@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>追瑞 | AI 原生投行工作台</title>
+    <meta
+      name="description"
+      content="追瑞 is an AI-native capital markets intelligence hub for HKEX, CSRC and issuer evidence workflows."
+    />
+    <meta name="theme-color" content="#f5f7f8" />
+    <link rel="icon" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workspaceMain">跳至主内容</a>
+    <div class="loading-screen" id="loadingScreen" role="status" aria-live="polite">
+      <div class="loading-card">
+        <div class="loading-brand">追瑞</div>
+        <div class="loading-title">正在载入证监会追踪样例</div>
+        <div class="loading-bar" aria-hidden="true"><span></span></div>
+        <p>数据为自动初步收集，未经过人工复核，仅供功能示例和朋友预览。</p>
+        <small>Preliminary automated collection. Not manually verified.</small>
+      </div>
+    </div>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">追</div>
+          <div>
+            <div class="brand-name">追瑞</div>
+            <div class="brand-subtitle">AI-native banker hub</div>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item is-active" data-view="tracker">
+            <span class="nav-icon" aria-hidden="true">监</span>
+            <span><b>证监会追踪</b><small>CSRC Tracker</small></span>
+          </button>
+          <button class="nav-item" data-view="precedents">
+            <span class="nav-icon" aria-hidden="true">例</span>
+            <span><b>案例检索</b><small>Precedents</small></span>
+          </button>
+          <button class="nav-item" data-view="dossiers">
+            <span class="nav-icon" aria-hidden="true">档</span>
+            <span><b>发行人档案</b><small>Issuer Dossiers</small></span>
+          </button>
+          <button class="nav-item" data-view="signals">
+            <span class="nav-icon" aria-hidden="true">仓</span>
+            <span><b>市场信号</b><small>Market Signals</small></span>
+          </button>
+          <button class="nav-item" data-view="research">
+            <span class="nav-icon" aria-hidden="true">研</span>
+            <span><b>研究笔记</b><small>Research</small></span>
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="status-dot"></span>
+          <span id="dataMode">限量预览</span>
+        </div>
+      </aside>
+
+      <main class="workspace" id="workspaceMain">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">资本市场情报 · Capital markets intelligence</p>
+            <h1 id="viewTitle">证监会备案追踪</h1>
+          </div>
+          <div class="topbar-actions">
+            <div class="source-pill" id="sourcePill">样例快照</div>
+            <button class="text-button compact-button" id="refreshButton" title="刷新数据" aria-label="刷新数据">刷新</button>
+          </div>
+        </header>
+
+        <section class="view-panel is-visible" id="trackerView" aria-label="CSRC tracker">
+          <p class="snapshot-meta" id="snapshotMeta"></p>
+          <div class="metrics-grid" id="metricsGrid"></div>
+
+          <section class="tracker-layout">
+            <div class="tracker-main">
+              <div class="toolbar">
+                <div class="search-box">
+                  <span aria-hidden="true">搜</span>
+                  <input id="issuerSearch" name="issuerSearch" type="search" autocomplete="off" placeholder="搜索发行人、保荐人、行业…" />
+                </div>
+                <div class="segmented" role="tablist" aria-label="Status filter">
+                  <button class="segment is-active" data-status="all">全部</button>
+                  <button class="segment" data-status="notice_issued">通知书</button>
+                  <button class="segment" data-status="regulator_opinion">征询意见</button>
+                  <button class="segment" data-status="supplement_requested">补材料</button>
+                  <button class="segment" data-status="csrc_received">已接收</button>
+                  <button class="segment" data-status="waiting_received">等待接收</button>
+                  <button class="segment" data-status="review_pending">待复核</button>
+                </div>
+              </div>
+
+              <div class="filter-grid" aria-label="Tracker filters">
+                <label class="filter-control">
+                  <span><b>日期口径</b><small>Date field</small></span>
+                  <select id="dateField" name="dateField" autocomplete="off">
+                    <option value="a1Date">A1 锚点</option>
+                    <option value="currentA1Date">当前 A1</option>
+                    <option value="csrcReceivedDate">首轮接收</option>
+                    <option value="csrcCurrentReceivedDate">当前接收</option>
+                    <option value="noticeDate">备案通知书</option>
+                  </select>
+                </label>
+                <label class="filter-control">
+                  <span><b>起始</b><small>From</small></span>
+                  <input id="dateFrom" name="dateFrom" type="date" autocomplete="off" />
+                </label>
+                <label class="filter-control">
+                  <span><b>截至</b><small>To</small></span>
+                  <input id="dateTo" name="dateTo" type="date" autocomplete="off" />
+                </label>
+                <label class="filter-control">
+                  <span><b>发行人类型</b><small>Issuer type</small></span>
+                  <select id="structureFilter" name="structureFilter" autocomplete="off"></select>
+                </label>
+                <label class="filter-control">
+                  <span><b>行业</b><small>Industry</small></span>
+                  <select id="industryFilter" name="industryFilter" autocomplete="off"></select>
+                </label>
+                <label class="filter-control">
+                  <span><b>保荐人</b><small>Sponsor</small></span>
+                  <select id="sponsorFilter" name="sponsorFilter" autocomplete="off"></select>
+                </label>
+                <label class="filter-control">
+                  <span><b>A1 日 A 股市值下限</b><small>RMB bn · 仅 A+H</small></span>
+                  <input id="marketCapMin" name="marketCapMin" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
+                </label>
+                <label class="filter-control">
+                  <span><b>A1 日 A 股市值上限</b><small>RMB bn · 仅 A+H</small></span>
+                  <input id="marketCapMax" name="marketCapMax" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
+                </label>
+                <label class="filter-control">
+                  <span><b>排序</b><small>Sort by</small></span>
+                  <select id="sortField" name="sortField" autocomplete="off">
+                    <option value="a1Date">A1 锚点</option>
+                    <option value="currentA1Date">当前 A1</option>
+                    <option value="csrcReceivedDate">首轮接收</option>
+                    <option value="csrcCurrentReceivedDate">当前接收</option>
+                    <option value="noticeDate">备案通知书</option>
+                    <option value="businessDaysA1ToReceived">递表至接收天数</option>
+                    <option value="businessDaysCurrentA1ToReceived">当前A1至当前接收天数</option>
+                    <option value="businessDaysReceivedToNotice">接收至通知天数</option>
+                    <option value="businessDaysA1ToNotice">递表至通知天数</option>
+                    <option value="aShareMarketCapAtA1RmbBn">A1 日 A 股市值</option>
+                    <option value="issuerName">发行人名称</option>
+                    <option value="structureType">发行人类型</option>
+                  </select>
+                </label>
+                <button class="sort-button" id="sortDirection" data-dir="desc">降序</button>
+                <button class="clear-button" id="clearFilters">清除</button>
+              </div>
+
+              <div class="table-wrap">
+                <table class="tracker-table">
+                  <thead>
+                    <tr>
+                      <th><span class="th-zh">发行人</span><span class="th-en">Issuer</span></th>
+                      <th><span class="th-zh">状态</span><span class="th-en">Status</span></th>
+                      <th><span class="th-zh">A1</span><span class="th-en">Anchor / current</span></th>
+                      <th><span class="th-zh">接收</span><span class="th-en">First / current</span></th>
+                      <th><span class="th-zh">通知书</span><span class="th-en">Notice</span></th>
+                      <th><span class="th-zh">天数</span><span class="th-en">Days</span></th>
+                      <th><span class="th-zh">类型</span><span class="th-en">Issuer type</span></th>
+                      <th><span class="th-zh">A1日市值</span><span class="th-en">A-share mkt cap</span></th>
+                      <th><span class="th-zh">行业</span><span class="th-en">Industry</span></th>
+                      <th><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="trackerRows"></tbody>
+                </table>
+              </div>
+              <div class="pagination-bar" id="paginationBar" aria-live="polite"></div>
+            </div>
+
+            <aside class="detail-pane" aria-label="Issuer detail">
+              <div id="issuerDetail"></div>
+            </aside>
+          </section>
+        </section>
+
+        <section class="view-panel" id="precedentsView" aria-label="Precedent search">
+          <div class="coming-grid">
+            <div class="feature-slab">
+              <div class="feature-kicker">Coming soon</div>
+              <h2>案例语义检索 <small>HKEX precedent search</small></h2>
+              <div class="mock-search">
+                <span>搜</span>
+                <input value="social insurance housing fund non-compliance" readonly />
+                <button disabled>Search</button>
+              </div>
+              <div class="result-skeleton">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="mini-panel">
+              <h3>Evidence contract</h3>
+              <p>doc id, page range, snippet, source URL, retrieval basis, review flag.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="dossiersView" aria-label="Issuer dossiers">
+          <div class="coming-grid">
+            <div class="feature-slab">
+              <div class="feature-kicker">Coming soon</div>
+              <h2>发行人档案 <small>Issuer dossier</small></h2>
+              <div class="dossier-preview">
+                <div class="dossier-title">Applicant identity graph</div>
+                <div class="dossier-line"></div>
+                <div class="dossier-line short"></div>
+                <div class="tag-row">
+                  <span>A+H</span>
+                  <span>PRC issuer</span>
+                  <span>CSRC matched</span>
+                </div>
+              </div>
+            </div>
+            <div class="mini-panel">
+              <h3>Entity layer</h3>
+              <p>HKEX applicant, CSRC issuer, A-share company, offshore holding company.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="signalsView" aria-label="Market signals">
+          <div class="coming-grid">
+            <div class="feature-slab">
+              <div class="feature-kicker">Coming soon</div>
+              <h2>持仓集中度 <small>CCASS concentration</small></h2>
+              <div class="bar-stack">
+                <span style="width: 44%"></span>
+                <span style="width: 25%"></span>
+                <span style="width: 17%"></span>
+                <span style="width: 14%"></span>
+              </div>
+            </div>
+            <div class="mini-panel">
+              <h3>Signal wording</h3>
+              <p>Participant-level custody signal, not beneficial ownership proof.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" id="researchView" aria-label="Research">
+          <div class="coming-grid">
+            <div class="feature-slab">
+              <div class="feature-kicker">Private draft room</div>
+              <h2>研究笔记 <small>Research notes</small></h2>
+              <div class="research-preview">
+                <div class="claim-row">
+                  <span>Claim ledger</span>
+                  <strong>0 public</strong>
+                </div>
+                <div class="claim-row">
+                  <span>Source packs</span>
+                  <strong>Coming soon</strong>
+                </div>
+              </div>
+            </div>
+            <div class="mini-panel">
+              <h3>Publication gate</h3>
+              <p>Source-backed, reviewer-checked, versioned, and legally cautious.</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer-note">
+          预览版本。公开页面应链接至港交所/证监会官方材料，并避免批量转载源文件。
+          <span>Preview build with official-source linking discipline.</span>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      window.ZHUIRUI_FALLBACK_DATA = {
+        meta: {
+          generatedAt: "2026-06-08T00:00:00+08:00",
+          sourceMode: "sample_fixture",
+          label: "Fixture snapshot",
+          labelZh: "样例快照"
+        },
+        summary: {
+          trackedIssuers: 8,
+          csrcNoticeIssued: 4,
+          supplementRequests: 2,
+          reviewQueue: 2,
+          medianA1ToNoticeBusinessDays: 28
+        },
+        records: [
+          {
+            id: "mixue-2025-preview",
+            issuerName: "Mixue Group",
+            csrcName: "蜜雪冰城股份有限公司",
+            status: "notice_issued",
+            a1Date: "2024-03-01",
+            csrcReceivedDate: "2024-03-06",
+            noticeDate: "2025-01-07",
+            businessDaysA1ToReceived: 3,
+            businessDaysReceivedToNotice: 210,
+            businessDaysA1ToNotice: 213,
+            structureType: "H-share / PRC issuer",
+            aShareStatus: "No",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Consumer", "Food & beverage", "Franchise"],
+            sponsors: ["BofA Securities", "Goldman Sachs", "UBS"],
+            feedbackStatus: "No public supplement in fixture",
+            sourceLinks: [
+              { label: "CSRC notice", url: "https://www.csrc.gov.cn/" }
+            ]
+          },
+          {
+            id: "hushangayi-2025-preview",
+            issuerName: "Auntea Jenny",
+            csrcName: "沪上阿姨（上海）实业股份有限公司",
+            status: "notice_issued",
+            a1Date: "2024-02-14",
+            csrcReceivedDate: "2024-02-19",
+            noticeDate: "2025-01-10",
+            businessDaysA1ToReceived: 3,
+            businessDaysReceivedToNotice: 225,
+            businessDaysA1ToNotice: 228,
+            structureType: "H-share / PRC issuer",
+            aShareStatus: "No",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Consumer", "Food & beverage", "Retail"],
+            sponsors: ["CITIC Securities", "Haitong International"],
+            feedbackStatus: "Needs backend confirmation",
+            sourceLinks: [
+              { label: "CSRC notice", url: "https://www.csrc.gov.cn/" }
+            ]
+          },
+          {
+            id: "zg-group-2025-preview",
+            issuerName: "ZG Group",
+            csrcName: "ZG Group（找钢产业互联集团）",
+            status: "notice_issued",
+            a1Date: "2023-06-30",
+            csrcReceivedDate: "2023-07-05",
+            noticeDate: "2025-01-10",
+            businessDaysA1ToReceived: 3,
+            businessDaysReceivedToNotice: 387,
+            businessDaysA1ToNotice: 390,
+            structureType: "Red-chip / offshore issuer",
+            aShareStatus: "No",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Industrials", "B2B platform", "Steel supply chain"],
+            sponsors: ["CICC", "Huatai International"],
+            feedbackStatus: "Needs backend confirmation",
+            sourceLinks: [
+              { label: "CSRC notice", url: "https://www.csrc.gov.cn/" }
+            ]
+          },
+          {
+            id: "duality-2025-preview",
+            issuerName: "Duality Biotherapeutics",
+            csrcName: "Duality Biotherapeutics, Inc.（映恩生物）",
+            status: "notice_issued",
+            a1Date: "2024-09-16",
+            csrcReceivedDate: "2024-09-19",
+            noticeDate: "2025-01-21",
+            businessDaysA1ToReceived: 3,
+            businessDaysReceivedToNotice: 81,
+            businessDaysA1ToNotice: 84,
+            structureType: "Red-chip / offshore issuer",
+            aShareStatus: "No",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Healthcare", "Biotech", "ADC"],
+            sponsors: ["Morgan Stanley", "J.P. Morgan"],
+            feedbackStatus: "No public supplement in fixture",
+            sourceLinks: [
+              { label: "CSRC notice", url: "https://www.csrc.gov.cn/" }
+            ]
+          },
+          {
+            id: "basic-2026-preview",
+            issuerName: "BASiC Semiconductor Co., Ltd.",
+            csrcName: "BASiC Semiconductor Co., Ltd.",
+            status: "supplement_requested",
+            a1Date: "2026-06-05",
+            csrcReceivedDate: null,
+            noticeDate: null,
+            businessDaysA1ToReceived: null,
+            businessDaysReceivedToNotice: null,
+            businessDaysA1ToNotice: null,
+            structureType: "PRC issuer / pending review",
+            aShareStatus: "No",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Technology", "Semiconductors", "Power devices"],
+            sponsors: ["Pending extraction"],
+            feedbackStatus: "Supplement request sample",
+            sourceLinks: [
+              { label: "CSRC supplement", url: "https://www.csrc.gov.cn/" }
+            ]
+          },
+          {
+            id: "wus-2026-preview",
+            issuerName: "WUS Printed Circuit (Kunshan) Co., Ltd.",
+            csrcName: "沪士电子股份有限公司 / WUS Printed Circuit",
+            status: "pending_match",
+            a1Date: "2026-06-05",
+            csrcReceivedDate: null,
+            noticeDate: null,
+            businessDaysA1ToReceived: null,
+            businessDaysReceivedToNotice: null,
+            businessDaysA1ToNotice: null,
+            structureType: "A+H candidate / pending review",
+            aShareStatus: "A-share listed",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Technology", "Electronic components", "PCB"],
+            sponsors: ["Pending extraction"],
+            feedbackStatus: "Manual review needed",
+            sourceLinks: []
+          },
+          {
+            id: "anker-2026-preview",
+            issuerName: "Anker Innovations Technology Co., Ltd.",
+            csrcName: "安克创新科技股份有限公司",
+            status: "pending_match",
+            a1Date: "2026-06-03",
+            csrcReceivedDate: null,
+            noticeDate: null,
+            businessDaysA1ToReceived: null,
+            businessDaysReceivedToNotice: null,
+            businessDaysA1ToNotice: null,
+            structureType: "A+H candidate / pending review",
+            aShareStatus: "A-share listed",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Consumer electronics", "Technology", "Cross-border e-commerce"],
+            sponsors: ["Pending extraction"],
+            feedbackStatus: "Manual review needed",
+            sourceLinks: []
+          },
+          {
+            id: "seer-2026-preview",
+            issuerName: "Shanghai Seer Intelligent Technology Co., Ltd.",
+            csrcName: "上海仙工智能科技股份有限公司",
+            status: "supplement_requested",
+            a1Date: "2026-06-07",
+            csrcReceivedDate: null,
+            noticeDate: null,
+            businessDaysA1ToReceived: null,
+            businessDaysReceivedToNotice: null,
+            businessDaysA1ToNotice: null,
+            structureType: "PRC issuer / pending review",
+            aShareStatus: "No",
+            aShareMarketCapAtA1RmbBn: null,
+            industryTags: ["Technology", "Robotics", "Industrial automation"],
+            sponsors: ["Pending extraction"],
+            feedbackStatus: "Supplement request sample",
+            sourceLinks: [
+              { label: "CSRC supplement", url: "https://www.csrc.gov.cn/" }
+            ]
+          }
+        ]
+      };
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
