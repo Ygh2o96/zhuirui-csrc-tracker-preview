@@ -443,11 +443,15 @@ function renderDurationMetric(metric, stats) {
   const sampleStart = state.data?.meta?.libraryCoverageStartDate || state.data?.meta?.durationSampleStartDate || "N/A";
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
   const startLabel = `样本池最早本地A1 ${sampleStart} · CSRC口径≥${regimeStart}`;
+  const lowSampleText = metric.minCount
+    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛`
+    : `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计`;
   const caption = stats.sampleTooSmall
-    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计`
+    ? lowSampleText
     : stats.count
       ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metric.note}`
       : `${startLabel} 暂无可统计样本`;
+  const statValue = (value) => stats.sampleTooSmall ? "样本不足" : formatNumber(value);
   return `
     <article class="metric metric-wide duration-card">
       <div class="metric-title">
@@ -456,12 +460,12 @@ function renderDurationMetric(metric, stats) {
       </div>
       <div class="duration-core">
         <span>平均工作日</span>
-        <strong>${formatNumber(stats.average)}</strong>
+        <strong>${statValue(stats.average)}</strong>
       </div>
       <div class="metric-stat-grid">
-        <div><span>中位</span><strong>${formatNumber(stats.median)}</strong></div>
-        <div><span>最低</span><strong>${formatNumber(stats.min)}</strong></div>
-        <div><span>最高</span><strong>${formatNumber(stats.max)}</strong></div>
+        <div><span>中位</span><strong>${statValue(stats.median)}</strong></div>
+        <div><span>最低</span><strong>${statValue(stats.min)}</strong></div>
+        <div><span>最高</span><strong>${statValue(stats.max)}</strong></div>
       </div>
       <div class="metric-caption">${caption}</div>
     </article>
