@@ -252,7 +252,8 @@ function hkexListingStage(record) {
   const rawStatus = String(record.hkexPublicStatus || "").trim();
   const normalized = rawStatus.toLowerCase();
   if (["active", "processing"].includes(normalized) || rawStatus === "處理中" || rawStatus === "处理中") return "applying";
-  return "other";
+  if (["lapsed", "withdrawn", "rejected"].includes(normalized) || ["失效", "撤回", "拒绝", "拒絕"].includes(rawStatus)) return "other";
+  return "applying";
 }
 
 function hkexStageLabel(stage) {
@@ -260,7 +261,7 @@ function hkexStageLabel(stage) {
     all: "全部",
     applying: "上市申请中",
     listed: "已上市",
-    other: "失效/其他"
+    other: "失效/撤回"
   };
   return labels[stage] || stage;
 }

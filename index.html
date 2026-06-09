@@ -74,7 +74,7 @@
             <strong data-stage-count="listed">0</strong>
           </button>
           <button class="listing-stage-button muted-stage" type="button" data-hkex-stage="other">
-            <span><b>失效/其他</b><small>Lapsed or unclear</small></span>
+            <span><b>失效/撤回</b><small>Lapsed / withdrawn</small></span>
             <strong data-stage-count="other">0</strong>
           </button>
         </div>
@@ -320,7 +320,7 @@
         <footer class="footer-note">
           <details class="methodology-note">
             <summary>口径说明 Methodology</summary>
-            <p>默认页为上市申请中；已上市页仅纳入HKEX New Listing Report显示上市日不早于2023-03-31的发行人。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收，若当前A1后尚无接收日则剔除。已上市页只展示首次A1至备案通过、首次A1至上市两组天数；无需备案发行人不纳入备案通过统计，但可纳入A1至上市统计。页面天数统一向上取整显示。左侧“上市进度”为HKEX consolidated index及NLR口径，独立于证监会备案状态。</p>
+            <p>默认页为上市申请中；已上市页纳入HKEX New Listing Report显示上市日不早于2023-03-31的全量发行人，并补入不在本地AP库中的listed-only样本。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收，若当前A1后尚无接收日则剔除。已上市页只展示首次A1至备案通过、首次A1至上市两组天数；无需备案发行人不纳入备案通过统计，但可纳入A1至上市统计。页面天数统一向上取整显示。左侧“上市进度”为HKEX consolidated index及NLR口径，空白HKEX状态不等于失效；只有明确Lapsed/Withdrawn/Rejected才进入失效/撤回。</p>
           </details>
           预览版本。公开页面应链接至港交所/证监会官方材料，并避免批量转载源文件。
           <span>Preview build with official-source linking discipline.</span>
