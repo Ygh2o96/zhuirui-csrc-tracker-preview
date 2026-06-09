@@ -732,7 +732,6 @@ function median(values) {
 
 function statsFor(records, key, minCount = 0) {
   const values = records
-    .filter((record) => record.durationSampleEligible)
     .map((record) => record[key])
     .filter((value) => typeof value === "number");
   if (!values.length || values.length < minCount) {
@@ -750,9 +749,8 @@ function statsFor(records, key, minCount = 0) {
 }
 
 function renderDurationMetric(metric, stats) {
-  const sampleStart = state.data?.meta?.libraryCoverageStartDate || state.data?.meta?.durationSampleStartDate || "N/A";
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
-  const startLabel = `样本池最早本地A1 ${sampleStart} · CSRC口径≥${regimeStart}`;
+  const startLabel = `纳入所有日期齐全且顺序有效样本 · CSRC口径≥${regimeStart}`;
   const metricNote = `${metric.note} · ${dayBasisNote()}`;
   const lowSampleText = metric.minCount
     ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛 · ${metricNote}`
