@@ -56,6 +56,29 @@
           </button>
         </nav>
 
+        <div class="listing-stage-panel" aria-label="HKEX listing progress filter">
+          <div class="listing-stage-title">
+            <b>上市进度</b>
+            <small>HKEX stage</small>
+          </div>
+          <button class="listing-stage-button is-active" type="button" data-hkex-stage="all">
+            <span><b>全部</b><small>All tracked</small></span>
+            <strong data-stage-count="all">0</strong>
+          </button>
+          <button class="listing-stage-button" type="button" data-hkex-stage="applying">
+            <span><b>上市申请中</b><small>Application in progress</small></span>
+            <strong data-stage-count="applying">0</strong>
+          </button>
+          <button class="listing-stage-button" type="button" data-hkex-stage="listed">
+            <span><b>已上市</b><small>Listed</small></span>
+            <strong data-stage-count="listed">0</strong>
+          </button>
+          <button class="listing-stage-button muted-stage" type="button" data-hkex-stage="other">
+            <span><b>失效/其他</b><small>Lapsed or unclear</small></span>
+            <strong data-stage-count="other">0</strong>
+          </button>
+        </div>
+
         <div class="sidebar-note">
           <span class="status-dot"></span>
           <span id="dataMode">限量预览</span>
@@ -295,7 +318,7 @@
         <footer class="footer-note">
           <details class="methodology-note">
             <summary>口径说明 Methodology</summary>
-            <p>A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收，若当前A1后尚无接收日则剔除。行内仍保留历史锚点和当前A1两组时间线。接收至通知统计只纳入同一发行人链条中接收日不晚于通知书日的样本。</p>
+            <p>A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收，若当前A1后尚无接收日则剔除。行内仍保留历史锚点和当前A1两组时间线。接收至通知统计只纳入同一发行人链条中接收日不晚于通知书日的样本。页面天数统一向上取整显示。左侧“上市进度”为HKEX consolidated index口径，独立于证监会备案状态；“已上市”包含HKEX最新状态为Listed的发行人，如本库尚未匹配source-backed备案通知书，会在行内标记“通知书待核”，并从时长统计中剔除。</p>
           </details>
           预览版本。公开页面应链接至港交所/证监会官方材料，并避免批量转载源文件。
           <span>Preview build with official-source linking discipline.</span>
@@ -486,6 +509,6 @@
         ]
       };
     </script>
-    <script src="app.js?v=20260609-duration-cap-2"></script>
+    <script src="app.js?v=20260609-hkex-stage-1"></script>
   </body>
 </html>

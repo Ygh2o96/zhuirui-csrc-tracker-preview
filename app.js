@@ -5,6 +5,7 @@ const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 const defaults = {
   selectedId: null,
   status: "all",
+  hkexStage: "all",
   query: "",
   view: "tracker",
   dateField: "a1Date",
@@ -33,6 +34,7 @@ const statusLabels = {
   supplement_requested: ["补充材料", "Supplement requested"],
   csrc_received: ["已接收", "CSRC received"],
   waiting_received: ["等待接收", "Awaiting receipt"],
+  not_required: ["无需备案", "Not required"],
   review_pending: ["待复核", "Review queue"],
   pending_match: ["待复核", "Review queue"]
 };
@@ -69,6 +71,7 @@ const metricDefinitions = [
 const trackedStateKeys = [
   "view",
   "status",
+  "hkexStage",
   "query",
   "dateField",
   "dateFrom",
@@ -189,8 +192,13 @@ function formatNumber(value, mode = "decimal") {
   return mode === "integer" ? integerFormatter.format(value) : numberFormatter.format(value);
 }
 
+function formatDayValue(value) {
+  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待披露";
+  return integerFormatter.format(Math.ceil(value));
+}
+
 function formatDayNumber(value, unit = dayUnitLabel()) {
-  return typeof value === "number" ? `${formatNumber(value)} ${unit}` : formatPending();
+  return typeof value === "number" ? `${formatDayValue(value)} ${unit}` : formatPending();
 }
 
 function formatPending() {
@@ -199,6 +207,56 @@ function formatPending() {
 
 function isAhCandidate(record) {
   return Boolean(record.isAH) || Boolean(record.aShareCode) || String(record.aShareStatus || "").includes("A-share listed");
+}
+
+function isHkexListed(record) {
+  const rawStatus = String(record.hkexPublicStatus || "").trim();
+  return rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
+}
+
+function hasNoticeGapAfterListing(record) {
+  return isHkexListed(record) && !record.noticeDate;
+}
+
+function hkexListingStage(record) {
+  if (isHkexListed(record)) return "listed";
+  const rawStatus = String(record.hkexPublicStatus || "").trim();
+  const normalized = rawStatus.toLowerCase();
+  if (["active", "processing"].includes(normalized) || rawStatus === "處理中" || rawStatus === "处理中") return "applying";
+  return "other";
+}
+
+function hkexStageLabel(stage) {
+  const labels = {
+    all: "全部",
+    applying: "上市申请中",
+    listed: "已上市",
+    other: "失效/其他"
+  };
+  return labels[stage] || stage;
+}
+
+function hkexListingStageCounts(records = state.data?.records || []) {
+  const counts = { all: records.length, applying: 0, listed: 0, other: 0 };
+  for (const record of records) {
+    const stage = hkexListingStage(record);
+    counts[stage] = (counts[stage] || 0) + 1;
+  }
+  return counts;
+}
+
+function syncListingStageButtons() {
+  const stageCounts = hkexListingStageCounts();
+  document.querySelectorAll("[data-hkex-stage]").forEach((button) => {
+    const stage = button.dataset.hkexStage;
+    button.classList.toggle("is-active", stage === state.hkexStage);
+    button.setAttribute("aria-pressed", String(stage === state.hkexStage));
+    button.title = `${hkexStageLabel(stage)}：${formatNumber(stageCounts[stage] || 0, "integer")} 家`;
+  });
+  document.querySelectorAll("[data-stage-count]").forEach((item) => {
+    const stage = item.dataset.stageCount;
+    item.textContent = formatNumber(stageCounts[stage] || 0, "integer");
+  });
 }
 
 function issuerTypeKey(record) {
@@ -534,9 +592,23 @@ function renderStatusTags(record) {
   if (!tags.length) return "";
   return `
     <span class="status-tag-list">
-      ${tags.map((tag) => `<span title="HKEX confidential filing date used as A1 anchor">${escapeHtml(tag)}</span>`).join("")}
+      ${tags.map((tag) => `<span class="${escapeHtml(statusTagClass(tag))}" title="${escapeHtml(statusTagTitle(tag))}">${escapeHtml(tag)}</span>`).join("")}
     </span>
   `;
+}
+
+function statusTagClass(tag) {
+  if (tag === "已上市") return "listed-tag";
+  if (tag === "通知书待核") return "pending-listed-tag";
+  return "";
+}
+
+function statusTagTitle(tag) {
+  if (tag === "密交") return "HKEX confidential filing date used as A1 anchor";
+  if (tag === "已上市") return "HKEX consolidated index latest status is Listed";
+  if (tag === "通知书待核") return "HKEX Listed, but a source-backed CSRC notice is not yet matched in this tracker";
+  if (tag === "无需备案") return "Hong Kong or non-PRC filing-not-required case; excluded from CSRC filing duration statistics";
+  return "Status tag";
 }
 
 function renderStatusBadge(record) {
@@ -602,6 +674,7 @@ function getBaseFilteredRecords() {
 
   return state.data.records.filter((record) => {
     if (state.status !== "all" && record.status !== state.status) return false;
+    if (state.hkexStage !== "all" && hkexListingStage(record) !== state.hkexStage) return false;
     if (state.structure !== "all" && issuerTypeKey(record) !== state.structure) return false;
     if (state.industry !== "all" && !(record.industryTags || []).includes(state.industry)) return false;
     if (
@@ -731,6 +804,8 @@ function median(values) {
 }
 
 function durationValueForStats(record, metric) {
+  if (record.csrcFilingRequired === false) return null;
+  if (hasNoticeGapAfterListing(record)) return null;
   if (metric.metric === "a1ToReceived" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS) {
     const currentField = dayMetricField("currentA1ToReceived");
     return typeof record[currentField] === "number" ? record[currentField] : null;
@@ -763,7 +838,7 @@ function renderDurationMetric(metric, stats) {
   const caption = stats.count
     ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metricNote}`
     : `${startLabel} 暂无可统计样本 · ${metricNote}`;
-  const statValue = (value) => formatNumber(value);
+  const statValue = (value) => formatDayValue(value);
   return `
     <article class="metric metric-wide duration-card">
       <div class="metric-title">
@@ -817,15 +892,15 @@ function renderDays(record) {
     a1ToNotice: dayMetricField("a1ToNotice")
   };
   const currentReceivedLine = typeof record[fields.currentA1ToReceived] === "number"
-    ? `<div><span>当前A1至接收</span><strong>${formatNumber(record[fields.currentA1ToReceived])}</strong></div>`
+    ? `<div><span>当前A1至接收</span><strong>${formatDayValue(record[fields.currentA1ToReceived])}</strong></div>`
     : "";
   return `
     <div class="days-cell">
       <div class="days-cell-mode">${dayUnitLabel()}</div>
-      <div><span>备案锚点（A1日）至接收</span><strong>${formatNumber(record[fields.a1ToReceived])}</strong></div>
+      <div><span>备案锚点（A1日）至接收</span><strong>${formatDayValue(record[fields.a1ToReceived])}</strong></div>
       ${currentReceivedLine}
-      <div><span>接收至通知</span><strong>${formatNumber(record[fields.receivedToNotice])}</strong></div>
-      <div><span>备案锚点（A1日）至通知</span><strong>${formatNumber(record[fields.a1ToNotice])}</strong></div>
+      <div><span>接收至通知</span><strong>${formatDayValue(record[fields.receivedToNotice])}</strong></div>
+      <div><span>备案锚点（A1日）至通知</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
     </div>
   `;
 }
@@ -1085,6 +1160,7 @@ function renderChrome() {
     meta.generatedAt
       ? `${meta.disclaimerZh || "初步自动收集，未人工复核，仅示例"} · 生成时间 ${meta.generatedAt} · ${meta.marketCapNoteZh || ""}`
       : meta.disclaimerZh || meta.marketCapNoteZh || "";
+  syncListingStageButtons();
 }
 
 function emptyPayload(message) {
@@ -1147,6 +1223,7 @@ function syncControls() {
   document.querySelectorAll(".segment").forEach((item) => {
     item.classList.toggle("is-active", item.dataset.status === state.status);
   });
+  syncListingStageButtons();
   syncSortHeaders();
 }
 
@@ -1220,6 +1297,10 @@ document.querySelectorAll(".nav-item").forEach((button) => {
 
 document.querySelectorAll(".segment").forEach((button) => {
   button.addEventListener("click", () => updateTracker({ status: button.dataset.status }));
+});
+
+document.querySelectorAll("[data-hkex-stage]").forEach((button) => {
+  button.addEventListener("click", () => updateTracker({ hkexStage: button.dataset.hkexStage }));
 });
 
 document.getElementById("issuerSearch").addEventListener("input", (event) => {
@@ -1302,6 +1383,7 @@ document.addEventListener("keydown", (event) => {
 document.getElementById("clearFilters").addEventListener("click", () => {
   Object.assign(state, {
     status: "all",
+    hkexStage: "all",
     query: "",
     dateField: "a1Date",
     dateFrom: "",

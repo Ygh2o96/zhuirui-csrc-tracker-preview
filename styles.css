@@ -263,6 +263,89 @@ select {
   background: #42d392;
 }
 
+.listing-stage-panel {
+  display: grid;
+  gap: 7px;
+  margin-top: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.listing-stage-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0 2px;
+  color: #eff7f6;
+}
+
+.listing-stage-title b,
+.listing-stage-title small {
+  display: block;
+  line-height: 1.1;
+}
+
+.listing-stage-title b {
+  font-size: 11px;
+  font-weight: 760;
+}
+
+.listing-stage-title small {
+  color: #9eb2bf;
+  font-size: 9px;
+}
+
+.listing-stage-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #dbe8e8;
+  text-align: left;
+  cursor: pointer;
+}
+
+.listing-stage-button b,
+.listing-stage-button small {
+  display: block;
+  line-height: 1.12;
+}
+
+.listing-stage-button b {
+  font-size: 11px;
+  font-weight: 720;
+}
+
+.listing-stage-button small {
+  margin-top: 2px;
+  color: #9fb5ba;
+  font-size: 8.5px;
+}
+
+.listing-stage-button strong {
+  min-width: 28px;
+  color: #ffffff;
+  font-size: 12px;
+  text-align: right;
+}
+
+.listing-stage-button:hover,
+.listing-stage-button.is-active {
+  border-color: rgba(125, 204, 190, 0.42);
+  background: rgba(84, 168, 153, 0.16);
+}
+
+.listing-stage-button.muted-stage {
+  color: #bdc8c8;
+}
+
 .workspace {
   display: flex;
   flex-direction: column;
@@ -952,6 +1035,18 @@ tr[role="button"]:focus-visible {
   line-height: 1;
 }
 
+.status-tag-list span.listed-tag {
+  border-color: #b7d8ca;
+  background: #e9f7f2;
+  color: var(--green);
+}
+
+.status-tag-list span.pending-listed-tag {
+  border-color: #d7d0c0;
+  background: #f7f3e9;
+  color: #73674b;
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -1559,14 +1654,45 @@ tr[role="button"]:focus-visible {
     top: 0;
     z-index: 5;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    overflow-x: auto;
+    overflow-x: visible;
     padding: 12px;
   }
 
   .nav-list {
+    display: flex;
+    flex: 1 1 260px;
+    overflow-x: auto;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
+  }
+
+  .listing-stage-panel {
+    display: flex;
+    align-items: stretch;
+    flex: 1 0 100%;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    margin-top: 0;
+    padding: 8px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 0;
+  }
+
+  .listing-stage-title {
+    display: none;
+  }
+
+  .listing-stage-button {
+    flex: 0 0 auto;
+    grid-template-columns: minmax(0, auto) auto;
+    width: auto;
+    min-width: 96px;
+    min-height: 36px;
+    padding: 5px 7px;
   }
 
   .nav-item {
