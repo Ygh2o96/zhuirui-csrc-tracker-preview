@@ -138,7 +138,7 @@ function formatPending() {
 }
 
 function isAhCandidate(record) {
-  return Boolean(record.isAH) || String(record.structureType || "").includes("A+H");
+  return Boolean(record.isAH) || Boolean(record.aShareCode) || String(record.aShareStatus || "").includes("A-share listed");
 }
 
 function formatMarketCap(record) {
