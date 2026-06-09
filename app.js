@@ -731,7 +731,10 @@ function median(values) {
 }
 
 function statsFor(records, key, minCount = 0) {
-  const values = records.map((record) => record[key]).filter((value) => typeof value === "number");
+  const values = records
+    .filter((record) => record.durationSampleEligible)
+    .map((record) => record[key])
+    .filter((value) => typeof value === "number");
   if (!values.length || values.length < minCount) {
     return { count: values.length, average: null, median: null, min: null, max: null, sampleTooSmall: values.length > 0 };
   }
