@@ -16,6 +16,7 @@ const defaults = {
   marketCapMax: "",
   sortField: "a1Date",
   sortDir: "desc",
+  daySortField: "businessDaysA1ToReceived",
   page: 1
 };
 
@@ -78,8 +79,39 @@ const trackedStateKeys = [
   "marketCapMax",
   "sortField",
   "sortDir",
+  "daySortField",
   "page"
 ];
+
+const daySortFields = [
+  "businessDaysA1ToReceived",
+  "businessDaysCurrentA1ToReceived",
+  "businessDaysReceivedToNotice",
+  "businessDaysA1ToNotice"
+];
+
+const statusSortRank = {
+  notice_issued: 10,
+  regulator_opinion: 20,
+  supplement_requested: 30,
+  csrc_received: 40,
+  waiting_received: 90,
+  review_pending: 100,
+  pending_match: 100
+};
+
+const descendingDefaultSortFields = new Set([
+  "a1Date",
+  "currentA1Date",
+  "csrcReceivedDate",
+  "csrcCurrentReceivedDate",
+  "noticeDate",
+  "businessDaysA1ToReceived",
+  "businessDaysCurrentA1ToReceived",
+  "businessDaysReceivedToNotice",
+  "businessDaysA1ToNotice",
+  "aShareMarketCapAtA1RmbBn"
+]);
 
 const dateFormatter = new Intl.DateTimeFormat("zh-HK", {
   year: "numeric",
@@ -141,6 +173,30 @@ function isAhCandidate(record) {
   return Boolean(record.isAH) || Boolean(record.aShareCode) || String(record.aShareStatus || "").includes("A-share listed");
 }
 
+function issuerTypeKey(record) {
+  if (isAhCandidate(record)) return "a_h";
+  const raw = `${record.structureType || ""} ${record.issuerJurisdiction || ""}`.toLowerCase();
+  if (raw.includes("red-chip") || raw.includes("offshore")) return "red_chip";
+  if (raw.includes("h-share") || raw.includes("prc-incorporated")) return "h_share";
+  return "other";
+}
+
+function issuerTypeInfo(recordOrKey) {
+  const key = typeof recordOrKey === "string" ? recordOrKey : issuerTypeKey(recordOrKey);
+  const labels = {
+    a_h: { primary: "A+H", secondary: "A-share + H-share", rank: 1 },
+    h_share: { primary: "H股", secondary: "H-share", rank: 2 },
+    red_chip: { primary: "红筹", secondary: "Red-chip", rank: 3 },
+    other: { primary: "其他", secondary: "Other", rank: 9 }
+  };
+  return labels[key] || labels.other;
+}
+
+function renderIssuerType(record) {
+  const info = issuerTypeInfo(record);
+  return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>`;
+}
+
 function formatMarketCap(record) {
   const value = record.aShareMarketCapAtA1RmbBn;
   if (!isAhCandidate(record)) return `<span class="not-applicable">不适用</span><span class="pending-en">N/A</span>`;
@@ -168,73 +224,205 @@ function statusLabel(status, index = 0) {
 }
 
 const sponsorDisplayRules = [
-  [/China International Capital|CICC/i, "中金"],
-  [/CITIC Securities/i, "中信证券"],
-  [/China Securities.*International/i, "中信建投国际"],
-  [/Huatai/i, "华泰国际"],
-  [/Guotai Junan/i, "国泰君安"],
-  [/CMB International/i, "招银国际"],
-  [/China Merchants Securities/i, "招商证券"],
-  [/Haitong/i, "海通国际"],
-  [/J\.?P\.?\s*Morgan|JP Morgan/i, "摩根大通"],
-  [/CCB International|CCBI/i, "建银国际"],
-  [/GF Capital|GF Securities/i, "广发"],
-  [/ABCI/i, "农银国际"],
-  [/Goldman/i, "高盛"],
-  [/Morgan Stanley/i, "摩根士丹利"],
-  [/CLSA|CITIC CLSA/i, "中信里昂"],
-  [/Citigroup|Citi/i, "花旗"],
-  [/BOCI/i, "中银国际"],
-  [/Merrill|BofA|Bank of America/i, "美银"],
-  [/China Galaxy/i, "银河国际"],
-  [/CMBC International/i, "民银国际"],
-  [/UBS/i, "瑞银"],
-  [/Sinolink/i, "国金"],
-  [/ICBC International/i, "工银国际"],
-  [/HSBC|Hongkong and Shanghai Banking/i, "汇丰"],
-  [/Shenwan Hongyuan|Shenyin Wanguo/i, "申万宏源"],
-  [/Ping An/i, "平安"],
-  [/Deutsche/i, "德银"],
-  [/Zhongtai/i, "中泰国际"],
-  [/Jefferies/i, "杰富瑞"],
-  [/SPDB/i, "浦银国际"],
-  [/DBS/i, "星展"],
-  [/BNP/i, "法巴"],
-  [/BOCOM/i, "交银国际"],
-  [/China Everbright|CEB International/i, "光大国际"],
-  [/Guoyuan/i, "国元"],
-  [/Orient Capital/i, "Orient"],
-  [/Rainbow/i, "Rainbow"],
-  [/Sunny Fortune/i, "Sunny"],
-  [/China Industrial Securities/i, "兴证国际"],
-  [/First Shanghai/i, "第一上海"],
-  [/Yue Xiu/i, "越秀"],
-  [/Alliance Capital Partners/i, "Alliance"],
-  [/SDIC|Essence/i, "国投证券"],
-  [/Quam/i, "华富建业"],
-  [/Zero2IPO/i, "清科"],
-  [/South China/i, "南华"],
-  [/Lego/i, "Lego"],
-  [/VBG/i, "建泉"],
-  [/Guosen/i, "国信"],
-  [/China Renaissance/i, "华兴"],
-  [/Goldlink/i, "金联"],
-  [/Dongxing/i, "东兴"],
-  [/Macquarie/i, "麦格理"],
-  [/Altus/i, "浩德"],
-  [/Red Sun/i, "红日"],
-  [/Cinda/i, "信达国际"],
-  [/Caitong/i, "财通国际"],
-  [/Innovax/i, "创升"],
-  [/Somerley/i, "新百利"],
-  [/China Sunrise/i, "华升"]
+  { pattern: /China International Capital|CICC/i, shortName: "中金", aliases: ["CICC", "中国国际金融", "China International Capital"] },
+  { pattern: /CITIC Securities/i, shortName: "中信证券", aliases: ["CITIC", "中信", "CITIC Securities"] },
+  { pattern: /China Securities.*International/i, shortName: "中信建投国际", aliases: ["中信建投", "CSC", "China Securities"] },
+  { pattern: /Huatai/i, shortName: "华泰国际", aliases: ["华泰", "Huatai"] },
+  { pattern: /Guotai Junan/i, shortName: "国泰君安", aliases: ["国泰君安国际", "GTJA", "Guotai Junan"] },
+  { pattern: /CMB International/i, shortName: "招银国际", aliases: ["招银", "CMBI", "CMB International"] },
+  { pattern: /China Merchants Securities/i, shortName: "招商证券", aliases: ["招商", "CMS", "China Merchants"] },
+  { pattern: /Haitong/i, shortName: "海通国际", aliases: ["海通", "Haitong"] },
+  { pattern: /J\.?P\.?\s*Morgan|JP Morgan/i, shortName: "摩根大通", aliases: ["JPM", "J.P. Morgan", "JP Morgan"] },
+  { pattern: /CCB International|CCBI/i, shortName: "建银国际", aliases: ["建银", "CCBI", "CCB International"] },
+  { pattern: /GF Capital|GF Securities/i, shortName: "广发", aliases: ["广发证券", "GF", "GF Securities"] },
+  { pattern: /ABCI/i, shortName: "农银国际", aliases: ["农银", "ABCI"] },
+  { pattern: /Goldman/i, shortName: "高盛", aliases: ["Goldman Sachs"] },
+  { pattern: /Morgan Stanley/i, shortName: "摩根士丹利", aliases: ["MS", "Morgan Stanley"] },
+  { pattern: /CLSA|CITIC CLSA/i, shortName: "中信里昂", aliases: ["里昂", "CLSA"] },
+  { pattern: /Citigroup|Citi/i, shortName: "花旗", aliases: ["Citi", "Citigroup"] },
+  { pattern: /BOCI/i, shortName: "中银国际", aliases: ["中银", "BOCI"] },
+  { pattern: /Merrill|BofA|Bank of America/i, shortName: "美银", aliases: ["美林", "BofA", "Bank of America", "Merrill"] },
+  { pattern: /China Galaxy/i, shortName: "银河国际", aliases: ["银河", "China Galaxy"] },
+  { pattern: /CMBC International/i, shortName: "民银国际", aliases: ["民银", "CMBC"] },
+  { pattern: /UBS/i, shortName: "瑞银", aliases: ["UBS", "瑞銀"] },
+  { pattern: /Sinolink/i, shortName: "国金", aliases: ["国金证券", "Sinolink"] },
+  { pattern: /ICBC International/i, shortName: "工银国际", aliases: ["工银", "ICBC"] },
+  { pattern: /HSBC|Hongkong and Shanghai Banking/i, shortName: "汇丰", aliases: ["滙豐", "汇丰银行", "HSBC"] },
+  { pattern: /Shenwan Hongyuan|Shenyin Wanguo/i, shortName: "申万宏源", aliases: ["申万", "申銀萬國", "Shenwan"] },
+  { pattern: /Ping An/i, shortName: "平安", aliases: ["平安证券", "Ping An"] },
+  { pattern: /Deutsche/i, shortName: "德银", aliases: ["德意志银行", "Deutsche"] },
+  { pattern: /Zhongtai/i, shortName: "中泰国际", aliases: ["中泰", "Zhongtai"] },
+  { pattern: /Jefferies/i, shortName: "杰富瑞", aliases: ["Jefferies"] },
+  { pattern: /SPDB/i, shortName: "浦银国际", aliases: ["浦银", "SPDB"] },
+  { pattern: /DBS/i, shortName: "星展", aliases: ["星展银行", "DBS"] },
+  { pattern: /BNP/i, shortName: "法巴", aliases: ["法国巴黎银行", "BNP", "BNP Paribas"] },
+  { pattern: /BOCOM/i, shortName: "交银国际", aliases: ["交银", "BOCOM"] },
+  { pattern: /China Everbright|CEB International/i, shortName: "光大国际", aliases: ["光大", "Everbright", "CEB"] },
+  { pattern: /Guoyuan/i, shortName: "国元", aliases: ["Guoyuan"] },
+  { pattern: /Orient Capital/i, shortName: "东方融资", aliases: ["Orient Capital"] },
+  { pattern: /Rainbow/i, shortName: "Rainbow", aliases: ["Rainbow"] },
+  { pattern: /Sunny Fortune/i, shortName: "Sunny", aliases: ["Sunny Fortune"] },
+  { pattern: /China Industrial Securities/i, shortName: "兴证国际", aliases: ["兴证", "China Industrial Securities"] },
+  { pattern: /First Shanghai/i, shortName: "第一上海", aliases: ["First Shanghai"] },
+  { pattern: /Yue Xiu/i, shortName: "越秀", aliases: ["Yue Xiu"] },
+  { pattern: /Alliance Capital Partners/i, shortName: "Alliance", aliases: ["Alliance"] },
+  { pattern: /SDIC|Essence/i, shortName: "国投证券", aliases: ["安信", "Essence", "SDIC"] },
+  { pattern: /Quam/i, shortName: "华富建业", aliases: ["Quam"] },
+  { pattern: /Zero2IPO/i, shortName: "清科", aliases: ["Zero2IPO"] },
+  { pattern: /South China/i, shortName: "南华", aliases: ["South China"] },
+  { pattern: /Lego/i, shortName: "Lego", aliases: ["Lego"] },
+  { pattern: /VBG/i, shortName: "建泉", aliases: ["VBG"] },
+  { pattern: /Guosen/i, shortName: "国信", aliases: ["Guosen"] },
+  { pattern: /China Renaissance/i, shortName: "华兴", aliases: ["华兴资本", "China Renaissance"] },
+  { pattern: /Goldlink/i, shortName: "金联", aliases: ["Goldlink"] },
+  { pattern: /Dongxing/i, shortName: "东兴", aliases: ["Dongxing"] },
+  { pattern: /Macquarie/i, shortName: "麦格理", aliases: ["Macquarie"] },
+  { pattern: /Altus/i, shortName: "浩德", aliases: ["Altus"] },
+  { pattern: /Red Sun/i, shortName: "红日", aliases: ["Red Sun"] },
+  { pattern: /Cinda/i, shortName: "信达国际", aliases: ["信达", "Cinda"] },
+  { pattern: /Caitong/i, shortName: "财通国际", aliases: ["财通", "Caitong"] },
+  { pattern: /Innovax/i, shortName: "创升", aliases: ["Innovax"] },
+  { pattern: /Somerley/i, shortName: "新百利", aliases: ["Somerley"] },
+  { pattern: /China Sunrise/i, shortName: "华升", aliases: ["China Sunrise"] }
 ];
+
+const traditionalToSimplified = {
+  "萬": "万", "與": "与", "專": "专", "業": "业", "東": "东", "絲": "丝", "丟": "丢", "兩": "两", "嚴": "严", "喪": "丧", "個": "个", "豐": "丰",
+  "臨": "临", "為": "为", "麗": "丽", "舉": "举", "麼": "么", "義": "义", "烏": "乌", "樂": "乐", "喬": "乔", "習": "习", "鄉": "乡",
+  "書": "书", "買": "买", "亂": "乱", "爭": "争", "於": "于", "虧": "亏", "雲": "云", "亞": "亚", "產": "产", "畝": "亩", "親": "亲",
+  "褻": "亵", "嚲": "亸", "億": "亿", "僅": "仅", "從": "从", "侖": "仑", "倉": "仓", "儀": "仪", "們": "们", "價": "价", "眾": "众",
+  "優": "优", "會": "会", "傘": "伞", "偉": "伟", "傳": "传", "傷": "伤", "倫": "伦", "偽": "伪", "佇": "伫", "體": "体", "餘": "余",
+  "傭": "佣", "僉": "佥", "俠": "侠", "侶": "侣", "僥": "侥", "偵": "侦", "側": "侧", "僑": "侨", "儈": "侩", "儂": "侬", "儼": "俨",
+  "儉": "俭", "債": "债", "傾": "倾", "偻": "偻", "償": "偿", "儲": "储", "兒": "儿", "兌": "兑", "內": "内", "兩": "两", "冊": "册",
+  "寫": "写", "軍": "军", "農": "农", "馮": "冯", "沖": "冲", "決": "决", "況": "况", "凍": "冻", "淨": "净", "準": "准", "涼": "凉",
+  "減": "减", "湊": "凑", "凜": "凛", "幾": "几", "鳳": "凤", "憑": "凭", "凱": "凯", "擊": "击", "鑿": "凿", "剎": "刹", "劑": "剂",
+  "則": "则", "剛": "刚", "創": "创", "刪": "删", "別": "别", "剗": "刬", "剄": "刭", "剎": "刹", "劉": "刘", "劊": "刽", "劍": "剑",
+  "剝": "剥", "劇": "剧", "勸": "劝", "辦": "办", "務": "务", "勛": "勋", "動": "动", "勵": "励", "勁": "劲", "勞": "劳", "勢": "势",
+  "勻": "匀", "匭": "匦", "匯": "汇", "區": "区", "協": "协", "單": "单", "賣": "卖", "盧": "卢", "鹵": "卤", "衛": "卫", "卻": "却",
+  "廠": "厂", "廳": "厅", "歷": "历", "厲": "厉", "壓": "压", "厭": "厌", "廈": "厦", "縣": "县", "參": "参", "雙": "双", "發": "发",
+  "變": "变", "敘": "叙", "疊": "叠", "葉": "叶", "號": "号", "嘆": "叹", "嘰": "叽", "嚇": "吓", "嗎": "吗", "啟": "启", "吳": "吴",
+  "吶": "呐", "嘔": "呕", "員": "员", "聽": "听", "嗆": "呛", "嗚": "呜", "詠": "咏", "鹹": "咸", "響": "响", "啞": "哑", "嘩": "哗",
+  "噲": "哙", "喲": "哟", "嘜": "唛", "喚": "唤", "啄": "啄", "問": "问", "啓": "启", "啞": "哑", "嘖": "啧", "嘗": "尝", "嘮": "唠",
+  "嘯": "啸", "嘰": "叽", "噴": "喷", "噸": "吨", "嚨": "咙", "嚐": "尝", "嚮": "向", "嚶": "嘤", "嚴": "严", "囑": "嘱", "囂": "嚣",
+  "團": "团", "園": "园", "國": "国", "圖": "图", "圓": "圆", "聖": "圣", "場": "场", "壞": "坏", "塊": "块", "堅": "坚", "壇": "坛",
+  "壩": "坝", "墳": "坟", "墜": "坠", "壟": "垄", "壘": "垒", "墾": "垦", "執": "执", "堯": "尧", "報": "报", "塢": "坞", "墊": "垫",
+  "塵": "尘", "塹": "堑", "墮": "堕", "壯": "壮", "聲": "声", "殼": "壳", "壺": "壶", "處": "处", "備": "备", "複": "复", "夠": "够",
+  "頭": "头", "誇": "夸", "夾": "夹", "奪": "夺", "奮": "奋", "奧": "奥", "妝": "妆", "婦": "妇", "媽": "妈", "嫵": "妩", "嫻": "娴",
+  "嬌": "娇", "嬈": "娆", "娛": "娱", "媧": "娲", "嫗": "妪", "媼": "媪", "嬋": "婵", "嬸": "婶", "孫": "孙", "學": "学", "孿": "孪",
+  "寧": "宁", "寶": "宝", "實": "实", "寵": "宠", "審": "审", "寫": "写", "寬": "宽", "賓": "宾", "寢": "寝", "對": "对", "尋": "寻",
+  "導": "导", "將": "将", "爾": "尔", "塵": "尘", "嘗": "尝", "堯": "尧", "尷": "尴", "屍": "尸", "盡": "尽", "層": "层", "屜": "屉",
+  "屬": "属", "岡": "冈", "島": "岛", "峽": "峡", "崗": "岗", "巋": "岿", "嶇": "岖", "嶄": "崭", "嶼": "屿", "歲": "岁", "豈": "岂",
+  "嶺": "岭", "嶽": "岳", "巔": "巅", "幣": "币", "帥": "帅", "師": "师", "帳": "帐", "帶": "带", "幀": "帧", "幫": "帮", "幹": "干",
+  "幾": "几", "庫": "库", "廁": "厕", "廂": "厢", "廄": "厩", "廈": "厦", "廚": "厨", "廝": "厮", "廟": "庙", "廠": "厂", "廡": "庑",
+  "廢": "废", "廣": "广", "廩": "廪", "廬": "庐", "廳": "厅", "弒": "弑", "張": "张", "強": "强", "彆": "别", "彈": "弹", "彌": "弥",
+  "彎": "弯", "彙": "汇", "彥": "彦", "後": "后", "徑": "径", "從": "从", "徠": "徕", "復": "复", "徵": "征", "徹": "彻", "恆": "恒",
+  "恥": "耻", "悅": "悦", "悶": "闷", "惡": "恶", "惱": "恼", "惲": "恽", "愛": "爱", "愜": "惬", "愨": "悫", "愴": "怆", "愷": "恺",
+  "愾": "忾", "態": "态", "慣": "惯", "慘": "惨", "慚": "惭", "慟": "恸", "慪": "怄", "慫": "怂", "慮": "虑", "慳": "悭", "慶": "庆",
+  "憂": "忧", "憊": "惫", "憐": "怜", "憑": "凭", "憚": "惮", "憤": "愤", "憫": "悯", "憮": "怃", "憲": "宪", "憶": "忆", "懇": "恳",
+  "應": "应", "懌": "怿", "懍": "懔", "懟": "怼", "懣": "懑", "懲": "惩", "懶": "懒", "懷": "怀", "懸": "悬", "懺": "忏", "懼": "惧",
+  "懾": "慑", "戀": "恋", "戇": "戆", "戔": "戋", "戲": "戏", "戧": "戗", "戰": "战", "戩": "戬", "戶": "户", "拋": "抛", "挾": "挟",
+  "捨": "舍", "掃": "扫", "掄": "抡", "掙": "挣", "掛": "挂", "採": "采", "揀": "拣", "換": "换", "揮": "挥", "損": "损", "搖": "摇",
+  "搗": "捣", "搜": "搜", "搶": "抢", "摑": "掴", "摜": "掼", "摟": "搂", "摯": "挚", "摳": "抠", "摶": "抟", "撈": "捞", "撐": "撑",
+  "撓": "挠", "撥": "拨", "撫": "抚", "撲": "扑", "撳": "揿", "撻": "挞", "撾": "挝", "撿": "捡", "擁": "拥", "擄": "掳", "擇": "择",
+  "擊": "击", "擋": "挡", "擔": "担", "據": "据", "擠": "挤", "擬": "拟", "擯": "摈", "擰": "拧", "擱": "搁", "擲": "掷", "擴": "扩",
+  "擺": "摆", "擻": "擞", "擾": "扰", "攆": "撵", "攏": "拢", "攔": "拦", "攖": "撄", "攙": "搀", "攜": "携", "攝": "摄", "攢": "攒",
+  "攣": "挛", "攤": "摊", "攪": "搅", "攬": "揽", "敗": "败", "敘": "叙", "敵": "敌", "數": "数", "斂": "敛", "斃": "毙", "斕": "斓",
+  "斬": "斩", "斷": "断", "於": "于", "時": "时", "晉": "晋", "晝": "昼", "暈": "晕", "暉": "晖", "暢": "畅", "暫": "暂", "曄": "晔",
+  "曆": "历", "曇": "昙", "曉": "晓", "曖": "暧", "曠": "旷", "曨": "昽", "曬": "晒", "書": "书", "會": "会", "朧": "胧", "東": "东",
+  "極": "极", "構": "构", "槍": "枪", "楓": "枫", "梟": "枭", "櫃": "柜", "檸": "柠", "檢": "检", "樓": "楼", "標": "标", "樞": "枢",
+  "樣": "样", "樸": "朴", "樹": "树", "橋": "桥", "機": "机", "橢": "椭", "橫": "横", "檔": "档", "檯": "台", "檳": "槟", "檸": "柠",
+  "櫥": "橱", "櫻": "樱", "權": "权", "欄": "栏", "欽": "钦", "歐": "欧", "殲": "歼", "殺": "杀", "殼": "壳", "毀": "毁", "毆": "殴",
+  "畢": "毕", "氣": "气", "氫": "氢", "氬": "氩", "氳": "氲", "漢": "汉", "湯": "汤", "溝": "沟", "沒": "没", "淚": "泪", "淥": "渌",
+  "潔": "洁", "潛": "潜", "潤": "润", "澀": "涩", "淵": "渊", "淶": "涞", "淺": "浅", "漿": "浆", "澆": "浇", "湞": "浈", "濁": "浊",
+  "測": "测", "濟": "济", "瀏": "浏", "渾": "浑", "滸": "浒", "濃": "浓", "澤": "泽", "濤": "涛", "澗": "涧", "瀋": "沈", "瀘": "泸",
+  "濾": "滤", "瀟": "潇", "灑": "洒", "灣": "湾", "滅": "灭", "燈": "灯", "靈": "灵", "災": "灾", "爐": "炉", "點": "点", "煉": "炼",
+  "熾": "炽", "爍": "烁", "爛": "烂", "爭": "争", "爺": "爷", "牆": "墙", "牽": "牵", "犧": "牺", "狀": "状", "獨": "独", "狹": "狭",
+  "獅": "狮", "獎": "奖", "獵": "猎", "豬": "猪", "貓": "猫", "現": "现", "瑋": "玮", "環": "环", "璽": "玺", "瓊": "琼", "電": "电",
+  "畫": "画", "當": "当", "疇": "畴", "療": "疗", "瘡": "疮", "瘋": "疯", "瘍": "疡", "瘓": "痪", "瘞": "瘗", "瘡": "疮", "癆": "痨",
+  "癇": "痫", "癉": "瘅", "癒": "愈", "癘": "疠", "癟": "瘪", "癢": "痒", "癤": "疖", "癥": "症", "癧": "疬", "癩": "癞", "癬": "癣",
+  "癭": "瘿", "癮": "瘾", "癰": "痈", "癱": "瘫", "癲": "癫", "發": "发", "皚": "皑", "皰": "疱", "盜": "盗", "盞": "盏", "監": "监",
+  "盤": "盘", "盧": "卢", "眥": "眦", "眾": "众", "睏": "困", "睜": "睁", "矚": "瞩", "矯": "矫", "礦": "矿", "碼": "码", "磚": "砖",
+  "確": "确", "磧": "碛", "磯": "矶", "禪": "禅", "禮": "礼", "禱": "祷", "禍": "祸", "禎": "祯", "離": "离", "禿": "秃", "稅": "税",
+  "穀": "谷", "穌": "稣", "積": "积", "穎": "颖", "窩": "窝", "窪": "洼", "窮": "穷", "竄": "窜", "竅": "窍", "竇": "窦", "競": "竞",
+  "筆": "笔", "筍": "笋", "箋": "笺", "節": "节", "範": "范", "築": "筑", "篤": "笃", "簡": "简", "簽": "签", "簾": "帘", "籃": "篮",
+  "籌": "筹", "籤": "签", "籲": "吁", "粵": "粤", "糞": "粪", "糧": "粮", "糾": "纠", "紀": "纪", "紂": "纣", "約": "约", "紅": "红",
+  "紋": "纹", "納": "纳", "紐": "纽", "紓": "纾", "純": "纯", "紕": "纰", "紗": "纱", "紙": "纸", "級": "级", "紛": "纷", "紜": "纭",
+  "紡": "纺", "緊": "紧", "細": "细", "紱": "绂", "紳": "绅", "紹": "绍", "紺": "绀", "終": "终", "絆": "绊", "組": "组", "絎": "绗",
+  "結": "结", "絕": "绝", "絛": "绦", "絞": "绞", "絡": "络", "給": "给", "絢": "绚", "統": "统", "絲": "丝", "絳": "绛", "絹": "绢",
+  "綁": "绑", "綃": "绡", "綏": "绥", "經": "经", "綜": "综", "綠": "绿", "綢": "绸", "綣": "绻", "綫": "线", "維": "维", "綱": "纲",
+  "網": "网", "綴": "缀", "綵": "彩", "綸": "纶", "綹": "绺", "綺": "绮", "綻": "绽", "綽": "绰", "綾": "绫", "綿": "绵", "緄": "绲",
+  "緇": "缁", "緊": "紧", "緋": "绯", "緒": "绪", "緘": "缄", "緙": "缂", "線": "线", "緝": "缉", "緞": "缎", "締": "缔", "緡": "缗",
+  "緣": "缘", "編": "编", "緩": "缓", "緬": "缅", "緯": "纬", "練": "练", "緶": "缏", "緹": "缇", "緻": "致", "縈": "萦", "縉": "缙",
+  "縊": "缢", "縋": "缒", "縐": "绉", "縑": "缣", "縛": "缚", "縝": "缜", "縞": "缟", "縟": "缛", "縣": "县", "縫": "缝", "縭": "缡",
+  "縮": "缩", "縱": "纵", "縲": "缧", "縴": "纤", "縵": "缦", "縷": "缕", "縹": "缥", "總": "总", "績": "绩", "繃": "绷", "繅": "缫",
+  "繆": "缪", "繈": "襁", "繒": "缯", "織": "织", "繕": "缮", "繚": "缭", "繞": "绕", "繡": "绣", "繢": "缋", "繩": "绳", "繪": "绘",
+  "繫": "系", "繭": "茧", "繮": "缰", "繯": "缳", "繰": "缲", "繳": "缴", "繹": "绎", "繼": "继", "繽": "缤", "纈": "缬", "續": "续",
+  "纏": "缠", "纓": "缨", "纖": "纤", "纜": "缆", "缽": "钵", "罈": "坛", "罌": "罂", "罰": "罚", "羅": "罗", "羆": "罴", "羈": "羁",
+  "羋": "芈", "羥": "羟", "義": "义", "習": "习", "翹": "翘", "聖": "圣", "聞": "闻", "聯": "联", "聰": "聪", "聲": "声", "聳": "耸",
+  "職": "职", "聶": "聂", "聾": "聋", "肅": "肃", "脅": "胁", "脈": "脉", "脛": "胫", "脫": "脱", "腎": "肾", "腫": "肿", "腳": "脚",
+  "腸": "肠", "膚": "肤", "膠": "胶", "膽": "胆", "膾": "脍", "臉": "脸", "臍": "脐", "臏": "膑", "臘": "腊", "臚": "胪", "臟": "脏",
+  "臠": "脔", "臢": "臜", "臨": "临", "與": "与", "興": "兴", "舉": "举", "舊": "旧", "艙": "舱", "艦": "舰", "艱": "艰", "艷": "艳",
+  "藝": "艺", "節": "节", "薌": "芗", "蕪": "芜", "蘆": "芦", "蘇": "苏", "蘊": "蕴", "蘋": "苹", "藍": "蓝", "薊": "蓟", "虛": "虚",
+  "蟲": "虫", "蝕": "蚀", "蟻": "蚁", "蠶": "蚕", "衆": "众", "術": "术", "衛": "卫", "衝": "冲", "袞": "衮", "補": "补", "裝": "装",
+  "裡": "里", "製": "制", "複": "复", "褲": "裤", "襲": "袭", "見": "见", "觀": "观", "規": "规", "覓": "觅", "視": "视", "覘": "觇",
+  "覡": "觋", "覥": "觍", "覦": "觎", "親": "亲", "覬": "觊", "覯": "觏", "覲": "觐", "覷": "觑", "覺": "觉", "覽": "览", "覿": "觌",
+  "觔": "筋", "觴": "觞", "觸": "触", "訁": "讠", "訂": "订", "訃": "讣", "計": "计", "訊": "讯", "訌": "讧", "討": "讨", "訐": "讦",
+  "訓": "训", "訕": "讪", "訖": "讫", "託": "托", "記": "记", "訛": "讹", "訝": "讶", "訟": "讼", "訣": "诀", "訥": "讷", "訪": "访",
+  "設": "设", "許": "许", "訴": "诉", "診": "诊", "註": "注", "詁": "诂", "詆": "诋", "詎": "讵", "詐": "诈", "詒": "诒", "詔": "诏",
+  "評": "评", "詛": "诅", "詞": "词", "詠": "咏", "詢": "询", "詣": "诣", "試": "试", "詩": "诗", "詫": "诧", "詬": "诟", "詭": "诡",
+  "詮": "诠", "話": "话", "該": "该", "詳": "详", "詵": "诜", "詼": "诙", "誅": "诛", "誇": "夸", "誌": "志", "認": "认", "誑": "诳",
+  "誒": "诶", "誕": "诞", "誘": "诱", "語": "语", "誠": "诚", "誡": "诫", "誣": "诬", "誤": "误", "誥": "诰", "誦": "诵", "誨": "诲",
+  "說": "说", "誰": "谁", "課": "课", "誹": "诽", "誼": "谊", "調": "调", "諂": "谄", "諄": "谆", "談": "谈", "諉": "诿", "請": "请",
+  "諍": "诤", "諏": "诹", "諑": "诼", "諒": "谅", "論": "论", "諗": "谂", "諛": "谀", "諜": "谍", "諧": "谐", "諫": "谏", "諭": "谕",
+  "諮": "谘", "諱": "讳", "諳": "谙", "諶": "谌", "諷": "讽", "諸": "诸", "諺": "谚", "諾": "诺", "謀": "谋", "謁": "谒", "謂": "谓",
+  "謄": "誊", "謅": "诌", "謊": "谎", "謎": "谜", "謐": "谧", "謔": "谑", "謖": "谡", "謗": "谤", "謙": "谦", "講": "讲", "謝": "谢",
+  "謠": "谣", "謡": "谣", "謨": "谟", "謫": "谪", "謬": "谬", "謳": "讴", "謹": "谨", "謾": "谩", "譁": "哗", "證": "证", "譎": "谲",
+  "譏": "讥", "譖": "谮", "識": "识", "譙": "谯", "譚": "谭", "譜": "谱", "警": "警", "譫": "谵", "譯": "译", "議": "议", "譴": "谴",
+  "護": "护", "譽": "誉", "讀": "读", "變": "变", "讒": "谗", "讓": "让", "讕": "谰", "讖": "谶", "讚": "赞", "讜": "谠", "貝": "贝",
+  "貞": "贞", "負": "负", "財": "财", "貢": "贡", "貧": "贫", "貨": "货", "販": "贩", "貪": "贪", "貫": "贯", "責": "责", "貯": "贮",
+  "貴": "贵", "貶": "贬", "買": "买", "貸": "贷", "費": "费", "貼": "贴", "貽": "贻", "貿": "贸", "賀": "贺", "賁": "贲", "賂": "赂",
+  "賃": "赁", "賄": "贿", "資": "资", "賈": "贾", "賊": "贼", "賑": "赈", "賒": "赊", "賓": "宾", "賕": "赇", "賙": "赒", "賚": "赉",
+  "賜": "赐", "賞": "赏", "賠": "赔", "賡": "赓", "賢": "贤", "賣": "卖", "賤": "贱", "賦": "赋", "質": "质", "賬": "账", "賭": "赌",
+  "賴": "赖", "賵": "赗", "賺": "赚", "購": "购", "賽": "赛", "贄": "贽", "贅": "赘", "贈": "赠", "贊": "赞", "贍": "赡", "贏": "赢",
+  "贓": "赃", "贖": "赎", "贗": "赝", "贛": "赣", "趕": "赶", "趙": "赵", "趨": "趋", "躉": "趸", "躍": "跃", "躑": "踯", "躒": "跞",
+  "躓": "踬", "躕": "蹰", "躚": "跹", "躡": "蹑", "躥": "蹿", "躦": "躜", "軀": "躯", "車": "车", "軋": "轧", "軌": "轨", "軍": "军",
+  "軒": "轩", "軔": "轫", "軟": "软", "軤": "轷", "軫": "轸", "軲": "轱", "軸": "轴", "軹": "轵", "軺": "轺", "軻": "轲", "軼": "轶",
+  "軾": "轼", "較": "较", "輅": "辂", "輇": "辁", "載": "载", "輊": "轾", "輒": "辄", "輓": "挽", "輔": "辅", "輕": "轻", "輛": "辆",
+  "輜": "辎", "輝": "辉", "輞": "辋", "輟": "辍", "輥": "辊", "輦": "辇", "輩": "辈", "輪": "轮", "輯": "辑", "輸": "输", "輻": "辐",
+  "輾": "辗", "輿": "舆", "轂": "毂", "轄": "辖", "轅": "辕", "轆": "辘", "轉": "转", "轍": "辙", "轎": "轿", "轔": "辚", "轟": "轰",
+  "轡": "辔", "轢": "轹", "轤": "轳", "辦": "办", "辭": "辞", "辯": "辩", "農": "农", "逕": "迳", "這": "这", "連": "连", "週": "周",
+  "進": "进", "遊": "游", "運": "运", "過": "过", "達": "达", "違": "违", "遙": "遥", "遜": "逊", "遞": "递", "遠": "远", "適": "适",
+  "遲": "迟", "遷": "迁", "選": "选", "遺": "遗", "遼": "辽", "邁": "迈", "還": "还", "邇": "迩", "邊": "边", "邏": "逻", "鄧": "邓",
+  "鄭": "郑", "鄰": "邻", "鄲": "郸", "鄴": "邺", "鄶": "郐", "鄺": "邝", "酈": "郦", "醞": "酝", "醫": "医", "醬": "酱", "釀": "酿",
+  "釁": "衅", "釋": "释", "釐": "厘", "釒": "钅", "鈍": "钝", "鈔": "钞", "鐘": "钟", "鈣": "钙", "鈦": "钛", "鈞": "钧", "鈉": "钠",
+  "鋼": "钢", "鉅": "钜", "鉛": "铅", "鉤": "钩", "鉑": "铂", "銀": "银", "銅": "铜", "銘": "铭", "銳": "锐", "銷": "销", "鋁": "铝",
+  "鋒": "锋", "鋅": "锌", "錦": "锦", "錄": "录", "錢": "钱", "錫": "锡", "錯": "错", "錳": "锰", "錶": "表", "鍋": "锅", "鍍": "镀",
+  "鍛": "锻", "鍾": "钟", "鎂": "镁", "鎮": "镇", "鏈": "链", "鏡": "镜", "鏽": "锈", "鐵": "铁", "鑄": "铸", "鑑": "鉴", "鑒": "鉴",
+  "鑠": "铄", "鑣": "镳", "鑰": "钥", "鑽": "钻", "鑾": "銮", "長": "长", "門": "门", "閃": "闪", "閉": "闭", "開": "开", "閏": "闰",
+  "閑": "闲", "間": "间", "閔": "闵", "閘": "闸", "閡": "阂", "閣": "阁", "閥": "阀", "閨": "闺", "閩": "闽", "閭": "闾", "閱": "阅",
+  "閻": "阎", "闊": "阔", "闆": "板", "闈": "闱", "闔": "阖", "闖": "闯", "關": "关", "闞": "阚", "闡": "阐", "闢": "辟", "闥": "闼",
+  "阪": "坂", "陘": "陉", "陝": "陕", "陣": "阵", "陰": "阴", "陳": "陈", "陸": "陆", "陽": "阳", "隉": "陧", "隊": "队", "階": "阶",
+  "際": "际", "隨": "随", "險": "险", "隱": "隐", "隴": "陇", "隸": "隶", "雋": "隽", "雖": "虽", "雙": "双", "雜": "杂", "雞": "鸡",
+  "離": "离", "難": "难", "雲": "云", "電": "电", "霧": "雾", "霽": "霁", "靂": "雳", "靄": "霭", "靈": "灵", "靚": "靓", "靜": "静",
+  "頂": "顶", "頃": "顷", "項": "项", "順": "顺", "頇": "顸", "須": "须", "頊": "顼", "頌": "颂", "預": "预", "頑": "顽", "頒": "颁",
+  "頓": "顿", "頗": "颇", "領": "领", "頡": "颉", "頤": "颐", "頦": "颏", "頭": "头", "頰": "颊", "頲": "颋", "頸": "颈", "頻": "频",
+  "顆": "颗", "題": "题", "額": "额", "顎": "颚", "顏": "颜", "顓": "颛", "願": "愿", "顙": "颡", "顛": "颠", "類": "类", "顢": "颟",
+  "顥": "颢", "顧": "顾", "顫": "颤", "顬": "颥", "顯": "显", "顰": "颦", "顱": "颅", "顳": "颞", "顴": "颧", "風": "风", "颱": "台",
+  "颳": "刮", "颶": "飓", "颺": "扬", "飛": "飞", "饑": "饥", "飯": "饭", "飲": "饮", "飾": "饰", "飽": "饱", "餃": "饺", "餅": "饼",
+  "養": "养", "餌": "饵", "餓": "饿", "餘": "余", "餡": "馅", "館": "馆", "饋": "馈", "饒": "饶", "饗": "飨", "饞": "馋", "饢": "馕",
+  "馬": "马", "駁": "驳", "駐": "驻", "駕": "驾", "駛": "驶", "駝": "驼", "駟": "驷", "駢": "骈", "駭": "骇", "駱": "骆", "騎": "骑",
+  "騙": "骗", "騷": "骚", "驅": "驱", "驚": "惊", "驗": "验", "驢": "驴", "驥": "骥", "髏": "髅", "髒": "脏", "體": "体", "鬆": "松",
+  "鬍": "胡", "鬚": "须", "鬥": "斗", "鬧": "闹", "鬨": "哄", "鬱": "郁", "魎": "魉", "魘": "魇", "魚": "鱼", "魯": "鲁", "鮑": "鲍",
+  "鮮": "鲜", "鯉": "鲤", "鯨": "鲸", "鯊": "鲨", "鱷": "鳄", "鳥": "鸟", "鳩": "鸠", "鳳": "凤", "鳴": "鸣", "鴻": "鸿", "鵬": "鹏",
+  "鶴": "鹤", "鷗": "鸥", "鷹": "鹰", "鹼": "碱", "鹽": "盐", "麗": "丽", "麥": "麦", "黃": "黄", "點": "点", "黨": "党", "齊": "齐",
+  "齒": "齿", "龍": "龙", "龐": "庞", "龔": "龚"
+};
 
 function sponsorShortName(name) {
   const raw = String(name || "").trim();
   if (!raw || raw === "待抽取") return raw;
-  const matched = sponsorDisplayRules.find(([pattern]) => pattern.test(raw));
-  if (matched) return matched[1];
+  const matched = sponsorDisplayRules.find((rule) => rule.pattern.test(raw));
+  if (matched) return matched.shortName;
   return raw
     .replace(/\b(Hong Kong|HK|International|Capital|Securities|Corporate Finance|Company|Limited|Co\.?|Ltd\.?|AG|plc|Branch)\b/gi, " ")
     .replace(/[(),.]/g, " ")
@@ -243,6 +431,12 @@ function sponsorShortName(name) {
     .split(" ")
     .slice(0, 2)
     .join(" ") || raw;
+}
+
+function sponsorSearchAliases(name) {
+  const raw = String(name || "").trim();
+  const matched = sponsorDisplayRules.find((rule) => rule.pattern.test(raw) || rule.shortName === raw);
+  return matched ? [matched.shortName, ...(matched.aliases || [])] : [];
 }
 
 function sponsorDisplayEntries(record) {
@@ -261,6 +455,20 @@ function sponsorDisplayEntries(record) {
 
 function sponsorLabels(record) {
   return sponsorDisplayEntries(record).map((entry) => entry.shortName);
+}
+
+function foldTraditional(value) {
+  return String(value || "").replace(/[\u3400-\u9fff]/g, (char) => traditionalToSimplified[char] || char);
+}
+
+function normalizeSearchText(value) {
+  return foldTraditional(value)
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[()（）【】\[\],，.。;；:：'’"“”\-_/\\]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function renderStatusTags(record) {
@@ -283,9 +491,12 @@ function renderStatusBadge(record) {
 }
 
 function getRecordText(record) {
-  return [
+  const sponsorAliases = (record.sponsors || []).flatMap((sponsor) => sponsorSearchAliases(sponsor));
+  const rawText = [
     record.issuerName,
     record.csrcName,
+    issuerTypeInfo(record).primary,
+    issuerTypeInfo(record).secondary,
     record.structureType,
     record.issuerJurisdiction,
     record.aShareStatus,
@@ -301,10 +512,11 @@ function getRecordText(record) {
     ...(record.csrcIndustryTags || []),
     ...(record.regulatoryTags || []),
     ...sponsorLabels(record),
+    ...sponsorAliases,
     ...(record.sponsors || [])
   ]
-    .join(" ")
-    .toLowerCase();
+    .join(" ");
+  return normalizeSearchText(rawText);
 }
 
 function renderStackedDate(primary, secondaryLabel, secondary) {
@@ -324,7 +536,7 @@ function renderReceivedCell(record) {
 }
 
 function getBaseFilteredRecords() {
-  const query = state.query.trim().toLowerCase();
+  const query = normalizeSearchText(state.query);
   const from = asDateValue(state.dateFrom);
   const to = asDateValue(state.dateTo);
   const capMin = state.marketCapMin === "" ? null : Number(state.marketCapMin);
@@ -332,7 +544,7 @@ function getBaseFilteredRecords() {
 
   return state.data.records.filter((record) => {
     if (state.status !== "all" && record.status !== state.status) return false;
-    if (state.structure !== "all" && record.structureType !== state.structure) return false;
+    if (state.structure !== "all" && issuerTypeKey(record) !== state.structure) return false;
     if (state.industry !== "all" && !(record.industryTags || []).includes(state.industry)) return false;
     if (
       state.sponsor !== "all" &&
@@ -355,29 +567,55 @@ function getBaseFilteredRecords() {
   });
 }
 
-function compareValues(a, b, field) {
-  const aValue = a[field];
-  const bValue = b[field];
-  const aMissing = aValue === null || aValue === undefined || aValue === "";
-  const bMissing = bValue === null || bValue === undefined || bValue === "";
-  if (aMissing && bMissing) return 0;
-  if (aMissing) return 1;
-  if (bMissing) return -1;
+function firstTextValue(values) {
+  const list = Array.isArray(values) ? values : [values];
+  return list
+    .map((value) => String(value || "").trim())
+    .filter((value) => value && value !== "待抽取" && value !== "Pending extraction")
+    .sort((a, b) => a.localeCompare(b, "zh-Hans", { numeric: true, sensitivity: "base" }))[0] || "";
+}
 
-  if (field.endsWith("Date")) {
-    return asDateValue(aValue) - asDateValue(bValue);
+function sortKey(record, field) {
+  if (field === "status") return { value: statusSortRank[record.status] || 999, type: "number" };
+  if (field === "industryTags") return { value: firstTextValue(record.industryTags || []), type: "text" };
+  if (field === "sponsors") return { value: firstTextValue(sponsorLabels(record)), type: "text" };
+  if (field === "structureType") return { value: issuerTypeInfo(record).rank, type: "number" };
+  if (field === "issuerName") {
+    const names = nameParts(record);
+    return { value: `${names.primary || ""} ${names.secondary || ""}`.trim(), type: "text" };
   }
-  if (typeof aValue === "number" && typeof bValue === "number") {
-    return aValue - bValue;
+  if (field === "aShareMarketCapAtA1RmbBn") {
+    return { value: isAhCandidate(record) ? record.aShareMarketCapAtA1RmbBn : null, type: "number" };
   }
-  return String(aValue).localeCompare(String(bValue), "zh-Hans", { numeric: true, sensitivity: "base" });
+  if (field.endsWith("Date")) return { value: asDateValue(record[field]), type: "number" };
+  return { value: record[field], type: typeof record[field] === "number" ? "number" : "text" };
+}
+
+function isMissingSortKey(key) {
+  const value = key.value;
+  if (value === null || value === undefined || value === "") return true;
+  if (typeof value === "number") return Number.isNaN(value);
+  const normalized = String(value).trim().toLowerCase();
+  return ["待补", "待补充", "pending", "n/a", "not applicable", "不适用"].includes(normalized);
+}
+
+function compareSortKeys(aKey, bKey) {
+  if (aKey.type === "number" && bKey.type === "number") return aKey.value - bKey.value;
+  return String(aKey.value).localeCompare(String(bKey.value), "zh-Hans", { numeric: true, sensitivity: "base" });
 }
 
 function getFilteredRecords() {
   const rows = getBaseFilteredRecords();
   const direction = state.sortDir === "asc" ? 1 : -1;
   return [...rows].sort((a, b) => {
-    const compared = compareValues(a, b, state.sortField);
+    const aKey = sortKey(a, state.sortField);
+    const bKey = sortKey(b, state.sortField);
+    const aMissing = isMissingSortKey(aKey);
+    const bMissing = isMissingSortKey(bKey);
+    if (aMissing && bMissing) return String(a.issuerName).localeCompare(String(b.issuerName), "en", { sensitivity: "base" });
+    if (aMissing) return 1;
+    if (bMissing) return -1;
+    const compared = compareSortKeys(aKey, bKey);
     if (compared !== 0) return compared * direction;
     return String(a.issuerName).localeCompare(String(b.issuerName), "en", { sensitivity: "base" });
   });
@@ -405,7 +643,18 @@ function populateSelect(id, options, currentValue, allLabel) {
 }
 
 function populateFilters() {
-  populateSelect("structureFilter", getUniqueOptions((record) => record.structureType), state.structure, "全部类型");
+  const structureOptions = ["a_h", "h_share", "red_chip", "other"]
+    .filter((key) => state.data.records.some((record) => issuerTypeKey(record) === key));
+  const structureSelect = document.getElementById("structureFilter");
+  if (state.structure !== "all" && !structureOptions.includes(state.structure)) state.structure = "all";
+  structureSelect.innerHTML = [
+    `<option value="all">全部类型</option>`,
+    ...structureOptions.map((key) => {
+      const info = issuerTypeInfo(key);
+      return `<option value="${escapeHtml(key)}">${escapeHtml(info.primary)} · ${escapeHtml(info.secondary)}</option>`;
+    })
+  ].join("");
+  structureSelect.value = structureOptions.includes(state.structure) ? state.structure : "all";
   populateSelect("industryFilter", getUniqueOptions((record) => record.industryTags || []), state.industry, "全部行业");
   const sponsorOptions = getUniqueOptions((record) => sponsorLabels(record));
   if (state.sponsor !== "all" && !sponsorOptions.includes(state.sponsor)) {
@@ -536,9 +785,27 @@ function renderPagination(total, pageCount, startIndex, endIndex) {
   });
 }
 
-function selectRecord(recordId) {
+function closeDetail() {
+  const modal = document.getElementById("detailModal");
+  if (!modal) return;
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+function openDetail(recordId) {
+  const record = state.data.records.find((item) => item.id === recordId);
+  if (!record) return;
   state.selectedId = recordId;
+  renderDetail(record);
+  const modal = document.getElementById("detailModal");
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.getElementById("detailClose")?.focus();
   renderRows();
+}
+
+function selectRecord(recordId) {
+  openDetail(recordId);
 }
 
 function renderRows() {
@@ -552,7 +819,7 @@ function renderRows() {
       </tr>
     `;
     document.getElementById("paginationBar").innerHTML = "";
-    renderDetail(null);
+    closeDetail();
     return;
   }
 
@@ -589,7 +856,7 @@ function renderRows() {
           <td class="date-cell">${renderReceivedCell(record)}</td>
           <td class="date-cell">${formatDate(record.noticeDate)}</td>
           <td>${renderDays(record)}</td>
-          <td>${escapeHtml(record.structureType)}</td>
+          <td>${renderIssuerType(record)}</td>
           <td>${formatMarketCap(record)}</td>
           <td><div class="tag-list">${industries}</div></td>
           <td><div class="tag-list">${sponsors}</div></td>
@@ -609,7 +876,6 @@ function renderRows() {
   });
 
   renderPagination(rows.length, pageCount, startIndex, endIndex);
-  renderDetail(rows.find((record) => record.id === state.selectedId) || pageRows[0]);
 }
 
 function renderDetail(record) {
@@ -684,7 +950,7 @@ function renderDetail(record) {
       </div>
       <div class="detail-item">
         <span>发行人类型 Issuer type</span>
-        <strong>${escapeHtml(record.structureType)}</strong>
+        <strong>${renderIssuerType(record)}</strong>
       </div>
       <div class="detail-item">
         <span>A 股状态 / A1 日当天市值</span>
@@ -788,10 +1054,13 @@ function syncControls() {
   document.getElementById("marketCapMin").value = state.marketCapMin;
   document.getElementById("marketCapMax").value = state.marketCapMax;
   document.getElementById("sortField").value = state.sortField;
+  document.getElementById("daySortField").value = state.daySortField;
   document.getElementById("sortDirection").textContent = state.sortDir === "asc" ? "升序" : "降序";
+  document.getElementById("sortDirection").dataset.dir = state.sortDir;
   document.querySelectorAll(".segment").forEach((item) => {
     item.classList.toggle("is-active", item.dataset.status === state.status);
   });
+  syncSortHeaders();
 }
 
 function updateTracker(partial = {}, options = {}) {
@@ -800,6 +1069,29 @@ function updateTracker(partial = {}, options = {}) {
   syncControls();
   syncUrl();
   renderRows();
+}
+
+function defaultSortDir(field) {
+  return descendingDefaultSortFields.has(field) ? "desc" : "asc";
+}
+
+function syncSortHeaders() {
+  document.querySelectorAll(".th-sort").forEach((button) => {
+    const field = button.dataset.sortField === "__days__" ? state.daySortField : button.dataset.sortField;
+    const active = field === state.sortField;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-sort", active ? (state.sortDir === "asc" ? "ascending" : "descending") : "none");
+    const indicator = button.querySelector(".sort-indicator");
+    if (indicator) indicator.textContent = active ? (state.sortDir === "asc" ? "↑" : "↓") : "";
+  });
+}
+
+function updateSortField(field) {
+  const nextField = field === "__days__" ? state.daySortField : field;
+  const nextDir = state.sortField === nextField
+    ? (state.sortDir === "asc" ? "desc" : "asc")
+    : defaultSortDir(nextField);
+  updateTracker({ sortField: nextField, sortDir: nextDir });
 }
 
 async function loadData() {
@@ -812,6 +1104,8 @@ async function loadData() {
     state.data = emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   }
   applyStateFromUrl();
+  if (state.sortField === "__days__") state.sortField = state.daySortField;
+  if (daySortFields.includes(state.sortField)) state.daySortField = state.sortField;
   state.selectedId = state.data.records[0]?.id || null;
   populateFilters();
   syncControls();
@@ -870,11 +1164,29 @@ document.getElementById("marketCapMax").addEventListener("input", (event) => {
 });
 
 document.getElementById("sortField").addEventListener("change", (event) => {
-  updateTracker({ sortField: event.target.value });
+  const nextField = event.target.value;
+  const patch = { sortField: nextField };
+  if (daySortFields.includes(nextField)) patch.daySortField = nextField;
+  updateTracker(patch);
+});
+
+document.getElementById("daySortField").addEventListener("change", (event) => {
+  updateTracker({ daySortField: event.target.value, sortField: event.target.value });
 });
 
 document.getElementById("sortDirection").addEventListener("click", () => {
   updateTracker({ sortDir: state.sortDir === "asc" ? "desc" : "asc" });
+});
+
+document.querySelectorAll(".th-sort").forEach((button) => {
+  button.addEventListener("click", () => updateSortField(button.dataset.sortField));
+});
+
+document.getElementById("detailBackdrop").addEventListener("click", closeDetail);
+document.getElementById("detailClose").addEventListener("click", closeDetail);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeDetail();
 });
 
 document.getElementById("clearFilters").addEventListener("click", () => {
@@ -891,6 +1203,7 @@ document.getElementById("clearFilters").addEventListener("click", () => {
     marketCapMax: "",
     sortField: "a1Date",
     sortDir: "desc",
+    daySortField: "businessDaysA1ToReceived",
     page: 1
   });
   syncControls();
