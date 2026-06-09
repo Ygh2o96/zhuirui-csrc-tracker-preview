@@ -963,6 +963,35 @@ tr[role="button"]:focus-visible {
   font-size: 8.5px;
 }
 
+.days-header-cell {
+  min-width: 122px;
+}
+
+.days-header-cell .th-sort {
+  margin-bottom: 4px;
+}
+
+.days-metric-select {
+  width: 100%;
+  min-height: 24px;
+  border: 1px solid #d5e6e4;
+  border-radius: 6px;
+  padding: 0 20px 0 7px;
+  appearance: none;
+  background:
+    linear-gradient(45deg, transparent 50%, #607277 50%) calc(100% - 12px) 9px / 5px 5px no-repeat,
+    linear-gradient(135deg, #607277 50%, transparent 50%) calc(100% - 7px) 9px / 5px 5px no-repeat,
+    #f8fbfa;
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 720;
+}
+
+.days-metric-select:focus {
+  outline: 2px solid rgba(0, 125, 132, 0.22);
+  outline-offset: 1px;
+}
+
 .days-cell strong {
   color: var(--ink);
   font-size: 11px;

@@ -145,23 +145,11 @@
                     <option value="csrcReceivedDate">首轮接收</option>
                     <option value="csrcCurrentReceivedDate">当前接收</option>
                     <option value="noticeDate">备案通知书</option>
-                    <option value="businessDaysA1ToReceived">备案锚点（A1日）至接收天数</option>
-                    <option value="businessDaysCurrentA1ToReceived">当前A1至当前接收天数</option>
-                    <option value="businessDaysReceivedToNotice">接收至通知天数</option>
-                    <option value="businessDaysA1ToNotice">备案锚点（A1日）至通知天数</option>
+                    <option value="__days__">天数（按天数栏口径）</option>
                     <option value="aShareMarketCapAtA1RmbBn">A1 日 A 股市值</option>
                     <option value="structureType">发行人类型</option>
                     <option value="industryTags">行业</option>
                     <option value="sponsors">保荐人</option>
-                  </select>
-                </label>
-                <label class="filter-control">
-                  <span><b>天数口径</b><small>Days metric</small></span>
-                  <select id="daySortField" name="daySortField" autocomplete="off">
-                    <option value="businessDaysA1ToReceived">备案锚点（A1日）至接收</option>
-                    <option value="businessDaysCurrentA1ToReceived">当前A1至当前接收</option>
-                    <option value="businessDaysReceivedToNotice">接收至通知</option>
-                    <option value="businessDaysA1ToNotice">备案锚点（A1日）至通知</option>
                   </select>
                 </label>
                 <button class="sort-button" id="sortDirection" data-dir="desc">降序</button>
@@ -177,7 +165,15 @@
                       <th><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1</span><span class="th-en">Anchor / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh">接收</span><span class="th-en">First / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="noticeDate"><span class="th-zh">通知书</span><span class="th-en">Notice</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">天数</span><span class="th-en">Days</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="days-header-cell">
+                        <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">天数</span><span class="th-en">Days</span><span class="sort-indicator" aria-hidden="true"></span></button>
+                        <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="天数口径" autocomplete="off">
+                          <option value="businessDaysA1ToReceived">A1至接收</option>
+                          <option value="businessDaysCurrentA1ToReceived">当前A1至接收</option>
+                          <option value="businessDaysReceivedToNotice">接收至通知</option>
+                          <option value="businessDaysA1ToNotice">A1至通知</option>
+                        </select>
+                      </th>
                       <th><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh">A1日市值</span><span class="th-en">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>

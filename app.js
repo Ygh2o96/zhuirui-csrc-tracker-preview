@@ -148,7 +148,7 @@ function asDateValue(value) {
 
 function formatDate(value) {
   const time = asDateValue(value);
-  if (!time) return `<span class="pending-zh">待补充</span><span class="pending-en">Pending</span>`;
+  if (!time) return formatPending();
   const parts = Object.fromEntries(
     dateFormatter.formatToParts(new Date(time)).map((part) => [part.type, part.value])
   );
@@ -157,16 +157,16 @@ function formatDate(value) {
 
 function formatDatePlain(value) {
   const html = formatDate(value);
-  return html.includes("<span") ? "待补" : html;
+  return html.includes("<span") ? "待披露" : html;
 }
 
 function formatNumber(value, mode = "decimal") {
-  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待补";
+  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待披露";
   return mode === "integer" ? integerFormatter.format(value) : numberFormatter.format(value);
 }
 
 function formatPending() {
-  return `<span class="pending-zh">待补充</span><span class="pending-en">Pending</span>`;
+  return `<span class="pending-zh">待披露</span><span class="pending-en">Pending</span>`;
 }
 
 function isAhCandidate(record) {
@@ -596,7 +596,7 @@ function isMissingSortKey(key) {
   if (value === null || value === undefined || value === "") return true;
   if (typeof value === "number") return Number.isNaN(value);
   const normalized = String(value).trim().toLowerCase();
-  return ["待补", "待补充", "pending", "n/a", "not applicable", "不适用"].includes(normalized);
+  return ["待补", "待补充", "待披露", "pending", "n/a", "not applicable", "不适用"].includes(normalized);
 }
 
 function compareSortKeys(aKey, bKey) {
@@ -842,7 +842,7 @@ function renderRows() {
         .map((tag) => `<span>${escapeHtml(tag)}</span>`)
         .join("");
       const sponsors = sponsorDisplayEntries(record)
-        .slice(0, 3)
+        .slice(0, 4)
         .map((entry) => `<span title="${escapeHtml(entry.fullName)}">${escapeHtml(entry.shortName)}</span>`)
         .join("");
       return `
@@ -1006,7 +1006,7 @@ function renderChrome() {
     meta.sourceMode === "live_snapshot" ? "后端快照" : "限量预览";
   document.getElementById("snapshotMeta").textContent =
     meta.generatedAt
-      ? `初步自动收集，未人工复核，仅示例 · 生成时间 ${meta.generatedAt} · ${meta.marketCapNoteZh || ""}`
+      ? `${meta.disclaimerZh || "初步自动收集，未人工复核，仅示例"} · 生成时间 ${meta.generatedAt} · ${meta.marketCapNoteZh || ""}`
       : meta.disclaimerZh || meta.marketCapNoteZh || "";
 }
 
@@ -1053,7 +1053,7 @@ function syncControls() {
   document.getElementById("sponsorFilter").value = state.sponsor;
   document.getElementById("marketCapMin").value = state.marketCapMin;
   document.getElementById("marketCapMax").value = state.marketCapMax;
-  document.getElementById("sortField").value = state.sortField;
+  document.getElementById("sortField").value = daySortFields.includes(state.sortField) ? "__days__" : state.sortField;
   document.getElementById("daySortField").value = state.daySortField;
   document.getElementById("sortDirection").textContent = state.sortDir === "asc" ? "升序" : "降序";
   document.getElementById("sortDirection").dataset.dir = state.sortDir;
@@ -1164,7 +1164,7 @@ document.getElementById("marketCapMax").addEventListener("input", (event) => {
 });
 
 document.getElementById("sortField").addEventListener("change", (event) => {
-  const nextField = event.target.value;
+  const nextField = event.target.value === "__days__" ? state.daySortField : event.target.value;
   const patch = { sortField: nextField };
   if (daySortFields.includes(nextField)) patch.daySortField = nextField;
   updateTracker(patch);
