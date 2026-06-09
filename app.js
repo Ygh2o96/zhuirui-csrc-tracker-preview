@@ -5,7 +5,7 @@ const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 const defaults = {
   selectedId: null,
   status: "all",
-  hkexStage: "all",
+  hkexStage: "applying",
   query: "",
   view: "tracker",
   dateField: "a1Date",
@@ -68,6 +68,21 @@ const metricDefinitions = [
   }
 ];
 
+const listedMetricDefinitions = [
+  {
+    metric: "a1ToNotice",
+    labelZh: "首次A1至备案通过天数",
+    labelEn: "First A1 to CSRC notice days",
+    note: "按上市日在CSRC新规后且已有source-backed备案通知书样本"
+  },
+  {
+    metric: "a1ToListing",
+    labelZh: "首次A1至上市天数",
+    labelEn: "First A1 to HKEX listing days",
+    note: "按HKEX New Listing Report上市日样本；无需备案发行人可纳入"
+  }
+];
+
 const trackedStateKeys = [
   "view",
   "status",
@@ -108,6 +123,11 @@ const dayFieldPairs = {
     calendar: "calendarDaysA1ToNotice",
     business: "businessDaysA1ToNotice",
     label: "A1至通知"
+  },
+  a1ToListing: {
+    calendar: "calendarDaysA1ToListing",
+    business: "businessDaysA1ToListing",
+    label: "A1至上市"
   }
 };
 
@@ -118,6 +138,7 @@ const statusSortRank = {
   regulator_opinion: 20,
   supplement_requested: 30,
   csrc_received: 40,
+  not_required: 80,
   waiting_received: 90,
   review_pending: 100,
   pending_match: 100
@@ -129,6 +150,7 @@ const descendingDefaultSortFields = new Set([
   "csrcReceivedDate",
   "csrcCurrentReceivedDate",
   "noticeDate",
+  "hkexListingDate",
   "calendarDaysA1ToReceived",
   "calendarDaysCurrentA1ToReceived",
   "calendarDaysReceivedToNotice",
@@ -137,6 +159,7 @@ const descendingDefaultSortFields = new Set([
   "businessDaysCurrentA1ToReceived",
   "businessDaysReceivedToNotice",
   "businessDaysA1ToNotice",
+  "businessDaysA1ToListing",
   "aShareMarketCapAtA1RmbBn"
 ]);
 
@@ -214,12 +237,18 @@ function isHkexListed(record) {
   return rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
 }
 
+function isPostRegimeListed(record) {
+  if (!isHkexListed(record)) return false;
+  const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
+  return Boolean(record.hkexListingDate) && String(record.hkexListingDate) >= regimeStart;
+}
+
 function hasNoticeGapAfterListing(record) {
-  return isHkexListed(record) && !record.noticeDate;
+  return isPostRegimeListed(record) && record.csrcFilingRequired !== false && !record.noticeDate;
 }
 
 function hkexListingStage(record) {
-  if (isHkexListed(record)) return "listed";
+  if (isPostRegimeListed(record)) return "listed";
   const rawStatus = String(record.hkexPublicStatus || "").trim();
   const normalized = rawStatus.toLowerCase();
   if (["active", "processing"].includes(normalized) || rawStatus === "處理中" || rawStatus === "处理中") return "applying";
@@ -257,6 +286,17 @@ function syncListingStageButtons() {
     const stage = item.dataset.stageCount;
     item.textContent = formatNumber(stageCounts[stage] || 0, "integer");
   });
+}
+
+function currentMetricDefinitions() {
+  return state.hkexStage === "listed" ? listedMetricDefinitions : metricDefinitions;
+}
+
+function currentDayMetricEntries() {
+  const metrics = state.hkexStage === "listed"
+    ? ["a1ToNotice", "a1ToListing"]
+    : ["a1ToReceived", "currentA1ToReceived", "receivedToNotice", "a1ToNotice"];
+  return metrics.map((metric) => dayFieldPairs[metric]).filter(Boolean);
 }
 
 function issuerTypeKey(record) {
@@ -333,7 +373,12 @@ function dayMetricField(metric) {
 function setDaySelectOptions() {
   const select = document.getElementById("daySortField");
   if (!select) return;
-  const html = Object.values(dayFieldPairs)
+  const entries = currentDayMetricEntries();
+  if (!entries.some((entry) => entry[state.dayCountMode] === state.daySortField)) {
+    state.daySortField = entries[0]?.[state.dayCountMode] || fieldForDayMode(state.daySortField, state.dayCountMode);
+    if (daySortFields.includes(state.sortField)) state.sortField = state.daySortField;
+  }
+  const html = entries
     .map((entry) => `<option value="${entry[state.dayCountMode]}">${entry.label}</option>`)
     .join("");
   if (select.innerHTML !== html) select.innerHTML = html;
@@ -633,6 +678,10 @@ function getRecordText(record) {
     record.aShareCode,
     record.backendStageZh,
     record.currentA1Date,
+    record.hkexListingDate,
+    record.hkexListingStockCode,
+    record.hkexProspectusDate,
+    record.hkexListingCompanyName,
     record.csrcFirstReceivedDate,
     record.csrcCurrentReceivedDate,
     ...(record.statusTags || []),
@@ -663,6 +712,28 @@ function renderA1Cell(record) {
 function renderReceivedCell(record) {
   const primary = record.csrcReceivedDate || record.csrcFirstReceivedDate;
   return renderStackedDate(primary, "当前", record.csrcCurrentReceivedDate);
+}
+
+function renderListingCell(record) {
+  const secondary = record.hkexListingStockCode ? `股份代号 ${record.hkexListingStockCode}` : "";
+  const secondaryHtml = secondary ? `<span class="date-secondary">${escapeHtml(secondary)}</span>` : "";
+  return `<span class="date-primary">${formatDate(record.hkexListingDate)}</span>${secondaryHtml}`;
+}
+
+function syncTrackerTableMode() {
+  const listed = state.hkexStage === "listed";
+  const col4 = document.getElementById("dateColumn4Sort");
+  const col5 = document.getElementById("dateColumn5Sort");
+  if (col4) col4.dataset.sortField = listed ? "noticeDate" : "csrcReceivedDate";
+  if (col5) col5.dataset.sortField = listed ? "hkexListingDate" : "noticeDate";
+  const setText = (id, text) => {
+    const node = document.getElementById(id);
+    if (node) node.textContent = text;
+  };
+  setText("dateColumn4Zh", listed ? "备案通过" : "接收");
+  setText("dateColumn4En", listed ? "CSRC notice" : "First / current");
+  setText("dateColumn5Zh", listed ? "上市日" : "通知书");
+  setText("dateColumn5En", listed ? "Listing" : "Notice");
 }
 
 function getBaseFilteredRecords() {
@@ -804,9 +875,13 @@ function median(values) {
 }
 
 function durationValueForStats(record, metric) {
+  if (metric.metric === "a1ToListing") {
+    const key = dayMetricField(metric.metric);
+    return typeof record[key] === "number" ? record[key] : null;
+  }
   if (record.csrcFilingRequired === false) return null;
-  if (hasNoticeGapAfterListing(record)) return null;
-  if (metric.metric === "a1ToReceived" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS) {
+  if (metric.metric !== "a1ToListing" && hasNoticeGapAfterListing(record)) return null;
+  if (state.hkexStage !== "listed" && metric.metric === "a1ToReceived" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS) {
     const currentField = dayMetricField("currentA1ToReceived");
     return typeof record[currentField] === "number" ? record[currentField] : null;
   }
@@ -833,7 +908,9 @@ function statsFor(records, metric) {
 
 function renderDurationMetric(metric, stats) {
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
-  const startLabel = `纳入所有日期齐全且顺序有效样本 · CSRC口径≥${regimeStart}`;
+  const startLabel = state.hkexStage === "listed"
+    ? `已上市页仅纳入上市日≥${regimeStart}且日期顺序有效样本`
+    : `纳入所有日期齐全且顺序有效样本 · CSRC口径≥${regimeStart}`;
   const metricNote = `${metric.note} · ${dayBasisNote()}`;
   const caption = stats.count
     ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metricNote}`
@@ -864,22 +941,25 @@ function renderMetrics(records) {
     counts[record.status] = (counts[record.status] || 0) + 1;
     return counts;
   }, {});
-  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "review_pending"]
+  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required", "review_pending"]
     .map((status) => `<span>${escapeHtml(statusLabel(status))} ${formatNumber(statusCounts[status] || 0, "integer")}</span>`)
     .join("");
+  const metricSet = currentMetricDefinitions();
+  const titleZh = state.hkexStage === "listed" ? "已上市样本" : "筛选结果";
+  const titleEn = state.hkexStage === "listed" ? "Listed issuers" : "Filtered issuers";
 
   const html = [
     `
       <article class="metric metric-count">
         <div class="metric-title">
-          <span class="metric-zh">筛选结果</span>
-          <span class="metric-en">Filtered issuers</span>
+          <span class="metric-zh">${titleZh}</span>
+          <span class="metric-en">${titleEn}</span>
         </div>
         <div class="metric-value">${formatNumber(records.length, "integer")}</div>
         <div class="status-mini">${statusHtml}</div>
       </article>
     `,
-    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, metric)))
+    ...metricSet.map((metric) => renderDurationMetric(metric, statsFor(records, metric)))
   ];
   document.getElementById("metricsGrid").innerHTML = html.join("");
 }
@@ -889,8 +969,18 @@ function renderDays(record) {
     a1ToReceived: dayMetricField("a1ToReceived"),
     currentA1ToReceived: dayMetricField("currentA1ToReceived"),
     receivedToNotice: dayMetricField("receivedToNotice"),
-    a1ToNotice: dayMetricField("a1ToNotice")
+    a1ToNotice: dayMetricField("a1ToNotice"),
+    a1ToListing: dayMetricField("a1ToListing")
   };
+  if (state.hkexStage === "listed") {
+    return `
+      <div class="days-cell">
+        <div class="days-cell-mode">${dayUnitLabel()}</div>
+        <div><span>首次A1至备案通过</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
+        <div><span>首次A1至上市</span><strong>${formatDayValue(record[fields.a1ToListing])}</strong></div>
+      </div>
+    `;
+  }
   const currentReceivedLine = typeof record[fields.currentA1ToReceived] === "number"
     ? `<div><span>当前A1至接收</span><strong>${formatDayValue(record[fields.currentA1ToReceived])}</strong></div>`
     : "";
@@ -990,6 +1080,7 @@ function renderRows() {
         .slice(0, 4)
         .map((entry) => `<span title="${escapeHtml(entry.fullName)}">${escapeHtml(entry.shortName)}</span>`)
         .join("");
+      const listedPage = state.hkexStage === "listed";
       return `
         <tr class="${selected}" data-record-id="${escapeHtml(record.id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(names.primary)}">
           <td class="issuer-cell">
@@ -998,8 +1089,8 @@ function renderRows() {
           </td>
           <td>${renderStatusBadge(record)}</td>
           <td class="date-cell">${renderA1Cell(record)}</td>
-          <td class="date-cell">${renderReceivedCell(record)}</td>
-          <td class="date-cell">${formatDate(record.noticeDate)}</td>
+          <td class="date-cell">${listedPage ? formatDate(record.noticeDate) : renderReceivedCell(record)}</td>
+          <td class="date-cell">${listedPage ? renderListingCell(record) : formatDate(record.noticeDate)}</td>
           <td>${renderDays(record)}</td>
           <td>${renderIssuerType(record)}</td>
           <td>${formatMarketCap(record)}</td>
@@ -1066,9 +1157,28 @@ function renderDetail(record) {
     a1ToReceived: dayMetricField("a1ToReceived"),
     currentA1ToReceived: dayMetricField("currentA1ToReceived"),
     receivedToNotice: dayMetricField("receivedToNotice"),
-    a1ToNotice: dayMetricField("a1ToNotice")
+    a1ToNotice: dayMetricField("a1ToNotice"),
+    a1ToListing: dayMetricField("a1ToListing")
   };
   const dayUnit = dayUnitLabel();
+  const listedPage = state.hkexStage === "listed";
+  const listedTimelineRows = listedPage
+    ? `
+          <div class="timeline-row"><span>HKEX招股书</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
+          <div class="timeline-row"><span>HKEX上市日</span><strong>${formatDate(record.hkexListingDate)}</strong></div>
+      `
+    : "";
+  const daysRows = listedPage
+    ? `
+          <div><span>首次A1至备案通过</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
+          <div><span>首次A1至上市</span><strong>${formatDayNumber(record[dayFields.a1ToListing], dayUnit)}</strong></div>
+      `
+    : `
+          <div><span>备案锚点（A1日）至接收</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
+          <div><span>当前A1至当前接收</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
+          <div><span>接收至通知</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
+          <div><span>备案锚点（A1日）至通知</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
+      `;
 
   detail.innerHTML = `
     <div class="detail-header">
@@ -1089,15 +1199,13 @@ function renderDetail(record) {
           <div class="timeline-row"><span>首轮接收</span><strong>${formatDate(record.csrcFirstReceivedDate || record.csrcReceivedDate)}</strong></div>
           <div class="timeline-row"><span>当前接收</span><strong>${formatDate(record.csrcCurrentReceivedDate)}</strong></div>
           <div class="timeline-row"><span>备案通知书</span><strong>${formatDate(record.noticeDate)}</strong></div>
+          ${listedTimelineRows}
         </div>
       </div>
       <div class="detail-item">
         <span>天数 Days · ${dayUnit}</span>
         <div class="detail-days">
-          <div><span>备案锚点（A1日）至接收</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
-          <div><span>当前A1至当前接收</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
-          <div><span>接收至通知</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
-          <div><span>备案锚点（A1日）至通知</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
+          ${daysRows}
         </div>
       </div>
       <div class="detail-item">
@@ -1139,7 +1247,9 @@ function renderDetail(record) {
 
 function switchView(view, updateLocation = true) {
   state.view = view;
-  document.getElementById("viewTitle").textContent = viewTitles[view] || "追瑞";
+  document.getElementById("viewTitle").textContent = view === "tracker"
+    ? (state.hkexStage === "listed" ? "证监会备案追踪 · 已上市" : "证监会备案追踪 · 上市申请中")
+    : (viewTitles[view] || "追瑞");
   document.querySelectorAll(".nav-item").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.view === view);
   });
@@ -1160,7 +1270,13 @@ function renderChrome() {
     meta.generatedAt
       ? `${meta.disclaimerZh || "初步自动收集，未人工复核，仅示例"} · 生成时间 ${meta.generatedAt} · ${meta.marketCapNoteZh || ""}`
       : meta.disclaimerZh || meta.marketCapNoteZh || "";
+  if (state.view === "tracker") {
+    document.getElementById("viewTitle").textContent = state.hkexStage === "listed"
+      ? "证监会备案追踪 · 已上市"
+      : "证监会备案追踪 · 上市申请中";
+  }
   syncListingStageButtons();
+  syncTrackerTableMode();
 }
 
 function emptyPayload(message) {
@@ -1216,6 +1332,7 @@ function syncControls() {
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-pressed", String(active));
   });
+  syncTrackerTableMode();
   const dayModeHint = document.getElementById("dayModeHint");
   if (dayModeHint) dayModeHint.textContent = dayBasisNote();
   document.getElementById("sortDirection").textContent = state.sortDir === "asc" ? "升序" : "降序";
@@ -1232,6 +1349,7 @@ function updateTracker(partial = {}, options = {}) {
   if (options.resetPage !== false) state.page = 1;
   syncControls();
   syncUrl();
+  renderChrome();
   renderRows();
   if (document.getElementById("detailModal")?.classList.contains("is-open")) {
     renderDetail(state.data.records.find((item) => item.id === state.selectedId));
@@ -1383,7 +1501,7 @@ document.addEventListener("keydown", (event) => {
 document.getElementById("clearFilters").addEventListener("click", () => {
   Object.assign(state, {
     status: "all",
-    hkexStage: "all",
+    hkexStage: "applying",
     query: "",
     dateField: "a1Date",
     dateFrom: "",
