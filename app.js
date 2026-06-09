@@ -55,8 +55,7 @@ const metricDefinitions = [
     metric: "receivedToNotice",
     labelZh: "接收至通知天数",
     labelEn: "CSRC received to notice days",
-    note: "需同一发行人接收日及通知书",
-    minCount: 5
+    note: "需同一发行人接收日及通知书"
   },
   {
     metric: "a1ToNotice",
@@ -730,12 +729,12 @@ function median(values) {
   return (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
-function statsFor(records, key, minCount = 0) {
+function statsFor(records, key) {
   const values = records
     .map((record) => record[key])
     .filter((value) => typeof value === "number");
-  if (!values.length || values.length < minCount) {
-    return { count: values.length, average: null, median: null, min: null, max: null, sampleTooSmall: values.length > 0 };
+  if (!values.length) {
+    return { count: 0, average: null, median: null, min: null, max: null };
   }
   const total = values.reduce((sum, value) => sum + value, 0);
   return {
@@ -743,8 +742,7 @@ function statsFor(records, key, minCount = 0) {
     average: total / values.length,
     median: median(values),
     min: Math.min(...values),
-    max: Math.max(...values),
-    sampleTooSmall: false
+    max: Math.max(...values)
   };
 }
 
@@ -752,15 +750,10 @@ function renderDurationMetric(metric, stats) {
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
   const startLabel = `纳入所有日期齐全且顺序有效样本 · CSRC口径≥${regimeStart}`;
   const metricNote = `${metric.note} · ${dayBasisNote()}`;
-  const lowSampleText = metric.minCount
-    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛 · ${metricNote}`
-    : `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计 · ${metricNote}`;
-  const caption = stats.sampleTooSmall
-    ? lowSampleText
-    : stats.count
-      ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metricNote}`
-      : `${startLabel} 暂无可统计样本`;
-  const statValue = (value) => stats.sampleTooSmall ? "样本不足" : formatNumber(value);
+  const caption = stats.count
+    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metricNote}`
+    : `${startLabel} 暂无可统计样本 · ${metricNote}`;
+  const statValue = (value) => formatNumber(value);
   return `
     <article class="metric metric-wide duration-card">
       <div class="metric-title">
@@ -801,7 +794,7 @@ function renderMetrics(records) {
         <div class="status-mini">${statusHtml}</div>
       </article>
     `,
-    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, dayMetricField(metric.metric), metric.minCount || 0)))
+    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, dayMetricField(metric.metric))))
   ];
   document.getElementById("metricsGrid").innerHTML = html.join("");
 }
