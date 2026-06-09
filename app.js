@@ -1,5 +1,6 @@
 const DATA_URL = `data/csrc_tracker_public.json?ts=${Date.now()}`;
 const PAGE_SIZE = 50;
+const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 
 const defaults = {
   selectedId: null,
@@ -49,7 +50,7 @@ const metricDefinitions = [
     metric: "a1ToReceived",
     labelZh: "备案锚点（A1日）至接收天数",
     labelEn: "CSRC A1 date anchor to received days",
-    note: "按有公开接收日样本"
+    note: "按有公开接收日样本；历史锚点超过180天时改用当前A1，当前A1后未接收则剔除"
   },
   {
     metric: "receivedToNotice",
@@ -729,9 +730,18 @@ function median(values) {
   return (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
-function statsFor(records, key) {
+function durationValueForStats(record, metric) {
+  if (metric.metric === "a1ToReceived" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS) {
+    const currentField = dayMetricField("currentA1ToReceived");
+    return typeof record[currentField] === "number" ? record[currentField] : null;
+  }
+  const key = dayMetricField(metric.metric);
+  return typeof record[key] === "number" ? record[key] : null;
+}
+
+function statsFor(records, metric) {
   const values = records
-    .map((record) => record[key])
+    .map((record) => durationValueForStats(record, metric))
     .filter((value) => typeof value === "number");
   if (!values.length) {
     return { count: 0, average: null, median: null, min: null, max: null };
@@ -794,7 +804,7 @@ function renderMetrics(records) {
         <div class="status-mini">${statusHtml}</div>
       </article>
     `,
-    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, dayMetricField(metric.metric))))
+    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, metric)))
   ];
   document.getElementById("metricsGrid").innerHTML = html.join("");
 }

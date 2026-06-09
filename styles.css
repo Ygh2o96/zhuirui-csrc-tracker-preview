@@ -1471,6 +1471,24 @@ tr[role="button"]:focus-visible {
   font-size: 10.5px;
 }
 
+.methodology-note {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.methodology-note summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.methodology-note p {
+  max-width: 980px;
+  margin: 7px 0 0;
+  line-height: 1.6;
+}
+
 .footer-note span {
   display: block;
   margin-top: 3px;
