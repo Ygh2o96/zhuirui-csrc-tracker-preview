@@ -45,8 +45,8 @@ const viewTitles = {
 const metricDefinitions = [
   {
     key: "businessDaysA1ToReceived",
-    labelZh: "备案锚点至接收",
-    labelEn: "CSRC A1 anchor to received",
+    labelZh: "备案锚点（A1日）至接收",
+    labelEn: "CSRC A1 date anchor to received",
     note: "按有公开接收日样本"
   },
   {
@@ -58,8 +58,8 @@ const metricDefinitions = [
   },
   {
     key: "businessDaysA1ToNotice",
-    labelZh: "备案锚点至通知",
-    labelEn: "CSRC A1 anchor to notice",
+    labelZh: "备案锚点（A1日）至通知",
+    labelEn: "CSRC A1 date anchor to notice",
     note: "按有通知书样本"
   }
 ];
@@ -444,8 +444,8 @@ function renderDurationMetric(metric, stats) {
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
   const startLabel = `样本池最早本地A1 ${sampleStart} · CSRC口径≥${regimeStart}`;
   const lowSampleText = metric.minCount
-    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛`
-    : `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计`;
+    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛 · ${metric.note}`
+    : `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计 · ${metric.note}`;
   const caption = stats.sampleTooSmall
     ? lowSampleText
     : stats.count
@@ -503,10 +503,10 @@ function renderDays(record) {
     : "";
   return `
     <div class="days-cell">
-      <div><span>备案锚点至接收</span><strong>${formatNumber(record.businessDaysA1ToReceived)}</strong></div>
+      <div><span>备案锚点（A1日）至接收</span><strong>${formatNumber(record.businessDaysA1ToReceived)}</strong></div>
       ${currentReceivedLine}
       <div><span>接收至通知</span><strong>${formatNumber(record.businessDaysReceivedToNotice)}</strong></div>
-      <div><span>备案锚点至通知</span><strong>${formatNumber(record.businessDaysA1ToNotice)}</strong></div>
+      <div><span>备案锚点（A1日）至通知</span><strong>${formatNumber(record.businessDaysA1ToNotice)}</strong></div>
     </div>
   `;
 }
@@ -676,10 +676,10 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>工作日 Business days</span>
         <div class="detail-days">
-          <div><span>备案锚点至接收</span><strong>${formatNumber(record.businessDaysA1ToReceived)}</strong></div>
+          <div><span>备案锚点（A1日）至接收</span><strong>${formatNumber(record.businessDaysA1ToReceived)}</strong></div>
           <div><span>当前A1至当前接收</span><strong>${formatNumber(record.businessDaysCurrentA1ToReceived)}</strong></div>
           <div><span>接收至通知</span><strong>${formatNumber(record.businessDaysReceivedToNotice)}</strong></div>
-          <div><span>备案锚点至通知</span><strong>${formatNumber(record.businessDaysA1ToNotice)}</strong></div>
+          <div><span>备案锚点（A1日）至通知</span><strong>${formatNumber(record.businessDaysA1ToNotice)}</strong></div>
         </div>
       </div>
       <div class="detail-item">
