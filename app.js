@@ -1,4 +1,4 @@
-const DATA_URL = "data/csrc_tracker_public.json";
+const DATA_URL = `data/csrc_tracker_public.json?ts=${Date.now()}`;
 const PAGE_SIZE = 50;
 
 const defaults = {
