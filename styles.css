@@ -355,6 +355,61 @@ h1 {
   line-height: 1.35;
 }
 
+.day-mode-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  border: 1px solid #c9ddda;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #f7fbfa;
+  color: var(--ink);
+}
+
+.day-mode-bar > span {
+  display: grid;
+  gap: 1px;
+}
+
+.day-mode-bar b {
+  font-size: 12px;
+}
+
+.day-mode-bar small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.day-mode-toggle {
+  display: inline-flex;
+  border: 1px solid #bfd7d3;
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.day-mode-button {
+  min-height: 28px;
+  border: 0;
+  border-right: 1px solid #d7e5e3;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.day-mode-button:last-child {
+  border-right: 0;
+}
+
+.day-mode-button.is-active {
+  background: var(--teal);
+  color: #fff;
+}
+
 .view-panel {
   display: none;
 }
@@ -937,6 +992,17 @@ tr[role="button"]:focus-visible {
 
 .days-cell span {
   color: var(--muted);
+}
+
+.days-cell-mode {
+  width: fit-content;
+  border: 1px solid #cfe2df;
+  border-radius: 999px;
+  padding: 1px 6px;
+  color: #2d6768;
+  background: #eef7f6;
+  font-size: 9px;
+  font-weight: 780;
 }
 
 .market-cap-value,

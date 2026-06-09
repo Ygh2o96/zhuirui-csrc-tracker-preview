@@ -76,6 +76,14 @@
 
         <section class="view-panel is-visible" id="trackerView" aria-label="CSRC tracker">
           <p class="snapshot-meta" id="snapshotMeta"></p>
+          <div class="day-mode-bar" aria-label="天数口径">
+            <span><b>天数口径</b><small>Days basis</small></span>
+            <div class="day-mode-toggle" role="group" aria-label="天数口径">
+              <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日</button>
+              <button class="day-mode-button" type="button" data-day-count-mode="business">工作日</button>
+            </div>
+            <small id="dayModeHint">默认自然日</small>
+          </div>
           <div class="metrics-grid" id="metricsGrid"></div>
 
           <section class="tracker-layout">
@@ -145,7 +153,7 @@
                     <option value="csrcReceivedDate">首轮接收</option>
                     <option value="csrcCurrentReceivedDate">当前接收</option>
                     <option value="noticeDate">备案通知书</option>
-                    <option value="__days__">天数（按天数栏口径）</option>
+                    <option value="__days__">天数</option>
                     <option value="aShareMarketCapAtA1RmbBn">A1 日 A 股市值</option>
                     <option value="structureType">发行人类型</option>
                     <option value="industryTags">行业</option>
@@ -168,10 +176,10 @@
                       <th class="days-header-cell">
                         <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">天数</span><span class="th-en">Days</span><span class="sort-indicator" aria-hidden="true"></span></button>
                         <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="天数口径" autocomplete="off">
-                          <option value="businessDaysA1ToReceived">A1至接收</option>
-                          <option value="businessDaysCurrentA1ToReceived">当前A1至接收</option>
-                          <option value="businessDaysReceivedToNotice">接收至通知</option>
-                          <option value="businessDaysA1ToNotice">A1至通知</option>
+                          <option value="calendarDaysA1ToReceived">A1至接收</option>
+                          <option value="calendarDaysCurrentA1ToReceived">当前A1至接收</option>
+                          <option value="calendarDaysReceivedToNotice">接收至通知</option>
+                          <option value="calendarDaysA1ToNotice">A1至通知</option>
                         </select>
                       </th>
                       <th><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>

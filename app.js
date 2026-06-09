@@ -16,7 +16,8 @@ const defaults = {
   marketCapMax: "",
   sortField: "a1Date",
   sortDir: "desc",
-  daySortField: "businessDaysA1ToReceived",
+  dayCountMode: "calendar",
+  daySortField: "calendarDaysA1ToReceived",
   page: 1
 };
 
@@ -45,22 +46,22 @@ const viewTitles = {
 
 const metricDefinitions = [
   {
-    key: "businessDaysA1ToReceived",
-    labelZh: "备案锚点（A1日）至接收",
-    labelEn: "CSRC A1 date anchor to received",
+    metric: "a1ToReceived",
+    labelZh: "备案锚点（A1日）至接收天数",
+    labelEn: "CSRC A1 date anchor to received days",
     note: "按有公开接收日样本"
   },
   {
-    key: "businessDaysReceivedToNotice",
-    labelZh: "接收至通知",
-    labelEn: "CSRC received to notice",
+    metric: "receivedToNotice",
+    labelZh: "接收至通知天数",
+    labelEn: "CSRC received to notice days",
     note: "需同一发行人接收日及通知书",
     minCount: 5
   },
   {
-    key: "businessDaysA1ToNotice",
-    labelZh: "备案锚点（A1日）至通知",
-    labelEn: "CSRC A1 date anchor to notice",
+    metric: "a1ToNotice",
+    labelZh: "备案锚点（A1日）至通知天数",
+    labelEn: "CSRC A1 date anchor to notice days",
     note: "按有通知书样本"
   }
 ];
@@ -79,16 +80,35 @@ const trackedStateKeys = [
   "marketCapMax",
   "sortField",
   "sortDir",
+  "dayCountMode",
   "daySortField",
   "page"
 ];
 
-const daySortFields = [
-  "businessDaysA1ToReceived",
-  "businessDaysCurrentA1ToReceived",
-  "businessDaysReceivedToNotice",
-  "businessDaysA1ToNotice"
-];
+const dayFieldPairs = {
+  a1ToReceived: {
+    calendar: "calendarDaysA1ToReceived",
+    business: "businessDaysA1ToReceived",
+    label: "A1至接收"
+  },
+  currentA1ToReceived: {
+    calendar: "calendarDaysCurrentA1ToReceived",
+    business: "businessDaysCurrentA1ToReceived",
+    label: "当前A1至接收"
+  },
+  receivedToNotice: {
+    calendar: "calendarDaysReceivedToNotice",
+    business: "businessDaysReceivedToNotice",
+    label: "接收至通知"
+  },
+  a1ToNotice: {
+    calendar: "calendarDaysA1ToNotice",
+    business: "businessDaysA1ToNotice",
+    label: "A1至通知"
+  }
+};
+
+const daySortFields = Object.values(dayFieldPairs).flatMap((item) => [item.calendar, item.business]);
 
 const statusSortRank = {
   notice_issued: 10,
@@ -106,6 +126,10 @@ const descendingDefaultSortFields = new Set([
   "csrcReceivedDate",
   "csrcCurrentReceivedDate",
   "noticeDate",
+  "calendarDaysA1ToReceived",
+  "calendarDaysCurrentA1ToReceived",
+  "calendarDaysReceivedToNotice",
+  "calendarDaysA1ToNotice",
   "businessDaysA1ToReceived",
   "businessDaysCurrentA1ToReceived",
   "businessDaysReceivedToNotice",
@@ -165,6 +189,10 @@ function formatNumber(value, mode = "decimal") {
   return mode === "integer" ? integerFormatter.format(value) : numberFormatter.format(value);
 }
 
+function formatDayNumber(value, unit = dayUnitLabel()) {
+  return typeof value === "number" ? `${formatNumber(value)} ${unit}` : formatPending();
+}
+
 function formatPending() {
   return `<span class="pending-zh">待披露</span><span class="pending-en">Pending</span>`;
 }
@@ -221,6 +249,36 @@ function nameParts(record) {
 
 function statusLabel(status, index = 0) {
   return (statusLabels[status] || [status, status])[index];
+}
+
+function dayUnitLabel() {
+  return state.dayCountMode === "business" ? "工作日" : "自然日";
+}
+
+function dayBasisNote() {
+  return state.dayCountMode === "business" ? "按中国节假日调休口径" : "按自然日差值";
+}
+
+function dayMetricEntry(field) {
+  return Object.values(dayFieldPairs).find((item) => item.calendar === field || item.business === field) || null;
+}
+
+function fieldForDayMode(field, mode = state.dayCountMode) {
+  const entry = dayMetricEntry(field);
+  return entry ? entry[mode] : field;
+}
+
+function dayMetricField(metric) {
+  return dayFieldPairs[metric]?.[state.dayCountMode] || metric;
+}
+
+function setDaySelectOptions() {
+  const select = document.getElementById("daySortField");
+  if (!select) return;
+  const html = Object.values(dayFieldPairs)
+    .map((entry) => `<option value="${entry[state.dayCountMode]}">${entry.label}</option>`)
+    .join("");
+  if (select.innerHTML !== html) select.innerHTML = html;
 }
 
 const sponsorDisplayRules = [
@@ -692,13 +750,14 @@ function renderDurationMetric(metric, stats) {
   const sampleStart = state.data?.meta?.libraryCoverageStartDate || state.data?.meta?.durationSampleStartDate || "N/A";
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
   const startLabel = `样本池最早本地A1 ${sampleStart} · CSRC口径≥${regimeStart}`;
+  const metricNote = `${metric.note} · ${dayBasisNote()}`;
   const lowSampleText = metric.minCount
-    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛 · ${metric.note}`
-    : `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计 · ${metric.note}`;
+    ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，低于 ${integerFormatter.format(metric.minCount)} 条统计门槛 · ${metricNote}`
+    : `${startLabel} · ${integerFormatter.format(stats.count)} 条样本，暂不展示统计 · ${metricNote}`;
   const caption = stats.sampleTooSmall
     ? lowSampleText
     : stats.count
-      ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metric.note}`
+      ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metricNote}`
       : `${startLabel} 暂无可统计样本`;
   const statValue = (value) => stats.sampleTooSmall ? "样本不足" : formatNumber(value);
   return `
@@ -708,7 +767,7 @@ function renderDurationMetric(metric, stats) {
         <span class="metric-en">${escapeHtml(metric.labelEn)}</span>
       </div>
       <div class="duration-core">
-        <span>平均工作日</span>
+        <span>平均天数</span>
         <strong>${statValue(stats.average)}</strong>
       </div>
       <div class="metric-stat-grid">
@@ -741,21 +800,28 @@ function renderMetrics(records) {
         <div class="status-mini">${statusHtml}</div>
       </article>
     `,
-    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, metric.key, metric.minCount || 0)))
+    ...metricDefinitions.map((metric) => renderDurationMetric(metric, statsFor(records, dayMetricField(metric.metric), metric.minCount || 0)))
   ];
   document.getElementById("metricsGrid").innerHTML = html.join("");
 }
 
 function renderDays(record) {
-  const currentReceivedLine = typeof record.businessDaysCurrentA1ToReceived === "number"
-    ? `<div><span>当前A1至接收</span><strong>${formatNumber(record.businessDaysCurrentA1ToReceived)}</strong></div>`
+  const fields = {
+    a1ToReceived: dayMetricField("a1ToReceived"),
+    currentA1ToReceived: dayMetricField("currentA1ToReceived"),
+    receivedToNotice: dayMetricField("receivedToNotice"),
+    a1ToNotice: dayMetricField("a1ToNotice")
+  };
+  const currentReceivedLine = typeof record[fields.currentA1ToReceived] === "number"
+    ? `<div><span>当前A1至接收</span><strong>${formatNumber(record[fields.currentA1ToReceived])}</strong></div>`
     : "";
   return `
     <div class="days-cell">
-      <div><span>备案锚点（A1日）至接收</span><strong>${formatNumber(record.businessDaysA1ToReceived)}</strong></div>
+      <div class="days-cell-mode">${dayUnitLabel()}</div>
+      <div><span>备案锚点（A1日）至接收</span><strong>${formatNumber(record[fields.a1ToReceived])}</strong></div>
       ${currentReceivedLine}
-      <div><span>接收至通知</span><strong>${formatNumber(record.businessDaysReceivedToNotice)}</strong></div>
-      <div><span>备案锚点（A1日）至通知</span><strong>${formatNumber(record.businessDaysA1ToNotice)}</strong></div>
+      <div><span>接收至通知</span><strong>${formatNumber(record[fields.receivedToNotice])}</strong></div>
+      <div><span>备案锚点（A1日）至通知</span><strong>${formatNumber(record[fields.a1ToNotice])}</strong></div>
     </div>
   `;
 }
@@ -917,6 +983,13 @@ function renderDetail(record) {
   const historicalAnchorLine = record.historicalTimelineAnchorDate && record.historicalTimelineAnchorDate !== record.a1Date
     ? `<div class="timeline-row"><span>历史最早A1</span><strong>${formatDate(record.historicalTimelineAnchorDate)}</strong></div>`
     : "";
+  const dayFields = {
+    a1ToReceived: dayMetricField("a1ToReceived"),
+    currentA1ToReceived: dayMetricField("currentA1ToReceived"),
+    receivedToNotice: dayMetricField("receivedToNotice"),
+    a1ToNotice: dayMetricField("a1ToNotice")
+  };
+  const dayUnit = dayUnitLabel();
 
   detail.innerHTML = `
     <div class="detail-header">
@@ -940,12 +1013,12 @@ function renderDetail(record) {
         </div>
       </div>
       <div class="detail-item">
-        <span>工作日 Business days</span>
+        <span>天数 Days · ${dayUnit}</span>
         <div class="detail-days">
-          <div><span>备案锚点（A1日）至接收</span><strong>${formatNumber(record.businessDaysA1ToReceived)}</strong></div>
-          <div><span>当前A1至当前接收</span><strong>${formatNumber(record.businessDaysCurrentA1ToReceived)}</strong></div>
-          <div><span>接收至通知</span><strong>${formatNumber(record.businessDaysReceivedToNotice)}</strong></div>
-          <div><span>备案锚点（A1日）至通知</span><strong>${formatNumber(record.businessDaysA1ToNotice)}</strong></div>
+          <div><span>备案锚点（A1日）至接收</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
+          <div><span>当前A1至当前接收</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
+          <div><span>接收至通知</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
+          <div><span>备案锚点（A1日）至通知</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
         </div>
       </div>
       <div class="detail-item">
@@ -1044,6 +1117,9 @@ function syncUrl() {
 }
 
 function syncControls() {
+  state.daySortField = fieldForDayMode(state.daySortField, state.dayCountMode);
+  if (daySortFields.includes(state.sortField)) state.sortField = fieldForDayMode(state.sortField, state.dayCountMode);
+  setDaySelectOptions();
   document.getElementById("issuerSearch").value = state.query;
   document.getElementById("dateField").value = state.dateField;
   document.getElementById("dateFrom").value = state.dateFrom;
@@ -1055,6 +1131,13 @@ function syncControls() {
   document.getElementById("marketCapMax").value = state.marketCapMax;
   document.getElementById("sortField").value = daySortFields.includes(state.sortField) ? "__days__" : state.sortField;
   document.getElementById("daySortField").value = state.daySortField;
+  document.querySelectorAll("[data-day-count-mode]").forEach((button) => {
+    const active = button.dataset.dayCountMode === state.dayCountMode;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  const dayModeHint = document.getElementById("dayModeHint");
+  if (dayModeHint) dayModeHint.textContent = dayBasisNote();
   document.getElementById("sortDirection").textContent = state.sortDir === "asc" ? "升序" : "降序";
   document.getElementById("sortDirection").dataset.dir = state.sortDir;
   document.querySelectorAll(".segment").forEach((item) => {
@@ -1069,6 +1152,9 @@ function updateTracker(partial = {}, options = {}) {
   syncControls();
   syncUrl();
   renderRows();
+  if (document.getElementById("detailModal")?.classList.contains("is-open")) {
+    renderDetail(state.data.records.find((item) => item.id === state.selectedId));
+  }
 }
 
 function defaultSortDir(field) {
@@ -1104,8 +1190,13 @@ async function loadData() {
     state.data = emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   }
   applyStateFromUrl();
+  if (!["calendar", "business"].includes(state.dayCountMode)) state.dayCountMode = "calendar";
   if (state.sortField === "__days__") state.sortField = state.daySortField;
-  if (daySortFields.includes(state.sortField)) state.daySortField = state.sortField;
+  state.daySortField = fieldForDayMode(state.daySortField, state.dayCountMode);
+  if (daySortFields.includes(state.sortField)) {
+    state.sortField = fieldForDayMode(state.sortField, state.dayCountMode);
+    state.daySortField = state.sortField;
+  }
   state.selectedId = state.data.records[0]?.id || null;
   populateFilters();
   syncControls();
@@ -1174,6 +1265,21 @@ document.getElementById("daySortField").addEventListener("change", (event) => {
   updateTracker({ daySortField: event.target.value, sortField: event.target.value });
 });
 
+document.querySelectorAll("[data-day-count-mode]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const nextMode = button.dataset.dayCountMode;
+    const nextDaySortField = fieldForDayMode(state.daySortField, nextMode);
+    const nextSortField = daySortFields.includes(state.sortField)
+      ? fieldForDayMode(state.sortField, nextMode)
+      : state.sortField;
+    updateTracker({
+      dayCountMode: nextMode,
+      daySortField: nextDaySortField,
+      sortField: nextSortField
+    });
+  });
+});
+
 document.getElementById("sortDirection").addEventListener("click", () => {
   updateTracker({ sortDir: state.sortDir === "asc" ? "desc" : "asc" });
 });
@@ -1203,7 +1309,8 @@ document.getElementById("clearFilters").addEventListener("click", () => {
     marketCapMax: "",
     sortField: "a1Date",
     sortDir: "desc",
-    daySortField: "businessDaysA1ToReceived",
+    dayCountMode: "calendar",
+    daySortField: "calendarDaysA1ToReceived",
     page: 1
   });
   syncControls();
