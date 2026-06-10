@@ -165,7 +165,8 @@ const descendingDefaultSortFields = new Set([
   "calendarDaysCurrentA1ToNotice",
   "businessDaysCurrentA1ToNotice",
   "calendarDaysA1ToListing",
-  "aShareMarketCapAtA1RmbBn"
+  "aShareMarketCapAtA1RmbBn",
+  "listingMarketCapHkdBn"
 ]);
 
 const numberFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
@@ -243,6 +244,10 @@ function hasNoticeGapAfterListing(record) {
 }
 
 function hkexListingStage(record) {
+  // practicalStage is computed by the exporter: lapsed/withdrawn issuers with
+  // live CSRC progress stay in "applying" (they almost always refile); only
+  // genuinely stale cases park in "other".
+  if (record.practicalStage) return record.practicalStage;
   if (isPostRegimeListed(record)) return "listed";
   const rawStatus = String(record.hkexPublicStatus || "").trim();
   const normalized = rawStatus.toLowerCase();
@@ -253,10 +258,10 @@ function hkexListingStage(record) {
 
 function hkexStageLabel(stage) {
   const labels = {
-    all: "全部",
-    applying: "上市申请中",
-    listed: "已上市",
-    other: "失效/撤回"
+    all: "全部 All",
+    applying: "上市申请中 In application",
+    listed: "已上市 Listed",
+    other: "搁置/撤回 Stalled / withdrawn"
   };
   return labels[stage] || stage;
 }
@@ -331,6 +336,16 @@ function formatMarketCap(record) {
   return `
     <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
     <span class="pending-en">¥${rmbBnFormatter.format(value)}B · A1日</span>
+  `;
+}
+
+function formatListingMarketCap(record) {
+  const value = record.listingMarketCapHkdBn;
+  if (typeof value !== "number") return formatPending();
+  const yiValue = value * 10;
+  return `
+    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
+    <span class="pending-en">HK$${rmbBnFormatter.format(value)}B · 上市日</span>
   `;
 }
 
@@ -642,28 +657,46 @@ function normalizeSearchText(value) {
     .trim();
 }
 
+const HIDDEN_INTERNAL_TAGS = new Set(["已上市", "HKEX全量上市样本"]);
+
+const tagDictionary = {
+  "密交": { en: "Confidential A1", title: "HKEX confidential filing date used as the A1 anchor / 以港交所密交日期作为A1锚点" },
+  "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
+  "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计" },
+  "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日" },
+  "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
+  "已撤回": { en: "Withdrawn", title: "HKEX application withdrawn / 港交所申请已撤回", cls: "inactive-tag" },
+  "已拒绝": { en: "Rejected", title: "HKEX application rejected / 港交所申请被拒", cls: "inactive-tag" },
+  "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics as a chronology outlier (e.g. prior-cycle notice, >180-day stale anchor) / 时间线异常样本，不计入头部时长统计", cls: "outlier-tag" }
+};
+
+function isStatsOutlier(record) {
+  if (record.csrcFilingRequired === false) return false;
+  if (record.durationSampleEligible === false && (record.noticeDate || record.csrcReceivedDate)) return true;
+  if (typeof record.calendarDaysA1ToReceived === "number" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS
+      && typeof record.calendarDaysCurrentA1ToReceived !== "number") return true;
+  if ((record.timelineFlags || []).includes("csrc_notice_before_received_chronology_conflict")) return true;
+  return false;
+}
+
+function visibleStatusTags(record) {
+  const tags = (record.statusTags || []).filter((tag) => !HIDDEN_INTERNAL_TAGS.has(tag));
+  if (isStatsOutlier(record)) tags.push("outlier剔除统计");
+  return tags;
+}
+
 function renderStatusTags(record) {
-  const tags = record.statusTags || [];
+  const tags = visibleStatusTags(record);
   if (!tags.length) return "";
   return `
     <span class="status-tag-list">
-      ${tags.map((tag) => `<span class="${escapeHtml(statusTagClass(tag))}" title="${escapeHtml(statusTagTitle(tag))}">${escapeHtml(tag)}</span>`).join("")}
+      ${tags.map((tag) => {
+        const info = tagDictionary[tag] || {};
+        const en = info.en ? `<small>${escapeHtml(info.en)}</small>` : "";
+        return `<span class="${escapeHtml(info.cls || "")}" title="${escapeHtml(info.title || tag)}">${escapeHtml(tag)}${en}</span>`;
+      }).join("")}
     </span>
   `;
-}
-
-function statusTagClass(tag) {
-  if (tag === "已上市") return "listed-tag";
-  if (tag === "通知书待核") return "pending-listed-tag";
-  return "";
-}
-
-function statusTagTitle(tag) {
-  if (tag === "密交") return "HKEX confidential filing date used as A1 anchor";
-  if (tag === "已上市") return "HKEX consolidated index latest status is Listed";
-  if (tag === "通知书待核") return "HKEX Listed, but a source-backed CSRC notice is not yet matched in this tracker";
-  if (tag === "无需备案") return "Hong Kong or non-PRC filing-not-required case; excluded from CSRC filing duration statistics";
-  return "Status tag";
 }
 
 function renderStatusBadge(record) {
@@ -742,6 +775,8 @@ function syncTrackerTableMode() {
   const col5 = document.getElementById("dateColumn5Sort");
   if (col4) col4.dataset.sortField = listed ? "noticeDate" : "csrcReceivedDate";
   if (col5) col5.dataset.sortField = listed ? "hkexListingDate" : "noticeDate";
+  const capSort = document.getElementById("marketCapSort");
+  if (capSort) capSort.dataset.sortField = listed ? "listingMarketCapHkdBn" : "aShareMarketCapAtA1RmbBn";
   const setText = (id, text) => {
     const node = document.getElementById(id);
     if (node) node.textContent = text;
@@ -750,6 +785,8 @@ function syncTrackerTableMode() {
   setText("dateColumn4En", listed ? "CSRC notice" : "First / current");
   setText("dateColumn5Zh", listed ? "上市日" : "通知书");
   setText("dateColumn5En", listed ? "Listing" : "Notice");
+  setText("marketCapZh", listed ? "上市日市值" : "A1日市值");
+  setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
 }
 
 function getBaseFilteredRecords() {
@@ -812,6 +849,9 @@ function sortKey(record, field) {
   }
   if (field === "aShareMarketCapAtA1RmbBn") {
     return { value: isAhCandidate(record) ? record.aShareMarketCapAtA1RmbBn : null, type: "number" };
+  }
+  if (field === "listingMarketCapHkdBn") {
+    return { value: typeof record.listingMarketCapHkdBn === "number" ? record.listingMarketCapHkdBn : null, type: "number" };
   }
   if (field === "csrcReceivedDate") {
     return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate), type: "number" };
@@ -1008,8 +1048,8 @@ function renderDays(record) {
     return `
       <div class="days-cell">
         <div class="days-cell-mode">${dayUnitLabel()}</div>
-        <div><span>首次A1至备案通过</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
-        <div><span>首次A1至上市</span><strong>${formatDayValue(record[fields.a1ToListing])}</strong></div>
+        <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
+        <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayValue(record[fields.a1ToListing])}</strong></div>
       </div>
     `;
   }
@@ -1035,8 +1075,8 @@ function renderPagination(total, pageCount, startIndex, endIndex) {
       <span>共 ${formatNumber(total, "integer")} 家 · 第 ${formatNumber(state.page, "integer")} / ${formatNumber(pageCount, "integer")} 页</span>
     </div>
     <div class="pagination-actions">
-      <button id="prevPage" ${state.page <= 1 ? "disabled" : ""}>上一页</button>
-      <button id="nextPage" ${state.page >= pageCount ? "disabled" : ""}>下一页</button>
+      <button id="prevPage" ${state.page <= 1 ? "disabled" : ""}>上一页 Prev</button>
+      <button id="nextPage" ${state.page >= pageCount ? "disabled" : ""}>下一页 Next</button>
     </div>
   `;
 
@@ -1154,7 +1194,7 @@ function renderRows() {
           <td class="date-cell">${listedPage ? renderListingCell(record) : formatDate(record.noticeDate)}</td>
           <td>${renderDays(record)}</td>
           <td>${renderIssuerType(record)}</td>
-          <td>${formatMarketCap(record)}</td>
+          <td>${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
           <td><div class="tag-list">${industries}</div></td>
           <td><div class="tag-list">${sponsors}</div></td>
         </tr>
@@ -1182,28 +1222,64 @@ function renderDetail(record) {
       `
     )
     .join("");
-  const industryList = (record.industryTags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
-  const regulatorList = (record.regulatoryTags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+  const industryEn = record.industryTagEn ? `<span class="pending-en">${escapeHtml(record.industryTagEn)}</span>` : "";
+  const industryList = (record.industryTags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("") + industryEn;
+  const regulatorLabels = {
+    "MIIT_工信": "工信部 MIIT",
+    "CAC_网信数据": "网信办 CAC",
+    "NMPA_药监医疗": "药监局 NMPA",
+    "NHC_卫健": "卫健委 NHC",
+    "MOE_教育": "教育部 MOE",
+    "PBOC_NFRA_finance": "央行/金监局 PBOC·NFRA",
+    "NDRC_energy": "发改委 NDRC",
+    "MNR_resources": "自然资源部 MNR",
+    "MEE_environment": "生态环境部 MEE",
+    "MOHURD_real_estate": "住建部 MOHURD",
+    "SAMR_consumer": "市监总局 SAMR",
+    "CSRC_filing_direct_overseas": "证监会 CSRC"
+  };
+  const regulatorList = (record.regulatoryTags || []).map((tag) => `<span>${escapeHtml(regulatorLabels[tag] || tag)}</span>`).join("");
   const sourceLinks = (record.sourceLinks || [])
     .filter((source) => /^https?:\/\//i.test(String(source.url || "")))
     .map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`)
     .join("");
   const feedbackItems = (record.feedbackItems || [])
-    .map(
-      (item) => `
+    .map((item) => {
+      const text = String(item.questionText || "");
+      const lead = text.slice(0, 220);
+      const rest = text.slice(220);
+      const body = rest
+        ? `<p>${escapeHtml(lead)}…</p><details><summary>展开全文 Show full text</summary><p>${escapeHtml(text)}</p></details>`
+        : `<p>${escapeHtml(text)}</p>`;
+      return `
         <article class="feedback-card">
           <strong>${escapeHtml(item.publishedDate || "")} · ${escapeHtml(item.title || "补充材料")}</strong>
-          <p>${escapeHtml(item.questionText || "")}</p>
+          ${body}
         </article>
-      `
-    )
+      `;
+    })
     .join("");
+  const timelineFlagLabels = {
+    hkex_public_first_a1_before_current_local_a1: "曾有更早A1 Earlier A1 cycle",
+    csrc_received_before_timeline_anchor_possible_mismatch: "接收早于A1锚点 Received before A1 anchor",
+    csrc_received_before_current_a1_after_public_first_a1: "接收属前一周期 Received in prior cycle",
+    csrc_notice_before_timeline_anchor_possible_mismatch: "通知书早于公开A1 Notice before public A1",
+    csrc_notice_before_current_a1_after_public_first_a1: "通知书属前一周期 Notice in prior cycle",
+    csrc_notice_before_received_chronology_conflict: "通知书早于最新接收 Notice predates latest receipt",
+    notice_without_status_received_match: "有通知书无接收记录 Notice without received date",
+    status_without_notice_match: "已接收待通知书 Received, notice pending",
+    feedback_before_timeline_anchor_possible_mismatch: "补充材料早于A1 Feedback before A1",
+    pre_regime_a1_no_csrc_notice_expected: "制度前A1无需备案 Pre-regime A1, no filing",
+    same_day_notice_without_status_received_match_possible_missing_anchor: "通知书与A1同日 Notice same day as A1"
+  };
   const timelineFlags = (record.timelineFlags || [])
+    .map((flag) => timelineFlagLabels[flag])
+    .filter(Boolean)
     .slice(0, 5)
-    .map((flag) => `<span>${escapeHtml(flag)}</span>`)
+    .map((label) => `<span>${escapeHtml(label)}</span>`)
     .join("");
   const historicalAnchorLine = record.historicalTimelineAnchorDate && record.historicalTimelineAnchorDate !== record.a1Date
-    ? `<div class="timeline-row"><span>历史最早A1</span><strong>${formatDate(record.historicalTimelineAnchorDate)}</strong></div>`
+    ? `<div class="timeline-row"><span>历史最早A1 Earliest A1</span><strong>${formatDate(record.historicalTimelineAnchorDate)}</strong></div>`
     : "";
   const dayFields = {
     a1ToReceived: dayMetricField("a1ToReceived"),
@@ -1216,20 +1292,20 @@ function renderDetail(record) {
   const listedPage = state.hkexStage === "listed";
   const listedTimelineRows = listedPage
     ? `
-          <div class="timeline-row"><span>HKEX招股书</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
-          <div class="timeline-row"><span>HKEX上市日</span><strong>${formatDate(record.hkexListingDate)}</strong></div>
+          <div class="timeline-row"><span>HKEX招股书 Prospectus</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
+          <div class="timeline-row"><span>HKEX上市日 Listing</span><strong>${formatDate(record.hkexListingDate)}</strong></div>
       `
     : "";
   const daysRows = listedPage
     ? `
-          <div><span>首次A1至备案通过</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
-          <div><span>首次A1至上市</span><strong>${formatDayNumber(record[dayFields.a1ToListing], dayUnit)}</strong></div>
+          <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
+          <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayNumber(record[dayFields.a1ToListing], dayUnit)}</strong></div>
       `
     : `
-          <div><span>备案锚点（A1日）至接收</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
-          <div><span>当前A1至当前接收</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
-          <div><span>接收至通知</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
-          <div><span>备案锚点（A1日）至通知</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
+          <div><span>备案锚点（A1日）至接收 A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
+          <div><span>当前A1至当前接收 Current A1→Received</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
+          <div><span>接收至通知 Received→Notice</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
+          <div><span>备案锚点（A1日）至通知 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
       `;
 
   detail.innerHTML = `
@@ -1245,12 +1321,12 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>时间线 Timeline</span>
         <div class="timeline">
-          <div class="timeline-row"><span>备案A1锚点</span><strong>${formatDate(record.a1Date)}</strong></div>
+          <div class="timeline-row"><span>备案A1锚点 A1 anchor</span><strong>${formatDate(record.a1Date)}</strong></div>
           ${historicalAnchorLine}
-          <div class="timeline-row"><span>当前 A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>
-          <div class="timeline-row"><span>首轮接收</span><strong>${formatDate(record.csrcFirstReceivedDate || record.csrcReceivedDate)}</strong></div>
-          <div class="timeline-row"><span>当前接收</span><strong>${formatDate(record.csrcCurrentReceivedDate)}</strong></div>
-          <div class="timeline-row"><span>备案通知书</span><strong>${formatDate(record.noticeDate)}</strong></div>
+          <div class="timeline-row"><span>当前A1 Current A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>
+          <div class="timeline-row"><span>首轮接收 First received</span><strong>${formatDate(record.csrcFirstReceivedDate || record.csrcReceivedDate)}</strong></div>
+          <div class="timeline-row"><span>当前接收 Current received</span><strong>${formatDate(record.csrcCurrentReceivedDate)}</strong></div>
+          <div class="timeline-row"><span>备案通知书 CSRC notice</span><strong>${formatDate(record.noticeDate)}</strong></div>
           ${listedTimelineRows}
         </div>
       </div>
@@ -1265,8 +1341,8 @@ function renderDetail(record) {
         <strong>${renderIssuerType(record)}</strong>
       </div>
       <div class="detail-item">
-        <span>A 股状态 / A1 日当天市值</span>
-        <div>${escapeHtml(record.aShareStatus)}<div class="market-cap-detail">${formatMarketCap(record)}</div></div>
+        <span>${listedPage ? "上市日市值 Listing-day mkt cap" : "A 股状态 / A1 日市值 A-share status / mkt cap"}</span>
+        <div>${listedPage ? `<div class="market-cap-detail">${formatListingMarketCap(record)}</div>` : `${escapeHtml(record.aShareStatus)}<div class="market-cap-detail">${formatMarketCap(record)}</div>`}</div>
       </div>
       <div class="detail-item">
         <span>行业标签 Industry</span>
@@ -1297,10 +1373,20 @@ function renderDetail(record) {
   `;
 }
 
+function trackerTitle() {
+  const stageTitles = {
+    all: "证监会备案追踪 · 全部",
+    applying: "证监会备案追踪 · 上市申请中",
+    listed: "证监会备案追踪 · 已上市",
+    other: "证监会备案追踪 · 搁置/撤回"
+  };
+  return stageTitles[state.hkexStage] || "证监会备案追踪";
+}
+
 function switchView(view, updateLocation = true) {
   state.view = view;
   document.getElementById("viewTitle").textContent = view === "tracker"
-    ? (state.hkexStage === "listed" ? "证监会备案追踪 · 已上市" : "证监会备案追踪 · 上市申请中")
+    ? trackerTitle()
     : (viewTitles[view] || "追瑞");
   document.querySelectorAll(".nav-item").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.view === view);
@@ -1323,9 +1409,7 @@ function renderChrome() {
       ? `${meta.disclaimerZh || "初步自动收集，未人工复核，仅示例"} · 生成时间 ${meta.generatedAt} · ${meta.marketCapNoteZh || ""}`
       : meta.disclaimerZh || meta.marketCapNoteZh || "";
   if (state.view === "tracker") {
-    document.getElementById("viewTitle").textContent = state.hkexStage === "listed"
-      ? "证监会备案追踪 · 已上市"
-      : "证监会备案追踪 · 上市申请中";
+    document.getElementById("viewTitle").textContent = trackerTitle();
   }
   syncListingStageButtons();
   syncTrackerTableMode();

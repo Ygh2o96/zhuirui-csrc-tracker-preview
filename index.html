@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260610-match-gating-1" />
+    <link rel="stylesheet" href="styles.css?v=20260610-practical-stage-1" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -74,7 +74,7 @@
             <strong data-stage-count="listed">0</strong>
           </button>
           <button class="listing-stage-button muted-stage" type="button" data-hkex-stage="other">
-            <span><b>失效/撤回</b><small>Lapsed / withdrawn</small></span>
+            <span><b>搁置/撤回</b><small>Stalled / withdrawn</small></span>
             <strong data-stage-count="other">0</strong>
           </button>
         </div>
@@ -102,8 +102,8 @@
           <div class="day-mode-bar" aria-label="天数口径">
             <span><b>天数口径</b><small>Days basis</small></span>
             <div class="day-mode-toggle" role="group" aria-label="天数口径">
-              <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日</button>
-              <button class="day-mode-button" type="button" data-day-count-mode="business">工作日</button>
+              <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日 Calendar</button>
+              <button class="day-mode-button" type="button" data-day-count-mode="business">工作日 Business</button>
             </div>
             <small id="dayModeHint">默认自然日</small>
           </div>
@@ -117,13 +117,13 @@
                   <input id="issuerSearch" name="issuerSearch" type="search" autocomplete="off" placeholder="搜索发行人、保荐人、行业…" />
                 </div>
                 <div class="segmented" role="tablist" aria-label="Status filter">
-                  <button class="segment is-active" data-status="all">全部</button>
-                  <button class="segment" data-status="notice_issued">通知书</button>
-                  <button class="segment" data-status="regulator_opinion">征询意见</button>
-                  <button class="segment" data-status="supplement_requested">补材料</button>
-                  <button class="segment" data-status="csrc_received">已接收</button>
-                  <button class="segment" data-status="waiting_received">等待接收</button>
-                  <button class="segment" data-status="review_pending">待复核</button>
+                  <button class="segment is-active" data-status="all">全部<small>All</small></button>
+                  <button class="segment" data-status="notice_issued">通知书<small>Notice</small></button>
+                  <button class="segment" data-status="regulator_opinion">征询意见<small>Opinion</small></button>
+                  <button class="segment" data-status="supplement_requested">补材料<small>Suppl.</small></button>
+                  <button class="segment" data-status="csrc_received">已接收<small>Received</small></button>
+                  <button class="segment" data-status="waiting_received">等待接收<small>Awaiting</small></button>
+                  <button class="segment" data-status="review_pending">待复核<small>Review</small></button>
                 </div>
               </div>
 
@@ -208,7 +208,7 @@
                         </select>
                       </th>
                       <th><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh">A1日市值</span><span class="th-en">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                     </tr>
@@ -320,7 +320,8 @@
         <footer class="footer-note">
           <details class="methodology-note">
             <summary>口径说明 Methodology</summary>
-            <p>默认页为上市申请中；已上市页纳入HKEX New Listing Report显示上市日不早于2023-03-31的全量发行人，并补入不在本地AP库中的listed-only样本。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收，若当前A1后尚无接收日则剔除。已上市页只展示首次A1至备案通过、首次A1至上市两组天数；无需备案发行人不纳入备案通过统计，但可纳入A1至上市统计。页面天数统一向上取整显示。左侧“上市进度”为HKEX consolidated index及NLR口径，空白HKEX状态不等于失效；只有明确Lapsed/Withdrawn/Rejected才进入失效/撤回。</p>
+            <p>默认页为上市申请中；已上市页纳入HKEX New Listing Report显示上市日不早于2023-03-31的全量发行人。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收，若当前A1后尚无接收日则剔除并打「outlier剔除统计」标签。已上市页展示首次A1至备案通过、首次A1至上市两组天数及上市日总市值（首日收盘×现行总股本，yfinance口径）；无需备案发行人不纳入备案通过统计。备案要求按周期判断：只要任一次A1递交日不早于2023-03-31即需备案，仅全部A1周期早于该日的发行人标记「制度前A1」。左侧「搁置/撤回」为实操口径：港交所失效/撤回但证监会备案已被接收的发行人大概率将重新递交，仍归入上市申请中并打「A1已失效」标签；仅 (a) 最近A1超过6个月且备案始终未获接收、或 (b) 已接收但停留征求意见且最近A1超过一年未更新 的发行人归入搁置/撤回。页面天数统一向上取整。</p>
+            <p class="methodology-en">Default view tracks live applications; the Listed view covers all HKEX New Listing Report issuers listed on or after 2023-03-31. A1→received statistics include records with complete, chronologically valid dates; where the historical anchor exceeds 180 calendar days the cards switch to the current-cycle A1 (records without a current-cycle receipt are excluded and tagged "outlier"). The Listed view shows first-A1→notice and first-A1→listing durations plus listing-day market cap (first close × current shares outstanding, via yfinance). Filing applicability is cycle-based: any A1 submitted on or after 2023-03-31 triggers the CSRC filing requirement; only issuers whose every A1 cycle predates that date are tagged "Pre-regime A1". The "Stalled / withdrawn" bucket is practitioner-defined: lapsed HKEX applications with a live CSRC filing typically refile and stay under "In application" (tagged "A1 lapsed"); only (a) no CSRC receipt with the latest A1 older than 6 months, or (b) stuck at regulator-opinion with no new A1 for over a year, are parked here. Day counts round up.</p>
           </details>
           预览版本。公开页面应链接至港交所/证监会官方材料，并避免批量转载源文件。
           <span>Preview build with official-source linking discipline.</span>
@@ -328,6 +329,6 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260610-match-gating-1"></script>
+    <script src="app.js?v=20260610-practical-stage-1"></script>
   </body>
 </html>
