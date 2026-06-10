@@ -2,7 +2,7 @@
   color-scheme: light;
   --ink: #19212a;
   --muted: #5e6875;
-  --subtle: #87919f;
+  --subtle: #65707c;
   --line: #d8dfdc;
   --soft-line: #e9eeeb;
   --surface: #fffefb;
@@ -811,13 +811,25 @@ tr[role="button"]:focus-visible {
   width: 100%;
   max-width: 100%;
   overflow: auto;
+  max-height: min(78vh, 980px);
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tracker-table {
   width: 100%;
   min-width: 0;
   table-layout: fixed;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.tracker-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--surface);
+  box-shadow: 0 1px 0 var(--line);
 }
 
 .tracker-table th,
@@ -972,7 +984,7 @@ tr[role="button"]:focus-visible {
 }
 
 .badge small {
-  opacity: 0.74;
+  opacity: 1;
   font-size: 8px;
   font-weight: 650;
 }
@@ -1753,6 +1765,23 @@ tr[role="button"]:focus-visible {
     min-width: 980px;
   }
 
+  .tracker-table th:nth-child(1),
+  .tracker-table td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--surface);
+    box-shadow: 1px 0 0 var(--line);
+  }
+
+  .tracker-table thead th:nth-child(1) {
+    z-index: 3;
+  }
+
+  .tracker-table tr.is-selected td:nth-child(1) {
+    background: #eef6f3;
+  }
+
   .pagination-bar {
     align-items: stretch;
     flex-direction: column;
@@ -1761,4 +1790,10 @@ tr[role="button"]:focus-visible {
   .pagination-actions button {
     flex: 1;
   }
+}
+
+.empty-row {
+  padding: 34px 16px !important;
+  text-align: center !important;
+  font-size: 13px !important;
 }

@@ -1,4 +1,6 @@
-const DATA_URL = `data/csrc_tracker_public.json?ts=${Date.now()}`;
+// no-cache (not no-store) lets the browser revalidate with the CDN ETag and
+// skip re-downloading the multi-MB payload when the snapshot is unchanged.
+const DATA_URL = "data/csrc_tracker_public.json";
 const PAGE_SIZE = 50;
 const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 
@@ -160,14 +162,11 @@ const descendingDefaultSortFields = new Set([
   "businessDaysReceivedToNotice",
   "businessDaysA1ToNotice",
   "businessDaysA1ToListing",
+  "calendarDaysCurrentA1ToNotice",
+  "businessDaysCurrentA1ToNotice",
+  "calendarDaysA1ToListing",
   "aShareMarketCapAtA1RmbBn"
 ]);
-
-const dateFormatter = new Intl.DateTimeFormat("zh-HK", {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit"
-});
 
 const numberFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
 const integerFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
@@ -197,12 +196,8 @@ function asDateValue(value) {
 }
 
 function formatDate(value) {
-  const time = asDateValue(value);
-  if (!time) return formatPending();
-  const parts = Object.fromEntries(
-    dateFormatter.formatToParts(new Date(time)).map((part) => [part.type, part.value])
-  );
-  return `${parts.year}-${parts.month}-${parts.day}`;
+  if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(String(value))) return formatPending();
+  return String(value);
 }
 
 function formatDatePlain(value) {
@@ -266,12 +261,16 @@ function hkexStageLabel(stage) {
   return labels[stage] || stage;
 }
 
+let stageCountsCache = null;
+
 function hkexListingStageCounts(records = state.data?.records || []) {
+  if (records === state.data?.records && stageCountsCache) return stageCountsCache;
   const counts = { all: records.length, applying: 0, listed: 0, other: 0 };
   for (const record of records) {
     const stage = hkexListingStage(record);
     counts[stage] = (counts[stage] || 0) + 1;
   }
+  if (records === state.data?.records) stageCountsCache = counts;
   return counts;
 }
 
@@ -577,22 +576,32 @@ const traditionalToSimplified = {
   "鬍": "胡", "鬚": "须", "鬥": "斗", "鬧": "闹", "鬨": "哄", "鬱": "郁", "魎": "魉", "魘": "魇", "魚": "鱼", "魯": "鲁", "鮑": "鲍",
   "鮮": "鲜", "鯉": "鲤", "鯨": "鲸", "鯊": "鲨", "鱷": "鳄", "鳥": "鸟", "鳩": "鸠", "鳳": "凤", "鳴": "鸣", "鴻": "鸿", "鵬": "鹏",
   "鶴": "鹤", "鷗": "鸥", "鷹": "鹰", "鹼": "碱", "鹽": "盐", "麗": "丽", "麥": "麦", "黃": "黄", "點": "点", "黨": "党", "齊": "齐",
-  "齒": "齿", "龍": "龙", "龐": "庞", "龔": "龚"
+  "齒": "齿", "龍": "龙", "龐": "庞", "龔": "龚",
+  "來": "来", "劃": "划", "勝": "胜", "夢": "梦", "宮": "宫", "嵐": "岚", "揚": "扬", "昇": "升", "榮": "荣", "歡": "欢",
+  "滄": "沧", "滙": "汇", "滬": "沪", "潯": "浔", "濰": "潍", "濱": "滨", "瀾": "澜", "無": "无", "熱": "热", "營": "营",
+  "瑤": "瑶", "礎": "础", "腦": "脑", "臥": "卧", "華": "华", "萊": "莱", "蓋": "盖", "蓮": "莲", "藥": "药", "蘭": "兰",
+  "詰": "诘", "賾": "赜", "鈴": "铃", "鋪": "铺", "鋰": "锂", "鎖": "锁", "鐳": "镭", "馭": "驭", "騰": "腾", "鱘": "鲟",
+  "鴿": "鸽", "麵": "面", "臺": "台", "証": "证"
 };
+
+const sponsorShortNameCache = new Map();
 
 function sponsorShortName(name) {
   const raw = String(name || "").trim();
   if (!raw || raw === "待抽取") return raw;
+  const cached = sponsorShortNameCache.get(raw);
+  if (cached !== undefined) return cached;
   const matched = sponsorDisplayRules.find((rule) => rule.pattern.test(raw));
-  if (matched) return matched.shortName;
-  return raw
+  const result = matched ? matched.shortName : (raw
     .replace(/\b(Hong Kong|HK|International|Capital|Securities|Corporate Finance|Company|Limited|Co\.?|Ltd\.?|AG|plc|Branch)\b/gi, " ")
     .replace(/[(),.]/g, " ")
     .replace(/\s+/g, " ")
     .trim()
     .split(" ")
     .slice(0, 2)
-    .join(" ") || raw;
+    .join(" ") || raw);
+  sponsorShortNameCache.set(raw, result);
+  return result;
 }
 
 function sponsorSearchAliases(name) {
@@ -666,7 +675,11 @@ function renderStatusBadge(record) {
   `;
 }
 
+const recordTextCache = new WeakMap();
+
 function getRecordText(record) {
+  const cached = recordTextCache.get(record);
+  if (cached !== undefined) return cached;
   const sponsorAliases = (record.sponsors || []).flatMap((sponsor) => sponsorSearchAliases(sponsor));
   const rawText = [
     record.issuerName,
@@ -696,7 +709,9 @@ function getRecordText(record) {
     ...(record.sponsors || [])
   ]
     .join(" ");
-  return normalizeSearchText(rawText);
+  const text = normalizeSearchText(rawText);
+  recordTextCache.set(record, text);
+  return text;
 }
 
 function renderStackedDate(primary, secondaryLabel, secondary) {
@@ -741,8 +756,13 @@ function getBaseFilteredRecords() {
   const query = normalizeSearchText(state.query);
   const from = asDateValue(state.dateFrom);
   const to = asDateValue(state.dateTo);
-  const capMin = state.marketCapMin === "" ? null : Number(state.marketCapMin);
-  const capMax = state.marketCapMax === "" ? null : Number(state.marketCapMax);
+  const parseCap = (raw) => {
+    if (raw === "" || raw === null || raw === undefined) return null;
+    const value = Number(raw);
+    return Number.isFinite(value) ? value : null;
+  };
+  const capMin = parseCap(state.marketCapMin);
+  const capMax = parseCap(state.marketCapMax);
 
   return state.data.records.filter((record) => {
     if (state.status !== "all" && record.status !== state.status) return false;
@@ -762,7 +782,10 @@ function getBaseFilteredRecords() {
       if (capMax !== null && record.aShareMarketCapAtA1RmbBn > capMax) return false;
     }
 
-    const recordDate = asDateValue(record[state.dateField]);
+    const rawDate = state.dateField === "csrcReceivedDate"
+      ? (record.csrcReceivedDate || record.csrcFirstReceivedDate)
+      : record[state.dateField];
+    const recordDate = asDateValue(rawDate);
     if ((from || to) && !recordDate) return false;
     if (from && recordDate < from) return false;
     if (to && recordDate > to) return false;
@@ -790,6 +813,9 @@ function sortKey(record, field) {
   if (field === "aShareMarketCapAtA1RmbBn") {
     return { value: isAhCandidate(record) ? record.aShareMarketCapAtA1RmbBn : null, type: "number" };
   }
+  if (field === "csrcReceivedDate") {
+    return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate), type: "number" };
+  }
   if (field.endsWith("Date")) return { value: asDateValue(record[field]), type: "number" };
   return { value: record[field], type: typeof record[field] === "number" ? "number" : "text" };
 }
@@ -810,18 +836,19 @@ function compareSortKeys(aKey, bKey) {
 function getFilteredRecords() {
   const rows = getBaseFilteredRecords();
   const direction = state.sortDir === "asc" ? 1 : -1;
-  return [...rows].sort((a, b) => {
-    const aKey = sortKey(a, state.sortField);
-    const bKey = sortKey(b, state.sortField);
-    const aMissing = isMissingSortKey(aKey);
-    const bMissing = isMissingSortKey(bKey);
-    if (aMissing && bMissing) return String(a.issuerName).localeCompare(String(b.issuerName), "en", { sensitivity: "base" });
-    if (aMissing) return 1;
-    if (bMissing) return -1;
-    const compared = compareSortKeys(aKey, bKey);
-    if (compared !== 0) return compared * direction;
-    return String(a.issuerName).localeCompare(String(b.issuerName), "en", { sensitivity: "base" });
+  const decorated = rows.map((record) => {
+    const key = sortKey(record, state.sortField);
+    return { record, key, missing: isMissingSortKey(key), name: String(record.issuerName) };
   });
+  decorated.sort((a, b) => {
+    if (a.missing && b.missing) return a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+    if (a.missing) return 1;
+    if (b.missing) return -1;
+    const compared = compareSortKeys(a.key, b.key);
+    if (compared !== 0) return compared * direction;
+    return a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+  });
+  return decorated.map((item) => item.record);
 }
 
 function getUniqueOptions(getter) {
@@ -836,13 +863,15 @@ function getUniqueOptions(getter) {
   return [...values].sort((a, b) => a.localeCompare(b, "zh-Hans", { sensitivity: "base" }));
 }
 
-function populateSelect(id, options, currentValue, allLabel) {
+function populateSelect(id, options, currentValue, allLabel, stateKey) {
   const select = document.getElementById(id);
   select.innerHTML = [
     `<option value="all">${escapeHtml(allLabel)}</option>`,
     ...options.map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`)
   ].join("");
-  select.value = options.includes(currentValue) ? currentValue : "all";
+  const valid = options.includes(currentValue);
+  select.value = valid ? currentValue : "all";
+  if (!valid && stateKey && state[stateKey] !== "all") state[stateKey] = "all";
 }
 
 function populateFilters() {
@@ -858,13 +887,13 @@ function populateFilters() {
     })
   ].join("");
   structureSelect.value = structureOptions.includes(state.structure) ? state.structure : "all";
-  populateSelect("industryFilter", getUniqueOptions((record) => record.industryTags || []), state.industry, "全部行业");
+  populateSelect("industryFilter", getUniqueOptions((record) => record.industryTags || []), state.industry, "全部行业", "industry");
   const sponsorOptions = getUniqueOptions((record) => sponsorLabels(record));
   if (state.sponsor !== "all" && !sponsorOptions.includes(state.sponsor)) {
     const shortName = sponsorShortName(state.sponsor);
     if (sponsorOptions.includes(shortName)) state.sponsor = shortName;
   }
-  populateSelect("sponsorFilter", sponsorOptions, state.sponsor, "全部保荐人");
+  populateSelect("sponsorFilter", sponsorOptions, state.sponsor, "全部保荐人", "sponsor");
 }
 
 function median(values) {
@@ -877,11 +906,13 @@ function median(values) {
 
 function durationValueForStats(record, metric) {
   if (metric.metric === "a1ToListing") {
+    if (record.listingDurationSampleEligible === false) return null;
     const key = dayMetricField(metric.metric);
     return typeof record[key] === "number" ? record[key] : null;
   }
   if (record.csrcFilingRequired === false) return null;
-  if (metric.metric !== "a1ToListing" && hasNoticeGapAfterListing(record)) return null;
+  if (record.durationSampleEligible === false) return null;
+  if (hasNoticeGapAfterListing(record)) return null;
   if (state.hkexStage !== "listed" && metric.metric === "a1ToReceived" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS) {
     const currentField = dayMetricField("currentA1ToReceived");
     return typeof record[currentField] === "number" ? record[currentField] : null;
@@ -1021,23 +1052,48 @@ function renderPagination(total, pageCount, startIndex, endIndex) {
   });
 }
 
+let lastModalTrigger = null;
+
 function closeDetail() {
   const modal = document.getElementById("detailModal");
-  if (!modal) return;
+  if (!modal || !modal.classList.contains("is-open")) return;
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  if (lastModalTrigger && document.contains(lastModalTrigger)) lastModalTrigger.focus();
+  lastModalTrigger = null;
 }
 
 function openDetail(recordId) {
   const record = state.data.records.find((item) => item.id === recordId);
   if (!record) return;
   state.selectedId = recordId;
+  lastModalTrigger = document.activeElement;
   renderDetail(record);
   const modal = document.getElementById("detailModal");
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
   document.getElementById("detailClose")?.focus();
-  renderRows();
+  document.querySelectorAll("#trackerRows [data-record-id]").forEach((row) => {
+    row.classList.toggle("is-selected", row.dataset.recordId === recordId);
+  });
+}
+
+function trapModalFocus(event) {
+  const modal = document.getElementById("detailModal");
+  if (!modal || !modal.classList.contains("is-open") || event.key !== "Tab") return;
+  const focusable = modal.querySelectorAll("button, a[href], select, input, [tabindex]:not([tabindex='-1'])");
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
 }
 
 function selectRecord(recordId) {
@@ -1049,9 +1105,13 @@ function renderRows() {
   renderMetrics(rows);
 
   if (!rows.length) {
+    const isLoadFailure = !(state.data?.records || []).length;
+    const emptyMessage = isLoadFailure
+      ? "数据加载失败，请点击右上角「刷新」重试 / Data failed to load — use Refresh."
+      : "当前筛选无匹配发行人，可点击「清除」重置筛选 / No matching issuer — try Clear filters.";
     document.getElementById("trackerRows").innerHTML = `
       <tr>
-        <td colspan="10" class="muted empty-row">当前筛选无匹配发行人 / No matching issuer.</td>
+        <td colspan="10" class="muted empty-row">${emptyMessage}</td>
       </tr>
     `;
     document.getElementById("paginationBar").innerHTML = "";
@@ -1102,16 +1162,6 @@ function renderRows() {
     })
     .join("");
 
-  document.querySelectorAll("[data-record-id]").forEach((row) => {
-    row.addEventListener("click", () => selectRecord(row.dataset.recordId));
-    row.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        selectRecord(row.dataset.recordId);
-      }
-    });
-  });
-
   renderPagination(rows.length, pageCount, startIndex, endIndex);
 }
 
@@ -1135,6 +1185,7 @@ function renderDetail(record) {
   const industryList = (record.industryTags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
   const regulatorList = (record.regulatoryTags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
   const sourceLinks = (record.sourceLinks || [])
+    .filter((source) => /^https?:\/\//i.test(String(source.url || "")))
     .map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`)
     .join("");
   const feedbackItems = (record.feedbackItems || [])
@@ -1366,7 +1417,8 @@ function syncSortHeaders() {
     const field = button.dataset.sortField === "__days__" ? state.daySortField : button.dataset.sortField;
     const active = field === state.sortField;
     button.classList.toggle("is-active", active);
-    button.setAttribute("aria-sort", active ? (state.sortDir === "asc" ? "ascending" : "descending") : "none");
+    const th = button.closest("th");
+    if (th) th.setAttribute("aria-sort", active ? (state.sortDir === "asc" ? "ascending" : "descending") : "none");
     const indicator = button.querySelector(".sort-indicator");
     if (indicator) indicator.textContent = active ? (state.sortDir === "asc" ? "↑" : "↓") : "";
   });
@@ -1383,11 +1435,15 @@ function updateSortField(field) {
 async function loadData() {
   setLoading(true);
   try {
-    const response = await fetch(DATA_URL, { cache: "no-store" });
+    const response = await fetch(DATA_URL, { cache: "no-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.data = await response.json();
   } catch (error) {
     state.data = emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
+  }
+  stageCountsCache = null;
+  for (const record of state.data.records || []) {
+    getRecordText(record);
   }
   applyStateFromUrl();
   if (!["calendar", "business"].includes(state.dayCountMode)) state.dayCountMode = "calendar";
@@ -1422,9 +1478,18 @@ document.querySelectorAll("[data-hkex-stage]").forEach((button) => {
   button.addEventListener("click", () => updateTracker({ hkexStage: button.dataset.hkexStage }));
 });
 
-document.getElementById("issuerSearch").addEventListener("input", (event) => {
-  updateTracker({ query: event.target.value });
-});
+function debounce(fn, wait = 160) {
+  let timer = null;
+  return (...args) => {
+    if (timer) window.clearTimeout(timer);
+    timer = window.setTimeout(() => fn(...args), wait);
+  };
+}
+
+document.getElementById("issuerSearch").addEventListener(
+  "input",
+  debounce((event) => updateTracker({ query: event.target.value }))
+);
 
 document.getElementById("dateField").addEventListener("change", (event) => {
   updateTracker({ dateField: event.target.value });
@@ -1450,13 +1515,15 @@ document.getElementById("sponsorFilter").addEventListener("change", (event) => {
   updateTracker({ sponsor: event.target.value });
 });
 
-document.getElementById("marketCapMin").addEventListener("input", (event) => {
-  updateTracker({ marketCapMin: event.target.value });
-});
+document.getElementById("marketCapMin").addEventListener(
+  "input",
+  debounce((event) => updateTracker({ marketCapMin: event.target.value }))
+);
 
-document.getElementById("marketCapMax").addEventListener("input", (event) => {
-  updateTracker({ marketCapMax: event.target.value });
-});
+document.getElementById("marketCapMax").addEventListener(
+  "input",
+  debounce((event) => updateTracker({ marketCapMax: event.target.value }))
+);
 
 document.getElementById("sortField").addEventListener("change", (event) => {
   const nextField = event.target.value === "__days__" ? state.daySortField : event.target.value;
@@ -1492,11 +1559,25 @@ document.querySelectorAll(".th-sort").forEach((button) => {
   button.addEventListener("click", () => updateSortField(button.dataset.sortField));
 });
 
+const trackerRowsBody = document.getElementById("trackerRows");
+trackerRowsBody.addEventListener("click", (event) => {
+  const row = event.target.closest("[data-record-id]");
+  if (row) selectRecord(row.dataset.recordId);
+});
+trackerRowsBody.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const row = event.target.closest("[data-record-id]");
+  if (!row) return;
+  event.preventDefault();
+  selectRecord(row.dataset.recordId);
+});
+
 document.getElementById("detailBackdrop").addEventListener("click", closeDetail);
 document.getElementById("detailClose").addEventListener("click", closeDetail);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeDetail();
+  trapModalFocus(event);
 });
 
 document.getElementById("clearFilters").addEventListener("click", () => {
