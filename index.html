@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260611-allview-5" />
+    <link rel="stylesheet" href="styles.css?v=20260611-layout-6" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -189,21 +189,21 @@
                 <button class="clear-button" id="clearFilters">清除</button>
               </div>
 
-              <aside class="stage-criteria" id="stageCriteriaNote" hidden>
-                <strong>搁置/撤回 收录条件 · Inclusion criteria</strong>
+              <details class="stage-criteria" id="stageCriteriaNote" hidden>
+                <summary>搁置/撤回 收录条件 · Inclusion criteria</summary>
                 <p>仅收录港交所申请已<b>失效 / 撤回 / 拒绝</b>，且满足其一的发行人：<b>(a)</b> 证监会备案<b>从未获接收</b>，且最新一次 A1 距今超过 <b>6 个月</b>；或 <b>(b)</b> 备案获接收后停留在「已接收」或「征求监管意见」，且最新一次 A1 距今超过 <b>1 年</b>、未再重新递交。备案已获接收的其他失效个案通常会重新递交，仍归入「上市申请中」。</p>
                 <p class="stage-criteria-en">Only issuers whose HKEX application has <b>lapsed / been withdrawn / been rejected</b>, AND either <b>(a)</b> the CSRC filing was <b>never received</b> and the latest A1 is more than <b>6 months</b> old, or <b>(b)</b> the filing is parked at the received or regulator-opinion stage with no new A1 for over <b>1 year</b>. Lapsed applicants whose CSRC filing has been received typically refile and remain under "In application".</p>
-              </aside>
+              </details>
               <div class="table-wrap">
                 <table class="tracker-table">
                   <thead>
                     <tr>
-                      <th><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="th-en">Issuer</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">状态</span><span class="th-en">Status</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1</span><span class="th-en">Anchor / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" id="dateColumn4Sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh" id="dateColumn4Zh">接收</span><span class="th-en" id="dateColumn4En">First / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En">Notice</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="all-only-col"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="th-en">Listing</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-issuer"><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="th-en">Issuer</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-status"><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">状态</span><span class="th-en">Status</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1</span><span class="th-en">Anchor / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" id="dateColumn4Sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh" id="dateColumn4Zh">接收</span><span class="th-en" id="dateColumn4En">First / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En">Notice</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="all-only-col col-listing-date"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="th-en">Listing</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="days-header-cell">
                         <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">天数</span><span class="th-en">Days</span><span class="sort-indicator" aria-hidden="true"></span></button>
                         <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="天数口径" autocomplete="off">
@@ -213,9 +213,9 @@
                           <option value="calendarDaysA1ToNotice">A1至通知</option>
                         </select>
                       </th>
-                      <th><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-industry"><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                     </tr>
                   </thead>
@@ -338,7 +338,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260611-allview-5"></script>
+    <script src="app.js?v=20260611-layout-6"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

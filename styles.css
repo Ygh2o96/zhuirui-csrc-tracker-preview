@@ -854,48 +854,50 @@ tr[role="button"]:focus-visible {
   overflow-wrap: anywhere;
 }
 
-.tracker-table th:nth-child(1),
-.tracker-table td:nth-child(1) {
+/* Column widths are class-based (NOT nth-child) so optional columns like the
+   All-view listing-date column cannot shift the width map. */
+.tracker-table th.col-issuer,
+.tracker-table td.issuer-cell {
   width: 126px;
 }
 
-.tracker-table th:nth-child(2),
-.tracker-table td:nth-child(2) {
+.tracker-table th.col-status,
+.tracker-table td.status-cell {
   width: 88px;
 }
 
-.tracker-table th:nth-child(3),
-.tracker-table td:nth-child(3),
-.tracker-table th:nth-child(4),
-.tracker-table td:nth-child(4),
-.tracker-table th:nth-child(5),
-.tracker-table td:nth-child(5) {
+.tracker-table th.col-date,
+.tracker-table td.date-cell {
   width: 58px;
 }
 
-.tracker-table th:nth-child(6),
-.tracker-table td:nth-child(6) {
+.tracker-table th.col-listing-date,
+.tracker-table td.listing-date-cell {
+  width: 64px;
+}
+
+.tracker-table th.days-header-cell,
+.tracker-table td.days-td {
   width: 142px;
 }
 
-.tracker-table th:nth-child(7),
-.tracker-table td:nth-child(7) {
+.tracker-table th.col-type,
+.tracker-table td.type-cell {
   width: 82px;
 }
 
-.tracker-table th:nth-child(8),
-.tracker-table td:nth-child(8) {
-  width: 80px;
-}
-
-.tracker-table th:nth-child(9),
-.tracker-table td:nth-child(9) {
+.tracker-table th.col-mcap,
+.tracker-table td.mcap-cell {
   width: 92px;
 }
 
-.tracker-table th:nth-child(10),
-.tracker-table td:nth-child(10) {
+.tracker-table th.col-industry,
+.tracker-table td.industry-cell {
   width: 76px;
+}
+
+.tracker-table.show-listing-col {
+  min-width: 1140px;
 }
 
 .tracker-table th {
@@ -1108,11 +1110,16 @@ tr[role="button"]:focus-visible {
   color: #4d4639;
 }
 
-.stage-criteria strong {
-  display: block;
-  margin-bottom: 4px;
+.stage-criteria summary {
+  width: fit-content;
+  cursor: pointer;
   font-size: 13px;
+  font-weight: 740;
   color: #6e5a28;
+}
+
+.stage-criteria[open] summary {
+  margin-bottom: 4px;
 }
 
 .stage-criteria p {

@@ -1207,15 +1207,15 @@ function renderRows() {
             <strong>${escapeHtml(names.primary)}</strong>
             <span>${escapeHtml(names.secondary)}</span>
           </td>
-          <td>${renderStatusBadge(record)}</td>
+          <td class="status-cell">${renderStatusBadge(record)}</td>
           <td class="date-cell">${renderA1Cell(record)}</td>
           <td class="date-cell">${listedPage ? formatDate(record.noticeDate) : renderReceivedCell(record)}</td>
           <td class="date-cell">${listedPage ? renderListingCell(record) : formatDate(record.noticeDate)}</td>
-          <td class="date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
-          <td>${renderDays(record)}</td>
-          <td>${renderIssuerType(record)}</td>
-          <td>${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
-          <td><div class="tag-list">${industries}</div></td>
+          <td class="listing-date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
+          <td class="days-td">${renderDays(record)}</td>
+          <td class="type-cell">${renderIssuerType(record)}</td>
+          <td class="mcap-cell">${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
+          <td class="industry-cell"><div class="tag-list">${industries}</div></td>
           <td><div class="tag-list">${sponsors}</div></td>
         </tr>
       `;
