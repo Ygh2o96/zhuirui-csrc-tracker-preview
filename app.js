@@ -18,7 +18,7 @@ const defaults = {
   sponsor: "all",
   marketCapMin: "",
   marketCapMax: "",
-  sortField: "a1Date",
+  sortField: "currentA1Date",
   sortDir: "desc",
   dayCountMode: "calendar",
   daySortField: "calendarDaysA1ToReceived",
@@ -669,7 +669,8 @@ const tagDictionary = {
   "已拒绝": { en: "Rejected", title: "HKEX application rejected / 港交所申请被拒", cls: "inactive-tag" },
   "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics: no post-regime A1 cycle precedes the CSRC notice (e.g. filing completed under an earlier lapsed cycle) / 通知书早于已知的制度后A1周期，无有效统计锚点，不计入头部时长统计", cls: "outlier-tag" },
   "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点" },
-  "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" }
+  "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" },
+  "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer of listing from GEM to the Main Board (no prospectus or sponsor in the New Listing Report); no new offering, so no fresh CSRC filing is expected / GEM转主板，无新发行，无需重新备案" }
 };
 
 function isStatsOutlier(record) {
@@ -1392,6 +1393,8 @@ function trackerTitle() {
 
 function switchView(view, updateLocation = true) {
   state.view = view;
+  const stagePanel = document.getElementById("listingStagePanel");
+  if (stagePanel) stagePanel.style.display = view === "tracker" ? "" : "none";
   document.getElementById("viewTitle").textContent = view === "tracker"
     ? trackerTitle()
     : (viewTitles[view] || "追瑞");
@@ -1684,7 +1687,7 @@ document.getElementById("clearFilters").addEventListener("click", () => {
     sponsor: "all",
     marketCapMin: "",
     marketCapMax: "",
-    sortField: "a1Date",
+    sortField: "currentA1Date",
     sortDir: "desc",
     dayCountMode: "calendar",
     daySortField: "calendarDaysA1ToReceived",
