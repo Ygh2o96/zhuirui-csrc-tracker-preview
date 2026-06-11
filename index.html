@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260611-pace-transfer-3" />
+    <link rel="stylesheet" href="styles.css?v=20260611-rule-b-4" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -191,8 +191,8 @@
 
               <aside class="stage-criteria" id="stageCriteriaNote" hidden>
                 <strong>搁置/撤回 收录条件 · Inclusion criteria</strong>
-                <p>仅收录港交所申请已<b>失效 / 撤回 / 拒绝</b>，且满足其一的发行人：<b>(a)</b> 证监会备案<b>从未获接收</b>，且最新一次 A1 距今超过 <b>6 个月</b>；或 <b>(b)</b> 备案获接收后停留在「征求监管意见」，且最新一次 A1 距今超过 <b>1 年</b>、未再重新递交。备案已获接收的其他失效个案通常会重新递交，仍归入「上市申请中」。</p>
-                <p class="stage-criteria-en">Only issuers whose HKEX application has <b>lapsed / been withdrawn / been rejected</b>, AND either <b>(a)</b> the CSRC filing was <b>never received</b> and the latest A1 is more than <b>6 months</b> old, or <b>(b)</b> the filing is parked at the regulator-opinion stage with no new A1 for over <b>1 year</b>. Lapsed applicants whose CSRC filing has been received typically refile and remain under "In application".</p>
+                <p>仅收录港交所申请已<b>失效 / 撤回 / 拒绝</b>，且满足其一的发行人：<b>(a)</b> 证监会备案<b>从未获接收</b>，且最新一次 A1 距今超过 <b>6 个月</b>；或 <b>(b)</b> 备案获接收后停留在「已接收」或「征求监管意见」，且最新一次 A1 距今超过 <b>1 年</b>、未再重新递交。备案已获接收的其他失效个案通常会重新递交，仍归入「上市申请中」。</p>
+                <p class="stage-criteria-en">Only issuers whose HKEX application has <b>lapsed / been withdrawn / been rejected</b>, AND either <b>(a)</b> the CSRC filing was <b>never received</b> and the latest A1 is more than <b>6 months</b> old, or <b>(b)</b> the filing is parked at the received or regulator-opinion stage with no new A1 for over <b>1 year</b>. Lapsed applicants whose CSRC filing has been received typically refile and remain under "In application".</p>
               </aside>
               <div class="table-wrap">
                 <table class="tracker-table">
@@ -325,8 +325,8 @@
         <footer class="footer-note">
           <details class="methodology-note">
             <summary>口径说明 Methodology</summary>
-            <p>默认页为上市申请中；已上市页纳入HKEX New Listing Report显示上市日不早于2023-03-31的全量发行人。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收。已上市页展示首次A1至备案通过、首次A1至上市两组天数及上市日总市值（首日收盘×现行总股本，yfinance口径）；无需备案发行人不纳入备案通过统计。A1至备案通过的统计锚点取2023-03-31当日或之后的第一次A1（最早A1早于制度生效日的发行人打「制度后A1锚点」标签）；申请周期跨越制度生效日的存量项目（通知书落在该周期内）展示自2023-03-31起算的时长、打「过渡期A1锚点」标签且不计入头部统计；通知书早于全部已知制度后A1周期、无法确定有效锚点的其他个案剔除并打「outlier剔除统计」标签；以秘密递交路线申请、公开A1日不反映真实起点的发行人打「密交」标签且不纳入该统计。备案要求按周期判断：只要任一次A1递交日不早于2023-03-31即需备案，仅全部A1周期早于该日的发行人标记「制度前A1」。行业筛选采用证监会《上市公司行业分类指引》门类（LLM辅助归类），明细业务标签保留展示。左侧「搁置/撤回」为实操口径：港交所失效/撤回但证监会备案已被接收的发行人大概率将重新递交，仍归入上市申请中并打「A1已失效」标签；仅 (a) 最近A1超过6个月且备案始终未获接收、或 (b) 已接收但停留征求意见且最近A1超过一年未更新 的发行人归入搁置/撤回。页面天数统一向上取整。</p>
-            <p class="methodology-en">Default view tracks live applications; the Listed view covers all HKEX New Listing Report issuers listed on or after 2023-03-31. A1→received statistics include records with complete, chronologically valid dates; where the historical anchor exceeds 180 calendar days the cards switch to the current-cycle A1. The Listed view shows first-A1→notice and first-A1→listing durations plus listing-day market cap (first close × current shares outstanding, via yfinance). The A1→notice statistic is anchored to the first A1 posted on or after 2023-03-31 (issuers whose earliest A1 predates the regime carry a "Post-regime A1 anchor" tag); in-process applications that straddled the regime effective date (notice issued within that cycle) display a clock starting 2023-03-31, carry a "Transition cohort" tag and are excluded from headline statistics; other records whose notice predates every known post-regime A1 cycle are excluded and tagged "Outlier excluded"; confidential-route filers whose public A1 date does not reflect the true start carry a "Confidential A1" tag and are excluded from that statistic. Filing applicability is cycle-based: any A1 submitted on or after 2023-03-31 triggers the CSRC filing requirement; only issuers whose every A1 cycle predates that date are tagged "Pre-regime A1". The industry filter uses CSRC Listed-Company Industry Classification categories (LLM-assisted); granular business tags remain on display. The "Stalled / withdrawn" bucket is practitioner-defined: lapsed HKEX applications with a live CSRC filing typically refile and stay under "In application" (tagged "A1 lapsed"); only (a) no CSRC receipt with the latest A1 older than 6 months, or (b) stuck at regulator-opinion with no new A1 for over a year, are parked here. Day counts round up.</p>
+            <p>默认页为上市申请中；已上市页纳入HKEX New Listing Report显示上市日不早于2023-03-31的全量发行人。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收。已上市页展示首次A1至备案通过、首次A1至上市两组天数及上市日总市值（首日收盘×现行总股本，yfinance口径）；无需备案发行人不纳入备案通过统计。A1至备案通过的统计锚点取2023-03-31当日或之后的第一次A1（最早A1早于制度生效日的发行人打「制度后A1锚点」标签）；申请周期跨越制度生效日的存量项目（通知书落在该周期内）展示自2023-03-31起算的时长、打「过渡期A1锚点」标签且不计入头部统计；通知书早于全部已知制度后A1周期、无法确定有效锚点的其他个案剔除并打「outlier剔除统计」标签；以秘密递交路线申请、公开A1日不反映真实起点的发行人打「密交」标签且不纳入该统计。备案要求按周期判断：只要任一次A1递交日不早于2023-03-31即需备案，仅全部A1周期早于该日的发行人标记「制度前A1」。行业筛选采用证监会《上市公司行业分类指引》门类（LLM辅助归类），明细业务标签保留展示。左侧「搁置/撤回」为实操口径：港交所失效/撤回但证监会备案已被接收的发行人大概率将重新递交，仍归入上市申请中并打「A1已失效」标签；仅 (a) 最近A1超过6个月且备案始终未获接收、或 (b) 停留在已接收/征求监管意见且最近A1超过一年未更新 的发行人归入搁置/撤回。页面天数统一向上取整。</p>
+            <p class="methodology-en">Default view tracks live applications; the Listed view covers all HKEX New Listing Report issuers listed on or after 2023-03-31. A1→received statistics include records with complete, chronologically valid dates; where the historical anchor exceeds 180 calendar days the cards switch to the current-cycle A1. The Listed view shows first-A1→notice and first-A1→listing durations plus listing-day market cap (first close × current shares outstanding, via yfinance). The A1→notice statistic is anchored to the first A1 posted on or after 2023-03-31 (issuers whose earliest A1 predates the regime carry a "Post-regime A1 anchor" tag); in-process applications that straddled the regime effective date (notice issued within that cycle) display a clock starting 2023-03-31, carry a "Transition cohort" tag and are excluded from headline statistics; other records whose notice predates every known post-regime A1 cycle are excluded and tagged "Outlier excluded"; confidential-route filers whose public A1 date does not reflect the true start carry a "Confidential A1" tag and are excluded from that statistic. Filing applicability is cycle-based: any A1 submitted on or after 2023-03-31 triggers the CSRC filing requirement; only issuers whose every A1 cycle predates that date are tagged "Pre-regime A1". The industry filter uses CSRC Listed-Company Industry Classification categories (LLM-assisted); granular business tags remain on display. The "Stalled / withdrawn" bucket is practitioner-defined: lapsed HKEX applications with a live CSRC filing typically refile and stay under "In application" (tagged "A1 lapsed"); only (a) no CSRC receipt with the latest A1 older than 6 months, or (b) stuck at the received or regulator-opinion stage with no new A1 for over a year, are parked here. Day counts round up.</p>
           </details>
           预览版本。公开页面应链接至港交所/证监会官方材料，并避免批量转载源文件。
           <span>Preview build with official-source linking discipline.</span>
@@ -337,7 +337,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260611-pace-transfer-3"></script>
+    <script src="app.js?v=20260611-rule-b-4"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
