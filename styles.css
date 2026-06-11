@@ -908,7 +908,7 @@ tr[role="button"]:focus-visible {
 
 .tracker-table th.col-industry,
 .tracker-table td.industry-cell {
-  width: 76px;
+  width: 86px;
 }
 
 .tracker-table th.col-mcap-listing {
@@ -1177,20 +1177,29 @@ tr[role="button"]:focus-visible {
 
 .tag-list span,
 .tag-row span {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   min-height: 18px;
+  line-height: 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0 7px;
   color: var(--muted);
   background: #fbfcfd;
   font-size: 9.5px;
-  line-height: 1;
   white-space: nowrap;
   max-width: 100%;
+  box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.tag-list span.csrc-cat-tag,
+.tag-row span.csrc-cat-tag {
+  border-color: #c4d8d6;
+  background: #f0f7f6;
+  color: #1f6a70;
+  font-weight: 700;
 }
 
 .days-cell {

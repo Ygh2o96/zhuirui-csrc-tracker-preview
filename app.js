@@ -1195,10 +1195,12 @@ function renderRows() {
     .map((record) => {
       const selected = record.id === state.selectedId ? "is-selected" : "";
       const names = nameParts(record);
-      const industries = (record.industryTags || [])
-        .slice(0, 3)
-        .map((tag) => `<span>${escapeHtml(tag)}</span>`)
-        .join("");
+      const csrcCats = record.csrcIndustryTags || [];
+      const bizTags = (record.industryTags || []).filter((tag) => !csrcCats.includes(tag));
+      const industries = [
+        ...csrcCats.slice(0, 2).map((tag) => `<span class="csrc-cat-tag" title="${escapeHtml(tag)}（证监会行业门类）">${escapeHtml(tag)}</span>`),
+        ...bizTags.slice(0, 1).map((tag) => `<span title="${escapeHtml(tag)}">${escapeHtml(tag)}</span>`)
+      ].join("");
       const sponsors = sponsorDisplayEntries(record)
         .slice(0, 4)
         .map((entry) => `<span title="${escapeHtml(entry.fullName)}">${escapeHtml(entry.shortName)}</span>`)
@@ -1247,7 +1249,12 @@ function renderDetail(record) {
     )
     .join("");
   const industryEn = record.industryTagEn ? `<span class="pending-en">${escapeHtml(record.industryTagEn)}</span>` : "";
-  const industryList = (record.industryTags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("") + industryEn;
+  const detailCats = record.csrcIndustryTags || [];
+  const detailBiz = (record.industryTags || []).filter((tag) => !detailCats.includes(tag));
+  const industryList = [
+    ...detailCats.map((tag) => `<span class="csrc-cat-tag">${escapeHtml(tag)}</span>`),
+    ...detailBiz.map((tag) => `<span>${escapeHtml(tag)}</span>`)
+  ].join("") + industryEn;
   const regulatorLabels = {
     "MIIT_工信": "工信部 MIIT",
     "CAC_网信数据": "网信办 CAC",
