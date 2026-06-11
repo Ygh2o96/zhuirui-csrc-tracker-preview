@@ -42,7 +42,7 @@ const statusLabels = {
 };
 
 const viewTitles = {
-  tracker: "证监会备案追踪",
+  tracker: "监管节奏追踪",
   precedents: "案例检索",
   dossiers: "发行人档案",
   signals: "市场信号",
@@ -1397,12 +1397,12 @@ function renderDetail(record) {
 
 function trackerTitle() {
   const stageTitles = {
-    all: "证监会备案追踪 · 全部",
-    applying: "证监会备案追踪 · 上市申请中",
-    listed: "证监会备案追踪 · 已上市",
-    other: "证监会备案追踪 · 搁置/撤回"
+    all: "监管节奏追踪 · 全部",
+    applying: "监管节奏追踪 · 上市申请中",
+    listed: "监管节奏追踪 · 已上市",
+    other: "监管节奏追踪 · 搁置/撤回"
   };
-  return stageTitles[state.hkexStage] || "证监会备案追踪";
+  return stageTitles[state.hkexStage] || "监管节奏追踪";
 }
 
 function switchView(view, updateLocation = true) {
