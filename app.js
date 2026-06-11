@@ -1,6 +1,6 @@
 // no-cache (not no-store) lets the browser revalidate with the CDN ETag and
 // skip re-downloading the multi-MB payload when the snapshot is unchanged.
-const DATA_URL = "data/csrc_tracker_public.json";
+const DATA_URL = `data/csrc_tracker_public.json?v=${Date.now()}`;
 const PAGE_SIZE = 50;
 const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 
