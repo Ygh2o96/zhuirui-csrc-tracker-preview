@@ -303,6 +303,7 @@ const allStageListingMetric = {
 function currentMetricDefinitions() {
   if (state.hkexStage === "listed") return listedMetricDefinitions;
   if (state.hkexStage === "all") return [...metricDefinitions, allStageListingMetric];
+  if (state.hkexStage === "other") return [];
   return metricDefinitions;
 }
 
@@ -803,6 +804,8 @@ function syncTrackerTableMode() {
   setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
   const criteriaNote = document.getElementById("stageCriteriaNote");
   if (criteriaNote) criteriaNote.hidden = state.hkexStage !== "other";
+  const dayModeBar = document.querySelector(".day-mode-bar");
+  if (dayModeBar) dayModeBar.hidden = state.hkexStage === "other";
   document.querySelector(".tracker-table")?.classList.toggle("show-listing-col", state.hkexStage === "all");
 }
 

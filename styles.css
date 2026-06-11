@@ -450,6 +450,10 @@ h1 {
   color: var(--ink);
 }
 
+.day-mode-bar[hidden] {
+  display: none;
+}
+
 .day-mode-bar > span {
   display: grid;
   gap: 1px;
