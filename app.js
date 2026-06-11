@@ -667,14 +667,16 @@ const tagDictionary = {
   "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
   "已撤回": { en: "Withdrawn", title: "HKEX application withdrawn / 港交所申请已撤回", cls: "inactive-tag" },
   "已拒绝": { en: "Rejected", title: "HKEX application rejected / 港交所申请被拒", cls: "inactive-tag" },
-  "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics as a chronology outlier (e.g. prior-cycle notice, >180-day stale anchor) / 时间线异常样本，不计入头部时长统计", cls: "outlier-tag" }
+  "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics: no post-regime A1 cycle precedes the CSRC notice (e.g. filing completed under an earlier lapsed cycle) / 通知书早于已知的制度后A1周期，无有效统计锚点，不计入头部时长统计", cls: "outlier-tag" },
+  "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点" },
+  "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" }
 };
 
 function isStatsOutlier(record) {
   if (record.csrcFilingRequired === false) return false;
-  if (record.durationSampleEligible === false && (record.noticeDate || record.csrcReceivedDate)) return true;
-  if (typeof record.calendarDaysA1ToReceived === "number" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS
-      && typeof record.calendarDaysCurrentA1ToReceived !== "number") return true;
+  if ((record.statusTags || []).includes("密交")) return false;
+  if ((record.statusTags || []).includes("过渡期A1锚点")) return false;
+  if (record.durationSampleEligible === false && record.a1Date && (record.noticeDate || record.csrcReceivedDate)) return true;
   if ((record.timelineFlags || []).includes("csrc_notice_before_received_chronology_conflict")) return true;
   return false;
 }
@@ -787,6 +789,8 @@ function syncTrackerTableMode() {
   setText("dateColumn5En", listed ? "Listing" : "Notice");
   setText("marketCapZh", listed ? "上市日市值" : "A1日市值");
   setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
+  const criteriaNote = document.getElementById("stageCriteriaNote");
+  if (criteriaNote) criteriaNote.hidden = state.hkexStage !== "other";
 }
 
 function getBaseFilteredRecords() {
@@ -805,7 +809,9 @@ function getBaseFilteredRecords() {
     if (state.status !== "all" && record.status !== state.status) return false;
     if (state.hkexStage !== "all" && hkexListingStage(record) !== state.hkexStage) return false;
     if (state.structure !== "all" && issuerTypeKey(record) !== state.structure) return false;
-    if (state.industry !== "all" && !(record.industryTags || []).includes(state.industry)) return false;
+    if (state.industry !== "all"
+        && !(record.csrcIndustryTags || []).includes(state.industry)
+        && !(record.industryTags || []).includes(state.industry)) return false;
     if (
       state.sponsor !== "all" &&
       !(record.sponsors || []).includes(state.sponsor) &&
@@ -927,7 +933,7 @@ function populateFilters() {
     })
   ].join("");
   structureSelect.value = structureOptions.includes(state.structure) ? state.structure : "all";
-  populateSelect("industryFilter", getUniqueOptions((record) => record.industryTags || []), state.industry, "全部行业", "industry");
+  populateSelect("industryFilter", getUniqueOptions((record) => record.csrcIndustryTags || []), state.industry, "全部行业", "industry");
   const sponsorOptions = getUniqueOptions((record) => sponsorLabels(record));
   if (state.sponsor !== "all" && !sponsorOptions.includes(state.sponsor)) {
     const shortName = sponsorShortName(state.sponsor);
@@ -1322,6 +1328,7 @@ function renderDetail(record) {
         <span>时间线 Timeline</span>
         <div class="timeline">
           <div class="timeline-row"><span>备案A1锚点 A1 anchor</span><strong>${formatDate(record.a1Date)}</strong></div>
+          ${record.statsAnchorDate && record.statsAnchorDate !== record.a1Date ? `<div class="timeline-row"><span>统计锚点（制度后首A1）Stats anchor</span><strong>${formatDate(record.statsAnchorDate)}</strong></div>` : ""}
           ${historicalAnchorLine}
           <div class="timeline-row"><span>当前A1 Current A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>
           <div class="timeline-row"><span>首轮接收 First received</span><strong>${formatDate(record.csrcFirstReceivedDate || record.csrcReceivedDate)}</strong></div>
