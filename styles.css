@@ -1090,6 +1090,12 @@ tr[role="button"]:focus-visible {
   color: #8a4a42;
 }
 
+.status-tag-list span.listed-tag {
+  border-color: #bcd6c4;
+  background: #eef7f0;
+  color: #2e6b45;
+}
+
 .stage-criteria {
   margin: 0 0 12px;
   padding: 12px 16px;
@@ -1667,6 +1673,14 @@ tr[role="button"]:focus-visible {
 .footer-note span {
   display: block;
   margin-top: 3px;
+}
+
+.tracker-table .all-only-col {
+  display: none;
+}
+
+.tracker-table.show-listing-col .all-only-col {
+  display: table-cell;
 }
 
 .footer-note .visit-counter {

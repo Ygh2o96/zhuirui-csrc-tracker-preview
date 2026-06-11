@@ -293,8 +293,17 @@ function syncListingStageButtons() {
   });
 }
 
+const allStageListingMetric = {
+  metric: "a1ToListing",
+  labelZh: "首次A1至上市天数",
+  labelEn: "First A1 to HKEX listing days",
+  note: "按已上市样本；多周期发行人自历史首次A1起算"
+};
+
 function currentMetricDefinitions() {
-  return state.hkexStage === "listed" ? listedMetricDefinitions : metricDefinitions;
+  if (state.hkexStage === "listed") return listedMetricDefinitions;
+  if (state.hkexStage === "all") return [...metricDefinitions, allStageListingMetric];
+  return metricDefinitions;
 }
 
 function currentDayMetricEntries() {
@@ -660,6 +669,7 @@ function normalizeSearchText(value) {
 const HIDDEN_INTERNAL_TAGS = new Set(["已上市", "HKEX全量上市样本"]);
 
 const tagDictionary = {
+  "已上市": { en: "Listed", title: "Listed on HKEX / 已在港交所上市", cls: "listed-tag" },
   "密交": { en: "Confidential A1", title: "HKEX confidential filing date used as the A1 anchor / 以港交所密交日期作为A1锚点" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
   "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计" },
@@ -684,6 +694,7 @@ function isStatsOutlier(record) {
 
 function visibleStatusTags(record) {
   const tags = (record.statusTags || []).filter((tag) => !HIDDEN_INTERNAL_TAGS.has(tag));
+  if (state.hkexStage === "all" && record.practicalStage === "listed") tags.unshift("已上市");
   if (isStatsOutlier(record)) tags.push("outlier剔除统计");
   return tags;
 }
@@ -792,6 +803,7 @@ function syncTrackerTableMode() {
   setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
   const criteriaNote = document.getElementById("stageCriteriaNote");
   if (criteriaNote) criteriaNote.hidden = state.hkexStage !== "other";
+  document.querySelector(".tracker-table")?.classList.toggle("show-listing-col", state.hkexStage === "all");
 }
 
 function getBaseFilteredRecords() {
@@ -1199,6 +1211,7 @@ function renderRows() {
           <td class="date-cell">${renderA1Cell(record)}</td>
           <td class="date-cell">${listedPage ? formatDate(record.noticeDate) : renderReceivedCell(record)}</td>
           <td class="date-cell">${listedPage ? renderListingCell(record) : formatDate(record.noticeDate)}</td>
+          <td class="date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
           <td>${renderDays(record)}</td>
           <td>${renderIssuerType(record)}</td>
           <td>${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
