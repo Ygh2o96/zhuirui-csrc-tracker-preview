@@ -670,17 +670,17 @@ const HIDDEN_INTERNAL_TAGS = new Set(["已上市", "HKEX全量上市样本"]);
 
 const tagDictionary = {
   "已上市": { en: "Listed", title: "Listed on HKEX / 已在港交所上市", cls: "listed-tag" },
-  "密交": { en: "Confidential A1", title: "HKEX confidential filing date used as the A1 anchor / 以港交所密交日期作为A1锚点" },
+  "密交": { en: "Confidential A1", title: "HKEX confidential filing date used as the A1 anchor / 以港交所密交日期作为A1锚点", cls: "info-tag" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
-  "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计" },
-  "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日" },
+  "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计", cls: "info-tag" },
+  "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
   "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
   "已撤回": { en: "Withdrawn", title: "HKEX application withdrawn / 港交所申请已撤回", cls: "inactive-tag" },
   "已拒绝": { en: "Rejected", title: "HKEX application rejected / 港交所申请被拒", cls: "inactive-tag" },
   "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics: no post-regime A1 cycle precedes the CSRC notice (e.g. filing completed under an earlier lapsed cycle) / 通知书早于已知的制度后A1周期，无有效统计锚点，不计入头部时长统计", cls: "outlier-tag" },
-  "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点" },
+  "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点", cls: "info-tag" },
   "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" },
-  "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer of listing from GEM to the Main Board (no prospectus or sponsor in the New Listing Report); no new offering, so no fresh CSRC filing is expected / GEM转主板，无新发行，无需重新备案" }
+  "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer of listing from GEM to the Main Board (no prospectus or sponsor in the New Listing Report); no new offering, so no fresh CSRC filing is expected / GEM转主板，无新发行，无需重新备案", cls: "info-tag" }
 };
 
 function isStatsOutlier(record) {
@@ -1215,6 +1215,7 @@ function renderRows() {
           <td class="days-td">${renderDays(record)}</td>
           <td class="type-cell">${renderIssuerType(record)}</td>
           <td class="mcap-cell">${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
+          <td class="mcap-cell all-only-col">${formatListingMarketCap(record)}</td>
           <td class="industry-cell"><div class="tag-list">${industries}</div></td>
           <td><div class="tag-list">${sponsors}</div></td>
         </tr>

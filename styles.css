@@ -743,22 +743,26 @@ h1 {
 
 .filter-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
-  gap: 6px;
-  padding: 7px 9px;
+  grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
+  gap: 8px 10px;
+  align-items: end;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--soft-line);
   background: linear-gradient(180deg, #fbfbf8, #f7f9f6);
 }
 
 .filter-control {
   display: grid;
-  gap: 3px;
+  grid-template-rows: auto 28px;
+  gap: 4px;
   min-width: 0;
 }
 
 .filter-control span {
   display: grid;
   gap: 1px;
+  align-content: end;
+  min-height: 24px;
   color: var(--muted);
 }
 
@@ -766,20 +770,26 @@ h1 {
   color: var(--ink);
   font-size: 9.5px;
   font-weight: 720;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .filter-control small {
   color: var(--subtle);
   font-size: 8px;
   line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .filter-control select,
 .filter-control input {
   width: 100%;
-  min-height: 26px;
+  height: 28px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 7px;
   padding: 0 8px;
   outline: none;
   background: var(--surface);
@@ -794,9 +804,9 @@ h1 {
 .sort-button,
 .clear-button {
   align-self: end;
-  min-height: 26px;
+  height: 28px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 7px;
   background: var(--surface);
   color: var(--ink);
   cursor: pointer;
@@ -863,7 +873,7 @@ tr[role="button"]:focus-visible {
 
 .tracker-table th.col-status,
 .tracker-table td.status-cell {
-  width: 88px;
+  width: 94px;
 }
 
 .tracker-table th.col-date,
@@ -896,8 +906,12 @@ tr[role="button"]:focus-visible {
   width: 76px;
 }
 
+.tracker-table th.col-mcap-listing {
+  width: 92px;
+}
+
 .tracker-table.show-listing-col {
-  min-width: 1140px;
+  min-width: 1240px;
 }
 
 .tracker-table th {
@@ -985,10 +999,19 @@ tr[role="button"]:focus-visible {
   gap: 1px;
   align-items: center;
   min-height: 21px;
+  max-width: 100%;
+  box-sizing: border-box;
   border-radius: 999px;
   padding: 3px 7px;
   font-size: 9.5px;
   font-weight: 700;
+}
+
+.badge b,
+.badge small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .badge b,
@@ -1045,57 +1068,67 @@ tr[role="button"]:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .status-tag-list span {
   display: inline-flex;
   align-items: center;
-  min-height: 16px;
-  border: 1px solid #d8cfa8;
+  min-height: 17px;
+  max-width: 100%;
+  border: 1px solid #dcc998;
   border-radius: 999px;
-  padding: 0 6px;
-  background: #fff8dc;
+  padding: 0 7px;
+  background: #fdf6e0;
   color: #84620b;
   font-size: 8.5px;
-  font-weight: 760;
+  font-weight: 720;
   line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.status-tag-list span.listed-tag {
-  border-color: #b7d8ca;
-  background: #e9f7f2;
-  color: var(--green);
-}
-
-.status-tag-list span.pending-listed-tag {
-  border-color: #d7d0c0;
-  background: #f7f3e9;
-  color: #73674b;
+.status-stack {
+  max-width: 100%;
 }
 
 .status-tag-list span small {
   margin-left: 4px;
   font-size: 7.5px;
-  font-weight: 640;
-  opacity: 0.85;
-}
-
-.status-tag-list span.inactive-tag {
-  border-color: #d3cdd8;
-  background: #f3f0f6;
-  color: #6c6177;
-}
-
-.status-tag-list span.outlier-tag {
-  border-color: #d8c2c2;
-  background: #faf0ef;
-  color: #8a4a42;
+  font-weight: 620;
+  opacity: 0.8;
 }
 
 .status-tag-list span.listed-tag {
-  border-color: #bcd6c4;
-  background: #eef7f0;
+  border-color: #b5d4bf;
+  background: #ecf6ee;
   color: #2e6b45;
+}
+
+.status-tag-list span.info-tag {
+  border-color: #bccbdc;
+  background: #eef3f9;
+  color: #3a5a7e;
+}
+
+.status-tag-list span.pending-listed-tag {
+  border-color: #dcc998;
+  background: #fdf6e0;
+  color: #84620b;
+}
+
+.status-tag-list span.inactive-tag {
+  border-color: #cfcdd4;
+  background: #f2f1f5;
+  color: #5f5b68;
+}
+
+.status-tag-list span.outlier-tag {
+  border-color: #dcc0bd;
+  background: #faf0ee;
+  color: #8a4a42;
 }
 
 .stage-criteria {
@@ -1141,13 +1174,18 @@ tr[role="button"]:focus-visible {
 .tag-row span {
   display: inline-flex;
   align-items: center;
-  min-height: 19px;
+  min-height: 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0 6px;
+  padding: 0 7px;
   color: var(--muted);
   background: #fbfcfd;
   font-size: 9.5px;
+  line-height: 1;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .days-cell {

@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260611-layout-6" />
+    <link rel="stylesheet" href="styles.css?v=20260611-ux-7" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -160,11 +160,11 @@
                   <select id="sponsorFilter" name="sponsorFilter" autocomplete="off"></select>
                 </label>
                 <label class="filter-control">
-                  <span><b>A1 日 A 股市值下限</b><small>RMB bn · 已识别A股代码</small></span>
+                  <span><b>A股市值下限</b><small>A1-day mkt cap min · RMB bn</small></span>
                   <input id="marketCapMin" name="marketCapMin" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
                 </label>
                 <label class="filter-control">
-                  <span><b>A1 日 A 股市值上限</b><small>RMB bn · 已识别A股代码</small></span>
+                  <span><b>A股市值上限</b><small>A1-day mkt cap max · RMB bn</small></span>
                   <input id="marketCapMax" name="marketCapMax" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
                 </label>
                 <label class="filter-control">
@@ -215,6 +215,7 @@
                       </th>
                       <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="all-only-col col-mcap-listing"><button class="th-sort" type="button" data-sort-field="listingMarketCapHkdBn"><span class="th-zh">上市日市值</span><span class="th-en">Listing mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-industry"><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                     </tr>
@@ -338,7 +339,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260611-layout-6"></script>
+    <script src="app.js?v=20260611-ux-7"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
