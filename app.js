@@ -871,11 +871,27 @@ function firstTextValue(values) {
     .sort((a, b) => a.localeCompare(b, "zh-Hans", { numeric: true, sensitivity: "base" }))[0] || "";
 }
 
+function dayMetricForField(field) {
+  for (const [metric, pair] of Object.entries(dayFieldPairs)) {
+    if (field === pair.calendar || field === pair.business) return metric;
+  }
+  return null;
+}
+
+function durationValueForDisplay(record, metric) {
+  if (metric === "a1ToListing" && record.listingDurationSampleEligible === false) return null;
+  if (metric === "a1ToNotice" && record.durationSampleEligible === false) return null;
+  const key = dayMetricField(metric);
+  return typeof record[key] === "number" ? record[key] : null;
+}
+
 function sortKey(record, field) {
   if (field === "status") return { value: statusSortRank[record.status] || 999, type: "number" };
   if (field === "industryTags") return { value: firstTextValue(record.industryTags || []), type: "text" };
   if (field === "sponsors") return { value: firstTextValue(sponsorLabels(record)), type: "text" };
   if (field === "structureType") return { value: issuerTypeInfo(record).rank, type: "number" };
+  const durationMetric = dayMetricForField(field);
+  if (durationMetric) return { value: durationValueForDisplay(record, durationMetric), type: "number" };
   if (field === "issuerName") {
     const names = nameParts(record);
     return { value: `${names.primary || ""} ${names.secondary || ""}`.trim(), type: "text" };
@@ -1086,8 +1102,8 @@ function renderDays(record) {
     return `
       <div class="days-cell">
         <div class="days-cell-mode">${dayUnitLabel()}</div>
-        <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
-        <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayValue(record[fields.a1ToListing])}</strong></div>
+        <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayValue(durationValueForDisplay(record, "a1ToNotice"))}</strong></div>
+        <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayValue(durationValueForDisplay(record, "a1ToListing"))}</strong></div>
       </div>
     `;
   }
@@ -1345,8 +1361,8 @@ function renderDetail(record) {
     : "";
   const daysRows = listedPage
     ? `
-          <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
-          <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayNumber(record[dayFields.a1ToListing], dayUnit)}</strong></div>
+          <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToNotice"), dayUnit)}</strong></div>
+          <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToListing"), dayUnit)}</strong></div>
       `
     : `
           <div><span>备案锚点（A1日）至接收 A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
