@@ -37,8 +37,8 @@ const statusLabels = {
   csrc_received: ["已接收", "CSRC received"],
   waiting_received: ["等待接收", "Awaiting receipt"],
   not_required: ["无需备案", "Not required"],
-  review_pending: ["待复核", "Review queue"],
-  pending_match: ["待复核", "Review queue"]
+  review_pending: ["待披露", "Pending"],
+  pending_match: ["待披露", "Pending"]
 };
 
 const viewTitles = {
@@ -1067,7 +1067,7 @@ function renderMetrics(records) {
     counts[record.status] = (counts[record.status] || 0) + 1;
     return counts;
   }, {});
-  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required", "review_pending"]
+  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required"]
     .map((status) => `<span>${escapeHtml(statusLabel(status))} ${formatNumber(statusCounts[status] || 0, "integer")}</span>`)
     .join("");
   const metricSet = currentMetricDefinitions();
