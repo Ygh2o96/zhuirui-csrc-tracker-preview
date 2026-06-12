@@ -81,7 +81,7 @@ const listedMetricDefinitions = [
     metric: "a1ToListing",
     labelZh: "首次A1至上市天数",
     labelEn: "First A1 to HKEX listing days",
-    note: "按HKEX New Listing Report上市日样本；无需备案发行人可纳入"
+    note: "按HKEX New Listing Report上市日样本；密交/疑似密交剔除；无需备案发行人可纳入"
   }
 ];
 
@@ -297,7 +297,7 @@ const allStageListingMetric = {
   metric: "a1ToListing",
   labelZh: "首次A1至上市天数",
   labelEn: "First A1 to HKEX listing days",
-  note: "按已上市样本；多周期发行人自历史首次A1起算"
+  note: "按HKEX New Listing Report上市日样本；密交/疑似密交剔除；无需备案发行人可纳入"
 };
 
 function currentMetricDefinitions() {
@@ -1002,9 +1002,14 @@ function statsFor(records, metric) {
 
 function renderDurationMetric(metric, stats) {
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
-  const startLabel = state.hkexStage === "listed"
-    ? `已上市页仅纳入上市日≥${regimeStart}且日期顺序有效样本`
-    : `纳入所有日期齐全且顺序有效样本 · CSRC口径≥${regimeStart}`;
+  const isListingMetric = metric.metric === "a1ToListing";
+  const startLabel = isListingMetric
+    ? `仅纳入上市日≥${regimeStart}且日期顺序有效样本；密交/疑似密交剔除`
+    : (
+      state.hkexStage === "listed"
+        ? `已上市页仅纳入上市日≥${regimeStart}且日期顺序有效样本`
+        : `纳入所有日期齐全且顺序有效样本 · CSRC口径≥${regimeStart}`
+    );
   const metricNote = `${metric.note} · ${dayBasisNote()}`;
   const caption = stats.count
     ? `${startLabel} · ${integerFormatter.format(stats.count)} 条样本 · 平均/中位/最低/最高 · ${metricNote}`
