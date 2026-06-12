@@ -802,6 +802,14 @@ function syncTrackerTableMode() {
   setText("dateColumn5En", listed ? "Listing" : "Notice");
   setText("marketCapZh", listed ? "上市日市值" : "A1日市值");
   setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
+  setText("marketCapMinZh", listed ? "港股市值下限" : "A股市值下限");
+  setText("marketCapMinEn", listed ? "Listing-day mkt cap min · HKD bn" : "A1-day mkt cap min · RMB bn");
+  setText("marketCapMaxZh", listed ? "港股市值上限" : "A股市值上限");
+  setText("marketCapMaxEn", listed ? "Listing-day mkt cap max · HKD bn" : "A1-day mkt cap max · RMB bn");
+  const aShareCapOption = document.getElementById("aShareMarketCapSortOption");
+  const listingCapOption = document.getElementById("listingMarketCapSortOption");
+  if (aShareCapOption) aShareCapOption.hidden = listed;
+  if (listingCapOption) listingCapOption.hidden = !listed;
   const criteriaNote = document.getElementById("stageCriteriaNote");
   if (criteriaNote) criteriaNote.hidden = state.hkexStage !== "other";
   const dayModeBar = document.querySelector(".day-mode-bar");
@@ -836,9 +844,12 @@ function getBaseFilteredRecords() {
     if (query && !getRecordText(record).includes(query)) return false;
 
     if (capMin !== null || capMax !== null) {
-      if (!isAhCandidate(record) || typeof record.aShareMarketCapAtA1RmbBn !== "number") return false;
-      if (capMin !== null && record.aShareMarketCapAtA1RmbBn < capMin) return false;
-      if (capMax !== null && record.aShareMarketCapAtA1RmbBn > capMax) return false;
+      const listedCapMode = state.hkexStage === "listed";
+      const capValue = listedCapMode ? record.listingMarketCapHkdBn : record.aShareMarketCapAtA1RmbBn;
+      if (!listedCapMode && !isAhCandidate(record)) return false;
+      if (typeof capValue !== "number") return false;
+      if (capMin !== null && capValue < capMin) return false;
+      if (capMax !== null && capValue > capMax) return false;
     }
 
     const rawDate = state.dateField === "csrcReceivedDate"
@@ -1488,9 +1499,13 @@ function syncUrl() {
 }
 
 function syncControls() {
+  const listed = state.hkexStage === "listed";
+  if (listed && state.sortField === "aShareMarketCapAtA1RmbBn") state.sortField = "listingMarketCapHkdBn";
+  if (!listed && state.sortField === "listingMarketCapHkdBn") state.sortField = "aShareMarketCapAtA1RmbBn";
   state.daySortField = fieldForDayMode(state.daySortField, state.dayCountMode);
   if (daySortFields.includes(state.sortField)) state.sortField = fieldForDayMode(state.sortField, state.dayCountMode);
   setDaySelectOptions();
+  syncTrackerTableMode();
   document.getElementById("issuerSearch").value = state.query;
   document.getElementById("dateField").value = state.dateField;
   document.getElementById("dateFrom").value = state.dateFrom;
@@ -1507,7 +1522,6 @@ function syncControls() {
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  syncTrackerTableMode();
   const dayModeHint = document.getElementById("dayModeHint");
   if (dayModeHint) dayModeHint.textContent = dayBasisNote();
   document.getElementById("sortDirection").textContent = state.sortDir === "asc" ? "升序" : "降序";

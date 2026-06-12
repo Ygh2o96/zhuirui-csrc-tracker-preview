@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260611-ux-13" />
+    <link rel="stylesheet" href="styles.css?v=20260612-ux-14" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -160,11 +160,11 @@
                   <select id="sponsorFilter" name="sponsorFilter" autocomplete="off"></select>
                 </label>
                 <label class="filter-control">
-                  <span><b>A股市值下限</b><small>A1-day mkt cap min · RMB bn</small></span>
+                  <span><b id="marketCapMinZh">A股市值下限</b><small id="marketCapMinEn">A1-day mkt cap min · RMB bn</small></span>
                   <input id="marketCapMin" name="marketCapMin" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
                 </label>
                 <label class="filter-control">
-                  <span><b>A股市值上限</b><small>A1-day mkt cap max · RMB bn</small></span>
+                  <span><b id="marketCapMaxZh">A股市值上限</b><small id="marketCapMaxEn">A1-day mkt cap max · RMB bn</small></span>
                   <input id="marketCapMax" name="marketCapMax" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
                 </label>
                 <label class="filter-control">
@@ -179,7 +179,8 @@
                     <option value="noticeDate">备案通知书</option>
                     <option value="hkexListingDate">上市日期</option>
                     <option value="__days__">天数</option>
-                    <option value="aShareMarketCapAtA1RmbBn">A1 日 A 股市值</option>
+                    <option value="aShareMarketCapAtA1RmbBn" id="aShareMarketCapSortOption">A1 日 A 股市值</option>
+                    <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日港股市值</option>
                     <option value="structureType">发行人类型</option>
                     <option value="industryTags">行业</option>
                     <option value="sponsors">保荐人</option>
@@ -339,7 +340,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260611-ux-13"></script>
+    <script src="app.js?v=20260612-ux-14"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
