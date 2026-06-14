@@ -43,6 +43,7 @@ const statusLabels = {
 
 const viewTitles = {
   tracker: "监管节奏追踪",
+  pipeline: "数据管线",
   precedents: "案例检索",
   dossiers: "发行人档案",
   signals: "市场信号",

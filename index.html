@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260612-ux-16" />
+    <link rel="stylesheet" href="styles.css?v=20260614-pipeline-1" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -37,6 +37,10 @@
           <button class="nav-item is-active" data-view="tracker">
             <span class="nav-icon" aria-hidden="true">监</span>
             <span><b>监管节奏追踪</b><small>Regulatory Pace</small></span>
+          </button>
+          <button class="nav-item" data-view="pipeline">
+            <span class="nav-icon" aria-hidden="true">流</span>
+            <span><b>数据管线</b><small>Data Pipeline</small></span>
           </button>
           <button class="nav-item" data-view="precedents">
             <span class="nav-icon" aria-hidden="true">例</span>
@@ -236,6 +240,183 @@
           </div>
         </section>
 
+        <section class="view-panel" id="pipelineView" aria-label="Data intake pipeline">
+          <div class="pipeline-page">
+            <section class="pipeline-hero">
+              <div>
+                <p class="feature-kicker">Methodology transparency</p>
+                <h2>数据采集与处理流程 <small>Data Intake Pipeline</small></h2>
+                <p>本工具基于港交所和中国证监会公开披露材料，自动整理发行人 A1、备案接收、补充材料、监管意见、备案通知书及已上市状态。规则脚本负责采集、标准化、匹配和质量门控；LLM 仅用于处理双语、曾用名、简称等歧义候选；本地检索/RAG 用于证据发现和人工复核，不直接生成公开日期。</p>
+                <p class="pipeline-hero-en">The tracker is built from public HKEX and CSRC disclosures. Rule-based scripts own collection, normalization, matching and quality gates; LLM assistance is limited to ambiguous candidate curation; local retrieval/RAG is used for evidence discovery and review, not as an automatic source of public dates.</p>
+              </div>
+              <div class="pipeline-principles" aria-label="Pipeline principles">
+                <span>官方来源优先<br><small>Official sources first</small></span>
+                <span>候选不自动发布<br><small>Candidates are not facts</small></span>
+                <span>日期顺序门控<br><small>Chronology gated</small></span>
+                <span>欢迎公开线索<br><small>Feedback welcome</small></span>
+              </div>
+            </section>
+
+            <section class="pipeline-flow" aria-label="Pipeline flow diagram">
+              <div class="pipeline-lane lane-source">
+                <div class="lane-heading"><b>1. 公开来源</b><small>Public sources</small></div>
+                <div class="flow-node script-node">
+                  <span class="node-num">01</span>
+                  <b>HKEX 披露</b>
+                  <small>AP / PHIP / 综合索引 / 新上市报告</small>
+                </div>
+                <div class="flow-node script-node">
+                  <span class="node-num">02</span>
+                  <b>CSRC 披露</b>
+                  <small>备案情况表 / 通知书 / 补充材料公示</small>
+                </div>
+                <div class="flow-node source-node">
+                  <span class="node-num">03</span>
+                  <b>人工来源通道</b>
+                  <small>仅接受可回溯公开来源或官方链接</small>
+                </div>
+              </div>
+
+              <div class="pipeline-lane lane-script">
+                <div class="lane-heading"><b>2. 规则脚本主线</b><small>Rule-based scripts</small></div>
+                <div class="flow-node script-node">
+                  <span class="node-num">04</span>
+                  <b>采集与快照</b>
+                  <small>保留来源快照，避免覆盖历史线索</small>
+                </div>
+                <div class="flow-node rag-node">
+                  <span class="node-num">05</span>
+                  <b>AP 文本索引</b>
+                  <small>读取文件、页、章节、保荐人、业务和监管章节</small>
+                </div>
+                <div class="flow-node script-node">
+                  <span class="node-num">06</span>
+                  <b>标准化</b>
+                  <small>英文名、中文名、繁简、曾用名、保荐人短名</small>
+                </div>
+                <div class="decision-node">
+                  <span>高置信且来源明确？</span>
+                  <small>High-confidence source-backed match?</small>
+                </div>
+              </div>
+
+              <div class="pipeline-lane lane-curation">
+                <div class="lane-heading"><b>3. 候选分流</b><small>Candidate routing</small></div>
+                <div class="flow-split">
+                  <div class="flow-node script-node">
+                    <span class="node-num">07A</span>
+                    <b>自动接受</b>
+                    <small>精确名称、官方链接、股票代码、时间顺序有效</small>
+                  </div>
+                  <div class="flow-node llm-node">
+                    <span class="node-num">07B</span>
+                    <b>LLM 复核</b>
+                    <small>只在双语/曾用名/红筹实体/低置信候选时介入</small>
+                  </div>
+                </div>
+                <div class="decision-node llm-decision">
+                  <span>LLM 是否只选择已有候选 key？</span>
+                  <small>Supplied candidate key only</small>
+                </div>
+                <div class="flow-node source-node">
+                  <span class="node-num">08</span>
+                  <b>来源支撑回填</b>
+                  <small>无来源支撑则保持待披露，不补日期</small>
+                </div>
+              </div>
+
+              <div class="pipeline-lane lane-timeline">
+                <div class="lane-heading"><b>4. 时间线与统计门控</b><small>Timeline gates</small></div>
+                <div class="flow-node script-node">
+                  <span class="node-num">09</span>
+                  <b>拆分事实</b>
+                  <small>A1、接收、通知书、补充材料、上市日分别保留</small>
+                </div>
+                <div class="decision-grid">
+                  <div class="decision-node"><span>是否需要备案？</span><small>Filing required?</small></div>
+                  <div class="decision-node"><span>是否密交？</span><small>Confidential route?</small></div>
+                  <div class="decision-node"><span>日期顺序有效？</span><small>A1 <= received <= notice?</small></div>
+                  <div class="decision-node"><span>是否超过 180 天？</span><small>Use current-cycle anchor?</small></div>
+                </div>
+                <div class="flow-node script-node">
+                  <span class="node-num">10</span>
+                  <b>计算天数</b>
+                  <small>自然日 / 工作日，缺日期或顺序异常则剔除对应段</small>
+                </div>
+              </div>
+
+              <div class="pipeline-lane lane-stage">
+                <div class="lane-heading"><b>5. 页面分流</b><small>Page routing</small></div>
+                <div class="flow-node stage-node">
+                  <span class="node-num">11A</span>
+                  <b>上市申请中</b>
+                  <small>HKEX active，或 A1 失效但 CSRC 备案仍有生命体征，保留并打标签</small>
+                </div>
+                <div class="flow-node publish-node">
+                  <span class="node-num">11B</span>
+                  <b>已上市</b>
+                  <small>HKEX 新上市报告确认上市日，备案通知书或无需备案逻辑单独核验</small>
+                </div>
+                <div class="flow-node stalled-node">
+                  <span class="node-num">11C</span>
+                  <b>搁置 / 撤回</b>
+                  <small>无接收且最近 A1 超 6 个月，或已接收/征询意见后超 1 年无新 A1</small>
+                </div>
+              </div>
+
+              <div class="pipeline-lane lane-qa">
+                <div class="lane-heading"><b>6. 质量门控与发布</b><small>QA and publishing</small></div>
+                <div class="flow-node script-node">
+                  <span class="node-num">12</span>
+                  <b>生成快照</b>
+                  <small>数据库、Excel、前端 JSON 同步导出</small>
+                </div>
+                <div class="decision-node gate-node">
+                  <span>校验和健康检查通过？</span>
+                  <small>Verify and healthcheck OK?</small>
+                </div>
+                <div class="flow-node source-node">
+                  <span class="node-num">13</span>
+                  <b>人工注意队列</b>
+                  <small>通知书缺接收日、补材料缺接收日、反馈早于 A1</small>
+                </div>
+                <div class="flow-node publish-node">
+                  <span class="node-num">14</span>
+                  <b>公开页面</b>
+                  <small>仅展示校验后的静态 JSON，支持筛选和排序</small>
+                </div>
+              </div>
+            </section>
+
+            <section class="pipeline-boundaries">
+              <div class="boundary-card">
+                <h3>脚本什么时候做主？<small>When scripts decide</small></h3>
+                <p>来源采集、候选评分、时间线拆分、统计口径、行业初筛、保荐人标准化、校验和发布门控均由规则脚本执行。</p>
+              </div>
+              <div class="boundary-card">
+                <h3>LLM 什么时候介入？<small>When LLM curates</small></h3>
+                <p>仅当存在双语名称、曾用名、红筹境内实体、简称或低置信候选歧义时介入；LLM 只能确认或否决候选，不能发明日期。</p>
+              </div>
+              <div class="boundary-card">
+                <h3>RAG 什么时候使用？<small>When local RAG helps</small></h3>
+                <p>本地 AP 文本索引用于提取业务、监管章节、密交线索和保荐人；向量/RAG 检索用于人工核查和证据发现，不直接写入公开日期。</p>
+              </div>
+              <div class="boundary-card">
+                <h3>页面分流什么时候发生？<small>When pages split</small></h3>
+                <p>先判断已上市，再判断仍在申请中或搁置/撤回。港交所 A1 失效本身不等于项目终止；若 CSRC 备案仍有接收、补材料或监管意见线索，会继续留在申请中并打标签。</p>
+              </div>
+            </section>
+
+            <section class="pipeline-feedback">
+              <div>
+                <h3>欢迎指点错漏 <small>Public feedback welcome</small></h3>
+                <p>如果你发现某个项目状态、日期、保荐人、行业或上市标签与公开资料不一致，欢迎提供官方链接或可核验来源。我们会按 source-backed 原则回填，并在后续日常更新中同步。</p>
+              </div>
+              <a href="mailto:ygh2o96@gmail.com">ygh2o96@gmail.com</a>
+            </section>
+          </div>
+        </section>
+
         <section class="view-panel" id="precedentsView" aria-label="Precedent search">
           <div class="coming-grid">
             <div class="feature-slab">
@@ -339,7 +520,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260612-ux-16"></script>
+    <script src="app.js?v=20260614-pipeline-1"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
