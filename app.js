@@ -733,6 +733,7 @@ function getRecordText(record) {
   const rawText = [
     record.issuerName,
     record.csrcName,
+    ...(record.nameSearchAliases || []),
     issuerTypeInfo(record).primary,
     issuerTypeInfo(record).secondary,
     record.structureType,
