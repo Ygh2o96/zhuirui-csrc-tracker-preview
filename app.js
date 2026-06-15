@@ -7,7 +7,7 @@ const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 const defaults = {
   selectedId: null,
   status: "all",
-  hkexStage: "applying",
+  hkexStage: "all",
   query: "",
   view: "tracker",
   dateField: "a1Date",
@@ -764,6 +764,18 @@ function getRecordText(record) {
   return text;
 }
 
+function recordSearchRank(record, query) {
+  if (!query) return 0;
+  const aliases = (record.nameSearchAliases || []).map((value) => normalizeSearchText(value)).filter(Boolean);
+  if (aliases.some((alias) => alias === query)) return 0;
+  if (aliases.some((alias) => alias.startsWith(query))) return 1;
+  const names = [record.issuerName, record.csrcName, record.hkexListingCompanyName]
+    .map((value) => normalizeSearchText(value))
+    .filter(Boolean);
+  if (names.some((name) => name === query || name.startsWith(query))) return 2;
+  return 3;
+}
+
 function renderStackedDate(primary, secondaryLabel, secondary) {
   const secondaryHtml = secondary && secondary !== primary
     ? `<span class="date-secondary">${escapeHtml(secondaryLabel)} ${formatDatePlain(secondary)}</span>`
@@ -926,12 +938,14 @@ function compareSortKeys(aKey, bKey) {
 
 function getFilteredRecords() {
   const rows = getBaseFilteredRecords();
+  const query = normalizeSearchText(state.query);
   const direction = state.sortDir === "asc" ? 1 : -1;
   const decorated = rows.map((record) => {
     const key = sortKey(record, state.sortField);
-    return { record, key, missing: isMissingSortKey(key), name: String(record.issuerName) };
+    return { record, key, missing: isMissingSortKey(key), name: String(record.issuerName), searchRank: recordSearchRank(record, query) };
   });
   decorated.sort((a, b) => {
+    if (query && a.searchRank !== b.searchRank) return a.searchRank - b.searchRank;
     if (a.missing && b.missing) return a.name.localeCompare(b.name, "en", { sensitivity: "base" });
     if (a.missing) return 1;
     if (b.missing) return -1;
@@ -1738,7 +1752,7 @@ document.addEventListener("keydown", (event) => {
 document.getElementById("clearFilters").addEventListener("click", () => {
   Object.assign(state, {
     status: "all",
-    hkexStage: "applying",
+    hkexStage: "all",
     query: "",
     dateField: "a1Date",
     dateFrom: "",
