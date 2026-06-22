@@ -674,6 +674,7 @@ const tagDictionary = {
   "已上市": { en: "Listed", title: "Listed on HKEX / 已在港交所上市", cls: "listed-tag" },
   "密交": { en: "Confidential route", title: "HKEX public A1 is not a reliable duration anchor because the process appears to have started earlier, including confidential filing or prior-cycle evidence / 公开A1不适合作为时长锚点，可能存在密交或前序周期证据", cls: "info-tag" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
+  "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched; likely confidential route / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行，通常为密交路径", cls: "info-tag" },
   "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计", cls: "info-tag" },
   "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
   "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
