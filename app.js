@@ -269,14 +269,15 @@ function hkexStageLabel(stage) {
 
 let stageCountsCache = null;
 
-function hkexListingStageCounts(records = state.data?.records || []) {
-  if (records === state.data?.records && stageCountsCache) return stageCountsCache;
-  const counts = { all: records.length, applying: 0, listed: 0, other: 0 };
-  for (const record of records) {
+function hkexListingStageCounts(records) {
+  const source = records ?? state.data?.records ?? [];
+  if (source === state.data?.records && stageCountsCache) return stageCountsCache;
+  const counts = { all: source.length, applying: 0, listed: 0, other: 0 };
+  for (const record of source) {
     const stage = hkexListingStage(record);
     counts[stage] = (counts[stage] || 0) + 1;
   }
-  if (records === state.data?.records) stageCountsCache = counts;
+  if (source === state.data?.records) stageCountsCache = counts;
   return counts;
 }
 
@@ -820,6 +821,10 @@ function syncTrackerTableMode() {
 }
 
 function getBaseFilteredRecords() {
+  if (!state.data?.records) {
+    console.warn("[getBaseFilteredRecords] No records available");
+    return [];
+  }
   const query = normalizeSearchText(state.query);
   const from = asDateValue(state.dateFrom);
   const to = asDateValue(state.dateTo);
@@ -944,7 +949,7 @@ function getFilteredRecords() {
 
 function getUniqueOptions(getter) {
   const values = new Set();
-  for (const record of state.data.records) {
+  for (const record of state.data?.records || []) {
     const raw = getter(record);
     const list = Array.isArray(raw) ? raw : [raw];
     for (const value of list) {
@@ -956,6 +961,10 @@ function getUniqueOptions(getter) {
 
 function populateSelect(id, options, currentValue, allLabel, stateKey) {
   const select = document.getElementById(id);
+  if (!select) {
+    console.warn(`[populateSelect] Element #${id} not found`);
+    return;
+  }
   select.innerHTML = [
     `<option value="all">${escapeHtml(allLabel)}</option>`,
     ...options.map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`)
@@ -966,9 +975,14 @@ function populateSelect(id, options, currentValue, allLabel, stateKey) {
 }
 
 function populateFilters() {
+  const records = state.data?.records || [];
   const structureOptions = ["a_h", "h_share", "red_chip", "other"]
-    .filter((key) => state.data.records.some((record) => issuerTypeKey(record) === key));
+    .filter((key) => records.some((record) => issuerTypeKey(record) === key));
   const structureSelect = document.getElementById("structureFilter");
+  if (!structureSelect) {
+    console.warn("[populateFilters] Element #structureFilter not found");
+    return;
+  }
   if (state.structure !== "all" && !structureOptions.includes(state.structure)) state.structure = "all";
   structureSelect.innerHTML = [
     `<option value="all">全部类型</option>`,
@@ -1161,7 +1175,7 @@ function closeDetail() {
 }
 
 function openDetail(recordId) {
-  const record = state.data.records.find((item) => item.id === recordId);
+  const record = (state.data?.records || []).find((item) => item.id === recordId);
   if (!record) return;
   state.selectedId = recordId;
   lastModalTrigger = document.activeElement;
@@ -1467,6 +1481,10 @@ function switchView(view, updateLocation = true) {
 }
 
 function renderChrome() {
+  if (!state.data) {
+    console.warn("[renderChrome] state.data is not available");
+    return;
+  }
   const meta = state.data.meta || {};
   const summary = state.data.summary || {};
   document.getElementById("sourcePill").textContent = `${meta.labelZh || meta.label || "数据快照"} · ${formatNumber(summary.trackedIssuers || state.data.records.length, "integer")} 家`;
@@ -1524,17 +1542,18 @@ function syncControls() {
   if (daySortFields.includes(state.sortField)) state.sortField = fieldForDayMode(state.sortField, state.dayCountMode);
   setDaySelectOptions();
   syncTrackerTableMode();
-  document.getElementById("issuerSearch").value = state.query;
-  document.getElementById("dateField").value = state.dateField;
-  document.getElementById("dateFrom").value = state.dateFrom;
-  document.getElementById("dateTo").value = state.dateTo;
-  document.getElementById("structureFilter").value = state.structure;
-  document.getElementById("industryFilter").value = state.industry;
-  document.getElementById("sponsorFilter").value = state.sponsor;
-  document.getElementById("marketCapMin").value = state.marketCapMin;
-  document.getElementById("marketCapMax").value = state.marketCapMax;
-  document.getElementById("sortField").value = daySortFields.includes(state.sortField) ? "__days__" : state.sortField;
-  document.getElementById("daySortField").value = state.daySortField;
+  const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+  setVal("issuerSearch", state.query);
+  setVal("dateField", state.dateField);
+  setVal("dateFrom", state.dateFrom);
+  setVal("dateTo", state.dateTo);
+  setVal("structureFilter", state.structure);
+  setVal("industryFilter", state.industry);
+  setVal("sponsorFilter", state.sponsor);
+  setVal("marketCapMin", state.marketCapMin);
+  setVal("marketCapMax", state.marketCapMax);
+  setVal("sortField", daySortFields.includes(state.sortField) ? "__days__" : state.sortField);
+  setVal("daySortField", state.daySortField);
   document.querySelectorAll("[data-day-count-mode]").forEach((button) => {
     const active = button.dataset.dayCountMode === state.dayCountMode;
     button.classList.toggle("is-active", active);
@@ -1542,8 +1561,11 @@ function syncControls() {
   });
   const dayModeHint = document.getElementById("dayModeHint");
   if (dayModeHint) dayModeHint.textContent = dayBasisNote();
-  document.getElementById("sortDirection").textContent = state.sortDir === "asc" ? "升序" : "降序";
-  document.getElementById("sortDirection").dataset.dir = state.sortDir;
+  const sortDirEl = document.getElementById("sortDirection");
+  if (sortDirEl) {
+    sortDirEl.textContent = state.sortDir === "asc" ? "升序" : "降序";
+    sortDirEl.dataset.dir = state.sortDir;
+  }
   document.querySelectorAll(".segment").forEach((item) => {
     item.classList.toggle("is-active", item.dataset.status === state.status);
   });
@@ -1554,12 +1576,16 @@ function syncControls() {
 function updateTracker(partial = {}, options = {}) {
   Object.assign(state, partial);
   if (options.resetPage !== false) state.page = 1;
-  syncControls();
-  syncUrl();
-  renderChrome();
-  renderRows();
-  if (document.getElementById("detailModal")?.classList.contains("is-open")) {
-    renderDetail(state.data.records.find((item) => item.id === state.selectedId));
+  try {
+    syncControls();
+    syncUrl();
+    renderChrome();
+    renderRows();
+    if (document.getElementById("detailModal")?.classList.contains("is-open")) {
+      renderDetail((state.data?.records || []).find((item) => item.id === state.selectedId));
+    }
+  } catch (error) {
+    console.error("[updateTracker] Render error:", error);
   }
 }
 
@@ -1591,10 +1617,20 @@ async function loadData() {
   setLoading(true);
   try {
     const response = await fetch(DATA_URL, { cache: "no-cache" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    state.data = await response.json();
+    if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    let payload;
+    try {
+      payload = await response.json();
+    } catch (parseError) {
+      throw new Error(`JSON parse error: ${parseError.message}`);
+    }
+    if (!payload || !Array.isArray(payload.records)) {
+      throw new Error("Invalid payload: missing records array");
+    }
+    state.data = payload;
   } catch (error) {
-    state.data = emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
+    console.error("[loadData] Failed to load tracker data:", error);
+    state.data = emptyPayload(`无法读取数据: ${error.message}`);
   }
   stageCountsCache = null;
   for (const record of state.data.records || []) {
@@ -1609,10 +1645,14 @@ async function loadData() {
     state.daySortField = state.sortField;
   }
   state.selectedId = state.data.records[0]?.id || null;
-  populateFilters();
-  syncControls();
-  render();
-  switchView(state.view, false);
+  try {
+    populateFilters();
+    syncControls();
+    render();
+    switchView(state.view, false);
+  } catch (renderError) {
+    console.error("[loadData] Render failed after data load:", renderError);
+  }
   window.setTimeout(() => setLoading(false), 160);
 }
 
@@ -1641,53 +1681,53 @@ function debounce(fn, wait = 160) {
   };
 }
 
-document.getElementById("issuerSearch").addEventListener(
+document.getElementById("issuerSearch")?.addEventListener(
   "input",
   debounce((event) => updateTracker({ query: event.target.value }))
 );
 
-document.getElementById("dateField").addEventListener("change", (event) => {
+document.getElementById("dateField")?.addEventListener("change", (event) => {
   updateTracker({ dateField: event.target.value });
 });
 
-document.getElementById("dateFrom").addEventListener("change", (event) => {
+document.getElementById("dateFrom")?.addEventListener("change", (event) => {
   updateTracker({ dateFrom: event.target.value });
 });
 
-document.getElementById("dateTo").addEventListener("change", (event) => {
+document.getElementById("dateTo")?.addEventListener("change", (event) => {
   updateTracker({ dateTo: event.target.value });
 });
 
-document.getElementById("structureFilter").addEventListener("change", (event) => {
+document.getElementById("structureFilter")?.addEventListener("change", (event) => {
   updateTracker({ structure: event.target.value });
 });
 
-document.getElementById("industryFilter").addEventListener("change", (event) => {
+document.getElementById("industryFilter")?.addEventListener("change", (event) => {
   updateTracker({ industry: event.target.value });
 });
 
-document.getElementById("sponsorFilter").addEventListener("change", (event) => {
+document.getElementById("sponsorFilter")?.addEventListener("change", (event) => {
   updateTracker({ sponsor: event.target.value });
 });
 
-document.getElementById("marketCapMin").addEventListener(
+document.getElementById("marketCapMin")?.addEventListener(
   "input",
   debounce((event) => updateTracker({ marketCapMin: event.target.value }))
 );
 
-document.getElementById("marketCapMax").addEventListener(
+document.getElementById("marketCapMax")?.addEventListener(
   "input",
   debounce((event) => updateTracker({ marketCapMax: event.target.value }))
 );
 
-document.getElementById("sortField").addEventListener("change", (event) => {
+document.getElementById("sortField")?.addEventListener("change", (event) => {
   const nextField = event.target.value === "__days__" ? state.daySortField : event.target.value;
   const patch = { sortField: nextField };
   if (daySortFields.includes(nextField)) patch.daySortField = nextField;
   updateTracker(patch);
 });
 
-document.getElementById("daySortField").addEventListener("change", (event) => {
+document.getElementById("daySortField")?.addEventListener("change", (event) => {
   updateTracker({ daySortField: event.target.value, sortField: event.target.value });
 });
 
@@ -1706,7 +1746,7 @@ document.querySelectorAll("[data-day-count-mode]").forEach((button) => {
   });
 });
 
-document.getElementById("sortDirection").addEventListener("click", () => {
+document.getElementById("sortDirection")?.addEventListener("click", () => {
   updateTracker({ sortDir: state.sortDir === "asc" ? "desc" : "asc" });
 });
 
@@ -1715,27 +1755,29 @@ document.querySelectorAll(".th-sort").forEach((button) => {
 });
 
 const trackerRowsBody = document.getElementById("trackerRows");
-trackerRowsBody.addEventListener("click", (event) => {
-  const row = event.target.closest("[data-record-id]");
-  if (row) selectRecord(row.dataset.recordId);
-});
-trackerRowsBody.addEventListener("keydown", (event) => {
-  if (event.key !== "Enter" && event.key !== " ") return;
-  const row = event.target.closest("[data-record-id]");
-  if (!row) return;
-  event.preventDefault();
-  selectRecord(row.dataset.recordId);
-});
+if (trackerRowsBody) {
+  trackerRowsBody.addEventListener("click", (event) => {
+    const row = event.target.closest("[data-record-id]");
+    if (row) selectRecord(row.dataset.recordId);
+  });
+  trackerRowsBody.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const row = event.target.closest("[data-record-id]");
+    if (!row) return;
+    event.preventDefault();
+    selectRecord(row.dataset.recordId);
+  });
+}
 
-document.getElementById("detailBackdrop").addEventListener("click", closeDetail);
-document.getElementById("detailClose").addEventListener("click", closeDetail);
+document.getElementById("detailBackdrop")?.addEventListener("click", closeDetail);
+document.getElementById("detailClose")?.addEventListener("click", closeDetail);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeDetail();
   trapModalFocus(event);
 });
 
-document.getElementById("clearFilters").addEventListener("click", () => {
+document.getElementById("clearFilters")?.addEventListener("click", () => {
   Object.assign(state, {
     status: "all",
     hkexStage: "applying",
@@ -1759,6 +1801,10 @@ document.getElementById("clearFilters").addEventListener("click", () => {
   renderRows();
 });
 
-document.getElementById("refreshButton").addEventListener("click", loadData);
+document.getElementById("refreshButton")?.addEventListener("click", loadData);
+
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("[unhandledrejection]", event.reason);
+});
 
 loadData();
