@@ -405,7 +405,7 @@ function setDaySelectOptions() {
     if (daySortFields.includes(state.sortField)) state.sortField = state.daySortField;
   }
   const html = entries
-    .map((entry) => `<option value="${entry[state.dayCountMode]}">${entry.label}</option>`)
+    .map((entry) => `<option value="${escapeHtml(entry[state.dayCountMode])}">${escapeHtml(entry.label)}</option>`)
     .join("");
   if (select.innerHTML !== html) select.innerHTML = html;
 }
