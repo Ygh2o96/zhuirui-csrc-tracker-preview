@@ -207,13 +207,29 @@ function formatDatePlain(value) {
   return html.includes("<span") ? "待披露" : html;
 }
 
+function isMissingValue(value) {
+  return value === null || value === undefined || value === "" || Number.isNaN(value);
+}
+
+function parseNumericInput(raw) {
+  if (raw === "" || raw === null || raw === undefined) return null;
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : null;
+}
+
+function splitIndustryTags(record) {
+  const csrcTags = record.csrcIndustryTags || [];
+  const bizTags = (record.industryTags || []).filter((tag) => !csrcTags.includes(tag));
+  return { csrcTags, bizTags };
+}
+
 function formatNumber(value, mode = "decimal") {
-  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待披露";
+  if (isMissingValue(value)) return "待披露";
   return mode === "integer" ? integerFormatter.format(value) : numberFormatter.format(value);
 }
 
 function formatDayValue(value) {
-  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待披露";
+  if (isMissingValue(value)) return "待披露";
   return integerFormatter.format(Math.ceil(value));
 }
 
@@ -339,25 +355,22 @@ function renderIssuerType(record) {
   return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>`;
 }
 
-function formatMarketCap(record) {
-  const value = record.aShareMarketCapAtA1RmbBn;
-  if (!isAhCandidate(record)) return `<span class="not-applicable">不适用</span><span class="pending-en">N/A</span>`;
+function formatMarketCapCore(value, currencyPrefix, dateLabel) {
   if (typeof value !== "number") return formatPending();
   const yiValue = value * 10;
   return `
     <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">¥${rmbBnFormatter.format(value)}B · A1日</span>
+    <span class="pending-en">${currencyPrefix}${rmbBnFormatter.format(value)}B · ${dateLabel}</span>
   `;
 }
 
+function formatMarketCap(record) {
+  if (!isAhCandidate(record)) return `<span class="not-applicable">不适用</span><span class="pending-en">N/A</span>`;
+  return formatMarketCapCore(record.aShareMarketCapAtA1RmbBn, "¥", "A1日");
+}
+
 function formatListingMarketCap(record) {
-  const value = record.listingMarketCapHkdBn;
-  if (typeof value !== "number") return formatPending();
-  const yiValue = value * 10;
-  return `
-    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">HK$${rmbBnFormatter.format(value)}B · 上市日</span>
-  `;
+  return formatMarketCapCore(record.listingMarketCapHkdBn, "HK$", "上市日");
 }
 
 function hasCjk(value) {
@@ -823,13 +836,8 @@ function getBaseFilteredRecords() {
   const query = normalizeSearchText(state.query);
   const from = asDateValue(state.dateFrom);
   const to = asDateValue(state.dateTo);
-  const parseCap = (raw) => {
-    if (raw === "" || raw === null || raw === undefined) return null;
-    const value = Number(raw);
-    return Number.isFinite(value) ? value : null;
-  };
-  const capMin = parseCap(state.marketCapMin);
-  const capMax = parseCap(state.marketCapMax);
+  const capMin = parseNumericInput(state.marketCapMin);
+  const capMax = parseNumericInput(state.marketCapMax);
 
   return state.data.records.filter((record) => {
     if (state.status !== "all" && record.status !== state.status) return false;
@@ -912,10 +920,9 @@ function sortKey(record, field) {
 }
 
 function isMissingSortKey(key) {
-  const value = key.value;
-  if (value === null || value === undefined || value === "") return true;
-  if (typeof value === "number") return Number.isNaN(value);
-  const normalized = String(value).trim().toLowerCase();
+  if (isMissingValue(key.value)) return true;
+  if (typeof key.value === "number") return false;
+  const normalized = String(key.value).trim().toLowerCase();
   return ["待补", "待补充", "待披露", "pending", "n/a", "not applicable", "不适用"].includes(normalized);
 }
 
@@ -1092,14 +1099,18 @@ function renderMetrics(records) {
   document.getElementById("metricsGrid").innerHTML = html.join("");
 }
 
-function renderDays(record) {
-  const fields = {
+function getDayFields() {
+  return {
     a1ToReceived: dayMetricField("a1ToReceived"),
     currentA1ToReceived: dayMetricField("currentA1ToReceived"),
     receivedToNotice: dayMetricField("receivedToNotice"),
     a1ToNotice: dayMetricField("a1ToNotice"),
     a1ToListing: dayMetricField("a1ToListing")
   };
+}
+
+function renderDays(record) {
+  const fields = getDayFields();
   if (state.hkexStage === "listed") {
     return `
       <div class="days-cell">
@@ -1229,10 +1240,9 @@ function renderRows() {
     .map((record) => {
       const selected = record.id === state.selectedId ? "is-selected" : "";
       const names = nameParts(record);
-      const csrcCats = record.csrcIndustryTags || [];
-      const bizTags = (record.industryTags || []).filter((tag) => !csrcCats.includes(tag));
+      const { csrcTags, bizTags } = splitIndustryTags(record);
       const industries = [
-        ...csrcCats.slice(0, 2).map((tag) => `<span class="csrc-cat-tag" title="${escapeHtml(tag)}（证监会行业门类）">${escapeHtml(tag)}</span>`),
+        ...csrcTags.slice(0, 2).map((tag) => `<span class="csrc-cat-tag" title="${escapeHtml(tag)}（证监会行业门类）">${escapeHtml(tag)}</span>`),
         ...bizTags.slice(0, 1).map((tag) => `<span title="${escapeHtml(tag)}">${escapeHtml(tag)}</span>`)
       ].join("");
       const sponsors = sponsorDisplayEntries(record)
@@ -1283,8 +1293,7 @@ function renderDetail(record) {
     )
     .join("");
   const industryEn = record.industryTagEn ? `<span class="pending-en">${escapeHtml(record.industryTagEn)}</span>` : "";
-  const detailCats = record.csrcIndustryTags || [];
-  const detailBiz = (record.industryTags || []).filter((tag) => !detailCats.includes(tag));
+  const { csrcTags: detailCats, bizTags: detailBiz } = splitIndustryTags(record);
   const industryList = [
     ...detailCats.map((tag) => `<span class="csrc-cat-tag">${escapeHtml(tag)}</span>`),
     ...detailBiz.map((tag) => `<span>${escapeHtml(tag)}</span>`)
@@ -1346,13 +1355,7 @@ function renderDetail(record) {
   const historicalAnchorLine = record.historicalTimelineAnchorDate && record.historicalTimelineAnchorDate !== record.a1Date
     ? `<div class="timeline-row"><span>历史最早A1 Earliest A1</span><strong>${formatDate(record.historicalTimelineAnchorDate)}</strong></div>`
     : "";
-  const dayFields = {
-    a1ToReceived: dayMetricField("a1ToReceived"),
-    currentA1ToReceived: dayMetricField("currentA1ToReceived"),
-    receivedToNotice: dayMetricField("receivedToNotice"),
-    a1ToNotice: dayMetricField("a1ToNotice"),
-    a1ToListing: dayMetricField("a1ToListing")
-  };
+  const dayFields = getDayFields();
   const dayUnit = dayUnitLabel();
   const listedPage = state.hkexStage === "listed";
   const listedTimelineRows = listedPage
@@ -1646,28 +1649,17 @@ document.getElementById("issuerSearch").addEventListener(
   debounce((event) => updateTracker({ query: event.target.value }))
 );
 
-document.getElementById("dateField").addEventListener("change", (event) => {
-  updateTracker({ dateField: event.target.value });
-});
-
-document.getElementById("dateFrom").addEventListener("change", (event) => {
-  updateTracker({ dateFrom: event.target.value });
-});
-
-document.getElementById("dateTo").addEventListener("change", (event) => {
-  updateTracker({ dateTo: event.target.value });
-});
-
-document.getElementById("structureFilter").addEventListener("change", (event) => {
-  updateTracker({ structure: event.target.value });
-});
-
-document.getElementById("industryFilter").addEventListener("change", (event) => {
-  updateTracker({ industry: event.target.value });
-});
-
-document.getElementById("sponsorFilter").addEventListener("change", (event) => {
-  updateTracker({ sponsor: event.target.value });
+[
+  ["dateField", "dateField"],
+  ["dateFrom", "dateFrom"],
+  ["dateTo", "dateTo"],
+  ["structureFilter", "structure"],
+  ["industryFilter", "industry"],
+  ["sponsorFilter", "sponsor"]
+].forEach(([elementId, stateKey]) => {
+  document.getElementById(elementId).addEventListener("change", (event) => {
+    updateTracker({ [stateKey]: event.target.value });
+  });
 });
 
 document.getElementById("marketCapMin").addEventListener(
