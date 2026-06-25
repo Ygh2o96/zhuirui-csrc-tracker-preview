@@ -1,0 +1,17 @@
+{
+  "name": "zhuirui-csrc-tracker-preview",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jsdom": "^28.1.0",
+    "vitest": "^4.1.9"
+  }
+}
