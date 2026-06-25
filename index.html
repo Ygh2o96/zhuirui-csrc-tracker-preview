@@ -10,6 +10,10 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://events.vercount.one; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://events.vercount.one; base-uri 'self'; form-action 'self'"
+    />
     <link rel="stylesheet" href="styles.css?v=20260614-pipeline-img-1" />
   </head>
   <body>
@@ -259,7 +263,7 @@
 
             <section class="pipeline-image-gallery" aria-label="Pipeline diagrams">
               <figure class="pipeline-image-card">
-                <a href="assets/pipeline/csrc-daily-intake-pipeline.png" target="_blank" rel="noopener">
+                <a href="assets/pipeline/csrc-daily-intake-pipeline.png" target="_blank" rel="noopener noreferrer">
                   <img
                     src="assets/pipeline/csrc-daily-intake-pipeline.png"
                     alt="CSRC Tracker Daily Intake and Data Processing Pipeline"
@@ -272,7 +276,7 @@
                 </figcaption>
               </figure>
               <figure class="pipeline-image-card">
-                <a href="assets/pipeline/csrc-intake-decision-flow.png" target="_blank" rel="noopener">
+                <a href="assets/pipeline/csrc-intake-decision-flow.png" target="_blank" rel="noopener noreferrer">
                   <img
                     src="assets/pipeline/csrc-intake-decision-flow.png"
                     alt="CSRC Tracker Intake Decision Flow"
@@ -550,6 +554,6 @@
     </div>
 
     <script src="app.js?v=20260615-name-search-off-1"></script>
-    <script defer src="https://events.vercount.one/js"></script>
+    <script defer src="https://events.vercount.one/js" integrity="sha384-VbNGnlNebdJO/IELDgca6pmOf1wQ9zswcwsqHLuQkUl8li7HxVN1jqPZ3VJu4UQ6" crossorigin="anonymous"></script>
   </body>
 </html>
