@@ -1263,6 +1263,16 @@ tr[role="button"]:focus-visible {
   color: var(--muted);
 }
 
+.days-cell .days-cell-listing {
+  border-color: #bfdad9;
+  background: #eef7f6;
+}
+
+.days-cell .days-cell-listing span,
+.days-cell .days-cell-listing strong {
+  color: #176066;
+}
+
 .days-cell-mode {
   width: fit-content;
   border: 1px solid #cfe2df;

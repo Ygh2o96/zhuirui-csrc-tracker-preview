@@ -162,10 +162,8 @@ const descendingDefaultSortFields = new Set([
   "businessDaysCurrentA1ToReceived",
   "businessDaysReceivedToNotice",
   "businessDaysA1ToNotice",
-  "businessDaysA1ToListing",
   "calendarDaysCurrentA1ToNotice",
   "businessDaysCurrentA1ToNotice",
-  "calendarDaysA1ToListing",
   "aShareMarketCapAtA1RmbBn",
   "listingMarketCapHkdBn"
 ]);
@@ -311,7 +309,9 @@ function currentMetricDefinitions() {
 function currentDayMetricEntries() {
   const metrics = state.hkexStage === "listed"
     ? ["a1ToNotice", "a1ToListing"]
-    : ["a1ToReceived", "currentA1ToReceived", "receivedToNotice", "a1ToNotice"];
+    : state.hkexStage === "all"
+      ? ["a1ToReceived", "currentA1ToReceived", "receivedToNotice", "a1ToNotice", "a1ToListing"]
+      : ["a1ToReceived", "currentA1ToReceived", "receivedToNotice", "a1ToNotice"];
   return metrics.map((metric) => dayFieldPairs[metric]).filter(Boolean);
 }
 
@@ -408,12 +408,18 @@ function setDaySelectOptions() {
   const entries = currentDayMetricEntries();
   if (!entries.some((entry) => entry[state.dayCountMode] === state.daySortField)) {
     state.daySortField = entries[0]?.[state.dayCountMode] || fieldForDayMode(state.daySortField, state.dayCountMode);
-    if (daySortFields.includes(state.sortField)) state.sortField = state.daySortField;
+    if (daySortFields.includes(state.sortField)) {
+      state.sortField = state.daySortField;
+      state.sortDir = defaultSortDir(state.daySortField);
+    }
   }
   const html = entries
     .map((entry) => `<option value="${escapeHtml(entry[state.dayCountMode])}">${escapeHtml(entry.label)}</option>`)
     .join("");
   if (select.innerHTML !== html) select.innerHTML = html;
+  select.title = dayMetricForField(state.daySortField) === "a1ToListing"
+    ? "A1至上市默认升序（最快优先）"
+    : "选择天数排序口径";
 }
 
 const sponsorDisplayRules = [
@@ -1166,6 +1172,10 @@ function renderDays(record) {
   const currentReceivedLine = typeof record[fields.currentA1ToReceived] === "number"
     ? `<div><span>当前A1至接收</span><strong>${formatDayValue(record[fields.currentA1ToReceived])}</strong></div>`
     : "";
+  const listingDays = durationValueForDisplay(record, "a1ToListing");
+  const allStageListingLine = state.hkexStage === "all" && typeof listingDays === "number"
+    ? `<div class="days-cell-listing"><span title="首次A1至上市 First A1 to HKEX listing">A1→上市</span><strong>${formatDayValue(listingDays)}</strong></div>`
+    : "";
   return `
     <div class="days-cell">
       <div class="days-cell-mode">${dayUnitLabel()}</div>
@@ -1173,6 +1183,7 @@ function renderDays(record) {
       ${currentReceivedLine}
       <div><span>接收至通知</span><strong>${formatDayValue(record[fields.receivedToNotice])}</strong></div>
       <div><span>备案锚点（A1日）至通知</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
+      ${allStageListingLine}
     </div>
   `;
 }
@@ -1283,9 +1294,10 @@ function renderRows() {
     const emptyMessage = isLoadFailure
       ? "数据加载失败，请点击右上角「刷新」重试 / Data failed to load — use Refresh."
       : "当前筛选无匹配发行人，可点击「清除」重置筛选 / No matching issuer — try Clear filters.";
+    const visibleColumnCount = state.hkexStage === "all" ? 12 : 10;
     document.getElementById("trackerRows").innerHTML = `
       <tr>
-        <td colspan="10" class="muted empty-row">${emptyMessage}</td>
+        <td colspan="${visibleColumnCount}" class="muted empty-row">${emptyMessage}</td>
       </tr>
     `;
     document.getElementById("paginationBar").innerHTML = "";
@@ -1414,6 +1426,7 @@ function renderDetail(record) {
     status_without_notice_match: "已接收待通知书 Received, notice pending",
     feedback_before_timeline_anchor_possible_mismatch: "补充材料早于A1 Feedback before A1",
     pre_regime_a1_no_csrc_notice_expected: "制度前A1无需备案 Pre-regime A1, no filing",
+    filing_not_required_no_csrc_notice_expected: "无需备案，无通知书 Not required, no notice expected",
     same_day_notice_without_status_received_match_possible_missing_anchor: "通知书与A1同日 Notice same day as A1"
   };
   const timelineFlags = (record.timelineFlags || [])
@@ -1767,7 +1780,11 @@ document.getElementById("sortField").addEventListener("change", (event) => {
 });
 
 document.getElementById("daySortField").addEventListener("change", (event) => {
-  updateTracker({ daySortField: event.target.value, sortField: event.target.value });
+  updateTracker({
+    daySortField: event.target.value,
+    sortField: event.target.value,
+    sortDir: defaultSortDir(event.target.value)
+  });
 });
 
 document.querySelectorAll("[data-day-count-mode]").forEach((button) => {
