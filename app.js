@@ -76,13 +76,13 @@ const listedMetricDefinitions = [
     metric: "a1ToNotice",
     labelZh: "首次A1至备案通过天数",
     labelEn: "First A1 to CSRC notice days",
-    note: "按上市日在CSRC新规后且已有source-backed备案通知书样本；De-SPAC剔除"
+    note: "按上市日在CSRC新规后且已有source-backed备案通知书样本；De-SPAC/HDR剔除"
   },
   {
     metric: "a1ToListing",
     labelZh: "首次A1至上市天数",
     labelEn: "First A1 to HKEX listing days",
-    note: "按HKEX New Listing Report上市日样本；密交/疑似密交/De-SPAC剔除；无需备案发行人可纳入"
+    note: "按HKEX New Listing Report上市日样本；密交/疑似密交/De-SPAC/HDR剔除；无需备案发行人可纳入"
   }
 ];
 
@@ -231,7 +231,7 @@ function isAhCandidate(record) {
 
 function isHkexListed(record) {
   const rawStatus = String(record.hkexPublicStatus || "").trim();
-  return rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
+  return Boolean(record.hkexListingDate) || rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
 }
 
 function isPostRegimeListed(record) {
@@ -298,7 +298,7 @@ const allStageListingMetric = {
   metric: "a1ToListing",
   labelZh: "首次A1至上市天数",
   labelEn: "First A1 to HKEX listing days",
-  note: "按HKEX New Listing Report上市日样本；密交/疑似密交/De-SPAC剔除；无需备案发行人可纳入"
+  note: "按HKEX New Listing Report上市日样本；密交/疑似密交/De-SPAC/HDR剔除；无需备案发行人可纳入"
 };
 
 function currentMetricDefinitions() {
@@ -317,9 +317,11 @@ function currentDayMetricEntries() {
 
 function issuerTypeKey(record) {
   if (record.specialListingRoute === "de_spac") return "de_spac";
+  if (record.specialListingRoute === "hdr") return "hdr";
   if (isAhCandidate(record)) return "a_h";
   const raw = `${record.structureType || ""} ${record.issuerJurisdiction || ""}`.toLowerCase();
   if (raw.includes("de-spac") || raw.includes("de spac")) return "de_spac";
+  if (raw.includes("depositary receipt") || raw.includes(" hdr")) return "hdr";
   if (raw.includes("red-chip") || raw.includes("offshore")) return "red_chip";
   if (raw.includes("h-share") || raw.includes("prc-incorporated")) return "h_share";
   return "other";
@@ -332,6 +334,7 @@ function issuerTypeInfo(recordOrKey) {
     h_share: { primary: "H股", secondary: "H-share", rank: 2 },
     red_chip: { primary: "红筹", secondary: "Red-chip", rank: 3 },
     de_spac: { primary: "De-SPAC", secondary: "De-SPAC", rank: 4 },
+    hdr: { primary: "HDR", secondary: "Depositary receipts", rank: 5 },
     other: { primary: "其他", secondary: "Other", rank: 9 }
   };
   return labels[key] || labels.other;
@@ -982,7 +985,7 @@ function populateSelect(id, options, currentValue, allLabel, stateKey) {
 }
 
 function populateFilters() {
-  const structureOptions = ["a_h", "h_share", "red_chip", "de_spac", "other"]
+  const structureOptions = ["a_h", "h_share", "red_chip", "de_spac", "hdr", "other"]
     .filter((key) => state.data.records.some((record) => issuerTypeKey(record) === key));
   const structureSelect = document.getElementById("structureFilter");
   if (state.structure !== "all" && !structureOptions.includes(state.structure)) state.structure = "all";
@@ -1084,7 +1087,7 @@ function renderDurationMetric(metric, stats) {
   const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
   const isListingMetric = metric.metric === "a1ToListing";
   const startLabel = isListingMetric
-    ? `仅纳入上市日≥${regimeStart}且日期顺序有效样本；密交/疑似密交/De-SPAC剔除`
+    ? `仅纳入上市日≥${regimeStart}且日期顺序有效样本；密交/疑似密交/De-SPAC/HDR剔除`
     : (
       state.hkexStage === "listed"
         ? `已上市页仅纳入上市日≥${regimeStart}且日期顺序有效样本`
