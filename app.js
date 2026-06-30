@@ -408,7 +408,7 @@ function setDaySelectOptions() {
     if (daySortFields.includes(state.sortField)) state.sortField = state.daySortField;
   }
   const html = entries
-    .map((entry) => `<option value="${entry[state.dayCountMode]}">${entry.label}</option>`)
+    .map((entry) => `<option value="${escapeHtml(entry[state.dayCountMode])}">${escapeHtml(entry.label)}</option>`)
     .join("");
   if (select.innerHTML !== html) select.innerHTML = html;
 }
@@ -1029,20 +1029,55 @@ function durationValueForStats(record, metric) {
 }
 
 function statsFor(records, metric) {
-  const values = records
-    .map((record) => durationValueForStats(record, metric))
-    .filter((value) => typeof value === "number");
-  if (!values.length) {
-    return { count: 0, average: null, median: null, min: null, max: null };
+  const entries = records
+    .map((record) => ({ record, value: durationValueForStats(record, metric) }))
+    .filter((entry) => typeof entry.value === "number")
+    .sort((a, b) => a.value - b.value || String(a.record.issuerName).localeCompare(String(b.record.issuerName), "en", { sensitivity: "base" }));
+  if (!entries.length) {
+    return { count: 0, average: null, median: null, min: null, max: null, minRecord: null, maxRecord: null };
   }
+  const values = entries.map((entry) => entry.value);
   const total = values.reduce((sum, value) => sum + value, 0);
+  const minEntry = entries[0];
+  const maxEntry = entries[entries.length - 1];
   return {
     count: values.length,
     average: total / values.length,
     median: median(values),
-    min: Math.min(...values),
-    max: Math.max(...values)
+    min: minEntry.value,
+    max: maxEntry.value,
+    minRecord: minEntry.record,
+    maxRecord: maxEntry.record
   };
+}
+
+function statRecordLabel(record) {
+  if (!record) return "";
+  const names = nameParts(record);
+  return names.primary || names.secondary || record.issuerName || record.id || "";
+}
+
+function renderExtremeStat(label, value, record, metric, sortDir) {
+  if (!record || typeof value !== "number") {
+    return `<div><span>${escapeHtml(label)}</span><strong>${formatDayValue(value)}</strong></div>`;
+  }
+  const recordLabel = statRecordLabel(record);
+  return `
+    <div>
+      <span>${escapeHtml(label)}</span>
+      <button
+        class="metric-extreme-link"
+        type="button"
+        data-record-id="${escapeHtml(record.id)}"
+        data-sort-field="${escapeHtml(dayMetricField(metric.metric))}"
+        data-sort-dir="${escapeHtml(sortDir)}"
+        title="按该口径排序并定位 ${escapeHtml(recordLabel)}"
+      >
+        <strong>${formatDayValue(value)}</strong>
+        <small>${escapeHtml(recordLabel)}</small>
+      </button>
+    </div>
+  `;
 }
 
 function renderDurationMetric(metric, stats) {
@@ -1072,8 +1107,8 @@ function renderDurationMetric(metric, stats) {
       </div>
       <div class="metric-stat-grid">
         <div><span>中位</span><strong>${statValue(stats.median)}</strong></div>
-        <div><span>最低</span><strong>${statValue(stats.min)}</strong></div>
-        <div><span>最高</span><strong>${statValue(stats.max)}</strong></div>
+        ${renderExtremeStat("最低", stats.min, stats.minRecord, metric, "asc")}
+        ${renderExtremeStat("最高", stats.max, stats.maxRecord, metric, "desc")}
       </div>
       <div class="metric-caption">${caption}</div>
     </article>
@@ -1210,6 +1245,30 @@ function trapModalFocus(event) {
 
 function selectRecord(recordId) {
   openDetail(recordId);
+}
+
+function focusRecordInTable(recordId, sortField, sortDir) {
+  if (!recordId) return;
+  state.sortField = sortField || state.sortField;
+  if (daySortFields.includes(state.sortField)) state.daySortField = state.sortField;
+  state.sortDir = sortDir === "asc" ? "asc" : "desc";
+  state.selectedId = recordId;
+  syncControls();
+  const rows = getFilteredRecords();
+  const index = rows.findIndex((record) => record.id === recordId);
+  if (index >= 0) state.page = Math.floor(index / PAGE_SIZE) + 1;
+  syncUrl();
+  renderChrome();
+  renderRows();
+  window.requestAnimationFrame(() => {
+    const row = [...document.querySelectorAll("#trackerRows [data-record-id]")]
+      .find((item) => item.dataset.recordId === recordId);
+    if (!row) return;
+    row.classList.add("is-stat-focused");
+    row.scrollIntoView({ block: "center", behavior: "smooth" });
+    row.focus({ preventScroll: true });
+    window.setTimeout(() => row.classList.remove("is-stat-focused"), 1400);
+  });
 }
 
 function renderRows() {
@@ -1743,6 +1802,12 @@ trackerRowsBody.addEventListener("keydown", (event) => {
   selectRecord(row.dataset.recordId);
 });
 
+document.getElementById("metricsGrid").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-record-id][data-sort-field]");
+  if (!button) return;
+  focusRecordInTable(button.dataset.recordId, button.dataset.sortField, button.dataset.sortDir);
+});
+
 document.getElementById("detailBackdrop").addEventListener("click", closeDetail);
 document.getElementById("detailClose").addEventListener("click", closeDetail);
 
@@ -1752,26 +1817,16 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.getElementById("clearFilters").addEventListener("click", () => {
-  Object.assign(state, {
-    status: "all",
-    hkexStage: "applying",
-    query: "",
-    dateField: "a1Date",
-    dateFrom: "",
-    dateTo: "",
-    structure: "all",
-    industry: "all",
-    sponsor: "all",
-    marketCapMin: "",
-    marketCapMax: "",
-    sortField: "currentA1Date",
-    sortDir: "desc",
-    dayCountMode: "calendar",
-    daySortField: "calendarDaysA1ToReceived",
-    page: 1
+  const preservedView = state.view;
+  const preservedStage = state.hkexStage;
+  Object.assign(state, defaults, {
+    view: preservedView,
+    hkexStage: preservedStage,
+    selectedId: null
   });
   syncControls();
   syncUrl();
+  renderChrome();
   renderRows();
 });
 

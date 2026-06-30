@@ -606,6 +606,39 @@ h1 {
   font-variant-numeric: tabular-nums;
 }
 
+.metric-extreme-link {
+  display: inline-grid;
+  gap: 2px;
+  max-width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.metric-extreme-link strong {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.metric-extreme-link small {
+  overflow: hidden;
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 8px;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metric-extreme-link:hover strong,
+.metric-extreme-link:focus-visible strong {
+  color: #075f63;
+}
+
 .duration-core {
   display: flex;
   align-items: baseline;
@@ -984,6 +1017,11 @@ tr[role="button"]:focus-visible {
 .tracker-table tbody tr.is-selected,
 .tracker-table tbody tr:focus-visible {
   background: #f2f7f7;
+}
+
+.tracker-table tbody tr.is-stat-focused {
+  background: #e5f3f0;
+  box-shadow: inset 3px 0 0 var(--teal);
 }
 
 .issuer-cell strong {
