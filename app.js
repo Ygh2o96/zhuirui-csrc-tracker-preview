@@ -1376,6 +1376,7 @@ function renderDetail(record) {
     "MEE_environment": "生态环境部 MEE",
     "MOHURD_real_estate": "住建部 MOHURD",
     "SAMR_consumer": "市监总局 SAMR",
+    "MCT_tourism": "文旅部 MCT",
     "CSRC_filing_direct_overseas": "证监会 CSRC"
   };
   const regulatorList = (record.regulatoryTags || []).map((tag) => `<span>${escapeHtml(regulatorLabels[tag] || tag)}</span>`).join("");
