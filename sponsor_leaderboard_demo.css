@@ -43,10 +43,99 @@ button {
   cursor: pointer;
 }
 
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid rgba(217, 224, 220, 0.92);
+  background: rgba(243, 245, 241, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.site-nav-inner {
+  display: flex;
+  width: min(1480px, 100%);
+  min-height: 66px;
+  margin: 0 auto;
+  padding: 10px 28px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.site-brand,
+.site-nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-brand {
+  display: inline-flex;
+  min-width: 190px;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--nav);
+  color: #fff;
+  font-weight: 820;
+}
+
+.site-brand strong,
+.site-brand small {
+  display: block;
+}
+
+.site-brand strong {
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.site-brand small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.site-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.site-nav-links a {
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.site-nav-links a:hover {
+  border-color: rgba(8, 116, 102, 0.24);
+  color: var(--teal);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.site-nav-links a.is-active {
+  border-color: rgba(8, 116, 102, 0.38);
+  color: var(--teal);
+  background: rgba(8, 116, 102, 0.1);
+}
+
 .league-shell {
   width: min(1480px, 100%);
   margin: 0 auto;
-  padding: 26px 28px 42px;
+  padding: 22px 28px 42px;
 }
 
 .league-header {
@@ -603,6 +692,21 @@ a.pill:hover {
 }
 
 @media (max-width: 980px) {
+  .site-nav-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .site-brand {
+    min-width: 0;
+  }
+
+  .site-nav-links {
+    justify-content: flex-start;
+  }
+
   .league-shell {
     padding: 18px 14px 34px;
   }
