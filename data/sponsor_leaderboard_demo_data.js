@@ -1,4 +1,4 @@
-{
+window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
     "generatedAt": "2026-07-03T10:48:46Z",
     "sourceGeneratedAt": "2026-07-03T18:48:46+08:00",
@@ -94072,4 +94072,4 @@
     }
   ],
   "quality": []
-}
+};

@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>保荐人龙虎榜 | 追瑞</title>
+    <title>保荐人龙虎榜 Demo | 追瑞</title>
     <meta name="robots" content="noindex" />
     <link rel="icon" href="assets/favicon.svg" />
-    <!-- The sponsor leaderboard now lives inside the main app shell.
-         This page remains only as a backward-compatible redirect for old links. -->
+    <!-- Local demo entry. The sponsor leaderboard now lives inside the main
+         app shell; this page just forwards to the integrated view (which
+         falls back to the bundled data/sponsor_leaderboard_demo_data.js when
+         opened over file://). -->
     <meta http-equiv="refresh" content="0; url=index.html?view=sponsorLeaderboard" />
     <script>
       window.location.replace("index.html?view=sponsorLeaderboard");

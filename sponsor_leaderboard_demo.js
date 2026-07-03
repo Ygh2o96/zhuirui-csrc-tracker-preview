@@ -1,4 +1,13 @@
+// Sponsor leaderboard view module. Wrapped in an IIFE because it shares the
+// page (and global scope) with app.js inside the integrated shell.
+(() => {
+
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js";
+
+// Integrated view root inside the main app shell (index.html). All sponsor
+// DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
+const viewRoot = document.getElementById("sponsorLeaderboardView");
 
 const state = {
   data: null,
@@ -41,7 +50,7 @@ const creditLabels = {
 };
 
 function $(id) {
-  return document.getElementById(id);
+  return document.getElementById(`sl${id.charAt(0).toUpperCase()}${id.slice(1)}`);
 }
 
 function escapeHtml(value) {
@@ -473,7 +482,7 @@ function syncControls() {
   els.dateFieldSelect.value = state.dateField;
   els.dateFrom.value = state.dateFrom;
   els.dateTo.value = state.dateTo;
-  document.querySelectorAll(".preset").forEach((button) => {
+  viewRoot.querySelectorAll(".preset").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.preset === state.preset);
   });
 }
@@ -909,7 +918,7 @@ function bindControls() {
       els[id].addEventListener("change", readControls);
     }
   });
-  document.querySelectorAll(".preset").forEach((button) => {
+  viewRoot.querySelectorAll(".preset").forEach((button) => {
     button.addEventListener("click", () => setPreset(button.dataset.preset));
   });
   els.clearButton.addEventListener("click", () => {
@@ -962,16 +971,27 @@ function validatePayload(payload) {
   return payload;
 }
 
+function loadBundledData() {
+  if (window.SPONSOR_LEADERBOARD_DEMO_DATA) return Promise.resolve(window.SPONSOR_LEADERBOARD_DEMO_DATA);
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = BUNDLED_DATA_URL;
+    script.onload = () => resolve(window.SPONSOR_LEADERBOARD_DEMO_DATA || null);
+    script.onerror = () => resolve(null);
+    document.head.appendChild(script);
+  });
+}
+
 async function loadData() {
-  let payload = window.location.protocol === "file:" ? window.SPONSOR_LEADERBOARD_DEMO_DATA : null;
+  let payload = window.location.protocol === "file:" ? await loadBundledData() : null;
   if (!payload) {
     try {
       const response = await fetch(`${DATA_URL}?demo=${Date.now()}`);
       if (!response.ok) throw new Error(`Failed to load ${DATA_URL}: ${response.status}`);
       payload = await response.json();
     } catch (error) {
-      if (!window.SPONSOR_LEADERBOARD_DEMO_DATA) throw error;
-      payload = window.SPONSOR_LEADERBOARD_DEMO_DATA;
+      payload = await loadBundledData();
+      if (!payload) throw error;
       console.warn(`Falling back to bundled demo data after JSON load failed: ${error.message}`);
     }
   }
@@ -1018,4 +1038,23 @@ async function init() {
   }
 }
 
-init();
+// The payload is ~3MB, so defer loading until the sponsor view is actually
+// opened (via nav click or ?view=sponsorLeaderboard deep link).
+let initStarted = false;
+
+function ensureInit() {
+  if (initStarted) return;
+  initStarted = true;
+  init();
+}
+
+if (viewRoot) {
+  document.querySelectorAll('.nav-item[data-view="sponsorLeaderboard"]').forEach((button) => {
+    button.addEventListener("click", ensureInit);
+  });
+  if (new URLSearchParams(window.location.search).get("view") === "sponsorLeaderboard") {
+    ensureInit();
+  }
+}
+
+})();

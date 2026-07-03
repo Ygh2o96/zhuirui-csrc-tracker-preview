@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260630-all-listing-days-1" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260703-integrated-1" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -42,10 +43,10 @@
             <span class="nav-icon" aria-hidden="true">流</span>
             <span><b>数据管线</b><small>Data Pipeline</small></span>
           </button>
-          <a class="nav-item" href="sponsor-leaderboard.html">
+          <button class="nav-item" data-view="sponsorLeaderboard">
             <span class="nav-icon" aria-hidden="true">榜</span>
             <span><b>保荐龙虎榜</b><small>Sponsor League</small></span>
-          </a>
+          </button>
           <button class="nav-item" data-view="precedents">
             <span class="nav-icon" aria-hidden="true">例</span>
             <span><b>案例检索</b><small>Precedents</small></span>
@@ -450,6 +451,135 @@
           </div>
         </section>
 
+        <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard">
+          <div class="sl-meta-bar">
+            <p class="snapshot-meta" id="slCoverageText">正在载入保荐人龙虎榜…</p>
+            <p class="sl-meta-count"><strong id="slFirmCount">--</strong> 个保荐/合并口径 · <span id="slGeneratedAt">--</span></p>
+          </div>
+
+          <section class="sl-notice-strip" id="slDemoNote"></section>
+
+          <section class="sl-metric-strip" id="slMetricStrip" aria-label="Sponsor summary"></section>
+
+          <section class="sl-controls" aria-label="Sponsor leaderboard filters">
+            <div class="sl-search-field">
+              <span aria-hidden="true">搜</span>
+              <input id="slSearchInput" name="slSearchInput" type="search" autocomplete="off" placeholder="搜索保荐人、项目、行业…" />
+            </div>
+            <div class="sl-preset-row" id="slPresetRow">
+              <button type="button" class="preset is-active" data-preset="all">全部</button>
+              <button type="button" class="preset" data-preset="applying">申请中</button>
+              <button type="button" class="preset" data-preset="listed">已上市</button>
+              <button type="button" class="preset" data-preset="ah">A+H</button>
+              <button type="button" class="preset" data-preset="recentA1">近30天新交表</button>
+              <button type="button" class="preset" data-preset="recentNotice">近90天备案通过</button>
+            </div>
+            <div class="sl-filter-grid">
+              <label>
+                <span>排名口径</span>
+                <select id="slMetricSelect" name="slMetricSelect" autocomplete="off">
+                  <option value="projectCount">项目数</option>
+                  <option value="activeCount">申请中项目</option>
+                  <option value="listedCount">已上市项目</option>
+                  <option value="ahCount">A+H 项目</option>
+                  <option value="listingMarketCapHkdBnSum">上市日港股市值</option>
+                  <option value="aShareMarketCapRmbBnSum">A股市值</option>
+                  <option value="lifecycleMedianDays">A1→上市中位数（已上市）</option>
+                  <option value="type6TotalCount">六号牌人数</option>
+                  <option value="type6RepPerProject">Rep/项目</option>
+                  <option value="projectsPerType6Rep">项目/六号牌Rep</option>
+                  <option value="projectsPerType6RO">项目/RO</option>
+                  <option value="projectsPerType6Total">项目/六号牌总人数</option>
+                </select>
+              </label>
+              <label>
+                <span>信用口径</span>
+                <select id="slCreditSelect" name="slCreditSelect" autocomplete="off">
+                  <option value="creditAllFull">全额计入</option>
+                  <option value="creditEqual">平均拆分</option>
+                  <option value="creditFirstNamed">首名计入</option>
+                </select>
+              </label>
+              <label>
+                <span>阶段</span>
+                <select id="slStageSelect" name="slStageSelect" autocomplete="off">
+                  <option value="all">全部阶段</option>
+                  <option value="applying">上市申请中</option>
+                  <option value="listed">已上市</option>
+                  <option value="other">搁置/撤回</option>
+                </select>
+              </label>
+              <label>
+                <span>类型</span>
+                <select id="slTypeSelect" name="slTypeSelect" autocomplete="off">
+                  <option value="all">全部类型</option>
+                </select>
+              </label>
+              <label>
+                <span>性质</span>
+                <select id="slNatureSelect" name="slNatureSelect" autocomplete="off">
+                  <option value="all">全部性质</option>
+                </select>
+              </label>
+              <label>
+                <span>日期字段</span>
+                <select id="slDateFieldSelect" name="slDateFieldSelect" autocomplete="off">
+                  <option value="a1Date">A1</option>
+                  <option value="noticeDate">备案通知书</option>
+                  <option value="listingDate">上市日</option>
+                </select>
+              </label>
+              <label>
+                <span>起始</span>
+                <input id="slDateFrom" name="slDateFrom" type="date" autocomplete="off" />
+              </label>
+              <label>
+                <span>截至</span>
+                <input id="slDateTo" name="slDateTo" type="date" autocomplete="off" />
+              </label>
+            </div>
+          </section>
+
+          <section class="sl-board">
+            <div class="sl-board-title">
+              <div>
+                <h2>排行榜</h2>
+                <p id="slResultHint">--</p>
+              </div>
+              <button id="slClearButton" type="button">清除筛选</button>
+            </div>
+            <div class="sl-table-wrap">
+              <table class="sl-table">
+                <thead>
+                  <tr>
+                    <th>排名</th>
+                    <th>保荐人</th>
+                    <th>性质</th>
+                    <th>六号牌</th>
+                    <th>项目</th>
+                    <th>申请中</th>
+                    <th>已上市</th>
+                    <th>A+H</th>
+                    <th id="slPrimaryMetricHead">排名指标</th>
+                    <th id="slMarketCapHead">市值</th>
+                    <th title="已上市项目显示 A1→上市最终周期；申请中项目显示截至快照日已过天数">周期 / 已过</th>
+                    <th>行业</th>
+                  </tr>
+                </thead>
+                <tbody id="slLeaderboardRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="sl-drawer" id="slDrawer" aria-hidden="true">
+            <button class="sl-drawer-backdrop" id="slDrawerBackdrop" type="button" aria-label="关闭"></button>
+            <section class="sl-drawer-panel" role="dialog" aria-modal="true" aria-label="Sponsor detail">
+              <button class="sl-drawer-close" id="slDrawerClose" type="button">关闭</button>
+              <div id="slDrawerContent"></div>
+            </section>
+          </aside>
+        </section>
+
         <section class="view-panel" id="precedentsView" aria-label="Precedent search">
           <div class="coming-grid">
             <div class="feature-slab">
@@ -553,7 +683,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260630-all-listing-days-1"></script>
+    <script src="app.js?v=20260703-sponsor-integrated-1"></script>
+    <script src="sponsor_leaderboard_demo.js?v=20260703-integrated-1"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
