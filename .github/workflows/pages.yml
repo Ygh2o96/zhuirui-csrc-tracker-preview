@@ -32,10 +32,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _site/assets/pipeline _site/data
-          cp index.html app.js styles.css CNAME .nojekyll _site/
+          cp index.html sponsor-leaderboard.html app.js styles.css sponsor_leaderboard_demo.css sponsor_leaderboard_demo.js CNAME .nojekyll _site/
           cp assets/favicon.svg _site/assets/
           cp assets/pipeline/*.png _site/assets/pipeline/
           cp data/csrc_tracker_public.json _site/data/
+          cp data/sponsor_leaderboard_demo.json _site/data/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
