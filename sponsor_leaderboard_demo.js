@@ -40,13 +40,14 @@ const metricLabels = {
   aShareMarketCapRmbBnSum: "A股市值",
   lifecycleMedianDays: "A1→上市中位数",
   type6TotalCount: "六号牌人数",
-  type6RepPerProject: "Rep/项目",
-  type6TotalPerProject: "总六号牌/项目",
-  projectsPerType6Rep: "项目/六号牌Rep",
-  projectsPerType6RO: "项目/RO",
-  projectsPerType6Total: "项目/六号牌总人数",
-  type6TotalPerActiveProject: "总六号牌/申请中项目",
-  activeProjectsPerType6Total: "申请中项目/总六号牌",
+  type6RepPerProject: "每项目Rep",
+  type6ROPerProject: "每项目RO",
+  type6TotalPerProject: "每项目六号牌",
+  projectsPerType6Rep: "每名Rep项目数",
+  projectsPerType6RO: "每名RO项目数",
+  projectsPerType6Total: "每名六号牌项目数",
+  type6TotalPerActiveProject: "每申请中项目六号牌",
+  activeProjectsPerType6Total: "每名六号牌申请中项目",
 };
 
 const creditLabels = {
@@ -155,6 +156,7 @@ function metricSortAsc(metric) {
     "topIndustry",
     "lifecycleMedianDays",
     "type6RepPerProject",
+    "type6ROPerProject",
     "type6TotalPerProject",
     "type6TotalPerActiveProject",
   ]).has(metric);
@@ -373,6 +375,7 @@ function aggregateFacts(facts) {
       projectsPerType6Rep: type6RepCount && type6RepCount > 0 ? projectCount / type6RepCount : null,
       type6RepPerProject: projectCount > 0 && type6RepCount ? type6RepCount / projectCount : null,
       projectsPerType6RO: type6ROCount && type6ROCount > 0 ? projectCount / type6ROCount : null,
+      type6ROPerProject: projectCount > 0 && type6ROCount ? type6ROCount / projectCount : null,
       projectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? projectCount / type6TotalCount : null,
       type6TotalPerProject: projectCount > 0 && type6TotalCount ? type6TotalCount / projectCount : null,
       type6TotalPerActiveProject: activeCount > 0 && type6TotalCount ? type6TotalCount / activeCount : null,
@@ -626,43 +629,49 @@ function metricDisplay(row) {
   if (state.metric === "projectsPerType6Rep") {
     return {
       main: formatRatio(row.projectsPerType6Rep),
-      sub: isNumber(row.type6RepCount) ? `项目/Rep · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
+      sub: isNumber(row.type6RepCount) ? `每名Rep覆盖项目数 · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
     };
   }
   if (state.metric === "type6RepPerProject") {
     return {
       main: formatRatio(row.type6RepPerProject),
-      sub: isNumber(row.type6RepCount) ? `Rep/项目 · 越低越精简 · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
+      sub: isNumber(row.type6RepCount) ? `每个项目平均需要多少Rep · 越低越精简 · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
+    };
+  }
+  if (state.metric === "type6ROPerProject") {
+    return {
+      main: formatRatio(row.type6ROPerProject),
+      sub: isNumber(row.type6ROCount) ? `每个项目平均需要多少RO · 越低越精简 · RO ${compactNumber(row.type6ROCount, 0)}` : "暂无六号牌RO",
     };
   }
   if (state.metric === "type6TotalPerProject") {
     return {
       main: formatRatio(row.type6TotalPerProject),
-      sub: isNumber(row.type6TotalCount) ? `总六号牌/项目 · 越低越精简 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
+      sub: isNumber(row.type6TotalCount) ? `每个项目平均需要多少六号牌人员 · 越低越精简 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
   if (state.metric === "projectsPerType6RO") {
     return {
       main: formatRatio(row.projectsPerType6RO),
-      sub: isNumber(row.type6ROCount) ? `项目/RO · RO ${compactNumber(row.type6ROCount, 0)}` : "暂无六号牌RO",
+      sub: isNumber(row.type6ROCount) ? `每名RO覆盖项目数 · RO ${compactNumber(row.type6ROCount, 0)}` : "暂无六号牌RO",
     };
   }
   if (state.metric === "projectsPerType6Total") {
     return {
       main: formatRatio(row.projectsPerType6Total),
-      sub: isNumber(row.type6TotalCount) ? `项目/六号牌总人数 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
+      sub: isNumber(row.type6TotalCount) ? `每名六号牌人员覆盖项目数 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
   if (state.metric === "type6TotalPerActiveProject") {
     return {
       main: formatRatio(row.type6TotalPerActiveProject),
-      sub: isNumber(row.type6TotalCount) ? `总六号牌/申请中项目 · 越低越精简 · 申请中 ${compactCredit(row.activeCount)}` : "暂无六号牌人数",
+      sub: isNumber(row.type6TotalCount) ? `每个申请中项目平均需要多少六号牌人员 · 越低越精简 · 申请中 ${compactCredit(row.activeCount)}` : "暂无六号牌人数",
     };
   }
   if (state.metric === "activeProjectsPerType6Total") {
     return {
       main: formatRatio(row.activeProjectsPerType6Total),
-      sub: isNumber(row.type6TotalCount) ? `申请中项目/总六号牌 · 越高负荷越重 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
+      sub: isNumber(row.type6TotalCount) ? `每名六号牌人员正在覆盖多少申请中项目 · 越高负荷越重 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
   return {
@@ -787,10 +796,10 @@ function metricCards(rows) {
       note: type6Leader ? type6Display(type6Leader).sub : "Webb SFC Type 6",
     },
     {
-      label: "累计人效第一",
+      label: "每项目人手最少",
       value: peopleEfficiencyLeader ? peopleEfficiencyLeader.displayNameZh : "样本不足",
       note: peopleEfficiencyLeader
-        ? `${formatRatio(peopleEfficiencyLeader.type6TotalPerProject)} 人/项目 · ${formatRatio(peopleEfficiencyLeader.projectsPerType6Total)} 项目/人`
+        ? `每项目 ${formatRatio(peopleEfficiencyLeader.type6TotalPerProject)} 名六号牌 · Rep ${formatRatio(peopleEfficiencyLeader.type6RepPerProject)}/项目 · RO ${formatRatio(peopleEfficiencyLeader.type6ROPerProject)}/项目`
         : "需匹配六号牌人数及项目样本",
     },
     {
@@ -801,10 +810,10 @@ function metricCards(rows) {
         : "需匹配六号牌人数及申请中项目",
     },
     {
-      label: "RO杠杆第一",
+      label: "RO负荷最高",
       value: roLeverageLeader ? roLeverageLeader.displayNameZh : "样本不足",
       note: roLeverageLeader
-        ? `${formatRatio(roLeverageLeader.projectsPerType6RO)} 项目/RO · RO ${compactNumber(roLeverageLeader.type6ROCount || 0, 0)}`
+        ? `每名RO ${formatRatio(roLeverageLeader.projectsPerType6RO)} 个项目 · 每项目 ${formatRatio(roLeverageLeader.type6ROPerProject)} 名RO`
         : "需匹配负责人员RO样本",
     },
   ];
@@ -931,13 +940,14 @@ function drawerStats(row) {
     ["已上市", compactCredit(row.listedCount)],
     ["A+H", compactCredit(row.ahCount)],
     ["六号牌", type6Display(row).main],
-    ["Rep/项目", formatRatio(row.type6RepPerProject)],
-    ["总六号牌/项目", formatRatio(row.type6TotalPerProject)],
-    ["项目/六号牌Rep", formatRatio(row.projectsPerType6Rep)],
-    ["项目/RO", formatRatio(row.projectsPerType6RO)],
-    ["项目/六号牌总人数", formatRatio(row.projectsPerType6Total)],
-    ["总六号牌/申请中项目", formatRatio(row.type6TotalPerActiveProject)],
-    ["申请中项目/总六号牌", formatRatio(row.activeProjectsPerType6Total)],
+    ["每项目Rep", formatRatio(row.type6RepPerProject)],
+    ["每项目RO", formatRatio(row.type6ROPerProject)],
+    ["每项目六号牌", formatRatio(row.type6TotalPerProject)],
+    ["每名Rep项目数", formatRatio(row.projectsPerType6Rep)],
+    ["每名RO项目数", formatRatio(row.projectsPerType6RO)],
+    ["每名六号牌项目数", formatRatio(row.projectsPerType6Total)],
+    ["每申请中项目六号牌", formatRatio(row.type6TotalPerActiveProject)],
+    ["每名六号牌申请中项目", formatRatio(row.activeProjectsPerType6Total)],
     ["上市日港股市值", formatCap(row.listingMarketCapHkdBnSum, "HK$")],
     ["A1日A股市值", formatCap(row.aShareMarketCapRmbBnSum, "¥")],
     ["A1→上市中位数", formatDays(row.listedLifecycleMedianDays, row.listedLifecycleN)],
