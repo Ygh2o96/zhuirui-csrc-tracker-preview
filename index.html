@@ -487,17 +487,20 @@
                   <option value="lifecycleMedianDays">A1→上市中位数（已上市）</option>
                   <option value="type6TotalCount">六号牌人数</option>
                   <option value="type6RepPerProject">Rep/项目</option>
+                  <option value="type6TotalPerProject">总六号牌/项目</option>
                   <option value="projectsPerType6Rep">项目/六号牌Rep</option>
                   <option value="projectsPerType6RO">项目/RO</option>
                   <option value="projectsPerType6Total">项目/六号牌总人数</option>
+                  <option value="type6TotalPerActiveProject">总六号牌/申请中项目</option>
+                  <option value="activeProjectsPerType6Total">申请中项目/总六号牌</option>
                 </select>
               </label>
               <label>
-                <span>信用口径</span>
+                <span>统计口径</span>
                 <select id="slCreditSelect" name="slCreditSelect" autocomplete="off">
-                  <option value="creditAllFull">全额计入</option>
-                  <option value="creditEqual">平均拆分</option>
-                  <option value="creditFirstNamed">首名计入</option>
+                  <option value="creditAllFull">具名保荐人全部计入</option>
+                  <option value="creditFirstNamed">只计牵头/首名保荐人</option>
+                  <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
               <label>
@@ -553,17 +556,17 @@
                 <thead>
                   <tr>
                     <th>排名</th>
-                    <th>保荐人</th>
-                    <th>性质</th>
-                    <th>六号牌</th>
-                    <th>项目</th>
-                    <th>申请中</th>
-                    <th>已上市</th>
-                    <th>A+H</th>
-                    <th id="slPrimaryMetricHead">排名指标</th>
-                    <th id="slMarketCapHead">市值</th>
-                    <th title="已上市项目显示 A1→上市最终周期；申请中项目显示截至快照日已过天数">周期 / 已过</th>
-                    <th>行业</th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="sponsorName"><span class="sl-th-label">保荐人</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="sponsorNature"><span class="sl-th-label">性质</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="type6TotalCount"><span class="sl-th-label">六号牌</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="projectCount"><span class="sl-th-label">项目</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="activeCount"><span class="sl-th-label">申请中</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="listedCount"><span class="sl-th-label">已上市</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="ahCount"><span class="sl-th-label">A+H</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th id="slPrimaryMetricHead"><button class="sl-th-sort" type="button" data-sort-key="__metric"><span class="sl-th-label">排名指标</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th id="slMarketCapHead"><button class="sl-th-sort" type="button" data-sort-key="__marketCap"><span class="sl-th-label">市值</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th title="已上市项目显示 A1→上市最终周期；申请中项目显示截至快照日已过天数"><button class="sl-th-sort" type="button" data-sort-key="lifecycleMedianDays"><span class="sl-th-label">周期 / 已过</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th><button class="sl-th-sort" type="button" data-sort-key="topIndustry"><span class="sl-th-label">行业</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
                   </tr>
                 </thead>
                 <tbody id="slLeaderboardRows"></tbody>

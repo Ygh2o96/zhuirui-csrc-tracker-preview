@@ -242,6 +242,33 @@
   background: #f8faf8;
 }
 
+.sponsor-league .sl-th-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.sponsor-league .sl-th-sort:hover,
+.sponsor-league .sl-th-sort.is-active {
+  color: var(--teal);
+}
+
+.sponsor-league .sl-sort-indicator {
+  display: inline-block;
+  min-width: 10px;
+  color: var(--teal);
+  font-size: 11px;
+  line-height: 1;
+}
+
 .sponsor-league .sl-table td {
   font-size: 12px;
 }

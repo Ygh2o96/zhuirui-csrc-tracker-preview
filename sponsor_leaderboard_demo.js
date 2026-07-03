@@ -14,6 +14,9 @@ const state = {
   search: "",
   preset: "all",
   metric: "projectCount",
+  sortKey: "projectCount",
+  sortHeaderKey: "projectCount",
+  sortDir: null,
   credit: "creditAllFull",
   stage: "all",
   type: "all",
@@ -38,15 +41,25 @@ const metricLabels = {
   lifecycleMedianDays: "A1→上市中位数",
   type6TotalCount: "六号牌人数",
   type6RepPerProject: "Rep/项目",
+  type6TotalPerProject: "总六号牌/项目",
   projectsPerType6Rep: "项目/六号牌Rep",
   projectsPerType6RO: "项目/RO",
   projectsPerType6Total: "项目/六号牌总人数",
+  type6TotalPerActiveProject: "总六号牌/申请中项目",
+  activeProjectsPerType6Total: "申请中项目/总六号牌",
 };
 
 const creditLabels = {
-  creditAllFull: "全额计入",
-  creditEqual: "平均拆分",
-  creditFirstNamed: "首名计入",
+  creditAllFull: "具名全部计入",
+  creditEqual: "按保荐人数量平分",
+  creditFirstNamed: "只计牵头/首名",
+};
+
+const sortLabels = {
+  ...metricLabels,
+  sponsorName: "保荐人",
+  sponsorNature: "性质",
+  topIndustry: "行业",
 };
 
 function $(id) {
@@ -136,12 +149,44 @@ function addDays(dateString, days) {
 }
 
 function metricSortAsc(metric) {
-  return metric === "lifecycleMedianDays";
+  return new Set([
+    "sponsorName",
+    "sponsorNature",
+    "topIndustry",
+    "lifecycleMedianDays",
+    "type6RepPerProject",
+    "type6TotalPerProject",
+    "type6TotalPerActiveProject",
+  ]).has(metric);
+}
+
+function effectiveSortDir(metric = state.sortKey) {
+  return state.sortDir || (metricSortAsc(metric) ? "asc" : "desc");
+}
+
+function resolveHeaderSortKey(rawKey) {
+  if (rawKey === "__metric") return state.metric;
+  if (rawKey === "__marketCap") {
+    const mode = marketCapMode();
+    return mode === "listed" || mode === "mixed" ? "listingMarketCapHkdBnSum" : "aShareMarketCapRmbBnSum";
+  }
+  return rawKey;
 }
 
 function metricValue(row, metric = state.metric) {
+  if (metric === "sponsorName") return row.displayNameZh || row.displayNameEn || "";
+  if (metric === "sponsorNature") return row.sponsorNature || "";
+  if (metric === "topIndustry") return row.topIndustries?.[0] || "";
   if (metric === "lifecycleMedianDays") return row.listedLifecycleMedianDays;
   return row[metric];
+}
+
+function missingSortValue(row, metric, value) {
+  if (metric === "sponsorName" || metric === "sponsorNature" || metric === "topIndustry") {
+    return !String(value || "").trim();
+  }
+  if (metric === "lifecycleMedianDays") return !isNumber(value) || !row.listedLifecycleN;
+  return !isNumber(value);
 }
 
 function factCredit(fact) {
@@ -280,6 +325,7 @@ function aggregateFacts(facts) {
       .map((fact) => fact.aShareMarketCapAtA1RmbBn)
       .filter(isNumber);
     const projectCount = weightedCount(sponsorFacts, () => true);
+    const activeCount = weightedCount(sponsorFacts, (fact) => fact.hkexStage === "applying");
     const type6RepCount = isNumber(firm.type6RepCount) ? firm.type6RepCount : null;
     const type6ROCount = isNumber(firm.type6ROCount) ? firm.type6ROCount : null;
     const type6TotalCount = isNumber(firm.type6TotalCount) ? firm.type6TotalCount : null;
@@ -289,7 +335,7 @@ function aggregateFacts(facts) {
       facts: sponsorFacts,
       searchSponsorMatch: firmMatchesSearch(firm, query),
       projectCount,
-      activeCount: weightedCount(sponsorFacts, (fact) => fact.hkexStage === "applying"),
+      activeCount,
       listedCount: weightedCount(sponsorFacts, (fact) => fact.hkexStage === "listed"),
       noticeCount: weightedCount(sponsorFacts, (fact) => fact.status === "notice_issued"),
       ahCount: weightedCount(sponsorFacts, (fact) => fact.isAH),
@@ -328,6 +374,9 @@ function aggregateFacts(facts) {
       type6RepPerProject: projectCount > 0 && type6RepCount ? type6RepCount / projectCount : null,
       projectsPerType6RO: type6ROCount && type6ROCount > 0 ? projectCount / type6ROCount : null,
       projectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? projectCount / type6TotalCount : null,
+      type6TotalPerProject: projectCount > 0 && type6TotalCount ? type6TotalCount / projectCount : null,
+      type6TotalPerActiveProject: activeCount > 0 && type6TotalCount ? type6TotalCount / activeCount : null,
+      activeProjectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? activeCount / type6TotalCount : null,
       topIndustries: topIndustries(sponsorFacts),
     });
   }
@@ -340,12 +389,17 @@ function compareRows(a, b) {
     const bSponsorMatch = !!b.searchSponsorMatch;
     if (aSponsorMatch !== bSponsorMatch) return aSponsorMatch ? -1 : 1;
   }
-  const av = metricValue(a);
-  const bv = metricValue(b);
-  const aMissing = !isNumber(av) || (state.metric === "lifecycleMedianDays" && !a.listedLifecycleN);
-  const bMissing = !isNumber(bv) || (state.metric === "lifecycleMedianDays" && !b.listedLifecycleN);
+  const sortKey = state.sortKey || state.metric;
+  const av = metricValue(a, sortKey);
+  const bv = metricValue(b, sortKey);
+  const aMissing = missingSortValue(a, sortKey, av);
+  const bMissing = missingSortValue(b, sortKey, bv);
   if (aMissing !== bMissing) return aMissing ? 1 : -1;
-  if (!aMissing && av !== bv) return metricSortAsc(state.metric) ? av - bv : bv - av;
+  const sortFactor = effectiveSortDir(sortKey) === "asc" ? 1 : -1;
+  if (!aMissing && av !== bv) {
+    if (isNumber(av) && isNumber(bv)) return (av - bv) * sortFactor;
+    return String(av).localeCompare(String(bv), "zh-Hans") * sortFactor;
+  }
   if (b.projectCount !== a.projectCount) return b.projectCount - a.projectCount;
   return String(a.displayNameEn).localeCompare(String(b.displayNameEn));
 }
@@ -426,6 +480,10 @@ function metaToday() {
 function enforceMetricCompatibility() {
   if (state.stage === "applying" && state.metric === "lifecycleMedianDays") {
     state.metric = "activeCount";
+    if (state.sortKey === "lifecycleMedianDays") state.sortKey = "activeCount";
+    if (state.sortHeaderKey === "__metric") state.sortHeaderKey = "__metric";
+    if (state.sortHeaderKey === "lifecycleMedianDays") state.sortHeaderKey = "activeCount";
+    state.sortDir = null;
   }
 }
 
@@ -485,11 +543,18 @@ function syncControls() {
   viewRoot.querySelectorAll(".preset").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.preset === state.preset);
   });
+  syncSortHeaders();
 }
 
 function readControls() {
+  const nextMetric = els.metricSelect.value;
+  if (nextMetric !== state.metric) {
+    state.metric = nextMetric;
+    state.sortKey = nextMetric;
+    state.sortHeaderKey = "__metric";
+    state.sortDir = null;
+  }
   state.search = els.searchInput.value;
-  state.metric = els.metricSelect.value;
   state.credit = els.creditSelect.value;
   state.stage = els.stageSelect.value;
   state.type = els.typeSelect.value;
@@ -499,6 +564,39 @@ function readControls() {
   state.dateTo = els.dateTo.value;
   state.preset = "custom";
   enforceMetricCompatibility();
+  if (!state.sortKey) state.sortKey = state.metric;
+  syncControls();
+  render();
+}
+
+function sortLabel(sortKey = state.sortKey) {
+  if (sortKey === "listingMarketCapHkdBnSum" || sortKey === "aShareMarketCapRmbBnSum") return marketCapHeaderText();
+  return sortLabels[sortKey] || metricLabels[sortKey] || "排名指标";
+}
+
+function syncSortHeaders() {
+  viewRoot.querySelectorAll(".sl-th-sort").forEach((button) => {
+    const sortKey = resolveHeaderSortKey(button.dataset.sortKey);
+    const active = button.dataset.sortKey === state.sortHeaderKey && sortKey === state.sortKey;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+    const th = button.closest("th");
+    if (th) th.setAttribute("aria-sort", active ? (effectiveSortDir(sortKey) === "asc" ? "ascending" : "descending") : "none");
+    const indicator = button.querySelector(".sl-sort-indicator");
+    if (indicator) indicator.textContent = active ? (effectiveSortDir(sortKey) === "asc" ? "↑" : "↓") : "";
+  });
+}
+
+function setSortFromHeader(rawKey) {
+  const nextKey = resolveHeaderSortKey(rawKey);
+  if (rawKey === state.sortHeaderKey && nextKey === state.sortKey) {
+    state.sortDir = effectiveSortDir(nextKey) === "asc" ? "desc" : "asc";
+  } else {
+    state.sortKey = nextKey;
+    state.sortHeaderKey = rawKey;
+    state.sortDir = null;
+  }
+  state.preset = "custom";
   syncControls();
   render();
 }
@@ -534,7 +632,13 @@ function metricDisplay(row) {
   if (state.metric === "type6RepPerProject") {
     return {
       main: formatRatio(row.type6RepPerProject),
-      sub: isNumber(row.type6RepCount) ? `Rep/项目 · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
+      sub: isNumber(row.type6RepCount) ? `Rep/项目 · 越低越精简 · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
+    };
+  }
+  if (state.metric === "type6TotalPerProject") {
+    return {
+      main: formatRatio(row.type6TotalPerProject),
+      sub: isNumber(row.type6TotalCount) ? `总六号牌/项目 · 越低越精简 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
   if (state.metric === "projectsPerType6RO") {
@@ -547,6 +651,18 @@ function metricDisplay(row) {
     return {
       main: formatRatio(row.projectsPerType6Total),
       sub: isNumber(row.type6TotalCount) ? `项目/六号牌总人数 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
+    };
+  }
+  if (state.metric === "type6TotalPerActiveProject") {
+    return {
+      main: formatRatio(row.type6TotalPerActiveProject),
+      sub: isNumber(row.type6TotalCount) ? `总六号牌/申请中项目 · 越低越精简 · 申请中 ${compactCredit(row.activeCount)}` : "暂无六号牌人数",
+    };
+  }
+  if (state.metric === "activeProjectsPerType6Total") {
+    return {
+      main: formatRatio(row.activeProjectsPerType6Total),
+      sub: isNumber(row.type6TotalCount) ? `申请中项目/总六号牌 · 越高负荷越重 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
   return {
@@ -635,8 +751,11 @@ function metricCards(rows) {
     .filter((row) => row.firmScope !== "rollup" && isNumber(row.type6TotalCount))
     .sort((a, b) => b.type6TotalCount - a.type6TotalCount || b.projectCount - a.projectCount)[0];
   const peopleEfficiencyLeader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.projectsPerType6Total) && row.projectCount > 0)
-    .sort((a, b) => b.projectsPerType6Total - a.projectsPerType6Total || b.projectCount - a.projectCount)[0];
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.type6TotalPerProject) && row.projectCount > 0)
+    .sort((a, b) => a.type6TotalPerProject - b.type6TotalPerProject || b.projectCount - a.projectCount)[0];
+  const liveLoadLeader = [...rows]
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.activeProjectsPerType6Total) && row.activeCount > 0)
+    .sort((a, b) => b.activeProjectsPerType6Total - a.activeProjectsPerType6Total || b.activeCount - a.activeCount)[0];
   const roLeverageLeader = [...rows]
     .filter((row) => row.firmScope !== "rollup" && isNumber(row.projectsPerType6RO) && row.projectCount > 0)
     .sort((a, b) => b.projectsPerType6RO - a.projectsPerType6RO || b.projectCount - a.projectCount)[0];
@@ -668,11 +787,18 @@ function metricCards(rows) {
       note: type6Leader ? type6Display(type6Leader).sub : "Webb SFC Type 6",
     },
     {
-      label: "人效第一",
+      label: "累计人效第一",
       value: peopleEfficiencyLeader ? peopleEfficiencyLeader.displayNameZh : "样本不足",
       note: peopleEfficiencyLeader
-        ? `${formatRatio(peopleEfficiencyLeader.projectsPerType6Total)} 项目/六号牌总人数 · 每项目 ${formatRatio(peopleEfficiencyLeader.type6TotalCount / peopleEfficiencyLeader.projectCount)} 人`
+        ? `${formatRatio(peopleEfficiencyLeader.type6TotalPerProject)} 人/项目 · ${formatRatio(peopleEfficiencyLeader.projectsPerType6Total)} 项目/人`
         : "需匹配六号牌人数及项目样本",
+    },
+    {
+      label: "申请中负荷最高",
+      value: liveLoadLeader ? liveLoadLeader.displayNameZh : "样本不足",
+      note: liveLoadLeader
+        ? `${formatRatio(liveLoadLeader.activeProjectsPerType6Total)} 申请中项目/人 · ${formatRatio(liveLoadLeader.type6TotalPerActiveProject)} 人/申请中项目`
+        : "需匹配六号牌人数及申请中项目",
     },
     {
       label: "RO杠杆第一",
@@ -774,16 +900,17 @@ function render() {
   state.activeFacts = facts;
   state.activeRows = rows;
   els.metricStrip.innerHTML = metricCards(rows);
-  els.primaryMetricHead.textContent = metricLabels[state.metric] || "排名指标";
+  els.primaryMetricHead.querySelector(".sl-th-label").textContent = metricLabels[state.metric] || "排名指标";
   els.marketCapHead.hidden = !showMarketCap;
-  els.marketCapHead.textContent = marketCapHeaderText();
+  els.marketCapHead.querySelector(".sl-th-label").textContent = marketCapHeaderText();
   const rankingNote = " · A1→上市统计仅纳入已上市项目；申请中为 elapsed/freshness";
   const syntheticFactCount = facts.filter((fact) => fact.isSyntheticRollup).length;
   const baseFactCount = facts.length - syntheticFactCount;
   const factText = syntheticFactCount
     ? `${compactNumber(baseFactCount)} 原始 + ${compactNumber(syntheticFactCount)} 合并 fact`
     : `${compactNumber(facts.length)} 条计分 fact`;
-  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]}${rankingNote}`;
+  const sortNote = ` · 按${sortLabel()}${effectiveSortDir() === "asc" ? "升序" : "降序"}`;
+  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]}${sortNote}${rankingNote}`;
   if (!rows.length) {
     els.leaderboardRows.innerHTML = `<tr><td colspan="${showMarketCap ? 12 : 11}" class="empty-state">没有符合条件的样本</td></tr>`;
     return;
@@ -805,9 +932,12 @@ function drawerStats(row) {
     ["A+H", compactCredit(row.ahCount)],
     ["六号牌", type6Display(row).main],
     ["Rep/项目", formatRatio(row.type6RepPerProject)],
+    ["总六号牌/项目", formatRatio(row.type6TotalPerProject)],
     ["项目/六号牌Rep", formatRatio(row.projectsPerType6Rep)],
     ["项目/RO", formatRatio(row.projectsPerType6RO)],
     ["项目/六号牌总人数", formatRatio(row.projectsPerType6Total)],
+    ["总六号牌/申请中项目", formatRatio(row.type6TotalPerActiveProject)],
+    ["申请中项目/总六号牌", formatRatio(row.activeProjectsPerType6Total)],
     ["上市日港股市值", formatCap(row.listingMarketCapHkdBnSum, "HK$")],
     ["A1日A股市值", formatCap(row.aShareMarketCapRmbBnSum, "¥")],
     ["A1→上市中位数", formatDays(row.listedLifecycleMedianDays, row.listedLifecycleN)],
@@ -921,9 +1051,15 @@ function bindControls() {
   viewRoot.querySelectorAll(".preset").forEach((button) => {
     button.addEventListener("click", () => setPreset(button.dataset.preset));
   });
+  viewRoot.querySelectorAll(".sl-th-sort").forEach((button) => {
+    button.addEventListener("click", () => setSortFromHeader(button.dataset.sortKey));
+  });
   els.clearButton.addEventListener("click", () => {
     state.search = "";
     state.metric = "projectCount";
+    state.sortKey = "projectCount";
+    state.sortHeaderKey = "projectCount";
+    state.sortDir = null;
     state.credit = "creditAllFull";
     setPreset("all");
   });
