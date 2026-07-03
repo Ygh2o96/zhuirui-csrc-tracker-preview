@@ -1711,7 +1711,7 @@ function render() {
   renderRows();
 }
 
-document.querySelectorAll(".nav-item").forEach((button) => {
+document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
   button.addEventListener("click", () => switchView(button.dataset.view));
 });
 

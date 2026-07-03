@@ -206,6 +206,7 @@ select {
   color: #d7e0e6;
   background: transparent;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
 }
 
