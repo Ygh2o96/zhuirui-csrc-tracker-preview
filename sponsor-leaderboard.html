@@ -10,43 +10,64 @@
     />
     <meta name="theme-color" content="#f3f5f1" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260703-live-3" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260703-live-4" />
   </head>
   <body>
-    <header class="site-nav" aria-label="YingSight navigation">
-      <div class="site-nav-inner">
-        <a class="site-brand" href="index.html" aria-label="返回追瑞监管节奏追踪">
-          <span class="site-brand-mark" aria-hidden="true">追</span>
-          <span><strong>追瑞</strong><small>AI-native banker hub</small></span>
-        </a>
-        <nav class="site-nav-links" aria-label="Primary sections">
-          <a href="index.html">监管节奏追踪</a>
-          <a href="index.html?view=pipeline">数据管线</a>
-          <a class="is-active" href="sponsor-leaderboard.html" aria-current="page">保荐龙虎榜</a>
-          <a href="index.html?view=precedents">案例检索</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">追</div>
+          <div>
+            <div class="brand-name">追瑞</div>
+            <div class="brand-subtitle">AI-native banker hub</div>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Primary sections">
+          <a class="nav-item" href="index.html">
+            <span class="nav-icon" aria-hidden="true">监</span>
+            <span><b>监管节奏追踪</b><small>Regulatory Pace</small></span>
+          </a>
+          <a class="nav-item" href="index.html?view=pipeline">
+            <span class="nav-icon" aria-hidden="true">流</span>
+            <span><b>数据管线</b><small>Data Pipeline</small></span>
+          </a>
+          <a class="nav-item is-active" href="sponsor-leaderboard.html" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">榜</span>
+            <span><b>保荐龙虎榜</b><small>Sponsor League</small></span>
+          </a>
+          <a class="nav-item" href="index.html?view=precedents">
+            <span class="nav-icon" aria-hidden="true">例</span>
+            <span><b>案例检索</b><small>Precedents</small></span>
+          </a>
         </nav>
-      </div>
-    </header>
 
-    <main class="league-shell">
-      <header class="league-header">
-        <div>
-          <p class="eyebrow">追瑞 · Sponsor intelligence</p>
-          <h1>保荐人龙虎榜 <span>Public beta</span></h1>
-          <p class="coverage" id="coverageText">正在载入…</p>
+        <div class="sidebar-note">
+          <span class="status-dot"></span>
+          <span>公开预览 · 自动更新</span>
         </div>
-        <div class="header-panel">
-          <strong id="firmCount">--</strong>
-          <span>个保荐/合并口径</span>
-          <small id="generatedAt">--</small>
-        </div>
-      </header>
 
-      <section class="notice-strip" id="demoNote"></section>
+      </aside>
 
-      <section class="metric-strip" id="metricStrip" aria-label="Sponsor summary"></section>
+      <main class="workspace league-shell" id="leagueMain">
+        <header class="league-header">
+          <div>
+            <p class="eyebrow">资本市场情报 · Sponsor intelligence</p>
+            <h1>保荐人龙虎榜 <span>Public beta</span></h1>
+            <p class="coverage" id="coverageText">正在载入…</p>
+          </div>
+          <div class="header-panel">
+            <strong id="firmCount">--</strong>
+            <span>个保荐/合并口径</span>
+            <small id="generatedAt">--</small>
+          </div>
+        </header>
 
-      <section class="controls" aria-label="Sponsor leaderboard filters">
+        <section class="notice-strip" id="demoNote"></section>
+
+        <section class="metric-strip" id="metricStrip" aria-label="Sponsor summary"></section>
+
+        <section class="controls" aria-label="Sponsor leaderboard filters">
         <div class="search-field">
           <span aria-hidden="true">搜</span>
           <input id="searchInput" type="search" autocomplete="off" placeholder="搜索保荐人、项目、行业…" />
@@ -123,9 +144,9 @@
             <input id="dateTo" type="date" autocomplete="off" />
           </label>
         </div>
-      </section>
+        </section>
 
-      <section class="league-board">
+        <section class="league-board">
         <div class="board-title">
           <div>
             <h2>排行榜</h2>
@@ -154,8 +175,9 @@
             <tbody id="leaderboardRows"></tbody>
           </table>
         </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
 
     <aside class="drawer" id="drawer" aria-hidden="true">
       <button class="drawer-backdrop" id="drawerBackdrop" type="button" aria-label="关闭"></button>

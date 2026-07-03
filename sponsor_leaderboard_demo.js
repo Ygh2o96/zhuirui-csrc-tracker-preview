@@ -625,6 +625,12 @@ function metricCards(rows) {
   const type6Leader = [...rows]
     .filter((row) => row.firmScope !== "rollup" && isNumber(row.type6TotalCount))
     .sort((a, b) => b.type6TotalCount - a.type6TotalCount || b.projectCount - a.projectCount)[0];
+  const peopleEfficiencyLeader = [...rows]
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.projectsPerType6Total) && row.projectCount > 0)
+    .sort((a, b) => b.projectsPerType6Total - a.projectsPerType6Total || b.projectCount - a.projectCount)[0];
+  const roLeverageLeader = [...rows]
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.projectsPerType6RO) && row.projectCount > 0)
+    .sort((a, b) => b.projectsPerType6RO - a.projectsPerType6RO || b.projectCount - a.projectCount)[0];
 
   const cards = [
     {
@@ -651,6 +657,20 @@ function metricCards(rows) {
       label: "六号牌人数第一",
       value: type6Leader ? type6Leader.displayNameZh : "待接入",
       note: type6Leader ? type6Display(type6Leader).sub : "Webb SFC Type 6",
+    },
+    {
+      label: "人效第一",
+      value: peopleEfficiencyLeader ? peopleEfficiencyLeader.displayNameZh : "样本不足",
+      note: peopleEfficiencyLeader
+        ? `${formatRatio(peopleEfficiencyLeader.projectsPerType6Total)} 项目/六号牌总人数 · 每项目 ${formatRatio(peopleEfficiencyLeader.type6TotalCount / peopleEfficiencyLeader.projectCount)} 人`
+        : "需匹配六号牌人数及项目样本",
+    },
+    {
+      label: "RO杠杆第一",
+      value: roLeverageLeader ? roLeverageLeader.displayNameZh : "样本不足",
+      note: roLeverageLeader
+        ? `${formatRatio(roLeverageLeader.projectsPerType6RO)} 项目/RO · RO ${compactNumber(roLeverageLeader.type6ROCount || 0, 0)}`
+        : "需匹配负责人员RO样本",
     },
   ];
   return cards
@@ -702,9 +722,7 @@ function rowHtml(row, index, showMarketCap) {
   const scopePill =
     row.firmScope === "rollup"
       ? '<span class="pill amber">合并口径</span>'
-      : row.firmScope === "legal_group"
-        ? '<span class="pill amber">集团合并</span>'
-        : "";
+      : "";
   const industries = row.topIndustries?.length
     ? row.topIndustries.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")
     : '<span class="pill">待披露</span>';

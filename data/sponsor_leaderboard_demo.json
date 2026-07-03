@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-03T08:40:03Z",
+    "generatedAt": "2026-07-03T09:37:23Z",
     "sourceGeneratedAt": "2026-07-03T11:57:05+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
@@ -206,8 +206,8 @@
       "sponsorId": "group-gtja-haitong",
       "sponsorTag": null,
       "displayNameZh": "国泰海通",
-      "displayNameEn": "GTJA Haitong",
-      "canonicalName": "Guotai Junan + Haitong International combined view",
+      "displayNameEn": "Guotai Haitong",
+      "canonicalName": "Guotai Haitong combined view",
       "legalNames": [
         "Haitong International Capital Limited",
         "Guotai Junan Capital Limited",
@@ -257,12 +257,12 @@
       "type6TotalCount": 334,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-03",
       "type6Quality": "fresh",
@@ -341,7 +341,7 @@
       "sponsorNature": "中资",
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
-      "firmScope": "legal_group",
+      "firmScope": "legal_entity",
       "projectCount": 60,
       "activeCount": 38,
       "listedCount": 22,
