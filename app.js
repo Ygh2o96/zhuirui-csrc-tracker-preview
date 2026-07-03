@@ -906,8 +906,6 @@ function dayMetricForField(field) {
 }
 
 function durationValueForDisplay(record, metric) {
-  if (metric === "a1ToListing" && record.listingDurationSampleEligible === false) return null;
-  if (metric === "a1ToNotice" && record.durationSampleEligible === false) return null;
   const key = dayMetricField(metric);
   return typeof record[key] === "number" ? record[key] : null;
 }
