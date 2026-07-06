@@ -975,7 +975,7 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   }
 
-  .sponsor-league .spk-picker label:nth-of-type(n + 4),
+  .sponsor-league .spk-picker label:nth-of-type(n + 3),
   .sponsor-league .spk-date-quick {
     grid-column: 1 / -1;
   }

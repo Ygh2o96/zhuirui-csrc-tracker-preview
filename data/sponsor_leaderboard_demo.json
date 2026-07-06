@@ -34,10 +34,10 @@
       "source": "renavon_webb_archive",
       "sourceUrl": "https://webbsite.renavon.com/dbpub/SFClicount.asp?a=6",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_type6_capacity.json",
-      "methodologyNote": "Webb/0xmd queries the SFC database and notes that licensees may be licensed to more than one firm; HKMA-regulated bank executive officers are not tracked on the same historical basis. Treat Type 6 counts as an indicative firm capacity proxy, not deal-team staffing. Where multiple Webb firm rows are summed for one sponsor group, individuals licensed to more than one entity may be double-counted.",
-      "dataFreshnessNote": "Renavon Webb archive is database-backed but the public archive banner says it is frozen; use as a capacity proxy until a fresh Webb/Renavon dump or API snapshot is available.",
+      "methodologyNote": "Webb/0xmd queries the SFC database and notes that licensees may be licensed to more than one firm; HKMA-regulated bank executive officers are not tracked on the same historical basis. Treat Type 6 counts as an indicative firm capacity indicator, not deal-team staffing. Where multiple Webb firm rows are summed for one sponsor group, individuals licensed to more than one entity may be double-counted.",
+      "dataFreshnessNote": "Renavon Webb archive is database-backed but the public archive banner says it is frozen; use as a capacity indicator until a fresh Webb/Renavon dump or API snapshot is available.",
       "archiveFrozenAt": "2025-10-10",
-      "noteZh": "六号牌人数仅作为保荐机构容量代理，不代表项目组实际配置。"
+      "noteZh": "六号牌人数仅作为保荐机构容量旁证，不代表项目组实际配置。"
     },
     "sponsorPrincipals": {
       "available": true,

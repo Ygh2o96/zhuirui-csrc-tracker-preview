@@ -74,52 +74,82 @@ const creditLabels = {
 const PUBLIC_ACTIVE_CAVEAT =
   "申请中项目仅指HKEX已公开A1的上市申请；密交、未公开pipeline及尚未公开的申报中项目不可见，因此SP/Rep负荷只是公开样本旁证。";
 
+function publicMethodologyText(value) {
+  if (!value) return "";
+  return String(value)
+    .replace(/capacity proxy/gi, "capacity indicator")
+    .replace(/\bproxy\b/gi, "indicator")
+    .replace(/容量代理/g, "容量旁证")
+    .replace(/间接测量/g, "旁证");
+}
+
 const SECTOR_OPTIONS = [
   { value: "all", label: "全部赛道" },
   {
     value: "tmt",
     label: "TMT/科技",
-    keywords: ["信息传输", "软件", "互联网", "ai", "数据", "云", "saas", "半导体", "集成电路", "电子制造", "芯片", "智能硬件", "激光雷达", "传感器", "游戏", "传媒", "文娱"],
+    keywords: ["信息传输", "信息技术", "软件", "互联网", "人工智能", "ai", "大模型", "数据", "云", "saas", "半导体", "半导体材料", "碳化硅", "集成电路", "电子制造", "芯片", "通信", "光模块", "网络设备", "计算机", "算法", "虚拟资产", "移动内容", "移动广告", "数字教育", "智能硬件", "激光雷达", "传感器", "游戏", "传媒", "文娱"],
   },
   {
     value: "healthcare",
     label: "医疗健康",
-    keywords: ["医药", "生物", "医疗", "器械", "卫生", "创新药", "adc", "肿瘤", "医院", "健康"],
+    keywords: ["医药", "医学", "药物", "药品", "制药", "制剂", "生物", "医疗", "器械", "卫生", "临床", "手术", "疫苗", "抗体", "细胞", "基因", "诊断", "检验", "影像", "创新药", "adc", "cdmo", "crdmo", "mirna", "肿瘤", "医院", "诊所", "护理", "健康", "慢病", "数字疗法"],
   },
   {
     value: "new_energy_auto",
     label: "新能源/汽车",
-    keywords: ["新能源", "汽车", "动力电池", "储能", "光伏", "智能驾驶", "自动驾驶", "座舱", "整车", "锂", "氢能", "电池"],
+    keywords: ["新能源", "汽车", "动力电池", "储能", "光伏", "智能驾驶", "自动驾驶", "座舱", "车载", "整车", "两轮车", "电动自行车", "锂", "氢能", "电池"],
   },
   {
     value: "consumer",
     label: "消费/零售",
-    keywords: ["消费", "食品", "饮料", "日化", "批发", "零售", "电商", "餐饮", "住宿", "农、林、牧、渔", "农林牧渔", "茶饮", "珠宝", "母婴", "卫生用品", "调味品"],
+    keywords: ["消费", "食品", "饮料", "日化", "批发", "零售", "电商", "餐饮", "住宿", "旅游", "文旅", "景区", "酒店", "休闲", "农、林、牧、渔", "农林牧渔", "养殖", "茶饮", "现制饮品", "白酒", "乳业", "奶", "珠宝", "母婴", "营养品", "卫生用品", "调味品", "家电", "超市", "零食", "香水", "护肤", "美妆"],
   },
   {
     value: "industrial",
     label: "工业/先进制造",
-    keywords: ["高端装备", "机器人", "智能制造", "制造业", "工业", "机械", "材料", "化工", "仪器", "设备", "自动化", "科学研究"],
+    keywords: ["高端装备", "机器人", "智能制造", "制造业", "工业", "机械", "工程机械", "材料", "化工", "仪器", "设备", "装备", "自动化", "科学研究"],
   },
   {
     value: "finance_property",
     label: "金融/地产",
-    keywords: ["金融", "保险", "证券", "支付", "房地产业", "房地产", "物业"],
+    keywords: ["金融", "保险", "证券", "支付", "私募股权", "放贷", "信贷", "房地产业", "房地产", "物业"],
   },
   {
     value: "logistics_infra",
     label: "物流/交通/基建",
-    keywords: ["物流", "运输", "供应链", "交通", "仓储", "建筑", "工程", "基建"],
+    keywords: ["物流", "运输", "供应链", "交通", "仓储", "建筑", "建筑工程", "营造工程", "机电工程", "安装工程", "消防工程", "基建"],
   },
   {
     value: "energy_resources_env",
     label: "能源/资源/环保",
-    keywords: ["采矿", "矿业", "资源", "电力", "燃气", "公用能源", "环保", "水利", "环境", "公共设施"],
+    keywords: ["采矿", "开采", "矿业", "矿产", "资源", "电力", "燃气", "公用能源", "环保", "水利", "环境", "公共设施"],
   },
   { value: "other", label: "其他/综合", keywords: [] },
 ];
 
 const SECTOR_BY_VALUE = new Map(SECTOR_OPTIONS.map((option) => [option.value, option]));
+
+const SECTOR_MATCH_PRIORITY = [
+  "healthcare",
+  "new_energy_auto",
+  "finance_property",
+  "tmt",
+  "consumer",
+  "logistics_infra",
+  "energy_resources_env",
+  "industrial",
+];
+
+const SECTOR_STRONG_SIGNALS = [
+  { value: "healthcare", keywords: ["创新药", "医药", "医学", "药品", "制剂", "医疗", "医院", "手术", "医疗机器人", "慢病", "数字疗法", "疫苗", "抗体", "基因", "诊断", "检验", "影像", "肿瘤"] },
+  { value: "new_energy_auto", keywords: ["新能源", "汽车", "智能驾驶", "自动驾驶", "车载", "动力电池", "储能", "光伏", "氢能", "电动两轮车", "电动自行车"] },
+  { value: "finance_property", keywords: ["金融", "保险", "证券", "支付", "私募股权", "放贷", "信贷"] },
+  { value: "tmt", keywords: ["半导体", "半导体材料", "碳化硅", "集成电路", "芯片", "人工智能", "大模型", "通信", "光模块", "网络设备", "计算机视觉", "算法", "软件", "saas", "虚拟资产", "移动广告", "移动内容", "数字教育"] },
+  { value: "industrial", keywords: ["高端装备", "机器人", "智能制造", "工程机械", "机械", "自动化", "仪器", "装备"] },
+  { value: "consumer", keywords: ["食品", "饮料", "白酒", "乳业", "茶饮", "餐饮", "旅游", "文旅", "景区", "酒店", "超市", "零食", "香水", "护肤", "美妆", "珠宝", "母婴", "养殖"] },
+  { value: "energy_resources_env", keywords: ["采矿", "开采", "矿业", "矿产", "电力", "燃气", "环保"] },
+];
 
 const SECTOR_METRIC_KEYS = new Set([
   "projectCount",
@@ -129,6 +159,7 @@ const SECTOR_METRIC_KEYS = new Set([
   "listingMarketCapHkdBnSum",
   "aShareMarketCapRmbBnSum",
   "lifecycleMedianDays",
+  "listedLifecycleMedianDays",
   "noticeCycleMedianDays",
   "receivedCycleMedianDays",
 ]);
@@ -528,6 +559,11 @@ function dateScopeLabel() {
   return `${fieldLabel} · ${state.dateFrom || "最早"} 至 ${state.dateTo || "最新"}`;
 }
 
+function scopeLabel() {
+  const sector = state.sector === "all" ? "全部赛道" : `赛道：${sectorLabel()}`;
+  return `${sector}；${dateScopeLabel()}`;
+}
+
 function compareRows(a, b) {
   if (normalize(state.search)) {
     const aSponsorRank = a.searchSponsorRank || 0;
@@ -597,17 +633,27 @@ function matchesSearch(fact, firm, query) {
   return haystack.includes(query);
 }
 
-function factIndustryText(fact) {
+function factIndustryTags(fact) {
   return [...(fact.industryTags || []), ...(fact.csrcIndustryTags || [])]
-    .map(normalize)
-    .join(" ");
+    .map((tag) => String(tag || "").trim())
+    .filter(Boolean);
+}
+
+function sectorKeywordMatches(option, tag) {
+  const text = normalize(tag);
+  return option?.keywords?.some((keyword) => text.includes(normalize(keyword))) || false;
 }
 
 function factSector(fact) {
-  const text = factIndustryText(fact);
-  for (const option of SECTOR_OPTIONS) {
-    if (option.value === "all" || option.value === "other") continue;
-    if (option.keywords.some((keyword) => text.includes(normalize(keyword)))) return option.value;
+  const tags = factIndustryTags(fact);
+  for (const signal of SECTOR_STRONG_SIGNALS) {
+    if (tags.some((tag) => signal.keywords.some((keyword) => normalize(tag).includes(normalize(keyword))))) {
+      return signal.value;
+    }
+  }
+  for (const sectorValue of SECTOR_MATCH_PRIORITY) {
+    const option = SECTOR_BY_VALUE.get(sectorValue);
+    if (tags.some((tag) => sectorKeywordMatches(option, tag))) return sectorValue;
   }
   return "other";
 }
@@ -1075,6 +1121,48 @@ function metricCards(rows) {
   const listedMcapLeader = [...rows]
     .filter((row) => row.listingMarketCapHkdBnSum > 0)
     .sort((a, b) => b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum || b.listingMarketCapN - a.listingMarketCapN)[0];
+  const projectLeader = [...rows].filter((row) => row.projectCount > 0).sort((a, b) => b.projectCount - a.projectCount || b.activeCount - a.activeCount)[0];
+  const listedLeader = [...rows].filter((row) => row.listedCount > 0).sort((a, b) => b.listedCount - a.listedCount || b.projectCount - a.projectCount)[0];
+
+  if (state.sector !== "all") {
+    const label = sectorLabel();
+    const cards = [
+      {
+        label: `${label}项目最多`,
+        value: projectLeader ? projectLeader.displayNameZh : "待披露",
+        note: projectLeader ? `${compactCredit(projectLeader.projectCount)} 个${label}项目 · 赛道按公开行业标签归类` : "无赛道样本",
+      },
+      {
+        label: `${label}公开申请中最多`,
+        value: activeLeader ? activeLeader.displayNameZh : "待披露",
+        note: activeLeader ? `${compactCredit(activeLeader.activeCount)} 个公开申请中项目 · 内部pipeline不可见` : "无公开申请中样本",
+      },
+      {
+        label: `${label}已上市最多`,
+        value: listedLeader ? listedLeader.displayNameZh : "待披露",
+        note: listedLeader ? `${compactCredit(listedLeader.listedCount)} 个已上市项目` : "无已上市样本",
+      },
+      {
+        label: `${label}项目上市市值第一`,
+        value: listedMcapLeader ? listedMcapLeader.displayNameZh : "待披露",
+        note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")} · 已上市项目上市日港股市值合计` : "无已上市市值样本",
+      },
+      {
+        label: `${label}已上市周期较快`,
+        value: timingLeader ? timingLeader.displayNameZh : "样本不足",
+        note: timingLeader ? `${formatDays(timingLeader.listedLifecycleMedianDays, timingLeader.listedLifecycleN)} · 仅已上市样本` : "需至少5个已上市样本",
+      },
+    ];
+    return cards
+      .map(
+        (card) => `<article class="metric-card">
+          <span>${escapeHtml(card.label)}</span>
+          <strong>${escapeHtml(card.value)}</strong>
+          <small>${escapeHtml(card.note)}</small>
+        </article>`,
+      )
+      .join("");
+  }
 
   const cards = [
     {
@@ -1090,7 +1178,7 @@ function metricCards(rows) {
         : "需匹配SP且达到申请中样本门槛",
     },
     {
-      label: "Rep公开申请配置最精简",
+      label: "Rep公开申请配置最低",
       value: repLeanLeader ? repLeanLeader.displayNameZh : "样本不足",
       note: repLeanLeader
         ? `每个公开申请中项目配置 ${formatRatio(repLeanLeader.type6RepPerActiveProject)} 名Rep · Rep ${compactNumber(repLeanLeader.type6RepCount, 0)} · 至少${MIN_ACTIVE_PROJECTS}个公开样本`
@@ -1217,13 +1305,14 @@ function render() {
   els.marketCapHead.hidden = !showMarketCap;
   els.marketCapHead.querySelector(".sl-th-label").textContent = marketCapHeaderText();
   const rankingNote = " · A1→上市统计仅纳入已上市项目；申请中为 elapsed/freshness";
+  const sectorNote = state.sector === "all" ? "" : ` · 赛道：${sectorLabel()} · 人员/SP/Rep不按赛道拆分`;
   const syntheticFactCount = facts.filter((fact) => fact.isSyntheticRollup).length;
   const baseFactCount = facts.length - syntheticFactCount;
   const factText = syntheticFactCount
     ? `${compactNumber(baseFactCount)} 原始 + ${compactNumber(syntheticFactCount)} 合并 fact`
     : `${compactNumber(facts.length)} 条计分 fact`;
   const sortNote = ` · 按${sortLabel()}${effectiveSortDir() === "asc" ? "升序" : "降序"}`;
-  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]}${sortNote}${rankingNote}`;
+  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]}${sortNote}${sectorNote}${rankingNote}`;
   if (!rows.length) {
     els.leaderboardRows.innerHTML = `<tr><td colspan="${showMarketCap ? 12 : 11}" class="empty-state">没有符合条件的样本</td></tr>`;
     return;
@@ -1238,7 +1327,7 @@ function render() {
 }
 
 function pkMetricRows(rowA, rowB) {
-  return [
+  const metrics = [
     { label: "项目总数 / Total deals", key: "projectCount", value: (row) => row.projectCount, format: compactCredit, higher: true, note: "规模口径 / Scale" },
     { label: "公开申请中项目 / Public active deals", key: "activeCount", value: (row) => row.activeCount, format: compactCredit, higher: true, note: "公开A1样本 / Public APs only" },
     { label: "已上市项目 / Listed deals", key: "listedCount", value: (row) => row.listedCount, format: compactCredit, higher: true, note: "完成项目 / Completed listings" },
@@ -1257,7 +1346,7 @@ function pkMetricRows(rowA, rowB) {
       key: "type6RepPerActiveProject",
       value: (row) => row.type6RepPerActiveProject,
       format: (value) => (isNumber(value) ? `${formatRatio(value)}名/项目` : "待披露"),
-      higher: false,
+      higher: null,
       note: "执行配置 / Execution staffing",
     },
     { label: "上市日港股市值 / Listed market cap", key: "listingMarketCapHkdBnSum", value: (row) => row.listingMarketCapHkdBnSum, format: (value) => formatCap(value, "HK$"), higher: true, note: "项目上市市值 / Listed deal value" },
@@ -1280,7 +1369,9 @@ function pkMetricRows(rowA, rowB) {
     { label: "A1→接收中位数 / A1 to receipt", key: "receivedCycleMedianDays", value: (row) => row.receivedCycleMedianDays, format: (value, row) => formatDays(value, row.receivedCycleN), higher: false, note: "已接收样本 / Received sample" },
     { label: "A1→通知中位数 / A1 to notice", key: "noticeCycleMedianDays", value: (row) => row.noticeCycleMedianDays, format: (value, row) => formatDays(value, row.noticeCycleN), higher: false, note: "已通知样本 / Notice-issued sample" },
     { label: "A1→上市中位数 / A1 to listing", key: "listedLifecycleMedianDays", value: (row) => row.listedLifecycleMedianDays, format: (value, row) => formatDays(value, row.listedLifecycleN), higher: false, note: "仅已上市 / Listed sample" },
-  ].map((metric) => ({
+  ];
+  const visibleMetrics = state.sector === "all" ? metrics : metrics.filter((metric) => SECTOR_METRIC_KEYS.has(metric.key));
+  return visibleMetrics.map((metric) => ({
     ...metric,
     a: metric.value(rowA),
     b: metric.value(rowB),
@@ -1290,7 +1381,7 @@ function pkMetricRows(rowA, rowB) {
 function pkWinnerClass(metric, side) {
   const av = metric.a;
   const bv = metric.b;
-  if (!isNumber(av) || !isNumber(bv) || av === bv) return "";
+  if (typeof metric.higher !== "boolean" || !isNumber(av) || !isNumber(bv) || av === bv) return "";
   const aWins = metric.higher ? av > bv : av < bv;
   return (side === "a" && aWins) || (side === "b" && !aWins) ? " is-winner" : "";
 }
@@ -1378,7 +1469,8 @@ function renderPk() {
   pkEls.sponsorB.value = pkState.sponsorB;
   pkEls.creditLabel.textContent = creditLabels[pkState.credit] || "具名全部计入";
   const sourceDate = state.data.meta?.sourceGeneratedAt || state.data.meta?.generatedAt || "待披露";
-  pkEls.sourceNote.textContent = `同源于保荐龙虎榜 JSON；${dateScopeLabel()}；快照 ${sourceDate}；${PUBLIC_ACTIVE_CAVEAT} 密交、De-SPAC、HDR、outlier 等周期剔除沿用监管节奏追踪。`;
+  const sectorNote = state.sector === "all" ? "" : " 赛道比较只按项目行业标签重聚合，不推断人员在各行业的内部分布。";
+  pkEls.sourceNote.textContent = `同源于保荐龙虎榜 JSON；${scopeLabel()}；快照 ${sourceDate}；${PUBLIC_ACTIVE_CAVEAT}${sectorNote} 密交、De-SPAC、HDR、outlier 等周期剔除沿用监管节奏追踪。`;
   pkEls.versus.innerHTML = `${renderPkCard(rowA, "左侧")}<div class="spk-vs">VS</div>${renderPkCard(rowB, "右侧")}`;
   pkEls.metrics.innerHTML = pkMetricRows(rowA, rowB).map((metric) => renderPkMetric(metric, rowA, rowB)).join("");
 }
@@ -1514,7 +1606,7 @@ function closeDrawer() {
 }
 
 function bindControls() {
-  ["searchInput", "metricSelect", "creditSelect", "stageSelect", "typeSelect", "natureSelect", "dateFieldSelect", "dateFrom", "dateTo"].forEach((id) => {
+  ["searchInput", "metricSelect", "creditSelect", "stageSelect", "typeSelect", "natureSelect", "sectorSelect", "dateFieldSelect", "dateFrom", "dateTo"].forEach((id) => {
     if (id === "searchInput") {
       els[id].addEventListener("input", () => {
         window.clearTimeout(searchRenderTimer);
@@ -1563,7 +1655,7 @@ function bindPkControls() {
     pkState.credit = pkEls.creditSelect.value;
     renderPk();
   });
-  [pkEls.dateFieldSelect, pkEls.dateFrom, pkEls.dateTo].forEach((element) => {
+  [pkEls.sectorSelect, pkEls.dateFieldSelect, pkEls.dateFrom, pkEls.dateTo].forEach((element) => {
     if (element) element.addEventListener("change", readPkDateControls);
   });
   pkRoot.querySelectorAll("[data-date-quick]").forEach((button) => {
@@ -1590,6 +1682,7 @@ function cacheElements() {
     "stageSelect",
     "typeSelect",
     "natureSelect",
+    "sectorSelect",
     "dateFieldSelect",
     "dateFrom",
     "dateTo",
@@ -1617,6 +1710,7 @@ function cachePkElements() {
   pkEls.metrics = document.getElementById("spkMetrics");
   pkEls.sourceNote = document.getElementById("spkSourceNote");
   pkEls.creditLabel = document.getElementById("spkCreditLabel");
+  pkEls.sectorSelect = document.getElementById("spkSectorSelect");
   pkEls.dateFieldSelect = document.getElementById("spkDateFieldSelect");
   pkEls.dateFrom = document.getElementById("spkDateFrom");
   pkEls.dateTo = document.getElementById("spkDateTo");
@@ -1669,7 +1763,7 @@ async function init() {
     els.firmCount.textContent = compactNumber(meta.firmCount || state.data.firms.length, 0);
     const sourceNote = meta.sourceGeneratedAt ? ` · 源快照 ${meta.sourceGeneratedAt}` : "";
     els.generatedAt.textContent = `生成 ${meta.generatedAt || "待披露"}${sourceNote}`;
-    els.demoNote.textContent = `${meta.demoNoteZh || "本地 demo，不用于公开发布。"} ${PUBLIC_ACTIVE_CAVEAT}`;
+    els.demoNote.textContent = `${publicMethodologyText(meta.demoNoteZh || "本地 demo，不用于公开发布。")} ${PUBLIC_ACTIVE_CAVEAT}`;
     if (meta.licenseCapacity?.available) {
       const cap = meta.licenseCapacity;
       const matchNote = cap.rollupCapacityFirmCount
@@ -1682,7 +1776,7 @@ async function init() {
       const blockNote = cap.primarySourceBlockedReason ? " · 0xmd fallback" : "";
       els.demoNote.textContent += ` 六号牌容量：${cap.quality || "source"} · ${cap.asOfDate || "date pending"}${freshnessNote}${blockNote} · ${matchNote}；仅作机构容量旁证。`;
       if (cap.quality === "archive_db" && cap.dataFreshnessNote) {
-        els.demoNote.textContent += ` ${cap.dataFreshnessNote}`;
+        els.demoNote.textContent += ` ${publicMethodologyText(cap.dataFreshnessNote)}`;
       }
     }
     if (meta.sponsorPrincipals?.available) {
