@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-04T04:58:32Z",
-    "sourceGeneratedAt": "2026-07-04T12:58:08+08:00",
+    "generatedAt": "2026-07-06T03:29:04Z",
+    "sourceGeneratedAt": "2026-07-06T11:28:33+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-04T12:58:08+08:00",
+      "generatedAt": "2026-07-06T11:28:33+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1455,
@@ -30,7 +30,7 @@
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 214,
-      "asOfDate": "2026-07-04",
+      "asOfDate": "2026-07-06",
       "source": "webb_0xmd",
       "sourceUrl": "https://webbsite.0xmd.com/dbpub/SFClicount.asp?a=6",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_type6_capacity.json",
@@ -90,7 +90,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=46811&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -135,8 +135,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "新能源/汽车产业链",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "新能源/汽车产业链"
       ],
       "type6ROCount": 46,
       "type6RepCount": 927,
@@ -148,7 +148,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18459&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -167,7 +167,7 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 119,
-      "activeCount": 69,
+      "activeCount": 68,
       "listedCount": 50,
       "noticeCount": 54,
       "ahCount": 39,
@@ -187,7 +187,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "软件/AI/数据/互联网",
-        "高端装备/机器人/智能制造"
+        "新能源/汽车产业链"
       ],
       "type6ROCount": 31,
       "type6RepCount": 426,
@@ -199,7 +199,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49319&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -257,14 +257,14 @@
       "type6TotalCount": 334,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "GUOTAI JUNAN CAPITAL LIMITED",
-        "HAITONG INTERNATIONAL CAPITAL LIMITED"
+        "HAITONG INTERNATIONAL CAPITAL LIMITED",
+        "GUOTAI JUNAN CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh",
       "type6RollupMemberSponsorIds": [
         "gtja",
@@ -318,7 +318,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=60614&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -375,7 +375,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -425,7 +425,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1942934&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -476,7 +476,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -527,7 +527,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1464&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -577,7 +577,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=30230&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -627,7 +627,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18359&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -678,7 +678,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -728,7 +728,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49367&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -780,7 +780,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5596&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -831,7 +831,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68371&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -882,7 +882,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1467&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -932,7 +932,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18311&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -969,8 +969,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "交通运输、仓储和邮政业",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 24,
       "type6RepCount": 178,
@@ -982,7 +982,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12227&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1032,7 +1032,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7117&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1082,7 +1082,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9131&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1132,7 +1132,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68488&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1182,7 +1182,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2041492&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1232,7 +1232,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=47434&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1283,7 +1283,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1333,7 +1333,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68484&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1383,7 +1383,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1433,7 +1433,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=72015&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1483,7 +1483,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=34259&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1533,7 +1533,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2439801&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1583,7 +1583,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=41210&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1633,7 +1633,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5451&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1683,7 +1683,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2007103&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1734,7 +1734,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6162&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1784,7 +1784,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1896613&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1836,7 +1836,7 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6",
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5437&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1886,7 +1886,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1939868&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1936,7 +1936,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2458625&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -1986,7 +1986,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2126636&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2036,7 +2036,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1552564&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2086,7 +2086,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=19417&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2136,7 +2136,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23670404&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2186,7 +2186,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=26392041&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2238,7 +2238,7 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6",
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5689&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2288,7 +2288,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2338,7 +2338,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23445433&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2388,7 +2388,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2084540&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2438,7 +2438,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6721901&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2473,10 +2473,10 @@
       "medianA1ToNoticeDays": 180.0,
       "timingN": 1,
       "topIndustries": [
-        "综合",
         "软件/AI/数据/互联网",
-        "制造业",
-        "信息传输、软件和信息技术服务业"
+        "信息传输、软件和信息技术服务业",
+        "金融业",
+        "综合"
       ],
       "type6ROCount": 3,
       "type6RepCount": 71,
@@ -2488,7 +2488,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=64301&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2538,7 +2538,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1933817&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2588,7 +2588,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1912087&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2638,7 +2638,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22364027&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2688,7 +2688,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2620772&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2738,7 +2738,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9754&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2788,7 +2788,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12111423&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2876,7 +2876,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2455747&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2927,7 +2927,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=37237&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -2977,7 +2977,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1440&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3027,7 +3027,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=926&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3077,7 +3077,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2003564&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3127,7 +3127,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2557091&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3175,7 +3175,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15005&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3223,7 +3223,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9620&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3271,7 +3271,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2420405&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3355,7 +3355,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2278798&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3403,7 +3403,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6407&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3451,7 +3451,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22123361&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3499,7 +3499,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2690790&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3548,7 +3548,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2555806&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3596,7 +3596,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2626430&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3644,7 +3644,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1747929&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3692,7 +3692,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2539213&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     },
     {
@@ -3740,11 +3740,271 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68441&a=6"
       ],
-      "type6AsOfDate": "2026-07-04",
+      "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh"
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "new shicoh motor co., ltd.",
+      "issuerName": "New Shicoh Motor Co., Ltd.",
+      "csrcName": "新思考電機股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "huatai",
+      "sourceSponsorTag": "HUATAI",
+      "sourceSponsorTags": [
+        "HUATAI"
+      ],
+      "leaderboardSponsorTag": "HUATAI",
+      "sponsorLegalName": "Huatai Financial Holdings (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "Huatai Financial Holdings (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-02",
+      "currentA1Date": "2026-07-05",
+      "receivedDate": "2026-01-23",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "新能源/汽车产业链",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 21.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "new shicoh motor co., ltd.",
+      "issuerName": "New Shicoh Motor Co., Ltd.",
+      "csrcName": "新思考電機股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-02",
+      "currentA1Date": "2026-07-05",
+      "receivedDate": "2026-01-23",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "新能源/汽车产业链",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 21.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "shenzhen forms syntron information co., ltd.",
+      "issuerName": "Shenzhen Forms Syntron Information Co., Ltd.",
+      "csrcName": "深圳四方精創資訊股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cmbi",
+      "sourceSponsorTag": "CMBI",
+      "sourceSponsorTags": [
+        "CMBI"
+      ],
+      "leaderboardSponsorTag": "CMBI",
+      "sponsorLegalName": "CMB International Capital Limited",
+      "sponsorLegalNames": [
+        "CMB International Capital Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2025-12-24",
+      "currentA1Date": "2026-07-05",
+      "receivedDate": "2026-01-14",
+      "noticeDate": "2026-06-22",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "金融/保险/证券/支付",
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业",
+        "金融业"
+      ],
+      "csrcIndustryTags": [
+        "金融业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 18.0792,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 180.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 21.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7643241/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "shenzhen forms syntron information co., ltd.",
+      "issuerName": "Shenzhen Forms Syntron Information Co., Ltd.",
+      "csrcName": "深圳四方精創資訊股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "guosen",
+      "sourceSponsorTag": "GUOSEN",
+      "sourceSponsorTags": [
+        "GUOSEN"
+      ],
+      "leaderboardSponsorTag": "GUOSEN",
+      "sponsorLegalName": "Guosen Securities (HK) Capital Company Limited",
+      "sponsorLegalNames": [
+        "Guosen Securities (HK) Capital Company Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2025-12-24",
+      "currentA1Date": "2026-07-05",
+      "receivedDate": "2026-01-14",
+      "noticeDate": "2026-06-22",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "金融/保险/证券/支付",
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业",
+        "金融业"
+      ],
+      "csrcIndustryTags": [
+        "金融业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 18.0792,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 180.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 21.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7643241/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "hosin global electronics co., ltd.",
       "issuerName": "HOSIN Global Electronics Co., Ltd.",
@@ -3931,6 +4191,136 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "shenzhen kinwong electronic co., ltd.",
+      "issuerName": "Shenzhen Kinwong Electronic Co., Ltd.",
+      "csrcName": "深圳市景旺電子股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities Corporate Finance (HK) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-01-01",
+      "currentA1Date": "2026-07-03",
+      "receivedDate": "2026-01-30",
+      "noticeDate": "2026-06-22",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
+        "软件/AI/数据/互联网",
+        "制造业",
+        "信息传输、软件和信息技术服务业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 71.9779,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 172.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7641697/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "shenzhen kinwong electronic co., ltd.",
+      "issuerName": "Shenzhen Kinwong Electronic Co., Ltd.",
+      "csrcName": "深圳市景旺電子股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "ml",
+      "sourceSponsorTag": "ML",
+      "sourceSponsorTags": [
+        "ML"
+      ],
+      "leaderboardSponsorTag": "ML",
+      "sponsorLegalName": "Merrill Lynch (Asia Pacific) Limited",
+      "sponsorLegalNames": [
+        "Merrill Lynch (Asia Pacific) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-01-01",
+      "currentA1Date": "2026-07-03",
+      "receivedDate": "2026-01-30",
+      "noticeDate": "2026-06-22",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
+        "软件/AI/数据/互联网",
+        "制造业",
+        "信息传输、软件和信息技术服务业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 71.9779,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 172.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7641697/content.shtml"
         }
       ]
     },
@@ -46308,7 +46698,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46369,7 +46761,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46431,7 +46825,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46495,7 +46891,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46559,7 +46957,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46623,7 +47023,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46689,7 +47091,9 @@
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "补充材料公示",
@@ -46747,7 +47151,9 @@
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "补充材料公示",
@@ -46802,7 +47208,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46861,7 +47269,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -46920,7 +47330,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -47129,136 +47541,6 @@
       ]
     },
     {
-      "issuerId": "new shicoh motor co., ltd.",
-      "issuerName": "New Shicoh Motor Co., Ltd.",
-      "csrcName": "新思考電機股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "huatai",
-      "sourceSponsorTag": "HUATAI",
-      "sourceSponsorTags": [
-        "HUATAI"
-      ],
-      "leaderboardSponsorTag": "HUATAI",
-      "sponsorLegalName": "Huatai Financial Holdings (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "Huatai Financial Holdings (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-02",
-      "currentA1Date": "2026-01-02",
-      "receivedDate": "2026-01-23",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "新能源/汽车产业链",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 21.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "new shicoh motor co., ltd.",
-      "issuerName": "New Shicoh Motor Co., Ltd.",
-      "csrcName": "新思考電機股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-02",
-      "currentA1Date": "2026-01-02",
-      "receivedDate": "2026-01-23",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "新能源/汽车产业链",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 21.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
       "issuerId": "pinecone wisdom inc.",
       "issuerName": "Pinecone Wisdom Inc.",
       "csrcName": "Pinecone Wisdom Inc.",
@@ -47278,7 +47560,7 @@
       "creditAllFull": 1.0,
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "other",
       "status": "waiting_received",
       "statusLabelZh": "等待接收",
       "a1Date": "2026-01-02",
@@ -47551,136 +47833,6 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen kinwong electronic co., ltd.",
-      "issuerName": "Shenzhen Kinwong Electronic Co., Ltd.",
-      "csrcName": "深圳市景旺電子股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citic",
-      "sourceSponsorTag": "CITIC",
-      "sourceSponsorTags": [
-        "CITIC"
-      ],
-      "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
-      "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "notice_issued",
-      "statusLabelZh": "已发通知书",
-      "a1Date": "2026-01-01",
-      "currentA1Date": "2026-01-01",
-      "receivedDate": "2026-01-30",
-      "noticeDate": "2026-06-22",
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "半导体/集成电路/电子制造",
-        "软件/AI/数据/互联网",
-        "制造业",
-        "信息传输、软件和信息技术服务业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 71.9779,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": 172.0,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 29.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
-        },
-        {
-          "label": "备案通知书",
-          "url": "https://www.csrc.gov.cn/csrc/c105984/c7641697/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen kinwong electronic co., ltd.",
-      "issuerName": "Shenzhen Kinwong Electronic Co., Ltd.",
-      "csrcName": "深圳市景旺電子股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "ml",
-      "sourceSponsorTag": "ML",
-      "sourceSponsorTags": [
-        "ML"
-      ],
-      "leaderboardSponsorTag": "ML",
-      "sponsorLegalName": "Merrill Lynch (Asia Pacific) Limited",
-      "sponsorLegalNames": [
-        "Merrill Lynch (Asia Pacific) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "notice_issued",
-      "statusLabelZh": "已发通知书",
-      "a1Date": "2026-01-01",
-      "currentA1Date": "2026-01-01",
-      "receivedDate": "2026-01-30",
-      "noticeDate": "2026-06-22",
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "半导体/集成电路/电子制造",
-        "软件/AI/数据/互联网",
-        "制造业",
-        "信息传输、软件和信息技术服务业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 71.9779,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": 172.0,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 29.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
-        },
-        {
-          "label": "备案通知书",
-          "url": "https://www.csrc.gov.cn/csrc/c105984/c7641697/content.shtml"
         }
       ]
     },
@@ -49253,146 +49405,6 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen forms syntron information co., ltd.",
-      "issuerName": "Shenzhen Forms Syntron Information Co., Ltd.",
-      "csrcName": "深圳四方精創資訊股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cmbi",
-      "sourceSponsorTag": "CMBI",
-      "sourceSponsorTags": [
-        "CMBI"
-      ],
-      "leaderboardSponsorTag": "CMBI",
-      "sponsorLegalName": "CMB International Capital Limited",
-      "sponsorLegalNames": [
-        "CMB International Capital Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "notice_issued",
-      "statusLabelZh": "已发通知书",
-      "a1Date": "2025-12-24",
-      "currentA1Date": "2025-12-24",
-      "receivedDate": "2026-01-14",
-      "noticeDate": "2026-06-22",
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "金融/保险/证券/支付",
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业",
-        "金融业"
-      ],
-      "csrcIndustryTags": [
-        "金融业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 18.0792,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": 180.0,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 21.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
-        },
-        {
-          "label": "备案通知书",
-          "url": "https://www.csrc.gov.cn/csrc/c105984/c7643241/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen forms syntron information co., ltd.",
-      "issuerName": "Shenzhen Forms Syntron Information Co., Ltd.",
-      "csrcName": "深圳四方精創資訊股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "guosen",
-      "sourceSponsorTag": "GUOSEN",
-      "sourceSponsorTags": [
-        "GUOSEN"
-      ],
-      "leaderboardSponsorTag": "GUOSEN",
-      "sponsorLegalName": "Guosen Securities (HK) Capital Company Limited",
-      "sponsorLegalNames": [
-        "Guosen Securities (HK) Capital Company Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "notice_issued",
-      "statusLabelZh": "已发通知书",
-      "a1Date": "2025-12-24",
-      "currentA1Date": "2025-12-24",
-      "receivedDate": "2026-01-14",
-      "noticeDate": "2026-06-22",
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "金融/保险/证券/支付",
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业",
-        "金融业"
-      ],
-      "csrcIndustryTags": [
-        "金融业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 18.0792,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": 180.0,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 21.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7638951/content.shtml"
-        },
-        {
-          "label": "备案通知书",
-          "url": "https://www.csrc.gov.cn/csrc/c105984/c7643241/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -90726,7 +90738,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -90800,7 +90814,9 @@
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "补充材料公示",
@@ -90863,7 +90879,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
