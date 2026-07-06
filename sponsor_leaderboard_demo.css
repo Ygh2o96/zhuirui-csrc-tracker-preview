@@ -665,7 +665,7 @@
 }
 
 .sponsor-league.sponsor-pk {
-  --spk-axis-width: 110px;
+  --spk-axis-width: 74px;
   padding: 0;
   background:
     linear-gradient(180deg, rgba(8, 116, 102, 0.055), transparent 240px),
@@ -838,7 +838,7 @@
 }
 
 .sponsor-league .spk-card {
-  padding: 12px;
+  padding: 15px 18px;
   border-top: 3px solid rgba(8, 116, 102, 0.42);
   background: linear-gradient(180deg, var(--surface), #fbfcfa);
 }
@@ -865,16 +865,22 @@
 .sponsor-league .spk-card-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 14px;
+  gap: 0;
+  margin-top: 16px;
+  border-top: 1px solid var(--sl-soft);
+  padding-top: 12px;
 }
 
 .sponsor-league .spk-card-grid div {
-  min-height: 50px;
-  border: 1px solid var(--sl-soft);
-  border-radius: 7px;
-  padding: 8px;
-  background: var(--sl-panel-bg);
+  min-height: 0;
+  border-left: 1px solid var(--sl-soft);
+  padding: 0 11px;
+  background: transparent;
+}
+
+.sponsor-league .spk-card-grid div:first-child {
+  border-left: 0;
+  padding-left: 0;
 }
 
 .sponsor-league .spk-card-grid b {
@@ -894,6 +900,10 @@
 .sponsor-league .spk-vs {
   display: grid;
   place-items: center;
+  align-self: center;
+  justify-self: center;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
@@ -994,7 +1004,7 @@
 
 @media (max-width: 1120px) {
   .sponsor-league.sponsor-pk {
-    --spk-axis-width: 96px;
+    --spk-axis-width: 68px;
   }
 
   .sponsor-league .sl-metric-strip {
@@ -1188,6 +1198,16 @@
 
   .sponsor-league .spk-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-league .spk-card-grid div:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .sponsor-league .spk-card-grid div:nth-child(n + 3) {
+    border-top: 1px solid var(--sl-soft);
+    padding-top: 8px;
   }
 
   .sponsor-league .spk-metric-row {

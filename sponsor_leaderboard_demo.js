@@ -48,7 +48,7 @@ const metricLabels = {
   ahCount: "A+H",
   listingMarketCapHkdBnSum: "上市市值",
   aShareMarketCapRmbBnSum: "A股市值",
-  lifecycleMedianDays: "A1→上市中位数",
+  lifecycleMedianDays: "A1→上市平均时间",
   noticeCycleMedianDays: "A1→通知中位数",
   receivedCycleMedianDays: "A1→接收中位数",
   sponsorPrincipalCount: "SP人数",
@@ -169,6 +169,8 @@ const sortLabels = {
   sponsorName: "保荐人",
   sponsorNature: "性质",
   topIndustry: "行业",
+  listedLifecycleAverageDays: "A1到上市流程平均",
+  applyingElapsedAverageDays: "项目生命周期阶段",
 };
 
 function $(id) {
@@ -277,6 +279,7 @@ function metricSortAsc(metric) {
     "sponsorNature",
     "topIndustry",
     "lifecycleMedianDays",
+    "listedLifecycleAverageDays",
     "noticeCycleMedianDays",
     "receivedCycleMedianDays",
     "sponsorPrincipalPerProject",
@@ -287,11 +290,16 @@ function metricSortAsc(metric) {
   ]).has(metric);
 }
 
+function lifecycleSortKey() {
+  return state.stage === "applying" ? "applyingElapsedAverageDays" : "lifecycleMedianDays";
+}
+
 function effectiveSortDir(metric = state.sortKey) {
   return state.sortDir || (metricSortAsc(metric) ? "asc" : "desc");
 }
 
 function resolveHeaderSortKey(rawKey) {
+  if (rawKey === "__lifecycle") return lifecycleSortKey();
   if (rawKey === "__metric") return state.metric;
   if (rawKey === "__marketCap") {
     const mode = marketCapMode();
@@ -304,7 +312,8 @@ function metricValue(row, metric = state.metric) {
   if (metric === "sponsorName") return row.displayNameZh || row.displayNameEn || "";
   if (metric === "sponsorNature") return row.sponsorNature || "";
   if (metric === "topIndustry") return row.topIndustries?.[0] || "";
-  if (metric === "lifecycleMedianDays") return row.listedLifecycleMedianDays;
+  if (metric === "lifecycleMedianDays" || metric === "listedLifecycleAverageDays") return row.listedLifecycleAverageDays;
+  if (metric === "applyingElapsedAverageDays") return row.applyingElapsedAverageDays;
   if (metric === "noticeCycleMedianDays") return row.noticeCycleMedianDays;
   if (metric === "receivedCycleMedianDays") return row.receivedCycleMedianDays;
   return row[metric];
@@ -314,7 +323,8 @@ function missingSortValue(row, metric, value) {
   if (metric === "sponsorName" || metric === "sponsorNature" || metric === "topIndustry") {
     return !String(value || "").trim();
   }
-  if (metric === "lifecycleMedianDays") return !isNumber(value) || !row.listedLifecycleN;
+  if (metric === "lifecycleMedianDays" || metric === "listedLifecycleAverageDays") return !isNumber(value) || !row.listedLifecycleN;
+  if (metric === "applyingElapsedAverageDays") return !isNumber(value) || !row.applyingElapsedN;
   if (metric === "noticeCycleMedianDays") return !isNumber(value) || !row.noticeCycleN;
   if (metric === "receivedCycleMedianDays") return !isNumber(value) || !row.receivedCycleN;
   return !isNumber(value);
@@ -331,6 +341,12 @@ function median(values) {
   const mid = Math.floor(clean.length / 2);
   if (clean.length % 2) return clean[mid];
   return (clean[mid - 1] + clean[mid]) / 2;
+}
+
+function average(values) {
+  const clean = values.filter(isNumber);
+  if (!clean.length) return null;
+  return clean.reduce((sum, value) => sum + value, 0) / clean.length;
 }
 
 function weightedCount(facts, predicate) {
@@ -410,20 +426,20 @@ function durationExclusionReason(fact) {
 
 function lifecycleNote(row) {
   const parts = [];
-  if (row.listedLifecycleN) parts.push(`已上市最终样本 ${row.listedLifecycleN}`);
-  if (row.lifecycleApplyingN) parts.push(`申请中 elapsed ${row.lifecycleApplyingN}`);
-  if (row.lifecycleExcludedN) parts.push(`剔除 ${row.lifecycleExcludedN}`);
-  if (row.lifecycleOtherN) parts.push(`其他/搁置 ${row.lifecycleOtherN}`);
+  if (row.listedLifecycleN) parts.push("已上市项目");
+  if (row.lifecycleApplyingN) parts.push("申请中项目");
+  if (row.lifecycleExcludedN) parts.push("剔除特殊路径");
+  if (row.lifecycleOtherN) parts.push("其他/搁置");
   return parts.length ? `${parts.join(" / ")}；密交/De-SPAC/HDR/outlier按主 tracker 门控剔除` : "暂无日期齐全样本";
 }
 
 function lifecycleCellNote(row) {
   if (state.stage === "applying") {
-    return "申请中 elapsed 仅作 freshness";
+    return "生命周期阶段，不纳入快慢统计";
   }
   const parts = [];
-  if (row.listedLifecycleN) parts.push(`已上市样本 ${row.listedLifecycleN}`);
-  if (row.lifecycleExcludedN) parts.push(`剔除 ${row.lifecycleExcludedN}`);
+  if (row.listedLifecycleN) parts.push("仅已上市项目");
+  if (row.lifecycleExcludedN) parts.push("特殊路径已剔除");
   if (row.lifecycleApplyingN && state.stage === "all") parts.push("申请中不计快慢");
   return parts.length ? parts.join("；") : "暂无可比样本";
 }
@@ -505,12 +521,14 @@ function aggregateFacts(facts) {
       lifecycleApplyingN: lifecycleTimings.filter((item) => item.kind === "applying").length,
       lifecycleOtherN: lifecycleTimings.filter((item) => item.kind === "other").length,
       lifecycleExcludedN: allLifecycleTimings.filter((item) => item.kind === "excluded").length,
+      listedLifecycleAverageDays: average(listedLifecycleValues),
       listedLifecycleMedianDays: median(listedLifecycleValues),
       listedLifecycleN: listedLifecycleValues.length,
       noticeCycleMedianDays: median(noticeCycleValues),
       noticeCycleN: noticeCycleValues.length,
       receivedCycleMedianDays: median(receivedCycleValues),
       receivedCycleN: receivedCycleValues.length,
+      applyingElapsedAverageDays: average(applyingElapsedValues),
       applyingElapsedMedianDays: median(applyingElapsedValues),
       applyingElapsedN: applyingElapsedValues.length,
       projectsPerType6Rep: type6RepCount && type6RepCount > 0 ? projectCount / type6RepCount : null,
@@ -716,6 +734,9 @@ function metaToday() {
 }
 
 function enforceMetricCompatibility() {
+  if (state.sortHeaderKey === "__lifecycle") {
+    state.sortKey = lifecycleSortKey();
+  }
   if (state.stage === "applying" && state.metric === "lifecycleMedianDays") {
     state.metric = "activeCount";
     if (state.sortKey === "lifecycleMedianDays") state.sortKey = "activeCount";
@@ -918,8 +939,8 @@ function metricDisplay(row) {
   }
   if (state.metric === "lifecycleMedianDays") {
     return {
-      main: formatDays(row.listedLifecycleMedianDays, row.listedLifecycleN),
-      sub: "排名仅纳入已上市 A1→上市样本",
+      main: formatDays(row.listedLifecycleAverageDays),
+      sub: "仅按已上市项目计算A1到上市流程平均",
     };
   }
   if (state.metric === "noticeCycleMedianDays") {
@@ -1030,6 +1051,17 @@ function marketCapHeaderText() {
   return "市值";
 }
 
+function lifecycleHeaderText() {
+  return state.stage === "applying" ? "项目生命周期阶段" : "A1到上市流程平均";
+}
+
+function lifecycleHeaderTitle() {
+  if (state.stage === "applying") {
+    return "上市申请中项目显示公开 A1 后截至快照日的平均已过时间；这是生命周期阶段/freshness，不纳入 A1 到上市快慢统计。";
+  }
+  return "全部/已上市视图仅按已上市项目计算 A1 到上市流程平均时间；申请中项目不混入该指标，密交/De-SPAC/HDR/outlier 等剔除沿用监管节奏追踪。";
+}
+
 function marketCapSortValue(row) {
   const mode = marketCapMode();
   if (mode === "listed") return row.listingMarketCapHkdBnSum;
@@ -1089,8 +1121,8 @@ function metricCards(rows) {
   const MIN_MARKET_CAP_PROJECTS = 3;
   const activeLeader = [...rows].filter((row) => row.activeCount > 0).sort((a, b) => b.activeCount - a.activeCount || b.projectCount - a.projectCount)[0];
   const timingLeader = [...rows]
-    .filter((row) => isNumber(row.listedLifecycleMedianDays) && row.listedLifecycleN >= 5)
-    .sort((a, b) => a.listedLifecycleMedianDays - b.listedLifecycleMedianDays)[0];
+    .filter((row) => isNumber(row.listedLifecycleAverageDays) && row.listedLifecycleN >= 5)
+    .sort((a, b) => a.listedLifecycleAverageDays - b.listedLifecycleAverageDays)[0];
   const spWorkloadLeader = [...rows]
     .filter((row) => row.firmScope !== "rollup" && isNumber(row.activeProjectsPerSponsorPrincipal) && row.activeCount >= MIN_ACTIVE_PROJECTS)
     .sort((a, b) => b.activeProjectsPerSponsorPrincipal - a.activeProjectsPerSponsorPrincipal || b.activeCount - a.activeCount)[0];
@@ -1149,7 +1181,7 @@ function metricCards(rows) {
       {
         label: `${label}已上市周期较快`,
         value: timingLeader ? timingLeader.displayNameZh : "样本不足",
-        note: timingLeader ? `${formatDays(timingLeader.listedLifecycleMedianDays, timingLeader.listedLifecycleN)} · 仅已上市样本` : "需至少5个已上市样本",
+        note: timingLeader ? `${formatDays(timingLeader.listedLifecycleAverageDays)} · 仅已上市项目` : "需至少5个已上市样本",
       },
     ];
     return cards
@@ -1205,7 +1237,7 @@ function metricCards(rows) {
     {
       label: "已上市周期较快",
       value: timingLeader ? timingLeader.displayNameZh : "样本不足",
-      note: timingLeader ? `${formatDays(timingLeader.listedLifecycleMedianDays, timingLeader.listedLifecycleN)} · 仅已上市样本` : "需至少5个已上市样本",
+      note: timingLeader ? `${formatDays(timingLeader.listedLifecycleAverageDays)} · 仅已上市项目` : "需至少5个已上市样本",
     },
   ];
   return cards
@@ -1220,24 +1252,24 @@ function metricCards(rows) {
 }
 
 function lifecycleDisplay(row) {
-  const finalText = formatDays(row.listedLifecycleMedianDays, row.listedLifecycleN);
-  const elapsedText = formatDays(row.applyingElapsedMedianDays, row.applyingElapsedN);
+  const finalText = formatDays(row.listedLifecycleAverageDays);
+  const elapsedText = formatDays(row.applyingElapsedAverageDays);
   if (state.stage === "applying") {
     return {
       main: elapsedText,
-      sub: "申请中 time elapsed；只反映项目 freshness，不纳入 A1→上市快慢统计",
+      sub: "公开A1后已过平均时间；只反映项目生命周期阶段",
     };
   }
   if (row.listedLifecycleN) {
     return {
       main: finalText,
-      sub: "A1→上市最终样本",
+      sub: "已上市项目A1到上市流程平均时间",
     };
   }
   if (row.applyingElapsedN) {
     return {
       main: "暂无已上市样本",
-      sub: `申请中已过中位 ${elapsedText}；不纳入周期快慢统计`,
+      sub: `申请中平均已过 ${elapsedText}；不混入A1到上市流程`,
     };
   }
   return {
@@ -1287,7 +1319,7 @@ function rowHtml(row, index, showMarketCap) {
     <td data-label="A+H"><span class="number">${compactCredit(row.ahCount)}</span></td>
     <td data-label="排名指标"><span class="number">${escapeHtml(primary.main)}</span><span class="sub-number">${escapeHtml(primary.sub)}</span></td>
     ${marketCapCell}
-    <td data-label="周期 / 已过"><span class="number">${escapeHtml(lifecycle.main)}</span><span class="sub-number">${escapeHtml(lifecycle.sub)} · ${escapeHtml(lifecycleCellNote(row))}</span></td>
+    <td data-label="${escapeHtml(lifecycleHeaderText())}"><span class="number">${escapeHtml(lifecycle.main)}</span><span class="sub-number">${escapeHtml(lifecycle.sub)} · ${escapeHtml(lifecycleCellNote(row))}</span></td>
     <td data-label="行业">${industries}</td>
   </tr>`;
 }
@@ -1303,7 +1335,14 @@ function render() {
   els.primaryMetricHead.querySelector(".sl-th-label").textContent = metricLabels[state.metric] || "排名指标";
   els.marketCapHead.hidden = !showMarketCap;
   els.marketCapHead.querySelector(".sl-th-label").textContent = marketCapHeaderText();
-  const rankingNote = " · A1→上市统计仅纳入已上市项目；申请中为 elapsed/freshness";
+  if (els.lifecycleHead) {
+    els.lifecycleHead.querySelector(".sl-th-label").textContent = lifecycleHeaderText();
+    els.lifecycleHead.title = lifecycleHeaderTitle();
+  }
+  const rankingNote =
+    state.stage === "applying"
+      ? " · 生命周期阶段为公开A1后已过时间，不纳入最终快慢统计"
+      : " · A1到上市流程仅按已上市项目计算，申请中不混入";
   const sectorNote = state.sector === "all" ? "" : ` · 赛道：${sectorLabel()} · 人员/SP/Rep不按赛道拆分`;
   const syntheticFactCount = facts.filter((fact) => fact.isSyntheticRollup).length;
   const baseFactCount = facts.length - syntheticFactCount;
@@ -1367,7 +1406,7 @@ function pkMetricRows(rowA, rowB) {
     },
     { label: "A1→接收中位数 / A1 to receipt", key: "receivedCycleMedianDays", value: (row) => row.receivedCycleMedianDays, format: (value, row) => formatDays(value, row.receivedCycleN), higher: false, note: "已接收样本 / Received sample" },
     { label: "A1→通知中位数 / A1 to notice", key: "noticeCycleMedianDays", value: (row) => row.noticeCycleMedianDays, format: (value, row) => formatDays(value, row.noticeCycleN), higher: false, note: "已通知样本 / Notice-issued sample" },
-    { label: "A1→上市中位数 / A1 to listing", key: "listedLifecycleMedianDays", value: (row) => row.listedLifecycleMedianDays, format: (value, row) => formatDays(value, row.listedLifecycleN), higher: false, note: "仅已上市 / Listed sample" },
+    { label: "A1→上市平均时间 / Average A1-to-listing", key: "listedLifecycleAverageDays", value: (row) => row.listedLifecycleAverageDays, format: (value) => formatDays(value), higher: false, note: "仅已上市项目 / Listed deals only" },
   ];
   const visibleMetrics = state.sector === "all" ? metrics : metrics.filter((metric) => SECTOR_METRIC_KEYS.has(metric.key));
   return visibleMetrics.map((metric) => ({
@@ -1478,7 +1517,7 @@ function drawerStats(row) {
   const cycleSummary = [
     row.receivedCycleN ? `接收 ${formatDays(row.receivedCycleMedianDays, row.receivedCycleN)}` : "",
     row.noticeCycleN ? `通知 ${formatDays(row.noticeCycleMedianDays, row.noticeCycleN)}` : "",
-    row.listedLifecycleN ? `上市 ${formatDays(row.listedLifecycleMedianDays, row.listedLifecycleN)}` : "",
+    row.listedLifecycleN ? `上市 ${formatDays(row.listedLifecycleAverageDays)}` : "",
   ]
     .filter(Boolean)
     .join(" · ");
@@ -1495,8 +1534,8 @@ function drawerStats(row) {
     ["六号牌人均上市市值", formatCapPerPerson(row.listingMarketCapPerType6TotalHkdBn)],
     ["上市日港股市值合计", formatCap(row.listingMarketCapHkdBnSum, "HK$")],
     ["A1日A股市值合计", formatCap(row.aShareMarketCapRmbBnSum, "¥")],
-    ["周期中位数", cycleSummary || "待披露"],
-    ["申请中已过中位数", formatDays(row.applyingElapsedMedianDays, row.applyingElapsedN)],
+    ["流程时间", cycleSummary || "待披露"],
+    ["申请中平均已过", formatDays(row.applyingElapsedAverageDays)],
   ]
     .map(
       ([label, value]) => `<div class="drawer-stat">
@@ -1689,6 +1728,7 @@ function cacheElements() {
     "resultHint",
     "primaryMetricHead",
     "marketCapHead",
+    "lifecycleHead",
     "leaderboardRows",
     "drawer",
     "drawerBackdrop",

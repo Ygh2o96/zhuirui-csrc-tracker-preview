@@ -487,7 +487,7 @@
                   <option value="ahCount">A+H 项目</option>
                   <option value="listingMarketCapHkdBnSum">上市日港股市值</option>
                   <option value="aShareMarketCapRmbBnSum">A股市值</option>
-                  <option value="lifecycleMedianDays">A1→上市中位数（已上市）</option>
+                  <option value="lifecycleMedianDays">A1→上市平均时间（已上市）</option>
                   <option value="noticeCycleMedianDays">A1→通知中位数（已通知）</option>
                   <option value="receivedCycleMedianDays">A1→接收中位数（已接收）</option>
                   <option value="sponsorPrincipalCount">SP人数</option>
@@ -585,7 +585,7 @@
                     <th><button class="sl-th-sort" type="button" data-sort-key="ahCount"><span class="sl-th-label">A+H</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
                     <th id="slPrimaryMetricHead"><button class="sl-th-sort" type="button" data-sort-key="__metric"><span class="sl-th-label">排名指标</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
                     <th id="slMarketCapHead"><button class="sl-th-sort" type="button" data-sort-key="__marketCap"><span class="sl-th-label">市值</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th title="已上市项目显示 A1→上市最终周期；申请中项目显示截至快照日已过天数"><button class="sl-th-sort" type="button" data-sort-key="lifecycleMedianDays"><span class="sl-th-label">周期 / 已过</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th id="slLifecycleHead" title="全部/已上市显示已上市项目 A1 到上市平均流程时间；申请中显示公开 A1 后已过平均时间，不纳入最终周期快慢统计"><button class="sl-th-sort" type="button" data-sort-key="__lifecycle"><span class="sl-th-label">A1到上市流程平均</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
                     <th><button class="sl-th-sort" type="button" data-sort-key="topIndustry"><span class="sl-th-label">行业</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
                   </tr>
                 </thead>
