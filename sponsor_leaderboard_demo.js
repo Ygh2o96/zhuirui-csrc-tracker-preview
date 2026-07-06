@@ -39,15 +39,16 @@ const metricLabels = {
   listingMarketCapHkdBnSum: "上市市值",
   aShareMarketCapRmbBnSum: "A股市值",
   lifecycleMedianDays: "A1→上市中位数",
-  type6TotalCount: "六号牌人数",
+  sponsorPrincipalCount: "SP人数",
+  type6TotalCount: "六号牌总人数",
   type6RepPerProject: "每项目Rep",
-  type6ROPerProject: "每项目RO",
+  sponsorPrincipalPerProject: "每项目SP",
   type6TotalPerProject: "每项目六号牌",
   projectsPerType6Rep: "每名Rep项目数",
-  projectsPerType6RO: "每名RO项目数",
+  projectsPerSponsorPrincipal: "每名SP项目数",
   projectsPerType6Total: "每名六号牌项目数",
-  type6TotalPerActiveProject: "每申请中项目六号牌",
-  activeProjectsPerType6Total: "每名六号牌申请中项目",
+  sponsorPrincipalPerActiveProject: "每申请中项目SP",
+  activeProjectsPerSponsorPrincipal: "每名SP申请中项目",
 };
 
 const creditLabels = {
@@ -121,12 +122,22 @@ function formatRatio(value, digits = 2) {
   return compactNumber(value, digits);
 }
 
-function type6Display(row) {
-  if (!isNumber(row.type6TotalCount)) return { main: "待接入", sub: "暂无匹配六号牌数据" };
-  const quality = row.type6Quality === "archive_db" ? "archive" : row.type6Quality || "fresh";
+function capacityDisplay(row) {
+  const quality = row.sponsorPrincipalQuality || row.type6Quality || "fresh";
+  if (isNumber(row.sponsorPrincipalCount)) {
+    const type6 = isNumber(row.type6TotalCount) ? `六号牌 ${compactNumber(row.type6TotalCount, 0)}` : "六号牌待补";
+    const ro = isNumber(row.type6ROCount) ? `RO ${compactNumber(row.type6ROCount, 0)}` : "RO待补";
+    const rep = isNumber(row.type6RepCount) ? `Rep ${compactNumber(row.type6RepCount, 0)}` : "Rep待补";
+    return {
+      main: `${compactNumber(row.sponsorPrincipalCount, 0)} SP`,
+      sub: `${type6} / ${ro} / ${rep} · ${quality}`,
+    };
+  }
+  if (!isNumber(row.type6TotalCount)) return { main: "待接入", sub: "暂无匹配 SP / 六号牌数据" };
+  const fallbackQuality = row.type6Quality === "archive_db" ? "archive" : row.type6Quality || "fresh";
   return {
-    main: `${compactNumber(row.type6TotalCount, 0)}人`,
-    sub: `RO ${compactNumber(row.type6ROCount || 0, 0)} / Rep ${compactNumber(row.type6RepCount || 0, 0)} · ${quality}`,
+    main: "SP待补",
+    sub: `六号牌 ${compactNumber(row.type6TotalCount, 0)} / RO ${compactNumber(row.type6ROCount || 0, 0)} / Rep ${compactNumber(row.type6RepCount || 0, 0)} · ${fallbackQuality}`,
   };
 }
 
@@ -156,9 +167,9 @@ function metricSortAsc(metric) {
     "topIndustry",
     "lifecycleMedianDays",
     "type6RepPerProject",
-    "type6ROPerProject",
+    "sponsorPrincipalPerProject",
     "type6TotalPerProject",
-    "type6TotalPerActiveProject",
+    "sponsorPrincipalPerActiveProject",
   ]).has(metric);
 }
 
@@ -328,9 +339,10 @@ function aggregateFacts(facts) {
       .filter(isNumber);
     const projectCount = weightedCount(sponsorFacts, () => true);
     const activeCount = weightedCount(sponsorFacts, (fact) => fact.hkexStage === "applying");
-    const type6RepCount = isNumber(firm.type6RepCount) ? firm.type6RepCount : null;
-    const type6ROCount = isNumber(firm.type6ROCount) ? firm.type6ROCount : null;
-    const type6TotalCount = isNumber(firm.type6TotalCount) ? firm.type6TotalCount : null;
+  const type6RepCount = isNumber(firm.type6RepCount) ? firm.type6RepCount : null;
+  const type6ROCount = isNumber(firm.type6ROCount) ? firm.type6ROCount : null;
+  const type6TotalCount = isNumber(firm.type6TotalCount) ? firm.type6TotalCount : null;
+    const sponsorPrincipalCount = isNumber(firm.sponsorPrincipalCount) ? firm.sponsorPrincipalCount : null;
     const query = normalize(state.search);
     rows.push({
       ...firm,
@@ -376,10 +388,14 @@ function aggregateFacts(facts) {
       type6RepPerProject: projectCount > 0 && type6RepCount ? type6RepCount / projectCount : null,
       projectsPerType6RO: type6ROCount && type6ROCount > 0 ? projectCount / type6ROCount : null,
       type6ROPerProject: projectCount > 0 && type6ROCount ? type6ROCount / projectCount : null,
+      projectsPerSponsorPrincipal: sponsorPrincipalCount && sponsorPrincipalCount > 0 ? projectCount / sponsorPrincipalCount : null,
+      sponsorPrincipalPerProject: projectCount > 0 && sponsorPrincipalCount ? sponsorPrincipalCount / projectCount : null,
       projectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? projectCount / type6TotalCount : null,
       type6TotalPerProject: projectCount > 0 && type6TotalCount ? type6TotalCount / projectCount : null,
       type6TotalPerActiveProject: activeCount > 0 && type6TotalCount ? type6TotalCount / activeCount : null,
       activeProjectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? activeCount / type6TotalCount : null,
+      sponsorPrincipalPerActiveProject: activeCount > 0 && sponsorPrincipalCount ? sponsorPrincipalCount / activeCount : null,
+      activeProjectsPerSponsorPrincipal: sponsorPrincipalCount && sponsorPrincipalCount > 0 ? activeCount / sponsorPrincipalCount : null,
       topIndustries: topIndustries(sponsorFacts),
     });
   }
@@ -623,8 +639,8 @@ function metricDisplay(row) {
       sub: "排名仅纳入已上市 A1→上市样本",
     };
   }
-  if (state.metric === "type6TotalCount") {
-    return type6Display(row);
+  if (state.metric === "sponsorPrincipalCount") {
+    return capacityDisplay(row);
   }
   if (state.metric === "projectsPerType6Rep") {
     return {
@@ -638,10 +654,10 @@ function metricDisplay(row) {
       sub: isNumber(row.type6RepCount) ? `每个项目平均需要多少Rep · 越低越精简 · Rep ${compactNumber(row.type6RepCount, 0)}` : "暂无六号牌Rep",
     };
   }
-  if (state.metric === "type6ROPerProject") {
+  if (state.metric === "sponsorPrincipalPerProject") {
     return {
-      main: formatRatio(row.type6ROPerProject),
-      sub: isNumber(row.type6ROCount) ? `每个项目平均需要多少RO · 越低越精简 · RO ${compactNumber(row.type6ROCount, 0)}` : "暂无六号牌RO",
+      main: formatRatio(row.sponsorPrincipalPerProject),
+      sub: isNumber(row.sponsorPrincipalCount) ? `每个项目平均需要多少SP · 越低越精简 · SP ${compactNumber(row.sponsorPrincipalCount, 0)}` : "暂无SP人数",
     };
   }
   if (state.metric === "type6TotalPerProject") {
@@ -650,10 +666,10 @@ function metricDisplay(row) {
       sub: isNumber(row.type6TotalCount) ? `每个项目平均需要多少六号牌人员 · 越低越精简 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
-  if (state.metric === "projectsPerType6RO") {
+  if (state.metric === "projectsPerSponsorPrincipal") {
     return {
-      main: formatRatio(row.projectsPerType6RO),
-      sub: isNumber(row.type6ROCount) ? `每名RO覆盖项目数 · RO ${compactNumber(row.type6ROCount, 0)}` : "暂无六号牌RO",
+      main: formatRatio(row.projectsPerSponsorPrincipal),
+      sub: isNumber(row.sponsorPrincipalCount) ? `每名SP覆盖项目数 · SP ${compactNumber(row.sponsorPrincipalCount, 0)}` : "暂无SP人数",
     };
   }
   if (state.metric === "projectsPerType6Total") {
@@ -662,16 +678,16 @@ function metricDisplay(row) {
       sub: isNumber(row.type6TotalCount) ? `每名六号牌人员覆盖项目数 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
     };
   }
-  if (state.metric === "type6TotalPerActiveProject") {
+  if (state.metric === "sponsorPrincipalPerActiveProject") {
     return {
-      main: formatRatio(row.type6TotalPerActiveProject),
-      sub: isNumber(row.type6TotalCount) ? `每个申请中项目平均需要多少六号牌人员 · 越低越精简 · 申请中 ${compactCredit(row.activeCount)}` : "暂无六号牌人数",
+      main: formatRatio(row.sponsorPrincipalPerActiveProject),
+      sub: isNumber(row.sponsorPrincipalCount) ? `每个申请中项目平均对应多少SP · 越低越精简 · 申请中 ${compactCredit(row.activeCount)}` : "暂无SP人数",
     };
   }
-  if (state.metric === "activeProjectsPerType6Total") {
+  if (state.metric === "activeProjectsPerSponsorPrincipal") {
     return {
-      main: formatRatio(row.activeProjectsPerType6Total),
-      sub: isNumber(row.type6TotalCount) ? `每名六号牌人员正在覆盖多少申请中项目 · 越高负荷越重 · ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数",
+      main: formatRatio(row.activeProjectsPerSponsorPrincipal),
+      sub: isNumber(row.sponsorPrincipalCount) ? `每名SP正在覆盖多少申请中项目 · 越高负荷越重 · SP ${compactNumber(row.sponsorPrincipalCount, 0)}` : "暂无SP人数",
     };
   }
   return {
@@ -756,18 +772,18 @@ function metricCards(rows) {
   const timingLeader = [...rows]
     .filter((row) => isNumber(row.listedLifecycleMedianDays) && row.listedLifecycleN >= 5)
     .sort((a, b) => a.listedLifecycleMedianDays - b.listedLifecycleMedianDays)[0];
-  const type6Leader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.type6TotalCount))
-    .sort((a, b) => b.type6TotalCount - a.type6TotalCount || b.projectCount - a.projectCount)[0];
+  const spLeader = [...rows]
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.sponsorPrincipalCount))
+    .sort((a, b) => b.sponsorPrincipalCount - a.sponsorPrincipalCount || b.projectCount - a.projectCount)[0];
   const peopleEfficiencyLeader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.type6TotalPerProject) && row.projectCount > 0)
-    .sort((a, b) => a.type6TotalPerProject - b.type6TotalPerProject || b.projectCount - a.projectCount)[0];
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.sponsorPrincipalPerProject) && row.projectCount > 0)
+    .sort((a, b) => a.sponsorPrincipalPerProject - b.sponsorPrincipalPerProject || b.projectCount - a.projectCount)[0];
   const liveLoadLeader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.activeProjectsPerType6Total) && row.activeCount > 0)
-    .sort((a, b) => b.activeProjectsPerType6Total - a.activeProjectsPerType6Total || b.activeCount - a.activeCount)[0];
-  const roLeverageLeader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.projectsPerType6RO) && row.projectCount > 0)
-    .sort((a, b) => b.projectsPerType6RO - a.projectsPerType6RO || b.projectCount - a.projectCount)[0];
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.activeProjectsPerSponsorPrincipal) && row.activeCount > 0)
+    .sort((a, b) => b.activeProjectsPerSponsorPrincipal - a.activeProjectsPerSponsorPrincipal || b.activeCount - a.activeCount)[0];
+  const spLoadLeader = [...rows]
+    .filter((row) => row.firmScope !== "rollup" && isNumber(row.projectsPerSponsorPrincipal) && row.projectCount > 0)
+    .sort((a, b) => b.projectsPerSponsorPrincipal - a.projectsPerSponsorPrincipal || b.projectCount - a.projectCount)[0];
 
   const cards = [
     {
@@ -791,30 +807,30 @@ function metricCards(rows) {
       note: timingLeader ? `${formatDays(timingLeader.listedLifecycleMedianDays, timingLeader.listedLifecycleN)} · 仅已上市样本` : "需至少5个已上市样本",
     },
     {
-      label: "六号牌人数第一",
-      value: type6Leader ? type6Leader.displayNameZh : "待接入",
-      note: type6Leader ? type6Display(type6Leader).sub : "Webb SFC Type 6",
+      label: "SP人数第一",
+      value: spLeader ? spLeader.displayNameZh : "待接入",
+      note: spLeader ? capacityDisplay(spLeader).sub : "SFC sponsor principal",
     },
     {
-      label: "每项目人手最少",
+      label: "每项目SP最少",
       value: peopleEfficiencyLeader ? peopleEfficiencyLeader.displayNameZh : "样本不足",
       note: peopleEfficiencyLeader
-        ? `每项目 ${formatRatio(peopleEfficiencyLeader.type6TotalPerProject)} 名六号牌 · Rep ${formatRatio(peopleEfficiencyLeader.type6RepPerProject)}/项目 · RO ${formatRatio(peopleEfficiencyLeader.type6ROPerProject)}/项目`
-        : "需匹配六号牌人数及项目样本",
+        ? `每项目 ${formatRatio(peopleEfficiencyLeader.sponsorPrincipalPerProject)} 名SP · 六号牌 ${formatRatio(peopleEfficiencyLeader.type6TotalPerProject)}/项目`
+        : "需匹配SP人数及项目样本",
     },
     {
-      label: "申请中负荷最高",
+      label: "申请中SP负荷最高",
       value: liveLoadLeader ? liveLoadLeader.displayNameZh : "样本不足",
       note: liveLoadLeader
-        ? `${formatRatio(liveLoadLeader.activeProjectsPerType6Total)} 申请中项目/人 · ${formatRatio(liveLoadLeader.type6TotalPerActiveProject)} 人/申请中项目`
-        : "需匹配六号牌人数及申请中项目",
+        ? `每名SP ${formatRatio(liveLoadLeader.activeProjectsPerSponsorPrincipal)} 个申请中项目 · 每申请中项目 ${formatRatio(liveLoadLeader.sponsorPrincipalPerActiveProject)} 名SP`
+        : "需匹配SP人数及申请中项目",
     },
     {
-      label: "RO负荷最高",
-      value: roLeverageLeader ? roLeverageLeader.displayNameZh : "样本不足",
-      note: roLeverageLeader
-        ? `每名RO ${formatRatio(roLeverageLeader.projectsPerType6RO)} 个项目 · 每项目 ${formatRatio(roLeverageLeader.type6ROPerProject)} 名RO`
-        : "需匹配负责人员RO样本",
+      label: "SP项目负荷最高",
+      value: spLoadLeader ? spLoadLeader.displayNameZh : "样本不足",
+      note: spLoadLeader
+        ? `每名SP ${formatRatio(spLoadLeader.projectsPerSponsorPrincipal)} 个项目 · 每项目 ${formatRatio(spLoadLeader.sponsorPrincipalPerProject)} 名SP`
+        : "需匹配SP样本",
     },
   ];
   return cards
@@ -858,7 +874,7 @@ function lifecycleDisplay(row) {
 function rowHtml(row, index, showMarketCap) {
   const primary = metricDisplay(row);
   const marketCap = marketCapDisplay(row);
-  const type6 = type6Display(row);
+  const type6 = capacityDisplay(row);
   const lifecycle = lifecycleDisplay(row);
   const marketCapCell = showMarketCap
     ? `<td data-label="${escapeHtml(marketCapHeaderText())}"><span class="number">${escapeHtml(marketCap.main)}</span><span class="sub-number">${escapeHtml(marketCap.sub)}</span></td>`
@@ -889,7 +905,7 @@ function rowHtml(row, index, showMarketCap) {
       ${scopePill}
     </td>
     <td data-label="性质"><span class="pill teal">${escapeHtml(row.sponsorNature || "待核")}</span></td>
-    <td data-label="六号牌"><span class="number">${escapeHtml(type6.main)}</span><span class="sub-number">${escapeHtml(type6.sub)}</span></td>
+    <td data-label="SP / 六号牌"><span class="number">${escapeHtml(type6.main)}</span><span class="sub-number">${escapeHtml(type6.sub)}</span></td>
     <td data-label="项目"><span class="number">${compactCredit(row.projectCount)}</span><span class="sub-number">${typePills}</span></td>
     <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span></td>
     <td data-label="已上市"><span class="number">${compactCredit(row.listedCount)}</span></td>
@@ -939,15 +955,16 @@ function drawerStats(row) {
     ["申请中", compactCredit(row.activeCount)],
     ["已上市", compactCredit(row.listedCount)],
     ["A+H", compactCredit(row.ahCount)],
-    ["六号牌", type6Display(row).main],
+    ["SP", isNumber(row.sponsorPrincipalCount) ? `${compactNumber(row.sponsorPrincipalCount, 0)}人` : "待接入"],
+    ["六号牌", isNumber(row.type6TotalCount) ? `${compactNumber(row.type6TotalCount, 0)}人` : "待接入"],
     ["每项目Rep", formatRatio(row.type6RepPerProject)],
-    ["每项目RO", formatRatio(row.type6ROPerProject)],
+    ["每项目SP", formatRatio(row.sponsorPrincipalPerProject)],
     ["每项目六号牌", formatRatio(row.type6TotalPerProject)],
     ["每名Rep项目数", formatRatio(row.projectsPerType6Rep)],
-    ["每名RO项目数", formatRatio(row.projectsPerType6RO)],
+    ["每名SP项目数", formatRatio(row.projectsPerSponsorPrincipal)],
     ["每名六号牌项目数", formatRatio(row.projectsPerType6Total)],
-    ["每申请中项目六号牌", formatRatio(row.type6TotalPerActiveProject)],
-    ["每名六号牌申请中项目", formatRatio(row.activeProjectsPerType6Total)],
+    ["每申请中项目SP", formatRatio(row.sponsorPrincipalPerActiveProject)],
+    ["每名SP申请中项目", formatRatio(row.activeProjectsPerSponsorPrincipal)],
     ["上市日港股市值", formatCap(row.listingMarketCapHkdBnSum, "HK$")],
     ["A1日A股市值", formatCap(row.aShareMarketCapRmbBnSum, "¥")],
     ["A1→上市中位数", formatDays(row.listedLifecycleMedianDays, row.listedLifecycleN)],
@@ -1018,6 +1035,16 @@ function openDrawer(sponsorId) {
     .map((name) => `<span class="pill">${escapeHtml(name)}</span>`)
     .join("");
   const industries = (row.topIndustries || []).map((name) => `<span class="pill teal">${escapeHtml(name)}</span>`).join("");
+  const principalSources = (row.sponsorPrincipalSourceFirmNames || [])
+    .slice(0, 6)
+    .map((name, index) => {
+      const url = (row.sponsorPrincipalSourceUrls || [])[index] || "";
+      if (/^https?:\/\//i.test(url)) {
+        return `<a class="pill" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a>`;
+      }
+      return `<span class="pill">${escapeHtml(name)}</span>`;
+    })
+    .join("");
   const type6Sources = (row.type6SourceFirmNames || [])
     .slice(0, 6)
     .map((name, index) => {
@@ -1032,6 +1059,8 @@ function openDrawer(sponsorId) {
     <p class="drawer-subtitle">${escapeHtml(row.displayNameEn)} · ${escapeHtml(row.sponsorNature || "待核")} · ${escapeHtml(row.mappingConfidence || "demo")}</p>
     <div class="drawer-pills">${legalNames}</div>
     <div class="drawer-summary">${drawerStats(row)}</div>
+    <h4>SP 来源</h4>
+    <div class="drawer-pills">${principalSources || '<span class="pill">未匹配 Sponsor Principal 行</span>'}</div>
     <h4>六号牌来源</h4>
     <div class="drawer-pills">${type6Sources || '<span class="pill">未匹配 Webb Type 6 行</span>'}</div>
     <h4>主要行业</h4>
@@ -1170,6 +1199,13 @@ async function init() {
       if (cap.quality === "archive_db" && cap.dataFreshnessNote) {
         els.demoNote.textContent += ` ${cap.dataFreshnessNote}`;
       }
+    }
+    if (meta.sponsorPrincipals?.available) {
+      const sp = meta.sponsorPrincipals;
+      const spMatchNote = sp.rollupCapacityFirmCount
+        ? `匹配 ${sp.matchedRealFirmCount || 0} 家 + ${sp.rollupCapacityFirmCount} 个合并口径`
+        : `匹配 ${sp.matchedFirmCount || 0} 家`;
+      els.demoNote.textContent += ` SP口径：${sp.quality || "source"} · ${sp.asOfDate || "date pending"} · ${spMatchNote}；SP为可签sponsor工作的principal，负荷/人效优先使用该口径。`;
     }
     if (state.data.quality?.length) {
       els.demoNote.textContent += ` 质量提示：${state.data.quality.map((item) => `${item.code}=${item.count || item.items?.length || 1}`).join("；")}`;

@@ -1,13 +1,13 @@
 {
   "meta": {
-    "generatedAt": "2026-07-06T08:51:05Z",
+    "generatedAt": "2026-07-06T09:12:10Z",
     "sourceGeneratedAt": "2026-07-06T16:51:04+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
       "generatedAt": "2026-07-06T16:51:04+08:00",
-      "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌容量 enrichment 外，不设独立项目 intake。"
+      "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1455,
     "baseProjectFactCount": 1349,
@@ -15,7 +15,7 @@
     "firmCount": 74,
     "excludedPlaceholderSponsorRecordCount": 10,
     "coverageZh": "HKEX Main Board / CSRC 备案口径；A1样本自 2019-04-08；普通IPO统计自 2023-03-31",
-    "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计牵头/首名保荐人，或按保荐人数量平分；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。",
+    "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计牵头/首名保荐人，或按保荐人数量平分；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。SP 为真正可签 sponsor 工作的 sponsor principal，负荷/人效优先用 SP 口径；六号牌总人数、RO、Rep 仅作容量背景。",
     "creditMethods": [
       "allFull",
       "equalSplit",
@@ -38,6 +38,23 @@
       "dataFreshnessNote": null,
       "archiveFrozenAt": null,
       "noteZh": "六号牌人数仅作为保荐机构容量代理，不代表项目组实际配置。"
+    },
+    "sponsorPrincipals": {
+      "available": true,
+      "quality": "fresh",
+      "rowCount": 121,
+      "matchedFirmCount": 72,
+      "matchedRealFirmCount": 71,
+      "rollupCapacityFirmCount": 1,
+      "ambiguousCapacityRowCount": 0,
+      "unmatchedCapacityRowCount": 50,
+      "asOfDate": "2026-07-05",
+      "sourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "source": "sfc_sponsor_principal_register_mirror",
+      "sourceUrl": "https://drdrhuhabqfsu.ok.kimi.link/",
+      "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_sponsor_principals.json",
+      "methodologyNote": "Signing principal counts are parsed from a public SFC-register mirror. SPs must be Type 6 ROs, but not all ROs are SPs; use SP counts as the preferred capacity denominator for sponsor-signing load.",
+      "noteZh": "SP 为 sponsor principal；SP 必须是 RO，但 RO 不一定是 SP。龙虎榜负荷/人效优先使用 SP 口径。"
     }
   },
   "firms": [
@@ -91,7 +108,45 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=46811&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 83,
+      "sponsorPrincipalRepCount": 1597,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ACN231",
+        "AHA614",
+        "AHK750",
+        "ALV331",
+        "ATJ227",
+        "AWY297",
+        "AXD116",
+        "AXF284",
+        "BAR460",
+        "BBH324",
+        "BBR070",
+        "BBV148",
+        "BBZ161",
+        "BEA501",
+        "BEW537",
+        "BEZ909",
+        "BFU750",
+        "BFX877",
+        "BHT089",
+        "BIO049",
+        "BIW988",
+        "BJG757",
+        "BMH292"
+      ],
+      "sponsorPrincipalCount": 23
     },
     {
       "sponsorId": "citic",
@@ -149,7 +204,48 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18459&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 47,
+      "sponsorPrincipalRepCount": 942,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGF194",
+        "AHA572",
+        "AHD591",
+        "AJB117",
+        "ALI074",
+        "AMJ193",
+        "AMS885",
+        "APN587",
+        "AQQ108",
+        "AQS231",
+        "ATB631",
+        "AVR238",
+        "AVY121",
+        "AXR364",
+        "AYO044",
+        "AYZ889",
+        "AZJ841",
+        "BBF446",
+        "BBL850",
+        "BHL578",
+        "BIX444",
+        "BJP009",
+        "BJX658",
+        "BMI346",
+        "BMT656",
+        "BMX543"
+      ],
+      "sponsorPrincipalCount": 26
     },
     {
       "sponsorId": "huatai",
@@ -200,7 +296,41 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49319&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Huatai Financial Holdings (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 65,
+      "sponsorPrincipalRepCount": 801,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AEK034",
+        "AHN470",
+        "AMK406",
+        "APZ538",
+        "AQQ125",
+        "AUI935",
+        "AXT416",
+        "AYF532",
+        "AYZ032",
+        "AZV756",
+        "BEQ492",
+        "BFE452",
+        "BIN075",
+        "BIO217",
+        "BIR327",
+        "BJK566",
+        "BJQ665",
+        "BMP491",
+        "BNW951"
+      ],
+      "sponsorPrincipalCount": 19
     },
     {
       "sponsorId": "group-gtja-haitong",
@@ -257,16 +387,60 @@
       "type6TotalCount": 334,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh",
       "type6RollupMemberSponsorIds": [
+        "gtja",
+        "haitong"
+      ],
+      "sponsorPrincipalCount": 24,
+      "sponsorPrincipalCerefs": [
+        "AGG766",
+        "AGH150",
+        "AGK773",
+        "AHN287",
+        "AIL064",
+        "AKP198",
+        "ALZ574",
+        "AMF746",
+        "AMN642",
+        "AMX936",
+        "ANV057",
+        "APR020",
+        "AQD161",
+        "AWN316",
+        "AWO954",
+        "AXP429",
+        "AXQ079",
+        "AZU828",
+        "AZV239",
+        "BAI406",
+        "BCF400",
+        "BJH821",
+        "BJK228",
+        "BML419"
+      ],
+      "sponsorPrincipalRowCount": 2,
+      "sponsorPrincipalSourceFirmNames": [
+        "Guotai Junan Capital Limited",
+        "Haitong International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 33,
+      "sponsorPrincipalRepCount": 288,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalRollupMemberSponsorIds": [
         "gtja",
         "haitong"
       ]
@@ -319,7 +493,31 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=60614&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "CMB International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 20,
+      "sponsorPrincipalRepCount": 90,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AJH516",
+        "AKN222",
+        "AXZ894",
+        "AYO955",
+        "AYR997",
+        "BEM067",
+        "BEZ042",
+        "BFF189",
+        "BHC101"
+      ],
+      "sponsorPrincipalCount": 9
     },
     {
       "sponsorId": "gtja",
@@ -376,7 +574,32 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 13,
+      "sponsorPrincipalRepCount": 140,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGK773",
+        "AIL064",
+        "AKP198",
+        "AMN642",
+        "AMX936",
+        "APR020",
+        "AWO954",
+        "AXP429",
+        "BAI406",
+        "BJH821"
+      ],
+      "sponsorPrincipalCount": 10
     },
     {
       "sponsorId": "csi",
@@ -426,7 +649,32 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1942934&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Securities (International) Corporate Finance Company Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 17,
+      "sponsorPrincipalRepCount": 319,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGP056",
+        "AOX943",
+        "AVK963",
+        "AWS553",
+        "AXM307",
+        "AXW924",
+        "BBK031",
+        "BDF606",
+        "BDY288",
+        "BEW802"
+      ],
+      "sponsorPrincipalCount": 10
     },
     {
       "sponsorId": "haitong",
@@ -477,7 +725,36 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Haitong International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 20,
+      "sponsorPrincipalRepCount": 148,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGG766",
+        "AGH150",
+        "AHN287",
+        "ALZ574",
+        "AMF746",
+        "ANV057",
+        "AQD161",
+        "AWN316",
+        "AXQ079",
+        "AZU828",
+        "AZV239",
+        "BCF400",
+        "BJK228",
+        "BML419"
+      ],
+      "sponsorPrincipalCount": 14
     },
     {
       "sponsorId": "ms",
@@ -528,7 +805,32 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1464&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Morgan Stanley Asia Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 50,
+      "sponsorPrincipalRepCount": 861,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ACO819",
+        "AGJ127",
+        "AIB748",
+        "AJH249",
+        "ANQ835",
+        "APH556",
+        "ASU033",
+        "AVY068",
+        "BAE169",
+        "BLK546"
+      ],
+      "sponsorPrincipalCount": 10
     },
     {
       "sponsorId": "ccbi",
@@ -578,7 +880,31 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=30230&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "CCB International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 17,
+      "sponsorPrincipalRepCount": 74,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AEE758",
+        "AKP396",
+        "APD344",
+        "ASW638",
+        "AUL971",
+        "AVL082",
+        "AYG286",
+        "BEZ276",
+        "BFE478"
+      ],
+      "sponsorPrincipalCount": 9
     },
     {
       "sponsorId": "cms",
@@ -628,7 +954,33 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18359&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Merchants Securities (HK) Co., Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 35,
+      "sponsorPrincipalRepCount": 382,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGC693",
+        "APB940",
+        "AXA214",
+        "AYW579",
+        "BBD585",
+        "BBT729",
+        "BCH640",
+        "BFM348",
+        "BHO251",
+        "BHO363",
+        "BIO431"
+      ],
+      "sponsorPrincipalCount": 11
     },
     {
       "sponsorId": "jpm",
@@ -679,7 +1031,29 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "J.P. Morgan Securities (Far East) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 14,
+      "sponsorPrincipalRepCount": 163,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ACQ669",
+        "AGH243",
+        "AOL528",
+        "AQJ204",
+        "AQU426",
+        "ARQ788",
+        "AYQ814"
+      ],
+      "sponsorPrincipalCount": 7
     },
     {
       "sponsorId": "gf",
@@ -729,7 +1103,26 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49367&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "GF Capital (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 165,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AJH211",
+        "AQG695",
+        "ART992",
+        "AYS989"
+      ],
+      "sponsorPrincipalCount": 4
     },
     {
       "sponsorId": "gs",
@@ -781,7 +1174,34 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5596&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Goldman Sachs (Asia) L.L.C."
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 39,
+      "sponsorPrincipalRepCount": 856,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFR865",
+        "AGK798",
+        "AMF026",
+        "AOV345",
+        "ARN055",
+        "AUS877",
+        "AUV855",
+        "AWN911",
+        "AXX258",
+        "BBB592",
+        "BBK045",
+        "BGE643"
+      ],
+      "sponsorPrincipalCount": 12
     },
     {
       "sponsorId": "abci",
@@ -832,7 +1252,29 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68371&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "ABCI Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 17,
+      "sponsorPrincipalRepCount": 53,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFP043",
+        "AHM208",
+        "AMI407",
+        "APW782",
+        "AQN907",
+        "AVG944",
+        "BJU502"
+      ],
+      "sponsorPrincipalCount": 7
     },
     {
       "sponsorId": "ubs",
@@ -883,7 +1325,32 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1467&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "UBS Securities Hong Kong Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 24,
+      "sponsorPrincipalRepCount": 331,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ACI535",
+        "ADR379",
+        "AFM599",
+        "AMI346",
+        "ATN888",
+        "AVD964",
+        "AYQ809",
+        "AYQ810",
+        "AYR264",
+        "BJK278"
+      ],
+      "sponsorPrincipalCount": 10
     },
     {
       "sponsorId": "citi",
@@ -933,7 +1400,29 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18311&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Citigroup Global Markets Asia Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 37,
+      "sponsorPrincipalRepCount": 441,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFF166",
+        "AWQ371",
+        "AWW837",
+        "AXZ547",
+        "AZQ393",
+        "BDV095",
+        "BFV916"
+      ],
+      "sponsorPrincipalCount": 7
     },
     {
       "sponsorId": "ml",
@@ -983,7 +1472,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12227&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Merrill Lynch (Asia Pacific) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 43,
+      "sponsorPrincipalRepCount": 386,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ABR710",
+        "ALR886",
+        "ANQ758",
+        "AQN969",
+        "AZX263"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "boci",
@@ -1033,7 +1542,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7117&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "BOCI Asia Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 17,
+      "sponsorPrincipalRepCount": 51,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AOA854",
+        "AVN286",
+        "AYR781",
+        "BDY994",
+        "BFY250"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "sws",
@@ -1083,7 +1612,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9131&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Shenwan Hongyuan Capital (H.K.) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 9,
+      "sponsorPrincipalRepCount": 40,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AWC885",
+        "BBH921",
+        "BFY640"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "pingan",
@@ -1133,7 +1680,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68488&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Ping An of China Capital (Hong Kong) Company Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 9,
+      "sponsorPrincipalRepCount": 48,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AKS933",
+        "ANX999",
+        "AVV214"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "cmbci",
@@ -1183,7 +1748,26 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2041492&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "CMBC International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 6,
+      "sponsorPrincipalRepCount": 21,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFQ413",
+        "AND639",
+        "AVT322",
+        "AZN927"
+      ],
+      "sponsorPrincipalCount": 4
     },
     {
       "sponsorId": "icbci",
@@ -1233,7 +1817,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=47434&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "ICBC International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 15,
+      "sponsorPrincipalRepCount": 44,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGO243",
+        "AHE256",
+        "ANO984",
+        "AWT704",
+        "BDW301"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "db",
@@ -1284,7 +1888,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Deutsche Securities Asia Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 12,
+      "sponsorPrincipalRepCount": 69,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFA799",
+        "ALA688",
+        "AXO614",
+        "BBE278",
+        "BBK034"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "galaxy",
@@ -1334,7 +1958,26 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68484&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Galaxy International Securities (Hong Kong) Co., Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 23,
+      "sponsorPrincipalRepCount": 255,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AOZ130",
+        "AQU542",
+        "BFP205",
+        "BFW878"
+      ],
+      "sponsorPrincipalCount": 4
     },
     {
       "sponsorId": "hsbc",
@@ -1384,7 +2027,30 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "HSBC Corporate Finance (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 11,
+      "sponsorPrincipalRepCount": 101,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ABY439",
+        "ABZ794",
+        "ADY273",
+        "AGE022",
+        "ALP771",
+        "AMJ254",
+        "AZC818",
+        "BDM532"
+      ],
+      "sponsorPrincipalCount": 8
     },
     {
       "sponsorId": "jefferies",
@@ -1434,7 +2100,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=72015&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Jefferies Hong Kong Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 17,
+      "sponsorPrincipalRepCount": 265,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AXM402",
+        "AXV634",
+        "BDP927"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "sinolink",
@@ -1484,7 +2168,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=34259&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Sinolink Securities (Hong Kong) Company Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 18,
+      "sponsorPrincipalRepCount": 104,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "APK242",
+        "AQR105",
+        "ARU545"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "spdb",
@@ -1534,7 +2236,26 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2439801&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "SPDB International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 21,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGN288",
+        "AHP359",
+        "AIH774",
+        "APZ857"
+      ],
+      "sponsorPrincipalCount": 4
     },
     {
       "sponsorId": "bocom",
@@ -1584,7 +2305,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=41210&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "BOCOM International (Asia) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 7,
+      "sponsorPrincipalRepCount": 28,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "BCY611",
+        "BEQ696"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "dbs",
@@ -1634,7 +2372,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5451&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "DBS Asia Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 30,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AEY337",
+        "AHC010",
+        "AUM188"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "orient",
@@ -1684,7 +2440,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2007103&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Orient Capital (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 7,
+      "sponsorPrincipalRepCount": 35,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ASP357",
+        "AUC919",
+        "AXK040"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "bnpp",
@@ -1735,7 +2509,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6162&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "BNP Paribas Securities (Asia) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 17,
+      "sponsorPrincipalRepCount": 201,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGL135",
+        "AJD184"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "zhongtai",
@@ -1785,7 +2576,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1896613&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Zhongtai International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 5,
+      "sponsorPrincipalRepCount": 37,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AHP762",
+        "AOV083",
+        "AVM747"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "everbright",
@@ -1837,7 +2646,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5437&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Everbright Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 18,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ANQ192",
+        "AWP881"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "xyzq",
@@ -1887,7 +2713,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1939868&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Industrial Securities International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 45,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AQO269",
+        "BHK027"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "ceb",
@@ -1937,7 +2780,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2458625&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "CEB International Capital Corporation Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 11,
+      "sponsorPrincipalRepCount": 28,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGK771",
+        "AKL738"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "dongxing",
@@ -1987,7 +2847,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2126636&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Dongxing Securities (Hong Kong) Company Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 19,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADM812",
+        "BDP260"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "guoyuan",
@@ -2037,7 +2914,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1552564&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Guoyuan Capital (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 4,
+      "sponsorPrincipalRepCount": 17,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "APB407",
+        "APZ793"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "quam",
@@ -2087,7 +2981,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=19417&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Quam Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 11,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AAN686",
+        "ADH952",
+        "ADO401",
+        "AGF192",
+        "APF787"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "rainbow",
@@ -2137,7 +3051,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23670404&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Rainbow Capital (HK) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AUM132",
+        "AVV519"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "zero2ipo",
@@ -2187,7 +3118,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=26392041&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Zero2IPO Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 7,
+      "sponsorPrincipalRepCount": 4,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AIU419",
+        "AQI866",
+        "AWC183"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "firstshg",
@@ -2239,7 +3188,23 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5689&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "First Shanghai Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 1,
+      "sponsorPrincipalRepCount": 9,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AOR644"
+      ],
+      "sponsorPrincipalCount": 1
     },
     {
       "sponsorId": "sdic",
@@ -2289,7 +3254,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "SDIC Securities Corporate Finance (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 6,
+      "sponsorPrincipalRepCount": 80,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AHY113",
+        "AXH621",
+        "BAI751"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "sunnyfort",
@@ -2339,7 +3322,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23445433&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Sunny Fortune Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 4,
+      "sponsorPrincipalRepCount": 3,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFV839",
+        "BDF847"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "alliance",
@@ -2389,7 +3389,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2084540&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Alliance Capital Partners Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ACH258",
+        "AEE670",
+        "AFC591"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "grande",
@@ -2439,7 +3457,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6721901&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Grande Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 4,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGO945",
+        "AWS123"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "guosen",
@@ -2489,7 +3524,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=64301&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Guosen Securities (HK) Capital Company Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 76,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AAW465",
+        "AES254"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "halcyon",
@@ -2539,7 +3591,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1933817&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Halcyon Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 5,
+      "sponsorPrincipalRepCount": 2,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADN295",
+        "ADT140",
+        "AFS636"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "huaxing",
@@ -2589,7 +3659,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1912087&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Renaissance Securities (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 7,
+      "sponsorPrincipalRepCount": 24,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADA866",
+        "ALQ686"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "yuexiu",
@@ -2639,7 +3726,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22364027&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Yue Xiu Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 6,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AEW978",
+        "ANP353",
+        "BGE010"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "caitong",
@@ -2689,7 +3794,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2620772&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Caitong International Capital Co., Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 4,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFG775",
+        "AOJ327"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "cinda",
@@ -2739,7 +3861,23 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9754&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Cinda International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 4,
+      "sponsorPrincipalRepCount": 10,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "BER960"
+      ],
+      "sponsorPrincipalCount": 1
     },
     {
       "sponsorId": "eddid",
@@ -2789,7 +3927,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12111423&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Eddid Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 7,
+      "sponsorPrincipalRepCount": 15,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AGM902",
+        "APB109",
+        "BGT436"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "goldlink",
@@ -2877,7 +4033,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2455747&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Lego Corporate Finance Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 9,
+      "sponsorPrincipalRepCount": 11,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADP076",
+        "AFL987",
+        "AGF471",
+        "AKQ987",
+        "APC625"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "macquarie",
@@ -2928,7 +4104,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=37237&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Macquarie Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 19,
+      "sponsorPrincipalRepCount": 127,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ARP180",
+        "ATI263"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "nomura",
@@ -2978,7 +4171,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1440&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Nomura International (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 32,
+      "sponsorPrincipalRepCount": 518,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADH994",
+        "ADS384"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "scap",
@@ -3028,7 +4238,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=926&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "South China Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 6,
+      "sponsorPrincipalRepCount": 4,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AAA815",
+        "AGN592",
+        "AHY120"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "somerley",
@@ -3078,7 +4306,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2003564&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Somerley Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 9,
+      "sponsorPrincipalRepCount": 17,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AAJ065",
+        "AFR677",
+        "AMF525"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "tfi",
@@ -3128,7 +4374,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2557091&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "TFI Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 23,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFY720",
+        "APK770"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "altus",
@@ -3176,7 +4439,27 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15005&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Altus Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 8,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ABF972",
+        "ABX240",
+        "ACA326",
+        "AGC368",
+        "AYE286"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "emperor",
@@ -3224,7 +4507,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9620&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Emperor Corporate Finance Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 5,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AHJ599",
+        "AWN387"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "grandmoore",
@@ -3272,7 +4572,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2420405&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Grand Moore Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 6,
+      "sponsorPrincipalRepCount": 3,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ABI141",
+        "AEY943",
+        "AGJ887"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "honestum",
@@ -3356,7 +4674,29 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2278798&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Innovax Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 10,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADX572",
+        "AEH818",
+        "AEI210",
+        "AFR783",
+        "AOB433",
+        "APL885",
+        "AXM306"
+      ],
+      "sponsorPrincipalCount": 7
     },
     {
       "sponsorId": "kingsway",
@@ -3404,7 +4744,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6407&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Kingsway Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 4,
+      "sponsorPrincipalRepCount": 2,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AAG625",
+        "ADR744",
+        "AEI412"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "maxa",
@@ -3452,7 +4810,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22123361&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Maxa Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 5,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ABW953",
+        "AGH222",
+        "AYI394"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "redsolar",
@@ -3500,7 +4876,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2690790&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Red Solar Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 2,
+      "sponsorPrincipalRepCount": 4,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AEC838",
+        "ALS787"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "redsun",
@@ -3549,7 +4942,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2555806&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Red Sun Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 5,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ADK252",
+        "AEK600",
+        "AQE931"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "shanxi",
@@ -3597,7 +5008,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2626430&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Shanxi Securities International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 5,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AOG831",
+        "AVK761"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "soochow",
@@ -3645,7 +5073,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1747929&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Soochow Securities International Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 3,
+      "sponsorPrincipalRepCount": 1,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ARH793",
+        "AUX369"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "sunrise",
@@ -3693,7 +5138,24 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2539213&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "China Sunrise Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 2,
+      "sponsorPrincipalRepCount": 4,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AML472",
+        "AWD487"
+      ],
+      "sponsorPrincipalCount": 2
     },
     {
       "sponsorId": "vbg",
@@ -3741,7 +5203,25 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68441&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
-      "type6Quality": "fresh"
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "VBG Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 4,
+      "sponsorPrincipalRepCount": 7,
+      "sponsorPrincipalAsOfDate": "2026-07-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-05T21:32:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AJK773",
+        "ANG409",
+        "AXG598"
+      ],
+      "sponsorPrincipalCount": 3
     }
   ],
   "projectFacts": [
