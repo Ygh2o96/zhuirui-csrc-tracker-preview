@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260630-all-listing-days-1" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260706-sponsor-pk-1" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260706-sponsor-pk-2" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -45,7 +45,7 @@
           </button>
           <button class="nav-item" data-view="sponsorPk">
             <span class="nav-icon" aria-hidden="true">PK</span>
-            <span><b>Sponsor PK</b><small>Peer Compare</small></span>
+            <span><b>保荐人擂台</b><small>Sponsor PK</small></span>
           </button>
           <button class="nav-item" data-view="precedents">
             <span class="nav-icon" aria-hidden="true">例</span>
@@ -457,7 +457,10 @@
             <p class="sl-meta-count"><strong id="slFirmCount">--</strong> 个保荐/合并口径 · <span id="slGeneratedAt">--</span></p>
           </div>
 
-          <section class="sl-notice-strip" id="slDemoNote"></section>
+          <details class="sl-notice-strip sl-notice-details">
+            <summary>公开预览及口径说明 <small>Methodology</small></summary>
+            <p id="slDemoNote"></p>
+          </details>
 
           <section class="sl-metric-strip" id="slMetricStrip" aria-label="Sponsor summary"></section>
 
@@ -479,24 +482,23 @@
                 <span>排名口径</span>
                 <select id="slMetricSelect" name="slMetricSelect" autocomplete="off">
                   <option value="projectCount">项目数</option>
-                  <option value="activeCount">申请中项目</option>
+                  <option value="activeCount">公开申请中项目</option>
                   <option value="listedCount">已上市项目</option>
                   <option value="ahCount">A+H 项目</option>
                   <option value="listingMarketCapHkdBnSum">上市日港股市值</option>
                   <option value="aShareMarketCapRmbBnSum">A股市值</option>
                   <option value="lifecycleMedianDays">A1→上市中位数（已上市）</option>
+                  <option value="noticeCycleMedianDays">A1→通知中位数（已通知）</option>
+                  <option value="receivedCycleMedianDays">A1→接收中位数（已接收）</option>
                   <option value="sponsorPrincipalCount">SP人数</option>
                   <option value="projectsPerSponsorPrincipal">每名SP负责项目</option>
-                  <option value="sponsorPrincipalPerActiveProject">每申请中项目平均SP</option>
-                  <option value="type6RepPerActiveProject">每申请中项目平均Rep</option>
-                  <option value="activeProjectsPerSponsorPrincipal">每名SP负责申请中项目</option>
-                  <option value="activeProjectsPerType6Rep">每名Rep负责申请中项目</option>
-                  <option value="type6RepPerProject">每项目平均Rep</option>
-                  <option value="projectsPerType6Rep">每名Rep负责项目</option>
-                  <option value="type6TotalPerProject">每项目平均六号牌</option>
-                  <option value="projectsPerType6Total">每名六号牌负责项目</option>
-                  <option value="listingMarketCapPerType6TotalHkdBn">上市市值/六号牌人均</option>
-                  <option value="listingMarketCapPerSponsorPrincipalHkdBn">上市市值/SP人均</option>
+                  <option value="activeProjectsPerSponsorPrincipal">每名SP负责公开申请中项目</option>
+                  <option value="type6RepPerActiveProject">每个公开申请中项目配置Rep</option>
+                  <option value="type6RepPerProject">每个项目配置Rep</option>
+                  <option value="type6TotalPerProject">项目六号牌配置</option>
+                  <option value="projectsPerType6Total">六号牌项目负荷</option>
+                  <option value="listingMarketCapPerType6TotalHkdBn">六号牌人均上市市值</option>
+                  <option value="listingMarketCapPerSponsorPrincipalHkdBn">SP人均上市市值</option>
                 </select>
               </label>
               <label>
@@ -544,6 +546,13 @@
                 <span>截至</span>
                 <input id="slDateTo" name="slDateTo" type="date" autocomplete="off" />
               </label>
+              <div class="sl-date-quick" role="group" aria-label="快捷时间范围">
+                <button type="button" data-date-quick="3m">近3个月</button>
+                <button type="button" data-date-quick="6m">近6个月</button>
+                <button type="button" data-date-quick="1y">近1年</button>
+                <button type="button" data-date-quick="2026ytd">2026年至今</button>
+                <button type="button" data-date-quick="all">全部</button>
+              </div>
             </div>
           </section>
 
@@ -587,11 +596,11 @@
           </aside>
         </section>
 
-        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="Sponsor PK">
+        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="保荐人擂台 Sponsor PK">
           <div class="spk-shell">
             <section class="spk-hero">
               <div>
-                <span class="spk-kicker">Sponsor PK</span>
+                <span class="spk-kicker">保荐人擂台 · Sponsor PK</span>
                 <h2>保荐人横向对比</h2>
                 <p id="spkSourceNote">使用保荐龙虎榜同一份快照即时计算；不设独立项目 intake。</p>
               </div>
@@ -604,21 +613,45 @@
             <section class="spk-picker" aria-label="Sponsor PK controls">
               <label>
                 <span>左侧保荐人</span>
-                <select id="spkSponsorA" autocomplete="off"></select>
+                <select id="spkSponsorA" name="spkSponsorA" autocomplete="off"></select>
               </label>
               <button id="spkSwapButton" type="button">交换</button>
               <label>
                 <span>右侧保荐人</span>
-                <select id="spkSponsorB" autocomplete="off"></select>
+                <select id="spkSponsorB" name="spkSponsorB" autocomplete="off"></select>
               </label>
               <label>
                 <span>统计口径</span>
-                <select id="spkCreditSelect" autocomplete="off">
+                <select id="spkCreditSelect" name="spkCreditSelect" autocomplete="off">
                   <option value="creditAllFull">具名保荐人全部计入</option>
                   <option value="creditFirstNamed">只计牵头/首名保荐人</option>
                   <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
+              <label>
+                <span>日期字段</span>
+                <select id="spkDateFieldSelect" name="spkDateFieldSelect" autocomplete="off">
+                  <option value="a1Date">A1</option>
+                  <option value="noticeDate">备案通知书</option>
+                  <option value="receivedDate">接收</option>
+                  <option value="listingDate">上市日</option>
+                </select>
+              </label>
+              <label>
+                <span>起始</span>
+                <input id="spkDateFrom" name="spkDateFrom" type="date" autocomplete="off" />
+              </label>
+              <label>
+                <span>截至</span>
+                <input id="spkDateTo" name="spkDateTo" type="date" autocomplete="off" />
+              </label>
+              <div class="spk-date-quick" role="group" aria-label="Sponsor PK quick date range">
+                <button type="button" data-date-quick="3m">近3个月</button>
+                <button type="button" data-date-quick="6m">近6个月</button>
+                <button type="button" data-date-quick="1y">近1年</button>
+                <button type="button" data-date-quick="2026ytd">2026年至今</button>
+                <button type="button" data-date-quick="all">全部</button>
+              </div>
             </section>
 
             <section class="spk-versus" id="spkVersus" aria-label="Sponsor PK summary"></section>
@@ -730,7 +763,7 @@
     </div>
 
     <script src="app.js?v=20260703-sponsor-integrated-1"></script>
-    <script src="sponsor_leaderboard_demo.js?v=20260706-sponsor-pk-1"></script>
+    <script src="sponsor_leaderboard_demo.js?v=20260706-sponsor-pk-2"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

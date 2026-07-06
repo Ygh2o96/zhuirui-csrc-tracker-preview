@@ -52,6 +52,7 @@
 .sponsor-league .sl-board,
 .sponsor-league .spk-hero,
 .sponsor-league .spk-picker,
+.sponsor-league .spk-date-quick,
 .sponsor-league .spk-card,
 .sponsor-league .spk-metric-row {
   border: 1px solid var(--line);
@@ -69,6 +70,44 @@
 
 .sponsor-league .sl-notice-strip:empty {
   display: none;
+}
+
+.sponsor-league .sl-notice-details {
+  padding: 0;
+}
+
+.sponsor-league .sl-notice-details summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 11px 14px;
+  color: var(--ink);
+  font-weight: 760;
+}
+
+.sponsor-league .sl-notice-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.sponsor-league .sl-notice-details summary::after {
+  content: "+";
+  float: right;
+  color: var(--teal);
+}
+
+.sponsor-league .sl-notice-details[open] summary::after {
+  content: "-";
+}
+
+.sponsor-league .sl-notice-details summary small {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.sponsor-league .sl-notice-details p {
+  margin: 0;
+  border-top: 1px solid var(--sl-soft);
+  padding: 11px 14px 13px;
 }
 
 .sponsor-league .sl-metric-strip {
@@ -122,6 +161,21 @@
   background: var(--sl-panel-bg);
 }
 
+.sponsor-league .sl-search-field:focus-within,
+.sponsor-league .sl-filter-grid label:focus-within,
+.sponsor-league .spk-picker label:focus-within {
+  border-color: rgba(8, 116, 102, 0.48);
+  box-shadow: 0 0 0 3px rgba(8, 116, 102, 0.08);
+}
+
+.sponsor-league .sl-date-quick button:focus-visible,
+.sponsor-league .spk-date-quick button:focus-visible,
+.sponsor-league .spk-picker > button:focus-visible,
+.sponsor-league .preset:focus-visible {
+  outline: 2px solid rgba(8, 116, 102, 0.55);
+  outline-offset: 2px;
+}
+
 .sponsor-league .sl-search-field span {
   color: var(--teal);
   text-align: center;
@@ -170,31 +224,78 @@
 
 .sponsor-league .sl-filter-grid {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 10px;
+}
+
+.sponsor-league .sl-date-quick,
+.sponsor-league .spk-date-quick {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.sponsor-league .sl-date-quick {
+  grid-column: 1 / -1;
+}
+
+.sponsor-league .sl-date-quick button,
+.sponsor-league .spk-date-quick button {
+  min-height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 10px;
+  background: var(--sl-panel-bg);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 720;
+  cursor: pointer;
+}
+
+.sponsor-league .sl-date-quick button.is-active,
+.sponsor-league .spk-date-quick button.is-active {
+  border-color: rgba(8, 116, 102, 0.34);
+  background: rgba(8, 116, 102, 0.08);
+  color: var(--teal);
 }
 
 .sponsor-league .sl-filter-grid label {
   display: grid;
-  min-height: 58px;
+  min-height: 64px;
   align-content: center;
-  gap: 4px;
+  gap: 6px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  padding: 8px 9px;
+  padding: 8px 10px;
   background: var(--sl-panel-bg);
+  min-width: 0;
 }
 
 .sponsor-league .sl-filter-grid span {
   color: var(--muted);
   font-size: 10px;
   font-weight: 680;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .sponsor-league .sl-filter-grid select,
 .sponsor-league .sl-filter-grid input {
   color: var(--ink);
   font-size: 12px;
+  min-width: 0;
+  height: 26px;
+  line-height: 26px;
+}
+
+.sponsor-league .sl-filter-grid select {
+  padding-right: 22px;
+  text-overflow: ellipsis;
+}
+
+.sponsor-league .sl-filter-grid input[type="date"] {
+  padding-right: 4px;
 }
 
 .sponsor-league .sl-board {
@@ -565,6 +666,9 @@
 
 .sponsor-league.sponsor-pk {
   padding: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 116, 102, 0.055), transparent 240px),
+    linear-gradient(90deg, rgba(154, 101, 13, 0.035), transparent 52%);
 }
 
 .sponsor-league .spk-shell {
@@ -574,10 +678,10 @@
 
 .sponsor-league .spk-hero {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 18px;
+  padding: 14px 16px;
   background:
     linear-gradient(135deg, rgba(8, 116, 102, 0.1), transparent 58%),
     linear-gradient(180deg, var(--surface), #fbfcfa);
@@ -596,7 +700,7 @@
 
 .sponsor-league .spk-hero h2 {
   margin: 0 0 6px;
-  font-size: 24px;
+  font-size: 21px;
   line-height: 1.05;
 }
 
@@ -628,23 +732,37 @@
 
 .sponsor-league .spk-picker {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(180px, 0.72fr);
+  grid-template-columns: minmax(190px, 1.05fr) auto minmax(190px, 1.05fr) minmax(180px, 0.78fr);
   align-items: end;
   gap: 10px;
   padding: 14px;
   background: linear-gradient(180deg, var(--surface), rgba(248, 250, 248, 0.92));
 }
 
+.sponsor-league .spk-picker label:nth-of-type(n + 4) {
+  grid-column: span 1;
+}
+
+.sponsor-league .spk-date-quick {
+  grid-column: 1 / -1;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
 .sponsor-league .spk-picker label {
   display: grid;
-  gap: 5px;
+  gap: 6px;
   color: var(--muted);
   font-size: 10px;
   font-weight: 700;
+  min-width: 0;
+  line-height: 1.15;
 }
 
 .sponsor-league .spk-picker select,
-.sponsor-league .spk-picker button {
+.sponsor-league .spk-picker input,
+.sponsor-league .spk-picker > button {
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -655,10 +773,17 @@
 
 .sponsor-league .spk-picker select {
   width: 100%;
-  padding: 0 9px;
+  padding: 0 26px 0 10px;
+  text-overflow: ellipsis;
 }
 
-.sponsor-league .spk-picker button {
+.sponsor-league .spk-picker input {
+  width: 100%;
+  min-width: 0;
+  padding: 0 8px;
+}
+
+.sponsor-league .spk-picker > button {
   padding: 0 12px;
   color: var(--teal);
   font-weight: 760;
@@ -673,7 +798,7 @@
 }
 
 .sponsor-league .spk-card {
-  padding: 16px;
+  padding: 12px;
   border-top: 3px solid rgba(8, 116, 102, 0.42);
   background: linear-gradient(180deg, var(--surface), #fbfcfa);
 }
@@ -686,7 +811,7 @@
 .sponsor-league .spk-card strong {
   display: block;
   margin-top: 6px;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.1;
 }
 
@@ -705,7 +830,7 @@
 }
 
 .sponsor-league .spk-card-grid div {
-  min-height: 56px;
+  min-height: 50px;
   border: 1px solid var(--sl-soft);
   border-radius: 7px;
   padding: 8px;
@@ -744,10 +869,10 @@
 
 .sponsor-league .spk-metric-row {
   display: grid;
-  grid-template-columns: minmax(170px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 0.62fr) minmax(0, 1fr);
   gap: 12px;
   align-items: center;
-  padding: 12px;
+  padding: 9px;
 }
 
 .sponsor-league .spk-metric-name strong,
@@ -758,6 +883,7 @@
 }
 
 .sponsor-league .spk-metric-name strong {
+  text-align: center;
   font-size: 13px;
 }
 
@@ -767,14 +893,28 @@
   font-size: 10px;
 }
 
+.sponsor-league .spk-metric-name {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  border-right: 1px solid var(--sl-soft);
+  border-left: 1px solid var(--sl-soft);
+  padding: 0 8px;
+  text-align: center;
+}
+
 .sponsor-league .spk-metric-side {
   position: relative;
   overflow: hidden;
-  min-height: 54px;
+  min-height: 48px;
   border: 1px solid var(--sl-soft);
   border-radius: 7px;
   padding: 8px 10px;
   background: var(--sl-panel-bg);
+}
+
+.sponsor-league .spk-metric-side:first-child {
+  text-align: right;
 }
 
 .sponsor-league .spk-metric-side i {
@@ -784,6 +924,11 @@
   width: var(--spk-bar, 0%);
   height: 4px;
   background: rgba(8, 116, 102, 0.28);
+}
+
+.sponsor-league .spk-metric-side:first-child i {
+  right: 0;
+  left: auto;
 }
 
 .sponsor-league .spk-metric-side.is-winner {
@@ -830,7 +975,8 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   }
 
-  .sponsor-league .spk-picker label:last-child {
+  .sponsor-league .spk-picker label:nth-of-type(n + 4),
+  .sponsor-league .spk-date-quick {
     grid-column: 1 / -1;
   }
 }
@@ -977,6 +1123,18 @@
     width: 100%;
   }
 
+  .sponsor-league .sl-date-quick,
+  .sponsor-league .spk-date-quick {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .sponsor-league .sl-date-quick button,
+  .sponsor-league .spk-date-quick button {
+    flex: 0 0 auto;
+  }
+
   .sponsor-league .spk-versus {
     grid-template-columns: 1fr;
   }
@@ -990,7 +1148,27 @@
   }
 
   .sponsor-league .spk-metric-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .sponsor-league .spk-metric-name {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-height: 34px;
+    border: 0;
+    border-bottom: 1px solid var(--sl-soft);
+    padding-bottom: 6px;
+  }
+
+  .sponsor-league .spk-metric-side:first-child {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .sponsor-league .spk-metric-side:last-child {
+    grid-column: 2;
+    grid-row: 2;
   }
 }
 
