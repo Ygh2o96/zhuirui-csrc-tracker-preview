@@ -223,10 +223,9 @@ function formatCapPerPerson(value, currency = "HK$") {
   return `${currency}${compactNumber(value, value >= 10 ? 1 : 2)}bn/人`;
 }
 
-function formatDays(value, sampleN) {
+function formatDays(value) {
   if (!isNumber(value)) return "待披露";
-  const suffix = isNumber(sampleN) ? ` · n=${sampleN}` : "";
-  return `${compactNumber(Math.round(value), 0)}天${suffix}`;
+  return `${compactNumber(Math.round(value), 0)}天`;
 }
 
 function formatRatio(value, digits = 2) {
