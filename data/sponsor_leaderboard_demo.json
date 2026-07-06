@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-06T04:02:01Z",
-    "sourceGeneratedAt": "2026-07-06T11:57:02+08:00",
+    "generatedAt": "2026-07-06T08:51:05Z",
+    "sourceGeneratedAt": "2026-07-06T16:51:04+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-06T11:57:02+08:00",
+      "generatedAt": "2026-07-06T16:51:04+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1455,
@@ -66,9 +66,9 @@
       "redChipCount": 57,
       "deSpacCount": 0,
       "hdrCount": 1,
-      "listingMarketCapHkdBnSum": 5101.458,
-      "listingMarketCapHkdBnMedian": 15.5257,
-      "listingMarketCapN": 105,
+      "listingMarketCapHkdBnSum": 5176.7905,
+      "listingMarketCapHkdBnMedian": 15.054549999999999,
+      "listingMarketCapN": 108,
       "aShareMarketCapRmbBnSum": 4614.9286,
       "aShareMarketCapRmbBnMedian": 39.2248,
       "aShareMarketCapN": 49,
@@ -124,9 +124,9 @@
       "redChipCount": 29,
       "deSpacCount": 1,
       "hdrCount": 1,
-      "listingMarketCapHkdBnSum": 2384.3095,
+      "listingMarketCapHkdBnSum": 2412.3557,
       "listingMarketCapHkdBnMedian": 13.3456,
-      "listingMarketCapN": 67,
+      "listingMarketCapN": 69,
       "aShareMarketCapRmbBnSum": 3027.0337,
       "aShareMarketCapRmbBnMedian": 39.71935,
       "aShareMarketCapN": 54,
@@ -175,9 +175,9 @@
       "redChipCount": 23,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1845.4057,
-      "listingMarketCapHkdBnMedian": 12.267050000000001,
-      "listingMarketCapN": 48,
+      "listingMarketCapHkdBnSum": 1875.8133,
+      "listingMarketCapHkdBnMedian": 13.27835,
+      "listingMarketCapN": 50,
       "aShareMarketCapRmbBnSum": 2065.7084,
       "aShareMarketCapRmbBnMedian": 30.1528,
       "aShareMarketCapN": 39,
@@ -257,12 +257,12 @@
       "type6TotalCount": 334,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "GUOTAI JUNAN CAPITAL LIMITED",
-        "HAITONG INTERNATIONAL CAPITAL LIMITED"
+        "HAITONG INTERNATIONAL CAPITAL LIMITED",
+        "GUOTAI JUNAN CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh",
@@ -294,9 +294,9 @@
       "redChipCount": 13,
       "deSpacCount": 2,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 319.5484,
-      "listingMarketCapHkdBnMedian": 8.98215,
-      "listingMarketCapN": 24,
+      "listingMarketCapHkdBnSum": 327.0965,
+      "listingMarketCapHkdBnMedian": 8.2797,
+      "listingMarketCapN": 25,
       "aShareMarketCapRmbBnSum": 301.9608,
       "aShareMarketCapRmbBnMedian": 23.3444,
       "aShareMarketCapN": 9,
@@ -401,9 +401,9 @@
       "redChipCount": 7,
       "deSpacCount": 1,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2014.5968,
-      "listingMarketCapHkdBnMedian": 12.8239,
-      "listingMarketCapN": 23,
+      "listingMarketCapHkdBnSum": 2027.0098,
+      "listingMarketCapHkdBnMedian": 12.61845,
+      "listingMarketCapN": 24,
       "aShareMarketCapRmbBnSum": 1588.5802,
       "aShareMarketCapRmbBnMedian": 18.1889,
       "aShareMarketCapN": 15,
@@ -603,9 +603,9 @@
       "redChipCount": 5,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 174.0229,
-      "listingMarketCapHkdBnMedian": 12.1637,
-      "listingMarketCapN": 11,
+      "listingMarketCapHkdBnSum": 177.0388,
+      "listingMarketCapHkdBnMedian": 12.138950000000001,
+      "listingMarketCapN": 12,
       "aShareMarketCapRmbBnSum": 127.2374,
       "aShareMarketCapRmbBnMedian": 11.7853,
       "aShareMarketCapN": 7,
@@ -654,9 +654,9 @@
       "redChipCount": 11,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2253.2204,
-      "listingMarketCapHkdBnMedian": 35.2896,
-      "listingMarketCapN": 13,
+      "listingMarketCapHkdBnSum": 2311.2782,
+      "listingMarketCapHkdBnMedian": 46.6737,
+      "listingMarketCapN": 14,
       "aShareMarketCapRmbBnSum": 2147.0726,
       "aShareMarketCapRmbBnMedian": 57.8898,
       "aShareMarketCapN": 13,
@@ -756,9 +756,9 @@
       "redChipCount": 12,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1186.1368,
-      "listingMarketCapHkdBnMedian": 43.6404,
-      "listingMarketCapN": 16,
+      "listingMarketCapHkdBnSum": 1244.1946,
+      "listingMarketCapHkdBnMedian": 48.9986,
+      "listingMarketCapN": 17,
       "aShareMarketCapRmbBnSum": 1417.032,
       "aShareMarketCapRmbBnMedian": 57.8675,
       "aShareMarketCapN": 11,
@@ -958,9 +958,9 @@
       "redChipCount": 8,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2336.3499,
-      "listingMarketCapHkdBnMedian": 95.3095,
-      "listingMarketCapN": 9,
+      "listingMarketCapHkdBnSum": 2351.9831,
+      "listingMarketCapHkdBnMedian": 74.98955000000001,
+      "listingMarketCapN": 10,
       "aShareMarketCapRmbBnSum": 2081.9002,
       "aShareMarketCapRmbBnMedian": 166.1289,
       "aShareMarketCapN": 7,
@@ -1008,9 +1008,9 @@
       "redChipCount": 4,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 169.4869,
-      "listingMarketCapHkdBnMedian": 37.0799,
-      "listingMarketCapN": 5,
+      "listingMarketCapHkdBnSum": 208.5254,
+      "listingMarketCapHkdBnMedian": 23.4053,
+      "listingMarketCapN": 7,
       "aShareMarketCapRmbBnSum": 67.6241,
       "aShareMarketCapRmbBnMedian": 33.81205,
       "aShareMarketCapN": 2,
@@ -1158,9 +1158,9 @@
       "redChipCount": 2,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 62.6331,
-      "listingMarketCapHkdBnMedian": 8.5805,
-      "listingMarketCapN": 6,
+      "listingMarketCapHkdBnSum": 86.0384,
+      "listingMarketCapHkdBnMedian": 12.1549,
+      "listingMarketCapN": 7,
       "aShareMarketCapRmbBnSum": 0,
       "aShareMarketCapRmbBnMedian": null,
       "aShareMarketCapN": 0,
@@ -1409,9 +1409,9 @@
       "redChipCount": 6,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 64.6322,
-      "listingMarketCapHkdBnMedian": 9.9062,
-      "listingMarketCapN": 5,
+      "listingMarketCapHkdBnSum": 80.2654,
+      "listingMarketCapHkdBnMedian": 12.7697,
+      "listingMarketCapN": 6,
       "aShareMarketCapRmbBnSum": 17.8839,
       "aShareMarketCapRmbBnMedian": 17.8839,
       "aShareMarketCapN": 1,
@@ -1609,9 +1609,9 @@
       "redChipCount": 2,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 14.2166,
-      "listingMarketCapHkdBnMedian": 1.5292,
-      "listingMarketCapN": 4,
+      "listingMarketCapHkdBnSum": 28.4754,
+      "listingMarketCapHkdBnMedian": 1.6534,
+      "listingMarketCapN": 5,
       "aShareMarketCapRmbBnSum": 0,
       "aShareMarketCapRmbBnMedian": null,
       "aShareMarketCapN": 0,
@@ -9802,7 +9802,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 14.2588,
       "calendarDaysA1ToNotice": 162.0,
       "calendarDaysA1ToListing": 204.0,
       "calendarDaysA1ToReceived": null,
@@ -9863,7 +9863,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 14.2588,
       "calendarDaysA1ToNotice": 162.0,
       "calendarDaysA1ToListing": 204.0,
       "calendarDaysA1ToReceived": null,
@@ -10793,7 +10793,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 57.8675,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 58.0578,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": 212.0,
       "calendarDaysA1ToReceived": 27.0,
@@ -10859,7 +10859,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 57.8675,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 58.0578,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": 212.0,
       "calendarDaysA1ToReceived": 27.0,
@@ -10925,7 +10925,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 57.8675,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 58.0578,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": 212.0,
       "calendarDaysA1ToReceived": 27.0,
@@ -12431,7 +12431,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 7.5481,
       "calendarDaysA1ToNotice": 137.0,
       "calendarDaysA1ToListing": 179.0,
       "calendarDaysA1ToReceived": null,
@@ -17659,7 +17659,7 @@
         "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 14.7744,
       "calendarDaysA1ToNotice": 213.0,
       "calendarDaysA1ToListing": 241.0,
       "calendarDaysA1ToReceived": 14.0,
@@ -18299,7 +18299,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 15.6332,
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 241.0,
       "calendarDaysA1ToReceived": null,
@@ -18361,7 +18361,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 15.6332,
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 241.0,
       "calendarDaysA1ToReceived": null,
@@ -18423,7 +18423,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 15.6332,
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 241.0,
       "calendarDaysA1ToReceived": null,
@@ -18485,7 +18485,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 15.6332,
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 241.0,
       "calendarDaysA1ToReceived": null,
@@ -18547,7 +18547,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 15.6332,
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 241.0,
       "calendarDaysA1ToReceived": null,
@@ -18609,7 +18609,7 @@
         "农、林、牧、渔业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 12.413,
       "calendarDaysA1ToNotice": 204.0,
       "calendarDaysA1ToListing": 243.0,
       "calendarDaysA1ToReceived": 15.0,
@@ -18675,7 +18675,7 @@
         "农、林、牧、渔业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 12.413,
       "calendarDaysA1ToNotice": 204.0,
       "calendarDaysA1ToListing": 243.0,
       "calendarDaysA1ToReceived": 15.0,
@@ -18741,7 +18741,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 3.0159,
       "calendarDaysA1ToNotice": 378.0,
       "calendarDaysA1ToListing": 445.0,
       "calendarDaysA1ToReceived": 203.0,
@@ -18807,7 +18807,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 3.0159,
       "calendarDaysA1ToNotice": 378.0,
       "calendarDaysA1ToListing": 445.0,
       "calendarDaysA1ToReceived": 203.0,
@@ -32429,7 +32429,7 @@
         "金融业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 23.4053,
       "calendarDaysA1ToNotice": 273.0,
       "calendarDaysA1ToListing": 486.0,
       "calendarDaysA1ToReceived": null,
@@ -32493,7 +32493,7 @@
         "金融业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 23.4053,
       "calendarDaysA1ToNotice": 273.0,
       "calendarDaysA1ToListing": 486.0,
       "calendarDaysA1ToReceived": null,
@@ -63474,6 +63474,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0628/11263045/2024062800345.pdf"
         }
       ]
     },
@@ -64330,6 +64334,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0927/2024092700039.pdf"
         }
       ]
     },
@@ -65388,6 +65396,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1024/2024102400036.pdf"
         }
       ]
     },
@@ -65452,6 +65464,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1024/2024102400036.pdf"
         }
       ]
     },
@@ -73002,6 +73018,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/2025062600017.pdf"
         }
       ]
     },
@@ -73066,6 +73086,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/2025062600017.pdf"
         }
       ]
     },
@@ -75642,6 +75666,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0919/2025091900073.pdf"
         }
       ]
     },
@@ -75706,6 +75734,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0919/2025091900073.pdf"
         }
       ]
     },
@@ -79958,6 +79990,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1209/2025120900025.pdf"
         }
       ]
     },
@@ -80023,6 +80059,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1209/2025120900025.pdf"
         }
       ]
     },
@@ -93590,6 +93630,10 @@
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2025_Chi.xlsx"
+        },
+        {
+          "label": "无需备案依据",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1209/2025120900025.pdf"
         }
       ],
       "sourceSponsorId": "gtja",
