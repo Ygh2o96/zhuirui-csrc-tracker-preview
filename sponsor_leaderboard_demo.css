@@ -7,6 +7,12 @@
 .sponsor-league {
   --sl-soft: var(--soft-line, #eef2ef);
   --sl-panel-bg: #fbfcfa;
+  --sl-tint: rgba(8, 116, 102, 0.06);
+  --sl-warm: rgba(154, 101, 13, 0.06);
+  background:
+    linear-gradient(180deg, rgba(8, 116, 102, 0.045), transparent 260px),
+    linear-gradient(90deg, rgba(154, 101, 13, 0.035), transparent 42%);
+  border-radius: 10px;
 }
 
 .sponsor-league [hidden] {
@@ -43,7 +49,11 @@
 .sponsor-league .sl-notice-strip,
 .sponsor-league .metric-card,
 .sponsor-league .sl-controls,
-.sponsor-league .sl-board {
+.sponsor-league .sl-board,
+.sponsor-league .spk-hero,
+.sponsor-league .spk-picker,
+.sponsor-league .spk-card,
+.sponsor-league .spk-metric-row {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -71,6 +81,12 @@
 .sponsor-league .metric-card {
   min-height: 92px;
   padding: 14px;
+  border-top: 3px solid rgba(8, 116, 102, 0.38);
+  background: linear-gradient(180deg, var(--surface), #fbfcfa);
+}
+
+.sponsor-league .metric-card:nth-child(2n) {
+  border-top-color: rgba(154, 101, 13, 0.36);
 }
 
 .sponsor-league .metric-card span {
@@ -93,6 +109,7 @@
 
 .sponsor-league .sl-controls {
   padding: 14px;
+  background: linear-gradient(180deg, var(--surface), rgba(248, 250, 248, 0.92));
 }
 
 .sponsor-league .sl-search-field {
@@ -183,6 +200,7 @@
 .sponsor-league .sl-board {
   margin-top: 14px;
   overflow: hidden;
+  background: linear-gradient(180deg, var(--surface), #fbfcfa);
 }
 
 .sponsor-league .sl-board-title {
@@ -545,6 +563,244 @@
   text-decoration: underline;
 }
 
+.sponsor-league.sponsor-pk {
+  padding: 0;
+}
+
+.sponsor-league .spk-shell {
+  display: grid;
+  gap: 14px;
+}
+
+.sponsor-league .spk-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(8, 116, 102, 0.1), transparent 58%),
+    linear-gradient(180deg, var(--surface), #fbfcfa);
+}
+
+.sponsor-league .spk-kicker {
+  display: inline-flex;
+  margin-bottom: 8px;
+  border: 1px solid rgba(8, 116, 102, 0.26);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 760;
+}
+
+.sponsor-league .spk-hero h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  line-height: 1.05;
+}
+
+.sponsor-league .spk-hero p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.sponsor-league .spk-hero-stat {
+  min-width: 150px;
+  border-left: 1px solid var(--line);
+  padding-left: 16px;
+}
+
+.sponsor-league .spk-hero-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.sponsor-league .spk-hero-stat strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.sponsor-league .spk-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(180px, 0.72fr);
+  align-items: end;
+  gap: 10px;
+  padding: 14px;
+  background: linear-gradient(180deg, var(--surface), rgba(248, 250, 248, 0.92));
+}
+
+.sponsor-league .spk-picker label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sponsor-league .spk-picker select,
+.sponsor-league .spk-picker button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--sl-panel-bg);
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.sponsor-league .spk-picker select {
+  width: 100%;
+  padding: 0 9px;
+}
+
+.sponsor-league .spk-picker button {
+  padding: 0 12px;
+  color: var(--teal);
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.sponsor-league .spk-versus {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 12px;
+}
+
+.sponsor-league .spk-card {
+  padding: 16px;
+  border-top: 3px solid rgba(8, 116, 102, 0.42);
+  background: linear-gradient(180deg, var(--surface), #fbfcfa);
+}
+
+.sponsor-league .spk-card > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.sponsor-league .spk-card strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.sponsor-league .spk-card small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.sponsor-league .spk-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.sponsor-league .spk-card-grid div {
+  min-height: 56px;
+  border: 1px solid var(--sl-soft);
+  border-radius: 7px;
+  padding: 8px;
+  background: var(--sl-panel-bg);
+}
+
+.sponsor-league .spk-card-grid b {
+  display: block;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sponsor-league .spk-card-grid span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.sponsor-league .spk-vs {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 820;
+}
+
+.sponsor-league .spk-metrics {
+  display: grid;
+  gap: 9px;
+}
+
+.sponsor-league .spk-metric-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+}
+
+.sponsor-league .spk-metric-name strong,
+.sponsor-league .spk-metric-name span,
+.sponsor-league .spk-metric-side span,
+.sponsor-league .spk-metric-side b {
+  display: block;
+}
+
+.sponsor-league .spk-metric-name strong {
+  font-size: 13px;
+}
+
+.sponsor-league .spk-metric-name span,
+.sponsor-league .spk-metric-side span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.sponsor-league .spk-metric-side {
+  position: relative;
+  overflow: hidden;
+  min-height: 54px;
+  border: 1px solid var(--sl-soft);
+  border-radius: 7px;
+  padding: 8px 10px;
+  background: var(--sl-panel-bg);
+}
+
+.sponsor-league .spk-metric-side i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: var(--spk-bar, 0%);
+  height: 4px;
+  background: rgba(8, 116, 102, 0.28);
+}
+
+.sponsor-league .spk-metric-side.is-winner {
+  border-color: rgba(8, 116, 102, 0.34);
+  background: rgba(8, 116, 102, 0.065);
+}
+
+.sponsor-league .spk-metric-side.is-winner b {
+  color: var(--teal);
+}
+
+.sponsor-league .spk-metric-side b {
+  margin-top: 5px;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
 .sponsor-league .empty-state {
   padding: 34px;
   color: var(--muted);
@@ -568,6 +824,14 @@
 
   .sponsor-league .sl-filter-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-league .spk-picker {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .sponsor-league .spk-picker label:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -691,6 +955,42 @@
 
   .sponsor-league .row-action {
     display: none;
+  }
+
+  .sponsor-league .spk-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sponsor-league .spk-hero-stat {
+    width: 100%;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 12px 0 0;
+  }
+
+  .sponsor-league .spk-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-league .spk-picker button {
+    width: 100%;
+  }
+
+  .sponsor-league .spk-versus {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-league .spk-vs {
+    min-height: 34px;
+  }
+
+  .sponsor-league .spk-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-league .spk-metric-row {
+    grid-template-columns: 1fr;
   }
 }
 

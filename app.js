@@ -43,8 +43,8 @@ const statusLabels = {
 
 const viewTitles = {
   tracker: "监管节奏追踪",
-  pipeline: "数据管线",
   sponsorLeaderboard: "保荐龙虎榜",
+  sponsorPk: "Sponsor PK",
   precedents: "案例检索",
   dossiers: "发行人档案",
   signals: "市场信号",
@@ -1541,19 +1541,19 @@ function trackerTitle() {
 }
 
 function switchView(view, updateLocation = true) {
-  state.view = view;
+  state.view = viewTitles[view] ? view : "tracker";
   const stagePanel = document.getElementById("listingStagePanel");
-  if (stagePanel) stagePanel.style.display = view === "tracker" ? "" : "none";
-  document.getElementById("viewTitle").textContent = view === "tracker"
+  if (stagePanel) stagePanel.style.display = state.view === "tracker" ? "" : "none";
+  document.getElementById("viewTitle").textContent = state.view === "tracker"
     ? trackerTitle()
-    : (viewTitles[view] || "追瑞");
+    : (viewTitles[state.view] || "追瑞");
   document.querySelectorAll(".nav-item").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.view === view);
+    button.classList.toggle("is-active", button.dataset.view === state.view);
   });
   document.querySelectorAll(".view-panel").forEach((panel) => {
     panel.classList.remove("is-visible");
   });
-  document.getElementById(`${view}View`)?.classList.add("is-visible");
+  document.getElementById(`${state.view}View`)?.classList.add("is-visible");
   if (updateLocation) syncUrl();
 }
 

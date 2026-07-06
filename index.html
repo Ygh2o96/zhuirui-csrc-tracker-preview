@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260630-all-listing-days-1" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260706-sp-metrics-2" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260706-sponsor-pk-1" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -39,13 +39,13 @@
             <span class="nav-icon" aria-hidden="true">监</span>
             <span><b>监管节奏追踪</b><small>Regulatory Pace</small></span>
           </button>
-          <button class="nav-item" data-view="pipeline">
-            <span class="nav-icon" aria-hidden="true">流</span>
-            <span><b>数据管线</b><small>Data Pipeline</small></span>
-          </button>
           <button class="nav-item" data-view="sponsorLeaderboard">
             <span class="nav-icon" aria-hidden="true">榜</span>
             <span><b>保荐龙虎榜</b><small>Sponsor League</small></span>
+          </button>
+          <button class="nav-item" data-view="sponsorPk">
+            <span class="nav-icon" aria-hidden="true">PK</span>
+            <span><b>Sponsor PK</b><small>Peer Compare</small></span>
           </button>
           <button class="nav-item" data-view="precedents">
             <span class="nav-icon" aria-hidden="true">例</span>
@@ -487,8 +487,10 @@
                   <option value="lifecycleMedianDays">A1→上市中位数（已上市）</option>
                   <option value="sponsorPrincipalCount">SP人数</option>
                   <option value="projectsPerSponsorPrincipal">每名SP负责项目</option>
-                  <option value="activeProjectsPerSponsorPrincipal">每名SP负责申请中</option>
-                  <option value="activeProjectsPerType6Rep">每名Rep负责申请中</option>
+                  <option value="sponsorPrincipalPerActiveProject">每申请中项目平均SP</option>
+                  <option value="type6RepPerActiveProject">每申请中项目平均Rep</option>
+                  <option value="activeProjectsPerSponsorPrincipal">每名SP负责申请中项目</option>
+                  <option value="activeProjectsPerType6Rep">每名Rep负责申请中项目</option>
                   <option value="type6RepPerProject">每项目平均Rep</option>
                   <option value="projectsPerType6Rep">每名Rep负责项目</option>
                   <option value="type6TotalPerProject">每项目平均六号牌</option>
@@ -583,6 +585,45 @@
               <div id="slDrawerContent"></div>
             </section>
           </aside>
+        </section>
+
+        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="Sponsor PK">
+          <div class="spk-shell">
+            <section class="spk-hero">
+              <div>
+                <span class="spk-kicker">Sponsor PK</span>
+                <h2>保荐人横向对比</h2>
+                <p id="spkSourceNote">使用保荐龙虎榜同一份快照即时计算；不设独立项目 intake。</p>
+              </div>
+              <div class="spk-hero-stat">
+                <span>统计口径</span>
+                <strong id="spkCreditLabel">具名全部计入</strong>
+              </div>
+            </section>
+
+            <section class="spk-picker" aria-label="Sponsor PK controls">
+              <label>
+                <span>左侧保荐人</span>
+                <select id="spkSponsorA" autocomplete="off"></select>
+              </label>
+              <button id="spkSwapButton" type="button">交换</button>
+              <label>
+                <span>右侧保荐人</span>
+                <select id="spkSponsorB" autocomplete="off"></select>
+              </label>
+              <label>
+                <span>统计口径</span>
+                <select id="spkCreditSelect" autocomplete="off">
+                  <option value="creditAllFull">具名保荐人全部计入</option>
+                  <option value="creditFirstNamed">只计牵头/首名保荐人</option>
+                  <option value="creditEqual">按保荐人数量平分</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="spk-versus" id="spkVersus" aria-label="Sponsor PK summary"></section>
+            <section class="spk-metrics" id="spkMetrics" aria-label="Sponsor PK metrics"></section>
+          </div>
         </section>
 
         <section class="view-panel" id="precedentsView" aria-label="Precedent search">
@@ -689,7 +730,7 @@
     </div>
 
     <script src="app.js?v=20260703-sponsor-integrated-1"></script>
-    <script src="sponsor_leaderboard_demo.js?v=20260706-sp-metrics-2"></script>
+    <script src="sponsor_leaderboard_demo.js?v=20260706-sponsor-pk-1"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

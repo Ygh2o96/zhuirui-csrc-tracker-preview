@@ -1,6 +1,6 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-06T09:20:14Z",
+    "generatedAt": "2026-07-06T10:24:03Z",
     "sourceGeneratedAt": "2026-07-06T16:51:04+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
@@ -29,7 +29,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "matchedRealFirmCount": 71,
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
-      "unmatchedCapacityRowCount": 214,
+      "unmatchedCapacityRowCount": 216,
       "asOfDate": "2026-07-06",
       "source": "webb_0xmd",
       "sourceUrl": "https://webbsite.0xmd.com/dbpub/SFClicount.asp?a=6",
@@ -55,7 +55,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_sponsor_principals.json",
       "methodologyNote": "Signing principal counts are parsed from a public SFC-register mirror. SPs must be Type 6 ROs, but not all ROs are SPs; use SP counts as the preferred capacity denominator for sponsor-signing load.",
       "noteZh": "SP 为 sponsor principal；SP 必须是 RO，但 RO 不一定是 SP。龙虎榜负荷/人效优先使用 SP 口径。"
-    }
+    },
+    "capacityReconciledFromSponsorPrincipals": 0
   },
   "firms": [
     {
@@ -2633,17 +2634,15 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "高端装备/机器人/智能制造",
         "文旅景区运营"
       ],
-      "type6ROCount": 4,
-      "type6RepCount": 19,
-      "type6TotalCount": 23,
-      "type6RowCount": 2,
+      "type6ROCount": 2,
+      "type6RepCount": 18,
+      "type6TotalCount": 20,
+      "type6RowCount": 1,
       "type6SourceFirmNames": [
-        "CHINA EVERBRIGHT CAPITAL LIMITED",
-        "CHINA EVERBRIGHT SECURITIES (HK) LIMITED"
+        "CHINA EVERBRIGHT CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5437&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh",
@@ -2970,15 +2969,15 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业",
         "信息传输、软件和信息技术服务业"
       ],
-      "type6ROCount": 2,
-      "type6RepCount": 2,
-      "type6TotalCount": 4,
+      "type6ROCount": 8,
+      "type6RepCount": 8,
+      "type6TotalCount": 16,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
-        "Quam Securities Limited"
+        "Quam Capital Limited (b1994-08-04)"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=19417&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh",
@@ -3175,17 +3174,15 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "高端装备/机器人/智能制造",
         "消费品制造/食品饮料/日化"
       ],
-      "type6ROCount": 3,
-      "type6RepCount": 15,
-      "type6TotalCount": 18,
-      "type6RowCount": 2,
+      "type6ROCount": 1,
+      "type6RepCount": 10,
+      "type6TotalCount": 11,
+      "type6RowCount": 1,
       "type6SourceFirmNames": [
-        "FIRST SHANGHAI CAPITAL LIMITED",
-        "FIRST SHANGHAI SECURITIES LIMITED"
+        "FIRST SHANGHAI CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5689&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6"
       ],
       "type6AsOfDate": "2026-07-06",
       "type6Quality": "fresh",
