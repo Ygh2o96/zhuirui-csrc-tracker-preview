@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260630-all-listing-days-1" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260706-sponsor-pk-2" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260707-sponsor-pk-mobile-2" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -618,16 +618,16 @@
             </section>
 
             <section class="spk-picker" aria-label="Sponsor PK controls">
-              <label>
+              <label class="spk-sponsor-field spk-sponsor-a">
                 <span>左侧保荐人</span>
                 <select id="spkSponsorA" name="spkSponsorA" autocomplete="off"></select>
               </label>
-              <button id="spkSwapButton" type="button">交换</button>
-              <label>
+              <button class="spk-swap-button" id="spkSwapButton" type="button">交换</button>
+              <label class="spk-sponsor-field spk-sponsor-b">
                 <span>右侧保荐人</span>
                 <select id="spkSponsorB" name="spkSponsorB" autocomplete="off"></select>
               </label>
-              <label>
+              <label class="spk-filter-field spk-credit-field">
                 <span>统计口径</span>
                 <select id="spkCreditSelect" name="spkCreditSelect" autocomplete="off">
                   <option value="creditAllFull">具名保荐人全部计入</option>
@@ -635,13 +635,13 @@
                   <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
-              <label>
+              <label class="spk-filter-field spk-sector-field">
                 <span>赛道</span>
                 <select id="spkSectorSelect" name="spkSectorSelect" autocomplete="off">
                   <option value="all">全部赛道</option>
                 </select>
               </label>
-              <label>
+              <label class="spk-filter-field spk-date-field">
                 <span>日期字段</span>
                 <select id="spkDateFieldSelect" name="spkDateFieldSelect" autocomplete="off">
                   <option value="a1Date">A1</option>
@@ -650,11 +650,11 @@
                   <option value="listingDate">上市日</option>
                 </select>
               </label>
-              <label>
+              <label class="spk-filter-field spk-date-from-field">
                 <span>起始</span>
                 <input id="spkDateFrom" name="spkDateFrom" type="date" autocomplete="off" />
               </label>
-              <label>
+              <label class="spk-filter-field spk-date-to-field">
                 <span>截至</span>
                 <input id="spkDateTo" name="spkDateTo" type="date" autocomplete="off" />
               </label>
@@ -775,8 +775,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260703-sponsor-integrated-1"></script>
-    <script src="sponsor_leaderboard_demo.js?v=20260706-sponsor-pk-2"></script>
+    <script src="app.js?v=20260707-sponsor-pk-mobile-2"></script>
+    <script src="sponsor_leaderboard_demo.js?v=20260707-sponsor-pk-mobile-2"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

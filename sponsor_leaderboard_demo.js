@@ -74,6 +74,83 @@ const creditLabels = {
 const PUBLIC_ACTIVE_CAVEAT =
   "申请中项目仅指HKEX已公开A1的上市申请；密交、未公开pipeline及尚未公开的申报中项目不可见，因此SP/Rep负荷只是公开样本旁证。";
 
+const BENCHMARK_PREFIX = "__benchmark_";
+const BENCHMARK_GROUPS = [
+  {
+    id: `${BENCHMARK_PREFIX}all`,
+    zh: "全行业中位",
+    en: "Market median",
+    note: "全部可比保荐人",
+    filter: () => true,
+  },
+  {
+    id: `${BENCHMARK_PREFIX}cn`,
+    zh: "中资中位",
+    en: "Chinese sponsors median",
+    note: "中资保荐人",
+    filter: (row) => row.sponsorNature === "中资",
+  },
+  {
+    id: `${BENCHMARK_PREFIX}foreign`,
+    zh: "外资中位",
+    en: "International sponsors median",
+    note: "外资保荐人",
+    filter: (row) => row.sponsorNature === "外资",
+  },
+  {
+    id: `${BENCHMARK_PREFIX}hk`,
+    zh: "港资中位",
+    en: "Hong Kong sponsors median",
+    note: "港资保荐人",
+    filter: (row) => row.sponsorNature === "港资",
+  },
+];
+
+const BENCHMARK_MEDIAN_FIELDS = [
+  "projectCount",
+  "activeCount",
+  "listedCount",
+  "noticeCount",
+  "ahCount",
+  "hShareCount",
+  "redChipCount",
+  "deSpacCount",
+  "hdrCount",
+  "listingMarketCapHkdBnSum",
+  "listingMarketCapHkdBnMedian",
+  "aShareMarketCapRmbBnSum",
+  "aShareMarketCapRmbBnMedian",
+  "applyingAhMarketCapRmbBnSum",
+  "applyingAhMarketCapRmbBnMedian",
+  "lifecycleMedianDays",
+  "listedLifecycleAverageDays",
+  "listedLifecycleMedianDays",
+  "noticeCycleMedianDays",
+  "receivedCycleMedianDays",
+  "applyingElapsedAverageDays",
+  "applyingElapsedMedianDays",
+  "type6ROCount",
+  "type6RepCount",
+  "type6TotalCount",
+  "sponsorPrincipalCount",
+  "projectsPerType6Rep",
+  "type6RepPerProject",
+  "projectsPerType6RO",
+  "type6ROPerProject",
+  "projectsPerSponsorPrincipal",
+  "sponsorPrincipalPerProject",
+  "projectsPerType6Total",
+  "type6TotalPerProject",
+  "type6TotalPerActiveProject",
+  "activeProjectsPerType6Total",
+  "sponsorPrincipalPerActiveProject",
+  "activeProjectsPerSponsorPrincipal",
+  "type6RepPerActiveProject",
+  "activeProjectsPerType6Rep",
+  "listingMarketCapPerType6TotalHkdBn",
+  "listingMarketCapPerSponsorPrincipalHkdBn",
+];
+
 function publicMethodologyText(value) {
   if (!value) return "";
   return String(value)
@@ -238,12 +315,13 @@ function formatRatio(value, digits = 2) {
 function capacityDisplay(row) {
   const quality = row.sponsorPrincipalQuality || row.type6Quality || "fresh";
   if (isNumber(row.sponsorPrincipalCount)) {
-    const type6 = isNumber(row.type6TotalCount) ? `六号牌 ${compactNumber(row.type6TotalCount, 0)}` : "六号牌待补";
-    const ro = isNumber(row.type6ROCount) ? `RO ${compactNumber(row.type6ROCount, 0)}` : "RO待补";
-    const rep = isNumber(row.type6RepCount) ? `Rep ${compactNumber(row.type6RepCount, 0)}` : "Rep待补";
+    const digits = row.firmScope === "benchmark" ? 1 : 0;
+    const type6 = isNumber(row.type6TotalCount) ? `六号牌 ${compactNumber(row.type6TotalCount, digits)}` : "六号牌待补";
+    const ro = isNumber(row.type6ROCount) ? `RO ${compactNumber(row.type6ROCount, digits)}` : "RO待补";
+    const rep = isNumber(row.type6RepCount) ? `Rep ${compactNumber(row.type6RepCount, digits)}` : "Rep待补";
     return {
-      main: `${compactNumber(row.sponsorPrincipalCount, 0)} SP`,
-      sub: `${type6} / ${ro} / ${rep} · ${quality}`,
+      main: `${row.firmScope === "benchmark" ? "中位 " : ""}${compactNumber(row.sponsorPrincipalCount, digits)} SP`,
+      sub: `${row.firmScope === "benchmark" ? "组内中位 · " : ""}${type6} / ${ro} / ${rep} · ${quality}`,
     };
   }
   if (!isNumber(row.type6TotalCount)) return { main: "待接入", sub: "暂无匹配 SP / 六号牌数据" };
@@ -565,6 +643,158 @@ function aggregateFactsForCredit(facts, credit) {
   }
 }
 
+function countRowsWithNumber(rows, key) {
+  return rows.filter((row) => isNumber(row[key])).length;
+}
+
+function benchmarkLabel(group, rows) {
+  if (group.id === `${BENCHMARK_PREFIX}all` && state.sector !== "all") {
+    return {
+      zh: `${sectorLabel()}中位`,
+      en: `${sectorLabel()} median`,
+    };
+  }
+  return { zh: group.zh, en: group.en };
+}
+
+function buildBenchmarkRow(group, sourceRows) {
+  const rows = sourceRows.filter(group.filter);
+  if (!rows.length) return null;
+  const labels = benchmarkLabel(group, rows);
+  const row = {
+    sponsorId: group.id,
+    sponsorTag: null,
+    displayNameZh: labels.zh,
+    displayNameEn: labels.en,
+    canonicalName: `${labels.en} benchmark`,
+    legalNames: [],
+    aliases: [group.zh, group.en, group.note, "benchmark", "median", "中位", "基准"],
+    sponsorNature: "基准",
+    natureConfidence: "derived",
+    mappingConfidence: "derived_benchmark",
+    firmScope: "benchmark",
+    benchmarkGroupSize: rows.length,
+    benchmarkNote: `${group.note} · 组内中位数 · ${rows.length}家`,
+    facts: [],
+    searchSponsorMatch: false,
+    searchSponsorRank: 0,
+    type6Quality: "benchmark",
+    sponsorPrincipalQuality: "benchmark",
+    topIndustries: [state.sector === "all" ? "全行业" : sectorLabel()],
+  };
+  for (const key of BENCHMARK_MEDIAN_FIELDS) {
+    row[key] = median(rows.map((item) => item[key]).filter(isNumber));
+  }
+  row.listingMarketCapN = countRowsWithNumber(rows, "listingMarketCapHkdBnSum");
+  row.aShareMarketCapN = countRowsWithNumber(rows, "aShareMarketCapRmbBnSum");
+  row.applyingAhMarketCapN = countRowsWithNumber(rows, "applyingAhMarketCapRmbBnSum");
+  row.lifecycleTimingN = countRowsWithNumber(rows, "listedLifecycleAverageDays");
+  row.lifecycleListedN = row.lifecycleTimingN;
+  row.lifecycleApplyingN = countRowsWithNumber(rows, "applyingElapsedAverageDays");
+  row.lifecycleOtherN = 0;
+  row.lifecycleExcludedN = 0;
+  row.listedLifecycleN = row.lifecycleTimingN;
+  row.noticeCycleN = countRowsWithNumber(rows, "noticeCycleMedianDays");
+  row.receivedCycleN = countRowsWithNumber(rows, "receivedCycleMedianDays");
+  row.applyingElapsedN = row.lifecycleApplyingN;
+  return row;
+}
+
+function benchmarkRows(rows) {
+  const sourceRows = rows.filter((row) => row.firmScope !== "rollup" && row.firmScope !== "benchmark" && row.projectCount > 0);
+  return BENCHMARK_GROUPS.map((group) => buildBenchmarkRow(group, sourceRows)).filter(Boolean);
+}
+
+function rowsWithBenchmarks(rows) {
+  return [...benchmarkRows(rows), ...rows];
+}
+
+function emptyPkRow(template) {
+  if (!template) return null;
+  const type6RepCount = isNumber(template.type6RepCount) ? template.type6RepCount : null;
+  const type6ROCount = isNumber(template.type6ROCount) ? template.type6ROCount : null;
+  const type6TotalCount = isNumber(template.type6TotalCount) ? template.type6TotalCount : null;
+  const sponsorPrincipalCount = isNumber(template.sponsorPrincipalCount) ? template.sponsorPrincipalCount : null;
+  return {
+    sponsorId: template.sponsorId,
+    sponsorTag: template.sponsorTag,
+    displayNameZh: template.displayNameZh || template.sponsorId,
+    displayNameEn: template.displayNameEn || template.sponsorId,
+    canonicalName: template.canonicalName || template.displayNameEn || template.displayNameZh || template.sponsorId,
+    legalNames: template.legalNames || [],
+    aliases: template.aliases || [],
+    sponsorNature: template.sponsorNature || "待核",
+    natureConfidence: template.natureConfidence,
+    mappingConfidence: template.mappingConfidence,
+    firmScope: "empty_filter",
+    emptyFilter: true,
+    facts: [],
+    searchSponsorMatch: template.searchSponsorMatch || false,
+    searchSponsorRank: template.searchSponsorRank || 0,
+    type6Quality: template.type6Quality,
+    sponsorPrincipalQuality: template.sponsorPrincipalQuality,
+    type6RepCount,
+    type6ROCount,
+    type6TotalCount,
+    sponsorPrincipalCount,
+    projectCount: 0,
+    activeCount: 0,
+    listedCount: 0,
+    noticeCount: 0,
+    ahCount: 0,
+    hShareCount: 0,
+    redChipCount: 0,
+    deSpacCount: 0,
+    hdrCount: 0,
+    listingMarketCapHkdBnSum: 0,
+    listingMarketCapHkdBnMedian: null,
+    listingMarketCapN: 0,
+    aShareMarketCapRmbBnSum: 0,
+    aShareMarketCapRmbBnMedian: null,
+    aShareMarketCapN: 0,
+    applyingAhMarketCapRmbBnSum: 0,
+    applyingAhMarketCapRmbBnMedian: null,
+    applyingAhMarketCapN: 0,
+    lifecycleMedianDays: null,
+    lifecycleTimingN: 0,
+    lifecycleListedN: 0,
+    lifecycleApplyingN: 0,
+    lifecycleOtherN: 0,
+    lifecycleExcludedN: 0,
+    listedLifecycleAverageDays: null,
+    listedLifecycleMedianDays: null,
+    listedLifecycleN: 0,
+    noticeCycleMedianDays: null,
+    noticeCycleN: 0,
+    receivedCycleMedianDays: null,
+    receivedCycleN: 0,
+    applyingElapsedAverageDays: null,
+    applyingElapsedMedianDays: null,
+    applyingElapsedN: 0,
+    projectsPerType6Rep: type6RepCount && type6RepCount > 0 ? 0 : null,
+    type6RepPerProject: null,
+    projectsPerType6RO: type6ROCount && type6ROCount > 0 ? 0 : null,
+    type6ROPerProject: null,
+    projectsPerSponsorPrincipal: sponsorPrincipalCount && sponsorPrincipalCount > 0 ? 0 : null,
+    sponsorPrincipalPerProject: null,
+    projectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? 0 : null,
+    type6TotalPerProject: null,
+    type6TotalPerActiveProject: null,
+    activeProjectsPerType6Total: type6TotalCount && type6TotalCount > 0 ? 0 : null,
+    sponsorPrincipalPerActiveProject: null,
+    activeProjectsPerSponsorPrincipal: sponsorPrincipalCount && sponsorPrincipalCount > 0 ? 0 : null,
+    type6RepPerActiveProject: null,
+    activeProjectsPerType6Rep: type6RepCount && type6RepCount > 0 ? 0 : null,
+    listingMarketCapPerType6TotalHkdBn: type6TotalCount && type6TotalCount > 0 ? 0 : null,
+    listingMarketCapPerSponsorPrincipalHkdBn: sponsorPrincipalCount && sponsorPrincipalCount > 0 ? 0 : null,
+    topIndustries: [state.sector === "all" ? "当前筛选" : sectorLabel()],
+  };
+}
+
+function pkComparableRow(sponsorId, comparisonRows, optionRows) {
+  return comparisonRows.find((row) => row.sponsorId === sponsorId) || emptyPkRow(optionRows.find((row) => row.sponsorId === sponsorId));
+}
+
 function dateScopeLabel() {
   const fieldLabel = {
     a1Date: "A1",
@@ -708,6 +938,10 @@ function pkFilteredFacts() {
   return (state.data?.projectFacts || []).filter((fact) => matchesDateScope(fact) && matchesSector(fact));
 }
 
+function pkOptionFacts() {
+  return state.data?.projectFacts || [];
+}
+
 function uniqueSorted(values) {
   return [...new Set(values.filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "zh-Hans"));
 }
@@ -800,6 +1034,7 @@ function setPreset(preset) {
   enforceMetricCompatibility();
   syncControls();
   render();
+  renderPk();
 }
 
 function setDateQuickRange(range) {
@@ -1439,10 +1674,15 @@ function renderPkCard(row, sideLabel) {
     return `<article class="spk-card"><span>${escapeHtml(sideLabel)}</span><strong>待选择</strong></article>`;
   }
   const capacity = capacityDisplay(row);
+  const note = row.firmScope === "benchmark"
+    ? row.benchmarkNote || "组内中位数"
+    : row.emptyFilter
+      ? `${row.displayNameEn} · 当前筛选暂无样本`
+      : `${row.displayNameEn} · ${row.sponsorNature || "待核"}`;
   return `<article class="spk-card">
     <span>${escapeHtml(sideLabel)}</span>
     <strong>${escapeHtml(row.displayNameZh)}</strong>
-    <small>${escapeHtml(row.displayNameEn)} · ${escapeHtml(row.sponsorNature || "待核")}</small>
+    <small>${escapeHtml(note)}</small>
     <div class="spk-card-grid">
       <div><b>${compactCredit(row.projectCount)}</b><span>项目</span></div>
       <div><b>${compactCredit(row.activeCount)}</b><span>申请中</span></div>
@@ -1473,15 +1713,20 @@ function renderPkMetric(metric, rowA, rowB) {
 
 function populatePkOptions(rows) {
   if (!pkRoot || !pkEls.sponsorA || !pkEls.sponsorB) return;
-  const options = rows
-    .filter((row) => row.firmScope !== "rollup")
+  const benchmarkOptions = rows
+    .filter((row) => row.firmScope === "benchmark")
+    .map((row) => `<option value="${escapeHtml(row.sponsorId)}">${escapeHtml(row.displayNameZh)} · ${escapeHtml(row.displayNameEn)}</option>`)
+    .join("");
+  const firmOptions = rows
+    .filter((row) => row.firmScope !== "rollup" && row.firmScope !== "benchmark")
     .sort((a, b) => b.projectCount - a.projectCount || String(a.displayNameZh).localeCompare(String(b.displayNameZh), "zh-Hans"))
     .map((row) => `<option value="${escapeHtml(row.sponsorId)}">${escapeHtml(row.displayNameZh)} · ${escapeHtml(row.displayNameEn)}</option>`)
     .join("");
+  const options = `${benchmarkOptions ? `<optgroup label="市场基准">${benchmarkOptions}</optgroup>` : ""}<optgroup label="保荐人">${firmOptions}</optgroup>`;
   pkEls.sponsorA.innerHTML = options;
   pkEls.sponsorB.innerHTML = options;
-  const defaultA = rows.find((row) => row.sponsorId === "cicc") || rows[0];
-  const defaultB = rows.find((row) => row.sponsorId === "citic") || rows.find((row) => row.sponsorId !== defaultA?.sponsorId) || rows[1];
+  const defaultA = rows.find((row) => row.sponsorId === "cicc") || rows.find((row) => row.firmScope !== "benchmark") || rows[0];
+  const defaultB = rows.find((row) => row.sponsorId === `${BENCHMARK_PREFIX}all`) || rows.find((row) => row.sponsorId === "citic") || rows.find((row) => row.sponsorId !== defaultA?.sponsorId) || rows[1];
   pkState.sponsorA = pkState.sponsorA || defaultA?.sponsorId || "";
   pkState.sponsorB = pkState.sponsorB || defaultB?.sponsorId || "";
   pkEls.sponsorA.value = pkState.sponsorA;
@@ -1493,9 +1738,12 @@ function renderPk() {
   if (!state.data || !pkRoot || !pkEls.versus || !pkEls.metrics) return;
   const scopedFacts = pkFilteredFacts();
   const rows = aggregateFactsForCredit(scopedFacts, pkState.credit);
-  if (!pkEls.sponsorA.options.length) populatePkOptions(rows);
-  const rowA = rows.find((row) => row.sponsorId === pkState.sponsorA) || rows[0];
-  const rowB = rows.find((row) => row.sponsorId === pkState.sponsorB) || rows.find((row) => row.sponsorId !== rowA?.sponsorId) || rows[1] || rowA;
+  const comparisonRows = rowsWithBenchmarks(rows);
+  const optionRows = aggregateFactsForCredit(pkOptionFacts(), pkState.credit);
+  const selectorRows = [...benchmarkRows(rows), ...optionRows];
+  populatePkOptions(selectorRows);
+  const rowA = pkComparableRow(pkState.sponsorA, comparisonRows, selectorRows) || comparisonRows.find((row) => row.firmScope !== "benchmark") || selectorRows.find((row) => row.firmScope !== "benchmark") || comparisonRows[0] || selectorRows[0];
+  const rowB = pkComparableRow(pkState.sponsorB, comparisonRows, selectorRows) || comparisonRows.find((row) => row.sponsorId === `${BENCHMARK_PREFIX}all`) || comparisonRows.find((row) => row.sponsorId !== rowA?.sponsorId) || selectorRows.find((row) => row.sponsorId !== rowA?.sponsorId) || comparisonRows[1] || selectorRows[1] || rowA;
   if (!rowA || !rowB) {
     pkEls.versus.innerHTML = '<div class="empty-state">该时间范围暂无可比较样本 / No comparable sample in this date range</div>';
     pkEls.metrics.innerHTML = "";
@@ -1508,7 +1756,7 @@ function renderPk() {
   pkEls.creditLabel.textContent = creditLabels[pkState.credit] || "具名全部计入";
   const sourceDate = state.data.meta?.sourceGeneratedAt || state.data.meta?.generatedAt || "待披露";
   const sectorNote = state.sector === "all" ? "" : " 赛道比较只按项目行业标签重聚合，不推断人员在各行业的内部分布。";
-  pkEls.sourceNote.textContent = `同源于保荐龙虎榜 JSON；${scopeLabel()}；快照 ${sourceDate}；${PUBLIC_ACTIVE_CAVEAT}${sectorNote} 密交、De-SPAC、HDR、outlier 等周期剔除沿用监管节奏追踪。`;
+  pkEls.sourceNote.textContent = `同源龙虎榜快照 · ${scopeLabel()} · 基准项按组内中位数显示，避免头部项目拉高均值；申请中仅含HKEX已公开A1项目。${sectorNote} 特殊路径剔除沿用监管节奏追踪。快照 ${sourceDate}。`;
   pkEls.versus.innerHTML = `${renderPkCard(rowA, "左侧")}<div class="spk-vs">VS</div>${renderPkCard(rowB, "右侧")}`;
   pkEls.metrics.innerHTML = pkMetricRows(rowA, rowB).map((metric) => renderPkMetric(metric, rowA, rowB)).join("");
 }
@@ -1832,8 +2080,6 @@ async function init() {
     syncControls();
     render();
     if (pkRoot) {
-      const pkRows = aggregateFactsForCredit(pkFilteredFacts(), pkState.credit);
-      populatePkOptions(pkRows);
       renderPk();
     }
   } catch (error) {

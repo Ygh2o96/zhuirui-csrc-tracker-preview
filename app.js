@@ -1550,6 +1550,8 @@ function switchView(view, updateLocation = true) {
   document.querySelectorAll(".nav-item").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.view === state.view);
   });
+  const activeNav = document.querySelector(`.nav-item[data-view="${state.view}"]`);
+  activeNav?.scrollIntoView({ block: "nearest", inline: "center" });
   document.querySelectorAll(".view-panel").forEach((panel) => {
     panel.classList.remove("is-visible");
   });
