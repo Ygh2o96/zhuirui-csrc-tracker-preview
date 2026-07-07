@@ -1113,6 +1113,7 @@ function readControls() {
   if (!state.sortKey) state.sortKey = state.metric;
   syncControls();
   render();
+  renderPk();
 }
 
 function readPkDateControls() {
