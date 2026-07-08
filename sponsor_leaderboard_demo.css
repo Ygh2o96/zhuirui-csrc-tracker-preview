@@ -53,6 +53,7 @@
 .sponsor-league .spk-hero,
 .sponsor-league .spk-picker,
 .sponsor-league .spk-date-quick,
+.sponsor-league .spk-side,
 .sponsor-league .spk-card,
 .sponsor-league .spk-metric-row {
   border: 1px solid var(--line);
@@ -163,14 +164,15 @@
 
 .sponsor-league .sl-search-field:focus-within,
 .sponsor-league .sl-filter-grid label:focus-within,
-.sponsor-league .spk-picker label:focus-within {
+.sponsor-league .spk-picker label:focus-within,
+.sponsor-league .spk-sponsor-field:focus-within {
   border-color: rgba(8, 116, 102, 0.48);
   box-shadow: 0 0 0 3px rgba(8, 116, 102, 0.08);
 }
 
 .sponsor-league .sl-date-quick button:focus-visible,
 .sponsor-league .spk-date-quick button:focus-visible,
-.sponsor-league .spk-picker > button:focus-visible,
+.sponsor-league .spk-swap-button:focus-visible,
 .sponsor-league .preset:focus-visible {
   outline: 2px solid rgba(8, 116, 102, 0.55);
   outline-offset: 2px;
@@ -733,62 +735,48 @@
 
 .sponsor-league .spk-picker {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--spk-axis-width) minmax(0, 1fr) minmax(180px, 0.8fr);
+  grid-template-columns: minmax(210px, 1fr) minmax(210px, 1fr) minmax(150px, 0.72fr) minmax(170px, 0.8fr) minmax(170px, 0.8fr);
   align-items: end;
   gap: 10px;
   padding: 14px;
   background: linear-gradient(180deg, var(--surface), rgba(248, 250, 248, 0.92));
 }
 
-.sponsor-league .spk-sponsor-a {
+.sponsor-league .spk-credit-field {
   grid-column: 1;
   grid-row: 1;
 }
 
-.sponsor-league .spk-swap-button {
+.sponsor-league .spk-sector-field {
   grid-column: 2;
   grid-row: 1;
 }
 
-.sponsor-league .spk-sponsor-b {
+.sponsor-league .spk-date-field {
   grid-column: 3;
   grid-row: 1;
 }
 
-.sponsor-league .spk-credit-field {
+.sponsor-league .spk-date-from-field {
   grid-column: 4;
   grid-row: 1;
 }
 
-.sponsor-league .spk-sector-field {
-  grid-column: 1 / 3;
-  grid-row: 2;
-}
-
-.sponsor-league .spk-date-field {
-  grid-column: 3 / 5;
-  grid-row: 2;
-}
-
-.sponsor-league .spk-date-from-field {
-  grid-column: 1 / 3;
-  grid-row: 3;
-}
-
 .sponsor-league .spk-date-to-field {
-  grid-column: 3 / 5;
-  grid-row: 3;
+  grid-column: 5;
+  grid-row: 1;
 }
 
 .sponsor-league .spk-date-quick {
   grid-column: 1 / -1;
-  grid-row: 4;
+  grid-row: 2;
   border: 0;
   box-shadow: none;
   background: transparent;
 }
 
-.sponsor-league .spk-picker label {
+.sponsor-league .spk-picker label,
+.sponsor-league .spk-sponsor-field {
   display: grid;
   gap: 6px;
   color: var(--muted);
@@ -800,7 +788,7 @@
 
 .sponsor-league .spk-picker select,
 .sponsor-league .spk-picker input,
-.sponsor-league .spk-picker > button {
+.sponsor-league .spk-sponsor-field select {
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -809,7 +797,8 @@
   font-size: 12px;
 }
 
-.sponsor-league .spk-picker select {
+.sponsor-league .spk-picker select,
+.sponsor-league .spk-sponsor-field select {
   width: 100%;
   padding: 0 26px 0 10px;
   text-overflow: ellipsis;
@@ -821,14 +810,6 @@
   padding: 0 8px;
 }
 
-.sponsor-league .spk-picker > button {
-  padding: 0 12px;
-  color: var(--teal);
-  font-weight: 760;
-  min-width: 0;
-  cursor: pointer;
-}
-
 .sponsor-league .spk-versus {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--spk-axis-width) minmax(0, 1fr);
@@ -837,10 +818,48 @@
   padding: 0 14px;
 }
 
+.sponsor-league .spk-side {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px;
+  background:
+    linear-gradient(180deg, rgba(8, 116, 102, 0.055), transparent 110px),
+    var(--surface);
+}
+
+.sponsor-league .spk-side-b {
+  background:
+    linear-gradient(180deg, rgba(154, 101, 13, 0.052), transparent 110px),
+    var(--surface);
+}
+
+.sponsor-league .spk-vs-rail {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  min-height: 100%;
+}
+
+.sponsor-league .spk-swap-button {
+  min-width: 52px;
+  min-height: 32px;
+  border: 1px solid rgba(8, 116, 102, 0.25);
+  border-radius: 999px;
+  background: rgba(8, 116, 102, 0.055);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 780;
+  cursor: pointer;
+}
+
 .sponsor-league .spk-card {
-  padding: 15px 18px;
+  height: 100%;
+  padding: 13px 14px;
   border-top: 3px solid rgba(8, 116, 102, 0.42);
   background: linear-gradient(180deg, var(--surface), #fbfcfa);
+  box-shadow: none;
 }
 
 .sponsor-league .spk-card > span {
@@ -1163,59 +1182,39 @@
   }
 
   .sponsor-league .spk-picker {
-    grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: end;
     gap: 9px;
   }
 
-  .sponsor-league .spk-sponsor-a {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .sponsor-league .spk-swap-button {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: stretch;
-  }
-
-  .sponsor-league .spk-sponsor-b {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
   .sponsor-league .spk-credit-field {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 1;
   }
 
   .sponsor-league .spk-sector-field {
-    grid-column: 1 / 3;
-    grid-row: 3;
+    grid-column: 1;
+    grid-row: 2;
   }
 
   .sponsor-league .spk-date-field {
-    grid-column: 3;
-    grid-row: 3;
+    grid-column: 2;
+    grid-row: 2;
   }
 
   .sponsor-league .spk-date-from-field {
-    grid-column: 1 / 3;
-    grid-row: 4;
+    grid-column: 1;
+    grid-row: 3;
   }
 
   .sponsor-league .spk-date-to-field {
-    grid-column: 3;
-    grid-row: 4;
+    grid-column: 2;
+    grid-row: 3;
   }
 
   .sponsor-league .spk-date-quick {
     grid-column: 1 / -1;
-    grid-row: 5;
-  }
-
-  .sponsor-league .spk-picker > button {
-    width: 100%;
+    grid-row: 4;
   }
 
   .sponsor-league .sl-date-quick,
@@ -1231,7 +1230,7 @@
   }
 
   .sponsor-league .spk-versus {
-    grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
     gap: 8px;
   }
 
@@ -1335,7 +1334,7 @@
 
   .sponsor-league .spk-picker select,
   .sponsor-league .spk-picker input,
-  .sponsor-league .spk-picker > button {
+  .sponsor-league .spk-sponsor-field select {
     width: 100%;
     min-width: 0;
     min-height: 42px;
@@ -1343,7 +1342,8 @@
     font-size: 12px;
   }
 
-  .sponsor-league .spk-picker select {
+  .sponsor-league .spk-picker select,
+  .sponsor-league .spk-sponsor-field select {
     padding-right: 22px;
     padding-left: 8px;
   }
@@ -1353,8 +1353,8 @@
   }
 
   .sponsor-league .spk-swap-button {
-    align-self: end;
-    padding: 0;
+    min-width: 48px;
+    min-height: 32px;
     font-size: 10px;
   }
 
@@ -1371,8 +1371,21 @@
   }
 
   .sponsor-league .spk-versus {
+    grid-template-columns: minmax(0, 1fr);
     gap: 6px;
-    padding: 0 2px;
+    padding: 0 10px;
+  }
+
+  .sponsor-league .spk-side {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .sponsor-league .spk-vs-rail {
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    min-height: 38px;
   }
 
   .sponsor-league .spk-card {

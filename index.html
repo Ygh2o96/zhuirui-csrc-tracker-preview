@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260630-all-listing-days-1" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260707-sponsor-pk-mobile-3" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260708-sponsor-pk-vs-select-1" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -618,15 +618,6 @@
             </section>
 
             <section class="spk-picker" aria-label="Sponsor PK controls">
-              <label class="spk-sponsor-field spk-sponsor-a">
-                <span>左侧保荐人</span>
-                <select id="spkSponsorA" name="spkSponsorA" autocomplete="off"></select>
-              </label>
-              <button class="spk-swap-button" id="spkSwapButton" type="button">交换</button>
-              <label class="spk-sponsor-field spk-sponsor-b">
-                <span>右侧保荐人</span>
-                <select id="spkSponsorB" name="spkSponsorB" autocomplete="off"></select>
-              </label>
               <label class="spk-filter-field spk-credit-field">
                 <span>统计口径</span>
                 <select id="spkCreditSelect" name="spkCreditSelect" autocomplete="off">
@@ -667,7 +658,26 @@
               </div>
             </section>
 
-            <section class="spk-versus" id="spkVersus" aria-label="Sponsor PK summary"></section>
+            <section class="spk-versus" id="spkVersus" aria-label="Sponsor PK summary">
+              <div class="spk-side spk-side-a">
+                <label class="spk-sponsor-field spk-sponsor-a">
+                  <span>左侧保荐人</span>
+                  <select id="spkSponsorA" name="spkSponsorA" autocomplete="off"></select>
+                </label>
+                <div class="spk-card-slot" id="spkCardA"></div>
+              </div>
+              <div class="spk-vs-rail" aria-hidden="false">
+                <button class="spk-swap-button" id="spkSwapButton" type="button">交换</button>
+                <div class="spk-vs">VS</div>
+              </div>
+              <div class="spk-side spk-side-b">
+                <label class="spk-sponsor-field spk-sponsor-b">
+                  <span>右侧保荐人</span>
+                  <select id="spkSponsorB" name="spkSponsorB" autocomplete="off"></select>
+                </label>
+                <div class="spk-card-slot" id="spkCardB"></div>
+              </div>
+            </section>
             <section class="spk-metrics" id="spkMetrics" aria-label="Sponsor PK metrics"></section>
           </div>
         </section>
@@ -775,8 +785,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=20260707-sponsor-pk-mobile-3"></script>
-    <script src="sponsor_leaderboard_demo.js?v=20260707-sponsor-pk-mobile-3"></script>
+    <script src="app.js?v=20260708-sponsor-pk-vs-select-1"></script>
+    <script src="sponsor_leaderboard_demo.js?v=20260708-sponsor-pk-vs-select-1"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

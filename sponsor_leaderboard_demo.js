@@ -1746,7 +1746,10 @@ function renderPk() {
   const rowA = pkComparableRow(pkState.sponsorA, comparisonRows, selectorRows) || comparisonRows.find((row) => row.firmScope !== "benchmark") || selectorRows.find((row) => row.firmScope !== "benchmark") || comparisonRows[0] || selectorRows[0];
   const rowB = pkComparableRow(pkState.sponsorB, comparisonRows, selectorRows) || comparisonRows.find((row) => row.sponsorId === `${BENCHMARK_PREFIX}all`) || comparisonRows.find((row) => row.sponsorId !== rowA?.sponsorId) || selectorRows.find((row) => row.sponsorId !== rowA?.sponsorId) || comparisonRows[1] || selectorRows[1] || rowA;
   if (!rowA || !rowB) {
-    pkEls.versus.innerHTML = '<div class="empty-state">该时间范围暂无可比较样本 / No comparable sample in this date range</div>';
+    if (pkEls.cardA) {
+      pkEls.cardA.innerHTML = '<div class="empty-state">该时间范围暂无可比较样本 / No comparable sample in this date range</div>';
+    }
+    if (pkEls.cardB) pkEls.cardB.innerHTML = "";
     pkEls.metrics.innerHTML = "";
     return;
   }
@@ -1758,7 +1761,8 @@ function renderPk() {
   const sourceDate = state.data.meta?.sourceGeneratedAt || state.data.meta?.generatedAt || "待披露";
   const sectorNote = state.sector === "all" ? "" : " 赛道比较只按项目行业标签重聚合，不推断人员在各行业的内部分布。";
   pkEls.sourceNote.textContent = `同源龙虎榜快照 · ${scopeLabel()} · 基准项按组内中位数显示，避免头部项目拉高均值；申请中仅含HKEX已公开A1项目。${sectorNote} 特殊路径剔除沿用监管节奏追踪。快照 ${sourceDate}。`;
-  pkEls.versus.innerHTML = `${renderPkCard(rowA, "左侧")}<div class="spk-vs">VS</div>${renderPkCard(rowB, "右侧")}`;
+  if (pkEls.cardA) pkEls.cardA.innerHTML = renderPkCard(rowA, "左侧");
+  if (pkEls.cardB) pkEls.cardB.innerHTML = renderPkCard(rowB, "右侧");
   pkEls.metrics.innerHTML = pkMetricRows(rowA, rowB).map((metric) => renderPkMetric(metric, rowA, rowB)).join("");
 }
 
@@ -1995,6 +1999,8 @@ function cachePkElements() {
   pkEls.creditSelect = document.getElementById("spkCreditSelect");
   pkEls.swapButton = document.getElementById("spkSwapButton");
   pkEls.versus = document.getElementById("spkVersus");
+  pkEls.cardA = document.getElementById("spkCardA");
+  pkEls.cardB = document.getElementById("spkCardB");
   pkEls.metrics = document.getElementById("spkMetrics");
   pkEls.sourceNote = document.getElementById("spkSourceNote");
   pkEls.creditLabel = document.getElementById("spkCreditLabel");
