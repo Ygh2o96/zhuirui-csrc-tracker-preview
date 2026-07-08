@@ -312,11 +312,6 @@ function formatRatio(value, digits = 2) {
   return compactNumber(value, digits);
 }
 
-function formatPercent(value, denominator) {
-  if (!isNumber(value) || !isNumber(denominator) || denominator <= 0) return "待披露";
-  return `${compactNumber((value / denominator) * 100, 0)}%`;
-}
-
 function capacityDisplay(row) {
   const quality = row.sponsorPrincipalQuality || row.type6Quality || "fresh";
   if (isNumber(row.sponsorPrincipalCount)) {
@@ -1691,8 +1686,8 @@ function renderPkCard(row, sideLabel) {
     <small>${escapeHtml(note)}</small>
     <div class="spk-card-grid">
       <div><b>${compactCredit(row.projectCount)}</b><span>项目</span></div>
+      <div><b>${compactCredit(row.listedCount)}</b><span>已上市</span></div>
       <div><b>${compactCredit(row.activeCount)}</b><span>申请中</span></div>
-      <div><b>${formatPercent(row.activeCount, row.projectCount)}</b><span>申请中占比</span></div>
       <div><b>${escapeHtml(capacity.main)}</b><span>${escapeHtml(capacity.sub)}</span></div>
     </div>
   </article>`;
