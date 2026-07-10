@@ -1686,8 +1686,8 @@ function renderPkCard(row, sideLabel) {
     <small>${escapeHtml(note)}</small>
     <div class="spk-card-grid">
       <div><b>${compactCredit(row.projectCount)}</b><span>项目</span></div>
-      <div><b>${compactCredit(row.listedCount)}</b><span>已上市</span></div>
       <div><b>${compactCredit(row.activeCount)}</b><span>申请中</span></div>
+      <div><b>${compactCredit(row.listedCount)}</b><span>已上市</span></div>
       <div><b>${escapeHtml(capacity.main)}</b><span>${escapeHtml(capacity.sub)}</span></div>
     </div>
   </article>`;

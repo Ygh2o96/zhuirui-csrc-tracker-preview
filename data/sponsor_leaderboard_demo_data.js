@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-10T06:41:34Z",
-    "sourceGeneratedAt": "2026-07-10T14:41:14+08:00",
+    "generatedAt": "2026-07-10T06:57:30Z",
+    "sourceGeneratedAt": "2026-07-10T14:57:17+08:00",
     "sourceRecordCount": 831,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-10T14:41:14+08:00",
+      "generatedAt": "2026-07-10T14:57:17+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1459,
@@ -84,7 +84,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 56,
       "deSpacCount": 0,
       "hdrCount": 1,
-      "listingMarketCapHkdBnSum": 5798.6776,
+      "listingMarketCapHkdBnSum": 5807.5961,
       "listingMarketCapHkdBnMedian": 15.054549999999999,
       "listingMarketCapN": 112,
       "aShareMarketCapRmbBnSum": 4614.9286,
@@ -180,7 +180,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 29,
       "deSpacCount": 1,
       "hdrCount": 1,
-      "listingMarketCapHkdBnSum": 3060.8199,
+      "listingMarketCapHkdBnSum": 3057.9628,
       "listingMarketCapHkdBnMedian": 13.3456,
       "listingMarketCapN": 73,
       "aShareMarketCapRmbBnSum": 3113.3608,
@@ -388,12 +388,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6TotalCount": 335,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
@@ -430,8 +430,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Haitong International Capital Limited",
-        "Guotai Junan Capital Limited"
+        "Guotai Junan Capital Limited",
+        "Haitong International Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
@@ -469,8 +469,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 13,
       "deSpacCount": 2,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 327.0965,
-      "listingMarketCapHkdBnMedian": 8.2797,
+      "listingMarketCapHkdBnSum": 329.9443,
+      "listingMarketCapHkdBnMedian": 9.6846,
       "listingMarketCapN": 25,
       "aShareMarketCapRmbBnSum": 301.9608,
       "aShareMarketCapRmbBnMedian": 23.3444,
@@ -625,7 +625,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 7,
       "deSpacCount": 1,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2027.0098,
+      "listingMarketCapHkdBnSum": 2021.7415,
       "listingMarketCapHkdBnMedian": 12.61845,
       "listingMarketCapN": 24,
       "aShareMarketCapRmbBnSum": 1588.5802,
@@ -1007,8 +1007,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 11,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2311.2782,
-      "listingMarketCapHkdBnMedian": 46.6737,
+      "listingMarketCapHkdBnSum": 2320.1967,
+      "listingMarketCapHkdBnMedian": 47.76225,
       "listingMarketCapN": 14,
       "aShareMarketCapRmbBnSum": 2147.0726,
       "aShareMarketCapRmbBnMedian": 57.8898,
@@ -1150,7 +1150,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 12,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1724.0124,
+      "listingMarketCapHkdBnSum": 1732.9309,
       "listingMarketCapHkdBnMedian": 51.83410000000001,
       "listingMarketCapN": 18,
       "aShareMarketCapRmbBnSum": 1417.032,
@@ -1228,7 +1228,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 9,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 126.8137,
+      "listingMarketCapHkdBnSum": 128.5344,
       "listingMarketCapHkdBnMedian": 7.9347,
       "listingMarketCapN": 13,
       "aShareMarketCapRmbBnSum": 19.0416,
@@ -1301,7 +1301,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 14,
       "deSpacCount": 1,
       "hdrCount": 1,
-      "listingMarketCapHkdBnSum": 1353.8373,
+      "listingMarketCapHkdBnSum": 1356.6851,
       "listingMarketCapHkdBnMedian": 38.2822,
       "listingMarketCapN": 17,
       "aShareMarketCapRmbBnSum": 658.654,
@@ -2003,7 +2003,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 3,
       "deSpacCount": 1,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 211.4997,
+      "listingMarketCapHkdBnSum": 214.3475,
       "listingMarketCapHkdBnMedian": 45.3662,
       "listingMarketCapN": 3,
       "aShareMarketCapRmbBnSum": 245.3055,
@@ -3092,8 +3092,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 2,
       "deSpacCount": 1,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 31.4187,
-      "listingMarketCapHkdBnMedian": 15.70935,
+      "listingMarketCapHkdBnSum": 26.8409,
+      "listingMarketCapHkdBnMedian": 13.420449999999999,
       "listingMarketCapN": 2,
       "aShareMarketCapRmbBnSum": 0,
       "aShareMarketCapRmbBnMedian": null,
@@ -4005,8 +4005,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 1,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 0.558,
-      "listingMarketCapHkdBnMedian": 0.558,
+      "listingMarketCapHkdBnSum": 0.552,
+      "listingMarketCapHkdBnMedian": 0.552,
       "listingMarketCapN": 1,
       "aShareMarketCapRmbBnSum": 0,
       "aShareMarketCapRmbBnMedian": null,
@@ -4481,8 +4481,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 1,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 0.558,
-      "listingMarketCapHkdBnMedian": 0.558,
+      "listingMarketCapHkdBnSum": 0.552,
+      "listingMarketCapHkdBnMedian": 0.552,
       "listingMarketCapN": 1,
       "aShareMarketCapRmbBnSum": 0,
       "aShareMarketCapRmbBnMedian": null,
@@ -12924,7 +12924,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 57.8675,
-      "listingMarketCapHkdBn": 58.0578,
+      "listingMarketCapHkdBn": 66.9763,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": 212.0,
       "calendarDaysA1ToReceived": 27.0,
@@ -12990,7 +12990,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 57.8675,
-      "listingMarketCapHkdBn": 58.0578,
+      "listingMarketCapHkdBn": 66.9763,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": 212.0,
       "calendarDaysA1ToReceived": 27.0,
@@ -13056,7 +13056,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 57.8675,
-      "listingMarketCapHkdBn": 58.0578,
+      "listingMarketCapHkdBn": 66.9763,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": 212.0,
       "calendarDaysA1ToReceived": 27.0,
@@ -57800,7 +57800,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "租赁和商务服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 0.558,
+      "listingMarketCapHkdBn": 0.552,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": 762.0,
       "calendarDaysA1ToReceived": null,
@@ -57864,7 +57864,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "租赁和商务服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 0.558,
+      "listingMarketCapHkdBn": 0.552,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": 762.0,
       "calendarDaysA1ToReceived": null,
@@ -58195,7 +58195,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "交通运输、仓储和邮政业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 1.4142,
+      "listingMarketCapHkdBn": 3.1349,
       "calendarDaysA1ToNotice": 75.0,
       "calendarDaysA1ToListing": 336.0,
       "calendarDaysA1ToReceived": null,
@@ -58263,7 +58263,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "交通运输、仓储和邮政业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 1.4142,
+      "listingMarketCapHkdBn": 3.1349,
       "calendarDaysA1ToNotice": 75.0,
       "calendarDaysA1ToListing": 336.0,
       "calendarDaysA1ToReceived": null,
@@ -58331,7 +58331,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 3.902,
+      "listingMarketCapHkdBn": 3.2115,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": 290.0,
       "calendarDaysA1ToReceived": 733.0,
@@ -70205,7 +70205,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 7.8799,
+      "listingMarketCapHkdBn": 10.7277,
       "calendarDaysA1ToNotice": 32.0,
       "calendarDaysA1ToListing": 91.0,
       "calendarDaysA1ToReceived": null,
@@ -70273,7 +70273,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 7.8799,
+      "listingMarketCapHkdBn": 10.7277,
       "calendarDaysA1ToNotice": 32.0,
       "calendarDaysA1ToListing": 91.0,
       "calendarDaysA1ToReceived": null,
@@ -70341,7 +70341,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 7.8799,
+      "listingMarketCapHkdBn": 10.7277,
       "calendarDaysA1ToNotice": 32.0,
       "calendarDaysA1ToListing": 91.0,
       "calendarDaysA1ToReceived": null,
@@ -81193,7 +81193,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 21.924,
+      "listingMarketCapHkdBn": 17.3462,
       "calendarDaysA1ToNotice": 49.0,
       "calendarDaysA1ToListing": 106.0,
       "calendarDaysA1ToReceived": null,
@@ -81261,7 +81261,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 21.924,
+      "listingMarketCapHkdBn": 17.3462,
       "calendarDaysA1ToNotice": 49.0,
       "calendarDaysA1ToListing": 106.0,
       "calendarDaysA1ToReceived": null,
@@ -81329,7 +81329,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 21.924,
+      "listingMarketCapHkdBn": 17.3462,
       "calendarDaysA1ToNotice": 49.0,
       "calendarDaysA1ToListing": 106.0,
       "calendarDaysA1ToReceived": null,
