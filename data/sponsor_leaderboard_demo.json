@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-07-09T03:59:55Z",
-    "sourceGeneratedAt": "2026-07-09T11:59:40+08:00",
-    "sourceRecordCount": 830,
+    "generatedAt": "2026-07-10T03:20:25Z",
+    "sourceGeneratedAt": "2026-07-10T11:19:32+08:00",
+    "sourceRecordCount": 831,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-09T11:59:40+08:00",
+      "generatedAt": "2026-07-10T11:19:32+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1458,
-    "baseProjectFactCount": 1352,
+    "projectFactCount": 1459,
+    "baseProjectFactCount": 1353,
     "rollupProjectFactCount": 106,
     "firmCount": 74,
     "excludedPlaceholderSponsorRecordCount": 10,
@@ -76,12 +76,12 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 233,
-      "activeCount": 119,
-      "listedCount": 111,
+      "activeCount": 117,
+      "listedCount": 113,
       "noticeCount": 105,
       "ahCount": 49,
       "hShareCount": 123,
-      "redChipCount": 57,
+      "redChipCount": 56,
       "deSpacCount": 0,
       "hdrCount": 1,
       "listingMarketCapHkdBnSum": 5176.7905,
@@ -171,12 +171,12 @@
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_group",
-      "projectCount": 173,
-      "activeCount": 94,
+      "projectCount": 174,
+      "activeCount": 95,
       "listedCount": 73,
       "noticeCount": 76,
       "ahCount": 55,
-      "hShareCount": 84,
+      "hShareCount": 85,
       "redChipCount": 29,
       "deSpacCount": 1,
       "hdrCount": 1,
@@ -264,8 +264,8 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 119,
-      "activeCount": 67,
-      "listedCount": 51,
+      "activeCount": 66,
+      "listedCount": 52,
       "noticeCount": 54,
       "ahCount": 39,
       "hShareCount": 56,
@@ -848,8 +848,8 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 36,
-      "activeCount": 18,
-      "listedCount": 17,
+      "activeCount": 17,
+      "listedCount": 18,
       "noticeCount": 19,
       "ahCount": 2,
       "hShareCount": 22,
@@ -1856,12 +1856,12 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 13,
-      "activeCount": 7,
-      "listedCount": 6,
+      "activeCount": 6,
+      "listedCount": 7,
       "noticeCount": 7,
       "ahCount": 1,
       "hShareCount": 7,
-      "redChipCount": 5,
+      "redChipCount": 4,
       "deSpacCount": 0,
       "hdrCount": 0,
       "listingMarketCapHkdBnSum": 154.0563,
@@ -5222,6 +5222,57 @@
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "ziyond pharmaceutical co., ltd.",
+      "issuerName": "Ziyond Pharmaceutical Co., Ltd.",
+      "csrcName": "江蘇知原藥業股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC",
+        "CLSA"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited / CLSA Equity Capital Markets Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities Corporate Finance (HK) Limited",
+        "CLSA Equity Capital Markets Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "waiting_received",
+      "statusLabelZh": "等待接收",
+      "a1Date": "2026-07-09",
+      "currentA1Date": "2026-07-09",
+      "receivedDate": null,
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": []
+    },
     {
       "issuerId": "ming yu pharmaceutical limited - b",
       "issuerName": "Ming Yu Pharmaceutical Limited - B",
@@ -11699,7 +11750,7 @@
       "issuerId": "chaozhou three-circle (group) co., ltd.",
       "issuerName": "Chaozhou Three-Circle (Group) Co., Ltd.",
       "csrcName": "潮州三環（集團）股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Chaozhou Three-Circle (Group) Co., Ltd. - H Shares",
       "sponsorId": "galaxy",
       "sourceSponsorTag": "GALAXY",
       "sourceSponsorTags": [
@@ -11722,7 +11773,7 @@
       "currentA1Date": "2026-06-08",
       "receivedDate": "2025-12-29",
       "noticeDate": "2026-06-01",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -11739,10 +11790,10 @@
       "aShareMarketCapAtA1RmbBn": 83.7126,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 178.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 216.0,
       "calendarDaysA1ToReceived": 24.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -11753,6 +11804,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7638864/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -12228,7 +12283,7 @@
       "issuerId": "basic semiconductor co., ltd.",
       "issuerName": "BASiC Semiconductor Co., Ltd.",
       "csrcName": "深圳基本半導體股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "BASiC Semiconductor Co., Ltd. - H Shares",
       "sponsorId": "sinolink",
       "sourceSponsorTag": "SINOLINK",
       "sourceSponsorTags": [
@@ -12251,7 +12306,7 @@
       "currentA1Date": "2026-06-05",
       "receivedDate": null,
       "noticeDate": "2025-11-26",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -12266,16 +12321,20 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 183.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 407.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7598370/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -12287,7 +12346,7 @@
       "issuerId": "basic semiconductor co., ltd.",
       "issuerName": "BASiC Semiconductor Co., Ltd.",
       "csrcName": "深圳基本半導體股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "BASiC Semiconductor Co., Ltd. - H Shares",
       "sponsorId": "boci",
       "sourceSponsorTag": "BOCI",
       "sourceSponsorTags": [
@@ -12310,7 +12369,7 @@
       "currentA1Date": "2026-06-05",
       "receivedDate": null,
       "noticeDate": "2025-11-26",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -12325,16 +12384,20 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 183.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 407.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7598370/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -12688,7 +12751,7 @@
       "issuerId": "guangdong dtech technology co., ltd.",
       "issuerName": "Guangdong Dtech Technology Co., Ltd.",
       "csrcName": "廣東鼎泰高科技術股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Guangdong Dtech Technology Co., Ltd. - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -12711,7 +12774,7 @@
       "currentA1Date": "2026-06-04",
       "receivedDate": "2026-02-04",
       "noticeDate": "2026-05-11",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -12728,10 +12791,10 @@
       "aShareMarketCapAtA1RmbBn": 41.4141,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 161.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 220.0,
       "calendarDaysA1ToReceived": 65.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -12744,6 +12807,10 @@
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7633025/content.shtml"
         },
         {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
@@ -12753,7 +12820,7 @@
       "issuerId": "guangdong dtech technology co., ltd.",
       "issuerName": "Guangdong Dtech Technology Co., Ltd.",
       "csrcName": "廣東鼎泰高科技術股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Guangdong Dtech Technology Co., Ltd. - H Shares",
       "sponsorId": "hsbc",
       "sourceSponsorTag": "HSBC",
       "sourceSponsorTags": [
@@ -12776,7 +12843,7 @@
       "currentA1Date": "2026-06-04",
       "receivedDate": "2026-02-04",
       "noticeDate": "2026-05-11",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -12793,10 +12860,10 @@
       "aShareMarketCapAtA1RmbBn": 41.4141,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 161.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 220.0,
       "calendarDaysA1ToReceived": 65.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -12807,6 +12874,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7633025/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -23789,7 +23860,7 @@
       "issuerId": "befar group co., ltd.",
       "issuerName": "Befar Group Co., Ltd.",
       "csrcName": "濱化集團股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "BEFAR GROUP",
       "sponsorId": "huatai",
       "sourceSponsorTag": "HUATAI",
       "sourceSponsorTags": [
@@ -23805,14 +23876,14 @@
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-10-22",
       "currentA1Date": "2026-04-24",
       "receivedDate": "2025-10-30",
       "noticeDate": "2026-04-17",
-      "listingDate": null,
+      "listingDate": "2026-07-10",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -23825,10 +23896,10 @@
       "aShareMarketCapAtA1RmbBn": 8.7416,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 177.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 261.0,
       "calendarDaysA1ToReceived": 8.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -23839,6 +23910,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7628414/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
         }
       ]
     },
@@ -23846,7 +23921,7 @@
       "issuerId": "befar group co., ltd.",
       "issuerName": "Befar Group Co., Ltd.",
       "csrcName": "濱化集團股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "BEFAR GROUP",
       "sponsorId": "ccbi",
       "sourceSponsorTag": "CCBI",
       "sourceSponsorTags": [
@@ -23862,14 +23937,14 @@
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-10-22",
       "currentA1Date": "2026-04-24",
       "receivedDate": "2025-10-30",
       "noticeDate": "2026-04-17",
-      "listingDate": null,
+      "listingDate": "2026-07-10",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -23882,10 +23957,10 @@
       "aShareMarketCapAtA1RmbBn": 8.7416,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 177.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 261.0,
       "calendarDaysA1ToReceived": 8.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -23896,6 +23971,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7628414/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
         }
       ]
     },
@@ -25387,7 +25466,7 @@
       "issuerId": "dke holding company limited",
       "issuerName": "DKE Holding Company Limited",
       "csrcName": "浙江東方科脈電子股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "DKE Holding Company Limited - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -25410,7 +25489,7 @@
       "currentA1Date": "2026-04-16",
       "receivedDate": "2025-09-30",
       "noticeDate": "2026-03-23",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -25426,10 +25505,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 179.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 287.0,
       "calendarDaysA1ToReceived": 5.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -25440,6 +25519,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7622916/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -28239,7 +28322,7 @@
       "issuerId": "rigol technologies co., ltd.",
       "issuerName": "RIGOL Technologies Co., Ltd.",
       "csrcName": "普源精電科技股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "RIGOL Technologies Co., Ltd. - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -28262,7 +28345,7 @@
       "currentA1Date": "2026-04-02",
       "receivedDate": "2025-10-17",
       "noticeDate": "2026-02-25",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -28276,10 +28359,10 @@
       "aShareMarketCapAtA1RmbBn": 7.2478,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 149.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 283.0,
       "calendarDaysA1ToReceived": 18.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -28294,6 +28377,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7618590/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -29886,7 +29973,7 @@
       "issuerId": "nexchip semiconductor corporation",
       "issuerName": "Nexchip Semiconductor Corporation",
       "csrcName": "合肥晶合集成電路股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "NEXCHIP",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -29902,14 +29989,14 @@
       "creditAllFull": 1.0,
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-09-29",
       "currentA1Date": "2026-03-31",
       "receivedDate": "2025-10-17",
       "noticeDate": "2026-05-19",
-      "listingDate": null,
+      "listingDate": "2026-07-10",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -29925,10 +30012,10 @@
       "aShareMarketCapAtA1RmbBn": 67.5466,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 232.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 284.0,
       "calendarDaysA1ToReceived": 18.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -29943,6 +30030,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7634515/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
         },
         {
           "label": "补充材料公示",
@@ -30198,7 +30289,7 @@
       "issuerId": "rokae (shandong) robotics group inc.",
       "issuerName": "Rokae (Shandong) Robotics Group Inc.",
       "csrcName": "珞石( 山東) 機器人集團股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Rokae (Shandong) Robotics Group Inc. - H Shares",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -30221,7 +30312,7 @@
       "currentA1Date": "2026-03-31",
       "receivedDate": "2025-10-28",
       "noticeDate": "2026-03-26",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -30235,10 +30326,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 178.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 283.0,
       "calendarDaysA1ToReceived": 29.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -30251,6 +30342,10 @@
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7622930/content.shtml"
         },
         {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
@@ -30260,7 +30355,7 @@
       "issuerId": "rokae (shandong) robotics group inc.",
       "issuerName": "Rokae (Shandong) Robotics Group Inc.",
       "csrcName": "珞石( 山東) 機器人集團股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Rokae (Shandong) Robotics Group Inc. - H Shares",
       "sponsorId": "gtja",
       "sourceSponsorTag": "GTJA",
       "sourceSponsorTags": [
@@ -30283,7 +30378,7 @@
       "currentA1Date": "2026-03-31",
       "receivedDate": "2025-10-28",
       "noticeDate": "2026-03-26",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -30297,10 +30392,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 178.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 283.0,
       "calendarDaysA1ToReceived": 29.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -30311,6 +30406,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7622930/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -33179,7 +33278,7 @@
       "issuerId": "reconova technologies co., ltd.",
       "issuerName": "Reconova Technologies Co., Ltd.",
       "csrcName": "廈門瑞為信息技術股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Reconova Technologies Co., Ltd. - H Shares",
       "sponsorId": "huatai",
       "sourceSponsorTag": "HUATAI",
       "sourceSponsorTags": [
@@ -33202,7 +33301,7 @@
       "currentA1Date": "2026-03-26",
       "receivedDate": null,
       "noticeDate": "2026-05-11",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -33215,16 +33314,20 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 315.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 373.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7633027/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -33236,7 +33339,7 @@
       "issuerId": "reconova technologies co., ltd.",
       "issuerName": "Reconova Technologies Co., Ltd.",
       "csrcName": "廈門瑞為信息技術股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Reconova Technologies Co., Ltd. - H Shares",
       "sponsorId": "ccbi",
       "sourceSponsorTag": "CCBI",
       "sourceSponsorTags": [
@@ -33259,7 +33362,7 @@
       "currentA1Date": "2026-03-26",
       "receivedDate": null,
       "noticeDate": "2026-05-11",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -33272,16 +33375,20 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 315.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 373.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7633027/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -33293,7 +33400,7 @@
       "issuerId": "reconova technologies co., ltd.",
       "issuerName": "Reconova Technologies Co., Ltd.",
       "csrcName": "廈門瑞為信息技術股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Reconova Technologies Co., Ltd. - H Shares",
       "sponsorId": "abci",
       "sourceSponsorTag": "ABCI",
       "sourceSponsorTags": [
@@ -33316,7 +33423,7 @@
       "currentA1Date": "2026-03-26",
       "receivedDate": null,
       "noticeDate": "2026-05-11",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -33329,16 +33436,20 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 315.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 373.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7633027/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -35559,7 +35670,7 @@
       "issuerId": "jiangxi qiyunshan food co., ltd.",
       "issuerName": "Jiangxi Qiyunshan Food Co., Ltd.",
       "csrcName": "齊雲山食品股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Jiangxi Qiyunshan Food Co., Ltd. - H Shares",
       "sponsorId": "zhongtai",
       "sourceSponsorTag": "ZHONGTAI",
       "sourceSponsorTags": [
@@ -35582,7 +35693,7 @@
       "currentA1Date": "2026-03-13",
       "receivedDate": "2025-07-25",
       "noticeDate": "2026-05-12",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -35596,10 +35707,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 319.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 377.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -35610,6 +35721,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7633031/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -36731,7 +36846,7 @@
       "issuerId": "luxshare precision industry co., ltd.",
       "issuerName": "Luxshare Precision Industry Co., Ltd.",
       "csrcName": "立訊精密工業股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Luxshare Precision Industry Co., Ltd. - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -36754,7 +36869,7 @@
       "currentA1Date": "2026-02-27",
       "receivedDate": "2025-08-28",
       "noticeDate": "2026-06-05",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -36770,10 +36885,10 @@
       "aShareMarketCapAtA1RmbBn": 287.1075,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 291.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 325.0,
       "calendarDaysA1ToReceived": 10.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -36790,6 +36905,10 @@
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640234/content.shtml"
         },
         {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
@@ -36799,7 +36918,7 @@
       "issuerId": "luxshare precision industry co., ltd.",
       "issuerName": "Luxshare Precision Industry Co., Ltd.",
       "csrcName": "立訊精密工業股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Luxshare Precision Industry Co., Ltd. - H Shares",
       "sponsorId": "gs",
       "sourceSponsorTag": "GS",
       "sourceSponsorTags": [
@@ -36822,7 +36941,7 @@
       "currentA1Date": "2026-02-27",
       "receivedDate": "2025-08-28",
       "noticeDate": "2026-06-05",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -36838,10 +36957,10 @@
       "aShareMarketCapAtA1RmbBn": 287.1075,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 291.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 325.0,
       "calendarDaysA1ToReceived": 10.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -36858,6 +36977,10 @@
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640234/content.shtml"
         },
         {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
@@ -36867,7 +36990,7 @@
       "issuerId": "luxshare precision industry co., ltd.",
       "issuerName": "Luxshare Precision Industry Co., Ltd.",
       "csrcName": "立訊精密工業股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Luxshare Precision Industry Co., Ltd. - H Shares",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -36890,7 +37013,7 @@
       "currentA1Date": "2026-02-27",
       "receivedDate": "2025-08-28",
       "noticeDate": "2026-06-05",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "A+H",
       "isAH": true,
       "specialListingRoute": null,
@@ -36906,10 +37029,10 @@
       "aShareMarketCapAtA1RmbBn": 287.1075,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 291.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 325.0,
       "calendarDaysA1ToReceived": 10.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -36924,6 +37047,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640234/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -50808,7 +50935,7 @@
       "issuerId": "eacon group co., ltd",
       "issuerName": "EACON Group Co., Ltd",
       "csrcName": "易控智駕科技股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "EACON Group Co., Ltd - H Shares",
       "sponsorId": "haitong",
       "sourceSponsorTag": "HAITONG",
       "sourceSponsorTags": [
@@ -50831,7 +50958,7 @@
       "currentA1Date": "2025-12-29",
       "receivedDate": "2025-07-25",
       "noticeDate": "2026-05-25",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -50845,10 +50972,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 334.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 378.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -50859,6 +50986,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7635867/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -88376,10 +88507,10 @@
       ]
     },
     {
-      "issuerId": "csrc_notice:7640253",
+      "issuerId": "listed:06880",
       "issuerName": "MOMENTA GLOBAL LIMITED - W",
-      "csrcName": "梦腾智驾环球有限公司",
-      "hkexListingCompanyName": "",
+      "csrcName": "MOMENTA GLOBAL LIMITED - W",
+      "hkexListingCompanyName": "MOMENTA GLOBAL LIMITED - W",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -88395,113 +88526,105 @@
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
-      "a1Date": null,
-      "currentA1Date": null,
+      "a1Date": "2026-06-23",
+      "currentA1Date": "2026-06-23",
       "receivedDate": null,
       "noticeDate": "2026-06-10",
-      "listingDate": null,
-      "issuerType": "红筹",
+      "listingDate": "2026-07-08",
+      "issuerType": "其他",
       "isAH": false,
       "specialListingRoute": null,
-      "industryTags": [
-        "软件/AI/数据/互联网",
-        "新能源/汽车产业链"
-      ],
-      "csrcIndustryTags": [
-        "信息传输、软件和信息技术服务业"
-      ],
+      "industryTags": [],
+      "csrcIndustryTags": [],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 15.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "密交",
-        "PHIP已公开"
-      ],
+      "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "HKEX新上市报告（中文）",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Chi.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640253/content.shtml"
-        },
-        {
-          "label": "HKEX PHIP",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108670/documents/sehk26062300176.pdf"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
     {
-      "issuerId": "csrc_notice:7640253",
+      "issuerId": "listed:06880",
       "issuerName": "MOMENTA GLOBAL LIMITED - W",
-      "csrcName": "梦腾智驾环球有限公司",
-      "hkexListingCompanyName": "",
+      "csrcName": "MOMENTA GLOBAL LIMITED - W",
+      "hkexListingCompanyName": "MOMENTA GLOBAL LIMITED - W",
       "sponsorId": "db",
       "sourceSponsorTag": "DB",
       "sourceSponsorTags": [
         "DB"
       ],
       "leaderboardSponsorTag": "DB",
-      "sponsorLegalName": "Deutsche Bank AG, Hong Kong Branch",
+      "sponsorLegalName": "Deutsche Securities Asia Limited",
       "sponsorLegalNames": [
-        "Deutsche Bank AG, Hong Kong Branch"
+        "Deutsche Securities Asia Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
-      "a1Date": null,
-      "currentA1Date": null,
+      "a1Date": "2026-06-23",
+      "currentA1Date": "2026-06-23",
       "receivedDate": null,
       "noticeDate": "2026-06-10",
-      "listingDate": null,
-      "issuerType": "红筹",
+      "listingDate": "2026-07-08",
+      "issuerType": "其他",
       "isAH": false,
       "specialListingRoute": null,
-      "industryTags": [
-        "软件/AI/数据/互联网",
-        "新能源/汽车产业链"
-      ],
-      "csrcIndustryTags": [
-        "信息传输、软件和信息技术服务业"
-      ],
+      "industryTags": [],
+      "csrcIndustryTags": [],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 15.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "密交",
-        "PHIP已公开"
-      ],
+      "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "HKEX新上市报告（中文）",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Chi.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640253/content.shtml"
-        },
-        {
-          "label": "HKEX PHIP",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108670/documents/sehk26062300176.pdf"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -90944,7 +91067,7 @@
       "issuerId": "rokae (shandong) robotics group inc.",
       "issuerName": "Rokae (Shandong) Robotics Group Inc.",
       "csrcName": "珞石( 山東) 機器人集團股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "Rokae (Shandong) Robotics Group Inc. - H Shares",
       "sponsorId": "group-gtja-haitong",
       "sourceSponsorTag": "GTJA",
       "sourceSponsorTags": [
@@ -90967,7 +91090,7 @@
       "currentA1Date": "2026-03-31",
       "receivedDate": "2025-10-28",
       "noticeDate": "2026-03-26",
-      "listingDate": null,
+      "listingDate": "2026-07-09",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -90981,10 +91104,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 178.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 283.0,
       "calendarDaysA1ToReceived": 29.0,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -90995,6 +91118,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7622930/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -92730,7 +92857,7 @@
       "issuerId": "eacon group co., ltd",
       "issuerName": "EACON Group Co., Ltd",
       "csrcName": "易控智駕科技股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "EACON Group Co., Ltd - H Shares",
       "sponsorId": "group-gtja-haitong",
       "sourceSponsorTag": "HAITONG",
       "sourceSponsorTags": [
@@ -92753,7 +92880,7 @@
       "currentA1Date": "2025-12-29",
       "receivedDate": "2025-07-25",
       "noticeDate": "2026-05-25",
-      "listingDate": null,
+      "listingDate": "2026-07-08",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -92767,10 +92894,10 @@
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 334.0,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 378.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
+      "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
@@ -92781,6 +92908,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7635867/content.shtml"
+        },
+        {
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
