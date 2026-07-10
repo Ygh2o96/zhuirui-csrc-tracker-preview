@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-10T03:20:25Z",
-    "sourceGeneratedAt": "2026-07-10T11:19:32+08:00",
+    "generatedAt": "2026-07-10T04:26:46Z",
+    "sourceGeneratedAt": "2026-07-10T12:26:27+08:00",
     "sourceRecordCount": 831,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-10T11:19:32+08:00",
+      "generatedAt": "2026-07-10T12:26:27+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1459,
@@ -30,7 +30,7 @@
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 215,
-      "asOfDate": "2026-07-09",
+      "asOfDate": "2026-07-10",
       "source": "webb_0xmd",
       "sourceUrl": "https://webbsite.0xmd.com/dbpub/SFClicount.asp?a=6",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_type6_capacity.json",
@@ -48,8 +48,8 @@
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 50,
-      "asOfDate": "2026-07-09",
-      "sourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "asOfDate": "2026-07-10",
+      "sourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "source": "sfc_sponsor_principal_register_mirror",
       "sourceUrl": "https://drdrhuhabqfsu.ok.kimi.link/",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_sponsor_principals.json",
@@ -99,8 +99,8 @@
         "新能源/汽车产业链"
       ],
       "type6ROCount": 38,
-      "type6RepCount": 948,
-      "type6TotalCount": 986,
+      "type6RepCount": 947,
+      "type6TotalCount": 985,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CHINA INTERNATIONAL CAPITAL CORPORATION HONG KONG SECURITIES LIMITED"
@@ -108,7 +108,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=46811&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -119,8 +119,8 @@
       ],
       "sponsorPrincipalROCount": 83,
       "sponsorPrincipalRepCount": 1597,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACN231",
@@ -204,7 +204,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18459&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -215,8 +215,8 @@
       ],
       "sponsorPrincipalROCount": 47,
       "sponsorPrincipalRepCount": 942,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGF194",
@@ -296,7 +296,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49319&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -307,8 +307,8 @@
       ],
       "sponsorPrincipalROCount": 65,
       "sponsorPrincipalRepCount": 801,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEK034",
@@ -388,14 +388,14 @@
       "type6TotalCount": 335,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "GUOTAI JUNAN CAPITAL LIMITED",
-        "HAITONG INTERNATIONAL CAPITAL LIMITED"
+        "HAITONG INTERNATIONAL CAPITAL LIMITED",
+        "GUOTAI JUNAN CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "type6RollupMemberSponsorIds": [
         "gtja",
@@ -430,16 +430,16 @@
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Guotai Junan Capital Limited",
-        "Haitong International Capital Limited"
+        "Haitong International Capital Limited",
+        "Guotai Junan Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
       ],
       "sponsorPrincipalROCount": 33,
       "sponsorPrincipalRepCount": 288,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalRollupMemberSponsorIds": [
         "gtja",
@@ -484,8 +484,8 @@
         "新能源/汽车产业链"
       ],
       "type6ROCount": 19,
-      "type6RepCount": 88,
-      "type6TotalCount": 107,
+      "type6RepCount": 89,
+      "type6TotalCount": 108,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CMB International Capital Limited"
@@ -493,7 +493,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=60614&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -504,8 +504,8 @@
       ],
       "sponsorPrincipalROCount": 20,
       "sponsorPrincipalRepCount": 90,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJH516",
@@ -574,7 +574,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -585,8 +585,8 @@
       ],
       "sponsorPrincipalROCount": 13,
       "sponsorPrincipalRepCount": 140,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGK773",
@@ -649,7 +649,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1942934&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -660,8 +660,8 @@
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 319,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGP056",
@@ -725,7 +725,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -736,8 +736,8 @@
       ],
       "sponsorPrincipalROCount": 20,
       "sponsorPrincipalRepCount": 148,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGG766",
@@ -796,8 +796,8 @@
         "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 21,
-      "type6RepCount": 270,
-      "type6TotalCount": 291,
+      "type6RepCount": 267,
+      "type6TotalCount": 288,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Morgan Stanley Asia Limited"
@@ -805,7 +805,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1464&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -816,8 +816,8 @@
       ],
       "sponsorPrincipalROCount": 50,
       "sponsorPrincipalRepCount": 861,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACO819",
@@ -880,7 +880,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=30230&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -891,8 +891,8 @@
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 74,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEE758",
@@ -954,7 +954,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18359&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -965,8 +965,8 @@
       ],
       "sponsorPrincipalROCount": 35,
       "sponsorPrincipalRepCount": 382,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGC693",
@@ -1031,7 +1031,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1042,8 +1042,8 @@
       ],
       "sponsorPrincipalROCount": 14,
       "sponsorPrincipalRepCount": 163,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACQ669",
@@ -1103,7 +1103,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49367&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1114,8 +1114,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 165,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJH211",
@@ -1174,7 +1174,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5596&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1185,8 +1185,8 @@
       ],
       "sponsorPrincipalROCount": 39,
       "sponsorPrincipalRepCount": 856,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFR865",
@@ -1252,7 +1252,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68371&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1263,8 +1263,8 @@
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 53,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFP043",
@@ -1315,9 +1315,9 @@
         "住宿和餐饮业",
         "采矿业"
       ],
-      "type6ROCount": 10,
-      "type6RepCount": 176,
-      "type6TotalCount": 186,
+      "type6ROCount": 11,
+      "type6RepCount": 173,
+      "type6TotalCount": 184,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "UBS SECURITIES HONG KONG LIMITED"
@@ -1325,7 +1325,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1467&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1336,8 +1336,8 @@
       ],
       "sponsorPrincipalROCount": 24,
       "sponsorPrincipalRepCount": 331,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACI535",
@@ -1391,8 +1391,8 @@
         "文化、体育和娱乐业"
       ],
       "type6ROCount": 14,
-      "type6RepCount": 167,
-      "type6TotalCount": 181,
+      "type6RepCount": 168,
+      "type6TotalCount": 182,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Citigroup Global Markets Asia Limited"
@@ -1400,7 +1400,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18311&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1411,8 +1411,8 @@
       ],
       "sponsorPrincipalROCount": 37,
       "sponsorPrincipalRepCount": 441,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFF166",
@@ -1462,9 +1462,9 @@
         "软件/AI/数据/互联网",
         "交通运输、仓储和邮政业"
       ],
-      "type6ROCount": 24,
-      "type6RepCount": 178,
-      "type6TotalCount": 202,
+      "type6ROCount": 23,
+      "type6RepCount": 174,
+      "type6TotalCount": 197,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Merrill Lynch (Asia Pacific) Limited"
@@ -1472,7 +1472,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12227&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1483,8 +1483,8 @@
       ],
       "sponsorPrincipalROCount": 43,
       "sponsorPrincipalRepCount": 386,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABR710",
@@ -1542,7 +1542,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7117&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1553,8 +1553,8 @@
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 51,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOA854",
@@ -1612,7 +1612,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9131&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1623,8 +1623,8 @@
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 41,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AWC885",
@@ -1680,7 +1680,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68488&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1691,8 +1691,8 @@
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 48,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AKS933",
@@ -1748,7 +1748,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2041492&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1759,8 +1759,8 @@
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 21,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFQ413",
@@ -1817,7 +1817,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=47434&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1828,8 +1828,8 @@
       ],
       "sponsorPrincipalROCount": 15,
       "sponsorPrincipalRepCount": 44,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGO243",
@@ -1888,7 +1888,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1899,8 +1899,8 @@
       ],
       "sponsorPrincipalROCount": 12,
       "sponsorPrincipalRepCount": 69,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFA799",
@@ -1958,7 +1958,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68484&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1969,8 +1969,8 @@
       ],
       "sponsorPrincipalROCount": 23,
       "sponsorPrincipalRepCount": 255,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOZ130",
@@ -2027,7 +2027,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2038,8 +2038,8 @@
       ],
       "sponsorPrincipalROCount": 11,
       "sponsorPrincipalRepCount": 101,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABY439",
@@ -2100,7 +2100,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=72015&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2111,8 +2111,8 @@
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 265,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AXM402",
@@ -2168,7 +2168,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=34259&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2179,8 +2179,8 @@
       ],
       "sponsorPrincipalROCount": 18,
       "sponsorPrincipalRepCount": 104,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "APK242",
@@ -2236,7 +2236,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2439801&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2247,8 +2247,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 21,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGN288",
@@ -2305,7 +2305,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=41210&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2316,8 +2316,8 @@
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 28,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "BCY611",
@@ -2372,7 +2372,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5451&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2383,8 +2383,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 30,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEY337",
@@ -2440,7 +2440,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2007103&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2451,8 +2451,8 @@
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 35,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ASP357",
@@ -2509,7 +2509,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6162&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2520,8 +2520,8 @@
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 201,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGL135",
@@ -2576,7 +2576,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1896613&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2587,8 +2587,8 @@
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 37,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHP762",
@@ -2644,7 +2644,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2655,8 +2655,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 18,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ANQ192",
@@ -2711,7 +2711,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1939868&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2722,8 +2722,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 45,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AQO269",
@@ -2778,7 +2778,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2458625&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2789,8 +2789,8 @@
       ],
       "sponsorPrincipalROCount": 11,
       "sponsorPrincipalRepCount": 28,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGK771",
@@ -2845,7 +2845,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2126636&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2856,8 +2856,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 19,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADM812",
@@ -2912,7 +2912,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1552564&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2923,8 +2923,8 @@
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 17,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "APB407",
@@ -2979,7 +2979,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2990,8 +2990,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAN686",
@@ -3049,7 +3049,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23670404&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3060,8 +3060,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AUM132",
@@ -3116,7 +3116,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=26392041&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3127,8 +3127,8 @@
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AIU419",
@@ -3184,7 +3184,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3195,8 +3195,8 @@
       ],
       "sponsorPrincipalROCount": 1,
       "sponsorPrincipalRepCount": 9,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOR644"
@@ -3241,8 +3241,8 @@
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 6,
-      "type6RepCount": 77,
-      "type6TotalCount": 83,
+      "type6RepCount": 74,
+      "type6TotalCount": 80,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "SDIC Securities Corporate Finance (Hong Kong) Limited"
@@ -3250,7 +3250,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3261,8 +3261,8 @@
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 81,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHY113",
@@ -3318,7 +3318,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23445433&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3329,8 +3329,8 @@
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 3,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFV839",
@@ -3385,7 +3385,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22364027&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3396,8 +3396,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 6,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEW978",
@@ -3453,7 +3453,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2084540&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3464,8 +3464,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACH258",
@@ -3521,7 +3521,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6721901&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3532,8 +3532,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGO945",
@@ -3579,8 +3579,8 @@
         "综合"
       ],
       "type6ROCount": 3,
-      "type6RepCount": 72,
-      "type6TotalCount": 75,
+      "type6RepCount": 73,
+      "type6TotalCount": 76,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "GUOSEN SECURITIES (HK) CAPITAL COMPANY LIMITED"
@@ -3588,7 +3588,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=64301&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3599,8 +3599,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 76,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAW465",
@@ -3655,7 +3655,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1933817&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3666,8 +3666,8 @@
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADN295",
@@ -3723,7 +3723,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1912087&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3734,8 +3734,8 @@
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 24,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADA866",
@@ -3790,7 +3790,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2620772&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3801,8 +3801,8 @@
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFG775",
@@ -3857,7 +3857,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9754&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3868,8 +3868,8 @@
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 10,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "BER960"
@@ -3923,7 +3923,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12111423&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3934,8 +3934,8 @@
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 15,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGM902",
@@ -4029,7 +4029,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2455747&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4040,8 +4040,8 @@
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADP076",
@@ -4100,7 +4100,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=37237&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4111,8 +4111,8 @@
       ],
       "sponsorPrincipalROCount": 19,
       "sponsorPrincipalRepCount": 127,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ARP180",
@@ -4167,7 +4167,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1440&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4178,8 +4178,8 @@
       ],
       "sponsorPrincipalROCount": 32,
       "sponsorPrincipalRepCount": 518,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADH994",
@@ -4234,7 +4234,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=926&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4245,8 +4245,8 @@
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAA815",
@@ -4302,7 +4302,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2003564&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4313,8 +4313,8 @@
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 17,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAJ065",
@@ -4370,7 +4370,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2557091&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4381,8 +4381,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 23,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFY720",
@@ -4435,7 +4435,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15005&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4446,8 +4446,8 @@
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 8,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABF972",
@@ -4503,7 +4503,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9620&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4514,8 +4514,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 5,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHJ599",
@@ -4568,7 +4568,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2420405&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4579,8 +4579,8 @@
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 3,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABI141",
@@ -4670,7 +4670,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2278798&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4681,8 +4681,8 @@
       ],
       "sponsorPrincipalROCount": 10,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADX572",
@@ -4740,7 +4740,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6407&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4751,8 +4751,8 @@
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAG625",
@@ -4806,7 +4806,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22123361&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4817,8 +4817,8 @@
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABW953",
@@ -4872,7 +4872,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2690790&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4883,8 +4883,8 @@
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEC838",
@@ -4938,7 +4938,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2555806&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4949,8 +4949,8 @@
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADK252",
@@ -5004,7 +5004,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2626430&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5015,8 +5015,8 @@
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOG831",
@@ -5069,7 +5069,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1747929&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5080,8 +5080,8 @@
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 1,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ARH793",
@@ -5134,7 +5134,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2539213&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5145,8 +5145,8 @@
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AML472",
@@ -5199,7 +5199,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68441&a=6"
       ],
-      "type6AsOfDate": "2026-07-09",
+      "type6AsOfDate": "2026-07-10",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5210,8 +5210,8 @@
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-09",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-09T11:25:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJK773",
