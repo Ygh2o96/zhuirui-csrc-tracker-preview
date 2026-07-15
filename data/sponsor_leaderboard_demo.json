@@ -1,18 +1,18 @@
 {
   "meta": {
-    "generatedAt": "2026-07-14T21:11:59Z",
-    "sourceGeneratedAt": "2026-07-15T05:11:28+08:00",
+    "generatedAt": "2026-07-15T03:08:01Z",
+    "sourceGeneratedAt": "2026-07-15T11:07:08+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-15T05:11:28+08:00",
+      "generatedAt": "2026-07-15T11:07:08+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1427,
-    "baseProjectFactCount": 1321,
+    "projectFactCount": 1421,
+    "baseProjectFactCount": 1315,
     "rollupProjectFactCount": 106,
-    "firmCount": 73,
+    "firmCount": 72,
     "excludedPlaceholderSponsorRecordCount": 6,
     "coverageZh": "HKEX Main Board / CSRC 备案口径；A1样本自 2019-04-08；普通IPO统计自 2023-03-31",
     "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计牵头/首名保荐人，或按保荐人数量平分；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。SP 为真正可签 sponsor 工作的 sponsor principal，负荷/人效优先用 SP 口径；六号牌总人数、RO、Rep 仅作容量背景。",
@@ -25,8 +25,8 @@
       "available": true,
       "quality": "fresh",
       "rowCount": 286,
-      "matchedFirmCount": 71,
-      "matchedRealFirmCount": 70,
+      "matchedFirmCount": 70,
+      "matchedRealFirmCount": 69,
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 216,
@@ -43,8 +43,8 @@
       "available": true,
       "quality": "fresh",
       "rowCount": 121,
-      "matchedFirmCount": 71,
-      "matchedRealFirmCount": 70,
+      "matchedFirmCount": 70,
+      "matchedRealFirmCount": 69,
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 51,
@@ -75,21 +75,21 @@
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 232,
-      "activeCount": 112,
+      "projectCount": 230,
+      "activeCount": 110,
       "listedCount": 114,
       "noticeCount": 104,
-      "ahCount": 49,
-      "hShareCount": 121,
+      "ahCount": 50,
+      "hShareCount": 118,
       "redChipCount": 58,
       "deSpacCount": 0,
       "hdrCount": 1,
       "listingMarketCapHkdBnSum": 5890.5221,
       "listingMarketCapHkdBnMedian": 15.054549999999999,
       "listingMarketCapN": 114,
-      "aShareMarketCapRmbBnSum": 4614.9286,
-      "aShareMarketCapRmbBnMedian": 39.2248,
-      "aShareMarketCapN": 49,
+      "aShareMarketCapRmbBnSum": 4632.0676,
+      "aShareMarketCapRmbBnMedian": 37.21615,
+      "aShareMarketCapN": 50,
       "medianA1ToNoticeDays": 187.0,
       "timingN": 93,
       "topIndustries": [
@@ -172,7 +172,7 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_group",
       "projectCount": 169,
-      "activeCount": 91,
+      "activeCount": 92,
       "listedCount": 72,
       "noticeCount": 75,
       "ahCount": 55,
@@ -387,12 +387,12 @@
       "type6TotalCount": 337,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "GUOTAI JUNAN CAPITAL LIMITED",
-        "HAITONG INTERNATIONAL CAPITAL LIMITED"
+        "HAITONG INTERNATIONAL CAPITAL LIMITED",
+        "GUOTAI JUNAN CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
       "type6AsOfDate": "2026-07-15",
       "type6Quality": "fresh",
@@ -429,8 +429,8 @@
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Guotai Junan Capital Limited",
-        "Haitong International Capital Limited"
+        "Haitong International Capital Limited",
+        "Guotai Junan Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
@@ -1062,79 +1062,6 @@
       "sponsorPrincipalCount": 12
     },
     {
-      "sponsorId": "jpm",
-      "sponsorTag": "JPM",
-      "displayNameZh": "摩根大通",
-      "displayNameEn": "JPM",
-      "canonicalName": "J.P. Morgan Securities (Asia Pacific) Limited",
-      "legalNames": [
-        "J.P. Morgan Securities (Asia Pacific) Limited",
-        "J.P. Morgan Securities (Far East) Limited"
-      ],
-      "aliases": [],
-      "sponsorNature": "外资",
-      "natureConfidence": "demo_seed",
-      "mappingConfidence": "dictionary",
-      "firmScope": "legal_entity",
-      "projectCount": 31,
-      "activeCount": 16,
-      "listedCount": 13,
-      "noticeCount": 11,
-      "ahCount": 12,
-      "hShareCount": 5,
-      "redChipCount": 11,
-      "deSpacCount": 0,
-      "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2241.3514,
-      "listingMarketCapHkdBnMedian": 35.2896,
-      "listingMarketCapN": 13,
-      "aShareMarketCapRmbBnSum": 2082.2246,
-      "aShareMarketCapRmbBnMedian": 57.87865,
-      "aShareMarketCapN": 12,
-      "medianA1ToNoticeDays": 198.0,
-      "timingN": 11,
-      "topIndustries": [
-        "制造业",
-        "交通运输、仓储和邮政业",
-        "信息传输、软件和信息技术服务业",
-        "金融业"
-      ],
-      "type6ROCount": 10,
-      "type6RepCount": 148,
-      "type6TotalCount": 158,
-      "type6RowCount": 1,
-      "type6SourceFirmNames": [
-        "J.P. MORGAN SECURITIES (FAR EAST) LIMITED"
-      ],
-      "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
-      ],
-      "type6AsOfDate": "2026-07-15",
-      "type6Quality": "fresh",
-      "sponsorPrincipalRowCount": 1,
-      "sponsorPrincipalSourceFirmNames": [
-        "J.P. Morgan Securities (Far East) Limited"
-      ],
-      "sponsorPrincipalSourceUrls": [
-        "https://drdrhuhabqfsu.ok.kimi.link/"
-      ],
-      "sponsorPrincipalROCount": 14,
-      "sponsorPrincipalRepCount": 163,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
-      "sponsorPrincipalQuality": "fresh",
-      "sponsorPrincipalCerefs": [
-        "ACQ669",
-        "AGH243",
-        "AOL528",
-        "AQJ204",
-        "AQU426",
-        "ARQ788",
-        "AYQ814"
-      ],
-      "sponsorPrincipalCount": 7
-    },
-    {
       "sponsorId": "gf",
       "sponsorTag": "GF",
       "displayNameZh": "广发",
@@ -1202,6 +1129,79 @@
         "AYS989"
       ],
       "sponsorPrincipalCount": 4
+    },
+    {
+      "sponsorId": "jpm",
+      "sponsorTag": "JPM",
+      "displayNameZh": "摩根大通",
+      "displayNameEn": "JPM",
+      "canonicalName": "J.P. Morgan Securities (Asia Pacific) Limited",
+      "legalNames": [
+        "J.P. Morgan Securities (Asia Pacific) Limited",
+        "J.P. Morgan Securities (Far East) Limited"
+      ],
+      "aliases": [],
+      "sponsorNature": "外资",
+      "natureConfidence": "demo_seed",
+      "mappingConfidence": "dictionary",
+      "firmScope": "legal_entity",
+      "projectCount": 30,
+      "activeCount": 15,
+      "listedCount": 13,
+      "noticeCount": 11,
+      "ahCount": 11,
+      "hShareCount": 5,
+      "redChipCount": 11,
+      "deSpacCount": 0,
+      "hdrCount": 0,
+      "listingMarketCapHkdBnSum": 2241.3514,
+      "listingMarketCapHkdBnMedian": 35.2896,
+      "listingMarketCapN": 13,
+      "aShareMarketCapRmbBnSum": 1994.6425,
+      "aShareMarketCapRmbBnMedian": 57.8675,
+      "aShareMarketCapN": 11,
+      "medianA1ToNoticeDays": 198.0,
+      "timingN": 11,
+      "topIndustries": [
+        "制造业",
+        "交通运输、仓储和邮政业",
+        "信息传输、软件和信息技术服务业",
+        "金融业"
+      ],
+      "type6ROCount": 10,
+      "type6RepCount": 148,
+      "type6TotalCount": 158,
+      "type6RowCount": 1,
+      "type6SourceFirmNames": [
+        "J.P. MORGAN SECURITIES (FAR EAST) LIMITED"
+      ],
+      "type6SourceUrls": [
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
+      ],
+      "type6AsOfDate": "2026-07-15",
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "J.P. Morgan Securities (Far East) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 14,
+      "sponsorPrincipalRepCount": 163,
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ACQ669",
+        "AGH243",
+        "AOL528",
+        "AQJ204",
+        "AQU426",
+        "ARQ788",
+        "AYQ814"
+      ],
+      "sponsorPrincipalCount": 7
     },
     {
       "sponsorId": "abci",
@@ -2931,76 +2931,6 @@
       "sponsorPrincipalCount": 2
     },
     {
-      "sponsorId": "quam",
-      "sponsorTag": "QUAM",
-      "displayNameZh": "华富建业",
-      "displayNameEn": "QUAM",
-      "canonicalName": "Quam Capital Limited",
-      "legalNames": [
-        "Quam Capital Limited"
-      ],
-      "aliases": [],
-      "sponsorNature": "港资",
-      "natureConfidence": "demo_seed",
-      "mappingConfidence": "dictionary",
-      "firmScope": "legal_entity",
-      "projectCount": 5,
-      "activeCount": 2,
-      "listedCount": 2,
-      "noticeCount": 2,
-      "ahCount": 0,
-      "hShareCount": 1,
-      "redChipCount": 4,
-      "deSpacCount": 0,
-      "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1.8298,
-      "listingMarketCapHkdBnMedian": 0.9148999999999999,
-      "listingMarketCapN": 2,
-      "aShareMarketCapRmbBnSum": 0,
-      "aShareMarketCapRmbBnMedian": null,
-      "aShareMarketCapN": 0,
-      "medianA1ToNoticeDays": 99.0,
-      "timingN": 1,
-      "topIndustries": [
-        "批发和零售业",
-        "交通运输、仓储和邮政业",
-        "制造业",
-        "信息传输、软件和信息技术服务业"
-      ],
-      "type6ROCount": 8,
-      "type6RepCount": 9,
-      "type6TotalCount": 17,
-      "type6RowCount": 1,
-      "type6SourceFirmNames": [
-        "Quam Capital Limited (b1994-08-04)"
-      ],
-      "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
-      ],
-      "type6AsOfDate": "2026-07-15",
-      "type6Quality": "fresh",
-      "sponsorPrincipalRowCount": 1,
-      "sponsorPrincipalSourceFirmNames": [
-        "Quam Capital Limited"
-      ],
-      "sponsorPrincipalSourceUrls": [
-        "https://drdrhuhabqfsu.ok.kimi.link/"
-      ],
-      "sponsorPrincipalROCount": 8,
-      "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
-      "sponsorPrincipalQuality": "fresh",
-      "sponsorPrincipalCerefs": [
-        "AAN686",
-        "ADH952",
-        "ADO401",
-        "AGF192",
-        "APF787"
-      ],
-      "sponsorPrincipalCount": 5
-    },
-    {
       "sponsorId": "zero2ipo",
       "sponsorTag": "ZERO2IPO",
       "displayNameZh": "清科",
@@ -3067,6 +2997,76 @@
         "AWC183"
       ],
       "sponsorPrincipalCount": 3
+    },
+    {
+      "sponsorId": "quam",
+      "sponsorTag": "QUAM",
+      "displayNameZh": "华富建业",
+      "displayNameEn": "QUAM",
+      "canonicalName": "Quam Capital Limited",
+      "legalNames": [
+        "Quam Capital Limited"
+      ],
+      "aliases": [],
+      "sponsorNature": "港资",
+      "natureConfidence": "demo_seed",
+      "mappingConfidence": "dictionary",
+      "firmScope": "legal_entity",
+      "projectCount": 4,
+      "activeCount": 2,
+      "listedCount": 2,
+      "noticeCount": 2,
+      "ahCount": 0,
+      "hShareCount": 1,
+      "redChipCount": 3,
+      "deSpacCount": 0,
+      "hdrCount": 0,
+      "listingMarketCapHkdBnSum": 1.8298,
+      "listingMarketCapHkdBnMedian": 0.9148999999999999,
+      "listingMarketCapN": 2,
+      "aShareMarketCapRmbBnSum": 0,
+      "aShareMarketCapRmbBnMedian": null,
+      "aShareMarketCapN": 0,
+      "medianA1ToNoticeDays": 99.0,
+      "timingN": 1,
+      "topIndustries": [
+        "批发和零售业",
+        "交通运输、仓储和邮政业",
+        "信息传输、软件和信息技术服务业",
+        "零售/电商/商业流通"
+      ],
+      "type6ROCount": 8,
+      "type6RepCount": 9,
+      "type6TotalCount": 17,
+      "type6RowCount": 1,
+      "type6SourceFirmNames": [
+        "Quam Capital Limited (b1994-08-04)"
+      ],
+      "type6SourceUrls": [
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
+      ],
+      "type6AsOfDate": "2026-07-15",
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Quam Capital Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 8,
+      "sponsorPrincipalRepCount": 11,
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AAN686",
+        "ADH952",
+        "ADO401",
+        "AGF192",
+        "APF787"
+      ],
+      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "rainbow",
@@ -3136,74 +3136,6 @@
       "sponsorPrincipalCount": 2
     },
     {
-      "sponsorId": "sdic",
-      "sponsorTag": "SDIC",
-      "displayNameZh": "国投证券",
-      "displayNameEn": "SDIC",
-      "canonicalName": "SDIC Securities Corporate Finance (Hong Kong) Limited",
-      "legalNames": [
-        "SDIC Securities Corporate Finance (Hong Kong) Limited"
-      ],
-      "aliases": [],
-      "sponsorNature": "中资",
-      "natureConfidence": "demo_seed",
-      "mappingConfidence": "dictionary",
-      "firmScope": "legal_entity",
-      "projectCount": 4,
-      "activeCount": 4,
-      "listedCount": 0,
-      "noticeCount": 0,
-      "ahCount": 0,
-      "hShareCount": 4,
-      "redChipCount": 0,
-      "deSpacCount": 0,
-      "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 0,
-      "listingMarketCapHkdBnMedian": null,
-      "listingMarketCapN": 0,
-      "aShareMarketCapRmbBnSum": 0,
-      "aShareMarketCapRmbBnMedian": null,
-      "aShareMarketCapN": 0,
-      "medianA1ToNoticeDays": null,
-      "timingN": 0,
-      "topIndustries": [
-        "科学研究和技术服务业",
-        "生物医药研发/技术许可",
-        "信息传输、软件和信息技术服务业",
-        "制造业"
-      ],
-      "type6ROCount": 6,
-      "type6RepCount": 74,
-      "type6TotalCount": 80,
-      "type6RowCount": 1,
-      "type6SourceFirmNames": [
-        "SDIC Securities Corporate Finance (Hong Kong) Limited"
-      ],
-      "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
-      ],
-      "type6AsOfDate": "2026-07-15",
-      "type6Quality": "fresh",
-      "sponsorPrincipalRowCount": 1,
-      "sponsorPrincipalSourceFirmNames": [
-        "SDIC Securities Corporate Finance (Hong Kong) Limited"
-      ],
-      "sponsorPrincipalSourceUrls": [
-        "https://drdrhuhabqfsu.ok.kimi.link/"
-      ],
-      "sponsorPrincipalROCount": 6,
-      "sponsorPrincipalRepCount": 81,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
-      "sponsorPrincipalQuality": "fresh",
-      "sponsorPrincipalCerefs": [
-        "AHY113",
-        "AXH621",
-        "BAI751"
-      ],
-      "sponsorPrincipalCount": 3
-    },
-    {
       "sponsorId": "sunnyfort",
       "sponsorTag": "SUNNYFORT",
       "displayNameZh": "Sunny",
@@ -3218,7 +3150,7 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 4,
-      "activeCount": 2,
+      "activeCount": 3,
       "listedCount": 1,
       "noticeCount": 1,
       "ahCount": 0,
@@ -3671,6 +3603,74 @@
         "ALQ686"
       ],
       "sponsorPrincipalCount": 2
+    },
+    {
+      "sponsorId": "sdic",
+      "sponsorTag": "SDIC",
+      "displayNameZh": "国投证券",
+      "displayNameEn": "SDIC",
+      "canonicalName": "SDIC Securities Corporate Finance (Hong Kong) Limited",
+      "legalNames": [
+        "SDIC Securities Corporate Finance (Hong Kong) Limited"
+      ],
+      "aliases": [],
+      "sponsorNature": "中资",
+      "natureConfidence": "demo_seed",
+      "mappingConfidence": "dictionary",
+      "firmScope": "legal_entity",
+      "projectCount": 3,
+      "activeCount": 3,
+      "listedCount": 0,
+      "noticeCount": 0,
+      "ahCount": 0,
+      "hShareCount": 3,
+      "redChipCount": 0,
+      "deSpacCount": 0,
+      "hdrCount": 0,
+      "listingMarketCapHkdBnSum": 0,
+      "listingMarketCapHkdBnMedian": null,
+      "listingMarketCapN": 0,
+      "aShareMarketCapRmbBnSum": 0,
+      "aShareMarketCapRmbBnMedian": null,
+      "aShareMarketCapN": 0,
+      "medianA1ToNoticeDays": null,
+      "timingN": 0,
+      "topIndustries": [
+        "科学研究和技术服务业",
+        "生物医药研发/技术许可",
+        "制造业",
+        "医药/生物科技/医疗器械制造"
+      ],
+      "type6ROCount": 6,
+      "type6RepCount": 74,
+      "type6TotalCount": 80,
+      "type6RowCount": 1,
+      "type6SourceFirmNames": [
+        "SDIC Securities Corporate Finance (Hong Kong) Limited"
+      ],
+      "type6SourceUrls": [
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
+      ],
+      "type6AsOfDate": "2026-07-15",
+      "type6Quality": "fresh",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "SDIC Securities Corporate Finance (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 6,
+      "sponsorPrincipalRepCount": 81,
+      "sponsorPrincipalAsOfDate": "2026-07-10",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AHY113",
+        "AXH621",
+        "BAI751"
+      ],
+      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "caitong",
@@ -4879,73 +4879,6 @@
         "AVK761"
       ],
       "sponsorPrincipalCount": 2
-    },
-    {
-      "sponsorId": "somerley",
-      "sponsorTag": "SOMERLEY",
-      "displayNameZh": "新百利",
-      "displayNameEn": "SOMERLEY",
-      "canonicalName": "Somerley Capital Limited",
-      "legalNames": [
-        "Somerley Capital Limited"
-      ],
-      "aliases": [],
-      "sponsorNature": "港资",
-      "natureConfidence": "demo_seed",
-      "mappingConfidence": "dictionary",
-      "firmScope": "legal_entity",
-      "projectCount": 1,
-      "activeCount": 0,
-      "listedCount": 0,
-      "noticeCount": 0,
-      "ahCount": 0,
-      "hShareCount": 0,
-      "redChipCount": 1,
-      "deSpacCount": 0,
-      "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 0,
-      "listingMarketCapHkdBnMedian": null,
-      "listingMarketCapN": 0,
-      "aShareMarketCapRmbBnSum": 0,
-      "aShareMarketCapRmbBnMedian": null,
-      "aShareMarketCapN": 0,
-      "medianA1ToNoticeDays": null,
-      "timingN": 0,
-      "topIndustries": [
-        "制造业",
-        "生物医药研发/技术许可",
-        "医药/生物科技/医疗器械制造"
-      ],
-      "type6ROCount": 9,
-      "type6RepCount": 17,
-      "type6TotalCount": 26,
-      "type6RowCount": 1,
-      "type6SourceFirmNames": [
-        "Somerley Capital Limited"
-      ],
-      "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2003564&a=6"
-      ],
-      "type6AsOfDate": "2026-07-15",
-      "type6Quality": "fresh",
-      "sponsorPrincipalRowCount": 1,
-      "sponsorPrincipalSourceFirmNames": [
-        "Somerley Capital Limited"
-      ],
-      "sponsorPrincipalSourceUrls": [
-        "https://drdrhuhabqfsu.ok.kimi.link/"
-      ],
-      "sponsorPrincipalROCount": 9,
-      "sponsorPrincipalRepCount": 17,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
-      "sponsorPrincipalQuality": "fresh",
-      "sponsorPrincipalCerefs": [
-        "AAJ065",
-        "AFR677",
-        "AMF525"
-      ],
-      "sponsorPrincipalCount": 3
     },
     {
       "sponsorId": "soochow",
@@ -6440,6 +6373,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7641697/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -6502,6 +6439,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7641697/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -6575,8 +6516,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-12-19",
       "currentA1Date": "2026-06-30",
       "receivedDate": null,
@@ -6602,7 +6543,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "avatr technology (chongqing) company limited",
@@ -7773,6 +7719,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -9508,64 +9458,10 @@
         "CITIC Securities Corporate Finance (HK) Limited"
       ],
       "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
+      "sponsorCountOnDeal": 1,
       "creditAllFull": 1.0,
-      "creditEqual": 0.5,
+      "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
-      "a1Date": "2025-12-02",
-      "currentA1Date": "2026-06-18",
-      "receivedDate": null,
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "电子元器件/消费电子制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 87.5821,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [],
-      "sourceLinks": [
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen transsion holdings co., ltd.",
-      "issuerName": "Shenzhen Transsion Holdings Co., Ltd.",
-      "csrcName": "深圳傳音控股股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "jpm",
-      "sourceSponsorTag": "JPM",
-      "sourceSponsorTags": [
-        "JPM"
-      ],
-      "leaderboardSponsorTag": "JPM",
-      "sponsorLegalName": "J.P. Morgan Securities (Asia Pacific) Limited",
-      "sponsorLegalNames": [
-        "J.P. Morgan Securities (Asia Pacific) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
       "hkexStage": "applying",
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
@@ -14448,6 +14344,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -14503,6 +14403,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -15006,8 +14910,8 @@
       "creditEqual": 0.25,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
       "receivedDate": null,
@@ -15032,7 +14936,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "freetech (zhejiang) intelligent technology co., ltd.",
@@ -15055,8 +14964,8 @@
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
       "receivedDate": null,
@@ -15081,7 +14990,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "freetech (zhejiang) intelligent technology co., ltd.",
@@ -15104,8 +15018,8 @@
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
       "receivedDate": null,
@@ -15130,7 +15044,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "freetech (zhejiang) intelligent technology co., ltd.",
@@ -15153,8 +15072,8 @@
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
       "receivedDate": null,
@@ -15179,7 +15098,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "hla group corp., ltd.",
@@ -18383,6 +18307,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -18441,6 +18369,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -22922,6 +22854,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7422137/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -24786,69 +24722,10 @@
         "Haitong International Capital Limited"
       ],
       "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
+      "sponsorCountOnDeal": 1,
       "creditAllFull": 1.0,
-      "creditEqual": 0.5,
+      "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
-      "a1Date": "2025-09-30",
-      "currentA1Date": "2026-04-10",
-      "receivedDate": "2025-10-17",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "医药/医疗产品流通",
-        "检测/检验/认证",
-        "批发和零售业"
-      ],
-      "csrcIndustryTags": [
-        "批发和零售业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 17.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [],
-      "sourceLinks": [
-        {
-          "label": "历史备案情况表截图",
-          "url": "https://www.10100.com/article/31215520"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
-        }
-      ]
-    },
-    {
-      "issuerId": "good doctor cloud healthcare & technology group co., ltd.",
-      "issuerName": "Good Doctor Cloud Healthcare & Technology Group Co., Ltd.",
-      "csrcName": "四川好醫生雲醫療科技集團股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
       "hkexStage": "applying",
       "status": "csrc_received",
       "statusLabelZh": "已接收",
@@ -24904,72 +24781,10 @@
         "ABCI Capital Limited"
       ],
       "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
+      "sponsorCountOnDeal": 1,
       "creditAllFull": 1.0,
-      "creditEqual": 0.5,
+      "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
-      "a1Date": "2025-09-30",
-      "currentA1Date": "2026-04-10",
-      "receivedDate": "2025-10-17",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业"
-      ],
-      "csrcIndustryTags": [
-        "信息传输、软件和信息技术服务业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 17.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [],
-      "sourceLinks": [
-        {
-          "label": "历史备案情况表截图",
-          "url": "https://www.10100.com/article/31215520"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen huafu technology co., ltd.",
-      "issuerName": "Shenzhen Huafu Technology Co., Ltd.",
-      "csrcName": "深圳華付技術股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "sdic",
-      "sourceSponsorTag": "SDIC",
-      "sourceSponsorTags": [
-        "SDIC"
-      ],
-      "leaderboardSponsorTag": "SDIC",
-      "sponsorLegalName": "SDIC Securities Corporate Finance (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "SDIC Securities Corporate Finance (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
       "hkexStage": "applying",
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
@@ -25250,6 +25065,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -25317,6 +25136,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -27510,6 +27333,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -27568,6 +27395,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -30488,6 +30319,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -31107,72 +30942,10 @@
         "CMB International Capital Limited"
       ],
       "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
+      "sponsorCountOnDeal": 1,
       "creditAllFull": 1.0,
-      "creditEqual": 0.5,
+      "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-03-27",
-      "currentA1Date": "2026-03-27",
-      "receivedDate": "2026-05-13",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "消费品制造/食品饮料/日化",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 47.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen xiaokuo technology co., ltd.",
-      "issuerName": "Shenzhen Xiaokuo Technology Co., Ltd.",
-      "csrcName": "深圳小闊科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
       "hkexStage": "applying",
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见",
@@ -31872,6 +31645,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -31932,6 +31709,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -31992,6 +31773,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -32419,6 +32204,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7614302/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -33391,6 +33180,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -33454,6 +33247,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -35340,6 +35137,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -35398,6 +35199,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -35456,6 +35261,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -35514,6 +35323,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -35572,6 +35385,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -37317,6 +37134,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -37375,6 +37196,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -39238,6 +39063,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -39297,6 +39126,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -40411,6 +40244,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -40469,6 +40306,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -42948,6 +42789,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -43440,6 +43285,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -43498,6 +43347,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -43697,8 +43550,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-04-30",
       "currentA1Date": "2026-01-18",
       "receivedDate": null,
@@ -43723,7 +43576,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "shanghai fuiou payment service corp., ltd.",
@@ -43746,8 +43604,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-04-30",
       "currentA1Date": "2026-01-18",
       "receivedDate": null,
@@ -43772,7 +43630,12 @@
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "akuvox (xiamen) networks co., ltd.",
@@ -44884,6 +44747,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -44944,6 +44811,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -45258,6 +45129,10 @@
         {
           "label": "HKEX新上市报告",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -47498,6 +47373,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -47558,6 +47437,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -48666,6 +48549,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ]
     },
@@ -50154,9 +50041,9 @@
         "Morgan Stanley & Co. International plc"
       ],
       "sponsorOrder": 1,
-      "sponsorCountOnDeal": 4,
+      "sponsorCountOnDeal": 2,
       "creditAllFull": 1.0,
-      "creditEqual": 0.25,
+      "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "other",
       "status": "waiting_received",
@@ -50206,113 +50093,9 @@
         "SPDB International Capital Limited"
       ],
       "sponsorOrder": 2,
-      "sponsorCountOnDeal": 4,
+      "sponsorCountOnDeal": 2,
       "creditAllFull": 1.0,
-      "creditEqual": 0.25,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "other",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
-      "a1Date": "2025-04-15",
-      "currentA1Date": "2025-12-03",
-      "receivedDate": null,
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "红筹",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "生物医药研发/技术许可",
-        "医药/生物科技/医疗器械制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": []
-    },
-    {
-      "issuerId": "genor biopharma holdings limited",
-      "issuerName": "Genor Biopharma Holdings Limited",
-      "csrcName": "嘉和生物藥業(開曼)控股有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "somerley",
-      "sourceSponsorTag": "SOMERLEY",
-      "sourceSponsorTags": [
-        "SOMERLEY"
-      ],
-      "leaderboardSponsorTag": "SOMERLEY",
-      "sponsorLegalName": "Somerley Capital Limited",
-      "sponsorLegalNames": [
-        "Somerley Capital Limited"
-      ],
-      "sponsorOrder": 3,
-      "sponsorCountOnDeal": 4,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.25,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "other",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
-      "a1Date": "2025-04-15",
-      "currentA1Date": "2025-12-03",
-      "receivedDate": null,
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "红筹",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "生物医药研发/技术许可",
-        "医药/生物科技/医疗器械制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": []
-    },
-    {
-      "issuerId": "genor biopharma holdings limited",
-      "issuerName": "Genor Biopharma Holdings Limited",
-      "csrcName": "嘉和生物藥業(開曼)控股有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "quam",
-      "sourceSponsorTag": "QUAM",
-      "sourceSponsorTags": [
-        "QUAM"
-      ],
-      "leaderboardSponsorTag": "QUAM",
-      "sponsorLegalName": "Quam Capital Limited",
-      "sponsorLegalNames": [
-        "Quam Capital Limited"
-      ],
-      "sponsorOrder": 4,
-      "sponsorCountOnDeal": 4,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.25,
+      "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "other",
       "status": "waiting_received",
@@ -51369,9 +51152,9 @@
       "creditAllFull": 1.0,
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "other",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "hkexStage": "applying",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2024-06-12",
       "currentA1Date": "2025-11-27",
       "receivedDate": null,
@@ -51398,7 +51181,12 @@
       "statusTags": [
         "A1已失效"
       ],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "soulgate inc.",
@@ -51420,9 +51208,9 @@
       "creditAllFull": 1.0,
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "other",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "hkexStage": "applying",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-11-27",
       "currentA1Date": "2025-11-27",
       "receivedDate": null,
@@ -51449,7 +51237,12 @@
       "statusTags": [
         "A1已失效"
       ],
-      "sourceLinks": []
+      "sourceLinks": [
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
     },
     {
       "issuerId": "shanghai top numerical control technology co., ltd.",
@@ -73154,8 +72947,8 @@
       "receivedDate": null,
       "noticeDate": "2025-05-28",
       "listingDate": "2025-07-09",
-      "issuerType": "H股",
-      "isAH": false,
+      "issuerType": "A+H",
+      "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
         "电机驱动控制芯片",
@@ -73164,7 +72957,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 17.139,
       "listingMarketCapHkdBn": 16.0929,
       "calendarDaysA1ToNotice": 133.0,
       "calendarDaysA1ToListing": 175.0,
@@ -89309,9 +89102,9 @@
         "Haitong International Capital Limited"
       ],
       "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
+      "sponsorCountOnDeal": 1,
       "creditAllFull": 1.0,
-      "creditEqual": 0.5,
+      "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
       "status": "csrc_received",
@@ -90183,6 +89976,10 @@
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7614302/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -91543,6 +91340,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
