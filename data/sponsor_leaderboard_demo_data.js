@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-16T16:49:14Z",
-    "sourceGeneratedAt": "2026-07-17T00:23:00+08:00",
+    "generatedAt": "2026-07-16T20:52:30Z",
+    "sourceGeneratedAt": "2026-07-17T04:51:41+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-17T00:23:00+08:00",
+      "generatedAt": "2026-07-17T04:51:41+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1421,
@@ -386,12 +386,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6TotalCount": 337,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
@@ -428,8 +428,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Haitong International Capital Limited",
-        "Guotai Junan Capital Limited"
+        "Guotai Junan Capital Limited",
+        "Haitong International Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
@@ -794,8 +794,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 21,
-      "type6RepCount": 268,
-      "type6TotalCount": 289,
+      "type6RepCount": 269,
+      "type6TotalCount": 290,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Morgan Stanley Asia Limited"
@@ -1021,8 +1021,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "科学研究和技术服务业"
       ],
       "type6ROCount": 12,
-      "type6RepCount": 100,
-      "type6TotalCount": 112,
+      "type6RepCount": 103,
+      "type6TotalCount": 115,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "GOLDMAN SACHS (ASIA) L.L.C."
@@ -1239,8 +1239,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "交通运输、仓储和邮政业",
         "信息传输、软件和信息技术服务业"
       ],
-      "type6ROCount": 16,
-      "type6RepCount": 53,
+      "type6ROCount": 17,
+      "type6RepCount": 52,
       "type6TotalCount": 69,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
@@ -1530,8 +1530,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "type6ROCount": 8,
-      "type6RepCount": 39,
-      "type6TotalCount": 47,
+      "type6RepCount": 40,
+      "type6TotalCount": 48,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "SHENWAN HONGYUAN CAPITAL (H.K.) LIMITED"
@@ -2088,8 +2088,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "电子元器件/消费电子制造"
       ],
       "type6ROCount": 4,
-      "type6RepCount": 62,
-      "type6TotalCount": 66,
+      "type6RepCount": 63,
+      "type6TotalCount": 67,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Jefferies Hong Kong Limited"
