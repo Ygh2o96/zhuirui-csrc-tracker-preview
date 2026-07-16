@@ -696,6 +696,7 @@ const tagDictionary = {
   "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics: no post-regime A1 cycle precedes the CSRC notice (e.g. filing completed under an earlier lapsed cycle) / 通知书早于已知的制度后A1周期，无有效统计锚点，不计入头部时长统计", cls: "outlier-tag" },
   "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点", cls: "info-tag" },
   "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" },
+  "前轮A1锚点": { en: "Previous-cycle A1 anchor", title: "The selected A1 falls on the CSRC notice date, so the displayed filing clock uses the latest earlier A1 in the HKEX consolidated index; a pre-regime fallback is excluded from headline statistics / 所选A1与通知书同日，展示时长改用港交所综合索引中通知日前最近一轮A1；如该日期早于备案新规则不计入头部统计", cls: "info-tag" },
   "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer of listing from GEM to the Main Board (no prospectus or sponsor in the New Listing Report); no new offering, so no fresh CSRC filing is expected / GEM转主板，无新发行，无需重新备案", cls: "info-tag" }
 };
 
@@ -785,6 +786,13 @@ function renderStackedDate(primary, secondaryLabel, secondary) {
 }
 
 function renderA1Cell(record) {
+  if (record.hkexConfidentialFilingDate && record.hkexConfidentialFilingDate === record.a1Date) {
+    const publicA1 = record.hkexPublicFirstPostingDate || record.currentA1Date;
+    const publicA1Html = publicA1 && publicA1 !== record.a1Date
+      ? `<span class="date-secondary">公开 ${formatDatePlain(publicA1)}</span>`
+      : "";
+    return `<span class="date-primary">密交 ${formatDate(record.a1Date)}</span>${publicA1Html}`;
+  }
   return renderStackedDate(record.a1Date, "当前", record.currentA1Date);
 }
 
@@ -1477,8 +1485,9 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>时间线 Timeline</span>
         <div class="timeline">
-          <div class="timeline-row"><span>备案A1锚点 A1 anchor</span><strong>${formatDate(record.a1Date)}</strong></div>
-          ${record.hkexConfidentialFilingDate ? `<div class="timeline-row" title="${escapeHtml(record.hkexConfidentialFilingEvidence || "")}"><span>密交递交 Confidential filing</span><strong>${formatDate(record.hkexConfidentialFilingDate)}</strong></div>` : ""}
+          <div class="timeline-row"><span>${record.hkexConfidentialFilingDate === record.a1Date ? "密交A1锚点 Confidential A1 anchor" : "备案A1锚点 A1 anchor"}</span><strong>${formatDate(record.a1Date)}</strong></div>
+          ${record.hkexConfidentialFilingDate && record.hkexConfidentialFilingDate !== record.a1Date ? `<div class="timeline-row" title="${escapeHtml(record.hkexConfidentialFilingEvidence || "")}"><span>密交递交 Confidential filing</span><strong>${formatDate(record.hkexConfidentialFilingDate)}</strong></div>` : ""}
+          ${record.hkexConfidentialFilingDate && (record.hkexPublicFirstPostingDate || record.currentA1Date) ? `<div class="timeline-row"><span>公开A1 Public A1</span><strong>${formatDate(record.hkexPublicFirstPostingDate || record.currentA1Date)}</strong></div>` : ""}
           ${record.statsAnchorDate && record.statsAnchorDate !== record.a1Date ? `<div class="timeline-row"><span>统计锚点（制度后首A1）Stats anchor</span><strong>${formatDate(record.statsAnchorDate)}</strong></div>` : ""}
           ${historicalAnchorLine}
           <div class="timeline-row"><span>当前A1 Current A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>

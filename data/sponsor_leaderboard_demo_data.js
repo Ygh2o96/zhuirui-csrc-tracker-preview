@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-16T03:45:30Z",
-    "sourceGeneratedAt": "2026-07-16T11:45:20+08:00",
+    "generatedAt": "2026-07-16T16:49:14Z",
+    "sourceGeneratedAt": "2026-07-17T00:23:00+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-16T11:45:20+08:00",
+      "generatedAt": "2026-07-17T00:23:00+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1421,
@@ -29,8 +29,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "matchedRealFirmCount": 69,
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
-      "unmatchedCapacityRowCount": 216,
-      "asOfDate": "2026-07-15",
+      "unmatchedCapacityRowCount": 217,
+      "asOfDate": "2026-07-17",
       "source": "webb_0xmd",
       "sourceUrl": "https://webbsite.0xmd.com/dbpub/SFClicount.asp?a=6",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_type6_capacity.json",
@@ -47,9 +47,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "matchedRealFirmCount": 69,
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
-      "unmatchedCapacityRowCount": 51,
-      "asOfDate": "2026-07-10",
-      "sourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "unmatchedCapacityRowCount": 52,
+      "asOfDate": "2026-07-16",
+      "sourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "source": "sfc_sponsor_principal_register_mirror",
       "sourceUrl": "https://drdrhuhabqfsu.ok.kimi.link/",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_sponsor_principals.json",
@@ -108,7 +108,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=46811&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -119,8 +119,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 83,
       "sponsorPrincipalRepCount": 1597,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACN231",
@@ -194,8 +194,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "生物医药研发/技术许可"
       ],
       "type6ROCount": 46,
-      "type6RepCount": 926,
-      "type6TotalCount": 972,
+      "type6RepCount": 921,
+      "type6TotalCount": 967,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CITIC Securities (Hong Kong) Limited"
@@ -203,7 +203,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18459&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -214,8 +214,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 47,
       "sponsorPrincipalRepCount": 942,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGF194",
@@ -286,8 +286,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 31,
-      "type6RepCount": 426,
-      "type6TotalCount": 457,
+      "type6RepCount": 425,
+      "type6TotalCount": 456,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "HUATAI FINANCIAL HOLDINGS (HONG KONG) LIMITED"
@@ -295,7 +295,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49319&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -306,8 +306,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 65,
       "sponsorPrincipalRepCount": 801,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEK034",
@@ -373,8 +373,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapRmbBnSum": 737.6929,
       "aShareMarketCapRmbBnMedian": 33.0618,
       "aShareMarketCapN": 17,
-      "medianA1ToNoticeDays": 194.0,
-      "timingN": 37,
+      "medianA1ToNoticeDays": 199.0,
+      "timingN": 36,
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
@@ -386,14 +386,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6TotalCount": 337,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "GUOTAI JUNAN CAPITAL LIMITED",
-        "HAITONG INTERNATIONAL CAPITAL LIMITED"
+        "HAITONG INTERNATIONAL CAPITAL LIMITED",
+        "GUOTAI JUNAN CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "type6RollupMemberSponsorIds": [
         "gtja",
@@ -428,16 +428,16 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Guotai Junan Capital Limited",
-        "Haitong International Capital Limited"
+        "Haitong International Capital Limited",
+        "Guotai Junan Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
       ],
       "sponsorPrincipalROCount": 33,
       "sponsorPrincipalRepCount": 288,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalRollupMemberSponsorIds": [
         "gtja",
@@ -491,7 +491,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1942934&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -502,8 +502,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 319,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGP056",
@@ -555,8 +555,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapRmbBnSum": 479.3427,
       "aShareMarketCapRmbBnMedian": 22.8171,
       "aShareMarketCapN": 11,
-      "medianA1ToNoticeDays": 179.0,
-      "timingN": 18,
+      "medianA1ToNoticeDays": 180.0,
+      "timingN": 17,
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
@@ -573,7 +573,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -584,8 +584,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 13,
       "sponsorPrincipalRepCount": 140,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGK773",
@@ -648,7 +648,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=60614&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -659,8 +659,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 20,
       "sponsorPrincipalRepCount": 90,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJH516",
@@ -723,7 +723,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -734,8 +734,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 20,
       "sponsorPrincipalRepCount": 148,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGG766",
@@ -803,7 +803,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1464&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -814,8 +814,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 50,
       "sponsorPrincipalRepCount": 861,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACO819",
@@ -869,8 +869,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "生物医药研发/技术许可"
       ],
       "type6ROCount": 16,
-      "type6RepCount": 60,
-      "type6TotalCount": 76,
+      "type6RepCount": 59,
+      "type6TotalCount": 75,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CCB INTERNATIONAL CAPITAL LIMITED"
@@ -878,7 +878,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=30230&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -889,8 +889,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 74,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEE758",
@@ -943,8 +943,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "半导体/集成电路/电子制造"
       ],
       "type6ROCount": 17,
-      "type6RepCount": 206,
-      "type6TotalCount": 223,
+      "type6RepCount": 205,
+      "type6TotalCount": 222,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CHINA MERCHANTS SECURITIES (HK) CO., LIMITED"
@@ -952,7 +952,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18359&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -963,8 +963,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 35,
       "sponsorPrincipalRepCount": 382,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGC693",
@@ -1021,8 +1021,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "科学研究和技术服务业"
       ],
       "type6ROCount": 12,
-      "type6RepCount": 101,
-      "type6TotalCount": 113,
+      "type6RepCount": 100,
+      "type6TotalCount": 112,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "GOLDMAN SACHS (ASIA) L.L.C."
@@ -1030,7 +1030,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5596&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1041,8 +1041,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 39,
       "sponsorPrincipalRepCount": 856,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFR865",
@@ -1107,7 +1107,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49367&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1118,8 +1118,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 165,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJH211",
@@ -1177,7 +1177,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1188,8 +1188,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 14,
       "sponsorPrincipalRepCount": 163,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACQ669",
@@ -1249,7 +1249,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68371&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1260,8 +1260,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 53,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFP043",
@@ -1322,7 +1322,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1467&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1333,8 +1333,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 24,
       "sponsorPrincipalRepCount": 331,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACI535",
@@ -1397,7 +1397,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18311&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1408,8 +1408,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 37,
       "sponsorPrincipalRepCount": 441,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFF166",
@@ -1460,8 +1460,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "生物医药研发/技术许可"
       ],
       "type6ROCount": 23,
-      "type6RepCount": 174,
-      "type6TotalCount": 197,
+      "type6RepCount": 173,
+      "type6TotalCount": 196,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Merrill Lynch (Asia Pacific) Limited"
@@ -1469,7 +1469,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12227&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1480,8 +1480,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 43,
       "sponsorPrincipalRepCount": 386,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABR710",
@@ -1539,7 +1539,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9131&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1550,8 +1550,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 41,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AWC885",
@@ -1607,7 +1607,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7117&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1618,8 +1618,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 51,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOA854",
@@ -1677,7 +1677,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2041492&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1688,8 +1688,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 21,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFQ413",
@@ -1746,7 +1746,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68488&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1757,8 +1757,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 48,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AKS933",
@@ -1815,7 +1815,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1826,8 +1826,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 12,
       "sponsorPrincipalRepCount": 69,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFA799",
@@ -1885,7 +1885,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=47434&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1896,8 +1896,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 15,
       "sponsorPrincipalRepCount": 44,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGO243",
@@ -1955,7 +1955,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68484&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1966,8 +1966,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 23,
       "sponsorPrincipalRepCount": 255,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOZ130",
@@ -2024,7 +2024,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2035,8 +2035,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 11,
       "sponsorPrincipalRepCount": 101,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABY439",
@@ -2097,7 +2097,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=72015&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2108,8 +2108,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 265,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AXM402",
@@ -2165,7 +2165,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=34259&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2176,8 +2176,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 18,
       "sponsorPrincipalRepCount": 104,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "APK242",
@@ -2224,8 +2224,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 8,
-      "type6RepCount": 18,
-      "type6TotalCount": 26,
+      "type6RepCount": 17,
+      "type6TotalCount": 25,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "SPDB International Capital Limited"
@@ -2233,7 +2233,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2439801&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2244,8 +2244,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 21,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGN288",
@@ -2302,7 +2302,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=41210&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2313,8 +2313,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 28,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "BCY611",
@@ -2369,7 +2369,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2007103&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2380,8 +2380,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 35,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ASP357",
@@ -2437,7 +2437,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5451&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2448,8 +2448,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 30,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEY337",
@@ -2506,7 +2506,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6162&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2517,8 +2517,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 201,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGL135",
@@ -2573,7 +2573,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1896613&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2584,8 +2584,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 37,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHP762",
@@ -2641,7 +2641,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2652,8 +2652,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 18,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ANQ192",
@@ -2708,7 +2708,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1939868&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2719,8 +2719,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 45,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AQO269",
@@ -2775,7 +2775,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2458625&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2786,8 +2786,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 11,
       "sponsorPrincipalRepCount": 28,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGK771",
@@ -2842,7 +2842,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2126636&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2853,8 +2853,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 19,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADM812",
@@ -2909,7 +2909,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1552564&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2920,8 +2920,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 17,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "APB407",
@@ -2976,7 +2976,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=26392041&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2987,8 +2987,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AIU419",
@@ -3044,7 +3044,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3055,8 +3055,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAN686",
@@ -3114,7 +3114,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23670404&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3125,8 +3125,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AUM132",
@@ -3181,7 +3181,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23445433&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3192,8 +3192,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 3,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFV839",
@@ -3248,7 +3248,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2084540&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3259,8 +3259,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACH258",
@@ -3315,7 +3315,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3326,8 +3326,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 1,
       "sponsorPrincipalRepCount": 9,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOR644"
@@ -3381,7 +3381,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6721901&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3392,8 +3392,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGO945",
@@ -3448,7 +3448,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=64301&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3459,8 +3459,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 76,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAW465",
@@ -3515,7 +3515,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1933817&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3526,8 +3526,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADN295",
@@ -3583,7 +3583,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1912087&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3594,8 +3594,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 24,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADA866",
@@ -3650,7 +3650,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3661,8 +3661,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 81,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHY113",
@@ -3717,7 +3717,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2620772&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3728,8 +3728,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFG775",
@@ -3784,7 +3784,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9754&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3795,8 +3795,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 10,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "BER960"
@@ -3850,7 +3850,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12111423&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3861,8 +3861,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 15,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGM902",
@@ -3955,7 +3955,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2455747&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3966,8 +3966,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADP076",
@@ -4016,8 +4016,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 6,
-      "type6RepCount": 82,
-      "type6TotalCount": 88,
+      "type6RepCount": 81,
+      "type6TotalCount": 87,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "NOMURA INTERNATIONAL (HONG KONG) LIMITED"
@@ -4025,7 +4025,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1440&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4036,8 +4036,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 32,
       "sponsorPrincipalRepCount": 518,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADH994",
@@ -4091,7 +4091,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=926&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4102,8 +4102,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAA815",
@@ -4159,7 +4159,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2557091&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4170,8 +4170,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 23,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFY720",
@@ -4216,8 +4216,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "商用打印设备"
       ],
       "type6ROCount": 3,
-      "type6RepCount": 6,
-      "type6TotalCount": 9,
+      "type6RepCount": 7,
+      "type6TotalCount": 10,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Yue Xiu Capital Limited"
@@ -4225,7 +4225,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22364027&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4236,8 +4236,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 6,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEW978",
@@ -4291,7 +4291,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15005&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4302,8 +4302,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 8,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABF972",
@@ -4359,7 +4359,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9620&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4370,8 +4370,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 5,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHJ599",
@@ -4424,7 +4424,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2420405&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4435,8 +4435,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 3,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABI141",
@@ -4526,7 +4526,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2278798&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4537,8 +4537,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 10,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADX572",
@@ -4596,7 +4596,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6407&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4607,8 +4607,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAG625",
@@ -4662,7 +4662,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=37237&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4673,8 +4673,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 19,
       "sponsorPrincipalRepCount": 127,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ARP180",
@@ -4727,7 +4727,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22123361&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4738,8 +4738,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABW953",
@@ -4793,7 +4793,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2690790&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4804,8 +4804,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEC838",
@@ -4848,9 +4848,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "建筑业",
         "安装工程总承包"
       ],
-      "type6ROCount": 5,
+      "type6ROCount": 6,
       "type6RepCount": 7,
-      "type6TotalCount": 12,
+      "type6TotalCount": 13,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "SHANXI SECURITIES INTERNATIONAL CAPITAL LIMITED"
@@ -4858,7 +4858,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2626430&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4869,8 +4869,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOG831",
@@ -4923,7 +4923,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1747929&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4934,8 +4934,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 1,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ARH793",
@@ -4988,7 +4988,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2539213&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4999,8 +4999,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AML472",
@@ -5053,7 +5053,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68441&a=6"
       ],
-      "type6AsOfDate": "2026-07-15",
+      "type6AsOfDate": "2026-07-17",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5064,8 +5064,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-07-10",
-      "sponsorPrincipalSourceUpdatedAt": "2026-07-10T10:10:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-07-16",
+      "sponsorPrincipalSourceUpdatedAt": "2026-07-16T23:07:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJK773",
@@ -5076,6 +5076,120 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "immvira bioscience inc. - b",
+      "issuerName": "Immvira Bioscience Inc. - B",
+      "csrcName": "Immvira Bioscience Inc. - B",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citi",
+      "sourceSponsorTag": "CITI",
+      "sourceSponsorTags": [
+        "CITI"
+      ],
+      "leaderboardSponsorTag": "CITI",
+      "sponsorLegalName": "Citigroup Global Markets Asia Limited",
+      "sponsorLegalNames": [
+        "Citigroup Global Markets Asia Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2025-06-25",
+      "currentA1Date": "2026-07-16",
+      "receivedDate": "2026-01-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "红筹",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "生物医药研发/技术许可"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 209.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "immvira bioscience inc. - b",
+      "issuerName": "Immvira Bioscience Inc. - B",
+      "csrcName": "Immvira Bioscience Inc. - B",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2025-06-25",
+      "currentA1Date": "2026-07-16",
+      "receivedDate": "2026-01-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "红筹",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "生物医药研发/技术许可"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 209.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "yonyou network technology co., ltd.",
       "issuerName": "Yonyou Network Technology Co., Ltd.",
@@ -44689,124 +44803,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ]
     },
     {
-      "issuerId": "immvira bioscience inc. - b",
-      "issuerName": "Immvira Bioscience Inc. - B",
-      "csrcName": "Immvira Bioscience Inc. - B",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citi",
-      "sourceSponsorTag": "CITI",
-      "sourceSponsorTags": [
-        "CITI"
-      ],
-      "leaderboardSponsorTag": "CITI",
-      "sponsorLegalName": "Citigroup Global Markets Asia Limited",
-      "sponsorLegalNames": [
-        "Citigroup Global Markets Asia Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2025-06-25",
-      "currentA1Date": "2026-01-14",
-      "receivedDate": "2026-01-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "红筹",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "生物医药研发/技术许可"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 209.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "immvira bioscience inc. - b",
-      "issuerName": "Immvira Bioscience Inc. - B",
-      "csrcName": "Immvira Bioscience Inc. - B",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2025-06-25",
-      "currentA1Date": "2026-01-14",
-      "receivedDate": "2026-01-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "红筹",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "生物医药研发/技术许可"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 209.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
-        }
-      ]
-    },
-    {
       "issuerId": "chengdu zenitar biomedical technology co., ltd. - b",
       "issuerName": "Chengdu Zenitar Biomedical Technology Co., Ltd. - B",
       "csrcName": "成都賾靈生物醫藥科技股份有限公司",
@@ -59300,14 +59296,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 45.734,
-      "calendarDaysA1ToNotice": 0.0,
+      "calendarDaysA1ToNotice": 206.0,
       "calendarDaysA1ToListing": 332.0,
       "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": true,
+      "durationSampleEligible": false,
       "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "制度后A1锚点"
+        "前轮A1锚点"
       ],
       "sourceLinks": [
         {
@@ -92068,14 +92064,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 45.734,
-      "calendarDaysA1ToNotice": 0.0,
+      "calendarDaysA1ToNotice": 206.0,
       "calendarDaysA1ToListing": 332.0,
       "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": true,
+      "durationSampleEligible": false,
       "listingDurationSampleEligible": true,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "制度后A1锚点"
+        "前轮A1锚点"
       ],
       "sourceLinks": [
         {
