@@ -23,7 +23,9 @@ const state = {
   type: "all",
   nature: "all",
   sector: "all",
-  dateField: "a1Date",
+  // Mixed-stage views need a date that follows the project's current stage:
+  // public A1 for applications and HKEX listing date for completed listings.
+  dateField: "stageDate",
   dateFrom: "",
   dateTo: "",
   dateQuick: "all",
@@ -797,6 +799,7 @@ function pkComparableRow(sponsorId, comparisonRows, optionRows) {
 
 function dateScopeLabel() {
   const fieldLabel = {
+    stageDate: "阶段日（申请中按A1；已上市按上市日）",
     a1Date: "A1",
     noticeDate: "备案通知书",
     receivedDate: "接收",
@@ -928,10 +931,16 @@ function filteredFacts() {
 }
 
 function matchesDateScope(fact) {
-  const dateValue = fact[state.dateField];
+  const dateValue = factDateForScope(fact, state.dateField);
   if (state.dateFrom && (!dateValue || dateValue < state.dateFrom)) return false;
   if (state.dateTo && (!dateValue || dateValue > state.dateTo)) return false;
   return true;
+}
+
+function factDateForScope(fact, dateField = state.dateField) {
+  if (dateField !== "stageDate") return fact[dateField];
+  if (fact.hkexStage === "listed") return fact.listingDate;
+  return fact.a1Date;
 }
 
 function pkFilteredFacts() {
@@ -986,46 +995,34 @@ function enforceMetricCompatibility() {
   }
 }
 
+function resetPresetFilters() {
+  state.search = "";
+  state.stage = "all";
+  state.type = "all";
+  state.nature = "all";
+  state.sector = "all";
+  state.dateField = "stageDate";
+  state.dateFrom = "";
+  state.dateTo = "";
+  state.dateQuick = "all";
+}
+
 function setPreset(preset) {
   state.preset = preset;
-  if (preset === "all") {
-    state.stage = "all";
-    state.type = "all";
-    state.nature = "all";
-    state.sector = "all";
-    state.dateFrom = "";
-    state.dateTo = "";
-    state.dateField = "a1Date";
-    state.dateQuick = "all";
-  } else if (preset === "applying") {
+  resetPresetFilters();
+  if (preset === "applying") {
     state.stage = "applying";
-    state.type = "all";
-    state.dateFrom = "";
-    state.dateTo = "";
-    state.dateQuick = "all";
     enforceMetricCompatibility();
   } else if (preset === "listed") {
     state.stage = "listed";
-    state.dateField = "listingDate";
-    state.dateFrom = "";
-    state.dateTo = "";
-    state.dateQuick = "all";
   } else if (preset === "ah") {
-    state.stage = "all";
     state.type = "A+H";
-    state.dateFrom = "";
-    state.dateTo = "";
-    state.dateQuick = "all";
   } else if (preset === "recentA1") {
-    state.stage = "all";
-    state.type = "all";
     state.dateField = "a1Date";
     state.dateTo = metaToday();
     state.dateFrom = addDays(state.dateTo, -30);
     state.dateQuick = "custom";
   } else if (preset === "recentNotice") {
-    state.stage = "all";
-    state.type = "all";
     state.dateField = "noticeDate";
     state.dateTo = metaToday();
     state.dateFrom = addDays(state.dateTo, -90);
@@ -1122,6 +1119,7 @@ function readPkDateControls() {
   if (pkEls.dateFrom) state.dateFrom = pkEls.dateFrom.value;
   if (pkEls.dateTo) state.dateTo = pkEls.dateTo.value;
   state.dateQuick = "custom";
+  state.preset = "custom";
   enforceMetricCompatibility();
   syncControls();
   render();
@@ -1355,20 +1353,20 @@ function marketCapDisplay(row) {
 function metricCards(rows) {
   const MIN_ACTIVE_PROJECTS = 8;
   const MIN_MARKET_CAP_PROJECTS = 3;
-  const activeLeader = [...rows].filter((row) => row.activeCount > 0).sort((a, b) => b.activeCount - a.activeCount || b.projectCount - a.projectCount)[0];
-  const timingLeader = [...rows]
+  const comparableRows = rows.filter((row) => row.firmScope !== "rollup" && row.firmScope !== "benchmark");
+  const activeLeader = [...comparableRows].filter((row) => row.activeCount > 0).sort((a, b) => b.activeCount - a.activeCount || b.projectCount - a.projectCount)[0];
+  const timingLeader = [...comparableRows]
     .filter((row) => isNumber(row.listedLifecycleAverageDays) && row.listedLifecycleN >= 5)
     .sort((a, b) => a.listedLifecycleAverageDays - b.listedLifecycleAverageDays)[0];
-  const spWorkloadLeader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.activeProjectsPerSponsorPrincipal) && row.activeCount >= MIN_ACTIVE_PROJECTS)
+  const spWorkloadLeader = [...comparableRows]
+    .filter((row) => isNumber(row.activeProjectsPerSponsorPrincipal) && row.activeCount >= MIN_ACTIVE_PROJECTS)
     .sort((a, b) => b.activeProjectsPerSponsorPrincipal - a.activeProjectsPerSponsorPrincipal || b.activeCount - a.activeCount)[0];
-  const repLeanLeader = [...rows]
-    .filter((row) => row.firmScope !== "rollup" && isNumber(row.type6RepPerActiveProject) && row.activeCount >= MIN_ACTIVE_PROJECTS)
+  const repLeanLeader = [...comparableRows]
+    .filter((row) => isNumber(row.type6RepPerActiveProject) && row.activeCount >= MIN_ACTIVE_PROJECTS)
     .sort((a, b) => a.type6RepPerActiveProject - b.type6RepPerActiveProject || b.activeCount - a.activeCount)[0];
-  const mcapPerSpLeader = [...rows]
+  const mcapPerSpLeader = [...comparableRows]
     .filter(
       (row) =>
-        row.firmScope !== "rollup" &&
         isNumber(row.listingMarketCapPerSponsorPrincipalHkdBn) &&
         row.listingMarketCapN >= MIN_MARKET_CAP_PROJECTS,
     )
@@ -1377,19 +1375,18 @@ function metricCards(rows) {
         b.listingMarketCapPerSponsorPrincipalHkdBn - a.listingMarketCapPerSponsorPrincipalHkdBn ||
         b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum,
     )[0];
-  const mcapPerTotalLeader = [...rows]
+  const mcapPerTotalLeader = [...comparableRows]
     .filter(
       (row) =>
-        row.firmScope !== "rollup" &&
         isNumber(row.listingMarketCapPerType6TotalHkdBn) &&
         row.listingMarketCapN >= MIN_MARKET_CAP_PROJECTS,
     )
     .sort((a, b) => b.listingMarketCapPerType6TotalHkdBn - a.listingMarketCapPerType6TotalHkdBn || b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum)[0];
-  const listedMcapLeader = [...rows]
+  const listedMcapLeader = [...comparableRows]
     .filter((row) => row.listingMarketCapHkdBnSum > 0)
     .sort((a, b) => b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum || b.listingMarketCapN - a.listingMarketCapN)[0];
-  const projectLeader = [...rows].filter((row) => row.projectCount > 0).sort((a, b) => b.projectCount - a.projectCount || b.activeCount - a.activeCount)[0];
-  const listedLeader = [...rows].filter((row) => row.listedCount > 0).sort((a, b) => b.listedCount - a.listedCount || b.projectCount - a.projectCount)[0];
+  const projectLeader = [...comparableRows].filter((row) => row.projectCount > 0).sort((a, b) => b.projectCount - a.projectCount || b.activeCount - a.activeCount)[0];
+  const listedLeader = [...comparableRows].filter((row) => row.listedCount > 0).sort((a, b) => b.listedCount - a.listedCount || b.projectCount - a.projectCount)[0];
 
   if (state.sector !== "all") {
     const label = sectorLabel();
@@ -1677,6 +1674,8 @@ function renderPkCard(row, sideLabel) {
   const capacity = capacityDisplay(row);
   const note = row.firmScope === "benchmark"
     ? row.benchmarkNote || "组内中位数"
+    : row.firmScope === "rollup"
+      ? `${row.displayNameEn} · 合并口径`
     : row.emptyFilter
       ? `${row.displayNameEn} · 当前筛选暂无样本`
       : `${row.displayNameEn} · ${row.sponsorNature || "待核"}`;
@@ -1719,9 +1718,12 @@ function populatePkOptions(rows) {
     .map((row) => `<option value="${escapeHtml(row.sponsorId)}">${escapeHtml(row.displayNameZh)} · ${escapeHtml(row.displayNameEn)}</option>`)
     .join("");
   const firmOptions = rows
-    .filter((row) => row.firmScope !== "rollup" && row.firmScope !== "benchmark")
+    .filter((row) => row.firmScope !== "benchmark")
     .sort((a, b) => b.projectCount - a.projectCount || String(a.displayNameZh).localeCompare(String(b.displayNameZh), "zh-Hans"))
-    .map((row) => `<option value="${escapeHtml(row.sponsorId)}">${escapeHtml(row.displayNameZh)} · ${escapeHtml(row.displayNameEn)}</option>`)
+    .map((row) => {
+      const scope = row.firmScope === "rollup" ? " · 合并口径" : "";
+      return `<option value="${escapeHtml(row.sponsorId)}">${escapeHtml(row.displayNameZh)} · ${escapeHtml(row.displayNameEn)}${scope}</option>`;
+    })
     .join("");
   const options = `${benchmarkOptions ? `<optgroup label="市场基准">${benchmarkOptions}</optgroup>` : ""}<optgroup label="保荐人">${firmOptions}</optgroup>`;
   pkEls.sponsorA.innerHTML = options;
