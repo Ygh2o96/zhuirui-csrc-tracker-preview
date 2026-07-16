@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-15T03:08:01Z",
-    "sourceGeneratedAt": "2026-07-15T11:07:08+08:00",
+    "generatedAt": "2026-07-16T03:45:30Z",
+    "sourceGeneratedAt": "2026-07-16T11:45:20+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-15T11:07:08+08:00",
+      "generatedAt": "2026-07-16T11:45:20+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1421,
@@ -95,8 +95,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "科学研究和技术服务业",
-        "新能源/汽车产业链"
+        "新能源/汽车产业链",
+        "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 38,
       "type6RepCount": 946,
@@ -154,11 +154,10 @@
       "sponsorTag": "CITIC",
       "displayNameZh": "中信证券",
       "displayNameEn": "CITIC",
-      "canonicalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "canonicalName": "CITIC Securities (Hong Kong) Limited",
       "legalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited",
-        "CLSA Equity Capital Markets Limited",
-        "CITIC Securities (Hong Kong) Limited"
+        "CITIC Securities (Hong Kong) Limited",
+        "CLSA Equity Capital Markets Limited"
       ],
       "aliases": [
         "里昂",
@@ -190,8 +189,8 @@
       "timingN": 71,
       "topIndustries": [
         "制造业",
-        "科学研究和技术服务业",
         "信息传输、软件和信息技术服务业",
+        "科学研究和技术服务业",
         "生物医药研发/技术许可"
       ],
       "type6ROCount": 46,
@@ -284,7 +283,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "批发和零售业",
-        "科学研究和技术服务业"
+        "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 31,
       "type6RepCount": 426,
@@ -387,12 +386,12 @@
       "type6TotalCount": 337,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-15",
       "type6Quality": "fresh",
@@ -429,8 +428,8 @@
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Haitong International Capital Limited",
-        "Guotai Junan Capital Limited"
+        "Guotai Junan Capital Limited",
+        "Haitong International Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
@@ -480,7 +479,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "半导体/集成电路/电子制造",
-        "批发和零售业"
+        "新能源/汽车产业链"
       ],
       "type6ROCount": 15,
       "type6RepCount": 321,
@@ -637,7 +636,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "软件/AI/数据/互联网",
-        "科学研究和技术服务业"
+        "新能源/汽车产业链"
       ],
       "type6ROCount": 19,
       "type6RepCount": 90,
@@ -711,8 +710,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "科学研究和技术服务业",
-        "批发和零售业"
+        "批发和零售业",
+        "软件/AI/数据/互联网"
       ],
       "type6ROCount": 21,
       "type6RepCount": 153,
@@ -792,7 +791,7 @@
         "制造业",
         "科学研究和技术服务业",
         "高端装备/机器人/智能制造",
-        "信息传输、软件和信息技术服务业"
+        "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 21,
       "type6RepCount": 268,
@@ -866,8 +865,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "科学研究和技术服务业",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "生物医药研发/技术许可"
       ],
       "type6ROCount": 16,
       "type6RepCount": 60,
@@ -941,7 +940,7 @@
         "制造业",
         "租赁和商务服务业",
         "批发和零售业",
-        "信息传输、软件和信息技术服务业"
+        "半导体/集成电路/电子制造"
       ],
       "type6ROCount": 17,
       "type6RepCount": 206,
@@ -1017,9 +1016,9 @@
       "timingN": 14,
       "topIndustries": [
         "制造业",
-        "科学研究和技术服务业",
         "交通运输、仓储和邮政业",
-        "电子元器件/消费电子制造"
+        "电子元器件/消费电子制造",
+        "科学研究和技术服务业"
       ],
       "type6ROCount": 12,
       "type6RepCount": 101,
@@ -1237,8 +1236,8 @@
       "topIndustries": [
         "制造业",
         "批发和零售业",
-        "信息传输、软件和信息技术服务业",
-        "交通运输、仓储和邮政业"
+        "交通运输、仓储和邮政业",
+        "信息传输、软件和信息技术服务业"
       ],
       "type6ROCount": 16,
       "type6RepCount": 53,
@@ -1384,9 +1383,9 @@
       "timingN": 9,
       "topIndustries": [
         "制造业",
-        "科学研究和技术服务业",
         "租赁和商务服务业",
-        "高端装备/机器人/智能制造"
+        "高端装备/机器人/智能制造",
+        "电子元器件/消费电子制造"
       ],
       "type6ROCount": 14,
       "type6RepCount": 168,
@@ -1874,7 +1873,7 @@
         "信息传输、软件和信息技术服务业",
         "制造业",
         "软件/AI/数据/互联网",
-        "科学研究和技术服务业"
+        "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 14,
       "type6RepCount": 38,
@@ -2011,8 +2010,8 @@
       "timingN": 2,
       "topIndustries": [
         "制造业",
-        "信息传输、软件和信息技术服务业",
         "批发和零售业",
+        "信息传输、软件和信息技术服务业",
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 11,
@@ -2083,8 +2082,8 @@
       "medianA1ToNoticeDays": 175.0,
       "timingN": 3,
       "topIndustries": [
-        "科学研究和技术服务业",
         "制造业",
+        "科学研究和技术服务业",
         "生物医药研发/技术许可",
         "电子元器件/消费电子制造"
       ],
@@ -2221,8 +2220,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "卫生和社会工作",
-        "租赁和商务服务业"
+        "租赁和商务服务业",
+        "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 8,
       "type6RepCount": 18,
@@ -3234,8 +3233,8 @@
       "medianA1ToNoticeDays": null,
       "timingN": 0,
       "topIndustries": [
-        "交通运输、仓储和邮政业",
         "物流/运输/供应链",
+        "交通运输、仓储和邮政业",
         "建筑业",
         "高端装备/机器人/智能制造"
       ],
@@ -3706,8 +3705,7 @@
       "topIndustries": [
         "制造业",
         "医药/生物科技/医疗器械制造",
-        "母婴营养品",
-        "批发和零售业"
+        "母婴营养品"
       ],
       "type6ROCount": 3,
       "type6RepCount": 6,
@@ -4013,9 +4011,9 @@
       "timingN": 1,
       "topIndustries": [
         "运动消费品与IP运营",
-        "批发和零售业",
         "文化、体育和娱乐业",
-        "顺风车平台"
+        "顺风车平台",
+        "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 6,
       "type6RepCount": 82,
@@ -5079,6 +5077,130 @@
   ],
   "projectFacts": [
     {
+      "issuerId": "yonyou network technology co., ltd.",
+      "issuerName": "Yonyou Network Technology Co., Ltd.",
+      "csrcName": "用友網絡科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cmbi",
+      "sourceSponsorTag": "CMBI",
+      "sourceSponsorTags": [
+        "CMBI"
+      ],
+      "leaderboardSponsorTag": "CMBI",
+      "sponsorLegalName": "CMB International Capital Limited",
+      "sponsorLegalNames": [
+        "CMB International Capital Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2025-06-27",
+      "currentA1Date": "2026-07-15",
+      "receivedDate": "2026-04-28",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
+      ],
+      "csrcIndustryTags": [
+        "信息传输、软件和信息技术服务业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 44.7627,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 305.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "yonyou network technology co., ltd.",
+      "issuerName": "Yonyou Network Technology Co., Ltd.",
+      "csrcName": "用友網絡科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2025-06-27",
+      "currentA1Date": "2026-07-15",
+      "receivedDate": "2026-04-28",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
+      ],
+      "csrcIndustryTags": [
+        "信息传输、软件和信息技术服务业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 44.7627,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 305.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
+        }
+      ]
+    },
+    {
       "issuerId": "jinan janbon metallic materials co., ltd. (formerly known as janbon materials co., ltd.)",
       "issuerName": "Jinan Janbon Metallic Materials Co., Ltd. (formerly known as Janbon Materials Co., Ltd.)",
       "csrcName": "濟南建邦金屬材料股份有限公司",
@@ -5324,9 +5446,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -5386,9 +5508,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -5551,9 +5673,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 3,
       "sponsorCountOnDeal": 3,
@@ -5609,9 +5731,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -5833,9 +5955,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -6325,9 +6447,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -6457,9 +6579,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -6561,9 +6683,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -6775,9 +6897,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -7630,9 +7752,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -8413,9 +8535,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 3,
@@ -8566,9 +8688,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -9247,9 +9369,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -9453,9 +9575,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -9929,9 +10051,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -9950,8 +10072,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -10040,9 +10161,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -10151,9 +10272,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -10172,8 +10293,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -10230,8 +10350,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -10919,9 +11038,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -11648,9 +11767,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -12202,9 +12321,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -13089,8 +13208,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "营销/广告/品牌服务",
-        "租赁和商务服务业"
+        "营销/广告/品牌服务"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -13152,8 +13270,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "营销/广告/品牌服务",
-        "租赁和商务服务业"
+        "营销/广告/品牌服务"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -13405,9 +13522,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -13751,9 +13868,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -13860,9 +13977,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -14070,9 +14187,9 @@
         "CLSA"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited / CLSA Equity Capital Markets Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited / CLSA Equity Capital Markets Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited",
+        "CITIC Securities (Hong Kong) Limited",
         "CLSA Equity Capital Markets Limited"
       ],
       "sponsorOrder": 1,
@@ -14325,8 +14442,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "新能源/汽车产业链",
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业"
+        "软件/AI/数据/互联网"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -14384,8 +14500,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "新能源/汽车产业链",
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业"
+        "软件/AI/数据/互联网"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -14618,9 +14733,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -14639,8 +14754,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -14900,9 +15014,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 4,
@@ -15240,9 +15354,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -15621,9 +15735,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -15794,9 +15908,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -15892,9 +16006,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -16146,8 +16260,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "餐饮/连锁餐饮",
-        "客运/出行/共享交通",
-        "交通运输、仓储和邮政业"
+        "客运/出行/共享交通"
       ],
       "csrcIndustryTags": [
         "文化、体育和娱乐业"
@@ -16727,9 +16840,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 4,
       "sponsorCountOnDeal": 4,
@@ -17075,9 +17188,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -17272,9 +17385,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -18125,8 +18238,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电力/燃气/公用能源",
-        "电力、热力、燃气及水生产和供应业"
+        "电力/燃气/公用能源"
       ],
       "csrcIndustryTags": [
         "水利、环境和公共设施管理业"
@@ -18153,9 +18265,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -18174,8 +18286,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -19200,9 +19311,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -20564,9 +20675,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -20744,9 +20855,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 3,
@@ -21677,9 +21788,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -21860,9 +21971,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 3,
@@ -22831,8 +22942,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "金融/保险/证券/支付",
-        "医药/医疗产品流通",
-        "批发和零售业"
+        "医药/医疗产品流通"
       ],
       "csrcIndustryTags": [
         "金融业"
@@ -23019,9 +23129,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -23040,8 +23150,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -23098,8 +23207,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -23281,8 +23389,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "金融/保险/证券/支付",
-        "医疗服务/养老/社会工作",
-        "卫生和社会工作"
+        "医疗服务/养老/社会工作"
       ],
       "csrcIndustryTags": [
         "金融业"
@@ -23376,9 +23483,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 4,
@@ -23703,9 +23810,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -24077,9 +24184,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -25464,9 +25571,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -26141,9 +26248,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -26199,9 +26306,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -26381,9 +26488,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -26439,9 +26546,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -26509,9 +26616,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -27463,9 +27570,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -28140,9 +28247,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -29314,8 +29421,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "客运/出行/共享交通",
-        "交通运输、仓储和邮政业"
+        "客运/出行/共享交通"
       ],
       "csrcIndustryTags": [
         "文化、体育和娱乐业"
@@ -29582,9 +29688,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -29900,9 +30006,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -30453,9 +30559,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 3,
@@ -30763,9 +30869,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 3,
@@ -31115,9 +31221,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -31169,9 +31275,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -31190,8 +31296,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "营销/广告/品牌服务",
-        "租赁和商务服务业"
+        "营销/广告/品牌服务"
       ],
       "csrcIndustryTags": [
         "信息传输、软件和信息技术服务业"
@@ -31475,9 +31580,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -31727,9 +31832,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 3,
       "sponsorCountOnDeal": 3,
@@ -32061,8 +32166,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -32123,8 +32227,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -32222,9 +32325,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -32243,8 +32346,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -32345,9 +32447,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -32824,9 +32926,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -34295,9 +34397,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -34775,9 +34877,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 3,
@@ -35007,8 +35109,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "物流/运输/供应链",
-        "交通运输、仓储和邮政业"
+        "物流/运输/供应链"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -35762,8 +35863,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "检测/检验/认证",
-        "科学研究和技术服务业"
+        "检测/检验/认证"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -36039,9 +36139,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 3,
@@ -36350,9 +36450,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -36475,9 +36575,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -36600,9 +36700,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -36684,8 +36784,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -36965,9 +37064,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 3,
       "sponsorCountOnDeal": 3,
@@ -37214,9 +37313,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -37276,9 +37375,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -38032,9 +38131,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -38350,9 +38449,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -38777,9 +38876,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -39081,9 +39180,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -39144,9 +39243,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -39590,9 +39689,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -39714,9 +39813,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -39776,9 +39875,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -39902,9 +40001,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -39951,9 +40050,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -39972,8 +40071,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -40013,9 +40111,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -40698,9 +40796,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -40823,9 +40921,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 3,
@@ -40949,9 +41047,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -41524,8 +41622,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "物流/运输/供应链",
-        "房地产/物业",
-        "房地产业"
+        "房地产/物业"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -41574,8 +41671,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "物流/运输/供应链",
-        "房地产/物业",
-        "房地产业"
+        "房地产/物业"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -41624,8 +41720,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "物流/运输/供应链",
-        "房地产/物业",
-        "房地产业"
+        "房地产/物业"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -41714,9 +41809,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -42572,9 +42667,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -43303,9 +43398,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -43540,9 +43635,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -43684,7 +43779,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -43746,7 +43843,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -43808,7 +43907,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -43870,7 +43971,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -43932,7 +44035,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -43959,9 +44064,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -43995,7 +44100,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44053,7 +44160,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44080,9 +44189,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -44115,7 +44224,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44178,7 +44289,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44241,7 +44354,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44304,7 +44419,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44366,7 +44483,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "备案情况表（历史表）",
@@ -44542,8 +44661,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -44602,8 +44720,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -44662,8 +44779,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -44722,8 +44838,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -44786,8 +44901,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -44829,9 +44943,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -44957,9 +45071,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -46073,9 +46187,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -46789,9 +46903,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -47084,9 +47198,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -47148,9 +47262,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -47506,9 +47620,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -47853,9 +47967,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -47913,9 +48027,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -48079,9 +48193,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -48617,134 +48731,6 @@
       ]
     },
     {
-      "issuerId": "yonyou network technology co., ltd.",
-      "issuerName": "Yonyou Network Technology Co., Ltd.",
-      "csrcName": "用友網絡科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cmbi",
-      "sourceSponsorTag": "CMBI",
-      "sourceSponsorTags": [
-        "CMBI"
-      ],
-      "leaderboardSponsorTag": "CMBI",
-      "sponsorLegalName": "CMB International Capital Limited",
-      "sponsorLegalNames": [
-        "CMB International Capital Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2025-06-27",
-      "currentA1Date": "2025-12-29",
-      "receivedDate": "2026-04-28",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业"
-      ],
-      "csrcIndustryTags": [
-        "信息传输、软件和信息技术服务业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 44.7627,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 305.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "yonyou network technology co., ltd.",
-      "issuerName": "Yonyou Network Technology Co., Ltd.",
-      "csrcName": "用友網絡科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citic",
-      "sourceSponsorTag": "CITIC",
-      "sourceSponsorTags": [
-        "CITIC"
-      ],
-      "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
-      "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2025-06-27",
-      "currentA1Date": "2025-12-29",
-      "receivedDate": "2026-04-28",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业"
-      ],
-      "csrcIndustryTags": [
-        "信息传输、软件和信息技术服务业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 44.7627,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 305.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
-        }
-      ]
-    },
-    {
       "issuerId": "youcare pharmaceutical group co., ltd.",
       "issuerName": "Youcare Pharmaceutical Group Co., Ltd.",
       "csrcName": "悅康藥業集團股份有限公司",
@@ -48755,9 +48741,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -48827,8 +48813,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -49075,8 +49060,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -49135,8 +49119,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -49912,9 +49895,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -49976,9 +49959,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -50915,9 +50898,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -51081,9 +51064,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -51199,9 +51182,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -51371,9 +51354,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 1,
@@ -51423,9 +51406,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -51847,9 +51830,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -51988,8 +51971,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -52018,9 +52000,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 2,
@@ -52039,8 +52021,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -52310,9 +52291,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 2,
       "sponsorCountOnDeal": 4,
@@ -52950,9 +52931,9 @@
         "CITIC"
       ],
       "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities Corporate Finance (HK) Limited",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
       "sponsorLegalNames": [
-        "CITIC Securities Corporate Finance (HK) Limited"
+        "CITIC Securities (Hong Kong) Limited"
       ],
       "sponsorOrder": 1,
       "sponsorCountOnDeal": 2,
@@ -53138,8 +53119,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "出海数字营销",
-        "租赁和商务服务业"
+        "出海数字营销"
       ],
       "csrcIndustryTags": [
         "信息传输、软件和信息技术服务业"
@@ -53788,8 +53768,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "疫苗研发",
-        "科学研究和技术服务业"
+        "疫苗研发"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -53920,8 +53899,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "商品营销服务",
-        "租赁和商务服务业"
+        "商品营销服务"
       ],
       "csrcIndustryTags": [
         "批发和零售业"
@@ -53985,8 +53963,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "商品营销服务",
-        "租赁和商务服务业"
+        "商品营销服务"
       ],
       "csrcIndustryTags": [
         "批发和零售业"
@@ -54439,8 +54416,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "皮肤医疗产品",
-        "科学研究和技术服务业"
+        "皮肤医疗产品"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -54504,8 +54480,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "运动消费品与IP运营",
-        "批发和零售业"
+        "运动消费品与IP运营"
       ],
       "csrcIndustryTags": [
         "文化、体育和娱乐业"
@@ -54637,8 +54612,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤创新药研发",
-        "科学研究和技术服务业"
+        "肿瘤创新药研发"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -54702,8 +54676,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "第三方医学检验",
-        "卫生和社会工作"
+        "第三方医学检验"
       ],
       "csrcIndustryTags": [
         "科学研究和技术服务业"
@@ -54767,8 +54740,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "第三方医学检验",
-        "卫生和社会工作"
+        "第三方医学检验"
       ],
       "csrcIndustryTags": [
         "科学研究和技术服务业"
@@ -54896,8 +54868,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "ADC创新药",
-        "科学研究和技术服务业"
+        "ADC创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -54965,8 +54936,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "ADC创新药",
-        "科学研究和技术服务业"
+        "ADC创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -55431,8 +55401,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤免疫创新药",
-        "科学研究和技术服务业"
+        "肿瘤免疫创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -55496,8 +55465,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤免疫创新药",
-        "科学研究和技术服务业"
+        "肿瘤免疫创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -55697,8 +55665,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "双特异性抗体创新药",
-        "科学研究和技术服务业"
+        "双特异性抗体创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -57345,8 +57312,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "汽车融资租赁",
-        "租赁和商务服务业"
+        "汽车融资租赁"
       ],
       "csrcIndustryTags": [
         "金融业"
@@ -58926,8 +58892,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "代谢疾病创新药",
-        "科学研究和技术服务业"
+        "代谢疾病创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -58992,8 +58957,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "代谢疾病创新药",
-        "科学研究和技术服务业"
+        "代谢疾病创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -59536,8 +59500,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "汽车流通服务",
-        "租赁和商务服务业"
+        "汽车流通服务"
       ],
       "csrcIndustryTags": [
         "批发和零售业"
@@ -59602,8 +59565,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "汽车流通服务",
-        "租赁和商务服务业"
+        "汽车流通服务"
       ],
       "csrcIndustryTags": [
         "批发和零售业"
@@ -60146,8 +60108,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "自身免疫创新药",
-        "科学研究和技术服务业"
+        "自身免疫创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -60971,8 +60932,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "城市运营服务",
-        "水利、环境和公共设施管理业"
+        "城市运营服务"
       ],
       "csrcIndustryTags": [
         "租赁和商务服务业"
@@ -61037,8 +60997,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "抗体细胞因子创新药",
-        "科学研究和技术服务业"
+        "抗体细胞因子创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -61103,8 +61062,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "智能营销终端服务",
-        "租赁和商务服务业"
+        "智能营销终端服务"
       ],
       "csrcIndustryTags": [
         "信息传输、软件和信息技术服务业"
@@ -61707,8 +61665,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "顺风车平台",
-        "信息传输、软件和信息技术服务业"
+        "顺风车平台"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -61775,8 +61732,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "顺风车平台",
-        "信息传输、软件和信息技术服务业"
+        "顺风车平台"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -61843,8 +61799,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "顺风车平台",
-        "信息传输、软件和信息技术服务业"
+        "顺风车平台"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -61911,8 +61866,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "古法黄金珠宝",
-        "批发和零售业"
+        "古法黄金珠宝"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -62253,8 +62207,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网慢病管理",
-        "信息传输、软件和信息技术服务业"
+        "互联网慢病管理"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -62321,8 +62274,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网慢病管理",
-        "信息传输、软件和信息技术服务业"
+        "互联网慢病管理"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -62389,8 +62341,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "网约车出行",
-        "信息传输、软件和信息技术服务业"
+        "网约车出行"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -62455,8 +62406,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "网约车出行",
-        "信息传输、软件和信息技术服务业"
+        "网约车出行"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -62521,8 +62471,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "网约车出行",
-        "信息传输、软件和信息技术服务业"
+        "网约车出行"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -63123,8 +63072,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤小分子创新药",
-        "科学研究和技术服务业"
+        "肿瘤小分子创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -63461,8 +63409,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "临床研究数字化SaaS",
-        "信息传输、软件和信息技术服务业"
+        "临床研究数字化SaaS"
       ],
       "csrcIndustryTags": [
         "科学研究和技术服务业"
@@ -63535,8 +63482,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "临床研究数字化SaaS",
-        "信息传输、软件和信息技术服务业"
+        "临床研究数字化SaaS"
       ],
       "csrcIndustryTags": [
         "科学研究和技术服务业"
@@ -64539,8 +64485,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤创新药",
-        "科学研究和技术服务业"
+        "肿瘤创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -64613,8 +64558,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤创新药",
-        "科学研究和技术服务业"
+        "肿瘤创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -65325,8 +65269,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物药及生物类似药",
-        "科学研究和技术服务业"
+        "生物药及生物类似药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -65395,8 +65338,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "黄金珠宝",
-        "批发和零售业"
+        "黄金珠宝"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -66325,8 +66267,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网医疗平台",
-        "信息传输、软件和信息技术服务业"
+        "互联网医疗平台"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -66761,8 +66702,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "认知数字疗法",
-        "卫生和社会工作"
+        "认知数字疗法"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -66827,8 +66767,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "认知数字疗法",
-        "卫生和社会工作"
+        "认知数字疗法"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -67235,8 +67174,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "母婴营养品",
-        "批发和零售业"
+        "母婴营养品"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -68181,8 +68119,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "内分泌创新药",
-        "科学研究和技术服务业"
+        "内分泌创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -68249,8 +68186,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "内分泌创新药",
-        "科学研究和技术服务业"
+        "内分泌创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -68661,8 +68597,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "ADC创新药",
-        "科学研究和技术服务业"
+        "ADC创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -68727,8 +68662,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "ADC创新药",
-        "科学研究和技术服务业"
+        "ADC创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -68793,8 +68727,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "ADC创新药",
-        "科学研究和技术服务业"
+        "ADC创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -69843,8 +69776,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "miRNA肿瘤早筛",
-        "科学研究和技术服务业"
+        "miRNA肿瘤早筛"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -69909,8 +69841,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "miRNA肿瘤早筛",
-        "科学研究和技术服务业"
+        "miRNA肿瘤早筛"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -70185,8 +70116,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "代谢类创新药",
-        "科学研究和技术服务业"
+        "代谢类创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -71005,8 +70935,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "小分子创新药",
-        "科学研究和技术服务业"
+        "小分子创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -71085,8 +71014,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "小分子创新药",
-        "科学研究和技术服务业"
+        "小分子创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -71305,8 +71233,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "网约车出行",
-        "信息传输、软件和信息技术服务业"
+        "网约车出行"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -71371,8 +71298,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "网约车出行",
-        "信息传输、软件和信息技术服务业"
+        "网约车出行"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -71437,8 +71363,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "网约车出行",
-        "信息传输、软件和信息技术服务业"
+        "网约车出行"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -71701,8 +71626,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "月子护理服务",
-        "居民服务、修理和其他服务业"
+        "月子护理服务"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -71767,8 +71691,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "月子护理服务",
-        "居民服务、修理和其他服务业"
+        "月子护理服务"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -71833,8 +71756,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "黄金珠宝",
-        "批发和零售业"
+        "黄金珠宝"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -71903,8 +71825,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "黄金珠宝",
-        "批发和零售业"
+        "黄金珠宝"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -71973,8 +71894,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "椰子水饮品品牌",
-        "批发和零售业"
+        "椰子水饮品品牌"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -72337,8 +72257,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "眼科创新药",
-        "科学研究和技术服务业"
+        "眼科创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -72403,8 +72322,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "眼科创新药",
-        "科学研究和技术服务业"
+        "眼科创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -73153,8 +73071,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤免疫创新药",
-        "科学研究和技术服务业"
+        "肿瘤免疫创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -73223,8 +73140,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤免疫创新药",
-        "科学研究和技术服务业"
+        "肿瘤免疫创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -73367,8 +73283,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "新型疫苗",
-        "科学研究和技术服务业"
+        "新型疫苗"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -73441,8 +73356,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "新型疫苗",
-        "科学研究和技术服务业"
+        "新型疫苗"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -73515,8 +73429,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "代谢类生物创新药",
-        "科学研究和技术服务业"
+        "代谢类生物创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -73589,8 +73502,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "代谢类生物创新药",
-        "科学研究和技术服务业"
+        "代谢类生物创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -74419,8 +74331,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网医疗服务平台",
-        "信息传输、软件和信息技术服务业"
+        "互联网医疗服务平台"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -74485,8 +74396,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网医疗服务平台",
-        "信息传输、软件和信息技术服务业"
+        "互联网医疗服务平台"
       ],
       "csrcIndustryTags": [
         "卫生和社会工作"
@@ -74551,8 +74461,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "肿瘤小分子创新药",
-        "科学研究和技术服务业"
+        "肿瘤小分子创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -75517,8 +75426,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "吸入制剂",
-        "科学研究和技术服务业"
+        "吸入制剂"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -75587,8 +75495,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "吸入制剂",
-        "科学研究和技术服务业"
+        "吸入制剂"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -75727,8 +75634,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "创新药研发",
-        "科学研究和技术服务业"
+        "创新药研发"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -77585,8 +77491,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "抗病毒创新药",
-        "科学研究和技术服务业"
+        "抗病毒创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -79143,8 +79048,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物创新药",
-        "科学研究和技术服务业"
+        "生物创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -79217,8 +79121,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物创新药",
-        "科学研究和技术服务业"
+        "生物创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -80324,8 +80227,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "创面修复生物药",
-        "科学研究和技术服务业"
+        "创面修复生物药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -80394,8 +80296,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "创面修复生物药",
-        "科学研究和技术服务业"
+        "创面修复生物药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -80794,8 +80695,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "免疫治疗创新药",
-        "科学研究和技术服务业"
+        "免疫治疗创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -80938,8 +80838,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网健康保障平台",
-        "信息传输、软件和信息技术服务业"
+        "互联网健康保障平台"
       ],
       "csrcIndustryTags": [
         "金融业"
@@ -81004,8 +80903,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "互联网健康保障平台",
-        "信息传输、软件和信息技术服务业"
+        "互联网健康保障平台"
       ],
       "csrcIndustryTags": [
         "金融业"
@@ -81794,8 +81692,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "钢结构建筑系统",
-        "建筑业"
+        "钢结构建筑系统"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -82520,8 +82417,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "小核酸药物",
-        "科学研究和技术服务业"
+        "小核酸药物"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -82594,8 +82490,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "小核酸药物",
-        "科学研究和技术服务业"
+        "小核酸药物"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -86804,7 +86699,7 @@
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
+      "hkexConfidentialFilingDate": "2025-06-29",
       "statusTags": [
         "密交"
       ],
@@ -86828,6 +86723,10 @@
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7619928/content.shtml"
+        },
+        {
+          "label": "HKEX招股书（密交递交日期依据）",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/2026032300023.pdf"
         }
       ]
     },
@@ -86876,7 +86775,7 @@
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
+      "hkexConfidentialFilingDate": "2025-06-29",
       "statusTags": [
         "密交"
       ],
@@ -86900,6 +86799,10 @@
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7619928/content.shtml"
+        },
+        {
+          "label": "HKEX招股书（密交递交日期依据）",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/2026032300023.pdf"
         }
       ]
     },
@@ -90571,8 +90474,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "物流/运输/供应链",
-        "房地产/物业",
-        "房地产业"
+        "房地产/物业"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -91387,8 +91289,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -91459,8 +91360,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
+        "生物医药研发/技术许可"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -91864,8 +91764,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "商品营销服务",
-        "租赁和商务服务业"
+        "商品营销服务"
       ],
       "csrcIndustryTags": [
         "批发和零售业"
@@ -92400,8 +92299,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "智能营销终端服务",
-        "租赁和商务服务业"
+        "智能营销终端服务"
       ],
       "csrcIndustryTags": [
         "信息传输、软件和信息技术服务业"
@@ -92548,8 +92446,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "顺风车平台",
-        "信息传输、软件和信息技术服务业"
+        "顺风车平台"
       ],
       "csrcIndustryTags": [
         "交通运输、仓储和邮政业"
@@ -93641,8 +93538,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物创新药",
-        "科学研究和技术服务业"
+        "生物创新药"
       ],
       "csrcIndustryTags": [
         "制造业"
@@ -94437,7 +94333,7 @@
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
+      "hkexConfidentialFilingDate": "2025-06-29",
       "statusTags": [
         "密交"
       ],
@@ -94461,6 +94357,10 @@
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7619928/content.shtml"
+        },
+        {
+          "label": "HKEX招股书（密交递交日期依据）",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/2026032300023.pdf"
         }
       ],
       "sourceSponsorId": "gtja",

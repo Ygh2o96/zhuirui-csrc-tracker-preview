@@ -1478,6 +1478,7 @@ function renderDetail(record) {
         <span>时间线 Timeline</span>
         <div class="timeline">
           <div class="timeline-row"><span>备案A1锚点 A1 anchor</span><strong>${formatDate(record.a1Date)}</strong></div>
+          ${record.hkexConfidentialFilingDate ? `<div class="timeline-row" title="${escapeHtml(record.hkexConfidentialFilingEvidence || "")}"><span>密交递交 Confidential filing</span><strong>${formatDate(record.hkexConfidentialFilingDate)}</strong></div>` : ""}
           ${record.statsAnchorDate && record.statsAnchorDate !== record.a1Date ? `<div class="timeline-row"><span>统计锚点（制度后首A1）Stats anchor</span><strong>${formatDate(record.statsAnchorDate)}</strong></div>` : ""}
           ${historicalAnchorLine}
           <div class="timeline-row"><span>当前A1 Current A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>
