@@ -802,14 +802,24 @@ function renderReceivedDateValue(value, isAsOf = false) {
   return `<span class="date-primary">截至 ${escapeHtml(formatDatePlain(value))}</span><span class="date-secondary">已接收 · as of status</span>`;
 }
 
+function isLaterCycleReceived(record) {
+  const current = asDateValue(record.csrcCurrentReceivedDate);
+  const notice = asDateValue(record.noticeDate);
+  return current !== null && notice !== null && current > notice;
+}
+
 function renderReceivedCell(record) {
   const primary = record.csrcReceivedDate || record.csrcFirstReceivedDate;
   const primaryIsAsOf = record.csrcReceivedDateIsAsOf || (
     !record.csrcReceivedDate && record.csrcFirstReceivedDate && record.csrcFirstReceivedDateIsAsOf
   );
   const currentIsAsOf = record.csrcCurrentReceivedDateIsAsOf;
+  const currentLabel = isLaterCycleReceived(record) ? "后续备案轮次" : "当前";
+  if (!primary && record.csrcCurrentReceivedDate) {
+    return `${renderReceivedDateValue(record.csrcCurrentReceivedDate, currentIsAsOf)}<span class="date-secondary">${currentLabel}接收</span>`;
+  }
   const secondaryHtml = record.csrcCurrentReceivedDate && record.csrcCurrentReceivedDate !== primary
-    ? `<span class="date-secondary">当前 ${currentIsAsOf ? "截至 " : ""}${formatDatePlain(record.csrcCurrentReceivedDate)}</span>`
+    ? `<span class="date-secondary">${currentLabel} ${currentIsAsOf ? "截至 " : ""}${formatDatePlain(record.csrcCurrentReceivedDate)}</span>`
     : "";
   return `${renderReceivedDateValue(primary, primaryIsAsOf)}${secondaryHtml}`;
 }
@@ -889,7 +899,7 @@ function getBaseFilteredRecords() {
     }
 
     const rawDate = state.dateField === "csrcReceivedDate"
-      ? (record.csrcReceivedDate || record.csrcFirstReceivedDate)
+      ? (record.csrcReceivedDate || record.csrcFirstReceivedDate || record.csrcCurrentReceivedDate)
       : record[state.dateField];
     const recordDate = asDateValue(rawDate);
     if ((from || to) && !recordDate) return false;
@@ -937,7 +947,7 @@ function sortKey(record, field) {
     return { value: typeof record.listingMarketCapHkdBn === "number" ? record.listingMarketCapHkdBn : null, type: "number" };
   }
   if (field === "csrcReceivedDate") {
-    return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate), type: "number" };
+    return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate || record.csrcCurrentReceivedDate), type: "number" };
   }
   if (field.endsWith("Date")) return { value: asDateValue(record[field]), type: "number" };
   return { value: record[field], type: typeof record[field] === "number" ? "number" : "text" };
@@ -1492,7 +1502,7 @@ function renderDetail(record) {
           ${historicalAnchorLine}
           <div class="timeline-row"><span>当前A1 Current A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>
           <div class="timeline-row"><span>${record.csrcReceivedDateIsAsOf ? "首轮接收状态 First received status" : "首轮接收 First received"}</span><strong>${renderReceivedDateValue(record.csrcFirstReceivedDate || record.csrcReceivedDate, record.csrcReceivedDateIsAsOf)}</strong></div>
-          <div class="timeline-row"><span>${record.csrcCurrentReceivedDateIsAsOf ? "当前接收状态 Current received status" : "当前接收 Current received"}</span><strong>${renderReceivedDateValue(record.csrcCurrentReceivedDate, record.csrcCurrentReceivedDateIsAsOf)}</strong></div>
+          <div class="timeline-row"><span>${isLaterCycleReceived(record) ? "后续备案轮次接收 Later-cycle received" : (record.csrcCurrentReceivedDateIsAsOf ? "当前接收状态 Current received status" : "当前接收 Current received")}</span><strong>${renderReceivedDateValue(record.csrcCurrentReceivedDate, record.csrcCurrentReceivedDateIsAsOf)}</strong></div>
           <div class="timeline-row"><span>备案通知书 CSRC notice</span><strong>${formatDate(record.noticeDate)}</strong></div>
           ${listedTimelineRows}
         </div>
