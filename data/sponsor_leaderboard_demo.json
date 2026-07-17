@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-17T03:42:21Z",
-    "sourceGeneratedAt": "2026-07-17T11:42:10+08:00",
+    "generatedAt": "2026-07-17T10:31:59Z",
+    "sourceGeneratedAt": "2026-07-17T17:52:55+08:00",
     "sourceRecordCount": 828,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-17T11:42:10+08:00",
+      "generatedAt": "2026-07-17T17:52:55+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1421,
@@ -7021,8 +7021,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-11-25",
       "currentA1Date": "2026-06-30",
       "receivedDate": "2026-01-07",
@@ -9443,7 +9443,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-20",
       "currentA1Date": "2026-06-22",
-      "receivedDate": null,
+      "receivedDate": "2025-07-10",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -9460,12 +9460,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 20.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -9703,7 +9707,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-12-02",
       "currentA1Date": "2026-06-18",
-      "receivedDate": null,
+      "receivedDate": "2026-01-16",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -9720,12 +9724,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 45.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://caifuhao.eastmoney.com/news/20260202150743843978360"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -10396,8 +10404,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-11-30",
       "currentA1Date": "2026-06-15",
       "receivedDate": "2025-12-29",
@@ -10453,8 +10461,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-11-30",
       "currentA1Date": "2026-06-15",
       "receivedDate": "2025-12-29",
@@ -12221,8 +12229,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-10-17",
       "currentA1Date": "2026-06-05",
       "receivedDate": "2025-11-06",
@@ -12279,8 +12287,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-12-03",
       "currentA1Date": "2026-06-05",
       "receivedDate": "2025-12-30",
@@ -13438,7 +13446,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-30",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2025-07-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -13455,12 +13463,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 25.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -13492,7 +13504,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-30",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2025-07-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -13509,12 +13521,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 25.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -13546,7 +13562,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-30",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2025-07-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -13563,12 +13579,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 25.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -15142,7 +15162,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
-      "receivedDate": null,
+      "receivedDate": "2025-06-20",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -15159,12 +15179,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 210.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -15196,7 +15220,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
-      "receivedDate": null,
+      "receivedDate": "2025-06-20",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -15213,12 +15237,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 210.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -15250,7 +15278,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
-      "receivedDate": null,
+      "receivedDate": "2025-06-20",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -15267,12 +15295,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 210.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -15304,7 +15336,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-11-22",
       "currentA1Date": "2026-05-26",
-      "receivedDate": null,
+      "receivedDate": "2025-06-20",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -15321,12 +15353,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 210.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -15926,7 +15962,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-30",
       "currentA1Date": "2026-05-22",
-      "receivedDate": null,
+      "receivedDate": "2025-07-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -15944,12 +15980,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 25.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -15981,7 +16021,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-30",
       "currentA1Date": "2026-05-22",
-      "receivedDate": null,
+      "receivedDate": "2025-07-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -15999,12 +16039,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 25.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -21538,7 +21582,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-09",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2025-06-23",
       "noticeDate": "2025-12-08",
       "listingDate": null,
       "issuerType": "H股",
@@ -21555,12 +21599,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 182.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 14.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7600645/content.shtml"
@@ -21596,7 +21644,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-09",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2025-06-23",
       "noticeDate": "2025-12-08",
       "listingDate": null,
       "issuerType": "H股",
@@ -21613,12 +21661,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 182.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 14.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7600645/content.shtml"
@@ -21974,8 +22026,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-10-16",
       "currentA1Date": "2026-04-27",
       "receivedDate": "2025-10-24",
@@ -23495,7 +23547,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-27",
       "currentA1Date": "2026-04-20",
-      "receivedDate": null,
+      "receivedDate": "2025-07-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -23512,12 +23564,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 28.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -27912,7 +27968,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2026-03-31",
       "currentA1Date": "2026-03-31",
-      "receivedDate": null,
+      "receivedDate": "2026-05-08",
       "noticeDate": "2026-05-22",
       "listingDate": null,
       "issuerType": "H股",
@@ -27929,12 +27985,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 52.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 38.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://m.sohu.com/a/1021039390_122727761"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7637385/content.shtml"
@@ -27966,7 +28026,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2026-03-31",
       "currentA1Date": "2026-03-31",
-      "receivedDate": null,
+      "receivedDate": "2026-05-08",
       "noticeDate": "2026-05-22",
       "listingDate": null,
       "issuerType": "H股",
@@ -27983,12 +28043,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 52.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 38.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://m.sohu.com/a/1021039390_122727761"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7637385/content.shtml"
@@ -28144,7 +28208,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-26",
       "currentA1Date": "2026-03-31",
-      "receivedDate": null,
+      "receivedDate": "2025-08-01",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -28161,12 +28225,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 36.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -30571,7 +30639,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-05-29",
       "currentA1Date": "2026-03-27",
-      "receivedDate": null,
+      "receivedDate": "2025-07-09",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -30588,12 +30656,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 41.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -30943,7 +31015,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-29",
       "currentA1Date": "2026-03-27",
-      "receivedDate": null,
+      "receivedDate": "2025-07-21",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -30960,12 +31032,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 22.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -31349,7 +31425,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-27",
       "currentA1Date": "2026-03-26",
-      "receivedDate": null,
+      "receivedDate": "2025-07-09",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -31366,12 +31442,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 12.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -32395,7 +32475,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-23",
       "currentA1Date": "2026-03-23",
-      "receivedDate": null,
+      "receivedDate": "2025-07-01",
       "noticeDate": "2026-01-29",
       "listingDate": null,
       "issuerType": "H股",
@@ -32412,12 +32492,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 220.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 8.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7614302/content.shtml"
@@ -38577,7 +38661,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-05-30",
       "currentA1Date": "2026-01-30",
-      "receivedDate": null,
+      "receivedDate": "2025-07-09",
       "noticeDate": "2026-06-04",
       "listingDate": null,
       "issuerType": "H股",
@@ -38594,12 +38678,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 370.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 40.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640217/content.shtml"
@@ -38635,7 +38723,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-05-30",
       "currentA1Date": "2026-01-30",
-      "receivedDate": null,
+      "receivedDate": "2025-07-09",
       "noticeDate": "2026-06-04",
       "listingDate": null,
       "issuerType": "H股",
@@ -38652,12 +38740,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 370.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 40.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640217/content.shtml"
@@ -43763,7 +43855,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-04-30",
       "currentA1Date": "2026-01-18",
-      "receivedDate": null,
+      "receivedDate": "2024-05-15",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -43780,12 +43872,20 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 15.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://www.kbpos.com/%e6%94%af%e4%bb%98%e9%87%91%e8%9e%8d/2565.html"
+        },
+        {
+          "label": "接收状态来源（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -43817,7 +43917,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-04-30",
       "currentA1Date": "2026-01-18",
-      "receivedDate": null,
+      "receivedDate": "2024-05-15",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -43834,12 +43934,20 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 15.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://www.kbpos.com/%e6%94%af%e4%bb%98%e9%87%91%e8%9e%8d/2565.html"
+        },
+        {
+          "label": "接收状态来源（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -46913,7 +47021,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-23",
       "currentA1Date": "2026-01-04",
-      "receivedDate": null,
+      "receivedDate": "2025-07-22",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -46930,14 +47038,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -46969,7 +47081,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-23",
       "currentA1Date": "2026-01-04",
-      "receivedDate": null,
+      "receivedDate": "2025-07-22",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -46986,14 +47098,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -47917,7 +48033,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-27",
       "currentA1Date": "2025-12-31",
-      "receivedDate": null,
+      "receivedDate": "2025-07-09",
       "noticeDate": "2025-12-24",
       "listingDate": null,
       "issuerType": "A+H",
@@ -47934,7 +48050,7 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 180.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 12.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
@@ -47942,6 +48058,10 @@
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7606680/content.shtml"
@@ -47977,7 +48097,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-27",
       "currentA1Date": "2025-12-31",
-      "receivedDate": null,
+      "receivedDate": "2025-07-09",
       "noticeDate": "2025-12-24",
       "listingDate": null,
       "issuerType": "A+H",
@@ -47994,7 +48114,7 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 180.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 12.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
@@ -48002,6 +48122,10 @@
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7606680/content.shtml"
@@ -48687,8 +48811,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-06-26",
       "currentA1Date": "2025-12-29",
       "receivedDate": "2025-07-08",
@@ -49461,8 +49585,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-06-16",
       "currentA1Date": "2025-12-17",
       "receivedDate": "2025-07-15",
@@ -49969,7 +50093,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-05-30",
       "currentA1Date": "2025-12-05",
-      "receivedDate": null,
+      "receivedDate": "2025-06-17",
       "noticeDate": "2025-11-27",
       "listingDate": null,
       "issuerType": "H股",
@@ -49986,7 +50110,7 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 181.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 18.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
@@ -49994,6 +50118,10 @@
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7598380/content.shtml"
@@ -50133,7 +50261,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-05-29",
       "currentA1Date": "2025-12-03",
-      "receivedDate": null,
+      "receivedDate": "2025-07-18",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -50150,14 +50278,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 50.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -50189,7 +50321,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-05-29",
       "currentA1Date": "2025-12-03",
-      "receivedDate": null,
+      "receivedDate": "2025-07-18",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -50206,14 +50338,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 50.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -50245,7 +50381,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-05-29",
       "currentA1Date": "2025-12-03",
-      "receivedDate": null,
+      "receivedDate": "2025-07-18",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -50262,14 +50398,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 50.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -50427,7 +50567,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-04-03",
       "currentA1Date": "2025-12-02",
-      "receivedDate": null,
+      "receivedDate": "2025-05-09",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -50444,14 +50584,22 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 36.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
+        {
+          "label": "接收状态来源",
+          "url": "https://caifuhao.eastmoney.com/news/20260202150743843978360"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -51006,8 +51154,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-11-28",
       "currentA1Date": "2025-11-28",
       "receivedDate": "2026-01-07",
@@ -51136,7 +51284,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-06-12",
       "currentA1Date": "2025-11-27",
-      "receivedDate": null,
+      "receivedDate": "2024-06-25",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -51153,14 +51301,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 13.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://www.greenprocapital.cn/News/info/id/775.html"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -51192,7 +51344,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-11-27",
       "currentA1Date": "2025-11-27",
-      "receivedDate": null,
+      "receivedDate": "2023-06-29",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -51217,6 +51369,10 @@
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20230725/3caf65fd74df3f11fb0fec706bfd1a8a.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -51416,7 +51572,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-09-26",
       "currentA1Date": "2025-11-25",
-      "receivedDate": null,
+      "receivedDate": "2024-11-01",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -51433,14 +51589,22 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 36.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://www.greenprocapital.cn/News/info/id/901.html"
+        },
+        {
+          "label": "接收状态来源（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -51472,7 +51636,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-09-26",
       "currentA1Date": "2025-11-25",
-      "receivedDate": null,
+      "receivedDate": "2024-11-01",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -51489,14 +51653,22 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 36.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://www.greenprocapital.cn/News/info/id/901.html"
+        },
+        {
+          "label": "接收状态来源（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -88481,7 +88653,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-09",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2025-06-23",
       "noticeDate": "2025-12-08",
       "listingDate": null,
       "issuerType": "H股",
@@ -88498,12 +88670,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 182.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 14.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7600645/content.shtml"
@@ -89849,7 +90025,7 @@
       "statusLabelZh": "已发通知书",
       "a1Date": "2025-06-23",
       "currentA1Date": "2026-03-23",
-      "receivedDate": null,
+      "receivedDate": "2025-07-01",
       "noticeDate": "2026-01-29",
       "listingDate": null,
       "issuerType": "H股",
@@ -89866,12 +90042,16 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": 220.0,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
+      "calendarDaysA1ToReceived": 8.0,
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7614302/content.shtml"
@@ -90855,7 +91035,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2025-06-23",
       "currentA1Date": "2026-01-04",
-      "receivedDate": null,
+      "receivedDate": "2025-07-22",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -90872,14 +91052,18 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
@@ -91630,7 +91814,7 @@
       "statusLabelZh": "补充材料",
       "a1Date": "2024-09-26",
       "currentA1Date": "2025-11-25",
-      "receivedDate": null,
+      "receivedDate": "2024-11-01",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -91647,14 +91831,22 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 36.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
         "A1已失效"
       ],
       "sourceLinks": [
+        {
+          "label": "历史备案情况表截图",
+          "url": "https://www.greenprocapital.cn/News/info/id/901.html"
+        },
+        {
+          "label": "接收状态来源（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/common_list.shtml"
