@@ -1,19 +1,19 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-17T20:44:06Z",
-    "sourceGeneratedAt": "2026-07-18T04:43:56+08:00",
+    "generatedAt": "2026-07-18T02:52:39Z",
+    "sourceGeneratedAt": "2026-07-18T10:51:58+08:00",
     "sourceRecordCount": 830,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-18T04:43:56+08:00",
+      "generatedAt": "2026-07-18T10:51:58+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1422,
-    "baseProjectFactCount": 1316,
+    "projectFactCount": 1426,
+    "baseProjectFactCount": 1320,
     "rollupProjectFactCount": 106,
     "firmCount": 72,
-    "excludedPlaceholderSponsorRecordCount": 7,
+    "excludedPlaceholderSponsorRecordCount": 6,
     "coverageZh": "HKEX Main Board / CSRC 备案口径；A1样本自 2019-04-08；普通IPO统计自 2023-03-31",
     "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计牵头/首名保荐人，或按保荐人数量平分；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。SP 为真正可签 sponsor 工作的 sponsor principal，负荷/人效优先用 SP 口径；六号牌总人数、RO、Rep 仅作容量背景。",
     "creditMethods": [
@@ -75,11 +75,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 230,
-      "activeCount": 110,
+      "projectCount": 231,
+      "activeCount": 111,
       "listedCount": 114,
-      "noticeCount": 104,
-      "ahCount": 50,
+      "noticeCount": 105,
+      "ahCount": 51,
       "hShareCount": 118,
       "redChipCount": 58,
       "deSpacCount": 0,
@@ -386,12 +386,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6TotalCount": 338,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-18",
       "type6Quality": "fresh",
@@ -428,8 +428,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Haitong International Capital Limited",
-        "Guotai Junan Capital Limited"
+        "Guotai Junan Capital Limited",
+        "Haitong International Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
@@ -770,11 +770,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 40,
-      "activeCount": 13,
+      "projectCount": 41,
+      "activeCount": 14,
       "listedCount": 26,
-      "noticeCount": 21,
-      "ahCount": 8,
+      "noticeCount": 22,
+      "ahCount": 9,
       "hShareCount": 14,
       "redChipCount": 16,
       "deSpacCount": 0,
@@ -997,11 +997,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 32,
-      "activeCount": 11,
+      "projectCount": 33,
+      "activeCount": 12,
       "listedCount": 19,
-      "noticeCount": 15,
-      "ahCount": 11,
+      "noticeCount": 16,
+      "ahCount": 12,
       "hShareCount": 6,
       "redChipCount": 13,
       "deSpacCount": 0,
@@ -1074,11 +1074,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 30,
-      "activeCount": 18,
+      "projectCount": 31,
+      "activeCount": 19,
       "listedCount": 11,
-      "noticeCount": 14,
-      "ahCount": 11,
+      "noticeCount": 15,
+      "ahCount": 12,
       "hShareCount": 11,
       "redChipCount": 8,
       "deSpacCount": 0,
@@ -87248,6 +87248,262 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7640253/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7646095",
+      "issuerName": "Zhongji InnoLight Co., Ltd.",
+      "csrcName": "中际旭创股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "gs",
+      "sourceSponsorTag": "GS",
+      "sourceSponsorTags": [
+        "GS"
+      ],
+      "leaderboardSponsorTag": "GS",
+      "sponsorLegalName": "Goldman Sachs (Asia) Limited",
+      "sponsorLegalNames": [
+        "Goldman Sachs (Asia) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
+      "receivedDate": null,
+      "noticeDate": "2026-07-08",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "光模块与通信设备"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7646095/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108739/documents/sehk26071700234.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7646095",
+      "issuerName": "Zhongji InnoLight Co., Ltd.",
+      "csrcName": "中际旭创股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
+      "receivedDate": null,
+      "noticeDate": "2026-07-08",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "光模块与通信设备"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7646095/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108739/documents/sehk26071700234.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7646095",
+      "issuerName": "Zhongji InnoLight Co., Ltd.",
+      "csrcName": "中际旭创股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "ms",
+      "sourceSponsorTag": "MS",
+      "sourceSponsorTags": [
+        "MS"
+      ],
+      "leaderboardSponsorTag": "MS",
+      "sponsorLegalName": "Morgan Stanley & Co. International plc",
+      "sponsorLegalNames": [
+        "Morgan Stanley & Co. International plc"
+      ],
+      "sponsorOrder": 3,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
+      "receivedDate": null,
+      "noticeDate": "2026-07-08",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "光模块与通信设备"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7646095/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108739/documents/sehk26071700234.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7646095",
+      "issuerName": "Zhongji InnoLight Co., Ltd.",
+      "csrcName": "中际旭创股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "gf",
+      "sourceSponsorTag": "GF",
+      "sourceSponsorTags": [
+        "GF"
+      ],
+      "leaderboardSponsorTag": "GF",
+      "sponsorLegalName": "GF Capital (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "GF Capital (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 4,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
+      "receivedDate": null,
+      "noticeDate": "2026-07-08",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "光模块与通信设备"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7646095/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108739/documents/sehk26071700234.pdf"
         }
       ]
     },

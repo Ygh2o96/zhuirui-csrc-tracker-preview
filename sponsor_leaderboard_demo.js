@@ -940,7 +940,8 @@ function matchesDateScope(fact) {
 function factDateForScope(fact, dateField = state.dateField) {
   if (dateField !== "stageDate") return fact[dateField];
   if (fact.hkexStage === "listed") return fact.listingDate;
-  return fact.a1Date;
+  if (fact.hkexStage === "applying") return fact.a1Date;
+  return "";
 }
 
 function pkFilteredFacts() {
