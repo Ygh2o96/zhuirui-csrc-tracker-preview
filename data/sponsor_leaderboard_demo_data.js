@@ -1,19 +1,19 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-25T20:40:14Z",
-    "sourceGeneratedAt": "2026-07-26T04:40:04+08:00",
+    "generatedAt": "2026-07-26T12:34:22Z",
+    "sourceGeneratedAt": "2026-07-26T20:34:07+08:00",
     "sourceRecordCount": 831,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-26T04:40:04+08:00",
+      "generatedAt": "2026-07-26T20:34:07+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1426,
-    "baseProjectFactCount": 1320,
+    "projectFactCount": 1429,
+    "baseProjectFactCount": 1323,
     "rollupProjectFactCount": 106,
     "firmCount": 72,
-    "excludedPlaceholderSponsorRecordCount": 6,
+    "excludedPlaceholderSponsorRecordCount": 5,
     "coverageZh": "HKEX Main Board / CSRC 备案口径；A1样本自 2019-04-08；普通IPO统计自 2023-03-31",
     "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计牵头/首名保荐人，或按保荐人数量平分；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。SP 为真正可签 sponsor 工作的 sponsor principal，负荷/人效优先用 SP 口径；六号牌总人数、RO、Rep 仅作容量背景。",
     "creditMethods": [
@@ -385,12 +385,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6TotalCount": 345,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
-        "HAITONG INTERNATIONAL CAPITAL LIMITED",
-        "GUOTAI JUNAN CAPITAL LIMITED"
+        "GUOTAI JUNAN CAPITAL LIMITED",
+        "HAITONG INTERNATIONAL CAPITAL LIMITED"
       ],
       "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6",
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
       "type6AsOfDate": "2026-07-26",
       "type6Quality": "fresh",
@@ -428,8 +428,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalRowCount": 2,
       "sponsorPrincipalSourceFirmNames": [
-        "Haitong International Capital Limited",
-        "Guotai Junan Capital Limited"
+        "Guotai Junan Capital Limited",
+        "Haitong International Capital Limited"
       ],
       "sponsorPrincipalSourceUrls": [
         "https://drdrhuhabqfsu.ok.kimi.link/"
@@ -769,13 +769,13 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 41,
-      "activeCount": 14,
+      "projectCount": 42,
+      "activeCount": 15,
       "listedCount": 26,
-      "noticeCount": 22,
+      "noticeCount": 23,
       "ahCount": 9,
       "hShareCount": 14,
-      "redChipCount": 16,
+      "redChipCount": 17,
       "deSpacCount": 0,
       "hdrCount": 0,
       "listingMarketCapHkdBnSum": 2076.6945,
@@ -995,13 +995,13 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 33,
-      "activeCount": 12,
+      "projectCount": 34,
+      "activeCount": 13,
       "listedCount": 19,
-      "noticeCount": 16,
+      "noticeCount": 17,
       "ahCount": 12,
       "hShareCount": 6,
-      "redChipCount": 13,
+      "redChipCount": 14,
       "deSpacCount": 0,
       "hdrCount": 0,
       "listingMarketCapHkdBnSum": 1744.4912,
@@ -1015,8 +1015,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "topIndustries": [
         "制造业",
         "交通运输、仓储和邮政业",
-        "电子元器件/消费电子制造",
-        "科学研究和技术服务业"
+        "批发和零售业",
+        "电子元器件/消费电子制造"
       ],
       "type6ROCount": 12,
       "type6RepCount": 114,
@@ -1143,13 +1143,13 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 30,
-      "activeCount": 15,
+      "projectCount": 31,
+      "activeCount": 16,
       "listedCount": 13,
-      "noticeCount": 11,
+      "noticeCount": 12,
       "ahCount": 11,
       "hShareCount": 5,
-      "redChipCount": 11,
+      "redChipCount": 12,
       "deSpacCount": 0,
       "hdrCount": 0,
       "listingMarketCapHkdBnSum": 2241.3514,
@@ -1314,8 +1314,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "金融业"
       ],
       "type6ROCount": 11,
-      "type6RepCount": 178,
-      "type6TotalCount": 189,
+      "type6RepCount": 176,
+      "type6TotalCount": 187,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "UBS SECURITIES HONG KONG LIMITED"
@@ -87655,6 +87655,198 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX PHIP",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108739/documents/sehk26071700234.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7644823",
+      "issuerName": "SHEIN Global Holdings Limited (formerly known as Elite Depot Limited) - W",
+      "csrcName": "希音国际控股有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "gs",
+      "sourceSponsorTag": "GS",
+      "sourceSponsorTags": [
+        "GS"
+      ],
+      "leaderboardSponsorTag": "GS",
+      "sponsorLegalName": "Goldman Sachs (Asia) Limited",
+      "sponsorLegalNames": [
+        "Goldman Sachs (Asia) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 3,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.3333333333333333,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-26",
+      "currentA1Date": "2026-07-26",
+      "receivedDate": null,
+      "noticeDate": "2026-07-10",
+      "listingDate": null,
+      "issuerType": "红筹",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "零售/电商/商业流通"
+      ],
+      "csrcIndustryTags": [
+        "批发和零售业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7644823/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108766/documents/sehk26072600126.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7644823",
+      "issuerName": "SHEIN Global Holdings Limited (formerly known as Elite Depot Limited) - W",
+      "csrcName": "希音国际控股有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "ms",
+      "sourceSponsorTag": "MS",
+      "sourceSponsorTags": [
+        "MS"
+      ],
+      "leaderboardSponsorTag": "MS",
+      "sponsorLegalName": "Morgan Stanley & Co. International plc",
+      "sponsorLegalNames": [
+        "Morgan Stanley & Co. International plc"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 3,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.3333333333333333,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-26",
+      "currentA1Date": "2026-07-26",
+      "receivedDate": null,
+      "noticeDate": "2026-07-10",
+      "listingDate": null,
+      "issuerType": "红筹",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "零售/电商/商业流通"
+      ],
+      "csrcIndustryTags": [
+        "批发和零售业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7644823/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108766/documents/sehk26072600126.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7644823",
+      "issuerName": "SHEIN Global Holdings Limited (formerly known as Elite Depot Limited) - W",
+      "csrcName": "希音国际控股有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "jpm",
+      "sourceSponsorTag": "JPM",
+      "sourceSponsorTags": [
+        "JPM"
+      ],
+      "leaderboardSponsorTag": "JPM",
+      "sponsorLegalName": "J.P. Morgan Securities (Asia Pacific) Limited",
+      "sponsorLegalNames": [
+        "J.P. Morgan Securities (Asia Pacific) Limited"
+      ],
+      "sponsorOrder": 3,
+      "sponsorCountOnDeal": 3,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.3333333333333333,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2026-07-26",
+      "currentA1Date": "2026-07-26",
+      "receivedDate": null,
+      "noticeDate": "2026-07-10",
+      "listingDate": null,
+      "issuerType": "红筹",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "零售/电商/商业流通"
+      ],
+      "csrcIndustryTags": [
+        "批发和零售业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7644823/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108766/documents/sehk26072600126.pdf"
         }
       ]
     },
