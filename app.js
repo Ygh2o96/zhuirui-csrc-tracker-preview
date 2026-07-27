@@ -687,6 +687,8 @@ const tagDictionary = {
   "已上市": { en: "Listed", title: "Listed on HKEX / 已在港交所上市", cls: "listed-tag" },
   "密交": { en: "Confidential route", title: "HKEX public A1 is not a reliable duration anchor because the process appears to have started earlier, including confidential filing or prior-cycle evidence / 公开A1不适合作为时长锚点，可能存在密交或前序周期证据", cls: "info-tag" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
+  "官方状态冲突": { en: "Official status conflict", title: "The same latest CSRC status workbook contains different statuses for this issuer; the contradiction is preserved and no ordering is inferred / 同一份最新官方备案情况表载有不同状态，页面保留矛盾且不推断先后", cls: "outlier-tag" },
+  "未见于最新状态表": { en: "Absent from latest table", title: "The last observed official status is retained as history, but the issuer is absent from the latest CSRC status workbook; no withdrawal, completion or status change is inferred / 保留最近一次官方状态作为历史事实，但最新备案情况表未见该发行人，不据此推断撤回、完成或状态变化", cls: "info-tag" },
   "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched; likely confidential route / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行，通常为密交路径", cls: "info-tag" },
   "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计", cls: "info-tag" },
   "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
@@ -1444,6 +1446,9 @@ function renderDetail(record) {
     feedback_before_timeline_anchor_possible_mismatch: "补充材料早于A1 Feedback before A1",
     pre_regime_a1_no_csrc_notice_expected: "制度前A1无需备案 Pre-regime A1, no filing",
     filing_not_required_no_csrc_notice_expected: "无需备案，无通知书 Not required, no notice expected",
+    csrc_official_status_conflict_same_snapshot: "同一官方快照状态冲突 Official status conflict",
+    csrc_status_absent_from_latest_official_snapshot: "未见于最新官方状态表 Absent from latest official table",
+    hkex_phip_public_no_observed_a1: "PHIP已公开但无可观察A1 PHIP public, A1 unobserved",
     same_day_notice_without_status_received_match_possible_missing_anchor: "通知书与A1同日 Notice same day as A1"
   };
   const timelineFlags = (record.timelineFlags || [])
@@ -1482,6 +1487,16 @@ function renderDetail(record) {
           <div><span>备案锚点（A1日）至通知 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
       `;
 
+  const noticePredatesKnownAnchor = (record.timelineFlags || []).includes(
+    "csrc_notice_before_timeline_anchor_possible_mismatch",
+  );
+  const confidentialAnchorLabel =
+    record.hkexConfidentialFilingDate === record.a1Date
+      ? noticePredatesKnownAnchor
+        ? "已观察密交AP日 Observed confidential AP"
+        : "密交A1锚点 Confidential A1 anchor"
+      : "备案A1锚点 A1 anchor";
+
   detail.innerHTML = `
     <div class="detail-header">
       <h2>${escapeHtml(names.primary)}</h2>
@@ -1495,7 +1510,7 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>时间线 Timeline</span>
         <div class="timeline">
-          <div class="timeline-row"><span>${record.hkexConfidentialFilingDate === record.a1Date ? "密交A1锚点 Confidential A1 anchor" : "备案A1锚点 A1 anchor"}</span><strong>${formatDate(record.a1Date)}</strong></div>
+          <div class="timeline-row"><span>${confidentialAnchorLabel}</span><strong>${formatDate(record.a1Date)}</strong></div>
           ${record.hkexConfidentialFilingDate && record.hkexConfidentialFilingDate !== record.a1Date ? `<div class="timeline-row" title="${escapeHtml(record.hkexConfidentialFilingEvidence || "")}"><span>密交递交 Confidential filing</span><strong>${formatDate(record.hkexConfidentialFilingDate)}</strong></div>` : ""}
           ${record.hkexConfidentialFilingDate && (record.hkexPublicFirstPostingDate || record.currentA1Date) ? `<div class="timeline-row"><span>公开A1 Public A1</span><strong>${formatDate(record.hkexPublicFirstPostingDate || record.currentA1Date)}</strong></div>` : ""}
           ${record.statsAnchorDate && record.statsAnchorDate !== record.a1Date ? `<div class="timeline-row"><span>统计锚点（制度后首A1）Stats anchor</span><strong>${formatDate(record.statsAnchorDate)}</strong></div>` : ""}
