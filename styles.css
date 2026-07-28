@@ -2252,6 +2252,15 @@ tr[role="button"]:focus-visible {
   font-weight: 700;
 }
 
+.footer-note .visit-counter.is-lower-bound {
+  cursor: help;
+}
+
+.footer-note .visit-counter.is-lower-bound #busuanzi_value_site_pv {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 1420px) {
   .tracker-layout {
     grid-template-columns: 1fr;

@@ -211,6 +211,69 @@ function formatNumber(value, mode = "decimal") {
   return mode === "integer" ? integerFormatter.format(value) : numberFormatter.format(value);
 }
 
+function parseVisitCounterValue(value) {
+  const compact = String(value ?? "").replaceAll(",", "").trim();
+  if (!/^\d+$/.test(compact)) return null;
+  const parsed = Number(compact);
+  return Number.isSafeInteger(parsed) ? parsed : null;
+}
+
+function visitCounterPresentation(sitePv, siteUv) {
+  const pv = parseVisitCounterValue(sitePv);
+  const uv = parseVisitCounterValue(siteUv);
+  if (pv === null || uv === null || (pv === 0 && uv === 0)) return null;
+
+  if (pv >= uv) {
+    return {
+      displayPv: formatNumber(pv, "integer"),
+      displayUv: formatNumber(uv, "integer"),
+      state: "exact",
+      title: ""
+    };
+  }
+
+  return {
+    displayPv: `≥${formatNumber(uv, "integer")}`,
+    displayUv: formatNumber(uv, "integer"),
+    state: "lower-bound",
+    title:
+      "访问量历史基线异常，暂显示由访客数可证实的最低访问量。 Historical PV baseline is inconsistent; showing the defensible minimum."
+  };
+}
+
+function initVisitCounter() {
+  const container = document.getElementById("siteVisitCounter");
+  const pvElement = document.getElementById("busuanzi_value_site_pv");
+  const uvElement = document.getElementById("busuanzi_value_site_uv");
+  if (!container || !pvElement || !uvElement || typeof MutationObserver === "undefined") return;
+
+  let timeoutId = null;
+  const observer = new MutationObserver(renderWhenReady);
+
+  function renderWhenReady() {
+    const presentation = visitCounterPresentation(pvElement.textContent, uvElement.textContent);
+    if (!presentation) return;
+
+    observer.disconnect();
+    if (timeoutId !== null) window.clearTimeout(timeoutId);
+    pvElement.textContent = presentation.displayPv;
+    uvElement.textContent = presentation.displayUv;
+    container.dataset.counterState = presentation.state;
+    container.classList.toggle("is-lower-bound", presentation.state === "lower-bound");
+    container.title = presentation.title;
+    container.setAttribute(
+      "aria-label",
+      `自上线累计，访问量 ${presentation.displayPv}，访客 ${presentation.displayUv}`
+    );
+    container.style.display = "block";
+  }
+
+  observer.observe(pvElement, { childList: true, characterData: true, subtree: true });
+  observer.observe(uvElement, { childList: true, characterData: true, subtree: true });
+  renderWhenReady();
+  timeoutId = window.setTimeout(() => observer.disconnect(), 8000);
+}
+
 function formatDayValue(value) {
   if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待披露";
   return integerFormatter.format(Math.ceil(value));
@@ -681,14 +744,13 @@ function normalizeSearchText(value) {
     .trim();
 }
 
-const HIDDEN_INTERNAL_TAGS = new Set(["已上市", "HKEX全量上市样本"]);
+const HIDDEN_INTERNAL_TAGS = new Set(["已上市", "HKEX全量上市样本", "未见于最新状态表"]);
 
 const tagDictionary = {
   "已上市": { en: "Listed", title: "Listed on HKEX / 已在港交所上市", cls: "listed-tag" },
   "密交": { en: "Confidential route", title: "HKEX public A1 is not a reliable duration anchor because the process appears to have started earlier, including confidential filing or prior-cycle evidence / 公开A1不适合作为时长锚点，可能存在密交或前序周期证据", cls: "info-tag" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
   "官方状态冲突": { en: "Official status conflict", title: "The same latest CSRC status workbook contains different statuses for this issuer; the contradiction is preserved and no ordering is inferred / 同一份最新官方备案情况表载有不同状态，页面保留矛盾且不推断先后", cls: "outlier-tag" },
-  "未见于最新状态表": { en: "Absent from latest table", title: "The last observed official status is retained as history, but the issuer is absent from the latest CSRC status workbook; no withdrawal, completion or status change is inferred / 保留最近一次官方状态作为历史事实，但最新备案情况表未见该发行人，不据此推断撤回、完成或状态变化", cls: "info-tag" },
   "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched; likely confidential route / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行，通常为密交路径", cls: "info-tag" },
   "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计", cls: "info-tag" },
   "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
@@ -1447,7 +1509,6 @@ function renderDetail(record) {
     pre_regime_a1_no_csrc_notice_expected: "制度前A1无需备案 Pre-regime A1, no filing",
     filing_not_required_no_csrc_notice_expected: "无需备案，无通知书 Not required, no notice expected",
     csrc_official_status_conflict_same_snapshot: "同一官方快照状态冲突 Official status conflict",
-    csrc_status_absent_from_latest_official_snapshot: "未见于最新官方状态表 Absent from latest official table",
     hkex_phip_public_no_observed_a1: "PHIP已公开但无可观察A1 PHIP public, A1 unobserved",
     same_day_notice_without_status_received_match_possible_missing_anchor: "通知书与A1同日 Notice same day as A1"
   };
@@ -1889,4 +1950,5 @@ document.getElementById("clearFilters").addEventListener("click", () => {
 
 document.getElementById("refreshButton").addEventListener("click", loadData);
 
+initVisitCounter();
 loadData();

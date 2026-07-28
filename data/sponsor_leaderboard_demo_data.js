@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-07-27T01:00:58Z",
-    "sourceGeneratedAt": "2026-07-27T09:00:30+08:00",
+    "generatedAt": "2026-07-28T07:10:15Z",
+    "sourceGeneratedAt": "2026-07-28T15:10:03+08:00",
     "sourceRecordCount": 837,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-27T09:00:30+08:00",
+      "generatedAt": "2026-07-28T15:10:03+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1434,
@@ -30,7 +30,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 217,
-      "asOfDate": "2026-07-27",
+      "asOfDate": "2026-07-28",
       "source": "webb_0xmd",
       "sourceUrl": "https://webbsite.0xmd.com/dbpub/SFClicount.asp?a=6",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_type6_capacity.json",
@@ -108,7 +108,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=46811&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -203,7 +203,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18459&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -295,7 +295,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49319&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -381,8 +381,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 36,
-      "type6RepCount": 309,
-      "type6TotalCount": 345,
+      "type6RepCount": 310,
+      "type6TotalCount": 346,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
         "GUOTAI JUNAN CAPITAL LIMITED",
@@ -392,7 +392,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "type6RollupMemberSponsorIds": [
         "gtja",
@@ -491,7 +491,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1942934&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -557,13 +557,13 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "timingN": 17,
       "topIndustries": [
         "制造业",
-        "信息传输、软件和信息技术服务业",
         "高端装备/机器人/智能制造",
+        "信息传输、软件和信息技术服务业",
         "半导体/集成电路/电子制造"
       ],
       "type6ROCount": 16,
-      "type6RepCount": 150,
-      "type6TotalCount": 166,
+      "type6RepCount": 151,
+      "type6TotalCount": 167,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "GUOTAI JUNAN CAPITAL LIMITED"
@@ -571,7 +571,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -638,8 +638,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "科学研究和技术服务业"
       ],
       "type6ROCount": 19,
-      "type6RepCount": 90,
-      "type6TotalCount": 109,
+      "type6RepCount": 91,
+      "type6TotalCount": 110,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CMB International Capital Limited"
@@ -647,7 +647,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=60614&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -722,7 +722,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -793,8 +793,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 21,
-      "type6RepCount": 268,
-      "type6TotalCount": 289,
+      "type6RepCount": 269,
+      "type6TotalCount": 290,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Morgan Stanley Asia Limited"
@@ -802,7 +802,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1464&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -877,7 +877,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=30230&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -950,7 +950,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18359&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1028,7 +1028,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5596&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1104,7 +1104,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49367&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1176,7 +1176,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1249,7 +1249,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68371&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1314,8 +1314,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "金融业"
       ],
       "type6ROCount": 11,
-      "type6RepCount": 176,
-      "type6TotalCount": 187,
+      "type6RepCount": 179,
+      "type6TotalCount": 190,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "UBS SECURITIES HONG KONG LIMITED"
@@ -1323,7 +1323,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1467&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1398,7 +1398,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18311&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1470,7 +1470,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12227&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1531,8 +1531,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "零售/电商/商业流通"
       ],
       "type6ROCount": 8,
-      "type6RepCount": 39,
-      "type6TotalCount": 47,
+      "type6RepCount": 40,
+      "type6TotalCount": 48,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "SHENWAN HONGYUAN CAPITAL (H.K.) LIMITED"
@@ -1540,7 +1540,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9131&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1608,7 +1608,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7117&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1678,7 +1678,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2041492&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1738,8 +1738,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "半导体/集成电路/电子制造"
       ],
       "type6ROCount": 9,
-      "type6RepCount": 48,
-      "type6TotalCount": 57,
+      "type6RepCount": 49,
+      "type6TotalCount": 58,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Ping An of China Capital (Hong Kong) Company Limited"
@@ -1747,7 +1747,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68488&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1816,7 +1816,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1886,7 +1886,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=47434&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1955,7 +1955,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68484&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2015,8 +2015,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 11,
-      "type6RepCount": 109,
-      "type6TotalCount": 120,
+      "type6RepCount": 110,
+      "type6TotalCount": 121,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "HSBC Corporate Finance (Hong Kong) Limited"
@@ -2024,7 +2024,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2097,7 +2097,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=72015&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2165,7 +2165,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=34259&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2233,7 +2233,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2439801&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2302,7 +2302,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=41210&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2370,7 +2370,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2007103&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2439,7 +2439,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5451&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2508,7 +2508,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6162&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2575,7 +2575,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1896613&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2643,7 +2643,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2710,7 +2710,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1939868&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2778,7 +2778,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2458625&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2845,7 +2845,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2126636&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2912,7 +2912,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1552564&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2980,7 +2980,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3050,7 +3050,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=26392041&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3118,7 +3118,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23670404&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3185,7 +3185,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23445433&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3252,7 +3252,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2084540&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3319,7 +3319,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3385,7 +3385,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6721901&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3481,8 +3481,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 3,
-      "type6RepCount": 73,
-      "type6TotalCount": 76,
+      "type6RepCount": 74,
+      "type6TotalCount": 77,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "GUOSEN SECURITIES (HK) CAPITAL COMPANY LIMITED"
@@ -3490,7 +3490,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=64301&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3557,7 +3557,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1933817&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3625,7 +3625,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1912087&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3692,7 +3692,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3758,7 +3758,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2620772&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3825,7 +3825,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9754&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3891,7 +3891,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12111423&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3996,7 +3996,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2455747&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4055,8 +4055,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "顺风车平台",
         "交通运输、仓储和邮政业"
       ],
-      "type6ROCount": 6,
-      "type6RepCount": 82,
+      "type6ROCount": 7,
+      "type6RepCount": 81,
       "type6TotalCount": 88,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
@@ -4065,7 +4065,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1440&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4131,7 +4131,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=926&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4199,7 +4199,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2557091&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4265,7 +4265,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22364027&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4331,7 +4331,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15005&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4399,7 +4399,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9620&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4464,7 +4464,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2420405&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4566,7 +4566,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2278798&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4635,7 +4635,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6407&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4701,7 +4701,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=37237&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4766,7 +4766,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22123361&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4832,7 +4832,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2690790&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4897,7 +4897,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2626430&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4963,7 +4963,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1747929&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5028,7 +5028,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2539213&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5093,7 +5093,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68441&a=6"
       ],
-      "type6AsOfDate": "2026-07-27",
+      "type6AsOfDate": "2026-07-28",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5116,6 +5116,138 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "standard robots (wuxi) co., ltd.",
+      "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
+      "csrcName": "斯坦德機器人(無錫)股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
+      "a1Date": "2025-06-23",
+      "currentA1Date": "2026-07-27",
+      "receivedDate": "2025-07-22",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108767/documents/sehk26072701068.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "standard robots (wuxi) co., ltd.",
+      "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
+      "csrcName": "斯坦德機器人(無錫)股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "gtja",
+      "sourceSponsorTag": "GTJA",
+      "sourceSponsorTags": [
+        "GTJA"
+      ],
+      "leaderboardSponsorTag": "GTJA",
+      "sponsorLegalName": "Guotai Junan Capital Limited",
+      "sponsorLegalNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
+      "a1Date": "2025-06-23",
+      "currentA1Date": "2026-07-27",
+      "receivedDate": "2025-07-22",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108767/documents/sehk26072701068.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "guangzhou novaken pharm co., ltd. - b",
       "issuerName": "Guangzhou Novaken Pharm Co., Ltd. - B",
@@ -5162,9 +5294,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5234,9 +5364,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5306,9 +5434,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5378,9 +5504,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5450,9 +5574,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5728,9 +5850,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5800,9 +5920,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5872,9 +5990,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -5944,9 +6060,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6016,9 +6130,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6277,9 +6389,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6349,9 +6459,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6479,9 +6587,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6621,9 +6727,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6693,9 +6797,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6823,9 +6925,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6891,9 +6991,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -6959,9 +7057,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -7086,9 +7182,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -7154,9 +7248,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -7340,9 +7432,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -7412,9 +7502,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -8445,9 +8533,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -8953,9 +9039,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -9502,9 +9586,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -10476,9 +10558,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -10859,9 +10939,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -11345,9 +11423,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -12403,9 +12479,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -12470,9 +12544,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -12596,9 +12668,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -12664,9 +12734,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -12906,9 +12974,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -12974,9 +13040,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -13042,9 +13106,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -13239,9 +13301,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -13361,9 +13421,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -13797,9 +13855,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -14541,9 +14597,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -14679,9 +14733,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -14743,9 +14795,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -15295,9 +15345,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -15482,9 +15530,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -15799,9 +15845,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -15872,9 +15916,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -17044,9 +17086,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -18209,9 +18249,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -18409,9 +18447,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -18668,9 +18704,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -18737,9 +18771,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -19279,9 +19311,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -19343,9 +19373,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -19465,9 +19493,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -19533,9 +19559,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -19908,9 +19932,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -19976,9 +19998,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20044,9 +20064,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20112,9 +20130,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20180,9 +20196,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20318,9 +20332,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20386,9 +20398,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20897,9 +20907,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -20969,9 +20977,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -22225,9 +22231,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -24672,9 +24676,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -25987,9 +25989,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -27634,9 +27634,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -27706,9 +27704,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -28911,9 +28907,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -28979,9 +28973,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -29375,9 +29367,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -29439,9 +29429,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -29507,9 +29495,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -31046,9 +31032,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -34232,9 +34216,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -34296,9 +34278,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -36371,9 +36351,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -36439,9 +36417,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -36507,9 +36483,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -38236,7 +38210,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "已撤回"
       ],
       "sourceLinks": [
@@ -38305,7 +38278,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "已撤回"
       ],
       "sourceLinks": [
@@ -38713,9 +38685,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -38781,9 +38751,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -40804,9 +40772,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -40868,9 +40834,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -44161,9 +44125,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -44233,9 +44195,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46951,7 +46911,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -47021,7 +46983,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -47092,7 +47056,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -47163,7 +47129,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -47233,7 +47201,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -49379,7 +49349,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -49452,7 +49421,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -49586,7 +49554,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -49935,7 +49902,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -50152,7 +50118,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -50225,7 +50190,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -50298,7 +50262,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -50371,7 +50334,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -50444,7 +50406,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -51005,7 +50966,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -51295,7 +51255,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -51436,7 +51395,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -51509,7 +51467,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -51582,7 +51539,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -51655,7 +51611,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52010,7 +51965,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52082,7 +52036,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52155,7 +52108,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52228,7 +52180,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52301,7 +52252,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52374,7 +52324,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52693,7 +52642,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -52766,7 +52714,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53288,7 +53235,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53362,7 +53308,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53435,7 +53380,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53748,7 +53692,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53821,7 +53764,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53894,7 +53836,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -53967,7 +53908,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54040,7 +53980,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54063,142 +54002,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7617372/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "standard robots (wuxi) co., ltd.",
-      "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
-      "csrcName": "斯坦德機器人(無錫)股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citic",
-      "sourceSponsorTag": "CITIC",
-      "sourceSponsorTags": [
-        "CITIC"
-      ],
-      "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "CITIC Securities (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
-      "a1Date": "2025-06-23",
-      "currentA1Date": "2026-01-04",
-      "receivedDate": "2025-07-22",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 29.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108046/documents/sehk26010400080.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "历史备案情况表转载（接收日期核验）",
-          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "standard robots (wuxi) co., ltd.",
-      "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
-      "csrcName": "斯坦德機器人(無錫)股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "gtja",
-      "sourceSponsorTag": "GTJA",
-      "sourceSponsorTags": [
-        "GTJA"
-      ],
-      "leaderboardSponsorTag": "GTJA",
-      "sponsorLegalName": "Guotai Junan Capital Limited",
-      "sponsorLegalNames": [
-        "Guotai Junan Capital Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
-      "a1Date": "2025-06-23",
-      "currentA1Date": "2026-01-04",
-      "receivedDate": "2025-07-22",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 29.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108046/documents/sehk26010400080.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "历史备案情况表转载（接收日期核验）",
-          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
         }
       ]
     },
@@ -54250,7 +54053,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54320,7 +54122,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54390,7 +54191,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54460,7 +54260,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54593,7 +54392,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54666,7 +54464,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54798,7 +54595,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -54991,7 +54787,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -55060,7 +54855,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -55273,7 +55067,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -55467,7 +55260,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -55540,7 +55332,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -55613,7 +55404,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -55686,7 +55476,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56153,7 +55942,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56222,7 +56010,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56497,7 +56284,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56566,7 +56352,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56639,7 +56424,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56772,7 +56556,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56913,7 +56696,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -56982,7 +56764,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -57055,7 +56836,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -57662,7 +57442,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -58474,7 +58253,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59098,7 +58876,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59171,7 +58948,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59244,7 +59020,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59314,7 +59089,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59447,7 +59221,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59512,7 +59285,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59687,7 +59459,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59752,7 +59523,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59817,7 +59587,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59882,7 +59651,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -59947,7 +59715,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60012,7 +59779,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60077,7 +59843,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60325,7 +60090,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60386,7 +60150,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60447,7 +60210,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60512,7 +60274,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -60577,7 +60338,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -94387,6 +94147,80 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ]
     },
     {
+      "issuerId": "standard robots (wuxi) co., ltd.",
+      "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
+      "csrcName": "斯坦德機器人(無錫)股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "group-gtja-haitong",
+      "sourceSponsorTag": "GTJA",
+      "sourceSponsorTags": [
+        "GTJA"
+      ],
+      "leaderboardSponsorTag": "GTJA",
+      "sponsorLegalName": "国泰海通",
+      "sponsorLegalNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
+      "a1Date": "2025-06-23",
+      "currentA1Date": "2026-07-27",
+      "receivedDate": "2025-07-22",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 29.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108767/documents/sehk26072701068.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
+        }
+      ],
+      "sourceSponsorId": "gtja",
+      "sourceSponsorIds": [
+        "gtja"
+      ],
+      "sourceSponsorLegalNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "isSyntheticRollup": true
+    },
+    {
       "issuerId": "guangzhou novaken pharm co., ltd. - b",
       "issuerName": "Guangzhou Novaken Pharm Co., Ltd. - B",
       "csrcName": "廣州新濟醫藥股份有限公司",
@@ -94432,9 +94266,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -95058,9 +94890,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -95212,9 +95042,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -95656,9 +95484,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -95814,9 +95640,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -95890,9 +95714,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -95970,9 +95792,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -96785,9 +96605,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -96939,9 +96757,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "未见于最新状态表"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -98937,7 +98753,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -98960,82 +98775,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7617372/content.shtml"
-        }
-      ],
-      "sourceSponsorId": "gtja",
-      "sourceSponsorIds": [
-        "gtja"
-      ],
-      "sourceSponsorLegalNames": [
-        "Guotai Junan Capital Limited"
-      ],
-      "isSyntheticRollup": true
-    },
-    {
-      "issuerId": "standard robots (wuxi) co., ltd.",
-      "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
-      "csrcName": "斯坦德機器人(無錫)股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "group-gtja-haitong",
-      "sourceSponsorTag": "GTJA",
-      "sourceSponsorTags": [
-        "GTJA"
-      ],
-      "leaderboardSponsorTag": "GTJA",
-      "sponsorLegalName": "国泰海通",
-      "sponsorLegalNames": [
-        "Guotai Junan Capital Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
-      "a1Date": "2025-06-23",
-      "currentA1Date": "2026-01-04",
-      "receivedDate": "2025-07-22",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 29.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108046/documents/sehk26010400080.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "历史备案情况表转载（接收日期核验）",
-          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -99095,7 +98834,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -99172,7 +98910,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
@@ -99490,7 +99227,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "未见于最新状态表",
         "A1已失效"
       ],
       "sourceLinks": [
