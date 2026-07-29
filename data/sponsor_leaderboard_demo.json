@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T04:46:42Z",
-    "sourceGeneratedAt": "2026-07-29T12:46:32+08:00",
+    "generatedAt": "2026-07-29T06:34:59Z",
+    "sourceGeneratedAt": "2026-07-29T14:34:59+08:00",
     "sourceRecordCount": 837,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-29T12:46:32+08:00",
+      "generatedAt": "2026-07-29T14:34:59+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1434,
@@ -96,7 +96,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "高端装备/机器人/智能制造",
-        "批发和零售业"
+        "科学研究和技术服务业"
       ],
       "type6ROCount": 41,
       "type6RepCount": 945,
@@ -189,9 +189,9 @@
       "timingN": 73,
       "topIndustries": [
         "制造业",
-        "信息传输、软件和信息技术服务业",
         "科学研究和技术服务业",
-        "电子元器件/消费电子制造"
+        "信息传输、软件和信息技术服务业",
+        "新能源/汽车产业链"
       ],
       "type6ROCount": 46,
       "type6RepCount": 915,
@@ -378,7 +378,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "高端装备/机器人/智能制造",
-        "软件/AI/数据/互联网"
+        "半导体/集成电路/电子制造"
       ],
       "type6ROCount": 36,
       "type6RepCount": 312,
@@ -477,9 +477,9 @@
       "timingN": 21,
       "topIndustries": [
         "制造业",
+        "信息传输、软件和信息技术服务业",
         "半导体/集成电路/电子制造",
-        "批发和零售业",
-        "信息传输、软件和信息技术服务业"
+        "批发和零售业"
       ],
       "type6ROCount": 14,
       "type6RepCount": 323,
@@ -557,8 +557,8 @@
       "timingN": 17,
       "topIndustries": [
         "制造业",
-        "高端装备/机器人/智能制造",
         "信息传输、软件和信息技术服务业",
+        "高端装备/机器人/智能制造",
         "半导体/集成电路/电子制造"
       ],
       "type6ROCount": 16,
@@ -634,8 +634,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "软件/AI/数据/互联网",
-        "科学研究和技术服务业"
+        "新能源/汽车产业链",
+        "软件/AI/数据/互联网"
       ],
       "type6ROCount": 18,
       "type6RepCount": 91,
@@ -710,7 +710,7 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "批发和零售业",
-        "卫生和社会工作"
+        "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 20,
       "type6RepCount": 161,
@@ -864,8 +864,8 @@
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
-        "生物医药研发/技术许可",
-        "软件/AI/数据/互联网"
+        "科学研究和技术服务业",
+        "生物医药研发/技术许可"
       ],
       "type6ROCount": 16,
       "type6RepCount": 59,
@@ -1014,8 +1014,8 @@
       "timingN": 14,
       "topIndustries": [
         "制造业",
+        "科学研究和技术服务业",
         "批发和零售业",
-        "电子元器件/消费电子制造",
         "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 12,
@@ -1090,9 +1090,9 @@
       "timingN": 12,
       "topIndustries": [
         "制造业",
+        "半导体/集成电路/电子制造",
         "信息传输、软件和信息技术服务业",
-        "科学研究和技术服务业",
-        "消费品制造/食品饮料/日化"
+        "科学研究和技术服务业"
       ],
       "type6ROCount": 10,
       "type6RepCount": 161,
@@ -1384,9 +1384,9 @@
       "timingN": 9,
       "topIndustries": [
         "制造业",
-        "电子元器件/消费电子制造",
+        "科学研究和技术服务业",
         "租赁和商务服务业",
-        "卫生和社会工作"
+        "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 15,
       "type6RepCount": 168,
@@ -1527,8 +1527,8 @@
       "topIndustries": [
         "信息传输、软件和信息技术服务业",
         "卫生和社会工作",
-        "批发和零售业",
-        "零售/电商/商业流通"
+        "科学研究和技术服务业",
+        "批发和零售业"
       ],
       "type6ROCount": 8,
       "type6RepCount": 40,
@@ -2010,8 +2010,8 @@
       "timingN": 2,
       "topIndustries": [
         "制造业",
-        "批发和零售业",
         "信息传输、软件和信息技术服务业",
+        "批发和零售业",
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 11,
@@ -2083,8 +2083,8 @@
       "timingN": 3,
       "topIndustries": [
         "制造业",
-        "生物医药研发/技术许可",
         "科学研究和技术服务业",
+        "生物医药研发/技术许可",
         "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 4,
@@ -2494,9 +2494,9 @@
       "timingN": 4,
       "topIndustries": [
         "制造业",
-        "批发和零售业",
+        "信息传输、软件和信息技术服务业",
         "软件/AI/数据/互联网",
-        "信息传输、软件和信息技术服务业"
+        "批发和零售业"
       ],
       "type6ROCount": 6,
       "type6RepCount": 59,
@@ -2629,9 +2629,9 @@
       "timingN": 3,
       "topIndustries": [
         "制造业",
+        "租赁和商务服务业",
         "科学研究和技术服务业",
-        "信息传输、软件和信息技术服务业",
-        "建筑业"
+        "信息传输、软件和信息技术服务业"
       ],
       "type6ROCount": 2,
       "type6RepCount": 17,
@@ -3439,8 +3439,8 @@
       "topIndustries": [
         "信息传输、软件和信息技术服务业",
         "制造业",
-        "软件/AI/数据/互联网",
-        "电子元器件/消费电子制造"
+        "科学研究和技术服务业",
+        "软件/AI/数据/互联网"
       ]
     },
     {
@@ -3876,9 +3876,9 @@
       "medianA1ToNoticeDays": 221.0,
       "timingN": 1,
       "topIndustries": [
+        "科学研究和技术服务业",
         "建筑/工程",
         "工程设计/技术咨询",
-        "建筑业",
         "通信网络工程服务"
       ],
       "type6ROCount": 5,
@@ -4554,7 +4554,7 @@
       "timingN": 1,
       "topIndustries": [
         "采矿业",
-        "海砂开采"
+        "黄金开采"
       ],
       "type6ROCount": 9,
       "type6RepCount": 3,
@@ -5358,7 +5358,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -5428,7 +5428,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -5498,7 +5498,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -5701,10 +5701,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "生物医药研发/技术许可",
-        "医药/医疗产品流通"
+        "医药/医疗产品流通",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -6108,7 +6109,8 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -6182,7 +6184,8 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -6537,10 +6540,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "新能源/汽车产业链",
-        "电力/燃气/公用能源"
+        "电力/燃气/公用能源",
+        "电力、热力、燃气及水生产和供应业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "电力、热力、燃气及水生产和供应业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -6665,10 +6669,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -6730,10 +6735,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -8336,7 +8342,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -8410,7 +8417,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -8484,7 +8492,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -9010,10 +9019,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "消费品制造/食品饮料/日化",
-        "医药/医疗产品流通"
+        "医药/医疗产品流通",
+        "批发和零售业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -9516,10 +9526,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "建筑/工程",
-        "工程设计/技术咨询"
+        "工程设计/技术咨询",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "建筑业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -10434,7 +10445,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -10492,7 +10504,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -11415,7 +11428,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -11473,7 +11486,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -11829,7 +11842,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "消费品制造/食品饮料/日化",
+        "医药/生物科技/医疗器械制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -12569,7 +12582,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -12627,10 +12640,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -12886,10 +12900,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -12951,10 +12966,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -15139,7 +15155,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -15201,7 +15217,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -17632,7 +17648,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -17691,10 +17707,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "新能源/汽车产业链",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -17761,10 +17778,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "新能源/汽车产业链",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -17830,7 +17848,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -18062,10 +18080,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -18656,10 +18675,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "消费品制造/食品饮料/日化",
-        "零售/电商/商业流通"
+        "零售/电商/商业流通",
+        "批发和零售业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": 30.1614,
       "listingMarketCapHkdBn": null,
@@ -19842,10 +19862,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "餐饮/连锁餐饮",
-        "客运/出行/共享交通"
+        "客运/出行/共享交通",
+        "交通运输、仓储和邮政业"
       ],
       "csrcIndustryTags": [
-        "文化、体育和娱乐业"
+        "交通运输、仓储和邮政业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -20031,7 +20052,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -20338,7 +20359,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -20404,7 +20426,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -20470,7 +20493,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -20536,7 +20560,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -20738,7 +20763,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -20804,7 +20829,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -21177,7 +21202,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -21245,7 +21270,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -21384,10 +21409,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -22140,10 +22166,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工程设计/技术咨询"
+        "工程设计/技术咨询",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "水利、环境和公共设施管理业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -22197,10 +22224,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工程设计/技术咨询"
+        "工程设计/技术咨询",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "水利、环境和公共设施管理业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -22254,10 +22282,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 2.5951,
@@ -22321,8 +22350,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
-        "新能源/汽车产业链",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -25879,7 +25907,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -25949,7 +25977,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -26465,7 +26493,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -26536,7 +26563,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -26607,7 +26633,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -27330,11 +27355,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "物流/运输/供应链",
-        "交通运输、仓储和邮政业"
+        "工业制造/材料加工",
+        "制造业"
       ],
       "csrcIndustryTags": [
-        "交通运输、仓储和邮政业"
+        "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -27661,10 +27686,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "金融/保险/证券/支付",
-        "医药/医疗产品流通"
+        "医药/医疗产品流通",
+        "批发和零售业"
       ],
       "csrcIndustryTags": [
-        "金融业"
+        "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -27910,10 +27936,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -27975,10 +28002,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -29035,7 +29063,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -29517,7 +29544,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -29575,7 +29602,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -30327,7 +30354,6 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -30398,7 +30424,6 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -30469,7 +30494,6 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -32119,7 +32143,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -32177,7 +32201,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -32907,7 +32931,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -35096,10 +35119,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "旅游/目的地管理/商务服务"
+        "旅游/目的地管理/商务服务",
+        "租赁和商务服务业"
       ],
       "csrcIndustryTags": [
-        "文化、体育和娱乐业"
+        "租赁和商务服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -35915,7 +35939,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -35989,7 +36013,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -36063,7 +36087,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -36138,10 +36162,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "环保/公用事业",
-        "工业制造/材料加工"
+        "工业制造/材料加工",
+        "制造业"
       ],
       "csrcIndustryTags": [
-        "水利、环境和公共设施管理业"
+        "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 22.2392,
       "listingMarketCapHkdBn": null,
@@ -36336,7 +36361,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -36407,7 +36431,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -36478,7 +36501,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -37025,7 +37047,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "半导体/集成电路/电子制造",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -37095,7 +37117,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "半导体/集成电路/电子制造",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -37231,10 +37253,11 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "营销/广告/品牌服务"
+        "营销/广告/品牌服务",
+        "租赁和商务服务业"
       ],
       "csrcIndustryTags": [
-        "信息传输、软件和信息技术服务业"
+        "租赁和商务服务业"
       ],
       "aShareMarketCapAtA1RmbBn": 15.8263,
       "listingMarketCapHkdBn": null,
@@ -38200,10 +38223,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -38269,10 +38293,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -38408,10 +38433,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -38478,10 +38504,11 @@
       "specialListingRoute": "hdr",
       "industryTags": [
         "租赁/车队运营服务",
-        "矿业/资源"
+        "矿业/资源",
+        "租赁和商务服务业"
       ],
       "csrcIndustryTags": [
-        "采矿业"
+        "租赁和商务服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 366.2218,
@@ -38547,10 +38574,11 @@
       "specialListingRoute": "hdr",
       "industryTags": [
         "租赁/车队运营服务",
-        "矿业/资源"
+        "矿业/资源",
+        "租赁和商务服务业"
       ],
       "csrcIndustryTags": [
-        "采矿业"
+        "租赁和商务服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 366.2218,
@@ -39364,7 +39392,7 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -42400,10 +42428,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "检测/检验/认证"
+        "检测/检验/认证",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": 3.7935,
       "listingMarketCapHkdBn": null,
@@ -43359,8 +43388,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可",
-        "消费品制造/食品饮料/日化",
+        "医药/生物科技/医疗器械制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -43430,10 +43458,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -46039,7 +46068,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -46113,7 +46142,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -46184,7 +46212,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -46557,10 +46584,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -47186,10 +47214,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -47401,7 +47430,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -47473,7 +47502,6 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -47546,7 +47574,6 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -48125,7 +48152,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -48198,7 +48224,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -48549,7 +48574,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -50244,7 +50269,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -51881,10 +51906,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -51948,10 +51974,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -52019,10 +52046,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -52768,7 +52796,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -54241,7 +54269,6 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -54578,10 +54605,11 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": 15.7542,
       "listingMarketCapHkdBn": null,
@@ -56132,10 +56160,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -56199,10 +56228,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -57221,10 +57251,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "零售/电商/商业流通",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "批发和零售业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": 69.786,
       "listingMarketCapHkdBn": null,
@@ -57289,10 +57320,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "零售/电商/商业流通",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "批发和零售业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": 69.786,
       "listingMarketCapHkdBn": null,
@@ -57357,10 +57389,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "零售/电商/商业流通",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "批发和零售业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": 69.786,
       "listingMarketCapHkdBn": null,
@@ -59331,10 +59364,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -59386,10 +59420,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -59633,7 +59668,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -59697,7 +59732,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -59761,7 +59796,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -59825,7 +59860,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -66353,7 +66388,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "海砂开采",
+        "黄金开采",
         "采矿业"
       ],
       "csrcIndustryTags": [
@@ -94250,10 +94285,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "生物医药研发/技术许可",
-        "医药/医疗产品流通"
+        "医药/医疗产品流通",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -94327,7 +94363,8 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -95541,7 +95578,7 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -95623,7 +95660,8 @@
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "高端装备/机器人/智能制造",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -95776,10 +95814,11 @@
       "specialListingRoute": null,
       "industryTags": [
         "高端装备/机器人/智能制造",
-        "软件/AI/数据/互联网"
+        "软件/AI/数据/互联网",
+        "信息传输、软件和信息技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "信息传输、软件和信息技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
@@ -96133,7 +96172,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
+        "半导体/集成电路/电子制造",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -96814,7 +96853,6 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "工业制造/材料加工",
         "新能源/汽车产业链",
         "制造业"
       ],
@@ -98278,7 +98316,7 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "电子元器件/消费电子制造",
+        "新能源/汽车产业链",
         "制造业"
       ],
       "csrcIndustryTags": [
@@ -99134,10 +99172,11 @@
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "生物医药研发/技术许可"
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
