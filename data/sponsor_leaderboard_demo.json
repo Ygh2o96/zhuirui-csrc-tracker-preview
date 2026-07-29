@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T07:10:15Z",
-    "sourceGeneratedAt": "2026-07-28T15:10:03+08:00",
+    "generatedAt": "2026-07-29T04:46:42Z",
+    "sourceGeneratedAt": "2026-07-29T12:46:32+08:00",
     "sourceRecordCount": 837,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-07-28T15:10:03+08:00",
+      "generatedAt": "2026-07-29T12:46:32+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1434,
@@ -30,7 +30,7 @@
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 217,
-      "asOfDate": "2026-07-28",
+      "asOfDate": "2026-07-29",
       "source": "webb_0xmd",
       "sourceUrl": "https://webbsite.0xmd.com/dbpub/SFClicount.asp?a=6",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_type6_capacity.json",
@@ -98,9 +98,9 @@
         "高端装备/机器人/智能制造",
         "批发和零售业"
       ],
-      "type6ROCount": 38,
+      "type6ROCount": 41,
       "type6RepCount": 945,
-      "type6TotalCount": 983,
+      "type6TotalCount": 986,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CHINA INTERNATIONAL CAPITAL CORPORATION HONG KONG SECURITIES LIMITED"
@@ -108,7 +108,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=46811&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -191,11 +191,11 @@
         "制造业",
         "信息传输、软件和信息技术服务业",
         "科学研究和技术服务业",
-        "生物医药研发/技术许可"
+        "电子元器件/消费电子制造"
       ],
       "type6ROCount": 46,
-      "type6RepCount": 916,
-      "type6TotalCount": 962,
+      "type6RepCount": 915,
+      "type6TotalCount": 961,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CITIC Securities (Hong Kong) Limited"
@@ -203,7 +203,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18459&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -295,7 +295,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49319&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -381,8 +381,8 @@
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 36,
-      "type6RepCount": 310,
-      "type6TotalCount": 346,
+      "type6RepCount": 312,
+      "type6TotalCount": 348,
       "type6RowCount": 2,
       "type6SourceFirmNames": [
         "GUOTAI JUNAN CAPITAL LIMITED",
@@ -392,7 +392,7 @@
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6",
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "type6RollupMemberSponsorIds": [
         "gtja",
@@ -482,8 +482,8 @@
         "信息传输、软件和信息技术服务业"
       ],
       "type6ROCount": 14,
-      "type6RepCount": 322,
-      "type6TotalCount": 336,
+      "type6RepCount": 323,
+      "type6TotalCount": 337,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "China Securities (International) Corporate Finance Company Limited"
@@ -491,7 +491,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1942934&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -571,7 +571,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17722&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -637,9 +637,9 @@
         "软件/AI/数据/互联网",
         "科学研究和技术服务业"
       ],
-      "type6ROCount": 19,
+      "type6ROCount": 18,
       "type6RepCount": 91,
-      "type6TotalCount": 110,
+      "type6TotalCount": 109,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CMB International Capital Limited"
@@ -647,7 +647,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=60614&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -713,8 +713,8 @@
         "卫生和社会工作"
       ],
       "type6ROCount": 20,
-      "type6RepCount": 159,
-      "type6TotalCount": 179,
+      "type6RepCount": 161,
+      "type6TotalCount": 181,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "HAITONG INTERNATIONAL CAPITAL LIMITED"
@@ -722,7 +722,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5600&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -793,8 +793,8 @@
         "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 21,
-      "type6RepCount": 269,
-      "type6TotalCount": 290,
+      "type6RepCount": 268,
+      "type6TotalCount": 289,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Morgan Stanley Asia Limited"
@@ -802,7 +802,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1464&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -877,7 +877,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=30230&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -941,8 +941,8 @@
         "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 17,
-      "type6RepCount": 212,
-      "type6TotalCount": 229,
+      "type6RepCount": 213,
+      "type6TotalCount": 230,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CHINA MERCHANTS SECURITIES (HK) CO., LIMITED"
@@ -950,7 +950,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18359&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1028,7 +1028,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5596&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1095,8 +1095,8 @@
         "消费品制造/食品饮料/日化"
       ],
       "type6ROCount": 10,
-      "type6RepCount": 162,
-      "type6TotalCount": 172,
+      "type6RepCount": 161,
+      "type6TotalCount": 171,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "GF Capital (Hong Kong) Limited"
@@ -1104,7 +1104,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=49367&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1176,7 +1176,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=42764&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1249,7 +1249,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68371&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1323,7 +1323,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1467&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1388,9 +1388,9 @@
         "租赁和商务服务业",
         "卫生和社会工作"
       ],
-      "type6ROCount": 14,
+      "type6ROCount": 15,
       "type6RepCount": 168,
-      "type6TotalCount": 182,
+      "type6TotalCount": 183,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Citigroup Global Markets Asia Limited"
@@ -1398,7 +1398,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=18311&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1470,7 +1470,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12227&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1540,7 +1540,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9131&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1608,7 +1608,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7117&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1678,7 +1678,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2041492&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1747,7 +1747,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68488&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1816,7 +1816,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1886,7 +1886,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=47434&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -1955,7 +1955,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68484&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2024,7 +2024,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2088,8 +2088,8 @@
         "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 4,
-      "type6RepCount": 64,
-      "type6TotalCount": 68,
+      "type6RepCount": 65,
+      "type6TotalCount": 69,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Jefferies Hong Kong Limited"
@@ -2097,7 +2097,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=72015&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2165,7 +2165,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=34259&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2224,8 +2224,8 @@
         "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 8,
-      "type6RepCount": 17,
-      "type6TotalCount": 25,
+      "type6RepCount": 16,
+      "type6TotalCount": 24,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "SPDB International Capital Limited"
@@ -2233,7 +2233,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2439801&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2293,8 +2293,8 @@
         "批发和零售业"
       ],
       "type6ROCount": 7,
-      "type6RepCount": 33,
-      "type6TotalCount": 40,
+      "type6RepCount": 34,
+      "type6TotalCount": 41,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "BOCOM International (Asia) Limited"
@@ -2302,7 +2302,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=41210&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2360,9 +2360,9 @@
         "住宿和餐饮业",
         "信息传输、软件和信息技术服务业"
       ],
-      "type6ROCount": 8,
+      "type6ROCount": 9,
       "type6RepCount": 33,
-      "type6TotalCount": 41,
+      "type6TotalCount": 42,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "ORIENT CAPITAL (HONG KONG) LIMITED"
@@ -2370,7 +2370,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2007103&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2439,7 +2439,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=5451&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2508,7 +2508,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6162&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2575,7 +2575,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1896613&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2643,7 +2643,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=7381&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2701,8 +2701,8 @@
         "高端装备/机器人/智能制造"
       ],
       "type6ROCount": 4,
-      "type6RepCount": 46,
-      "type6TotalCount": 50,
+      "type6RepCount": 47,
+      "type6TotalCount": 51,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "CHINA INDUSTRIAL SECURITIES INTERNATIONAL CAPITAL LIMITED"
@@ -2710,7 +2710,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1939868&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2778,7 +2778,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2458625&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2845,7 +2845,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2126636&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2898,8 +2898,8 @@
       "timingN": 2,
       "topIndustries": [
         "制造业",
-        "科学研究和技术服务业",
         "卫生和社会工作",
+        "科学研究和技术服务业",
         "采矿业"
       ],
       "type6ROCount": 4,
@@ -2912,7 +2912,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1552564&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -2971,8 +2971,8 @@
         "信息传输、软件和信息技术服务业"
       ],
       "type6ROCount": 8,
-      "type6RepCount": 9,
-      "type6TotalCount": 17,
+      "type6RepCount": 10,
+      "type6TotalCount": 18,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Quam Capital Limited (b1994-08-04)"
@@ -2980,7 +2980,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=17646&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3050,7 +3050,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=26392041&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3109,8 +3109,8 @@
         "软件/AI/数据/互联网"
       ],
       "type6ROCount": 3,
-      "type6RepCount": 6,
-      "type6TotalCount": 9,
+      "type6RepCount": 5,
+      "type6TotalCount": 8,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Rainbow Capital (HK) Limited"
@@ -3118,7 +3118,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23670404&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3185,7 +3185,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=23445433&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3252,7 +3252,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2084540&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3319,7 +3319,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15125&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3376,8 +3376,8 @@
         "机电工程"
       ],
       "type6ROCount": 2,
-      "type6RepCount": 2,
-      "type6TotalCount": 4,
+      "type6RepCount": 1,
+      "type6TotalCount": 3,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "Grande Capital Limited"
@@ -3385,7 +3385,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6721901&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3490,7 +3490,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=64301&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3557,7 +3557,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1933817&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3616,8 +3616,8 @@
         "零售/电商/商业流通"
       ],
       "type6ROCount": 3,
-      "type6RepCount": 7,
-      "type6TotalCount": 10,
+      "type6RepCount": 9,
+      "type6TotalCount": 12,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "China Renaissance Securities (Hong Kong) Limited"
@@ -3625,7 +3625,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1912087&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3682,8 +3682,8 @@
         "制造业",
         "医药/生物科技/医疗器械制造"
       ],
-      "type6ROCount": 6,
-      "type6RepCount": 75,
+      "type6ROCount": 7,
+      "type6RepCount": 74,
       "type6TotalCount": 81,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
@@ -3692,7 +3692,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=63996&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3758,7 +3758,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2620772&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3825,7 +3825,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9754&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3891,7 +3891,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=12111423&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -3996,7 +3996,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2455747&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4056,8 +4056,8 @@
         "交通运输、仓储和邮政业"
       ],
       "type6ROCount": 7,
-      "type6RepCount": 81,
-      "type6TotalCount": 88,
+      "type6RepCount": 80,
+      "type6TotalCount": 87,
       "type6RowCount": 1,
       "type6SourceFirmNames": [
         "NOMURA INTERNATIONAL (HONG KONG) LIMITED"
@@ -4065,7 +4065,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1440&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4131,7 +4131,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=926&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4199,7 +4199,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2557091&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4265,7 +4265,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22364027&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4331,7 +4331,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=15005&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4357,7 +4357,7 @@
     {
       "sponsorId": "emperor",
       "sponsorTag": "EMPEROR",
-      "displayNameZh": "Emperor Corporate",
+      "displayNameZh": "英皇企业融资",
       "displayNameEn": "EMPEROR",
       "canonicalName": "Emperor Corporate Finance Limited",
       "legalNames": [
@@ -4399,7 +4399,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=9620&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4464,7 +4464,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2420405&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4566,7 +4566,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2278798&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4635,7 +4635,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=6407&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4701,7 +4701,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=37237&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4766,7 +4766,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=22123361&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4832,7 +4832,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2690790&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4897,7 +4897,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2626430&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -4963,7 +4963,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=1747929&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5028,7 +5028,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=2539213&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5093,7 +5093,7 @@
       "type6SourceUrls": [
         "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=68441&a=6"
       ],
-      "type6AsOfDate": "2026-07-28",
+      "type6AsOfDate": "2026-07-29",
       "type6Quality": "fresh",
       "sponsorPrincipalRowCount": 1,
       "sponsorPrincipalSourceFirmNames": [
@@ -5116,6 +5116,426 @@
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "harbin yuyantang traditional chinese medicine outpatient group co., ltd.",
+      "issuerName": "Harbin Yuyantang Traditional Chinese Medicine Outpatient Group Co., Ltd.",
+      "csrcName": "哈爾濱譽研堂中醫門診集團股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cmbi",
+      "sourceSponsorTag": "CMBI",
+      "sourceSponsorTags": [
+        "CMBI"
+      ],
+      "leaderboardSponsorTag": "CMBI",
+      "sponsorLegalName": "CMB International Capital Limited",
+      "sponsorLegalNames": [
+        "CMB International Capital Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-16",
+      "currentA1Date": "2026-07-29",
+      "receivedDate": "2026-03-30",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医疗服务/养老/社会工作",
+        "卫生和社会工作"
+      ],
+      "csrcIndustryTags": [
+        "卫生和社会工作"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 73.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108770/documents/sehk26072900088.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7628529/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "harbin yuyantang traditional chinese medicine outpatient group co., ltd.",
+      "issuerName": "Harbin Yuyantang Traditional Chinese Medicine Outpatient Group Co., Ltd.",
+      "csrcName": "哈爾濱譽研堂中醫門診集團股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "guoyuan",
+      "sourceSponsorTag": "GUOYUAN",
+      "sourceSponsorTags": [
+        "GUOYUAN"
+      ],
+      "leaderboardSponsorTag": "GUOYUAN",
+      "sponsorLegalName": "Guoyuan Capital (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "Guoyuan Capital (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-16",
+      "currentA1Date": "2026-07-29",
+      "receivedDate": "2026-03-30",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医疗服务/养老/社会工作",
+        "卫生和社会工作"
+      ],
+      "csrcIndustryTags": [
+        "卫生和社会工作"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 73.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108770/documents/sehk26072900088.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7628529/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "giantec semiconductor corporation",
+      "issuerName": "Giantec Semiconductor Corporation",
+      "csrcName": "聚辰半導體股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-26",
+      "currentA1Date": "2026-07-28",
+      "receivedDate": "2026-03-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "半导体/集成电路/电子制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 26.0087,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 53.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108769/documents/sehk26072800992.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "ningbo deye technology corporation",
+      "issuerName": "Ningbo Deye Technology Corporation",
+      "csrcName": "寧波德業科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 3,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.3333333333333333,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-27",
+      "currentA1Date": "2026-07-28",
+      "receivedDate": "2026-03-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "电子元器件/消费电子制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 61.252,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 52.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108768/documents/sehk26072800883.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "ningbo deye technology corporation",
+      "issuerName": "Ningbo Deye Technology Corporation",
+      "csrcName": "寧波德業科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 3,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.3333333333333333,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-27",
+      "currentA1Date": "2026-07-28",
+      "receivedDate": "2026-03-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "电子元器件/消费电子制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 61.252,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 52.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108768/documents/sehk26072800883.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "ningbo deye technology corporation",
+      "issuerName": "Ningbo Deye Technology Corporation",
+      "csrcName": "寧波德業科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cmbi",
+      "sourceSponsorTag": "CMBI",
+      "sourceSponsorTags": [
+        "CMBI"
+      ],
+      "leaderboardSponsorTag": "CMBI",
+      "sponsorLegalName": "CMB International Capital Limited",
+      "sponsorLegalNames": [
+        "CMB International Capital Limited"
+      ],
+      "sponsorOrder": 3,
+      "sponsorCountOnDeal": 3,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.3333333333333333,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-27",
+      "currentA1Date": "2026-07-28",
+      "receivedDate": "2026-03-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "电子元器件/消费电子制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 61.252,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 52.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108768/documents/sehk26072800883.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "standard robots (wuxi) co., ltd.",
       "issuerName": "Standard Robots (Wuxi) Co., Ltd.",
@@ -46502,7 +46922,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46573,7 +46995,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46644,7 +47068,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46714,7 +47140,9 @@
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46771,7 +47199,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46841,7 +47271,9 @@
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -47662,225 +48094,6 @@
       ]
     },
     {
-      "issuerId": "ningbo deye technology corporation",
-      "issuerName": "Ningbo Deye Technology Corporation",
-      "csrcName": "寧波德業科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 3,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.3333333333333333,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-27",
-      "currentA1Date": "2026-01-27",
-      "receivedDate": "2026-03-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "消费品制造/食品饮料/日化",
-        "新能源/汽车产业链",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 61.252,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 52.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108148/documents/sehk26012701157.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "ningbo deye technology corporation",
-      "issuerName": "Ningbo Deye Technology Corporation",
-      "csrcName": "寧波德業科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citic",
-      "sourceSponsorTag": "CITIC",
-      "sourceSponsorTags": [
-        "CITIC"
-      ],
-      "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "CITIC Securities (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 3,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.3333333333333333,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-27",
-      "currentA1Date": "2026-01-27",
-      "receivedDate": "2026-03-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "消费品制造/食品饮料/日化",
-        "新能源/汽车产业链",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 61.252,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 52.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108148/documents/sehk26012701157.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "ningbo deye technology corporation",
-      "issuerName": "Ningbo Deye Technology Corporation",
-      "csrcName": "寧波德業科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cmbi",
-      "sourceSponsorTag": "CMBI",
-      "sourceSponsorTags": [
-        "CMBI"
-      ],
-      "leaderboardSponsorTag": "CMBI",
-      "sponsorLegalName": "CMB International Capital Limited",
-      "sponsorLegalNames": [
-        "CMB International Capital Limited"
-      ],
-      "sponsorOrder": 3,
-      "sponsorCountOnDeal": 3,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.3333333333333333,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-27",
-      "currentA1Date": "2026-01-27",
-      "receivedDate": "2026-03-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "消费品制造/食品饮料/日化",
-        "新能源/汽车产业链",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 61.252,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 52.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108148/documents/sehk26012701157.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
-        }
-      ]
-    },
-    {
       "issuerId": "shenzhen capchem technology co., ltd.",
       "issuerName": "SHENZHEN CAPCHEM TECHNOLOGY CO., LTD.",
       "csrcName": "深圳新宙邦科技股份有限公司",
@@ -48301,78 +48514,6 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "giantec semiconductor corporation",
-      "issuerName": "Giantec Semiconductor Corporation",
-      "csrcName": "聚辰半導體股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 1,
-      "creditAllFull": 1.0,
-      "creditEqual": 1.0,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-26",
-      "currentA1Date": "2026-01-26",
-      "receivedDate": "2026-03-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "半导体/集成电路/电子制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 26.0087,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 53.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108134/documents/sehk26012600719.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
         }
       ]
     },
@@ -51060,150 +51201,6 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7627079/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "harbin yuyantang traditional chinese medicine outpatient group co., ltd.",
-      "issuerName": "Harbin Yuyantang Traditional Chinese Medicine Outpatient Group Co., Ltd.",
-      "csrcName": "哈爾濱譽研堂中醫門診集團股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cmbi",
-      "sourceSponsorTag": "CMBI",
-      "sourceSponsorTags": [
-        "CMBI"
-      ],
-      "leaderboardSponsorTag": "CMBI",
-      "sponsorLegalName": "CMB International Capital Limited",
-      "sponsorLegalNames": [
-        "CMB International Capital Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-16",
-      "currentA1Date": "2026-01-16",
-      "receivedDate": "2026-03-30",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "医疗服务/养老/社会工作",
-        "卫生和社会工作"
-      ],
-      "csrcIndustryTags": [
-        "卫生和社会工作"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 73.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108085/documents/sehk26011600873.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7628529/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "harbin yuyantang traditional chinese medicine outpatient group co., ltd.",
-      "issuerName": "Harbin Yuyantang Traditional Chinese Medicine Outpatient Group Co., Ltd.",
-      "csrcName": "哈爾濱譽研堂中醫門診集團股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "guoyuan",
-      "sourceSponsorTag": "GUOYUAN",
-      "sourceSponsorTags": [
-        "GUOYUAN"
-      ],
-      "leaderboardSponsorTag": "GUOYUAN",
-      "sponsorLegalName": "Guoyuan Capital (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "Guoyuan Capital (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-16",
-      "currentA1Date": "2026-01-16",
-      "receivedDate": "2026-03-30",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "医疗服务/养老/社会工作",
-        "卫生和社会工作"
-      ],
-      "csrcIndustryTags": [
-        "卫生和社会工作"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 73.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108085/documents/sehk26011600873.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7647524/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7628529/content.shtml"
         }
       ]
     },
