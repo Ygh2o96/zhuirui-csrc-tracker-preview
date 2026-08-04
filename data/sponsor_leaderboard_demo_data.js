@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-04T08:13:13Z",
-    "sourceGeneratedAt": "2026-08-04T16:13:13+08:00",
+    "generatedAt": "2026-08-04T20:50:17Z",
+    "sourceGeneratedAt": "2026-08-05T04:50:02+08:00",
     "sourceRecordCount": 838,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-04T16:13:13+08:00",
+      "generatedAt": "2026-08-05T04:50:02+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1435,
@@ -48,8 +48,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "rollupCapacityFirmCount": 1,
       "ambiguousCapacityRowCount": 0,
       "unmatchedCapacityRowCount": 51,
-      "asOfDate": "2026-08-03",
-      "sourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "asOfDate": "2026-08-04",
+      "sourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "source": "sfc_sponsor_principal_register_mirror",
       "sourceUrl": "https://drdrhuhabqfsu.ok.kimi.link/",
       "snapshotPath": "downloads/sponsor_capacity/snapshots/latest_sfc_sponsor_principals.json",
@@ -119,8 +119,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 83,
       "sponsorPrincipalRepCount": 1597,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACN231",
@@ -217,8 +217,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 47,
       "sponsorPrincipalRepCount": 942,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGF194",
@@ -309,8 +309,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 69,
       "sponsorPrincipalRepCount": 796,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEK034",
@@ -439,8 +439,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 36,
       "sponsorPrincipalRepCount": 301,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalRollupMemberSponsorIds": [
         "gtja",
@@ -505,8 +505,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 14,
       "sponsorPrincipalRepCount": 324,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGP056",
@@ -585,8 +585,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 16,
       "sponsorPrincipalRepCount": 147,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGK773",
@@ -661,8 +661,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 20,
       "sponsorPrincipalRepCount": 90,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJH516",
@@ -736,8 +736,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 20,
       "sponsorPrincipalRepCount": 154,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGG766",
@@ -816,8 +816,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 50,
       "sponsorPrincipalRepCount": 861,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACO819",
@@ -891,8 +891,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 16,
       "sponsorPrincipalRepCount": 71,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEE758",
@@ -964,8 +964,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 35,
       "sponsorPrincipalRepCount": 382,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGC693",
@@ -1042,8 +1042,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 38,
       "sponsorPrincipalRepCount": 873,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFR865",
@@ -1118,8 +1118,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 10,
       "sponsorPrincipalRepCount": 163,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEO767",
@@ -1190,8 +1190,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 15,
       "sponsorPrincipalRepCount": 158,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACQ669",
@@ -1263,8 +1263,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 52,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFP043",
@@ -1337,8 +1337,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 24,
       "sponsorPrincipalRepCount": 331,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACI535",
@@ -1412,8 +1412,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 37,
       "sponsorPrincipalRepCount": 441,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFF166",
@@ -1484,8 +1484,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 43,
       "sponsorPrincipalRepCount": 386,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABR710",
@@ -1554,8 +1554,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 41,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AWC885",
@@ -1622,8 +1622,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 54,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOA854",
@@ -1691,8 +1691,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 21,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFQ413",
@@ -1760,8 +1760,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 48,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AKS933",
@@ -1829,8 +1829,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 12,
       "sponsorPrincipalRepCount": 69,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFA799",
@@ -1899,8 +1899,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 14,
       "sponsorPrincipalRepCount": 41,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGO243",
@@ -1968,8 +1968,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 23,
       "sponsorPrincipalRepCount": 255,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOZ130",
@@ -2037,8 +2037,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 11,
       "sponsorPrincipalRepCount": 101,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABY439",
@@ -2110,8 +2110,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 265,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AXM402",
@@ -2178,8 +2178,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 18,
       "sponsorPrincipalRepCount": 104,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "APK242",
@@ -2246,8 +2246,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 21,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGN288",
@@ -2315,8 +2315,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 34,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGG695",
@@ -2383,8 +2383,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 35,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFS979",
@@ -2453,8 +2453,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 30,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEY337",
@@ -2522,8 +2522,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 17,
       "sponsorPrincipalRepCount": 201,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGL135",
@@ -2589,8 +2589,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 37,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHP762",
@@ -2657,8 +2657,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 18,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ANQ192",
@@ -2724,8 +2724,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 46,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHR797",
@@ -2792,8 +2792,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 11,
       "sponsorPrincipalRepCount": 28,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGK771",
@@ -2859,8 +2859,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 20,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADM812",
@@ -2926,8 +2926,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 16,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "APB407",
@@ -2994,8 +2994,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAN686",
@@ -3064,8 +3064,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AIU419",
@@ -3132,8 +3132,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AUM132",
@@ -3199,8 +3199,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 3,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFV839",
@@ -3266,8 +3266,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ACH258",
@@ -3333,8 +3333,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 1,
       "sponsorPrincipalRepCount": 9,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AOR644"
@@ -3399,8 +3399,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGO945",
@@ -3466,8 +3466,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 11,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AED786",
@@ -3533,8 +3533,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 76,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAW465",
@@ -3600,8 +3600,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADN295",
@@ -3668,8 +3668,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 24,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADA866",
@@ -3735,8 +3735,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 79,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHY113",
@@ -3801,8 +3801,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFG775",
@@ -3868,8 +3868,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 10,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "BER960"
@@ -3934,8 +3934,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 7,
       "sponsorPrincipalRepCount": 15,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AGM902",
@@ -4039,8 +4039,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 12,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFL987",
@@ -4108,8 +4108,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 32,
       "sponsorPrincipalRepCount": 518,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ADH994",
@@ -4174,8 +4174,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 6,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAA815",
@@ -4242,8 +4242,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 23,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AFY720",
@@ -4308,8 +4308,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 6,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEW978",
@@ -4374,8 +4374,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 8,
       "sponsorPrincipalRepCount": 8,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABF972",
@@ -4442,8 +4442,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 5,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AHJ599",
@@ -4507,8 +4507,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 3,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABI141",
@@ -4608,8 +4608,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 9,
       "sponsorPrincipalRepCount": 6,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEH818",
@@ -4677,8 +4677,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 2,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AAG625",
@@ -4743,8 +4743,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 19,
       "sponsorPrincipalRepCount": 127,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ARP180",
@@ -4808,8 +4808,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 5,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ABW953",
@@ -4874,8 +4874,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AEC838",
@@ -4939,8 +4939,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 6,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ANJ771",
@@ -5005,8 +5005,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 3,
       "sponsorPrincipalRepCount": 1,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "ARH793",
@@ -5070,8 +5070,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 2,
       "sponsorPrincipalRepCount": 4,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AML472",
@@ -5135,8 +5135,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "sponsorPrincipalROCount": 4,
       "sponsorPrincipalRepCount": 7,
-      "sponsorPrincipalAsOfDate": "2026-08-03",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-03T18:05:00+08:00",
+      "sponsorPrincipalAsOfDate": "2026-08-04",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-04T15:26:00+08:00",
       "sponsorPrincipalQuality": "fresh",
       "sponsorPrincipalCerefs": [
         "AJK773",
@@ -5147,6 +5147,76 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "hangzhou yodosmart automotive technology co., ltd.",
+      "issuerName": "Hangzhou Yodosmart Automotive Technology Co., Ltd.",
+      "csrcName": "杭州雲動智能汽車技術股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-19",
+      "currentA1Date": "2026-08-04",
+      "receivedDate": "2026-02-26",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "新能源/汽车产业链",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 38.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108786/documents/sehk26080402104.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（最近一次公开状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7646093/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7624298/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "beijing eswin computing technology co., ltd.",
       "issuerName": "Beijing ESWIN Computing Technology Co., Ltd.",
@@ -50802,78 +50872,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7620010/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "hangzhou yodosmart automotive technology co., ltd.",
-      "issuerName": "Hangzhou Yodosmart Automotive Technology Co., Ltd.",
-      "csrcName": "杭州雲動智能汽車技術股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 1,
-      "creditAllFull": 1.0,
-      "creditEqual": 1.0,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-19",
-      "currentA1Date": "2026-01-19",
-      "receivedDate": "2026-02-26",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "新能源/汽车产业链",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 38.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108113/documents/sehk26011901336.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7646093/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7624298/content.shtml"
         }
       ]
     },
