@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-04T20:50:17Z",
-    "sourceGeneratedAt": "2026-08-05T04:50:02+08:00",
+    "generatedAt": "2026-08-05T04:07:37Z",
+    "sourceGeneratedAt": "2026-08-05T12:07:36+08:00",
     "sourceRecordCount": 838,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-05T04:50:02+08:00",
+      "generatedAt": "2026-08-05T12:07:36+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1435,
@@ -3418,8 +3418,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "Guolian Securities International Capital Co., Limited"
       ],
       "aliases": [],
-      "sponsorNature": "待核",
-      "natureConfidence": "needs_review",
+      "sponsorNature": "中资",
+      "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 3,
