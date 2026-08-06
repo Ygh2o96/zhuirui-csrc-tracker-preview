@@ -1,6 +1,6 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-05T20:46:09Z",
+    "generatedAt": "2026-08-06T02:45:35Z",
     "sourceGeneratedAt": "2026-08-06T04:46:00+08:00",
     "sourceRecordCount": 838,
     "sourceOfTruth": {
@@ -4609,7 +4609,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     {
       "sponsorId": "kingsway",
       "sponsorTag": "KINGSWAY",
-      "displayNameZh": "Kingsway",
+      "displayNameZh": "滙富融資",
       "displayNameEn": "KINGSWAY",
       "canonicalName": "Kingsway Capital Limited",
       "legalNames": [
