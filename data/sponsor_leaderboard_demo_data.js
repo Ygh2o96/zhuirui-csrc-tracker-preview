@@ -1,16 +1,16 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-06T02:45:35Z",
-    "sourceGeneratedAt": "2026-08-06T04:46:00+08:00",
-    "sourceRecordCount": 838,
+    "generatedAt": "2026-08-07T06:18:59Z",
+    "sourceGeneratedAt": "2026-08-07T14:18:59+08:00",
+    "sourceRecordCount": 839,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-06T04:46:00+08:00",
+      "generatedAt": "2026-08-07T14:18:59+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1435,
-    "baseProjectFactCount": 1329,
+    "projectFactCount": 1439,
+    "baseProjectFactCount": 1333,
     "rollupProjectFactCount": 106,
     "firmCount": 73,
     "excludedPlaceholderSponsorRecordCount": 9,
@@ -75,11 +75,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 232,
-      "activeCount": 111,
+      "projectCount": 233,
+      "activeCount": 112,
       "listedCount": 115,
-      "noticeCount": 106,
-      "ahCount": 51,
+      "noticeCount": 107,
+      "ahCount": 52,
       "hShareCount": 119,
       "redChipCount": 58,
       "deSpacCount": 0,
@@ -87,11 +87,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 7013.4674,
       "listingMarketCapHkdBnMedian": 15.5257,
       "listingMarketCapN": 115,
-      "aShareMarketCapRmbBnSum": 4628.9331,
-      "aShareMarketCapRmbBnMedian": 36.35365,
-      "aShareMarketCapN": 50,
-      "medianA1ToNoticeDays": 186.5,
-      "timingN": 94,
+      "aShareMarketCapRmbBnSum": 4697.476,
+      "aShareMarketCapRmbBnMedian": 39.2248,
+      "aShareMarketCapN": 51,
+      "medianA1ToNoticeDays": 186.0,
+      "timingN": 95,
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
@@ -173,11 +173,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_group",
-      "projectCount": 170,
-      "activeCount": 92,
+      "projectCount": 171,
+      "activeCount": 93,
       "listedCount": 72,
-      "noticeCount": 77,
-      "ahCount": 55,
+      "noticeCount": 78,
+      "ahCount": 56,
       "hShareCount": 84,
       "redChipCount": 26,
       "deSpacCount": 1,
@@ -185,11 +185,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 2975.273,
       "listingMarketCapHkdBnMedian": 13.114899999999999,
       "listingMarketCapN": 72,
-      "aShareMarketCapRmbBnSum": 3082.4245,
-      "aShareMarketCapRmbBnMedian": 39.0254,
-      "aShareMarketCapN": 55,
-      "medianA1ToNoticeDays": 179.0,
-      "timingN": 73,
+      "aShareMarketCapRmbBnSum": 3150.9674,
+      "aShareMarketCapRmbBnMedian": 39.71935,
+      "aShareMarketCapN": 56,
+      "medianA1ToNoticeDays": 178.0,
+      "timingN": 74,
       "topIndustries": [
         "制造业",
         "科学研究和技术服务业",
@@ -361,8 +361,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "mappingConfidence": "rollup_group",
       "firmScope": "rollup",
       "projectCount": 106,
-      "activeCount": 60,
-      "listedCount": 43,
+      "activeCount": 59,
+      "listedCount": 44,
       "noticeCount": 45,
       "ahCount": 17,
       "hShareCount": 71,
@@ -693,8 +693,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 48,
-      "activeCount": 24,
-      "listedCount": 22,
+      "activeCount": 23,
+      "listedCount": 23,
       "noticeCount": 24,
       "ahCount": 6,
       "hShareCount": 29,
@@ -1579,8 +1579,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 15,
-      "activeCount": 8,
-      "listedCount": 7,
+      "activeCount": 7,
+      "listedCount": 8,
       "noticeCount": 8,
       "ahCount": 1,
       "hShareCount": 10,
@@ -1703,6 +1703,77 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "sponsorPrincipalCount": 4
     },
     {
+      "sponsorId": "db",
+      "sponsorTag": "DB",
+      "displayNameZh": "德银",
+      "displayNameEn": "DB",
+      "canonicalName": "Deutsche Bank AG, Hong Kong Branch",
+      "legalNames": [
+        "Deutsche Bank AG, Hong Kong Branch",
+        "Deutsche Securities Asia Limited"
+      ],
+      "aliases": [],
+      "sponsorNature": "外资",
+      "natureConfidence": "demo_seed",
+      "mappingConfidence": "dictionary",
+      "firmScope": "legal_entity",
+      "projectCount": 14,
+      "activeCount": 7,
+      "listedCount": 7,
+      "noticeCount": 9,
+      "ahCount": 2,
+      "hShareCount": 7,
+      "redChipCount": 5,
+      "deSpacCount": 0,
+      "hdrCount": 0,
+      "listingMarketCapHkdBnSum": 283.1082,
+      "listingMarketCapHkdBnMedian": 27.4298,
+      "listingMarketCapN": 7,
+      "aShareMarketCapRmbBnSum": 80.6187,
+      "aShareMarketCapRmbBnMedian": 40.30935,
+      "aShareMarketCapN": 2,
+      "medianA1ToNoticeDays": 154.0,
+      "timingN": 5,
+      "topIndustries": [
+        "制造业",
+        "信息传输、软件和信息技术服务业",
+        "电子元器件/消费电子制造",
+        "软件/AI/数据/互联网"
+      ],
+      "type6ROCount": 7,
+      "type6RepCount": 56,
+      "type6TotalCount": 63,
+      "type6RowCount": 1,
+      "type6SourceFirmNames": [
+        "DEUTSCHE SECURITIES ASIA LIMITED"
+      ],
+      "type6SourceUrls": [
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
+      ],
+      "type6AsOfDate": "2026-07-29",
+      "type6Quality": "manual",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "Deutsche Securities Asia Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 12,
+      "sponsorPrincipalRepCount": 69,
+      "sponsorPrincipalAsOfDate": "2026-08-05",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-05T15:01:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "AFA799",
+        "ALA688",
+        "AXO614",
+        "BBE278",
+        "BBK034"
+      ],
+      "sponsorPrincipalCount": 5
+    },
+    {
       "sponsorId": "pingan",
       "sponsorTag": "PINGAN",
       "displayNameZh": "平安",
@@ -1769,77 +1840,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "AVV214"
       ],
       "sponsorPrincipalCount": 3
-    },
-    {
-      "sponsorId": "db",
-      "sponsorTag": "DB",
-      "displayNameZh": "德银",
-      "displayNameEn": "DB",
-      "canonicalName": "Deutsche Bank AG, Hong Kong Branch",
-      "legalNames": [
-        "Deutsche Bank AG, Hong Kong Branch",
-        "Deutsche Securities Asia Limited"
-      ],
-      "aliases": [],
-      "sponsorNature": "外资",
-      "natureConfidence": "demo_seed",
-      "mappingConfidence": "dictionary",
-      "firmScope": "legal_entity",
-      "projectCount": 13,
-      "activeCount": 6,
-      "listedCount": 7,
-      "noticeCount": 8,
-      "ahCount": 1,
-      "hShareCount": 7,
-      "redChipCount": 5,
-      "deSpacCount": 0,
-      "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 283.1082,
-      "listingMarketCapHkdBnMedian": 27.4298,
-      "listingMarketCapN": 7,
-      "aShareMarketCapRmbBnSum": 12.0758,
-      "aShareMarketCapRmbBnMedian": 12.0758,
-      "aShareMarketCapN": 1,
-      "medianA1ToNoticeDays": 151.5,
-      "timingN": 4,
-      "topIndustries": [
-        "制造业",
-        "信息传输、软件和信息技术服务业",
-        "电子元器件/消费电子制造",
-        "软件/AI/数据/互联网"
-      ],
-      "type6ROCount": 7,
-      "type6RepCount": 56,
-      "type6TotalCount": 63,
-      "type6RowCount": 1,
-      "type6SourceFirmNames": [
-        "DEUTSCHE SECURITIES ASIA LIMITED"
-      ],
-      "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50678&a=6"
-      ],
-      "type6AsOfDate": "2026-07-29",
-      "type6Quality": "manual",
-      "sponsorPrincipalRowCount": 1,
-      "sponsorPrincipalSourceFirmNames": [
-        "Deutsche Securities Asia Limited"
-      ],
-      "sponsorPrincipalSourceUrls": [
-        "https://drdrhuhabqfsu.ok.kimi.link/"
-      ],
-      "sponsorPrincipalROCount": 12,
-      "sponsorPrincipalRepCount": 69,
-      "sponsorPrincipalAsOfDate": "2026-08-05",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-05T15:01:00+08:00",
-      "sponsorPrincipalQuality": "fresh",
-      "sponsorPrincipalCerefs": [
-        "AFA799",
-        "ALA688",
-        "AXO614",
-        "BBE278",
-        "BBK034"
-      ],
-      "sponsorPrincipalCount": 5
     },
     {
       "sponsorId": "icbci",
@@ -2066,11 +2066,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 11,
-      "activeCount": 5,
+      "projectCount": 12,
+      "activeCount": 6,
       "listedCount": 6,
-      "noticeCount": 4,
-      "ahCount": 1,
+      "noticeCount": 5,
+      "ahCount": 2,
       "hShareCount": 4,
       "redChipCount": 6,
       "deSpacCount": 0,
@@ -2078,11 +2078,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 80.2654,
       "listingMarketCapHkdBnMedian": 12.7697,
       "listingMarketCapN": 6,
-      "aShareMarketCapRmbBnSum": 17.8839,
-      "aShareMarketCapRmbBnMedian": 17.8839,
-      "aShareMarketCapN": 1,
-      "medianA1ToNoticeDays": 175.0,
-      "timingN": 3,
+      "aShareMarketCapRmbBnSum": 86.4268,
+      "aShareMarketCapRmbBnMedian": 43.2134,
+      "aShareMarketCapN": 2,
+      "medianA1ToNoticeDays": 164.5,
+      "timingN": 4,
       "topIndustries": [
         "制造业",
         "科学研究和技术服务业",
@@ -5132,6 +5132,254 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "sichuan biokin pharmaceutical co., ltd. - b",
+      "issuerName": "Sichuan Biokin Pharmaceutical Co., Ltd. - B",
+      "csrcName": "四川百利天恒藥業股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2024-07-10",
+      "currentA1Date": "2026-08-06",
+      "receivedDate": null,
+      "noticeDate": "2024-12-11",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 68.5429,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 154.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108787/documents/sehk26080601694.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7524373/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "sichuan biokin pharmaceutical co., ltd. - b",
+      "issuerName": "Sichuan Biokin Pharmaceutical Co., Ltd. - B",
+      "csrcName": "四川百利天恒藥業股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "jefferies",
+      "sourceSponsorTag": "JEFFERIES",
+      "sourceSponsorTags": [
+        "JEFFERIES"
+      ],
+      "leaderboardSponsorTag": "JEFFERIES",
+      "sponsorLegalName": "Jefferies Hong Kong Limited",
+      "sponsorLegalNames": [
+        "Jefferies Hong Kong Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2024-07-10",
+      "currentA1Date": "2026-08-06",
+      "receivedDate": null,
+      "noticeDate": "2024-12-11",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 68.5429,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 154.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108787/documents/sehk26080601694.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7524373/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "sichuan biokin pharmaceutical co., ltd. - b",
+      "issuerName": "Sichuan Biokin Pharmaceutical Co., Ltd. - B",
+      "csrcName": "四川百利天恒藥業股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 3,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2024-07-10",
+      "currentA1Date": "2026-08-06",
+      "receivedDate": null,
+      "noticeDate": "2024-12-11",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 68.5429,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 154.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108787/documents/sehk26080601694.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7524373/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "sichuan biokin pharmaceutical co., ltd. - b",
+      "issuerName": "Sichuan Biokin Pharmaceutical Co., Ltd. - B",
+      "csrcName": "四川百利天恒藥業股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "db",
+      "sourceSponsorTag": "DB",
+      "sourceSponsorTags": [
+        "DB"
+      ],
+      "leaderboardSponsorTag": "DB",
+      "sponsorLegalName": "Deutsche Bank AG, Hong Kong Branch",
+      "sponsorLegalNames": [
+        "Deutsche Bank AG, Hong Kong Branch"
+      ],
+      "sponsorOrder": 4,
+      "sponsorCountOnDeal": 4,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.25,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "a1Date": "2024-07-10",
+      "currentA1Date": "2026-08-06",
+      "receivedDate": null,
+      "noticeDate": "2024-12-11",
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 68.5429,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": 154.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108787/documents/sehk26080601694.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7524373/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "hangzhou yodosmart automotive technology co., ltd.",
       "issuerName": "Hangzhou Yodosmart Automotive Technology Co., Ltd.",
@@ -25774,7 +26022,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "nasn intelligent tech (zhejiang) co., ltd.",
       "issuerName": "NASN Intelligent Tech (Zhejiang) Co., Ltd.",
       "csrcName": "拿森智能科技（浙江）股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "NASN TECH",
       "sponsorId": "haitong",
       "sourceSponsorTag": "HAITONG",
       "sourceSponsorTags": [
@@ -25790,14 +26038,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
       "a1Date": "2026-04-29",
       "currentA1Date": "2026-04-29",
       "receivedDate": null,
       "noticeDate": "2026-04-09",
-      "listingDate": null,
+      "listingDate": "2026-08-07",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -25811,7 +26059,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 100.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -25833,6 +26081,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626838/content.shtml"
         },
         {
+          "label": "HKEX近期新上市证券",
+          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+        },
+        {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7635852/content.shtml"
         }
@@ -25842,7 +26094,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "nasn intelligent tech (zhejiang) co., ltd.",
       "issuerName": "NASN Intelligent Tech (Zhejiang) Co., Ltd.",
       "csrcName": "拿森智能科技（浙江）股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "NASN TECH",
       "sponsorId": "boci",
       "sourceSponsorTag": "BOCI",
       "sourceSponsorTags": [
@@ -25858,14 +26110,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
       "a1Date": "2026-04-29",
       "currentA1Date": "2026-04-29",
       "receivedDate": null,
       "noticeDate": "2026-04-09",
-      "listingDate": null,
+      "listingDate": "2026-08-07",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -25879,7 +26131,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 100.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -25899,6 +26151,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626838/content.shtml"
+        },
+        {
+          "label": "HKEX近期新上市证券",
+          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
         },
         {
           "label": "补充材料公示",
@@ -96652,7 +96908,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "nasn intelligent tech (zhejiang) co., ltd.",
       "issuerName": "NASN Intelligent Tech (Zhejiang) Co., Ltd.",
       "csrcName": "拿森智能科技（浙江）股份有限公司",
-      "hkexListingCompanyName": "",
+      "hkexListingCompanyName": "NASN TECH",
       "sponsorId": "group-gtja-haitong",
       "sourceSponsorTag": "HAITONG",
       "sourceSponsorTags": [
@@ -96668,14 +96924,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditAllFull": 1.0,
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
       "a1Date": "2026-04-29",
       "currentA1Date": "2026-04-29",
       "receivedDate": null,
       "noticeDate": "2026-04-09",
-      "listingDate": null,
+      "listingDate": "2026-08-07",
       "issuerType": "H股",
       "isAH": false,
       "specialListingRoute": null,
@@ -96689,7 +96945,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 100.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -96709,6 +96965,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626838/content.shtml"
+        },
+        {
+          "label": "HKEX近期新上市证券",
+          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
         },
         {
           "label": "补充材料公示",
