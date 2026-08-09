@@ -1,19 +1,19 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-07T06:18:59Z",
-    "sourceGeneratedAt": "2026-08-07T14:18:59+08:00",
-    "sourceRecordCount": 839,
+    "generatedAt": "2026-08-09T02:47:56Z",
+    "sourceGeneratedAt": "2026-08-09T10:47:52+08:00",
+    "sourceRecordCount": 840,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-07T14:18:59+08:00",
+      "generatedAt": "2026-08-09T10:47:52+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1439,
     "baseProjectFactCount": 1333,
     "rollupProjectFactCount": 106,
     "firmCount": 73,
-    "excludedPlaceholderSponsorRecordCount": 9,
+    "excludedPlaceholderSponsorRecordCount": 10,
     "coverageZh": "HKEX Main Board / CSRC 备案口径；A1样本自 2019-04-08；普通IPO统计自 2023-03-31",
     "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计牵头/首名保荐人，或按保荐人数量平分；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。SP 为真正可签 sponsor 工作的 sponsor principal，负荷/人效优先用 SP 口径；六号牌总人数、RO、Rep 仅作容量背景。",
     "creditMethods": [
@@ -87,9 +87,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 7013.4674,
       "listingMarketCapHkdBnMedian": 15.5257,
       "listingMarketCapN": 115,
-      "aShareMarketCapRmbBnSum": 4697.476,
-      "aShareMarketCapRmbBnMedian": 39.2248,
-      "aShareMarketCapN": 51,
+      "aShareMarketCapRmbBnSum": 5789.8037,
+      "aShareMarketCapRmbBnMedian": 39.91075,
+      "aShareMarketCapN": 52,
       "medianA1ToNoticeDays": 186.0,
       "timingN": 95,
       "topIndustries": [
@@ -369,9 +369,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 15,
       "deSpacCount": 1,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 752.7368,
-      "listingMarketCapHkdBnMedian": 13.136,
-      "listingMarketCapN": 43,
+      "listingMarketCapHkdBnSum": 762.911,
+      "listingMarketCapHkdBnMedian": 12.77755,
+      "listingMarketCapN": 44,
       "aShareMarketCapRmbBnSum": 737.6929,
       "aShareMarketCapRmbBnMedian": 33.0618,
       "aShareMarketCapN": 17,
@@ -701,9 +701,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 12,
       "deSpacCount": 1,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 327.8308,
-      "listingMarketCapHkdBnMedian": 9.575949999999999,
-      "listingMarketCapN": 22,
+      "listingMarketCapHkdBnSum": 338.005,
+      "listingMarketCapHkdBnMedian": 9.8804,
+      "listingMarketCapN": 23,
       "aShareMarketCapRmbBnSum": 258.3502,
       "aShareMarketCapRmbBnMedian": 33.643299999999996,
       "aShareMarketCapN": 6,
@@ -784,9 +784,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 3199.6398,
       "listingMarketCapHkdBnMedian": 35.2896,
       "listingMarketCapN": 27,
-      "aShareMarketCapRmbBnSum": 1169.9229,
-      "aShareMarketCapRmbBnMedian": 133.31815,
-      "aShareMarketCapN": 8,
+      "aShareMarketCapRmbBnSum": 2262.2506,
+      "aShareMarketCapRmbBnMedian": 166.1289,
+      "aShareMarketCapN": 9,
       "medianA1ToNoticeDays": 150.0,
       "timingN": 19,
       "topIndustries": [
@@ -923,7 +923,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "projectCount": 35,
       "activeCount": 21,
       "listedCount": 12,
-      "noticeCount": 11,
+      "noticeCount": 12,
       "ahCount": 8,
       "hShareCount": 21,
       "redChipCount": 5,
@@ -936,7 +936,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapRmbBnMedian": 20.96905,
       "aShareMarketCapN": 8,
       "medianA1ToNoticeDays": 179.0,
-      "timingN": 10,
+      "timingN": 11,
       "topIndustries": [
         "制造业",
         "租赁和商务服务业",
@@ -1010,9 +1010,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 2867.4365,
       "listingMarketCapHkdBnMedian": 51.83410000000001,
       "listingMarketCapN": 20,
-      "aShareMarketCapRmbBnSum": 1417.032,
-      "aShareMarketCapRmbBnMedian": 57.8675,
-      "aShareMarketCapN": 11,
+      "aShareMarketCapRmbBnSum": 2509.3597,
+      "aShareMarketCapRmbBnMedian": 129.8195,
+      "aShareMarketCapN": 12,
       "medianA1ToNoticeDays": 192.5,
       "timingN": 14,
       "topIndustries": [
@@ -1086,9 +1086,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBnSum": 1871.2955,
       "listingMarketCapHkdBnMedian": 20.7365,
       "listingMarketCapN": 12,
-      "aShareMarketCapRmbBnSum": 634.9259,
-      "aShareMarketCapRmbBnMedian": 33.4825,
-      "aShareMarketCapN": 11,
+      "aShareMarketCapRmbBnSum": 1727.2536,
+      "aShareMarketCapRmbBnMedian": 36.35365,
+      "aShareMarketCapN": 12,
       "medianA1ToNoticeDays": 177.0,
       "timingN": 12,
       "topIndustries": [
@@ -1587,9 +1587,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "redChipCount": 4,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 203.0007,
-      "listingMarketCapHkdBnMedian": 23.4053,
-      "listingMarketCapN": 7,
+      "listingMarketCapHkdBnSum": 213.1749,
+      "listingMarketCapHkdBnMedian": 16.78975,
+      "listingMarketCapN": 8,
       "aShareMarketCapRmbBnSum": 60.1333,
       "aShareMarketCapRmbBnMedian": 60.1333,
       "aShareMarketCapN": 1,
@@ -3777,6 +3777,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "timingN": 1,
       "topIndustries": [
         "制造业",
+        "批发和零售业",
         "医药/生物科技/医疗器械制造",
         "母婴营养品"
       ],
@@ -5133,6 +5134,216 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   ],
   "projectFacts": [
     {
+      "issuerId": "suzhou genhouse bio co., ltd. - b",
+      "issuerName": "Suzhou GenHouse Bio Co., Ltd. - B",
+      "csrcName": "勤浩醫藥（蘇州）股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "huatai",
+      "sourceSponsorTag": "HUATAI",
+      "sourceSponsorTags": [
+        "HUATAI"
+      ],
+      "leaderboardSponsorTag": "HUATAI",
+      "sponsorLegalName": "Huatai Financial Holdings (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "Huatai Financial Holdings (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-16",
+      "currentA1Date": "2026-08-07",
+      "receivedDate": "2026-04-20",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "生物医药研发/技术许可",
+        "科学研究和技术服务业"
+      ],
+      "csrcIndustryTags": [
+        "科学研究和技术服务业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 94.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108789/documents/sehk26080701538.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7634569/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "zhejiang energy marine environmental technology co., ltd",
+      "issuerName": "ZHEJIANG ENERGY MARINE ENVIRONMENTAL TECHNOLOGY CO., LTD",
+      "csrcName": "浙江浙能邁領綠航科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-30",
+      "currentA1Date": "2026-08-07",
+      "receivedDate": "2026-04-28",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 88.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108788/documents/sehk26080701054.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（最近一次公开状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7634566/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "zhejiang energy marine environmental technology co., ltd",
+      "issuerName": "ZHEJIANG ENERGY MARINE ENVIRONMENTAL TECHNOLOGY CO., LTD",
+      "csrcName": "浙江浙能邁領綠航科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cmbi",
+      "sourceSponsorTag": "CMBI",
+      "sourceSponsorTags": [
+        "CMBI"
+      ],
+      "leaderboardSponsorTag": "CMBI",
+      "sponsorLegalName": "CMB International Capital Limited",
+      "sponsorLegalNames": [
+        "CMB International Capital Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2026-01-30",
+      "currentA1Date": "2026-08-07",
+      "receivedDate": "2026-04-28",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "高端装备/机器人/智能制造",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 88.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108788/documents/sehk26080701054.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（最近一次公开状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7634566/content.shtml"
+        }
+      ]
+    },
+    {
       "issuerId": "sichuan biokin pharmaceutical co., ltd. - b",
       "issuerName": "Sichuan Biokin Pharmaceutical Co., Ltd. - B",
       "csrcName": "四川百利天恒藥業股份有限公司",
@@ -5769,7 +5980,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -5840,7 +6051,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -6335,7 +6546,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -7913,8 +8124,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -7983,8 +8194,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8013,11 +8224,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2025-11-07",
       "currentA1Date": "2026-07-14",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -8034,8 +8245,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 273.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -8047,6 +8258,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -8182,7 +8397,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8409,8 +8624,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.3333333333333333,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2025-11-24",
       "currentA1Date": "2026-07-08",
       "receivedDate": "2026-01-05",
@@ -8447,6 +8662,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8475,8 +8694,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.3333333333333333,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2025-11-24",
       "currentA1Date": "2026-07-08",
       "receivedDate": "2026-01-05",
@@ -8513,6 +8732,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8541,8 +8764,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.3333333333333333,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2025-11-24",
       "currentA1Date": "2026-07-08",
       "receivedDate": "2026-01-05",
@@ -8579,6 +8802,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8956,8 +9183,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9026,8 +9253,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7641783/content.shtml"
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9245,7 +9472,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9315,7 +9542,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9385,7 +9612,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9739,7 +9966,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9809,7 +10036,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9879,7 +10106,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -10132,7 +10359,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -10701,7 +10928,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -10767,7 +10994,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -10833,7 +11060,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -11198,7 +11425,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -11264,7 +11491,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -11334,7 +11561,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -12520,8 +12747,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2026-06-23",
       "currentA1Date": "2026-06-23",
       "receivedDate": "2026-07-28",
@@ -12558,6 +12785,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7650799/content.shtml"
         }
       ]
     },
@@ -12582,8 +12817,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2026-06-23",
       "currentA1Date": "2026-06-23",
       "receivedDate": "2026-07-28",
@@ -12620,6 +12855,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7650799/content.shtml"
         }
       ]
     },
@@ -13289,7 +13532,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -13359,7 +13602,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -13781,7 +14024,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -14794,7 +15037,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -14943,12 +15186,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
       "a1Date": "2025-11-27",
       "currentA1Date": "2026-06-11",
       "receivedDate": "2025-12-31",
-      "noticeDate": null,
+      "noticeDate": "2026-07-16",
       "listingDate": null,
       "issuerType": "A+H",
       "isAH": true,
@@ -14962,7 +15205,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ],
       "aShareMarketCapAtA1RmbBn": 3.77,
       "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToNotice": 231.0,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 34.0,
       "durationSampleEligible": true,
@@ -14985,6 +15228,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7646093/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7650819/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -15628,7 +15875,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -15698,7 +15945,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -15823,6 +16070,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -16028,7 +16279,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16098,7 +16349,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16168,7 +16419,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16238,7 +16489,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16945,11 +17196,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-29",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -16967,8 +17218,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 70.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -16980,6 +17231,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -17004,11 +17259,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-29",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -17026,8 +17281,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 70.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -17039,6 +17294,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -17171,7 +17430,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -17237,7 +17496,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -17562,7 +17821,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -17633,7 +17892,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -17704,7 +17963,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18031,7 +18290,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18101,7 +18360,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18357,7 +18616,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18444,11 +18703,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-28",
       "currentA1Date": "2026-05-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -18465,8 +18724,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 71.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -18478,6 +18737,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -18502,11 +18765,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-28",
       "currentA1Date": "2026-05-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -18523,8 +18786,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 71.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -18536,6 +18799,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -18603,7 +18870,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18872,7 +19139,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18943,7 +19210,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18972,11 +19239,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-28",
       "currentA1Date": "2026-05-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-06",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -18993,8 +19260,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 70.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -19006,6 +19273,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -19245,7 +19516,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -19443,7 +19714,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -20236,7 +20507,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -20436,7 +20707,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -20638,7 +20909,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -20704,7 +20975,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -21432,11 +21703,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-20",
       "currentA1Date": "2026-05-20",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -21454,8 +21725,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 79.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -21467,6 +21738,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -21759,8 +22034,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2025-08-22",
       "currentA1Date": "2026-05-19",
       "receivedDate": "2025-09-04",
@@ -21797,6 +22072,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -21866,7 +22145,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -22138,7 +22417,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -22163,11 +22442,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-15",
       "currentA1Date": "2026-05-15",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -22184,8 +22463,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 80.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -22197,6 +22476,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -22280,11 +22563,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-15",
       "currentA1Date": "2026-05-15",
-      "receivedDate": null,
+      "receivedDate": "2026-07-24",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -22301,8 +22584,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 70.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -22314,6 +22597,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -22379,7 +22666,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -22445,7 +22732,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -22648,7 +22935,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -22714,7 +23001,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -23210,7 +23497,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -23581,7 +23868,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -23651,7 +23938,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -23904,7 +24191,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -24044,7 +24331,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -24110,7 +24397,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -24176,14 +24463,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
     {
       "issuerId": "yusheng holdings limited",
       "issuerName": "Yusheng Holdings Limited",
-      "csrcName": "Yusheng Holdings Limited",
+      "csrcName": "裕晟控股有限公司",
       "hkexListingCompanyName": "",
       "sponsorId": "citi",
       "sourceSponsorTag": "CITI",
@@ -24201,11 +24488,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-06",
       "currentA1Date": "2026-05-06",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -24222,8 +24509,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 89.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -24235,6 +24522,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -24949,7 +25240,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -25329,7 +25620,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -25400,7 +25691,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -25804,7 +26095,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -25874,7 +26165,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -25944,7 +26235,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26014,7 +26305,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -26022,7 +26313,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "nasn intelligent tech (zhejiang) co., ltd.",
       "issuerName": "NASN Intelligent Tech (Zhejiang) Co., Ltd.",
       "csrcName": "拿森智能科技（浙江）股份有限公司",
-      "hkexListingCompanyName": "NASN TECH",
+      "hkexListingCompanyName": "NASN Intelligent Tech (Zhejiang) Co., Ltd. - H Shares",
       "sponsorId": "haitong",
       "sourceSponsorTag": "HAITONG",
       "sourceSponsorTags": [
@@ -26057,7 +26348,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 10.1742,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": 100.0,
       "calendarDaysA1ToReceived": null,
@@ -26081,8 +26372,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626838/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -26094,7 +26385,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "nasn intelligent tech (zhejiang) co., ltd.",
       "issuerName": "NASN Intelligent Tech (Zhejiang) Co., Ltd.",
       "csrcName": "拿森智能科技（浙江）股份有限公司",
-      "hkexListingCompanyName": "NASN TECH",
+      "hkexListingCompanyName": "NASN Intelligent Tech (Zhejiang) Co., Ltd. - H Shares",
       "sponsorId": "boci",
       "sourceSponsorTag": "BOCI",
       "sourceSponsorTags": [
@@ -26129,7 +26420,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 10.1742,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": 100.0,
       "calendarDaysA1ToReceived": null,
@@ -26153,8 +26444,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626838/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -26225,7 +26516,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26361,7 +26652,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26431,7 +26722,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26501,7 +26792,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26646,7 +26937,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7650799/content.shtml"
         }
       ]
     },
@@ -26712,7 +27007,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26782,7 +27077,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26852,7 +27147,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26919,6 +27214,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -26981,6 +27280,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -27203,11 +27506,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.25,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-28",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -27225,8 +27528,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 97.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -27238,6 +27541,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -27262,11 +27569,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-28",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -27284,8 +27591,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 97.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -27297,6 +27604,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -27321,11 +27632,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-28",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -27343,8 +27654,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 97.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -27356,6 +27667,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -27380,11 +27695,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-28",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -27402,8 +27717,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 97.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -27415,6 +27730,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -27480,7 +27799,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27550,7 +27869,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27690,7 +28009,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27760,7 +28079,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27830,7 +28149,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27901,7 +28220,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27972,7 +28291,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28245,7 +28564,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28316,7 +28635,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28618,7 +28937,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -28684,7 +29003,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28754,7 +29073,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28824,7 +29143,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7650799/content.shtml"
         }
       ]
     },
@@ -28891,7 +29214,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "备案通知书",
@@ -28924,11 +29247,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-22",
       "currentA1Date": "2026-04-22",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -28945,8 +29268,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 103.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -28958,6 +29281,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -28982,11 +29309,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-22",
       "currentA1Date": "2026-04-22",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -29003,8 +29330,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 107.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -29016,6 +29343,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -29040,11 +29371,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-22",
       "currentA1Date": "2026-04-22",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -29061,8 +29392,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 107.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -29074,6 +29405,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -29139,7 +29474,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -29205,7 +29540,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -29477,7 +29812,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29844,7 +30179,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29984,7 +30319,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30054,7 +30389,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30125,7 +30460,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30196,7 +30531,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30266,7 +30601,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30337,7 +30672,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -30403,7 +30738,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30473,7 +30808,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30863,7 +31198,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30933,7 +31268,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31201,7 +31536,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -31267,7 +31602,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -31333,7 +31668,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -31557,7 +31892,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31627,7 +31962,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31697,7 +32032,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31767,7 +32102,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31837,7 +32172,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32047,7 +32382,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32117,7 +32452,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32187,7 +32522,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32257,7 +32592,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32327,7 +32662,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32356,11 +32691,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-02",
       "currentA1Date": "2026-04-02",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -32377,8 +32712,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 127.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -32390,6 +32725,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -32455,7 +32794,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32525,7 +32864,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32595,7 +32934,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32863,7 +33202,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -32929,7 +33268,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -33073,7 +33412,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33143,7 +33482,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -33209,7 +33548,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -33276,7 +33615,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33462,7 +33801,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33532,7 +33871,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33994,7 +34333,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34064,7 +34403,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34134,7 +34473,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34320,7 +34659,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34390,7 +34729,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34592,7 +34931,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34662,7 +35001,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34798,7 +35137,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34868,7 +35207,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35016,7 +35355,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -35082,7 +35421,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -35148,7 +35487,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35218,7 +35557,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35436,7 +35775,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35654,7 +35993,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -35720,7 +36059,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -35786,7 +36125,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -35976,7 +36315,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36046,7 +36385,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36116,7 +36455,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36326,7 +36665,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "备案通知书",
@@ -36400,7 +36739,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -36594,7 +36933,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36804,7 +37143,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -37369,7 +37708,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -37572,7 +37911,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -37642,7 +37981,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -37712,7 +38051,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38188,7 +38527,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38258,7 +38597,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38328,7 +38667,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38464,7 +38803,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -38530,7 +38869,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39228,7 +39567,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39298,7 +39637,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39368,7 +39707,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -39434,7 +39773,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39504,7 +39843,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39603,8 +39942,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2025-09-15",
       "currentA1Date": "2026-03-20",
       "receivedDate": "2025-09-25",
@@ -39644,7 +39983,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40132,7 +40471,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -40198,7 +40537,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -40264,7 +40603,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -40603,7 +40942,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -40818,7 +41157,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40889,7 +41228,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40960,7 +41299,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -41105,7 +41444,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -41171,7 +41510,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -41651,7 +41990,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -41721,7 +42060,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -41930,7 +42269,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -42000,7 +42339,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -42281,7 +42620,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -42351,7 +42690,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -42544,7 +42883,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -42622,7 +42961,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -42700,7 +43039,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -42838,7 +43177,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -42904,7 +43243,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -42974,7 +43313,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43044,7 +43383,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43114,7 +43453,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43184,7 +43523,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43255,7 +43594,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43326,7 +43665,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43643,7 +43982,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43772,7 +44111,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43842,7 +44181,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44111,7 +44450,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44181,7 +44520,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44251,7 +44590,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44321,7 +44660,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44391,7 +44730,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -44462,7 +44801,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -44533,7 +44872,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44603,7 +44942,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44673,7 +45012,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -44739,7 +45078,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44809,7 +45148,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -44875,7 +45214,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44945,7 +45284,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45015,7 +45354,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45086,7 +45425,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45156,7 +45495,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45226,7 +45565,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45296,7 +45635,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45366,7 +45705,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45436,7 +45775,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45565,7 +45904,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45635,7 +45974,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45705,7 +46044,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -46039,7 +46378,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         }
       ]
@@ -46107,7 +46446,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -46395,7 +46734,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         },
         {
@@ -46468,7 +46807,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -46540,7 +46879,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -47718,150 +48057,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       ]
     },
     {
-      "issuerId": "zhejiang energy marine environmental technology co., ltd",
-      "issuerName": "ZHEJIANG ENERGY MARINE ENVIRONMENTAL TECHNOLOGY CO., LTD",
-      "csrcName": "浙江浙能邁領綠航科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citic",
-      "sourceSponsorTag": "CITIC",
-      "sourceSponsorTags": [
-        "CITIC"
-      ],
-      "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "CITIC Securities (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-30",
-      "currentA1Date": "2026-01-30",
-      "receivedDate": "2026-04-28",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 88.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108179/documents/sehk26013002733.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7634566/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "zhejiang energy marine environmental technology co., ltd",
-      "issuerName": "ZHEJIANG ENERGY MARINE ENVIRONMENTAL TECHNOLOGY CO., LTD",
-      "csrcName": "浙江浙能邁領綠航科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cmbi",
-      "sourceSponsorTag": "CMBI",
-      "sourceSponsorTags": [
-        "CMBI"
-      ],
-      "leaderboardSponsorTag": "CMBI",
-      "sponsorLegalName": "CMB International Capital Limited",
-      "sponsorLegalNames": [
-        "CMB International Capital Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-30",
-      "currentA1Date": "2026-01-30",
-      "receivedDate": "2026-04-28",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "高端装备/机器人/智能制造",
-        "制造业"
-      ],
-      "csrcIndustryTags": [
-        "制造业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 88.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108179/documents/sehk26013002733.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7634566/content.shtml"
-        }
-      ]
-    },
-    {
       "issuerId": "gemilai holdings limited",
       "issuerName": "Gemilai Holdings Limited",
       "csrcName": "格米莱控股有限公司",
@@ -47998,7 +48193,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48071,7 +48266,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48419,7 +48614,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48924,7 +49119,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48997,7 +49192,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -49495,7 +49690,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -50275,7 +50470,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -52171,7 +52366,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -52464,78 +52659,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7584475/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "suzhou genhouse bio co., ltd. - b",
-      "issuerName": "Suzhou GenHouse Bio Co., Ltd. - B",
-      "csrcName": "勤浩醫藥（蘇州）股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "huatai",
-      "sourceSponsorTag": "HUATAI",
-      "sourceSponsorTags": [
-        "HUATAI"
-      ],
-      "leaderboardSponsorTag": "HUATAI",
-      "sponsorLegalName": "Huatai Financial Holdings (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "Huatai Financial Holdings (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 1,
-      "creditAllFull": 1.0,
-      "creditEqual": 1.0,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2026-01-16",
-      "currentA1Date": "2026-01-16",
-      "receivedDate": "2026-04-20",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "生物医药研发/技术许可",
-        "科学研究和技术服务业"
-      ],
-      "csrcIndustryTags": [
-        "科学研究和技术服务业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 94.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108092/documents/sehk26011601894.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7634569/content.shtml"
         }
       ]
     },
@@ -53789,7 +53912,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -53861,7 +53984,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -57537,7 +57660,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -57609,7 +57732,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -58624,7 +58747,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -69108,10 +69231,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "抗体细胞因子创新药"
+        "抗体细胞因子创新药",
+        "科学研究和技术服务业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "科学研究和技术服务业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 2.2748,
@@ -74553,7 +74677,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -74623,7 +74747,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -74693,7 +74817,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -75197,10 +75321,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "母婴营养品"
+        "母婴营养品",
+        "批发和零售业"
       ],
       "csrcIndustryTags": [
-        "制造业"
+        "批发和零售业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
       "listingMarketCapHkdBn": 0.69,
@@ -86429,7 +86554,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -87844,7 +87969,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -87914,7 +88039,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -88509,7 +88634,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -89175,7 +89300,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -89245,7 +89370,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -93047,7 +93172,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
     },
@@ -94421,9 +94546,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     },
     {
       "issuerId": "listed:03308",
-      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "csrcName": "中際旭創股份有限公司 - H 股",
-      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "sponsorId": "gs",
       "sourceSponsorTag": "GS",
       "sourceSponsorTags": [
@@ -94442,8 +94567,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
-      "a1Date": null,
-      "currentA1Date": null,
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
       "receivedDate": null,
       "noticeDate": "2026-07-08",
       "listingDate": "2026-07-30",
@@ -94456,10 +94581,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 1092.3277,
       "listingMarketCapHkdBn": 1122.9453,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 13.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -94492,9 +94617,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     },
     {
       "issuerId": "listed:03308",
-      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "csrcName": "中際旭創股份有限公司 - H 股",
-      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -94513,8 +94638,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
-      "a1Date": null,
-      "currentA1Date": null,
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
       "receivedDate": null,
       "noticeDate": "2026-07-08",
       "listingDate": "2026-07-30",
@@ -94527,10 +94652,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 1092.3277,
       "listingMarketCapHkdBn": 1122.9453,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 13.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -94563,9 +94688,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     },
     {
       "issuerId": "listed:03308",
-      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "csrcName": "中際旭創股份有限公司 - H 股",
-      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "sponsorId": "ms",
       "sourceSponsorTag": "MS",
       "sourceSponsorTags": [
@@ -94584,8 +94709,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
-      "a1Date": null,
-      "currentA1Date": null,
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
       "receivedDate": null,
       "noticeDate": "2026-07-08",
       "listingDate": "2026-07-30",
@@ -94598,10 +94723,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 1092.3277,
       "listingMarketCapHkdBn": 1122.9453,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 13.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -94634,9 +94759,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     },
     {
       "issuerId": "listed:03308",
-      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "issuerName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "csrcName": "中際旭創股份有限公司 - H 股",
-      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares 中際旭創股份有限公司 - H 股",
+      "hkexListingCompanyName": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "sponsorId": "gf",
       "sourceSponsorTag": "GF",
       "sourceSponsorTags": [
@@ -94655,8 +94780,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "hkexStage": "listed",
       "status": "notice_issued",
       "statusLabelZh": "已发通知书",
-      "a1Date": null,
-      "currentA1Date": null,
+      "a1Date": "2026-07-17",
+      "currentA1Date": "2026-07-17",
       "receivedDate": null,
       "noticeDate": "2026-07-08",
       "listingDate": "2026-07-30",
@@ -94669,10 +94794,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 1092.3277,
       "listingMarketCapHkdBn": 1122.9453,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToListing": 13.0,
       "calendarDaysA1ToReceived": null,
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
@@ -95921,7 +96046,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -96073,7 +96198,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -96214,7 +96339,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -96251,11 +96376,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-28",
       "currentA1Date": "2026-05-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-07",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -96272,8 +96397,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 71.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -96285,6 +96410,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -96892,7 +97021,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -96908,7 +97037,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "nasn intelligent tech (zhejiang) co., ltd.",
       "issuerName": "NASN Intelligent Tech (Zhejiang) Co., Ltd.",
       "csrcName": "拿森智能科技（浙江）股份有限公司",
-      "hkexListingCompanyName": "NASN TECH",
+      "hkexListingCompanyName": "NASN Intelligent Tech (Zhejiang) Co., Ltd. - H Shares",
       "sponsorId": "group-gtja-haitong",
       "sourceSponsorTag": "HAITONG",
       "sourceSponsorTags": [
@@ -96943,7 +97072,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
+      "listingMarketCapHkdBn": 10.1742,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": 100.0,
       "calendarDaysA1ToReceived": null,
@@ -96967,8 +97096,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626838/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -97047,7 +97176,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7650799/content.shtml"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -97158,11 +97291,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditEqual": 0.25,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-04-28",
       "currentA1Date": "2026-04-28",
-      "receivedDate": null,
+      "receivedDate": "2026-08-03",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -97180,8 +97313,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 97.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -97193,6 +97326,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -97266,7 +97403,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97344,7 +97481,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -97419,7 +97556,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97498,7 +97635,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97650,7 +97787,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97802,7 +97939,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97954,7 +98091,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98032,7 +98169,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98192,7 +98329,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98270,7 +98407,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -98576,7 +98713,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98732,7 +98869,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -98806,7 +98943,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -99038,7 +99175,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -99112,7 +99249,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
         }
       ],
@@ -99269,7 +99406,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
           "label": "补充材料公示",
