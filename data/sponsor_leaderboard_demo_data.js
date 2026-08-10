@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-09T12:43:02Z",
-    "sourceGeneratedAt": "2026-08-09T20:42:52+08:00",
+    "generatedAt": "2026-08-10T08:57:54Z",
+    "sourceGeneratedAt": "2026-08-10T16:56:57+08:00",
     "sourceRecordCount": 840,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-09T20:42:52+08:00",
+      "generatedAt": "2026-08-10T16:56:57+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1439,
@@ -45833,7 +45833,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -45903,7 +45905,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -45962,7 +45966,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46032,7 +46038,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46102,7 +46110,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46172,7 +46182,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46246,7 +46258,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46320,7 +46334,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46378,7 +46394,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -46437,7 +46455,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -99232,7 +99252,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
