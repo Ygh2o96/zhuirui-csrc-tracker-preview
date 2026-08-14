@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-14T12:31:43Z",
-    "sourceGeneratedAt": "2026-08-14T20:31:34+08:00",
+    "generatedAt": "2026-08-14T20:50:19Z",
+    "sourceGeneratedAt": "2026-08-15T04:50:08+08:00",
     "sourceRecordCount": 841,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-14T20:31:34+08:00",
+      "generatedAt": "2026-08-15T04:50:08+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1440,
@@ -284,8 +284,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "timingN": 49,
       "topIndustries": [
         "制造业",
-        "信息传输、软件和信息技术服务业",
         "批发和零售业",
+        "信息传输、软件和信息技术服务业",
         "医药/生物科技/医疗器械制造"
       ],
       "type6ROCount": 30,
@@ -5133,6 +5133,76 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "shenzhen woke technology co., ltd",
+      "issuerName": "SHENZHEN WOKE TECHNOLOGY Co., LTD",
+      "csrcName": "深圳市沃客非凡科技股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "huatai",
+      "sourceSponsorTag": "HUATAI",
+      "sourceSponsorTags": [
+        "HUATAI"
+      ],
+      "leaderboardSponsorTag": "HUATAI",
+      "sponsorLegalName": "Huatai Financial Holdings (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "Huatai Financial Holdings (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
+      "a1Date": "2026-01-20",
+      "currentA1Date": "2026-08-14",
+      "receivedDate": "2026-02-25",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "零售/电商/商业流通",
+        "批发和零售业"
+      ],
+      "csrcIndustryTags": [
+        "批发和零售业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 36.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108795/documents/sehk26081402024.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
+        },
+        {
+          "label": "备案情况表（最近一次公开状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7646093/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7621321/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "hunan junxin environmental protection co., ltd.",
       "issuerName": "Hunan Junxin Environmental Protection Co., Ltd.",
@@ -51506,78 +51576,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        }
-      ]
-    },
-    {
-      "issuerId": "shenzhen woke technology co., ltd",
-      "issuerName": "SHENZHEN WOKE TECHNOLOGY Co., LTD",
-      "csrcName": "深圳市沃客非凡科技股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "huatai",
-      "sourceSponsorTag": "HUATAI",
-      "sourceSponsorTags": [
-        "HUATAI"
-      ],
-      "leaderboardSponsorTag": "HUATAI",
-      "sponsorLegalName": "Huatai Financial Holdings (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "Huatai Financial Holdings (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 1,
-      "creditAllFull": 1.0,
-      "creditEqual": 1.0,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
-      "a1Date": "2026-01-20",
-      "currentA1Date": "2026-01-20",
-      "receivedDate": "2026-02-25",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "H股",
-      "isAH": false,
-      "specialListingRoute": null,
-      "industryTags": [
-        "零售/电商/商业流通",
-        "批发和零售业"
-      ],
-      "csrcIndustryTags": [
-        "批发和零售业"
-      ],
-      "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 36.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108118/documents/sehk26012001012.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7646093/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7621321/content.shtml"
         }
       ]
     },
