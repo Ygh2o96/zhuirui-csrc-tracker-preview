@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-08-14T09:20:41Z",
-    "sourceGeneratedAt": "2026-08-14T17:20:41+08:00",
+    "generatedAt": "2026-08-14T12:31:43Z",
+    "sourceGeneratedAt": "2026-08-14T20:31:34+08:00",
     "sourceRecordCount": 841,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-14T17:20:41+08:00",
+      "generatedAt": "2026-08-14T20:31:34+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1440,
@@ -78,7 +78,7 @@
       "projectCount": 233,
       "activeCount": 112,
       "listedCount": 115,
-      "noticeCount": 107,
+      "noticeCount": 108,
       "ahCount": 52,
       "hShareCount": 119,
       "redChipCount": 58,
@@ -90,8 +90,8 @@
       "aShareMarketCapRmbBnSum": 5789.8037,
       "aShareMarketCapRmbBnMedian": 39.91075,
       "aShareMarketCapN": 52,
-      "medianA1ToNoticeDays": 186.0,
-      "timingN": 95,
+      "medianA1ToNoticeDays": 186.5,
+      "timingN": 96,
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
@@ -176,7 +176,7 @@
       "projectCount": 171,
       "activeCount": 93,
       "listedCount": 72,
-      "noticeCount": 78,
+      "noticeCount": 80,
       "ahCount": 56,
       "hShareCount": 84,
       "redChipCount": 26,
@@ -188,8 +188,8 @@
       "aShareMarketCapRmbBnSum": 3150.9674,
       "aShareMarketCapRmbBnMedian": 39.71935,
       "aShareMarketCapN": 56,
-      "medianA1ToNoticeDays": 178.0,
-      "timingN": 74,
+      "medianA1ToNoticeDays": 179.0,
+      "timingN": 76,
       "topIndustries": [
         "制造业",
         "科学研究和技术服务业",
@@ -1220,7 +1220,7 @@
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 28,
-      "activeCount": 14,
+      "activeCount": 15,
       "listedCount": 13,
       "noticeCount": 13,
       "ahCount": 2,
@@ -5154,12 +5154,12 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
       "a1Date": "2025-08-13",
       "currentA1Date": "2026-08-13",
       "receivedDate": "2025-09-05",
-      "noticeDate": null,
+      "noticeDate": "2026-07-31",
       "listingDate": null,
       "issuerType": "A+H",
       "isAH": true,
@@ -5173,7 +5173,7 @@
       ],
       "aShareMarketCapAtA1RmbBn": 11.2763,
       "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToNotice": 352.0,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 23.0,
       "durationSampleEligible": true,
@@ -5196,6 +5196,10 @@
         {
           "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7652318/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -5224,12 +5228,12 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
       "a1Date": "2025-08-13",
       "currentA1Date": "2026-08-13",
       "receivedDate": "2025-09-05",
-      "noticeDate": null,
+      "noticeDate": "2026-07-31",
       "listingDate": null,
       "issuerType": "A+H",
       "isAH": true,
@@ -5243,7 +5247,7 @@
       ],
       "aShareMarketCapAtA1RmbBn": 11.2763,
       "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToNotice": 352.0,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 23.0,
       "durationSampleEligible": true,
@@ -5266,6 +5270,10 @@
         {
           "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7652318/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -5406,7 +5414,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -5608,7 +5616,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -6393,7 +6401,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -6464,7 +6472,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -6959,7 +6967,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -8538,7 +8546,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8608,7 +8616,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8675,6 +8683,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -8769,8 +8781,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-01-12",
       "currentA1Date": "2026-07-13",
       "receivedDate": "2026-04-24",
@@ -8810,7 +8822,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -8979,11 +8991,11 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-07-09",
       "currentA1Date": "2026-07-09",
-      "receivedDate": null,
+      "receivedDate": "2026-07-31",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -9000,8 +9012,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 22.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -9013,6 +9025,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -9078,7 +9094,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9148,7 +9164,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9218,7 +9234,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9597,7 +9613,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9667,7 +9683,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9885,7 +9901,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9914,8 +9930,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-06-27",
       "currentA1Date": "2026-07-03",
       "receivedDate": "2026-01-16",
@@ -9955,7 +9971,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -9984,8 +10000,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2025-06-27",
       "currentA1Date": "2026-07-03",
       "receivedDate": "2026-01-16",
@@ -10025,7 +10041,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -10379,7 +10395,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -10449,7 +10465,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -10519,7 +10535,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -10772,7 +10788,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -11341,7 +11357,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -11407,7 +11423,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -11473,7 +11489,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -11838,7 +11854,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -11904,7 +11920,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -11974,7 +11990,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -13201,7 +13217,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -13271,7 +13287,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -13838,12 +13854,12 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "supplement_requested",
-      "statusLabelZh": "补充材料",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
       "a1Date": "2025-12-02",
       "currentA1Date": "2026-06-18",
       "receivedDate": "2026-01-16",
-      "noticeDate": null,
+      "noticeDate": "2026-07-30",
       "listingDate": null,
       "issuerType": "A+H",
       "isAH": true,
@@ -13857,7 +13873,7 @@
       ],
       "aShareMarketCapAtA1RmbBn": 87.5821,
       "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToNotice": 240.0,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 45.0,
       "durationSampleEligible": true,
@@ -13876,6 +13892,10 @@
         {
           "label": "历史备案情况表截图",
           "url": "https://caifuhao.eastmoney.com/news/20260202150743843978360"
+        },
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7652304/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -13945,7 +13965,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -14015,7 +14035,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -14222,11 +14242,11 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2026-06-16",
       "currentA1Date": "2026-06-16",
-      "receivedDate": null,
+      "receivedDate": "2026-07-31",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -14243,8 +14263,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 45.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -14256,6 +14276,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -14437,7 +14461,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -15450,7 +15474,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16288,7 +16312,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16358,7 +16382,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16486,7 +16510,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -16692,7 +16716,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16762,7 +16786,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16832,7 +16856,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -16902,7 +16926,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -17648,6 +17672,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -17711,6 +17739,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -17843,7 +17875,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -17909,7 +17941,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -17934,11 +17966,11 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-29",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2026-08-12",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -17955,8 +17987,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 75.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -17968,6 +18000,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -17992,11 +18028,11 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-29",
       "currentA1Date": "2026-05-29",
-      "receivedDate": null,
+      "receivedDate": "2026-08-12",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -18013,8 +18049,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 75.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -18026,6 +18062,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -18234,7 +18274,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18305,7 +18345,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18376,7 +18416,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18703,7 +18743,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -18773,7 +18813,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -19029,7 +19069,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -19154,6 +19194,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -19216,6 +19260,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -19283,7 +19331,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -19552,7 +19600,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -19623,7 +19671,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -19690,6 +19738,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -19929,7 +19981,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -20127,7 +20179,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -20160,11 +20212,11 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-27",
       "currentA1Date": "2026-05-27",
-      "receivedDate": null,
+      "receivedDate": "2026-08-14",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -20181,8 +20233,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 79.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -20194,6 +20246,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -20920,7 +20976,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -21120,7 +21176,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -21322,7 +21378,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -21388,7 +21444,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -22155,6 +22211,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -22488,7 +22548,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -22558,7 +22618,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -22789,8 +22849,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-05-15",
       "currentA1Date": "2026-05-15",
       "receivedDate": "2026-07-23",
@@ -22830,7 +22890,11 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -22893,6 +22957,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -22917,11 +22985,11 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-15",
       "currentA1Date": "2026-05-15",
-      "receivedDate": null,
+      "receivedDate": "2026-08-14",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "H股",
@@ -22939,8 +23007,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 91.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -22952,6 +23020,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -23014,6 +23086,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -23079,7 +23155,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -23145,7 +23221,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -23348,7 +23424,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -23414,7 +23490,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -23910,7 +23986,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -24182,11 +24258,11 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "csrc_received",
+      "statusLabelZh": "已接收",
       "a1Date": "2026-05-11",
       "currentA1Date": "2026-05-11",
-      "receivedDate": null,
+      "receivedDate": "2026-08-14",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "A+H",
@@ -24203,8 +24279,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 95.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -24216,6 +24292,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -24281,7 +24361,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -24351,7 +24431,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -24604,7 +24684,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -24744,7 +24824,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -24810,7 +24890,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -24876,7 +24956,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -24939,6 +25019,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -25653,7 +25737,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26033,7 +26117,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26104,7 +26188,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26508,7 +26592,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26578,7 +26662,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26648,7 +26732,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -26718,7 +26802,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -26929,7 +27013,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27065,7 +27149,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27135,7 +27219,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27205,7 +27289,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27350,7 +27434,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27420,7 +27504,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27490,7 +27574,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27560,7 +27644,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -27630,7 +27714,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -27696,7 +27780,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -27958,6 +28042,14 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -28021,6 +28113,14 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -28084,6 +28184,14 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -28147,6 +28255,14 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -28212,7 +28328,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28282,7 +28398,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28422,7 +28538,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28492,7 +28608,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28562,7 +28678,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28633,7 +28749,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28704,7 +28820,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -28977,7 +29093,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29048,7 +29164,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29350,7 +29466,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -29416,7 +29532,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29486,7 +29602,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29556,7 +29672,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -29627,7 +29743,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "备案通知书",
@@ -29698,6 +29814,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -29760,6 +29880,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -29822,6 +29946,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -29887,7 +30015,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -29953,7 +30081,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -30225,7 +30353,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30592,7 +30720,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30732,7 +30860,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30802,7 +30930,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30873,7 +31001,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -30944,7 +31072,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31014,7 +31142,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31043,8 +31171,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-04-13",
       "currentA1Date": "2026-04-13",
       "receivedDate": "2026-07-01",
@@ -31085,7 +31213,11 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -31151,7 +31283,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31221,7 +31353,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31611,7 +31743,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31681,7 +31813,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -31908,8 +32040,8 @@
       "creditEqual": 0.3333333333333333,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-04-10",
       "currentA1Date": "2026-04-10",
       "receivedDate": "2026-05-29",
@@ -31949,7 +32081,11 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -31974,8 +32110,8 @@
       "creditEqual": 0.3333333333333333,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-04-10",
       "currentA1Date": "2026-04-10",
       "receivedDate": "2026-05-29",
@@ -32015,7 +32151,11 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -32040,8 +32180,8 @@
       "creditEqual": 0.3333333333333333,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-04-10",
       "currentA1Date": "2026-04-10",
       "receivedDate": "2026-05-29",
@@ -32081,7 +32221,11 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -32305,7 +32449,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32375,7 +32519,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32445,7 +32589,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32515,7 +32659,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32585,7 +32729,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32795,7 +32939,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32865,7 +33009,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -32935,7 +33079,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33005,7 +33149,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33075,7 +33219,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33142,6 +33286,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -33207,7 +33355,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33277,7 +33425,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33347,7 +33495,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33574,8 +33722,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-04-02",
       "currentA1Date": "2026-04-02",
       "receivedDate": "2026-05-29",
@@ -33615,7 +33763,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -33640,8 +33788,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-04-02",
       "currentA1Date": "2026-04-02",
       "receivedDate": "2026-05-29",
@@ -33681,7 +33829,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -33825,7 +33973,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -33895,7 +34043,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -33961,7 +34109,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -34028,7 +34176,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34057,8 +34205,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2026-04-02",
       "currentA1Date": "2026-04-02",
       "receivedDate": null,
@@ -34091,6 +34239,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -34115,8 +34267,8 @@
       "creditEqual": 0.5,
       "creditFirstNamed": 0.0,
       "hkexStage": "applying",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "status": "supplement_requested",
+      "statusLabelZh": "补充材料",
       "a1Date": "2026-04-02",
       "currentA1Date": "2026-04-02",
       "receivedDate": null,
@@ -34149,6 +34301,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -34214,7 +34370,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34284,7 +34440,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34746,7 +34902,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34816,7 +34972,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -34886,7 +35042,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35072,7 +35228,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35142,7 +35298,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35344,7 +35500,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35414,7 +35570,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35550,7 +35706,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35620,7 +35776,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35768,7 +35924,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -35834,7 +35990,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -35900,7 +36056,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -35970,7 +36126,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36188,7 +36344,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36406,7 +36562,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -36472,7 +36628,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -36538,7 +36694,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -36728,7 +36884,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36798,7 +36954,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -36868,7 +37024,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -37078,7 +37234,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "备案通知书",
@@ -37152,7 +37308,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -37346,7 +37502,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -37556,7 +37712,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38079,8 +38235,8 @@
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
       "hkexStage": "applying",
-      "status": "csrc_received",
-      "statusLabelZh": "已接收",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-03-27",
       "currentA1Date": "2026-03-27",
       "receivedDate": "2026-07-23",
@@ -38121,7 +38277,11 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ]
     },
@@ -38324,7 +38484,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38394,7 +38554,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38464,7 +38624,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -38940,7 +39100,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39010,7 +39170,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39080,7 +39240,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39216,7 +39376,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -39282,7 +39442,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -39980,7 +40140,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40050,7 +40210,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40120,7 +40280,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -40186,7 +40346,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40256,7 +40416,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40396,7 +40556,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -40884,7 +41044,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -40950,7 +41110,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -41016,7 +41176,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -41355,7 +41515,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -41570,7 +41730,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -41641,7 +41801,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -41712,7 +41872,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -41857,7 +42017,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -41923,7 +42083,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -42403,7 +42563,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -42473,7 +42633,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43033,7 +43193,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43103,7 +43263,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43590,7 +43750,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -43656,7 +43816,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43726,7 +43886,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43796,7 +43956,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43866,7 +44026,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -43936,7 +44096,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44007,7 +44167,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44078,7 +44238,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44395,7 +44555,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44524,7 +44684,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44594,7 +44754,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44863,7 +45023,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -44933,7 +45093,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -45004,7 +45164,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45076,7 +45236,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45148,7 +45308,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45220,7 +45380,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45293,7 +45453,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -45360,7 +45520,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45432,7 +45592,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ]
@@ -45500,7 +45660,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45572,7 +45732,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45644,7 +45804,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45717,7 +45877,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45789,7 +45949,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45861,7 +46021,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -45933,7 +46093,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -46005,7 +46165,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -46077,7 +46237,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -46209,7 +46369,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -46281,7 +46441,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -47055,7 +47215,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -47127,7 +47287,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48029,7 +48189,7 @@
     {
       "issuerId": "yesmro holdings limited",
       "issuerName": "YESMRO Holdings Limited",
-      "csrcName": "YESMRO Holdings Limited",
+      "csrcName": "易买工品控股有限公司",
       "hkexListingCompanyName": "",
       "sponsorId": "abci",
       "sourceSponsorTag": "ABCI",
@@ -48046,12 +48206,12 @@
       "creditAllFull": 1.0,
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "other",
-      "status": "waiting_received",
-      "statusLabelZh": "等待接收",
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
       "a1Date": "2026-01-30",
       "currentA1Date": "2026-01-30",
-      "receivedDate": null,
+      "receivedDate": "2026-07-09",
       "noticeDate": null,
       "listingDate": null,
       "issuerType": "红筹",
@@ -48068,8 +48228,8 @@
       "listingMarketCapHkdBn": null,
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": null,
-      "durationSampleEligible": false,
+      "calendarDaysA1ToReceived": 160.0,
+      "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
@@ -48083,6 +48243,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -48441,7 +48605,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48514,7 +48678,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -48862,7 +49026,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -49367,7 +49531,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -49440,7 +49604,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -49938,7 +50102,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -50718,7 +50882,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -52614,7 +52778,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -54083,7 +54247,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -54155,7 +54319,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         },
         {
@@ -57760,7 +57924,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -57832,7 +57996,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -58847,7 +59011,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -74777,7 +74941,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -74847,7 +75011,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -74917,7 +75081,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -86654,7 +86818,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -88069,7 +88233,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -88139,7 +88303,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -88734,7 +88898,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -89400,7 +89564,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -89470,7 +89634,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -93272,7 +93436,7 @@
         },
         {
           "label": "全流通备案状态",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ]
     },
@@ -96146,7 +96310,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -96298,7 +96462,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -96439,7 +96603,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -96514,6 +96678,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -97121,7 +97289,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -97276,7 +97444,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97430,6 +97598,14 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+        },
+        {
+          "label": "备案情况表（当前状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7652468/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -97503,7 +97679,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97581,7 +97757,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -97656,7 +97832,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97735,7 +97911,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -97887,7 +98063,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98039,7 +98215,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98191,7 +98367,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98269,7 +98445,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98429,7 +98605,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98507,7 +98683,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -98813,7 +98989,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -98969,7 +99145,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -99043,7 +99219,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
@@ -99276,7 +99452,7 @@
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
         },
         {
-          "label": "备案情况表（当前状态）",
+          "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
         }
       ],
@@ -99510,7 +99686,7 @@
         },
         {
           "label": "备案情况表（当前状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7650801/content.shtml"
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7652466/content.shtml"
         },
         {
           "label": "补充材料公示",
