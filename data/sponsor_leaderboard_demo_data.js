@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-13T10:35:15Z",
-    "sourceGeneratedAt": "2026-08-13T18:35:04+08:00",
+    "generatedAt": "2026-08-14T09:20:41Z",
+    "sourceGeneratedAt": "2026-08-14T17:20:41+08:00",
     "sourceRecordCount": 841,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-13T18:35:04+08:00",
+      "generatedAt": "2026-08-14T17:20:41+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1440,
@@ -5133,6 +5133,146 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "hunan junxin environmental protection co., ltd.",
+      "issuerName": "Hunan Junxin Environmental Protection Co., Ltd.",
+      "csrcName": "湖南軍信環保股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "cicc",
+      "sourceSponsorTag": "CICC",
+      "sourceSponsorTags": [
+        "CICC"
+      ],
+      "leaderboardSponsorTag": "CICC",
+      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
+      "sponsorLegalNames": [
+        "China International Capital Corporation Hong Kong Securities Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2025-08-13",
+      "currentA1Date": "2026-08-13",
+      "receivedDate": "2025-09-05",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "环保/公用事业",
+        "水利、环境和公共设施管理业"
+      ],
+      "csrcIndustryTags": [
+        "水利、环境和公共设施管理业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 11.2763,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 23.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108794/documents/sehk26081301489.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "备案情况表（最近一次公开状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7588110/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "hunan junxin environmental protection co., ltd.",
+      "issuerName": "Hunan Junxin Environmental Protection Co., Ltd.",
+      "csrcName": "湖南軍信環保股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "regulator_opinion",
+      "statusLabelZh": "征询监管意见",
+      "a1Date": "2025-08-13",
+      "currentA1Date": "2026-08-13",
+      "receivedDate": "2025-09-05",
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "环保/公用事业",
+        "水利、环境和公共设施管理业"
+      ],
+      "csrcIndustryTags": [
+        "水利、环境和公共设施管理业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 11.2763,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 23.0,
+      "durationSampleEligible": true,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108794/documents/sehk26081301489.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "备案情况表（历史表）",
+          "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "备案情况表（最近一次公开状态）",
+          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7588110/content.shtml"
+        }
+      ]
+    },
     {
       "issuerId": "suzhou zelgen biopharmaceuticals co., ltd.",
       "issuerName": "Suzhou Zelgen Biopharmaceuticals Co., Ltd.",
@@ -44942,152 +45082,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/c7644834/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "hunan junxin environmental protection co., ltd.",
-      "issuerName": "Hunan Junxin Environmental Protection Co., Ltd.",
-      "csrcName": "湖南軍信環保股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "cicc",
-      "sourceSponsorTag": "CICC",
-      "sourceSponsorTags": [
-        "CICC"
-      ],
-      "leaderboardSponsorTag": "CICC",
-      "sponsorLegalName": "China International Capital Corporation Hong Kong Securities Limited",
-      "sponsorLegalNames": [
-        "China International Capital Corporation Hong Kong Securities Limited"
-      ],
-      "sponsorOrder": 1,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2025-08-13",
-      "currentA1Date": "2026-02-13",
-      "receivedDate": "2025-09-05",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "环保/公用事业",
-        "电力/燃气/公用能源",
-        "水利、环境和公共设施管理业"
-      ],
-      "csrcIndustryTags": [
-        "水利、环境和公共设施管理业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 11.2763,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 23.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108205/documents/sehk26021301600.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
-        },
-        {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7588110/content.shtml"
-        }
-      ]
-    },
-    {
-      "issuerId": "hunan junxin environmental protection co., ltd.",
-      "issuerName": "Hunan Junxin Environmental Protection Co., Ltd.",
-      "csrcName": "湖南軍信環保股份有限公司",
-      "hkexListingCompanyName": "",
-      "sponsorId": "citic",
-      "sourceSponsorTag": "CITIC",
-      "sourceSponsorTags": [
-        "CITIC"
-      ],
-      "leaderboardSponsorTag": "CITIC",
-      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
-      "sponsorLegalNames": [
-        "CITIC Securities (Hong Kong) Limited"
-      ],
-      "sponsorOrder": 2,
-      "sponsorCountOnDeal": 2,
-      "creditAllFull": 1.0,
-      "creditEqual": 0.5,
-      "creditFirstNamed": 0.0,
-      "hkexStage": "applying",
-      "status": "regulator_opinion",
-      "statusLabelZh": "征询监管意见",
-      "a1Date": "2025-08-13",
-      "currentA1Date": "2026-02-13",
-      "receivedDate": "2025-09-05",
-      "noticeDate": null,
-      "listingDate": null,
-      "issuerType": "A+H",
-      "isAH": true,
-      "specialListingRoute": null,
-      "industryTags": [
-        "环保/公用事业",
-        "电力/燃气/公用能源",
-        "水利、环境和公共设施管理业"
-      ],
-      "csrcIndustryTags": [
-        "水利、环境和公共设施管理业"
-      ],
-      "aShareMarketCapAtA1RmbBn": 11.2763,
-      "listingMarketCapHkdBn": null,
-      "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": null,
-      "calendarDaysA1ToReceived": 23.0,
-      "durationSampleEligible": true,
-      "listingDurationSampleEligible": false,
-      "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
-      "sourceLinks": [
-        {
-          "label": "HKEX申请版本",
-          "url": "https://www1.hkexnews.hk/app/sehk/2026/108205/documents/sehk26021301600.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
-        },
-        {
-          "label": "备案情况表（历史表）",
-          "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
-        },
-        {
-          "label": "备案情况表（最近一次公开状态）",
-          "url": "https://www.csrc.gov.cn/csrc/c106251/c7649306/content.shtml"
-        },
-        {
-          "label": "补充材料公示",
-          "url": "https://www.csrc.gov.cn/csrc/c105983/c7588110/content.shtml"
         }
       ]
     },
