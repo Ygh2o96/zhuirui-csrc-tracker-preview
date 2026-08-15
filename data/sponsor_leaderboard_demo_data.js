@@ -1,12 +1,12 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-14T20:50:19Z",
-    "sourceGeneratedAt": "2026-08-15T04:50:08+08:00",
+    "generatedAt": "2026-08-15T02:54:30Z",
+    "sourceGeneratedAt": "2026-08-15T10:54:30+08:00",
     "sourceRecordCount": 841,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-15T04:50:08+08:00",
+      "generatedAt": "2026-08-15T10:54:30+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1440,
@@ -3077,7 +3077,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     {
       "sponsorId": "rainbow",
       "sponsorTag": "RAINBOW",
-      "displayNameZh": "Rainbow",
+      "displayNameZh": "浤博资本",
       "displayNameEn": "RAINBOW",
       "canonicalName": "Rainbow Capital (HK) Limited",
       "legalNames": [
@@ -4173,14 +4173,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     {
       "sponsorId": "tfi",
       "sponsorTag": "TFI",
-      "displayNameZh": "TFI",
+      "displayNameZh": "天风国际资本市场",
       "displayNameEn": "TFI",
       "canonicalName": "TFI Capital Limited",
       "legalNames": [
         "TFI Capital Limited"
       ],
       "aliases": [],
-      "sponsorNature": "港资",
+      "sponsorNature": "中资",
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
@@ -16188,7 +16188,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "guangdong true health medical technology development co., ltd. - b",
       "issuerName": "Guangdong True Health Medical Technology Development Co., Ltd. - B",
       "csrcName": "廣東真健康醫療科技開發股份有限公司",
-      "hkexListingCompanyName": "Guangdong True Health Medical Technology Development Co., Ltd. - B",
+      "hkexListingCompanyName": "Guangdong True Health Medical Technology Development Co., Ltd. - B - H Shares",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -16247,8 +16247,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7635851/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -16256,7 +16256,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "guangdong true health medical technology development co., ltd. - b",
       "issuerName": "Guangdong True Health Medical Technology Development Co., Ltd. - B",
       "csrcName": "廣東真健康醫療科技開發股份有限公司",
-      "hkexListingCompanyName": "Guangdong True Health Medical Technology Development Co., Ltd. - B",
+      "hkexListingCompanyName": "Guangdong True Health Medical Technology Development Co., Ltd. - B - H Shares",
       "sponsorId": "dbs",
       "sourceSponsorTag": "DBS",
       "sourceSponsorTags": [
@@ -16315,8 +16315,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7635851/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -19013,7 +19013,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "zhejiang laifual drive co., ltd.",
       "issuerName": "Zhejiang Laifual Drive Co., Ltd.",
       "csrcName": "浙江來福諧波傳動股份有限公司",
-      "hkexListingCompanyName": "Zhejiang Laifual Drive Co., Ltd.",
+      "hkexListingCompanyName": "Zhejiang Laifual Drive Co., Ltd. - H Shares",
       "sponsorId": "cmbi",
       "sourceSponsorTag": "CMBI",
       "sourceSponsorTags": [
@@ -19072,8 +19072,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7635865/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -21522,7 +21522,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "liuliumei co., ltd. (formerly known as liuliu orchard group co., ltd.)",
       "issuerName": "Liuliumei Co., Ltd.",
       "csrcName": "溜溜梅股份有限公司（前称溜溜果园集团股份有限公司）",
-      "hkexListingCompanyName": "Liuliumei Co., Ltd.",
+      "hkexListingCompanyName": "Liuliumei Co., Ltd. - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -21579,8 +21579,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7603250/content.shtml"
         },
         {
-          "label": "HKEX新上市资料",
-          "url": "https://www2.hkexnews.hk/New-Listings/New-Listing-Information/Main-Board?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -21592,7 +21592,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "liuliumei co., ltd. (formerly known as liuliu orchard group co., ltd.)",
       "issuerName": "Liuliumei Co., Ltd.",
       "csrcName": "溜溜梅股份有限公司（前称溜溜果园集团股份有限公司）",
-      "hkexListingCompanyName": "Liuliumei Co., Ltd.",
+      "hkexListingCompanyName": "Liuliumei Co., Ltd. - H Shares",
       "sponsorId": "guoyuan",
       "sourceSponsorTag": "GUOYUAN",
       "sourceSponsorTags": [
@@ -21649,8 +21649,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7603250/content.shtml"
         },
         {
-          "label": "HKEX新上市资料",
-          "url": "https://www2.hkexnews.hk/New-Listings/New-Listing-Information/Main-Board?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -24243,7 +24243,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "hj science co., ltd. - b",
       "issuerName": "HJ Science Co., Ltd. - B",
       "csrcName": "華健未來(成都)科技股份有限公司",
-      "hkexListingCompanyName": "HJ Science Co., Ltd. - B",
+      "hkexListingCompanyName": "HJ Science Co., Ltd. - B - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -24302,8 +24302,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7631506/content.shtml"
         },
         {
-          "label": "HKEX上市日历",
-          "url": "https://www.hkex.com.hk/News/HKEX-Calendar?defaultdate=2026-06-23&sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -25453,7 +25453,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "hangzhou qiandaohu xunlong sci-tech co., ltd.",
       "issuerName": "Hangzhou Qiandaohu Xunlong Sci-tech Co., Ltd.",
       "csrcName": "杭州千島湖鱘龍科技股份有限公司",
-      "hkexListingCompanyName": "Hangzhou Qiandaohu Xunlong Sci-tech Co., Ltd.",
+      "hkexListingCompanyName": "Hangzhou Qiandaohu Xunlong Sci-tech Co., Ltd. - H Shares",
       "sponsorId": "citic",
       "sourceSponsorTag": "CITIC",
       "sourceSponsorTags": [
@@ -25514,8 +25514,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7634519/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -25527,7 +25527,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "hangzhou qiandaohu xunlong sci-tech co., ltd.",
       "issuerName": "Hangzhou Qiandaohu Xunlong Sci-tech Co., Ltd.",
       "csrcName": "杭州千島湖鱘龍科技股份有限公司",
-      "hkexListingCompanyName": "Hangzhou Qiandaohu Xunlong Sci-tech Co., Ltd.",
+      "hkexListingCompanyName": "Hangzhou Qiandaohu Xunlong Sci-tech Co., Ltd. - H Shares",
       "sponsorId": "csi",
       "sourceSponsorTag": "CSI",
       "sourceSponsorTags": [
@@ -25588,8 +25588,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7634519/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -25601,7 +25601,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "jiangxi institute of biological products inc.",
       "issuerName": "Jiangxi Institute of Biological Products Inc.",
       "csrcName": "江西生物製品研究所股份有限公司",
-      "hkexListingCompanyName": "Jiangxi Institute of Biological Products Inc.",
+      "hkexListingCompanyName": "Jiangxi Institute of Biological Products Inc. - H Shares",
       "sponsorId": "cicc",
       "sourceSponsorTag": "CICC",
       "sourceSponsorTags": [
@@ -25662,8 +25662,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7630032/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -25675,7 +25675,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "jiangxi institute of biological products inc.",
       "issuerName": "Jiangxi Institute of Biological Products Inc.",
       "csrcName": "江西生物製品研究所股份有限公司",
-      "hkexListingCompanyName": "Jiangxi Institute of Biological Products Inc.",
+      "hkexListingCompanyName": "Jiangxi Institute of Biological Products Inc. - H Shares",
       "sponsorId": "cms",
       "sourceSponsorTag": "CMS",
       "sourceSponsorTags": [
@@ -25736,8 +25736,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7630032/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -42776,8 +42776,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7616068/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -42846,8 +42846,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7616068/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ]
     },
@@ -47790,7 +47790,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "issuerId": "shenzhen senior technology material co., ltd.",
       "issuerName": "Shenzhen Senior Technology Material Co., Ltd.",
       "csrcName": "深圳市星源材質科技股份有限公司",
-      "hkexListingCompanyName": "Shenzhen Senior Technology Material Co., Ltd.",
+      "hkexListingCompanyName": "Shenzhen Senior Technology Material Co., Ltd. - H Shares",
       "sponsorId": "csi",
       "sourceSponsorTag": "CSI",
       "sourceSponsorTags": [
@@ -47851,8 +47851,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7626846/content.shtml"
         },
         {
-          "label": "HKEX上市日历",
-          "url": "https://www.hkex.com.hk/News/HKEX-Calendar?defaultdate=2026-06-23&sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -99298,8 +99298,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7616068/content.shtml"
         },
         {
-          "label": "HKEX近期新上市证券",
-          "url": "https://www.hkex.com.hk/Services/Trading/Securities/Trading-News/Newly-Listed-Securities?sc_lang=en"
+          "label": "HKEX新上市报告",
+          "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         }
       ],
       "sourceSponsorId": "gtja",
