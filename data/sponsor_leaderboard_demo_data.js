@@ -1,16 +1,16 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-08-15T02:54:30Z",
-    "sourceGeneratedAt": "2026-08-15T10:54:30+08:00",
-    "sourceRecordCount": 841,
+    "generatedAt": "2026-08-17T03:19:26Z",
+    "sourceGeneratedAt": "2026-08-17T11:19:15+08:00",
+    "sourceRecordCount": 843,
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "web_mvp/data/csrc_tracker_public.json",
-      "generatedAt": "2026-08-15T10:54:30+08:00",
+      "generatedAt": "2026-08-17T11:19:15+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1440,
-    "baseProjectFactCount": 1334,
+    "projectFactCount": 1444,
+    "baseProjectFactCount": 1338,
     "rollupProjectFactCount": 106,
     "firmCount": 73,
     "excludedPlaceholderSponsorRecordCount": 10,
@@ -173,12 +173,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_group",
-      "projectCount": 171,
-      "activeCount": 93,
+      "projectCount": 172,
+      "activeCount": 94,
       "listedCount": 72,
       "noticeCount": 80,
       "ahCount": 56,
-      "hShareCount": 84,
+      "hShareCount": 85,
       "redChipCount": 26,
       "deSpacCount": 1,
       "hdrCount": 1,
@@ -461,21 +461,21 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 61,
-      "activeCount": 37,
+      "projectCount": 63,
+      "activeCount": 39,
       "listedCount": 24,
       "noticeCount": 24,
-      "ahCount": 15,
-      "hShareCount": 38,
+      "ahCount": 16,
+      "hShareCount": 39,
       "redChipCount": 7,
       "deSpacCount": 1,
       "hdrCount": 0,
       "listingMarketCapHkdBnSum": 2021.7415,
       "listingMarketCapHkdBnMedian": 12.61845,
       "listingMarketCapN": 24,
-      "aShareMarketCapRmbBnSum": 1588.5802,
-      "aShareMarketCapRmbBnMedian": 18.1889,
-      "aShareMarketCapN": 15,
+      "aShareMarketCapRmbBnSum": 1648.998,
+      "aShareMarketCapRmbBnMedian": 22.84235,
+      "aShareMarketCapN": 16,
       "medianA1ToNoticeDays": 175.0,
       "timingN": 21,
       "topIndustries": [
@@ -1911,6 +1911,79 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "sponsorPrincipalCount": 3
     },
     {
+      "sponsorId": "hsbc",
+      "sponsorTag": "HSBC",
+      "displayNameZh": "汇丰",
+      "displayNameEn": "HSBC",
+      "canonicalName": "HSBC Corporate Finance (Hong Kong) Limited",
+      "legalNames": [
+        "HSBC Corporate Finance (Hong Kong) Limited"
+      ],
+      "aliases": [],
+      "sponsorNature": "港资",
+      "natureConfidence": "demo_seed",
+      "mappingConfidence": "dictionary",
+      "firmScope": "legal_entity",
+      "projectCount": 13,
+      "activeCount": 10,
+      "listedCount": 3,
+      "noticeCount": 3,
+      "ahCount": 4,
+      "hShareCount": 5,
+      "redChipCount": 3,
+      "deSpacCount": 1,
+      "hdrCount": 0,
+      "listingMarketCapHkdBnSum": 214.3475,
+      "listingMarketCapHkdBnMedian": 45.3662,
+      "listingMarketCapN": 3,
+      "aShareMarketCapRmbBnSum": 305.7233,
+      "aShareMarketCapRmbBnMedian": 65.33109999999999,
+      "aShareMarketCapN": 4,
+      "medianA1ToNoticeDays": 190.0,
+      "timingN": 2,
+      "topIndustries": [
+        "制造业",
+        "批发和零售业",
+        "信息传输、软件和信息技术服务业",
+        "新能源/汽车产业链"
+      ],
+      "type6ROCount": 11,
+      "type6RepCount": 110,
+      "type6TotalCount": 121,
+      "type6RowCount": 1,
+      "type6SourceFirmNames": [
+        "HSBC Corporate Finance (Hong Kong) Limited"
+      ],
+      "type6SourceUrls": [
+        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
+      ],
+      "type6AsOfDate": "2026-07-29",
+      "type6Quality": "manual",
+      "sponsorPrincipalRowCount": 1,
+      "sponsorPrincipalSourceFirmNames": [
+        "HSBC Corporate Finance (Hong Kong) Limited"
+      ],
+      "sponsorPrincipalSourceUrls": [
+        "https://drdrhuhabqfsu.ok.kimi.link/"
+      ],
+      "sponsorPrincipalROCount": 11,
+      "sponsorPrincipalRepCount": 101,
+      "sponsorPrincipalAsOfDate": "2026-08-06",
+      "sponsorPrincipalSourceUpdatedAt": "2026-08-06T16:31:00+08:00",
+      "sponsorPrincipalQuality": "fresh",
+      "sponsorPrincipalCerefs": [
+        "ABY439",
+        "ABZ794",
+        "ADY273",
+        "AGE022",
+        "ALP771",
+        "AMJ254",
+        "AZC818",
+        "BDM532"
+      ],
+      "sponsorPrincipalCount": 8
+    },
+    {
       "sponsorId": "galaxy",
       "sponsorTag": "GALAXY",
       "displayNameZh": "银河国际",
@@ -1978,79 +2051,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "BFW878"
       ],
       "sponsorPrincipalCount": 4
-    },
-    {
-      "sponsorId": "hsbc",
-      "sponsorTag": "HSBC",
-      "displayNameZh": "汇丰",
-      "displayNameEn": "HSBC",
-      "canonicalName": "HSBC Corporate Finance (Hong Kong) Limited",
-      "legalNames": [
-        "HSBC Corporate Finance (Hong Kong) Limited"
-      ],
-      "aliases": [],
-      "sponsorNature": "港资",
-      "natureConfidence": "demo_seed",
-      "mappingConfidence": "dictionary",
-      "firmScope": "legal_entity",
-      "projectCount": 12,
-      "activeCount": 9,
-      "listedCount": 3,
-      "noticeCount": 3,
-      "ahCount": 3,
-      "hShareCount": 5,
-      "redChipCount": 3,
-      "deSpacCount": 1,
-      "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 214.3475,
-      "listingMarketCapHkdBnMedian": 45.3662,
-      "listingMarketCapN": 3,
-      "aShareMarketCapRmbBnSum": 245.3055,
-      "aShareMarketCapRmbBnMedian": 70.2444,
-      "aShareMarketCapN": 3,
-      "medianA1ToNoticeDays": 190.0,
-      "timingN": 2,
-      "topIndustries": [
-        "制造业",
-        "批发和零售业",
-        "信息传输、软件和信息技术服务业",
-        "软件/AI/数据/互联网"
-      ],
-      "type6ROCount": 11,
-      "type6RepCount": 110,
-      "type6TotalCount": 121,
-      "type6RowCount": 1,
-      "type6SourceFirmNames": [
-        "HSBC Corporate Finance (Hong Kong) Limited"
-      ],
-      "type6SourceUrls": [
-        "https://webbsite.0xmd.com/dbpub/SFChistfirm.asp?f=y&p=50862&a=6"
-      ],
-      "type6AsOfDate": "2026-07-29",
-      "type6Quality": "manual",
-      "sponsorPrincipalRowCount": 1,
-      "sponsorPrincipalSourceFirmNames": [
-        "HSBC Corporate Finance (Hong Kong) Limited"
-      ],
-      "sponsorPrincipalSourceUrls": [
-        "https://drdrhuhabqfsu.ok.kimi.link/"
-      ],
-      "sponsorPrincipalROCount": 11,
-      "sponsorPrincipalRepCount": 101,
-      "sponsorPrincipalAsOfDate": "2026-08-06",
-      "sponsorPrincipalSourceUpdatedAt": "2026-08-06T16:31:00+08:00",
-      "sponsorPrincipalQuality": "fresh",
-      "sponsorPrincipalCerefs": [
-        "ABY439",
-        "ABZ794",
-        "ADY273",
-        "AGE022",
-        "ALP771",
-        "AMJ254",
-        "AZC818",
-        "BDM532"
-      ],
-      "sponsorPrincipalCount": 8
     },
     {
       "sponsorId": "jefferies",
@@ -5133,6 +5133,122 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
     }
   ],
   "projectFacts": [
+    {
+      "issuerId": "hunan yuneng new energy battery material co., ltd.",
+      "issuerName": "Hunan Yuneng New Energy Battery Material Co., Ltd.",
+      "csrcName": "湖南裕能新能源電池材料股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "csi",
+      "sourceSponsorTag": "CSI",
+      "sourceSponsorTags": [
+        "CSI"
+      ],
+      "leaderboardSponsorTag": "CSI",
+      "sponsorLegalName": "China Securities (International) Corporate Finance Company Limited",
+      "sponsorLegalNames": [
+        "China Securities (International) Corporate Finance Company Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "waiting_received",
+      "statusLabelZh": "等待接收",
+      "a1Date": "2026-08-17",
+      "currentA1Date": "2026-08-17",
+      "receivedDate": null,
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "新能源/汽车产业链",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 60.4178,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108797/documents/sehk26081700010.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        }
+      ]
+    },
+    {
+      "issuerId": "hunan yuneng new energy battery material co., ltd.",
+      "issuerName": "Hunan Yuneng New Energy Battery Material Co., Ltd.",
+      "csrcName": "湖南裕能新能源電池材料股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "hsbc",
+      "sourceSponsorTag": "HSBC",
+      "sourceSponsorTags": [
+        "HSBC"
+      ],
+      "leaderboardSponsorTag": "HSBC",
+      "sponsorLegalName": "HSBC Corporate Finance (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "HSBC Corporate Finance (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "waiting_received",
+      "statusLabelZh": "等待接收",
+      "a1Date": "2026-08-17",
+      "currentA1Date": "2026-08-17",
+      "receivedDate": null,
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "A+H",
+      "isAH": true,
+      "specialListingRoute": null,
+      "industryTags": [
+        "新能源/汽车产业链",
+        "制造业"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": 60.4178,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [],
+      "sourceLinks": [
+        {
+          "label": "HKEX申请版本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108797/documents/sehk26081700010.pdf"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        }
+      ]
+    },
     {
       "issuerId": "shenzhen woke technology co., ltd",
       "issuerName": "SHENZHEN WOKE TECHNOLOGY Co., LTD",
@@ -44738,7 +44854,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -44808,7 +44926,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -45077,7 +45197,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -45147,7 +45269,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "A1已失效"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
@@ -49294,17 +49418,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "durationSampleEligible": true,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [
-        "A1已失效"
-      ],
+      "statusTags": [],
       "sourceLinks": [
         {
           "label": "HKEX申请版本",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108154/documents/sehk26012801025.pdf"
-        },
-        {
-          "label": "HKEX Main Board Consolidated Index",
-          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
         },
         {
           "label": "备案情况表（历史表）",
@@ -95279,6 +95397,118 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX PHIP",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108766/documents/sehk26072600126.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "hkex_phip:fbb8d9b5b1c5bf0c6cb3",
+      "issuerName": "Mech-Mind Robotics Technologies Co., Ltd.",
+      "csrcName": "Mech-Mind Robotics Technologies Co., Ltd.",
+      "hkexListingCompanyName": "",
+      "sponsorId": "csi",
+      "sourceSponsorTag": "CSI",
+      "sourceSponsorTags": [
+        "CSI"
+      ],
+      "leaderboardSponsorTag": "CSI",
+      "sponsorLegalName": "China Securities (International) Corporate Finance Company Limited",
+      "sponsorLegalNames": [
+        "China Securities (International) Corporate Finance Company Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "waiting_received",
+      "statusLabelZh": "等待接收",
+      "a1Date": null,
+      "currentA1Date": null,
+      "receivedDate": null,
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "软件/AI/数据/互联网"
+      ],
+      "csrcIndustryTags": [
+        "信息传输、软件和信息技术服务业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108796/documents/sehk26081600030.pdf"
+        }
+      ]
+    },
+    {
+      "issuerId": "hkex_phip:fbb8d9b5b1c5bf0c6cb3",
+      "issuerName": "Mech-Mind Robotics Technologies Co., Ltd.",
+      "csrcName": "Mech-Mind Robotics Technologies Co., Ltd.",
+      "hkexListingCompanyName": "",
+      "sponsorId": "citic",
+      "sourceSponsorTag": "CITIC",
+      "sourceSponsorTags": [
+        "CITIC"
+      ],
+      "leaderboardSponsorTag": "CITIC",
+      "sponsorLegalName": "CITIC Securities (Hong Kong) Limited",
+      "sponsorLegalNames": [
+        "CITIC Securities (Hong Kong) Limited"
+      ],
+      "sponsorOrder": 2,
+      "sponsorCountOnDeal": 2,
+      "creditAllFull": 1.0,
+      "creditEqual": 0.5,
+      "creditFirstNamed": 0.0,
+      "hkexStage": "applying",
+      "status": "waiting_received",
+      "statusLabelZh": "等待接收",
+      "a1Date": null,
+      "currentA1Date": null,
+      "receivedDate": null,
+      "noticeDate": null,
+      "listingDate": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "软件/AI/数据/互联网"
+      ],
+      "csrcIndustryTags": [
+        "信息传输、软件和信息技术服务业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "calendarDaysA1ToNotice": null,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": null,
+      "durationSampleEligible": false,
+      "listingDurationSampleEligible": false,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "密交",
+        "PHIP已公开"
+      ],
+      "sourceLinks": [
+        {
+          "label": "HKEX PHIP",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108796/documents/sehk26081600030.pdf"
         }
       ]
     },
