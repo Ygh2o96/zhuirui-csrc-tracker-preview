@@ -982,16 +982,12 @@ function hkexDocumentLabel(label) {
   return labels[label] || label;
 }
 
-function renderHkexPostings(record, compact) {
+function renderHkexPostings(record) {
   const docs = (record.hkexPublishedApplications || []).flatMap(a => a.documents || [])
     .filter(d => /^https:\/\/www1\.hkexnews\.hk\/app\/sehk\/\d{4}\/\d+\/documents\/sehk\d+(_c)?\.pdf$/.test(d.url))
     .sort((a, b) => b.date.localeCompare(a.date) || Number(a.previous) - Number(b.previous));
   if (!docs.length) return "";
   const lead = docs[0];
-  if (compact) {
-    const labels = [...new Set(docs.filter(d => d.date === lead.date && !d.previous).map(d => hkexDocumentLabel(d.label)))];
-    return `<small>${escapeHtml(lead.date)} · ${escapeHtml(labels.join("、") || hkexDocumentLabel(lead.label))}</small>`;
-  }
   return `<details><summary>港交所申请文件 · ${escapeHtml(lead.date)}</summary>${docs.map(d =>
     `<div><a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">${escapeHtml(d.date)} · ${escapeHtml(hkexDocumentLabel(d.label))}</a>${d.previous ? " · 此前刊发" : ""}</div>`
   ).join("")}</details>`;
@@ -1586,7 +1582,7 @@ function renderRows() {
             <span>${escapeHtml(names.secondary)}</span>
           </td>
           <td class="status-cell">${renderStatusBadge(record)}</td>
-          <td class="date-cell">${renderA1Cell(record)}${renderHkexPostings(record, true)}</td>
+          <td class="date-cell">${renderA1Cell(record)}</td>
           <td class="date-cell">${listedPage ? renderNoticeCell(record) : renderReceivedCell(record)}</td>
           <td class="date-cell">${listedPage ? renderListingCell(record) : renderNoticeCell(record)}</td>
           <td class="listing-date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
@@ -1955,7 +1951,7 @@ function renderDetail(record) {
         <strong>${renderStatusBadge(record, false)}</strong>
         ${renderIssuerDisclosure(record)}
         ${renderHkexStatusEvidence(record)}
-        ${renderHkexPostings(record, false)}
+        ${renderHkexPostings(record)}
         ${record.csrcFilingApplicability && record.csrcFilingApplicability !== "pending" ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需备案 / No filing required", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
         ${record.status === "applicability_pending" ? `<div class="muted">证监会公示中未匹配到本次上市的备案记录。<a href="https://www.csrc.gov.cn/csrc/c101935/zfxxgk_zdgk.shtml" target="_blank" rel="noreferrer">查阅证监会公示</a></div>` : ""}
         ${record.csrcFilingReportingRequired ? `<div>转板后须向证监会报告 / Post-transfer reporting required</div>` : ""}
