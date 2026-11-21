@@ -10,8 +10,8 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260630-all-listing-days-1" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20260708-sponsor-pk-active-absolute-1" />
+    <link rel="stylesheet" href="styles.css?v=20261119-listing-economics-v1" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20261120-capacity-sources" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -168,11 +168,11 @@
                   <select id="sponsorFilter" name="sponsorFilter" autocomplete="off"></select>
                 </label>
                 <label class="filter-control">
-                  <span><b id="marketCapMinZh">A股市值下限</b><small id="marketCapMinEn">A1-day mkt cap min · RMB bn</small></span>
+                  <span><b id="marketCapMinZh">A股估值下限</b><small id="marketCapMinEn">A-share value min · RMB bn</small></span>
                   <input id="marketCapMin" name="marketCapMin" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
                 </label>
                 <label class="filter-control">
-                  <span><b id="marketCapMaxZh">A股市值上限</b><small id="marketCapMaxEn">A1-day mkt cap max · RMB bn</small></span>
+                  <span><b id="marketCapMaxZh">A股估值上限</b><small id="marketCapMaxEn">A-share value max · RMB bn</small></span>
                   <input id="marketCapMax" name="marketCapMax" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
                 </label>
                 <label class="filter-control">
@@ -188,7 +188,7 @@
                     <option value="hkexListingDate">上市日期</option>
                     <option value="__days__">天数</option>
                     <option value="aShareMarketCapAtA1RmbBn" id="aShareMarketCapSortOption">A1 日 A 股市值</option>
-                    <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日港股市值</option>
+                    <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日总市值</option>
                     <option value="structureType">发行人类型</option>
                     <option value="industryTags">行业</option>
                     <option value="sponsors">保荐人</option>
@@ -223,7 +223,7 @@
                         </select>
                       </th>
                       <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A股估值</span><span class="th-en" id="marketCapEn">A-share valuation</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="all-only-col col-mcap-listing"><button class="th-sort" type="button" data-sort-field="listingMarketCapHkdBn"><span class="th-zh">上市日市值</span><span class="th-en">Listing mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-industry"><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
@@ -245,211 +245,6 @@
           </div>
         </section>
 
-        <section class="view-panel" id="pipelineView" aria-label="Data intake pipeline">
-          <div class="pipeline-page">
-            <section class="pipeline-hero">
-              <div>
-                <p class="feature-kicker">Methodology transparency</p>
-                <h2>数据采集与处理流程 <small>Data Intake Pipeline</small></h2>
-                <p>本工具基于港交所和中国证监会公开披露材料，自动整理发行人 A1、备案接收、补充材料、监管意见、备案通知书及已上市状态。规则脚本负责采集、标准化、匹配和质量门控；LLM 仅用于处理双语、曾用名、简称等歧义候选；本地检索/RAG 用于证据发现和人工复核，不直接生成公开日期。</p>
-                <p class="pipeline-hero-en">The tracker is built from public HKEX and CSRC disclosures. Rule-based scripts own collection, normalization, matching and quality gates; LLM assistance is limited to ambiguous candidate curation; local retrieval/RAG is used for evidence discovery and review, not as an automatic source of public dates.</p>
-              </div>
-              <div class="pipeline-principles" aria-label="Pipeline principles">
-                <span>官方来源优先<br><small>Official sources first</small></span>
-                <span>候选不自动发布<br><small>Candidates are not facts</small></span>
-                <span>日期顺序门控<br><small>Chronology gated</small></span>
-                <span>欢迎公开线索<br><small>Feedback welcome</small></span>
-              </div>
-            </section>
-
-            <section class="pipeline-image-gallery" aria-label="Pipeline diagrams">
-              <figure class="pipeline-image-card">
-                <a href="assets/pipeline/csrc-daily-intake-pipeline.png" target="_blank" rel="noopener">
-                  <img
-                    src="assets/pipeline/csrc-daily-intake-pipeline.png"
-                    alt="CSRC Tracker Daily Intake and Data Processing Pipeline"
-                    loading="eager"
-                  />
-                </a>
-                <figcaption>
-                  <b>每日数据入口与处理流水线</b>
-                  <small>Daily intake, source collection, matching, enrichment, QA gates and publish/review loop. 点击图片打开高清原图。</small>
-                </figcaption>
-              </figure>
-              <figure class="pipeline-image-card">
-                <a href="assets/pipeline/csrc-intake-decision-flow.png" target="_blank" rel="noopener">
-                  <img
-                    src="assets/pipeline/csrc-intake-decision-flow.png"
-                    alt="CSRC Tracker Intake Decision Flow"
-                    loading="lazy"
-                  />
-                </a>
-                <figcaption>
-                  <b>备案追踪数据分流决策图</b>
-                  <small>Decision flow for HKEX/CSRC intake, status routing, timeline gates, statistics eligibility and QA alerts. 手机可横向滑动预览。</small>
-                </figcaption>
-              </figure>
-            </section>
-
-            <section class="pipeline-flow" aria-label="Pipeline flow diagram" hidden>
-              <div class="pipeline-lane lane-source">
-                <div class="lane-heading"><b>1. 公开来源</b><small>Public sources</small></div>
-                <div class="flow-node script-node">
-                  <span class="node-num">01</span>
-                  <b>HKEX 披露</b>
-                  <small>AP / PHIP / 综合索引 / 新上市报告</small>
-                </div>
-                <div class="flow-node script-node">
-                  <span class="node-num">02</span>
-                  <b>CSRC 披露</b>
-                  <small>备案情况表 / 通知书 / 补充材料公示</small>
-                </div>
-                <div class="flow-node source-node">
-                  <span class="node-num">03</span>
-                  <b>人工来源通道</b>
-                  <small>仅接受可回溯公开来源或官方链接</small>
-                </div>
-              </div>
-
-              <div class="pipeline-lane lane-script">
-                <div class="lane-heading"><b>2. 规则脚本主线</b><small>Rule-based scripts</small></div>
-                <div class="flow-node script-node">
-                  <span class="node-num">04</span>
-                  <b>采集与快照</b>
-                  <small>保留来源快照，避免覆盖历史线索</small>
-                </div>
-                <div class="flow-node rag-node">
-                  <span class="node-num">05</span>
-                  <b>AP 文本索引</b>
-                  <small>读取文件、页、章节、保荐人、业务和监管章节</small>
-                </div>
-                <div class="flow-node script-node">
-                  <span class="node-num">06</span>
-                  <b>标准化</b>
-                  <small>英文名、中文名、繁简、曾用名、保荐人短名</small>
-                </div>
-                <div class="decision-node">
-                  <span>高置信且来源明确？</span>
-                  <small>High-confidence source-backed match?</small>
-                </div>
-              </div>
-
-              <div class="pipeline-lane lane-curation">
-                <div class="lane-heading"><b>3. 候选分流</b><small>Candidate routing</small></div>
-                <div class="flow-split">
-                  <div class="flow-node script-node">
-                    <span class="node-num">07A</span>
-                    <b>自动接受</b>
-                    <small>精确名称、官方链接、股票代码、时间顺序有效</small>
-                  </div>
-                  <div class="flow-node llm-node">
-                    <span class="node-num">07B</span>
-                    <b>LLM 复核</b>
-                    <small>只在双语/曾用名/红筹实体/低置信候选时介入</small>
-                  </div>
-                </div>
-                <div class="decision-node llm-decision">
-                  <span>LLM 是否只选择已有候选 key？</span>
-                  <small>Supplied candidate key only</small>
-                </div>
-                <div class="flow-node source-node">
-                  <span class="node-num">08</span>
-                  <b>来源支撑回填</b>
-                  <small>无来源支撑则保持待披露，不补日期</small>
-                </div>
-              </div>
-
-              <div class="pipeline-lane lane-timeline">
-                <div class="lane-heading"><b>4. 时间线与统计门控</b><small>Timeline gates</small></div>
-                <div class="flow-node script-node">
-                  <span class="node-num">09</span>
-                  <b>拆分事实</b>
-                  <small>A1、接收、通知书、补充材料、上市日分别保留</small>
-                </div>
-                <div class="decision-grid">
-                  <div class="decision-node"><span>是否需要备案？</span><small>Filing required?</small></div>
-                  <div class="decision-node"><span>是否密交？</span><small>Confidential route?</small></div>
-                  <div class="decision-node"><span>日期顺序有效？</span><small>A1 <= received <= notice?</small></div>
-                  <div class="decision-node"><span>是否超过 180 天？</span><small>Use current-cycle anchor?</small></div>
-                </div>
-                <div class="flow-node script-node">
-                  <span class="node-num">10</span>
-                  <b>计算天数</b>
-                  <small>自然日 / 工作日，缺日期或顺序异常则剔除对应段</small>
-                </div>
-              </div>
-
-              <div class="pipeline-lane lane-stage">
-                <div class="lane-heading"><b>5. 页面分流</b><small>Page routing</small></div>
-                <div class="flow-node stage-node">
-                  <span class="node-num">11A</span>
-                  <b>上市申请中</b>
-                  <small>HKEX active，或 A1 失效但 CSRC 备案仍有生命体征，保留并打标签</small>
-                </div>
-                <div class="flow-node publish-node">
-                  <span class="node-num">11B</span>
-                  <b>已上市</b>
-                  <small>HKEX 新上市报告确认上市日，备案通知书或无需备案逻辑单独核验</small>
-                </div>
-                <div class="flow-node stalled-node">
-                  <span class="node-num">11C</span>
-                  <b>搁置 / 撤回</b>
-                  <small>无接收且最近 A1 超 6 个月，或已接收/征询意见后超 1 年无新 A1</small>
-                </div>
-              </div>
-
-              <div class="pipeline-lane lane-qa">
-                <div class="lane-heading"><b>6. 质量门控与发布</b><small>QA and publishing</small></div>
-                <div class="flow-node script-node">
-                  <span class="node-num">12</span>
-                  <b>生成快照</b>
-                  <small>数据库、Excel、前端 JSON 同步导出</small>
-                </div>
-                <div class="decision-node gate-node">
-                  <span>校验和健康检查通过？</span>
-                  <small>Verify and healthcheck OK?</small>
-                </div>
-                <div class="flow-node source-node">
-                  <span class="node-num">13</span>
-                  <b>人工注意队列</b>
-                  <small>通知书缺接收日、补材料缺接收日、反馈早于 A1</small>
-                </div>
-                <div class="flow-node publish-node">
-                  <span class="node-num">14</span>
-                  <b>公开页面</b>
-                  <small>仅展示校验后的静态 JSON，支持筛选和排序</small>
-                </div>
-              </div>
-            </section>
-
-            <section class="pipeline-boundaries" hidden>
-              <div class="boundary-card">
-                <h3>脚本什么时候做主？<small>When scripts decide</small></h3>
-                <p>来源采集、候选评分、时间线拆分、统计口径、行业初筛、保荐人标准化、校验和发布门控均由规则脚本执行。</p>
-              </div>
-              <div class="boundary-card">
-                <h3>LLM 什么时候介入？<small>When LLM curates</small></h3>
-                <p>仅当存在双语名称、曾用名、红筹境内实体、简称或低置信候选歧义时介入；LLM 只能确认或否决候选，不能发明日期。</p>
-              </div>
-              <div class="boundary-card">
-                <h3>RAG 什么时候使用？<small>When local RAG helps</small></h3>
-                <p>本地 AP 文本索引用于提取业务、监管章节、密交线索和保荐人；向量/RAG 检索用于人工核查和证据发现，不直接写入公开日期。</p>
-              </div>
-              <div class="boundary-card">
-                <h3>页面分流什么时候发生？<small>When pages split</small></h3>
-                <p>先判断已上市，再判断仍在申请中或搁置/撤回。港交所 A1 失效本身不等于项目终止；若 CSRC 备案仍有接收、补材料或监管意见线索，会继续留在申请中并打标签。</p>
-              </div>
-            </section>
-
-            <section class="pipeline-feedback">
-              <div>
-                <h3>欢迎指点错漏 <small>Public feedback welcome</small></h3>
-                <p>如果你发现某个项目状态、日期、保荐人、行业或上市标签与公开资料不一致，欢迎提供官方链接或可核验来源。我们会按 source-backed 原则回填，并在后续日常更新中同步。</p>
-              </div>
-              <a href="mailto:ygh2o96@gmail.com">ygh2o96@gmail.com</a>
-            </section>
-          </div>
-        </section>
 
         <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard">
           <div class="sl-meta-bar">
@@ -485,8 +280,8 @@
                   <option value="activeCount">公开申请中项目</option>
                   <option value="listedCount">已上市项目</option>
                   <option value="ahCount">A+H 项目</option>
-                  <option value="listingMarketCapHkdBnSum">上市日港股市值</option>
-                  <option value="aShareMarketCapRmbBnSum">A股市值</option>
+                  <option value="listingMarketCapHkdBnSum">上市日总市值</option>
+                  <option value="aShareMarketCapRmbBnSum">A股估值</option>
                   <option value="lifecycleMedianDays">A1→上市平均时间（已上市）</option>
                   <option value="noticeCycleMedianDays">A1→通知中位数（已通知）</option>
                   <option value="receivedCycleMedianDays">A1→接收中位数（已接收）</option>
@@ -505,7 +300,7 @@
                 <span>统计口径</span>
                 <select id="slCreditSelect" name="slCreditSelect" autocomplete="off">
                   <option value="creditAllFull">具名保荐人全部计入</option>
-                  <option value="creditFirstNamed">只计牵头/首名保荐人</option>
+                  <option value="creditFirstNamed">只计首名保荐人</option>
                   <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
@@ -539,7 +334,7 @@
               <label>
                 <span>日期口径</span>
                 <select id="slDateFieldSelect" name="slDateFieldSelect" autocomplete="off">
-                  <option value="stageDate">阶段日（申请中A1 / 已上市上市日）</option>
+                  <option value="stageDate">阶段日（申请中按A1；已上市按上市日/RTO完成日）</option>
                   <option value="a1Date">A1</option>
                   <option value="noticeDate">备案通知书</option>
                   <option value="receivedDate">接收</option>
@@ -623,7 +418,7 @@
                 <span>统计口径</span>
                 <select id="spkCreditSelect" name="spkCreditSelect" autocomplete="off">
                   <option value="creditAllFull">具名保荐人全部计入</option>
-                  <option value="creditFirstNamed">只计牵头/首名保荐人</option>
+                  <option value="creditFirstNamed">只计首名保荐人</option>
                   <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
@@ -636,7 +431,7 @@
               <label class="spk-filter-field spk-date-field">
                 <span>日期口径</span>
                 <select id="spkDateFieldSelect" name="spkDateFieldSelect" autocomplete="off">
-                  <option value="stageDate">阶段日（申请中A1 / 已上市上市日）</option>
+                  <option value="stageDate">阶段日（申请中按A1；已上市按上市日/RTO完成日）</option>
                   <option value="a1Date">A1</option>
                   <option value="noticeDate">备案通知书</option>
                   <option value="receivedDate">接收</option>
@@ -775,20 +570,27 @@
         <footer class="footer-note">
           <details class="methodology-note">
             <summary>口径说明 Methodology</summary>
-            <p>默认页为上市申请中；已上市页纳入HKEX New Listing Report显示上市日不早于2023-03-31的全量发行人。申请中页A1至接收统计纳入日期齐全且顺序有效样本；如历史A1锚点至接收超过180个自然日，统计卡改用当前A1至当前接收。已上市页展示首次A1至备案通过、首次A1至上市两组天数及上市日总市值（首日收盘×现行总股本，yfinance口径）；无需备案发行人不纳入备案通过统计。A1至备案通过的统计锚点取2023-03-31当日或之后的第一次A1（最早A1早于制度生效日的发行人打「制度后A1锚点」标签）；申请周期跨越制度生效日的存量项目（通知书落在该周期内）展示自2023-03-31起算的时长、打「过渡期A1锚点」标签且不计入头部统计；通知书早于全部已知制度后A1周期、无法确定有效锚点的其他个案剔除并打「outlier剔除统计」标签；以秘密递交路线申请、公开A1日不反映真实起点的发行人打「密交」标签且不纳入该统计。备案要求按周期判断：只要任一次A1递交日不早于2023-03-31即需备案，仅全部A1周期早于该日的发行人标记「制度前A1」。行业筛选采用证监会《上市公司行业分类指引》门类（LLM辅助归类），明细业务标签保留展示。左侧「搁置/撤回」为实操口径：港交所失效/撤回但证监会备案已被接收的发行人大概率将重新递交，仍归入上市申请中并打「A1已失效」标签；仅 (a) 最近A1超过6个月且备案始终未获接收、或 (b) 停留在已接收/征求监管意见且最近A1超过一年未更新 的发行人归入搁置/撤回。工作日口径按中国国务院公开节假日及调休安排；页面天数统一向上取整。</p>
-            <p class="methodology-en">Default view tracks live applications; the Listed view covers all HKEX New Listing Report issuers listed on or after 2023-03-31. A1→received statistics include records with complete, chronologically valid dates; where the historical anchor exceeds 180 calendar days the cards switch to the current-cycle A1. The Listed view shows first-A1→notice and first-A1→listing durations plus listing-day market cap (first close × current shares outstanding, via yfinance). The A1→notice statistic is anchored to the first A1 posted on or after 2023-03-31 (issuers whose earliest A1 predates the regime carry a "Post-regime A1 anchor" tag); in-process applications that straddled the regime effective date (notice issued within that cycle) display a clock starting 2023-03-31, carry a "Transition cohort" tag and are excluded from headline statistics; other records whose notice predates every known post-regime A1 cycle are excluded and tagged "Outlier excluded"; confidential-route filers whose public A1 date does not reflect the true start carry a "Confidential A1" tag and are excluded from that statistic. Filing applicability is cycle-based: any A1 submitted on or after 2023-03-31 triggers the CSRC filing requirement; only issuers whose every A1 cycle predates that date are tagged "Pre-regime A1". The industry filter uses CSRC Listed-Company Industry Classification categories (LLM-assisted); granular business tags remain on display. The "Stalled / withdrawn" bucket is practitioner-defined: lapsed HKEX applications with a live CSRC filing typically refile and stay under "In application" (tagged "A1 lapsed"); only (a) no CSRC receipt with the latest A1 older than 6 months, or (b) stuck at the received or regulator-opinion stage with no new A1 for over a year, are parked here. Business-day counts follow PRC State Council public holiday and make-up workday arrangements. Day counts round up.</p>
+            <p>已上市范围为HKEX New Listing Report中上市日不早于2023-03-31的发行人。周期统计只纳入日期完整、先后顺序有效且符合相应统计口径的样本。A1至接收超过180个自然日时改用当前申请周期；当前A1后尚无接收日的，不计入该项统计。A1至通知以制度生效后的申请锚点计算；跨制度生效日的过渡期、无法确定有效锚点的异常记录、密交及疑似密交，以及De-SPAC、HDR、介绍上市、反向收购和GEM转主板均不纳入普通IPO周期统计。申请中项目只展示截至快照日已过时间。工作日采用2017至2026年国务院节假日及调休安排，超出已核实日历范围不推算；展示天数向上取整。</p>
+            <p class="methodology-en">Listed coverage includes HKEX New Listing Report issuers listed from 31 March 2023. Duration samples require complete, chronologically valid dates. If historical A1-to-receipt exceeds 180 calendar days, the current cycle is used; no subsequent receipt means exclusion. Notice durations use a post-effective-date anchor. Transition cohorts, unresolved anchors, confidential or suspected confidential filings, De-SPACs, HDRs, introductions, reverse takeovers and GEM transfers are excluded from ordinary IPO duration statistics. Active applications show elapsed time only. Business days follow verified PRC holidays and make-up workdays for 2017–2026; unsupported years remain unavailable. Displayed days round up.</p>
+            <p>备案适用性按境内企业直接或间接境外发行上市范围、本次交易及制度衔接条件判断；注册地或A1日期均不能单独决定是否需要备案。制度前已递交但尚未获境外审核同意的范围内企业，仍须按规定在上市前完成备案。通知日期优先采用正文署日，网页发布日期另列；历史通知保留，新一轮备案进度另行判断。行业按证监会行业分类门类展示，并保留业务标签。</p>
+            <p class="methodology-en">Filing applicability depends on domestic-enterprise scope, the transaction and transition provisions. Incorporation or the A1 date alone does not establish an exemption or requirement. In-scope applications submitted but not approved overseas before effectiveness remain subject to pre-listing filing requirements. Notice dates use the signed document date where available; webpage publication dates and historical notices remain separate from the current filing. Industry categories follow the CSRC classification with additional business tags.</p>
+            <p>上市日总市值使用同日已发行股份（不含库存股）。A+H分别以A股、H股收盘价估值，按当日汇率折为港币合计；非A+H以港股收盘价计算全部普通股价值。遇某一市场休市，采用该市场最近交易日收盘价并标明日期，股数及汇率仍采用估值当日口径。无法核实股数、股类或汇率的上市市值保留估算说明，不计入精确市值排名。申请中A+H的A股估算市值可用于排序，并标明估算、实际价格日期及所用申请锚点。龙虎榜、PK及明细共用具名全计、首名或平分口径；首名模式的项目与周期来自同一过滤集。</p>
+            <p class="methodology-en">Listing-day total equity value uses each share class's closing price and same-day issued shares excluding treasury shares. A and H shares are valued separately and converted to HKD at the same-day exchange rate. If a market is closed, its most recent trading close is used and the actual price date is shown; share counts and FX retain the valuation date. Unverified listing values are excluded from precise value rankings. A-share estimates may enter applying A+H rankings with explicit estimate labels, actual price dates and application anchors. League, PK and detail views share full, first-named or fractional credit rules; first-named deal and duration samples use the same filtered set.</p>
+            <p>「搁置/撤回」为实操分类：港交所申请失效但备案已获接收的，仍列申请中并标记A1已失效。最近A1超过六个月且无接收记录，或停留在已接收/征询监管意见且A1超过一年未更新的，列入搁置/撤回；该分类不代表证监会已终止备案。</p>
+            <p class="methodology-en">Stalled/withdrawn is a practitioner classification. Lapsed HKEX applications with CSRC receipt remain active with an A1-lapsed tag. Applications without receipt after six months, or with a received/regulator-opinion status and no updated A1 for over a year, enter this category. This is not a CSRC termination decision.</p>
           </details>
           预览版本。公开页面应链接至港交所/证监会官方材料，并避免批量转载源文件。
           <span>Preview build with official-source linking discipline.</span>
           <span class="visit-counter" id="siteVisitCounter" style="display:none" aria-live="polite">
             自上线累计 Since launch · 访问量 Visits <span id="busuanzi_value_site_pv">–</span> · 访客 Visitors <span id="busuanzi_value_site_uv">–</span>
           </span>
+          <small id="visitCounterDisclosure">本页加载 Vercount 第三方脚本统计访问量与访客数。 A third-party Vercount script counts page views and visitors.</small>
         </footer>
       </main>
     </div>
 
-    <script src="app.js?v=20260727-visit-counter-invariant-1"></script>
-    <script src="sponsor_leaderboard_demo.js?v=20260716-sponsor-stage-date-1"></script>
+    <script src="app.js?v=common-e56200f5f7ae-55e8869bc5b9-fee-20c4f3c7d7ae-fx-9265bf27e8af-units-c408c597990f"></script>
+    <script src="sponsor_leaderboard_demo.js?v=3b65ea640e320b2d"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

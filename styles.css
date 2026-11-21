@@ -1459,6 +1459,43 @@ tr[role="button"]:focus-visible {
   color: var(--muted);
 }
 
+.listing-economics {
+  border-block-start: 1px solid var(--soft-line);
+  padding-block: 10px;
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.listing-economics h3, .listing-economics h4, .listing-economics dl,
+.listing-economics dd, .listing-economics p {
+  margin: 0;
+}
+
+.listing-economics h3 { font-size: 14px; }
+.listing-economics h3 small, .econ-sources { display: block; }
+.listing-economics h3 small, .listing-economics dt {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.listing-economics section, .listing-economics > dl { margin-top: 6px; }
+.listing-economics h4 { font-size: 12px; margin-bottom: 4px; }
+.listing-economics .econ-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3px 10px;
+  font-size: 12px;
+  padding-block: 3px;
+  overflow-wrap: anywhere;
+}
+.listing-economics dd { font-variant-numeric: tabular-nums; }
+.listing-economics dd strong, .listing-economics .econ-note { font-size: 12px; }
+.econ-sources { font-size: 11px; margin-top: 2px; }
+.econ-sources a { display: inline-block; color: var(--teal); }
+@container (max-width: 290px) {
+  .listing-economics .econ-line { grid-template-columns: minmax(0, 1fr); }
+}
+
 .detail-days {
   display: grid;
   gap: 5px;

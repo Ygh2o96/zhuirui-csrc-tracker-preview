@@ -600,6 +600,14 @@
   gap: 4px;
 }
 
+.sponsor-league .capacity-source-pills .pill {
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .sponsor-league .drawer-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -657,6 +665,15 @@
   line-height: 1.5;
 }
 
+.sponsor-league .market-cap-detail,
+.sponsor-league .market-cap-coverage {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
 .sponsor-league .source-link {
   color: var(--teal);
   text-decoration: none;
@@ -676,6 +693,7 @@
 
 .sponsor-league .spk-shell {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
 }
 
@@ -735,7 +753,7 @@
 
 .sponsor-league .spk-picker {
   display: grid;
-  grid-template-columns: minmax(210px, 1fr) minmax(210px, 1fr) minmax(150px, 0.72fr) minmax(170px, 0.8fr) minmax(170px, 0.8fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.72fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
   align-items: end;
   gap: 10px;
   padding: 14px;
@@ -789,6 +807,7 @@
 .sponsor-league .spk-picker select,
 .sponsor-league .spk-picker input,
 .sponsor-league .spk-sponsor-field select {
+  min-width: 0;
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -1044,6 +1063,41 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sponsor-league .spk-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+    gap: 9px;
+  }
+
+  .sponsor-league .spk-credit-field {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .sponsor-league .spk-sector-field {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .sponsor-league .spk-date-field {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .sponsor-league .spk-date-from-field {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .sponsor-league .spk-date-to-field {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .sponsor-league .spk-date-quick {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1179,42 +1233,6 @@
     border-left: 0;
     border-top: 1px solid var(--line);
     padding: 12px 0 0;
-  }
-
-  .sponsor-league .spk-picker {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: end;
-    gap: 9px;
-  }
-
-  .sponsor-league .spk-credit-field {
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-
-  .sponsor-league .spk-sector-field {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .sponsor-league .spk-date-field {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .sponsor-league .spk-date-from-field {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  .sponsor-league .spk-date-to-field {
-    grid-column: 2;
-    grid-row: 3;
-  }
-
-  .sponsor-league .spk-date-quick {
-    grid-column: 1 / -1;
-    grid-row: 4;
   }
 
   .sponsor-league .sl-date-quick,

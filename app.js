@@ -2,7 +2,6 @@
 // skip re-downloading the multi-MB payload when the snapshot is unchanged.
 const DATA_URL = `data/csrc_tracker_public.json?v=${Date.now()}`;
 const PAGE_SIZE = 50;
-const A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS = 180;
 
 const defaults = {
   selectedId: null,
@@ -37,6 +36,7 @@ const statusLabels = {
   csrc_received: ["已接收", "CSRC received"],
   waiting_received: ["等待接收", "Awaiting receipt"],
   not_required: ["无需备案", "Not required"],
+  applicability_pending: ["适用性未确认", "Scope unconfirmed"],
   review_pending: ["待披露", "Pending"],
   pending_match: ["待披露", "Pending"]
 };
@@ -143,6 +143,7 @@ const statusSortRank = {
   supplement_requested: 30,
   csrc_received: 40,
   not_required: 80,
+  applicability_pending: 95,
   waiting_received: 90,
   review_pending: 100,
   pending_match: 100
@@ -296,14 +297,36 @@ function isHkexListed(record) {
   return Boolean(record.hkexListingDate) || rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
 }
 
+// BEGIN shared tracker timing (sync_sponsor_timing.py)
+function postRegimeListingDate(date, regimeStart) {
+  return Boolean(date) && String(date) >= (regimeStart || "2023-03-31");
+}
+
+function timingNoticeGap(record, listingDate, regimeStart) {
+  return record.csrcFilingRequired === true && !record.noticeDate && postRegimeListingDate(listingDate, regimeStart);
+}
+
+function timingSample(record, metric, field, currentReceiptField, stage, listingDate, regimeStart) {
+  if (metric === "a1ToListing") {
+    if (record.listingDurationSampleEligible === false) return null;
+  } else {
+    if (record.csrcFilingRequired !== true || record.durationSampleEligible === false) return null;
+    if (record.noticeSupersededByCurrentFiling && ["a1ToNotice", "receivedToNotice"].includes(metric)) return null;
+    if (timingNoticeGap(record, listingDate, regimeStart)) return null;
+    if (metric === "a1ToReceived" && stage !== "listed" && record.calendarDaysA1ToReceived > 180) {
+      field = currentReceiptField;
+    }
+  }
+  return Number.isFinite(record[field]) ? record[field] : null;
+}
+// END shared tracker timing
+
 function isPostRegimeListed(record) {
-  if (!isHkexListed(record)) return false;
-  const regimeStart = state.data?.meta?.csrcRegimeEffectiveDate || "2023-03-31";
-  return Boolean(record.hkexListingDate) && String(record.hkexListingDate) >= regimeStart;
+  return postRegimeListingDate(record.hkexListingDate, state.data?.meta?.csrcRegimeEffectiveDate);
 }
 
 function hasNoticeGapAfterListing(record) {
-  return isPostRegimeListed(record) && record.csrcFilingRequired !== false && !record.noticeDate;
+  return timingNoticeGap(record, record.hkexListingDate, state.data?.meta?.csrcRegimeEffectiveDate);
 }
 
 function hkexListingStage(record) {
@@ -412,22 +435,71 @@ function renderIssuerType(record) {
 function formatMarketCap(record) {
   const value = record.aShareMarketCapAtA1RmbBn;
   if (!isAhCandidate(record)) return `<span class="not-applicable">不适用</span><span class="pending-en">N/A</span>`;
-  if (typeof value !== "number") return formatPending();
+  if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
+  const provenance = record.aShareMarketCapProvenance || {};
+  const estimated = provenance.status !== "verified";
+  const tradeDate = record.aShareMarketCapTradeDate;
+  const anchor = record.aShareMarketCapAnchorDate;
   return `
-    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">¥${rmbBnFormatter.format(value)}B · A1日</span>
+    <span class="market-cap-value">${estimated ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
+    <span class="pending-en">¥${rmbBnFormatter.format(value)}B${estimated ? " · 估算 / Est." : ""}</span>
+    <span class="pending-en">估值日 ${escapeHtml(tradeDate || "待披露")}</span>
+    ${anchor && anchor !== record.a1Date ? `<span class="pending-en">历史申请锚点 ${escapeHtml(anchor)}</span>` : ""}
   `;
 }
 
 function formatListingMarketCap(record) {
   const value = record.listingMarketCapHkdBn;
-  if (typeof value !== "number") return formatPending();
+  if (record.listingMarketCapSampleEligible !== true) {
+    return record.hkexListingDate
+      ? `<span class="not-applicable">估值待核</span><span class="pending-en">Valuation unverified</span>`
+      : formatPending();
+  }
+  if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
   return `
     <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
     <span class="pending-en">HK$${rmbBnFormatter.format(value)}B · 上市日</span>
   `;
+}
+
+function renderValuationDetails(record, listing) {
+  const data = record[listing ? "listingMarketCapProvenance" : "aShareMarketCapProvenance"];
+  if (!data) return "";
+  const policies = {
+    ah_components_ex_treasury: "A/H分别估值，折算港币 / A/H components in HKD",
+    hk_ordinary_ex_treasury: "港股收盘价计量全部普通股 / Full ordinary equity at HK close",
+  };
+  const rows = [
+    ["估值锚点 Valuation anchor", data.anchorDate],
+    ...(!listing ? [["价格日期 Price date", data.priceDate], ["股本日期 Share date", data.sharesAsOf]] : []),
+    ["估值口径 Basis", policies[data.policy] || "股类及股本口径待核 / Share basis unverified"],
+    ["币种 Currency", data.valueCurrency],
+  ];
+  if (listing && Number.isFinite(record.listingMarketCapEstimateHkdBn) && record.listingMarketCapEstimateHkdBn > 0) {
+    const estimate = record.listingMarketCapEstimateHkdBn;
+    rows.push(["历史估算 / Legacy estimate", `${rmbYiFormatter.format(estimate * 10)}亿 (HK$${rmbBnFormatter.format(estimate)}B)`]);
+    rows.push(["历史估算口径 / Estimate basis", "股本时点待核；不计入精确市值排名 / Share date unverified; excluded from verified rankings"]);
+  }
+  for (const item of (data.components || [])) {
+    rows.push([`${item.class} 股数（不含库存股） / Shares ex treasury`, item.sharesExTreasury == null ? null : formatNumber(item.sharesExTreasury)]);
+    rows.push([`${item.class} 股本日期 / Share date`, item.sharesAsOf]);
+    rows.push([`${item.class} 收盘价 / Closing price`, item.price == null ? null : `${item.priceCurrency} ${item.price} · ${item.priceDate || ""}`]);
+    if (item.priceStatus === "verified" && item.priceDatePolicy === "latest_exchange_session_on_or_before_valuation_date" && item.priceDate !== data.anchorDate) {
+      rows.push([`${item.class} 价格口径 / Price basis`, "估值日休市，沿用最近交易日收盘价 / Market closed; most recent trading close"]);
+    }
+  }
+  if (listing && data.policy === "ah_components_ex_treasury") {
+    const fx = data.fx;
+    const complete = data.fxStatus === "verified" && fx?.baseCurrency === "CNY" && fx.quoteCurrency === "HKD"
+      && (typeof fx.rate === "number" || (typeof fx.rate === "string" && /^\d+(?:\.\d+)?$/.test(fx.rate)))
+      && Number.isFinite(Number(fx.rate)) && Number(fx.rate) > 0
+      && typeof fx.date === "string" && fx.date === data.anchorDate && /^\d{4}-\d{2}-\d{2}$/.test(fx.date)
+      && new Date(fx.date + "T00:00:00Z").toJSON()?.slice(0, 10) === fx.date;
+    rows.push(["当日汇率 FX", complete ? `${fx.baseCurrency}/${fx.quoteCurrency} ${fx.rate} · ${fx.date}` : null]);
+  }
+  return `<div class="timeline">${rows.map(([label, value]) => `<div class="timeline-row"><span>${escapeHtml(label)}</span><strong>${value ? escapeHtml(value) : "待核 / Unverified"}</strong></div>`).join("")}</div>`;
 }
 
 function hasCjk(value) {
@@ -751,8 +823,11 @@ const tagDictionary = {
   "密交": { en: "Confidential route", title: "HKEX public A1 is not a reliable duration anchor because the process appears to have started earlier, including confidential filing or prior-cycle evidence / 公开A1不适合作为时长锚点，可能存在密交或前序周期证据", cls: "info-tag" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
   "官方状态冲突": { en: "Official status conflict", title: "The same latest CSRC status workbook contains different statuses for this issuer; the contradiction is preserved and no ordering is inferred / 同一份最新官方备案情况表载有不同状态，页面保留矛盾且不推断先后", cls: "outlier-tag" },
+  "介绍上市": { en: "Introduction", title: "Listing by introduction; excluded from ordinary IPO duration statistics / 介绍上市，不计入普通IPO周期统计", cls: "info-tag" },
+  "RTO": { en: "Reverse takeover", title: "Reverse takeover; excluded from ordinary IPO duration statistics / 反向收购，不计入普通IPO周期统计", cls: "info-tag" },
+  "RTO已完成": { en: "RTO completed", title: "Official completion announcement; the completion date is separate from the original IPO date / 官方公告确认交易完成；完成日与首次IPO日分别记录", cls: "info-tag" },
   "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched; likely confidential route / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行，通常为密交路径", cls: "info-tag" },
-  "无需备案": { en: "Filing N/A", title: "Outside CSRC overseas filing regime scope; excluded from filing duration statistics / 不属于境外上市备案范围，不计入备案时长统计", cls: "info-tag" },
+  "无需备案": { en: "Filing N/A", title: "No separate filing required for this listing event; see the applicability basis / 本次上市事项无需另行备案，具体依据见适用性说明", cls: "info-tag" },
   "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
   "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
   "已撤回": { en: "Withdrawn", title: "HKEX application withdrawn / 港交所申请已撤回", cls: "inactive-tag" },
@@ -761,11 +836,12 @@ const tagDictionary = {
   "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点", cls: "info-tag" },
   "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" },
   "前轮A1锚点": { en: "Previous-cycle A1 anchor", title: "The selected A1 falls on the CSRC notice date, so the displayed filing clock uses the latest earlier A1 in the HKEX consolidated index; a pre-regime fallback is excluded from headline statistics / 所选A1与通知书同日，展示时长改用港交所综合索引中通知日前最近一轮A1；如该日期早于备案新规则不计入头部统计", cls: "info-tag" },
-  "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer of listing from GEM to the Main Board (no prospectus or sponsor in the New Listing Report); no new offering, so no fresh CSRC filing is expected / GEM转主板，无新发行，无需重新备案", cls: "info-tag" }
+  "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer from GEM to the Main Board; filing or reporting obligations depend on the transaction / GEM转主板；备案或报告义务须根据具体交易判断", cls: "info-tag" }
 };
 
 function isStatsOutlier(record) {
-  if (record.csrcFilingRequired === false) return false;
+  if (record.specialListingRoute) return false;
+  if (record.csrcFilingRequired !== true) return false;
   if ((record.statusTags || []).includes("密交")) return false;
   if ((record.statusTags || []).includes("过渡期A1锚点")) return false;
   if (record.durationSampleEligible === false && record.a1Date && (record.noticeDate || record.csrcReceivedDate)) return true;
@@ -849,7 +925,29 @@ function renderStackedDate(primary, secondaryLabel, secondary) {
   return `<span class="date-primary">${formatDate(primary)}</span>${secondaryHtml}`;
 }
 
+function submissionDateRows(record) {
+  const e = record.listedSubmissionEvidence;
+  if (!e) return "";
+  const row = (label, value) => `<div class="timeline-row"><span>${label}</span><strong>${value}</strong></div>`;
+  if (e.kind === "confidential_submission" && e.publicDocumentType === "PHIP") {
+    return row("密交递交 / Confidential submission", formatDate(e.submissionDate)) +
+      row("聆讯后资料集 / PHIP", formatDate(e.publicDocumentDate)) +
+      row("公开申请版本 / Public AP", "未见公开申请版本 / No public AP evidenced");
+  }
+  if (e.kind === "public_same_day_AP" && e.publicDocumentType === "AP_UNSPECIFIED") {
+    return row("首次已见公开申请版本 / First evidenced public AP", formatDate(e.publicDocumentDate)) +
+      row("版本类别 / AP version", "未注明首次或修订 / Original or revised not specified");
+  }
+  return "";
+}
+
 function renderA1Cell(record) {
+  const reported = record.listedSubmissionEvidence;
+  if (reported?.kind === "confidential_submission" && reported.publicDocumentType === "PHIP")
+    return `<span class="date-primary">公开AP未见 / No public AP evidenced</span><span class="date-secondary">密交 ${formatDate(reported.submissionDate)}</span>`;
+  if (reported?.kind === "public_same_day_AP" && reported.publicDocumentType === "AP_UNSPECIFIED")
+    return `<span class="date-primary">${formatDate(reported.publicDocumentDate)}</span><span class="date-secondary">首次已见 / First evidenced AP</span>`;
+
   if (record.hkexConfidentialFilingDate && record.hkexConfidentialFilingDate === record.a1Date) {
     const publicA1 = record.hkexPublicFirstPostingDate || record.currentA1Date;
     const publicA1Html = publicA1 && publicA1 !== record.a1Date
@@ -891,7 +989,16 @@ function renderReceivedCell(record) {
 function renderListingCell(record) {
   const secondary = record.hkexListingStockCode ? `股份代号 ${record.hkexListingStockCode}` : "";
   const secondaryHtml = secondary ? `<span class="date-secondary">${escapeHtml(secondary)}</span>` : "";
+  if (record.specialListingRoute === "rto" && record.transactionCompletionDate) {
+    return `<span class="date-primary">${formatDate(record.transactionCompletionDate)}</span><span class="date-secondary">RTO完成 Completed</span>${secondaryHtml}`;
+  }
   return `<span class="date-primary">${formatDate(record.hkexListingDate)}</span>${secondaryHtml}`;
+}
+
+function renderNoticeCell(record) {
+  const label = record.noticeSupersededByCurrentFiling ? "历史通知 Historical notice"
+    : record.noticeDateBasis === "publication_date_fallback" ? "网页发布 Published" : "";
+  return `${formatDate(record.noticeDate)}${label ? `<span class="date-secondary">${label}</span>` : ""}`;
 }
 
 function syncTrackerTableMode() {
@@ -910,12 +1017,12 @@ function syncTrackerTableMode() {
   setText("dateColumn4En", listed ? "CSRC notice" : "First / current");
   setText("dateColumn5Zh", listed ? "上市日" : "通知书");
   setText("dateColumn5En", listed ? "Listing" : "Notice");
-  setText("marketCapZh", listed ? "上市日市值" : "A1日市值");
-  setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
-  setText("marketCapMinZh", listed ? "港股市值下限" : "A股市值下限");
-  setText("marketCapMinEn", listed ? "Listing-day mkt cap min · HKD bn" : "A1-day mkt cap min · RMB bn");
-  setText("marketCapMaxZh", listed ? "港股市值上限" : "A股市值上限");
-  setText("marketCapMaxEn", listed ? "Listing-day mkt cap max · HKD bn" : "A1-day mkt cap max · RMB bn");
+  setText("marketCapZh", listed ? "上市日总市值" : "A股估值");
+  setText("marketCapEn", listed ? "Listing-day equity value" : "A-share valuation");
+  setText("marketCapMinZh", listed ? "上市总市值下限" : "A股估值下限");
+  setText("marketCapMinEn", listed ? "Listing value min · HKD bn" : "A-share value min · RMB bn");
+  setText("marketCapMaxZh", listed ? "上市总市值上限" : "A股估值上限");
+  setText("marketCapMaxEn", listed ? "Listing value max · HKD bn" : "A-share value max · RMB bn");
   const aShareCapOption = document.getElementById("aShareMarketCapSortOption");
   const listingCapOption = document.getElementById("listingMarketCapSortOption");
   if (aShareCapOption) aShareCapOption.hidden = listed;
@@ -955,9 +1062,11 @@ function getBaseFilteredRecords() {
 
     if (capMin !== null || capMax !== null) {
       const listedCapMode = state.hkexStage === "listed";
-      const capValue = listedCapMode ? record.listingMarketCapHkdBn : record.aShareMarketCapAtA1RmbBn;
+      const capValue = listedCapMode
+        ? (record.listingMarketCapSampleEligible === true ? record.listingMarketCapHkdBn : null)
+        : (record.aShareMarketCapRankEligible === true ? record.aShareMarketCapAtA1RmbBn : null);
       if (!listedCapMode && !isAhCandidate(record)) return false;
-      if (typeof capValue !== "number") return false;
+      if (!Number.isFinite(capValue) || capValue <= 0) return false;
       if (capMin !== null && capValue < capMin) return false;
       if (capMax !== null && capValue > capMax) return false;
     }
@@ -1005,10 +1114,10 @@ function sortKey(record, field) {
     return { value: `${names.primary || ""} ${names.secondary || ""}`.trim(), type: "text" };
   }
   if (field === "aShareMarketCapAtA1RmbBn") {
-    return { value: isAhCandidate(record) ? record.aShareMarketCapAtA1RmbBn : null, type: "number" };
+    return { value: isAhCandidate(record) && record.aShareMarketCapRankEligible === true ? record.aShareMarketCapAtA1RmbBn : null, type: "number" };
   }
   if (field === "listingMarketCapHkdBn") {
-    return { value: typeof record.listingMarketCapHkdBn === "number" ? record.listingMarketCapHkdBn : null, type: "number" };
+    return { value: record.listingMarketCapSampleEligible === true && typeof record.listingMarketCapHkdBn === "number" ? record.listingMarketCapHkdBn : null, type: "number" };
   }
   if (field === "csrcReceivedDate") {
     return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate || record.csrcCurrentReceivedDate), type: "number" };
@@ -1102,20 +1211,8 @@ function median(values) {
 }
 
 function durationValueForStats(record, metric) {
-  if (metric.metric === "a1ToListing") {
-    if (record.listingDurationSampleEligible === false) return null;
-    const key = dayMetricField(metric.metric);
-    return typeof record[key] === "number" ? record[key] : null;
-  }
-  if (record.csrcFilingRequired === false) return null;
-  if (record.durationSampleEligible === false) return null;
-  if (hasNoticeGapAfterListing(record)) return null;
-  if (state.hkexStage !== "listed" && metric.metric === "a1ToReceived" && record.calendarDaysA1ToReceived > A1_RECEIVED_CURRENT_CYCLE_CAP_DAYS) {
-    const currentField = dayMetricField("currentA1ToReceived");
-    return typeof record[currentField] === "number" ? record[currentField] : null;
-  }
-  const key = dayMetricField(metric.metric);
-  return typeof record[key] === "number" ? record[key] : null;
+  return timingSample(record, metric.metric, dayMetricField(metric.metric), dayMetricField("currentA1ToReceived"),
+    state.hkexStage, record.hkexListingDate, state.data?.meta?.csrcRegimeEffectiveDate);
 }
 
 function statsFor(records, metric) {
@@ -1210,7 +1307,7 @@ function renderMetrics(records) {
     counts[record.status] = (counts[record.status] || 0) + 1;
     return counts;
   }, {});
-  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required"]
+  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required", "applicability_pending"]
     .map((status) => `<span>${escapeHtml(statusLabel(status))} ${formatNumber(statusCounts[status] || 0, "integer")}</span>`)
     .join("");
   const metricSet = currentMetricDefinitions();
@@ -1406,7 +1503,7 @@ function renderRows() {
         ...csrcCats.slice(0, 2).map((tag) => `<span class="csrc-cat-tag" title="${escapeHtml(tag)}（证监会行业门类）">${escapeHtml(tag)}</span>`),
         ...bizTags.slice(0, 1).map((tag) => `<span title="${escapeHtml(tag)}">${escapeHtml(tag)}</span>`)
       ].join("");
-      const sponsors = sponsorDisplayEntries(record)
+      const sponsors = record.sponsorAppointmentStatus === "waived" ? '<span title="Sponsor appointment waived for this transaction">获豁免委聘</span>' : sponsorDisplayEntries(record)
         .slice(0, 4)
         .map((entry) => `<span title="${escapeHtml(entry.fullName)}">${escapeHtml(entry.shortName)}</span>`)
         .join("");
@@ -1419,14 +1516,14 @@ function renderRows() {
           </td>
           <td class="status-cell">${renderStatusBadge(record)}</td>
           <td class="date-cell">${renderA1Cell(record)}</td>
-          <td class="date-cell">${listedPage ? formatDate(record.noticeDate) : renderReceivedCell(record)}</td>
-          <td class="date-cell">${listedPage ? renderListingCell(record) : formatDate(record.noticeDate)}</td>
+          <td class="date-cell">${listedPage ? renderNoticeCell(record) : renderReceivedCell(record)}</td>
+          <td class="date-cell">${listedPage ? renderListingCell(record) : renderNoticeCell(record)}</td>
           <td class="listing-date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
           <td class="days-td">${renderDays(record)}</td>
           <td class="type-cell">${renderIssuerType(record)}</td>
           <td class="mcap-cell">${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
           <td class="mcap-cell all-only-col">${formatListingMarketCap(record)}</td>
-          <td class="industry-cell"><div class="tag-list">${industries}</div></td>
+          <td class="industry-cell"><div class="tag-list">${industries || escapeHtml(record.industryDisplayLabel || "")}</div></td>
           <td><div class="tag-list">${sponsors}</div></td>
         </tr>
       `;
@@ -1436,6 +1533,173 @@ function renderRows() {
   renderPagination(rows.length, pageCount, startIndex, endIndex);
 }
 
+const listingPdfUrl = url => typeof url === "string" && /^https:\/\/www1?\.hkexnews\.hk\/listedco\/listconews\/sehk\/\d{4}\/\d{4}\/\d+\.pdf$/i.test(url);
+
+function economicsRoute(record) {
+  return record.listingEconomics?.route?.value || (record.specialListingRoute === "gem_to_main_transfer" ? "transfer" :
+    record.specialListingRoute === "introduction" || record.listingFeeTerms?.noOffering ? "introduction" : "");
+}
+
+function renderListingFeeTerms(record) {
+  const f = record.listingFeeTerms;
+  if (!record.hkexListingDate || !f || !listingPdfUrl(f.url)) return "";
+  const pct = n => new Intl.NumberFormat("zh-HK", { style: "percent", maximumFractionDigits: 4 }).format(n);
+  const row = (label, value, item) => {
+    const links = (Array.isArray(item?.pages) ? item.pages : []).filter(p => Number.isInteger(p) && p > 0)
+      .map(p => `<a href="${escapeHtml(f.url)}#page=${p}" target="_blank" rel="noreferrer" aria-label="招股书 PDF 第 ${p} 页">PDF p.${p}</a>`).join(" · ");
+    return `<div class="timeline-row"><span>${label}</span><div><strong>${escapeHtml(value)}</strong>${links ? `<small class="source-list">${links}</small>` : ""}</div></div>`;
+  };
+  const fee = f.fee || f.feeApprox;
+  const rows = [fee
+    ? row("保荐费（招股书披露）", `${f.fee ? "" : "约 "}${fee.currency} ${fee.value.toLocaleString("en-US")}${fee.perSponsorCount ? "（按各保荐人约定费用合计）" : ""}`, fee)
+    : row("保荐费（招股书披露）", f.feeUnresolved ? "原文披露不一致" : "暂无可核实金额", f.feeUnresolved)];
+  const route = economicsRoute(record);
+  if (route === "introduction" || route === "transfer") rows.push(row("承销佣金率", route === "transfer" ? "不适用（转板上市）" : "不适用（介绍上市）"));
+  else {
+    if (f.rate) rows.push(row("固定承销佣金率", pct(f.rate.value), f.rate));
+    if (f.hkRate) rows.push(row("香港公开发售佣金率", pct(f.hkRate.value), f.hkRate));
+    if (f.intRate) rows.push(row("国际配售佣金率", pct(f.intRate.value), f.intRate));
+    if (!f.rate && !f.hkRate && !f.intRate) {
+      const item = f.rateConditional, d = item?.disclosure, p = item?.pages;
+      const bound = Number.isFinite(d?.rate) && Object.keys(d).length === 2 && d.rate >= 0 && d.rate <= 1 && Array.isArray(p) &&
+        p.length === 1 && Number.isInteger(p[0]) && p[0] > 0 && d.source === `${f.url}#page=${p[0]}`;
+      rows.push(bound
+        ? row("附条件承销佣金率", `${d.rate.toLocaleString("zh-HK", {style: "percent", maximumSignificantDigits: 17})}（适用条件见招股书）`, item)
+        : row("固定承销佣金率", item ? "视发售条款而定" : "暂无可核实费率", item));
+    }
+    if (f.discMax) rows.push(row("酌情奖励费上限", pct(f.discMax.value), f.discMax));
+    else if (f.discRate) rows.push(row("酌情奖励费率（非承诺支付）", pct(f.discRate.value), f.discRate));
+  }
+  return `<div class="detail-item"><span>发行费用 Offering fees</span><div class="timeline">${rows.join("")}</div></div>`;
+}
+
+// The exporter binds these outcome pages to an issuer. The UI checks only publisher/path syntax.
+function outcomePublisher(url) {
+  if (typeof url !== "string" || /[^\x21-\x7e]/.test(url)) return "";
+  if (/^https:\/\/www1\.hkexnews\.hk\/listedco\/listconews\/sehk\/[0-9]{4}\/[0-9]{4}\/[0-9]{13}_c\.pdf$/.test(url)) return "HKEX";
+  if (/^https:\/\/disc\.static\.szse\.cn\/disc\/disk03\/finalpage\/20[0-9]{2}-[0-9]{2}-[0-9]{2}\/[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\.PDF$/.test(url)) return "SZSE";
+  if (/^https:\/\/static\.cninfo\.com\.cn\/finalpage\/20[0-9]{2}-[0-9]{2}-[0-9]{2}\/[0-9]{10}\.PDF$/.test(url)) return "CNINFO";
+  return "";
+}
+
+// Source decimals are already validated. Format their digits without binary floating point.
+function listingDecimal(value, minFraction = 0, shift = 0) {
+  if (typeof value !== "string" || !/^\d+(?:\.\d+)?$/.test(value)) return "";
+  const [whole, fraction = ""] = value.split(".");
+  const integer = (whole + fraction.padEnd(shift, "0").slice(0, shift)).replace(/^0+(?=\d)/, "");
+  const tail = fraction.slice(shift).replace(/0+$/, "").padEnd(minFraction, "0");
+  return integer.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (tail ? "." + tail : "");
+}
+
+function secondarySourceNote(url) {
+  let host;
+  try { host = new URL(url).hostname; } catch { return ""; }
+  if (host === "scribd.com" || host === "www.scribd.com") return " · Scribd 转载 / Secondary repost";
+  if (host === "stcn.com" || host === "www.stcn.com") return " · 证券时报转载 / Secondary media source";
+  return "";
+}
+
+function renderListingEconomics(record) {
+  const e = record.listingEconomics;
+  if (!record.hkexListingDate || !record.hkexListingStockCode || !e) return "";
+  const missing = "暂无可核实数据 / Unverified";
+  const validPage = page => Number.isInteger(page) && page >= 1 && page <= 2147483647;
+  const sourcesOf = f => Array.isArray(f?.sources) ? f.sources : [];
+  const issued = e.actual?.sizeBasis === "issuer_issued_ipo";
+  const unitsOnly = issued && e.actual.grossMethod === "issued_units_cash_unreconciled";
+  const outcomePages = new Map();
+  if (e.route?.value === "offering" && (e.shoe?.value === "not_exercised" || (issued && e.shoe?.value === "no_option"))) {
+    for (const s of sourcesOf(e.shoe)) {
+      const publisher = outcomePublisher(s?.url);
+      if (publisher && validPage(s.page)) outcomePages.set(s.url + "#page=" + s.page, publisher);
+    }
+  }
+  const sourceLinks = (facts, allowOutcome = false) => {
+    const links = new Map();
+    for (const f of facts) for (const s of sourcesOf(f)) {
+      if (typeof s?.url !== "string" || /[^\x21-\x7e]/.test(s.url)) continue;
+      const year = String(record.hkexListingDate).slice(0, 4);
+      if (f === e.route && /^\d{4}$/.test(year) && s.url === "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR" + year + "_Eng.xlsx" &&
+          Number.isSafeInteger(s.row) && s.row > 0 && s.row <= 1048576) {
+        links.set(s.url + ":" + s.row, '<a target="_blank" rel="noreferrer" href="' + escapeHtml(s.url) + '">NLR row ' + s.row + '</a>');
+        continue;
+      }
+      if (!validPage(s.page)) continue;
+      const href = s.url + "#page=" + s.page;
+      const issueField = issued && (f === e.actual.shares || f === e.actual.gross || f === e.actual.estimate ||
+        (unitsOnly && (f === e.actual.reportedGross || f === e.actual.unitsTimesPrice)));
+      const publisher = (allowOutcome && issueField && outcomePublisher(s.url)) ||
+        (allowOutcome && outcomePages.get(href)) || (listingPdfUrl(s.url) && "PDF");
+      if (!publisher) continue;
+      const file = s.url.split("/").pop();
+      links.set(href, '<a target="_blank" rel="noreferrer" href="' + escapeHtml(href) +
+        '" title="' + escapeHtml(file) + '" aria-label="' + escapeHtml(file) + ', page ' + s.page + '">' + publisher + ' p.' + s.page + '</a>');
+    }
+    return links.size ? '<small class="econ-sources">' + [...links.values()].join(" · ") + "</small>" : "";
+  };
+  const fieldLine = allowOutcome => (label, value, ...facts) => '<div class="econ-line"><dt>' + escapeHtml(label) +
+    "</dt><dd><strong>" + escapeHtml(value) + "</strong>" + sourceLinks(facts, allowOutcome) + "</dd></div>";
+  const line = fieldLine(false), outcomeLine = fieldLine(true);
+  const pct = f => {
+    const digits = listingDecimal(f.value, 0, 2);
+    return digits ? digits + "%" : missing;
+  };
+  const money = (p, f) => {
+    const digits = listingDecimal(f.value, 2);
+    return digits ? p.currency + " " + digits : missing;
+  };
+  const reasons = {
+    cap: "仅披露上限 / Cap only", nonuniform: "费率不统一 / Nonuniform rates",
+    unallocated: "各档基数未确定 / Bases not allocated", conditional: "费率有条件 / Conditional rate"
+  };
+  const states = {
+    not_exercised: "未行使 / Not exercised",
+    no_option: "无超额配股权 / No option", partial: "部分行使 / Partially exercised", full: "全数行使 / Fully exercised",
+    exercised: "已行使 / Exercised", confirmed_zero: "无额外配发 / No additional allotment"
+  };
+  const phase = (title, p, isActual = false) => {
+    const sizeLine = isActual ? outcomeLine : line;
+    const finalIssue = isActual && issued;
+    const grossLabels = {
+      issued_units_cash_unreconciled: "确切募集总额 / Exact gross proceeds",
+      reported: "新股发行总额（披露）/ Reported gross on new shares",
+      reconciled_components: "新股发行总额（按披露金额合计）/ Gross from disclosed amounts",
+      shares_times_price: "新股发行总额（股数 × 发售价）/ Gross from shares × price"
+    };
+    const rows = [sizeLine(finalIssue ? grossLabels[p.grossMethod] : "发行总额 / Gross proceeds", p?.gross ? money(p, p.gross) : missing, p?.gross)];
+    if (p?.shares) rows.push(sizeLine(finalIssue ? "发行人新发股数 / New shares issued" : e.unit === "HDR" ? "发售预托证券 / Offer HDRs" : "发售股数 / Offer shares", listingDecimal(p.shares.value) || missing, p.shares));
+    if (p?.price) rows.push(line("最终发售价 / Final price", money(p, p.price), p.price));
+    if (isActual && unitsOnly) {
+      rows.push(sizeLine("发行人披露的募集总额 / Issuer-reported gross", money(p, p.reportedGross), p.reportedGross));
+      rows.push(sizeLine("股数 × 发售价（仅作说明）/ Shares × price (illustrative only)", money(p, p.unitsTimesPrice), p.unitsTimesPrice));
+    }
+    if (p?.rate) rows.push(line("适用固定费率 / Fixed rate", pct(p.rate), p.rate, p.basis));
+    for (const [k, label] of [["hk", "香港公开发售 / HK public offer"], ["international", "国际配售 / International placing"]]) {
+      const t = p?.tranches?.[k];
+      if (t) rows.push(line(label, money(p, t.gross) + " × " + pct(t.rate), t.gross, t.rate, p.basis));
+    }
+    rows.push((p?.estimate ? sizeLine : line)(finalIssue ? "新股固定佣金测算 / Illustrative fixed commission on new shares" : "估算固定佣金 / Est. fixed commission", p?.estimate ? money(p, p.estimate) :
+      reasons[p?.basis?.value] || missing, p?.estimate || p?.basis));
+    return "<section><h4>" + title + "</h4><dl>" + rows.join("") + "</dl></section>";
+  };
+  const kind = economicsRoute(record);
+  let body;
+  if (kind === "introduction" || kind === "transfer") {
+    body = '<p class="econ-note">' + (kind === "introduction" ? "介绍上市 / Listing by introduction" :
+      "转板上市 / Board transfer") + " · 不适用 / N/A" + sourceLinks([e.route]) + "</p>";
+  } else if (!e.route) {
+    body = '<p class="econ-note">' + missing + "</p>";
+  } else {
+    body = phase("基础发售（不含超额配股）/ Base offer, excluding option", e.offered) + "<dl>" +
+      outcomeLine("超额配股权 / Over-allotment", states[e.shoe?.value] || "未核实超额配股权行使结果 / Exercise outcome unverified", e.shoe) + "</dl>" +
+      (issued ? phase("最终发行（仅发行人新股）/ Final issuance (issuer-issued shares only)", e.actual, true) : e.shoe?.value === "pending" || (!e.shoe && !e.actual) ? '<p class="econ-note">鞋后实际发行规模未核实 / Final offer size unverified</p>' :
+        phase("最终发售（含实际超额配股）/ Final offer after over-allotment", e.actual, true)) +
+      '<p class="econ-note">估算佣金 = 适用发售总额 × 固定费率，不含酌情费用。' +
+      ' Estimated commission = applicable gross proceeds × fixed rate, excluding discretionary fees.</p>';
+  }
+  return '<div class="detail-item listing-economics"><h3>发行规模 / 承销佣金测算<small>Offer size &amp; estimated underwriting commission</small></h3>' + body + "</div>";
+}
+
 function renderDetail(record) {
   const detail = document.getElementById("issuerDetail");
   if (!record) {
@@ -1443,7 +1707,7 @@ function renderDetail(record) {
     return;
   }
   const names = nameParts(record);
-  const sponsorList = sponsorDisplayEntries(record)
+  const sponsorList = record.sponsorAppointmentStatus === "waived" ? '<div class="sponsor-detail"><strong>获豁免委聘保荐人</strong><span>Sponsor appointment waived for this transaction</span></div>' : sponsorDisplayEntries(record)
     .map(
       (entry) => `
         <div class="sponsor-detail">
@@ -1478,7 +1742,15 @@ function renderDetail(record) {
   const regulatorList = (record.regulatoryTags || []).map((tag) => `<span>${escapeHtml(regulatorLabels[tag] || tag)}</span>`).join("");
   const sourceLinks = (record.sourceLinks || [])
     .filter((source) => /^https?:\/\//i.test(String(source.url || "")))
-    .map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`)
+    .map((source) => {
+      const secondary = secondarySourceNote(source.url);
+      const label = escapeHtml(source.label) + secondary;
+      if (source.availability === "unavailable") {
+        const note = secondary ? "链接不可用 / Unavailable" : "官方历史文件暂不可用 / Historical file unavailable";
+        return `<span class="muted" title="${escapeHtml(source.checkedAt || '')}">${label} · ${note}</span>`;
+      }
+      return `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${label}${source.availability === "relocated" && !secondary ? ' · 官方存档 / Archive' : ''}</a>`;
+    })
     .join("");
   const feedbackItems = (record.feedbackItems || [])
     .map((item) => {
@@ -1506,7 +1778,6 @@ function renderDetail(record) {
     notice_without_status_received_match: "有通知书无接收记录 Notice without received date",
     status_without_notice_match: "已接收待通知书 Received, notice pending",
     feedback_before_timeline_anchor_possible_mismatch: "补充材料早于A1 Feedback before A1",
-    pre_regime_a1_no_csrc_notice_expected: "制度前A1无需备案 Pre-regime A1, no filing",
     filing_not_required_no_csrc_notice_expected: "无需备案，无通知书 Not required, no notice expected",
     csrc_official_status_conflict_same_snapshot: "同一官方快照状态冲突 Official status conflict",
     hkex_phip_public_no_observed_a1: "PHIP已公开但无可观察A1 PHIP public, A1 unobserved",
@@ -1567,19 +1838,25 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>状态 Status</span>
         <strong>${renderStatusBadge(record)}</strong>
+        ${record.csrcFilingApplicability ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需另行备案 / No separate filing", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
+        ${record.csrcFilingApplicabilityReason ? `<details><summary>适用依据 Basis</summary><p>${escapeHtml(record.csrcFilingApplicabilityReason)}</p>${(record.csrcFilingApplicabilitySourceUrls || []).filter((url) => /^https:\/\//.test(url)).map((url) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">来源 Source</a>`).join(" · ")}</details>` : ""}
       </div>
       <div class="detail-item">
         <span>时间线 Timeline</span>
         <div class="timeline">
+          ${submissionDateRows(record) || `
           <div class="timeline-row"><span>${confidentialAnchorLabel}</span><strong>${formatDate(record.a1Date)}</strong></div>
           ${record.hkexConfidentialFilingDate && record.hkexConfidentialFilingDate !== record.a1Date ? `<div class="timeline-row" title="${escapeHtml(record.hkexConfidentialFilingEvidence || "")}"><span>密交递交 Confidential filing</span><strong>${formatDate(record.hkexConfidentialFilingDate)}</strong></div>` : ""}
           ${record.hkexConfidentialFilingDate && (record.hkexPublicFirstPostingDate || record.currentA1Date) ? `<div class="timeline-row"><span>公开A1 Public A1</span><strong>${formatDate(record.hkexPublicFirstPostingDate || record.currentA1Date)}</strong></div>` : ""}
           ${record.statsAnchorDate && record.statsAnchorDate !== record.a1Date ? `<div class="timeline-row"><span>统计锚点（制度后首A1）Stats anchor</span><strong>${formatDate(record.statsAnchorDate)}</strong></div>` : ""}
           ${historicalAnchorLine}
           <div class="timeline-row"><span>当前A1 Current A1</span><strong>${formatDate(record.currentA1Date)}</strong></div>
+          `}
           <div class="timeline-row"><span>${record.csrcReceivedDateIsAsOf ? "首轮接收状态 First received status" : "首轮接收 First received"}</span><strong>${renderReceivedDateValue(record.csrcFirstReceivedDate || record.csrcReceivedDate, record.csrcReceivedDateIsAsOf)}</strong></div>
           <div class="timeline-row"><span>${isLaterCycleReceived(record) ? "后续备案轮次接收 Later-cycle received" : (record.csrcCurrentReceivedDateIsAsOf ? "当前接收状态 Current received status" : "当前接收 Current received")}</span><strong>${renderReceivedDateValue(record.csrcCurrentReceivedDate, record.csrcCurrentReceivedDateIsAsOf)}</strong></div>
-          <div class="timeline-row"><span>备案通知书 CSRC notice</span><strong>${formatDate(record.noticeDate)}</strong></div>
+          <div class="timeline-row"><span>${record.noticeSupersededByCurrentFiling ? "历史备案通知书 Historical CSRC notice" : "备案通知书 CSRC notice"}</span><strong>${renderNoticeCell(record)}</strong></div>
+          ${record.noticePublishedDate && record.noticePublishedDate !== record.noticeDate ? `<div class="timeline-row"><span>通知网页发布日期 Notice publication</span><strong>${formatDate(record.noticePublishedDate)}</strong></div>` : ""}
+          ${record.transactionCompletionDate ? `<div class="timeline-row"><span>反向收购完成 RTO completion</span><strong>${formatDate(record.transactionCompletionDate)}</strong></div>` : ""}
           ${listedTimelineRows}
         </div>
       </div>
@@ -1594,13 +1871,19 @@ function renderDetail(record) {
         <strong>${renderIssuerType(record)}</strong>
       </div>
       <div class="detail-item">
-        <span>${listedPage ? "上市日市值 Listing-day mkt cap" : "A 股状态 / A1 日市值 A-share status / mkt cap"}</span>
-        <div>${listedPage ? `<div class="market-cap-detail">${formatListingMarketCap(record)}</div>` : `${escapeHtml(record.aShareStatus)}<div class="market-cap-detail">${formatMarketCap(record)}</div>`}</div>
+        <span>${listedPage ? "上市日总市值 Listing-day total equity value" : "A 股状态 / 估值 A-share status / valuation"}</span>
+        <div>${listedPage ? `<div class="market-cap-detail">${formatListingMarketCap(record)}</div>` : `${escapeHtml(record.aShareStatus)}<div class="market-cap-detail">${formatMarketCap(record)}</div>`}${renderValuationDetails(record, listedPage)}</div>
       </div>
       <div class="detail-item">
         <span>行业标签 Industry</span>
-        <div class="tag-list">${industryList}</div>
+        <div class="tag-list">${industryList || escapeHtml(record.industryDisplayLabel || "")}</div>
       </div>
+      ${record.historicalApplicantIndustry?.scope === "original_applicant_group_as_filed" ? `
+        <div class="detail-item">
+          <span>原申请人集团行业（合并前） Original applicant group before merger</span>
+          <div>${escapeHtml(record.historicalApplicantIndustry.legalIssuer)} · ${escapeHtml(record.historicalApplicantIndustry.code)} ${escapeHtml(record.historicalApplicantIndustry.label)}</div>
+          <div>申请编号 ${escapeHtml(record.historicalApplicantIndustry.applicationId)} · AP ${escapeHtml(record.historicalApplicantIndustry.apDate)} · 财务期末 ${escapeHtml(record.historicalApplicantIndustry.periodEnd)}</div>
+        </div>` : ""}
       <div class="detail-item">
         <span>监管语境 Regulator context</span>
         <div class="tag-list">${regulatorList || '<span>暂无标签</span>'}</div>
@@ -1613,6 +1896,8 @@ function renderDetail(record) {
         <span>保荐人 Sponsors</span>
         <div class="sponsor-detail-list">${sponsorList || "<span>待抽取</span>"}</div>
       </div>
+      ${renderListingFeeTerms(record)}
+      ${renderListingEconomics(record)}
       <div class="detail-item">
         <span>证监会反馈 CSRC feedback</span>
         <div>${escapeHtml(record.feedbackStatus)}</div>
@@ -1743,6 +2028,14 @@ function syncControls() {
 function updateTracker(partial = {}, options = {}) {
   Object.assign(state, partial);
   if (options.resetPage !== false) state.page = 1;
+  if (!state.data) {
+    syncUrl();
+    return;
+  }
+  if (options.debounce) {
+    renderInputLater();
+    return;
+  }
   syncControls();
   syncUrl();
   renderChrome();
@@ -1789,7 +2082,6 @@ async function loadData() {
   for (const record of state.data.records || []) {
     getRecordText(record);
   }
-  applyStateFromUrl();
   if (!["calendar", "business"].includes(state.dayCountMode)) state.dayCountMode = "calendar";
   if (state.sortField === "__days__") state.sortField = state.daySortField;
   state.daySortField = fieldForDayMode(state.daySortField, state.dayCountMode);
@@ -1830,10 +2122,11 @@ function debounce(fn, wait = 160) {
   };
 }
 
-document.getElementById("issuerSearch").addEventListener(
-  "input",
-  debounce((event) => updateTracker({ query: event.target.value }))
-);
+// Capture input immediately; debounce only rendering so hydration cannot erase a keystroke.
+const renderInputLater = debounce(() => updateTracker({}, { resetPage: false }));
+for (const [id, key] of [["issuerSearch", "query"], ["marketCapMin", "marketCapMin"], ["marketCapMax", "marketCapMax"]]) {
+  document.getElementById(id).addEventListener("input", event => updateTracker({ [key]: event.target.value }, { debounce: true }));
+}
 
 document.getElementById("dateField").addEventListener("change", (event) => {
   updateTracker({ dateField: event.target.value });
@@ -1858,16 +2151,6 @@ document.getElementById("industryFilter").addEventListener("change", (event) => 
 document.getElementById("sponsorFilter").addEventListener("change", (event) => {
   updateTracker({ sponsor: event.target.value });
 });
-
-document.getElementById("marketCapMin").addEventListener(
-  "input",
-  debounce((event) => updateTracker({ marketCapMin: event.target.value }))
-);
-
-document.getElementById("marketCapMax").addEventListener(
-  "input",
-  debounce((event) => updateTracker({ marketCapMax: event.target.value }))
-);
 
 document.getElementById("sortField").addEventListener("change", (event) => {
   const nextField = event.target.value === "__days__" ? state.daySortField : event.target.value;
@@ -1935,20 +2218,12 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.getElementById("clearFilters").addEventListener("click", () => {
-  const preservedView = state.view;
-  const preservedStage = state.hkexStage;
-  Object.assign(state, defaults, {
-    view: preservedView,
-    hkexStage: preservedStage,
-    selectedId: null
-  });
-  syncControls();
-  syncUrl();
-  renderChrome();
-  renderRows();
+  updateTracker({ ...defaults, view: state.view, hkexStage: state.hkexStage });
 });
 
 document.getElementById("refreshButton").addEventListener("click", loadData);
 
+// Hydrate deep-link intent once, before yielding to any user input or fetch.
+applyStateFromUrl();
 initVisitCounter();
 loadData();
