@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=9d18d1fd84703024";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=34a2227fe977b1c9";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -819,6 +819,7 @@ function emptyPkRow(template) {
     displayNameEn: template.displayNameEn || template.sponsorId,
     canonicalName: template.canonicalName || template.displayNameEn || template.displayNameZh || template.sponsorId,
     legalNames: template.legalNames || [],
+    registeredEntity: template.registeredEntity,
     aliases: template.aliases || [],
     sponsorNature: template.sponsorNature || "待核",
     natureConfidence: template.natureConfidence,
@@ -951,6 +952,8 @@ function firmSearchTerms(firm) {
     firm?.displayNameEn,
     firm?.sponsorTag,
     firm?.canonicalName,
+    firm?.registeredEntity?.ce,
+    firm?.registeredEntity?.legalNameZh,
     ...(firm?.legalNames || []),
     ...(firm?.aliases || []),
     ...(firm?.type6InstitutionEvidence || []).map((r) => r.firmNameZh),
@@ -2159,6 +2162,8 @@ function openDrawer(sponsorId) {
     const bd = b.listingDate || b.noticeDate || b.a1Date || "";
     return bd.localeCompare(ad);
   });
+  const registration = row.registeredEntity;
+  const registerLink = registration ? `<a class="pill" href="https://apps.sfc.hk/publicregWeb/corp/${encodeURIComponent(registration.ce)}/details" target="_blank" rel="noopener noreferrer">${escapeHtml(registration.legalNameZh)} · SFC ${escapeHtml(registration.ce)}</a>` : "";
   const legalNames = (row.legalNames || [])
     .map((name) => `<span class="pill">${escapeHtml(name)}</span>`)
     .join("");
@@ -2167,7 +2172,7 @@ function openDrawer(sponsorId) {
   const type6Sources = capacitySourcePills(row, "type6");
   els.drawerContent.innerHTML = `<h3>${escapeHtml(row.displayNameZh)}</h3>
     <p class="drawer-subtitle">${escapeHtml(row.displayNameEn)} · ${escapeHtml(row.sponsorNature || "待核")}</p>
-    <div class="drawer-pills">${legalNames}</div>
+    <div class="drawer-pills">${legalNames}${registerLink}</div>
     <div class="drawer-summary">${drawerStats(row)}</div>
     <h4>SP · ${escapeHtml(capacityDateLabel(row, true, true))}</h4>
     <div class="drawer-pills capacity-source-pills">${principalSources || '<span class="pill">未匹配 Sponsor Principal 行</span>'}</div>

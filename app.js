@@ -765,15 +765,9 @@ function sponsorShortName(name) {
   if (!raw || raw === "待抽取") return raw;
   const cached = sponsorShortNameCache.get(raw);
   if (cached !== undefined) return cached;
+  const registered = state.data?.meta?.sponsorEntities?.[raw];
   const matched = sponsorDisplayRules.find((rule) => rule.pattern.test(raw));
-  const result = matched ? matched.shortName : (raw
-    .replace(/\b(Hong Kong|HK|International|Capital|Securities|Corporate Finance|Company|Limited|Co\.?|Ltd\.?|AG|plc|Branch)\b/gi, " ")
-    .replace(/[(),.]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .split(" ")
-    .slice(0, 2)
-    .join(" ") || raw);
+  const result = registered?.shortNameZh || matched?.shortName || raw;
   sponsorShortNameCache.set(raw, result);
   return result;
 }
@@ -781,6 +775,8 @@ function sponsorShortName(name) {
 function sponsorSearchAliases(name) {
   const raw = String(name || "").trim();
   const matched = sponsorDisplayRules.find((rule) => rule.pattern.test(raw) || rule.shortName === raw);
+  const registered = state.data?.meta?.sponsorEntities?.[raw];
+  if (registered) return [registered.shortNameZh, registered.legalNameZh, registered.ce];
   return matched ? [matched.shortName, ...(matched.aliases || [])] : [];
 }
 
@@ -793,7 +789,7 @@ function sponsorDisplayEntries(record) {
     const key = shortName.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
-    entries.push({ shortName, fullName: sponsor });
+    entries.push({ shortName, fullName: sponsor, registered: state.data?.meta?.sponsorEntities?.[sponsor] });
   }
   return entries;
 }
@@ -834,6 +830,7 @@ const tagDictionary = {
   "已拒绝": { en: "Rejected", title: "HKEX application rejected / 港交所申请被拒", cls: "inactive-tag" },
   "outlier剔除统计": { en: "Outlier excluded", title: "Excluded from headline duration statistics: no post-regime A1 cycle precedes the CSRC notice (e.g. filing completed under an earlier lapsed cycle) / 通知书早于已知的制度后A1周期，无有效统计锚点，不计入头部时长统计", cls: "outlier-tag" },
   "制度后A1锚点": { en: "Post-regime A1 anchor", title: "Earliest A1 predates the CSRC filing regime; durations are anchored to the first A1 cycle posted on/after 2023-03-31 / 最早A1早于备案新规，时长统计以制度生效后的第一次A1为锚点", cls: "info-tag" },
+  "过渡期内上市": { en: "Listed in transition period", title: "主板上市日在境外上市备案制度过渡期内；招股书披露见项目详情。 / See issuer details for the prospectus disclosure.", cls: "info-tag" },
   "过渡期A1锚点": { en: "Transition cohort", title: "In-process application straddled the regime effective date (存量在审); the displayed filing clock starts at 2023-03-31 and the true A1 anchor is unobservable, so this record is excluded from headline duration statistics / 申请周期跨越制度生效日，展示时长自2023-03-31起算；真实A1锚点不可观测，不计入头部时长统计", cls: "outlier-tag" },
   "前轮A1锚点": { en: "Previous-cycle A1 anchor", title: "The selected A1 falls on the CSRC notice date, so the displayed filing clock uses the latest earlier A1 in the HKEX consolidated index; a pre-regime fallback is excluded from headline statistics / 所选A1与通知书同日，展示时长改用港交所综合索引中通知日前最近一轮A1；如该日期早于备案新规则不计入头部统计", cls: "info-tag" },
   "GEM转主板": { en: "GEM-to-Main transfer", title: "Transfer from GEM to the Main Board; filing or reporting obligations depend on the transaction / GEM转主板；备案或报告义务须根据具体交易判断", cls: "info-tag" }
@@ -1011,6 +1008,9 @@ function renderListingCell(record) {
 }
 
 function renderNoticeCell(record) {
+  if (record.transactionDisclosures?.kind === "reverse_takeover_filing_notice") {
+    return `${formatDate(record.transactionDisclosures.signedDate)}<span class="date-secondary">反向收购备案 / RTO notice</span>`;
+  }
   const label = record.noticeSupersededByCurrentFiling ? "历史通知 Historical notice"
     : record.noticeDateBasis === "publication_date_fallback" ? "网页发布 Published" : "";
   return `${formatDate(record.noticeDate)}${label ? `<span class="date-secondary">${label}</span>` : ""}`;
@@ -1133,6 +1133,9 @@ function sortKey(record, field) {
   }
   if (field === "listingMarketCapHkdBn") {
     return { value: record.listingMarketCapSampleEligible === true && typeof record.listingMarketCapHkdBn === "number" ? record.listingMarketCapHkdBn : null, type: "number" };
+  }
+  if (field === "noticeDate" && record.transactionDisclosures?.kind === "reverse_takeover_filing_notice") {
+    return { value: asDateValue(record.transactionDisclosures.signedDate), type: "number" };
   }
   if (field === "csrcReceivedDate") {
     return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate || record.csrcCurrentReceivedDate), type: "number" };
@@ -1730,6 +1733,12 @@ function renderTransactionDisclosures(record) {
     row("通知书落款 / Signed", formatDate(event.signedDate));
     row("证监会公布 / Published", formatDate(event.publishedDate));
     row("反向收购完成 / Merger completed", formatDate(event.completionDate));
+  } else if (event.kind === "indirect_transition_disclosure") {
+    title = "备案过渡期披露 / CSRC transition disclosure";
+    row("发行人招股书 / Prospectus", formatDate(event.prospectusDate));
+    row("备案安排", event.issuerDisclosureZh);
+    row("Filing arrangements", event.issuerDisclosureEn);
+    row("主板开始买卖 / Main Board trading began", formatDate(event.mainBoardTradingDate));
   } else if (event.kind === "gem_board_transfer") {
     title = "GEM 转主板 / Board transfer";
     row("股票代码 / Stock codes", `GEM ${event.gemCode} → 主板 ${event.stockCode}`);
@@ -1765,6 +1774,7 @@ function renderDetail(record) {
         <div class="sponsor-detail">
           <strong title="${escapeHtml(entry.fullName)}">${escapeHtml(entry.shortName)}</strong>
           <span>${escapeHtml(entry.fullName)}</span>
+          ${entry.registered ? `<a href="https://apps.sfc.hk/publicregWeb/corp/${encodeURIComponent(entry.registered.ce)}/details" target="_blank" rel="noopener noreferrer">${escapeHtml(entry.registered.legalNameZh)} · SFC ${escapeHtml(entry.registered.ce)}</a>` : ""}
         </div>
       `
     )
@@ -1908,6 +1918,9 @@ function renderDetail(record) {
           `}
           <div class="timeline-row"><span>${record.csrcReceivedDateIsAsOf ? "首轮接收状态 First received status" : "首轮接收 First received"}</span><strong>${renderReceivedDateValue(record.csrcFirstReceivedDate || record.csrcReceivedDate, record.csrcReceivedDateIsAsOf)}</strong></div>
           <div class="timeline-row"><span>${isLaterCycleReceived(record) ? "后续备案轮次接收 Later-cycle received" : (record.csrcCurrentReceivedDateIsAsOf ? "当前接收状态 Current received status" : "当前接收 Current received")}</span><strong>${renderReceivedDateValue(record.csrcCurrentReceivedDate, record.csrcCurrentReceivedDateIsAsOf)}</strong></div>
+          ${(record.fullCirculationNotices || []).filter((item) => /^https?:\/\//.test(item.sourceUrl || "")).map((item) =>
+            `<div class="timeline-row"><span>全流通备案通知书 Full circulation</span><strong><a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noreferrer" title="${escapeHtml(item.title || "")}">${escapeHtml(item.noticeDate || item.publishedDate || "查看通知书")}</a></strong></div>`
+          ).join("")}
           <div class="timeline-row"><span>${record.noticeSupersededByCurrentFiling ? "历史备案通知书 Historical CSRC notice" : "备案通知书 CSRC notice"}</span><strong>${renderNoticeCell(record)}</strong></div>
           ${record.noticePublishedDate && record.noticePublishedDate !== record.noticeDate ? `<div class="timeline-row"><span>通知网页发布日期 Notice publication</span><strong>${formatDate(record.noticePublishedDate)}</strong></div>` : ""}
           ${record.transactionCompletionDate && record.transactionDisclosures?.kind !== "reverse_takeover_filing_notice" ? `<div class="timeline-row"><span>反向收购完成 RTO completion</span><strong>${formatDate(record.transactionCompletionDate)}</strong></div>` : ""}
@@ -2134,6 +2147,7 @@ async function loadData() {
     state.data = emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   }
   stageCountsCache = null;
+  sponsorShortNameCache.clear();
   for (const record of state.data.records || []) {
     getRecordText(record);
   }
