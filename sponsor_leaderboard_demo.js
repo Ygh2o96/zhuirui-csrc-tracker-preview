@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=f0e854894a6a8b10";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=b4b3ca50149d655a";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -661,9 +661,12 @@ function aggregateFacts(facts, stage = state.stage) {
       searchSponsorRank: firmSearchRank(firm, query),
       projectCount,
       activeCount,
+      applicationStatusCounts: Object.fromEntries([...new Set(sponsorFacts.filter(f => f.hkexStage === "applying")
+        .map(f => f.applicationStatusLabelZh).filter(Boolean))].map(label => [label,
+          weightedCount(sponsorFacts, f => f.hkexStage === "applying" && f.applicationStatusLabelZh === label)])),
       hkexActiveCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && f.applicationStatusGroup === "active"),
-      hkexInactiveCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && f.applicationStatusGroup === "inactive"),
-      hkexOtherStatusCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && !["active", "inactive"].includes(f.applicationStatusGroup)),
+      hkexInactiveCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && ["lapsed", "withdrawn", "rejected", "returned", "inactive"].includes(f.applicationStatusGroup)),
+      hkexOtherStatusCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && !["active", "inactive", "lapsed", "withdrawn", "rejected", "returned"].includes(f.applicationStatusGroup)),
       listedCount: weightedCount(sponsorFacts, (fact) => fact.hkexStage === "listed"),
       noticeCount: weightedCount(sponsorFacts, (fact) => fact.status === "notice_issued" && factFilingEligible(fact, "notice")),
       ahCount: weightedCount(sponsorFacts, (fact) => fact.isAH),
@@ -1629,9 +1632,31 @@ function lifecycleDisplay(row) {
 
 function applicationBreakdown(row) {
   if (!row.activeCount || row.firmScope === "benchmark") return "";
-  return [[row.hkexActiveCount, "港交所处理中"], [row.hkexInactiveCount, "已失效、撤回或拒绝"], [row.hkexOtherStatusCount, "其他或未披露状态"]]
-    .filter(([count]) => count > 0)
-    .map(([count, label]) => `${label} ${compactCredit(count)}`).join(" · ");
+  return Object.entries(row.applicationStatusCounts || {}).filter(([, count]) => count > 0)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh"))
+    .map(([label, count]) => `${label} ${compactCredit(count)}`).join(" · ");
+}
+
+function applicationDetails(row) {
+  if (!row.activeCount || row.firmScope === "benchmark") return "";
+  return Object.entries(row.applicationStatusCounts || {}).filter(([, count]) => count > 0)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh"))
+    .map(([label, count]) => `<details data-app-group="${escapeHtml(label)}" data-app-sponsor="${escapeHtml(row.sponsorId)}"><summary>${escapeHtml(label)} ${compactCredit(count)}</summary><ul></ul></details>`).join("");
+}
+
+function bindApplicationDetails(container, rows) {
+  const indexed = new Map(rows.filter(Boolean).map(row => [row.sponsorId, row]));
+  container.querySelectorAll("details[data-app-group]").forEach(details => {
+    details.addEventListener("toggle", () => {
+      if (!details.open) return;
+      const row = indexed.get(details.dataset.appSponsor);
+      const facts = (row?.facts || []).filter(f => f.hkexStage === "applying" && f.applicationStatusLabelZh === details.dataset.appGroup);
+      details.querySelector("ul").innerHTML = facts.map(f => {
+        const date = f.hkexReturnedApplication?.date || f.currentA1Date;
+        return `<li>${escapeHtml(f.issuerName)}${date ? " · " + escapeHtml(date) : ""} · ${escapeHtml(f.statusLabelZh || "")}</li>`;
+      }).join("");
+    });
+  });
 }
 
 function metricRanks(rows) {
@@ -1686,7 +1711,7 @@ function rowHtml(row, rank, showMarketCap) {
     <td data-label="性质"><span class="pill teal">${escapeHtml(row.sponsorNature || "待核")}</span></td>
     <td data-label="SP / 六号牌"><span class="number">${escapeHtml(type6.main)}</span><span class="sub-number">${escapeHtml(type6.sub)}</span></td>
     <td data-label="项目"><span class="number">${compactCredit(row.projectCount)}</span><span class="sub-number">${typePills}</span></td>
-    <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span><small class="sub-number">${escapeHtml(applicationBreakdown(row))}</small></td>
+    <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span><small class="sub-number">${applicationDetails(row)}</small></td>
     <td data-label="已上市"><span class="number">${compactCredit(row.listedCount)}</span></td>
     <td data-label="A+H"><span class="number">${compactCredit(row.ahCount)}</span></td>
     <td data-label="排名指标"><span class="number">${escapeHtml(primary.main)}</span></td>
@@ -1729,9 +1754,10 @@ function render() {
   }
   const ranks = metricRanks(rows);
   els.leaderboardRows.innerHTML = rows.map((row) => rowHtml(row, ranks.get(row.sponsorId), showMarketCap)).join("");
+  bindApplicationDetails(els.leaderboardRows, rows);
   els.leaderboardRows.querySelectorAll("tr[data-sponsor]").forEach((row) => {
     row.addEventListener("click", (event) => {
-      if (event.target instanceof Element && event.target.closest("a")) return;
+      if (event.target instanceof Element && event.target.closest("a, details[data-app-group]")) return;
       openDrawer(row.dataset.sponsor);
     });
   });
@@ -1866,7 +1892,7 @@ function renderPkMetric(metric, rowA, rowB) {
     <div class="spk-metric-side${pkWinnerClass(metric, "a")}" ${pkBarStyle(metric, "a")}>
       <span>${escapeHtml(rowA.displayNameZh)}</span>
       <b>${escapeHtml(metric.format(metric.a, rowA))}</b>
-      ${metric.coverage ? `<small class="market-cap-coverage">${escapeHtml(metric.coverage(rowA))}</small>` : ""}
+      ${metric.coverage ? `<small class="market-cap-coverage">${metric.key === "activeCount" ? applicationDetails(rowA) : escapeHtml(metric.coverage(rowA))}</small>` : ""}
       <i aria-hidden="true"></i>
     </div>
     <div class="spk-metric-name">
@@ -1876,7 +1902,7 @@ function renderPkMetric(metric, rowA, rowB) {
     <div class="spk-metric-side${pkWinnerClass(metric, "b")}" ${pkBarStyle(metric, "b")}>
       <span>${escapeHtml(rowB.displayNameZh)}</span>
       <b>${escapeHtml(metric.format(metric.b, rowB))}</b>
-      ${metric.coverage ? `<small class="market-cap-coverage">${escapeHtml(metric.coverage(rowB))}</small>` : ""}
+      ${metric.coverage ? `<small class="market-cap-coverage">${metric.key === "activeCount" ? applicationDetails(rowB) : escapeHtml(metric.coverage(rowB))}</small>` : ""}
       <i aria-hidden="true"></i>
     </div>
   </article>`;
@@ -1938,6 +1964,7 @@ function renderPk() {
   if (pkEls.cardA) pkEls.cardA.innerHTML = renderPkCard(rowA, "左侧");
   if (pkEls.cardB) pkEls.cardB.innerHTML = renderPkCard(rowB, "右侧");
   pkEls.metrics.innerHTML = pkMetricRows(rowA, rowB).map((metric) => renderPkMetric(metric, rowA, rowB)).join("");
+  bindApplicationDetails(pkEls.metrics, [rowA, rowB]);
 }
 
 function drawerStats(row) {
@@ -2118,8 +2145,8 @@ function projectLine(fact) {
     <strong>${escapeHtml(primaryName)}${fact.hkexListingStockCode ? ` · ${escapeHtml(fact.hkexListingStockCode)}` : ""}</strong>
     ${shadowName ? `<small class="shadow-name">${escapeHtml(shadowName)}</small>` : ""}
     <small>
-      港交所 ${escapeHtml(fact.hkexPublicStatus || "状态未披露")} · 备案 ${escapeHtml(fact.statusLabelZh || fact.status || "待核")} · ${escapeHtml(fact.issuerType || "类型待核")} ·
-      首次 A1 ${escapeHtml(formatDate(fact.a1Date))}${fact.currentA1Date && fact.currentA1Date !== fact.a1Date ? ` · 最近 A1 ${escapeHtml(fact.currentA1Date)}` : ""} · ${fact.noticeSupersededByCurrentFiling ? "历史通知 / Historical notice" : "通知"} ${escapeHtml(formatDate(fact.noticeDate))}${listingDateText}
+      ${escapeHtml(fact.applicationStatusLabelZh || fact.hkexPublicStatus || "未见港交所申请状态")}${fact.hkexReturnedApplication?.date ? " · " + escapeHtml(fact.hkexReturnedApplication.date) : ""} · 备案 ${escapeHtml(fact.statusLabelZh || fact.status || "待核")} · ${escapeHtml(fact.issuerType || "类型待核")} ·
+      首次 A1 ${escapeHtml(formatDate(fact.a1Date))}${fact.currentA1Date && fact.currentA1Date !== fact.a1Date ? ` · 最近 A1 ${escapeHtml(fact.currentA1Date)}` : ""} · ${fact.noticeSupersededByCurrentFiling ? "历史通知 / Historical notice" : "通知"} ${fact.noticeDate ? escapeHtml(formatDate(fact.noticeDate)) : fact.csrcFilingRequired === false ? "无需备案" : "未见备案通知书"}${listingDateText}
     </small>
     <small>本行计入的保荐机构 · ${escapeHtml((fact.sourceSponsorLegalNames || fact.sponsorLegalNames || []).join(" / ") || fact.sponsorLegalName)}</small>
     ${completionLine}

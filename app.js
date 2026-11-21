@@ -9,7 +9,7 @@ const defaults = {
   hkexStage: "applying",
   query: "",
   view: "tracker",
-  dateField: "a1Date",
+  dateField: "currentA1Date",
   dateFrom: "",
   dateTo: "",
   structure: "all",
@@ -152,6 +152,7 @@ const statusSortRank = {
 const descendingDefaultSortFields = new Set([
   "a1Date",
   "currentA1Date",
+  "hkexLatestDocumentDate",
   "csrcReceivedDate",
   "csrcCurrentReceivedDate",
   "noticeDate",
@@ -204,7 +205,7 @@ function formatDate(value) {
 
 function formatDatePlain(value) {
   const html = formatDate(value);
-  return html.includes("<span") ? "待披露" : html;
+  return html.includes("<span") ? "—" : html;
 }
 
 function formatNumber(value, mode = "decimal") {
@@ -276,16 +277,16 @@ function initVisitCounter() {
 }
 
 function formatDayValue(value) {
-  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "待披露";
+  if (value === null || value === undefined || value === "" || Number.isNaN(value)) return "—";
   return integerFormatter.format(Math.ceil(value));
 }
 
 function formatDayNumber(value, unit = dayUnitLabel()) {
-  return typeof value === "number" ? `${formatDayValue(value)} ${unit}` : formatPending();
+  return typeof value === "number" ? `${formatDayValue(value)} ${unit}` : "—";
 }
 
 function formatPending() {
-  return `<span class="pending-zh">待披露</span><span class="pending-en">Pending</span>`;
+  return `<span aria-label="无公开日期">—</span>`;
 }
 
 function isAhCandidate(record) {
@@ -452,9 +453,7 @@ function formatMarketCap(record) {
 function formatListingMarketCap(record) {
   const value = record.listingMarketCapHkdBn;
   if (record.listingMarketCapSampleEligible !== true) {
-    return record.hkexListingDate
-      ? `<span class="not-applicable">估值待核</span><span class="pending-en">Valuation unverified</span>`
-      : formatPending();
+    return record.hkexListingDate ? "—" : "不适用";
   }
   if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
@@ -903,6 +902,7 @@ function renderStatusBadge(record, compact = true) {
     <span class="status-stack">
       <span class="badge ${escapeHtml(record.status)}"><b>${escapeHtml(labels[0])}</b><small>${escapeHtml(labels[1])}</small></span>
       ${datedFact}
+      ${compact && record.hkexApplicationProofEvidence ? `<small>${escapeHtml(record.hkexApplicationStatusLabelZh)} · ${escapeHtml(record.hkexReturnedApplication?.date || record.hkexApplicationProofEvidence.date)}</small>` : ""}
       ${compact && record.filingScopeDisclosure && record.csrcFilingApplicability === "pending" ? `<small>${escapeHtml(record.filingScopeDisclosure.summaryZh)}</small>` : ""}
       ${renderStatusTags(record)}
     </span>
@@ -927,6 +927,8 @@ function getRecordText(record) {
     record.aShareCode,
     record.backendStageZh,
     record.currentA1Date,
+    record.hkexApplicationStatusLabelZh,
+    ...(record.hkexPublishedApplications || []).flatMap(a => a.documents.flatMap(d => [d.date, d.label, hkexDocumentLabel(d.label)])),
     record.hkexListingDate,
     record.hkexListingStockCode,
     record.hkexProspectusDate,
@@ -972,6 +974,31 @@ function submissionDateRows(record) {
   return "";
 }
 
+function hkexDocumentLabel(label) {
+  const labels = {"Application Proof (1st submission)": "首次申请版本", "Application Proof (Revised)": "修订申请版本",
+    "OC Announcement - Appointment": "整体协调人委任", "OC Announcement - Appointment (Revised)": "整体协调人委任（修订）",
+    "OC Announcement - Termination": "整体协调人终止委任", "PHIP (1st submission)": "聆讯后资料集"};
+  return labels[label] || label;
+}
+
+function renderHkexPostings(record, compact) {
+  const docs = (record.hkexPublishedApplications || []).flatMap(a => a.documents || [])
+    .filter(d => /^https:\/\/www1\.hkexnews\.hk\/app\/sehk\/\d{4}\/\d+\/documents\/sehk\d+(_c)?\.pdf$/.test(d.url))
+    .sort((a, b) => b.date.localeCompare(a.date) || Number(a.previous) - Number(b.previous));
+  if (!docs.length) return "";
+  const lead = docs[0];
+  if (compact) return `<small>${escapeHtml(lead.date)} · ${escapeHtml(hkexDocumentLabel(lead.label))}</small>`;
+  return `<details><summary>港交所申请文件 · ${escapeHtml(lead.date)}</summary>${docs.map(d =>
+    `<div><a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">${escapeHtml(d.date)} · ${escapeHtml(hkexDocumentLabel(d.label))}</a>${d.previous ? " · 此前刊发" : ""}</div>`
+  ).join("")}</details>`;
+}
+
+function renderHkexStatusEvidence(record) {
+  if (record.hkexReturnedApplication) return `<p>港交所于 ${escapeHtml(record.hkexReturnedApplication.date)} 发回本次上市申请。<a href="https://www1.hkexnews.hk/ncms/json/eds/appreturned_sehk_e.json" target="_blank" rel="noreferrer">港交所已发回申请名单</a></p>`;
+  if (record.hkexApplicationProofEvidence) return `<p>港交所曾于 ${escapeHtml(record.hkexApplicationProofEvidence.date)} 刊发申请版本。当前名册未列示本次申请状态。</p>`;
+  return "";
+}
+
 function renderA1Cell(record) {
   const reported = record.listedSubmissionEvidence;
   if (reported?.kind === "confidential_submission" && reported.publicDocumentType === "PHIP")
@@ -986,7 +1013,7 @@ function renderA1Cell(record) {
       : "";
     return `<span class="date-primary">密交 ${formatDate(record.a1Date)}</span>${publicA1Html}`;
   }
-  return renderStackedDate(record.a1Date, "当前", record.currentA1Date);
+  return record.currentA1Date ? renderStackedDate(record.currentA1Date, "备案锚点", record.a1Date) : renderStackedDate(record.a1Date, "", null);
 }
 
 function renderReceivedDateValue(value, isAsOf = false) {
@@ -1011,6 +1038,8 @@ function renderReceivedCell(record) {
   if (!primary && record.csrcCurrentReceivedDate) {
     return `${renderReceivedDateValue(record.csrcCurrentReceivedDate, currentIsAsOf)}<span class="date-secondary">${currentLabel}接收</span>`;
   }
+  if (!primary && record.status === "waiting_received") return "尚未接收";
+  if (!primary && record.status === "not_required") return "无需备案";
   const secondaryHtml = record.csrcCurrentReceivedDate && record.csrcCurrentReceivedDate !== primary
     ? `<span class="date-secondary">${currentLabel} ${currentIsAsOf ? "截至 " : ""}${formatDatePlain(record.csrcCurrentReceivedDate)}</span>`
     : "";
@@ -1023,6 +1052,7 @@ function renderListingCell(record) {
   if (record.specialListingRoute === "rto" && record.transactionCompletionDate) {
     return `<span class="date-primary">${formatDate(record.transactionCompletionDate)}</span><span class="date-secondary">RTO完成 Completed</span>${secondaryHtml}`;
   }
+  if (!record.hkexListingDate && record.hkexPublicStatus === "Active") return "尚无本次上市日";
   return `<span class="date-primary">${formatDate(record.hkexListingDate)}</span>${secondaryHtml}`;
 }
 
@@ -1552,7 +1582,7 @@ function renderRows() {
             <span>${escapeHtml(names.secondary)}</span>
           </td>
           <td class="status-cell">${renderStatusBadge(record)}</td>
-          <td class="date-cell">${renderA1Cell(record)}</td>
+          <td class="date-cell">${renderA1Cell(record)}${renderHkexPostings(record, true)}</td>
           <td class="date-cell">${listedPage ? renderNoticeCell(record) : renderReceivedCell(record)}</td>
           <td class="date-cell">${listedPage ? renderListingCell(record) : renderNoticeCell(record)}</td>
           <td class="listing-date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
@@ -1920,6 +1950,8 @@ function renderDetail(record) {
         <span>状态 Status</span>
         <strong>${renderStatusBadge(record, false)}</strong>
         ${renderIssuerDisclosure(record)}
+        ${renderHkexStatusEvidence(record)}
+        ${renderHkexPostings(record, false)}
         ${record.csrcFilingApplicability && record.csrcFilingApplicability !== "pending" ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需备案 / No filing required", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
         ${record.status === "applicability_pending" ? `<div class="muted">证监会公示中未匹配到本次上市的备案记录。<a href="https://www.csrc.gov.cn/csrc/c101935/zfxxgk_zdgk.shtml" target="_blank" rel="noreferrer">查阅证监会公示</a></div>` : ""}
         ${record.csrcFilingReportingRequired ? `<div>转板后须向证监会报告 / Post-transfer reporting required</div>` : ""}

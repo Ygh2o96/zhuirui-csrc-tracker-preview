@@ -139,8 +139,9 @@
                 <label class="filter-control">
                   <span><b>日期口径</b><small>Date field</small></span>
                   <select id="dateField" name="dateField" autocomplete="off">
-                    <option value="a1Date">A1 锚点</option>
-                    <option value="currentA1Date">当前 A1</option>
+                    <option value="currentA1Date">本次递表日</option>
+                    <option value="a1Date">备案 A1 锚点</option>
+                    <option value="hkexLatestDocumentDate">港交所最新文件</option>
                     <option value="csrcReceivedDate">首轮接收</option>
                     <option value="csrcCurrentReceivedDate">当前接收</option>
                     <option value="noticeDate">备案通知书</option>
@@ -180,8 +181,9 @@
                   <select id="sortField" name="sortField" autocomplete="off">
                     <option value="issuerName">发行人名称</option>
                     <option value="status">状态</option>
-                    <option value="a1Date">A1 锚点</option>
-                    <option value="currentA1Date">当前 A1</option>
+                    <option value="currentA1Date">本次递表日</option>
+                    <option value="a1Date">备案 A1 锚点</option>
+                    <option value="hkexLatestDocumentDate">港交所最新文件</option>
                     <option value="csrcReceivedDate">首轮接收</option>
                     <option value="csrcCurrentReceivedDate">当前接收</option>
                     <option value="noticeDate">备案通知书</option>
@@ -209,7 +211,7 @@
                     <tr>
                       <th class="col-issuer"><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="th-en">Issuer</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-status"><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">状态</span><span class="th-en">Status</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1</span><span class="th-en">Anchor / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="currentA1Date"><span class="th-zh">本次递表日</span><span class="th-en">Current application</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-date"><button class="th-sort" id="dateColumn4Sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh" id="dateColumn4Zh">接收</span><span class="th-en" id="dateColumn4En">First / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-date"><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En">Notice</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="all-only-col col-listing-date"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="th-en">Listing</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
@@ -587,8 +589,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=94356619237d4f6a"></script>
-    <script src="sponsor_leaderboard_demo.js?v=8a3069a914e06f8a"></script>
+    <script src="app.js?v=a58fb1db1b78cb15"></script>
+    <script src="sponsor_leaderboard_demo.js?v=0abb674507f7429e"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
