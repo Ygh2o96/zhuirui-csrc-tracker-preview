@@ -1,24 +1,23 @@
 {
   "meta": {
-    "generatedAt": "2026-11-21T09:10:17Z",
-    "sourceGeneratedAt": "2026-11-21T17:10:13+08:00",
+    "generatedAt": "2026-11-21T09:23:32Z",
+    "sourceGeneratedAt": "2026-11-21T17:23:17+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T17:10:13+08:00",
+      "generatedAt": "2026-11-21T17:23:17+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
-    "projectFactCount": 1480,
-    "baseProjectFactCount": 1369,
-    "rollupProjectFactCount": 111,
+    "projectFactCount": 1482,
+    "baseProjectFactCount": 1370,
+    "rollupProjectFactCount": 112,
     "firmCount": 73,
-    "excludedPlaceholderSponsorRecordCount": 8,
+    "excludedPlaceholderSponsorRecordCount": 7,
     "sponsorExclusionCounts": {
       "waived": 1,
-      "notNamed": 3,
-      "notApplicable": 4
+      "notNamed": 6
     },
     "coverageZh": "港交所主板及中国证监会备案 · 申请文件收录起点 2025-10-15 · 已追溯最早申请日 2019-04-08 · 上市样本的最早上市日 2023-03-31",
     "demoNoteZh": "公开预览：保荐人龙虎榜 mirror 监管节奏追踪的同一份 HKEX / CSRC 公开快照，自动更新但未逐项人工复核；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。中信证券/中信里昂按中信证券合并；国泰君安国际与海通国际保留单独行，并额外提供国泰海通合并口径。统计口径可切换为具名保荐人全部计入、只计首名保荐人，或按保荐人数量平分；首名依公开文件列示顺序，不代表牵头地位；平分口径按合并后的保荐人 group 计。A1→上市周期统计只纳入已上市项目；申请中项目仅展示截至快照日的 time elapsed / freshness，不纳入最终周期快慢统计。SP 为真正可签 sponsor 工作的 sponsor principal，负荷/人效优先用 SP 口径；六号牌总人数、RO、Rep 仅作容量背景。",
@@ -4096,7 +4095,7 @@
         "missing": 4,
         "total": 59
       },
-      "applyingAhMarketCapRmbBnSum": 1965.0419,
+      "applyingAhMarketCapRmbBnSum": 1989.54266563465,
       "applyingAhMarketCapRmbBnMedian": 30.2112,
       "applyingAhMarketCapN": 35,
       "applyingAhMarketCapCoverage": {
@@ -4350,18 +4349,18 @@
       "aShareMarketCapRmbBnMedian": 40.4133,
       "aShareMarketCapN": 59,
       "aShareMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 58,
+        "verified": 0,
+        "estimate": 59,
         "unsupported": 0,
         "missing": 2,
         "total": 61
       },
-      "applyingAhMarketCapRmbBnSum": 1896.8788648325399,
+      "applyingAhMarketCapRmbBnSum": 1934.68108101019,
       "applyingAhMarketCapRmbBnMedian": 40.504999999999995,
       "applyingAhMarketCapN": 38,
       "applyingAhMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 37,
+        "verified": 0,
+        "estimate": 38,
         "unsupported": 0,
         "missing": 0,
         "total": 38
@@ -4836,19 +4835,19 @@
       "natureConfidence": "demo_seed",
       "mappingConfidence": "rollup_group",
       "firmScope": "rollup",
-      "projectCount": 111.0,
-      "activeCount": 55.0,
+      "projectCount": 112.0,
+      "activeCount": 56.0,
       "applicationStatusCounts": {
         "港交所处理中": 45.0,
-        "申请已失效": 10.0
+        "申请已失效": 11.0
       },
       "hkexActiveCount": 45.0,
-      "hkexInactiveCount": 10.0,
+      "hkexInactiveCount": 11.0,
       "hkexOtherStatusCount": 0,
       "listedCount": 50.0,
-      "noticeCount": 52.0,
+      "noticeCount": 53.0,
       "ahCount": 22.0,
-      "hShareCount": 71.0,
+      "hShareCount": 72.0,
       "redChipCount": 14.0,
       "deSpacCount": 1.0,
       "hdrCount": 0,
@@ -4867,8 +4866,8 @@
       "aShareMarketCapRmbBnMedian": 34.2248,
       "aShareMarketCapN": 21,
       "aShareMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 20,
+        "verified": 0,
+        "estimate": 21,
         "unsupported": 0,
         "missing": 1,
         "total": 22
@@ -4877,14 +4876,14 @@
       "applyingAhMarketCapRmbBnMedian": 37.2204,
       "applyingAhMarketCapN": 11,
       "applyingAhMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 10,
+        "verified": 0,
+        "estimate": 11,
         "unsupported": 0,
         "missing": 0,
         "total": 11
       },
-      "medianA1ToNoticeDays": 208.5,
-      "timingN": 44,
+      "medianA1ToNoticeDays": 201.0,
+      "timingN": 45,
       "topIndustries": [
         "制造业",
         "信息传输、软件和信息技术服务业",
@@ -5037,7 +5036,7 @@
         "missing": 0,
         "total": 29
       },
-      "aShareMarketCapRmbBnSum": 1648.998,
+      "aShareMarketCapRmbBnSum": 1650.1255183708,
       "aShareMarketCapRmbBnMedian": 22.84235,
       "aShareMarketCapN": 16,
       "aShareMarketCapCoverage": {
@@ -5047,7 +5046,7 @@
         "missing": 0,
         "total": 16
       },
-      "applyingAhMarketCapRmbBnSum": 254.20770000000002,
+      "applyingAhMarketCapRmbBnSum": 255.3352183708,
       "applyingAhMarketCapRmbBnMedian": 14.5923,
       "applyingAhMarketCapN": 10,
       "applyingAhMarketCapCoverage": {
@@ -5269,19 +5268,19 @@
       "natureConfidence": "demo_seed",
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
-      "projectCount": 63.0,
-      "activeCount": 33.0,
+      "projectCount": 64.0,
+      "activeCount": 34.0,
       "applicationStatusCounts": {
         "港交所处理中": 28.0,
-        "申请已失效": 5.0
+        "申请已失效": 6.0
       },
       "hkexActiveCount": 28.0,
-      "hkexInactiveCount": 5.0,
+      "hkexInactiveCount": 6.0,
       "hkexOtherStatusCount": 0,
       "listedCount": 26.0,
-      "noticeCount": 26.0,
+      "noticeCount": 27.0,
       "ahCount": 14.0,
-      "hShareCount": 44.0,
+      "hShareCount": 45.0,
       "redChipCount": 2.0,
       "deSpacCount": 0,
       "hdrCount": 0,
@@ -5300,8 +5299,8 @@
       "aShareMarketCapRmbBnMedian": 22.8171,
       "aShareMarketCapN": 13,
       "aShareMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 12,
+        "verified": 0,
+        "estimate": 13,
         "unsupported": 0,
         "missing": 1,
         "total": 14
@@ -5310,14 +5309,14 @@
       "applyingAhMarketCapRmbBnMedian": 55.0092,
       "applyingAhMarketCapN": 7,
       "applyingAhMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 6,
+        "verified": 0,
+        "estimate": 7,
         "unsupported": 0,
         "missing": 0,
         "total": 7
       },
-      "medianA1ToNoticeDays": 199.0,
-      "timingN": 20,
+      "medianA1ToNoticeDays": 180.0,
+      "timingN": 21,
       "topIndustries": [
         "制造业",
         "高端装备/机器人/智能制造",
@@ -5560,7 +5559,7 @@
         "missing": 2,
         "total": 9
       },
-      "applyingAhMarketCapRmbBnSum": 201.33960000000002,
+      "applyingAhMarketCapRmbBnSum": 225.84036563465006,
       "applyingAhMarketCapRmbBnMedian": 32.487700000000004,
       "applyingAhMarketCapN": 6,
       "applyingAhMarketCapCoverage": {
@@ -7051,8 +7050,8 @@
       "aShareMarketCapRmbBnMedian": 33.4825,
       "aShareMarketCapN": 11,
       "aShareMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 11,
+        "verified": 0,
+        "estimate": 12,
         "unsupported": 0,
         "missing": 1,
         "total": 13
@@ -7061,8 +7060,8 @@
       "applyingAhMarketCapRmbBnMedian": 31.0961,
       "applyingAhMarketCapN": 9,
       "applyingAhMarketCapCoverage": {
-        "verified": 1,
-        "estimate": 8,
+        "verified": 0,
+        "estimate": 9,
         "unsupported": 0,
         "missing": 0,
         "total": 9
@@ -9506,8 +9505,8 @@
         "missing": 0,
         "total": 3
       },
-      "aShareMarketCapRmbBnSum": 330.2593595,
-      "aShareMarketCapRmbBnMedian": 60.4178,
+      "aShareMarketCapRmbBnSum": 331.3868778708,
+      "aShareMarketCapRmbBnMedian": 61.5453183708,
       "aShareMarketCapN": 5,
       "aShareMarketCapCoverage": {
         "verified": 0,
@@ -9516,7 +9515,7 @@
         "missing": 0,
         "total": 5
       },
-      "applyingAhMarketCapRmbBnSum": 264.3092,
+      "applyingAhMarketCapRmbBnSum": 265.4367183708,
       "applyingAhMarketCapRmbBnMedian": 70.2444,
       "applyingAhMarketCapN": 3,
       "applyingAhMarketCapCoverage": {
@@ -11086,8 +11085,8 @@
         "missing": 0,
         "total": 4
       },
-      "aShareMarketCapRmbBnSum": 38.5381,
-      "aShareMarketCapRmbBnMedian": 38.5381,
+      "aShareMarketCapRmbBnSum": 53.95330547172,
+      "aShareMarketCapRmbBnMedian": 53.95330547172,
       "aShareMarketCapN": 1,
       "aShareMarketCapCoverage": {
         "verified": 0,
@@ -12435,8 +12434,8 @@
         "missing": 0,
         "total": 1
       },
-      "aShareMarketCapRmbBnSum": 4.835,
-      "aShareMarketCapRmbBnMedian": 4.835,
+      "aShareMarketCapRmbBnSum": 4.8350202834,
+      "aShareMarketCapRmbBnMedian": 4.8350202834,
       "aShareMarketCapN": 1,
       "aShareMarketCapCoverage": {
         "verified": 0,
@@ -12445,8 +12444,8 @@
         "missing": 0,
         "total": 1
       },
-      "applyingAhMarketCapRmbBnSum": 4.835,
-      "applyingAhMarketCapRmbBnMedian": 4.835,
+      "applyingAhMarketCapRmbBnSum": 4.8350202834,
+      "applyingAhMarketCapRmbBnMedian": 4.8350202834,
       "applyingAhMarketCapN": 1,
       "applyingAhMarketCapCoverage": {
         "verified": 0,
@@ -12659,8 +12658,8 @@
         "missing": 0,
         "total": 2
       },
-      "aShareMarketCapRmbBnSum": 38.5381,
-      "aShareMarketCapRmbBnMedian": 38.5381,
+      "aShareMarketCapRmbBnSum": 53.95330547172,
+      "aShareMarketCapRmbBnMedian": 53.95330547172,
       "aShareMarketCapN": 1,
       "aShareMarketCapCoverage": {
         "verified": 0,
@@ -17465,8 +17464,8 @@
         "missing": 0,
         "total": 1
       },
-      "aShareMarketCapRmbBnSum": 38.5381,
-      "aShareMarketCapRmbBnMedian": 38.5381,
+      "aShareMarketCapRmbBnSum": 53.95330547172,
+      "aShareMarketCapRmbBnMedian": 53.95330547172,
       "aShareMarketCapN": 1,
       "aShareMarketCapCoverage": {
         "verified": 0,
@@ -30274,7 +30273,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 28.5118,
+      "aShareMarketCapAtA1RmbBn": 37.065325085,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -30297,34 +30296,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-01-29",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-01-29",
-        "price": 78.38461303710938,
+        "price": 101.9,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 363742150.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-11T09:27:19",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603119,day,2026-01-29,2026-01-29,2,bfq",
+        "shares": 363742150,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-01",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108815/documents/sehk26082401772.pdf#page=368",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:30+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "37065325085.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -30371,6 +30367,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603119,day,2026-01-29,2026-01-29,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108815/documents/sehk26082401772.pdf#page=368"
         }
       ]
     },
@@ -33689,7 +33693,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 60.4178,
+      "aShareMarketCapAtA1RmbBn": 61.5453183708,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -33712,34 +33716,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-08-17",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-08-17",
-        "price": 71.2699966430664,
+        "price": 72.6,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 847731658.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-08-17T11:03:51",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz301358,day,2026-08-17,2026-08-17,2,bfq",
+        "shares": 847731658,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-07-03",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-07-18/1225431018.PDF#page=1",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:29+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "61545318370.80",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -33774,6 +33775,14 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz301358,day,2026-08-17,2026-08-17,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-07-18/1225431018.PDF#page=1"
         }
       ]
     },
@@ -33830,7 +33839,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 60.4178,
+      "aShareMarketCapAtA1RmbBn": 61.5453183708,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -33853,34 +33862,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-08-17",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-08-17",
-        "price": 71.2699966430664,
+        "price": 72.6,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 847731658.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-08-17T11:03:51",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz301358,day,2026-08-17,2026-08-17,2,bfq",
+        "shares": 847731658,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-07-03",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-07-18/1225431018.PDF#page=1",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:29+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "61545318370.80",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -33915,6 +33921,14 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz301358,day,2026-08-17,2026-08-17,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-07-18/1225431018.PDF#page=1"
         }
       ]
     },
@@ -38887,7 +38901,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 61.252,
+      "aShareMarketCapAtA1RmbBn": 85.75276563465,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -38910,34 +38924,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-01-27",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-01-27",
-        "price": 67.39286041259766,
+        "price": 94.35,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 908879339.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-17T19:08:42",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh605117,day,2026-01-27,2026-01-27,2,bfq",
+        "shares": 908879339,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-09",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-01-16/1224936389.PDF#page=4",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:30+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "85752765634.65",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -38984,6 +38995,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh605117,day,2026-01-27,2026-01-27,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-01-16/1224936389.PDF#page=4"
         }
       ]
     },
@@ -39040,7 +39059,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 61.252,
+      "aShareMarketCapAtA1RmbBn": 85.75276563465,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -39063,34 +39082,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-01-27",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-01-27",
-        "price": 67.39286041259766,
+        "price": 94.35,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 908879339.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-17T19:08:42",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh605117,day,2026-01-27,2026-01-27,2,bfq",
+        "shares": 908879339,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-09",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-01-16/1224936389.PDF#page=4",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:30+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "85752765634.65",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -39137,6 +39153,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh605117,day,2026-01-27,2026-01-27,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-01-16/1224936389.PDF#page=4"
         }
       ]
     },
@@ -39193,7 +39217,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 61.252,
+      "aShareMarketCapAtA1RmbBn": 85.75276563465,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -39216,34 +39240,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-01-27",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-01-27",
-        "price": 67.39286041259766,
+        "price": 94.35,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 908879339.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-17T19:08:42",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh605117,day,2026-01-27,2026-01-27,2,bfq",
+        "shares": 908879339,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-09",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-01-16/1224936389.PDF#page=4",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:30+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "85752765634.65",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -39290,6 +39311,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7622709/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh605117,day,2026-01-27,2026-01-27,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-01-16/1224936389.PDF#page=4"
         }
       ]
     },
@@ -56861,6 +56890,10 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7672139/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7672136/content.shtml"
         }
       ]
     },
@@ -98868,6 +98901,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7416985/content.shtml"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7672136/content.shtml"
         }
       ]
     },
@@ -116812,7 +116849,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 4.835,
+      "aShareMarketCapAtA1RmbBn": 4.8350202834,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -116835,34 +116872,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_current_at_fetch_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-03-30",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-30",
         "price": 31.8,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "tencent_bfq_daily_close+eastmoney_current_total_shares",
-        "priceSourceUrl": null,
-        "shares": 152044663.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "tencent_bfq_daily_close+eastmoney_current_total_shares",
-        "sharesSourceUrl": null,
-        "sharesTiming": "current_at_fetch",
-        "retrievedAt": "2026-06-11T09:27:03",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=bj920060,day,2026-03-30,2026-03-30,2,bfq",
+        "shares": 152044663,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-03-21",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108368/documents/sehk26033000687.pdf#page=240",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:17:26+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "4835020283.40",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -116909,6 +116943,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/c7658251/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=bj920060,day,2026-03-30,2026-03-30,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108368/documents/sehk26033000687.pdf#page=240"
         }
       ]
     },
@@ -120533,7 +120575,7 @@
       "csrcIndustryTags": [
         "租赁和商务服务业"
       ],
-      "aShareMarketCapAtA1RmbBn": 15.8263,
+      "aShareMarketCapAtA1RmbBn": 20.574225458,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -120556,34 +120598,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-03-26",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-26",
-        "price": 33.53845977783203,
+        "price": 43.6,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 471885906.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-11T09:26:56",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz301171,day,2026-03-26,2026-03-26,2,bfq",
+        "shares": 471885905,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-03-20",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108332/documents/sehk26032600137.pdf#page=167",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:28+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "20574225458.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -120626,6 +120665,14 @@
         {
           "label": "备案情况表（当前状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7672139/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz301171,day,2026-03-26,2026-03-26,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108332/documents/sehk26032600137.pdf#page=167"
         }
       ]
     },
@@ -123773,35 +123820,35 @@
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "verified",
-        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
-        "scope": "total_issued_equity_at_a_price",
+        "status": "estimate",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-03-25",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-25",
         "price": 1141.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "mainland_exchange",
+        "priceCurrencySource": "dated_counter_quote",
         "priceSource": "Tencent unadjusted daily close",
         "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq",
         "shares": 85947726,
-        "sharesClass": "total_issued_shares",
-        "sharesAsOf": "2026-03-25",
-        "sharesSource": "issuer_filing",
-        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325",
-        "sharesTiming": "issuer_disclosed_at_application",
-        "retrievedAt": "2026-06-11T09:27:18",
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-03-16",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=186",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:27+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "98066355366.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [],
-        "valueCnyExact": "98066355366.00",
-        "priceEvidenceSha256": "25cebbf1fefdfd6a2d633d2783b0391eff2c0afa2a7c21ae5cfed0bfa655e620",
-        "sharesEvidenceSha256": "b1bd6941e0b866baf5e46f14b229246fe5e4b98ffb73aa2183634c9e3e09b294"
+        "validationIssues": [
+          "shares_date_differs_from_anchor"
+        ]
       },
-      "aShareMarketCapSampleEligible": true,
+      "aShareMarketCapSampleEligible": false,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-03-25",
       "aShareMarketCapTradeDate": "2026-03-25",
@@ -123853,6 +123900,10 @@
         {
           "label": "A股收盘价",
           "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=186"
         }
       ]
     },
@@ -123932,35 +123983,35 @@
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "verified",
-        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
-        "scope": "total_issued_equity_at_a_price",
+        "status": "estimate",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-03-25",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-25",
         "price": 1141.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "mainland_exchange",
+        "priceCurrencySource": "dated_counter_quote",
         "priceSource": "Tencent unadjusted daily close",
         "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq",
         "shares": 85947726,
-        "sharesClass": "total_issued_shares",
-        "sharesAsOf": "2026-03-25",
-        "sharesSource": "issuer_filing",
-        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325",
-        "sharesTiming": "issuer_disclosed_at_application",
-        "retrievedAt": "2026-06-11T09:27:18",
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-03-16",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=186",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:27+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "98066355366.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [],
-        "valueCnyExact": "98066355366.00",
-        "priceEvidenceSha256": "25cebbf1fefdfd6a2d633d2783b0391eff2c0afa2a7c21ae5cfed0bfa655e620",
-        "sharesEvidenceSha256": "b1bd6941e0b866baf5e46f14b229246fe5e4b98ffb73aa2183634c9e3e09b294"
+        "validationIssues": [
+          "shares_date_differs_from_anchor"
+        ]
       },
-      "aShareMarketCapSampleEligible": true,
+      "aShareMarketCapSampleEligible": false,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-03-25",
       "aShareMarketCapTradeDate": "2026-03-25",
@@ -124012,6 +124063,10 @@
         {
           "label": "A股收盘价",
           "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=186"
         }
       ]
     },
@@ -145473,35 +145528,35 @@
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "verified",
-        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
-        "scope": "total_issued_equity_at_a_price",
+        "status": "estimate",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-01-27",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-01-27",
         "price": 92.78,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "mainland_exchange",
+        "priceCurrencySource": "dated_counter_quote",
         "priceSource": "Tencent unadjusted daily close",
         "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603179,day,2026-01-27,2026-01-27,2,bfq",
         "shares": 510141893,
-        "sharesClass": "total_issued_shares",
-        "sharesAsOf": "2026-01-27",
-        "sharesSource": "issuer_filing",
-        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-01-09/1224925412.PDF#page=35",
-        "sharesTiming": "issuer_disclosed_at_application",
-        "retrievedAt": "2026-06-11T09:27:03",
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-09",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-01-09/1224925412.PDF#page=36",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:27+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "47330964832.54",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [],
-        "valueCnyExact": "47330964832.54",
-        "priceEvidenceSha256": "abfe7ea4aec3f0bcbd5966247e742705cad2d4b63fcae92b6cce87116b8fe137",
-        "sharesEvidenceSha256": "60a3a58e5e4d25ba7cab0f704eafe10297a778a83ce8e88f689d3eae98c54749"
+        "validationIssues": [
+          "shares_date_differs_from_anchor"
+        ]
       },
-      "aShareMarketCapSampleEligible": true,
+      "aShareMarketCapSampleEligible": false,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-01-27",
       "aShareMarketCapTradeDate": "2026-01-27",
@@ -145554,6 +145609,10 @@
         {
           "label": "A股收盘价",
           "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603179,day,2026-01-27,2026-01-27,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-01-09/1224925412.PDF#page=36"
         }
       ]
     },
@@ -159366,34 +159425,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_current_at_fetch_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2025-06-26",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2025-06-26",
-        "price": 109.39286041259766,
+        "price": 153.15,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_fast_info_current_shares",
-        "priceSourceUrl": null,
-        "shares": 196000000.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_fast_info_current_shares",
-        "sharesSourceUrl": null,
-        "sharesTiming": "current_at_fetch",
-        "retrievedAt": "2026-06-11T09:27:02",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688615,day,2025-06-26,2025-06-26,2,bfq",
+        "shares": 140000000,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-05-26",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2025-05-26/1223675654.PDF#page=1",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:33+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "21441000000.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -159437,6 +159493,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688615,day,2025-06-26,2025-06-26,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-05-26/1223675654.PDF#page=1"
         }
       ]
     },
@@ -168574,7 +168638,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 38.5381,
+      "aShareMarketCapAtA1RmbBn": 53.95330547172,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -168597,34 +168661,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2025-10-22",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2025-10-22",
-        "price": 111.34285736083984,
+        "price": 155.88,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 346120769.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-11T09:27:11",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300857,day,2025-10-22,2025-10-22,2,bfq",
+        "shares": 346120769,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-08-01",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-03-17/1225012787.PDF#page=129",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:19:43+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "53953305471.72",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -168653,6 +168714,14 @@
         {
           "label": "发行人接收公告（巨潮）",
           "url": "http://static.cninfo.com.cn/finalpage/2025-11-17/1224809614.PDF"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300857,day,2025-10-22,2025-10-22,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-03-17/1225012787.PDF#page=129"
         }
       ]
     },
@@ -168710,7 +168779,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 38.5381,
+      "aShareMarketCapAtA1RmbBn": 53.95330547172,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -168733,34 +168802,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2025-10-22",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2025-10-22",
-        "price": 111.34285736083984,
+        "price": 155.88,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 346120769.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-11T09:27:11",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300857,day,2025-10-22,2025-10-22,2,bfq",
+        "shares": 346120769,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-08-01",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-03-17/1225012787.PDF#page=129",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:19:43+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "53953305471.72",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -168789,6 +168855,14 @@
         {
           "label": "发行人接收公告（巨潮）",
           "url": "http://static.cninfo.com.cn/finalpage/2025-11-17/1224809614.PDF"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300857,day,2025-10-22,2025-10-22,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-03-17/1225012787.PDF#page=129"
         }
       ]
     },
@@ -168846,7 +168920,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 38.5381,
+      "aShareMarketCapAtA1RmbBn": 53.95330547172,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -168869,34 +168943,31 @@
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2025-10-22",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2025-10-22",
-        "price": 111.34285736083984,
+        "price": 155.88,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 346120769.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
-        "retrievedAt": "2026-06-11T09:27:11",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300857,day,2025-10-22,2025-10-22,2,bfq",
+        "shares": 346120769,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-08-01",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-03-17/1225012787.PDF#page=129",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:19:43+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "53953305471.72",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
+          "shares_date_differs_from_anchor"
         ]
       },
       "aShareMarketCapSampleEligible": false,
@@ -168925,6 +168996,14 @@
         {
           "label": "发行人接收公告（巨潮）",
           "url": "http://static.cninfo.com.cn/finalpage/2025-11-17/1224809614.PDF"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300857,day,2025-10-22,2025-10-22,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-03-17/1225012787.PDF#page=129"
         }
       ]
     },
@@ -296698,6 +296777,10 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7672136/content.shtml"
         }
       ]
     },
@@ -296952,6 +297035,10 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7672136/content.shtml"
         }
       ]
     },
@@ -297206,6 +297293,10 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c100098/c7672136/content.shtml"
         }
       ]
     },
@@ -298173,6 +298264,152 @@
           "checkedAt": "2026-11-19T18:21:54.338056+00:00",
           "lastAttemptAt": "2026-11-19T18:21:54.338056+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7570804/content.shtml"
+        }
+      ]
+    },
+    {
+      "issuerId": "csrc_notice:7591744",
+      "issuerName": "南京普爱医疗设备股份有限公司",
+      "csrcName": "南京普爱医疗设备股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "gtja",
+      "sourceSponsorTag": "GTJA",
+      "sourceSponsorTags": [
+        "GTJA"
+      ],
+      "leaderboardSponsorTag": "GTJA",
+      "sponsorLegalName": "Guotai Junan Capital Limited",
+      "sponsorLegalNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "hkexPublicStatus": "失效",
+      "applicationStatusGroup": "lapsed",
+      "applicationStatusLabelZh": "申请已失效",
+      "hkexApplicationProofEvidence": null,
+      "hkexReturnedApplication": null,
+      "hkexListingStockCode": "",
+      "issuerSearchAliases": [
+        "南京普愛醫療設備股份有限公司",
+        "南京普爱医疗设备股份有限公司"
+      ],
+      "a1Date": "2025-04-30",
+      "currentA1Date": "2025-04-30",
+      "receivedDate": "2025-05-22",
+      "noticeDate": "2025-10-27",
+      "noticeDateBasis": "official_signature_date",
+      "noticePublishedDate": "2025-10-29",
+      "listingDate": null,
+      "transactionCompletionDate": null,
+      "transactionCompletionSourceUrl": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "hkListingSessionClose": null,
+      "listingMarketCapEstimateHkdBn": null,
+      "listingMarketCapProvenance": {
+        "version": 2,
+        "status": "unsupported",
+        "policy": "hk_ordinary_ex_treasury",
+        "scope": "full_ordinary_equity_excluding_treasury",
+        "method": "hk_close_x_full_ordinary_shares_ex_treasury",
+        "anchorDate": null,
+        "valueCurrency": "HKD",
+        "priceDatePolicy": "same_day_or_calendar_proven_latest_close",
+        "valueHkdExact": null,
+        "components": [],
+        "fx": null,
+        "fxStatus": "not_applicable",
+        "coverageEvidence": null
+      },
+      "listingMarketCapSampleEligible": false,
+      "aShareMarketCapProvenance": {
+        "version": 1,
+        "status": "unsupported",
+        "method": "historical_close_x_unverified_shares",
+        "scope": "unverified_share_basis_at_a_price",
+        "anchorDate": null,
+        "anchorSource": null,
+        "priceDate": null,
+        "price": null,
+        "priceClass": "A",
+        "priceCurrency": "CNY",
+        "priceCurrencySource": "legacy_cache_contract_unverified",
+        "priceSource": null,
+        "priceSourceUrl": null,
+        "shares": null,
+        "sharesClass": "unverified",
+        "sharesAsOf": null,
+        "sharesSource": null,
+        "sharesSourceUrl": null,
+        "sharesTiming": "unverified",
+        "retrievedAt": null,
+        "valueCurrency": "CNY",
+        "fxMethod": "none_single_price_currency",
+        "fxRate": null,
+        "fxDate": null,
+        "validationIssues": [
+          "missing_or_invalid_anchor_date",
+          "missing_or_invalid_price_date",
+          "missing_or_invalid_price",
+          "missing_or_invalid_shares",
+          "missing_or_invalid_market_cap",
+          "share_class_unverified",
+          "share_capital_not_officially_verified",
+          "vendor_price_corporate_action_basis_unverified",
+          "shares_asof_unverified",
+          "price_currency_assumed_from_cache_contract"
+        ]
+      },
+      "aShareMarketCapSampleEligible": false,
+      "aShareMarketCapRankEligible": false,
+      "aShareMarketCapAnchorDate": null,
+      "aShareMarketCapTradeDate": null,
+      "calendarDaysA1ToNotice": 180.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 22.0,
+      "calendarDaysCurrentA1ToReceived": 22,
+      "durationSampleEligible": true,
+      "csrcFilingRequired": true,
+      "csrcFilingApplicability": "required",
+      "noticeSupersededByCurrentFiling": false,
+      "listingDurationSampleEligible": false,
+      "listingTiming": null,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "A1已失效"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7591744/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"
+        },
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
         },
         {
           "label": "补充材料公示",
@@ -308926,35 +309163,35 @@
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "verified",
-        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
-        "scope": "total_issued_equity_at_a_price",
+        "status": "estimate",
+        "method": "unadjusted_close_x_issuer_disclosed_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-03-25",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-25",
         "price": 1141.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "mainland_exchange",
+        "priceCurrencySource": "dated_counter_quote",
         "priceSource": "Tencent unadjusted daily close",
         "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq",
         "shares": 85947726,
-        "sharesClass": "total_issued_shares",
-        "sharesAsOf": "2026-03-25",
-        "sharesSource": "issuer_filing",
-        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325",
-        "sharesTiming": "issuer_disclosed_at_application",
-        "retrievedAt": "2026-06-11T09:27:18",
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-03-16",
+        "sharesSource": "Issuer capital disclosure",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=186",
+        "sharesTiming": "issuer_disclosed_as_of",
+        "retrievedAt": "2026-11-21T09:07:27+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "98066355366.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [],
-        "valueCnyExact": "98066355366.00",
-        "priceEvidenceSha256": "25cebbf1fefdfd6a2d633d2783b0391eff2c0afa2a7c21ae5cfed0bfa655e620",
-        "sharesEvidenceSha256": "b1bd6941e0b866baf5e46f14b229246fe5e4b98ffb73aa2183634c9e3e09b294"
+        "validationIssues": [
+          "shares_date_differs_from_anchor"
+        ]
       },
-      "aShareMarketCapSampleEligible": true,
+      "aShareMarketCapSampleEligible": false,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-03-25",
       "aShareMarketCapTradeDate": "2026-03-25",
@@ -309006,6 +309243,10 @@
         {
           "label": "A股收盘价",
           "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq"
+        },
+        {
+          "label": "发行人披露A股股本 / Issued A-share capital",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=186"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -321567,6 +321808,160 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/c7667706/content.shtml"
+        }
+      ],
+      "sourceSponsorId": "gtja",
+      "sourceSponsorIds": [
+        "gtja"
+      ],
+      "sourceSponsorLegalNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "isSyntheticRollup": true
+    },
+    {
+      "issuerId": "csrc_notice:7591744",
+      "issuerName": "南京普爱医疗设备股份有限公司",
+      "csrcName": "南京普爱医疗设备股份有限公司",
+      "hkexListingCompanyName": "",
+      "sponsorId": "group-gtja-haitong",
+      "sourceSponsorTag": "GTJA",
+      "sourceSponsorTags": [
+        "GTJA"
+      ],
+      "leaderboardSponsorTag": "GTJA",
+      "sponsorLegalName": "国泰海通",
+      "sponsorLegalNames": [
+        "Guotai Junan Capital Limited"
+      ],
+      "sponsorOrder": 1,
+      "sponsorCountOnDeal": 1,
+      "creditAllFull": 1.0,
+      "creditEqual": 1.0,
+      "creditFirstNamed": 1.0,
+      "hkexStage": "applying",
+      "status": "notice_issued",
+      "statusLabelZh": "已发通知书",
+      "hkexPublicStatus": "失效",
+      "applicationStatusGroup": "lapsed",
+      "applicationStatusLabelZh": "申请已失效",
+      "hkexApplicationProofEvidence": null,
+      "hkexReturnedApplication": null,
+      "hkexListingStockCode": "",
+      "issuerSearchAliases": [
+        "南京普愛醫療設備股份有限公司",
+        "南京普爱医疗设备股份有限公司"
+      ],
+      "a1Date": "2025-04-30",
+      "currentA1Date": "2025-04-30",
+      "receivedDate": "2025-05-22",
+      "noticeDate": "2025-10-27",
+      "noticeDateBasis": "official_signature_date",
+      "noticePublishedDate": "2025-10-29",
+      "listingDate": null,
+      "transactionCompletionDate": null,
+      "transactionCompletionSourceUrl": null,
+      "issuerType": "H股",
+      "isAH": false,
+      "specialListingRoute": null,
+      "industryTags": [
+        "医药/生物科技/医疗器械制造"
+      ],
+      "csrcIndustryTags": [
+        "制造业"
+      ],
+      "aShareMarketCapAtA1RmbBn": null,
+      "listingMarketCapHkdBn": null,
+      "hkListingSessionClose": null,
+      "listingMarketCapEstimateHkdBn": null,
+      "listingMarketCapProvenance": {
+        "version": 2,
+        "status": "unsupported",
+        "policy": "hk_ordinary_ex_treasury",
+        "scope": "full_ordinary_equity_excluding_treasury",
+        "method": "hk_close_x_full_ordinary_shares_ex_treasury",
+        "anchorDate": null,
+        "valueCurrency": "HKD",
+        "priceDatePolicy": "same_day_or_calendar_proven_latest_close",
+        "valueHkdExact": null,
+        "components": [],
+        "fx": null,
+        "fxStatus": "not_applicable",
+        "coverageEvidence": null
+      },
+      "listingMarketCapSampleEligible": false,
+      "aShareMarketCapProvenance": {
+        "version": 1,
+        "status": "unsupported",
+        "method": "historical_close_x_unverified_shares",
+        "scope": "unverified_share_basis_at_a_price",
+        "anchorDate": null,
+        "anchorSource": null,
+        "priceDate": null,
+        "price": null,
+        "priceClass": "A",
+        "priceCurrency": "CNY",
+        "priceCurrencySource": "legacy_cache_contract_unverified",
+        "priceSource": null,
+        "priceSourceUrl": null,
+        "shares": null,
+        "sharesClass": "unverified",
+        "sharesAsOf": null,
+        "sharesSource": null,
+        "sharesSourceUrl": null,
+        "sharesTiming": "unverified",
+        "retrievedAt": null,
+        "valueCurrency": "CNY",
+        "fxMethod": "none_single_price_currency",
+        "fxRate": null,
+        "fxDate": null,
+        "validationIssues": [
+          "missing_or_invalid_anchor_date",
+          "missing_or_invalid_price_date",
+          "missing_or_invalid_price",
+          "missing_or_invalid_shares",
+          "missing_or_invalid_market_cap",
+          "share_class_unverified",
+          "share_capital_not_officially_verified",
+          "vendor_price_corporate_action_basis_unverified",
+          "shares_asof_unverified",
+          "price_currency_assumed_from_cache_contract"
+        ]
+      },
+      "aShareMarketCapSampleEligible": false,
+      "aShareMarketCapRankEligible": false,
+      "aShareMarketCapAnchorDate": null,
+      "aShareMarketCapTradeDate": null,
+      "calendarDaysA1ToNotice": 180.0,
+      "calendarDaysA1ToListing": null,
+      "calendarDaysA1ToReceived": 22.0,
+      "calendarDaysCurrentA1ToReceived": 22,
+      "durationSampleEligible": true,
+      "csrcFilingRequired": true,
+      "csrcFilingApplicability": "required",
+      "noticeSupersededByCurrentFiling": false,
+      "listingDurationSampleEligible": false,
+      "listingTiming": null,
+      "hkexConfidentialFilingDate": null,
+      "statusTags": [
+        "A1已失效"
+      ],
+      "sourceLinks": [
+        {
+          "label": "备案通知书",
+          "url": "https://www.csrc.gov.cn/csrc/c105984/c7591744/content.shtml"
+        },
+        {
+          "label": "HKEX Main Board Consolidated Index",
+          "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"
+        },
+        {
+          "label": "历史备案情况表转载（接收日期核验）",
+          "url": "https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"
+        },
+        {
+          "label": "补充材料公示",
+          "url": "https://www.csrc.gov.cn/csrc/c105983/c7570804/content.shtml"
         }
       ],
       "sourceSponsorId": "gtja",

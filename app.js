@@ -871,11 +871,29 @@ function renderStatusTags(record) {
 }
 
 function issuerDocumentSource(source) {
-  if (!source || !/^https:\/\/www1\.hkexnews\.hk\/app\/(sehk|gem)\/\d{4}\/\d+\/documents\/(sehk|gem)\d+(_c)?\.pdf$/.test(source.url)) return "";
+  if (!source) return "";
+  const ap = /^https:\/\/www1\.hkexnews\.hk\/app\/(sehk|gem)\/\d{4}\/\d+\/documents\/(sehk|gem)\d+(_c)?\.pdf$/.test(source.url);
+  const report = /^https:\/\/www1?\.hkexnews\.hk\/listedco\/listconews\/(sehk|gem)\/\d{4}\/\d{4}\/\d+(_c)?\.pdf$/.test(source.url);
+  if (!ap && !report) return "";
   const pages = (source.pdfPages || []).filter(page => Number.isInteger(page) && page > 0);
   if (!pages.length) return "";
-  const doc = source.documentType === "PHIP" ? "聆讯后资料集" : "申请版本";
+  const doc = {PHIP:"聆讯后资料集", AP:"申请版本", board_transfer_announcement:"转板公告", annual_results:"全年业绩公告"}[source.documentType] || "港交所文件";
   return `<a href="${escapeHtml(source.url)}#page=${pages[0]}" target="_blank" rel="noreferrer">${doc} · ${escapeHtml(source.documentDate)} · PDF 第${pages.join("、")}页</a>`;
+}
+
+function renderListingRole(record, detailed = false) {
+  const role = record.listingRoleDisclosure;
+  if (!role) return "";
+  let label;
+  if (role.kind === "sole_listing_agent" && role.legalName) {
+    label = `独家上市代理 · ${role.legalName}`;
+  } else if (role.kind === "chapter_9b_transfer") {
+    label = "第9B章简化转板";
+  } else {
+    return "";
+  }
+  if (!detailed) return `<span>${escapeHtml(label)}</span>`;
+  return `<div class="sponsor-detail"><strong>${escapeHtml(label)}</strong>${issuerDocumentSource(role.source)}</div>`;
 }
 
 function renderIssuerDisclosure(record) {
@@ -1591,7 +1609,7 @@ function renderRows() {
           <td class="mcap-cell">${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>
           <td class="mcap-cell all-only-col">${formatListingMarketCap(record)}</td>
           <td class="industry-cell"><div class="tag-list">${industries || escapeHtml(record.industryDisplayLabel || "")}</div></td>
-          <td><div class="tag-list">${sponsors}</div></td>
+          <td><div class="tag-list">${sponsors}${renderListingRole(record)}</div></td>
         </tr>
       `;
     })
@@ -2022,7 +2040,7 @@ function renderDetail(record) {
       </div>
       <div class="detail-item">
         <span>保荐人 Sponsors</span>
-        <div class="sponsor-detail-list">${sponsorList || "<span>待抽取</span>"}</div>
+        <div class="sponsor-detail-list">${(sponsorList + renderListingRole(record, true)) || "<span>待抽取</span>"}</div>
       </div>
       ${renderTransactionDisclosures(record)}
       ${renderListingFeeTerms(record)}
