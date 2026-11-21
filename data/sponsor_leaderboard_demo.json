@@ -1,13 +1,13 @@
 {
   "meta": {
-    "generatedAt": "2026-11-21T07:52:28Z",
-    "sourceGeneratedAt": "2026-11-21T15:51:15+08:00",
+    "generatedAt": "2026-11-21T08:02:26Z",
+    "sourceGeneratedAt": "2026-11-21T15:57:10+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T15:51:15+08:00",
+      "generatedAt": "2026-11-21T15:57:10+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1480,
@@ -4847,15 +4847,15 @@
       "projectCount": 237.0,
       "activeCount": 113.0,
       "applicationStatusCounts": {
-        "未见港交所申请状态": 1.0,
+        "已刊发申请版本": 4.0,
         "港交所处理中": 89.0,
         "申请已失效": 18.0,
         "申请已撤回": 1.0,
-        "证监会已有公开记录": 4.0
+        "申请已被发回": 1.0
       },
       "hkexActiveCount": 89.0,
-      "hkexInactiveCount": 19.0,
-      "hkexOtherStatusCount": 5.0,
+      "hkexInactiveCount": 20.0,
+      "hkexOtherStatusCount": 4.0,
       "listedCount": 116.0,
       "noticeCount": 114.0,
       "ahCount": 59.0,
@@ -4863,7 +4863,7 @@
       "redChipCount": 55.0,
       "deSpacCount": 0,
       "hdrCount": 1.0,
-      "listingMarketCapHkdBnSum": 6060.915445126251,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 17.9741900525,
       "listingMarketCapN": 66,
       "listingMarketCapCoverage": {
@@ -4873,7 +4873,7 @@
         "missing": 0,
         "total": 116
       },
-      "aShareMarketCapRmbBnSum": 4812.356570625,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 39.91075,
       "aShareMarketCapN": 54,
       "aShareMarketCapCoverage": {
@@ -5199,9 +5199,9 @@
       "projectCount": 178.0,
       "activeCount": 90.0,
       "applicationStatusCounts": {
+        "已刊发申请版本": 1.0,
         "港交所处理中": 66.0,
-        "申请已失效": 23.0,
-        "证监会已有公开记录": 1.0
+        "申请已失效": 23.0
       },
       "hkexActiveCount": 66.0,
       "hkexInactiveCount": 23.0,
@@ -5213,7 +5213,7 @@
       "redChipCount": 25.0,
       "deSpacCount": 1.0,
       "hdrCount": 1.0,
-      "listingMarketCapHkdBnSum": 2389.7940323360713,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 13.1360304803,
       "listingMarketCapN": 55,
       "listingMarketCapCoverage": {
@@ -5223,7 +5223,7 @@
         "missing": 3,
         "total": 81
       },
-      "aShareMarketCapRmbBnSum": 3248.3248652820002,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 39.0254,
       "aShareMarketCapN": 59,
       "aShareMarketCapCoverage": {
@@ -5543,10 +5543,10 @@
       "projectCount": 117.0,
       "activeCount": 59.0,
       "applicationStatusCounts": {
+        "已刊发申请版本": 2.0,
         "港交所处理中": 40.0,
         "申请已失效": 14.0,
-        "申请已撤回": 3.0,
-        "证监会已有公开记录": 2.0
+        "申请已撤回": 3.0
       },
       "hkexActiveCount": 40.0,
       "hkexInactiveCount": 17.0,
@@ -5558,7 +5558,7 @@
       "redChipCount": 22.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1435.9777989907052,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 15.2430719755,
       "listingMarketCapN": 36,
       "listingMarketCapCoverage": {
@@ -5568,7 +5568,7 @@
         "missing": 1,
         "total": 55
       },
-      "aShareMarketCapRmbBnSum": 2072.4579000000003,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 30.1571,
       "aShareMarketCapN": 38,
       "aShareMarketCapCoverage": {
@@ -5911,7 +5911,7 @@
       "redChipCount": 15.0,
       "deSpacCount": 1.0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 780.1569358028328,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 16.4641418840732,
       "listingMarketCapN": 32,
       "listingMarketCapCoverage": {
@@ -5921,7 +5921,7 @@
         "missing": 3,
         "total": 50
       },
-      "aShareMarketCapRmbBnSum": 885.0543234694201,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 34.2248,
       "aShareMarketCapN": 21,
       "aShareMarketCapCoverage": {
@@ -6070,10 +6070,10 @@
       "projectCount": 65.0,
       "activeCount": 35.0,
       "applicationStatusCounts": {
+        "已刊发申请版本": 1.0,
         "港交所处理中": 27.0,
         "申请已失效": 6.0,
-        "申请已撤回": 1.0,
-        "证监会已有公开记录": 1.0
+        "申请已撤回": 1.0
       },
       "hkexActiveCount": 27.0,
       "hkexInactiveCount": 7.0,
@@ -6085,7 +6085,7 @@
       "redChipCount": 7.0,
       "deSpacCount": 1.0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1464.6409989095841,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 12.726177315000001,
       "listingMarketCapN": 12,
       "listingMarketCapCoverage": {
@@ -6434,7 +6434,7 @@
       "redChipCount": 3.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 492.2460243547821,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 18.942304479169998,
       "listingMarketCapN": 16,
       "listingMarketCapCoverage": {
@@ -6444,7 +6444,7 @@
         "missing": 2,
         "total": 26
       },
-      "aShareMarketCapRmbBnSum": 552.5309234694201,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 22.8171,
       "aShareMarketCapN": 13,
       "aShareMarketCapCoverage": {
@@ -6764,9 +6764,9 @@
       "projectCount": 54.0,
       "activeCount": 28.0,
       "applicationStatusCounts": {
+        "已刊发申请版本": 2.0,
         "港交所处理中": 17.0,
-        "申请已失效": 9.0,
-        "证监会已有公开记录": 2.0
+        "申请已失效": 9.0
       },
       "hkexActiveCount": 17.0,
       "hkexInactiveCount": 9.0,
@@ -6778,7 +6778,7 @@
       "redChipCount": 13.0,
       "deSpacCount": 2.0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 150.95612806587,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 9.8922175811,
       "listingMarketCapN": 12,
       "listingMarketCapCoverage": {
@@ -6788,7 +6788,7 @@
         "missing": 1,
         "total": 24
       },
-      "aShareMarketCapRmbBnSum": 271.1256,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 44.7627,
       "aShareMarketCapN": 7,
       "aShareMarketCapCoverage": {
@@ -7143,7 +7143,7 @@
       "redChipCount": 12.0,
       "deSpacCount": 1.0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 334.90043473170226,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 12.236619027749999,
       "listingMarketCapN": 18,
       "listingMarketCapCoverage": {
@@ -7489,7 +7489,7 @@
       "redChipCount": 17.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1738.1921379064925,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 17.51447512,
       "listingMarketCapN": 11,
       "listingMarketCapCoverage": {
@@ -7499,7 +7499,7 @@
         "missing": 1,
         "total": 30
       },
-      "aShareMarketCapRmbBnSum": 1207.1433,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 100.5074,
       "aShareMarketCapN": 9,
       "aShareMarketCapCoverage": {
@@ -7832,7 +7832,7 @@
       "redChipCount": 12.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 123.39128521280001,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 10.516406271,
       "listingMarketCapN": 11,
       "listingMarketCapCoverage": {
@@ -7842,7 +7842,7 @@
         "missing": 0,
         "total": 19
       },
-      "aShareMarketCapRmbBnSum": 30.980800000000002,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 15.490400000000001,
       "aShareMarketCapN": 2,
       "aShareMarketCapCoverage": {
@@ -8175,7 +8175,7 @@
       "redChipCount": 5.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 168.31783922768523,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 17.6845829,
       "listingMarketCapN": 7,
       "listingMarketCapCoverage": {
@@ -8519,7 +8519,7 @@
       "redChipCount": 13.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2567.0982350585073,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 67.5055144384,
       "listingMarketCapN": 12,
       "listingMarketCapCoverage": {
@@ -8529,7 +8529,7 @@
         "missing": 0,
         "total": 21
       },
-      "aShareMarketCapRmbBnSum": 1453.9848,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 57.58455,
       "aShareMarketCapN": 12,
       "aShareMarketCapCoverage": {
@@ -8849,7 +8849,7 @@
       "projectCount": 33.0,
       "activeCount": 18.0,
       "applicationStatusCounts": {
-        "未见港交所申请状态": 1.0,
+        "已刊发申请版本": 1.0,
         "港交所处理中": 17.0
       },
       "hkexActiveCount": 17.0,
@@ -8862,7 +8862,7 @@
       "redChipCount": 8.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1423.2642043168194,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 19.7923008,
       "listingMarketCapN": 6,
       "listingMarketCapCoverage": {
@@ -8872,7 +8872,7 @@
         "missing": 2,
         "total": 14
       },
-      "aShareMarketCapRmbBnSum": 634.9259,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 33.4825,
       "aShareMarketCapN": 11,
       "aShareMarketCapCoverage": {
@@ -9192,9 +9192,9 @@
       "projectCount": 32.0,
       "activeCount": 16.0,
       "applicationStatusCounts": {
+        "已刊发申请版本": 1.0,
         "港交所处理中": 12.0,
-        "申请已失效": 3.0,
-        "证监会已有公开记录": 1.0
+        "申请已失效": 3.0
       },
       "hkexActiveCount": 12.0,
       "hkexInactiveCount": 3.0,
@@ -9206,7 +9206,7 @@
       "redChipCount": 13.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 1680.6661276507932,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 66.95317141187788,
       "listingMarketCapN": 6,
       "listingMarketCapCoverage": {
@@ -9547,7 +9547,7 @@
       "redChipCount": 9.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 69.32076103301002,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 7.576,
       "listingMarketCapN": 9,
       "listingMarketCapCoverage": {
@@ -9893,7 +9893,7 @@
       "redChipCount": 14.0,
       "deSpacCount": 1.0,
       "hdrCount": 1.0,
-      "listingMarketCapHkdBnSum": 630.5696080656513,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 38.528240636549995,
       "listingMarketCapN": 10,
       "listingMarketCapCoverage": {
@@ -9903,7 +9903,7 @@
         "missing": 1,
         "total": 18
       },
-      "aShareMarketCapRmbBnSum": 658.654,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 96.8121,
       "aShareMarketCapN": 8,
       "aShareMarketCapCoverage": {
@@ -10223,10 +10223,10 @@
       "projectCount": 22.0,
       "activeCount": 10.0,
       "applicationStatusCounts": {
+        "已刊发申请版本": 1.0,
         "港交所处理中": 7.0,
         "申请已失效": 1.0,
-        "申请已撤回": 1.0,
-        "证监会已有公开记录": 1.0
+        "申请已撤回": 1.0
       },
       "hkexActiveCount": 7.0,
       "hkexInactiveCount": 2.0,
@@ -10238,7 +10238,7 @@
       "redChipCount": 9.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 382.1385008678787,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 20.301404227325826,
       "listingMarketCapN": 8,
       "listingMarketCapCoverage": {
@@ -10579,7 +10579,7 @@
       "redChipCount": 9.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 2260.604836471789,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 116.43724223956383,
       "listingMarketCapN": 8,
       "listingMarketCapCoverage": {
@@ -10942,7 +10942,7 @@
       "redChipCount": 4.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 55.09338189876,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 3.0277802,
       "listingMarketCapN": 5,
       "listingMarketCapCoverage": {
@@ -11307,7 +11307,7 @@
       "redChipCount": 4.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 182.75283857698,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 23.6270561806,
       "listingMarketCapN": 6,
       "listingMarketCapCoverage": {
@@ -11650,7 +11650,7 @@
       "redChipCount": 2.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 57.578896433459995,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 12.1549376018,
       "listingMarketCapN": 5,
       "listingMarketCapCoverage": {
@@ -12018,7 +12018,7 @@
       "redChipCount": 5.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 10.002195472,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 10.002195472,
       "listingMarketCapN": 1,
       "listingMarketCapCoverage": {
@@ -12028,7 +12028,7 @@
         "missing": 0,
         "total": 7
       },
-      "aShareMarketCapRmbBnSum": 104.69189477,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 24.07319477,
       "aShareMarketCapN": 3,
       "aShareMarketCapCoverage": {
@@ -12361,7 +12361,7 @@
       "redChipCount": 4.0,
       "deSpacCount": 1.0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 234.31214825763655,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 234.31214825763655,
       "listingMarketCapN": 1,
       "listingMarketCapCoverage": {
@@ -12726,7 +12726,7 @@
       "redChipCount": 1.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 278.1872229246113,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 82.570698382,
       "listingMarketCapN": 3,
       "listingMarketCapCoverage": {
@@ -12736,7 +12736,7 @@
         "missing": 0,
         "total": 6
       },
-      "aShareMarketCapRmbBnSum": 24.0556,
+      "aShareMarketCapRmbBnSum": null,
       "aShareMarketCapRmbBnMedian": 12.0278,
       "aShareMarketCapN": 2,
       "aShareMarketCapCoverage": {
@@ -13091,7 +13091,7 @@
       "redChipCount": 1.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 576.6402001372337,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 288.32010006861685,
       "listingMarketCapN": 2,
       "listingMarketCapCoverage": {
@@ -13455,7 +13455,7 @@
       "redChipCount": 2.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 32.726560401,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 11.975724,
       "listingMarketCapN": 3,
       "listingMarketCapCoverage": {
@@ -13820,7 +13820,7 @@
       "redChipCount": 5.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 33.147677746,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 16.573838873,
       "listingMarketCapN": 2,
       "listingMarketCapCoverage": {
@@ -14184,7 +14184,7 @@
       "redChipCount": 5.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 51.07878551900001,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 12.5215310895,
       "listingMarketCapN": 4,
       "listingMarketCapCoverage": {
@@ -14549,7 +14549,7 @@
       "redChipCount": 0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 24.082290501899998,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 9.77865717,
       "listingMarketCapN": 3,
       "listingMarketCapCoverage": {
@@ -14901,8 +14901,8 @@
       "projectCount": 10.0,
       "activeCount": 4.0,
       "applicationStatusCounts": {
-        "港交所处理中": 3.0,
-        "证监会已有公开记录": 1.0
+        "已刊发申请版本": 1.0,
+        "港交所处理中": 3.0
       },
       "hkexActiveCount": 3.0,
       "hkexInactiveCount": 0,
@@ -16011,7 +16011,7 @@
       "redChipCount": 2.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 15.6638012,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 7.8319006,
       "listingMarketCapN": 2,
       "listingMarketCapCoverage": {
@@ -16363,10 +16363,9 @@
       "projectCount": 7.0,
       "activeCount": 5.0,
       "applicationStatusCounts": {
-        "未见港交所申请状态": 1.0,
+        "已刊发申请版本": 2.0,
         "港交所处理中": 2.0,
-        "申请已失效": 1.0,
-        "证监会已有公开记录": 1.0
+        "申请已失效": 1.0
       },
       "hkexActiveCount": 2.0,
       "hkexInactiveCount": 1.0,
@@ -16743,7 +16742,7 @@
       "redChipCount": 0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 22.419992505,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 22.419992505,
       "listingMarketCapN": 1,
       "listingMarketCapCoverage": {
@@ -18930,7 +18929,7 @@
       "redChipCount": 2.0,
       "deSpacCount": 1.0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 17.2742612721,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 17.2742612721,
       "listingMarketCapN": 1,
       "listingMarketCapCoverage": {
@@ -23856,7 +23855,7 @@
       "projectCount": 2.0,
       "activeCount": 1.0,
       "applicationStatusCounts": {
-        "证监会已有公开记录": 1.0
+        "已刊发申请版本": 1.0
       },
       "hkexActiveCount": 0,
       "hkexInactiveCount": 0,
@@ -24329,7 +24328,7 @@
       "redChipCount": 2.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "listingMarketCapHkdBnSum": 4.62200631645,
+      "listingMarketCapHkdBnSum": null,
       "listingMarketCapHkdBnMedian": 4.62200631645,
       "listingMarketCapN": 1,
       "listingMarketCapCoverage": {
@@ -80756,11 +80755,17 @@
       "hkexStage": "applying",
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
-      "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
-      "hkexReturnedApplication": null,
+      "hkexPublicStatus": "Returned",
+      "applicationStatusGroup": "returned",
+      "applicationStatusLabelZh": "申请已被发回",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108569/documents/sehk26052500340.pdf",
+        "date": "2026-05-25"
+      },
+      "hkexReturnedApplication": {
+        "date": "2026-06-22",
+        "url": "https://www1.hkexnews.hk/ncms/json/eds/appreturned_sehk_e.json"
+      },
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
         "Inner Mongolia Xingye Silver & Tin Mining Co., Ltd.",
@@ -80854,7 +80859,9 @@
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "申请已发回"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
@@ -87457,9 +87464,12 @@
       "status": "csrc_received",
       "statusLabelZh": "已接收",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108539/documents/sehk26051401789.pdf",
+        "date": "2026-05-14"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -96560,9 +96570,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108481/documents/sehk26042904997.pdf",
+        "date": "2026-04-29"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -102489,9 +102502,12 @@
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108459/documents/sehk26042302879.pdf",
+        "date": "2026-04-23"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -102945,9 +102961,12 @@
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108458/documents/sehk26042202191.pdf",
+        "date": "2026-04-22"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -103094,9 +103113,12 @@
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108458/documents/sehk26042202191.pdf",
+        "date": "2026-04-22"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -105745,9 +105767,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108444/documents/sehk26041501793.pdf",
+        "date": "2026-04-15"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -112254,9 +112279,12 @@
       "status": "csrc_received",
       "statusLabelZh": "已接收",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108413/documents/sehk26040203821.pdf",
+        "date": "2026-04-02"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -112398,9 +112426,12 @@
       "status": "csrc_received",
       "statusLabelZh": "已接收",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108413/documents/sehk26040203821.pdf",
+        "date": "2026-04-02"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -115243,9 +115274,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108395/documents/sehk26040104415.pdf",
+        "date": "2026-04-01"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -115390,9 +115424,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108395/documents/sehk26040104415.pdf",
+        "date": "2026-04-01"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -120548,9 +120585,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108366/documents/sehk26032900568.pdf",
+        "date": "2026-03-29"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -122904,9 +122944,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108344/documents/sehk26032704285.pdf",
+        "date": "2026-03-27"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -136596,9 +136639,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108253/documents/sehk26022701229.pdf",
+        "date": "2026-02-27"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -136745,9 +136791,12 @@
       "status": "regulator_opinion",
       "statusLabelZh": "征询监管意见中",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "csrc_only",
-      "applicationStatusLabelZh": "证监会已有公开记录",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108253/documents/sehk26022701229.pdf",
+        "date": "2026-02-27"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -137636,9 +137685,12 @@
       "status": "waiting_received",
       "statusLabelZh": "尚未接收",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "status_unreported",
-      "applicationStatusLabelZh": "未见港交所申请状态",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108251/documents/sehk26022501103.pdf",
+        "date": "2026-02-25"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -137771,9 +137823,12 @@
       "status": "waiting_received",
       "statusLabelZh": "尚未接收",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "status_unreported",
-      "applicationStatusLabelZh": "未见港交所申请状态",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108251/documents/sehk26022501103.pdf",
+        "date": "2026-02-25"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [
@@ -138140,9 +138195,12 @@
       "status": "waiting_received",
       "statusLabelZh": "尚未接收",
       "hkexPublicStatus": "",
-      "applicationStatusGroup": "status_unreported",
-      "applicationStatusLabelZh": "未见港交所申请状态",
-      "hkexApplicationProofEvidence": null,
+      "applicationStatusGroup": "published_ap",
+      "applicationStatusLabelZh": "已刊发申请版本",
+      "hkexApplicationProofEvidence": {
+        "url": "https://www1.hkexnews.hk/app/sehk/2026/108249/documents/sehk26022500847.pdf",
+        "date": "2026-02-25"
+      },
       "hkexReturnedApplication": null,
       "hkexListingStockCode": "",
       "issuerSearchAliases": [

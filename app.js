@@ -43,6 +43,7 @@ const statusLabels = {
 
 const viewTitles = {
   tracker: "监管节奏追踪",
+  hkexApplications: "港交所最新申请",
   sponsorLeaderboard: "保荐龙虎榜",
   sponsorPk: "保荐人擂台",
   precedents: "案例检索",
@@ -917,6 +918,7 @@ function getRecordText(record) {
   const sponsorAliases = (record.sponsors || []).flatMap((sponsor) => sponsorSearchAliases(sponsor));
   const rawText = [
     record.issuerName,
+    record.id === "leadrive technology (shanghai) co., ltd." ? "Leaddrive" : "",
     record.csrcName,
     ...(record.issuerSearchAliases || []),
     issuerTypeInfo(record).primary,
@@ -987,7 +989,10 @@ function renderHkexPostings(record, compact) {
     .sort((a, b) => b.date.localeCompare(a.date) || Number(a.previous) - Number(b.previous));
   if (!docs.length) return "";
   const lead = docs[0];
-  if (compact) return `<small>${escapeHtml(lead.date)} · ${escapeHtml(hkexDocumentLabel(lead.label))}</small>`;
+  if (compact) {
+    const labels = [...new Set(docs.filter(d => d.date === lead.date && !d.previous).map(d => hkexDocumentLabel(d.label)))];
+    return `<small>${escapeHtml(lead.date)} · ${escapeHtml(labels.join("、") || hkexDocumentLabel(lead.label))}</small>`;
+  }
   return `<details><summary>港交所申请文件 · ${escapeHtml(lead.date)}</summary>${docs.map(d =>
     `<div><a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">${escapeHtml(d.date)} · ${escapeHtml(hkexDocumentLabel(d.label))}</a>${d.previous ? " · 此前刊发" : ""}</div>`
   ).join("")}</details>`;
@@ -2041,7 +2046,57 @@ function trackerTitle() {
   return stageTitles[state.hkexStage] || "监管节奏追踪";
 }
 
+const hkexApFeed = "https://www1.hkexnews.hk/ncms/json/eds/appactive_app_sehk_e.json";
+const feedFilters = {query: "", from: ""};
+
+function renderApplicationFeed() {
+  if (!state.data || state.view !== "hkexApplications") return;
+  const query = normalizeSearchText(feedFilters.query);
+  const rows = [];
+  let total = 0;
+  let feedDate = "";
+  for (const record of state.data.records) {
+    for (const entry of record.hkexPublishedApplications || []) {
+      if (entry.feedUrl !== hkexApFeed || !entry.documents?.length) continue;
+      total += 1;
+      if (entry.feedDate > feedDate) feedDate = entry.feedDate;
+      if (query && !getRecordText(record).includes(query)) continue;
+      const byDate = [...entry.documents].sort((a, b) => b.date.localeCompare(a.date));
+      const latest = byDate[0].date;
+      if (feedFilters.from && latest < feedFilters.from) continue;
+      const first = byDate.find(d => d.label === "Application Proof (1st submission)");
+      rows.push({record, entry, latest, current: first?.date || record.currentA1Date,
+        docs: byDate.filter(d => d.date === latest && !d.previous)});
+    }
+  }
+  rows.sort((a, b) => b.latest.localeCompare(a.latest) || a.entry.name.localeCompare(b.entry.name, "en"));
+  const count = document.getElementById("hkexFeedCount");
+  count.textContent = `${rows.length} / ${total} 家 · 主板处理中申请 · ${feedDate}`;
+  document.getElementById("hkexFeedSearch").value = feedFilters.query;
+  document.getElementById("hkexFeedFrom").value = feedFilters.from;
+  document.getElementById("hkexFeedRows").innerHTML = rows.map(({record, entry, latest, current, docs}) => {
+    const shortName = entry.name.replace(/\s*\(formerly known as .+\)$/i, "");
+    const zh = [record.csrcName, ...(record.issuerSearchAliases || [])].find(v => v && hasCjk(v));
+    const links = docs.filter(d => /^https:\/\/www1\.hkexnews\.hk\/app\/sehk\/\d{4}\/\d+\/documents\/sehk\d+(_c)?\.pdf$/.test(d.url))
+      .map(d => `<a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">${escapeHtml(hkexDocumentLabel(d.label))}</a>`).join(" · ");
+    const anchor = record.a1Date && record.a1Date !== current
+      ? `<small>备案锚点 ${escapeHtml(record.a1Date)}</small>` : "";
+    return `<article class="hkex-feed-row" data-app-id="${escapeHtml(entry.applicationId)}">
+      <time datetime="${escapeHtml(latest)}">${escapeHtml(latest)}</time>
+      <button type="button" data-feed-issuer="${escapeHtml(record.id)}">${escapeHtml(shortName)}${zh ? `<small>${escapeHtml(zh)}</small>` : ""}</button>
+      <span class="hkex-feed-cycle">本次递表 ${escapeHtml(current || "未见日期")}${anchor}</span>
+      <span class="hkex-feed-documents">${links}</span></article>`;
+  }).join("") || '<p>没有符合条件的申请。</p>';
+}
+
 function switchView(view, updateLocation = true) {
+  const crossing = (view === "hkexApplications") !== (state.view === "hkexApplications");
+  if (crossing) {
+    Object.assign(state, defaults);
+    Object.assign(feedFilters, {query: "", from: ""});
+    if (state.data) syncControls();
+  }
+  document.body.classList.toggle("hkex-ap-view", view === "hkexApplications");
   state.view = viewTitles[view] ? view : "tracker";
   const stagePanel = document.getElementById("listingStagePanel");
   if (stagePanel) stagePanel.style.display = state.view === "tracker" ? "" : "none";
@@ -2057,6 +2112,8 @@ function switchView(view, updateLocation = true) {
     panel.classList.remove("is-visible");
   });
   document.getElementById(`${state.view}View`)?.classList.add("is-visible");
+  if (state.view === "hkexApplications") renderApplicationFeed();
+  else if (crossing && state.data && state.view === "tracker") render();
   if (updateLocation) syncUrl();
 }
 
@@ -2087,6 +2144,12 @@ function emptyPayload(message) {
 
 function applyStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
+  if (params.get("hkexFeed") === "ap") {
+    state.view = "hkexApplications";
+    feedFilters.from = /^\d{4}-\d{2}-\d{2}$/.test(params.get("dateFrom") || "") ? params.get("dateFrom") : "";
+    feedFilters.query = params.get("query") || "";
+    return;
+  }
   for (const key of trackedStateKeys) {
     if (!params.has(key)) continue;
     const value = params.get(key);
@@ -2100,7 +2163,12 @@ function applyStateFromUrl() {
 
 function syncUrl() {
   const params = new URLSearchParams();
-  for (const key of trackedStateKeys) {
+  if (state.view === "hkexApplications") {
+    params.set("hkexFeed", "ap");
+    if (feedFilters.from) params.set("dateFrom", feedFilters.from);
+    if (feedFilters.query) params.set("query", feedFilters.query);
+  }
+  for (const key of state.view === "hkexApplications" ? [] : trackedStateKeys) {
     const value = state[key];
     if (value === defaults[key] || value === "" || value === null || value === undefined) continue;
     params.set(key, String(value));
@@ -2224,7 +2292,11 @@ function render() {
 }
 
 document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
-  button.addEventListener("click", () => switchView(button.dataset.view));
+  button.addEventListener("click", event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    switchView(button.dataset.view);
+  });
 });
 
 document.querySelectorAll(".segment").forEach((button) => {
@@ -2340,6 +2412,21 @@ document.addEventListener("keydown", (event) => {
 
 document.getElementById("clearFilters").addEventListener("click", () => {
   updateTracker({ ...defaults, view: state.view, hkexStage: state.hkexStage });
+});
+
+document.getElementById("hkexFeedRows").addEventListener("click", event => {
+  const issuer = event.target.closest("[data-feed-issuer]");
+  if (issuer) openDetail(issuer.dataset.feedIssuer);
+});
+const refreshFeed = () => { renderApplicationFeed(); syncUrl(); };
+document.getElementById("hkexFeedSearch").addEventListener("input", event => {
+  feedFilters.query = event.target.value; refreshFeed();
+});
+document.getElementById("hkexFeedFrom").addEventListener("change", event => {
+  feedFilters.from = event.target.value; refreshFeed();
+});
+document.getElementById("hkexFeedClear").addEventListener("click", () => {
+  Object.assign(feedFilters, {query: "", from: ""}); refreshFeed();
 });
 
 document.getElementById("refreshButton").addEventListener("click", loadData);
