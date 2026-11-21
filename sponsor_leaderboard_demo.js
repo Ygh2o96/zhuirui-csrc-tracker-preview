@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=5d466cfbae4bc7b2";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=3a494f8abe5d09eb";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -74,7 +74,7 @@ const creditLabels = {
 };
 
 const PUBLIC_ACTIVE_CAVEAT =
-  "申请中项目仅指HKEX已公开A1的上市申请；密交、未公开pipeline及尚未公开的申报中项目不可见，因此SP/Rep负荷只是公开样本旁证。";
+  "申请中沿用追踪表分类，包括港交所已失效或撤回、仍按备案进展跟踪的项目。人数与项目数分别取自各自注明日期的公开资料。";
 
 const BENCHMARK_PREFIX = "__benchmark_";
 const BENCHMARK_GROUPS = [
@@ -111,6 +111,9 @@ const BENCHMARK_GROUPS = [
 const BENCHMARK_MEDIAN_FIELDS = [
   "projectCount",
   "activeCount",
+  "hkexActiveCount",
+  "hkexInactiveCount",
+  "hkexOtherStatusCount",
   "listedCount",
   "noticeCount",
   "ahCount",
@@ -305,9 +308,9 @@ function formatCapPerPerson(value, currency = "HK$") {
   return `${currency}${compactNumber(value, value >= 10 ? 1 : 2)}bn/人`;
 }
 
-function formatDays(value) {
+function formatDays(value, samples) {
   if (!isNumber(value)) return "待披露";
-  return `${compactNumber(Math.round(value), 0)}天`;
+  return `${compactNumber(Math.ceil(value), 0)}天${isNumber(samples) ? `（样本 ${samples}）` : ""}`;
 }
 
 function formatRatio(value, digits = 2) {
@@ -657,6 +660,9 @@ function aggregateFacts(facts, stage = state.stage) {
       searchSponsorRank: firmSearchRank(firm, query),
       projectCount,
       activeCount,
+      hkexActiveCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && f.applicationStatusGroup === "active"),
+      hkexInactiveCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && f.applicationStatusGroup === "inactive"),
+      hkexOtherStatusCount: weightedCount(sponsorFacts, (f) => f.hkexStage === "applying" && !["active", "inactive"].includes(f.applicationStatusGroup)),
       listedCount: weightedCount(sponsorFacts, (fact) => fact.hkexStage === "listed"),
       noticeCount: weightedCount(sponsorFacts, (fact) => fact.status === "notice_issued" && factFilingEligible(fact, "notice")),
       ahCount: weightedCount(sponsorFacts, (fact) => fact.isAH),
@@ -835,6 +841,9 @@ function emptyPkRow(template) {
     sponsorPrincipalCount,
     projectCount: 0,
     activeCount: 0,
+    hkexActiveCount: 0,
+    hkexInactiveCount: 0,
+    hkexOtherStatusCount: 0,
     listedCount: 0,
     noticeCount: 0,
     ahCount: 0,
@@ -944,6 +953,8 @@ function firmSearchTerms(firm) {
     firm?.canonicalName,
     ...(firm?.legalNames || []),
     ...(firm?.aliases || []),
+    ...(firm?.type6InstitutionEvidence || []).map((r) => r.firmNameZh),
+    ...(firm?.sponsorPrincipalInstitutionEvidence || []).map((r) => r.firmNameZh),
   ]
     .map(normalize)
     .filter(Boolean);
@@ -969,6 +980,8 @@ function matchesSearch(fact, firm, query) {
     fact.issuerName,
     fact.csrcName,
     fact.hkexListingCompanyName,
+    ...(fact.issuerSearchAliases || []),
+    fact.hkexListingStockCode,
     fact.sponsorLegalName,
     fact.issuerType,
     fact.statusLabelZh,
@@ -1609,7 +1622,30 @@ function lifecycleDisplay(row) {
   };
 }
 
-function rowHtml(row, index, showMarketCap) {
+function applicationBreakdown(row) {
+  if (!row.activeCount || row.firmScope === "benchmark") return "";
+  return [[row.hkexActiveCount, "港交所处理中"], [row.hkexInactiveCount, "已失效、撤回或拒绝"], [row.hkexOtherStatusCount, "其他或未披露状态"]]
+    .filter(([count]) => count > 0)
+    .map(([count, label]) => `${label} ${compactCredit(count)}`).join(" · ");
+}
+
+function metricRanks(rows) {
+  // Rank the metric independently of the chosen display order or search relevance.
+  const key = state.metric;
+  const canonical = (value) => ["projectCount", "activeCount", "listedCount", "ahCount"].includes(key)
+    ? Number(value.toFixed(10)) : value;
+  const values = rows.filter((row) => row.firmScope !== "rollup" && !missingSortValue(row, key, metricValue(row, key)))
+    .map((row) => canonical(metricValue(row, key))).sort((a, b) => metricSortAsc(key) ? a - b : b - a);
+  const positions = new Map();
+  values.forEach((value, i) => { if (!positions.has(value)) positions.set(value, i + 1); });
+  return new Map(rows.map((row) => {
+    const value = metricValue(row, key);
+    const rank = row.firmScope !== "rollup" && isNumber(value) ? positions.get(canonical(value)) : null;
+    return [row.sponsorId, rank ? `#${rank}` : "—"];
+  }));
+}
+
+function rowHtml(row, rank, showMarketCap) {
   const primary = metricDisplay(row);
   const marketCap = marketCapDisplay(row);
   const type6 = capacityDisplay(row);
@@ -1635,7 +1671,7 @@ function rowHtml(row, index, showMarketCap) {
     .map((label) => `<span class="pill teal">${escapeHtml(label)}</span>`)
     .join("");
   return `<tr class="clickable-row" data-sponsor="${escapeHtml(row.sponsorId)}">
-    <td data-label="排名" class="rank">#${index + 1}</td>
+    <td data-label="排名" class="rank">${escapeHtml(rank)}</td>
     <td data-label="保荐人" class="sponsor-cell">
       <button type="button" aria-label="查看${escapeHtml(row.displayNameZh)}详情">${escapeHtml(row.displayNameZh)}</button>
       <small>${escapeHtml(row.displayNameEn)}${row.legalNames?.[0] ? ` · ${escapeHtml(row.legalNames[0])}` : ""}</small>
@@ -1645,7 +1681,7 @@ function rowHtml(row, index, showMarketCap) {
     <td data-label="性质"><span class="pill teal">${escapeHtml(row.sponsorNature || "待核")}</span></td>
     <td data-label="SP / 六号牌"><span class="number">${escapeHtml(type6.main)}</span><span class="sub-number">${escapeHtml(type6.sub)}</span></td>
     <td data-label="项目"><span class="number">${compactCredit(row.projectCount)}</span><span class="sub-number">${typePills}</span></td>
-    <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span></td>
+    <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span><small class="sub-number">${escapeHtml(applicationBreakdown(row))}</small></td>
     <td data-label="已上市"><span class="number">${compactCredit(row.listedCount)}</span></td>
     <td data-label="A+H"><span class="number">${compactCredit(row.ahCount)}</span></td>
     <td data-label="排名指标"><span class="number">${escapeHtml(primary.main)}</span><span class="sub-number">${escapeHtml(primary.sub)}</span></td>
@@ -1681,12 +1717,13 @@ function render() {
     ? `${compactNumber(baseFactCount)} 原始 + ${compactNumber(syntheticFactCount)} 合并 fact`
     : `${compactNumber(facts.length)} 条计分 fact`;
   const sortNote = ` · 按${sortLabel()}${effectiveSortDir() === "asc" ? "升序" : "降序"}`;
-  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]}${sortNote}${sectorNote}${rankingNote}`;
+  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]} · 以「${metricLabels[state.metric]}」在当前筛选内排名，同值并列，合并参考行及缺值不占名次${sortNote}${sectorNote}${rankingNote}`;
   if (!rows.length) {
     els.leaderboardRows.innerHTML = `<tr><td colspan="${showMarketCap ? 12 : 11}" class="empty-state">没有符合条件的样本</td></tr>`;
     return;
   }
-  els.leaderboardRows.innerHTML = rows.map((row, index) => rowHtml(row, index, showMarketCap)).join("");
+  const ranks = metricRanks(rows);
+  els.leaderboardRows.innerHTML = rows.map((row) => rowHtml(row, ranks.get(row.sponsorId), showMarketCap)).join("");
   els.leaderboardRows.querySelectorAll("tr[data-sponsor]").forEach((row) => {
     row.addEventListener("click", (event) => {
       if (event.target instanceof Element && event.target.closest("a")) return;
@@ -1698,7 +1735,7 @@ function render() {
 function pkMetricRows(rowA, rowB) {
   const metrics = [
     { label: "项目总数 / Total deals", key: "projectCount", value: (row) => row.projectCount, format: compactCredit, higher: true, note: "规模口径 / Scale" },
-    { label: "公开申请中项目 / Public active deals", key: "activeCount", value: (row) => row.activeCount, format: compactCredit, higher: true, note: "公开A1样本 / Public APs only" },
+    { label: "公开申请中项目 / Public active deals", key: "activeCount", value: (row) => row.activeCount, format: compactCredit, higher: true, note: "按追踪表申请中分类", coverage: applicationBreakdown },
     { label: "已上市项目 / Listed deals", key: "listedCount", value: (row) => row.listedCount, format: compactCredit, higher: true, note: "完成项目 / Completed listings" },
     { label: "A+H项目 / A+H deals", key: "ahCount", value: (row) => row.ahCount, format: compactCredit, higher: true, note: "A+H覆盖 / A+H coverage" },
     { label: "SP人数 / Sponsor principals", key: "sponsorPrincipalCount", value: (row) => row.sponsorPrincipalCount, format: (value) => (isNumber(value) ? `${compactNumber(value, 0)}人` : "待披露"), higher: true, note: "容量口径 / Capacity" },
@@ -1882,7 +1919,7 @@ function renderPk() {
   pkEls.creditLabel.textContent = creditLabels[pkState.credit] || "具名全部计入";
   const sourceDate = state.data.meta?.sourceGeneratedAt || state.data.meta?.generatedAt || "待披露";
   const sectorNote = state.sector === "all" ? "" : " 赛道比较只按项目行业标签重聚合，不推断人员在各行业的内部分布。";
-  pkEls.sourceNote.textContent = `同源龙虎榜快照 · ${scopeLabel()} · 基准项按组内中位数显示，避免头部项目拉高均值；申请中仅含HKEX已公开A1项目。${sectorNote} 特殊路径剔除沿用监管节奏追踪。快照 ${sourceDate}。`;
+  pkEls.sourceNote.textContent = `同源龙虎榜快照 · ${scopeLabel()} · 基准项按组内中位数显示，避免头部项目拉高均值。申请中沿用追踪表分类，包括部分港交所已失效或撤回的申请。${sectorNote} 特殊路径剔除沿用监管节奏追踪。快照 ${sourceDate}。`;
   if (pkEls.cardA) pkEls.cardA.innerHTML = renderPkCard(rowA, "左侧");
   if (pkEls.cardB) pkEls.cardB.innerHTML = renderPkCard(rowB, "右侧");
   pkEls.metrics.innerHTML = pkMetricRows(rowA, rowB).map((metric) => renderPkMetric(metric, rowA, rowB)).join("");
@@ -2063,12 +2100,13 @@ function projectLine(fact) {
     .map(sponsorSourceLink)
     .join("");
   return `<article class="deal-item">
-    <strong>${escapeHtml(primaryName)}</strong>
+    <strong>${escapeHtml(primaryName)}${fact.hkexListingStockCode ? ` · ${escapeHtml(fact.hkexListingStockCode)}` : ""}</strong>
     ${shadowName ? `<small class="shadow-name">${escapeHtml(shadowName)}</small>` : ""}
     <small>
-      ${escapeHtml(fact.statusLabelZh || fact.status || "待核")} · ${escapeHtml(fact.issuerType || "类型待核")} ·
-      A1 ${escapeHtml(formatDate(fact.a1Date))} · ${fact.noticeSupersededByCurrentFiling ? "历史通知 / Historical notice" : "通知"} ${escapeHtml(formatDate(fact.noticeDate))}${listingDateText}
+      港交所 ${escapeHtml(fact.hkexPublicStatus || "状态未披露")} · 备案 ${escapeHtml(fact.statusLabelZh || fact.status || "待核")} · ${escapeHtml(fact.issuerType || "类型待核")} ·
+      首次 A1 ${escapeHtml(formatDate(fact.a1Date))}${fact.currentA1Date && fact.currentA1Date !== fact.a1Date ? ` · 最近 A1 ${escapeHtml(fact.currentA1Date)}` : ""} · ${fact.noticeSupersededByCurrentFiling ? "历史通知 / Historical notice" : "通知"} ${escapeHtml(formatDate(fact.noticeDate))}${listingDateText}
     </small>
+    <small>本行计入的保荐机构 · ${escapeHtml((fact.sourceSponsorLegalNames || fact.sponsorLegalNames || []).join(" / ") || fact.sponsorLegalName)}</small>
     ${completionLine}
     <small>${escapeHtml(timing.label)}：${escapeHtml(timingValue)}${escapeHtml(timingReason)}</small>
     ${fact.hkexStage === "listed" || marketCapObservation(fact, "listing").estimateValue !== null ? projectMarketCapDetail(fact, "listing") : ""}
@@ -2093,7 +2131,10 @@ function capacitySourcePills(row, field) {
       : "组内来源日期 / Group source dates: " + capacityDates(row[field + "AsOfDate"], row[field + "SourceDates"]);
     const official = field === "type6" && /^https:\/\/apps\.sfc\.hk\/publicregWeb\/corp\/([A-Z]{3}\d{3})\/(ro|rep)$/.exec(raw);
     let label;
-    if (official) {
+    if (field === "sponsorPrincipal" && bound.some(s => s.source === "sfc_sponsor_principal_roster") &&
+        /^https:\/\/apps\.sfc\.hk\/publicregWeb\/corp\/[A-Z]{3}\d{3}\/details$/.test(raw)) {
+      label = "证监会保荐人主要人员名册 / SFC register";
+    } else if (official) {
       label = "证监会机构名册 / SFC corporate register · " + official[1] + " " + official[2].toUpperCase();
     } else if (u.origin === "https://webbsite.0xmd.com" && !u.username && !u.password) {
       label = "同事整理的第三方镜像 / Colleague-compiled third-party mirror (Webb / 0xmd)";
@@ -2119,7 +2160,6 @@ function openDrawer(sponsorId) {
     return bd.localeCompare(ad);
   });
   const legalNames = (row.legalNames || [])
-    .slice(0, 6)
     .map((name) => `<span class="pill">${escapeHtml(name)}</span>`)
     .join("");
   const industries = (row.topIndustries || []).map((name) => `<span class="pill teal">${escapeHtml(name)}</span>`).join("");
@@ -2135,8 +2175,13 @@ function openDrawer(sponsorId) {
     <div class="drawer-pills capacity-source-pills">${type6Sources || '<span class="pill">未匹配六号牌来源 / No matched Type 6 source</span>'}</div>
     <h4>主要行业</h4>
     <div class="drawer-pills">${industries || '<span class="pill">待披露</span>'}</div>
-    <h4>样本项目${facts.length > 40 ? `（显示40 / ${facts.length}）` : ""}</h4>
-    <div class="deal-list">${facts.slice(0, 40).map(projectLine).join("")}</div>`;
+    <h4>项目明细（${facts.length}）</h4>
+    <div class="deal-list">${facts.slice(0, 40).map(projectLine).join("")}</div>
+    ${facts.length > 40 ? `<details class="remaining-projects"><summary>查看其余 ${facts.length - 40} 个项目</summary><div class="deal-list"></div></details>` : ""}`;
+  const remaining = els.drawerContent.querySelector(".remaining-projects");
+  remaining?.addEventListener("toggle", () => {
+    if (remaining.open) remaining.querySelector(".deal-list").innerHTML = facts.slice(40).map(projectLine).join("");
+  }, { once: true });
   els.drawer.classList.add("is-open");
   els.drawer.setAttribute("aria-hidden", "false");
 }
@@ -2282,7 +2327,7 @@ async function loadData() {
   let payload = window.location.protocol === "file:" ? await loadBundledData() : null;
   if (!payload) {
     try {
-      const response = await fetch(`${DATA_URL}?demo=${Date.now()}`);
+      const response = await fetch(DATA_URL, { cache: "no-cache" });
       if (!response.ok) throw new Error(`Failed to load ${DATA_URL}: ${response.status}`);
       payload = await response.json();
     } catch (error) {
@@ -2308,6 +2353,10 @@ async function init() {
     const sourceNote = meta.sourceGeneratedAt ? ` · 源快照 ${meta.sourceGeneratedAt}` : "";
     els.generatedAt.textContent = `生成 ${meta.generatedAt || "待披露"}${sourceNote}`;
     els.demoNote.textContent = `${publicMethodologyText(meta.demoNoteZh || "本地 demo，不用于公开发布。")} ${PUBLIC_ACTIVE_CAVEAT}`;
+    if (meta.sponsorExclusionCounts) {
+      const reasons = meta.sponsorExclusionCounts;
+      els.demoNote.textContent += ` 未计入保荐人排名的发行人：获豁免 ${reasons.waived || 0} 家，保荐人不适用 ${reasons.notApplicable || 0} 家，尚无具名保荐人 ${reasons.notNamed || 0} 家。`;
+    }
     if (meta.licenseCapacity?.available) {
       const cap = meta.licenseCapacity;
       const matchNote = cap.rollupCapacityFirmCount

@@ -1,6 +1,6 @@
 // no-cache (not no-store) lets the browser revalidate with the CDN ETag and
 // skip re-downloading the multi-MB payload when the snapshot is unchanged.
-const DATA_URL = `data/csrc_tracker_public.json?v=${Date.now()}`;
+const DATA_URL = "data/csrc_tracker_public.json";
 const PAGE_SIZE = 50;
 
 const defaults = {
@@ -34,9 +34,9 @@ const statusLabels = {
   regulator_opinion: ["征询监管意见中", "Regulator opinion"],
   supplement_requested: ["补充材料", "Supplement requested"],
   csrc_received: ["已接收", "CSRC received"],
-  waiting_received: ["等待接收", "Awaiting receipt"],
+  waiting_received: ["尚未见接收公示", "No public receipt yet"],
   not_required: ["无需备案", "Not required"],
-  applicability_pending: ["适用性未确认", "Scope unconfirmed"],
+  applicability_pending: ["本次上市暂无公开备案进度", "No public filing update for this listing"],
   review_pending: ["待披露", "Pending"],
   pending_match: ["待披露", "Pending"]
 };
@@ -514,7 +514,7 @@ function nameParts(record) {
 }
 
 function statusLabel(status, index = 0) {
-  return (statusLabels[status] || [status, status])[index];
+  return (state.data?.meta?.statusLabels?.[status] || statusLabels[status] || [status, status])[index];
 }
 
 function dayUnitLabel() {
@@ -871,9 +871,14 @@ function renderStatusTags(record) {
 }
 
 function renderStatusBadge(record) {
+  const hkexStatus = record.hkexPublicStatus || "";
+  const hkexLabels = {Listed: "已上市", Active: "申请处理中", Lapsed: "申请已失效", Withdrawn: "已撤回", Rejected: "被拒绝"};
+  const hkexFact = record.status === "applicability_pending" && hkexLabels[hkexStatus]
+    ? `<small>港交所 · ${escapeHtml(hkexLabels[hkexStatus])}${record.hkexListingDate ? " · " + escapeHtml(record.hkexListingDate) : ""}</small>` : "";
   return `
     <span class="status-stack">
       <span class="badge ${escapeHtml(record.status)}"><b>${escapeHtml(statusLabel(record.status))}</b><small>${escapeHtml(statusLabel(record.status, 1))}</small></span>
+      ${hkexFact}
       ${renderStatusTags(record)}
     </span>
   `;
@@ -888,6 +893,7 @@ function getRecordText(record) {
   const rawText = [
     record.issuerName,
     record.csrcName,
+    ...(record.issuerSearchAliases || []),
     issuerTypeInfo(record).primary,
     issuerTypeInfo(record).secondary,
     record.structureType,
@@ -1838,8 +1844,9 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>状态 Status</span>
         <strong>${renderStatusBadge(record)}</strong>
-        ${record.csrcFilingApplicability ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需另行备案 / No separate filing", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
-        ${record.csrcFilingApplicabilityReason ? `<details><summary>适用依据 Basis</summary><p>${escapeHtml(record.csrcFilingApplicabilityReason)}</p>${(record.csrcFilingApplicabilitySourceUrls || []).filter((url) => /^https:\/\//.test(url)).map((url) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">来源 Source</a>`).join(" · ")}</details>` : ""}
+        ${record.csrcFilingApplicability && record.csrcFilingApplicability !== "pending" ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需另行备案 / No separate filing", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
+        ${record.csrcFilingReportingRequired ? `<div>转板后须向证监会报告 / Post-transfer reporting required</div>` : ""}
+        ${record.csrcFilingApplicabilityReason && record.csrcFilingApplicability !== "pending" ? `<details><summary>适用依据 Basis</summary><p>${escapeHtml(record.csrcFilingApplicabilityReason)}</p>${(record.csrcFilingApplicabilitySourceUrls || []).filter((url) => /^https:\/\//.test(url)).map((url) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">来源 Source</a>`).join(" · ")}</details>` : ""}
       </div>
       <div class="detail-item">
         <span>时间线 Timeline</span>
