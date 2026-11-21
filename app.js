@@ -307,7 +307,12 @@ function timingNoticeGap(record, listingDate, regimeStart) {
   return record.csrcFilingRequired === true && !record.noticeDate && postRegimeListingDate(listingDate, regimeStart);
 }
 
+function isSpecialTimingRoute(record) {
+  return ["de_spac", "hdr", "gem_to_main_transfer", "introduction", "rto"].includes(record.specialListingRoute);
+}
+
 function timingSample(record, metric, field, currentReceiptField, stage, listingDate, regimeStart) {
+  if (isSpecialTimingRoute(record)) return null;
   if (metric === "a1ToListing") {
     if (record.listingDurationSampleEligible === false) return null;
   } else {
@@ -1062,14 +1067,42 @@ function renderReceivedCell(record) {
   return `${renderReceivedDateValue(primary, primaryIsAsOf)}${secondaryHtml}`;
 }
 
-function renderListingCell(record) {
-  const secondary = record.hkexListingStockCode ? `股份代号 ${record.hkexListingStockCode}` : "";
-  const secondaryHtml = secondary ? `<span class="date-secondary">${escapeHtml(secondary)}</span>` : "";
-  if (record.specialListingRoute === "rto" && record.transactionCompletionDate) {
-    return `<span class="date-primary">${formatDate(record.transactionCompletionDate)}</span><span class="date-secondary">RTO完成 Completed</span>${secondaryHtml}`;
+function completedRtoDate(fact) {
+  if (fact.specialListingRoute !== "rto") return "";
+  const value = fact.transactionCompletionDate;
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value) || value.startsWith("0000-")) return "";
+  const parsed = new Date(`${value}T00:00:00Z`);
+  if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== value) return "";
+  const today = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit",
+  }).format(new Date());
+  if (value > today) return "";
+  const source = fact.transactionCompletionSourceUrl;
+  if (typeof source !== "string" || !/^https?:\/\/[^/\\]/i.test(source)) return "";
+  try {
+    const url = new URL(source);
+    return ["http:", "https:"].includes(url.protocol) && url.hostname ? value : "";
+  } catch {
+    return "";
   }
-  if (!record.hkexListingDate && record.hkexPublicStatus === "Active") return "尚无本次上市日";
-  return `<span class="date-primary">${formatDate(record.hkexListingDate)}</span>${secondaryHtml}`;
+}
+
+function listingOrCompletionDate(record) {
+  if (record.specialListingRoute !== "rto") return record.hkexListingDate || record.listingDate || "";
+  const stage = record.practicalStage || record.hkexStage;
+  return stage === "listed" ? completedRtoDate(record) : "";
+}
+
+function renderListingCell(record, showStockCode = true) {
+  const listingDate = listingOrCompletionDate(record);
+  const secondary = showStockCode && record.hkexListingStockCode ? `股份代号 ${record.hkexListingStockCode}` : "";
+  const secondaryHtml = secondary ? `<span class="date-secondary">${escapeHtml(secondary)}</span>` : "";
+  if (record.specialListingRoute === "rto" && listingDate) {
+    return `<span class="date-primary">${formatDate(listingDate)}</span><span class="date-secondary">RTO完成 Completed</span>${secondaryHtml}`;
+  }
+  if (!showStockCode) return formatDate(listingDate);
+  if (!listingDate && record.hkexPublicStatus === "Active") return "尚无本次上市日";
+  return `<span class="date-primary">${formatDate(listingDate)}</span>${secondaryHtml}`;
 }
 
 function renderNoticeCell(record) {
@@ -1155,7 +1188,7 @@ function getBaseFilteredRecords() {
 
     const rawDate = state.dateField === "csrcReceivedDate"
       ? (record.csrcReceivedDate || record.csrcFirstReceivedDate || record.csrcCurrentReceivedDate)
-      : record[state.dateField];
+      : state.dateField === "hkexListingDate" ? listingOrCompletionDate(record) : record[state.dateField];
     const recordDate = asDateValue(rawDate);
     if ((from || to) && !recordDate) return false;
     if (from && recordDate < from) return false;
@@ -1207,6 +1240,7 @@ function sortKey(record, field) {
   if (field === "csrcReceivedDate") {
     return { value: asDateValue(record.csrcReceivedDate || record.csrcFirstReceivedDate || record.csrcCurrentReceivedDate), type: "number" };
   }
+  if (field === "hkexListingDate") return { value: asDateValue(listingOrCompletionDate(record)), type: "number" };
   if (field.endsWith("Date")) return { value: asDateValue(record[field]), type: "number" };
   return { value: record[field], type: typeof record[field] === "number" ? "number" : "text" };
 }
@@ -1603,7 +1637,7 @@ function renderRows() {
           <td class="date-cell">${renderA1Cell(record)}</td>
           <td class="date-cell">${listedPage ? renderNoticeCell(record) : renderReceivedCell(record)}</td>
           <td class="date-cell">${listedPage ? renderListingCell(record) : renderNoticeCell(record)}</td>
-          <td class="listing-date-cell all-only-col">${formatDate(record.hkexListingDate)}</td>
+          <td class="listing-date-cell all-only-col">${renderListingCell(record, false)}</td>
           <td class="days-td">${renderDays(record)}</td>
           <td class="type-cell">${renderIssuerType(record)}</td>
           <td class="mcap-cell">${listedPage ? formatListingMarketCap(record) : formatMarketCap(record)}</td>

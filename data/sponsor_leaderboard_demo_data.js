@@ -1,13 +1,13 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-11-21T09:42:07Z",
-    "sourceGeneratedAt": "2026-11-21T17:41:57+08:00",
+    "generatedAt": "2026-11-21T09:54:10Z",
+    "sourceGeneratedAt": "2026-11-21T17:54:09+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T17:41:57+08:00",
+      "generatedAt": "2026-11-21T17:54:09+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1482,
@@ -4071,10 +4071,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeCount": 114.0,
       "ahCount": 60.0,
       "hShareCount": 116.0,
-      "redChipCount": 55.0,
+      "redChipCount": 56.0,
       "deSpacCount": 0,
       "hdrCount": 1.0,
-      "otherIssuerTypeCount": 5.0,
+      "otherIssuerTypeCount": 4.0,
       "listingMarketCapHkdBnSum": 7410.406372408484,
       "listingMarketCapHkdBnMedian": 15.95293731812,
       "listingMarketCapN": 116,
@@ -163710,7 +163710,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 29.0,
       "calendarDaysCurrentA1ToReceived": null,
-      "durationSampleEligible": true,
+      "durationSampleEligible": false,
       "csrcFilingRequired": true,
       "csrcFilingApplicability": "required",
       "noticeSupersededByCurrentFiling": false,
@@ -204325,7 +204325,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDate": "2024-07-12",
       "transactionCompletionDate": null,
       "transactionCompletionSourceUrl": null,
-      "issuerType": "其他",
+      "issuerType": "红筹",
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
@@ -204501,6 +204501,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
+        },
+        {
+          "label": "招股书 · 控股股东 / Controlling shareholders",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/2024062800083.pdf#page=310"
+        },
+        {
+          "label": "配发结果 · 上市时持股 / Shareholding on listing",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0711/2024071101139.pdf#page=6"
+        },
+        {
+          "label": "年报 · 控股股东持股 / Year-end shareholding",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042403596.pdf#page=49"
         }
       ]
     },

@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=3098e0d9507f17ce";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=5c0326bc249f18c6";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -530,7 +530,7 @@ function factFilingEligible(fact, milestone) {
 
 function factLifecycleTiming(fact) {
   if (fact.hkexStage === "listed") {
-    if (fact.listingDurationSampleEligible === false || fact.specialListingRoute === "rto") {
+    if (fact.listingDurationSampleEligible === false || isSpecialTimingRoute(fact)) {
       return {
         days: null,
         kind: "excluded",
@@ -593,7 +593,12 @@ function timingNoticeGap(record, listingDate, regimeStart) {
   return record.csrcFilingRequired === true && !record.noticeDate && postRegimeListingDate(listingDate, regimeStart);
 }
 
+function isSpecialTimingRoute(record) {
+  return ["de_spac", "hdr", "gem_to_main_transfer", "introduction", "rto"].includes(record.specialListingRoute);
+}
+
 function timingSample(record, metric, field, currentReceiptField, stage, listingDate, regimeStart) {
+  if (isSpecialTimingRoute(record)) return null;
   if (metric === "a1ToListing") {
     if (record.listingDurationSampleEligible === false) return null;
   } else {
@@ -1064,30 +1069,9 @@ function matchesDateScope(fact) {
   return true;
 }
 
-function completedRtoDate(fact) {
-  if (fact.specialListingRoute !== "rto") return "";
-  const value = fact.transactionCompletionDate;
-  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value) || value.startsWith("0000-")) return "";
-  const parsed = new Date(`${value}T00:00:00Z`);
-  if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== value) return "";
-  const today = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit",
-  }).format(new Date());
-  if (value > today) return "";
-  const source = fact.transactionCompletionSourceUrl;
-  if (typeof source !== "string" || !/^https?:\/\/[^/\\]/i.test(source)) return "";
-  try {
-    const url = new URL(source);
-    return ["http:", "https:"].includes(url.protocol) && url.hostname ? value : "";
-  } catch {
-    return "";
-  }
-}
-
 function factDateForScope(fact, dateField = state.dateField) {
   if (dateField !== "stageDate") return fact[dateField];
-  if (fact.hkexStage === "listed" && fact.specialListingRoute === "rto") return completedRtoDate(fact);
-  if (fact.hkexStage === "listed") return fact.listingDate;
+  if (fact.hkexStage === "listed") return listingOrCompletionDate(fact);
   if (fact.hkexStage === "applying") return fact.a1Date;
   return "";
 }
