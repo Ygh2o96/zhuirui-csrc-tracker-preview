@@ -479,7 +479,9 @@ function aggregateMarketCaps(facts, kind) {
 }
 
 function formatListingCap(row, value = row.listingMarketCapHkdBnSum, perPerson = false) {
-  return perPerson ? formatCapPerPerson(value) : formatCap(value, "HK$");
+  const label = perPerson ? formatCapPerPerson(value) : formatCap(value, "HK$");
+  return isNumber(value) && value > 0 && row.listingMarketCapCoverage?.estimate > 0
+    ? `${label} · 含估算 / Includes estimates` : label;
 }
 
 function formatAShareCap(row, prefix = "aShareMarketCap") {
@@ -1463,7 +1465,7 @@ function marketCapDisplay(row) {
   const total = row[`${prefix}Coverage`]?.total;
   return {
     main: total === 0 ? "不适用" : listing ? formatListingCap(row) : formatAShareCap(row, prefix),
-    sub: `${listing ? "上市日市值（A/H同日折算）" : metricLabels.aShareMarketCapRmbBnSum}`,
+    sub: `${listing ? "上市日总市值" : metricLabels.aShareMarketCapRmbBnSum}`,
   };
 }
 
@@ -2063,7 +2065,7 @@ function projectMarketCapDetail(fact, kind) {
     if (!quote) return "";
     return `<div class="market-cap-detail">港股收市价 HK$${escapeHtml(quote.price)} · ${escapeHtml(quote.priceDate)} · ${valuationEvidenceLinks([["行情来源", quote]])}</div>`;
   }
-  const amount = formatCap(value, currency);
+  const amount = `${listing && status === "estimate" ? "约 / Est. " : ""}${formatCap(value, currency)}`;
   if (listing && (provenance.version === 2 || Array.isArray(provenance.components))) {
     return `<small class="market-cap-detail">${escapeHtml(label)}：${escapeHtml(amount)}</small>
       ${listingComponentDetails(provenance)}`;
