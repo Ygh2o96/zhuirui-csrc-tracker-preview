@@ -45602,6 +45602,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "statusTags": [],
       "sourceLinks": [
         {
+          "label": "2026-09-17 延迟发售及上市 / Offering and listing postponed",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0917/2026091701579.pdf#page=1"
+        },
+        {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108727/documents/sehk26070500112.pdf",
           "originalLabel": "HKEX申请版本",
@@ -45780,6 +45784,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "2026-09-17 延迟发售及上市 / Offering and listing postponed",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0917/2026091701579.pdf#page=1"
+        },
         {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108727/documents/sehk26070500112.pdf",
@@ -114410,6 +114418,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "statusTags": [],
       "sourceLinks": [
         {
+          "label": "2026-10-25 延迟发售及上市 / Offering and listing postponed",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1025/2026102500001.pdf#page=1"
+        },
+        {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108374/documents/sehk26033100290.pdf",
           "originalLabel": "HKEX申请版本",
@@ -118488,6 +118500,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
       "sourceLinks": [
+        {
+          "label": "2026-10-20 延迟发售及上市 / Offering and listing postponed",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000564.pdf#page=1"
+        },
         {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108373/documents/sehk26033004449.pdf",
