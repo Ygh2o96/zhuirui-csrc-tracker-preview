@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=bebfb5c54607c3f1";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=75523fbda4bff901";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -121,6 +121,7 @@ const BENCHMARK_MEDIAN_FIELDS = [
   "redChipCount",
   "deSpacCount",
   "hdrCount",
+  "otherIssuerTypeCount",
   "listingMarketCapHkdBnSum",
   "listingMarketCapHkdBnMedian",
   "aShareMarketCapRmbBnSum",
@@ -478,15 +479,11 @@ function aggregateMarketCaps(facts, kind) {
 }
 
 function formatListingCap(row, value = row.listingMarketCapHkdBnSum, perPerson = false) {
-  const amount = perPerson ? formatCapPerPerson(value) : formatCap(value, "HK$");
-  return isNumber(value) && row.listingMarketCapCoverage?.estimate > 0 ? `约 ${amount}` : amount;
+  return perPerson ? formatCapPerPerson(value) : formatCap(value, "HK$");
 }
 
 function formatAShareCap(row, prefix = "aShareMarketCap") {
-  const value = row[`${prefix}RmbBnSum`];
-  const amount = formatCap(value, "¥");
-  if (!isNumber(value) || !row[`${prefix}Coverage`]?.estimate) return amount;
-  return `${row.firmScope === "benchmark" ? "含估算 / Includes estimates" : "估算合计 / Estimated total"} ${amount}`;
+  return formatCap(row[`${prefix}RmbBnSum`], "¥");
 }
 
 function median(values) {
@@ -671,6 +668,7 @@ function aggregateFacts(facts, stage = state.stage) {
       redChipCount: weightedCount(sponsorFacts, (fact) => fact.issuerType === "红筹"),
       deSpacCount: weightedCount(sponsorFacts, (fact) => fact.issuerType === "De-SPAC"),
       hdrCount: weightedCount(sponsorFacts, (fact) => fact.issuerType === "HDR"),
+      otherIssuerTypeCount: weightedCount(sponsorFacts, (fact) => fact.issuerType === "其他"),
       listingMarketCapHkdBnSum: listingCaps.sum,
       listingMarketCapHkdBnMedian: listingCaps.median,
       listingMarketCapN: listingCaps.n,
@@ -860,6 +858,7 @@ function emptyPkRow(template) {
     redChipCount: 0,
     deSpacCount: 0,
     hdrCount: 0,
+    otherIssuerTypeCount: 0,
     listingMarketCapHkdBnSum: null,
     listingMarketCapHkdBnMedian: null,
     listingMarketCapN: 0,
@@ -926,7 +925,8 @@ function dateScopeLabel() {
 
 function scopeLabel() {
   const sector = state.sector === "all" ? "全部赛道" : `赛道：${sectorLabel()}`;
-  return `${sector}；${dateScopeLabel()}`;
+  const types = state.type === "all" ? "" : `类型：${state.type}；`;
+  return `${types}${sector}；${dateScopeLabel()}`;
 }
 
 function compareRows(a, b) {
@@ -1039,6 +1039,10 @@ function matchesSector(fact) {
   return state.sector === "all" || factSector(fact) === state.sector;
 }
 
+function matchesIssuerType(fact) {
+  return state.type === "all" || fact.issuerType === state.type;
+}
+
 function filteredFacts() {
   const firms = firmById();
   const query = normalize(state.search);
@@ -1047,7 +1051,7 @@ function filteredFacts() {
     if (!matchesSearch(fact, firm, query)) return false;
     if (!matchesSector(fact)) return false;
     if (state.stage !== "all" && fact.hkexStage !== state.stage) return false;
-    if (state.type !== "all" && fact.issuerType !== state.type) return false;
+    if (!matchesIssuerType(fact)) return false;
     if (state.nature !== "all" && firm?.sponsorNature !== state.nature) return false;
     return matchesDateScope(fact);
   });
@@ -1089,7 +1093,7 @@ function factDateForScope(fact, dateField = state.dateField) {
 }
 
 function pkFilteredFacts() {
-  return (state.data?.projectFacts || []).filter((fact) => matchesDateScope(fact) && matchesSector(fact));
+  return (state.data?.projectFacts || []).filter((fact) => matchesDateScope(fact) && matchesSector(fact) && matchesIssuerType(fact));
 }
 
 function pkOptionFacts() {
@@ -1698,6 +1702,7 @@ function rowHtml(row, rank, showMarketCap) {
     row.redChipCount > 0 ? `红筹 ${compactCredit(row.redChipCount)}` : "",
     row.deSpacCount > 0 ? `De-SPAC ${compactCredit(row.deSpacCount)}` : "",
     row.hdrCount > 0 ? `HDR ${compactCredit(row.hdrCount)}` : "",
+    row.otherIssuerTypeCount > 0 ? `其他 ${compactCredit(row.otherIssuerTypeCount)}` : "",
   ]
     .filter(Boolean)
     .map((label) => `<span class="pill teal">${escapeHtml(label)}</span>`)
@@ -1782,7 +1787,7 @@ function pkMetricRows(rowA, rowB) {
       value: (row) => row.applyingAhMarketCapRmbBnSum,
       format: (value, row) => formatAShareCap(row, "applyingAhMarketCap"),
       higher: true,
-      note: "含符合条件的历史估算 / Includes eligible historical estimates",
+      note: "A股收盘价与股本 / A-share closing price and share capital",
     },
     {
       label: metricLabels.listingMarketCapHkdBnSum,
@@ -2066,7 +2071,7 @@ function projectMarketCapDetail(fact, kind) {
     if (!quote) return "";
     return `<div class="market-cap-detail">港股收市价 HK$${escapeHtml(quote.price)} · ${escapeHtml(quote.priceDate)} · ${valuationEvidenceLinks([["行情来源", quote]])}</div>`;
   }
-  const amount = status === "verified" ? `已核实 / Verified ${formatCap(value, currency)}` : listing ? `约 ${formatCap(value, currency)}` : `估算 / Estimate ${formatCap(value, currency)}`;
+  const amount = formatCap(value, currency);
   if (listing && (provenance.version === 2 || Array.isArray(provenance.components))) {
     return `<small class="market-cap-detail">${escapeHtml(label)}：${escapeHtml(amount)}</small>
       ${listingComponentDetails(provenance)}`;
@@ -2117,13 +2122,14 @@ function projectLine(fact) {
   const timingReason = timing.reason ? ` · ${timing.reason}` : "";
   const clock = fact.listingTiming;
   const cycleDetails = [];
-  if (clock?.firstPublicA1Date && clock.listingDate && isNumber(clock.firstToListingDays)) {
-    cycleDetails.push(`首次公开A1 ${clock.firstPublicA1Date} → 上市 ${clock.listingDate} · ${formatDays(clock.firstToListingDays)}`);
+  const firstA1 = clock?.firstA1Date || clock?.firstPublicA1Date;
+  if (firstA1 && clock.listingDate && isNumber(clock.firstToListingDays)) {
+    cycleDetails.push(`最早有记录的A1 ${firstA1} → 上市 ${clock.listingDate} · ${formatDays(clock.firstToListingDays)}`);
   }
-  if (clock?.successfulCycleA1Date && clock.successfulCycleA1Date !== clock.firstPublicA1Date && isNumber(clock.successfulCycleToListingDays)) {
+  if (clock?.successfulCycleA1Date && clock.successfulCycleA1Date !== firstA1 && isNumber(clock.successfulCycleToListingDays)) {
     cycleDetails.push(`成功上市的申请轮次 ${clock.successfulCycleA1Date} → ${clock.listingDate} · ${formatDays(clock.successfulCycleToListingDays)}`);
   }
-  const cycleSources = [["首次公开A1", clock?.firstSourceUrl], ["上市轮次A1", clock?.successfulCycleSourceUrl]]
+  const cycleSources = [["最早有记录的A1", clock?.firstSourceUrl], ["上市轮次A1", clock?.successfulCycleSourceUrl]]
     .filter((item, index, items) => item[1] && items.findIndex((v) => v[1] === item[1]) === index)
     .map(([label, url]) => sponsorSourceLink({label, url}));
   const primaryName = issuerPrimaryName(fact);
@@ -2147,7 +2153,7 @@ function projectLine(fact) {
     ${shadowName ? `<small class="shadow-name">${escapeHtml(shadowName)}</small>` : ""}
     <small>
       ${escapeHtml(fact.applicationStatusLabelZh || fact.hkexPublicStatus || "未见港交所申请状态")}${fact.hkexReturnedApplication?.date ? " · " + escapeHtml(fact.hkexReturnedApplication.date) : ""} · 备案 ${escapeHtml(fact.statusLabelZh || fact.status || "待核")} · ${escapeHtml(fact.issuerType || "类型待核")} ·
-      首次 A1 ${escapeHtml(formatDate(fact.a1Date))}${fact.currentA1Date && fact.currentA1Date !== fact.a1Date ? ` · 最近 A1 ${escapeHtml(fact.currentA1Date)}` : ""} · ${fact.noticeSupersededByCurrentFiling ? "历史通知 / Historical notice" : "通知"} ${fact.noticeDate ? escapeHtml(formatDate(fact.noticeDate)) : fact.csrcFilingRequired === false ? "无需备案" : "未见备案通知书"}${listingDateText}
+      首次 A1 ${escapeHtml(formatDate(fact.a1Date))}${fact.currentA1Date && fact.currentA1Date !== fact.a1Date ? ` · 最近 A1 ${escapeHtml(fact.currentA1Date)}` : ""} · ${fact.noticeDateBasis === "reverse_takeover_signature_date" ? "反向收购备案通知" : fact.noticeSupersededByCurrentFiling ? "历史通知 / Historical notice" : "通知"} ${fact.noticeDate ? escapeHtml(formatDate(fact.noticeDate)) : fact.csrcFilingRequired === false ? "无需备案" : "未见备案通知书"}${listingDateText}
     </small>
     <small>本行计入的保荐机构 · ${escapeHtml((fact.sourceSponsorLegalNames || fact.sponsorLegalNames || []).join(" / ") || fact.sponsorLegalName)}</small>
     ${completionLine}

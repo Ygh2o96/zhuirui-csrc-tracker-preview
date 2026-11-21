@@ -404,14 +404,15 @@ function currentDayMetricEntries() {
 }
 
 function issuerTypeKey(record) {
+  if (record.issuerTypeKey) return record.issuerTypeKey;
   if (record.specialListingRoute === "de_spac") return "de_spac";
   if (record.specialListingRoute === "hdr") return "hdr";
   if (isAhCandidate(record)) return "a_h";
-  const raw = `${record.structureType || ""} ${record.issuerJurisdiction || ""}`.toLowerCase();
-  if (raw.includes("de-spac") || raw.includes("de spac")) return "de_spac";
-  if (raw.includes("depositary receipt") || raw.includes(" hdr")) return "hdr";
-  if (raw.includes("red-chip") || raw.includes("offshore")) return "red_chip";
-  if (raw.includes("h-share") || raw.includes("prc-incorporated")) return "h_share";
+  const structure = String(record.structureType || record.rawStructureType || "").trim().toLowerCase();
+  if (/^de[- ]spac\b/.test(structure)) return "de_spac";
+  if (/^hdr\b|^depositary receipt/.test(structure)) return "hdr";
+  if (/^h[- ]share\b|^prc-incorporated\b|^h股/.test(structure)) return "h_share";
+  if (/^red[- ]?chip\b|^红筹|^紅籌/.test(structure)) return "red_chip";
   return "other";
 }
 
@@ -438,10 +439,8 @@ function formatMarketCap(record) {
   if (!isAhCandidate(record)) return `<span class="not-applicable">不适用</span><span class="pending-en">N/A</span>`;
   if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
-  const provenance = record.aShareMarketCapProvenance || {};
-  const estimated = provenance.status !== "verified";
   return `
-    <span class="market-cap-value">${estimated ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
+    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
     <span class="pending-en">¥${rmbBnFormatter.format(value)}B</span>
   `;
 }
@@ -454,7 +453,7 @@ function formatListingMarketCap(record) {
   if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
   return `
-    <span class="market-cap-value">${record.listingMarketCapProvenance?.status === "estimate" ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
+    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
     <span class="pending-en">HK$${rmbBnFormatter.format(value)}B</span>
   `;
 }
@@ -1055,6 +1054,8 @@ function renderNoticeCell(record) {
   if (record.transactionDisclosures?.kind === "reverse_takeover_filing_notice") {
     return `${formatDate(record.transactionDisclosures.signedDate)}<span class="date-secondary">反向收购备案 / RTO notice</span>`;
   }
+  if (record.noticeDateBasis === "publication_date_only" && record.noticePublishedDate)
+    return `公示 ${formatDate(record.noticePublishedDate)}`;
   const label = record.noticeSupersededByCurrentFiling ? "历史通知 Historical notice"
     : record.noticeDateBasis === "publication_date_fallback" ? "网页发布 Published" : "";
   return `${formatDate(record.noticeDate)}${label ? `<span class="date-secondary">${label}</span>` : ""}`;
