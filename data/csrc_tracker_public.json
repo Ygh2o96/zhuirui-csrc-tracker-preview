@@ -50,7 +50,7 @@
         "shortNameZh": "国联证券国际金融"
       }
     },
-    "generatedAt": "2026-11-21T16:54:36+08:00",
+    "generatedAt": "2026-11-21T16:58:18+08:00",
     "sourceDatabaseFingerprint": "sha256:860bff194133c5a62f101edc99a3719612d428bfa4108ad5903a05a647f56e01",
     "sourceDatabaseFingerprintVersion": 2,
     "sourceDatabaseTableCounts": {
@@ -136,21 +136,21 @@
     "reviewQueue": 0,
     "waitingReceived": 54,
     "csrcFilingNotRequired": 30,
-    "hkexListedIssuers": 369,
+    "hkexListedIssuers": 370,
     "listingMarketCapCoverage": {
-      "total": 369,
-      "verified": 369,
+      "total": 370,
+      "verified": 370,
       "excluded": 0
     },
-    "hkexListedPostRegimeIssuers": 369,
-    "hkexListedWithListingDate": 369,
+    "hkexListedPostRegimeIssuers": 370,
+    "hkexListedWithListingDate": 370,
     "hkexListedMissingListingDate": 0,
     "hkexListedNoticeMatched": 316,
     "hkexListedNoticeMissing": 0,
     "practicalStageCounts": {
-      "applying": 456,
-      "listed": 370,
-      "other": 32
+      "applying": 442,
+      "listed": 371,
+      "other": 45
     },
     "aShareMarketCapRows": 187,
     "medianA1ToNoticeBusinessDays": 125
@@ -18955,7 +18955,9 @@
       "issuerName": "Hand Enterprise Solutions Co., Ltd.",
       "csrcName": "上海漢得信息技術股份有限公司",
       "status": "regulator_opinion",
-      "statusTags": [],
+      "statusTags": [
+        "已终止赴港上市"
+      ],
       "backendStageZh": "征求主管部门意见",
       "a1Date": "2025-12-29",
       "localFirstA1Date": "2025-12-29",
@@ -19081,6 +19083,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7620010/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-09-09/1225554814.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -19148,7 +19154,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Hand Enterprise Solutions Co., Ltd.",
         "上海汉得信息技术股份有限公司",
@@ -19179,7 +19185,17 @@
       "hkexLatestDocumentDate": "2026-07-29",
       "hkexApplicationStatusGroup": "active",
       "hkexApplicationStatusLabelZh": "港交所处理中",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "上海汉得信息技术股份有限公司",
+        "title": "关于公司终止发行H股股票并在香港联合交易所有限公司上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-09-09/1225554814.PDF",
+        "pdfPage": 1,
+        "sha256": "936ca0be84d741847f3a8cc3c374de4b49b60a5124efb35c227a94ddd182a0ec",
+        "decisionDate": "2026-09-09",
+        "signedDate": "2026-09-09",
+        "publicationDate": "2026-09-09"
+      }
     },
     {
       "id": "shenzhen yueshi holding co., ltd. (formerly known as shenzhen yueshi digital intelligence co., ltd.)",
@@ -41416,7 +41432,8 @@
       "csrcName": "煙臺藍納成生物技術股份有限公司",
       "status": "csrc_received",
       "statusTags": [
-        "已撤回"
+        "已撤回",
+        "已终止赴港上市"
       ],
       "backendStageZh": "已接收",
       "a1Date": "2025-09-29",
@@ -41527,6 +41544,14 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-15/1225605380.PDF#page=1"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -41598,7 +41623,7 @@
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
       "csrcFilingEvidenceLocator": "PDF page 1",
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Yantai Lannacheng Biotechnology Co., Ltd.",
         "Yantai Lannacheng Biotechnology Co., Ltd. - B",
@@ -41609,7 +41634,25 @@
       ],
       "hkexApplicationStatusGroup": "withdrawn",
       "hkexApplicationStatusLabelZh": "申请已撤回",
-      "issuerTypeKey": "h_share"
+      "issuerTypeKey": "h_share",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "烟台蓝纳成生物技术股份有限公司",
+        "title": "关于终止分拆所属子公司至香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-15/1225605380.PDF",
+        "pdfPage": 1,
+        "sha256": "57cb5617baea8fe5e54e45e7ed78f656ebe07c0b44bcc54e9c4949974416b37d",
+        "decisionDate": "2026-10-13",
+        "signedDate": "2026-10-15",
+        "publicationDate": "2026-10-15"
+      },
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-06-12",
+        "applicationId": "108638",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "anhui huachuang new materials co., ltd.",
@@ -57356,6 +57399,10 @@
         {
           "label": "备案情况表（最近一次公开状态）",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7644850/content.shtml"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/appreturned_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -57426,7 +57473,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Inner Mongolia Xingye Silver & Tin Mining Co., Ltd.",
         "內蒙古興業銀錫礦業股份有限公司",
@@ -57442,7 +57489,13 @@
       },
       "hkexApplicationStatusGroup": "returned",
       "hkexApplicationStatusLabelZh": "申请已被发回",
-      "issuerTypeKey": "h_share"
+      "issuerTypeKey": "h_share",
+      "hkexTerminalApplication": {
+        "status": "Returned",
+        "apDate": "2026-05-25",
+        "returnDate": "2026-06-22",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/appreturned_sehk_e.json"
+      }
     },
     {
       "id": "shanh technology limited",
@@ -57597,6 +57650,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7591047/content.shtml"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -57667,7 +57724,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "ShanH Technology Limited",
         "閃回科技有限公司",
@@ -57675,7 +57732,15 @@
       ],
       "hkexApplicationStatusGroup": "withdrawn",
       "hkexApplicationStatusLabelZh": "申请已撤回",
-      "issuerTypeKey": "red_chip"
+      "issuerTypeKey": "red_chip",
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-05-25",
+        "applicationId": "108568",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "yanwen logistics co., ltd.",
@@ -62540,7 +62605,8 @@
       "csrcName": "博瑞生物醫藥（蘇州）股份有限公司",
       "status": "csrc_received",
       "statusTags": [
-        "已撤回"
+        "已撤回",
+        "已终止赴港上市"
       ],
       "backendStageZh": "已接收",
       "a1Date": "2025-10-30",
@@ -62667,6 +62733,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7606660/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-01/1225590543.PDF#page=1"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -62734,7 +62808,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "BrightGene Bio-Medical Technology Co., Ltd.",
         "博瑞生物医药(苏州)股份有限公司",
@@ -62742,7 +62816,25 @@
       ],
       "hkexApplicationStatusGroup": "withdrawn",
       "hkexApplicationStatusLabelZh": "申请已撤回",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "博瑞生物医药（苏州）股份有限公司",
+        "title": "关于终止发行H股股票并在香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-01/1225590543.PDF",
+        "pdfPage": 1,
+        "sha256": "c72a4a600421a628bb504c34a556c64b611ac102aad7a6f548fbbdd58e0eed6f",
+        "decisionDate": "2026-09-30",
+        "signedDate": "2026-10-01",
+        "publicationDate": "2026-10-01"
+      },
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-05-18",
+        "applicationId": "108547",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "guangdong jinsheng new energy co., ltd.",
@@ -72993,7 +73085,8 @@
       "csrcName": "安徽華恒生物科技股份有限公司",
       "status": "notice_issued",
       "statusTags": [
-        "已撤回"
+        "已撤回",
+        "已终止赴港上市"
       ],
       "backendStageZh": "补充材料",
       "a1Date": "2025-09-30",
@@ -73141,6 +73234,14 @@
           "lastAttemptAt": "2026-11-19T18:21:54.338056+00:00",
           "lastAttemptState": "access_restricted",
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-06-25/1225386681.PDF#page=1"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "phipDocumentDate": "2026-06-24",
@@ -73226,7 +73327,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Anhui Huaheng Biotechnology Co., Ltd.",
         "安徽华恒生物科技股份有限公司",
@@ -73234,7 +73335,25 @@
       ],
       "hkexApplicationStatusGroup": "withdrawn",
       "hkexApplicationStatusLabelZh": "申请已撤回",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "安徽华恒生物科技股份有限公司",
+        "title": "安徽华恒生物科技股份有限公司关于终止发行H股股票并于香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-06-25/1225386681.PDF",
+        "pdfPage": 1,
+        "sha256": "a9b1f29404d35637f012c3dc9a422d3e36b382633dfb1bd5ed651a29154fd930",
+        "decisionDate": "2026-06-24",
+        "signedDate": "2026-06-25",
+        "publicationDate": "2026-06-25"
+      },
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-04-30",
+        "applicationId": "108493",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "junqi holdings limited",
@@ -74789,30 +74908,32 @@
     },
     {
       "id": "dragon mining limited",
-      "issuerName": "Dragon Mining Limited",
+      "issuerName": "Dragon Gold Mining Limited",
       "csrcName": "龍金資源有限公司",
       "status": "not_required",
       "statusTags": [
-        "无需备案"
+        "无需备案",
+        "介绍上市",
+        "已上市"
       ],
       "backendStageZh": "无需备案",
       "a1Date": "2026-04-29",
       "localFirstA1Date": "2026-04-29",
       "currentA1Date": "2026-04-29",
-      "hkexPublicFirstPostingDate": "2017-04-12",
-      "hkexPublicStatus": "Active",
-      "hkexListingDate": null,
-      "hkexListingStockCode": "",
-      "hkexProspectusDate": null,
-      "hkexListingCompanyName": "",
-      "hkexListingSourceUrl": null,
-      "hkexListingDateBasis": "",
+      "hkexPublicFirstPostingDate": "2026-04-29",
+      "hkexPublicStatus": "Listed",
+      "hkexListingDate": "2026-09-02",
+      "hkexListingStockCode": "01712",
+      "hkexProspectusDate": "2026-06-29",
+      "hkexListingCompanyName": "Dragon Gold Mining Limited",
+      "hkexListingSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0902/2026090200045.pdf",
+      "hkexListingDateBasis": "hkex_scheme_implementation_announcement",
       "hkexConfidentialFilingDate": null,
       "hkexConfidentialFilingEvidence": "",
       "timelineAnchorDate": "2026-04-29",
       "timelineAnchorSource": "hkex_consolidated_index_after_csrc_rules,hkex_application_proof_after_csrc_rules",
-      "historicalTimelineAnchorDate": "2017-04-12",
-      "historicalTimelineAnchorSource": "hkex_consolidated_index",
+      "historicalTimelineAnchorDate": "2026-04-29",
+      "historicalTimelineAnchorSource": "hkex_application_proof",
       "regulatoryTimelineAnchorDate": "2026-04-29",
       "regulatoryTimelineAnchorSource": "hkex_consolidated_index_after_csrc_rules,hkex_application_proof_after_csrc_rules",
       "csrcReceivedDate": null,
@@ -74847,7 +74968,9 @@
       "durationSampleEligible": false,
       "listingDurationSampleEligible": false,
       "timelineQuality": "no_csrc_timeline_match",
-      "timelineFlags": [],
+      "timelineFlags": [
+        "introduction_excluded_from_ordinary_ipo_stats"
+      ],
       "structureType": "Other offshore / Hong Kong",
       "rawStructureType": "Other offshore / Hong Kong",
       "issuerJurisdiction": "Hong Kong",
@@ -74901,17 +75024,33 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "重组计划文件 / Scheme booklet §2.13",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062901004.pdf"
+        },
+        {
+          "label": "股东表决 / Scheme meeting result, p. 1",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601853.pdf"
+        },
+        {
+          "label": "法院批准及生效 / Court approval and effectiveness, pp. 1–2",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0813/2026081301322.pdf"
+        },
+        {
+          "label": "重组实施及上市 / Implementation and listing, pp. 1–2",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0902/2026090200045.pdf"
         }
       ],
-      "listingMarketCapHkdBn": null,
-      "listingMarketCapTradeDate": null,
+      "listingMarketCapHkdBn": 1.575590840175,
+      "listingMarketCapTradeDate": "2026-09-02",
       "aShareMarketCapProvenance": {
         "version": 1,
         "status": "unsupported",
         "method": "historical_close_x_unverified_shares",
         "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": "2017-04-12",
-        "anchorSource": "stored_a_share_market_cap_anchor",
+        "anchorDate": null,
+        "anchorSource": null,
         "priceDate": null,
         "price": null,
         "priceClass": "A",
@@ -74925,12 +75064,13 @@
         "sharesSource": null,
         "sharesSourceUrl": null,
         "sharesTiming": "unverified",
-        "retrievedAt": "2026-11-20T23:20:29",
+        "retrievedAt": null,
         "valueCurrency": "CNY",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
         "validationIssues": [
+          "missing_or_invalid_anchor_date",
           "missing_or_invalid_price_date",
           "missing_or_invalid_price",
           "missing_or_invalid_shares",
@@ -74944,24 +75084,85 @@
       },
       "aShareMarketCapSampleEligible": false,
       "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": "2017-04-12",
-      "aShareMarketCapAnchorSource": "stored_a_share_market_cap_anchor",
-      "listingMarketCapSampleEligible": false,
+      "aShareMarketCapAnchorDate": null,
+      "aShareMarketCapAnchorSource": null,
+      "listingMarketCapSampleEligible": true,
       "listingMarketCapEstimateHkdBn": null,
       "listingMarketCapProvenance": {
         "version": 2,
-        "status": "unsupported",
+        "status": "verified",
         "policy": "hk_ordinary_ex_treasury",
         "scope": "full_ordinary_equity_excluding_treasury",
         "method": "hk_close_x_full_ordinary_shares_ex_treasury",
-        "anchorDate": null,
+        "anchorDate": "2026-09-02",
         "valueCurrency": "HKD",
         "priceDatePolicy": "same_day_or_calendar_proven_latest_close",
-        "valueHkdExact": null,
-        "components": [],
+        "valueHkdExact": "1575590840.175",
+        "components": [
+          {
+            "class": "ordinary",
+            "securityCode": "01712",
+            "sharesAsOf": "2026-09-02",
+            "issuedShares": 189715935,
+            "treasuryShares": 0,
+            "sharesEvidence": {
+              "sha256": "54914926112ebc25bd2c60fa82043852041b52ede3b945c5bb8a493dd30c38c2",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1002/2026100202713.pdf",
+              "publishedDate": "2026-10-02",
+              "retrievedAt": "2026-11-21T08:57:11+00:00",
+              "authority": "exchange_filing",
+              "adapter": "hkex_ff301_nonah_dated_v2",
+              "facts": {
+                "class": "ordinary",
+                "securityCode": "01712",
+                "sharesAsOf": "2026-09-02",
+                "issuedShares": 189715935,
+                "treasuryShares": 0,
+                "shareBasis": "full_ordinary_issued_including_treasury"
+              }
+            },
+            "shareBasis": "full_ordinary_issued_including_treasury",
+            "price": "8.305",
+            "priceDate": "2026-09-02",
+            "priceCurrency": "HKD",
+            "priceKind": "unadjusted_vendor_close",
+            "priceEvidence": {
+              "sha256": "de65a52c4993ca2620dac24856326791aeb42807ca85cb1069d8a8645a6c4c88",
+              "sourceUrl": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk01712,day,2026-09-02,2026-09-02,2,bfq",
+              "publishedDate": null,
+              "retrievedAt": "2026-11-21T08:57:11+00:00",
+              "adapter": "tencent_unadjusted_day_v1",
+              "authority": "structured_market_data",
+              "facts": {
+                "class": "ordinary",
+                "securityCode": "01712",
+                "price": "8.305",
+                "priceDate": "2026-09-02",
+                "priceCurrency": "HKD",
+                "priceKind": "unadjusted_vendor_close"
+              }
+            },
+            "sharesExTreasury": 189715935,
+            "sharesStatus": "verified",
+            "priceStatus": "verified",
+            "valueHkd": "1575590840.175"
+          }
+        ],
         "fx": null,
         "fxStatus": "not_applicable",
-        "coverageEvidence": null
+        "coverageEvidence": {
+          "sha256": "54914926112ebc25bd2c60fa82043852041b52ede3b945c5bb8a493dd30c38c2",
+          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1002/2026100202713.pdf",
+          "publishedDate": "2026-10-02",
+          "retrievedAt": "2026-11-21T08:57:11+00:00",
+          "authority": "exchange_filing",
+          "adapter": "hkex_ff301_nonah_dated_v2",
+          "facts": {
+            "stockCode": "01712",
+            "sharesAsOf": "2026-09-02",
+            "policy": "hk_ordinary_ex_treasury"
+          }
+        }
       },
       "csrcFilingApplicability": "not_required",
       "csrcFilingApplicabilityBasis": "outside_domestic_scope",
@@ -74973,8 +75174,9 @@
       "csrcFilingApplicabilityConflict": false,
       "csrcFilingEvidenceLocator": "HKEX AP, PDF pages 51–53 and 79. CSRC Trial Measures, Articles 2 and 15.",
       "csrcFilingApplicabilityReasonZh": "本次申请涉及由香港新控股公司承接原上市架构，集团的主要矿业资产及运营均在芬兰和瑞典。按申请文件披露，本次交易不属于境内企业境外上市备案范围。",
-      "practicalStage": "applying",
+      "practicalStage": "listed",
       "issuerSearchAliases": [
+        "Dragon Gold Mining Limited",
         "Dragon Mining Limited",
         "龍資源有限公司",
         "龍金資源有限公司",
@@ -74998,9 +75200,87 @@
         }
       ],
       "hkexLatestDocumentDate": "2026-04-29",
-      "hkexApplicationStatusGroup": "active",
-      "hkexApplicationStatusLabelZh": "港交所处理中",
-      "issuerTypeKey": "other"
+      "issuerTypeKey": "other",
+      "hkexCoverChineseName": "龍金資源有限公司",
+      "specialListingRoute": "introduction",
+      "specialListingRouteEvidence": "集团更换控股公司，由在香港注册的龍金資源有限公司以介绍方式上市。",
+      "durationStatsExcludedReason": "introduction_not_ordinary_ipo",
+      "transactionDisclosures": {
+        "kind": "holding_company_substitution",
+        "route": "introduction",
+        "stockCode": "01712",
+        "predecessorName": "Dragon Mining Limited",
+        "predecessorNameZh": "龍資源有限公司",
+        "predecessorJurisdiction": "Western Australia",
+        "successorName": "Dragon Gold Mining Limited",
+        "successorNameZh": "龍金資源有限公司",
+        "successorJurisdiction": "Hong Kong",
+        "schemeMeetingDate": "2026-08-06",
+        "courtApprovalDate": "2026-08-13",
+        "schemeEffectiveDate": "2026-08-13",
+        "mainBoardTradingDate": "2026-09-02",
+        "sources": {
+          "scheme": {
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062901004.pdf",
+            "sha256": "109178fae1fc1d48064b5ee67a5a80e9e6305fe12e6487de399584f56a79d92b",
+            "documentDate": "2026-06-29",
+            "pdfPages": [
+              30
+            ],
+            "locator": "重组计划文件 / Scheme booklet §2.13"
+          },
+          "vote": {
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601853.pdf",
+            "sha256": "6c8976d3acdf50212b5131e86c0a7d5a21f8fda039a79d343f762398609ab3b5",
+            "documentDate": "2026-08-06",
+            "pdfPages": [
+              1
+            ],
+            "locator": "股东表决 / Scheme meeting result, p. 1"
+          },
+          "court": {
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0813/2026081301322.pdf",
+            "sha256": "ad7dd72847b9cb887e1ef68a3ab3d2679dff2bd26619db866dff35cc9cd4936d",
+            "documentDate": "2026-08-13",
+            "pdfPages": [
+              1,
+              2
+            ],
+            "locator": "法院批准及生效 / Court approval and effectiveness, pp. 1–2"
+          },
+          "completion": {
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0902/2026090200045.pdf",
+            "sha256": "4a3be0905feea8d767ec5df5634e25662c57d0032fecf78292ad4d5153ef2087",
+            "documentDate": "2026-09-02",
+            "pdfPages": [
+              1,
+              2
+            ],
+            "locator": "重组实施及上市 / Implementation and listing, pp. 1–2"
+          }
+        }
+      },
+      "listingTiming": {
+        "firstA1Date": "2026-04-29",
+        "firstPublicA1Date": "2026-04-29",
+        "firstSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108486/documents/sehk26042906339.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108486/documents/sehk26042906339.pdf",
+        "successfulCycleA1Date": "2026-04-29",
+        "successfulCycleSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108486/documents/sehk26042906339.pdf",
+        "firstToListingDays": 126,
+        "successfulCycleToListingDays": 126,
+        "listingDate": "2026-09-02",
+        "listingSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0902/2026090200045.pdf",
+        "includedInOrdinaryIPOAverage": false,
+        "exclusionReasonZh": "介绍上市项目，单列统计"
+      },
+      "hkListingSessionClose": {
+        "price": "8.305",
+        "priceDate": "2026-09-02",
+        "priceCurrency": "HKD",
+        "priceKind": "unadjusted_vendor_close",
+        "sourceUrl": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk01712,day,2026-09-02,2026-09-02,2,bfq"
+      }
     },
     {
       "id": "eccogene inc. - b",
@@ -92665,6 +92945,10 @@
         {
           "label": "HKEX Main Board Consolidated Index",
           "url": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -92742,7 +93026,15 @@
         "浙江毛源昌眼鏡股份有限公司",
         "浙江毛源昌眼镜股份有限公司"
       ],
-      "issuerTypeKey": "h_share"
+      "issuerTypeKey": "h_share",
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-04-02",
+        "applicationId": "108407",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "ekh limited",
@@ -109235,6 +109527,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7589856/content.shtml"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -109305,7 +109601,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Sichuan Yingfa Ruineng Technology CO., LTD.",
         "四川英发睿能科技股份有限公司",
@@ -109313,7 +109609,15 @@
       ],
       "hkexApplicationStatusGroup": "withdrawn",
       "hkexApplicationStatusLabelZh": "申请已撤回",
-      "issuerTypeKey": "h_share"
+      "issuerTypeKey": "h_share",
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-03-19",
+        "applicationId": "108318",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "baige online digital technology co., ltd.",
@@ -117683,7 +117987,8 @@
       "csrcName": "中文在線集團股份有限公司",
       "status": "regulator_opinion",
       "statusTags": [
-        "已撤回"
+        "已撤回",
+        "已终止赴港上市"
       ],
       "backendStageZh": "征求主管部门意见",
       "a1Date": "2026-02-27",
@@ -117807,6 +118112,14 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7635852/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-08/1225596000.PDF#page=1"
+        },
+        {
+          "label": "港交所申请记录",
+          "url": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -117874,7 +118187,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "COL Global Co., Ltd.",
         "中文在線集團股份有限公司",
@@ -117882,7 +118195,25 @@
       ],
       "hkexApplicationStatusGroup": "withdrawn",
       "hkexApplicationStatusLabelZh": "申请已撤回",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "中文在线集团股份有限公司",
+        "title": "关于终止发行H股股票并于香港联合交易所有限公司上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-08/1225596000.PDF",
+        "pdfPage": 1,
+        "sha256": "6c81aabd7469cab7ee0f8130aefeb1c511b777e5c6ef2ba007fd5f808e333088",
+        "decisionDate": "2026-10-07",
+        "signedDate": "2026-10-08",
+        "publicationDate": "2026-10-08"
+      },
+      "hkexTerminalApplication": {
+        "status": "Withdrawn",
+        "apDate": "2026-02-27",
+        "applicationId": "108260",
+        "asOf": "2026-11-20",
+        "sha256": "a7da1461739f343339ce9b35be99e44cd4f71d45d931caaf7d21ebf7067a05e6",
+        "sourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json"
+      }
     },
     {
       "id": "huge dental limited",
@@ -126453,7 +126784,8 @@
       "csrcName": "欣旺達電子股份有限公司",
       "status": "regulator_opinion",
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "backendStageZh": "征求主管部门意见",
       "a1Date": "2025-07-30",
@@ -126580,6 +126912,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7584475/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-30/1225643828.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -126647,7 +126983,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Sunwoda Electronic Co., Ltd.",
         "欣旺达电子股份有限公司",
@@ -126655,7 +126991,17 @@
       ],
       "hkexApplicationStatusGroup": "lapsed",
       "hkexApplicationStatusLabelZh": "申请已失效",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "欣旺达电子股份有限公司",
+        "title": "关于公司终止发行H股股票并在香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-30/1225643828.PDF",
+        "pdfPage": 1,
+        "sha256": "9a23810ba82c0f489daa8699fbf1620f41bc04f468dc565b4973d448c8cd6a44",
+        "decisionDate": "2026-10-28",
+        "signedDate": "2026-10-30",
+        "publicationDate": "2026-10-30"
+      }
     },
     {
       "id": "tailg technology co., ltd.",
@@ -139747,7 +140093,8 @@
       "csrcName": "北京藍色光標數據科技集團股份有限公司",
       "status": "csrc_received",
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "backendStageZh": "已接收",
       "a1Date": "2025-06-25",
@@ -139875,6 +140222,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7581728/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-27/1225622034.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -139942,7 +140293,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "BlueFocus Intelligent Communications Group Co., Ltd.",
         "北京蓝色光标数据科技集团股份有限公司",
@@ -139950,7 +140301,17 @@
       ],
       "hkexApplicationStatusGroup": "lapsed",
       "hkexApplicationStatusLabelZh": "申请已失效",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "北京蓝色光标数据科技集团股份有限公司",
+        "title": "关于终止发行H股股票并于香港联合交易所有限公司上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-27/1225622034.PDF",
+        "pdfPage": 1,
+        "sha256": "960f15e760c951e414e6c28a379ffa0ef95ce7abb3239e5fa9dea6009af22c96",
+        "decisionDate": "2026-10-26",
+        "signedDate": "2026-10-26",
+        "publicationDate": "2026-10-27"
+      }
     },
     {
       "id": "tojoy shared smart enterprise services co., ltd.",
@@ -141057,7 +141418,8 @@
       "csrcName": "北京宇信科技集團股份有限公司",
       "status": "csrc_received",
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "backendStageZh": "已接收",
       "a1Date": "2025-06-18",
@@ -141180,6 +141542,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7576302/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-30/1225639454.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -141246,7 +141612,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Yusys Technologies Co., Ltd.",
         "北京宇信科技集团股份有限公司",
@@ -141254,7 +141620,17 @@
       ],
       "hkexApplicationStatusGroup": "lapsed",
       "hkexApplicationStatusLabelZh": "申请已失效",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "北京宇信科技集团股份有限公司",
+        "title": "关于终止发行H股股票并于香港联合交易所有限公司上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-30/1225639454.PDF",
+        "pdfPage": 1,
+        "sha256": "d271b399fa4e29e8c0a3c4c5f28ac37553705088b395bae912e161e502a637c1",
+        "decisionDate": "2026-10-28",
+        "signedDate": "2026-10-30",
+        "publicationDate": "2026-10-30"
+      }
     },
     {
       "id": "zhejiang meorient commerce & exhibition inc.",
@@ -143217,7 +143593,8 @@
       "csrcName": "紫光股份有限公司",
       "status": "supplement_requested",
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "backendStageZh": "补充材料",
       "a1Date": "2025-05-29",
@@ -143342,6 +143719,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7576302/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-02-12/1224976623.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -143408,14 +143789,24 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Unisplendour Corporation Limited",
         "紫光股份有限公司"
       ],
       "hkexApplicationStatusGroup": "lapsed",
       "hkexApplicationStatusLabelZh": "申请已失效",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "紫光股份有限公司",
+        "title": "关于终止发行H股股票并于香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-02-12/1224976623.PDF",
+        "pdfPage": 1,
+        "sha256": "4a290fa74aee09cb47dfdc240ae8e569e965f95aad6815c2ad0b70f07c7c2cc6",
+        "decisionDate": "2026-02-11",
+        "signedDate": "2026-02-12",
+        "publicationDate": "2026-02-12"
+      }
     },
     {
       "id": "pharmeyes cayman holding limited",
@@ -147946,7 +148337,8 @@
       "csrcName": "浙江中堅科技股份有限公司",
       "status": "regulator_opinion",
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "backendStageZh": "征求主管部门意见",
       "a1Date": "2025-11-25",
@@ -148070,6 +148462,10 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7612550/content.shtml"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-24/1225619286.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -148137,7 +148533,7 @@
       ],
       "csrcFilingReportingRequired": null,
       "csrcFilingApplicabilityConflict": false,
-      "practicalStage": "applying",
+      "practicalStage": "other",
       "issuerSearchAliases": [
         "Zhejiang Zhongjian Technology Co., Ltd.",
         "浙江中坚科技股份有限公司",
@@ -148145,7 +148541,17 @@
       ],
       "hkexApplicationStatusGroup": "lapsed",
       "hkexApplicationStatusLabelZh": "申请已失效",
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "浙江中坚科技股份有限公司",
+        "title": "关于终止发行H股股票并于香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-10-24/1225619286.PDF",
+        "pdfPage": 1,
+        "sha256": "27b002962624065c98205731606cac1e958a92d634ce4de159dabff71b70eb0c",
+        "decisionDate": "2026-10-23",
+        "signedDate": "2026-10-24",
+        "publicationDate": "2026-10-24"
+      }
     },
     {
       "id": "mandi inc.",
@@ -150970,7 +151376,8 @@
       "csrcName": "拉卡拉支付股份有限公司",
       "status": "csrc_received",
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "backendStageZh": "已接收",
       "a1Date": "2025-10-17",
@@ -151067,6 +151474,10 @@
         {
           "label": "备案情况表（历史表）",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225504767.PDF#page=1"
         }
       ],
       "listingMarketCapHkdBn": null,
@@ -151139,7 +151550,17 @@
         "Lakala Payment Co., Ltd.",
         "拉卡拉支付股份有限公司"
       ],
-      "issuerTypeKey": "a_h"
+      "issuerTypeKey": "a_h",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "拉卡拉支付股份有限公司",
+        "title": "关于公司终止发行H股并于香港联合交易所有限公司主板上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225504767.PDF",
+        "pdfPage": 1,
+        "sha256": "75bae9feb62326a4d554fc82a0011e116e7314963581aecf751fbf09453f4bac",
+        "decisionDate": "2026-08-25",
+        "signedDate": "2026-08-25",
+        "publicationDate": "2026-08-25"
+      }
     },
     {
       "id": "simco infrastructure private credit ofc",

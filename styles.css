@@ -667,13 +667,19 @@ h1 {
   margin-top: 7px;
 }
 
-.status-mini span {
+.status-mini button {
   border: 1px solid var(--soft-line);
   border-radius: 999px;
   padding: 2px 6px;
   color: var(--muted);
   background: #fbfcfd;
+  font: inherit;
   font-size: 9px;
+  cursor: pointer;
+}
+
+.status-mini button[aria-pressed="true"] {
+  border-color: currentColor;
 }
 
 .tracker-layout {

@@ -516,6 +516,10 @@ function statusLabel(status, index = 0) {
   return (state.data?.meta?.statusLabels?.[status] || statusLabels[status] || [status, status])[index];
 }
 
+function publicStatusKey(status) {
+  return statusLabel(status) === statusLabel("applicability_pending") ? "applicability_pending" : status;
+}
+
 function dayUnitLabel() {
   return state.dayCountMode === "business" ? "工作日" : "自然日";
 }
@@ -1107,7 +1111,7 @@ function getBaseFilteredRecords() {
   const capMax = parseCap(state.marketCapMax);
 
   return state.data.records.filter((record) => {
-    if (state.status !== "all" && record.status !== state.status) return false;
+    if (state.status !== "all" && publicStatusKey(record.status) !== publicStatusKey(state.status)) return false;
     if (state.hkexStage !== "all" && hkexListingStage(record) !== state.hkexStage) return false;
     if (state.structure !== "all" && issuerTypeKey(record) !== state.structure) return false;
     if (state.industry !== "all"
@@ -1168,7 +1172,7 @@ function sortKey(record, field) {
   if (field === "sponsors") return { value: firstTextValue(sponsorLabels(record)), type: "text" };
   if (field === "structureType") return { value: issuerTypeInfo(record).rank, type: "number" };
   const durationMetric = dayMetricForField(field);
-  if (durationMetric) return { value: durationValueForDisplay(record, durationMetric), type: "number" };
+  if (durationMetric) return { value: durationValueForStats(record, {metric: durationMetric}), type: "number" };
   if (field === "issuerName") {
     const names = nameParts(record);
     return { value: `${names.primary || ""} ${names.secondary || ""}`.trim(), type: "text" };
@@ -1275,7 +1279,7 @@ function median(values) {
 
 function durationValueForStats(record, metric) {
   return timingSample(record, metric.metric, dayMetricField(metric.metric), dayMetricField("currentA1ToReceived"),
-    state.hkexStage, record.hkexListingDate, state.data?.meta?.csrcRegimeEffectiveDate);
+    record.practicalStage || (record.hkexListingDate ? "listed" : state.hkexStage), record.hkexListingDate, state.data?.meta?.csrcRegimeEffectiveDate);
 }
 
 function statsFor(records, metric) {
@@ -1289,7 +1293,7 @@ function statsFor(records, metric) {
   const values = entries.map((entry) => entry.value);
   const total = values.reduce((sum, value) => sum + value, 0);
   const minEntry = entries[0];
-  const maxEntry = entries[entries.length - 1];
+  const maxEntry = entries.find((entry) => entry.value === values[values.length - 1]);
   return {
     count: values.length,
     average: total / values.length,
@@ -1366,13 +1370,17 @@ function renderDurationMetric(metric, stats) {
 }
 
 function renderMetrics(records) {
-  const statusCounts = records.reduce((counts, record) => {
-    counts[record.status] = (counts[record.status] || 0) + 1;
-    return counts;
-  }, {});
-  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required"]
-    .map((status) => `<span>${escapeHtml(statusLabel(status))} ${formatNumber(statusCounts[status] || 0, "integer")}</span>`)
-    .join("");
+  const statusCounts = new Map();
+  for (const record of records) {
+    const key = publicStatusKey(record.status);
+    statusCounts.set(key, (statusCounts.get(key) || 0) + 1);
+  }
+  const statuses = new Set([...Object.keys(state.data?.meta?.statusLabels || statusLabels).map(publicStatusKey), ...statusCounts.keys()]);
+  const statusHtml = [...statuses].map((status) => {
+    const count = statusCounts.get(status) || 0;
+    const active = state.status !== "all" && publicStatusKey(state.status) === status;
+    return `<button type="button" data-count-status="${escapeHtml(status)}" aria-pressed="${active}">${escapeHtml(statusLabel(status))} ${formatNumber(count, "integer")}</button>`;
+  }).join("");
   const metricSet = currentMetricDefinitions();
   const titleZh = state.hkexStage === "listed" ? "已上市样本" : "筛选结果";
   const titleEn = state.hkexStage === "listed" ? "Listed issuers" : "Filtered issuers";
@@ -1394,36 +1402,32 @@ function renderMetrics(records) {
 }
 
 function renderDays(record) {
-  const fields = {
-    a1ToReceived: dayMetricField("a1ToReceived"),
-    currentA1ToReceived: dayMetricField("currentA1ToReceived"),
-    receivedToNotice: dayMetricField("receivedToNotice"),
-    a1ToNotice: dayMetricField("a1ToNotice"),
-    a1ToListing: dayMetricField("a1ToListing")
-  };
+  const days = (metric) => durationValueForStats(record, {metric});
   if (state.hkexStage === "listed") {
     return `
       <div class="days-cell">
         <div class="days-cell-mode">${dayUnitLabel()}</div>
-        <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayValue(durationValueForDisplay(record, "a1ToNotice"))}</strong></div>
-        <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayValue(durationValueForDisplay(record, "a1ToListing"))}</strong></div>
+        <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayValue(days("a1ToNotice"))}</strong></div>
+        <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayValue(days("a1ToListing"))}</strong></div>
       </div>
     `;
   }
-  const currentReceivedLine = typeof record[fields.currentA1ToReceived] === "number"
-    ? `<div><span>当前A1至接收</span><strong>${formatDayValue(record[fields.currentA1ToReceived])}</strong></div>`
+  const received = days("a1ToReceived");
+  const current = days("currentA1ToReceived");
+  const currentReceivedLine = Number.isFinite(current) && current !== received
+    ? `<div><span>当前A1至接收</span><strong>${formatDayValue(current)}</strong></div>`
     : "";
-  const listingDays = durationValueForDisplay(record, "a1ToListing");
+  const listingDays = days("a1ToListing");
   const allStageListingLine = state.hkexStage === "all" && typeof listingDays === "number"
     ? `<div class="days-cell-listing"><span title="首次A1至上市 First A1 to HKEX listing">A1→上市</span><strong>${formatDayValue(listingDays)}</strong></div>`
     : "";
   return `
     <div class="days-cell">
       <div class="days-cell-mode">${dayUnitLabel()}</div>
-      <div><span>备案锚点（A1日）至接收</span><strong>${formatDayValue(record[fields.a1ToReceived])}</strong></div>
+      <div><span>备案锚点（A1日）至接收</span><strong>${formatDayValue(received)}</strong></div>
       ${currentReceivedLine}
-      <div><span>接收至通知</span><strong>${formatDayValue(record[fields.receivedToNotice])}</strong></div>
-      <div><span>备案锚点（A1日）至通知</span><strong>${formatDayValue(record[fields.a1ToNotice])}</strong></div>
+      <div><span>接收至通知</span><strong>${formatDayValue(days("receivedToNotice"))}</strong></div>
+      <div><span>备案锚点（A1日）至通知</span><strong>${formatDayValue(days("a1ToNotice"))}</strong></div>
       ${allStageListingLine}
     </div>
   `;
@@ -1920,7 +1924,8 @@ function renderDetail(record) {
           <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToListing"), dayUnit)}</strong></div>
       `
     : `
-          <div><span>备案锚点（A1日）至接收 A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>
+          <div><span>备案计时至接收 A1→Received</span><strong>${formatDayNumber(durationValueForStats(record, {metric:"a1ToReceived"}), dayUnit)}</strong></div>
+          ${hkexListingStage(record) !== "listed" && record.calendarDaysA1ToReceived > 180 ? `<div><span>历史A1至接收 Historical A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>` : ""}
           <div><span>当前A1至当前接收 Current A1→Received</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
           <div><span>接收至通知 Received→Notice</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
           <div><span>备案锚点（A1日）至通知 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
@@ -2325,6 +2330,11 @@ trackerRowsBody.addEventListener("keydown", (event) => {
 });
 
 document.getElementById("metricsGrid").addEventListener("click", (event) => {
+  const status = event.target.closest("[data-count-status]")?.dataset.countStatus;
+  if (status) {
+    updateTracker({status: publicStatusKey(state.status) === status ? "all" : status});
+    return;
+  }
   const button = event.target.closest("[data-record-id][data-sort-field]");
   if (!button) return;
   focusRecordInTable(button.dataset.recordId, button.dataset.sortField, button.dataset.sortDir);

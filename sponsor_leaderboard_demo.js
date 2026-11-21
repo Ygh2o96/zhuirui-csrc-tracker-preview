@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=75523fbda4bff901";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=54df1fd235803e25";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -1183,6 +1183,14 @@ function setPreset(preset) {
   renderPk();
 }
 
+function monthsBefore(dateString, months) {
+  const end = new Date(dateString + "T00:00:00Z");
+  const year = end.getUTCFullYear();
+  const month = end.getUTCMonth() - months;
+  const lastDay = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  return new Date(Date.UTC(year, month, Math.min(end.getUTCDate(), lastDay))).toISOString().slice(0, 10);
+}
+
 function setDateQuickRange(range) {
   state.dateQuick = range;
   const today = metaToday();
@@ -1190,13 +1198,13 @@ function setDateQuickRange(range) {
   state.dateFrom = "";
   if (range === "3m") {
     state.dateTo = today;
-    state.dateFrom = addDays(today, -90);
+    state.dateFrom = monthsBefore(today, 3);
   } else if (range === "6m") {
     state.dateTo = today;
-    state.dateFrom = addDays(today, -183);
+    state.dateFrom = monthsBefore(today, 6);
   } else if (range === "1y") {
     state.dateTo = today;
-    state.dateFrom = addDays(today, -365);
+    state.dateFrom = monthsBefore(today, 12);
   } else if (range === "2026ytd") {
     state.dateFrom = "2026-01-01";
     state.dateTo = today;
