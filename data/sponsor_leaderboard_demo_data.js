@@ -77730,7 +77730,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "transactionCompletionSourceUrl": null,
       "issuerType": "红筹",
       "isAH": false,
-      "specialListingRoute": null,
+      "specialListingRoute": "introduction",
       "industryTags": [
         "餐饮/连锁餐饮",
         "客运/出行/共享交通",
@@ -77811,7 +77811,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDurationSampleEligible": false,
       "listingTiming": null,
       "hkexConfidentialFilingDate": null,
-      "statusTags": [],
+      "statusTags": [
+        "介绍上市"
+      ],
       "sourceLinks": [
         {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
