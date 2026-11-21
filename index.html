@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=3e7b04025541833b" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=dfa7fffc431431c2" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=b940a1d79e3ed957" />
 
   </head>
   <body>
@@ -130,9 +130,7 @@
                   <button class="segment" data-status="regulator_opinion">征询意见<small>Opinion</small></button>
                   <button class="segment" data-status="supplement_requested">补材料<small>Suppl.</small></button>
                   <button class="segment" data-status="csrc_received">已接收<small>Received</small></button>
-                  <button class="segment" data-status="waiting_received">尚未接收<small>No public receipt</small></button>
-                  <button class="segment" data-status="not_required">无需备案<small>No filing required</small></button>
-                  <button class="segment" data-status="applicability_pending">暂无公开进度<small>No public update</small></button>
+                  <button class="segment" data-status="waiting_received">尚未接收<small>Awaiting</small></button>
                 </div>
               </div>
 
@@ -140,9 +138,8 @@
                 <label class="filter-control">
                   <span><b>日期口径</b><small>Date field</small></span>
                   <select id="dateField" name="dateField" autocomplete="off">
-                    <option value="currentA1Date">本次递表日</option>
-                    <option value="a1Date">备案 A1 锚点</option>
-                    <option value="hkexLatestDocumentDate">港交所最新文件</option>
+                    <option value="a1Date">A1 锚点</option>
+                    <option value="currentA1Date">当前 A1</option>
                     <option value="csrcReceivedDate">首轮接收</option>
                     <option value="csrcCurrentReceivedDate">当前接收</option>
                     <option value="noticeDate">备案通知书</option>
@@ -182,16 +179,15 @@
                   <select id="sortField" name="sortField" autocomplete="off">
                     <option value="issuerName">发行人名称</option>
                     <option value="status">状态</option>
-                    <option value="currentA1Date">本次递表日</option>
-                    <option value="a1Date">备案 A1 锚点</option>
-                    <option value="hkexLatestDocumentDate">港交所最新文件</option>
+                    <option value="a1Date">A1 锚点</option>
+                    <option value="currentA1Date">当前 A1</option>
                     <option value="csrcReceivedDate">首轮接收</option>
                     <option value="csrcCurrentReceivedDate">当前接收</option>
                     <option value="noticeDate">备案通知书</option>
                     <option value="hkexListingDate">上市日期</option>
                     <option value="__days__">天数</option>
                     <option value="aShareMarketCapAtA1RmbBn" id="aShareMarketCapSortOption">A1 日 A 股市值</option>
-                    <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日总市值</option>
+                    <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日市值</option>
                     <option value="structureType">发行人类型</option>
                     <option value="industryTags">行业</option>
                     <option value="sponsors">保荐人</option>
@@ -212,7 +208,7 @@
                     <tr>
                       <th class="col-issuer"><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="th-en">Issuer</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-status"><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">状态</span><span class="th-en">Status</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="currentA1Date"><span class="th-zh">本次递表日</span><span class="th-en">Current application</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1</span><span class="th-en">Anchor / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-date"><button class="th-sort" id="dateColumn4Sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh" id="dateColumn4Zh">接收</span><span class="th-en" id="dateColumn4En">First / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-date"><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En">Notice</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="all-only-col col-listing-date"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="th-en">Listing</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
@@ -226,7 +222,7 @@
                         </select>
                       </th>
                       <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A股估值</span><span class="th-en" id="marketCapEn">A-share valuation</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="all-only-col col-mcap-listing"><button class="th-sort" type="button" data-sort-field="listingMarketCapHkdBn"><span class="th-zh">上市日市值</span><span class="th-en">Listing mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-industry"><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
@@ -285,8 +281,8 @@
                   <option value="activeCount">公开申请中项目</option>
                   <option value="listedCount">已上市项目</option>
                   <option value="ahCount">A+H 项目</option>
-                  <option value="listingMarketCapHkdBnSum">上市日总市值</option>
-                  <option value="aShareMarketCapRmbBnSum">A股估值</option>
+                  <option value="listingMarketCapHkdBnSum">上市日市值</option>
+                  <option value="aShareMarketCapRmbBnSum">A股市值</option>
                   <option value="lifecycleMedianDays">A1→上市平均时间（已上市）</option>
                   <option value="noticeCycleMedianDays">A1→通知中位数（已通知）</option>
                   <option value="receivedCycleMedianDays">A1→接收中位数（已接收）</option>
@@ -305,7 +301,7 @@
                 <span>统计口径</span>
                 <select id="slCreditSelect" name="slCreditSelect" autocomplete="off">
                   <option value="creditAllFull">具名保荐人全部计入</option>
-                  <option value="creditFirstNamed">只计首名保荐人</option>
+                  <option value="creditFirstNamed">只计牵头/首名保荐人</option>
                   <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
@@ -339,7 +335,7 @@
               <label>
                 <span>日期口径</span>
                 <select id="slDateFieldSelect" name="slDateFieldSelect" autocomplete="off">
-                  <option value="stageDate">阶段日（申请中按A1；已上市按上市日/RTO完成日）</option>
+                  <option value="stageDate">阶段日（申请中A1 / 已上市上市日）</option>
                   <option value="a1Date">A1</option>
                   <option value="noticeDate">备案通知书</option>
                   <option value="receivedDate">接收</option>
@@ -592,8 +588,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=71762e846e52620d"></script>
-    <script src="sponsor_leaderboard_demo.js?v=b891d3b1a4fa27d0"></script>
+    <script src="app.js?v=0d95ff0dc3b3366c"></script>
+    <script src="sponsor_leaderboard_demo.js?v=da43a6a51ad464b9"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

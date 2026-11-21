@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=8298750930e5a028";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=578c89940e341c5c";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -48,8 +48,8 @@ const metricLabels = {
   activeCount: "公开申请中",
   listedCount: "已上市",
   ahCount: "A+H",
-  listingMarketCapHkdBnSum: "上市日总市值 / Listing-day total equity value",
-  aShareMarketCapRmbBnSum: "A股估值 / A-share valuation",
+  listingMarketCapHkdBnSum: "上市市值",
+  aShareMarketCapRmbBnSum: "A股市值",
   lifecycleMedianDays: "A1→上市平均时间",
   noticeCycleMedianDays: "A1→通知中位数",
   receivedCycleMedianDays: "A1→接收中位数",
@@ -63,14 +63,14 @@ const metricLabels = {
   projectsPerType6Rep: "项目/Rep（内部）",
   type6TotalPerProject: "项目六号牌配置",
   projectsPerType6Total: "六号牌项目负荷",
-  listingMarketCapPerType6TotalHkdBn: "六号牌人均上市日总市值 / Listing-day total equity value per Type 6",
-  listingMarketCapPerSponsorPrincipalHkdBn: "SP人均上市日总市值 / Listing-day total equity value per SP",
+  listingMarketCapPerType6TotalHkdBn: "六号牌人均上市市值",
+  listingMarketCapPerSponsorPrincipalHkdBn: "SP人均上市市值",
 };
 
 const creditLabels = {
   creditAllFull: "具名全部计入",
   creditEqual: "按保荐人数量平分",
-  creditFirstNamed: "只计首名保荐人",
+  creditFirstNamed: "只计牵头/首名",
 };
 
 const PUBLIC_ACTIVE_CAVEAT =
@@ -547,6 +547,7 @@ function factLifecycleTiming(fact) {
 }
 
 function durationExclusionReason(fact) {
+  if (fact.listingTiming?.exclusionReasonZh) return fact.listingTiming.exclusionReasonZh;
   const tags = new Set(fact.statusTags || []);
   if (fact.specialListingRoute === "de_spac" || tags.has("De-SPAC")) return "De-SPAC特殊路径，剔除周期统计";
   if (fact.specialListingRoute === "hdr" || tags.has("HDR")) return "HDR/DRS特殊路径，剔除周期统计";
@@ -556,7 +557,8 @@ function durationExclusionReason(fact) {
   if (tags.has("outlier剔除统计") || tags.has("过渡期A1锚点") || tags.has("制度前A1") || tags.has("A1已失效")) {
     return "非可比或异常锚点，剔除周期统计";
   }
-  if (fact.listingDurationSampleEligible === false) return "沿用监管节奏追踪样本门控，剔除周期统计";
+  if (!fact.a1Date) return "未见可核实的首次公开A1";
+  if (fact.listingDurationSampleEligible === false) return "首次公开A1与上市时间未能完整核实";
   return "";
 }
 
@@ -634,7 +636,7 @@ function aggregateFacts(facts, stage = state.stage) {
         fact.listingDate, state.data?.meta?.csrcRegimeEffectiveDate)).filter(isNumber);
     const noticeCycleValues = cycleValues("a1ToNotice", "calendarDaysA1ToNotice");
     const receivedCycleValues = cycleValues("a1ToReceived", "calendarDaysA1ToReceived");
-    const listingCaps = aggregateMarketCaps(sponsorFacts.filter((fact) => fact.hkexStage === "listed"), "listing");
+    const listingCaps = aggregateMarketCaps(sponsorFacts.filter((fact) => fact.hkexStage === "listed" && (fact.specialListingRoute !== "rto" || fact.listingDate)), "listing");
     const aShareCaps = aggregateMarketCaps(sponsorFacts.filter((fact) => fact.isAH || isNumber(fact.aShareMarketCapAtA1RmbBn)), "aShare");
     const applyingAhCaps = aggregateMarketCaps(sponsorFacts.filter((fact) => fact.hkexStage === "applying" && fact.isAH), "aShare");
     const projectCount = weightedCount(sponsorFacts, () => true);
@@ -1310,8 +1312,7 @@ function metricDisplay(row) {
   }
   if (state.metric === "lifecycleMedianDays") {
     return {
-      main: formatDays(row.listedLifecycleAverageDays),
-      sub: "仅按已上市项目计算A1到上市流程平均",
+      ...lifecycleDisplay(row),
     };
   }
   if (state.metric === "noticeCycleMedianDays") {
@@ -1392,13 +1393,13 @@ function metricDisplay(row) {
   if (state.metric === "listingMarketCapPerType6TotalHkdBn") {
     return {
       main: formatCapPerPerson(row.listingMarketCapPerType6TotalHkdBn),
-      sub: `${isNumber(row.type6TotalCount) ? `已核实上市日总市值 / 六号牌 ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数"}`,
+      sub: `${isNumber(row.type6TotalCount) ? `上市日市值 / 六号牌 ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数"}`,
     };
   }
   if (state.metric === "listingMarketCapPerSponsorPrincipalHkdBn") {
     return {
       main: formatCapPerPerson(row.listingMarketCapPerSponsorPrincipalHkdBn),
-      sub: `${isNumber(row.sponsorPrincipalCount) ? `已核实上市日总市值 / SP ${compactNumber(row.sponsorPrincipalCount, 0)}人` : "暂无SP人数"}`,
+      sub: `${isNumber(row.sponsorPrincipalCount) ? `上市日市值 / SP ${compactNumber(row.sponsorPrincipalCount, 0)}人` : "暂无SP人数"}`,
     };
   }
   return {
@@ -1429,7 +1430,7 @@ function lifecycleHeaderTitle() {
   if (state.stage === "applying") {
     return "上市申请中项目显示公开 A1 后截至快照日的平均已过时间；这是生命周期阶段/freshness，不纳入 A1 到上市快慢统计。";
   }
-  return "全部/已上市视图仅按已上市项目计算 A1 到上市流程平均时间；申请中项目不混入该指标，密交/De-SPAC/HDR/outlier 等剔除沿用监管节奏追踪。";
+  return "每个有完整日期的普通IPO计一次，从可核实的首次公开A1起算，包括重新递表所经日历时间；项目明细另列最终成功轮次。";
 }
 
 function marketCapSortValue(row) {
@@ -1460,7 +1461,7 @@ function marketCapDisplay(row) {
   const total = row[`${prefix}Coverage`]?.total;
   return {
     main: total === 0 ? "不适用" : listing ? formatCap(row.listingMarketCapHkdBnSum, "HK$") : formatAShareCap(row, prefix),
-    sub: `${listing ? "已核实上市日总市值（A/H同日折算）" : metricLabels.aShareMarketCapRmbBnSum}`,
+    sub: `${listing ? "上市日市值（A/H同日折算）" : metricLabels.aShareMarketCapRmbBnSum}`,
   };
 }
 
@@ -1527,9 +1528,9 @@ function metricCards(rows) {
         note: listedLeader ? `${compactCredit(listedLeader.listedCount)} 个已上市项目` : "无已上市样本",
       },
       {
-        label: `${label}已核实上市日总市值 / Verified listing-day equity value`,
+        label: `${label}上市市值`,
         value: listedMcapLeader?.displayNameZh,
-        note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "无已核实上市日总市值样本",
+        note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "—",
       },
       {
         label: `${label}已上市周期较快`,
@@ -1569,23 +1570,23 @@ function metricCards(rows) {
         : "需匹配Rep且达到公开申请中样本门槛",
     },
     {
-      label: "SP人均已核实上市日总市值 / Verified listing-day equity value per SP",
+      label: "SP人均市值产出最高",
       value: mcapPerSpLeader?.displayNameZh,
       note: mcapPerSpLeader
-        ? `每名SP对应 ${formatCapPerPerson(mcapPerSpLeader.listingMarketCapPerSponsorPrincipalHkdBn)} 已核实上市日总市值`
-        : `需有SP人数及至少${MIN_MARKET_CAP_PROJECTS}个已核实上市日总市值样本`,
+        ? `每名SP对应 ${formatCapPerPerson(mcapPerSpLeader.listingMarketCapPerSponsorPrincipalHkdBn)} 上市日市值`
+        : `需有SP人数及至少${MIN_MARKET_CAP_PROJECTS}个上市日市值样本`,
     },
     {
-      label: "六号牌人均已核实上市日总市值 / Verified listing-day equity value per Type 6",
+      label: "六号牌持牌人员人均市值产出最高",
       value: mcapPerTotalLeader?.displayNameZh,
       note: mcapPerTotalLeader
-        ? `每名六号牌持牌人员对应 ${formatCapPerPerson(mcapPerTotalLeader.listingMarketCapPerType6TotalHkdBn)} 已核实上市日总市值`
-        : `需有六号牌人数及至少${MIN_MARKET_CAP_PROJECTS}个已核实上市日总市值样本`,
+        ? `每名六号牌持牌人员对应 ${formatCapPerPerson(mcapPerTotalLeader.listingMarketCapPerType6TotalHkdBn)} 上市日市值`
+        : `需有六号牌人数及至少${MIN_MARKET_CAP_PROJECTS}个上市日市值样本`,
     },
     {
-      label: "已核实上市日总市值 / Verified listing-day equity value",
+      label: "项目上市市值第一",
       value: listedMcapLeader?.displayNameZh,
-      note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "无已核实上市日总市值样本",
+      note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "—",
     },
     {
       label: "已上市周期较快",
@@ -1605,30 +1606,21 @@ function metricCards(rows) {
 }
 
 function lifecycleDisplay(row) {
-  const finalText = formatDays(row.listedLifecycleAverageDays);
-  const elapsedText = formatDays(row.applyingElapsedAverageDays);
   if (state.stage === "applying") {
-    return {
-      main: elapsedText,
-      sub: "公开A1后已过平均时间；只反映项目生命周期阶段",
-    };
+    return { main: formatDays(row.applyingElapsedAverageDays), sub: "申请至快照日平均已过时间" };
   }
-  if (row.listedLifecycleN) {
-    return {
-      main: finalText,
-      sub: "已上市项目A1到上市流程平均时间",
-    };
+  if (row.firmScope === "benchmark") {
+    return {main: formatDays(row.listedLifecycleAverageDays), sub: "机构组内中位数"};
   }
-  if (row.applyingElapsedN) {
-    return {
-      main: "暂无已上市样本",
-      sub: `申请中平均已过 ${elapsedText}；不混入A1到上市流程`,
-    };
+  const listed = (row.facts || []).filter((fact) => fact.hkexStage === "listed");
+  const n = row.listedLifecycleN || 0;
+  if (n) {
+    return {main: formatDays(row.listedLifecycleAverageDays), sub: "已上市项目A1到上市流程平均时间"};
   }
-  return {
-    main: "待披露",
-    sub: "暂无可比 A1→上市样本",
-  };
+  if (listed.length) {
+    return {main: "无可比周期", sub: ""};
+  }
+  return {main: "无上市项目", sub: ""};
 }
 
 function applicationBreakdown(row) {
@@ -1708,19 +1700,19 @@ function rowHtml(row, rank, showMarketCap) {
     <td data-label="排名" class="rank">${escapeHtml(rank)}</td>
     <td data-label="保荐人" class="sponsor-cell">
       <button type="button" aria-label="查看${escapeHtml(row.displayNameZh)}详情">${escapeHtml(row.displayNameZh)}</button>
-      <small>${escapeHtml(row.displayNameEn)}${row.legalNames?.[0] ? ` · ${escapeHtml(row.legalNames[0])}` : ""}</small>
+      <small>${escapeHtml(row.displayNameEn)}</small>
       <span class="row-action">查看详情</span>
       ${scopePill}
     </td>
     <td data-label="性质"><span class="pill teal">${escapeHtml(row.sponsorNature || "待核")}</span></td>
     <td data-label="SP / 六号牌"><span class="number">${escapeHtml(type6.main)}</span><span class="sub-number">${escapeHtml(type6.sub)}</span></td>
     <td data-label="项目"><span class="number">${compactCredit(row.projectCount)}</span><span class="sub-number">${typePills}</span></td>
-    <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span><small class="sub-number">${applicationDetails(row)}</small></td>
+    <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span></td>
     <td data-label="已上市"><span class="number">${compactCredit(row.listedCount)}</span></td>
     <td data-label="A+H"><span class="number">${compactCredit(row.ahCount)}</span></td>
     <td data-label="排名指标"><span class="number">${escapeHtml(primary.main)}</span></td>
     ${marketCapCell}
-    <td data-label="${escapeHtml(lifecycleHeaderText())}"><span class="number">${escapeHtml(lifecycle.main)}</span></td>
+    <td data-label="${escapeHtml(lifecycleHeaderText())}"><span class="number">${escapeHtml(lifecycle.main)}</span><span class="sub-number">${escapeHtml(lifecycle.sub)}</span></td>
     <td data-label="行业">${industries}</td>
   </tr>`;
 }
@@ -1740,25 +1732,13 @@ function render() {
     els.lifecycleHead.querySelector(".sl-th-label").textContent = lifecycleHeaderText();
     els.lifecycleHead.title = lifecycleHeaderTitle();
   }
-  const rankingNote =
-    state.stage === "applying"
-      ? " · 生命周期阶段为公开A1后已过时间，不纳入最终快慢统计"
-      : " · A1到上市流程仅按已上市项目计算，申请中不混入";
-  const sectorNote = state.sector === "all" ? "" : ` · 赛道：${sectorLabel()} · 人员/SP/Rep不按赛道拆分`;
-  const syntheticFactCount = facts.filter((fact) => fact.isSyntheticRollup).length;
-  const baseFactCount = facts.length - syntheticFactCount;
-  const factText = syntheticFactCount
-    ? `${compactNumber(baseFactCount)} 原始 + ${compactNumber(syntheticFactCount)} 合并 fact`
-    : `${compactNumber(facts.length)} 条计分 fact`;
-  const sortNote = ` · 按${sortLabel()}${effectiveSortDir() === "asc" ? "升序" : "降序"}`;
-  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${factText} · ${creditLabels[state.credit]} · 以「${metricLabels[state.metric]}」在当前筛选内排名，同值并列，合并参考行及缺值不占名次${sortNote}${sectorNote}${rankingNote}`;
+  els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${creditLabels[state.credit]}`;
   if (!rows.length) {
     els.leaderboardRows.innerHTML = `<tr><td colspan="${showMarketCap ? 12 : 11}" class="empty-state">没有符合条件的样本</td></tr>`;
     return;
   }
   const ranks = metricRanks(rows);
   els.leaderboardRows.innerHTML = rows.map((row) => rowHtml(row, ranks.get(row.sponsorId), showMarketCap)).join("");
-  bindApplicationDetails(els.leaderboardRows, rows);
   els.leaderboardRows.querySelectorAll("tr[data-sponsor]").forEach((row) => {
     row.addEventListener("click", (event) => {
       if (event.target instanceof Element && event.target.closest("a, details[data-app-group]")) return;
@@ -1824,7 +1804,7 @@ function pkMetricRows(rowA, rowB) {
     },
     { label: "A1→接收中位数 / A1 to receipt", key: "receivedCycleMedianDays", value: (row) => row.receivedCycleMedianDays, format: (value, row) => formatDays(value, row.receivedCycleN), higher: false, note: "已接收样本 / Received sample" },
     { label: "A1→通知中位数 / A1 to notice", key: "noticeCycleMedianDays", value: (row) => row.noticeCycleMedianDays, format: (value, row) => formatDays(value, row.noticeCycleN), higher: false, note: "已通知样本 / Notice-issued sample" },
-    { label: "A1→上市平均时间 / Average A1-to-listing", key: "listedLifecycleAverageDays", value: (row) => row.listedLifecycleAverageDays, format: (value) => formatDays(value), higher: false, note: "仅已上市项目 / Listed deals only" },
+    { label: "A1→上市平均时间 / Average A1-to-listing", key: "listedLifecycleAverageDays", value: (row) => row.listedLifecycleAverageDays, format: (value, row) => isNumber(value) ? formatDays(value) : row.listedCount ? "无可比周期" : "无上市项目", higher: false, note: "仅已上市项目 / Listed deals only" },
   ];
   const visibleMetrics = state.sector === "all" ? metrics : metrics.filter((metric) => SECTOR_METRIC_KEYS.has(metric.key));
   return visibleMetrics.map((metric) => ({
@@ -2129,6 +2109,17 @@ function projectLine(fact) {
   const timing = factLifecycleTiming(fact);
   const timingValue = timing.kind === "excluded" ? "统计剔除" : formatDays(timing.days);
   const timingReason = timing.reason ? ` · ${timing.reason}` : "";
+  const clock = fact.listingTiming;
+  const cycleDetails = [];
+  if (clock?.firstPublicA1Date && clock.listingDate && isNumber(clock.firstToListingDays)) {
+    cycleDetails.push(`首次公开A1 ${clock.firstPublicA1Date} → 上市 ${clock.listingDate} · ${formatDays(clock.firstToListingDays)}`);
+  }
+  if (clock?.successfulCycleA1Date && clock.successfulCycleA1Date !== clock.firstPublicA1Date && isNumber(clock.successfulCycleToListingDays)) {
+    cycleDetails.push(`成功上市的申请轮次 ${clock.successfulCycleA1Date} → ${clock.listingDate} · ${formatDays(clock.successfulCycleToListingDays)}`);
+  }
+  const cycleSources = [["首次公开A1", clock?.firstSourceUrl], ["上市轮次A1", clock?.successfulCycleSourceUrl]]
+    .filter((item, index, items) => item[1] && items.findIndex((v) => v[1] === item[1]) === index)
+    .map(([label, url]) => sponsorSourceLink({label, url}));
   const primaryName = issuerPrimaryName(fact);
   const shadowName = issuerShadowName(fact);
   const isCompletedRto = fact.specialListingRoute === "rto" && fact.hkexStage === "listed";
@@ -2155,6 +2146,8 @@ function projectLine(fact) {
     <small>本行计入的保荐机构 · ${escapeHtml((fact.sourceSponsorLegalNames || fact.sponsorLegalNames || []).join(" / ") || fact.sponsorLegalName)}</small>
     ${completionLine}
     <small>${escapeHtml(timing.label)}：${escapeHtml(timingValue)}${escapeHtml(timingReason)}</small>
+    ${cycleDetails.map((line) => `<small>${escapeHtml(line)}</small>`).join("")}
+    ${cycleSources.length ? `<small>${cycleSources.join(" · ")}</small>` : ""}
     ${fact.hkexStage === "listed" || marketCapObservation(fact, "listing").estimateValue !== null ? projectMarketCapDetail(fact, "listing") : ""}
     ${fact.isAH || marketCapObservation(fact, "aShare").estimateValue !== null ? projectMarketCapDetail(fact, "aShare") : ""}
     <small>

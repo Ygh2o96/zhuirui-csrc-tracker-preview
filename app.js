@@ -9,7 +9,7 @@ const defaults = {
   hkexStage: "applying",
   query: "",
   view: "tracker",
-  dateField: "currentA1Date",
+  dateField: "a1Date",
   dateFrom: "",
   dateTo: "",
   structure: "all",
@@ -430,7 +430,7 @@ function issuerTypeInfo(recordOrKey) {
 
 function renderIssuerType(record) {
   const info = issuerTypeInfo(record);
-  return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>${record.issuerJurisdictionEvidence ? `<small>注册地 · ${escapeHtml(record.issuerJurisdictionEvidence.jurisdictionZh)}</small>` : ""}`;
+  return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>`;
 }
 
 function formatMarketCap(record) {
@@ -440,13 +440,9 @@ function formatMarketCap(record) {
   const yiValue = value * 10;
   const provenance = record.aShareMarketCapProvenance || {};
   const estimated = provenance.status !== "verified";
-  const tradeDate = record.aShareMarketCapTradeDate;
-  const anchor = record.aShareMarketCapAnchorDate;
   return `
     <span class="market-cap-value">${estimated ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">¥${rmbBnFormatter.format(value)}B${estimated ? " · 估算 / Est." : ""}</span>
-    <span class="pending-en">估值日 ${escapeHtml(tradeDate || "待披露")}</span>
-    ${anchor && anchor !== record.a1Date ? `<span class="pending-en">历史申请锚点 ${escapeHtml(anchor)}</span>` : ""}
+    <span class="pending-en">¥${rmbBnFormatter.format(value)}B</span>
   `;
 }
 
@@ -459,7 +455,7 @@ function formatListingMarketCap(record) {
   const yiValue = value * 10;
   return `
     <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">HK$${rmbBnFormatter.format(value)}B · 上市日</span>
+    <span class="pending-en">HK$${rmbBnFormatter.format(value)}B</span>
   `;
 }
 
@@ -821,7 +817,7 @@ const tagDictionary = {
   "介绍上市": { en: "Introduction", title: "Listing by introduction; excluded from ordinary IPO duration statistics / 介绍上市，不计入普通IPO周期统计", cls: "info-tag" },
   "RTO": { en: "Reverse takeover", title: "Reverse takeover; excluded from ordinary IPO duration statistics / 反向收购，不计入普通IPO周期统计", cls: "info-tag" },
   "RTO已完成": { en: "RTO completed", title: "Official completion announcement; the completion date is separate from the original IPO date / 官方公告确认交易完成；完成日与首次IPO日分别记录", cls: "info-tag" },
-  "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched; likely confidential route / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行，通常为密交路径", cls: "info-tag" },
+  "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行", cls: "info-tag" },
   "无需备案": { en: "Filing N/A", title: "No filing required for this listing event; see the applicability basis / 本次上市事项无需备案，具体依据见适用性说明", cls: "info-tag" },
   "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
   "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
@@ -884,7 +880,7 @@ function renderIssuerDisclosure(record) {
   return filing + domicile;
 }
 
-function renderStatusBadge(record, compact = true) {
+function renderStatusBadge(record) {
   const hkexStatus = record.hkexPublicStatus || "";
   const milestones = {
     Listed: ["已上市", "Listed on HKEX"],
@@ -895,15 +891,9 @@ function renderStatusBadge(record, compact = true) {
   };
   const milestone = record.status === "applicability_pending" ? milestones[hkexStatus] : null;
   const labels = milestone || [statusLabel(record.status), statusLabel(record.status, 1)];
-  const hkexDate = hkexStatus === "Listed" ? record.hkexListingDate : record.currentA1Date;
-  const datedFact = milestone && hkexDate
-    ? `<small>${hkexStatus === "Listed" ? "上市" : "递表"} · ${escapeHtml(hkexDate)}</small>` : "";
   return `
     <span class="status-stack">
       <span class="badge ${escapeHtml(record.status)}"><b>${escapeHtml(labels[0])}</b><small>${escapeHtml(labels[1])}</small></span>
-      ${datedFact}
-      ${compact && record.hkexApplicationProofEvidence ? `<small>${escapeHtml(record.hkexApplicationStatusLabelZh)} · ${escapeHtml(record.hkexReturnedApplication?.date || record.hkexApplicationProofEvidence.date)}</small>` : ""}
-      ${compact && record.filingScopeDisclosure && record.csrcFilingApplicability === "pending" ? `<small>${escapeHtml(record.filingScopeDisclosure.summaryZh)}</small>` : ""}
       ${renderStatusTags(record)}
     </span>
   `;
@@ -1013,7 +1003,7 @@ function renderA1Cell(record) {
       : "";
     return `<span class="date-primary">密交 ${formatDate(record.a1Date)}</span>${publicA1Html}`;
   }
-  return record.currentA1Date ? renderStackedDate(record.currentA1Date, "备案锚点", record.a1Date) : renderStackedDate(record.a1Date, "", null);
+  return renderStackedDate(record.a1Date, "当前", record.currentA1Date);
 }
 
 function renderReceivedDateValue(value, isAsOf = false) {
@@ -1081,11 +1071,11 @@ function syncTrackerTableMode() {
   setText("dateColumn4En", listed ? "CSRC notice" : "First / current");
   setText("dateColumn5Zh", listed ? "上市日" : "通知书");
   setText("dateColumn5En", listed ? "Listing" : "Notice");
-  setText("marketCapZh", listed ? "上市日总市值" : "A股估值");
-  setText("marketCapEn", listed ? "Listing-day equity value" : "A-share valuation");
-  setText("marketCapMinZh", listed ? "上市总市值下限" : "A股估值下限");
+  setText("marketCapZh", listed ? "上市日市值" : "A1日市值");
+  setText("marketCapEn", listed ? "Listing mkt cap" : "A-share mkt cap");
+  setText("marketCapMinZh", listed ? "上市总市值下限" : "A股市值下限");
   setText("marketCapMinEn", listed ? "Listing value min · HKD bn" : "A-share value min · RMB bn");
-  setText("marketCapMaxZh", listed ? "上市总市值上限" : "A股估值上限");
+  setText("marketCapMaxZh", listed ? "上市总市值上限" : "A股市值上限");
   setText("marketCapMaxEn", listed ? "Listing value max · HKD bn" : "A-share value max · RMB bn");
   const aShareCapOption = document.getElementById("aShareMarketCapSortOption");
   const listingCapOption = document.getElementById("listingMarketCapSortOption");
@@ -1374,7 +1364,7 @@ function renderMetrics(records) {
     counts[record.status] = (counts[record.status] || 0) + 1;
     return counts;
   }, {});
-  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required", "applicability_pending"]
+  const statusHtml = ["notice_issued", "regulator_opinion", "supplement_requested", "csrc_received", "waiting_received", "not_required"]
     .map((status) => `<span>${escapeHtml(statusLabel(status))} ${formatNumber(statusCounts[status] || 0, "integer")}</span>`)
     .join("");
   const metricSet = currentMetricDefinitions();
@@ -1948,7 +1938,7 @@ function renderDetail(record) {
     <div class="detail-grid">
       <div class="detail-item">
         <span>状态 Status</span>
-        <strong>${renderStatusBadge(record, false)}</strong>
+        <strong>${renderStatusBadge(record)}</strong>
         ${renderIssuerDisclosure(record)}
         ${renderHkexStatusEvidence(record)}
         ${renderHkexPostings(record)}
