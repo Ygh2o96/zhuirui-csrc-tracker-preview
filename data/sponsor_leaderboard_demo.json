@@ -1,13 +1,13 @@
 {
   "meta": {
-    "generatedAt": "2026-11-21T09:54:10Z",
-    "sourceGeneratedAt": "2026-11-21T17:54:09+08:00",
+    "generatedAt": "2026-11-21T10:00:34Z",
+    "sourceGeneratedAt": "2026-11-21T18:00:33+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T17:54:09+08:00",
+      "generatedAt": "2026-11-21T18:00:33+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1482,
@@ -4075,7 +4075,7 @@
       "deSpacCount": 0,
       "hdrCount": 1.0,
       "otherIssuerTypeCount": 4.0,
-      "listingMarketCapHkdBnSum": 7410.406372408484,
+      "listingMarketCapHkdBnSum": 7412.156224292493,
       "listingMarketCapHkdBnMedian": 15.95293731812,
       "listingMarketCapN": 116,
       "listingMarketCapCoverage": {
@@ -4331,11 +4331,11 @@
       "noticeCount": 88.0,
       "ahCount": 61.0,
       "hShareCount": 86.0,
-      "redChipCount": 24.0,
+      "redChipCount": 25.0,
       "deSpacCount": 1.0,
       "hdrCount": 1.0,
-      "otherIssuerTypeCount": 5.0,
-      "listingMarketCapHkdBnSum": 3703.08649316615,
+      "otherIssuerTypeCount": 4.0,
+      "listingMarketCapHkdBnSum": 3704.8363450501593,
       "listingMarketCapHkdBnMedian": 14.08917547658324,
       "listingMarketCapN": 81,
       "listingMarketCapCoverage": {
@@ -6019,10 +6019,10 @@
       "noticeCount": 24.0,
       "ahCount": 10.0,
       "hShareCount": 14.0,
-      "redChipCount": 17.0,
+      "redChipCount": 18.0,
       "deSpacCount": 0,
       "hdrCount": 0,
-      "otherIssuerTypeCount": 2.0,
+      "otherIssuerTypeCount": 1.0,
       "listingMarketCapHkdBnSum": 3586.4491295688144,
       "listingMarketCapHkdBnMedian": 32.996488,
       "listingMarketCapN": 29,
@@ -6783,7 +6783,7 @@
       "deSpacCount": 0,
       "hdrCount": 0,
       "otherIssuerTypeCount": 2.0,
-      "listingMarketCapHkdBnSum": 3341.150393837125,
+      "listingMarketCapHkdBnSum": 3342.9002457211345,
       "listingMarketCapHkdBnMedian": 53.4224509362,
       "listingMarketCapN": 21,
       "listingMarketCapCoverage": {
@@ -136693,7 +136693,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 287.10731846793,
-      "listingMarketCapHkdBn": 566.4171718597557,
+      "listingMarketCapHkdBn": 568.167023743765,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 479.8178,
       "listingMarketCapProvenance": {
@@ -136705,26 +136705,27 @@
         "anchorDate": "2026-07-09",
         "valueCurrency": "HKD",
         "priceDatePolicy": "same_day_or_calendar_proven_latest_close",
-        "valueHkdExact": "566417171859.7556840",
+        "valueHkdExact": "568167023743.7649350",
         "components": [
           {
             "class": "A",
             "securityCode": "002475",
             "sharesAsOf": "2026-07-09",
-            "issuedShares": 7318257824,
+            "issuedShares": 7341804965,
             "treasuryShares": 17665380,
             "sharesEvidence": {
-              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-              "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-              "retrievedAt": "2026-11-21T15:37:16+08:00",
-              "publishedDate": "2026-08-06",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+              "publishedDate": "2026-09-04",
+              "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+              "retrievedAt": "2026-11-21T17:59:23+08:00",
               "retrievalMethod": "https_download",
               "authority": "exchange_filing",
+              "adapter": "hkex_ff301_listing_opening_v1",
               "facts": {
                 "class": "A",
                 "securityCode": "002475",
                 "sharesAsOf": "2026-07-09",
-                "issuedShares": 7318257824,
+                "issuedShares": 7341804965,
                 "treasuryShares": 17665380,
                 "shareBasis": "full_class_issued_including_treasury"
               }
@@ -136751,10 +136752,10 @@
                 "priceKind": "unadjusted_vendor_close"
               }
             },
-            "sharesExTreasury": 7300592444,
+            "sharesExTreasury": 7324139585,
             "sharesStatus": "verified",
             "priceStatus": "verified",
-            "valueHkd": "542526816419.7556840"
+            "valueHkd": "544276668303.7649350"
           },
           {
             "class": "H",
@@ -136763,12 +136764,13 @@
             "issuedShares": 383472800,
             "treasuryShares": 0,
             "sharesEvidence": {
-              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-              "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-              "retrievedAt": "2026-11-21T15:37:16+08:00",
-              "publishedDate": "2026-08-06",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+              "publishedDate": "2026-09-04",
+              "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+              "retrievedAt": "2026-11-21T17:59:23+08:00",
               "retrievalMethod": "https_download",
               "authority": "exchange_filing",
+              "adapter": "hkex_ff301_listing_opening_v1",
               "facts": {
                 "class": "H",
                 "securityCode": "02475",
@@ -136842,12 +136844,13 @@
         },
         "fxStatus": "verified",
         "coverageEvidence": {
-          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-          "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-          "retrievedAt": "2026-11-21T15:37:16+08:00",
-          "publishedDate": "2026-08-06",
+          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+          "publishedDate": "2026-09-04",
+          "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+          "retrievedAt": "2026-11-21T17:59:23+08:00",
           "retrievalMethod": "https_download",
           "authority": "exchange_filing",
+          "adapter": "hkex_ff301_listing_opening_v1",
           "facts": {
             "stockCode": "02475",
             "sharesAsOf": "2026-07-09",
@@ -137036,7 +137039,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 287.10731846793,
-      "listingMarketCapHkdBn": 566.4171718597557,
+      "listingMarketCapHkdBn": 568.167023743765,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 479.8178,
       "listingMarketCapProvenance": {
@@ -137048,26 +137051,27 @@
         "anchorDate": "2026-07-09",
         "valueCurrency": "HKD",
         "priceDatePolicy": "same_day_or_calendar_proven_latest_close",
-        "valueHkdExact": "566417171859.7556840",
+        "valueHkdExact": "568167023743.7649350",
         "components": [
           {
             "class": "A",
             "securityCode": "002475",
             "sharesAsOf": "2026-07-09",
-            "issuedShares": 7318257824,
+            "issuedShares": 7341804965,
             "treasuryShares": 17665380,
             "sharesEvidence": {
-              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-              "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-              "retrievedAt": "2026-11-21T15:37:16+08:00",
-              "publishedDate": "2026-08-06",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+              "publishedDate": "2026-09-04",
+              "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+              "retrievedAt": "2026-11-21T17:59:23+08:00",
               "retrievalMethod": "https_download",
               "authority": "exchange_filing",
+              "adapter": "hkex_ff301_listing_opening_v1",
               "facts": {
                 "class": "A",
                 "securityCode": "002475",
                 "sharesAsOf": "2026-07-09",
-                "issuedShares": 7318257824,
+                "issuedShares": 7341804965,
                 "treasuryShares": 17665380,
                 "shareBasis": "full_class_issued_including_treasury"
               }
@@ -137094,10 +137098,10 @@
                 "priceKind": "unadjusted_vendor_close"
               }
             },
-            "sharesExTreasury": 7300592444,
+            "sharesExTreasury": 7324139585,
             "sharesStatus": "verified",
             "priceStatus": "verified",
-            "valueHkd": "542526816419.7556840"
+            "valueHkd": "544276668303.7649350"
           },
           {
             "class": "H",
@@ -137106,12 +137110,13 @@
             "issuedShares": 383472800,
             "treasuryShares": 0,
             "sharesEvidence": {
-              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-              "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-              "retrievedAt": "2026-11-21T15:37:16+08:00",
-              "publishedDate": "2026-08-06",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+              "publishedDate": "2026-09-04",
+              "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+              "retrievedAt": "2026-11-21T17:59:23+08:00",
               "retrievalMethod": "https_download",
               "authority": "exchange_filing",
+              "adapter": "hkex_ff301_listing_opening_v1",
               "facts": {
                 "class": "H",
                 "securityCode": "02475",
@@ -137185,12 +137190,13 @@
         },
         "fxStatus": "verified",
         "coverageEvidence": {
-          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-          "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-          "retrievedAt": "2026-11-21T15:37:16+08:00",
-          "publishedDate": "2026-08-06",
+          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+          "publishedDate": "2026-09-04",
+          "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+          "retrievedAt": "2026-11-21T17:59:23+08:00",
           "retrievalMethod": "https_download",
           "authority": "exchange_filing",
+          "adapter": "hkex_ff301_listing_opening_v1",
           "facts": {
             "stockCode": "02475",
             "sharesAsOf": "2026-07-09",
@@ -137379,7 +137385,7 @@
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": 287.10731846793,
-      "listingMarketCapHkdBn": 566.4171718597557,
+      "listingMarketCapHkdBn": 568.167023743765,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 479.8178,
       "listingMarketCapProvenance": {
@@ -137391,26 +137397,27 @@
         "anchorDate": "2026-07-09",
         "valueCurrency": "HKD",
         "priceDatePolicy": "same_day_or_calendar_proven_latest_close",
-        "valueHkdExact": "566417171859.7556840",
+        "valueHkdExact": "568167023743.7649350",
         "components": [
           {
             "class": "A",
             "securityCode": "002475",
             "sharesAsOf": "2026-07-09",
-            "issuedShares": 7318257824,
+            "issuedShares": 7341804965,
             "treasuryShares": 17665380,
             "sharesEvidence": {
-              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-              "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-              "retrievedAt": "2026-11-21T15:37:16+08:00",
-              "publishedDate": "2026-08-06",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+              "publishedDate": "2026-09-04",
+              "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+              "retrievedAt": "2026-11-21T17:59:23+08:00",
               "retrievalMethod": "https_download",
               "authority": "exchange_filing",
+              "adapter": "hkex_ff301_listing_opening_v1",
               "facts": {
                 "class": "A",
                 "securityCode": "002475",
                 "sharesAsOf": "2026-07-09",
-                "issuedShares": 7318257824,
+                "issuedShares": 7341804965,
                 "treasuryShares": 17665380,
                 "shareBasis": "full_class_issued_including_treasury"
               }
@@ -137437,10 +137444,10 @@
                 "priceKind": "unadjusted_vendor_close"
               }
             },
-            "sharesExTreasury": 7300592444,
+            "sharesExTreasury": 7324139585,
             "sharesStatus": "verified",
             "priceStatus": "verified",
-            "valueHkd": "542526816419.7556840"
+            "valueHkd": "544276668303.7649350"
           },
           {
             "class": "H",
@@ -137449,12 +137456,13 @@
             "issuedShares": 383472800,
             "treasuryShares": 0,
             "sharesEvidence": {
-              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-              "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-              "retrievedAt": "2026-11-21T15:37:16+08:00",
-              "publishedDate": "2026-08-06",
+              "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+              "publishedDate": "2026-09-04",
+              "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+              "retrievedAt": "2026-11-21T17:59:23+08:00",
               "retrievalMethod": "https_download",
               "authority": "exchange_filing",
+              "adapter": "hkex_ff301_listing_opening_v1",
               "facts": {
                 "class": "H",
                 "securityCode": "02475",
@@ -137528,12 +137536,13 @@
         },
         "fxStatus": "verified",
         "coverageEvidence": {
-          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601026.pdf",
-          "sha256": "a268da7cdaa5c419e9327892c83a1539e3f3b93a5bad0d883b2aacb7ca162a54",
-          "retrievedAt": "2026-11-21T15:37:16+08:00",
-          "publishedDate": "2026-08-06",
+          "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400532.pdf",
+          "publishedDate": "2026-09-04",
+          "sha256": "52dbd16ecf46a11ae0c2c4884bcb8a0227919cfd55b80b66a1d490efb83c1f19",
+          "retrievedAt": "2026-11-21T17:59:23+08:00",
           "retrievalMethod": "https_download",
           "authority": "exchange_filing",
+          "adapter": "hkex_ff301_listing_opening_v1",
           "facts": {
             "stockCode": "02475",
             "sharesAsOf": "2026-07-09",
@@ -251348,7 +251357,7 @@
       "listingDate": "2025-09-30",
       "transactionCompletionDate": null,
       "transactionCompletionSourceUrl": null,
-      "issuerType": "其他",
+      "issuerType": "红筹",
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
@@ -251535,6 +251544,22 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "招股书 · 控股股东 / Controlling shareholders",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0919/2025091900073.pdf#page=37"
+        },
+        {
+          "label": "配发结果 · 上市时持股 / Shareholding on listing",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0929/2025092903788.pdf#page=18"
+        },
+        {
+          "label": "年报 · 控股股东持股 / Year-end shareholding",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042902638.pdf#page=59"
+        },
+        {
+          "label": "控股股东实际控制人 / Ultimate controller",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-10-31/1224773837.PDF#page=41"
         }
       ]
     },
@@ -251581,7 +251606,7 @@
       "listingDate": "2025-09-30",
       "transactionCompletionDate": null,
       "transactionCompletionSourceUrl": null,
-      "issuerType": "其他",
+      "issuerType": "红筹",
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
@@ -251768,6 +251793,22 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "招股书 · 控股股东 / Controlling shareholders",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0919/2025091900073.pdf#page=37"
+        },
+        {
+          "label": "配发结果 · 上市时持股 / Shareholding on listing",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0929/2025092903788.pdf#page=18"
+        },
+        {
+          "label": "年报 · 控股股东持股 / Year-end shareholding",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042902638.pdf#page=59"
+        },
+        {
+          "label": "控股股东实际控制人 / Ultimate controller",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-10-31/1224773837.PDF#page=41"
         }
       ]
     },
