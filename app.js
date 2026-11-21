@@ -819,7 +819,7 @@ const HIDDEN_INTERNAL_TAGS = new Set(["已上市", "HKEX全量上市样本", "�
 
 const tagDictionary = {
   "已上市": { en: "Listed", title: "Listed on HKEX / 已在港交所上市", cls: "listed-tag" },
-  "密交": { en: "Confidential route", title: "HKEX public A1 is not a reliable duration anchor because the process appears to have started earlier, including confidential filing or prior-cycle evidence / 公开A1不适合作为时长锚点，可能存在密交或前序周期证据", cls: "info-tag" },
+  "密交": { en: "Confidential route", title: "保密递交上市申请 / Confidential submission of a listing application", cls: "info-tag" },
   "通知书待核": { en: "Notice pending", title: "Listed, but a source-backed CSRC filing notice is not yet matched / 已上市但尚未匹配到官方备案通知书", cls: "pending-listed-tag" },
   "官方状态冲突": { en: "Official status conflict", title: "The same latest CSRC status workbook contains different statuses for this issuer; the contradiction is preserved and no ordering is inferred / 同一份最新官方备案情况表载有不同状态，页面保留矛盾且不推断先后", cls: "outlier-tag" },
   "介绍上市": { en: "Introduction", title: "Listing by introduction; excluded from ordinary IPO duration statistics / 介绍上市，不计入普通IPO周期统计", cls: "info-tag" },
@@ -1782,6 +1782,14 @@ function renderTransactionDisclosures(record) {
     row("通知书落款 / Signed", formatDate(event.signedDate));
     row("证监会公布 / Published", formatDate(event.publishedDate));
     row("反向收购完成 / Merger completed", formatDate(event.completionDate));
+  } else if (event.kind === "holding_company_substitution") {
+    title = "控股公司重组及介绍上市 / Holding-company substitution";
+    row("原上市公司 / Predecessor", event.predecessorNameZh + " · " + event.predecessorName);
+    row("新上市公司 / Successor", event.successorNameZh + " · " + event.successorName);
+    row("股东表决通过 / Shareholders approved", formatDate(event.schemeMeetingDate));
+    row("法院批准 / Court approval", formatDate(event.courtApprovalDate));
+    row("重组计划生效 / Scheme effective", formatDate(event.schemeEffectiveDate));
+    row("介绍上市并开始买卖 / Trading began", formatDate(event.mainBoardTradingDate));
   } else if (event.kind === "indirect_transition_disclosure") {
     title = "备案过渡期披露 / CSRC transition disclosure";
     row("发行人招股书 / Prospectus", formatDate(event.prospectusDate));
@@ -1914,7 +1922,7 @@ function renderDetail(record) {
   const listedPage = state.hkexStage === "listed";
   const listedTimelineRows = listedPage
     ? `
-          <div class="timeline-row"><span>HKEX招股书 Prospectus</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
+          <div class="timeline-row"><span>${record.transactionDisclosures?.kind === "holding_company_substitution" ? "重组计划文件 Scheme booklet" : "HKEX招股书 Prospectus"}</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
           <div class="timeline-row"><span>HKEX上市日 Listing</span><strong>${formatDate(record.hkexListingDate)}</strong></div>
       `
     : "";

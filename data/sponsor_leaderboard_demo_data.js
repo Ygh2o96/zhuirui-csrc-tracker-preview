@@ -1,13 +1,13 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-11-21T08:58:20Z",
-    "sourceGeneratedAt": "2026-11-21T16:58:18+08:00",
+    "generatedAt": "2026-11-21T09:10:17Z",
+    "sourceGeneratedAt": "2026-11-21T17:10:13+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T16:58:18+08:00",
+      "generatedAt": "2026-11-21T17:10:13+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1480,
@@ -4059,14 +4059,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "mappingConfidence": "dictionary",
       "firmScope": "legal_entity",
       "projectCount": 237.0,
-      "activeCount": 111.0,
+      "activeCount": 110.0,
       "applicationStatusCounts": {
         "已刊发申请版本": 4.0,
         "港交所处理中": 89.0,
-        "申请已失效": 18.0
+        "申请已失效": 17.0
       },
       "hkexActiveCount": 89.0,
-      "hkexInactiveCount": 18.0,
+      "hkexInactiveCount": 17.0,
       "hkexOtherStatusCount": 4.0,
       "listedCount": 116.0,
       "noticeCount": 114.0,
@@ -4096,15 +4096,15 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "missing": 4,
         "total": 59
       },
-      "applyingAhMarketCapRmbBnSum": 2024.1344,
-      "applyingAhMarketCapRmbBnMedian": 31.1421,
-      "applyingAhMarketCapN": 36,
+      "applyingAhMarketCapRmbBnSum": 1965.0419,
+      "applyingAhMarketCapRmbBnMedian": 30.2112,
+      "applyingAhMarketCapN": 35,
       "applyingAhMarketCapCoverage": {
         "verified": 0,
-        "estimate": 36,
+        "estimate": 35,
         "unsupported": 0,
         "missing": 0,
-        "total": 36
+        "total": 35
       },
       "medianA1ToNoticeDays": 196.0,
       "timingN": 99,
@@ -4347,21 +4347,21 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "total": 81
       },
       "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 39.0254,
+      "aShareMarketCapRmbBnMedian": 40.4133,
       "aShareMarketCapN": 59,
       "aShareMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 59,
+        "verified": 1,
+        "estimate": 58,
         "unsupported": 0,
         "missing": 2,
         "total": 61
       },
-      "applyingAhMarketCapRmbBnSum": 1883.3556999999998,
-      "applyingAhMarketCapRmbBnMedian": 39.71935,
+      "applyingAhMarketCapRmbBnSum": 1896.8788648325399,
+      "applyingAhMarketCapRmbBnMedian": 40.504999999999995,
       "applyingAhMarketCapN": 38,
       "applyingAhMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 38,
+        "verified": 1,
+        "estimate": 37,
         "unsupported": 0,
         "missing": 0,
         "total": 38
@@ -4867,18 +4867,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapRmbBnMedian": 34.2248,
       "aShareMarketCapN": 21,
       "aShareMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 21,
+        "verified": 1,
+        "estimate": 20,
         "unsupported": 0,
         "missing": 1,
         "total": 22
       },
-      "applyingAhMarketCapRmbBnSum": 531.4451999999999,
+      "applyingAhMarketCapRmbBnSum": 561.8795553659999,
       "applyingAhMarketCapRmbBnMedian": 37.2204,
       "applyingAhMarketCapN": 11,
       "applyingAhMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 11,
+        "verified": 1,
+        "estimate": 10,
         "unsupported": 0,
         "missing": 0,
         "total": 11
@@ -5300,18 +5300,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapRmbBnMedian": 22.8171,
       "aShareMarketCapN": 13,
       "aShareMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 13,
+        "verified": 1,
+        "estimate": 12,
         "unsupported": 0,
         "missing": 1,
         "total": 14
       },
-      "applyingAhMarketCapRmbBnSum": 380.41569999999996,
+      "applyingAhMarketCapRmbBnSum": 410.85005536599994,
       "applyingAhMarketCapRmbBnMedian": 55.0092,
       "applyingAhMarketCapN": 7,
       "applyingAhMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 7,
+        "verified": 1,
+        "estimate": 6,
         "unsupported": 0,
         "missing": 0,
         "total": 7
@@ -7051,18 +7051,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapRmbBnMedian": 33.4825,
       "aShareMarketCapN": 11,
       "aShareMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 12,
+        "verified": 1,
+        "estimate": 11,
         "unsupported": 0,
         "missing": 1,
         "total": 13
       },
-      "applyingAhMarketCapRmbBnSum": 307.9112,
+      "applyingAhMarketCapRmbBnSum": 338.345555366,
       "applyingAhMarketCapRmbBnMedian": 31.0961,
       "applyingAhMarketCapN": 9,
       "applyingAhMarketCapCoverage": {
-        "verified": 0,
-        "estimate": 9,
+        "verified": 1,
+        "estimate": 8,
         "unsupported": 0,
         "missing": 0,
         "total": 9
@@ -19761,8 +19761,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "deSpacCount": 0,
       "hdrCount": 0,
       "otherIssuerTypeCount": 0,
-      "listingMarketCapHkdBnSum": 0.00068,
-      "listingMarketCapHkdBnMedian": 0.00068,
+      "listingMarketCapHkdBnSum": 0.68,
+      "listingMarketCapHkdBnMedian": 0.68,
       "listingMarketCapN": 1,
       "listingMarketCapCoverage": {
         "verified": 0,
@@ -31582,9 +31582,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-02-08",
         "firstPublicA1Date": "2026-02-08",
         "firstToListingDays": 233,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-08-21",
         "successfulCycleToListingDays": 39,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26082102510.pdf",
@@ -33153,8 +33155,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26081900032.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26081900032.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -35057,9 +35063,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-01-09",
         "firstPublicA1Date": "2026-01-09",
         "firstToListingDays": 304,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-08-09",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/sehk26080900120.pdf",
@@ -36586,9 +36594,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-30",
         "firstPublicA1Date": "2025-05-30",
         "firstToListingDays": 497,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-07-31",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1009/sehk26073102104.pdf",
@@ -36841,9 +36851,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-30",
         "firstPublicA1Date": "2025-05-30",
         "firstToListingDays": 497,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-07-31",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1009/sehk26073102104.pdf",
@@ -45439,9 +45451,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-01-01",
         "firstPublicA1Date": "2026-01-01",
         "firstToListingDays": 315,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-07-03",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/sehk26070300014.pdf",
@@ -46092,9 +46106,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-01-01",
         "firstPublicA1Date": "2026-01-01",
         "firstToListingDays": 271,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-07-03",
         "successfulCycleToListingDays": 88,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26070302690.pdf",
@@ -46426,9 +46442,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-01-01",
         "firstPublicA1Date": "2026-01-01",
         "firstToListingDays": 271,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-07-03",
         "successfulCycleToListingDays": 88,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26070302690.pdf",
@@ -46760,9 +46778,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-01-01",
         "firstPublicA1Date": "2026-01-01",
         "firstToListingDays": 271,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-07-03",
         "successfulCycleToListingDays": 88,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26070302690.pdf",
@@ -55720,9 +55740,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-02",
         "firstPublicA1Date": "2025-12-02",
         "firstToListingDays": 317,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-18",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1015/sehk26061801815.pdf",
@@ -61151,9 +61173,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-05",
         "firstPublicA1Date": "2025-12-05",
         "firstToListingDays": 216,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-08",
         "successfulCycleToListingDays": 31,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26060802221.pdf",
@@ -62721,9 +62745,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-05",
         "successfulCycleToListingDays": 33,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk26060502095.pdf",
@@ -62971,9 +62997,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-05",
         "successfulCycleToListingDays": 33,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk26060502095.pdf",
@@ -64212,9 +64240,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-01",
         "firstPublicA1Date": "2025-12-01",
         "firstToListingDays": 220,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-04",
         "successfulCycleToListingDays": 35,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26060403008.pdf",
@@ -64543,9 +64573,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-01",
         "firstPublicA1Date": "2025-12-01",
         "firstToListingDays": 220,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-04",
         "successfulCycleToListingDays": 35,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26060403008.pdf",
@@ -64886,9 +64918,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-02",
         "firstPublicA1Date": "2025-12-02",
         "firstToListingDays": 212,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-03",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0702/sehk26060302857.pdf",
@@ -65233,9 +65267,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-02",
         "firstPublicA1Date": "2025-12-02",
         "firstToListingDays": 212,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-03",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0702/sehk26060302857.pdf",
@@ -65580,9 +65616,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-12-02",
         "firstPublicA1Date": "2025-12-02",
         "firstToListingDays": 212,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-06-03",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0702/sehk26060302857.pdf",
@@ -68407,9 +68445,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-03-21",
         "firstPublicA1Date": "2025-03-21",
         "firstToListingDays": 536,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-29",
         "successfulCycleToListingDays": 102,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0908/sehk26052902007.pdf",
@@ -68734,9 +68774,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-03-21",
         "firstPublicA1Date": "2025-03-21",
         "firstToListingDays": 536,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-29",
         "successfulCycleToListingDays": 102,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0908/sehk26052902007.pdf",
@@ -70924,9 +70966,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 393,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-28",
         "successfulCycleToListingDays": 27,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0624/sehk26052802656.pdf",
@@ -73872,9 +73916,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-15",
         "firstPublicA1Date": "2025-09-15",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-26",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0825/sehk26052601127.pdf",
@@ -76011,9 +76057,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-16",
         "firstPublicA1Date": "2025-04-16",
         "firstToListingDays": 425,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-21",
         "successfulCycleToListingDays": 25,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0615/sehk26052101959.pdf",
@@ -76267,9 +76315,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-16",
         "firstPublicA1Date": "2025-04-16",
         "firstToListingDays": 425,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-21",
         "successfulCycleToListingDays": 25,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0615/sehk26052101959.pdf",
@@ -77129,7 +77179,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "廣東領益智造股份有限公司",
         "廣東領益智造股份有限公司 - H股"
       ],
-      "a1Date": "2025-11-20",
+      "a1Date": "2021-06-30",
       "currentA1Date": "2026-05-20",
       "receivedDate": "2025-11-27",
       "noticeDate": "2026-05-19",
@@ -77359,9 +77409,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 1822,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2026-05-20",
         "successfulCycleToListingDays": 37,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26052001469.pdf",
@@ -78348,9 +78400,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-11-18",
         "firstPublicA1Date": "2025-11-18",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-19",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1028/sehk26051901436.pdf",
@@ -78718,9 +78772,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-11-18",
         "firstPublicA1Date": "2025-11-18",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-19",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1028/sehk26051901436.pdf",
@@ -79088,9 +79144,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-11-18",
         "firstPublicA1Date": "2025-11-18",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-19",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1028/sehk26051901436.pdf",
@@ -79458,9 +79516,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-11-18",
         "firstPublicA1Date": "2025-11-18",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-19",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1028/sehk26051901436.pdf",
@@ -81606,9 +81666,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-27",
         "firstPublicA1Date": "2025-01-27",
         "firstToListingDays": 655,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-14",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1113/sehk26051401391.pdf",
@@ -82713,9 +82775,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-28",
         "firstPublicA1Date": "2025-10-28",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-13",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26051301471.pdf",
@@ -83050,9 +83114,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-28",
         "firstPublicA1Date": "2025-10-28",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-13",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26051301471.pdf",
@@ -83387,9 +83453,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-28",
         "firstPublicA1Date": "2025-10-28",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-13",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26051301471.pdf",
@@ -85596,9 +85664,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-31",
         "firstPublicA1Date": "2025-10-31",
         "firstToListingDays": 375,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-08",
         "successfulCycleToListingDays": 186,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/sehk26050801313.pdf",
@@ -85851,9 +85921,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-31",
         "firstPublicA1Date": "2025-10-31",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-07",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/sehk26050701945.pdf",
@@ -86711,9 +86783,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-29",
         "firstPublicA1Date": "2025-04-29",
         "firstToListingDays": 423,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-05",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26050501857.pdf",
@@ -86962,9 +87036,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-29",
         "firstPublicA1Date": "2025-04-29",
         "firstToListingDays": 423,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-05",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26050501857.pdf",
@@ -87216,9 +87292,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-31",
         "firstPublicA1Date": "2025-10-31",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/sehk26050403577.pdf",
@@ -87470,9 +87548,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-31",
         "firstPublicA1Date": "2025-10-31",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/sehk26050403577.pdf",
@@ -87724,9 +87804,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-31",
         "firstPublicA1Date": "2025-10-31",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/sehk26050403577.pdf",
@@ -87974,9 +88056,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-30",
         "firstPublicA1Date": "2025-10-30",
         "firstToListingDays": 243,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/sehk26050403485.pdf",
@@ -88228,9 +88312,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-30",
         "firstPublicA1Date": "2025-10-30",
         "firstToListingDays": 243,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/sehk26050403485.pdf",
@@ -88482,9 +88568,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-11",
         "firstPublicA1Date": "2025-04-11",
         "firstToListingDays": 445,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/sehk26050403723.pdf",
@@ -88736,9 +88824,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-11",
         "firstPublicA1Date": "2025-04-11",
         "firstToListingDays": 445,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-04",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/sehk26050403723.pdf",
@@ -90546,9 +90636,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-03",
         "firstPublicA1Date": "2025-04-03",
         "firstToListingDays": 587,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-30",
         "successfulCycleToListingDays": 195,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/sehk26043002708.pdf",
@@ -90804,9 +90896,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-03",
         "firstPublicA1Date": "2025-04-03",
         "firstToListingDays": 587,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-30",
         "successfulCycleToListingDays": 195,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/sehk26043002708.pdf",
@@ -91746,8 +91840,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/sehk26042903959.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/sehk26042903959.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -92000,8 +92098,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/sehk26042903959.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/sehk26042903959.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -96650,9 +96752,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-22",
         "firstPublicA1Date": "2025-10-22",
         "firstToListingDays": 261,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-24",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0710/sehk26042403895.pdf",
@@ -96996,9 +97100,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-10-22",
         "firstPublicA1Date": "2025-10-22",
         "firstToListingDays": 261,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-24",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0710/sehk26042403895.pdf",
@@ -101128,9 +101234,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-25",
         "firstPublicA1Date": "2025-09-25",
         "firstToListingDays": 287,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-16",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26041602093.pdf",
@@ -104808,9 +104916,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 249,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-08",
         "successfulCycleToListingDays": 58,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0605/sehk26040802267.pdf",
@@ -105138,9 +105248,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 249,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-08",
         "successfulCycleToListingDays": 58,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0605/sehk26040802267.pdf",
@@ -105871,9 +105983,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 366,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-08",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0930/sehk26040802601.pdf",
@@ -106130,9 +106244,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 366,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-08",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0930/sehk26040802601.pdf",
@@ -108349,9 +108465,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 283,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-02",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26040202582.pdf",
@@ -110515,9 +110633,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-28",
         "firstPublicA1Date": "2025-09-28",
         "firstToListingDays": 271,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-01",
         "successfulCycleToListingDays": 86,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26040104299.pdf",
@@ -110846,9 +110966,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-28",
         "firstPublicA1Date": "2025-09-28",
         "firstToListingDays": 271,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-04-01",
         "successfulCycleToListingDays": 86,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26040104299.pdf",
@@ -113357,9 +113479,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 284,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-31",
         "successfulCycleToListingDays": 101,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0710/sehk26033102958.pdf",
@@ -114233,9 +114357,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 283,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-31",
         "successfulCycleToListingDays": 100,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26033103932.pdf",
@@ -114487,9 +114613,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 283,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-31",
         "successfulCycleToListingDays": 100,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26033103932.pdf",
@@ -114903,9 +115031,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 268,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-31",
         "successfulCycleToListingDays": 85,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0624/sehk26033100614.pdf",
@@ -115160,9 +115290,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 268,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-31",
         "successfulCycleToListingDays": 85,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0624/sehk26033100614.pdf",
@@ -117003,12 +117135,20 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
-          "label": "递表日（发行人招股书）",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf"
+          "label": "递表日（发行人招股书） · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf",
+          "originalLabel": "递表日（发行人招股书）",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26033003937.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26033003937.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -117235,12 +117375,20 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
-          "label": "递表日（发行人招股书）",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf"
+          "label": "递表日（发行人招股书） · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf",
+          "originalLabel": "递表日（发行人招股书）",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26033003937.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26033003937.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -117904,9 +118052,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-31",
         "firstPublicA1Date": "2024-12-31",
         "firstToListingDays": 519,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2026-03-27",
         "successfulCycleToListingDays": 68,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0603/sehk26032700220.pdf",
@@ -118821,9 +118971,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-26",
         "firstPublicA1Date": "2025-09-26",
         "firstToListingDays": 229,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-27",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0513/sehk26032703533.pdf",
@@ -119069,9 +119221,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-26",
         "firstPublicA1Date": "2025-09-26",
         "firstToListingDays": 229,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-27",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0513/sehk26032703533.pdf",
@@ -120828,9 +120982,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-30",
         "firstPublicA1Date": "2025-06-30",
         "firstToListingDays": 373,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-26",
         "successfulCycleToListingDays": 104,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk26032602495.pdf",
@@ -121078,9 +121234,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-30",
         "firstPublicA1Date": "2025-06-30",
         "firstToListingDays": 373,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-26",
         "successfulCycleToListingDays": 104,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk26032602495.pdf",
@@ -121328,9 +121486,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-30",
         "firstPublicA1Date": "2025-06-30",
         "firstToListingDays": 373,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-26",
         "successfulCycleToListingDays": 104,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk26032602495.pdf",
@@ -121975,9 +122135,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-06",
         "firstPublicA1Date": "2025-01-06",
         "firstToListingDays": 477,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-25",
         "successfulCycleToListingDays": 34,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26032501612.pdf",
@@ -122311,9 +122473,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-06",
         "firstPublicA1Date": "2025-01-06",
         "firstToListingDays": 477,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-25",
         "successfulCycleToListingDays": 34,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26032501612.pdf",
@@ -123467,9 +123631,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-18",
         "firstPublicA1Date": "2025-08-18",
         "firstToListingDays": 399,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-25",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/sehk26032502124.pdf",
@@ -123585,7 +123751,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 67.632,
+      "aShareMarketCapAtA1RmbBn": 98.066355366,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -123607,38 +123773,35 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "status": "verified",
+        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
+        "scope": "total_issued_equity_at_a_price",
         "anchorDate": "2026-03-25",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-25",
-        "price": 786.8965454101562,
+        "price": 1141.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 85947726.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
+        "priceCurrencySource": "mainland_exchange",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq",
+        "shares": 85947726,
+        "sharesClass": "total_issued_shares",
+        "sharesAsOf": "2026-03-25",
+        "sharesSource": "issuer_filing",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325",
+        "sharesTiming": "issuer_disclosed_at_application",
         "retrievedAt": "2026-06-11T09:27:18",
         "valueCurrency": "CNY",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "valueCnyExact": "98066355366.00",
+        "priceEvidenceSha256": "25cebbf1fefdfd6a2d633d2783b0391eff2c0afa2a7c21ae5cfed0bfa655e620",
+        "sharesEvidenceSha256": "b1bd6941e0b866baf5e46f14b229246fe5e4b98ffb73aa2183634c9e3e09b294"
       },
-      "aShareMarketCapSampleEligible": false,
+      "aShareMarketCapSampleEligible": true,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-03-25",
       "aShareMarketCapTradeDate": "2026-03-25",
@@ -123682,6 +123845,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/c7644834/content.shtml"
+        },
+        {
+          "label": "A股总股本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325"
+        },
+        {
+          "label": "A股收盘价",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq"
         }
       ]
     },
@@ -123739,7 +123910,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 67.632,
+      "aShareMarketCapAtA1RmbBn": 98.066355366,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -123761,38 +123932,35 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "status": "verified",
+        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
+        "scope": "total_issued_equity_at_a_price",
         "anchorDate": "2026-03-25",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-25",
-        "price": 786.8965454101562,
+        "price": 1141.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 85947726.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
+        "priceCurrencySource": "mainland_exchange",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq",
+        "shares": 85947726,
+        "sharesClass": "total_issued_shares",
+        "sharesAsOf": "2026-03-25",
+        "sharesSource": "issuer_filing",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325",
+        "sharesTiming": "issuer_disclosed_at_application",
         "retrievedAt": "2026-06-11T09:27:18",
         "valueCurrency": "CNY",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "valueCnyExact": "98066355366.00",
+        "priceEvidenceSha256": "25cebbf1fefdfd6a2d633d2783b0391eff2c0afa2a7c21ae5cfed0bfa655e620",
+        "sharesEvidenceSha256": "b1bd6941e0b866baf5e46f14b229246fe5e4b98ffb73aa2183634c9e3e09b294"
       },
-      "aShareMarketCapSampleEligible": false,
+      "aShareMarketCapSampleEligible": true,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-03-25",
       "aShareMarketCapTradeDate": "2026-03-25",
@@ -123836,6 +124004,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/c7644834/content.shtml"
+        },
+        {
+          "label": "A股总股本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325"
+        },
+        {
+          "label": "A股收盘价",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq"
         }
       ]
     },
@@ -124582,9 +124758,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-16",
         "firstPublicA1Date": "2025-09-16",
         "firstToListingDays": 219,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-23",
         "successfulCycleToListingDays": 31,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0423/sehk26032301639.pdf",
@@ -124899,9 +125077,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-16",
         "firstPublicA1Date": "2025-09-16",
         "firstToListingDays": 219,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-23",
         "successfulCycleToListingDays": 31,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0423/sehk26032301639.pdf",
@@ -125475,7 +125655,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": "2026-03-20",
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 98.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -125484,9 +125664,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2026-03-20",
         "firstPublicA1Date": "2026-03-20",
         "firstToListingDays": 98,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26032002117.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26032002117.pdf",
         "successfulCycleA1Date": "2026-03-20",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26032002117.pdf",
@@ -125755,7 +125937,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": "2026-03-20",
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 98.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -125764,9 +125946,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2026-03-20",
         "firstPublicA1Date": "2026-03-20",
         "firstToListingDays": 98,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26032002117.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26032002117.pdf",
         "successfulCycleA1Date": "2026-03-20",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26032002117.pdf",
@@ -126263,16 +126447,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         ],
         "corroboratingSources": [
           {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062602363.pdf",
-            "publishedDate": "2026-06-26",
-            "sha256": "d5bffcb48ad3f479e943555833ed476442ab171221799e5bee7d41dd6bcf9249"
-          },
-          {
-            "sourceUrl": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02672,day,2026-06-29,2026-06-29,2,bfq",
-            "publishedDate": null,
-            "sha256": "731c9ec1f45c5aeff2e3b75538bfdafb1947426490600f7851ef1ef7b999d01c"
-          },
-          {
             "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0618/2026061800045.pdf",
             "publishedDate": "2026-06-18",
             "sha256": "07e2937110840bc69cfbd397c7c5f58ac1ee20f9d20bfec928f750d06b3ce781"
@@ -126332,9 +126506,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-28",
         "firstPublicA1Date": "2025-02-28",
         "firstToListingDays": 486,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-18",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/sehk26031801757.pdf",
@@ -126385,18 +126561,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "lastAttemptAt": "2026-11-19T18:21:54.338056+00:00",
           "lastAttemptState": "access_restricted",
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062602363.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02672,day,2026-06-29,2026-06-29,2,bfq"
         },
         {
           "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
@@ -126515,16 +126679,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         ],
         "corroboratingSources": [
           {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062602363.pdf",
-            "publishedDate": "2026-06-26",
-            "sha256": "d5bffcb48ad3f479e943555833ed476442ab171221799e5bee7d41dd6bcf9249"
-          },
-          {
-            "sourceUrl": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02672,day,2026-06-29,2026-06-29,2,bfq",
-            "publishedDate": null,
-            "sha256": "731c9ec1f45c5aeff2e3b75538bfdafb1947426490600f7851ef1ef7b999d01c"
-          },
-          {
             "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0618/2026061800045.pdf",
             "publishedDate": "2026-06-18",
             "sha256": "07e2937110840bc69cfbd397c7c5f58ac1ee20f9d20bfec928f750d06b3ce781"
@@ -126584,9 +126738,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-28",
         "firstPublicA1Date": "2025-02-28",
         "firstToListingDays": 486,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-18",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/sehk26031801757.pdf",
@@ -126637,18 +126793,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "lastAttemptAt": "2026-11-19T18:21:54.338056+00:00",
           "lastAttemptState": "access_restricted",
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062602363.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02672,day,2026-06-29,2026-06-29,2,bfq"
         },
         {
           "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
@@ -127698,9 +127842,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-29",
         "firstPublicA1Date": "2025-08-29",
         "firstToListingDays": 250,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-16",
         "successfulCycleToListingDays": 51,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0506/sehk26031601727.pdf",
@@ -128001,9 +128147,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-29",
         "firstPublicA1Date": "2025-08-29",
         "firstToListingDays": 250,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-16",
         "successfulCycleToListingDays": 51,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0506/sehk26031601727.pdf",
@@ -128383,9 +128531,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-06",
         "firstPublicA1Date": "2025-08-06",
         "firstToListingDays": 320,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-16",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0622/sehk26031602253.pdf",
@@ -128635,9 +128785,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-06",
         "firstPublicA1Date": "2025-08-06",
         "firstToListingDays": 320,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-16",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0622/sehk26031602253.pdf",
@@ -129435,9 +129587,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-31",
         "firstPublicA1Date": "2025-08-31",
         "firstToListingDays": 299,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-15",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26031500202.pdf",
@@ -129998,9 +130152,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 377,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-13",
         "successfulCycleToListingDays": 118,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26031301714.pdf",
@@ -130252,9 +130408,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-11",
         "firstPublicA1Date": "2025-09-11",
         "firstToListingDays": 361,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-11",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0907/sehk26031101323.pdf",
@@ -130506,9 +130664,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-11",
         "firstPublicA1Date": "2025-09-11",
         "firstToListingDays": 361,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-11",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0907/sehk26031101323.pdf",
@@ -130907,9 +131067,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-14",
         "firstPublicA1Date": "2025-08-14",
         "firstToListingDays": 288,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-09",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0529/sehk26030901313.pdf",
@@ -131160,9 +131322,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-21",
         "firstPublicA1Date": "2025-02-21",
         "firstToListingDays": 419,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-09",
         "successfulCycleToListingDays": 38,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0416/sehk26030901519.pdf",
@@ -131400,9 +131564,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-21",
         "firstPublicA1Date": "2025-02-21",
         "firstToListingDays": 419,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-09",
         "successfulCycleToListingDays": 38,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0416/sehk26030901519.pdf",
@@ -131949,9 +132115,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-05",
         "firstPublicA1Date": "2025-09-05",
         "firstToListingDays": 285,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-06",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/sehk26030600295.pdf",
@@ -132205,9 +132373,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-05",
         "firstPublicA1Date": "2025-09-05",
         "firstToListingDays": 285,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-06",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/sehk26030600295.pdf",
@@ -132456,9 +132626,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-25",
         "firstPublicA1Date": "2025-08-25",
         "firstToListingDays": 393,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-05",
         "successfulCycleToListingDays": 201,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0922/sehk26030502135.pdf",
@@ -132711,9 +132883,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-25",
         "firstPublicA1Date": "2025-08-25",
         "firstToListingDays": 393,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-05",
         "successfulCycleToListingDays": 201,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0922/sehk26030502135.pdf",
@@ -132969,9 +133143,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-26",
         "firstPublicA1Date": "2025-08-26",
         "firstToListingDays": 252,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-03",
         "successfulCycleToListingDays": 63,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/sehk26030302173.pdf",
@@ -133210,9 +133386,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-26",
         "firstPublicA1Date": "2025-08-26",
         "firstToListingDays": 252,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-03",
         "successfulCycleToListingDays": 63,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/sehk26030302173.pdf",
@@ -134670,9 +134848,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-18",
         "firstPublicA1Date": "2025-08-18",
         "firstToListingDays": 325,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26022702399.pdf",
@@ -135001,9 +135181,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-18",
         "firstPublicA1Date": "2025-08-18",
         "firstToListingDays": 325,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26022702399.pdf",
@@ -135332,9 +135514,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-18",
         "firstPublicA1Date": "2025-08-18",
         "firstToListingDays": 325,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26022702399.pdf",
@@ -137102,9 +137286,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-21",
         "firstPublicA1Date": "2025-08-21",
         "firstToListingDays": 288,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-25",
         "successfulCycleToListingDays": 100,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0605/sehk26022500937.pdf",
@@ -137495,9 +137681,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-14",
         "firstPublicA1Date": "2025-02-14",
         "firstToListingDays": 427,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-24",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/sehk26022400844.pdf",
@@ -137729,9 +137917,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-14",
         "firstPublicA1Date": "2025-02-14",
         "firstToListingDays": 427,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-24",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/sehk26022400844.pdf",
@@ -138195,9 +138385,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-20",
         "firstPublicA1Date": "2025-08-20",
         "firstToListingDays": 244,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-24",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0421/sehk26022401310.pdf",
@@ -138513,9 +138705,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-20",
         "firstPublicA1Date": "2025-08-20",
         "firstToListingDays": 244,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-24",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0421/sehk26022401310.pdf",
@@ -138831,9 +139025,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-20",
         "firstPublicA1Date": "2025-08-20",
         "firstToListingDays": 244,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-24",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0421/sehk26022401310.pdf",
@@ -141247,9 +141443,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-30",
         "firstPublicA1Date": "2025-07-30",
         "firstToListingDays": 296,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-03",
         "successfulCycleToListingDays": 108,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0522/sehk26020301692.pdf",
@@ -141506,9 +141704,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-30",
         "firstPublicA1Date": "2025-07-30",
         "firstToListingDays": 296,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-02-03",
         "successfulCycleToListingDays": 108,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0522/sehk26020301692.pdf",
@@ -142940,9 +143140,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-07",
         "firstPublicA1Date": "2025-07-07",
         "firstToListingDays": 351,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-30",
         "successfulCycleToListingDays": 144,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/sehk26013002265.pdf",
@@ -145249,7 +145451,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 33.8078,
+      "aShareMarketCapAtA1RmbBn": 47.33096483254,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -145271,38 +145473,35 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "status": "verified",
+        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
+        "scope": "total_issued_equity_at_a_price",
         "anchorDate": "2026-01-27",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-01-27",
-        "price": 66.27143096923828,
+        "price": 92.78,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 510141893.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
+        "priceCurrencySource": "mainland_exchange",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603179,day,2026-01-27,2026-01-27,2,bfq",
+        "shares": 510141893,
+        "sharesClass": "total_issued_shares",
+        "sharesAsOf": "2026-01-27",
+        "sharesSource": "issuer_filing",
+        "sharesSourceUrl": "https://static.cninfo.com.cn/finalpage/2026-01-09/1224925412.PDF#page=35",
+        "sharesTiming": "issuer_disclosed_at_application",
         "retrievedAt": "2026-06-11T09:27:03",
         "valueCurrency": "CNY",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "valueCnyExact": "47330964832.54",
+        "priceEvidenceSha256": "abfe7ea4aec3f0bcbd5966247e742705cad2d4b63fcae92b6cce87116b8fe137",
+        "sharesEvidenceSha256": "60a3a58e5e4d25ba7cab0f704eafe10297a778a83ce8e88f689d3eae98c54749"
       },
-      "aShareMarketCapSampleEligible": false,
+      "aShareMarketCapSampleEligible": true,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-01-27",
       "aShareMarketCapTradeDate": "2026-01-27",
@@ -145347,6 +145546,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7634566/content.shtml"
+        },
+        {
+          "label": "A股总股本",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-01-09/1224925412.PDF#page=35"
+        },
+        {
+          "label": "A股收盘价",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603179,day,2026-01-27,2026-01-27,2,bfq"
         }
       ]
     },
@@ -145702,9 +145909,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 739,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2026-01-26",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0707/sehk26012600320.pdf",
@@ -148286,9 +148495,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-26",
         "firstPublicA1Date": "2025-06-26",
         "firstToListingDays": 335,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-19",
         "successfulCycleToListingDays": 128,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0527/sehk26011901052.pdf",
@@ -148535,9 +148746,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-26",
         "firstPublicA1Date": "2025-06-26",
         "firstToListingDays": 335,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-19",
         "successfulCycleToListingDays": 128,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0527/sehk26011901052.pdf",
@@ -151918,9 +152131,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-30",
         "firstPublicA1Date": "2025-06-30",
         "firstToListingDays": 322,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-13",
         "successfulCycleToListingDays": 125,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0518/sehk26011300798.pdf",
@@ -152158,9 +152373,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 308,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-13",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/sehk26011301264.pdf",
@@ -152398,9 +152615,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 308,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-13",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/sehk26011301264.pdf",
@@ -152638,9 +152857,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 308,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-13",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/sehk26011301264.pdf",
@@ -159010,9 +159231,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 378,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 191,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk25122902432.pdf",
@@ -160652,9 +160875,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-19",
         "firstPublicA1Date": "2025-06-19",
         "firstToListingDays": 302,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-19",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/sehk25121901774.pdf",
@@ -160893,9 +161118,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-19",
         "firstPublicA1Date": "2025-06-19",
         "firstToListingDays": 302,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-19",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/sehk25121901774.pdf",
@@ -160960,7 +161187,26 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "creditAllFull": 1.0,
       "creditEqual": 1.0,
       "creditFirstNamed": 1.0,
-      "hkexStage": "applying",
+      "hkexStage": "other",
+      "issuerListingPlanTermination": {
+        "subjectLegalNameZh": "新奥天然气股份有限公司",
+        "title": "关于终止重大资产重组及H股介绍上市的公告",
+        "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-06-13/1225368543.PDF",
+        "pdfPage": 1,
+        "sha256": "757e135a8daf39f39f339d0430b251fcda87fb58d9d112868373b119772fdf73",
+        "decisionDate": "2026-06-12",
+        "signedDate": "2026-06-13",
+        "publicationDate": "2026-06-13",
+        "exchangeConfirmation": {
+          "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0612/2026061201210.pdf",
+          "pdfPage": 2,
+          "publicationDate": "2026-06-12",
+          "sha256": "dc86a1e0c68b926356045915a23decae96ceb31a191eb9d0205a96da8b05e2ea",
+          "applicationDate": "2025-12-17",
+          "excerpt": "ENN-NG will not proceed further with its application for the Listing submitted to the Hong Kong Stock Exchange on December 17, 2025."
+        },
+        "route": "introduction"
+      },
       "status": "supplement_requested",
       "statusLabelZh": "补充材料",
       "hkexPublicStatus": "Lapsed",
@@ -160985,7 +161231,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "transactionCompletionSourceUrl": null,
       "issuerType": "A+H",
       "isAH": true,
-      "specialListingRoute": null,
+      "specialListingRoute": "introduction",
       "industryTags": [
         "电力/燃气/公用能源",
         "电力、热力、燃气及水生产和供应业"
@@ -161062,7 +161308,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingTiming": null,
       "hkexConfidentialFilingDate": null,
       "statusTags": [
-        "A1已失效"
+        "A1已失效",
+        "已终止赴港上市"
       ],
       "sourceLinks": [
         {
@@ -161087,6 +161334,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7577666/content.shtml"
+        },
+        {
+          "label": "终止介绍上市的港交所联合公告",
+          "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0612/2026061201210.pdf#page=2"
+        },
+        {
+          "label": "终止赴港上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-06-13/1225368543.PDF#page=1"
         }
       ]
     },
@@ -162405,9 +162660,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-23",
         "firstPublicA1Date": "2025-05-23",
         "firstToListingDays": 369,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-02",
         "successfulCycleToListingDays": 176,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0527/sehk25120200955.pdf",
@@ -162809,9 +163066,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-28",
         "firstPublicA1Date": "2025-05-28",
         "firstToListingDays": 364,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-01",
         "successfulCycleToListingDays": 177,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0527/sehk25120103938.pdf",
@@ -163355,9 +163614,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-30",
         "firstPublicA1Date": "2025-05-30",
         "firstToListingDays": 346,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-01",
         "successfulCycleToListingDays": 161,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0511/sehk25120104096.pdf",
@@ -163596,9 +163857,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-30",
         "firstPublicA1Date": "2025-05-30",
         "firstToListingDays": 346,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-01",
         "successfulCycleToListingDays": 161,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0511/sehk25120104096.pdf",
@@ -163835,9 +164098,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-11-28",
         "firstPublicA1Date": "2025-11-28",
         "firstToListingDays": 189,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0605/sehk25112802871.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0605/sehk25112802871.pdf",
         "successfulCycleA1Date": "2025-11-28",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0605/sehk25112802871.pdf",
@@ -164075,9 +164340,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-28",
         "firstPublicA1Date": "2025-05-28",
         "firstToListingDays": 357,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-28",
         "successfulCycleToListingDays": 173,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0520/sehk25112802645.pdf",
@@ -164631,9 +164898,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-26",
         "firstPublicA1Date": "2025-05-26",
         "firstToListingDays": 359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-26",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0520/sehk25112601483.pdf",
@@ -164879,9 +165148,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-26",
         "firstPublicA1Date": "2025-05-26",
         "firstToListingDays": 359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-26",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0520/sehk25112601483.pdf",
@@ -166027,9 +166298,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": null,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -166195,9 +166468,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": null,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -169690,7 +169965,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "制造业"
       ],
       "aShareMarketCapAtA1RmbBn": null,
-      "listingMarketCapHkdBn": 0.00068,
+      "listingMarketCapHkdBn": 0.68,
       "hkListingSessionClose": {
         "price": "0.680",
         "priceDate": "2023-03-31",
@@ -169698,7 +169973,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "priceKind": "unadjusted_vendor_close",
         "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02439,day,2023-03-31,2023-03-31,2,bfq"
       },
-      "listingMarketCapEstimateHkdBn": 0.00068,
+      "listingMarketCapEstimateHkdBn": 0.68,
       "listingMarketCapProvenance": {
         "version": 2,
         "status": "estimate",
@@ -169708,7 +169983,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "anchorDate": "2023-03-31",
         "valueCurrency": "HKD",
         "priceDate": "2023-03-31",
-        "valueHkdExact": "680000.000",
+        "valueHkdExact": "680000000.000",
         "components": [
           {
             "price": "0.680",
@@ -169717,7 +169992,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02439",
-            "sharesAsOf": "2023-03-31",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -169730,21 +170005,16 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
               "publishedDate": "2023-04-11",
               "sha256": "c2e65ba31d689566ae47c33ea027ffd3a253ef8da3d0737fd9296af5e5cb2680"
             },
-            "valueHkd": "680000.000",
-            "sharesExTreasury": 1000000,
+            "valueHkd": "680000000.000",
+            "sharesExTreasury": 1000000000,
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
         "corroboratingSources": [
           {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0411/2023041101757.pdf",
-            "publishedDate": "2023-04-11",
-            "sha256": "c2e65ba31d689566ae47c33ea027ffd3a253ef8da3d0737fd9296af5e5cb2680"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02439,day,2023-03-31,2023-03-31,2,bfq",
-            "publishedDate": null,
-            "sha256": "7514a8d74b598aba4876d75ce971a23d44a5a9f48ee96d5c5500396f0ed8809a"
+            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0321/2023032100047.pdf",
+            "publishedDate": "2023-03-21",
+            "sha256": "1b896f788e4f2488fd5e543b4a25425395bc67e4f2685a277ebdf11cdbf6676c"
           }
         ],
         "fxStatus": "not_applicable"
@@ -169802,9 +170072,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-07",
         "firstPublicA1Date": "2022-06-07",
         "firstToListingDays": 297,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2022-12-29",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0331/sehk22122902042.pdf",
@@ -169831,16 +170103,8 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
         },
         {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0411/2023041101757.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
           "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02439,day,2023-03-31,2023-03-31,2,bfq"
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0321/2023032100047.pdf"
         }
       ]
     },
@@ -170063,9 +170327,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-20",
         "firstPublicA1Date": "2022-05-20",
         "firstToListingDays": 315,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2022-12-15",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0331/sehk22121501293.pdf",
@@ -170173,7 +170439,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09669",
-            "sharesAsOf": "2023-04-13",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -170191,18 +170457,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0508/2023050800053.pdf",
-            "publishedDate": "2023-05-08",
-            "sha256": "35ac646dcee000fed4330d836e3b749c8aab1cf6c776534060f0124f16318eac"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09669,day,2023-04-13,2023-04-13,2,bfq",
-            "publishedDate": null,
-            "sha256": "3ec6851b660ab437bcc9c2a6305cebc52a3a6bfc9a534a8be462b80d926fb795"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -170258,9 +170513,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-01-10",
         "firstPublicA1Date": "2022-01-10",
         "firstToListingDays": 458,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-02-20",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0413/sehk23022000040.pdf",
@@ -170285,18 +170542,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0508/2023050800053.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09669,day,2023-04-13,2023-04-13,2,bfq"
         }
       ]
     },
@@ -170380,7 +170625,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09669",
-            "sharesAsOf": "2023-04-13",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -170398,18 +170643,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0508/2023050800053.pdf",
-            "publishedDate": "2023-05-08",
-            "sha256": "35ac646dcee000fed4330d836e3b749c8aab1cf6c776534060f0124f16318eac"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09669,day,2023-04-13,2023-04-13,2,bfq",
-            "publishedDate": null,
-            "sha256": "3ec6851b660ab437bcc9c2a6305cebc52a3a6bfc9a534a8be462b80d926fb795"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -170465,9 +170699,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-01-10",
         "firstPublicA1Date": "2022-01-10",
         "firstToListingDays": 458,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-02-20",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0413/sehk23022000040.pdf",
@@ -170492,18 +170728,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0508/2023050800053.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09669,day,2023-04-13,2023-04-13,2,bfq"
         }
       ]
     },
@@ -170690,7 +170914,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 72.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -170699,9 +170923,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2023-02-01",
         "firstPublicA1Date": "2023-02-01",
         "firstToListingDays": 72,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
         "successfulCycleA1Date": "2023-02-01",
         "successfulCycleToListingDays": 72,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
@@ -170913,7 +171139,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 72.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -170922,9 +171148,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2023-02-01",
         "firstPublicA1Date": "2023-02-01",
         "firstToListingDays": 72,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
         "successfulCycleA1Date": "2023-02-01",
         "successfulCycleToListingDays": 72,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
@@ -171136,7 +171364,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 72.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -171145,9 +171373,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2023-02-01",
         "firstPublicA1Date": "2023-02-01",
         "firstToListingDays": 72,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
         "successfulCycleA1Date": "2023-02-01",
         "successfulCycleToListingDays": 72,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/sehk23020103107.pdf",
@@ -171256,7 +171486,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02415",
-            "sharesAsOf": "2023-04-27",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -171274,18 +171504,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0505/2023050500835.pdf",
-            "publishedDate": "2023-05-05",
-            "sha256": "15518112fac01d9702a7af0e3f26f2dc82dcca7220f2f39e5211d3e2548cc445"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02415,day,2023-04-27,2023-04-27,2,bfq",
-            "publishedDate": null,
-            "sha256": "b60669668c384aa9c08ff4ce4e659463c09442a006fe7301e2d6b9a63bc07b67"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -171341,9 +171560,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-04-29",
         "firstPublicA1Date": "2022-04-29",
         "firstToListingDays": 363,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2022-11-09",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk22110900993.pdf",
@@ -171368,18 +171589,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0505/2023050500835.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02415,day,2023-04-27,2023-04-27,2,bfq"
         }
       ]
     },
@@ -171463,7 +171672,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02415",
-            "sharesAsOf": "2023-04-27",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -171481,18 +171690,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0505/2023050500835.pdf",
-            "publishedDate": "2023-05-05",
-            "sha256": "15518112fac01d9702a7af0e3f26f2dc82dcca7220f2f39e5211d3e2548cc445"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02415,day,2023-04-27,2023-04-27,2,bfq",
-            "publishedDate": null,
-            "sha256": "b60669668c384aa9c08ff4ce4e659463c09442a006fe7301e2d6b9a63bc07b67"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -171548,9 +171746,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-04-29",
         "firstPublicA1Date": "2022-04-29",
         "firstToListingDays": 363,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2022-11-09",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk22110900993.pdf",
@@ -171575,18 +171775,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0505/2023050500835.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02415,day,2023-04-27,2023-04-27,2,bfq"
         }
       ]
     },
@@ -171810,9 +171998,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-01-13",
         "firstPublicA1Date": "2023-01-13",
         "firstToListingDays": 104,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk23011301198.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk23011301198.pdf",
         "successfulCycleA1Date": "2023-01-13",
         "successfulCycleToListingDays": 104,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk23011301198.pdf",
@@ -172060,9 +172250,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-01-13",
         "firstPublicA1Date": "2023-01-13",
         "firstToListingDays": 104,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk23011301198.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk23011301198.pdf",
         "successfulCycleA1Date": "2023-01-13",
         "successfulCycleToListingDays": 104,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0427/sehk23011301198.pdf",
@@ -172176,7 +172368,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02480",
-            "sharesAsOf": "2023-05-08",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -172194,18 +172386,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0602/2023060201536.pdf",
-            "publishedDate": "2023-06-02",
-            "sha256": "414853f27f759b7c6cecc3a6d3e9dd1f9467f758f0fde77c91ed9c5137ca0145"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02480,day,2023-05-08,2023-05-08,2,bfq",
-            "publishedDate": null,
-            "sha256": "34e25636db300105c54c14411e94cbd997ba16a74b3d2b6b69cd7da5ee6f2e1b"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -172261,9 +172442,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-28",
         "firstPublicA1Date": "2022-06-28",
         "firstToListingDays": 314,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-02-13",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0508/sehk23021301023.pdf",
@@ -172292,18 +172475,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7458187/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0602/2023060201536.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02480,day,2023-05-08,2023-05-08,2,bfq"
         }
       ]
     },
@@ -172387,7 +172558,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02442",
-            "sharesAsOf": "2023-05-09",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -172405,18 +172576,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101686.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "b330dcfa8ef4f060a91dbde9c78cb3a053d49d554faf03b83d56fd4fd4bd8c2b"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02442,day,2023-05-09,2023-05-09,2,bfq",
-            "publishedDate": null,
-            "sha256": "001e270d81630c7b4e04f2602125d850d928776fe4be4b794bb6502bbbaa7be8"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -172472,9 +172632,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-10-29",
         "firstPublicA1Date": "2021-10-29",
         "firstToListingDays": 557,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-04-13",
         "successfulCycleToListingDays": 26,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0509/sehk23041300056.pdf",
@@ -172497,18 +172659,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101686.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02442,day,2023-05-09,2023-05-09,2,bfq"
         }
       ]
     },
@@ -172592,7 +172742,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02486",
-            "sharesAsOf": "2023-05-11",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -172610,18 +172760,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101152.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "f426cc33e44a9407560227ce1f4d16f8e5c5c73dc21ae996b16a6da92033f372"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02486,day,2023-05-11,2023-05-11,2,bfq",
-            "publishedDate": null,
-            "sha256": "e900ea70d8fbb172dd26efe15c31cc627d362280a08a5d9dd27e7b42455eb4a4"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -172677,9 +172816,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-07-21",
         "firstPublicA1Date": "2022-07-21",
         "firstToListingDays": 294,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-01-26",
         "successfulCycleToListingDays": 105,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0511/sehk23012600284.pdf",
@@ -172704,18 +172845,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101152.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02486,day,2023-05-11,2023-05-11,2,bfq"
         }
       ]
     },
@@ -172799,7 +172928,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02486",
-            "sharesAsOf": "2023-05-11",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -172817,18 +172946,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101152.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "f426cc33e44a9407560227ce1f4d16f8e5c5c73dc21ae996b16a6da92033f372"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02486,day,2023-05-11,2023-05-11,2,bfq",
-            "publishedDate": null,
-            "sha256": "e900ea70d8fbb172dd26efe15c31cc627d362280a08a5d9dd27e7b42455eb4a4"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -172884,9 +173002,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-07-21",
         "firstPublicA1Date": "2022-07-21",
         "firstToListingDays": 294,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-01-26",
         "successfulCycleToListingDays": 105,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0511/sehk23012600284.pdf",
@@ -172911,18 +173031,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101152.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02486,day,2023-05-11,2023-05-11,2,bfq"
         }
       ]
     },
@@ -173006,7 +173114,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09689",
-            "sharesAsOf": "2023-05-17",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -173024,18 +173132,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0602/2023060200387.pdf",
-            "publishedDate": "2023-06-02",
-            "sha256": "18caa8c78bd321bab36c285704fc94186ef3c0119359ee33baebce39289d25ed"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09689,day,2023-05-17,2023-05-17,2,bfq",
-            "publishedDate": null,
-            "sha256": "2db2273b3575ab681c57f642092a8975df612574da005a0bb7c5c5c40dd6ee6c"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -173082,7 +173179,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 1041.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -173091,9 +173188,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2020-07-10",
         "firstPublicA1Date": "2020-07-10",
         "firstToListingDays": 1041,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
         "successfulCycleA1Date": "2022-11-17",
         "successfulCycleToListingDays": 181,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0517/sehk22111701121.pdf",
@@ -173119,18 +173218,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0602/2023060200387.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09689,day,2023-05-17,2023-05-17,2,bfq"
         }
       ]
     },
@@ -173215,7 +173302,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02416",
-            "sharesAsOf": "2023-05-25",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -173233,18 +173320,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0605/2023060500813.pdf",
-            "publishedDate": "2023-06-05",
-            "sha256": "27f66ec1574e50d0028a56dba9a9efc1f4286665c6aeb6e1c89ae393620fefcc"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02416,day,2023-05-25,2023-05-25,2,bfq",
-            "publishedDate": null,
-            "sha256": "9c1f80abb05eecd78c23cf12fb774fdfb2d89b34e011d595cd83c6716387f0e4"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -173300,9 +173376,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-02-28",
         "firstPublicA1Date": "2022-02-28",
         "firstToListingDays": 451,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-10",
         "successfulCycleToListingDays": 76,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0525/sehk23031001473.pdf",
@@ -173327,18 +173405,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0605/2023060500813.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02416,day,2023-05-25,2023-05-25,2,bfq"
         }
       ]
     },
@@ -173423,7 +173489,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09930",
-            "sharesAsOf": "2023-05-25",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -173441,18 +173507,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "21f841c4874b47b30bc007769252d8c1ddf60f38ea6fb1586b3059d59e84d758"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq",
-            "publishedDate": null,
-            "sha256": "ab51bdca88ab428a4beeacbd68e72f2428c8f2bc8eee3f7e3701937be6d2fdba"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -173508,9 +173563,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 694,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-02-27",
         "successfulCycleToListingDays": 87,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0525/sehk23022701038.pdf",
@@ -173535,18 +173592,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq"
         }
       ]
     },
@@ -173631,7 +173676,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09930",
-            "sharesAsOf": "2023-05-25",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -173649,18 +173694,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "21f841c4874b47b30bc007769252d8c1ddf60f38ea6fb1586b3059d59e84d758"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq",
-            "publishedDate": null,
-            "sha256": "ab51bdca88ab428a4beeacbd68e72f2428c8f2bc8eee3f7e3701937be6d2fdba"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -173716,9 +173750,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 694,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-02-27",
         "successfulCycleToListingDays": 87,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0525/sehk23022701038.pdf",
@@ -173743,18 +173779,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq"
         }
       ]
     },
@@ -173839,7 +173863,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09930",
-            "sharesAsOf": "2023-05-25",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -173857,18 +173881,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "21f841c4874b47b30bc007769252d8c1ddf60f38ea6fb1586b3059d59e84d758"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq",
-            "publishedDate": null,
-            "sha256": "ab51bdca88ab428a4beeacbd68e72f2428c8f2bc8eee3f7e3701937be6d2fdba"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -173924,9 +173937,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 694,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-02-27",
         "successfulCycleToListingDays": 87,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0525/sehk23022701038.pdf",
@@ -173951,18 +173966,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq"
         }
       ]
     },
@@ -174047,7 +174050,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09930",
-            "sharesAsOf": "2023-05-25",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -174065,18 +174068,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "21f841c4874b47b30bc007769252d8c1ddf60f38ea6fb1586b3059d59e84d758"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq",
-            "publishedDate": null,
-            "sha256": "ab51bdca88ab428a4beeacbd68e72f2428c8f2bc8eee3f7e3701937be6d2fdba"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -174132,9 +174124,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 694,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-02-27",
         "successfulCycleToListingDays": 87,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0525/sehk23022701038.pdf",
@@ -174159,18 +174153,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101949.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09930,day,2023-05-25,2023-05-25,2,bfq"
         }
       ]
     },
@@ -174257,7 +174239,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02487",
-            "sharesAsOf": "2023-06-12",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -174275,18 +174257,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0906/2023090601096.pdf",
-            "publishedDate": "2023-09-06",
-            "sha256": "067bcf172ff8ff5ec098e9c897eb62816b3fdca1604e60bae2697b7ff0f11803"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02487,day,2023-06-12,2023-06-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "9bada5522a6b557f1d9f6e7d3cdddb708ef151a93d3c53b167a2a876951027a1"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -174342,9 +174313,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-08",
         "firstPublicA1Date": "2022-12-08",
         "firstToListingDays": 186,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0612/sehk22120801069.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0612/sehk22120801069.pdf",
         "successfulCycleA1Date": "2022-12-08",
         "successfulCycleToListingDays": 186,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0612/sehk22120801069.pdf",
@@ -174369,18 +174342,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0906/2023090601096.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02487,day,2023-06-12,2023-06-12,2,bfq"
         }
       ]
     },
@@ -174468,7 +174429,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "00933",
-            "sharesAsOf": "2023-06-27",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -174486,18 +174447,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0704/2023070401583.pdf",
-            "publishedDate": "2023-07-04",
-            "sha256": "be811337982f4999b4d67b4d15b27f5d8a737372e3129a783b87a4ade1ec4b82"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk00933,day,2023-06-27,2023-06-27,2,bfq",
-            "publishedDate": null,
-            "sha256": "f5a49f83b9a039164097ebbbcfb4c37dbf7ab61f1ce8f70fa962fa5848090c64"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -174544,7 +174494,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 91.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -174553,9 +174503,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2023-03-28",
         "firstPublicA1Date": "2023-03-28",
         "firstToListingDays": 91,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0627/sehk23032801676.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0627/sehk23032801676.pdf",
         "successfulCycleA1Date": "2023-03-28",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0627/sehk23032801676.pdf",
@@ -174580,18 +174532,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0704/2023070401583.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk00933,day,2023-06-27,2023-06-27,2,bfq"
         }
       ]
     },
@@ -174815,9 +174755,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-24",
         "firstPublicA1Date": "2022-05-24",
         "firstToListingDays": 400,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-06-01",
         "successfulCycleToListingDays": 27,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0628/sehk23060103510.pdf",
@@ -175067,9 +175009,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-16",
         "firstPublicA1Date": "2022-06-16",
         "firstToListingDays": 378,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-13",
         "successfulCycleToListingDays": 108,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0629/sehk23031301154.pdf",
@@ -175176,7 +175120,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09860",
-            "sharesAsOf": "2023-06-30",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -175194,18 +175138,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0706/2023070600485.pdf",
-            "publishedDate": "2023-07-06",
-            "sha256": "474fbc57f3a11358b97842af7f7435ca29ff2887071551baa0375957e2907cbd"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09860,day,2023-06-30,2023-06-30,2,bfq",
-            "publishedDate": null,
-            "sha256": "996b6a3c344775ddff9059c54b562d07099cd5c5fe04e685b2e9209f2309a95b"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -175261,9 +175194,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 730,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-03-03",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0630/sehk23030302077.pdf",
@@ -175288,18 +175223,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0706/2023070600485.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09860,day,2023-06-30,2023-06-30,2,bfq"
         }
       ]
     },
@@ -175382,7 +175305,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09860",
-            "sharesAsOf": "2023-06-30",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -175400,18 +175323,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0706/2023070600485.pdf",
-            "publishedDate": "2023-07-06",
-            "sha256": "474fbc57f3a11358b97842af7f7435ca29ff2887071551baa0375957e2907cbd"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09860,day,2023-06-30,2023-06-30,2,bfq",
-            "publishedDate": null,
-            "sha256": "996b6a3c344775ddff9059c54b562d07099cd5c5fe04e685b2e9209f2309a95b"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -175467,9 +175379,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 730,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-03-03",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0630/sehk23030302077.pdf",
@@ -175494,18 +175408,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0706/2023070600485.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09860,day,2023-06-30,2023-06-30,2,bfq"
         }
       ]
     },
@@ -175590,7 +175492,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02481",
-            "sharesAsOf": "2023-07-10",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -175608,18 +175510,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080201560.pdf",
-            "publishedDate": "2023-08-02",
-            "sha256": "fca5348254e36fe45e2546ea91965eebdb68a925f9468134f1064188b395a01e"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02481,day,2023-07-10,2023-07-10,2,bfq",
-            "publishedDate": null,
-            "sha256": "0cd0850b6d3478114e86ed1bc7e1fef9024b723e1cf432a046c8de467b553536"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -175675,9 +175566,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-15",
         "firstPublicA1Date": "2022-06-15",
         "firstToListingDays": 390,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-14",
         "successfulCycleToListingDays": 118,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0710/sehk23031401383.pdf",
@@ -175706,18 +175599,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7490945/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080201560.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02481,day,2023-07-10,2023-07-10,2,bfq"
         }
       ]
     },
@@ -175946,9 +175827,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-02-24",
         "firstPublicA1Date": "2023-02-24",
         "firstToListingDays": 137,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0711/sehk23022401353.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0711/sehk23022401353.pdf",
         "successfulCycleA1Date": "2023-02-24",
         "successfulCycleToListingDays": 137,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0711/sehk23022401353.pdf",
@@ -176217,9 +176100,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-02-24",
         "firstPublicA1Date": "2023-02-24",
         "firstToListingDays": 137,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0711/sehk23022401353.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0711/sehk23022401353.pdf",
         "successfulCycleA1Date": "2023-02-24",
         "successfulCycleToListingDays": 137,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0711/sehk23022401353.pdf",
@@ -176342,7 +176227,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "03650",
-            "sharesAsOf": "2023-07-12",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -176360,18 +176245,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0804/2023080401726.pdf",
-            "publishedDate": "2023-08-04",
-            "sha256": "6deb209812c0e17af3b936087dfad8448278482d07f92ba7b58ab11ca3a1e945"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk03650,day,2023-07-12,2023-07-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "20df3fd03fac5d9bcce63cab2f9e6f9d748b3e77997feff07da27e9b7c2841df"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -176427,9 +176301,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-02-25",
         "firstPublicA1Date": "2022-02-25",
         "firstToListingDays": 502,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-28",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0712/sehk23032801258.pdf",
@@ -176454,18 +176330,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0804/2023080401726.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk03650,day,2023-07-12,2023-07-12,2,bfq"
         }
       ]
     },
@@ -176550,7 +176414,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "06683",
-            "sharesAsOf": "2023-07-13",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -176568,18 +176432,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0803/2023080301335.pdf",
-            "publishedDate": "2023-08-03",
-            "sha256": "54159e66f0bb30a5311921e6bb540d1c3834c78cfaa1840a4d396522f6ef4eb1"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06683,day,2023-07-13,2023-07-13,2,bfq",
-            "publishedDate": null,
-            "sha256": "33cf5e672282ac1e5208d8e729388d73a909ae40c9338de9df5ab71f45a79bd6"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -176635,9 +176488,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-09-30",
         "firstPublicA1Date": "2021-09-30",
         "firstToListingDays": 651,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-04-11",
         "successfulCycleToListingDays": 93,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0713/sehk23041101868.pdf",
@@ -176662,18 +176517,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0803/2023080301335.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06683,day,2023-07-13,2023-07-13,2,bfq"
         }
       ]
     },
@@ -176757,7 +176600,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01284",
-            "sharesAsOf": "2023-07-17",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -176772,26 +176615,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             },
             "valueHkd": "558000000.000",
             "sharesExTreasury": 600000000,
-            "shareBasis": "historical_issued_equity_estimate"
+            "shareBasis": "historical_issued_equity_estimate",
+            "priceDatePolicy": "first_trading_session_after_exchange_closure",
+            "priceCalendarEvidence": [
+              {
+                "sourceUrl": "https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en",
+                "publishedDate": "2023-07-17",
+                "sha256": "c53445ff8de0f5ee53ce098dbd461d90e418b71a448ad57048b580b68fe74010"
+              }
+            ]
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0803/2023080300227.pdf",
-            "publishedDate": "2023-08-03",
-            "sha256": "ea5cd9d450216e57ccf7d2f063e8ebe0ee3ab4136a8d433887f3d715f5125034"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=hk01284,day,2023-07-18,2023-07-18,2,bfq",
-            "publishedDate": null,
-            "sha256": "3946369d68d534048121ebf3444dcc9474d2205f71ced2c777bedf8d9ce4b26f"
-          },
-          {
-            "sourceUrl": "https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en",
-            "publishedDate": "2023-07-17",
-            "sha256": "c53445ff8de0f5ee53ce098dbd461d90e418b71a448ad57048b580b68fe74010"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -176847,9 +176682,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-15",
         "firstPublicA1Date": "2021-06-15",
         "firstToListingDays": 762,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-03-16",
         "successfulCycleToListingDays": 123,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0717/sehk23031601323.pdf",
@@ -176872,22 +176709,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0803/2023080300227.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=hk01284,day,2023-07-18,2023-07-18,2,bfq"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en"
         }
       ]
     },
@@ -176971,7 +176792,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01284",
-            "sharesAsOf": "2023-07-17",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -176986,26 +176807,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             },
             "valueHkd": "558000000.000",
             "sharesExTreasury": 600000000,
-            "shareBasis": "historical_issued_equity_estimate"
+            "shareBasis": "historical_issued_equity_estimate",
+            "priceDatePolicy": "first_trading_session_after_exchange_closure",
+            "priceCalendarEvidence": [
+              {
+                "sourceUrl": "https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en",
+                "publishedDate": "2023-07-17",
+                "sha256": "c53445ff8de0f5ee53ce098dbd461d90e418b71a448ad57048b580b68fe74010"
+              }
+            ]
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0803/2023080300227.pdf",
-            "publishedDate": "2023-08-03",
-            "sha256": "ea5cd9d450216e57ccf7d2f063e8ebe0ee3ab4136a8d433887f3d715f5125034"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=hk01284,day,2023-07-18,2023-07-18,2,bfq",
-            "publishedDate": null,
-            "sha256": "3946369d68d534048121ebf3444dcc9474d2205f71ced2c777bedf8d9ce4b26f"
-          },
-          {
-            "sourceUrl": "https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en",
-            "publishedDate": "2023-07-17",
-            "sha256": "c53445ff8de0f5ee53ce098dbd461d90e418b71a448ad57048b580b68fe74010"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -177061,9 +176874,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-15",
         "firstPublicA1Date": "2021-06-15",
         "firstToListingDays": 762,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-03-16",
         "successfulCycleToListingDays": 123,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0717/sehk23031601323.pdf",
@@ -177086,22 +176901,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0803/2023080300227.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=hk01284,day,2023-07-18,2023-07-18,2,bfq"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en"
         }
       ]
     },
@@ -177187,7 +176986,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02271",
-            "sharesAsOf": "2023-07-18",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -177205,18 +177004,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080200573.pdf",
-            "publishedDate": "2023-08-02",
-            "sha256": "ca6bc59a48ffd8df4b81dfb47fa8fab90e10ec3a4e1767dc5b4ab626541136d4"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02271,day,2023-07-18,2023-07-18,2,bfq",
-            "publishedDate": null,
-            "sha256": "be20f9e95f6b1d28f8c2b26442f8810c8bbaeb1ec07c9224e37c05a6f9996563"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -177272,9 +177060,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-24",
         "firstPublicA1Date": "2021-06-24",
         "firstToListingDays": 754,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-04-28",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0718/sehk23042805316.pdf",
@@ -177299,18 +177089,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080200573.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02271,day,2023-07-18,2023-07-18,2,bfq"
         }
       ]
     },
@@ -177396,7 +177174,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02271",
-            "sharesAsOf": "2023-07-18",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -177414,18 +177192,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080200573.pdf",
-            "publishedDate": "2023-08-02",
-            "sha256": "ca6bc59a48ffd8df4b81dfb47fa8fab90e10ec3a4e1767dc5b4ab626541136d4"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02271,day,2023-07-18,2023-07-18,2,bfq",
-            "publishedDate": null,
-            "sha256": "be20f9e95f6b1d28f8c2b26442f8810c8bbaeb1ec07c9224e37c05a6f9996563"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -177481,9 +177248,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-24",
         "firstPublicA1Date": "2021-06-24",
         "firstToListingDays": 754,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-04-28",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0718/sehk23042805316.pdf",
@@ -177508,18 +177277,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080200573.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02271,day,2023-07-18,2023-07-18,2,bfq"
         }
       ]
     },
@@ -177609,7 +177366,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01541",
-            "sharesAsOf": "2023-09-05",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -177627,18 +177384,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100600351.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "77af3a5ae1fe00226c5f8cb4d97da4ccf4aeadc2aada32f60e4d55891a397fb0"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01541,day,2023-09-05,2023-09-05,2,bfq",
-            "publishedDate": null,
-            "sha256": "b35356d8fcbfd79423906061973074cf06473fd5fc8f4039f3690b26a78391c1"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -177694,9 +177440,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-27",
         "firstPublicA1Date": "2022-06-27",
         "firstToListingDays": 435,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-26",
         "successfulCycleToListingDays": 163,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0905/sehk23032600300.pdf",
@@ -177729,18 +177477,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7481016/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100600351.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01541,day,2023-09-05,2023-09-05,2,bfq"
         }
       ]
     },
@@ -177830,7 +177566,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01541",
-            "sharesAsOf": "2023-09-05",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -177848,18 +177584,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100600351.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "77af3a5ae1fe00226c5f8cb4d97da4ccf4aeadc2aada32f60e4d55891a397fb0"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01541,day,2023-09-05,2023-09-05,2,bfq",
-            "publishedDate": null,
-            "sha256": "b35356d8fcbfd79423906061973074cf06473fd5fc8f4039f3690b26a78391c1"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -177915,9 +177640,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-27",
         "firstPublicA1Date": "2022-06-27",
         "firstToListingDays": 435,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-26",
         "successfulCycleToListingDays": 163,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0905/sehk23032600300.pdf",
@@ -177950,18 +177677,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7481016/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100600351.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01541,day,2023-09-05,2023-09-05,2,bfq"
         }
       ]
     },
@@ -178185,9 +177900,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-10-24",
         "firstPublicA1Date": "2022-10-24",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-05-05",
         "successfulCycleToListingDays": 143,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0925/sehk23050502057.pdf",
@@ -178443,9 +178160,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-10-24",
         "firstPublicA1Date": "2022-10-24",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-05-05",
         "successfulCycleToListingDays": 143,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0925/sehk23050502057.pdf",
@@ -178567,7 +178286,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02496",
-            "sharesAsOf": "2023-09-25",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -178585,18 +178304,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1005/2023100501338.pdf",
-            "publishedDate": "2023-10-05",
-            "sha256": "accf23a5241a652772458e608809aa6edf06486b482f8f7ac9cb081da32b37f5"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02496,day,2023-09-25,2023-09-25,2,bfq",
-            "publishedDate": null,
-            "sha256": "e2d1debde4f11a07ffdd4302458342cb667f8a192e2a5c137bf77a5cd9f8b2af"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -178652,9 +178360,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-09",
         "firstPublicA1Date": "2022-12-09",
         "firstToListingDays": 290,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-06-11",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0925/sehk23061100050.pdf",
@@ -178687,18 +178397,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1005/2023100501338.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02496,day,2023-09-25,2023-09-25,2,bfq"
         }
       ]
     },
@@ -178789,7 +178487,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09690",
-            "sharesAsOf": "2023-09-26",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -178807,18 +178505,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "bcdd8a502b18057e872ee265f3089638e9adb2951e9ba771734c491b6891eebc"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq",
-            "publishedDate": null,
-            "sha256": "861e829c0ff31a30d9b53a0901feb95c483bf8f1ac499ddc4fb63f2a513b22e9"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -178874,9 +178561,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-01-24",
         "firstPublicA1Date": "2022-01-24",
         "firstToListingDays": 610,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-30",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0926/sehk23033001947.pdf",
@@ -178901,18 +178590,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq"
         }
       ]
     },
@@ -179003,7 +178680,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09690",
-            "sharesAsOf": "2023-09-26",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -179021,18 +178698,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "bcdd8a502b18057e872ee265f3089638e9adb2951e9ba771734c491b6891eebc"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq",
-            "publishedDate": null,
-            "sha256": "861e829c0ff31a30d9b53a0901feb95c483bf8f1ac499ddc4fb63f2a513b22e9"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -179088,9 +178754,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-01-24",
         "firstPublicA1Date": "2022-01-24",
         "firstToListingDays": 610,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-30",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0926/sehk23033001947.pdf",
@@ -179115,18 +178783,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq"
         }
       ]
     },
@@ -179217,7 +178873,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09690",
-            "sharesAsOf": "2023-09-26",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -179235,18 +178891,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "bcdd8a502b18057e872ee265f3089638e9adb2951e9ba771734c491b6891eebc"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq",
-            "publishedDate": null,
-            "sha256": "861e829c0ff31a30d9b53a0901feb95c483bf8f1ac499ddc4fb63f2a513b22e9"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -179302,9 +178947,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-01-24",
         "firstPublicA1Date": "2022-01-24",
         "firstToListingDays": 610,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-30",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0926/sehk23033001947.pdf",
@@ -179329,18 +178976,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq"
         }
       ]
     },
@@ -179431,7 +179066,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09690",
-            "sharesAsOf": "2023-09-26",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -179449,18 +179084,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "bcdd8a502b18057e872ee265f3089638e9adb2951e9ba771734c491b6891eebc"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq",
-            "publishedDate": null,
-            "sha256": "861e829c0ff31a30d9b53a0901feb95c483bf8f1ac499ddc4fb63f2a513b22e9"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -179516,9 +179140,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-01-24",
         "firstPublicA1Date": "2022-01-24",
         "firstToListingDays": 610,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-30",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0926/sehk23033001947.pdf",
@@ -179543,18 +179169,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601285.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09690,day,2023-09-26,2023-09-26,2,bfq"
         }
       ]
     },
@@ -179642,7 +179256,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "06682",
-            "sharesAsOf": "2023-09-28",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -179660,18 +179274,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1005/2023100500525.pdf",
-            "publishedDate": "2023-10-05",
-            "sha256": "576f87fb4bdc909684b168d59ebbbc951afbbccab39b321267ddead3a06682b1"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06682,day,2023-09-28,2023-09-28,2,bfq",
-            "publishedDate": null,
-            "sha256": "175d4faac20064343d9c3160f4df5c269d993d59cd99a5813bb1ad33b3ad9bd5"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -179727,9 +179330,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-08-13",
         "firstPublicA1Date": "2021-08-13",
         "firstToListingDays": 776,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-04-24",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0928/sehk23042402459.pdf",
@@ -179770,18 +179375,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7409674/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1005/2023100500525.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06682,day,2023-09-28,2023-09-28,2,bfq"
         }
       ]
     },
@@ -179866,7 +179459,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09686",
-            "sharesAsOf": "2023-09-28",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -179884,18 +179477,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1003/2023100301707.pdf",
-            "publishedDate": "2023-10-03",
-            "sha256": "c88e90497b02fd0e218b4cd6f434fd8c417fd9b529d9f170daafb46ccaf576a2"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09686,day,2023-09-28,2023-09-28,2,bfq",
-            "publishedDate": null,
-            "sha256": "99d8467df47671340fc9c3f41991ce230b25af1a0e6f01d1c4246d48c5bfffad"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -179951,9 +179533,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-05-31",
         "firstPublicA1Date": "2021-05-31",
         "firstToListingDays": 850,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-05-22",
         "successfulCycleToListingDays": 129,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0928/sehk23052200988.pdf",
@@ -179978,18 +179562,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1003/2023100301707.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09686,day,2023-09-28,2023-09-28,2,bfq"
         }
       ]
     },
@@ -180074,7 +179646,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09890",
-            "sharesAsOf": "2023-09-28",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -180092,18 +179664,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601010.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "437b8fe32537f51999a053f6a84884531a1eeefd9c78398fd087f9f3436a6554"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09890,day,2023-09-28,2023-09-28,2,bfq",
-            "publishedDate": null,
-            "sha256": "e74ddf437e77269fae9cc8488e94edb2e0f7412d28e5b2382341ef197fc9d11a"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -180159,9 +179720,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-25",
         "firstPublicA1Date": "2022-11-25",
         "firstToListingDays": 307,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-18",
         "successfulCycleToListingDays": 41,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0928/sehk23081801879.pdf",
@@ -180186,18 +179749,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601010.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09890,day,2023-09-28,2023-09-28,2,bfq"
         }
       ]
     },
@@ -180282,7 +179833,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09890",
-            "sharesAsOf": "2023-09-28",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -180300,18 +179851,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601010.pdf",
-            "publishedDate": "2023-10-06",
-            "sha256": "437b8fe32537f51999a053f6a84884531a1eeefd9c78398fd087f9f3436a6554"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09890,day,2023-09-28,2023-09-28,2,bfq",
-            "publishedDate": null,
-            "sha256": "e74ddf437e77269fae9cc8488e94edb2e0f7412d28e5b2382341ef197fc9d11a"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -180367,9 +179907,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-25",
         "firstPublicA1Date": "2022-11-25",
         "firstToListingDays": 307,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-18",
         "successfulCycleToListingDays": 41,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0928/sehk23081801879.pdf",
@@ -180394,18 +179936,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/2023100601010.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09890,day,2023-09-28,2023-09-28,2,bfq"
         }
       ]
     },
@@ -180489,7 +180019,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09882",
-            "sharesAsOf": "2023-09-29",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -180507,18 +180037,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1005/2023100500338.pdf",
-            "publishedDate": "2023-10-05",
-            "sha256": "fc0fa5017441270f6500c452bc48cf97d25b306c54504b7cad876531fd9a67d4"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09882,day,2023-09-29,2023-09-29,2,bfq",
-            "publishedDate": null,
-            "sha256": "1a9e0ac03ca9f413b6e3713c3a7fac56279fe4bb29e97dd1faa1b3f3f28a0e69"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -180565,7 +180084,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 183.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -180574,9 +180093,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2023-03-30",
         "firstPublicA1Date": "2023-03-30",
         "firstToListingDays": 183,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0929/sehk23033004369.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0929/sehk23033004369.pdf",
         "successfulCycleA1Date": "2023-03-30",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0929/sehk23033004369.pdf",
@@ -180602,18 +180123,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1005/2023100500338.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09882,day,2023-09-29,2023-09-29,2,bfq"
         }
       ]
     },
@@ -180701,7 +180210,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01973",
-            "sharesAsOf": "2023-10-06",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -180719,18 +180228,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600486.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "af5bb1d17045ffde8289c09ad8a7207475d55d9623222668550de857824b2f0b"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01973,day,2023-10-06,2023-10-06,2,bfq",
-            "publishedDate": null,
-            "sha256": "8b7013d43be10c61d491677f912c0ff3d7ec66902725cbe417d85134c8d7db91"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -180786,9 +180284,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-30",
         "firstPublicA1Date": "2022-06-30",
         "firstToListingDays": 463,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-31",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/sehk23033103730.pdf",
@@ -180813,18 +180313,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600486.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01973,day,2023-10-06,2023-10-06,2,bfq"
         }
       ]
     },
@@ -180912,7 +180400,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01973",
-            "sharesAsOf": "2023-10-06",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -180930,18 +180418,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600486.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "af5bb1d17045ffde8289c09ad8a7207475d55d9623222668550de857824b2f0b"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01973,day,2023-10-06,2023-10-06,2,bfq",
-            "publishedDate": null,
-            "sha256": "8b7013d43be10c61d491677f912c0ff3d7ec66902725cbe417d85134c8d7db91"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -180997,9 +180474,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-30",
         "firstPublicA1Date": "2022-06-30",
         "firstToListingDays": 463,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-31",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1006/sehk23033103730.pdf",
@@ -181024,18 +180503,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600486.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01973,day,2023-10-06,2023-10-06,2,bfq"
         }
       ]
     },
@@ -181120,7 +180587,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02501",
-            "sharesAsOf": "2023-10-11",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -181138,18 +180605,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1103/2023110300453.pdf",
-            "publishedDate": "2023-11-03",
-            "sha256": "3da327431d65bf13f37a0970f2aa5c2b7addd74b5dabcf80be018c27cb1d06f0"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02501,day,2023-10-11,2023-10-11,2,bfq",
-            "publishedDate": null,
-            "sha256": "f612291fbe116c72b98eb21427c3eb3f29063ca3b7b51c1494973a03fb70e809"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -181205,9 +180661,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-04-30",
         "firstPublicA1Date": "2021-04-30",
         "firstToListingDays": 894,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-08-11",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1011/sehk23081101591.pdf",
@@ -181240,18 +180698,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7408357/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1103/2023110300453.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02501,day,2023-10-11,2023-10-11,2,bfq"
         }
       ]
     },
@@ -181338,7 +180784,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02451",
-            "sharesAsOf": "2023-10-12",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -181356,18 +180802,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1102/2023110200715.pdf",
-            "publishedDate": "2023-11-02",
-            "sha256": "d8231f3f56a788e6b6d3b40d55b40a3047413024ea19ddc37c4e53375c0881a4"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02451,day,2023-10-12,2023-10-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "41497241e2ada8cfddd6f1111c4ffd35a67deaebf2bdd1496906352762b15e4b"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -181423,9 +180858,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-22",
         "firstPublicA1Date": "2022-11-22",
         "firstToListingDays": 324,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-05-29",
         "successfulCycleToListingDays": 136,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23052901789.pdf",
@@ -181454,18 +180891,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7418170/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1102/2023110200715.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02451,day,2023-10-12,2023-10-12,2,bfq"
         }
       ]
     },
@@ -181553,7 +180978,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09676",
-            "sharesAsOf": "2023-10-12",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -181571,18 +180996,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110601042.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "085c508b8b241ee069ce343340f443da0585df9b443e190d6794e0759239a28d"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09676,day,2023-10-12,2023-10-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "7cb351dcf0ac1a39bd06630cfd28505e8c718c2364d4e4be548bf8af146f3542"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -181638,9 +181052,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-31",
         "firstPublicA1Date": "2023-03-31",
         "firstToListingDays": 195,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
         "successfulCycleA1Date": "2023-03-31",
         "successfulCycleToListingDays": 195,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
@@ -181679,18 +181095,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7403976/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110601042.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09676,day,2023-10-12,2023-10-12,2,bfq"
         }
       ]
     },
@@ -181778,7 +181182,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09676",
-            "sharesAsOf": "2023-10-12",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -181796,18 +181200,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110601042.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "085c508b8b241ee069ce343340f443da0585df9b443e190d6794e0759239a28d"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09676,day,2023-10-12,2023-10-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "7cb351dcf0ac1a39bd06630cfd28505e8c718c2364d4e4be548bf8af146f3542"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -181863,9 +181256,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-31",
         "firstPublicA1Date": "2023-03-31",
         "firstToListingDays": 195,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
         "successfulCycleA1Date": "2023-03-31",
         "successfulCycleToListingDays": 195,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
@@ -181904,18 +181299,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7403976/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110601042.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09676,day,2023-10-12,2023-10-12,2,bfq"
         }
       ]
     },
@@ -182003,7 +181386,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "09676",
-            "sharesAsOf": "2023-10-12",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -182021,18 +181404,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110601042.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "085c508b8b241ee069ce343340f443da0585df9b443e190d6794e0759239a28d"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09676,day,2023-10-12,2023-10-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "7cb351dcf0ac1a39bd06630cfd28505e8c718c2364d4e4be548bf8af146f3542"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -182088,9 +181460,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-31",
         "firstPublicA1Date": "2023-03-31",
         "firstToListingDays": 195,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
         "successfulCycleA1Date": "2023-03-31",
         "successfulCycleToListingDays": 195,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1012/sehk23033104258.pdf",
@@ -182129,18 +181503,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7403976/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110601042.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09676,day,2023-10-12,2023-10-12,2,bfq"
         }
       ]
     },
@@ -182228,7 +181590,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01519",
-            "sharesAsOf": "2023-10-27",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -182246,18 +181608,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600906.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "c9ee24d1d951cf9e139497f1b2427c896af315ce5be833fadfeefcdc46c58cef"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01519,day,2023-10-27,2023-10-27,2,bfq",
-            "publishedDate": null,
-            "sha256": "0d4f885ab0b1e3abb60db5de90760a5524339b7f6d8c660e1af8c882640195c8"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -182313,9 +181664,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-16",
         "firstPublicA1Date": "2023-06-16",
         "firstToListingDays": 133,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
         "successfulCycleA1Date": "2023-06-16",
         "successfulCycleToListingDays": 133,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
@@ -182346,18 +181699,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7422705/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600906.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01519,day,2023-10-27,2023-10-27,2,bfq"
         }
       ]
     },
@@ -182445,7 +181786,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01519",
-            "sharesAsOf": "2023-10-27",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -182463,18 +181804,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600906.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "c9ee24d1d951cf9e139497f1b2427c896af315ce5be833fadfeefcdc46c58cef"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01519,day,2023-10-27,2023-10-27,2,bfq",
-            "publishedDate": null,
-            "sha256": "0d4f885ab0b1e3abb60db5de90760a5524339b7f6d8c660e1af8c882640195c8"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -182530,9 +181860,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-16",
         "firstPublicA1Date": "2023-06-16",
         "firstToListingDays": 133,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
         "successfulCycleA1Date": "2023-06-16",
         "successfulCycleToListingDays": 133,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
@@ -182563,18 +181895,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7422705/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600906.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01519,day,2023-10-27,2023-10-27,2,bfq"
         }
       ]
     },
@@ -182662,7 +181982,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01519",
-            "sharesAsOf": "2023-10-27",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -182680,18 +182000,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600906.pdf",
-            "publishedDate": "2023-11-06",
-            "sha256": "c9ee24d1d951cf9e139497f1b2427c896af315ce5be833fadfeefcdc46c58cef"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01519,day,2023-10-27,2023-10-27,2,bfq",
-            "publishedDate": null,
-            "sha256": "0d4f885ab0b1e3abb60db5de90760a5524339b7f6d8c660e1af8c882640195c8"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -182747,9 +182056,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-16",
         "firstPublicA1Date": "2023-06-16",
         "firstToListingDays": 133,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
         "successfulCycleA1Date": "2023-06-16",
         "successfulCycleToListingDays": 133,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1027/sehk23061601571.pdf",
@@ -182780,18 +182091,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7422705/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1106/2023110600906.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01519,day,2023-10-27,2023-10-27,2,bfq"
         }
       ]
     },
@@ -183020,9 +182319,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-04-03",
         "firstPublicA1Date": "2023-04-03",
         "firstToListingDays": 213,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-04",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1102/sehk23100401416.pdf",
@@ -183289,9 +182590,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-04-03",
         "firstPublicA1Date": "2023-04-03",
         "firstToListingDays": 213,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-04",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1102/sehk23100401416.pdf",
@@ -183417,7 +182720,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02429",
-            "sharesAsOf": "2023-11-03",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -183435,18 +182738,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600749.pdf",
-            "publishedDate": "2023-12-06",
-            "sha256": "e6cfe3c118901a035c866212907d97407beec10d9030567b37925ffb9d5cf1e7"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02429,day,2023-11-03,2023-11-03,2,bfq",
-            "publishedDate": null,
-            "sha256": "a2902560f7ff67c7eafb92c36d0433e6002c18cfdd2107d19159d15d7c5c29d9"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -183502,9 +182794,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-27",
         "firstPublicA1Date": "2022-05-27",
         "firstToListingDays": 525,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-21",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1103/sehk23082100102.pdf",
@@ -183545,18 +182839,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600749.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02429,day,2023-11-03,2023-11-03,2,bfq"
         }
       ]
     },
@@ -183644,7 +182926,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02429",
-            "sharesAsOf": "2023-11-03",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -183662,18 +182944,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600749.pdf",
-            "publishedDate": "2023-12-06",
-            "sha256": "e6cfe3c118901a035c866212907d97407beec10d9030567b37925ffb9d5cf1e7"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02429,day,2023-11-03,2023-11-03,2,bfq",
-            "publishedDate": null,
-            "sha256": "a2902560f7ff67c7eafb92c36d0433e6002c18cfdd2107d19159d15d7c5c29d9"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -183729,9 +183000,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-27",
         "firstPublicA1Date": "2022-05-27",
         "firstToListingDays": 525,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-21",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1103/sehk23082100102.pdf",
@@ -183772,18 +183045,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7637494/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600749.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02429,day,2023-11-03,2023-11-03,2,bfq"
         }
       ]
     },
@@ -183867,7 +183128,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02473",
-            "sharesAsOf": "2023-11-09",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -183885,18 +183146,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1201/2023120101243.pdf",
-            "publishedDate": "2023-12-01",
-            "sha256": "55b659ffaeaaed6e343e6c9d1c735e1f1ab7d1bd8071b1cc470fb58f63a5ff6b"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02473,day,2023-11-09,2023-11-09,2,bfq",
-            "publishedDate": null,
-            "sha256": "524dd0829a94c5b1aad1b21292c8a9c83d1a4924a7b80c6263102a08655e3a76"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -183952,9 +183202,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2019-12-31",
         "firstPublicA1Date": "2019-12-31",
         "firstToListingDays": 1409,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2019_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2019_sehk_e.json",
         "successfulCycleA1Date": "2023-05-10",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1109/sehk23051001220.pdf",
@@ -183987,18 +183239,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7408357/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1201/2023120101243.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02473,day,2023-11-09,2023-11-09,2,bfq"
         }
       ]
     },
@@ -184226,9 +183466,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-25",
         "firstPublicA1Date": "2023-05-25",
         "firstToListingDays": 169,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23052501417.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23052501417.pdf",
         "successfulCycleA1Date": "2023-05-25",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23052501417.pdf",
@@ -184346,7 +183588,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "01111",
-            "sharesAsOf": "2023-11-10",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -184364,18 +183606,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600226.pdf",
-            "publishedDate": "2023-12-06",
-            "sha256": "b0b90b73c0c2c1e0a8c0bebde3ee875f2f68debf0cc15c133e81ed615346ea31"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01111,day,2023-11-10,2023-11-10,2,bfq",
-            "publishedDate": null,
-            "sha256": "8272ed265ea7d646f2d6c476d3bb6075ef13ffc36130a31694ae135b2c1033c2"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -184431,9 +183662,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 133,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23063002683.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23063002683.pdf",
         "successfulCycleA1Date": "2023-06-30",
         "successfulCycleToListingDays": 133,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23063002683.pdf",
@@ -184464,18 +183697,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7413631/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600226.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01111,day,2023-11-10,2023-11-10,2,bfq"
         }
       ]
     },
@@ -184699,9 +183920,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-07-09",
         "firstPublicA1Date": "2023-07-09",
         "firstToListingDays": 131,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
         "successfulCycleA1Date": "2023-07-09",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
@@ -184951,9 +184174,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-07-09",
         "firstPublicA1Date": "2023-07-09",
         "firstToListingDays": 131,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
         "successfulCycleA1Date": "2023-07-09",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
@@ -185203,9 +184428,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-07-09",
         "firstPublicA1Date": "2023-07-09",
         "firstToListingDays": 131,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
         "successfulCycleA1Date": "2023-07-09",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1117/sehk23070900026.pdf",
@@ -185320,7 +184547,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02520",
-            "sharesAsOf": "2023-11-22",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -185338,18 +184565,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600186.pdf",
-            "publishedDate": "2023-12-06",
-            "sha256": "914e90fa49ce149db7942661e2bc9d0a8a5a4f022a4cc5e32b916007f6ecc8e3"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02520,day,2023-11-22,2023-11-22,2,bfq",
-            "publishedDate": null,
-            "sha256": "286b20353ad65e4846839f4a7b3517056ce30761a27101061209d9d86e79cb4a"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -185405,9 +184621,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-29",
         "firstPublicA1Date": "2022-06-29",
         "firstToListingDays": 511,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-09-29",
         "successfulCycleToListingDays": 54,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1122/sehk23092900687.pdf",
@@ -185436,18 +184654,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7670804/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600186.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02520,day,2023-11-22,2023-11-22,2,bfq"
         }
       ]
     },
@@ -185536,7 +184742,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02520",
-            "sharesAsOf": "2023-11-22",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -185554,18 +184760,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600186.pdf",
-            "publishedDate": "2023-12-06",
-            "sha256": "914e90fa49ce149db7942661e2bc9d0a8a5a4f022a4cc5e32b916007f6ecc8e3"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02520,day,2023-11-22,2023-11-22,2,bfq",
-            "publishedDate": null,
-            "sha256": "286b20353ad65e4846839f4a7b3517056ce30761a27101061209d9d86e79cb4a"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -185621,9 +184816,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-29",
         "firstPublicA1Date": "2022-06-29",
         "firstToListingDays": 511,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-09-29",
         "successfulCycleToListingDays": 54,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1122/sehk23092900687.pdf",
@@ -185652,18 +184849,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7670804/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/2023120600186.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02520,day,2023-11-22,2023-11-22,2,bfq"
         }
       ]
     },
@@ -185887,9 +185072,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-29",
         "firstPublicA1Date": "2023-03-29",
         "firstToListingDays": 251,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-06",
         "successfulCycleToListingDays": 60,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1205/sehk23100601400.pdf",
@@ -186135,9 +185322,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-29",
         "firstPublicA1Date": "2023-03-29",
         "firstToListingDays": 251,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-06",
         "successfulCycleToListingDays": 60,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1205/sehk23100601400.pdf",
@@ -186383,9 +185572,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-04-14",
         "firstPublicA1Date": "2021-04-14",
         "firstToListingDays": 965,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-05-29",
         "successfulCycleToListingDays": 190,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1205/sehk23052901089.pdf",
@@ -186524,18 +185715,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1204/10993779/2023120402570.pdf",
-            "publishedDate": "2023-12-04",
-            "sha256": "24dd1062d25ceca6759eb1d140e8db16e6330b9447ee5a840c1acfb17a16e7d7"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09663,day,2023-12-05,2023-12-05,2,bfq",
-            "publishedDate": null,
-            "sha256": "278069900d8f33d124098bc3a277fc31ef04dc892dc1b123e0c4a93e54eeed6a"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -186591,9 +185771,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-22",
         "firstPublicA1Date": "2022-11-22",
         "firstToListingDays": 378,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-05-22",
         "successfulCycleToListingDays": 197,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1205/sehk23052201264.pdf",
@@ -186626,18 +185808,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7474999/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1204/10993779/2023120402570.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk09663,day,2023-12-05,2023-12-05,2,bfq"
         }
       ]
     },
@@ -186865,9 +186035,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-29",
         "firstPublicA1Date": "2021-06-29",
         "firstToListingDays": 890,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-07-31",
         "successfulCycleToListingDays": 128,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/sehk23073101479.pdf",
@@ -187150,9 +186322,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-29",
         "firstPublicA1Date": "2021-06-29",
         "firstToListingDays": 890,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2023-07-31",
         "successfulCycleToListingDays": 128,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1206/sehk23073101479.pdf",
@@ -187314,18 +186488,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1211/2023121101204.pdf",
-            "publishedDate": "2023-12-11",
-            "sha256": "976c467e2a37aec67465a24969da4e7916daaba0344659c09707cf7ed01f0d2d"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01497,day,2023-12-12,2023-12-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "b811d983d5ce2d8f4d651d0011cf808edc279b4931e275eef765d9edd112fa04"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -187381,9 +186544,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-12",
         "firstPublicA1Date": "2023-06-12",
         "firstToListingDays": 183,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1212/sehk23061201007.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1212/sehk23061201007.pdf",
         "successfulCycleA1Date": "2023-06-12",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1212/sehk23061201007.pdf",
@@ -187414,18 +186579,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7466539/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1211/2023121101204.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01497,day,2023-12-12,2023-12-12,2,bfq"
         }
       ]
     },
@@ -187532,18 +186685,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1211/2023121101204.pdf",
-            "publishedDate": "2023-12-11",
-            "sha256": "976c467e2a37aec67465a24969da4e7916daaba0344659c09707cf7ed01f0d2d"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01497,day,2023-12-12,2023-12-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "b811d983d5ce2d8f4d651d0011cf808edc279b4931e275eef765d9edd112fa04"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -187599,9 +186741,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-12",
         "firstPublicA1Date": "2023-06-12",
         "firstToListingDays": 183,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1212/sehk23061201007.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1212/sehk23061201007.pdf",
         "successfulCycleA1Date": "2023-06-12",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1212/sehk23061201007.pdf",
@@ -187632,18 +186776,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7466539/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1211/2023121101204.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk01497,day,2023-12-12,2023-12-12,2,bfq"
         }
       ]
     },
@@ -187870,9 +187002,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-14",
         "firstPublicA1Date": "2022-12-14",
         "firstToListingDays": 369,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-06-30",
         "successfulCycleToListingDays": 171,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1218/sehk23063002783.pdf",
@@ -188135,9 +187269,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-14",
         "firstPublicA1Date": "2022-12-14",
         "firstToListingDays": 369,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-06-30",
         "successfulCycleToListingDays": 171,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1218/sehk23063002783.pdf",
@@ -188279,18 +187415,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1219/2023121901110.pdf",
-            "publishedDate": "2023-12-19",
-            "sha256": "04ce58915443241ea8a170c5deae939c11c24e645a0b9dbeb8bcaeb73a1ce936"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02502,day,2023-12-20,2023-12-20,2,bfq",
-            "publishedDate": null,
-            "sha256": "023bd3ea6538aa8783fec864ba2f137aa67fd755321e3fc2c7b8435a5e0bc30b"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -188346,9 +187471,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-28",
         "firstPublicA1Date": "2023-08-28",
         "firstToListingDays": 114,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23082801570.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23082801570.pdf",
         "successfulCycleA1Date": "2023-08-28",
         "successfulCycleToListingDays": 114,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23082801570.pdf",
@@ -188379,18 +187506,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7474993/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1219/2023121901110.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02502,day,2023-12-20,2023-12-20,2,bfq"
         }
       ]
     },
@@ -188619,9 +187734,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-04-04",
         "firstPublicA1Date": "2023-04-04",
         "firstToListingDays": 260,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-05",
         "successfulCycleToListingDays": 76,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23100501465.pdf",
@@ -188888,9 +188005,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-04-04",
         "firstPublicA1Date": "2023-04-04",
         "firstToListingDays": 260,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-05",
         "successfulCycleToListingDays": 76,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23100501465.pdf",
@@ -189157,9 +188276,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-04-04",
         "firstPublicA1Date": "2023-04-04",
         "firstToListingDays": 260,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-05",
         "successfulCycleToListingDays": 76,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23100501465.pdf",
@@ -189421,9 +188542,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-02-28",
         "firstPublicA1Date": "2023-02-28",
         "firstToListingDays": 297,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-09-08",
         "successfulCycleToListingDays": 105,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1222/sehk23090800718.pdf",
@@ -189564,18 +188687,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1221/2023122101298.pdf",
-            "publishedDate": "2023-12-21",
-            "sha256": "b449b8ce9820545b57172a64a57a2cd44ae8977b2016af36336605e26ad03731"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02511,day,2023-12-22,2023-12-22,2,bfq",
-            "publishedDate": null,
-            "sha256": "8b5f797a62116bdb176581482e806adc8405618568ce01b1e6cebbe025992d47"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -189631,9 +188743,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-30",
         "firstPublicA1Date": "2023-05-30",
         "firstToListingDays": 206,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-12-04",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1222/sehk23120402604.pdf",
@@ -189664,18 +188778,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7416985/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1221/2023122101298.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02511,day,2023-12-22,2023-12-22,2,bfq"
         }
       ]
     },
@@ -189784,18 +188886,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1221/2023122101298.pdf",
-            "publishedDate": "2023-12-21",
-            "sha256": "b449b8ce9820545b57172a64a57a2cd44ae8977b2016af36336605e26ad03731"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02511,day,2023-12-22,2023-12-22,2,bfq",
-            "publishedDate": null,
-            "sha256": "8b5f797a62116bdb176581482e806adc8405618568ce01b1e6cebbe025992d47"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -189851,9 +188942,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-30",
         "firstPublicA1Date": "2023-05-30",
         "firstToListingDays": 206,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-12-04",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1222/sehk23120402604.pdf",
@@ -189884,18 +188977,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7416985/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1221/2023122101298.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02511,day,2023-12-22,2023-12-22,2,bfq"
         }
       ]
     },
@@ -190120,9 +189201,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-03-30",
         "firstPublicA1Date": "2022-03-30",
         "firstToListingDays": 632,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-11-22",
         "successfulCycleToListingDays": 30,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1222/sehk23112201280.pdf",
@@ -190383,9 +189466,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-30",
         "firstPublicA1Date": "2022-05-30",
         "firstToListingDays": 571,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-22",
         "successfulCycleToListingDays": 122,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1222/sehk23082201417.pdf",
@@ -190650,9 +189735,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-30",
         "firstPublicA1Date": "2022-05-30",
         "firstToListingDays": 571,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-22",
         "successfulCycleToListingDays": 122,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1222/sehk23082201417.pdf",
@@ -190915,9 +190002,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-21",
         "firstPublicA1Date": "2023-06-21",
         "firstToListingDays": 190,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1228/sehk23062101517.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1228/sehk23062101517.pdf",
         "successfulCycleA1Date": "2023-06-21",
         "successfulCycleToListingDays": 190,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1228/sehk23062101517.pdf",
@@ -191174,9 +190263,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-01-31",
         "firstPublicA1Date": "2023-01-31",
         "firstToListingDays": 332,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-08-25",
         "successfulCycleToListingDays": 126,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1229/sehk23082502184.pdf",
@@ -191328,18 +190419,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0104/2024010401780.pdf",
-            "publishedDate": "2024-01-04",
-            "sha256": "8f4cfa244d998890a5ef533d094c19b05867294de2958c34257a56e20e329652"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02498,day,2024-01-05,2024-01-05,2,bfq",
-            "publishedDate": null,
-            "sha256": "a540967244dd46ae5b8e80173e77ec827c9c5b972f78295ca7cdd189cf27d414"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -191395,9 +190475,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 189,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0105/sehk23063001685.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0105/sehk23063001685.pdf",
         "successfulCycleA1Date": "2023-06-30",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0105/sehk23063001685.pdf",
@@ -191424,18 +190506,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7442605/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0104/2024010401780.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02498,day,2024-01-05,2024-01-05,2,bfq"
         }
       ]
     },
@@ -191539,18 +190609,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0104/2024010401780.pdf",
-            "publishedDate": "2024-01-04",
-            "sha256": "8f4cfa244d998890a5ef533d094c19b05867294de2958c34257a56e20e329652"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02498,day,2024-01-05,2024-01-05,2,bfq",
-            "publishedDate": null,
-            "sha256": "a540967244dd46ae5b8e80173e77ec827c9c5b972f78295ca7cdd189cf27d414"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -191606,9 +190665,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 189,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0105/sehk23063001685.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0105/sehk23063001685.pdf",
         "successfulCycleA1Date": "2023-06-30",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0105/sehk23063001685.pdf",
@@ -191635,18 +190696,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7442605/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0104/2024010401780.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02498,day,2024-01-05,2024-01-05,2,bfq"
         }
       ]
     },
@@ -191748,18 +190797,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0108/2024010801108.pdf",
-            "publishedDate": "2024-01-08",
-            "sha256": "870fceb774e047a67bf760f0f9438995b355e9aa7c6aa7ad314c00def14415ac"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06959,day,2024-01-09,2024-01-09,2,bfq",
-            "publishedDate": null,
-            "sha256": "8ae720b90dec627064f892ce34bddd2cbe1232423dc50b4234239ef187c48359"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -191815,9 +190853,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-16",
         "firstPublicA1Date": "2023-05-16",
         "firstToListingDays": 238,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-11-17",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0109/sehk23111701153.pdf",
@@ -191844,18 +190884,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7438004/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0108/2024010801108.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06959,day,2024-01-09,2024-01-09,2,bfq"
         }
       ]
     },
@@ -191957,18 +190985,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0108/2024010801108.pdf",
-            "publishedDate": "2024-01-08",
-            "sha256": "870fceb774e047a67bf760f0f9438995b355e9aa7c6aa7ad314c00def14415ac"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06959,day,2024-01-09,2024-01-09,2,bfq",
-            "publishedDate": null,
-            "sha256": "8ae720b90dec627064f892ce34bddd2cbe1232423dc50b4234239ef187c48359"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -192024,9 +191041,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-16",
         "firstPublicA1Date": "2023-05-16",
         "firstToListingDays": 238,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-11-17",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0109/sehk23111701153.pdf",
@@ -192053,18 +191072,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7438004/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0108/2024010801108.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk06959,day,2024-01-09,2024-01-09,2,bfq"
         }
       ]
     },
@@ -192291,9 +191298,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-31",
         "firstPublicA1Date": "2022-05-31",
         "firstToListingDays": 588,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-09-19",
         "successfulCycleToListingDays": 112,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0109/sehk23091901195.pdf",
@@ -192571,9 +191580,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-31",
         "firstPublicA1Date": "2022-05-31",
         "firstToListingDays": 588,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-09-19",
         "successfulCycleToListingDays": 112,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0109/sehk23091901195.pdf",
@@ -192848,9 +191859,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-09-09",
         "firstPublicA1Date": "2022-09-09",
         "firstToListingDays": 487,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-08-17",
         "successfulCycleToListingDays": 145,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0109/sehk23081701429.pdf",
@@ -192985,18 +191998,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0111/2024011101058.pdf",
-            "publishedDate": "2024-01-11",
-            "sha256": "74af011d4655b3ac5b4ceac01e15ec0227d6f7fc6855c1d13292243c62bb57d9"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02477,day,2024-01-12,2024-01-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "75635982b5337022d8e32ad2101abaa1688f72d43efb36c485c247fa5c6e60ca"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -193052,9 +192054,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-29",
         "firstPublicA1Date": "2022-06-29",
         "firstToListingDays": 562,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-11-10",
         "successfulCycleToListingDays": 63,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0112/sehk23111001140.pdf",
@@ -193087,18 +192091,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7413631/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0111/2024011101058.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02477,day,2024-01-12,2024-01-12,2,bfq"
         }
       ]
     },
@@ -193201,18 +192193,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0111/2024011101058.pdf",
-            "publishedDate": "2024-01-11",
-            "sha256": "74af011d4655b3ac5b4ceac01e15ec0227d6f7fc6855c1d13292243c62bb57d9"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02477,day,2024-01-12,2024-01-12,2,bfq",
-            "publishedDate": null,
-            "sha256": "75635982b5337022d8e32ad2101abaa1688f72d43efb36c485c247fa5c6e60ca"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -193268,9 +192249,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-29",
         "firstPublicA1Date": "2022-06-29",
         "firstToListingDays": 562,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-11-10",
         "successfulCycleToListingDays": 63,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0112/sehk23111001140.pdf",
@@ -193303,18 +192286,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7413631/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0111/2024011101058.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02477,day,2024-01-12,2024-01-12,2,bfq"
         }
       ]
     },
@@ -193537,9 +192508,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-04-28",
         "firstPublicA1Date": "2023-04-28",
         "firstToListingDays": 315,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-11-03",
         "successfulCycleToListingDays": 126,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0308/sehk23110302003.pdf",
@@ -193792,9 +192765,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-10",
         "firstPublicA1Date": "2023-08-10",
         "firstToListingDays": 211,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-22",
         "successfulCycleToListingDays": 15,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0308/sehk24022200939.pdf",
@@ -194047,9 +193022,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-31",
         "firstPublicA1Date": "2023-03-31",
         "firstToListingDays": 355,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-10-03",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0320/sehk23100303467.pdf",
@@ -194308,9 +193285,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-07-06",
         "firstPublicA1Date": "2022-07-06",
         "firstToListingDays": 624,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-09-22",
         "successfulCycleToListingDays": 181,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0321/sehk23092200164.pdf",
@@ -194561,9 +193540,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-09-27",
         "firstPublicA1Date": "2023-09-27",
         "firstToListingDays": 181,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0326/sehk23092701750.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0326/sehk23092701750.pdf",
         "successfulCycleA1Date": "2023-09-27",
         "successfulCycleToListingDays": 181,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0326/sehk23092701750.pdf",
@@ -194809,9 +193790,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-02-10",
         "firstPublicA1Date": "2021-02-10",
         "firstToListingDays": 1142,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2024-02-01",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0328/sehk24020103381.pdf",
@@ -194949,18 +193932,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0327/2024032703063.pdf",
-            "publishedDate": "2024-03-27",
-            "sha256": "ade63170d4377ffc475306adfa0ceef48b6054ee4a68053364b6ac30481d9b79"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02598,day,2024-03-28,2024-03-28,2,bfq",
-            "publishedDate": null,
-            "sha256": "b7061c31d0ef59c9d7f0158226c23ad60dcdeb65c7094d3d176c99e1676531cf"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -195016,9 +193988,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 272,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-01-11",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0328/sehk24011101097.pdf",
@@ -195049,18 +194023,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7670804/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0327/2024032703063.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02598,day,2024-03-28,2024-03-28,2,bfq"
         }
       ]
     },
@@ -195166,18 +194128,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0327/2024032703063.pdf",
-            "publishedDate": "2024-03-27",
-            "sha256": "ade63170d4377ffc475306adfa0ceef48b6054ee4a68053364b6ac30481d9b79"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02598,day,2024-03-28,2024-03-28,2,bfq",
-            "publishedDate": null,
-            "sha256": "b7061c31d0ef59c9d7f0158226c23ad60dcdeb65c7094d3d176c99e1676531cf"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -195233,9 +194184,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 272,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-01-11",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0328/sehk24011101097.pdf",
@@ -195266,18 +194219,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案状态",
           "url": "https://www.csrc.gov.cn/csrc/c106251/c7670804/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0327/2024032703063.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02598,day,2024-03-28,2024-03-28,2,bfq"
         }
       ]
     },
@@ -195385,16 +194326,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         ],
         "corroboratingSources": [
           {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0422/2024042202135.pdf",
-            "publishedDate": "2024-04-22",
-            "sha256": "a4cd65fcc667a5ec4d9d222d3ca0ab8bd14012fd11cc77c40cc667b196b93436"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02555,day,2024-04-23,2024-04-23,2,bfq",
-            "publishedDate": null,
-            "sha256": "9ac5e87c31e4f40fb121bbd008faf0d7f103c180bbb202b512007556ad17567f"
-          },
-          {
             "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0415/2024041500022.pdf",
             "publishedDate": "2024-04-15",
             "sha256": "544e7be45367072084ebf39771050abdf4d7ee9fe64ff28edbc1a5b344563e32"
@@ -195455,9 +194386,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-15",
         "firstPublicA1Date": "2023-08-15",
         "firstToListingDays": 252,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-23",
         "successfulCycleToListingDays": 60,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0423/sehk24022301162.pdf",
@@ -195488,18 +194421,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7430923/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0422/2024042202135.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02555,day,2024-04-23,2024-04-23,2,bfq"
         },
         {
           "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
@@ -195549,7 +194470,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "天津建设发展集团股份公司 - H股"
       ],
       "a1Date": "2023-06-30",
-      "currentA1Date": "2023-06-30",
+      "currentA1Date": "2024-03-15",
       "receivedDate": null,
       "noticeDate": "2023-09-14",
       "noticeDateBasis": "official_signature_date",
@@ -195734,12 +194655,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 298,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0423/sehk23063003591.pdf",
-        "successfulCycleA1Date": "2023-06-30",
-        "successfulCycleToListingDays": 298,
-        "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0423/sehk23063003591.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0423/sehk23063003591.pdf",
+        "successfulCycleA1Date": "2024-03-15",
+        "successfulCycleToListingDays": 39,
+        "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0423/sehk24031502316.pdf",
         "listingDate": "2024-04-23",
         "listingSourceUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Eng.xlsx",
         "includedInOrdinaryIPOAverage": true,
@@ -195990,9 +194913,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-30",
         "firstPublicA1Date": "2023-05-30",
         "firstToListingDays": 330,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-12-01",
         "successfulCycleToListingDays": 145,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0424/sehk23120103730.pdf",
@@ -196246,9 +195171,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-30",
         "firstPublicA1Date": "2023-05-30",
         "firstToListingDays": 330,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-12-01",
         "successfulCycleToListingDays": 145,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0424/sehk23120103730.pdf",
@@ -196381,18 +195308,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0514/2024051401235.pdf",
-            "publishedDate": "2024-05-14",
-            "sha256": "00e8ba49777bc2d71b9a40ea391d191dbf9ef16d0b6b007eb7347d9c515c32b4"
-          },
-          {
-            "sourceUrl": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02556,day,2024-05-16,2024-05-16,2,bfq",
-            "publishedDate": null,
-            "sha256": "20a5c7a1dce5d0ec7b459ddd4493ff24774564e29f7fffe29ef25a10d1f39b56"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -196448,9 +195364,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-21",
         "firstPublicA1Date": "2022-11-21",
         "firstToListingDays": 542,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-03-15",
         "successfulCycleToListingDays": 62,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0516/sehk24031502396.pdf",
@@ -196483,18 +195401,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7409674/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0514/2024051401235.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02556,day,2024-05-16,2024-05-16,2,bfq"
         }
       ]
     },
@@ -196597,18 +195503,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0514/2024051401235.pdf",
-            "publishedDate": "2024-05-14",
-            "sha256": "00e8ba49777bc2d71b9a40ea391d191dbf9ef16d0b6b007eb7347d9c515c32b4"
-          },
-          {
-            "sourceUrl": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02556,day,2024-05-16,2024-05-16,2,bfq",
-            "publishedDate": null,
-            "sha256": "20a5c7a1dce5d0ec7b459ddd4493ff24774564e29f7fffe29ef25a10d1f39b56"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -196664,9 +195559,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-21",
         "firstPublicA1Date": "2022-11-21",
         "firstToListingDays": 542,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-03-15",
         "successfulCycleToListingDays": 62,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0516/sehk24031502396.pdf",
@@ -196699,18 +195596,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7409674/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0514/2024051401235.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk02556,day,2024-05-16,2024-05-16,2,bfq"
         }
       ]
     },
@@ -196937,9 +195822,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-25",
         "firstPublicA1Date": "2023-06-25",
         "firstToListingDays": 327,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-15",
         "successfulCycleToListingDays": 63,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0517/sehk24031502144.pdf",
@@ -197075,16 +195962,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         ],
         "corroboratingSources": [
           {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0523/2024052301621.pdf",
-            "publishedDate": "2024-05-23",
-            "sha256": "6af05df0dfa916eac7dbea71de24aa5946c1e1e83bb4bc210dabbec5e4866b2d"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02898,day,2024-05-24,2024-05-24,2,bfq",
-            "publishedDate": null,
-            "sha256": "a68faf5c064c1a029bc639d13b9eab919303f68697f5985f2f9606d542321c1d"
-          },
-          {
             "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0516/2024051600013.pdf",
             "publishedDate": "2024-05-16",
             "sha256": "5cd36d05a73d6410163c1412ff613f034f329e79c951c1385002ad9e991c221d"
@@ -197145,9 +196022,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-03",
         "firstPublicA1Date": "2023-08-03",
         "firstToListingDays": 295,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-09",
         "successfulCycleToListingDays": 105,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0524/sehk24020900146.pdf",
@@ -197174,18 +196053,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7462771/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0523/2024052301621.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02898,day,2024-05-24,2024-05-24,2,bfq"
         },
         {
           "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
@@ -197416,9 +196283,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-09-04",
         "firstPublicA1Date": "2023-09-04",
         "firstToListingDays": 266,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-04",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0527/sehk24030402251.pdf",
@@ -197664,7 +196533,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 91.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -197673,16 +196542,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-02-27",
         "firstPublicA1Date": "2024-02-27",
         "firstToListingDays": 91,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0528/sehk24022701021.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0528/sehk24022701021.pdf",
         "successfulCycleA1Date": "2024-02-27",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0528/sehk24022701021.pdf",
         "listingDate": "2024-05-28",
         "listingSourceUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Eng.xlsx",
         "includedInOrdinaryIPOAverage": false,
-        "exclusionReasonZh": "首次公开A1与备案日期顺序未能核实"
+        "exclusionReasonZh": "公开资料未能确定首次递表日"
       },
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -197925,9 +196796,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-06",
         "successfulCycleToListingDays": 115,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0531/sehk24020601783.pdf",
@@ -198181,9 +197054,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-06",
         "successfulCycleToListingDays": 115,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0531/sehk24020601783.pdf",
@@ -198408,9 +197283,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-02-27",
         "firstPublicA1Date": "2023-02-27",
         "firstToListingDays": 466,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-04-22",
         "successfulCycleToListingDays": 46,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0607/sehk24042201878.pdf",
@@ -198641,9 +197518,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-11",
         "firstPublicA1Date": "2023-05-11",
         "firstToListingDays": 393,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-05-13",
         "successfulCycleToListingDays": 25,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0607/sehk24051300943.pdf",
@@ -198877,9 +197756,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-11-30",
         "firstPublicA1Date": "2023-11-30",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0613/sehk23113001942.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0613/sehk23113001942.pdf",
         "successfulCycleA1Date": "2023-11-30",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0613/sehk23113001942.pdf",
@@ -199105,9 +197986,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-31",
         "firstPublicA1Date": "2023-05-31",
         "firstToListingDays": 380,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-12-05",
         "successfulCycleToListingDays": 192,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0614/sehk23120502384.pdf",
@@ -199333,9 +198216,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-17",
         "firstPublicA1Date": "2022-06-17",
         "firstToListingDays": 732,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-03-04",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0618/sehk24030402325.pdf",
@@ -199559,9 +198444,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2020-10-08",
         "firstPublicA1Date": "2020-10-08",
         "firstToListingDays": 1359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
         "successfulCycleA1Date": "2024-03-19",
         "successfulCycleToListingDays": 101,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/sehk24031901238.pdf",
@@ -199787,9 +198674,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2020-10-08",
         "firstPublicA1Date": "2020-10-08",
         "firstToListingDays": 1359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
         "successfulCycleA1Date": "2024-03-19",
         "successfulCycleToListingDays": 101,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/sehk24031901238.pdf",
@@ -200015,9 +198904,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2020-10-08",
         "firstPublicA1Date": "2020-10-08",
         "firstToListingDays": 1359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
         "successfulCycleA1Date": "2024-03-19",
         "successfulCycleToListingDays": 101,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/sehk24031901238.pdf",
@@ -200247,9 +199138,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-11-10",
         "firstPublicA1Date": "2023-11-10",
         "firstToListingDays": 231,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-05-13",
         "successfulCycleToListingDays": 46,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/sehk24051301325.pdf",
@@ -200484,9 +199377,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-25",
         "firstPublicA1Date": "2023-08-25",
         "firstToListingDays": 308,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-28",
         "successfulCycleToListingDays": 121,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/sehk24022801366.pdf",
@@ -200716,9 +199611,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-09-20",
         "firstPublicA1Date": "2023-09-20",
         "firstToListingDays": 287,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-26",
         "successfulCycleToListingDays": 99,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0703/sehk24032602178.pdf",
@@ -200944,9 +199841,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 369,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-27",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0703/sehk24032703234.pdf",
@@ -201174,9 +200073,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-28",
         "firstPublicA1Date": "2023-06-28",
         "firstToListingDays": 377,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-09",
         "successfulCycleToListingDays": 151,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0709/sehk24020900354.pdf",
@@ -201401,9 +200302,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-21",
         "firstPublicA1Date": "2022-11-21",
         "firstToListingDays": 596,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-02-28",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0709/sehk24022801286.pdf",
@@ -201630,9 +200533,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-21",
         "firstPublicA1Date": "2022-11-21",
         "firstToListingDays": 596,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-02-28",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0709/sehk24022801286.pdf",
@@ -201858,9 +200763,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-18",
         "firstPublicA1Date": "2023-08-18",
         "firstToListingDays": 327,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-25",
         "successfulCycleToListingDays": 107,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0710/sehk24032501204.pdf",
@@ -202080,9 +200987,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-18",
         "firstPublicA1Date": "2023-08-18",
         "firstToListingDays": 327,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-25",
         "successfulCycleToListingDays": 107,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0710/sehk24032501204.pdf",
@@ -202302,9 +201211,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-18",
         "firstPublicA1Date": "2023-08-18",
         "firstToListingDays": 327,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-25",
         "successfulCycleToListingDays": 107,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0710/sehk24032501204.pdf",
@@ -202527,9 +201438,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-20",
         "firstPublicA1Date": "2023-03-20",
         "firstToListingDays": 478,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-28",
         "successfulCycleToListingDays": 104,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0710/sehk24032803851.pdf",
@@ -202761,9 +201674,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-27",
         "firstPublicA1Date": "2023-06-27",
         "firstToListingDays": 379,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-01-12",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0710/sehk24011201215.pdf",
@@ -202985,9 +201900,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-08",
         "firstPublicA1Date": "2023-06-08",
         "firstToListingDays": 400,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-06",
         "successfulCycleToListingDays": 128,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0712/sehk24030601292.pdf",
@@ -203205,9 +202122,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-06",
         "firstPublicA1Date": "2023-06-06",
         "firstToListingDays": 405,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-18",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0715/sehk24031801915.pdf",
@@ -203429,7 +202348,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 125.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -203438,16 +202357,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-04-03",
         "firstPublicA1Date": "2024-04-03",
         "firstToListingDays": 125,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0806/sehk24040302568.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0806/sehk24040302568.pdf",
         "successfulCycleA1Date": "2024-04-03",
         "successfulCycleToListingDays": 125,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0806/sehk24040302568.pdf",
         "listingDate": "2024-08-06",
         "listingSourceUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Eng.xlsx",
         "includedInOrdinaryIPOAverage": false,
-        "exclusionReasonZh": "首次公开A1与备案日期顺序未能核实"
+        "exclusionReasonZh": "公开资料未能确定首次递表日"
       },
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -203662,7 +202583,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 125.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -203671,16 +202592,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-04-03",
         "firstPublicA1Date": "2024-04-03",
         "firstToListingDays": 125,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0806/sehk24040302568.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0806/sehk24040302568.pdf",
         "successfulCycleA1Date": "2024-04-03",
         "successfulCycleToListingDays": 125,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0806/sehk24040302568.pdf",
         "listingDate": "2024-08-06",
         "listingSourceUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Eng.xlsx",
         "includedInOrdinaryIPOAverage": false,
-        "exclusionReasonZh": "首次公开A1与备案日期顺序未能核实"
+        "exclusionReasonZh": "公开资料未能确定首次递表日"
       },
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -203900,9 +202823,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 405,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-22",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0808/sehk24032201296.pdf",
@@ -204129,9 +203054,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 405,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-22",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0808/sehk24032201296.pdf",
@@ -204362,9 +203289,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-26",
         "firstPublicA1Date": "2024-01-26",
         "firstToListingDays": 207,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-29",
         "successfulCycleToListingDays": 22,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0820/sehk24072901438.pdf",
@@ -204704,9 +203633,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-10-24",
         "firstPublicA1Date": "2023-10-24",
         "firstToListingDays": 329,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-04-29",
         "successfulCycleToListingDays": 141,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0917/sehk24042902293.pdf",
@@ -205030,9 +203961,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-10-24",
         "firstPublicA1Date": "2023-10-24",
         "firstToListingDays": 329,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-04-29",
         "successfulCycleToListingDays": 141,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0917/sehk24042902293.pdf",
@@ -205254,9 +204187,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-08",
         "firstPublicA1Date": "2024-03-08",
         "firstToListingDays": 208,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -205482,9 +204417,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-08",
         "firstPublicA1Date": "2024-03-08",
         "firstToListingDays": 208,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -205712,9 +204649,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-29",
         "firstPublicA1Date": "2024-01-29",
         "firstToListingDays": 253,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-30",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1008/sehk24073001373.pdf",
@@ -205942,9 +204881,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-29",
         "firstPublicA1Date": "2024-01-29",
         "firstToListingDays": 253,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-30",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1008/sehk24073001373.pdf",
@@ -206170,9 +205111,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 103,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1009/sehk24062803606.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1009/sehk24062803606.pdf",
         "successfulCycleA1Date": "2024-06-28",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1009/sehk24062803606.pdf",
@@ -206389,9 +205332,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-29",
         "firstPublicA1Date": "2023-06-29",
         "firstToListingDays": 475,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-09-22",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1016/sehk24092200024.pdf",
@@ -206616,9 +205561,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-29",
         "firstPublicA1Date": "2023-06-29",
         "firstToListingDays": 475,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-09-22",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1016/sehk24092200024.pdf",
@@ -206844,9 +205791,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-22",
         "firstPublicA1Date": "2024-04-22",
         "firstToListingDays": 184,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
         "successfulCycleA1Date": "2024-04-22",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
@@ -207072,9 +206021,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-22",
         "firstPublicA1Date": "2024-04-22",
         "firstToListingDays": 184,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
         "successfulCycleA1Date": "2024-04-22",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
@@ -207300,9 +206251,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-22",
         "firstPublicA1Date": "2024-04-22",
         "firstToListingDays": 184,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
         "successfulCycleA1Date": "2024-04-22",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
@@ -207528,9 +206481,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-22",
         "firstPublicA1Date": "2024-04-22",
         "firstToListingDays": 184,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
         "successfulCycleA1Date": "2024-04-22",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1023/sehk24042201884.pdf",
@@ -207759,9 +206714,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-26",
         "firstPublicA1Date": "2024-03-26",
         "firstToListingDays": 212,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-10-01",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1024/sehk24100100072.pdf",
@@ -207990,9 +206947,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-26",
         "firstPublicA1Date": "2024-03-26",
         "firstToListingDays": 212,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-10-01",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1024/sehk24100100072.pdf",
@@ -208221,9 +207180,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-26",
         "firstPublicA1Date": "2024-03-26",
         "firstToListingDays": 212,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-10-01",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1024/sehk24100100072.pdf",
@@ -208538,9 +207499,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-10-24",
         "firstPublicA1Date": "2023-10-24",
         "firstToListingDays": 372,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-04-29",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24042900622.pdf",
@@ -208859,9 +207822,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-10-24",
         "firstPublicA1Date": "2023-10-24",
         "firstToListingDays": 372,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-04-29",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24042900622.pdf",
@@ -209096,7 +208061,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 121.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -209105,9 +208070,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-07-01",
         "firstPublicA1Date": "2024-07-01",
         "firstToListingDays": 121,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
         "successfulCycleA1Date": "2024-07-01",
         "successfulCycleToListingDays": 121,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
@@ -209134,8 +208101,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/2024103000063.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/2024103000063.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -209336,7 +208307,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 121.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -209345,9 +208316,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-07-01",
         "firstPublicA1Date": "2024-07-01",
         "firstToListingDays": 121,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
         "successfulCycleA1Date": "2024-07-01",
         "successfulCycleToListingDays": 121,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
@@ -209374,8 +208347,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/2024103000063.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/2024103000063.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -209576,9 +208553,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-29",
         "firstPublicA1Date": "2024-01-29",
         "firstToListingDays": 276,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-08-12",
         "successfulCycleToListingDays": 80,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1031/sehk24081201267.pdf",
@@ -209809,9 +208788,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-29",
         "firstPublicA1Date": "2024-01-29",
         "firstToListingDays": 276,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-08-12",
         "successfulCycleToListingDays": 80,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1031/sehk24081201267.pdf",
@@ -210037,9 +209018,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-10-28",
         "firstPublicA1Date": "2022-10-28",
         "firstToListingDays": 735,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-05-30",
         "successfulCycleToListingDays": 155,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1101/sehk24053001571.pdf",
@@ -210259,9 +209242,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-10-28",
         "firstPublicA1Date": "2022-10-28",
         "firstToListingDays": 735,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-05-30",
         "successfulCycleToListingDays": 155,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1101/sehk24053001571.pdf",
@@ -210484,9 +209469,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-01",
         "firstPublicA1Date": "2024-02-01",
         "firstToListingDays": 281,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-08-23",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1108/sehk24082302153.pdf",
@@ -210712,7 +209699,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 35.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -210721,16 +209708,18 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-10-04",
         "firstPublicA1Date": "2024-10-04",
         "firstToListingDays": 35,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1108/sehk24100401740.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1108/sehk24100401740.pdf",
         "successfulCycleA1Date": "2024-10-04",
         "successfulCycleToListingDays": 35,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1108/sehk24100401740.pdf",
         "listingDate": "2024-11-08",
         "listingSourceUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Eng.xlsx",
         "includedInOrdinaryIPOAverage": false,
-        "exclusionReasonZh": "首次公开A1与备案日期顺序未能核实"
+        "exclusionReasonZh": "公开资料未能确定首次递表日"
       },
       "hkexConfidentialFilingDate": null,
       "statusTags": [],
@@ -210956,9 +209945,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-20",
         "firstPublicA1Date": "2024-03-20",
         "firstToListingDays": 240,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-09-20",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1115/sehk24092001743.pdf",
@@ -211191,9 +210182,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-20",
         "firstPublicA1Date": "2024-03-20",
         "firstToListingDays": 240,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-09-20",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1115/sehk24092001743.pdf",
@@ -211498,9 +210491,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-21",
         "firstPublicA1Date": "2023-08-21",
         "firstToListingDays": 464,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-06-28",
         "successfulCycleToListingDays": 152,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1127/sehk24062801464.pdf",
@@ -211805,9 +210800,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-21",
         "firstPublicA1Date": "2023-08-21",
         "firstToListingDays": 464,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-06-28",
         "successfulCycleToListingDays": 152,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1127/sehk24062801464.pdf",
@@ -212112,9 +211109,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-21",
         "firstPublicA1Date": "2023-08-21",
         "firstToListingDays": 464,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-06-28",
         "successfulCycleToListingDays": 152,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1127/sehk24062801464.pdf",
@@ -212344,9 +211343,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-22",
         "firstPublicA1Date": "2024-01-22",
         "firstToListingDays": 311,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-24",
         "successfulCycleToListingDays": 127,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1128/sehk24072400991.pdf",
@@ -212570,9 +211571,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-09-28",
         "firstPublicA1Date": "2023-09-28",
         "firstToListingDays": 428,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-10-14",
         "successfulCycleToListingDays": 46,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1129/sehk24101400182.pdf",
@@ -212811,9 +211814,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-07",
         "firstPublicA1Date": "2022-12-07",
         "firstToListingDays": 730,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-10-31",
         "successfulCycleToListingDays": 36,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1206/sehk24103101709.pdf",
@@ -213042,9 +212047,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-07",
         "firstPublicA1Date": "2022-12-07",
         "firstToListingDays": 730,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-10-31",
         "successfulCycleToListingDays": 36,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1206/sehk24103101709.pdf",
@@ -213273,9 +212280,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-07",
         "firstPublicA1Date": "2022-12-07",
         "firstToListingDays": 730,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-10-31",
         "successfulCycleToListingDays": 36,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1206/sehk24103101709.pdf",
@@ -213506,9 +212515,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-29",
         "firstPublicA1Date": "2024-02-29",
         "firstToListingDays": 281,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-09-02",
         "successfulCycleToListingDays": 95,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1206/sehk24090200760.pdf",
@@ -213761,9 +212772,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-08",
         "firstPublicA1Date": "2024-04-08",
         "firstToListingDays": 246,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-10-09",
         "successfulCycleToListingDays": 62,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1210/sehk24100901098.pdf",
@@ -213993,9 +213006,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-27",
         "firstPublicA1Date": "2024-05-27",
         "firstToListingDays": 206,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-02",
         "successfulCycleToListingDays": 17,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1219/sehk24120203536.pdf",
@@ -214215,9 +213230,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-16",
         "firstPublicA1Date": "2024-01-16",
         "firstToListingDays": 339,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-16",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1220/sehk24071601035.pdf",
@@ -214443,9 +213460,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-16",
         "firstPublicA1Date": "2024-01-16",
         "firstToListingDays": 339,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-16",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1220/sehk24071601035.pdf",
@@ -214672,9 +213691,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-26",
         "firstPublicA1Date": "2024-06-26",
         "firstToListingDays": 180,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
         "successfulCycleA1Date": "2024-06-26",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
@@ -214912,9 +213933,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-26",
         "firstPublicA1Date": "2024-06-26",
         "firstToListingDays": 180,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
         "successfulCycleA1Date": "2024-06-26",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
@@ -215155,9 +214178,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-27",
         "firstPublicA1Date": "2024-05-27",
         "firstToListingDays": 214,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-28",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1227/sehk24112800402.pdf",
@@ -215391,9 +214416,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-27",
         "firstPublicA1Date": "2024-05-27",
         "firstToListingDays": 214,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-28",
         "successfulCycleToListingDays": 29,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1227/sehk24112800402.pdf",
@@ -215621,9 +214648,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-13",
         "firstPublicA1Date": "2023-06-13",
         "firstToListingDays": 566,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-09-13",
         "successfulCycleToListingDays": 108,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1230/sehk24091301677.pdf",
@@ -215852,9 +214881,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-12",
         "firstPublicA1Date": "2024-06-12",
         "firstToListingDays": 201,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-12",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1230/sehk24121201400.pdf",
@@ -216083,9 +215114,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-12",
         "firstPublicA1Date": "2024-06-12",
         "firstToListingDays": 201,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-12",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1230/sehk24121201400.pdf",
@@ -216314,9 +215347,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-26",
         "firstPublicA1Date": "2024-01-26",
         "firstToListingDays": 339,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-26",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1230/sehk24072601866.pdf",
@@ -216545,9 +215580,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-26",
         "firstPublicA1Date": "2024-01-26",
         "firstToListingDays": 339,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-26",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1230/sehk24072601866.pdf",
@@ -216776,9 +215813,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-26",
         "firstPublicA1Date": "2024-01-26",
         "firstToListingDays": 339,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-07-26",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1230/sehk24072601866.pdf",
@@ -217008,9 +216047,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-08",
         "firstPublicA1Date": "2023-08-08",
         "firstToListingDays": 519,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-10-31",
         "successfulCycleToListingDays": 69,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0108/sehk24103102067.pdf",
@@ -217251,9 +216292,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-08",
         "firstPublicA1Date": "2023-08-08",
         "firstToListingDays": 519,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-10-31",
         "successfulCycleToListingDays": 69,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0108/sehk24103102067.pdf",
@@ -217491,9 +216534,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-12-28",
         "firstPublicA1Date": "2023-12-28",
         "firstToListingDays": 378,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-09-19",
         "successfulCycleToListingDays": 112,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24091901679.pdf",
@@ -217729,9 +216774,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-31",
         "firstPublicA1Date": "2024-07-31",
         "firstToListingDays": 162,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24073101681.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24073101681.pdf",
         "successfulCycleA1Date": "2024-07-31",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24073101681.pdf",
@@ -217975,9 +217022,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-31",
         "firstPublicA1Date": "2024-07-31",
         "firstToListingDays": 162,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24073101681.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24073101681.pdf",
         "successfulCycleA1Date": "2024-07-31",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0109/sehk24073101681.pdf",
@@ -218218,9 +217267,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-17",
         "firstPublicA1Date": "2024-05-17",
         "firstToListingDays": 238,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-08",
         "successfulCycleToListingDays": 33,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0110/sehk24120800112.pdf",
@@ -218457,9 +217508,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-17",
         "firstPublicA1Date": "2024-05-17",
         "firstToListingDays": 238,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-08",
         "successfulCycleToListingDays": 33,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0110/sehk24120800112.pdf",
@@ -218696,9 +217749,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2019-04-08",
         "firstPublicA1Date": "2019-04-08",
         "firstToListingDays": 2104,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2019_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2019_sehk_e.json",
         "successfulCycleA1Date": "2024-09-30",
         "successfulCycleToListingDays": 102,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0110/sehk24093002537.pdf",
@@ -218937,9 +217992,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-28",
         "firstPublicA1Date": "2024-05-28",
         "firstToListingDays": 230,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-29",
         "successfulCycleToListingDays": 45,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0113/sehk24112901631.pdf",
@@ -219180,9 +218237,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 563,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-11-07",
         "successfulCycleToListingDays": 67,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0113/sehk24110701165.pdf",
@@ -219419,9 +218478,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 563,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-11-07",
         "successfulCycleToListingDays": 67,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0113/sehk24110701165.pdf",
@@ -219657,9 +218718,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-12-30",
         "firstPublicA1Date": "2022-12-30",
         "firstToListingDays": 747,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-12-04",
         "successfulCycleToListingDays": 42,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0115/sehk24120402129.pdf",
@@ -219897,9 +218960,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-02",
         "firstPublicA1Date": "2024-01-02",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-15",
         "successfulCycleToListingDays": 59,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0212/sehk24121500096.pdf",
@@ -220131,9 +219196,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-02",
         "firstPublicA1Date": "2024-01-02",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-15",
         "successfulCycleToListingDays": 59,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0212/sehk24121500096.pdf",
@@ -220367,9 +219434,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-02",
         "firstPublicA1Date": "2024-01-02",
         "firstToListingDays": 426,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-01",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0303/sehk25010100086.pdf",
@@ -220607,9 +219676,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-02",
         "firstPublicA1Date": "2024-01-02",
         "firstToListingDays": 426,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-01",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0303/sehk25010100086.pdf",
@@ -220847,9 +219918,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-02",
         "firstPublicA1Date": "2024-01-02",
         "firstToListingDays": 426,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-01",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0303/sehk25010100086.pdf",
@@ -221095,7 +220168,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 32.0,
-      "calendarDaysA1ToListing": 91.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -221104,9 +220177,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-12-09",
         "firstPublicA1Date": "2024-12-09",
         "firstToListingDays": 91,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
         "successfulCycleA1Date": "2024-12-09",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
@@ -221137,8 +220212,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7532902/content.shtml"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/2025031000174.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/2025031000174.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -221343,7 +220422,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 32.0,
-      "calendarDaysA1ToListing": 91.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -221352,9 +220431,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-12-09",
         "firstPublicA1Date": "2024-12-09",
         "firstToListingDays": 91,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
         "successfulCycleA1Date": "2024-12-09",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
@@ -221385,8 +220466,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7532902/content.shtml"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/2025031000174.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/2025031000174.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -221591,7 +220676,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 32.0,
-      "calendarDaysA1ToListing": 91.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -221600,9 +220685,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-12-09",
         "firstPublicA1Date": "2024-12-09",
         "firstToListingDays": 91,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
         "successfulCycleA1Date": "2024-12-09",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24120900302.pdf",
@@ -221633,8 +220720,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7532902/content.shtml"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/2025031000174.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/2025031000174.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -221907,9 +220998,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-30",
         "firstPublicA1Date": "2024-08-30",
         "firstToListingDays": 192,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24083000098.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24083000098.pdf",
         "successfulCycleA1Date": "2024-08-30",
         "successfulCycleToListingDays": 192,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0310/sehk24083000098.pdf",
@@ -222157,9 +221250,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-17",
         "firstPublicA1Date": "2022-11-17",
         "firstToListingDays": 855,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-09-26",
         "successfulCycleToListingDays": 176,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0321/sehk24092602285.pdf",
@@ -222413,9 +221508,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-11-17",
         "firstPublicA1Date": "2022-11-17",
         "firstToListingDays": 855,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2024-09-26",
         "successfulCycleToListingDays": 176,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0321/sehk24092602285.pdf",
@@ -222654,9 +221751,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-09-26",
         "firstPublicA1Date": "2024-09-26",
         "firstToListingDays": 180,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0325/sehk24092601784.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0325/sehk24092601784.pdf",
         "successfulCycleA1Date": "2024-09-26",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0325/sehk24092601784.pdf",
@@ -222885,9 +221984,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-10",
         "firstPublicA1Date": "2024-05-10",
         "firstToListingDays": 321,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-13",
         "successfulCycleToListingDays": 134,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0327/sehk24111301499.pdf",
@@ -223127,9 +222228,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-26",
         "firstPublicA1Date": "2024-06-26",
         "firstToListingDays": 278,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-24",
         "successfulCycleToListingDays": 66,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0331/sehk25012400048.pdf",
@@ -223365,9 +222468,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-26",
         "firstPublicA1Date": "2024-07-26",
         "firstToListingDays": 262,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-27",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0414/sehk25012701328.pdf",
@@ -223607,9 +222712,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-26",
         "firstPublicA1Date": "2024-07-26",
         "firstToListingDays": 262,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-27",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0414/sehk25012701328.pdf",
@@ -223846,9 +222953,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-26",
         "firstPublicA1Date": "2024-08-26",
         "firstToListingDays": 232,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-27",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0415/sehk25022701050.pdf",
@@ -224085,9 +223194,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-26",
         "firstPublicA1Date": "2024-08-26",
         "firstToListingDays": 232,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-27",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0415/sehk25022701050.pdf",
@@ -224324,9 +223435,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-26",
         "firstPublicA1Date": "2024-08-26",
         "firstToListingDays": 232,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-27",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0415/sehk25022701050.pdf",
@@ -224566,9 +223679,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-30",
         "firstPublicA1Date": "2024-04-30",
         "firstToListingDays": 372,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-08",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0507/sehk24110801438.pdf",
@@ -224812,9 +223927,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-30",
         "firstPublicA1Date": "2024-04-30",
         "firstToListingDays": 372,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-08",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0507/sehk24110801438.pdf",
@@ -225058,9 +224175,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-14",
         "firstPublicA1Date": "2024-02-14",
         "firstToListingDays": 449,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk24122701425.pdf",
@@ -225304,9 +224423,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-14",
         "firstPublicA1Date": "2024-02-14",
         "firstToListingDays": 449,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk24122701425.pdf",
@@ -225550,9 +224671,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-14",
         "firstPublicA1Date": "2024-02-14",
         "firstToListingDays": 449,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk24122701425.pdf",
@@ -225879,9 +225002,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-06",
         "firstPublicA1Date": "2024-02-06",
         "firstToListingDays": 457,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk25041501630.pdf",
@@ -226208,9 +225333,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-06",
         "firstPublicA1Date": "2024-02-06",
         "firstToListingDays": 457,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk25041501630.pdf",
@@ -226537,9 +225664,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-06",
         "firstPublicA1Date": "2024-02-06",
         "firstToListingDays": 457,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk25041501630.pdf",
@@ -226780,9 +225909,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-03-29",
         "firstPublicA1Date": "2021-03-29",
         "firstToListingDays": 1509,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2024-12-20",
         "successfulCycleToListingDays": 147,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0516/sehk24122001389.pdf",
@@ -227017,9 +226148,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-03-29",
         "firstPublicA1Date": "2021-03-29",
         "firstToListingDays": 1509,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2024-12-20",
         "successfulCycleToListingDays": 147,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0516/sehk24122001389.pdf",
@@ -227332,9 +226465,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-11",
         "firstPublicA1Date": "2025-02-11",
         "firstToListingDays": 98,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
         "successfulCycleA1Date": "2025-02-11",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
@@ -227653,9 +226788,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-11",
         "firstPublicA1Date": "2025-02-11",
         "firstToListingDays": 98,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
         "successfulCycleA1Date": "2025-02-11",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
@@ -227974,9 +227111,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-11",
         "firstPublicA1Date": "2025-02-11",
         "firstToListingDays": 98,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
         "successfulCycleA1Date": "2025-02-11",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
@@ -228295,9 +227434,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-11",
         "firstPublicA1Date": "2025-02-11",
         "firstToListingDays": 98,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
         "successfulCycleA1Date": "2025-02-11",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/sehk25021100743.pdf",
@@ -228546,9 +227687,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-07-25",
         "firstPublicA1Date": "2023-07-25",
         "firstToListingDays": 668,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-05-07",
         "successfulCycleToListingDays": 16,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25050700325.pdf",
@@ -228793,9 +227936,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-07-25",
         "firstPublicA1Date": "2023-07-25",
         "firstToListingDays": 668,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-05-07",
         "successfulCycleToListingDays": 16,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25050700325.pdf",
@@ -229135,9 +228280,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-06",
         "firstPublicA1Date": "2025-01-06",
         "firstToListingDays": 137,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
         "successfulCycleA1Date": "2025-01-06",
         "successfulCycleToListingDays": 137,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
@@ -229489,9 +228636,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-06",
         "firstPublicA1Date": "2025-01-06",
         "firstToListingDays": 137,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
         "successfulCycleA1Date": "2025-01-06",
         "successfulCycleToListingDays": 137,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
@@ -229843,9 +228992,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-06",
         "firstPublicA1Date": "2025-01-06",
         "firstToListingDays": 137,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
         "successfulCycleA1Date": "2025-01-06",
         "successfulCycleToListingDays": 137,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0523/sehk25010602135.pdf",
@@ -230105,9 +229256,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-23",
         "firstPublicA1Date": "2024-02-23",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-11-13",
         "successfulCycleToListingDays": 195,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk24111300082.pdf",
@@ -230446,9 +229599,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-06",
         "firstPublicA1Date": "2024-02-06",
         "firstToListingDays": 476,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk25041001546.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk25041001546.pdf",
         "successfulCycleA1Date": "2025-04-10",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk25041001546.pdf",
@@ -230799,9 +229954,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-06",
         "firstPublicA1Date": "2024-02-06",
         "firstToListingDays": 476,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk25041001546.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk25041001546.pdf",
         "successfulCycleA1Date": "2025-04-10",
         "successfulCycleToListingDays": 47,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0527/sehk25041001546.pdf",
@@ -231051,9 +230208,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-30",
         "firstPublicA1Date": "2024-07-30",
         "firstToListingDays": 304,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-07",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0530/sehk25030701522.pdf",
@@ -231291,9 +230450,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-30",
         "firstPublicA1Date": "2024-07-30",
         "firstToListingDays": 304,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-07",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0530/sehk25030701522.pdf",
@@ -231528,9 +230689,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-31",
         "firstPublicA1Date": "2024-05-31",
         "firstToListingDays": 375,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-31",
         "successfulCycleToListingDays": 161,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0610/sehk24123102335.pdf",
@@ -231766,9 +230929,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-17",
         "firstPublicA1Date": "2025-02-17",
         "firstToListingDays": 113,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0610/sehk25021700986.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0610/sehk25021700986.pdf",
         "successfulCycleA1Date": "2025-02-17",
         "successfulCycleToListingDays": 113,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0610/sehk25021700986.pdf",
@@ -232012,9 +231177,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-19",
         "firstPublicA1Date": "2024-04-19",
         "firstToListingDays": 417,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-01-16",
         "successfulCycleToListingDays": 145,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0610/sehk25011601019.pdf",
@@ -232329,9 +231496,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-13",
         "firstPublicA1Date": "2025-01-13",
         "firstToListingDays": 157,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
         "successfulCycleA1Date": "2025-01-13",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
@@ -232646,9 +231815,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-13",
         "firstPublicA1Date": "2025-01-13",
         "firstToListingDays": 157,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
         "successfulCycleA1Date": "2025-01-13",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
@@ -232963,9 +232134,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-13",
         "firstPublicA1Date": "2025-01-13",
         "firstToListingDays": 157,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
         "successfulCycleA1Date": "2025-01-13",
         "successfulCycleToListingDays": 157,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0619/sehk25011300510.pdf",
@@ -233212,9 +232385,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-26",
         "firstPublicA1Date": "2024-04-26",
         "firstToListingDays": 423,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-13",
         "successfulCycleToListingDays": 192,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk24121301724.pdf",
@@ -233456,9 +232631,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-08-25",
         "firstPublicA1Date": "2021-08-25",
         "firstToListingDays": 1398,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2024-12-30",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk24123002042.pdf",
@@ -233702,9 +232879,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-08-25",
         "firstPublicA1Date": "2021-08-25",
         "firstToListingDays": 1398,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2024-12-30",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk24123002042.pdf",
@@ -234016,9 +233195,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-15",
         "firstPublicA1Date": "2025-01-15",
         "firstToListingDays": 159,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk25011500281.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk25011500281.pdf",
         "successfulCycleA1Date": "2025-01-15",
         "successfulCycleToListingDays": 159,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk25011500281.pdf",
@@ -234328,9 +233509,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-15",
         "firstPublicA1Date": "2025-01-15",
         "firstToListingDays": 159,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk25011500281.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk25011500281.pdf",
         "successfulCycleA1Date": "2025-01-15",
         "successfulCycleToListingDays": 159,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0623/sehk25011500281.pdf",
@@ -234565,9 +233748,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-29",
         "firstPublicA1Date": "2024-04-29",
         "firstToListingDays": 422,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-30",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0625/sehk25043000296.pdf",
@@ -234802,9 +233987,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-29",
         "firstPublicA1Date": "2024-04-29",
         "firstToListingDays": 422,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-30",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0625/sehk25043000296.pdf",
@@ -235039,9 +234226,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-29",
         "firstPublicA1Date": "2024-04-29",
         "firstToListingDays": 422,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-30",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0625/sehk25043000296.pdf",
@@ -235281,9 +234470,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-09-29",
         "firstPublicA1Date": "2024-09-29",
         "firstToListingDays": 269,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-10",
         "successfulCycleToListingDays": 76,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0625/sehk25041001554.pdf",
@@ -235524,9 +234715,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-18",
         "firstPublicA1Date": "2024-07-18",
         "firstToListingDays": 343,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-07",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/sehk25020701004.pdf",
@@ -235759,9 +234952,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-18",
         "firstPublicA1Date": "2024-07-18",
         "firstToListingDays": 343,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-07",
         "successfulCycleToListingDays": 139,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/sehk25020701004.pdf",
@@ -235993,9 +235188,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-25",
         "firstPublicA1Date": "2024-06-25",
         "firstToListingDays": 366,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-31",
         "successfulCycleToListingDays": 177,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/sehk24123102199.pdf",
@@ -236231,9 +235428,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-25",
         "firstPublicA1Date": "2024-06-25",
         "firstToListingDays": 366,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-31",
         "successfulCycleToListingDays": 177,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/sehk24123102199.pdf",
@@ -236472,9 +235671,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-27",
         "firstPublicA1Date": "2024-06-27",
         "firstToListingDays": 364,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-28",
         "successfulCycleToListingDays": 118,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/sehk25022801878.pdf",
@@ -236709,9 +235910,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-27",
         "firstPublicA1Date": "2024-06-27",
         "firstToListingDays": 364,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-02-28",
         "successfulCycleToListingDays": 118,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/sehk25022801878.pdf",
@@ -236941,9 +236144,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-09",
         "firstPublicA1Date": "2025-04-09",
         "firstToListingDays": 82,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk25040901110.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk25040901110.pdf",
         "successfulCycleA1Date": "2025-04-09",
         "successfulCycleToListingDays": 82,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk25040901110.pdf",
@@ -237177,9 +236382,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-31",
         "firstPublicA1Date": "2024-05-31",
         "firstToListingDays": 395,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-06",
         "successfulCycleToListingDays": 206,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk24120601429.pdf",
@@ -237421,9 +236628,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-31",
         "firstPublicA1Date": "2024-05-31",
         "firstToListingDays": 395,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-06",
         "successfulCycleToListingDays": 206,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk24120601429.pdf",
@@ -237663,9 +236872,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-27",
         "firstPublicA1Date": "2023-06-27",
         "firstToListingDays": 734,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-03-30",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk25033000666.pdf",
@@ -237909,9 +237120,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-27",
         "firstPublicA1Date": "2023-06-27",
         "firstToListingDays": 734,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-03-30",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk25033000666.pdf",
@@ -238154,9 +237367,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-11-30",
         "firstPublicA1Date": "2023-11-30",
         "firstToListingDays": 581,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-06-11",
         "successfulCycleToListingDays": 22,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0703/sehk25061100780.pdf",
@@ -238395,9 +237610,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-11-30",
         "firstPublicA1Date": "2023-11-30",
         "firstToListingDays": 581,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-06-11",
         "successfulCycleToListingDays": 22,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0703/sehk25061100780.pdf",
@@ -238709,9 +237926,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-20",
         "firstPublicA1Date": "2025-01-20",
         "firstToListingDays": 165,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0704/sehk25012000471.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0704/sehk25012000471.pdf",
         "successfulCycleA1Date": "2025-01-20",
         "successfulCycleToListingDays": 165,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0704/sehk25012000471.pdf",
@@ -239023,9 +238242,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-20",
         "firstPublicA1Date": "2025-01-20",
         "firstToListingDays": 165,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0704/sehk25012000471.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0704/sehk25012000471.pdf",
         "successfulCycleA1Date": "2025-01-20",
         "successfulCycleToListingDays": 165,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0704/sehk25012000471.pdf",
@@ -239262,9 +238483,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-02-28",
         "firstPublicA1Date": "2022-02-28",
         "firstToListingDays": 1225,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2025-05-19",
         "successfulCycleToListingDays": 49,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0707/sehk25051900902.pdf",
@@ -239495,9 +238718,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-02-28",
         "firstPublicA1Date": "2022-02-28",
         "firstToListingDays": 1225,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2025-05-19",
         "successfulCycleToListingDays": 49,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0707/sehk25051900902.pdf",
@@ -239734,9 +238959,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-16",
         "firstPublicA1Date": "2024-12-16",
         "firstToListingDays": 205,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-16",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25061601324.pdf",
@@ -239983,9 +239210,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-16",
         "firstPublicA1Date": "2024-12-16",
         "firstToListingDays": 205,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-16",
         "successfulCycleToListingDays": 23,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25061601324.pdf",
@@ -240229,9 +239458,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-07-26",
         "firstPublicA1Date": "2024-07-26",
         "firstToListingDays": 348,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-04-30",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25043004232.pdf",
@@ -240542,9 +239773,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-15",
         "firstPublicA1Date": "2025-01-15",
         "firstToListingDays": 175,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25011500353.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25011500353.pdf",
         "successfulCycleA1Date": "2025-01-15",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25011500353.pdf",
@@ -240856,9 +240089,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-03-31",
         "firstPublicA1Date": "2025-03-31",
         "firstToListingDays": 100,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25033102804.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25033102804.pdf",
         "successfulCycleA1Date": "2025-03-31",
         "successfulCycleToListingDays": 100,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25033102804.pdf",
@@ -241098,9 +240333,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 222,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-05-29",
         "successfulCycleToListingDays": 41,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25052900245.pdf",
@@ -241338,9 +240575,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 238,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-04",
         "successfulCycleToListingDays": 51,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0725/sehk25060401966.pdf",
@@ -241582,9 +240821,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 238,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-04",
         "successfulCycleToListingDays": 51,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0725/sehk25060401966.pdf",
@@ -241815,7 +241056,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 187.0,
-      "calendarDaysA1ToListing": 239.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -241824,9 +241065,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-12-11",
         "firstPublicA1Date": "2024-12-11",
         "firstToListingDays": 239,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-11",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0807/sehk25061100226.pdf",
@@ -242063,9 +241306,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-23",
         "firstPublicA1Date": "2025-01-23",
         "firstToListingDays": 200,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-24",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0811/sehk25072400178.pdf",
@@ -242311,9 +241556,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-23",
         "firstPublicA1Date": "2025-01-23",
         "firstToListingDays": 200,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-24",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0811/sehk25072400178.pdf",
@@ -242559,9 +241806,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-03",
         "firstPublicA1Date": "2024-12-03",
         "firstToListingDays": 255,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-09",
         "successfulCycleToListingDays": 67,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0815/sehk25060901529.pdf",
@@ -242807,9 +242056,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-03",
         "firstPublicA1Date": "2024-12-03",
         "firstToListingDays": 255,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-09",
         "successfulCycleToListingDays": 67,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0815/sehk25060901529.pdf",
@@ -243142,9 +242393,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-24",
         "firstPublicA1Date": "2025-02-24",
         "firstToListingDays": 177,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/sehk25022400646.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/sehk25022400646.pdf",
         "successfulCycleA1Date": "2025-02-24",
         "successfulCycleToListingDays": 177,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/sehk25022400646.pdf",
@@ -243481,9 +242734,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-24",
         "firstPublicA1Date": "2025-02-24",
         "firstToListingDays": 177,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/sehk25022400646.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/sehk25022400646.pdf",
         "successfulCycleA1Date": "2025-02-24",
         "successfulCycleToListingDays": 177,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/sehk25022400646.pdf",
@@ -243732,9 +242987,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-27",
         "firstPublicA1Date": "2024-08-27",
         "firstToListingDays": 364,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-11",
         "successfulCycleToListingDays": 168,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0826/sehk25031101278.pdf",
@@ -243979,9 +243236,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-27",
         "firstPublicA1Date": "2024-08-27",
         "firstToListingDays": 364,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-11",
         "successfulCycleToListingDays": 168,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0826/sehk25031101278.pdf",
@@ -244226,9 +243485,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-08-27",
         "firstPublicA1Date": "2024-08-27",
         "firstToListingDays": 364,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-11",
         "successfulCycleToListingDays": 168,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0826/sehk25031101278.pdf",
@@ -244469,9 +243730,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-01-30",
         "firstPublicA1Date": "2024-01-30",
         "firstToListingDays": 576,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-31",
         "successfulCycleToListingDays": 150,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0828/sehk25033102484.pdf",
@@ -244705,9 +243968,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-15",
         "firstPublicA1Date": "2025-01-15",
         "firstToListingDays": 230,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-16",
         "successfulCycleToListingDays": 48,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0902/sehk25071600868.pdf",
@@ -244946,9 +244211,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-20",
         "firstPublicA1Date": "2025-01-20",
         "firstToListingDays": 232,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-22",
         "successfulCycleToListingDays": 49,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0909/sehk25072201279.pdf",
@@ -245948,9 +245215,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-12-15",
         "firstPublicA1Date": "2023-12-15",
         "firstToListingDays": 642,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 82,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0917/sehk25062703599.pdf",
@@ -246188,9 +245457,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-12-15",
         "firstPublicA1Date": "2023-12-15",
         "firstToListingDays": 642,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 82,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0917/sehk25062703599.pdf",
@@ -246433,9 +245704,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-27",
         "firstPublicA1Date": "2024-12-27",
         "firstToListingDays": 266,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0919/sehk25062703373.pdf",
@@ -246671,9 +245944,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-02",
         "firstPublicA1Date": "2025-01-02",
         "firstToListingDays": 264,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-15",
         "successfulCycleToListingDays": 39,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0923/sehk25081502293.pdf",
@@ -246909,9 +246184,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-02",
         "firstPublicA1Date": "2025-01-02",
         "firstToListingDays": 264,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-15",
         "successfulCycleToListingDays": 39,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0923/sehk25081502293.pdf",
@@ -247151,9 +246428,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-28",
         "firstPublicA1Date": "2025-02-28",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-29",
         "successfulCycleToListingDays": 27,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0925/sehk25082900202.pdf",
@@ -247393,9 +246672,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-28",
         "firstPublicA1Date": "2025-02-28",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-29",
         "successfulCycleToListingDays": 27,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0925/sehk25082900202.pdf",
@@ -247635,9 +246916,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-28",
         "firstPublicA1Date": "2025-02-28",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-29",
         "successfulCycleToListingDays": 27,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0925/sehk25082900202.pdf",
@@ -247879,9 +247162,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-25",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25032501232.pdf",
@@ -248119,9 +247404,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-25",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25032501232.pdf",
@@ -248359,9 +247646,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-25",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25032501232.pdf",
@@ -248599,9 +247888,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-25",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25032501232.pdf",
@@ -248839,9 +248130,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-25",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25032501232.pdf",
@@ -249076,9 +248369,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 305,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-03",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25060302702.pdf",
@@ -249315,9 +248610,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-30",
         "firstPublicA1Date": "2025-06-30",
         "firstToListingDays": 92,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25063004253.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25063004253.pdf",
         "successfulCycleA1Date": "2025-06-30",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25063004253.pdf",
@@ -249546,9 +248843,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-30",
         "firstPublicA1Date": "2025-06-30",
         "firstToListingDays": 92,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25063004253.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25063004253.pdf",
         "successfulCycleA1Date": "2025-06-30",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25063004253.pdf",
@@ -249779,9 +249078,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-28",
         "firstPublicA1Date": "2024-11-28",
         "firstToListingDays": 314,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-11",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1008/sehk25061101385.pdf",
@@ -250020,9 +249321,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-28",
         "firstPublicA1Date": "2024-11-28",
         "firstToListingDays": 314,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-11",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1008/sehk25061101385.pdf",
@@ -250262,9 +249565,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-29",
         "firstPublicA1Date": "2024-02-29",
         "firstToListingDays": 589,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-07-18",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1010/sehk25071801377.pdf",
@@ -250506,9 +249811,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-25",
         "firstPublicA1Date": "2024-11-25",
         "firstToListingDays": 324,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-13",
         "successfulCycleToListingDays": 124,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1015/sehk25061301830.pdf",
@@ -250754,9 +250061,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-03-21",
         "firstPublicA1Date": "2025-03-21",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-09-22",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1016/sehk25092201483.pdf",
@@ -250994,9 +250303,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-03-21",
         "firstPublicA1Date": "2025-03-21",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-09-22",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1016/sehk25092201483.pdf",
@@ -251233,9 +250544,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-03",
         "firstPublicA1Date": "2025-01-03",
         "firstToListingDays": 290,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-06",
         "successfulCycleToListingDays": 75,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1020/sehk25080602051.pdf",
@@ -251476,9 +250789,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-03",
         "firstPublicA1Date": "2025-01-03",
         "firstToListingDays": 290,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-06",
         "successfulCycleToListingDays": 75,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1020/sehk25080602051.pdf",
@@ -251715,9 +251030,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-19",
         "firstPublicA1Date": "2023-06-19",
         "firstToListingDays": 855,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-05-22",
         "successfulCycleToListingDays": 152,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1021/sehk25052201588.pdf",
@@ -251954,9 +251271,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-19",
         "firstPublicA1Date": "2023-06-19",
         "firstToListingDays": 855,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-05-22",
         "successfulCycleToListingDays": 152,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1021/sehk25052201588.pdf",
@@ -252271,9 +251590,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 180,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/sehk25042503780.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/sehk25042503780.pdf",
         "successfulCycleA1Date": "2025-04-25",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/sehk25042503780.pdf",
@@ -252513,9 +251834,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-17",
         "firstPublicA1Date": "2025-01-17",
         "firstToListingDays": 284,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-28",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25082803119.pdf",
@@ -252759,9 +252082,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-17",
         "firstPublicA1Date": "2025-01-17",
         "firstToListingDays": 284,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-28",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25082803119.pdf",
@@ -253005,9 +252330,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-17",
         "firstPublicA1Date": "2025-01-17",
         "firstToListingDays": 284,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-28",
         "successfulCycleToListingDays": 61,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25082803119.pdf",
@@ -253323,9 +252650,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 183,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25042803328.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25042803328.pdf",
         "successfulCycleA1Date": "2025-04-28",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25042803328.pdf",
@@ -253563,9 +252892,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
@@ -253803,9 +253134,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
@@ -254043,9 +253376,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
@@ -254283,9 +253618,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
@@ -254523,9 +253860,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
@@ -254836,9 +254175,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-22",
         "firstPublicA1Date": "2025-05-22",
         "firstToListingDays": 159,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25052200528.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25052200528.pdf",
         "successfulCycleA1Date": "2025-05-22",
         "successfulCycleToListingDays": 159,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25052200528.pdf",
@@ -255081,9 +254422,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 339,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-10",
         "successfulCycleToListingDays": 146,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1103/sehk25061001182.pdf",
@@ -255394,9 +254737,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 191,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1105/sehk25042801538.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1105/sehk25042801538.pdf",
         "successfulCycleA1Date": "2025-04-28",
         "successfulCycleToListingDays": 191,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1105/sehk25042801538.pdf",
@@ -255711,9 +255056,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 191,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1105/sehk25042801538.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1105/sehk25042801538.pdf",
         "successfulCycleA1Date": "2025-04-28",
         "successfulCycleToListingDays": 191,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1105/sehk25042801538.pdf",
@@ -256029,9 +255376,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-16",
         "firstPublicA1Date": "2025-01-16",
         "firstToListingDays": 294,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-07",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1106/sehk25080701059.pdf",
@@ -256347,9 +255696,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-16",
         "firstPublicA1Date": "2025-01-16",
         "firstToListingDays": 294,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-07",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1106/sehk25080701059.pdf",
@@ -257603,9 +256954,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-27",
         "firstPublicA1Date": "2025-01-27",
         "firstToListingDays": 283,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-31",
         "successfulCycleToListingDays": 98,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1106/sehk25073101777.pdf",
@@ -258356,9 +257709,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-27",
         "firstPublicA1Date": "2025-01-27",
         "firstToListingDays": 287,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-12",
         "successfulCycleToListingDays": 90,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1110/sehk25081201459.pdf",
@@ -258595,9 +257950,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-27",
         "firstPublicA1Date": "2025-01-27",
         "firstToListingDays": 287,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-12",
         "successfulCycleToListingDays": 90,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1110/sehk25081201459.pdf",
@@ -258834,9 +258191,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-27",
         "firstPublicA1Date": "2025-01-27",
         "firstToListingDays": 287,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-12",
         "successfulCycleToListingDays": 90,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1110/sehk25081201459.pdf",
@@ -259151,9 +258510,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-22",
         "firstPublicA1Date": "2025-04-22",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-23",
         "successfulCycleToListingDays": 25,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1117/sehk25102301093.pdf",
@@ -259468,9 +258829,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-22",
         "firstPublicA1Date": "2025-04-22",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-23",
         "successfulCycleToListingDays": 25,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1117/sehk25102301093.pdf",
@@ -259707,9 +259070,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-31",
         "firstPublicA1Date": "2025-07-31",
         "firstToListingDays": 116,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1124/sehk25073102189.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1124/sehk25073102189.pdf",
         "successfulCycleA1Date": "2025-07-31",
         "successfulCycleToListingDays": 116,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1124/sehk25073102189.pdf",
@@ -259942,9 +259307,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-31",
         "firstPublicA1Date": "2025-07-31",
         "firstToListingDays": 116,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1124/sehk25073102189.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1124/sehk25073102189.pdf",
         "successfulCycleA1Date": "2025-07-31",
         "successfulCycleToListingDays": 116,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1124/sehk25073102189.pdf",
@@ -260176,9 +259543,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-02-21",
         "firstPublicA1Date": "2023-02-21",
         "firstToListingDays": 1010,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-19",
         "successfulCycleToListingDays": 69,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1127/sehk25091901633.pdf",
@@ -260414,9 +259783,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-02-21",
         "firstPublicA1Date": "2023-02-21",
         "firstToListingDays": 1010,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-19",
         "successfulCycleToListingDays": 69,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1127/sehk25091901633.pdf",
@@ -260656,9 +260027,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-26",
         "firstPublicA1Date": "2025-02-26",
         "firstToListingDays": 275,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-27",
         "successfulCycleToListingDays": 93,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1128/sehk25082702136.pdf",
@@ -260898,9 +260271,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-03",
         "firstPublicA1Date": "2025-01-03",
         "firstToListingDays": 334,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-25",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501312.pdf",
@@ -261136,9 +260511,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-03",
         "firstPublicA1Date": "2025-01-03",
         "firstToListingDays": 334,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-07-25",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501312.pdf",
@@ -261372,9 +260749,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-25",
         "firstPublicA1Date": "2025-07-25",
         "firstToListingDays": 131,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501604.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501604.pdf",
         "successfulCycleA1Date": "2025-07-25",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501604.pdf",
@@ -261608,9 +260987,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-25",
         "firstPublicA1Date": "2025-07-25",
         "firstToListingDays": 131,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501604.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501604.pdf",
         "successfulCycleA1Date": "2025-07-25",
         "successfulCycleToListingDays": 131,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1203/sehk25072501604.pdf",
@@ -261846,9 +261227,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-12-23",
         "firstPublicA1Date": "2024-12-23",
         "firstToListingDays": 347,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-07-22",
         "successfulCycleToListingDays": 136,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1205/sehk25072201355.pdf",
@@ -262092,9 +261475,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 234,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-15",
         "successfulCycleToListingDays": 51,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1205/sehk25101500969.pdf",
@@ -262335,9 +261720,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-03",
         "firstPublicA1Date": "2024-05-03",
         "firstToListingDays": 584,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-06-18",
         "successfulCycleToListingDays": 173,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1208/sehk25061801692.pdf",
@@ -262659,9 +262046,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 227,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-27",
         "successfulCycleToListingDays": 42,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1208/sehk25102701517.pdf",
@@ -262995,9 +262384,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 227,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-27",
         "successfulCycleToListingDays": 42,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1208/sehk25102701517.pdf",
@@ -263331,9 +262722,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 227,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-27",
         "successfulCycleToListingDays": 42,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1208/sehk25102701517.pdf",
@@ -263583,9 +262976,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-21",
         "firstPublicA1Date": "2025-01-21",
         "firstToListingDays": 323,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-21",
         "successfulCycleToListingDays": 111,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082101568.pdf",
@@ -263831,9 +263226,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-21",
         "firstPublicA1Date": "2025-01-21",
         "firstToListingDays": 323,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-21",
         "successfulCycleToListingDays": 111,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082101568.pdf",
@@ -264080,7 +263477,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 49.0,
-      "calendarDaysA1ToListing": 106.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -264089,9 +263486,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2025-08-26",
         "firstPublicA1Date": "2025-08-26",
         "firstToListingDays": 106,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
         "successfulCycleA1Date": "2025-08-26",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
@@ -264130,8 +263529,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7426857/content.shtml"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/2025121000287.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/2025121000287.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -264333,7 +263736,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 49.0,
-      "calendarDaysA1ToListing": 106.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -264342,9 +263745,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2025-08-26",
         "firstPublicA1Date": "2025-08-26",
         "firstToListingDays": 106,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
         "successfulCycleA1Date": "2025-08-26",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
@@ -264383,8 +263788,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7426857/content.shtml"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/2025121000287.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/2025121000287.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -264586,7 +263995,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 49.0,
-      "calendarDaysA1ToListing": 106.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -264595,9 +264004,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2025-08-26",
         "firstPublicA1Date": "2025-08-26",
         "firstToListingDays": 106,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
         "successfulCycleA1Date": "2025-08-26",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082600106.pdf",
@@ -264636,8 +264047,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7426857/content.shtml"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/2025121000287.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/2025121000287.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -264833,9 +264248,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-30",
         "firstPublicA1Date": "2023-03-30",
         "firstToListingDays": 987,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-28",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1211/sehk25092800058.pdf",
@@ -265074,9 +264491,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-30",
         "firstPublicA1Date": "2023-03-30",
         "firstToListingDays": 987,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-28",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1211/sehk25092800058.pdf",
@@ -265315,9 +264734,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-30",
         "firstPublicA1Date": "2023-03-30",
         "firstToListingDays": 987,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-28",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1211/sehk25092800058.pdf",
@@ -265556,9 +264977,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-30",
         "firstPublicA1Date": "2023-03-30",
         "firstToListingDays": 987,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-28",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1211/sehk25092800058.pdf",
@@ -265797,9 +265220,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 232,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-03",
         "successfulCycleToListingDays": 43,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1216/sehk25110303883.pdf",
@@ -266520,9 +265945,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-07",
         "firstPublicA1Date": "2024-11-07",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-11",
         "successfulCycleToListingDays": 38,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1219/sehk25111100601.pdf",
@@ -266769,9 +266196,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-07",
         "firstPublicA1Date": "2024-11-07",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-11",
         "successfulCycleToListingDays": 38,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1219/sehk25111100601.pdf",
@@ -267018,9 +266447,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-07",
         "firstPublicA1Date": "2024-11-07",
         "firstToListingDays": 407,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-11",
         "successfulCycleToListingDays": 38,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1219/sehk25111100601.pdf",
@@ -267260,9 +266691,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-17",
         "firstPublicA1Date": "2025-04-17",
         "firstToListingDays": 246,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-23",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1219/sehk25102301407.pdf",
@@ -267506,9 +266939,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-17",
         "firstPublicA1Date": "2025-04-17",
         "firstToListingDays": 246,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-23",
         "successfulCycleToListingDays": 57,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1219/sehk25102301407.pdf",
@@ -267755,9 +267190,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-29",
         "firstPublicA1Date": "2024-04-29",
         "firstToListingDays": 602,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-08-15",
         "successfulCycleToListingDays": 129,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25081502223.pdf",
@@ -268000,9 +267437,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-29",
         "firstPublicA1Date": "2024-04-29",
         "firstToListingDays": 602,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-08-15",
         "successfulCycleToListingDays": 129,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25081502223.pdf",
@@ -268239,9 +267678,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-03",
         "firstPublicA1Date": "2024-04-03",
         "firstToListingDays": 628,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-12",
         "successfulCycleToListingDays": 40,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25111201435.pdf",
@@ -268478,9 +267919,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-04-03",
         "firstPublicA1Date": "2024-04-03",
         "firstToListingDays": 628,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-12",
         "successfulCycleToListingDays": 40,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25111201435.pdf",
@@ -268720,9 +268163,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-15",
         "firstPublicA1Date": "2025-01-15",
         "firstToListingDays": 341,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-14",
         "successfulCycleToListingDays": 69,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25101401053.pdf",
@@ -268958,9 +268403,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-15",
         "firstPublicA1Date": "2025-01-15",
         "firstToListingDays": 341,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-14",
         "successfulCycleToListingDays": 69,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25101401053.pdf",
@@ -269271,9 +268718,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-17",
         "firstPublicA1Date": "2025-04-17",
         "firstToListingDays": 249,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-31",
         "successfulCycleToListingDays": 52,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1222/sehk25103102401.pdf",
@@ -269515,9 +268964,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-24",
         "firstPublicA1Date": "2024-11-24",
         "firstToListingDays": 394,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-12-03",
         "successfulCycleToListingDays": 20,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1223/sehk25120302169.pdf",
@@ -269757,9 +269208,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-12",
         "firstPublicA1Date": "2024-11-12",
         "firstToListingDays": 406,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-18",
         "successfulCycleToListingDays": 35,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1223/sehk25111801427.pdf",
@@ -269999,9 +269452,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-28",
         "firstPublicA1Date": "2025-01-28",
         "firstToListingDays": 329,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-31",
         "successfulCycleToListingDays": 114,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1223/sehk25083100236.pdf",
@@ -270237,9 +269692,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-28",
         "firstPublicA1Date": "2025-01-28",
         "firstToListingDays": 329,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-31",
         "successfulCycleToListingDays": 114,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1223/sehk25083100236.pdf",
@@ -270480,9 +269937,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 396,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-12-02",
         "successfulCycleToListingDays": 28,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120200090.pdf",
@@ -270527,7 +269986,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "招股书 · 备案通知书日期",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1218/2025121800029.pdf#page=84"
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1218/2025121800029.pdf",
+          "originalLabel": "招股书 · 备案通知书日期",
+          "availability": "available",
+          "freshness": "fresh",
+          "lastKnownAvailability": "available",
+          "checkedAt": "2026-11-20T14:59:57.133911+00:00",
+          "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
+          "lastAttemptState": "available"
         }
       ]
     },
@@ -270727,9 +270193,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 396,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-12-02",
         "successfulCycleToListingDays": 28,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120200090.pdf",
@@ -270774,7 +270242,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         },
         {
           "label": "招股书 · 备案通知书日期",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1218/2025121800029.pdf#page=84"
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1218/2025121800029.pdf",
+          "originalLabel": "招股书 · 备案通知书日期",
+          "availability": "available",
+          "freshness": "fresh",
+          "lastKnownAvailability": "available",
+          "checkedAt": "2026-11-20T14:59:57.133911+00:00",
+          "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
+          "lastAttemptState": "available"
         }
       ]
     },
@@ -271703,9 +271178,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-08",
         "firstPublicA1Date": "2025-06-08",
         "firstToListingDays": 205,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
         "successfulCycleA1Date": "2025-12-09",
         "successfulCycleToListingDays": 21,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
@@ -271946,9 +271423,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-08",
         "firstPublicA1Date": "2025-06-08",
         "firstToListingDays": 205,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
         "successfulCycleA1Date": "2025-12-09",
         "successfulCycleToListingDays": 21,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
@@ -272195,9 +271674,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-29",
         "firstPublicA1Date": "2025-05-29",
         "firstToListingDays": 215,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-02",
         "successfulCycleToListingDays": 28,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120203203.pdf",
@@ -272448,9 +271929,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-29",
         "firstPublicA1Date": "2025-05-29",
         "firstToListingDays": 215,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-02",
         "successfulCycleToListingDays": 28,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120203203.pdf",
@@ -272692,9 +272175,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-12",
         "firstPublicA1Date": "2024-03-12",
         "firstToListingDays": 658,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-09-22",
         "successfulCycleToListingDays": 99,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25092202009.pdf",
@@ -272933,9 +272418,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-14",
         "firstPublicA1Date": "2025-02-14",
         "firstToListingDays": 319,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-09-15",
         "successfulCycleToListingDays": 106,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25091501753.pdf",
@@ -275379,9 +274866,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 259,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-28",
         "successfulCycleToListingDays": 73,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0109/sehk25102802279.pdf",
@@ -275623,9 +275112,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 259,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-28",
         "successfulCycleToListingDays": 73,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0109/sehk25102802279.pdf",
@@ -275864,9 +275355,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-01",
         "firstPublicA1Date": "2025-06-01",
         "firstToListingDays": 222,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-01",
         "successfulCycleToListingDays": 39,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0109/sehk25120104246.pdf",
@@ -276176,9 +275669,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 199,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 199,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
@@ -276514,9 +276009,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 199,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 199,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
@@ -276852,9 +276349,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 199,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 199,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
@@ -277190,9 +276689,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 199,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
         "successfulCycleA1Date": "2025-06-27",
         "successfulCycleToListingDays": 199,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/sehk25062702011.pdf",
@@ -277529,9 +277030,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-19",
         "firstPublicA1Date": "2025-06-19",
         "firstToListingDays": 208,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -277846,9 +277349,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-19",
         "firstPublicA1Date": "2025-06-19",
         "firstToListingDays": 208,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -278088,9 +277593,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 263,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-28",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0113/sehk25102801136.pdf",
@@ -278330,9 +277837,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-25",
         "firstPublicA1Date": "2025-04-25",
         "firstToListingDays": 263,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-28",
         "successfulCycleToListingDays": 77,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0113/sehk25102801136.pdf",
@@ -278643,9 +278152,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0122/sehk25122902234.pdf",
@@ -278967,9 +278478,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0122/sehk25122902234.pdf",
@@ -279291,9 +278804,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0122/sehk25122902234.pdf",
@@ -279545,9 +279060,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 275,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-28",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0128/sehk25102800997.pdf",
@@ -279788,9 +279305,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 275,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-28",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0128/sehk25102800997.pdf",
@@ -280102,9 +279621,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-03",
         "firstPublicA1Date": "2025-04-03",
         "firstToListingDays": 306,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-09",
         "successfulCycleToListingDays": 117,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/sehk25100900158.pdf",
@@ -280420,9 +279941,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-03",
         "firstPublicA1Date": "2025-04-03",
         "firstToListingDays": 306,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-09",
         "successfulCycleToListingDays": 117,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/sehk25100900158.pdf",
@@ -280738,9 +280261,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-03",
         "firstPublicA1Date": "2025-04-03",
         "firstToListingDays": 306,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-09",
         "successfulCycleToListingDays": 117,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/sehk25100900158.pdf",
@@ -281055,9 +280580,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-26",
         "firstPublicA1Date": "2025-06-26",
         "firstToListingDays": 223,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-09",
         "successfulCycleToListingDays": 26,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0204/sehk26010901050.pdf",
@@ -281305,9 +280832,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-16",
         "firstPublicA1Date": "2024-05-16",
         "firstToListingDays": 631,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-05",
         "successfulCycleToListingDays": 93,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25110501242.pdf",
@@ -281544,9 +281073,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-16",
         "firstPublicA1Date": "2024-05-16",
         "firstToListingDays": 631,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-05",
         "successfulCycleToListingDays": 93,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25110501242.pdf",
@@ -281872,9 +281403,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 255,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-28",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25112800920.pdf",
@@ -282200,9 +281733,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 255,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-28",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25112800920.pdf",
@@ -282528,9 +282063,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 255,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-28",
         "successfulCycleToListingDays": 70,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25112800920.pdf",
@@ -282843,9 +282380,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-30",
         "firstPublicA1Date": "2025-05-30",
         "firstToListingDays": 252,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-02",
         "successfulCycleToListingDays": 66,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25120202817.pdf",
@@ -283172,9 +282711,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-11",
         "firstPublicA1Date": "2025-07-11",
         "firstToListingDays": 213,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
         "successfulCycleA1Date": "2025-07-11",
         "successfulCycleToListingDays": 213,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
@@ -283509,9 +283050,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-11",
         "firstPublicA1Date": "2025-07-11",
         "firstToListingDays": 213,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
         "successfulCycleA1Date": "2025-07-11",
         "successfulCycleToListingDays": 213,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
@@ -283846,9 +283389,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-07-11",
         "firstPublicA1Date": "2025-07-11",
         "firstToListingDays": 213,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
         "successfulCycleA1Date": "2025-07-11",
         "successfulCycleToListingDays": 213,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0209/sehk25071101003.pdf",
@@ -284813,9 +284358,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-15",
         "firstPublicA1Date": "2024-11-15",
         "firstToListingDays": 452,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 43,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0210/sehk25122902134.pdf",
@@ -285128,9 +284675,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-25",
         "firstPublicA1Date": "2025-02-25",
         "firstToListingDays": 351,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-26",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0211/sehk25082601395.pdf",
@@ -285443,9 +284992,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-02-25",
         "firstPublicA1Date": "2025-02-25",
         "firstToListingDays": 351,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-26",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0211/sehk25082601395.pdf",
@@ -285685,9 +285236,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-17",
         "firstPublicA1Date": "2025-06-17",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-22",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0213/sehk25122201639.pdf",
@@ -285927,9 +285480,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-17",
         "firstPublicA1Date": "2025-06-17",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-22",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0213/sehk25122201639.pdf",
@@ -286169,9 +285724,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-17",
         "firstPublicA1Date": "2025-06-17",
         "firstToListingDays": 241,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-22",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0213/sehk25122201639.pdf",
@@ -286483,9 +286040,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-16",
         "firstPublicA1Date": "2025-06-16",
         "firstToListingDays": 242,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-26",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0213/sehk26012601769.pdf",
@@ -286797,9 +286356,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-16",
         "firstPublicA1Date": "2025-06-16",
         "firstToListingDays": 242,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-26",
         "successfulCycleToListingDays": 18,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0213/sehk26012601769.pdf",
@@ -287039,9 +286600,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-18",
         "firstPublicA1Date": "2024-11-18",
         "firstToListingDays": 476,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-12-24",
         "successfulCycleToListingDays": 75,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0309/sehk25122401881.pdf",
@@ -287353,9 +286916,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 255,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-15",
         "successfulCycleToListingDays": 53,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0309/sehk26011500640.pdf",
@@ -287718,9 +287283,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-18",
         "firstPublicA1Date": "2025-06-18",
         "firstToListingDays": 264,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-19",
         "successfulCycleToListingDays": 80,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0309/sehk25121901628.pdf",
@@ -288102,9 +287669,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-18",
         "firstPublicA1Date": "2025-06-18",
         "firstToListingDays": 264,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-19",
         "successfulCycleToListingDays": 80,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0309/sehk25121901628.pdf",
@@ -288437,9 +288006,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-18",
         "firstPublicA1Date": "2025-06-18",
         "firstToListingDays": 265,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-19",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0310/sehk25121901860.pdf",
@@ -288681,7 +288252,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": 112.0,
-      "calendarDaysA1ToListing": 168.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 15.0,
       "calendarDaysCurrentA1ToReceived": 15,
       "durationSampleEligible": false,
@@ -288690,9 +288261,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2025-10-02",
         "firstPublicA1Date": "2025-10-02",
         "firstToListingDays": 168,
         "firstSourceUrl": null,
+        "firstPublicA1SourceUrl": null,
         "successfulCycleA1Date": null,
         "successfulCycleToListingDays": null,
         "successfulCycleSourceUrl": null,
@@ -289016,9 +288589,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-11",
         "firstPublicA1Date": "2025-06-11",
         "firstToListingDays": 282,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-14",
         "successfulCycleToListingDays": 96,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0320/sehk25121400416.pdf",
@@ -289362,9 +288937,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-11",
         "firstPublicA1Date": "2025-06-11",
         "firstToListingDays": 282,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-14",
         "successfulCycleToListingDays": 96,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0320/sehk25121400416.pdf",
@@ -289697,9 +289274,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-26",
         "firstPublicA1Date": "2025-06-26",
         "firstToListingDays": 270,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/sehk25122902324.pdf",
@@ -289951,9 +289530,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 300,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-10",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/sehk25121001631.pdf",
@@ -290198,9 +289779,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 300,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-10",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/sehk25121001631.pdf",
@@ -290445,9 +290028,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-27",
         "firstPublicA1Date": "2025-05-27",
         "firstToListingDays": 300,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-10",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0323/sehk25121001631.pdf",
@@ -290691,9 +290276,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-09",
         "firstPublicA1Date": "2025-05-09",
         "firstToListingDays": 319,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-12",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/sehk25111201377.pdf",
@@ -290933,9 +290520,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-09",
         "firstPublicA1Date": "2025-05-09",
         "firstToListingDays": 319,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-12",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/sehk25111201377.pdf",
@@ -291175,9 +290764,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 272,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-02",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/sehk26010202931.pdf",
@@ -291417,9 +291008,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 272,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-02",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/sehk26010202931.pdf",
@@ -292162,9 +291755,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-29",
         "firstPublicA1Date": "2025-06-29",
         "firstToListingDays": 274,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-06",
         "successfulCycleToListingDays": 83,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/sehk26010602101.pdf",
@@ -292406,9 +292001,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-08",
         "firstPublicA1Date": "2025-04-08",
         "firstToListingDays": 356,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-10-14",
         "successfulCycleToListingDays": 167,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/sehk25101401281.pdf",
@@ -292700,8 +292297,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7610921/content.shtml"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/sehk26012000865.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/sehk26012000865.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -292900,9 +292501,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-09",
         "firstPublicA1Date": "2025-05-09",
         "firstToListingDays": 326,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-11",
         "successfulCycleToListingDays": 140,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0331/sehk25111101605.pdf",
@@ -296835,8 +296438,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7601771/content.shtml"
         },
         {
-          "label": "递表日（发行人招股书）",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083100009.pdf"
+          "label": "递表日（发行人招股书） · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083100009.pdf",
+          "originalLabel": "递表日（发行人招股书）",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ]
     },
@@ -299936,9 +299543,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2026-02-08",
         "firstPublicA1Date": "2026-02-08",
         "firstToListingDays": 233,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2026_sehk_e.json",
         "successfulCycleA1Date": "2026-08-21",
         "successfulCycleToListingDays": 39,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/sehk26082102510.pdf",
@@ -303582,9 +303191,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-15",
         "firstPublicA1Date": "2025-09-15",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-26",
         "successfulCycleToListingDays": 91,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0825/sehk26052601127.pdf",
@@ -303855,7 +303466,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         "廣東領益智造股份有限公司",
         "廣東領益智造股份有限公司 - H股"
       ],
-      "a1Date": "2025-11-20",
+      "a1Date": "2021-06-30",
       "currentA1Date": "2026-05-20",
       "receivedDate": "2025-11-27",
       "noticeDate": "2026-05-19",
@@ -304085,9 +303696,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2021-06-30",
         "firstPublicA1Date": "2021-06-30",
         "firstToListingDays": 1822,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2021_sehk_e.json",
         "successfulCycleA1Date": "2026-05-20",
         "successfulCycleToListingDays": 37,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/sehk26052001469.pdf",
@@ -304459,9 +304072,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-11-18",
         "firstPublicA1Date": "2025-11-18",
         "firstToListingDays": 344,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-19",
         "successfulCycleToListingDays": 162,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1028/sehk26051901436.pdf",
@@ -304894,9 +304509,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-27",
         "firstPublicA1Date": "2025-01-27",
         "firstToListingDays": 655,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-05-14",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1113/sehk26051401391.pdf",
@@ -305530,8 +305147,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "availabilityNote": "最近核查未确认 / Latest check inconclusive"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/sehk26042903959.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/sehk26042903959.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -307894,9 +307515,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-29",
         "firstPublicA1Date": "2025-09-29",
         "firstToListingDays": 283,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-31",
         "successfulCycleToListingDays": 100,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/sehk26033103932.pdf",
@@ -308514,12 +308137,20 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
         },
         {
-          "label": "递表日（发行人招股书）",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf"
+          "label": "递表日（发行人招股书） · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf",
+          "originalLabel": "递表日（发行人招股书）",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         },
         {
-          "label": "本轮港交所申请版本",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26033003937.pdf"
+          "label": "本轮港交所申请版本 · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26033003937.pdf",
+          "originalLabel": "本轮港交所申请版本",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -308816,9 +308447,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-06",
         "firstPublicA1Date": "2025-01-06",
         "firstToListingDays": 477,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-25",
         "successfulCycleToListingDays": 34,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/sehk26032501612.pdf",
@@ -309143,9 +308776,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-08-18",
         "firstPublicA1Date": "2025-08-18",
         "firstToListingDays": 399,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-25",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/sehk26032502124.pdf",
@@ -309269,7 +308904,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": 67.632,
+      "aShareMarketCapAtA1RmbBn": 98.066355366,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -309291,38 +308926,35 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "estimate",
-        "method": "historical_close_x_vendor_historical_observation_date_unretained_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "status": "verified",
+        "method": "unadjusted_a_close_x_issuer_total_issued_shares",
+        "scope": "total_issued_equity_at_a_price",
         "anchorDate": "2026-03-25",
         "anchorSource": "stored_a_share_market_cap_anchor",
         "priceDate": "2026-03-25",
-        "price": 786.8965454101562,
+        "price": 1141.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "priceSourceUrl": null,
-        "shares": 85947726.0,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": "yahoo_finance_history_close+yahoo_finance_shares_full",
-        "sharesSourceUrl": null,
-        "sharesTiming": "vendor_historical_observation_date_unretained",
+        "priceCurrencySource": "mainland_exchange",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq",
+        "shares": 85947726,
+        "sharesClass": "total_issued_shares",
+        "sharesAsOf": "2026-03-25",
+        "sharesSource": "issuer_filing",
+        "sharesSourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325",
+        "sharesTiming": "issuer_disclosed_at_application",
         "retrievedAt": "2026-06-11T09:27:18",
         "valueCurrency": "CNY",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "valueCnyExact": "98066355366.00",
+        "priceEvidenceSha256": "25cebbf1fefdfd6a2d633d2783b0391eff2c0afa2a7c21ae5cfed0bfa655e620",
+        "sharesEvidenceSha256": "b1bd6941e0b866baf5e46f14b229246fe5e4b98ffb73aa2183634c9e3e09b294"
       },
-      "aShareMarketCapSampleEligible": false,
+      "aShareMarketCapSampleEligible": true,
       "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-03-25",
       "aShareMarketCapTradeDate": "2026-03-25",
@@ -309366,6 +308998,14 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c100098/c7644834/content.shtml"
+        },
+        {
+          "label": "A股总股本",
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108326/documents/sehk26032500810.pdf#page=325"
+        },
+        {
+          "label": "A股收盘价",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688498,day,2026-03-25,2026-03-25,2,bfq"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -310059,9 +309699,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-09-05",
         "firstPublicA1Date": "2025-09-05",
         "firstToListingDays": 285,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-03-06",
         "successfulCycleToListingDays": 103,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/sehk26030600295.pdf",
@@ -311799,9 +311441,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 378,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 191,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/sehk25122902432.pdf",
@@ -312059,9 +311703,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-19",
         "firstPublicA1Date": "2025-06-19",
         "firstToListingDays": 302,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-19",
         "successfulCycleToListingDays": 119,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/sehk25121901774.pdf",
@@ -312308,9 +311954,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-30",
         "firstPublicA1Date": "2025-05-30",
         "firstToListingDays": 346,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-01",
         "successfulCycleToListingDays": 161,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0511/sehk25120104096.pdf",
@@ -312559,9 +312207,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-26",
         "firstPublicA1Date": "2025-05-26",
         "firstToListingDays": 359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-26",
         "successfulCycleToListingDays": 175,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0520/sehk25112601483.pdf",
@@ -313020,7 +312670,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02486",
-            "sharesAsOf": "2023-05-11",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -313038,18 +312688,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101152.pdf",
-            "publishedDate": "2023-06-01",
-            "sha256": "f426cc33e44a9407560227ce1f4d16f8e5c5c73dc21ae996b16a6da92033f372"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02486,day,2023-05-11,2023-05-11,2,bfq",
-            "publishedDate": null,
-            "sha256": "e900ea70d8fbb172dd26efe15c31cc627d362280a08a5d9dd27e7b42455eb4a4"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -313105,9 +312744,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-07-21",
         "firstPublicA1Date": "2022-07-21",
         "firstToListingDays": 294,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-01-26",
         "successfulCycleToListingDays": 105,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0511/sehk23012600284.pdf",
@@ -313132,18 +312773,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "HKEX新上市报告（中文）",
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2023_Chi.xlsx"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0601/2023060101152.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02486,day,2023-05-11,2023-05-11,2,bfq"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -313236,7 +312865,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "priceKind": "unadjusted_vendor_close",
             "class": "ordinary",
             "securityCode": "02481",
-            "sharesAsOf": "2023-07-10",
+            "sharesAsOf": null,
             "sharesStatus": "estimate",
             "priceStatus": "verified",
             "priceEvidence": {
@@ -313254,18 +312883,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080201560.pdf",
-            "publishedDate": "2023-08-02",
-            "sha256": "fca5348254e36fe45e2546ea91965eebdb68a925f9468134f1064188b395a01e"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02481,day,2023-07-10,2023-07-10,2,bfq",
-            "publishedDate": null,
-            "sha256": "0cd0850b6d3478114e86ed1bc7e1fef9024b723e1cf432a046c8de467b553536"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -313321,9 +312939,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-06-15",
         "firstPublicA1Date": "2022-06-15",
         "firstToListingDays": 390,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-03-14",
         "successfulCycleToListingDays": 118,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0710/sehk23031401383.pdf",
@@ -313352,18 +312972,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7490945/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0802/2023080201560.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02481,day,2023-07-10,2023-07-10,2,bfq"
         }
       ],
       "sourceSponsorId": "gtja",
@@ -313599,9 +313207,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-05-25",
         "firstPublicA1Date": "2023-05-25",
         "firstToListingDays": 169,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23052501417.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23052501417.pdf",
         "successfulCycleA1Date": "2023-05-25",
         "successfulCycleToListingDays": 169,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1110/sehk23052501417.pdf",
@@ -313749,18 +313359,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
             "shareBasis": "historical_issued_equity_estimate"
           }
         ],
-        "corroboratingSources": [
-          {
-            "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1219/2023121901110.pdf",
-            "publishedDate": "2023-12-19",
-            "sha256": "04ce58915443241ea8a170c5deae939c11c24e645a0b9dbeb8bcaeb73a1ce936"
-          },
-          {
-            "sourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02502,day,2023-12-20,2023-12-20,2,bfq",
-            "publishedDate": null,
-            "sha256": "023bd3ea6538aa8783fec864ba2f137aa67fd755321e3fc2c7b8435a5e0bc30b"
-          }
-        ],
+        "corroboratingSources": [],
         "fxStatus": "not_applicable"
       },
       "listingMarketCapSampleEligible": true,
@@ -313816,9 +313415,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-08-28",
         "firstPublicA1Date": "2023-08-28",
         "firstToListingDays": 114,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23082801570.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23082801570.pdf",
         "successfulCycleA1Date": "2023-08-28",
         "successfulCycleToListingDays": 114,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1220/sehk23082801570.pdf",
@@ -313849,18 +313450,6 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
         {
           "label": "全流通备案通知书",
           "url": "https://www.csrc.gov.cn/csrc/c105984/c7474993/content.shtml"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1219/2023121901110.pdf",
-          "originalLabel": "上市股本佐证 / Listing capital",
-          "availability": "unverified",
-          "freshness": "unchecked",
-          "availabilityNote": "未核验 / Unchecked"
-        },
-        {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get?param=hk02502,day,2023-12-20,2023-12-20,2,bfq"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -314095,9 +313684,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-01-31",
         "firstPublicA1Date": "2023-01-31",
         "firstToListingDays": 332,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2023-08-25",
         "successfulCycleToListingDays": 126,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1229/sehk23082502184.pdf",
@@ -314380,9 +313971,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2022-05-31",
         "firstPublicA1Date": "2022-05-31",
         "firstToListingDays": 588,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2022_sehk_e.json",
         "successfulCycleA1Date": "2023-09-19",
         "successfulCycleToListingDays": 112,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0109/sehk23091901195.pdf",
@@ -314664,9 +314257,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-09-27",
         "firstPublicA1Date": "2023-09-27",
         "firstToListingDays": 181,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0326/sehk23092701750.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0326/sehk23092701750.pdf",
         "successfulCycleA1Date": "2023-09-27",
         "successfulCycleToListingDays": 181,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0326/sehk23092701750.pdf",
@@ -314919,9 +314514,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-09-04",
         "firstPublicA1Date": "2023-09-04",
         "firstToListingDays": 266,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-03-04",
         "successfulCycleToListingDays": 84,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0527/sehk24030402251.pdf",
@@ -315183,9 +314780,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-30",
         "firstPublicA1Date": "2023-06-30",
         "firstToListingDays": 336,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-06",
         "successfulCycleToListingDays": 115,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0531/sehk24020601783.pdf",
@@ -315417,9 +315016,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2020-10-08",
         "firstPublicA1Date": "2020-10-08",
         "firstToListingDays": 1359,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2020_sehk_e.json",
         "successfulCycleA1Date": "2024-03-19",
         "successfulCycleToListingDays": 101,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0628/sehk24031901238.pdf",
@@ -315657,9 +315258,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-28",
         "firstPublicA1Date": "2023-06-28",
         "firstToListingDays": 377,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-02-09",
         "successfulCycleToListingDays": 151,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0709/sehk24020900354.pdf",
@@ -315982,9 +315585,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-10-24",
         "firstPublicA1Date": "2023-10-24",
         "firstToListingDays": 372,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2024-04-29",
         "successfulCycleToListingDays": 184,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24042900622.pdf",
@@ -316227,7 +315832,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "aShareMarketCapAnchorDate": null,
       "aShareMarketCapTradeDate": null,
       "calendarDaysA1ToNotice": null,
-      "calendarDaysA1ToListing": 121.0,
+      "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
       "calendarDaysCurrentA1ToReceived": null,
       "durationSampleEligible": false,
@@ -316236,9 +315841,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": false,
       "listingTiming": {
+        "firstA1Date": "2024-07-01",
         "firstPublicA1Date": "2024-07-01",
         "firstToListingDays": 121,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
         "successfulCycleA1Date": "2024-07-01",
         "successfulCycleToListingDays": 121,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/sehk24070100140.pdf",
@@ -316265,8 +315872,12 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "url": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2024_Chi.xlsx"
         },
         {
-          "label": "上市股本佐证 / Listing capital",
-          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/2024103000063.pdf"
+          "label": "上市股本佐证 / Listing capital · 未核验 / Unchecked",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1030/2024103000063.pdf",
+          "originalLabel": "上市股本佐证 / Listing capital",
+          "availability": "unverified",
+          "freshness": "unchecked",
+          "availabilityNote": "未核验 / Unchecked"
         }
       ],
       "sourceSponsorId": "haitong",
@@ -316473,9 +316084,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-20",
         "firstPublicA1Date": "2024-03-20",
         "firstToListingDays": 240,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-09-20",
         "successfulCycleToListingDays": 56,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1115/sehk24092001743.pdf",
@@ -316714,9 +316327,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-26",
         "firstPublicA1Date": "2024-06-26",
         "firstToListingDays": 180,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
         "successfulCycleA1Date": "2024-06-26",
         "successfulCycleToListingDays": 180,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1223/sehk24062601174.pdf",
@@ -316964,9 +316579,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-02-14",
         "firstPublicA1Date": "2024-02-14",
         "firstToListingDays": 449,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2024-12-27",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0508/sehk24122701425.pdf",
@@ -317218,9 +316835,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-06-27",
         "firstPublicA1Date": "2023-06-27",
         "firstToListingDays": 734,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-03-30",
         "successfulCycleToListingDays": 92,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0630/sehk25033000666.pdf",
@@ -317472,9 +317091,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-11-29",
         "firstPublicA1Date": "2024-11-29",
         "firstToListingDays": 222,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-05-29",
         "successfulCycleToListingDays": 41,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0709/sehk25052900245.pdf",
@@ -317976,9 +317597,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-02",
         "firstPublicA1Date": "2025-01-02",
         "firstToListingDays": 264,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-15",
         "successfulCycleToListingDays": 39,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0923/sehk25081502293.pdf",
@@ -318228,9 +317851,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-06-28",
         "firstPublicA1Date": "2024-06-28",
         "firstToListingDays": 459,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-03-25",
         "successfulCycleToListingDays": 189,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0930/sehk25032501232.pdf",
@@ -318546,9 +318171,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-28",
         "firstPublicA1Date": "2025-04-28",
         "firstToListingDays": 183,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25042803328.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25042803328.pdf",
         "successfulCycleA1Date": "2025-04-28",
         "successfulCycleToListingDays": 183,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25042803328.pdf",
@@ -318794,9 +318421,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-04-15",
         "firstPublicA1Date": "2025-04-15",
         "firstToListingDays": 196,
         "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
         "successfulCycleA1Date": "2025-04-15",
         "successfulCycleToListingDays": 196,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/sehk25041501908.pdf",
@@ -319046,9 +318675,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-01-21",
         "firstPublicA1Date": "2025-01-21",
         "firstToListingDays": 323,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-08-21",
         "successfulCycleToListingDays": 111,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1210/sehk25082101568.pdf",
@@ -319297,9 +318928,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2023-03-30",
         "firstPublicA1Date": "2023-03-30",
         "firstToListingDays": 987,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2023_sehk_e.json",
         "successfulCycleA1Date": "2025-09-28",
         "successfulCycleToListingDays": 74,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1211/sehk25092800058.pdf",
@@ -319795,9 +319428,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-08",
         "firstPublicA1Date": "2025-06-08",
         "firstToListingDays": 205,
-        "firstSourceUrl": null,
+        "firstSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
         "successfulCycleA1Date": "2025-12-09",
         "successfulCycleToListingDays": 21,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25120900112.pdf",
@@ -320043,9 +319678,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-03-12",
         "firstPublicA1Date": "2024-03-12",
         "firstToListingDays": 658,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-09-22",
         "successfulCycleToListingDays": 99,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/sehk25092202009.pdf",
@@ -320364,9 +320001,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-27",
         "firstPublicA1Date": "2025-06-27",
         "firstToListingDays": 209,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-12-29",
         "successfulCycleToListingDays": 24,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0122/sehk25122902234.pdf",
@@ -320624,9 +320263,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2024-05-16",
         "firstPublicA1Date": "2024-05-16",
         "firstToListingDays": 631,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2024_sehk_e.json",
         "successfulCycleA1Date": "2025-11-05",
         "successfulCycleToListingDays": 93,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/sehk25110501242.pdf",
@@ -321122,9 +320763,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-05-09",
         "firstPublicA1Date": "2025-05-09",
         "firstToListingDays": 319,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2025-11-12",
         "successfulCycleToListingDays": 132,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/sehk25111201377.pdf",
@@ -321372,9 +321015,11 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeSupersededByCurrentFiling": false,
       "listingDurationSampleEligible": true,
       "listingTiming": {
+        "firstA1Date": "2025-06-25",
         "firstPublicA1Date": "2025-06-25",
         "firstToListingDays": 272,
         "firstSourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
+        "firstPublicA1SourceUrl": "https://www1.hkexnews.hk/ncms/json/eds/app_2025_sehk_e.json",
         "successfulCycleA1Date": "2026-01-02",
         "successfulCycleToListingDays": 81,
         "successfulCycleSourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/sehk26010202931.pdf",
