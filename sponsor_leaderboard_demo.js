@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=578c89940e341c5c";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=bebfb5c54607c3f1";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -452,7 +452,7 @@ function marketCapObservation(fact, kind) {
     ? fact.listingMarketCapEstimateHkdBn : value;
   // The exporter owns share-class, same-day pricing and FX validation.
   const eligible = (listing
-    ? fact.listingMarketCapSampleEligible === true && provenance.status === "verified" && fact.hkexStage === "listed"
+    ? fact.listingMarketCapSampleEligible === true && (provenance.status === "verified" || (provenance.status === "estimate" && provenance.method === "dated_filings_and_first_trading_close_estimate")) && fact.hkexStage === "listed"
     : fact.aShareMarketCapRankEligible === true && ["verified", "estimate"].includes(provenance.status))
     && isNumber(value) && value > 0;
   const estimateValue = isNumber(estimate) && estimate > 0 ? estimate : null;
@@ -475,6 +475,11 @@ function aggregateMarketCaps(facts, kind) {
   }
   const complete = values.length > 0 && values.length === facts.length;
   return {sum: complete ? sum : null, median: median(values), n: values.length, coverage};
+}
+
+function formatListingCap(row, value = row.listingMarketCapHkdBnSum, perPerson = false) {
+  const amount = perPerson ? formatCapPerPerson(value) : formatCap(value, "HK$");
+  return isNumber(value) && row.listingMarketCapCoverage?.estimate > 0 ? `约 ${amount}` : amount;
 }
 
 function formatAShareCap(row, prefix = "aShareMarketCap") {
@@ -780,8 +785,9 @@ function buildBenchmarkRow(group, sourceRows) {
   row.applyingAhMarketCapN = countRowsWithNumber(rows, "applyingAhMarketCapRmbBnSum");
   for (const prefix of ["listingMarketCap", "aShareMarketCap", "applyingAhMarketCap"]) {
     row[`${prefix}Coverage`] = {verified: row[`${prefix}N`], total: rows.length, unit: "firms"};
-    if (prefix !== "listingMarketCap") {
-      const estimated = rows.filter((item) => isNumber(item[`${prefix}RmbBnSum`]) && item[`${prefix}Coverage`]?.estimate > 0).length;
+    {
+      const key = prefix === "listingMarketCap" ? "listingMarketCapHkdBnSum" : `${prefix}RmbBnSum`;
+      const estimated = rows.filter((item) => isNumber(item[key]) && item[`${prefix}Coverage`]?.estimate > 0).length;
       row[`${prefix}Coverage`].estimate = estimated;
       row[`${prefix}Coverage`].verified -= estimated;
     }
@@ -908,7 +914,7 @@ function pkComparableRow(sponsorId, comparisonRows, optionRows) {
 
 function dateScopeLabel() {
   const fieldLabel = {
-    stageDate: "阶段日（申请中按A1；已上市按上市日/RTO完成日）",
+    stageDate: "阶段日（申请中A1 / 已上市上市日）",
     a1Date: "A1",
     noticeDate: "备案通知书",
     receivedDate: "接收",
@@ -1300,8 +1306,8 @@ function setSortFromHeader(rawKey) {
 function metricDisplay(row) {
   if (state.metric === "listingMarketCapHkdBnSum") {
     return {
-      main: formatCap(row.listingMarketCapHkdBnSum, "HK$"),
-      sub: `仅已核实 · A/H同日分别估值后折算港元`,
+      main: formatListingCap(row),
+      sub: `上市日全部普通股市值`,
     };
   }
   if (state.metric === "aShareMarketCapRmbBnSum") {
@@ -1392,13 +1398,13 @@ function metricDisplay(row) {
   }
   if (state.metric === "listingMarketCapPerType6TotalHkdBn") {
     return {
-      main: formatCapPerPerson(row.listingMarketCapPerType6TotalHkdBn),
+      main: formatListingCap(row, row.listingMarketCapPerType6TotalHkdBn, true),
       sub: `${isNumber(row.type6TotalCount) ? `上市日市值 / 六号牌 ${compactNumber(row.type6TotalCount, 0)}人` : "暂无六号牌人数"}`,
     };
   }
   if (state.metric === "listingMarketCapPerSponsorPrincipalHkdBn") {
     return {
-      main: formatCapPerPerson(row.listingMarketCapPerSponsorPrincipalHkdBn),
+      main: formatListingCap(row, row.listingMarketCapPerSponsorPrincipalHkdBn, true),
       sub: `${isNumber(row.sponsorPrincipalCount) ? `上市日市值 / SP ${compactNumber(row.sponsorPrincipalCount, 0)}人` : "暂无SP人数"}`,
     };
   }
@@ -1460,7 +1466,7 @@ function marketCapDisplay(row) {
   const listing = prefix === "listingMarketCap";
   const total = row[`${prefix}Coverage`]?.total;
   return {
-    main: total === 0 ? "不适用" : listing ? formatCap(row.listingMarketCapHkdBnSum, "HK$") : formatAShareCap(row, prefix),
+    main: total === 0 ? "不适用" : listing ? formatListingCap(row) : formatAShareCap(row, prefix),
     sub: `${listing ? "上市日市值（A/H同日折算）" : metricLabels.aShareMarketCapRmbBnSum}`,
   };
 }
@@ -1530,7 +1536,7 @@ function metricCards(rows) {
       {
         label: `${label}上市市值`,
         value: listedMcapLeader?.displayNameZh,
-        note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "—",
+        note: listedMcapLeader ? `${formatListingCap(listedMcapLeader)}` : "—",
       },
       {
         label: `${label}已上市周期较快`,
@@ -1573,20 +1579,20 @@ function metricCards(rows) {
       label: "SP人均市值产出最高",
       value: mcapPerSpLeader?.displayNameZh,
       note: mcapPerSpLeader
-        ? `每名SP对应 ${formatCapPerPerson(mcapPerSpLeader.listingMarketCapPerSponsorPrincipalHkdBn)} 上市日市值`
+        ? `每名SP对应 ${formatListingCap(mcapPerSpLeader, mcapPerSpLeader.listingMarketCapPerSponsorPrincipalHkdBn, true)} 上市日市值`
         : `需有SP人数及至少${MIN_MARKET_CAP_PROJECTS}个上市日市值样本`,
     },
     {
       label: "六号牌持牌人员人均市值产出最高",
       value: mcapPerTotalLeader?.displayNameZh,
       note: mcapPerTotalLeader
-        ? `每名六号牌持牌人员对应 ${formatCapPerPerson(mcapPerTotalLeader.listingMarketCapPerType6TotalHkdBn)} 上市日市值`
+        ? `每名六号牌持牌人员对应 ${formatListingCap(mcapPerTotalLeader, mcapPerTotalLeader.listingMarketCapPerType6TotalHkdBn, true)} 上市日市值`
         : `需有六号牌人数及至少${MIN_MARKET_CAP_PROJECTS}个上市日市值样本`,
     },
     {
       label: "项目上市市值第一",
       value: listedMcapLeader?.displayNameZh,
-      note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "—",
+      note: listedMcapLeader ? `${formatListingCap(listedMcapLeader)}` : "—",
     },
     {
       label: "已上市周期较快",
@@ -1782,25 +1788,25 @@ function pkMetricRows(rowA, rowB) {
       label: metricLabels.listingMarketCapHkdBnSum,
       key: "listingMarketCapHkdBnSum",
       value: (row) => row.listingMarketCapHkdBnSum,
-      format: (value) => formatCap(value, "HK$"),
+      format: (value, row) => formatListingCap(row, value),
       higher: true,
-      note: "仅已核实 · A/H按上市日分别估值后折算港元 / Verified same-day A/H values + FX",
+      note: "上市日全部普通股市值 / Total ordinary equity value at listing",
     },
     {
       label: metricLabels.listingMarketCapPerSponsorPrincipalHkdBn,
       key: "listingMarketCapPerSponsorPrincipalHkdBn",
       value: (row) => row.listingMarketCapPerSponsorPrincipalHkdBn,
-      format: (value) => formatCapPerPerson(value),
+      format: (value, row) => formatListingCap(row, value, true),
       higher: true,
-      note: "已核实市值人均产出 / Verified value per person",
+      note: "人均上市市值 / Listing value per person",
     },
     {
       label: metricLabels.listingMarketCapPerType6TotalHkdBn,
       key: "listingMarketCapPerType6TotalHkdBn",
       value: (row) => row.listingMarketCapPerType6TotalHkdBn,
-      format: (value) => formatCapPerPerson(value),
+      format: (value, row) => formatListingCap(row, value, true),
       higher: true,
-      note: "已核实市值人均产出 / Verified value per person",
+      note: "人均上市市值 / Listing value per person",
     },
     { label: "A1→接收中位数 / A1 to receipt", key: "receivedCycleMedianDays", value: (row) => row.receivedCycleMedianDays, format: (value, row) => formatDays(value, row.receivedCycleN), higher: false, note: "已接收样本 / Received sample" },
     { label: "A1→通知中位数 / A1 to notice", key: "noticeCycleMedianDays", value: (row) => row.noticeCycleMedianDays, format: (value, row) => formatDays(value, row.noticeCycleN), higher: false, note: "已通知样本 / Notice-issued sample" },
@@ -1964,9 +1970,9 @@ function drawerStats(row) {
     ["六号牌人数", isNumber(row.type6TotalCount) ? `${compactNumber(row.type6TotalCount, 0)}人` : "待接入"],
     ["每名SP负责公开申请中", isNumber(row.activeProjectsPerSponsorPrincipal) ? `${formatRatio(row.activeProjectsPerSponsorPrincipal)}个` : "待披露"],
     ["每个公开申请中项目配置Rep", isNumber(row.type6RepPerActiveProject) ? `${formatRatio(row.type6RepPerActiveProject)}名/项目` : "待披露"],
-    [metricLabels.listingMarketCapPerSponsorPrincipalHkdBn, formatCapPerPerson(row.listingMarketCapPerSponsorPrincipalHkdBn)],
-    [metricLabels.listingMarketCapPerType6TotalHkdBn, formatCapPerPerson(row.listingMarketCapPerType6TotalHkdBn)],
-    [metricLabels.listingMarketCapHkdBnSum, formatCap(row.listingMarketCapHkdBnSum, "HK$")],
+    [metricLabels.listingMarketCapPerSponsorPrincipalHkdBn, formatListingCap(row, row.listingMarketCapPerSponsorPrincipalHkdBn, true)],
+    [metricLabels.listingMarketCapPerType6TotalHkdBn, formatListingCap(row, row.listingMarketCapPerType6TotalHkdBn, true)],
+    [metricLabels.listingMarketCapHkdBnSum, formatListingCap(row)],
     [metricLabels.aShareMarketCapRmbBnSum, formatAShareCap(row)],
     ["流程时间", cycleSummary || "待披露"],
     ["申请中平均已过", formatDays(row.applyingElapsedAverageDays)],
@@ -2022,7 +2028,7 @@ function listingComponentDetails(provenance) {
       `${shareClass} ${component.securityCode || "代码—"}`,
       `收盘价 / Close ${component.priceCurrency || "币种—"} ${positiveInput(component.price)}`,
       `价格日 / Price date ${component.priceDate || "—"}`,
-      `股数（不含库存股） / Shares ex treasury ${positiveInput(component.sharesExTreasury)}`,
+      `${component.sharesStatus === "estimate" ? "估值采用股数 / Shares used" : "股数（不含库存股） / Shares ex treasury"} ${positiveInput(component.sharesExTreasury)}`,
       `股本日 / Share date ${component.sharesAsOf || "—"}`,
     ];
     if (component.priceStatus === "verified"
@@ -2030,7 +2036,7 @@ function listingComponentDetails(provenance) {
       details.push("估值日或之前最近交易日收盘价 / Latest exchange close on or before valuation date");
     }
     if (component.priceStatus !== "verified") details.push("缺少当日收盘价 / Close unavailable");
-    if (component.sharesStatus !== "verified") details.push("缺少当日股本 / Shares unavailable");
+    if (!["verified","estimate"].includes(component.sharesStatus)) details.push("缺少当日股本 / Shares unavailable");
     const calendarEvidence = Array.isArray(component.priceCalendarEvidence) ? component.priceCalendarEvidence : [];
     const links = valuationEvidenceLinks([["价格来源 / Price source", component.priceEvidence],
       ["股本来源 / Share source", component.sharesEvidence],
@@ -2060,7 +2066,7 @@ function projectMarketCapDetail(fact, kind) {
     if (!quote) return "";
     return `<div class="market-cap-detail">港股收市价 HK$${escapeHtml(quote.price)} · ${escapeHtml(quote.priceDate)} · ${valuationEvidenceLinks([["行情来源", quote]])}</div>`;
   }
-  const amount = status === "verified" ? `已核实 / Verified ${formatCap(value, currency)}` : `估算 / Estimate ${formatCap(value, currency)}`;
+  const amount = status === "verified" ? `已核实 / Verified ${formatCap(value, currency)}` : listing ? `约 ${formatCap(value, currency)}` : `估算 / Estimate ${formatCap(value, currency)}`;
   if (listing && (provenance.version === 2 || Array.isArray(provenance.components))) {
     return `<small class="market-cap-detail">${escapeHtml(label)}：${escapeHtml(amount)}</small>
       ${listingComponentDetails(provenance)}`;
@@ -2394,39 +2400,7 @@ async function init() {
     els.firmCount.textContent = compactNumber(meta.firmCount || state.data.firms.length, 0);
     const sourceNote = meta.sourceGeneratedAt ? ` · 源快照 ${meta.sourceGeneratedAt}` : "";
     els.generatedAt.textContent = `生成 ${meta.generatedAt || "待披露"}${sourceNote}`;
-    els.demoNote.textContent = `${publicMethodologyText(meta.demoNoteZh || "本地 demo，不用于公开发布。")} ${PUBLIC_ACTIVE_CAVEAT}`;
-    if (meta.sponsorExclusionCounts) {
-      const reasons = meta.sponsorExclusionCounts;
-      els.demoNote.textContent += ` 未计入保荐人排名的发行人：获豁免 ${reasons.waived || 0} 家，保荐人不适用 ${reasons.notApplicable || 0} 家，尚无具名保荐人 ${reasons.notNamed || 0} 家。`;
-    }
-    if (meta.licenseCapacity?.available) {
-      const cap = meta.licenseCapacity;
-      const matchNote = cap.rollupCapacityFirmCount
-        ? `匹配 ${cap.matchedRealFirmCount || 0} 家 + ${cap.rollupCapacityFirmCount} 个合并口径`
-        : `匹配 ${cap.matchedFirmCount || 0} 家`;
-      const freshnessNote =
-        cap.quality === "archive_db" && cap.archiveFrozenAt
-          ? ` · archive frozen ${cap.archiveFrozenAt}`
-          : "";
-      const blockNote = cap.primarySourceBlockedReason ? " · 0xmd fallback" : "";
-      const dateNote = cap.quality === "mixed_sources" ? "来源日期按机构列示" : "来源 " + capacityDates(cap.asOfDate);
-      els.demoNote.textContent += ` 六号牌容量：${dateNote}${freshnessNote}${blockNote} · ${matchNote}；仅作机构容量旁证。`;
-      if (cap.quality === "archive_db" && cap.dataFreshnessNote) {
-        els.demoNote.textContent += ` ${publicMethodologyText(cap.dataFreshnessNote)}`;
-      }
-    }
-    if (meta.sponsorPrincipals?.available) {
-      const sp = meta.sponsorPrincipals;
-      const spMatchNote = sp.rollupCapacityFirmCount
-        ? `匹配 ${sp.matchedRealFirmCount || 0} 家 + ${sp.rollupCapacityFirmCount} 个合并口径`
-        : `匹配 ${sp.matchedFirmCount || 0} 家`;
-      const source = sp.quality === "mixed_sources" ? "来源日期按机构列示" : "来源 " + capacityDates(sp.asOfDate);
-      const capture = sp.capturedAt ? " · 采集 " + capacityDates(sp.capturedAt, [], true) : "";
-      els.demoNote.textContent += ` SP口径：${source}${capture} · ${spMatchNote}；SP为可签sponsor工作的principal，负荷/人效优先使用该口径。`;
-    }
-    if (state.data.quality?.length) {
-      els.demoNote.textContent += ` 质量提示：${state.data.quality.map((item) => `${item.code}=${item.count || item.items?.length || 1}`).join("；")}`;
-    }
+    els.demoNote.textContent = "具名全部计入时，每家保荐人各计一个项目。平分时按具名保荐人数分摊；只计首名时，项目归入文件列示的第一家。";
     populateOptions();
     syncControls();
     render();

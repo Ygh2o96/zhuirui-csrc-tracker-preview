@@ -454,22 +454,24 @@ function formatListingMarketCap(record) {
   if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
   return `
-    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
+    <span class="market-cap-value">${record.listingMarketCapProvenance?.status === "estimate" ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
     <span class="pending-en">HK$${rmbBnFormatter.format(value)}B</span>
   `;
 }
 
 function renderValuationDetails(record, listing) {
   const data = record[listing ? "listingMarketCapProvenance" : "aShareMarketCapProvenance"];
-  if (listing && data?.status !== "verified") {
+  if (listing && !["verified","estimate"].includes(data?.status)) {
     const quote = record.hkListingSessionClose;
     if (!quote) return "";
     return `<div class="timeline-row"><span>港股收市价 / HK closing price</span><strong>HK$${escapeHtml(quote.price)} · ${escapeHtml(quote.priceDate)}</strong><a href="${escapeHtml(quote.sourceUrl)}" target="_blank" rel="noopener noreferrer">行情来源</a></div>`;
   }
   if (!data) return "";
   const policies = {
+    hk_ordinary_historical_estimate: "港股收盘价计量全部普通股 / Full ordinary equity at HK close",
     ah_components_ex_treasury: "A/H分别估值，折算港币 / A/H components in HKD",
     hk_ordinary_ex_treasury: "港股收盘价计量全部普通股 / Full ordinary equity at HK close",
+    hk_hdr_and_idx_ordinary_ex_treasury: "香港预托证券与印尼其余普通股分别按当地收盘价计值 / HK depositary receipts and remaining IDX shares at local closing prices",
   };
   const rows = [
     ["估值锚点 Valuation anchor", data.anchorDate],
@@ -478,21 +480,24 @@ function renderValuationDetails(record, listing) {
     ["币种 Currency", data.valueCurrency],
   ];
   for (const item of (data.components || [])) {
-    rows.push([`${item.class} 股数（不含库存股） / Shares ex treasury`, item.sharesExTreasury == null ? null : formatNumber(item.sharesExTreasury)]);
+    const quantityLabel = data.status === "estimate" ? "估值采用股数 / Shares used" : item.class === "HDR" ? "香港预托证券份数 / HK depositary receipts" : `${item.class} 股数（不含库存股） / Shares ex treasury`;
+    rows.push([quantityLabel, item.sharesExTreasury == null ? null : formatNumber(item.sharesExTreasury)]);
     rows.push([`${item.class} 股本日期 / Share date`, item.sharesAsOf]);
     rows.push([`${item.class} 收盘价 / Closing price`, item.price == null ? null : `${item.priceCurrency} ${item.price} · ${item.priceDate || ""}`]);
     if (item.priceStatus === "verified" && item.priceDatePolicy === "latest_exchange_session_on_or_before_valuation_date" && item.priceDate !== data.anchorDate) {
       rows.push([`${item.class} 价格口径 / Price basis`, "估值日休市，沿用最近交易日收盘价 / Market closed; most recent trading close"]);
     }
   }
-  if (listing && data.policy === "ah_components_ex_treasury") {
+  if (listing && ["ah_components_ex_treasury", "hk_hdr_and_idx_ordinary_ex_treasury"].includes(data.policy)) {
     const fx = data.fx;
-    const complete = data.fxStatus === "verified" && fx?.baseCurrency === "CNY" && fx.quoteCurrency === "HKD"
+    const base = data.policy === "ah_components_ex_treasury" ? "CNY" : "IDR";
+    const complete = data.fxStatus === "verified" && fx?.baseCurrency === base && fx.quoteCurrency === "HKD"
       && (typeof fx.rate === "number" || (typeof fx.rate === "string" && /^\d+(?:\.\d+)?$/.test(fx.rate)))
       && Number.isFinite(Number(fx.rate)) && Number(fx.rate) > 0
       && typeof fx.date === "string" && fx.date === data.anchorDate && /^\d{4}-\d{2}-\d{2}$/.test(fx.date)
       && new Date(fx.date + "T00:00:00Z").toJSON()?.slice(0, 10) === fx.date;
-    rows.push(["当日汇率 FX", complete ? `${fx.baseCurrency}/${fx.quoteCurrency} ${fx.rate} · ${fx.date}` : null]);
+    const displayRate = base === "IDR" && complete ? Number(fx.rate).toPrecision(8) : fx?.rate;
+    rows.push(["当日汇率 FX", complete ? `${fx.baseCurrency}/${fx.quoteCurrency} ${displayRate} · ${fx.date}` : null]);
   }
   return `<div class="timeline">${rows.filter(([, value]) => value != null && value !== "").map(([label, value]) => `<div class="timeline-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join("")}</div>`;
 }

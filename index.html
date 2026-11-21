@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=3e7b04025541833b" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=b940a1d79e3ed957" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=351204354685e3d1" />
 
   </head>
   <body>
@@ -419,7 +419,7 @@
                 <span>统计口径</span>
                 <select id="spkCreditSelect" name="spkCreditSelect" autocomplete="off">
                   <option value="creditAllFull">具名保荐人全部计入</option>
-                  <option value="creditFirstNamed">只计首名保荐人</option>
+                  <option value="creditFirstNamed">只计牵头/首名保荐人</option>
                   <option value="creditEqual">按保荐人数量平分</option>
                 </select>
               </label>
@@ -432,7 +432,7 @@
               <label class="spk-filter-field spk-date-field">
                 <span>日期口径</span>
                 <select id="spkDateFieldSelect" name="spkDateFieldSelect" autocomplete="off">
-                  <option value="stageDate">阶段日（申请中按A1；已上市按上市日/RTO完成日）</option>
+                  <option value="stageDate">阶段日（申请中A1 / 已上市上市日）</option>
                   <option value="a1Date">A1</option>
                   <option value="noticeDate">备案通知书</option>
                   <option value="receivedDate">接收</option>
@@ -588,8 +588,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=0d95ff0dc3b3366c"></script>
-    <script src="sponsor_leaderboard_demo.js?v=da43a6a51ad464b9"></script>
+    <script src="app.js?v=8eae6c637f02dae1"></script>
+    <script src="sponsor_leaderboard_demo.js?v=f45371dceff7a5e8"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
