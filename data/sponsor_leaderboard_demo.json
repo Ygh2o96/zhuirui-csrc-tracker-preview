@@ -1,13 +1,13 @@
 {
   "meta": {
-    "generatedAt": "2026-11-21T09:30:58Z",
-    "sourceGeneratedAt": "2026-11-21T17:30:49+08:00",
+    "generatedAt": "2026-11-21T09:42:07Z",
+    "sourceGeneratedAt": "2026-11-21T17:41:57+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T17:30:49+08:00",
+      "generatedAt": "2026-11-21T17:41:57+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1482,
@@ -4069,8 +4069,8 @@
       "hkexOtherStatusCount": 4.0,
       "listedCount": 116.0,
       "noticeCount": 114.0,
-      "ahCount": 59.0,
-      "hShareCount": 117.0,
+      "ahCount": 60.0,
+      "hShareCount": 116.0,
       "redChipCount": 55.0,
       "deSpacCount": 0,
       "hdrCount": 1.0,
@@ -4086,14 +4086,14 @@
         "total": 116
       },
       "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 39.910757227605,
-      "aShareMarketCapN": 54,
+      "aShareMarketCapRmbBnMedian": 39.22477070121,
+      "aShareMarketCapN": 59,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 55,
+        "estimate": 60,
         "unsupported": 0,
-        "missing": 4,
-        "total": 59
+        "missing": 0,
+        "total": 60
       },
       "applyingAhMarketCapRmbBnSum": 1984.0880614894302,
       "applyingAhMarketCapRmbBnMedian": 30.21124372668,
@@ -4345,14 +4345,14 @@
         "missing": 0,
         "total": 81
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 40.41323956644,
-      "aShareMarketCapN": 59,
+      "aShareMarketCapRmbBnSum": 3368.3707461878403,
+      "aShareMarketCapRmbBnMedian": 39.02535,
+      "aShareMarketCapN": 61,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 59,
+        "estimate": 61,
         "unsupported": 0,
-        "missing": 2,
+        "missing": 0,
         "total": 61
       },
       "applyingAhMarketCapRmbBnSum": 1934.41234457535,
@@ -4599,14 +4599,14 @@
         "missing": 0,
         "total": 55
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 30.219384674609998,
-      "aShareMarketCapN": 38,
+      "aShareMarketCapRmbBnSum": 2138.8034184944504,
+      "aShareMarketCapRmbBnMedian": 30.16139745888,
+      "aShareMarketCapN": 39,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 38,
+        "estimate": 39,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 39
       },
       "applyingAhMarketCapRmbBnSum": 1038.418381432,
@@ -4862,14 +4862,14 @@
         "missing": 0,
         "total": 50
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 34.2247978446,
-      "aShareMarketCapN": 21,
+      "aShareMarketCapRmbBnSum": 922.48476564067,
+      "aShareMarketCapRmbBnMedian": 33.643276997095,
+      "aShareMarketCapN": 22,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 21,
+        "estimate": 22,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 22
       },
       "applyingAhMarketCapRmbBnSum": 561.8795405535099,
@@ -5295,14 +5295,14 @@
         "missing": 0,
         "total": 26
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 22.81703771415,
-      "aShareMarketCapN": 13,
+      "aShareMarketCapRmbBnSum": 589.9612780749801,
+      "aShareMarketCapRmbBnMedian": 20.491854361395,
+      "aShareMarketCapN": 14,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 13,
+        "estimate": 14,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 14
       },
       "applyingAhMarketCapRmbBnSum": 410.85000308737995,
@@ -5549,14 +5549,14 @@
         "missing": 0,
         "total": 24
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 44.7626660579,
-      "aShareMarketCapN": 7,
+      "aShareMarketCapRmbBnSum": 313.15514393958,
+      "aShareMarketCapRmbBnMedian": 20.2127057578,
+      "aShareMarketCapN": 9,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 7,
+        "estimate": 9,
         "unsupported": 0,
-        "missing": 2,
+        "missing": 0,
         "total": 9
       },
       "applyingAhMarketCapRmbBnSum": 225.8403499974,
@@ -6033,14 +6033,14 @@
         "missing": 0,
         "total": 29
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 134.7353683,
-      "aShareMarketCapN": 9,
+      "aShareMarketCapRmbBnSum": 1982.2833354562,
+      "aShareMarketCapRmbBnMedian": 150.43211144572,
+      "aShareMarketCapN": 10,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 9,
+        "estimate": 10,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 10
       },
       "applyingAhMarketCapRmbBnSum": 266.98107462094,
@@ -6286,14 +6286,14 @@
         "missing": 0,
         "total": 19
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 15.490388622600001,
-      "aShareMarketCapN": 2,
+      "aShareMarketCapRmbBnSum": 57.334284506900005,
+      "aShareMarketCapRmbBnMedian": 22.2392230722,
+      "aShareMarketCapN": 3,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 2,
+        "estimate": 3,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 3
       },
       "applyingAhMarketCapRmbBnSum": 22.2392230722,
@@ -6793,14 +6793,14 @@
         "missing": 0,
         "total": 21
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 57.584530103325,
-      "aShareMarketCapN": 12,
+      "aShareMarketCapRmbBnSum": 2209.61119772892,
+      "aShareMarketCapRmbBnMedian": 57.86749030765,
+      "aShareMarketCapN": 13,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 12,
+        "estimate": 13,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 13
       },
       "applyingAhMarketCapRmbBnSum": 414.60776806022,
@@ -7047,13 +7047,13 @@
         "total": 14
       },
       "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 33.48254455314,
-      "aShareMarketCapN": 11,
+      "aShareMarketCapRmbBnMedian": 36.353657627175,
+      "aShareMarketCapN": 12,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 12,
+        "estimate": 13,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 13
       },
       "applyingAhMarketCapRmbBnSum": 338.34558306682,
@@ -9252,14 +9252,14 @@
         "missing": 0,
         "total": 7
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": 24.07319477,
-      "aShareMarketCapN": 3,
+      "aShareMarketCapRmbBnSum": 117.09625041186,
+      "aShareMarketCapRmbBnMedian": 18.23878308165,
+      "aShareMarketCapN": 4,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 3,
+        "estimate": 4,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 4
       },
       "applyingAhMarketCapRmbBnSum": 80.61868424856,
@@ -14915,14 +14915,14 @@
         "missing": 0,
         "total": 3
       },
-      "aShareMarketCapRmbBnSum": null,
-      "aShareMarketCapRmbBnMedian": null,
-      "aShareMarketCapN": 0,
+      "aShareMarketCapRmbBnSum": 6.64532789928,
+      "aShareMarketCapRmbBnMedian": 6.64532789928,
+      "aShareMarketCapN": 1,
       "aShareMarketCapCoverage": {
         "verified": 0,
-        "estimate": 0,
+        "estimate": 1,
         "unsupported": 0,
-        "missing": 1,
+        "missing": 0,
         "total": 1
       },
       "applyingAhMarketCapRmbBnSum": null,
@@ -75157,8 +75157,8 @@
       "listingDate": null,
       "transactionCompletionDate": null,
       "transactionCompletionSourceUrl": null,
-      "issuerType": "H股",
-      "isAH": false,
+      "issuerType": "A+H",
+      "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
         "矿业/资源",
@@ -75167,7 +75167,7 @@
       "csrcIndustryTags": [
         "采矿业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 74.15054846064,
       "listingMarketCapHkdBn": null,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": null,
@@ -75189,45 +75189,39 @@
       "listingMarketCapSampleEligible": false,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
         "anchorDate": "2026-05-25",
-        "anchorSource": "stored_a_share_market_cap_anchor",
-        "priceDate": null,
-        "price": null,
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2026-05-25",
+        "price": 41.76,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": "2026-06-11T09:27:02",
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz000426,day,2026-05-25,2026-05-25,2,bfq",
+        "shares": 1775635739,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-05-25",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22000426%22%29%28TRADE_DATE%3D%272026-05-25%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:36:48+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "74150548460.64",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22000426.SZ%22%29%28END_DATE%3C%3D%272026-05-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2024-12-31",
+        "totalCompanyShares": 1775635739
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
+      "aShareMarketCapRankEligible": true,
       "aShareMarketCapAnchorDate": "2026-05-25",
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapTradeDate": "2026-05-25",
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": 23.0,
@@ -75266,6 +75260,22 @@
         {
           "label": "港交所申请记录",
           "url": "https://www1.hkexnews.hk/ncms/json/eds/appreturned_sehk_e.json"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-05-26/1225329977.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz000426,day,2026-05-25,2026-05-25,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22000426%22%29%28TRADE_DATE%3D%272026-05-25%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22000426.SZ%22%29%28END_DATE%3C%3D%272026-05-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -209858,7 +209868,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 6.64532789928,
       "listingMarketCapHkdBn": 6.601527945646,
       "hkListingSessionClose": {
         "price": "4.750",
@@ -210033,46 +210043,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2023-10-24",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2023-10-24",
+        "price": 11.76,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603906,day,2023-10-24,2023-10-24,2,bfq",
+        "shares": 565078903,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2023-10-24",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22603906%22%29%28TRADE_DATE%3D%272023-10-24%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "6645327899.28",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22603906.SH%22%29%28END_DATE%3C%3D%272023-10-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2022-12-16",
+        "totalCompanyShares": 565078903
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2023-10-24",
+      "aShareMarketCapTradeDate": "2023-10-24",
       "calendarDaysA1ToNotice": 85.0,
       "calendarDaysA1ToListing": 372.0,
       "calendarDaysA1ToReceived": null,
@@ -210122,6 +210125,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2023-10-25/1218139543.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603906,day,2023-10-24,2023-10-24,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22603906%22%29%28TRADE_DATE%3D%272023-10-24%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22603906.SH%22%29%28END_DATE%3C%3D%272023-10-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -210181,7 +210200,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 6.64532789928,
       "listingMarketCapHkdBn": 6.601527945646,
       "hkListingSessionClose": {
         "price": "4.750",
@@ -210356,46 +210375,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2023-10-24",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2023-10-24",
+        "price": 11.76,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603906,day,2023-10-24,2023-10-24,2,bfq",
+        "shares": 565078903,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2023-10-24",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22603906%22%29%28TRADE_DATE%3D%272023-10-24%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "6645327899.28",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22603906.SH%22%29%28END_DATE%3C%3D%272023-10-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2022-12-16",
+        "totalCompanyShares": 565078903
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2023-10-24",
+      "aShareMarketCapTradeDate": "2023-10-24",
       "calendarDaysA1ToNotice": 85.0,
       "calendarDaysA1ToListing": 372.0,
       "calendarDaysA1ToReceived": null,
@@ -210445,6 +210457,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2023-10-25/1218139543.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603906,day,2023-10-24,2023-10-24,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22603906%22%29%28TRADE_DATE%3D%272023-10-24%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22603906.SH%22%29%28END_DATE%3C%3D%272023-10-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -227404,7 +227432,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 12.4043713933,
       "listingMarketCapHkdBn": 12.042168218667648,
       "hkListingSessionClose": {
         "price": "26.600",
@@ -227576,46 +227604,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2024-02-06",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2024-02-06",
+        "price": 54.55,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002865,day,2024-02-06,2024-02-06,2,bfq",
+        "shares": 227394526,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2024-02-06",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002865%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "12404371393.30",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002865.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2023-12-20",
+        "totalCompanyShares": 227394526
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2024-02-06",
+      "aShareMarketCapTradeDate": "2024-02-06",
       "calendarDaysA1ToNotice": 98.0,
       "calendarDaysA1ToListing": 457.0,
       "calendarDaysA1ToReceived": null,
@@ -227676,6 +227697,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2024-02-07/1219110939.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002865,day,2024-02-06,2024-02-06,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002865%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002865.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -227735,7 +227772,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 12.4043713933,
       "listingMarketCapHkdBn": 12.042168218667648,
       "hkListingSessionClose": {
         "price": "26.600",
@@ -227907,46 +227944,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2024-02-06",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2024-02-06",
+        "price": 54.55,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002865,day,2024-02-06,2024-02-06,2,bfq",
+        "shares": 227394526,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2024-02-06",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002865%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "12404371393.30",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002865.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2023-12-20",
+        "totalCompanyShares": 227394526
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2024-02-06",
+      "aShareMarketCapTradeDate": "2024-02-06",
       "calendarDaysA1ToNotice": 98.0,
       "calendarDaysA1ToListing": 457.0,
       "calendarDaysA1ToReceived": null,
@@ -228007,6 +228037,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2024-02-07/1219110939.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002865,day,2024-02-06,2024-02-06,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002865%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002865.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -228066,7 +228112,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 12.4043713933,
       "listingMarketCapHkdBn": 12.042168218667648,
       "hkListingSessionClose": {
         "price": "26.600",
@@ -228238,46 +228284,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2024-02-06",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2024-02-06",
+        "price": 54.55,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002865,day,2024-02-06,2024-02-06,2,bfq",
+        "shares": 227394526,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2024-02-06",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002865%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "12404371393.30",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002865.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2023-12-20",
+        "totalCompanyShares": 227394526
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2024-02-06",
+      "aShareMarketCapTradeDate": "2024-02-06",
       "calendarDaysA1ToNotice": 98.0,
       "calendarDaysA1ToListing": 457.0,
       "calendarDaysA1ToReceived": null,
@@ -228338,6 +228377,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2024-02-07/1219110939.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002865,day,2024-02-06,2024-02-06,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002865%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002865.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -232057,7 +232112,7 @@
       "csrcIndustryTags": [
         "批发和零售业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 5.12447362328,
       "listingMarketCapHkdBn": 6.616605264278736,
       "hkListingSessionClose": {
         "price": "10.680",
@@ -232243,46 +232298,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2024-02-06",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2024-02-06",
+        "price": 13.31,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002803,day,2024-02-06,2024-02-06,2,bfq",
+        "shares": 385009288,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2024-02-06",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002803%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:55+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "5124473623.28",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002803.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2023-10-27",
+        "totalCompanyShares": 385009288
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2024-02-06",
+      "aShareMarketCapTradeDate": "2024-02-06",
       "calendarDaysA1ToNotice": 353.0,
       "calendarDaysA1ToListing": 476.0,
       "calendarDaysA1ToReceived": null,
@@ -232351,6 +232399,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2024-02-07/1219109003.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002803,day,2024-02-06,2024-02-06,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002803%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002803.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -232412,7 +232476,7 @@
       "csrcIndustryTags": [
         "批发和零售业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 5.12447362328,
       "listingMarketCapHkdBn": 6.616605264278736,
       "hkListingSessionClose": {
         "price": "10.680",
@@ -232598,46 +232662,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2024-02-06",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2024-02-06",
+        "price": 13.31,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002803,day,2024-02-06,2024-02-06,2,bfq",
+        "shares": 385009288,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2024-02-06",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002803%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:55+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "5124473623.28",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002803.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2023-10-27",
+        "totalCompanyShares": 385009288
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2024-02-06",
+      "aShareMarketCapTradeDate": "2024-02-06",
       "calendarDaysA1ToNotice": 353.0,
       "calendarDaysA1ToListing": 476.0,
       "calendarDaysA1ToReceived": null,
@@ -232706,6 +232763,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2024-02-07/1219109003.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz002803,day,2024-02-06,2024-02-06,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22002803%22%29%28TRADE_DATE%3D%272024-02-06%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22002803.SZ%22%29%28END_DATE%3C%3D%272024-02-06%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -244952,7 +245025,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 26.104945923,
       "listingMarketCapHkdBn": 32.9796407990392,
       "hkListingSessionClose": {
         "price": "45.540",
@@ -245127,46 +245200,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2025-02-24",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2025-02-24",
+        "price": 60.75,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688234,day,2025-02-24,2025-02-24,2,bfq",
+        "shares": 429711044,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-02-24",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688234%22%29%28TRADE_DATE%3D%272025-02-24%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:53+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "26104945923.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688234.SH%22%29%28END_DATE%3C%3D%272025-02-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-01-13",
+        "totalCompanyShares": 429711044
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2025-02-24",
+      "aShareMarketCapTradeDate": "2025-02-24",
       "calendarDaysA1ToNotice": 108.0,
       "calendarDaysA1ToListing": 177.0,
       "calendarDaysA1ToReceived": null,
@@ -245231,6 +245297,22 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7549184/content.shtml"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-02-25/1222626863.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688234,day,2025-02-24,2025-02-24,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688234%22%29%28TRADE_DATE%3D%272025-02-24%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688234.SH%22%29%28END_DATE%3C%3D%272025-02-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -245293,7 +245375,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 26.104945923,
       "listingMarketCapHkdBn": 32.9796407990392,
       "hkListingSessionClose": {
         "price": "45.540",
@@ -245468,46 +245550,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2025-02-24",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2025-02-24",
+        "price": 60.75,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688234,day,2025-02-24,2025-02-24,2,bfq",
+        "shares": 429711044,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-02-24",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688234%22%29%28TRADE_DATE%3D%272025-02-24%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:53+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "26104945923.00",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688234.SH%22%29%28END_DATE%3C%3D%272025-02-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-01-13",
+        "totalCompanyShares": 429711044
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2025-02-24",
+      "aShareMarketCapTradeDate": "2025-02-24",
       "calendarDaysA1ToNotice": 108.0,
       "calendarDaysA1ToListing": 177.0,
       "calendarDaysA1ToReceived": null,
@@ -245572,6 +245647,22 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7549184/content.shtml"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-02-25/1222626863.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688234,day,2025-02-24,2025-02-24,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688234%22%29%28TRADE_DATE%3D%272025-02-24%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688234.SH%22%29%28END_DATE%3C%3D%272025-02-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -264695,7 +264786,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 26.3535072617,
       "listingMarketCapHkdBn": 26.541180024132476,
       "hkListingSessionClose": {
         "price": "111.000",
@@ -264870,46 +264961,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2025-04-25",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2025-04-25",
+        "price": 184.9,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688052,day,2025-04-25,2025-04-25,2,bfq",
+        "shares": 142528433,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-04-25",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688052%22%29%28TRADE_DATE%3D%272025-04-25%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "26353507261.7",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688052.SH%22%29%28END_DATE%3C%3D%272025-04-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-04-22",
+        "totalCompanyShares": 142528433
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2025-04-25",
+      "aShareMarketCapTradeDate": "2025-04-25",
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 227.0,
       "calendarDaysA1ToReceived": null,
@@ -264974,6 +265058,22 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7564432/content.shtml"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-04-28/1223347487.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688052,day,2025-04-25,2025-04-25,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688052%22%29%28TRADE_DATE%3D%272025-04-25%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688052.SH%22%29%28END_DATE%3C%3D%272025-04-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -265033,7 +265133,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 26.3535072617,
       "listingMarketCapHkdBn": 26.541180024132476,
       "hkListingSessionClose": {
         "price": "111.000",
@@ -265208,46 +265308,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2025-04-25",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2025-04-25",
+        "price": 184.9,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688052,day,2025-04-25,2025-04-25,2,bfq",
+        "shares": 142528433,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-04-25",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688052%22%29%28TRADE_DATE%3D%272025-04-25%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "26353507261.7",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688052.SH%22%29%28END_DATE%3C%3D%272025-04-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-04-22",
+        "totalCompanyShares": 142528433
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2025-04-25",
+      "aShareMarketCapTradeDate": "2025-04-25",
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 227.0,
       "calendarDaysA1ToReceived": null,
@@ -265312,6 +265405,22 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7564432/content.shtml"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-04-28/1223347487.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688052,day,2025-04-25,2025-04-25,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688052%22%29%28TRADE_DATE%3D%272025-04-25%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688052.SH%22%29%28END_DATE%3C%3D%272025-04-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -265371,7 +265480,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 26.3535072617,
       "listingMarketCapHkdBn": 26.541180024132476,
       "hkListingSessionClose": {
         "price": "111.000",
@@ -265546,46 +265655,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2025-04-25",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2025-04-25",
+        "price": 184.9,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688052,day,2025-04-25,2025-04-25,2,bfq",
+        "shares": 142528433,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2025-04-25",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688052%22%29%28TRADE_DATE%3D%272025-04-25%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "26353507261.7",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688052.SH%22%29%28END_DATE%3C%3D%272025-04-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-04-22",
+        "totalCompanyShares": 142528433
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2025-04-25",
+      "aShareMarketCapTradeDate": "2025-04-25",
       "calendarDaysA1ToNotice": 175.0,
       "calendarDaysA1ToListing": 227.0,
       "calendarDaysA1ToReceived": null,
@@ -265650,6 +265752,22 @@
         {
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7564432/content.shtml"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2025-04-28/1223347487.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh688052,day,2025-04-25,2025-04-25,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22688052%22%29%28TRADE_DATE%3D%272025-04-25%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22688052.SH%22%29%28END_DATE%3C%3D%272025-04-25%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -296824,7 +296942,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 721.115798766,
       "listingMarketCapHkdBn": 1170.775438643208,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 1122.9453,
@@ -296993,46 +297111,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2026-01-30",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2026-01-30",
+        "price": 649.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq",
+        "shares": 1111118334,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-30",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:53+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "721115798766",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-12-31",
+        "totalCompanyShares": 1111118334
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2026-01-30",
+      "aShareMarketCapTradeDate": "2026-01-30",
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
@@ -297103,6 +297214,18 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -297162,7 +297285,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 721.115798766,
       "listingMarketCapHkdBn": 1170.775438643208,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 1122.9453,
@@ -297331,46 +297454,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2026-01-30",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2026-01-30",
+        "price": 649.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq",
+        "shares": 1111118334,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-30",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:53+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "721115798766",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-12-31",
+        "totalCompanyShares": 1111118334
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2026-01-30",
+      "aShareMarketCapTradeDate": "2026-01-30",
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
@@ -297441,6 +297557,18 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -297500,7 +297628,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 721.115798766,
       "listingMarketCapHkdBn": 1170.775438643208,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 1122.9453,
@@ -297669,46 +297797,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2026-01-30",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2026-01-30",
+        "price": 649.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq",
+        "shares": 1111118334,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-30",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:53+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "721115798766",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-12-31",
+        "totalCompanyShares": 1111118334
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2026-01-30",
+      "aShareMarketCapTradeDate": "2026-01-30",
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
@@ -297779,6 +297900,18 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -297838,7 +297971,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 721.115798766,
       "listingMarketCapHkdBn": 1170.775438643208,
       "hkListingSessionClose": null,
       "listingMarketCapEstimateHkdBn": 1122.9453,
@@ -298007,46 +298140,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2026-01-30",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2026-01-30",
+        "price": 649.0,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq",
+        "shares": 1111118334,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2026-01-30",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:53+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "721115798766",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2025-12-31",
+        "totalCompanyShares": 1111118334
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2026-01-30",
+      "aShareMarketCapTradeDate": "2026-01-30",
       "calendarDaysA1ToNotice": null,
       "calendarDaysA1ToListing": null,
       "calendarDaysA1ToReceived": null,
@@ -298117,6 +298243,18 @@
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sz300308,day,2026-01-30,2026-01-30,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22300308%22%29%28TRADE_DATE%3D%272026-01-30%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22300308.SZ%22%29%28END_DATE%3C%3D%272026-01-30%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ]
     },
@@ -318919,7 +319057,7 @@
       "csrcIndustryTags": [
         "制造业"
       ],
-      "aShareMarketCapAtA1RmbBn": null,
+      "aShareMarketCapAtA1RmbBn": 6.64532789928,
       "listingMarketCapHkdBn": 6.601527945646,
       "hkListingSessionClose": {
         "price": "4.750",
@@ -319094,46 +319232,39 @@
       "listingMarketCapSampleEligible": true,
       "aShareMarketCapProvenance": {
         "version": 1,
-        "status": "unsupported",
-        "method": "historical_close_x_unverified_shares",
-        "scope": "unverified_share_basis_at_a_price",
-        "anchorDate": null,
-        "anchorSource": null,
-        "priceDate": null,
-        "price": null,
+        "status": "estimate",
+        "method": "unadjusted_close_x_dated_issued_a_shares",
+        "scope": "total_issued_a_shares_at_a_price",
+        "anchorDate": "2023-10-24",
+        "anchorSource": "issuer_dated_h_share_submission",
+        "priceDate": "2023-10-24",
+        "price": 11.76,
         "priceClass": "A",
         "priceCurrency": "CNY",
-        "priceCurrencySource": "legacy_cache_contract_unverified",
-        "priceSource": null,
-        "priceSourceUrl": null,
-        "shares": null,
-        "sharesClass": "unverified",
-        "sharesAsOf": null,
-        "sharesSource": null,
-        "sharesSourceUrl": null,
-        "sharesTiming": "unverified",
-        "retrievedAt": null,
+        "priceCurrencySource": "dated_counter_quote",
+        "priceSource": "Tencent unadjusted daily close",
+        "priceSourceUrl": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603906,day,2023-10-24,2023-10-24,2,bfq",
+        "shares": 565078903,
+        "sharesClass": "issued_A",
+        "sharesAsOf": "2023-10-24",
+        "sharesSource": "Eastmoney dated shares and market capitalization",
+        "sharesSourceUrl": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22603906%22%29%28TRADE_DATE%3D%272023-10-24%27%29&pageSize=1&source=WEB&client=WEB",
+        "sharesTiming": "as_of_price_date",
+        "retrievedAt": "2026-11-21T09:37:52+00:00",
         "valueCurrency": "CNY",
+        "valueCnyExact": "6645327899.28",
         "fxMethod": "none_single_price_currency",
         "fxRate": null,
         "fxDate": null,
-        "validationIssues": [
-          "missing_or_invalid_anchor_date",
-          "missing_or_invalid_price_date",
-          "missing_or_invalid_price",
-          "missing_or_invalid_shares",
-          "missing_or_invalid_market_cap",
-          "share_class_unverified",
-          "share_capital_not_officially_verified",
-          "vendor_price_corporate_action_basis_unverified",
-          "shares_asof_unverified",
-          "price_currency_assumed_from_cache_contract"
-        ]
+        "validationIssues": [],
+        "shareClassSourceUrl": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22603906.SH%22%29%28END_DATE%3C%3D%272023-10-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC",
+        "shareClassStructureDate": "2022-12-16",
+        "totalCompanyShares": 565078903
       },
       "aShareMarketCapSampleEligible": false,
-      "aShareMarketCapRankEligible": false,
-      "aShareMarketCapAnchorDate": null,
-      "aShareMarketCapTradeDate": null,
+      "aShareMarketCapRankEligible": true,
+      "aShareMarketCapAnchorDate": "2023-10-24",
+      "aShareMarketCapTradeDate": "2023-10-24",
       "calendarDaysA1ToNotice": 85.0,
       "calendarDaysA1ToListing": 372.0,
       "calendarDaysA1ToReceived": null,
@@ -319183,6 +319314,22 @@
           "availability": "unverified",
           "freshness": "unchecked",
           "availabilityNote": "未核验 / Unchecked"
+        },
+        {
+          "label": "发行人递表公告 / Issuer submission announcement",
+          "url": "https://static.cninfo.com.cn/finalpage/2023-10-25/1218139543.PDF#page=1"
+        },
+        {
+          "label": "A股未复权收市价 / Unadjusted A-share close",
+          "url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get?param=sh603906,day,2023-10-24,2023-10-24,2,bfq"
+        },
+        {
+          "label": "交易日股本及市值 / Shares and capitalization on the trading date",
+          "url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_VALUEANALYSIS_DET&columns=ALL&filter=%28SECURITY_CODE%3D%22603906%22%29%28TRADE_DATE%3D%272023-10-24%27%29&pageSize=1&source=WEB&client=WEB"
+        },
+        {
+          "label": "A股股份类别及数量 / A-share class breakdown",
+          "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22603906.SH%22%29%28END_DATE%3C%3D%272023-10-24%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
         }
       ],
       "sourceSponsorId": "gtja",
