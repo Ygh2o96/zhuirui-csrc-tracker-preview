@@ -1,13 +1,13 @@
 window.SPONSOR_LEADERBOARD_DEMO_DATA = {
   "meta": {
-    "generatedAt": "2026-11-21T10:00:34Z",
-    "sourceGeneratedAt": "2026-11-21T18:00:33+08:00",
+    "generatedAt": "2026-11-21T10:09:17Z",
+    "sourceGeneratedAt": "2026-11-21T18:09:15+08:00",
     "sourceRecordCount": 858,
     "csrcRegimeEffectiveDate": "2023-03-31",
     "sourceOfTruth": {
       "kind": "csrc_tracker_public_json",
       "path": "data/csrc_tracker_public.json",
-      "generatedAt": "2026-11-21T18:00:33+08:00",
+      "generatedAt": "2026-11-21T18:09:15+08:00",
       "noteZh": "保荐人龙虎榜由监管节奏追踪同一份公开 JSON 派生；除六号牌/SP 容量 enrichment 外，不设独立项目 intake。"
     },
     "projectFactCount": 1482,
@@ -4071,10 +4071,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "noticeCount": 114.0,
       "ahCount": 60.0,
       "hShareCount": 116.0,
-      "redChipCount": 56.0,
+      "redChipCount": 57.0,
       "deSpacCount": 0,
       "hdrCount": 1.0,
-      "otherIssuerTypeCount": 4.0,
+      "otherIssuerTypeCount": 3.0,
       "listingMarketCapHkdBnSum": 7412.156224292493,
       "listingMarketCapHkdBnMedian": 15.95293731812,
       "listingMarketCapN": 116,
@@ -246477,7 +246477,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "listingDate": "2025-08-28",
       "transactionCompletionDate": null,
       "transactionCompletionSourceUrl": null,
-      "issuerType": "其他",
+      "issuerType": "红筹",
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
@@ -246668,6 +246668,22 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
           "checkedAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptAt": "2026-11-20T14:59:57.133911+00:00",
           "lastAttemptState": "available"
+        },
+        {
+          "label": "招股书 · 控股股东与国资股东",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000021.pdf#page=230"
+        },
+        {
+          "label": "配发结果 · 上市时股东持股",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0827/2025082702293.pdf#page=9"
+        },
+        {
+          "label": "翌日披露报表 · 超额配股股份",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0902/2025090201925.pdf#page=1"
+        },
+        {
+          "label": "中期报告 · 主要股东持股",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0925/2026092501065.pdf#page=12"
         }
       ]
     },
