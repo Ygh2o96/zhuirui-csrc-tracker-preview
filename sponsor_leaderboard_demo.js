@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=3993252927dd1552";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=f461c4fbf034e9e2";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
