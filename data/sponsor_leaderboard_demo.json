@@ -54287,8 +54287,8 @@
     },
     {
       "issuerId": "kidswant children products co., ltd.",
-      "issuerName": "Kidswant Children Products Co., Ltd.",
-      "csrcName": "孩子王兒童用品股份有限公司",
+      "issuerName": "Kidswant Digital Technology Co., Ltd.",
+      "csrcName": "孩子王数智科技股份有限公司",
       "hkexListingCompanyName": "",
       "sponsorId": "huatai",
       "sourceSponsorTag": "HUATAI",
@@ -54446,6 +54446,14 @@
         {
           "label": "A股股份类别及数量 / A-share class breakdown",
           "url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_EH_EQUITY&columns=SECUCODE%2CSECURITY_CODE%2CEND_DATE%2CTOTAL_SHARES%2CLISTED_A_SHARES%2CLIMITED_A_SHARES%2CB_FREE_SHARE%2CLIMITED_B_SHARES%2CH_FREE_SHARE%2CLIMITED_H_SHARES%2COTHER_FREE_SHARES&filter=%28SECUCODE%3D%22301078.SZ%22%29%28END_DATE%3C%3D%272025-12-11%27%29&pageSize=1&pageNumber=1&sortColumns=END_DATE&sortTypes=-1&source=HSF10&client=PC"
+        },
+        {
+          "label": "2026-06-25 工商更名公告 / Registered name change",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-06-25/1225386893.PDF"
+        },
+        {
+          "label": "公司章程：中英文名称 / Articles: legal names",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-06-02/1225343949.PDF"
         }
       ]
     },
