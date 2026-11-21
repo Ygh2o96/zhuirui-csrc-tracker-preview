@@ -429,7 +429,7 @@ function issuerTypeInfo(recordOrKey) {
 
 function renderIssuerType(record) {
   const info = issuerTypeInfo(record);
-  return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>`;
+  return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>${record.issuerJurisdictionEvidence ? `<small>注册地 · ${escapeHtml(record.issuerJurisdictionEvidence.jurisdictionZh)}</small>` : ""}`;
 }
 
 function formatMarketCap(record) {
@@ -867,7 +867,25 @@ function renderStatusTags(record) {
   `;
 }
 
-function renderStatusBadge(record) {
+function issuerDocumentSource(source) {
+  if (!source || !/^https:\/\/www1\.hkexnews\.hk\/app\/(sehk|gem)\/\d{4}\/\d+\/documents\/(sehk|gem)\d+(_c)?\.pdf$/.test(source.url)) return "";
+  const pages = (source.pdfPages || []).filter(page => Number.isInteger(page) && page > 0);
+  if (!pages.length) return "";
+  const doc = source.documentType === "PHIP" ? "聆讯后资料集" : "申请版本";
+  return `<a href="${escapeHtml(source.url)}#page=${pages[0]}" target="_blank" rel="noreferrer">${doc} · ${escapeHtml(source.documentDate)} · PDF 第${pages.join("、")}页</a>`;
+}
+
+function renderIssuerDisclosure(record) {
+  const disclosure = record.filingScopeDisclosure;
+  const incorporation = record.issuerJurisdictionEvidence;
+  const filing = disclosure && record.csrcFilingApplicability === "pending"
+    ? `<p>${escapeHtml(disclosure.detailZh)}<br>${escapeHtml(disclosure.detailEn)}<br>${issuerDocumentSource(disclosure.source)}</p>` : "";
+  const domicile = incorporation
+    ? `<p>注册地 / Incorporation · ${escapeHtml(incorporation.jurisdictionZh)} / ${escapeHtml(record.issuerJurisdiction)}<br>${issuerDocumentSource(incorporation.source)}</p>` : "";
+  return filing + domicile;
+}
+
+function renderStatusBadge(record, compact = true) {
   const hkexStatus = record.hkexPublicStatus || "";
   const milestones = {
     Listed: ["已上市", "Listed on HKEX"],
@@ -885,6 +903,7 @@ function renderStatusBadge(record) {
     <span class="status-stack">
       <span class="badge ${escapeHtml(record.status)}"><b>${escapeHtml(labels[0])}</b><small>${escapeHtml(labels[1])}</small></span>
       ${datedFact}
+      ${compact && record.filingScopeDisclosure && record.csrcFilingApplicability === "pending" ? `<small>${escapeHtml(record.filingScopeDisclosure.summaryZh)}</small>` : ""}
       ${renderStatusTags(record)}
     </span>
   `;
@@ -1899,7 +1918,8 @@ function renderDetail(record) {
     <div class="detail-grid">
       <div class="detail-item">
         <span>状态 Status</span>
-        <strong>${renderStatusBadge(record)}</strong>
+        <strong>${renderStatusBadge(record, false)}</strong>
+        ${renderIssuerDisclosure(record)}
         ${record.csrcFilingApplicability && record.csrcFilingApplicability !== "pending" ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需备案 / No filing required", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
         ${record.status === "applicability_pending" ? `<div class="muted">证监会公示中未匹配到本次上市的备案记录。<a href="https://www.csrc.gov.cn/csrc/c101935/zfxxgk_zdgk.shtml" target="_blank" rel="noreferrer">查阅证监会公示</a></div>` : ""}
         ${record.csrcFilingReportingRequired ? `<div>转板后须向证监会报告 / Post-transfer reporting required</div>` : ""}
@@ -2016,7 +2036,7 @@ function renderChrome() {
     meta.sourceMode === "live_snapshot" ? "后端快照" : "限量预览";
   document.getElementById("snapshotMeta").textContent =
     meta.generatedAt
-      ? `${meta.disclaimerZh || "初步自动收集，未人工复核，仅示例"} · 生成时间 ${meta.generatedAt} · ${meta.marketCapNoteZh || ""}`
+      ? `港交所及中国证监会公开资料 · 更新时间 ${meta.generatedAt.replace("T", " ").slice(0, 16)}（香港）`
       : meta.disclaimerZh || meta.marketCapNoteZh || "";
   if (state.view === "tracker") {
     document.getElementById("viewTitle").textContent = trackerTitle();

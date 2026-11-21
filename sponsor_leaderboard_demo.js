@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=34a2227fe977b1c9";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=f0e854894a6a8b10";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -299,17 +299,17 @@ function compactCredit(value) {
 }
 
 function formatCap(value, currency) {
-  if (!isNumber(value) || value <= 0) return "待核实";
+  if (!isNumber(value) || value <= 0) return "—";
   return `${currency}${compactNumber(value, value >= 100 ? 0 : 1)}bn`;
 }
 
 function formatCapPerPerson(value, currency = "HK$") {
-  if (!isNumber(value) || value <= 0) return "待核实";
+  if (!isNumber(value) || value <= 0) return "—";
   return `${currency}${compactNumber(value, value >= 10 ? 1 : 2)}bn/人`;
 }
 
 function formatDays(value, samples) {
-  if (!isNumber(value)) return "待披露";
+  if (!isNumber(value)) return "无可比样本";
   return `${compactNumber(Math.ceil(value), 0)}天${isNumber(samples) ? `（样本 ${samples}）` : ""}`;
 }
 
@@ -336,7 +336,8 @@ function capacityDates(summary, sources, timestamp = false) {
 
 function capacityDateLabel(row, sp, includeCapture = false) {
   if (row.firmScope === "benchmark") return "组内中位 · 日期不汇总";
-  if (!isNumber(sp ? row.sponsorPrincipalCount : row.type6TotalCount)) return "未匹配";
+  if (sp && row.currentSponsorRegister?.registerStatus === "not_listed") return "名册 " + row.currentSponsorRegister.asOf;
+  if (!isNumber(sp ? row.sponsorPrincipalCount : row.type6TotalCount)) return "无对应记录";
   const snapshots = Array.isArray(row.sponsorPrincipalInstitutionSources) ? row.sponsorPrincipalInstitutionSources : [];
   const spDates = Array.isArray(row.sponsorPrincipalSourceDates) ? row.sponsorPrincipalSourceDates : [];
   const source = sp ? capacityDates(row.sponsorPrincipalAsOfDate, [...spDates, ...snapshots.map(s => s?.asOfDate)])
@@ -351,7 +352,7 @@ function capacityDisplay(row) {
   if (!sp && !type6) return { main: "待接入", sub: "暂无匹配 SP / 六号牌数据" };
   const benchmark = row.firmScope === "benchmark";
   const count = v => compactNumber(v, benchmark ? 1 : 0);
-  const main = sp ? (benchmark ? "中位 " : "") + count(row.sponsorPrincipalCount) + " SP" : "SP待补";
+  const main = row.currentSponsorRegister?.registerStatus === "not_listed" ? "未列现行保荐人名册" : sp ? (benchmark ? "中位 " : "") + count(row.sponsorPrincipalCount) + " SP" : "名册无记录";
   const role = (label, n) => isNumber(n) ? label + " " + count(n) : label + "待补";
   const roles = type6 ? [role("六号牌", row.type6TotalCount), role("RO", row.type6ROCount), role("Rep", row.type6RepCount)].join(" / ") : "六号牌待补";
   const dates = benchmark ? "组内中位 · 日期不汇总" : "SP" + capacityDateLabel(row, true) + "；六号牌" + capacityDateLabel(row, false);
@@ -823,6 +824,7 @@ function emptyPkRow(template) {
     aliases: template.aliases || [],
     sponsorNature: template.sponsorNature || "待核",
     natureConfidence: template.natureConfidence,
+    ownershipDisclosure: template.ownershipDisclosure,
     mappingConfidence: template.mappingConfidence,
     firmScope: "empty_filter",
     emptyFilter: true,
@@ -1522,7 +1524,7 @@ function metricCards(rows) {
       },
       {
         label: `${label}已核实上市日总市值 / Verified listing-day equity value`,
-        value: listedMcapLeader ? listedMcapLeader.displayNameZh : "待核实",
+        value: listedMcapLeader ? listedMcapLeader.displayNameZh : "—",
         note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")} · ${marketCapCoverageText(listedMcapLeader)}` : "无已核实上市日总市值样本",
       },
       {
@@ -1578,7 +1580,7 @@ function metricCards(rows) {
     },
     {
       label: "已核实上市日总市值 / Verified listing-day equity value",
-      value: listedMcapLeader ? listedMcapLeader.displayNameZh : "待核实",
+      value: listedMcapLeader ? listedMcapLeader.displayNameZh : "—",
       note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")} · ${marketCapCoverageText(listedMcapLeader)}` : "无已核实上市日总市值样本",
     },
     {
@@ -1654,7 +1656,7 @@ function rowHtml(row, rank, showMarketCap) {
   const type6 = capacityDisplay(row);
   const lifecycle = lifecycleDisplay(row);
   const marketCapCell = showMarketCap
-    ? `<td data-label="${escapeHtml(marketCapHeaderText())}"><span class="number">${escapeHtml(marketCap.main)}</span><span class="sub-number">${escapeHtml(marketCap.sub)}</span></td>`
+    ? `<td data-label="${escapeHtml(marketCapHeaderText())}"><span class="number">${escapeHtml(marketCap.main)}</span>${row.listingMarketCapCoverage?.verified > 0 && row.listingMarketCapCoverage.verified < row.listingMarketCapCoverage.total && marketCap.sub.includes("上市日") ? `<span>（${row.listingMarketCapCoverage.verified}/${row.listingMarketCapCoverage.total} 项）</span>` : ""}</td>`
     : "";
   const scopePill =
     row.firmScope === "rollup"
@@ -1687,9 +1689,9 @@ function rowHtml(row, rank, showMarketCap) {
     <td data-label="申请中"><span class="number">${compactCredit(row.activeCount)}</span><small class="sub-number">${escapeHtml(applicationBreakdown(row))}</small></td>
     <td data-label="已上市"><span class="number">${compactCredit(row.listedCount)}</span></td>
     <td data-label="A+H"><span class="number">${compactCredit(row.ahCount)}</span></td>
-    <td data-label="排名指标"><span class="number">${escapeHtml(primary.main)}</span><span class="sub-number">${escapeHtml(primary.sub)}</span></td>
+    <td data-label="排名指标"><span class="number">${escapeHtml(primary.main)}</span></td>
     ${marketCapCell}
-    <td data-label="${escapeHtml(lifecycleHeaderText())}"><span class="number">${escapeHtml(lifecycle.main)}</span><span class="sub-number">${escapeHtml(lifecycle.sub)} · ${escapeHtml(lifecycleCellNote(row))}</span></td>
+    <td data-label="${escapeHtml(lifecycleHeaderText())}"><span class="number">${escapeHtml(lifecycle.main)}</span></td>
     <td data-label="行业">${industries}</td>
   </tr>`;
 }
@@ -1824,6 +1826,16 @@ function pkBarStyle(metric, side) {
   return `style="--spk-bar:${pct.toFixed(1)}%"`;
 }
 
+function renderSponsorOwnership(row) {
+  const disclosure = row.ownershipDisclosure;
+  if (!disclosure) return "";
+  const source = disclosure.source;
+  if (!source || !/^https:\/\/www1?\.hkexnews\.hk\/listedco\/listconews\/(sehk|gem)\/\d{4}\/\d{4}\/\d+(_c)?\.pdf$/.test(source.url)) return "";
+  const page = source.pdfPages?.[0];
+  if (!Number.isInteger(page) || page < 1) return "";
+  return `<p>${escapeHtml(disclosure.detailZh)} <a href="${escapeHtml(source.url)}#page=${page}" target="_blank" rel="noreferrer">股权披露 · ${escapeHtml(source.documentDate)} · PDF 第${page}页</a></p>`;
+}
+
 function renderPkCard(row, sideLabel) {
   if (!row) {
     return `<article class="spk-card"><span>${escapeHtml(sideLabel)}</span><strong>待选择</strong></article>`;
@@ -1941,7 +1953,7 @@ function drawerStats(row) {
     ["公开申请中项目", compactCredit(row.activeCount)],
     ["已上市项目", compactCredit(row.listedCount)],
     ["A+H项目", compactCredit(row.ahCount)],
-    ["SP人数", isNumber(row.sponsorPrincipalCount) ? `${compactNumber(row.sponsorPrincipalCount, 0)}人` : "待接入"],
+    ["SP人数", isNumber(row.sponsorPrincipalCount) ? `${compactNumber(row.sponsorPrincipalCount, 0)}人` : row.currentSponsorRegister?.registerStatus === "not_listed" ? "未列现行保荐人名册" : "无对应记录"],
     ["六号牌人数", isNumber(row.type6TotalCount) ? `${compactNumber(row.type6TotalCount, 0)}人` : "待接入"],
     ["每名SP负责公开申请中", isNumber(row.activeProjectsPerSponsorPrincipal) ? `${formatRatio(row.activeProjectsPerSponsorPrincipal)}个` : "待披露"],
     ["每个公开申请中项目配置Rep", isNumber(row.type6RepPerActiveProject) ? `${formatRatio(row.type6RepPerActiveProject)}名/项目` : "待披露"],
@@ -1992,27 +2004,27 @@ function listingComponentDetails(provenance) {
   const components = Array.isArray(provenance.components)
     ? provenance.components.filter((item) => item && typeof item === "object" && !Array.isArray(item)) : [];
   const positiveInput = (value) => (typeof value === "number" || (typeof value === "string" && value.trim()))
-    && Number.isFinite(Number(value)) && Number(value) > 0 ? String(value) : "待核实";
+    && Number.isFinite(Number(value)) && Number(value) > 0 ? String(value) : "—";
   const detailLine = (text, links = "") => `<small class="market-cap-detail">${escapeHtml(text)}${links ? ` · ${links}` : ""}</small>`;
-  const lines = [detailLine(`估值锚定日 ${provenance.anchorDate || "待核实"}`,
+  const lines = [detailLine(`估值锚定日 ${provenance.anchorDate || "—"}`,
     valuationEvidenceLinks([["股类依据 / Share-class evidence", provenance.coverageEvidence]]))];
-  if (!components.length) lines.push(detailLine("股类估值明细待核实 / Component valuation unavailable"));
+  if (!components.length) lines.push(detailLine("未取得上市日各类股份的完整估值"));
   const shareClasses = new Map([["A", "A股"], ["H", "H股"], ["ordinary", "普通股 / Ordinary shares"]]);
   for (const component of components) {
-    const shareClass = shareClasses.get(component.class) || component.class || "股类待核实";
+    const shareClass = shareClasses.get(component.class) || component.class || "股类—";
     const details = [
-      `${shareClass} ${component.securityCode || "代码待核实"}`,
-      `收盘价 / Close ${component.priceCurrency || "币种待核实"} ${positiveInput(component.price)}`,
-      `价格日 / Price date ${component.priceDate || "待核实"}`,
+      `${shareClass} ${component.securityCode || "代码—"}`,
+      `收盘价 / Close ${component.priceCurrency || "币种—"} ${positiveInput(component.price)}`,
+      `价格日 / Price date ${component.priceDate || "—"}`,
       `股数（不含库存股） / Shares ex treasury ${positiveInput(component.sharesExTreasury)}`,
-      `股本日 / Share date ${component.sharesAsOf || "待核实"}`,
+      `股本日 / Share date ${component.sharesAsOf || "—"}`,
     ];
     if (component.priceStatus === "verified"
         && component.priceDatePolicy === "latest_exchange_session_on_or_before_valuation_date") {
       details.push("估值日或之前最近交易日收盘价 / Latest exchange close on or before valuation date");
     }
-    if (component.priceStatus !== "verified") details.push("价格待核实 / Price unverified");
-    if (component.sharesStatus !== "verified") details.push("股本待核实 / Shares unverified");
+    if (component.priceStatus !== "verified") details.push("缺少当日收盘价 / Close unavailable");
+    if (component.sharesStatus !== "verified") details.push("缺少当日股本 / Shares unavailable");
     const calendarEvidence = Array.isArray(component.priceCalendarEvidence) ? component.priceCalendarEvidence : [];
     const links = valuationEvidenceLinks([["价格来源 / Price source", component.priceEvidence],
       ["股本来源 / Share source", component.sharesEvidence],
@@ -2021,7 +2033,7 @@ function listingComponentDetails(provenance) {
   }
   const fx = provenance.fx && typeof provenance.fx === "object" && !Array.isArray(provenance.fx) ? provenance.fx : null;
   if (fx || components.some((component) => component.class === "A")) {
-    const text = `汇率 / FX ${fx?.baseCurrency || "待核实"}/${fx?.quoteCurrency || "待核实"} ${positiveInput(fx?.rate)} · 汇率日 / FX date ${fx?.date || "待核实"}`;
+    const text = `汇率 / FX ${fx?.baseCurrency || "—"}/${fx?.quoteCurrency || "—"} ${positiveInput(fx?.rate)} · 汇率日 / FX date ${fx?.date || "—"}`;
     lines.push(detailLine(text, valuationEvidenceLinks([["汇率来源 / FX source", fx?.evidence], ["汇率单位 / FX units", fx?.unitEvidence]])));
   }
   return lines.join("\n");
@@ -2035,7 +2047,7 @@ function projectMarketCapDetail(fact, kind) {
   const currency = listing ? "HK$" : "¥";
   const amount = status === "verified" ? `已核实 / Verified ${formatCap(value, currency)}`
     : estimateValue !== null ? `估算 / Estimate ${formatCap(estimateValue, currency)} · ${value !== null ? "纳入估算排名 / Included in estimate ranking" : `${listing ? "总市值口径未核实 · " : ""}${status === "unsupported" ? "依据不足，" : ""}未纳入统计`}`
-    : "待核实 · 缺少金额";
+    : "无可计算金额";
   const retainedEstimate = status === "verified" && estimateValue !== null && estimateValue !== value
     ? `<small class="market-cap-detail">另存估算 ${escapeHtml(formatCap(estimateValue, currency))} · 该估算日期未提供 · 未纳入统计</small>` : "";
   if (listing && (provenance.version === 2 || Array.isArray(provenance.components))) {
@@ -2043,13 +2055,13 @@ function projectMarketCapDetail(fact, kind) {
       ${listingComponentDetails(provenance)}${retainedEstimate}`;
   }
   const details = [
-    `估值锚定日 ${provenance.anchorDate || fact[`${kind}MarketCapAnchorDate`] || "待核实"}`,
-    `价格日 ${provenance.priceDate || fact[`${kind}MarketCapTradeDate`] || "待核实"}`,
-    `股本日 ${provenance.sharesAsOf || "待核实"}`,
+    `估值锚定日 ${provenance.anchorDate || fact[`${kind}MarketCapAnchorDate`] || "—"}`,
+    `价格日 ${provenance.priceDate || fact[`${kind}MarketCapTradeDate`] || "—"}`,
+    `股本日 ${provenance.sharesAsOf || "—"}`,
   ];
   if (provenance.priceCurrency) details.push(`价格币种 ${provenance.priceCurrency}`);
   if (listing && (fact.isAH || provenance.fxDate || isNumber(provenance.fxRate))) {
-    details.push(`汇率 ${isNumber(provenance.fxRate) && provenance.fxRate > 0 ? provenance.fxRate : "待核实"} · 汇率日 ${provenance.fxDate || "待核实"}`);
+    details.push(`汇率 ${isNumber(provenance.fxRate) && provenance.fxRate > 0 ? provenance.fxRate : "—"} · 汇率日 ${provenance.fxDate || "—"}`);
   }
   const scopeLabels = {
     unverified_share_basis_at_hk_price: "港股价格 × 未核实类别股本",
@@ -2171,7 +2183,8 @@ function openDrawer(sponsorId) {
   const principalSources = capacitySourcePills(row, "sponsorPrincipal");
   const type6Sources = capacitySourcePills(row, "type6");
   els.drawerContent.innerHTML = `<h3>${escapeHtml(row.displayNameZh)}</h3>
-    <p class="drawer-subtitle">${escapeHtml(row.displayNameEn)} · ${escapeHtml(row.sponsorNature || "待核")}</p>
+    <p class="drawer-subtitle">${escapeHtml(row.displayNameEn)} · ${escapeHtml(row.sponsorNature || "未披露")}</p>
+    ${renderSponsorOwnership(row)}
     <div class="drawer-pills">${legalNames}${registerLink}</div>
     <div class="drawer-summary">${drawerStats(row)}</div>
     <h4>SP · ${escapeHtml(capacityDateLabel(row, true, true))}</h4>
