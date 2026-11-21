@@ -27096,7 +27096,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "餐饮/连锁餐饮",
+        "旅游度假运营",
         "住宿和餐饮业"
       ],
       "csrcIndustryTags": [
@@ -27241,7 +27241,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "餐饮/连锁餐饮",
+        "旅游度假运营",
         "住宿和餐饮业"
       ],
       "csrcIndustryTags": [
@@ -27386,7 +27386,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": false,
       "specialListingRoute": null,
       "industryTags": [
-        "餐饮/连锁餐饮",
+        "旅游度假运营",
         "住宿和餐饮业"
       ],
       "csrcIndustryTags": [
@@ -77732,8 +77732,9 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": false,
       "specialListingRoute": "introduction",
       "industryTags": [
-        "餐饮/连锁餐饮",
         "客运/出行/共享交通",
+        "文旅运营",
+        "酒店运营",
         "交通运输、仓储和邮政业"
       ],
       "csrcIndustryTags": [
@@ -121135,7 +121136,7 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "isAH": true,
       "specialListingRoute": null,
       "industryTags": [
-        "餐饮/连锁餐饮",
+        "酒店运营",
         "住宿和餐饮业"
       ],
       "csrcIndustryTags": [
