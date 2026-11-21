@@ -34,9 +34,9 @@ const statusLabels = {
   regulator_opinion: ["征询监管意见中", "Regulator opinion"],
   supplement_requested: ["补充材料", "Supplement requested"],
   csrc_received: ["已接收", "CSRC received"],
-  waiting_received: ["尚未见接收公示", "No public receipt yet"],
+  waiting_received: ["尚未接收", "No public receipt yet"],
   not_required: ["无需备案", "Not required"],
-  applicability_pending: ["本次上市暂无公开备案进度", "No public filing update for this listing"],
+  applicability_pending: ["无公开备案记录", "No public filing record"],
   review_pending: ["待披露", "Pending"],
   pending_match: ["待披露", "Pending"]
 };
@@ -827,7 +827,7 @@ const tagDictionary = {
   "RTO": { en: "Reverse takeover", title: "Reverse takeover; excluded from ordinary IPO duration statistics / 反向收购，不计入普通IPO周期统计", cls: "info-tag" },
   "RTO已完成": { en: "RTO completed", title: "Official completion announcement; the completion date is separate from the original IPO date / 官方公告确认交易完成；完成日与首次IPO日分别记录", cls: "info-tag" },
   "待HKEX公开": { en: "HKEX AP not public", title: "Official CSRC notice exists, but no public HKEX AP/listing row is currently matched; likely confidential route / 已有官方备案通知书，但暂未匹配到公开HKEX AP或上市行，通常为密交路径", cls: "info-tag" },
-  "无需备案": { en: "Filing N/A", title: "No separate filing required for this listing event; see the applicability basis / 本次上市事项无需另行备案，具体依据见适用性说明", cls: "info-tag" },
+  "无需备案": { en: "Filing N/A", title: "No filing required for this listing event; see the applicability basis / 本次上市事项无需备案，具体依据见适用性说明", cls: "info-tag" },
   "制度前A1": { en: "Pre-regime A1", title: "All A1 cycles predate the CSRC filing regime effective date 2023-03-31 / 全部A1周期早于备案新规生效日", cls: "info-tag" },
   "A1已失效": { en: "A1 lapsed", title: "HKEX application lapsed; CSRC filing remains standing and a refiling is typical / 港交所申请已失效，备案仍然有效，通常会重新递交", cls: "inactive-tag" },
   "已撤回": { en: "Withdrawn", title: "HKEX application withdrawn / 港交所申请已撤回", cls: "inactive-tag" },
@@ -872,13 +872,22 @@ function renderStatusTags(record) {
 
 function renderStatusBadge(record) {
   const hkexStatus = record.hkexPublicStatus || "";
-  const hkexLabels = {Listed: "已上市", Active: "申请处理中", Lapsed: "申请已失效", Withdrawn: "已撤回", Rejected: "被拒绝"};
-  const hkexFact = record.status === "applicability_pending" && hkexLabels[hkexStatus]
-    ? `<small>港交所 · ${escapeHtml(hkexLabels[hkexStatus])}${record.hkexListingDate ? " · " + escapeHtml(record.hkexListingDate) : ""}</small>` : "";
+  const milestones = {
+    Listed: ["已上市", "Listed on HKEX"],
+    Active: ["港交所申请处理中", "Active HKEX application"],
+    Lapsed: ["港交所申请已失效", "HKEX application lapsed"],
+    Withdrawn: ["已撤回港交所申请", "HKEX application withdrawn"],
+    Rejected: ["港交所已拒绝申请", "HKEX application rejected"],
+  };
+  const milestone = record.status === "applicability_pending" ? milestones[hkexStatus] : null;
+  const labels = milestone || [statusLabel(record.status), statusLabel(record.status, 1)];
+  const hkexDate = hkexStatus === "Listed" ? record.hkexListingDate : record.currentA1Date;
+  const datedFact = milestone && hkexDate
+    ? `<small>${hkexStatus === "Listed" ? "上市" : "递表"} · ${escapeHtml(hkexDate)}</small>` : "";
   return `
     <span class="status-stack">
-      <span class="badge ${escapeHtml(record.status)}"><b>${escapeHtml(statusLabel(record.status))}</b><small>${escapeHtml(statusLabel(record.status, 1))}</small></span>
-      ${hkexFact}
+      <span class="badge ${escapeHtml(record.status)}"><b>${escapeHtml(labels[0])}</b><small>${escapeHtml(labels[1])}</small></span>
+      ${datedFact}
       ${renderStatusTags(record)}
     </span>
   `;
@@ -1706,6 +1715,43 @@ function renderListingEconomics(record) {
   return '<div class="detail-item listing-economics"><h3>发行规模 / 承销佣金测算<small>Offer size &amp; estimated underwriting commission</small></h3>' + body + "</div>";
 }
 
+function renderTransactionDisclosures(record) {
+  const event = record.transactionDisclosures;
+  if (!event) return "";
+  const rows = [];
+  const row = (label, value) => rows.push(
+    `<div class="timeline-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`
+  );
+  let title;
+  if (event.kind === "reverse_takeover_filing_notice") {
+    title = "反向收购备案 / Reverse takeover filing";
+    row("通知书收件人 / Addressee", event.recipient);
+    row("备案通知书 / CSRC notice", event.noticeNumber);
+    row("通知书落款 / Signed", formatDate(event.signedDate));
+    row("证监会公布 / Published", formatDate(event.publishedDate));
+    row("反向收购完成 / Merger completed", formatDate(event.completionDate));
+  } else if (event.kind === "gem_board_transfer") {
+    title = "GEM 转主板 / Board transfer";
+    row("股票代码 / Stock codes", `GEM ${event.gemCode} → 主板 ${event.stockCode}`);
+    row("向港交所申请转板 / Transfer application", formatDate(event.applicationDate));
+    if (event.resubmissionDate) row("再次递交转板申请 / Resubmission", formatDate(event.resubmissionDate));
+    row("港交所原则批准 / HKEX approval in principle", formatDate(event.approvalInPrincipleDate));
+    row("转板公告 / Announcement published", formatDate(event.announcementPublishedDate));
+    row("主板开始买卖 / Main Board trading began", formatDate(event.mainBoardTradingDate));
+    if (event.reportDisclosure) {
+      const report = event.reportDisclosure;
+      const label = report.status === "intended" ? "公司拟于转板完成并公告后三个工作日内向证监会报告" :
+        "公司披露须于转板完成并公告后三个工作日内向证监会报告";
+      row("转板后报告 / Post-transfer report", label);
+      row("实际提交日期 / Actual submission date", "尚无公开确认 / Unconfirmed");
+    }
+  } else return "";
+  const links = Object.values(event.sources).map(source =>
+    `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.locator)}</a>`
+  ).join(" · ");
+  return `<div class="detail-item"><span>${escapeHtml(title)}</span><div class="timeline">${rows.join("")}</div><small class="source-list">${links}</small></div>`;
+}
+
 function renderDetail(record) {
   const detail = document.getElementById("issuerDetail");
   if (!record) {
@@ -1844,9 +1890,10 @@ function renderDetail(record) {
       <div class="detail-item">
         <span>状态 Status</span>
         <strong>${renderStatusBadge(record)}</strong>
-        ${record.csrcFilingApplicability && record.csrcFilingApplicability !== "pending" ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需另行备案 / No separate filing", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
+        ${record.csrcFilingApplicability && record.csrcFilingApplicability !== "pending" ? `<div class="muted">备案适用性 Filing scope: ${escapeHtml({required: "适用 / Applicable", not_required: "无需备案 / No filing required", pending: "暂无核实资料 / Unconfirmed"}[record.csrcFilingApplicability] || "")}</div>` : ""}
+        ${record.status === "applicability_pending" ? `<div class="muted">证监会公示中未匹配到本次上市的备案记录。<a href="https://www.csrc.gov.cn/csrc/c101935/zfxxgk_zdgk.shtml" target="_blank" rel="noreferrer">查阅证监会公示</a></div>` : ""}
         ${record.csrcFilingReportingRequired ? `<div>转板后须向证监会报告 / Post-transfer reporting required</div>` : ""}
-        ${record.csrcFilingApplicabilityReason && record.csrcFilingApplicability !== "pending" ? `<details><summary>适用依据 Basis</summary><p>${escapeHtml(record.csrcFilingApplicabilityReason)}</p>${(record.csrcFilingApplicabilitySourceUrls || []).filter((url) => /^https:\/\//.test(url)).map((url) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">来源 Source</a>`).join(" · ")}</details>` : ""}
+        ${record.csrcFilingApplicabilityReason && record.csrcFilingApplicability !== "pending" ? `<details><summary>备案依据 Filing basis</summary>${record.csrcFilingApplicabilityReasonZh ? `<p>${escapeHtml(record.csrcFilingApplicabilityReasonZh)}</p>` : ""}<p>${escapeHtml(record.csrcFilingApplicabilityReason)}</p>${record.csrcFilingEvidenceLocator ? `<p>${escapeHtml(record.csrcFilingEvidenceLocator)}</p>` : ""}${(record.csrcFilingApplicabilitySourceUrls || []).filter((url) => /^https:\/\//.test(url)).map((url) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">来源 Source</a>`).join(" · ")}</details>` : ""}
       </div>
       <div class="detail-item">
         <span>时间线 Timeline</span>
@@ -1863,7 +1910,7 @@ function renderDetail(record) {
           <div class="timeline-row"><span>${isLaterCycleReceived(record) ? "后续备案轮次接收 Later-cycle received" : (record.csrcCurrentReceivedDateIsAsOf ? "当前接收状态 Current received status" : "当前接收 Current received")}</span><strong>${renderReceivedDateValue(record.csrcCurrentReceivedDate, record.csrcCurrentReceivedDateIsAsOf)}</strong></div>
           <div class="timeline-row"><span>${record.noticeSupersededByCurrentFiling ? "历史备案通知书 Historical CSRC notice" : "备案通知书 CSRC notice"}</span><strong>${renderNoticeCell(record)}</strong></div>
           ${record.noticePublishedDate && record.noticePublishedDate !== record.noticeDate ? `<div class="timeline-row"><span>通知网页发布日期 Notice publication</span><strong>${formatDate(record.noticePublishedDate)}</strong></div>` : ""}
-          ${record.transactionCompletionDate ? `<div class="timeline-row"><span>反向收购完成 RTO completion</span><strong>${formatDate(record.transactionCompletionDate)}</strong></div>` : ""}
+          ${record.transactionCompletionDate && record.transactionDisclosures?.kind !== "reverse_takeover_filing_notice" ? `<div class="timeline-row"><span>反向收购完成 RTO completion</span><strong>${formatDate(record.transactionCompletionDate)}</strong></div>` : ""}
           ${listedTimelineRows}
         </div>
       </div>
@@ -1903,6 +1950,7 @@ function renderDetail(record) {
         <span>保荐人 Sponsors</span>
         <div class="sponsor-detail-list">${sponsorList || "<span>待抽取</span>"}</div>
       </div>
+      ${renderTransactionDisclosures(record)}
       ${renderListingFeeTerms(record)}
       ${renderListingEconomics(record)}
       <div class="detail-item">
