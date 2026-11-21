@@ -62153,6 +62153,10 @@ window.SPONSOR_LEADERBOARD_DEMO_DATA = {
       "statusTags": [],
       "sourceLinks": [
         {
+          "label": "2026-11-04 延迟发售及上市 / Offering and listing postponed",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1104/2026110400409.pdf#page=2"
+        },
+        {
           "label": "HKEX申请版本 · 最近核查未确认 / Latest check inconclusive",
           "url": "https://www1.hkexnews.hk/app/sehk/2026/108622/documents/sehk26060801665.pdf",
           "originalLabel": "HKEX申请版本",
