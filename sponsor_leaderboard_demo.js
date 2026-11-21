@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=04ebe81117d94f03";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=c85e3443c4b75020";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -707,9 +707,9 @@ function aggregateFacts(facts, stage = state.stage) {
       type6RepPerActiveProject: personnelPerProject(type6RepCount, activeCount),
       activeProjectsPerType6Rep: type6RepCount && type6RepCount > 0 ? activeCount / type6RepCount : null,
       listingMarketCapPerType6TotalHkdBn:
-        listingCaps.n > 0 && type6TotalCount && type6TotalCount > 0 ? listingCaps.sum / type6TotalCount : null,
+        isNumber(listingCaps.sum) && type6TotalCount > 0 ? listingCaps.sum / type6TotalCount : null,
       listingMarketCapPerSponsorPrincipalHkdBn:
-        listingCaps.n > 0 && sponsorPrincipalCount && sponsorPrincipalCount > 0 ? listingCaps.sum / sponsorPrincipalCount : null,
+        isNumber(listingCaps.sum) && sponsorPrincipalCount > 0 ? listingCaps.sum / sponsorPrincipalCount : null,
       topIndustries: topIndustries(sponsorFacts),
     });
   }
@@ -767,6 +767,11 @@ function buildBenchmarkRow(group, sourceRows) {
   };
   for (const key of BENCHMARK_MEDIAN_FIELDS) {
     row[key] = median(rows.map((item) => item[key]).filter(isNumber));
+  }
+  if (hasPartialListingValue(rows)) {
+    for (const field of ["listingMarketCapHkdBnSum", "listingMarketCapPerType6TotalHkdBn", "listingMarketCapPerSponsorPrincipalHkdBn"]) {
+      row[field] = null;
+    }
   }
   row.listingMarketCapN = countRowsWithNumber(rows, "listingMarketCapHkdBnSum");
   row.aShareMarketCapN = countRowsWithNumber(rows, "aShareMarketCapRmbBnSum");
@@ -1459,6 +1464,11 @@ function marketCapDisplay(row) {
   };
 }
 
+function hasPartialListingValue(rows) {
+  return rows.some(row => row.firmScope !== "rollup" && row.listingMarketCapCoverage?.total > 0
+    && !isNumber(row.listingMarketCapHkdBnSum));
+}
+
 function metricCards(rows) {
   const MIN_ACTIVE_PROJECTS = 8;
   const MIN_MARKET_CAP_PROJECTS = 3;
@@ -1473,7 +1483,8 @@ function metricCards(rows) {
   const repLeanLeader = [...comparableRows]
     .filter((row) => isNumber(row.type6RepPerActiveProject) && row.activeCount >= MIN_ACTIVE_PROJECTS)
     .sort((a, b) => a.type6RepPerActiveProject - b.type6RepPerActiveProject || b.activeCount - a.activeCount)[0];
-  const mcapPerSpLeader = [...comparableRows]
+  const listingValueRows = hasPartialListingValue(comparableRows) ? [] : comparableRows;
+  const mcapPerSpLeader = [...listingValueRows]
     .filter(
       (row) =>
         isNumber(row.listingMarketCapPerSponsorPrincipalHkdBn) &&
@@ -1484,14 +1495,14 @@ function metricCards(rows) {
         b.listingMarketCapPerSponsorPrincipalHkdBn - a.listingMarketCapPerSponsorPrincipalHkdBn ||
         b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum,
     )[0];
-  const mcapPerTotalLeader = [...comparableRows]
+  const mcapPerTotalLeader = [...listingValueRows]
     .filter(
       (row) =>
         isNumber(row.listingMarketCapPerType6TotalHkdBn) &&
         row.listingMarketCapN >= MIN_MARKET_CAP_PROJECTS,
     )
     .sort((a, b) => b.listingMarketCapPerType6TotalHkdBn - a.listingMarketCapPerType6TotalHkdBn || b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum)[0];
-  const listedMcapLeader = [...comparableRows]
+  const listedMcapLeader = [...listingValueRows]
     .filter((row) => row.listingMarketCapHkdBnSum > 0)
     .sort((a, b) => b.listingMarketCapHkdBnSum - a.listingMarketCapHkdBnSum || b.listingMarketCapN - a.listingMarketCapN)[0];
   const projectLeader = [...comparableRows].filter((row) => row.projectCount > 0).sort((a, b) => b.projectCount - a.projectCount || b.activeCount - a.activeCount)[0];
@@ -1517,7 +1528,7 @@ function metricCards(rows) {
       },
       {
         label: `${label}已核实上市日总市值 / Verified listing-day equity value`,
-        value: listedMcapLeader ? listedMcapLeader.displayNameZh : "—",
+        value: listedMcapLeader?.displayNameZh,
         note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "无已核实上市日总市值样本",
       },
       {
@@ -1526,7 +1537,7 @@ function metricCards(rows) {
         note: timingLeader ? `${formatDays(timingLeader.listedLifecycleAverageDays)} · 仅已上市项目` : "需至少5个已上市样本",
       },
     ];
-    return cards
+    return cards.filter(card => card.value)
       .map(
         (card) => `<article class="metric-card">
           <span>${escapeHtml(card.label)}</span>
@@ -1559,21 +1570,21 @@ function metricCards(rows) {
     },
     {
       label: "SP人均已核实上市日总市值 / Verified listing-day equity value per SP",
-      value: mcapPerSpLeader ? mcapPerSpLeader.displayNameZh : "样本不足",
+      value: mcapPerSpLeader?.displayNameZh,
       note: mcapPerSpLeader
         ? `每名SP对应 ${formatCapPerPerson(mcapPerSpLeader.listingMarketCapPerSponsorPrincipalHkdBn)} 已核实上市日总市值`
         : `需有SP人数及至少${MIN_MARKET_CAP_PROJECTS}个已核实上市日总市值样本`,
     },
     {
       label: "六号牌人均已核实上市日总市值 / Verified listing-day equity value per Type 6",
-      value: mcapPerTotalLeader ? mcapPerTotalLeader.displayNameZh : "样本不足",
+      value: mcapPerTotalLeader?.displayNameZh,
       note: mcapPerTotalLeader
         ? `每名六号牌持牌人员对应 ${formatCapPerPerson(mcapPerTotalLeader.listingMarketCapPerType6TotalHkdBn)} 已核实上市日总市值`
         : `需有六号牌人数及至少${MIN_MARKET_CAP_PROJECTS}个已核实上市日总市值样本`,
     },
     {
       label: "已核实上市日总市值 / Verified listing-day equity value",
-      value: listedMcapLeader ? listedMcapLeader.displayNameZh : "—",
+      value: listedMcapLeader?.displayNameZh,
       note: listedMcapLeader ? `${formatCap(listedMcapLeader.listingMarketCapHkdBnSum, "HK$")}` : "无已核实上市日总市值样本",
     },
     {
@@ -1582,7 +1593,7 @@ function metricCards(rows) {
       note: timingLeader ? `${formatDays(timingLeader.listedLifecycleAverageDays)} · 仅已上市项目` : "需至少5个已上市样本",
     },
   ];
-  return cards
+  return cards.filter(card => card.value)
     .map(
       (card) => `<article class="metric-card">
         <span>${escapeHtml(card.label)}</span>
@@ -1657,6 +1668,9 @@ function metricRanks(rows) {
   const values = rows.filter((row) => row.firmScope !== "rollup" && !missingSortValue(row, key, metricValue(row, key)))
     .map((row) => canonical(metricValue(row, key))).sort((a, b) => metricSortAsc(key) ? a - b : b - a);
   const positions = new Map();
+  if (key.startsWith("listingMarketCap") && hasPartialListingValue(rows)) {
+    return new Map(rows.map(row => [row.sponsorId, "—"]));
+  }
   values.forEach((value, i) => { if (!positions.has(value)) positions.set(value, i + 1); });
   return new Map(rows.map((row) => {
     const value = metricValue(row, key);
@@ -2058,17 +2072,18 @@ function listingComponentDetails(provenance) {
 function projectMarketCapDetail(fact, kind) {
   const listing = kind === "listing";
   const observation = marketCapObservation(fact, kind);
-  const {provenance, status, value, estimateValue} = observation;
+  const {provenance, status, value} = observation;
   const label = listing ? metricLabels.listingMarketCapHkdBnSum : metricLabels.aShareMarketCapRmbBnSum;
   const currency = listing ? "HK$" : "¥";
-  const amount = status === "verified" ? `已核实 / Verified ${formatCap(value, currency)}`
-    : estimateValue !== null ? `估算 / Estimate ${formatCap(estimateValue, currency)} · ${value !== null ? "纳入估算排名 / Included in estimate ranking" : `${listing ? "总市值口径未核实 · " : ""}${status === "unsupported" ? "依据不足，" : ""}未纳入统计`}`
-    : "无可计算金额";
-  const retainedEstimate = status === "verified" && estimateValue !== null && estimateValue !== value
-    ? `<small class="market-cap-detail">另存估算 ${escapeHtml(formatCap(estimateValue, currency))} · 该估算日期未提供 · 未纳入统计</small>` : "";
+  if (value === null) {
+    const quote = listing ? fact.hkListingSessionClose : null;
+    if (!quote) return "";
+    return `<div class="market-cap-detail">港股收市价 HK$${escapeHtml(quote.price)} · ${escapeHtml(quote.priceDate)} · ${valuationEvidenceLinks([["行情来源", quote]])}</div>`;
+  }
+  const amount = status === "verified" ? `已核实 / Verified ${formatCap(value, currency)}` : `估算 / Estimate ${formatCap(value, currency)}`;
   if (listing && (provenance.version === 2 || Array.isArray(provenance.components))) {
     return `<small class="market-cap-detail">${escapeHtml(label)}：${escapeHtml(amount)}</small>
-      ${listingComponentDetails(provenance)}${retainedEstimate}`;
+      ${listingComponentDetails(provenance)}`;
   }
   const details = [
     `估值锚定日 ${provenance.anchorDate || fact[`${kind}MarketCapAnchorDate`] || "—"}`,
@@ -2092,7 +2107,7 @@ function projectMarketCapDetail(fact, kind) {
     .map(([name, url]) => `<a class="source-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a>`)
     .join(" · ");
   return `<small class="market-cap-detail">${escapeHtml(label)}：${escapeHtml(amount)}</small>
-    <small class="market-cap-detail">${escapeHtml(details.join(" · "))}${links ? ` · ${links}` : ""}</small>${retainedEstimate}`;
+    <small class="market-cap-detail">${escapeHtml(details.join(" · "))}${links ? ` · ${links}` : ""}</small>`;
 }
 
 function sponsorSourceLink(link) {

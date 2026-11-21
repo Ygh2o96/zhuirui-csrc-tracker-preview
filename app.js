@@ -43,7 +43,6 @@ const statusLabels = {
 
 const viewTitles = {
   tracker: "监管节奏追踪",
-  hkexApplications: "港交所最新申请",
   sponsorLeaderboard: "保荐龙虎榜",
   sponsorPk: "保荐人擂台",
   precedents: "案例检索",
@@ -466,6 +465,11 @@ function formatListingMarketCap(record) {
 
 function renderValuationDetails(record, listing) {
   const data = record[listing ? "listingMarketCapProvenance" : "aShareMarketCapProvenance"];
+  if (listing && data?.status !== "verified") {
+    const quote = record.hkListingSessionClose;
+    if (!quote) return "";
+    return `<div class="timeline-row"><span>港股收市价 / HK closing price</span><strong>HK$${escapeHtml(quote.price)} · ${escapeHtml(quote.priceDate)}</strong><a href="${escapeHtml(quote.sourceUrl)}" target="_blank" rel="noopener noreferrer">行情来源</a></div>`;
+  }
   if (!data) return "";
   const policies = {
     ah_components_ex_treasury: "A/H分别估值，折算港币 / A/H components in HKD",
@@ -474,14 +478,9 @@ function renderValuationDetails(record, listing) {
   const rows = [
     ["估值锚点 Valuation anchor", data.anchorDate],
     ...(!listing ? [["价格日期 Price date", data.priceDate], ["股本日期 Share date", data.sharesAsOf]] : []),
-    ["估值口径 Basis", policies[data.policy] || "股类及股本口径待核 / Share basis unverified"],
+    ["估值口径 Basis", policies[data.policy]],
     ["币种 Currency", data.valueCurrency],
   ];
-  if (listing && Number.isFinite(record.listingMarketCapEstimateHkdBn) && record.listingMarketCapEstimateHkdBn > 0) {
-    const estimate = record.listingMarketCapEstimateHkdBn;
-    rows.push(["历史估算 / Legacy estimate", `${rmbYiFormatter.format(estimate * 10)}亿 (HK$${rmbBnFormatter.format(estimate)}B)`]);
-    rows.push(["历史估算口径 / Estimate basis", "股本时点待核；不计入精确市值排名 / Share date unverified; excluded from verified rankings"]);
-  }
   for (const item of (data.components || [])) {
     rows.push([`${item.class} 股数（不含库存股） / Shares ex treasury`, item.sharesExTreasury == null ? null : formatNumber(item.sharesExTreasury)]);
     rows.push([`${item.class} 股本日期 / Share date`, item.sharesAsOf]);
@@ -499,7 +498,7 @@ function renderValuationDetails(record, listing) {
       && new Date(fx.date + "T00:00:00Z").toJSON()?.slice(0, 10) === fx.date;
     rows.push(["当日汇率 FX", complete ? `${fx.baseCurrency}/${fx.quoteCurrency} ${fx.rate} · ${fx.date}` : null]);
   }
-  return `<div class="timeline">${rows.map(([label, value]) => `<div class="timeline-row"><span>${escapeHtml(label)}</span><strong>${value ? escapeHtml(value) : "待核 / Unverified"}</strong></div>`).join("")}</div>`;
+  return `<div class="timeline">${rows.filter(([, value]) => value != null && value !== "").map(([label, value]) => `<div class="timeline-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join("")}</div>`;
 }
 
 function hasCjk(value) {
@@ -2046,57 +2045,7 @@ function trackerTitle() {
   return stageTitles[state.hkexStage] || "监管节奏追踪";
 }
 
-const hkexApFeed = "https://www1.hkexnews.hk/ncms/json/eds/appactive_app_sehk_e.json";
-const feedFilters = {query: "", from: ""};
-
-function renderApplicationFeed() {
-  if (!state.data || state.view !== "hkexApplications") return;
-  const query = normalizeSearchText(feedFilters.query);
-  const rows = [];
-  let total = 0;
-  let feedDate = "";
-  for (const record of state.data.records) {
-    for (const entry of record.hkexPublishedApplications || []) {
-      if (entry.feedUrl !== hkexApFeed || !entry.documents?.length) continue;
-      total += 1;
-      if (entry.feedDate > feedDate) feedDate = entry.feedDate;
-      if (query && !getRecordText(record).includes(query)) continue;
-      const byDate = [...entry.documents].sort((a, b) => b.date.localeCompare(a.date));
-      const latest = byDate[0].date;
-      if (feedFilters.from && latest < feedFilters.from) continue;
-      const first = byDate.find(d => d.label === "Application Proof (1st submission)");
-      rows.push({record, entry, latest, current: first?.date || record.currentA1Date,
-        docs: byDate.filter(d => d.date === latest && !d.previous)});
-    }
-  }
-  rows.sort((a, b) => b.latest.localeCompare(a.latest) || a.entry.name.localeCompare(b.entry.name, "en"));
-  const count = document.getElementById("hkexFeedCount");
-  count.textContent = `${rows.length} / ${total} 家 · 主板处理中申请 · ${feedDate}`;
-  document.getElementById("hkexFeedSearch").value = feedFilters.query;
-  document.getElementById("hkexFeedFrom").value = feedFilters.from;
-  document.getElementById("hkexFeedRows").innerHTML = rows.map(({record, entry, latest, current, docs}) => {
-    const shortName = entry.name.replace(/\s*\(formerly known as .+\)$/i, "");
-    const zh = [record.csrcName, ...(record.issuerSearchAliases || [])].find(v => v && hasCjk(v));
-    const links = docs.filter(d => /^https:\/\/www1\.hkexnews\.hk\/app\/sehk\/\d{4}\/\d+\/documents\/sehk\d+(_c)?\.pdf$/.test(d.url))
-      .map(d => `<a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">${escapeHtml(hkexDocumentLabel(d.label))}</a>`).join(" · ");
-    const anchor = record.a1Date && record.a1Date !== current
-      ? `<small>备案锚点 ${escapeHtml(record.a1Date)}</small>` : "";
-    return `<article class="hkex-feed-row" data-app-id="${escapeHtml(entry.applicationId)}">
-      <time datetime="${escapeHtml(latest)}">${escapeHtml(latest)}</time>
-      <button type="button" data-feed-issuer="${escapeHtml(record.id)}">${escapeHtml(shortName)}${zh ? `<small>${escapeHtml(zh)}</small>` : ""}</button>
-      <span class="hkex-feed-cycle">本次递表 ${escapeHtml(current || "未见日期")}${anchor}</span>
-      <span class="hkex-feed-documents">${links}</span></article>`;
-  }).join("") || '<p>没有符合条件的申请。</p>';
-}
-
 function switchView(view, updateLocation = true) {
-  const crossing = (view === "hkexApplications") !== (state.view === "hkexApplications");
-  if (crossing) {
-    Object.assign(state, defaults);
-    Object.assign(feedFilters, {query: "", from: ""});
-    if (state.data) syncControls();
-  }
-  document.body.classList.toggle("hkex-ap-view", view === "hkexApplications");
   state.view = viewTitles[view] ? view : "tracker";
   const stagePanel = document.getElementById("listingStagePanel");
   if (stagePanel) stagePanel.style.display = state.view === "tracker" ? "" : "none";
@@ -2112,8 +2061,6 @@ function switchView(view, updateLocation = true) {
     panel.classList.remove("is-visible");
   });
   document.getElementById(`${state.view}View`)?.classList.add("is-visible");
-  if (state.view === "hkexApplications") renderApplicationFeed();
-  else if (crossing && state.data && state.view === "tracker") render();
   if (updateLocation) syncUrl();
 }
 
@@ -2144,12 +2091,6 @@ function emptyPayload(message) {
 
 function applyStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  if (params.get("hkexFeed") === "ap") {
-    state.view = "hkexApplications";
-    feedFilters.from = /^\d{4}-\d{2}-\d{2}$/.test(params.get("dateFrom") || "") ? params.get("dateFrom") : "";
-    feedFilters.query = params.get("query") || "";
-    return;
-  }
   for (const key of trackedStateKeys) {
     if (!params.has(key)) continue;
     const value = params.get(key);
@@ -2163,12 +2104,7 @@ function applyStateFromUrl() {
 
 function syncUrl() {
   const params = new URLSearchParams();
-  if (state.view === "hkexApplications") {
-    params.set("hkexFeed", "ap");
-    if (feedFilters.from) params.set("dateFrom", feedFilters.from);
-    if (feedFilters.query) params.set("query", feedFilters.query);
-  }
-  for (const key of state.view === "hkexApplications" ? [] : trackedStateKeys) {
+  for (const key of trackedStateKeys) {
     const value = state[key];
     if (value === defaults[key] || value === "" || value === null || value === undefined) continue;
     params.set(key, String(value));
@@ -2412,21 +2348,6 @@ document.addEventListener("keydown", (event) => {
 
 document.getElementById("clearFilters").addEventListener("click", () => {
   updateTracker({ ...defaults, view: state.view, hkexStage: state.hkexStage });
-});
-
-document.getElementById("hkexFeedRows").addEventListener("click", event => {
-  const issuer = event.target.closest("[data-feed-issuer]");
-  if (issuer) openDetail(issuer.dataset.feedIssuer);
-});
-const refreshFeed = () => { renderApplicationFeed(); syncUrl(); };
-document.getElementById("hkexFeedSearch").addEventListener("input", event => {
-  feedFilters.query = event.target.value; refreshFeed();
-});
-document.getElementById("hkexFeedFrom").addEventListener("change", event => {
-  feedFilters.from = event.target.value; refreshFeed();
-});
-document.getElementById("hkexFeedClear").addEventListener("click", () => {
-  Object.assign(feedFilters, {query: "", from: ""}); refreshFeed();
 });
 
 document.getElementById("refreshButton").addEventListener("click", loadData);
