@@ -457,9 +457,10 @@ function formatListingMarketCap(record) {
   }
   if (!Number.isFinite(value) || value <= 0) return formatPending();
   const yiValue = value * 10;
+  const estimate = record.listingMarketCapProvenance?.status === "estimate";
   return `
-    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">HK$${rmbBnFormatter.format(value)}B</span>
+    <span class="market-cap-value">${estimate ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
+    <span class="pending-en">${estimate ? "Est. " : ""}HK$${rmbBnFormatter.format(value)}B</span>
   `;
 }
 
@@ -2124,6 +2125,17 @@ function switchView(view, updateLocation = true) {
 function renderChrome() {
   const meta = state.data.meta || {};
   const summary = state.data.summary || {};
+  const coverage = summary.listingMarketCapCoverage;
+  const coverageNote = document.getElementById("listingMarketCapCoverageNote");
+  if (coverageNote) {
+    const valid = [coverage?.total, coverage?.verified, coverage?.estimate, coverage?.excluded]
+      .every(n => Number.isSafeInteger(n) && n >= 0)
+      && coverage.verified + coverage.estimate + coverage.excluded === coverage.total;
+    coverageNote.hidden = !valid;
+    coverageNote.textContent = valid
+      ? `上市市值覆盖 ${coverage.total} 家：已核实 ${coverage.verified} 家，估算 ${coverage.estimate} 家，未纳入 ${coverage.excluded} 家。 / Listing market caps: ${coverage.verified} verified, ${coverage.estimate} estimated, ${coverage.excluded} excluded (${coverage.total} total).`
+      : "";
+  }
   document.getElementById("sourcePill").textContent = `${meta.labelZh || meta.label || "数据快照"} · ${formatNumber(summary.trackedIssuers || state.data.records.length, "integer")} 家`;
   document.getElementById("dataMode").textContent =
     meta.sourceMode === "live_snapshot" ? "后端快照" : "限量预览";
