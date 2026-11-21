@@ -8,6 +8,7 @@ const defaults = {
   status: "all",
   hkexStage: "applying",
   query: "",
+  offeringQuery: "",
   view: "tracker",
   dateField: "a1Date",
   dateFrom: "",
@@ -43,6 +44,7 @@ const statusLabels = {
 
 const viewTitles = {
   tracker: "监管节奏追踪",
+  offerings: "发售搁置",
   sponsorLeaderboard: "保荐龙虎榜",
   sponsorPk: "保荐人擂台",
   precedents: "案例检索",
@@ -92,6 +94,7 @@ const trackedStateKeys = [
   "status",
   "hkexStage",
   "query",
+  "offeringQuery",
   "dateField",
   "dateFrom",
   "dateTo",
@@ -931,6 +934,160 @@ function renderStatusBadge(record) {
   `;
 }
 
+// Reviewed projection of overrides/public_document_facts.json. The source register
+// validates the PDF bytes, issuer, signed date, stock code and operative language.
+// A source citation alone never establishes the current application/offer status.
+const offeringNoticeEvidence = [
+  {
+    "issuerId": "ganzhou hemay pharmaceutical co., ltd. - b",
+    "issuerName": "Ganzhou Hemay Pharmaceutical Co., Ltd. - B",
+    "applicationDate": "2026-06-08",
+    "applicationId": "108622",
+    "kind": "offeringPostponement",
+    "stockCode": "00054",
+    "date": "2026-11-04",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1104/2026110400409.pdf",
+    "pages": [
+      2,
+      3
+    ]
+  },
+  {
+    "issuerId": "changzhou microintelligence co., ltd",
+    "issuerName": "Changzhou Microintelligence Co., Ltd",
+    "applicationDate": "2026-03-31",
+    "applicationId": "108374",
+    "kind": "offeringPostponement",
+    "stockCode": "03275",
+    "date": "2026-10-25",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1025/2026102500001.pdf",
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "issuerId": "jiangsu slender west lake cultural tourism co. ltd",
+    "issuerName": "Jiangsu Slender West Lake Cultural Tourism Co. Ltd",
+    "applicationDate": "2026-03-30",
+    "applicationId": "108373",
+    "kind": "offeringPostponement",
+    "stockCode": "06157",
+    "date": "2026-10-20",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000564.pdf",
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "issuerId": "shenzhen forms syntron information co., ltd.",
+    "issuerName": "Shenzhen Forms Syntron Information Co., Ltd.",
+    "applicationDate": "2026-07-05",
+    "applicationId": "108727",
+    "kind": "offeringPostponement",
+    "stockCode": "06700",
+    "date": "2026-09-17",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0917/2026091701579.pdf",
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "issuerId": "ekh limited",
+    "issuerName": "EKH Limited",
+    "applicationDate": "2026-04-01",
+    "applicationId": "108390",
+    "kind": "offeringNotProceeding",
+    "stockCode": "02523",
+    "date": "2026-07-08",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801370.pdf",
+    "pages": [
+      1,
+      2,
+      3
+    ]
+  }
+];
+
+function currentOfferingNotice(record) {
+  if (record.hkexListingDate || record.practicalStage === "listed" ||
+      /^(listed|withdrawn|rejected|returned)$/i.test(record.hkexPublicStatus || "") ||
+      /^(listed|withdrawn|rejected|returned)$/.test(record.hkexApplicationStatusGroup || "")) return null;
+  const notice = offeringNoticeEvidence.find(item => item.issuerId === record.id && item.issuerName === record.issuerName);
+  if (!notice || record.currentA1Date !== notice.applicationDate || notice.applicationDate > notice.date) return null;
+  const applications = record.hkexPublishedApplications || [];
+  const documents = applications.flatMap(item => item.documents || []);
+  if (!applications.some(item => item.applicationId === notice.applicationId &&
+      (item.documents || []).some(doc => /Application Proof/i.test(doc.label || "") && doc.date === notice.applicationDate))) return null;
+  if (record.hkexProspectusDate > notice.date || documents.some(doc =>
+      (/Application Proof/i.test(doc.label || "") && doc.date > notice.applicationDate) ||
+      (/PHIP|Prospectus|Allotment|招股|配发|配發|重启|重啟|Relaunch|Resumption/i.test(doc.label || "") && doc.date > notice.date))) return null;
+  const links = record.sourceLinks || [];
+  const expectedLabel = notice.kind === "offeringNotProceeding"
+    ? "本次发售及上市未进行 / This offering and listing did not proceed"
+    : "延迟发售及上市 / Offering and listing postponed";
+  if (!links.some(link => link.url === `${notice.url}#page=${notice.pages[0]}` &&
+      (link.originalLabel || link.label) === `${notice.date} ${expectedLabel}`)) return null;
+  // A later dated offering/allotment announcement supersedes this notice even
+  // before the listing feed has caught up. Undated or unrelated links do not.
+  if (links.some(link => {
+    const url = String(link.url || "").split("#")[0];
+    const match = url.match(/^https:\/\/www1?\.hkexnews\.hk\/listedco\/listconews\/sehk\/(\d{4})\/(\d{2})(\d{2})\/\d+\.pdf$/);
+    return match && `${match[1]}-${match[2]}-${match[3]}` > notice.date &&
+      /Prospectus|Allotment|招股|配发|配發|重启|重啟|Relaunch|Resumption|withdraw|撤回/i.test(link.originalLabel || link.label || "");
+  })) return null;
+  return notice;
+}
+
+function offeringNoticeLabels(notice) {
+  return notice.kind === "offeringNotProceeding"
+    ? ["本轮发售不进行", "This offering not proceeding", "本轮发售不进行"]
+    : ["发售及上市延期", "Offering and listing postponed", "发售搁置"];
+}
+
+function offeringSearchText(record) {
+  const notice = currentOfferingNotice(record);
+  return notice ? ["发售搁置 暂停 paused", ...offeringNoticeLabels(notice), notice.date, notice.stockCode].join(" ") : "";
+}
+
+function renderOfferingBadge(record) {
+  const notice = currentOfferingNotice(record);
+  if (!notice) return "";
+  const labels = offeringNoticeLabels(notice);
+  return `<button type="button" class="offering-badge" data-offering-id="${escapeHtml(record.id)}" title="${escapeHtml(labels[1])} · ${notice.date}">${labels[2]} ↗</button>`;
+}
+
+function renderOfferings() {
+  const root = document.getElementById("offeringCards");
+  if (!root) return;
+  const all = (state.data?.records || []).map(record => ({record, notice: currentOfferingNotice(record)}))
+    .filter(item => item.notice).sort((a, b) => b.notice.date.localeCompare(a.notice.date));
+  const query = normalizeSearchText(state.offeringQuery);
+  const rows = all.filter(({record}) => !query || getRecordText(record).includes(query));
+  const postponed = all.filter(item => item.notice.kind === "offeringPostponement").length;
+  document.getElementById("offeringCount").textContent = `${rows.length} / ${all.length} 家 · ${postponed} 家延期 · ${all.length - postponed} 家本轮不进行`;
+  document.getElementById("offeringSearch").value = state.offeringQuery;
+  root.innerHTML = rows.map(({record, notice}) => {
+    const names = nameParts(record), labels = offeringNoticeLabels(notice);
+    const links = notice.pages.map(page => `<a href="${notice.url}#page=${page}" target="_blank" rel="noopener noreferrer">原文 PDF · p.${page}</a>`).join(" · ");
+    return `<article class="offering-card" data-offering-card="${escapeHtml(record.id)}">
+      <div class="offering-card-heading"><div><h2>${escapeHtml(foldTraditional(names.primary))}</h2><p>${escapeHtml(names.secondary)}</p></div><span class="offering-code">${notice.stockCode}<small>发售代码 / Offer code</small></span></div>
+      <div class="offering-event"><div><strong>${labels[0]}</strong><small>${labels[1]}</small></div><time datetime="${notice.date}">${notice.date}</time></div>
+      <dl class="offering-context">
+        <div><dt>监管备案 / CSRC filing</dt><dd>${escapeHtml(statusLabel(record.status))}<small>${escapeHtml(statusLabel(record.status, 1))}</small></dd></div>
+        <div><dt>港交所申请 / HKEX application</dt><dd>${escapeHtml(record.hkexApplicationStatusLabelZh || record.hkexPublicStatus)}<small>${escapeHtml(record.hkexPublicStatus)} · 当前 A1 ${notice.applicationDate}</small></dd></div>
+      </dl>
+      <p class="offering-refund">认购款按公告安排退还；股票未发出，亦不交付申请人。<small>Application monies to be refunded; share certificates not issued or delivered.</small></p>
+      <div class="offering-links">${links}<button type="button" class="text-button" data-offering-detail="${escapeHtml(record.id)}">发行人详情 / Details</button></div>
+    </article>`;
+  }).join("") || '<p class="muted">没有匹配项目 / No matching offerings</p>';
+}
+
 const recordTextCache = new WeakMap();
 
 function getRecordText(record) {
@@ -939,6 +1096,7 @@ function getRecordText(record) {
   const sponsorAliases = (record.sponsors || []).flatMap((sponsor) => sponsorSearchAliases(sponsor));
   const rawText = [
     record.issuerName,
+    offeringSearchText(record),
     record.id === "leadrive technology (shanghai) co., ltd." ? "Leaddrive" : "",
     record.csrcName,
     ...(record.issuerSearchAliases || []),
@@ -1633,6 +1791,7 @@ function renderRows() {
           <td class="issuer-cell">
             <strong>${escapeHtml(names.primary)}</strong>
             <span>${escapeHtml(names.secondary)}</span>
+            ${renderOfferingBadge(record)}
           </td>
           <td class="status-cell">${renderStatusBadge(record)}</td>
           <td class="date-cell">${renderA1Cell(record)}</td>
@@ -2119,6 +2278,7 @@ function switchView(view, updateLocation = true) {
     panel.classList.remove("is-visible");
   });
   document.getElementById(`${state.view}View`)?.classList.add("is-visible");
+  if (state.view === "offerings") renderOfferings();
   if (updateLocation) syncUrl();
 }
 
@@ -2294,6 +2454,7 @@ async function loadData() {
 function render() {
   renderChrome();
   renderRows();
+  renderOfferings();
 }
 
 document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
@@ -2390,10 +2551,19 @@ document.querySelectorAll(".th-sort").forEach((button) => {
 
 const trackerRowsBody = document.getElementById("trackerRows");
 trackerRowsBody.addEventListener("click", (event) => {
+  const offering = event.target.closest("[data-offering-id]");
+  if (offering) {
+    const record = state.data.records.find(item => item.id === offering.dataset.offeringId);
+    state.offeringQuery = currentOfferingNotice(record)?.stockCode || "";
+    closeDetail();
+    switchView("offerings");
+    return;
+  }
   const row = event.target.closest("[data-record-id]");
   if (row) selectRecord(row.dataset.recordId);
 });
 trackerRowsBody.addEventListener("keydown", (event) => {
+  if (event.target.closest("[data-offering-id]")) return;
   if (event.key !== "Enter" && event.key !== " ") return;
   const row = event.target.closest("[data-record-id]");
   if (!row) return;
@@ -2425,6 +2595,23 @@ document.getElementById("clearFilters").addEventListener("click", () => {
 });
 
 document.getElementById("refreshButton").addEventListener("click", loadData);
+
+document.getElementById("offeringSearch").addEventListener("input", event => {
+  state.offeringQuery = event.target.value;
+  renderOfferings();
+  syncUrl();
+});
+document.getElementById("clearOfferingSearch").addEventListener("click", () => {
+  state.offeringQuery = "";
+  renderOfferings();
+  syncUrl();
+  document.getElementById("offeringSearch").focus();
+});
+document.getElementById("returnToTracker").addEventListener("click", () => switchView("tracker"));
+document.getElementById("offeringCards").addEventListener("click", event => {
+  const button = event.target.closest("[data-offering-detail]");
+  if (button) openDetail(button.dataset.offeringDetail);
+});
 
 // Hydrate deep-link intent once, before yielding to any user input or fetch.
 applyStateFromUrl();

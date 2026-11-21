@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=ca12511b90a3c261" />
+    <link rel="stylesheet" href="styles.css?v=60df044ac8141374" />
     <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=351204354685e3d1" />
 
   </head>
@@ -37,6 +37,10 @@
           <button class="nav-item is-active" data-view="tracker">
             <span class="nav-icon" aria-hidden="true">监</span>
             <span><b>监管节奏追踪</b><small>Regulatory Pace</small></span>
+          </button>
+          <button class="nav-item" data-view="offerings">
+            <span class="nav-icon" aria-hidden="true">售</span>
+            <span><b>发售搁置</b><small>Paused or not proceeding</small></span>
           </button>
           <button class="nav-item" data-view="sponsorLeaderboard">
             <span class="nav-icon" aria-hidden="true">榜</span>
@@ -246,6 +250,18 @@
           </div>
 
 
+
+        <section class="view-panel offerings-view" id="offeringsView" aria-label="发售搁置 Paused or not proceeding">
+          <p class="offering-intro">收录已公告延期或本轮不进行的 IPO 发售。发售状态、监管备案和港交所申请状态分别列示。<small>Announced IPO offering postponements or offers not proceeding. Filing and application status remain separate.</small></p>
+          <div class="offering-toolbar">
+            <label class="search-box"><span>搜</span><input id="offeringSearch" type="search" autocomplete="off" aria-label="搜索搁置发售" placeholder="搜索发行人、发售代码、状态…" /></label>
+            <button type="button" class="text-button" id="clearOfferingSearch">清除 / Clear</button>
+            <button type="button" class="text-button" id="returnToTracker">返回监管列表 / Back to tracker</button>
+          </div>
+          <p class="offering-count" id="offeringCount" role="status" aria-live="polite"></p>
+          <div class="offering-grid" id="offeringCards"></div>
+          <p class="offering-asof">核查截至 2026-11-22（香港时间）。延期或本轮不进行并不代表撤回申请或永久终止上市计划。<small>Reviewed as of 22 Nov 2026, Hong Kong time. These notices do not establish application withdrawal or permanent termination of listing plans.</small></p>
+        </section>
 
         <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard">
           <div class="sl-meta-bar">
@@ -589,7 +605,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=f3cb27f26311cbe8"></script>
+    <script src="app.js?v=2b65cacadc732710"></script>
     <script src="sponsor_leaderboard_demo.js?v=5636a6003248b570"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>

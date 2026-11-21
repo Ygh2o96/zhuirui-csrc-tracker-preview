@@ -2623,3 +2623,42 @@ tr[role="button"]:focus-visible {
   text-align: center !important;
   font-size: 13px !important;
 }
+
+/* Announced offering events stay separate from regulatory/application status. */
+.offering-badge {
+  display: block; width: fit-content; margin-top: 7px; padding: 4px 8px;
+  border: 1px solid #d8b76d; border-radius: 6px; background: #fff8e8;
+  color: #77520c; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.offering-badge:hover { background: #f9ebc9; }
+.offering-intro, .offering-asof { color: var(--muted); line-height: 1.65; }
+.offering-intro small, .offering-asof small, .offering-refund small { display: block; margin-top: 4px; }
+.offering-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 20px 0 12px; }
+.offering-toolbar .search-box { flex: 1 1 280px; max-width: 520px; }
+.offering-count { font-weight: 600; }
+.offering-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.offering-card { min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.offering-card-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.offering-card h2 { margin: 0; font-size: 18px; line-height: 1.5; }
+.offering-card-heading p { margin: 5px 0 0; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.offering-code { flex-shrink: 0; font-weight: 700; font-size: 19px; text-align: right; }
+.offering-code small { display: block; max-width: 104px; font-size: 10px; font-weight: 400; color: var(--muted); }
+.offering-event { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin: 18px 0; padding: 12px; border-radius: 8px; color: #77520c; background: #fff8e8; }
+.offering-event small, .offering-context small { display: block; margin-top: 4px; font-size: 11px; font-weight: 400; }
+.offering-event time { font-size: 13px; white-space: nowrap; }
+.offering-context { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; }
+.offering-context dt { color: var(--muted); font-size: 11px; }
+.offering-context dd { margin: 7px 0 0; font-size: 13px; }
+.offering-context small { color: var(--muted); }
+.offering-refund { margin: 18px 0; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.offering-links { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; font-size: 12px; }
+.offering-links .text-button { margin-left: auto; min-height: 40px; }
+.offering-asof { margin-top: 22px; font-size: 12px; }
+@media (max-width: 1120px) { .offering-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .offering-card { padding: 16px; }
+  .offering-card h2 { font-size: 16px; }
+  .offering-context { grid-template-columns: 1fr; }
+  .offering-links a { display: inline-flex; align-items: center; min-height: 40px; }
+  .offering-badge { min-height: 36px; }
+}
