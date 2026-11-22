@@ -40,6 +40,7 @@ jobs:
           cp data/sponsor_leaderboard_demo.json _site/data/
           cp data/sponsor_leaderboard_demo_data.js _site/data/
           cp data/offering_fees.json _site/data/
+          cp data/offering_dossiers.json _site/data/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

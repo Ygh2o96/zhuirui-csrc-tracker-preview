@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=e3c5080dcd64dc0d" />
+    <link rel="stylesheet" href="styles.css?v=49be3bf2bc4ffdf8" />
     <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=351204354685e3d1" />
 
   </head>
@@ -532,27 +532,13 @@
           </div>
         </section>
 
-        <section class="view-panel" id="dossiersView" aria-label="Issuer dossiers">
-          <div class="coming-grid">
-            <div class="feature-slab">
-              <div class="feature-kicker">Coming soon</div>
-              <h2>发行人档案 <small>Issuer dossier</small></h2>
-              <div class="dossier-preview">
-                <div class="dossier-title">Applicant identity graph</div>
-                <div class="dossier-line"></div>
-                <div class="dossier-line short"></div>
-                <div class="tag-row">
-                  <span>A+H</span>
-                  <span>PRC issuer</span>
-                  <span>CSRC matched</span>
-                </div>
-              </div>
-            </div>
-            <div class="mini-panel">
-              <h3>Entity layer</h3>
-              <p>HKEX applicant, CSRC issuer, A-share company, offshore holding company.</p>
-            </div>
+        <section class="view-panel dossiers-view" id="dossiersView" aria-label="发行人档案 Issuer dossiers">
+          <div class="offering-toolbar">
+            <label class="search-box"><span>搜</span><input id="dossierSearch" type="search" autocomplete="off" aria-label="搜索发行人档案" placeholder="搜索公司、代码、配售账户、执行事项…" /></label>
+            <button type="button" class="text-button" id="clearDossierSearch">清除 / Clear</button>
           </div>
+          <p class="offering-count" id="dossierCount" role="status" aria-live="polite"></p>
+          <div id="dossierCards"></div>
         </section>
 
         <section class="view-panel" id="signalsView" aria-label="Market signals">
@@ -618,7 +604,7 @@
       </main>
     </div>
 
-    <script src="app.js?v=71946a04eef255d4"></script>
+    <script src="app.js?v=0a84ac129c58afad"></script>
     <script src="sponsor_leaderboard_demo.js?v=1d703686b3629137"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>

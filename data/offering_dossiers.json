@@ -1,0 +1,153 @@
+{
+  "offers": [
+    {
+      "allotmentUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf",
+      "code": "06935",
+      "cornerstones": [
+        {
+          "name": "晶科能源投资",
+          "shares": 200800
+        },
+        {
+          "name": "锦信",
+          "shares": 2208800
+        }
+      ],
+      "execution": [
+        {
+          "action": "人力资源部门按月复核；公司承诺按主管部门要求补缴。",
+          "fact": "截至2026-06-30，社保短缴 RMB 35.1 百万，公积金短缴 RMB 6.4 百万。",
+          "id": "contributions",
+          "pages": [
+            191,
+            192
+          ],
+          "title": "社保及公积金短缴"
+        },
+        {
+          "action": "2024年9月申报新增项目时报告历史事项；其后取得新增60颗卫星核准，并将生产前核准纳入审批流程。",
+          "fact": "2023年12月前生产5颗卫星，生产前未取得所需发改委核准。",
+          "id": "satellite-approval",
+          "pages": [
+            203,
+            204
+          ],
+          "title": "卫星项目核准"
+        }
+      ],
+      "float": {
+        "accounts": [
+          {
+            "displayName": "招银国际多资产基金",
+            "economicParty": "基金投资者",
+            "fund": "CMBI Multi Assets Fund",
+            "id": "connected:cmbiam",
+            "legalHolder": "CMB International Asset Management Limited",
+            "manager": "CMB International Asset Management Limited",
+            "ownershipFact": "Xu Li 持有该基金 100%",
+            "shares": 160600,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=12",
+            "structure": "酌情管理"
+          },
+          {
+            "displayName": "Ignis Prime",
+            "economicParty": "Ignis Prime Capital Management Limited",
+            "fundingFact": "客户全额出资；华泰不提供融资",
+            "id": "connected:htci",
+            "legalHolder": "Huatai Capital Investment Limited",
+            "ownershipFact": "Lu Yiyang 持有 Ignis Prime 至少 30% 权益",
+            "rightsFact": "华泰持有法律权利及投票权；TRS 期间不行使投票权",
+            "shares": 441800,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=12",
+            "structure": "全额出资 TRS",
+            "structureSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=14"
+          }
+        ],
+        "adjustedHkd": 473513340,
+        "adjustedShares": 19016600,
+        "deductions": [
+          {
+            "id": "cornerstone:jinko",
+            "kind": "cornerstone",
+            "name": "晶科能源投资",
+            "shares": 200800,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=6"
+          },
+          {
+            "id": "cornerstone:kamshin",
+            "kind": "cornerstone",
+            "name": "锦信",
+            "shares": 2208800,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=6"
+          },
+          {
+            "id": "existing:ye-guofu",
+            "kind": "existing_shareholder_or_close_associate",
+            "name": "Ye Guofu",
+            "shares": 7088400,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=7"
+          },
+          {
+            "id": "existing:jin-jun",
+            "kind": "existing_shareholder_or_close_associate",
+            "name": "Jin Jun",
+            "shares": 1004000,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=7"
+          },
+          {
+            "id": "connected:cmbiam",
+            "kind": "connected_client",
+            "name": "招银国际资产管理",
+            "shares": 160600,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=12"
+          },
+          {
+            "id": "connected:htci",
+            "kind": "connected_client",
+            "name": "华泰资本投资",
+            "shares": 441800,
+            "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=12"
+          }
+        ],
+        "officialPublicRatio": 62.37,
+        "officialPublicShares": 375716350,
+        "sources": {
+          "accounts": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=12",
+          "allocations": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=7",
+          "official": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=16",
+          "trs": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=14"
+        },
+        "unlockedHkd": 690013860,
+        "unlockedShares": 27711400
+      },
+      "issuer": "国星宇航",
+      "issuerId": "adaspace technology co., ltd.",
+      "issuerType": "H股",
+      "listingDate": "2026-11-13",
+      "offer": {
+        "cornerstoneShares": 2409600,
+        "final": 24.9,
+        "gross": 750012900,
+        "high": 33.2,
+        "internationalShares": 27108900,
+        "internationalSubscription": 1.79,
+        "low": 24.9,
+        "postShares": 602419740,
+        "publicShares": 3012100,
+        "publicSubscription": 3.43,
+        "shares": 30121000
+      },
+      "prospectusDate": "2026-11-05",
+      "prospectusUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1105/2026110500055.pdf",
+      "roundId": "offering:06935:2026-11-05",
+      "sponsors": [
+        {
+          "name": "国泰君安融资有限公司",
+          "role": "独家保荐人"
+        }
+      ],
+      "status": "listed"
+    }
+  ],
+  "schemaVersion": 1
+}

@@ -2,6 +2,7 @@
 // skip re-downloading the multi-MB payload when the snapshot is unchanged.
 const DATA_URL = "data/csrc_tracker_public.json";
 const OFFERING_FEES_URL = "data/offering_fees.json";
+const OFFERING_DOSSIERS_URL = "data/offering_dossiers.json";
 const PAGE_SIZE = 50;
 
 const defaults = {
@@ -11,6 +12,9 @@ const defaults = {
   query: "",
   offeringQuery: "",
   feeQuery: "",
+  dossierQuery: "",
+  dossierId: "",
+  dossierSection: "",
   view: "tracker",
   dateField: "a1Date",
   dateFrom: "",
@@ -30,6 +34,7 @@ const defaults = {
 const state = {
   data: null,
   feeData: null,
+  dossierData: null,
   ...defaults
 };
 
@@ -100,6 +105,9 @@ const trackedStateKeys = [
   "query",
   "offeringQuery",
   "feeQuery",
+  "dossierQuery",
+  "dossierId",
+  "dossierSection",
   "dateField",
   "dateFrom",
   "dateTo",
@@ -2970,6 +2978,60 @@ function renderFeeComparison() {
     (priced.length ? `<section class="fee-comparison-section fee-estimate-section"><header><h2>最终定价下的估计开支</h2><p>绿鞋前 · HKD 百万</p></header>${priced.map(f => `<article data-fee-round="${escapeHtml(f.roundId)}"><div class="fee-priced-heading">${company(f)}<span>${f.listingDate} 上市</span></div><div class="fee-expense-track" role="img" aria-label="发售总额 ${offeringNumber(Number(f.grossHkd)/1000000,2)} 百万，估计开支 ${offeringNumber(Number(f.estimatedExpensesHkd)/1000000,2)} 百万，估计净额 ${offeringNumber(Number(f.netHkd)/1000000,2)} 百万"><span style="width:${Number(f.estimatedExpensesHkd)/Number(f.grossHkd)*100}%"></span></div><dl class="fee-estimate-metrics"><div><dt>发售总额</dt><dd>${offeringNumber(Number(f.grossHkd)/1000000,2)}</dd></div><div><dt>估计上市开支</dt><dd>${offeringNumber(Number(f.estimatedExpensesHkd)/1000000,2)} <span>· ${feePercent(f.estimatedExpenseBps)}</span></dd></div><div><dt>估计所得净额</dt><dd>${offeringNumber(Number(f.netHkd)/1000000,2)}</dd></div></dl><div class="fee-source">${feeSources(f.sources)}</div>${renderFeeContract(f.contractTerms)}</article>`).join("")}</section>` : "") || '<p class="muted">没有匹配项目</p>';
 }
 
+function eligibleOfferingDossiers() {
+  if (state.dossierData?.schemaVersion !== 1) return [];
+  const fees = eligibleOfferingFees();
+  return (state.dossierData.offers || []).filter(d => {
+    const record = (state.data?.records || []).find(r => r.id === d.issuerId);
+    return d.roundId === `offering:${d.code}:${d.prospectusDate}` && record?.hkexListingStockCode === d.code &&
+      record.hkexListingDate === d.listingDate && record.hkexProspectusDate === d.prospectusDate &&
+      fees.some(f => f.roundId === d.roundId && f.issuerId === d.issuerId);
+  });
+}
+function renderDossier(d) {
+  const o = d.offer, f = d.float, fee = eligibleOfferingFees().find(f => f.roundId === d.roundId);
+  const n = offeringNumber, million = value => n(Number(value) / 1000000,2);
+  const row = (label,value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+  const source = (url,pages) => feeSources(pages.map(page => ({url:`${url}#page=${page}`,page})));
+  const details = (title,body,id) => `<details class="dossier-section"${state.dossierId === d.roundId && state.dossierSection === id ? " open" : ""}><summary>${title}</summary><div class="dossier-section-body">${body}</div></details>`;
+  const allocation = `<div class="offering-allocation-bar" role="img" aria-label="香港公开发售 ${n(o.publicShares/o.shares*100,2)}%，国际配售 ${n(o.internationalShares/o.shares*100,2)}%"><span class="offering-allocation-hk" style="width:${o.publicShares/o.shares*100}%"></span><span class="offering-allocation-international" style="width:${o.internationalShares/o.shares*100}%"></span></div><div class="offering-allocation-labels"><span>香港 ${n(o.publicShares/o.shares*100,2)}% · ${n(o.publicShares)} 股</span><span>国际 ${n(o.internationalShares/o.shares*100,2)}% · ${n(o.internationalShares)} 股</span></div>`;
+  const bar = (label,shares) => `<div class="dossier-float-row"><div><span>${label}</span><strong>${n(shares/1000000,3)}</strong></div><div class="dossier-float-track"><span style="width:${shares/o.shares*100}%"></span></div></div>`;
+  const sponsor = d.sponsors.map(x => `${escapeHtml(x.role)}：${escapeHtml(x.name)}`).join(" · ");
+  let fees = renderOfferingFee(fee);
+  if (state.dossierId === d.roundId && state.dossierSection === "fees") fees = fees.replace('<details class=', '<details open class=');
+  return `<article class="dossier-card" data-dossier-round="${escapeHtml(d.roundId)}"><header class="dossier-issuer"><div><div class="dossier-code">${d.code} · ${escapeHtml(d.issuerType)}</div><h2>${escapeHtml(d.issuer)}</h2></div><span class="dossier-listed">已上市 · ${d.listingDate}</span></header>
+    <dl class="dossier-kpis">${row("最终发售价",`${n(o.final,2)}<small>HKD / 股</small>`)}${row("发售总额",`${million(fee.grossHkd)}<small>HKD 百万</small>`)}${row("估计所得净额",`${million(fee.netHkd)}<small>HKD 百万</small>`)}</dl>
+    <p class="dossier-sponsors">${sponsor}</p>
+    ${details("发行概览",`<div class="dossier-price"><span>招股价 HKD ${n(o.low,2)}–${n(o.high,2)}</span><strong>最终 ${n(o.final,2)} · ${o.final === o.low ? "下限" : o.final === o.high ? "上限" : "区间内"}</strong>${renderOfferingRange(null,o.final,o.low,o.high,`最终价格 HKD ${n(o.final,2)}`)}</div><dl class="dossier-facts">${row("发售股份",`${n(o.shares)} 股`)}${row("发售比例",`${n(o.shares/o.postShares*100,2)}%`)}${row("发售后总股本",`${n(o.postShares)} 股`)}${row("发行价总市值",`HKD ${million(o.postShares*o.final)} 百万`)}</dl><div class="fee-source">${source(d.allotmentUrl,[2,3,16])}</div>`,"overview")}
+    ${details("配售与流通",`<dl class="dossier-facts">${row("香港公开发售认购",`${n(o.publicSubscription,2)} 倍`)}${row("国际配售认购",`${n(o.internationalSubscription,2)} 倍`)}${row("公众持股（港交所披露）",`${n(f.officialPublicRatio,2)}% · ${n(f.officialPublicShares)} 股`)}${row("基石获配",`${n(o.cornerstoneShares)} 股 · ${n(o.cornerstoneShares/o.shares*100,2)}%`)}</dl>${allocation}
+      <div class="dossier-float"><h3>上市时流通结构 <span>百万股</span></h3>${bar("基础发售",o.shares)}${bar("扣基石后：上市时无禁售",f.unlockedShares)}${bar("再扣现有股东及关联客户（追瑞）",f.adjustedShares)}<dl class="dossier-facts">${row("上市时无禁售 · 按发行价",`HKD ${million(f.unlockedHkd)} 百万`)}${row("扣除后余量 · 按发行价（追瑞）",`HKD ${million(f.adjustedHkd)} 百万`)}</dl></div>
+      <details class="dossier-subsection"><summary>获配名单与股数</summary><div class="dossier-allocation-list">${f.deductions.map(x=>`<div><span>${escapeHtml(x.name)}<small>${x.kind === "cornerstone" ? "基石" : x.kind === "connected_client" ? "配售商关联客户" : "现有股东及紧密联系人"}</small></span><strong>${n(x.shares)} 股</strong></div>`).join("")}</div><div class="fee-source">${source(d.allotmentUrl,[6,7,12])}</div></details>
+      <details class="dossier-subsection"><summary>关联客户 · 账户与经济敞口</summary>${f.accounts.map(a=>`<section class="dossier-account"><h4>${escapeHtml(a.displayName)} <span>${n(a.shares)} 股</span></h4><p>${escapeHtml(a.structure)} · ${escapeHtml(a.ownershipFact)}</p><dl class="dossier-facts">${row("法律获配方",escapeHtml(a.legalHolder))}${row("投资账户 / 经济敞口",escapeHtml(a.fund || a.economicParty))}${a.manager ? row("管理人",escapeHtml(a.manager)) : ""}</dl>${a.fundingFact ? `<p>${escapeHtml(a.fundingFact)}</p><p>${escapeHtml(a.rightsFact)}</p>` : ""}<div class="fee-source"><a href="${escapeHtml(a.source)}" target="_blank" rel="noopener noreferrer">配发原件</a>${a.structureSource ? ` · <a href="${escapeHtml(a.structureSource)}" target="_blank" rel="noopener noreferrer">TRS 条款</a>` : ""}</div></section>`).join("")}</details>
+      <details class="dossier-subsection"><summary>配售条件</summary><p>上市规则 10.04、附录 F1 第 1C(1) 及 1C(2) 段的豁免或同意。</p><div class="fee-source">${source(d.allotmentUrl,[7])}</div></details>
+      <div class="fee-source">${source(d.allotmentUrl,[3,6,16])} · <a href="https://www.hkexnews.hk/homeccasssearch.html" target="_blank" rel="noopener noreferrer">港交所 CCASS 查询</a></div>`,"allocation")}
+    <div class="dossier-fees">${fees}</div>
+    ${details("执行参考",d.execution.map(x=>`<details class="dossier-execution"><summary>${escapeHtml(x.title)}</summary><p>${escapeHtml(x.fact)}</p><p>${escapeHtml(x.action)}</p><div class="fee-source">${source(d.prospectusUrl,x.pages)}</div></details>`).join(""),"execution")}
+    <footer class="dossier-footer"><a href="${escapeHtml(d.prospectusUrl)}" target="_blank" rel="noopener noreferrer">招股书</a><a href="${escapeHtml(d.allotmentUrl)}" target="_blank" rel="noopener noreferrer">定价及配发</a><button type="button" class="text-button" data-dossier-fee-comparison>费用对照</button></footer></article>`;
+}
+function renderDossiers() {
+  const root = document.getElementById("dossierCards");
+  if (!root) return;
+  const all = eligibleOfferingDossiers(), query = normalizeSearchText(state.dossierQuery);
+  const rows = all.filter(d => !query || normalizeSearchText([d.issuer,d.code,d.issuerId,...d.execution.flatMap(x=>[x.title,x.fact,x.action]),...d.float.accounts.flatMap(x=>[x.displayName,x.legalHolder,x.economicParty])].join(" ")).includes(query));
+  document.getElementById("dossierSearch").value = state.dossierQuery;
+  document.getElementById("dossierCount").textContent = `新股发行 · ${rows.length} / ${all.length} 家`;
+  root.innerHTML = rows.map(renderDossier).join("") || '<p class="muted">没有匹配的发行资料</p>';
+}
+function openOfferingDossier(roundId, section = "") {
+  if (!eligibleOfferingDossiers().some(d=>d.roundId === roundId)) return false;
+  state.dossierId = roundId;
+  state.dossierSection = section;
+  state.dossierQuery = "";
+  closeDetail();
+  switchView("dossiers");
+  return true;
+}
+
 function renderOfferingSources(facts, notice) {
   const link = (url,label) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
   const pdf = (label,pages) => `<div><b>${label}</b>${pages.map(page => link(`${facts.prospectusUrl}#page=${page}`, `p.${page}`)).join(" ")}</div>`;
@@ -4215,6 +4277,8 @@ function switchView(view, updateLocation = true) {
   document.getElementById(`${state.view}View`)?.classList.add("is-visible");
   if (state.view === "offerings") renderOfferings();
   if (state.view === "fees") renderFeeComparison();
+  if (state.view === "dossiers") renderDossiers();
+  document.getElementById("sourcePill").textContent = state.view === "dossiers" ? `新股发行 · ${eligibleOfferingDossiers().length} 家` : `公开披露 · ${formatNumber(state.data?.records?.length || 0,"integer")} 家`;
   if (updateLocation) syncUrl();
 }
 
@@ -4232,9 +4296,9 @@ function renderChrome() {
       ? `上市市值覆盖 ${coverage.total} 家：已核实 ${coverage.verified} 家，估算 ${coverage.estimate} 家，未纳入 ${coverage.excluded} 家。 / Listing market caps: ${coverage.verified} verified, ${coverage.estimate} estimated, ${coverage.excluded} excluded (${coverage.total} total).`
       : "";
   }
-  document.getElementById("sourcePill").textContent = `${meta.labelZh || meta.label || "数据快照"} · ${formatNumber(summary.trackedIssuers || state.data.records.length, "integer")} 家`;
+  document.getElementById("sourcePill").textContent = `公开披露 · ${formatNumber(summary.trackedIssuers || state.data.records.length, "integer")} 家`;
   document.getElementById("dataMode").textContent =
-    meta.sourceMode === "live_snapshot" ? "后端快照" : "限量预览";
+    meta.sourceMode === "live_snapshot" ? "公开资料" : "限量样本";
   document.getElementById("snapshotMeta").textContent =
     meta.generatedAt
       ? `港交所及中国证监会公开资料 · 更新时间 ${meta.generatedAt.replace("T", " ").slice(0, 16)}（香港）`
@@ -4365,9 +4429,10 @@ async function loadData() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return response.json();
   };
-  const [tracker, fees] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL)]);
+  const [tracker, fees, dossiers] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL), read(OFFERING_DOSSIERS_URL)]);
   state.data = tracker.status === "fulfilled" ? tracker.value : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   state.feeData = fees.status === "fulfilled" ? fees.value : null;
+  state.dossierData = dossiers.status === "fulfilled" ? dossiers.value : null;
   stageCountsCache = null;
   sponsorShortNameCache.clear();
   for (const record of state.data.records || []) {
@@ -4393,6 +4458,7 @@ function render() {
   renderRows();
   renderOfferings();
   renderFeeComparison();
+  renderDossiers();
 }
 
 document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
@@ -4565,9 +4631,28 @@ document.getElementById("clearFeeSearch").addEventListener("click", () => {
 document.getElementById("feeComparison").addEventListener("click", event => {
   const button = event.target.closest("[data-fee-detail]");
   if (!button) return;
+  const dossier = eligibleOfferingDossiers().find(d=>d.issuerId === button.dataset.feeDetail);
+  if (dossier && openOfferingDossier(dossier.roundId,"fees")) return;
   openDetail(button.dataset.feeDetail);
   const disclosure = document.querySelector("#issuerDetail .fee-disclosure");
   if (disclosure) { disclosure.open = true; disclosure.scrollIntoView({block: "center"}); }
+});
+
+document.getElementById("dossierSearch").addEventListener("input", event => {
+  state.dossierQuery = event.target.value;
+  renderDossiers();
+  syncUrl();
+});
+document.getElementById("clearDossierSearch").addEventListener("click", () => {
+  state.dossierQuery = "";
+  renderDossiers();
+  syncUrl();
+});
+document.getElementById("dossierCards").addEventListener("click", event => {
+  if (event.target.closest("[data-dossier-fee-comparison]")) {
+    state.feeQuery = "";
+    switchView("fees");
+  }
 });
 
 // Hydrate deep-link intent once, before yielding to any user input or fetch.
