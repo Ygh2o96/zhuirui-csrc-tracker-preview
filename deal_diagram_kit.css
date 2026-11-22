@@ -1,0 +1,563 @@
+/* ==========================================================================
+   YingSight Deal Structure Kit (YingSightDealDiagramKit v2.0)
+   True 2D Spatial Pitchbook Vector Topology SVG Styling (.ddk-*)
+   Flat 1px hairlines · Zero muddy gradients · Zero corner horns · tabular-nums
+   Responsive at 1440px, 1024px, and 390px
+   ========================================================================== */
+
+.ddk-board {
+  --ddk-bg: var(--surface, #ffffff);
+  --ddk-paper: var(--bg-canvas, #f5f5f1);
+  --ddk-subtle: var(--bg-subtle, #f1f1ec);
+  --ddk-tint: #fafaf7;
+  --ddk-ink: var(--ink, #0f172a);
+  --ddk-ink-2: var(--ink-2, #334155);
+  --ddk-muted: var(--muted, #5b6673);
+  --ddk-line: var(--line, #e2e5e9);
+  --ddk-soft-line: var(--soft-line, #edf0f3);
+  --ddk-accent: var(--accent, #0f3d5e);
+  --ddk-cash: #0d654d;
+  --ddk-cash-bg: #eef7f1;
+  --ddk-cash-bd: #bfdccc;
+  --ddk-shares: #1c3d6e;
+  --ddk-shares-bg: #eff4fa;
+  --ddk-shares-bd: #c2d4e8;
+  --ddk-asset: #8a541a;
+  --ddk-asset-bg: #fcf6e8;
+  --ddk-asset-bd: #e6d1a4;
+  --ddk-cancel: #475569;
+  --ddk-cancel-bg: #f3f5f8;
+  --ddk-cancel-bd: #d5dce4;
+  --ddk-danger: #881b25;
+  --ddk-danger-bg: #fdf2f2;
+  --ddk-danger-bd: #ebc3c6;
+  --ddk-font-sans: var(--font-sans, "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif);
+  --ddk-font-mono: var(--font-mono, "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, monospace);
+
+  margin: 14px 0 16px;
+  background: var(--ddk-bg);
+  border: 1px solid var(--ddk-line);
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: var(--ddk-font-sans);
+  color: var(--ddk-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ddk-board *,
+.ddk-board *::before,
+.ddk-board *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Header Bar ---------- */
+.ddk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: var(--ddk-tint);
+  border-bottom: 1px solid var(--ddk-line);
+}
+
+.ddk-header-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ddk-archetype-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 9px;
+  background: var(--ddk-accent);
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 11.5px;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.ddk-archetype-pill small {
+  font-family: var(--ddk-font-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+}
+
+.ddk-modality-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid var(--ddk-line);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.ddk-modality-pill.is-modality-cash {
+  background: var(--ddk-cash-bg);
+  border-color: var(--ddk-cash-bd);
+  color: var(--ddk-cash);
+}
+
+.ddk-modality-pill.is-modality-shares,
+.ddk-modality-pill.is-modality-share_swap {
+  background: var(--ddk-shares-bg);
+  border-color: var(--ddk-shares-bd);
+  color: var(--ddk-shares);
+}
+
+.ddk-modality-pill.is-modality-cash_and_asset {
+  background: var(--ddk-asset-bg);
+  border-color: var(--ddk-asset-bd);
+  color: var(--ddk-asset);
+}
+
+.ddk-modality-pill.is-modality-mixed {
+  background: var(--ddk-cancel-bg);
+  border-color: var(--ddk-cancel-bd);
+  color: var(--ddk-ink-2);
+}
+
+.ddk-status-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2px 8px;
+  border: 1px solid var(--ddk-line);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ddk-status-pill time {
+  font-family: var(--ddk-font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.ddk-status-pill.is-status-closed {
+  background: var(--ddk-cash-bg);
+  border-color: var(--ddk-cash-bd);
+  color: var(--ddk-cash);
+}
+
+.ddk-status-pill.is-status-active {
+  background: var(--ddk-shares-bg);
+  border-color: var(--ddk-shares-bd);
+  color: var(--ddk-shares);
+}
+
+.ddk-status-pill.is-status-approved {
+  background: var(--ddk-asset-bg);
+  border-color: var(--ddk-asset-bd);
+  color: var(--ddk-asset);
+}
+
+.ddk-status-pill.is-status-terminated {
+  background: var(--ddk-danger-bg);
+  border-color: var(--ddk-danger-bd);
+  color: var(--ddk-danger);
+}
+
+/* ---------- Flow Filter Controls ---------- */
+.ddk-filter-bar {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--ddk-line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ddk-bg);
+}
+
+.ddk-filter-btn {
+  appearance: none;
+  border: 0;
+  border-right: 1px solid var(--ddk-line);
+  background: transparent;
+  color: var(--ddk-muted);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.ddk-filter-btn:last-child {
+  border-right: 0;
+}
+
+.ddk-filter-btn:hover {
+  background: var(--ddk-tint);
+  color: var(--ddk-ink);
+}
+
+.ddk-filter-btn.is-active {
+  background: var(--ddk-accent);
+  color: #ffffff;
+}
+
+.ddk-filter-btn:focus-visible {
+  outline: 2px solid var(--ddk-accent);
+  outline-offset: -2px;
+}
+
+/* ---------- 2D Spatial Pitchbook Vector Canvas ---------- */
+.ddk-svg-stage {
+  background: var(--ddk-bg);
+  padding: 8px 10px 6px;
+  overflow: hidden;
+}
+
+.ddk-svg-desktop {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.ddk-svg-mobile {
+  display: none;
+}
+
+.ddk-svg-panel {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.ddk-mobile-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 0;
+}
+
+.ddk-mobile-gate span {
+  display: inline-block;
+  padding: 2px 12px;
+  border: 1px solid var(--ddk-accent);
+  border-radius: 3px;
+  background: var(--ddk-shares-bg);
+  color: var(--ddk-accent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.ddk-mobile-gate.is-status-closed span {
+  border-color: var(--ddk-cash-bd);
+  background: var(--ddk-cash-bg);
+  color: var(--ddk-cash);
+}
+
+.ddk-mobile-gate.is-status-approved span {
+  border-color: var(--ddk-asset-bd);
+  background: var(--ddk-asset-bg);
+  color: var(--ddk-asset);
+}
+
+.ddk-mobile-gate.is-status-terminated span {
+  border-color: var(--ddk-danger-bd);
+  border-style: dashed;
+  background: var(--ddk-danger-bg);
+  color: var(--ddk-danger);
+}
+
+/* ---------- Interactive SVG Flow Highlighting ---------- */
+.ddk-tx-arrow {
+  transition: opacity 150ms ease;
+}
+
+.ddk-board[data-ddk-filter="cash"] .ddk-tx-arrow:not([data-ddk-flow-kind="cash"]),
+.ddk-board[data-ddk-filter="shares"] .ddk-tx-arrow:not([data-ddk-flow-kind="shares"]),
+.ddk-board[data-ddk-filter="structural"] .ddk-tx-arrow:not([data-ddk-flow-group="structural"]) {
+  opacity: 0.16;
+}
+
+/* ---------- Legend & Filter Status Bar ---------- */
+.ddk-legend-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 7px 14px;
+  background: var(--ddk-tint);
+  border-top: 1px solid var(--ddk-soft-line);
+  font-size: 10.5px;
+  color: var(--ddk-muted);
+}
+
+.ddk-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.ddk-legend-item i {
+  display: inline-block;
+  width: 12px;
+  height: 3px;
+  border-radius: 1px;
+}
+
+.ddk-legend-item i.is-cash {
+  background: var(--ddk-cash);
+}
+
+.ddk-legend-item i.is-shares {
+  background: var(--ddk-shares);
+}
+
+.ddk-legend-item i.is-asset {
+  background: var(--ddk-asset);
+}
+
+.ddk-legend-item i.is-edge-solid {
+  height: 0;
+  border-top: 1.5px solid var(--ddk-shares);
+}
+
+.ddk-filter-note {
+  margin-left: auto;
+  font-size: 10.5px;
+  font-weight: 650;
+  color: var(--ddk-accent);
+}
+
+/* ---------- Bottom Callout Rail (4-Column Hairline Matrix) ---------- */
+.ddk-annotations {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--ddk-line);
+  background: var(--ddk-bg);
+}
+
+.ddk-callout {
+  padding: 10px 12px;
+  border-right: 1px solid var(--ddk-line);
+  min-width: 0;
+}
+
+.ddk-callout:last-child {
+  border-right: 0;
+}
+
+.ddk-callout-head {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.ddk-callout-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ddk-accent);
+}
+
+.ddk-callout-title {
+  font-size: 11.5px;
+  font-weight: 650;
+  color: var(--ddk-ink);
+}
+
+.ddk-rule-pill {
+  margin-left: auto;
+  font-family: var(--ddk-font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 1px 5px;
+  background: var(--ddk-subtle);
+  border: 1px solid var(--ddk-line);
+  border-radius: 2px;
+  color: var(--ddk-ink-2);
+  white-space: nowrap;
+}
+
+.ddk-callout-body {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ddk-ink-2);
+}
+
+/* ---------- Compact Table / Comparison Row Badge ---------- */
+.ddk-compact-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+  padding: 3px 7px;
+  background: var(--ddk-tint, #fafaf7);
+  border: 1px solid var(--ddk-line, #e2e5e9);
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+  max-width: 100%;
+}
+
+.ddk-compact-flow.is-status-terminated {
+  border-style: dashed;
+  border-color: #ebc3c6;
+  background: #fffafa;
+}
+
+.ddk-cf-archetype {
+  font-weight: 650;
+  color: var(--accent, #0f3d5e);
+  white-space: nowrap;
+}
+
+.ddk-cf-modality {
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ddk-cf-modality.is-modality-cash {
+  background: #eef7f1;
+  color: #0d654d;
+}
+
+.ddk-cf-modality.is-modality-shares,
+.ddk-cf-modality.is-modality-share_swap {
+  background: #eff4fa;
+  color: #1c3d6e;
+}
+
+.ddk-cf-modality.is-modality-cash_and_asset {
+  background: #fcf6e8;
+  color: #7c4a15;
+}
+
+.ddk-cf-modality.is-modality-mixed {
+  background: #f3f5f8;
+  color: #475569;
+}
+
+.ddk-cf-summary {
+  color: var(--ink-2, #334155);
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* ---------- Responsive: 1024px Laptop / Tablet ---------- */
+@media (max-width: 1120px) {
+  .ddk-annotations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ddk-callout {
+    border-bottom: 1px solid var(--ddk-line);
+  }
+
+  .ddk-callout:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ddk-callout:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .ddk-callout:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom: 0;
+  }
+}
+
+/* ---------- Responsive: Narrow Tablet & Mobile (<= 860px & 390px) ---------- */
+@media (max-width: 860px) {
+  .ddk-header {
+    padding: 9px 11px;
+    align-items: flex-start;
+  }
+
+  .ddk-filter-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ddk-filter-btn {
+    padding: 5px 4px;
+    font-size: 10.5px;
+    text-align: center;
+  }
+
+  .ddk-svg-stage {
+    padding: 8px 8px 6px;
+  }
+
+  .ddk-svg-desktop {
+    display: none;
+  }
+
+  .ddk-svg-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ddk-board {
+    margin: 12px 0;
+  }
+
+  .ddk-filter-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ddk-filter-btn:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ddk-filter-btn:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--ddk-line);
+  }
+
+  .ddk-legend-bar {
+    padding: 6px 10px;
+    gap: 6px 12px;
+  }
+
+  .ddk-annotations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ddk-callout {
+    border-right: 0;
+    border-bottom: 1px solid var(--ddk-line);
+  }
+
+  .ddk-callout:last-child {
+    border-bottom: 0;
+  }
+}

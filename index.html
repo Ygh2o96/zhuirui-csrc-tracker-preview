@@ -3,184 +3,310 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>追瑞 | AI 原生金融人驿站</title>
+    <title>追瑞 YingSight | 港股交易先例、发行条款与监管进度</title>
     <meta
       name="description"
-      content="追瑞 is an AI-native capital markets intelligence hub for HKEX, CSRC and issuer evidence workflows."
+      content="追瑞 YingSight：香港投行交易先例、新股发行条款与境外上市监管进度研究终端。"
     />
-    <meta name="theme-color" content="#f5f7f8" />
+    <meta name="theme-color" content="#f6f6f3" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=351204354685e3d1" />
-    <link rel="stylesheet" href="styles.css?v=9955b60717c38320" />
-
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=954e91db19b37cd6" />
+    <link rel="stylesheet" href="deal_diagram_kit.css?v=1759464c1aca8a91" />
+    <link rel="stylesheet" href="styles.css?v=6c5c976ca40cc949" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
     <div class="loading-screen" id="loadingScreen" role="status" aria-live="polite">
       <div class="loading-card">
-        <div class="loading-brand">追瑞</div>
-        <div class="loading-title">正在载入追瑞</div>
+        <div class="loading-brand">追瑞 YingSight</div>
+        <div class="loading-title">正在载入公开披露数据…</div>
         <div class="loading-bar" aria-hidden="true"><span></span></div>
       </div>
     </div>
+
     <div class="app-shell">
-      <header class="top-nav"><a class="brand-home" href="?view=pace" aria-label="追瑞首页">追瑞 <span>YingSight</span></a><span id="mobileViewTitle">监管节奏</span><nav class="nav-list" aria-label="主要栏目"><a class="nav-item" data-view="tracker" href="?view=pace">监管节奏</a><a class="nav-item" data-view="fees" href="?view=fees">新股与费用</a><a class="nav-item" data-view="precedents" href="?view=transactions" data-private-candidate="transactions">交易与重组</a><a class="nav-item" data-view="sponsorLeaderboard" href="?view=sponsors">机构与保荐</a></nav><button class="global-search-trigger" type="button" id="globalSearchOpen" aria-label="全局搜索">搜索 <kbd>⌘K</kbd></button><span id="dataMode" hidden></span></header>
+      <header class="top-nav">
+        <div class="top-nav-inner">
+          <a class="brand-home" href="?view=directory" aria-label="追瑞首页">追瑞 <span>YingSight</span></a>
+          <span id="mobileViewTitle">项目总录</span>
+          <nav class="nav-list" aria-label="主要栏目">
+            <a class="nav-item" data-view="directory" href="?view=directory">项目总录</a>
+            <a class="nav-item" data-view="tracker" href="?view=pace">监管节奏</a>
+            <a class="nav-item" data-view="fees" href="?view=fees">新股与费用</a>
+            <a class="nav-item" data-view="pausedOfferings" href="?view=paused">发售搁置</a>
+            <a class="nav-item" data-view="cornerstones" href="?view=cornerstones">基石画像</a>
+            <a class="nav-item" data-view="precedents" href="?view=transactions" data-private-candidate="transactions">交易与重组</a>
+            <a class="nav-item" data-view="sponsorLeaderboard" href="?view=sponsors">保荐人龙虎榜</a>
+          </nav>
+          <div class="top-nav-right">
+            <button class="global-search-trigger" type="button" id="globalSearchOpen" aria-label="全局搜索">
+              <span>搜索公司、代码、规则、机构…</span>
+              <kbd>⌘K</kbd>
+            </button>
+            <button class="icon-refresh-button" id="refreshButton" type="button" title="重新校验公开快照" aria-label="刷新数据">刷新</button>
+          </div>
+          <span id="dataMode" hidden></span>
+        </div>
+      </header>
 
       <main class="workspace" id="workspaceMain">
-        <header class="topbar">
-          <div>
-            
-            <h1 id="viewTitle">监管节奏追踪</h1>
-          </div>
+        <header class="topbar" hidden>
+          <h1 id="viewTitle">监管节奏</h1>
           <div class="topbar-actions">
-            <div class="source-pill" id="sourcePill">样例快照</div>
-            <button class="text-button compact-button" id="refreshButton" title="刷新数据" aria-label="刷新数据">刷新</button>
+            <div class="source-pill" id="sourcePill"></div>
           </div>
         </header>
 
-        <section class="view-panel is-visible" id="trackerView" aria-label="监管节奏">
-        <div class="listing-stage-panel" id="listingStagePanel" aria-label="Application pace filter">
-          <div class="listing-stage-title">
-            <b>申请节奏</b>
-            <small>Application pace</small>
-          </div>
-          <button class="listing-stage-button" type="button" data-hkex-stage="all">
-            <span><b>全部</b><small>All tracked</small></span>
-            <strong data-stage-count="all">0</strong>
-          </button>
-          <button class="listing-stage-button is-active" type="button" data-hkex-stage="applying">
-            <span><b>上市申请中</b><small>Application in progress</small></span>
-            <strong data-stage-count="applying">0</strong>
-          </button>
-          <button class="listing-stage-button" type="button" data-hkex-stage="listed">
-            <span><b>已上市</b><small>Listed</small></span>
-            <strong data-stage-count="listed">0</strong>
-          </button>
-          <button class="listing-stage-button muted-stage" type="button" data-hkex-stage="other">
-            <span><b>搁置/撤回</b><small>Stalled / withdrawn</small></span>
-            <strong data-stage-count="other">0</strong>
-          </button>
-        </div>
-          <p class="snapshot-meta" id="snapshotMeta"></p>
-          <div class="day-mode-bar" aria-label="天数口径">
-            <span><b>天数口径</b><small>Days basis</small></span>
-            <div class="day-mode-toggle" role="group" aria-label="天数口径">
-              <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日</button>
-              <button class="day-mode-button" type="button" data-day-count-mode="business">工作日</button>
+        <!-- 0. 项目总录 (HKEX AP & 上市项目总表) -->
+        <section class="view-panel directory-view is-visible" id="directoryView" aria-label="项目总录">
+          <div class="section-head-bar dir-head-bar">
+            <div class="dir-head-copy">
+              <h2 class="dir-heading">港股申报与上市项目总录 <span class="dir-heading-sub">HKEX AP &amp; Listing Directory</span></h2>
             </div>
-            <small id="dayModeHint">默认自然日</small>
+            <p class="snapshot-meta" id="dirSnapshotMeta"></p>
           </div>
-          
+
+          <section class="terminal-stat-strip dir-pulse-strip" id="directoryPulseStrip" aria-label="市场总览指标"></section>
+
+          <div class="dir-controls-shell">
+            <div class="dir-toolbar-primary">
+              <label class="search-box dir-search-box">
+                <span class="search-glyph" aria-hidden="true">⌕</span>
+                <input id="dirSearch" name="dirSearch" type="search" autocomplete="off" placeholder="搜索发行人中英文名、股份/A股代码、保荐人、行业…" />
+              </label>
+              <div class="dir-stage-tabs" id="dirStageTabs" role="tablist" aria-label="申请与上市阶段">
+                <button type="button" class="dir-stage-btn is-active" data-dir-stage="all" aria-pressed="true">全部 <strong data-dir-stage-count="all">0</strong></button>
+                <button type="button" class="dir-stage-btn" data-dir-stage="applying" aria-pressed="false">在审申请 <strong data-dir-stage-count="applying">0</strong></button>
+                <button type="button" class="dir-stage-btn" data-dir-stage="listed" aria-pressed="false">已上市 <strong data-dir-stage-count="listed">0</strong></button>
+                <button type="button" class="dir-stage-btn" data-dir-stage="other" aria-pressed="false">搁置/撤回 <strong data-dir-stage-count="other">0</strong></button>
+              </div>
+              <button class="clear-button" id="dirResetBtn" type="button">重置</button>
+            </div>
+
+            <div class="dir-toolbar-secondary" aria-label="项目总录筛选">
+              <label class="inline-select-pill">
+                <span>类别</span>
+                <select id="dirTypeFilter" name="dirTypeFilter" autocomplete="off">
+                  <option value="all">全部类别</option>
+                  <option value="a_h">A+H</option>
+                  <option value="h_share">H股</option>
+                  <option value="red_chip">红筹</option>
+                  <option value="chapter18">18A·特专 (-B/-P)</option>
+                  <option value="other">其他 (De-SPAC/HDR)</option>
+                </select>
+              </label>
+              <label class="inline-select-pill">
+                <span>AP文件</span>
+                <select id="dirDocFilter" name="dirDocFilter" autocomplete="off">
+                  <option value="all">全部状态</option>
+                  <option value="recent30">近30日更新</option>
+                  <option value="phip">PHIP 聆讯后</option>
+                  <option value="ap_revised">修订 AP</option>
+                  <option value="ap_first">首次 AP</option>
+                  <option value="oc">含 OC 委任</option>
+                  <option value="listed">已挂牌上市</option>
+                  <option value="paused_offer">发售搁置</option>
+                </select>
+              </label>
+              <label class="inline-select-pill">
+                <span>行业</span>
+                <select id="dirIndustryFilter" name="dirIndustryFilter" autocomplete="off">
+                  <option value="all">全部行业</option>
+                </select>
+              </label>
+              <label class="inline-select-pill">
+                <span>保荐人</span>
+                <select id="dirSponsorFilter" name="dirSponsorFilter" autocomplete="off">
+                  <option value="all">全部保荐人</option>
+                </select>
+              </label>
+              <label class="inline-select-pill">
+                <span>排序</span>
+                <select id="dirSortSelect" name="dirSortSelect" autocomplete="off">
+                  <option value="latestActivity">最新公开动态</option>
+                  <option value="currentA1Date">当前 A1 日期</option>
+                  <option value="a1Date">首轮 A1 日期</option>
+                  <option value="hkexListingDate">港交所挂牌日</option>
+                  <option value="marketCap">参考市值</option>
+                  <option value="issuerName">发行人名称</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="tracker-meta-strip dir-meta-strip" id="directoryMetaStrip" role="status" aria-live="polite"></div>
+
+          <div class="table-wrap dir-table-wrap">
+            <table class="dir-table">
+              <thead>
+                <tr>
+                  <th class="dir-col-issuer" scope="col">发行人 / 代码</th>
+                  <th class="dir-col-status" scope="col">当前状态（HKEX · CSRC）</th>
+                  <th class="dir-col-milestone" scope="col">最新披露节点</th>
+                  <th class="dir-col-industry" scope="col">架构与赛道</th>
+                  <th class="dir-col-anchor col-num" scope="col">市值 / 募资 / 进度锚点</th>
+                  <th class="dir-col-sponsors" scope="col">保荐人</th>
+                </tr>
+              </thead>
+              <tbody id="directoryRows"></tbody>
+            </table>
+          </div>
+          <div class="pagination-bar" id="dirPaginationBar" aria-live="polite"></div>
+        </section>
+
+        <!-- 1. 监管节奏 -->
+        <section class="view-panel" id="trackerView" aria-label="监管节奏">
+          <div class="section-head-bar">
+            <div class="listing-stage-panel" id="listingStagePanel" role="tablist" aria-label="申请阶段">
+              <button class="listing-stage-button is-active" type="button" data-hkex-stage="applying">
+                <span>上市申请中</span>
+                <strong data-stage-count="applying">0</strong>
+              </button>
+              <button class="listing-stage-button" type="button" data-hkex-stage="listed">
+                <span>已上市</span>
+                <strong data-stage-count="listed">0</strong>
+              </button>
+              <button class="listing-stage-button muted-stage" type="button" data-hkex-stage="other">
+                <span>搁置/撤回</span>
+                <strong data-stage-count="other">0</strong>
+              </button>
+              <button class="listing-stage-button" type="button" data-hkex-stage="all">
+                <span>全部收录</span>
+                <strong data-stage-count="all">0</strong>
+              </button>
+            </div>
+
+            <div class="section-head-right">
+              <div class="day-mode-bar" aria-label="天数口径">
+                <div class="day-mode-toggle" role="group" aria-label="天数口径">
+                  <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日</button>
+                  <button class="day-mode-button" type="button" data-day-count-mode="business">工作日</button>
+                </div>
+                <small id="dayModeHint" hidden>默认自然日</small>
+              </div>
+              <p class="snapshot-meta" id="snapshotMeta"></p>
+            </div>
+          </div>
+
+          <div class="metrics-grid" id="metricsGrid"></div>
 
           <section class="tracker-layout">
             <div class="tracker-main">
-              <div class="toolbar">
-                <div class="search-box">
-                  <span aria-hidden="true">搜</span>
-                  <input id="issuerSearch" name="issuerSearch" type="search" autocomplete="off" placeholder="搜索发行人、保荐人、行业…" />
-                </div>
-                <div class="segmented" role="tablist" aria-label="Status filter">
-                  <button class="segment is-active" data-status="all">全部<small>All</small></button>
-                  <button class="segment" data-status="notice_issued">通知书<small>Notice</small></button>
-                  <button class="segment" data-status="regulator_opinion">征询意见<small>Opinion</small></button>
-                  <button class="segment" data-status="supplement_requested">补材料<small>Suppl.</small></button>
-                  <button class="segment" data-status="csrc_received">已接收<small>Received</small></button>
-                  <button class="segment" data-status="waiting_received">尚未接收<small>Awaiting</small></button>
-                </div>
-              </div>
-
-              <details class="tracker-extra-filters"><summary>类型、行业、日期及排序</summary><div class="filter-grid" aria-label="Tracker filters">
-                <label class="filter-control">
-                  <span><b>日期口径</b><small>Date field</small></span>
-                  <select id="dateField" name="dateField" autocomplete="off">
-                    <option value="a1Date">A1 锚点</option>
-                    <option value="currentA1Date">当前 A1</option>
-                    <option value="csrcReceivedDate">首轮接收</option>
-                    <option value="csrcCurrentReceivedDate">当前接收</option>
-                    <option value="noticeDate">备案通知书</option>
-                    <option value="hkexListingDate">上市日期</option>
-                  </select>
+              <div class="toolbar tracker-primary-toolbar">
+                <label class="search-box">
+                  <span class="search-glyph" aria-hidden="true">⌕</span>
+                  <input id="issuerSearch" name="issuerSearch" type="search" autocomplete="off" placeholder="搜索发行人、A股代码、保荐人、行业…" />
                 </label>
-                <label class="filter-control">
-                  <span><b>起始</b><small>From</small></span>
-                  <input id="dateFrom" name="dateFrom" type="date" autocomplete="off" />
-                </label>
-                <label class="filter-control">
-                  <span><b>截至</b><small>To</small></span>
-                  <input id="dateTo" name="dateTo" type="date" autocomplete="off" />
-                </label>
-                <label class="filter-control">
-                  <span><b>发行人类型</b><small>Issuer type</small></span>
+                <label class="inline-select-pill" aria-label="发行人类别">
+                  <span>类别</span>
                   <select id="structureFilter" name="structureFilter" autocomplete="off"></select>
                 </label>
-                <label class="filter-control">
-                  <span><b>行业</b><small>Industry</small></span>
-                  <select id="industryFilter" name="industryFilter" autocomplete="off"></select>
-                </label>
-                <label class="filter-control">
-                  <span><b>保荐人</b><small>Sponsor</small></span>
-                  <select id="sponsorFilter" name="sponsorFilter" autocomplete="off"></select>
-                </label>
-                <label class="filter-control">
-                  <span><b id="marketCapMinZh">A股估值下限</b><small id="marketCapMinEn">A-share value min · RMB bn</small></span>
-                  <input id="marketCapMin" name="marketCapMin" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
-                </label>
-                <label class="filter-control">
-                  <span><b id="marketCapMaxZh">A股估值上限</b><small id="marketCapMaxEn">A-share value max · RMB bn</small></span>
-                  <input id="marketCapMax" name="marketCapMax" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限…" />
-                </label>
-                <label class="filter-control">
-                  <span><b>排序</b><small>Sort by</small></span>
-                  <select id="sortField" name="sortField" autocomplete="off">
-                    <option value="issuerName">发行人名称</option>
-                    <option value="status">状态</option>
-                    <option value="a1Date">A1 锚点</option>
-                    <option value="currentA1Date">当前 A1</option>
-                    <option value="csrcReceivedDate">首轮接收</option>
-                    <option value="csrcCurrentReceivedDate">当前接收</option>
-                    <option value="noticeDate">备案通知书</option>
-                    <option value="hkexListingDate">上市日期</option>
-                    <option value="__days__">天数</option>
-                    <option value="aShareMarketCapAtA1RmbBn" id="aShareMarketCapSortOption">A1 日 A 股市值</option>
-                    <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日市值</option>
-                    <option value="structureType">发行人类型</option>
-                    <option value="industryTags">行业</option>
-                    <option value="sponsors">保荐人</option>
-                  </select>
-                </label>
-                <button class="sort-button" id="sortDirection" data-dir="desc">降序</button>
-                <button class="clear-button" id="clearFilters">清除</button>
+                <div class="segmented" role="tablist" aria-label="备案状态筛选">
+                  <button class="segment is-active" type="button" data-status="all">全部</button>
+                  <button class="segment" type="button" data-status="notice_issued">已发通知书</button>
+                  <button class="segment" type="button" data-status="regulator_opinion">征询意见</button>
+                  <button class="segment" type="button" data-status="supplement_requested">补材料</button>
+                  <button class="segment" type="button" data-status="csrc_received">已接收</button>
+                  <button class="segment" type="button" data-status="waiting_received">尚未接收</button>
+                </div>
+                <button class="clear-button" id="clearFilters" type="button">重置</button>
               </div>
 
-              <details class="stage-criteria" id="stageCriteriaNote" hidden>
-                <summary>搁置/撤回 收录条件 · Inclusion criteria</summary>
-                <p>发行人已终止上市计划，或港交所最近一轮申请已撤回、被拒绝或发回且未重递的，列入「搁置/撤回」。申请失效后，最近 A1 超过六个月且备案尚未接收，或备案停留在已接收或征询监管意见、最近 A1 超过一年未更新的，也列入此类。</p>
-                <p class="stage-criteria-en">Stalled/withdrawn includes terminated listing plans and the latest applications withdrawn, rejected or returned without a subsequent filing. Lapsed applications also qualify after six months without CSRC receipt, or after a year without a new A1 while the filing remains at receipt or regulator opinion.</p>
+              <details class="tracker-extra-filters">
+                <summary>行业、保荐人、日期区间与排序</summary>
+                <div class="filter-grid" aria-label="高级筛选">
+                  <label class="filter-control">
+                    <span>行业</span>
+                    <select id="industryFilter" name="industryFilter" autocomplete="off"></select>
+                  </label>
+                  <label class="filter-control">
+                    <span>保荐人</span>
+                    <select id="sponsorFilter" name="sponsorFilter" autocomplete="off"></select>
+                  </label>
+                  <label class="filter-control">
+                    <span>日期口径</span>
+                    <select id="dateField" name="dateField" autocomplete="off">
+                      <option value="a1Date">A1 锚点</option>
+                      <option value="currentA1Date">当前 A1</option>
+                      <option value="csrcReceivedDate">首轮接收</option>
+                      <option value="csrcCurrentReceivedDate">当前接收</option>
+                      <option value="noticeDate">备案通知书</option>
+                      <option value="hkexListingDate">上市日期</option>
+                    </select>
+                  </label>
+                  <label class="filter-control">
+                    <span>起始日</span>
+                    <input id="dateFrom" name="dateFrom" type="date" autocomplete="off" />
+                  </label>
+                  <label class="filter-control">
+                    <span>截止日</span>
+                    <input id="dateTo" name="dateTo" type="date" autocomplete="off" />
+                  </label>
+                  <label class="filter-control">
+                    <span><b id="marketCapMinZh">A股市值下限 (亿)</b><small id="marketCapMinEn" hidden></small></span>
+                    <input id="marketCapMin" name="marketCapMin" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限" />
+                  </label>
+                  <label class="filter-control">
+                    <span><b id="marketCapMaxZh">A股市值上限 (亿)</b><small id="marketCapMaxEn" hidden></small></span>
+                    <input id="marketCapMax" name="marketCapMax" type="number" inputmode="decimal" min="0" step="1" autocomplete="off" placeholder="不限" />
+                  </label>
+                  <label class="filter-control">
+                    <span>排序字段</span>
+                    <select id="sortField" name="sortField" autocomplete="off">
+                      <option value="issuerName">发行人名称</option>
+                      <option value="status">状态</option>
+                      <option value="a1Date">A1 锚点</option>
+                      <option value="currentA1Date">当前 A1</option>
+                      <option value="csrcReceivedDate">首轮接收</option>
+                      <option value="csrcCurrentReceivedDate">当前接收</option>
+                      <option value="noticeDate">备案通知书</option>
+                      <option value="hkexListingDate">上市日期</option>
+                      <option value="__days__">阶段天数</option>
+                      <option value="aShareMarketCapAtA1RmbBn" id="aShareMarketCapSortOption">A1 日 A 股市值</option>
+                      <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日市值</option>
+                      <option value="structureType">发行人类别</option>
+                      <option value="industryTags">行业</option>
+                      <option value="sponsors">保荐人</option>
+                    </select>
+                  </label>
+                  <div class="filter-control filter-control-action">
+                    <span>排序方向</span>
+                    <button class="sort-button" id="sortDirection" type="button" data-dir="desc">降序</button>
+                  </div>
+                </div>
               </details>
-              </details><div class="metrics-grid" id="metricsGrid"></div><div class="table-wrap">
+
+              <details class="stage-criteria" id="stageCriteriaNote" hidden>
+                <summary>搁置/撤回 收录口径</summary>
+                <p>发行人已终止上市计划，或港交所最近一轮申请已撤回、被拒绝或发回且未重递的，列入「搁置/撤回」。申请失效后，最近 A1 超过六个月且备案尚未接收，或备案停留在已接收或征询监管意见、最近 A1 超过一年未更新的，也列入此类。</p>
+              </details>
+
+              <div class="tracker-meta-strip" id="trackerMetaStrip" role="status" aria-live="polite"></div>
+
+              <div class="table-wrap">
                 <table class="tracker-table">
                   <thead tabindex="-1">
                     <tr>
-                      <th class="col-issuer"><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="th-en">Issuer</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-status"><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">状态</span><span class="th-en">Status</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1</span><span class="th-en">Anchor / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-date"><button class="th-sort" id="dateColumn4Sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh" id="dateColumn4Zh">接收</span><span class="th-en" id="dateColumn4En">First / current</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-date"><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En">Notice</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="all-only-col col-listing-date"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="th-en">Listing</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="days-header-cell">
-                        <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">天数</span><span class="th-en">Days</span><span class="sort-indicator" aria-hidden="true"></span></button>
-                        <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="天数口径" autocomplete="off">
+                      <th class="col-issuer"><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-status"><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">备案状态</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" type="button" data-sort-field="a1Date"><span class="th-zh">A1 递表</span><span class="th-en" hidden></span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" id="dateColumn4Sort" type="button" data-sort-field="csrcReceivedDate"><span class="th-zh" id="dateColumn4Zh">接收</span><span class="th-en" id="dateColumn4En" hidden></span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-date"><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En" hidden></span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="all-only-col col-listing-date"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="days-header-cell col-num">
+                        <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">耗时</span><span class="sort-indicator" aria-hidden="true"></span></button>
+                        <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="天数口径" autocomplete="off" hidden>
                           <option value="calendarDaysA1ToReceived">A1至接收</option>
                           <option value="calendarDaysCurrentA1ToReceived">当前A1至接收</option>
                           <option value="calendarDaysReceivedToNotice">接收至通知</option>
                           <option value="calendarDaysA1ToNotice">A1至通知</option>
                         </select>
                       </th>
-                      <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类型</span><span class="th-en">Issuer type</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-mcap"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A1日市值</span><span class="th-en" id="marketCapEn">A-share mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="all-only-col col-mcap-listing"><button class="th-sort" type="button" data-sort-field="listingMarketCapHkdBn"><span class="th-zh">上市日市值</span><span class="th-en">Listing mkt cap</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th class="col-industry"><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="th-en">Industry</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
-                      <th><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="th-en">Sponsors</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类别</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-mcap col-num"><button class="th-sort" id="marketCapSort" type="button" data-sort-field="aShareMarketCapAtA1RmbBn"><span class="th-zh" id="marketCapZh">A股市值</span><span class="th-en" id="marketCapEn" hidden></span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="all-only-col col-mcap-listing col-num"><button class="th-sort" type="button" data-sort-field="listingMarketCapHkdBn"><span class="th-zh">上市市值</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-industry"><button class="th-sort" type="button" data-sort-field="industryTags"><span class="th-zh">行业</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
+                      <th class="col-sponsors"><button class="th-sort" type="button" data-sort-field="sponsors"><span class="th-zh">保荐人</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                     </tr>
                   </thead>
                   <tbody id="trackerRows"></tbody>
@@ -189,79 +315,136 @@
               <div class="pagination-bar" id="paginationBar" aria-live="polite"></div>
             </div>
           </section>
-
         </section>
 
-          <div class="detail-modal" id="detailModal" aria-hidden="true">
-            <button class="detail-backdrop" id="detailBackdrop" type="button" aria-label="关闭详情"></button>
-            <aside class="detail-pane detail-dialog" role="dialog" aria-modal="true" aria-label="Issuer detail">
-              <button class="detail-close" id="detailClose" type="button" aria-label="关闭详情">关闭</button>
-              <div id="issuerDetail"></div>
-            </aside>
+        <div class="detail-modal" id="detailModal" aria-hidden="true">
+          <button class="detail-backdrop" id="detailBackdrop" type="button" aria-label="关闭详情"></button>
+          <aside class="detail-pane detail-dialog" role="dialog" aria-modal="true" aria-label="发行人监管档案">
+            <div class="detail-drawer-topbar">
+              <span class="detail-drawer-kicker">监管与申报档案</span>
+              <button class="detail-close" id="detailClose" type="button" aria-label="关闭详情">关闭 Esc</button>
+            </div>
+            <div id="issuerDetail"></div>
+          </aside>
+        </div>
+
+        <!-- 3. 发售搁置工作台 (5 宗实证搁置/延期新股) -->
+        <section class="view-panel offerings-view" id="offeringsView" aria-label="发售搁置">
+          <div class="section-head-bar">
+            <div class="dir-head-copy">
+              <h2 class="dir-heading">港股发售搁置与延期工作台 <span class="dir-heading-sub">Paused &amp; Postponed HKEX Offerings</span></h2>
+            </div>
+            <div class="section-head-right">
+              <button type="button" class="clear-button" data-jump-view="fees">已定价新股与费用 →</button>
+            </div>
           </div>
-
-
-
-        <section class="view-panel offerings-view" id="offeringsView" aria-label="发售搁置 Paused or not proceeding">
-          <p class="offering-intro">计划金额 · HKD 毛额 · 绿鞋前</p>
-          <div class="offering-toolbar">
-            <label class="search-box"><span>搜</span><input id="offeringSearch" type="search" autocomplete="off" aria-label="搜索搁置发售" placeholder="搜索公司、代码、机构、基石、上市前投资者…" /></label>
-            <button type="button" class="text-button" id="clearOfferingSearch">清除 / Clear</button>
-            <button type="button" class="text-button" id="returnToTracker">返回监管列表 / Back to tracker</button>
+          <section class="terminal-stat-strip paused-insight-strip" id="pausedInsightStrip" aria-label="发售搁置核心洞察"></section>
+          <div class="offering-toolbar paused-toolbar">
+            <label class="search-box">
+              <span class="search-glyph" aria-hidden="true">⌕</span>
+              <input id="offeringSearch" type="search" autocomplete="off" aria-label="搜索搁置发售" placeholder="搜索发行人、代码、保荐人、基石或分配机制…" />
+            </label>
+            <button type="button" class="clear-button" id="clearOfferingSearch">清除</button>
+            <p class="offering-count" id="offeringCount" role="status" aria-live="polite"></p>
           </div>
-          <p class="offering-count" id="offeringCount" role="status" aria-live="polite"></p>
+          <div id="pausedMatrixWrap"></div>
           <div class="offering-grid" id="offeringCards"></div>
-          <p class="offering-asof">核查日期：2026-11-22（香港时间）</p>
         </section>
 
-        <section class="view-panel fees-view" id="feesView" aria-label="发行费用 Offering fees">
-          <div class="offering-toolbar">
-            <label class="search-box"><span>搜</span><input id="feeSearch" type="search" autocomplete="off" aria-label="搜索发行费用" placeholder="公司、代码、机构…" /></label>
-            <button type="button" class="text-button" id="clearFeeSearch">清除</button>
+        <!-- 4. 基石投资人画像 (Cornerstone Investor Profiles) -->
+        <section class="view-panel cornerstones-view" id="cornerstonesView" aria-label="基石画像">
+          <div class="section-head-bar">
+            <div class="dir-head-copy">
+              <h2 class="dir-heading">基石与机构投资者画像 <span class="dir-heading-sub">Cornerstone &amp; Institutional Profiles</span></h2>
+            </div>
+            <p class="snapshot-meta" id="csCoverageMeta">港股基石与机构获配实证档案</p>
           </div>
-          <div id="feeControls"></div>
-          <p class="offering-count" id="feeCount" role="status" aria-live="polite"></p>
-          <div id="feeSummary" role="status"></div><div id="feeSelection"></div>
+          <section class="terminal-stat-strip cs-insight-strip" id="csInsightStrip" aria-label="基石投资者统计概览"></section>
+          <section class="cs-thermometer-wrap" id="csThermometer" aria-label="基石资金构成温度条"></section>
+          <div class="cs-toolbar" id="csToolbar">
+            <label class="search-box cs-search-box">
+              <span class="search-glyph" aria-hidden="true">⌕</span>
+              <input id="csSearch" type="search" autocomplete="off" aria-label="搜索基石投资者" placeholder="搜索基石机构、持有人、签约实体、参与新股或保荐机构…" />
+            </label>
+            <div class="cs-archetype-tabs" id="csArchetypeTabs" role="tablist" aria-label="投资者类别">
+              <button type="button" class="dir-stage-btn is-active" data-cs-archetype="all" aria-pressed="true">全部</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="public_fund" aria-pressed="false">内地公募 / QDII</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="hk_family" aria-pressed="false">港资家族 / 个人</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="strategic" aria-pressed="false">产业战投</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="asset_mgmt" aria-pressed="false">私募 / 资管 / TRS</button>
+            </div>
+            <button type="button" class="clear-button" id="csResetBtn">重置</button>
+          </div>
+          <div id="cornerstoneListWrap"></div>
+          <article id="cornerstoneProfilePane" class="cs-profile-pane" aria-label="基石投资者详情档案" hidden></article>
+        </section>
+
+        <!-- 2. 新股与费用（全量 131 轮） -->
+        <section class="view-panel fees-view" id="feesView" aria-label="新股与费用">
+          <div class="fees-head-shell">
+            <div id="feeControls"></div>
+            <div class="offering-toolbar fees-search-bar">
+              <label class="search-box">
+                <span class="search-glyph" aria-hidden="true">⌕</span>
+                <input id="feeSearch" type="search" autocomplete="off" aria-label="搜索新股与费用" placeholder="搜索发行人、股票代码、保荐机构…" />
+              </label>
+              <button type="button" class="clear-button" id="clearFeeSearch">清除</button>
+            </div>
+          </div>
+          <section class="terminal-stat-strip fee-insight-strip" id="feeInsightStrip" aria-label="新股费用跨维度洞察"></section>
+          <section class="terminal-stat-strip fee-benchmark-strip" id="feeBenchmarkStrip" aria-label="发行规模分档费用基准"></section>
+          <details class="fee-curve-panel" id="feeScaleCurvePanel" hidden></details>
+          <div class="fees-meta-strip">
+            <p class="offering-count" id="feeCount" role="status" aria-live="polite"></p>
+            <div id="feeSummary" role="status"></div>
+          </div>
+          <div id="feeSelection"></div>
           <div id="feeComparison"></div>
-          <nav id="feePagination" aria-label="发行费用分页"></nav>
+          <nav id="feePagination" aria-label="新股与费用分页"></nav>
         </section>
 
-        <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard"><nav class="institution-tabs"><button type="button" data-sponsor-workbench="list">机构列表</button><button type="button" data-sponsor-workbench="compare">机构比较</button></nav>
-          <div class="sl-meta-bar">
-            <p class="snapshot-meta" id="slCoverageText">正在载入保荐人龙虎榜…</p>
-            <p class="sl-meta-count"><strong id="slFirmCount">--</strong> 个保荐/合并口径 · <span id="slGeneratedAt">--</span></p>
+        <!-- 3. 保荐人龙虎榜 -->
+        <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="保荐人龙虎榜">
+          <div class="section-head-bar">
+            <nav class="institution-tabs" aria-label="龙虎榜与擂台切换">
+              <button type="button" class="is-tab-current" data-sponsor-workbench="list">保荐人龙虎榜</button>
+              <button type="button" data-sponsor-workbench="compare">保荐人擂台</button>
+            </nav>
+            <div class="sl-meta-bar">
+              <p class="snapshot-meta" id="slCoverageText">正在载入保荐人龙虎榜…</p>
+              <p class="sl-meta-count"><strong id="slFirmCount">--</strong> 家保荐机构 · <span id="slGeneratedAt">--</span></p>
+            </div>
           </div>
-
-          <details class="sl-notice-strip sl-notice-details">
-            <summary>公开预览及口径说明 <small>Methodology</small></summary>
-            <p id="slDemoNote"></p>
-          </details>
 
           <section class="sl-metric-strip" id="slMetricStrip" aria-label="Sponsor summary"></section>
 
-          <section class="sl-controls" aria-label="Sponsor leaderboard filters">
-            <div class="sl-search-field">
-              <span aria-hidden="true">搜</span>
-              <input id="slSearchInput" name="slSearchInput" type="search" autocomplete="off" placeholder="搜索保荐人、项目、行业…" />
+          <section class="sl-controls" aria-label="机构筛选">
+            <div class="sl-primary-bar">
+              <label class="sl-search-field search-box">
+                <span class="search-glyph" aria-hidden="true">⌕</span>
+                <input id="slSearchInput" name="slSearchInput" type="search" autocomplete="off" placeholder="搜索保荐机构、代表项目、行业…" />
+              </label>
+              <div class="sl-preset-row" id="slPresetRow">
+                <button type="button" class="preset is-active" data-preset="all">全部</button>
+                <button type="button" class="preset" data-preset="applying">申请中</button>
+                <button type="button" class="preset" data-preset="listed">已上市</button>
+                <button type="button" class="preset" data-preset="ah">A+H</button>
+                <button type="button" class="preset" data-preset="recentA1">近30日交表</button>
+                <button type="button" class="preset" data-preset="recentNotice">近90日获通知</button>
+              </div>
+              <button id="slClearButton" class="clear-button" type="button">重置</button>
             </div>
-            <div class="sl-preset-row" id="slPresetRow">
-              <button type="button" class="preset is-active" data-preset="all">全部</button>
-              <button type="button" class="preset" data-preset="applying">申请中</button>
-              <button type="button" class="preset" data-preset="listed">已上市</button>
-              <button type="button" class="preset" data-preset="ah">A+H</button>
-              <button type="button" class="preset" data-preset="recentA1">近30天新交表</button>
-              <button type="button" class="preset" data-preset="recentNotice">近90天备案通过</button>
-            </div>
+
             <div class="sl-filter-grid">
               <label>
-                <span>排名口径</span>
+                <span>排名指标</span>
                 <select id="slMetricSelect" name="slMetricSelect" autocomplete="off">
-                  <option value="projectCount">项目数</option>
+                  <option value="projectCount">项目总数</option>
                   <option value="activeCount">公开申请中项目</option>
                   <option value="listedCount">已上市项目</option>
                   <option value="ahCount">A+H 项目</option>
-                  <option value="listingMarketCapHkdBnSum">上市日市值</option>
-                  <option value="aShareMarketCapRmbBnSum">A股市值</option>
+                  <option value="listingMarketCapHkdBnSum">上市日市值合计</option>
+                  <option value="aShareMarketCapRmbBnSum">A股市值合计</option>
                   <option value="lifecycleMedianDays">A1→上市平均时间（已上市）</option>
                   <option value="noticeCycleMedianDays">A1→通知中位数（已通知）</option>
                   <option value="receivedCycleMedianDays">A1→接收中位数（已接收）</option>
@@ -273,7 +456,7 @@
                   <option value="type6TotalPerProject">项目六号牌配置</option>
                   <option value="projectsPerType6Total">六号牌项目负荷</option>
                   <option value="listingMarketCapPerType6TotalHkdBn">六号牌人均上市市值</option>
-                  <option value="listingMarketCapPerSponsorPrincipalHkdBn">SP人均上市市值</option>
+                  <option value="listingMarketCapPerSponsorPrincipalHkdBn">SP 人均上市市值</option>
                 </select>
               </label>
               <label>
@@ -294,15 +477,15 @@
                 </select>
               </label>
               <label>
-                <span>类型</span>
+                <span>发行类别</span>
                 <select id="slTypeSelect" name="slTypeSelect" autocomplete="off">
-                  <option value="all">全部类型</option>
+                  <option value="all">全部类别</option>
                 </select>
               </label>
               <label>
-                <span>性质</span>
+                <span>机构背景</span>
                 <select id="slNatureSelect" name="slNatureSelect" autocomplete="off">
-                  <option value="all">全部性质</option>
+                  <option value="all">全部背景</option>
                 </select>
               </label>
               <label>
@@ -315,25 +498,25 @@
                 <span>日期口径</span>
                 <select id="slDateFieldSelect" name="slDateFieldSelect" autocomplete="off">
                   <option value="stageDate">阶段日（申请中A1 / 已上市上市日）</option>
-                  <option value="a1Date">A1</option>
+                  <option value="a1Date">A1 递表日</option>
                   <option value="noticeDate">备案通知书</option>
-                  <option value="receivedDate">接收</option>
-                  <option value="listingDate">上市日</option>
+                  <option value="receivedDate">证监会接收</option>
+                  <option value="listingDate">港交所上市日</option>
                 </select>
               </label>
               <label>
-                <span>起始</span>
+                <span>起始日</span>
                 <input id="slDateFrom" name="slDateFrom" type="date" autocomplete="off" />
               </label>
               <label>
-                <span>截至</span>
+                <span>截止日</span>
                 <input id="slDateTo" name="slDateTo" type="date" autocomplete="off" />
               </label>
               <div class="sl-date-quick" role="group" aria-label="快捷时间范围">
-                <button type="button" data-date-quick="3m">近3个月</button>
-                <button type="button" data-date-quick="6m">近6个月</button>
+                <button type="button" data-date-quick="3m">近3月</button>
+                <button type="button" data-date-quick="6m">近6月</button>
                 <button type="button" data-date-quick="1y">近1年</button>
-                <button type="button" data-date-quick="2026ytd">2026年至今</button>
+                <button type="button" data-date-quick="2026ytd">2026至今</button>
                 <button type="button" data-date-quick="all">全部</button>
               </div>
             </div>
@@ -341,28 +524,28 @@
 
           <section class="sl-board">
             <div class="sl-board-title">
-              <div>
-                <h2>排行榜</h2>
-                <p id="slResultHint">--</p>
-              </div>
-              <button id="slClearButton" type="button">清除筛选</button>
+              <p id="slResultHint">--</p>
+              <details class="sl-notice-strip sl-notice-details">
+                <summary>统计与牌照容量说明</summary>
+                <p id="slDemoNote"></p>
+              </details>
             </div>
             <div class="sl-table-wrap">
               <table class="sl-table">
                 <thead>
                   <tr>
-                    <th>排名</th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="sponsorName"><span class="sl-th-label">保荐人</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="sponsorNature"><span class="sl-th-label">性质</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="sponsorPrincipalCount"><span class="sl-th-label">SP / 六号牌</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="projectCount"><span class="sl-th-label">项目</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="activeCount"><span class="sl-th-label">申请中</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="listedCount"><span class="sl-th-label">已上市</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="ahCount"><span class="sl-th-label">A+H</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th id="slPrimaryMetricHead"><button class="sl-th-sort" type="button" data-sort-key="__metric"><span class="sl-th-label">排名指标</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th id="slMarketCapHead"><button class="sl-th-sort" type="button" data-sort-key="__marketCap"><span class="sl-th-label">市值</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th id="slLifecycleHead" title="全部/已上市显示已上市项目 A1 到上市平均流程时间；申请中显示公开 A1 后已过平均时间，不纳入最终周期快慢统计"><button class="sl-th-sort" type="button" data-sort-key="__lifecycle"><span class="sl-th-label">A1到上市流程平均</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
-                    <th><button class="sl-th-sort" type="button" data-sort-key="topIndustry"><span class="sl-th-label">行业</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-rank">排名</th>
+                    <th class="col-firm"><button class="sl-th-sort" type="button" data-sort-key="sponsorName"><span class="sl-th-label">保荐机构</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-nature"><button class="sl-th-sort" type="button" data-sort-key="sponsorNature"><span class="sl-th-label">背景</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-num"><button class="sl-th-sort" type="button" data-sort-key="sponsorPrincipalCount"><span class="sl-th-label">SP / 六号牌</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-num"><button class="sl-th-sort" type="button" data-sort-key="projectCount"><span class="sl-th-label">项目总数</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-num"><button class="sl-th-sort" type="button" data-sort-key="activeCount"><span class="sl-th-label">申请中</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-num"><button class="sl-th-sort" type="button" data-sort-key="listedCount"><span class="sl-th-label">已上市</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-num"><button class="sl-th-sort" type="button" data-sort-key="ahCount"><span class="sl-th-label">A+H</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th id="slPrimaryMetricHead" class="col-num"><button class="sl-th-sort" type="button" data-sort-key="__metric"><span class="sl-th-label">当前指标</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th id="slMarketCapHead" class="col-num"><button class="sl-th-sort" type="button" data-sort-key="__marketCap"><span class="sl-th-label">上市市值</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th id="slLifecycleHead" class="col-num" title="A1到上市流程平均天数"><button class="sl-th-sort" type="button" data-sort-key="__lifecycle"><span class="sl-th-label">A1→上市均值</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
+                    <th class="col-top-ind"><button class="sl-th-sort" type="button" data-sort-key="topIndustry"><span class="sl-th-label">主要行业</span><span class="sl-sort-indicator" aria-hidden="true"></span></button></th>
                   </tr>
                 </thead>
                 <tbody id="slLeaderboardRows"></tbody>
@@ -370,30 +553,34 @@
             </div>
           </section>
 
-          <div id="institutionCompareBar" hidden></div><aside class="sl-drawer" id="slDrawer" aria-hidden="true">
+          <div id="institutionCompareBar" hidden></div>
+          <aside class="sl-drawer" id="slDrawer" aria-hidden="true">
             <button class="sl-drawer-backdrop" id="slDrawerBackdrop" type="button" aria-label="关闭"></button>
-            <section class="sl-drawer-panel" role="dialog" aria-modal="true" aria-label="Sponsor detail">
-              <button class="sl-drawer-close" id="slDrawerClose" type="button">关闭</button>
+            <section class="sl-drawer-panel" role="dialog" aria-modal="true" aria-label="保荐机构详情">
+              <div class="detail-drawer-topbar">
+                <span class="detail-drawer-kicker">保荐机构执业档案</span>
+                <button class="sl-drawer-close" id="slDrawerClose" type="button">关闭 Esc</button>
+              </div>
               <div id="slDrawerContent"></div>
             </section>
           </aside>
         </section>
 
-        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="保荐人擂台 Sponsor PK"><nav class="institution-tabs"><button type="button" data-sponsor-workbench="list">机构列表</button><button type="button" data-sponsor-workbench="compare">机构比较</button></nav>
+        <!-- 保荐人擂台子视图 -->
+        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="保荐人擂台">
+          <div class="section-head-bar">
+            <nav class="institution-tabs" aria-label="龙虎榜与擂台切换">
+              <button type="button" data-sponsor-workbench="list">保荐人龙虎榜</button>
+              <button type="button" class="is-tab-current" data-sponsor-workbench="compare">保荐人擂台</button>
+            </nav>
+            <p class="snapshot-meta" id="spkSourceNote">与保荐人龙虎榜共享同一快照与统计口径</p>
+          </div>
           <div class="spk-shell">
-            <section class="spk-hero">
-              <div>
-                <span class="spk-kicker">保荐人擂台 · Sponsor PK</span>
-                <h2>保荐人横向对比</h2>
-                <p id="spkSourceNote">使用保荐龙虎榜同一份快照即时计算；不设独立项目 intake。</p>
-              </div>
-              <div class="spk-hero-stat">
-                <span>统计口径</span>
-                <strong id="spkCreditLabel">具名全部计入</strong>
-              </div>
-            </section>
+            <div class="spk-hero" hidden>
+              <strong id="spkCreditLabel">具名全部计入</strong>
+            </div>
 
-            <section class="spk-picker" aria-label="Sponsor PK controls">
+            <section class="spk-picker" aria-label="机构比较筛选">
               <label class="spk-filter-field spk-credit-field">
                 <span>统计口径</span>
                 <select id="spkCreditSelect" name="spkCreditSelect" autocomplete="off">
@@ -412,106 +599,175 @@
                 <span>日期口径</span>
                 <select id="spkDateFieldSelect" name="spkDateFieldSelect" autocomplete="off">
                   <option value="stageDate">阶段日（申请中A1 / 已上市上市日）</option>
-                  <option value="a1Date">A1</option>
+                  <option value="a1Date">A1 递表日</option>
                   <option value="noticeDate">备案通知书</option>
-                  <option value="receivedDate">接收</option>
-                  <option value="listingDate">上市日</option>
+                  <option value="receivedDate">证监会接收</option>
+                  <option value="listingDate">港交所上市日</option>
                 </select>
               </label>
               <label class="spk-filter-field spk-date-from-field">
-                <span>起始</span>
+                <span>起始日</span>
                 <input id="spkDateFrom" name="spkDateFrom" type="date" autocomplete="off" />
               </label>
               <label class="spk-filter-field spk-date-to-field">
-                <span>截至</span>
+                <span>截止日</span>
                 <input id="spkDateTo" name="spkDateTo" type="date" autocomplete="off" />
               </label>
-              <div class="spk-date-quick" role="group" aria-label="Sponsor PK quick date range">
-                <button type="button" data-date-quick="3m">近3个月</button>
-                <button type="button" data-date-quick="6m">近6个月</button>
+              <div class="spk-date-quick" role="group" aria-label="快捷时间范围">
+                <button type="button" data-date-quick="3m">近3月</button>
+                <button type="button" data-date-quick="6m">近6月</button>
                 <button type="button" data-date-quick="1y">近1年</button>
-                <button type="button" data-date-quick="2026ytd">2026年至今</button>
+                <button type="button" data-date-quick="2026ytd">2026至今</button>
                 <button type="button" data-date-quick="all">全部</button>
               </div>
             </section>
 
-            <section class="spk-versus" id="spkVersus" aria-label="Sponsor PK summary">
+            <section class="spk-versus" id="spkVersus" aria-label="选择对阵机构">
               <div class="spk-side spk-side-a">
                 <label class="spk-sponsor-field spk-sponsor-a">
-                  <span>左侧保荐人</span>
+                  <span>擂台机构 A</span>
                   <select id="spkSponsorA" name="spkSponsorA" autocomplete="off"></select>
                 </label>
-                <div class="spk-card-slot" id="spkCardA"></div>
+                <div class="spk-card-slot" id="spkCardA" hidden></div>
               </div>
-              <div class="spk-vs-rail" aria-hidden="false">
-                <button class="spk-swap-button" id="spkSwapButton" type="button">交换</button>
-                <div class="spk-vs">VS</div>
+              <div class="spk-vs-rail">
+                <button class="spk-swap-button" id="spkSwapButton" type="button" title="互换对阵机构">⇄ 互换</button>
               </div>
               <div class="spk-side spk-side-b">
                 <label class="spk-sponsor-field spk-sponsor-b">
-                  <span>右侧保荐人</span>
+                  <span>擂台机构 B / 基准</span>
                   <select id="spkSponsorB" name="spkSponsorB" autocomplete="off"></select>
                 </label>
-                <div class="spk-card-slot" id="spkCardB"></div>
+                <div class="spk-card-slot" id="spkCardB" hidden></div>
               </div>
             </section>
-            <div id="institutionComparison"></div><section class="spk-metrics" id="spkMetrics" aria-label="Sponsor PK metrics"></section>
+            <div id="institutionComparison"></div>
+            <section class="spk-metrics" id="spkMetrics" aria-label="Sponsor PK metrics" hidden></section>
           </div>
         </section>
 
+        <!-- 4. 交易与重组 -->
         <section class="view-panel transactions-view" id="precedentsView" aria-label="交易与重组">
- <div class="offering-toolbar"><label class="search-box"><span>搜</span><input id="transactionSearch" type="search" autocomplete="off" aria-label="搜索交易、规则或签署机构" placeholder="公司、代码、规则号、签署机构…" /></label><button type="button" class="text-button" id="clearTransactions">清除筛选</button></div>
- <button id="transactionReorganisation" class="transaction-example-link" type="button" data-tx-reorganisation>跨分类比较 · 反向收购／控股公司重组</button>
- <details class="transaction-filter-panel"><summary>规则、机构及交易筛选</summary><div class="transaction-filters">
- <label>规则<select id="transactionRule"><option value="all">全部规则</option></select></label>
- <label>签署机构<select id="transactionAdvisor"><option value="all">全部机构</option></select></label>
- <label>交易类型<select id="transactionCategory"><option value="all">全部类型</option><option value="reorganisation">跨分类重组先例</option><option value="reverse_takeover">反向收购</option><option value="holding_substitution">更换控股公司</option><option value="scheme">协议安排私有化</option><option value="offer">控制权／全面要约</option><option value="acquisition">收购</option><option value="disposal">资产处置</option></select></label>
- <label>已确认阶段<select id="transactionStatus"><option value="all">全部阶段</option><option value="active">要约进行中</option><option value="approved">股东已批准</option><option value="closed">已完成／已生效</option><option value="terminated">协议已终止</option></select></label>
- <label>中介角色<select id="transactionRole"><option value="all">全部角色</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="Accountant">会计师</option><option value="Valuer">估值师</option><option value="IndependentExpertAU">澳洲独立专家</option></select></label>
- <label>签署服务<select id="transactionService"><option value="all">全部服务</option><option value="rto_opinion">反向收购独立意见</option><option value="australian_scheme_expert">澳洲安排计划独立专家报告</option><option value="scheme_opinion">私有化独立意见</option><option value="offer_opinion">要约独立意见</option><option value="offer_advice">要约财务顾问</option><option value="takeovers_profit_forecast">收购守则盈利预测报告</option><option value="property_valuation">物业估值</option><option value="vessel_valuation">船舶估值</option><option value="acquisition_due_diligence">收购及尽职审查</option></select></label>
- <label>对价币种<select id="transactionCurrency"><option value="all">全部币种</option></select></label>
- <label>实质进度<select id="transactionRecent"><option value="all">全部日期</option><option value="30">近 30 日</option><option value="90">近 90 日</option></select></label>
- </div></details>
- <div class="transaction-caption"><p id="transactionCount" role="status" aria-live="polite"></p><span>金额：百万原币 · 每股价格另列</span></div>
- <section id="transactionComparison" class="transaction-comparison" aria-label="交易并列比较" hidden></section>
- <div id="transactionWorkspace" class="transaction-workspace"><div id="transactionCards" class="transaction-results" aria-label="交易搜索结果"></div><article id="transactionDetail" class="transaction-detail-pane" aria-label="交易详情" hidden></article><div id="transactionDetailEmpty" class="transaction-detail-empty"></div></div>
- <div id="transactionBasket" class="transaction-basket" aria-label="交易对比篮" hidden></div>
-</section>
+          <section class="tx-summary-strip" id="transactionSummaryStrip" aria-label="交易结构分类概览"></section>
+          <div class="tx-toolbar-primary">
+            <label class="search-box tx-search-box">
+              <span class="search-glyph" aria-hidden="true">⌕</span>
+              <input id="transactionSearch" type="search" autocomplete="off" aria-label="搜索交易、规则或签署机构" placeholder="搜索公司、代码、上市规则 (14.06B) / 收购守则 (TC:2.10)、签署机构…" />
+            </label>
+            <label class="inline-select-pill">
+              <span>结构</span>
+              <select id="transactionCategory" aria-label="交易类型">
+                <option value="all">全部结构</option>
+                <option value="reorganisation">反向收购／控股重组</option>
+                <option value="reverse_takeover">反向收购 (RTO)</option>
+                <option value="holding_substitution">更换控股公司</option>
+                <option value="scheme">协议安排私有化</option>
+                <option value="offer">控制权／全面要约</option>
+                <option value="acquisition">收购</option>
+                <option value="disposal">资产处置</option>
+              </select>
+            </label>
+            <label class="inline-select-pill">
+              <span>规则</span>
+              <select id="transactionRule" aria-label="适用规则"><option value="all">全部规则</option></select>
+            </label>
+            <label class="inline-select-pill">
+              <span>签署机构</span>
+              <select id="transactionAdvisor" aria-label="签署机构"><option value="all">全部机构</option></select>
+            </label>
+            <label class="inline-select-pill">
+              <span>阶段</span>
+              <select id="transactionStatus" aria-label="已确认阶段">
+                <option value="all">全部阶段</option>
+                <option value="active">要约进行中</option>
+                <option value="approved">股东已批准</option>
+                <option value="closed">已完成／已生效</option>
+                <option value="terminated">协议已终止</option>
+              </select>
+            </label>
+            <button type="button" class="clear-button" id="clearTransactions">重置</button>
+          </div>
 
+          <div class="tx-toolbar-secondary">
+            <div class="tx-preset-strip">
+              <span class="tx-preset-label">快速样本：</span>
+              <button id="transactionReorganisation" class="transaction-example-link" type="button" data-tx-reorganisation>反向收购 vs 控股重组（亿腾嘉和 · 龙金资源）</button>
+              <button id="transactionAtlasToggle" class="transaction-example-link" type="button" data-tx-atlas-toggle>九大标准架构图谱 ▾</button>
+            </div>
+            <details class="transaction-filter-panel">
+              <summary>顾问角色、签署服务、币种与近况</summary>
+              <div class="transaction-filters">
+                <label><span>中介角色</span><select id="transactionRole"><option value="all">全部角色</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="Accountant">会计师</option><option value="Valuer">估值师</option><option value="IndependentExpertAU">澳洲独立专家</option></select></label>
+                <label><span>签署服务</span><select id="transactionService"><option value="all">全部服务</option><option value="rto_opinion">反向收购独立意见</option><option value="australian_scheme_expert">澳洲安排计划独立专家报告</option><option value="scheme_opinion">私有化独立意见</option><option value="offer_opinion">要约独立意见</option><option value="offer_advice">要约财务顾问</option><option value="takeovers_profit_forecast">收购守则盈利预测报告</option><option value="property_valuation">物业估值</option><option value="vessel_valuation">船舶估值</option><option value="acquisition_due_diligence">收购及尽职审查</option></select></label>
+                <label><span>对价币种</span><select id="transactionCurrency"><option value="all">全部币种</option></select></label>
+                <label><span>更新窗口</span><select id="transactionRecent"><option value="all">全部日期</option><option value="30">近 30 日</option><option value="90">近 90 日</option></select></label>
+              </div>
+            </details>
+          </div>
 
+          <div class="transaction-caption">
+            <p id="transactionCount" role="status" aria-live="polite"></p>
+            <span>金额按披露原币列示（亿／万）· 覆盖上市规则第 14 章与香港收购守则先例</span>
+          </div>
 
+          <section id="transactionComparison" class="transaction-comparison" aria-label="交易并列比较" hidden></section>
 
-        <section class="view-panel dossiers-view" id="dossiersView" aria-label="发行人档案 Issuer dossiers">
-          <div class="offering-toolbar">
-            <label class="search-box"><span>搜</span><input id="dossierSearch" type="search" autocomplete="off" aria-label="搜索发行人档案" placeholder="搜索公司、代码、配售账户、执行事项…" /></label>
+          <div id="transactionWorkspace" class="transaction-workspace">
+            <div id="transactionCards" class="transaction-results" aria-label="交易先例列表"></div>
+            <article id="transactionDetail" class="transaction-detail-pane" aria-label="交易详情" hidden></article>
+            <div id="transactionDetailEmpty" class="transaction-detail-empty" hidden></div>
+          </div>
+
+          <details id="transactionArchetypeAtlas" class="transaction-section" style="margin-top:16px" hidden></details>
+
+          <div id="transactionBasket" class="transaction-basket" aria-label="交易对比篮" hidden></div>
+        </section>
+
+        <!-- 5. 单宗发行人及新股档案 -->
+        <section class="view-panel dossiers-view" id="dossiersView" aria-label="发行人档案">
+          <div class="offering-toolbar" hidden>
+            <label class="search-box"><input id="dossierSearch" type="search" autocomplete="off" aria-label="搜索发行人档案" /></label>
             <button type="button" class="text-button" id="clearDossierSearch">清除</button>
           </div>
-          <p class="offering-count" id="dossierCount" role="status" aria-live="polite"></p>
-          <div id="dossierReturn"></div><div id="dossierCards"></div>
+          <p class="offering-count" id="dossierCount" role="status" aria-live="polite" hidden></p>
+          <div id="dossierReturn"></div>
+          <div id="dossierCards"></div>
         </section>
 
         <footer class="footer-note">
-          <details class="methodology-note">
-            <summary>口径说明 Methodology</summary>
-            <p>已上市范围为HKEX New Listing Report中上市日不早于2023-03-31的发行人。周期统计只纳入日期完整、先后顺序有效且符合相应统计口径的样本。A1至接收超过180个自然日时改用当前申请周期；当前A1后尚无接收日的，不计入该项统计。A1至通知以制度生效后的申请锚点计算；跨制度生效日的过渡期、无法确定有效锚点的异常记录、密交及疑似密交，以及De-SPAC、HDR、介绍上市、反向收购和GEM转主板均不纳入普通IPO周期统计。申请中项目只展示截至快照日已过时间。工作日采用2017至2027年国务院节假日及调休安排，超出已核实日历范围不推算；展示天数向上取整。</p>
-            <p class="methodology-en">Listed coverage includes HKEX New Listing Report issuers listed from 31 March 2023. Duration samples require complete, chronologically valid dates. If historical A1-to-receipt exceeds 180 calendar days, the current cycle is used; no subsequent receipt means exclusion. Notice durations use a post-effective-date anchor. Transition cohorts, unresolved anchors, confidential or suspected confidential filings, De-SPACs, HDRs, introductions, reverse takeovers and GEM transfers are excluded from ordinary IPO duration statistics. Active applications show elapsed time only. Business days follow verified PRC holidays and make-up workdays for 2017–2027; unsupported years remain unavailable. Displayed days round up.</p>
-            <p>备案适用性按境内企业直接或间接境外发行上市范围、本次交易及制度衔接条件判断；注册地或A1日期均不能单独决定是否需要备案。制度前已递交但尚未获境外审核同意的范围内企业，仍须按规定在上市前完成备案。通知日期优先采用正文署日，网页发布日期另列；历史通知保留，新一轮备案进度另行判断。行业按证监会行业分类门类展示，并保留业务标签。</p>
-            <p class="methodology-en">Filing applicability depends on domestic-enterprise scope, the transaction and transition provisions. Incorporation or the A1 date alone does not establish an exemption or requirement. In-scope applications submitted but not approved overseas before effectiveness remain subject to pre-listing filing requirements. Notice dates use the signed document date where available; webpage publication dates and historical notices remain separate from the current filing. Industry categories follow the CSRC classification with additional business tags.</p>
-            <p id="listingMarketCapCoverageNote" hidden></p>
-            <p>已核实的上市日总市值采用估值日已发行股份（不含库存股）。A+H 分别按 A 股、H 股收盘价估值，并按当日汇率折为港币；非 A+H 通常采用港股收盘价。休市时注明实际采用的价格日期。有依据的估算也参与上市市值统计和排名，并标明为估算。申请中 A+H 的 A 股市值估算可用于排序，并注明价格日期和历史申请锚点。龙虎榜、PK 和明细使用同一套保荐计分规则。</p>
-            <p class="methodology-en">Verified listing-day market caps use valuation-day issued shares excluding treasury shares. A and H shares are valued at separate closes and combined in HKD at the valuation-day exchange rate; non-A+H generally uses the Hong Kong close. Where a market was closed, the actual price date is shown. Source-backed estimates enter listing market-cap statistics and rankings and are labelled. Applying A+H estimates are sortable with the price date and historical application anchor shown. The league, PK and deal details use the same sponsor credit rules.</p>
-            <p>发行人已终止上市计划，或港交所最近一轮申请已撤回、被拒绝或发回且未重递的，列入「搁置/撤回」。申请失效后，最近 A1 超过六个月且备案尚未接收，或备案停留在已接收或征询监管意见、最近 A1 超过一年未更新的，也列入此类。</p>
-            <p class="methodology-en">Stalled/withdrawn includes terminated listing plans and the latest applications withdrawn, rejected or returned without a subsequent filing. Lapsed applications also qualify after six months without CSRC receipt, or after a year without a new A1 while the filing remains at receipt or regulator opinion.</p>
-          </details>
-          
-          
+          <div class="footer-bar">
+            <details class="methodology-note">
+              <summary>统计与核查口径说明</summary>
+              <p>已上市范围为港交所 New Listing Report 中上市日不早于 2023-03-31 的发行人。周期统计仅纳入日期齐全、先后顺序有效且符合统计口径的样本：历史 A1 至接收逾 180 自然日时采用当前申请周期；跨制度过渡期、密交及疑似密交、De-SPAC、HDR、介绍上市、反向收购及 GEM 转主板不计入普通 IPO 耗时中位数。在审项目仅列示截至快照日已等待时长。工作日按 2017–2027 年国务院节假日及调休核定。</p>
+              <p id="listingMarketCapCoverageNote" hidden></p>
+              <p>上市日总市值采用估值日已发行股份（不含库存股）：A+H 分别按 A 股及 H 股收盘价估值并按当日汇率折算港币；非 A+H 采用港股收盘价，估值日休市时注明最近交易日。保荐机构排行与多机构比较使用同一套计分规则。</p>
+            </details>
+            <div class="visit-counter" id="siteVisitCounter" data-counter-state="pending" aria-label="访客记录">
+              <span class="visit-counter-label">访客记录</span>
+              <span class="visit-counter-item" id="busuanzi_container_site_pv">访问量 <strong id="busuanzi_value_site_pv">统计中</strong></span>
+              <span class="visit-counter-sep" aria-hidden="true">·</span>
+              <span class="visit-counter-item" id="busuanzi_container_site_uv">访客 <strong id="busuanzi_value_site_uv">统计中</strong></span>
+            </div>
+          </div>
         </footer>
       </main>
     </div>
 
-    <dialog id="globalSearchDialog" aria-labelledby="globalSearchTitle"><header><h2 id="globalSearchTitle">全局搜索</h2><button type="button" id="globalSearchClose" aria-label="关闭搜索">关闭</button></header><input id="globalSearchInput" type="search" placeholder="发行人、代码、机构、条款…" aria-label="搜索已收录资料"><div id="globalSearchResults"></div></dialog>
-<script src="app.js?v=320122cc0e533be8"></script>
-    <script src="sponsor_leaderboard_demo.js?v=aaaf77046ca9a5bb"></script>
-    
+    <dialog id="globalSearchDialog" aria-labelledby="globalSearchTitle">
+      <header class="search-dialog-header">
+        <h2 id="globalSearchTitle">全局检索</h2>
+        <button type="button" id="globalSearchClose" aria-label="关闭搜索">关闭 Esc</button>
+      </header>
+      <div class="search-dialog-input-wrap">
+        <span class="search-glyph" aria-hidden="true">⌕</span>
+        <input id="globalSearchInput" type="search" placeholder="输入发行人、代码、交易标的、规则号（如 14.06B）、保荐或签署机构…" aria-label="搜索已收录资料" />
+      </div>
+      <div id="globalSearchResults"></div>
+    </dialog>
+
+    <script src="deal_diagram_kit.js?v=ae7cb0cb79c088db"></script>
+    <script src="app.js?v=fcbfdaccae88a3c8"></script>
+    <script src="sponsor_leaderboard_demo.js?v=9fe6a09c9b18a3a6"></script>
+    <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>
