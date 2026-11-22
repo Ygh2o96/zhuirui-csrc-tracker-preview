@@ -1369,7 +1369,19 @@ const offeringNoticeEvidence = [
             440
           ]
         }
-      ]
+      ],
+      "plannedMarketCap": {
+        "priceHkd": 17.3,
+        "method": "postSharesTimesProspectusPrice",
+        "priceBasis": "招股书采用价 HKD 17.30",
+        "pdfPages": [
+          24,
+          25
+        ],
+        "decimals": 2,
+        "amountHkd": 7820578764.8,
+        "overAllotmentExercised": false
+      }
     }
   },
   {
@@ -1647,6 +1659,18 @@ const offeringNoticeEvidence = [
         "pdfPages": [
           276
         ]
+      },
+      "plannedMarketCap": {
+        "priceHkd": 19.05,
+        "method": "postSharesTimesProspectusPrice",
+        "priceBasis": "中位价 HKD 19.05",
+        "pdfPages": [
+          23,
+          275
+        ],
+        "decimals": 2,
+        "amountHkd": 7101027631.8,
+        "overAllotmentExercised": false
       }
     }
   },
@@ -1855,7 +1879,20 @@ const offeringNoticeEvidence = [
           "publishedDate": "31/03/2026"
         }
       ],
-      "cornerstoneGroups": []
+      "cornerstoneGroups": [],
+      "plannedMarketCap": {
+        "priceHkd": 4.5,
+        "method": "postSharesTimesProspectusPrice",
+        "priceBasis": "中位价 HKD 4.50",
+        "pdfPages": [
+          18,
+          97,
+          215
+        ],
+        "decimals": 2,
+        "amountHkd": 805616172.0,
+        "overAllotmentExercised": false
+      }
     }
   },
   {
@@ -2227,6 +2264,21 @@ const offeringNoticeEvidence = [
         "pdfPages": [
           216
         ]
+      },
+      "plannedMarketCap": {
+        "priceHkd": 16.0,
+        "method": "disclosedAPlusH",
+        "amountHkd": 15612030000,
+        "priceBasis": "A+H · H 股最高价 HKD 16.00 情景",
+        "pdfPages": [
+          27
+        ],
+        "decimals": 2,
+        "aShares": 530649275,
+        "aReferencePriceRmb": 23.9,
+        "hShares": 58961100,
+        "hShareMarketCapHkd": 943380000,
+        "overAllotmentExercised": false
       }
     }
   },
@@ -2416,7 +2468,18 @@ const offeringNoticeEvidence = [
           "publishedDate": "01/04/2026"
         }
       ],
-      "cornerstoneGroups": []
+      "cornerstoneGroups": [],
+      "plannedMarketCap": {
+        "priceHkd": 2.44,
+        "method": "disclosedTotal",
+        "amountHkd": 1070100000,
+        "priceBasis": "中位价 HKD 2.44",
+        "pdfPages": [
+          166
+        ],
+        "decimals": 1,
+        "overAllotmentExercised": false
+      }
     }
   }
 ];
@@ -2556,6 +2619,7 @@ function renderOfferingResearch(facts, notice) {
     </dl>
     <div class="offering-research-columns">
       <section><h3>发售结构 <span>Offer structure</span></h3><dl class="offering-facts">
+        ${facts.plannedMarketCap ? row("计划上市市值（绿鞋前）", `HKD ${n(facts.plannedMarketCap.amountHkd / 1000000, facts.plannedMarketCap.decimals)} 百万 · ${escapeHtml(facts.plannedMarketCap.priceBasis)}`) : ""}
         ${row("发售后总股本", `${n(facts.postShares)} 股`)}
         ${row("香港公开发售（初始）", `${n(facts.hongKongShares)} 股 · ${n(facts.hongKongShares / facts.offerShares * 100, 2)}%`)}
         ${row("发售股份性质", facts.saleShares ? `新股 ${n(facts.newShares)} 股；旧股 ${n(facts.saleShares)} 股` : "全部新股")}
@@ -2585,7 +2649,7 @@ function renderOfferingSources(facts, notice) {
   const pdf = (label,pages) => `<div><b>${label}</b>${pages.map(page => link(`${facts.prospectusUrl}#page=${page}`, `p.${page}`)).join(" ")}</div>`;
   return `<details class="offering-sources"><summary>原件与页码 <span>Sources · PDF pages</span></summary><div class="offering-source-list">
     <div><b>发售公告 ${notice.date}</b>${notice.pages.map(page => link(`${notice.url}#page=${page}`,`p.${page}`)).join(" ")}</div>
-    ${pdf(`招股书 ${facts.date} · 条款`,[2])}${pdf("股本",facts.denominatorPages)}${pdf("发售结构",facts.structurePages)}${pdf("保荐人 / CMI",facts.partyPages)}${pdf("基石",facts.cornerstonePages)}
+    ${pdf(`招股书 ${facts.date} · 条款`,[2])}${pdf("股本",facts.denominatorPages)}${facts.plannedMarketCap ? pdf("计划上市市值",facts.plannedMarketCap.pdfPages) : ""}${pdf("发售结构",facts.structurePages)}${pdf("保荐人 / CMI",facts.partyPages)}${pdf("基石",facts.cornerstonePages)}
     <div><b>OC 公告</b>${facts.ocSources.map(source => link(`${source.url}#page=3`,`${source.date} p.3`)).join(" ")}</div>
     <div><b>市场</b>${link(facts.market.sourceUrl,facts.market.sourceLabel)} ${link(facts.market.listingReportUrl,"港交所上市报告")}</div>
     ${(facts.cornerstones || []).filter(item => item.profileUrl).map(item => `<div><b>机构介绍</b>${link(item.profileUrl,item.shortName)}</div>`).join("")}
