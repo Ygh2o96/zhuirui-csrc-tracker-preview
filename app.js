@@ -3253,6 +3253,64 @@ function renderFeeInsightStrip(all) {
   <div class="stat-cell"><span class="stat-label">超额配股权（绿鞋）行使率</span><strong class="stat-val col-num">${shoeExRate}</strong><small class="stat-sub">已核实 ${shoeConfirmed.length} 宗：全额 ${shoeFull} · 部分 ${shoePart} · 未行使 ${shoeNone}</small></div>`;
 }
 
+// Exact comparisons use whole-engagement amounts in one explicitly selected currency.
+// Individual-case disclosure (including approximate and per-sponsor fees) stays unchanged.
+function p0SponsorComparisonCurrency() {
+ return ['HKD','USD','CNY'].includes(state.feeCurrency)?state.feeCurrency:'HKD';
+}
+function p0ComparableSponsorFee(r,currency='HKD') {
+ if(!r||r.route!=='listed_offering')return null;
+ const sp=p0EffectiveSponsorFee(r);
+ if(!sp||sp.currency!==currency||sp.approximate||sp.exactComparisonEligible===false)return null;
+ if(sp.value===null||sp.value===undefined||String(sp.value).trim()===''||!Number.isFinite(Number(sp.value))||Number(sp.value)<0)return null;
+ const source=sp.source||'',documentUrl=source.split('#')[0];
+ if(!/^https:\/\//.test(source)||!(r.sources||[]).includes(documentUrl))return null;
+ let multiplier=1;
+ if(sp.fallback){
+  const record=state.data?.records?.find(x=>x.id===r.issuerId);
+  if(record?.hkexListingStockCode!==r.code||record?.hkexProspectusDate!==r.prospectusDate||record?.hkexListingDate!==r.listingDate)return null;
+  // The fallback only carries an explicit amount scope when the source gives a per-sponsor count.
+  if(sp.scope!=='per_sponsor')return null;
+ }
+ if(sp.scope==='per_sponsor'){
+  const count=sp.fallback?state.data?.records?.find(x=>x.id===r.issuerId)?.listingFeeTerms?.fee?.perSponsorCount:sp.perSponsorCount;
+  if(!Number.isInteger(count)||count<1)return null;
+  multiplier=count;
+ }else if(!['sole_sponsor','joint_aggregate','engagement'].includes(sp.scope))return null;
+ const value=Number(sp.value)*multiplier;if(!Number.isFinite(value))return null;
+ return {roundId:r.id,currency,value,scope:'engagement',originalScope:sp.scope,originalValue:Number(sp.value),multiplier,source};
+}
+function p0SponsorFeeBenchmark(rows,currency='HKD') {
+ const samples=[...new Map(rows.map(r=>[r.id,r])).values()].map(r=>p0ComparableSponsorFee(r,currency)).filter(Boolean);
+ const values=samples.map(f=>f.value).sort((a,b)=>a-b),n=values.length;
+ const statistic=n>=3?'median':n===2?'range':n===1?'single':'none';
+ const label={median:'中位',range:'区间',single:'单笔',none:''}[statistic];
+ const amount=n>=3?formatChineseUnitAmount(p0Quantile(values,.5),currency):n===2?`${formatChineseUnitAmount(values[0],currency)}–${formatChineseUnitAmount(values[1],currency).replace(currency+' ','')}`:n===1?formatChineseUnitAmount(values[0],currency):'—';
+ const compact=`${label?label+' ':''}${amount}`;
+ return {currency,scope:'engagement',count:n,statistic,median:n>=3?p0Quantile(values,.5):null,samples,compact,text:`${compact} · n=${n}`};
+}
+let feeSponsorFirms=null,feeSponsorFirmsLoad=null;
+function loadFeeSponsorFirms() {
+ if(feeSponsorFirms||feeSponsorFirmsLoad||typeof fetch!=='function')return;
+ feeSponsorFirmsLoad=fetch('data/sponsor_leaderboard_demo.json',{cache:'no-cache'}).then(response=>{
+  if(!response.ok)throw new Error(`Sponsor metadata HTTP ${response.status}`);return response.json();
+ }).then(payload=>{
+  if(payload.meta?.sourceGeneratedAt!==state.data?.meta?.generatedAt||!Array.isArray(payload.firms))throw new Error('Sponsor metadata snapshot mismatch');
+  feeSponsorFirms=payload.firms;
+  if(state.view==='fees')renderFeeScaleCurvePanel(eligibleFeeRoster());
+ }).catch(error=>console.warn('Fee sponsor grouping unavailable:',error.message));
+}
+function p0FeeSponsorCamps(rows,firms=feeSponsorFirms||[]) {
+ const natures=new Map(firms.map(f=>[f.sponsorId,f.sponsorNature]));
+ const camps=[{key:'cn',label:'全中资',rows:[]},{key:'mixed',label:'中资＋外资',rows:[]},{key:'foreign',label:'全外资',rows:[]},{key:'other',label:'港资／其他组合',rows:[]}];
+ for(const row of rows){
+  const values=(row.institutions||[]).map(i=>natures.get(i.sponsorId));
+  const key=values.length&&values.every(v=>v==='中资')?'cn':values.length&&values.every(v=>v==='外资')?'foreign':values.includes('中资')&&values.includes('外资')&&values.every(v=>v==='中资'||v==='外资')?'mixed':'other';
+  camps.find(c=>c.key===key).rows.push(row);
+ }
+ return camps;
+}
+
 function renderFeeBenchmarkStrip(all) {
  const el=document.getElementById('feeBenchmarkStrip');if(!el)return;
  if(state.feePhase==='other'){el.hidden=true;el.innerHTML='';return;}
@@ -3280,13 +3338,12 @@ function renderFeeBenchmarkStrip(all) {
   const grossVals=subset.map(r=>p0FeeAmount(r,basis)).filter(x=>typeof x==='number'&&Number.isFinite(x));
   const fixedVals=subset.map(r=>r.fixedBps).filter(Number.isFinite);
   const upperVals=subset.map(r=>r.upperBps).filter(Number.isFinite);
-  const hkdSpVals=subset.map(r=>{const sp=p0EffectiveSponsorFee(r);return sp&&!sp.approximate&&sp.exactComparisonEligible!==false&&sp.currency==='HKD'?Number(sp.value):null;}).filter(Number.isFinite);
+  const sponsorBenchmark=p0SponsorFeeBenchmark(subset,p0SponsorComparisonCurrency());
   const active=(t.key==='all'&&state.sizeBand==='all'&&!state.feeMin&&!state.feeMax)||(t.key!=='all'&&state.sizeBand===t.key&&!state.feeMin&&!state.feeMax);
-  return `<button type="button" class="stat-cell is-clickable fee-tier-card${active?' is-active':''}" data-fee-tier="${t.key}" aria-pressed="${active}"><span class="stat-label">${t.label} <em>${subset.length} 宗</em></span><strong class="stat-val col-num">${fixedVals.length?feePercent(p0Quantile(fixedVals,.5)):'—'} <small>固定 · 上限 ${upperVals.length?feePercent(p0Quantile(upperVals,.5)):'—'}</small></strong><small class="stat-sub">中位募资 ${grossVals.length?formatChineseUnitAmount(p0Quantile(grossVals,.5),'HKD'):'—'} · 保荐费 ${hkdSpVals.length?formatChineseUnitAmount(p0Quantile(hkdSpVals,.5),'HKD'):'—'}</small></button>`;
+  return `<button type="button" class="stat-cell is-clickable fee-tier-card${active?' is-active':''}" data-fee-tier="${t.key}" aria-pressed="${active}"><span class="stat-label">${t.label} <em>${subset.length} 宗</em></span><strong class="stat-val col-num">${fixedVals.length?feePercent(p0Quantile(fixedVals,.5)):'—'} <small>固定 · 上限 ${upperVals.length?feePercent(p0Quantile(upperVals,.5)):'—'}</small></strong><small class="stat-sub">中位募资 ${grossVals.length?formatChineseUnitAmount(p0Quantile(grossVals,.5),'HKD'):'—'} · ${escapeHtml(sponsorBenchmark.currency)} 整单保荐费 ${escapeHtml(sponsorBenchmark.text)}</small></button>`;
  }).join('');
 }
 
-const FOREIGN_SPONSOR_IDS = new Set(["gs","ms","jpm","citi","ubs","ml","hsbc","db","bnpp","dbs","jefferies","nomura","macquarie","barclays","mizuho","clsa"]);
 let feeCurveExpanded = null;
 
 function renderFeeScaleCurvePanel(all) {
@@ -3335,32 +3392,20 @@ function renderFeeScaleCurvePanel(all) {
  const ahCount = pts.filter(p => p.r.isAH).length;
  const nonAhCount = pts.length - ahCount;
 
- // Sponsor nature benchmark: Chinese-only vs Joint-mixed vs Foreign-involved
- const camps = [
-  { key: "cn", label: "中资独立保荐", rows: [] },
-  { key: "mixed", label: "联席混编（中资+外资）", rows: [] },
-  { key: "foreign", label: "外资参团合计", rows: [] }
- ];
- for (const r of listed) {
-  const ids = (r.institutions || []).map(i => i.sponsorId).filter(Boolean);
-  const hasF = ids.some(id => FOREIGN_SPONSOR_IDS.has(id));
-  const hasC = ids.some(id => !FOREIGN_SPONSOR_IDS.has(id));
-  if (!hasF) camps[0].rows.push(r);
-  if (hasF && hasC) camps[1].rows.push(r);
-  if (hasF) camps[2].rows.push(r);
- }
+ // Sponsor nature is the same disclosed taxonomy used by the institution view.
+ loadFeeSponsorFirms();
+ const currency=p0SponsorComparisonCurrency();
+ const camps=p0FeeSponsorCamps(listed);
  const campRowsHtml = camps.map(c => {
   const fixedVals = c.rows.map(r => r.fixedBps).filter(Number.isFinite);
   const grossVals = c.rows.map(r => p0FeeAmount(r, basis)).filter(x => typeof x === "number" && Number.isFinite(x));
-  const hkdSp = c.rows.map(r => { const sp = p0EffectiveSponsorFee(r); return sp && sp.currency === "HKD" ? Number(sp.value) : null; }).filter(Number.isFinite);
-  const usdSp = c.rows.map(r => { const sp = p0EffectiveSponsorFee(r); return sp && sp.currency === "USD" ? Number(sp.value) : null; }).filter(Number.isFinite);
+  const sponsorBenchmark=p0SponsorFeeBenchmark(c.rows,currency);
   const medFix = fixedVals.length ? p0Quantile(fixedVals, 0.5) : null;
   const barW = medFix != null ? Math.min(100, Math.max(8, medFix / 400 * 100)) : 0;
-  const spSummary = hkdSp.length ? formatChineseUnitAmount(p0Quantile(hkdSp, 0.5), "HKD") : (usdSp.length ? formatChineseUnitAmount(p0Quantile(usdSp, 0.5), "USD") : "—");
-  return `<tr>
+  return `<tr data-fee-camp="${c.key}">
    <th scope="row"><strong>${c.label}</strong><small>${c.rows.length} 宗 · 中位募资 ${grossVals.length ? formatChineseUnitAmount(p0Quantile(grossVals, 0.5), "HKD") : "—"}</small></th>
    <td class="col-num"><div class="fee-camp-bar-cell"><strong>${medFix != null ? feePercent(medFix) : "—"}</strong><span class="fee-camp-bar" aria-hidden="true"><i style="width:${barW.toFixed(1)}%"></i></span></div></td>
-   <td class="col-num"><span class="fee-camp-sp">${escapeHtml(spSummary)}</span></td>
+   <td class="col-num"><span class="fee-camp-sp">${escapeHtml(sponsorBenchmark.compact)}</span><small class="fee-camp-sample">n=${sponsorBenchmark.count}</small></td>
   </tr>`;
  }).join("");
 
@@ -3378,10 +3423,10 @@ function renderFeeScaleCurvePanel(all) {
     <svg class="fee-curve-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="2026 港股新股发行规模与固定承销佣金率散点分布">${gridSvg}${trendSvg}${dotsSvg}</svg>
    </div>
    <div class="fee-camp-panel">
-    <h4>保荐阵营费率对照</h4>
+    <h4>保荐阵营 · ${escapeHtml(currency)} 整单明确金额</h4>
     <table class="fee-camp-table">
-     <thead><tr><th scope="col">保荐阵营 / 中位募资</th><th scope="col" class="col-num">固定佣金中位</th><th scope="col" class="col-num">保荐费中位</th></tr></thead>
-     <tbody>${campRowsHtml}</tbody>
+     <thead><tr><th scope="col">保荐阵营 / 中位募资</th><th scope="col" class="col-num">固定佣金中位</th><th scope="col" class="col-num">整单保荐费</th></tr></thead>
+     <tbody>${feeSponsorFirms?campRowsHtml:'<tr><td colspan="3">机构分类待载入</td></tr>'}</tbody>
     </table>
    </div>
   </div>`;
@@ -3487,7 +3532,9 @@ if (typeof window !== "undefined") {
     getRows:()=>structuredClone(eligibleFeeRoster()),
     select:criteria=>structuredClone(filterFeeRoster(eligibleFeeRoster(),criteria)),
     getDisclosure:roundId=>structuredClone(eligibleOfferingFees().find(f=>f.roundId===roundId)||null),
-    getRound:roundId=>structuredClone(eligibleFeeRoster().find(r=>r.id===roundId)||null)});
+    getRound:roundId=>structuredClone(eligibleFeeRoster().find(r=>r.id===roundId)||null),
+    getComparableSponsorFee:(roundId,currency='HKD')=>structuredClone(p0ComparableSponsorFee(eligibleFeeRoster().find(r=>r.id===roundId),currency)),
+    summarizeSponsorFees:(roundIds,currency='HKD')=>structuredClone(p0SponsorFeeBenchmark(eligibleFeeRoster().filter(r=>roundIds.includes(r.id)),currency))});
 }
 
 function eligibleOfferingDossiers() {

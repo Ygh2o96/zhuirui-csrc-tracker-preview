@@ -6580,6 +6580,8 @@ ul.offering-cornerstone-members li p {
   white-space: nowrap;
 }
 
+.fee-camp-sample { display: block; margin-top: 2px; font-size: 10.5px; color: var(--muted); }
+
 /* 4. Paused Window Signals, Pre-IPO Visual Bar & 00054 Valuation Ladder */
 .paused-window-cell {
   display: flex;
