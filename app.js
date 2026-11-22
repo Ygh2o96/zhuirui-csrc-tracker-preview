@@ -1381,7 +1381,10 @@ const offeringNoticeEvidence = [
         "decimals": 2,
         "amountHkd": 7820578764.8,
         "overAllotmentExercised": false
-      }
+      },
+      "displayName": "和美药业",
+      "roundId": "offering:00054:2026-10-30",
+      "reallocationPricing": "香港增至 15% 时：最终价格取 HKD 15.50 与调低后价格两者较低者"
     }
   },
   {
@@ -1671,7 +1674,9 @@ const offeringNoticeEvidence = [
         "decimals": 2,
         "amountHkd": 7101027631.8,
         "overAllotmentExercised": false
-      }
+      },
+      "displayName": "常州微亿智造",
+      "roundId": "offering:03275:2026-10-20"
     }
   },
   {
@@ -1892,6 +1897,63 @@ const offeringNoticeEvidence = [
         "decimals": 2,
         "amountHkd": 805616172.0,
         "overAllotmentExercised": false
+      },
+      "displayName": "瘦西湖文旅",
+      "roundId": "offering:06157:2026-10-14",
+      "preIpo": {
+        "kind": "equity",
+        "label": "1 名股权投资者",
+        "role": "上市前股权投资",
+        "roundDate": "2026-10-14",
+        "scenarioPriceHkd": 4.5,
+        "costCurrency": "RMB",
+        "hkdPerCostUnit": 1.155268022181146,
+        "fxLabel": "HKD 1 = RMB 0.86560",
+        "basis": "中位价 HKD 4.50 · 绿鞋前 · 不计税费及期间股息",
+        "postShares": 179025816,
+        "sourcePages": [
+          23,
+          60,
+          93,
+          95,
+          96,
+          98,
+          215
+        ],
+        "investors": [
+          {
+            "displayName": "大运河（扬州）文旅基金",
+            "legalName": "Jiangsu Grand Canal (Yangzhou) Cultural Tourism Development Fund (Limited Partnership)",
+            "legalNameZh": "江苏省大运河（扬州）文化旅游发展基金（有限合伙）",
+            "role": "上市前股权投资",
+            "profile": "2019年设立的投资基金；出资人包括江苏省及扬州国资投资机构",
+            "sourcePages": [
+              23,
+              93,
+              95,
+              96,
+              98,
+              215
+            ],
+            "investmentDate": "2023-03-17",
+            "fullyPaidDate": "2023-06-01",
+            "originalShares": 2797045,
+            "currentShares": 13425816,
+            "preOfferTotalShares": 134265816,
+            "postOfferTotalShares": 179025816,
+            "costCurrency": "RMB",
+            "cost": 28557829.45,
+            "adjustedCostPerShare": "2.127083333333333333333333333",
+            "scenarioPriceHkd": "4.5",
+            "rmbPerHkd": "0.8656",
+            "id": "grand-canal-yangzhou",
+            "holdingLabel": "发售前持股（资本化后）",
+            "displayRole": "投资基金",
+            "shares": 13425816,
+            "preShares": 134265816
+          }
+        ],
+        "roundId": "offering:06157:2026-10-14"
       }
     }
   },
@@ -2279,7 +2341,9 @@ const offeringNoticeEvidence = [
         "hShares": 58961100,
         "hShareMarketCapHkd": 943380000,
         "overAllotmentExercised": false
-      }
+      },
+      "displayName": "四方精创",
+      "roundId": "offering:06700:2026-09-14"
     }
   },
   {
@@ -2479,7 +2543,157 @@ const offeringNoticeEvidence = [
         ],
         "decimals": 1,
         "overAllotmentExercised": false
-      }
+      },
+      "displayName": "永康控股 EKH",
+      "roundId": "offering:02523:2026-06-30",
+      "preIpo": {
+        "kind": "convertible",
+        "label": "7 名可转债投资者",
+        "role": "上市前可转债",
+        "roundDate": "2026-06-30",
+        "scenarioPriceHkd": 2.44,
+        "costCurrency": "SGD",
+        "hkdPerCostUnit": 6.06,
+        "fxLabel": "SGD 1 = HKD 6.06",
+        "basis": "成功上市前自动转股 · 中位价 HKD 2.44 · 绿鞋前 · 不计票息及税费",
+        "postShares": 438578285,
+        "totalPrincipal": 15000000,
+        "totalConversionShares": 80620476,
+        "interestAnnualPercent": 3,
+        "sourcePages": [
+          91,
+          160,
+          161,
+          162,
+          164,
+          165,
+          166,
+          295
+        ],
+        "investors": [
+          {
+            "id": "samudera-shipping",
+            "displayName": "Samudera Shipping（SGX S56）",
+            "displayRole": "上市航运企业",
+            "profile": "新加坡上市航运企业，经营集装箱及散货油轮运输",
+            "legalName": "Samudera Shipping Line Ltd",
+            "cost": 7300000.0,
+            "shares": 39235298,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-30",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              164
+            ]
+          },
+          {
+            "id": "aai",
+            "displayName": "Barbara KWOK Sze Hang",
+            "displayRole": "全资持有人",
+            "profile": "AAI 全资持有人；载体经营电脑设施管理及商品批发",
+            "legalName": "AAI Pte. Ltd.",
+            "cost": 2000000.0,
+            "shares": 10749397,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-09",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              164
+            ]
+          },
+          {
+            "id": "stranda-venture",
+            "displayName": "Ng Siew Yong／Shaline Gnanalingam",
+            "displayRole": "共同全资持有人",
+            "profile": "共同全资持有 Stranda Venture，属附生存者权利的共同持有安排",
+            "legalName": "Stranda Venture Incorporated",
+            "cost": 2000000.0,
+            "shares": 10749397,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-09",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              164
+            ]
+          },
+          {
+            "id": "hpc-investment",
+            "displayName": "HPC Holdings（01742）",
+            "displayRole": "全资母公司",
+            "profile": "香港上市公司；透过全资投资子公司 HPC Investment 持有可转债",
+            "legalName": "HPC Investment Limited",
+            "cost": 1500000.0,
+            "shares": 8062048,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-09",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              164
+            ]
+          },
+          {
+            "id": "hb-equity",
+            "displayName": "Ho Bee Capital",
+            "displayRole": "持有 87%",
+            "profile": "持有 HB Equity Partners 87%；该公司为其投资机构",
+            "legalName": "HB Equity Partners Pte. Ltd.",
+            "cost": 1000000.0,
+            "shares": 5374698,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-09",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              165
+            ]
+          },
+          {
+            "id": "trans-coastal",
+            "displayName": "LIM Sin Sang",
+            "displayRole": "全资持有人",
+            "profile": "Trans-Coastal Lines 全资持有人；载体从事航运及货运代理",
+            "legalName": "Trans-Coastal Lines (S) Pte Ltd",
+            "cost": 800000.0,
+            "shares": 4299759,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-09",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              165
+            ]
+          },
+          {
+            "id": "tan-wee-hong",
+            "displayName": "TAN Wee Hong",
+            "displayRole": "集团高级管理层",
+            "profile": "永康东南亚区域总经理，属于集团高级管理层",
+            "legalName": "TAN Wee Hong",
+            "cost": 400000.0,
+            "shares": 2149879,
+            "currentEquityShares": null,
+            "fullyPaidDate": "2025-12-09",
+            "sourcePages": [
+              160,
+              161,
+              162,
+              165
+            ]
+          }
+        ],
+        "roundId": "offering:02523:2026-06-30"
+      },
+      "reallocationPricing": "香港增至 15% 时：最终价格 HKD 2.20"
     }
   }
 ];
@@ -2527,7 +2741,8 @@ function offeringSearchText(record) {
   const institutions = [...(facts.sponsors || []), ...(facts.cmis || []), ...(facts.cornerstones || [])];
   return ["发售搁置 暂停 paused", ...offeringNoticeLabels(notice), notice.date, notice.stockCode,
     ...institutions.flatMap(item => [item.name, item.shortName, item.type, item.manager, item.capacity, item.formerName, ...(item.roles || [])]),
-    ...(facts.cornerstoneGroups || []).flatMap(group => [group.name, group.displayName, group.displayRole, group.ownership, group.profile, ...group.tags.map(tag => tag.label), group.ranking?.metric, group.ranking?.asOf])].filter(Boolean).join(" ");
+    ...(facts.cornerstoneGroups || []).flatMap(group => [group.name, group.displayName, group.displayRole, group.ownership, group.profile, ...group.tags.map(tag => tag.label), group.ranking?.metric, group.ranking?.asOf]),
+    facts.displayName, facts.preIpo?.role, ...(facts.preIpo?.investors || []).flatMap(item => [item.displayName,item.legalName,item.legalNameZh,item.profile,item.displayRole])].filter(Boolean).join(" ");
 }
 
 function renderOfferingBadge(record) {
@@ -2605,43 +2820,83 @@ function renderOfferingCornerstones(facts) {
     }).join("")}</ul>`;
 }
 
+
+function renderOfferingRange(low, high, minimum, maximum, label, axisLabels = []) {
+  const x = value => 10 + (value - minimum) / (maximum - minimum) * 580;
+  const pointOnly = low === null;
+  const marks = pointOnly
+    ? `<circle class="offering-range-point" cx="${x(high)}" cy="12" r="5"/>`
+    : `<line class="offering-range-span" x1="${x(low)}" x2="${x(high)}" y1="12" y2="12"/><circle class="offering-range-point" cx="${x(low)}" cy="12" r="4"/><circle class="offering-range-point" cx="${x(high)}" cy="12" r="4"/>`;
+  return `<div class="offering-range" data-range-kind="${pointOnly ? "ceiling" : "range"}" data-axis-min="${minimum}" data-axis-max="${maximum}" data-range-low="${pointOnly ? "" : low}" data-range-high="${high}"><svg viewBox="0 0 600 24" preserveAspectRatio="none" role="img" aria-label="${escapeHtml(label)}"><line class="offering-range-axis" x1="10" x2="590" y1="12" y2="12"/>${axisLabels.length ? [10,300,590].map(tick => `<line class="offering-range-tick" x1="${tick}" x2="${tick}" y1="7" y2="17"/>`).join("") : ""}${marks}</svg>${axisLabels.length ? `<div class="offering-axis-labels" aria-hidden="true">${axisLabels.map(text => `<span>${escapeHtml(text)}</span>`).join("")}</div>` : ""}</div>`;
+}
+
+function renderOfferingPriceRange(facts) {
+  if (facts.priceLow === null) return `<div class="offering-price-point" role="img" aria-label="${escapeHtml(offeringPrice(facts))}"><i></i><strong>${offeringPrice(facts)}</strong></div>`;
+  return `<div class="offering-price-chart"><strong>${offeringPrice(facts)}</strong>${renderOfferingRange(facts.priceLow,facts.priceHigh,facts.priceLow,facts.priceHigh,offeringPrice(facts))}</div>`;
+}
+
+function renderOfferingAllocation(facts) {
+  const hk = facts.hongKongShares / facts.offerShares * 100;
+  const international = facts.internationalShares / facts.offerShares * 100;
+  return `<div class="offering-allocation"><h3>初始分配</h3><div class="offering-allocation-bar" role="img" aria-label="香港 ${offeringNumber(hk,2)}%，国际 ${offeringNumber(international,2)}%"><span class="offering-allocation-hk" style="width:${hk}%"></span><span class="offering-allocation-international" style="width:${international}%"></span></div><div class="offering-allocation-labels"><span><i class="offering-key-hk"></i>香港 ${offeringNumber(hk,2)}%<small>${offeringNumber(facts.hongKongShares)} 股</small></span><span><i class="offering-key-international"></i>国际 ${offeringNumber(international,2)}%<small>${offeringNumber(facts.internationalShares)} 股</small></span></div></div>`;
+}
+
+function offeringPreIpoScenario(profile, investor) {
+  const costHkd = investor.cost * profile.hkdPerCostUnit;
+  const valueHkd = investor.shares * profile.scenarioPriceHkd;
+  return {costHkd, valueHkd, gainHkd: valueHkd - costHkd,
+    returnPercent: (valueHkd / costHkd - 1) * 100,
+    postPercent: investor.shares / profile.postShares * 100,
+    prePercent: investor.preShares ? investor.shares / investor.preShares * 100 : null,
+    adjustedCostPerShare: investor.cost / investor.shares};
+}
+
+function renderOfferingPreIpo(facts) {
+  const p = facts.preIpo;
+  if (!p) return "";
+  const n = offeringNumber, convertible = p.kind === "convertible";
+  const row = (label,value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+  const money = value => `HKD ${n(value,2)}`;
+  const total = convertible ? offeringPreIpoScenario(p,{cost:p.totalPrincipal,shares:p.totalConversionShares}) : null;
+  return `<details class="offering-section offering-preipo" data-offer-round="${escapeHtml(p.roundId)}"><summary><strong>上市前投资者</strong><span>${escapeHtml(p.label)}</span></summary><div class="offering-section-body"><p class="offering-scenario-basis">${escapeHtml(p.basis)}<br>${escapeHtml(p.fxLabel)}</p>
+    ${convertible ? `<dl class="offering-preipo-total">${row("已付可转债本金",`SGD ${n(p.totalPrincipal)} · 2025-12`)}${row("拟转换股份",`${n(p.totalConversionShares)} 股 · ${n(total.postPercent,2)}%`)}${row("票面年利率",`${n(p.interestAnnualPercent)}%`)}${row("情景毛账面盈亏",`${money(total.gainHkd)} · +${n(total.returnPercent,2)}%`)}</dl>` : ""}
+    <div class="offering-preipo-investors">${p.investors.map(investor => {
+      const s = offeringPreIpoScenario(p,investor);
+      return `<details class="offering-investor" data-preipo-investor="${escapeHtml(investor.id)}"><summary><span><strong>${escapeHtml(investor.displayName)}</strong><span class="offering-investor-role">${escapeHtml(investor.displayRole)}</span></span><span>${escapeHtml(p.costCurrency)} ${n(investor.cost,convertible ? 0 : 2)}<span class="offering-investor-role">${convertible ? "本金" : "投资成本"} · 拟上市持股 ${n(s.postPercent,2)}%</span></span></summary><div class="offering-investor-body"><p class="offering-cornerstone-profile">${escapeHtml(investor.profile)}</p><p class="offering-cornerstone-legal">${escapeHtml(investor.legalNameZh || investor.legalName)}${investor.legalNameZh ? `<br>${escapeHtml(investor.legalName)}` : ""}</p><dl class="offering-preipo-grid">
+        ${row("投资角色",escapeHtml(p.role))}${row("款项付清",investor.fullyPaidDate)}
+        ${convertible ? row("发售前工具","可转债") : row("发售前持股",`${n(investor.shares)} 股 · ${n(s.prePercent,2)}%`)}
+        ${row(convertible ? "成功上市拟转换" : "拟上市后持股",`${n(investor.shares)} 股 · ${n(s.postPercent,2)}%`)}
+        ${row(convertible ? "每股转换本金" : "资本化后每股成本",`${escapeHtml(p.costCurrency)} ${n(s.adjustedCostPerShare,6)}`)}
+        ${row("情景港元成本",money(s.costHkd))}${row("情景持股市值",money(s.valueHkd))}${row("情景毛账面盈亏",`${money(s.gainHkd)} · +${n(s.returnPercent,2)}%`)}
+      </dl></div></details>`;
+    }).join("")}</div></div></details>`;
+}
+
 function renderOfferingResearch(facts, notice) {
-  const n = offeringNumber, market = facts.market;
-  const row = (label, value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
-  const cornerstones = facts.cornerstones || [];
-  const ocs = facts.cmis.filter(item => item.overallCoordinator), others = facts.cmis.filter(item => !item.overallCoordinator);
-  const marketDate = market.date === notice.date ? market.date : `${market.date}（前一交易日）`;
-  return `<dl class="offering-metrics">
-      ${row("计划发售股份 / Offer shares", `${n(facts.offerShares)} 股`)}
-      ${row("招股价 / Offer price", offeringPrice(facts))}
-      ${row("计划发售总额 / Gross offer", offeringGross(facts))}
-      ${row("发售比例 / Offer ÷ post-offer shares", `${n(facts.offerShares / facts.postShares * 100, 2)}%`)}
-    </dl>
-    <div class="offering-research-columns">
-      <section><h3>发售结构 <span>Offer structure</span></h3><dl class="offering-facts">
-        ${facts.plannedMarketCap ? row("计划上市市值（绿鞋前）", `HKD ${n(facts.plannedMarketCap.amountHkd / 1000000, facts.plannedMarketCap.decimals)} 百万 · ${escapeHtml(facts.plannedMarketCap.priceBasis)}`) : ""}
-        ${row("发售后总股本", `${n(facts.postShares)} 股`)}
-        ${row("香港公开发售（初始）", `${n(facts.hongKongShares)} 股 · ${n(facts.hongKongShares / facts.offerShares * 100, 2)}%`)}
-        ${row("发售股份性质", facts.saleShares ? `新股 ${n(facts.newShares)} 股；旧股 ${n(facts.saleShares)} 股` : "全部新股")}
-        ${row("分配机制", escapeHtml(facts.mechanism))}
-        ${facts.priceAdjustmentLow ? row("最低可调招股价", `HKD ${n(facts.priceAdjustmentLow, 2)}`) : ""}
-        ${cornerstones.length ? row("基石占发售股份", offeringCornerstoneRatio(facts)) : ""}
-      </dl><details class="offering-disclosure"><summary>股本构成</summary><dl class="offering-facts">${facts.capitalComponents.map(([label, shares]) => row(escapeHtml(label), `${n(shares)} 股`)).join("")}</dl></details></section>
-      <section><h3>公告日市场 <span>Market close</span></h3><dl class="offering-facts">
-        ${row("收市日期", marketDate)}
-        ${row("恒生指数", `${n(market.hsiClose, 2)} · ${market.changePercent > 0 ? "+" : ""}${n(market.changePercent, 2)}%`)}
-        ${row("主板成交额", `HKD ${n(market.turnoverHkd / 100000000, 2)} 亿`)}
-        ${row("此前 7 日主板挂牌（含公告日）", `${market.listedLast7Days} 宗`)}
-        ${facts.publicSubscription ? row("公开认购", escapeHtml(facts.publicSubscription)) : ""}
-      </dl></section>
-    </div>
-    <div class="offering-research-columns offering-parties">
-      <section><h3>保荐人 <span>Sponsors</span></h3>${renderOfferingOrganizations(facts.sponsors)}
-        <h3>整体协调人 <span>OC · ${ocs.length} 家</span></h3>${renderOfferingOrganizations(ocs)}
-        <details class="offering-disclosure"><summary>CMI 名单与角色（${facts.cmis.length} 家，含 OC）</summary>${renderOfferingOrganizations(facts.cmis, true)}</details>
-      </section>
-      <section class="offering-cornerstones">${renderOfferingCornerstones(facts)}</section>
-    </div>`;
+  const n = offeringNumber;
+  const row = (label,value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+  const groups = offeringCornerstoneGroups(facts);
+  const ocs = facts.cmis.filter(item => item.overallCoordinator);
+  const rates = (facts.cornerstoneScenarios || []).map(item => item.shares / facts.offerShares * 100).sort((a,b) => a-b);
+  return `<div class="offering-detail-sections">
+    <details class="offering-section"><summary><strong>发售结构</strong><span>${n(facts.offerShares)} 股 · ${facts.saleShares ? "含旧股" : "全部新股"}</span></summary><div class="offering-section-body">
+      <div class="offering-research-columns"><section><h3>招股价格</h3>${renderOfferingPriceRange(facts)}<dl class="offering-facts">
+        ${facts.priceAdjustmentLow ? row("最低可调招股价",`HKD ${n(facts.priceAdjustmentLow,2)}`) : ""}
+        ${row("计划发售总额",offeringGross(facts))}
+        ${row("计划上市市值（绿鞋前）",`HKD ${n(facts.plannedMarketCap.amountHkd / 1000000,facts.plannedMarketCap.decimals)} 百万 · ${escapeHtml(facts.plannedMarketCap.priceBasis)}`)}
+        ${row("发售后总股本",`${n(facts.postShares)} 股`)}
+        ${facts.saleShares ? row("新股 / 旧股",`${n(facts.newShares)} / ${n(facts.saleShares)} 股`) : ""}
+      </dl><details class="offering-disclosure"><summary>股本构成</summary><dl class="offering-facts">${facts.capitalComponents.map(([label,shares])=>row(escapeHtml(label),`${n(shares)} 股`)).join("")}</dl></details></section>
+      <section>${renderOfferingAllocation(facts)}<dl class="offering-facts">${row("分配机制",escapeHtml(facts.mechanism))}${facts.reallocationPricing ? row("重分配价格条件",escapeHtml(facts.reallocationPricing)) : ""}</dl></section></div>
+      <div class="offering-research-columns offering-parties"><section><h3>保荐人 <span>Sponsors</span></h3>${renderOfferingOrganizations(facts.sponsors)}</section><section><h3>整体协调人 <span>OC · ${ocs.length} 家</span></h3>${renderOfferingOrganizations(ocs)}<details class="offering-disclosure"><summary>CMI 名单与角色（${facts.cmis.length} 家，含 OC）</summary>${renderOfferingOrganizations(facts.cmis,true)}</details></section></div>
+    </div></details>
+    <details class="offering-section"><summary><strong>认购与基石</strong><span>${facts.publicSubscription ? escapeHtml(facts.publicSubscription) : groups.length ? `${groups.length} 组基石` : "基石披露"}</span></summary><div class="offering-section-body">
+      ${facts.publicSubscription ? `<p class="offering-subscription">${escapeHtml(facts.publicSubscription)}</p>` : ""}
+      ${rates.length ? `<div class="offering-cornerstone-ratio"><h3>基石占发售股份</h3><strong>${offeringCornerstoneRatio(facts)}</strong>${renderOfferingRange(rates.length > 1 ? rates[0] : null,rates.at(-1),0,100,`基石占发售股份 ${offeringCornerstoneRatio(facts)}`,["0%","50%","100%"] )}</div>` : ""}
+      <div class="offering-cornerstones">${renderOfferingCornerstones(facts)}</div>
+    </div></details>
+    ${renderOfferingPreIpo(facts)}
+  </div>`;
 }
 
 function renderOfferingSources(facts, notice) {
@@ -2651,7 +2906,7 @@ function renderOfferingSources(facts, notice) {
     <div><b>发售公告 ${notice.date}</b>${notice.pages.map(page => link(`${notice.url}#page=${page}`,`p.${page}`)).join(" ")}</div>
     ${pdf(`招股书 ${facts.date} · 条款`,[2])}${pdf("股本",facts.denominatorPages)}${facts.plannedMarketCap ? pdf("计划上市市值",facts.plannedMarketCap.pdfPages) : ""}${pdf("发售结构",facts.structurePages)}${pdf("保荐人 / CMI",facts.partyPages)}${pdf("基石",facts.cornerstonePages)}
     <div><b>OC 公告</b>${facts.ocSources.map(source => link(`${source.url}#page=3`,`${source.date} p.3`)).join(" ")}</div>
-    <div><b>市场</b>${link(facts.market.sourceUrl,facts.market.sourceLabel)} ${link(facts.market.listingReportUrl,"港交所上市报告")}</div>
+    ${facts.preIpo ? pdf("上市前投资者",facts.preIpo.sourcePages) : ""}
     ${(facts.cornerstones || []).filter(item => item.profileUrl).map(item => `<div><b>机构介绍</b>${link(item.profileUrl,item.shortName)}</div>`).join("")}
     ${(facts.cornerstoneGroups || []).filter(group => group.ranking).map(group => `<div><b>规模及排名</b>${link(group.ranking.sourceUrl,group.ranking.sourceLabel)}</div>`).join("")}
     ${(facts.cornerstoneGroups || []).flatMap(group => group.profileSources || []).map(source => `<div><b>人物身份</b>${link(source.url,source.label)}</div>`).join("")}
@@ -2662,24 +2917,29 @@ function renderOfferings() {
   const root = document.getElementById("offeringCards");
   if (!root) return;
   const all = (state.data?.records || []).map(record => ({record, notice: currentOfferingNotice(record)}))
-    .filter(item => item.notice).sort((a, b) => b.notice.date.localeCompare(a.notice.date));
+    .filter(item => item.notice).sort((a,b) => b.notice.date.localeCompare(a.notice.date));
   const query = normalizeSearchText(state.offeringQuery);
   const rows = all.filter(({record}) => !query || getRecordText(record).includes(query));
   const postponed = all.filter(item => item.notice.kind === "offeringPostponement").length;
   document.getElementById("offeringCount").textContent = `${rows.length} / ${all.length} 家 · ${postponed} 家延期 · ${all.length - postponed} 家本轮不进行`;
   document.getElementById("offeringSearch").value = state.offeringQuery;
-  root.innerHTML = rows.map(({record, notice}) => {
-    const names = nameParts(record), labels = offeringNoticeLabels(notice), facts = notice.research;
-    return `<article class="offering-card" data-offering-card="${escapeHtml(record.id)}">
-      <div class="offering-card-heading"><div><h2>${escapeHtml(foldTraditional(names.primary))}</h2><p>${escapeHtml(names.secondary)}</p></div><span class="offering-code">${notice.stockCode}<small>发售代码 / Offer code</small></span></div>
-      <div class="offering-event"><div><strong>${labels[0]}</strong><small>${labels[1]}</small></div><time datetime="${notice.date}">${notice.date}</time></div>
-      ${renderOfferingResearch(facts, notice)}
-      <dl class="offering-context">
-        <div><dt>监管备案 / CSRC filing</dt><dd>${escapeHtml(statusLabel(record.status))}<span>${escapeHtml(statusLabel(record.status, 1))}</span></dd></div>
-        <div><dt>港交所申请 / HKEX application</dt><dd>${escapeHtml(record.hkexApplicationStatusLabelZh || record.hkexPublicStatus)}<span>${escapeHtml(record.hkexPublicStatus)} · 当前 A1 ${notice.applicationDate}</span></dd></div>
-      </dl>
-      <div class="offering-links">${renderOfferingSources(facts, notice)}<button type="button" class="text-button" data-offering-detail="${escapeHtml(record.id)}">发行人详情 / Details</button></div>
-    </article>`;
+  const link = (url,label) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;
+  const headers = '<div class="offering-comparison-head" aria-hidden="true"><span>公司 / 公告</span><span>计划发售总额 · HKD 百万</span><span>计划上市市值 · HKD 百万</span><span>发售比例</span></div>';
+  root.innerHTML = (rows.length ? headers : "") + rows.map(({record,notice}) => {
+    const names = nameParts(record), labels = offeringNoticeLabels(notice), f = notice.research;
+    const high = f.offerShares * f.priceHigh / 1000000;
+    const low = f.priceLow === null ? null : f.offerShares * f.priceLow / 1000000;
+    const cap = f.plannedMarketCap;
+    return `<article class="offering-card" data-offering-card="${escapeHtml(record.id)}" data-offer-round="${escapeHtml(f.roundId)}">
+      <div class="offering-overview"><div class="offering-overview-company"><h2 title="${escapeHtml(foldTraditional(names.primary))}">${escapeHtml(f.displayName)} <span>${notice.stockCode}</span></h2><div class="offering-status" title="${escapeHtml(labels[1])}">${labels[0]}<time datetime="${notice.date}">${notice.date}</time></div><div class="offering-quick-links">${link(`${notice.url}#page=${notice.pages[0]}`,"公告")}${link(f.prospectusUrl,"招股书")}</div></div>
+      <div class="offering-overview-gross"><span class="offering-mobile-label">计划发售总额 · HKD 百万</span><strong>${low === null ? `最高 ${offeringNumber(high,2)}` : `${offeringNumber(low,2)}–${offeringNumber(high,2)}`}</strong>${renderOfferingRange(low,high,0,1100,offeringGross(f),["0","550","1,100"])}</div>
+      <div class="offering-overview-cap"><span class="offering-mobile-label">计划上市市值 · HKD 百万</span><strong>${offeringNumber(cap.amountHkd / 1000000,cap.decimals)}</strong><span class="offering-cap-basis">${escapeHtml(cap.priceBasis)}</span></div>
+      <div class="offering-overview-ratio"><span class="offering-mobile-label">发售比例</span><strong>${offeringNumber(f.offerShares / f.postShares * 100,2)}%</strong></div></div>
+      <details class="offering-expand"><summary>发售详情 <span>结构 · 认购与基石${f.preIpo ? " · 上市前投资者" : ""}</span></summary><div class="offering-expanded-body"><p class="offering-full-name">${escapeHtml(foldTraditional(names.primary))} · ${escapeHtml(names.secondary)}<br>${escapeHtml(labels[1])} · 招股书 ${f.date}</p>
+        ${renderOfferingResearch(f,notice)}
+        <dl class="offering-context"><div><dt>监管备案 / CSRC filing</dt><dd>${escapeHtml(statusLabel(record.status))}<span>${escapeHtml(statusLabel(record.status,1))}</span></dd></div><div><dt>港交所申请 / HKEX application</dt><dd>${escapeHtml(record.hkexApplicationStatusLabelZh || record.hkexPublicStatus)}<span>${escapeHtml(record.hkexPublicStatus)} · 当前 A1 ${notice.applicationDate}</span></dd></div></dl>
+        <div class="offering-links">${renderOfferingSources(f,notice)}<button type="button" class="text-button" data-offering-detail="${escapeHtml(record.id)}">发行人详情 / Details</button></div>
+      </div></details></article>`;
   }).join("") || '<p class="muted">没有匹配项目 / No matching offerings</p>';
 }
 

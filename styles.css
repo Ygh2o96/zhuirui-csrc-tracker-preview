@@ -2706,3 +2706,83 @@ tr[role="button"]:focus-visible {
   .offering-disclosure summary, .offering-sources summary { min-height: 44px; display: list-item; align-content: center; }
   .offering-badge { min-height: 36px; }
 }
+
+/* Compact comparison; figures share a fixed HKD scale, detail stays progressive. */
+.offering-grid { gap: 10px; }
+.offering-card { padding: 0; overflow: clip; }
+.offering-comparison-head, .offering-overview { display: grid; grid-template-columns: minmax(185px,1.1fr) minmax(200px,1.25fr) minmax(150px,1fr) minmax(68px,.4fr); gap: 20px; align-items: center; }
+.offering-comparison-head { padding: 0 16px 4px; font-size: 13px; color: var(--muted); }
+.offering-overview { padding: 12px 16px 8px; }
+.offering-overview > div { min-width: 0; }
+.offering-card h2 { font-size: 17px; line-height: 1.5; }
+.offering-card h2 span { font-size: 13px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.offering-status { font-size: 13px; color: #77520c; line-height: 1.6; }
+.offering-status time { display: inline-block; margin-left: 8px; color: var(--muted); }
+.offering-quick-links { display: flex; gap: 14px; font-size: 13px; line-height: 1.5; }
+.offering-quick-links a { display: inline-flex; align-items: center; min-height: 28px; }
+.offering-overview-gross > strong, .offering-overview-cap > strong, .offering-overview-ratio > strong { display: block; font-size: 17px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.offering-cap-basis { display: block; font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+.offering-mobile-label { display: none; }
+.offering-range { min-width: 0; }
+.offering-range svg { width: 100%; height: 24px; display: block; overflow: visible; }
+.offering-range-axis { stroke: #dce4e5; stroke-width: 2; }
+.offering-range-tick { stroke: #c5d0d3; stroke-width: 1; }
+.offering-range-span { stroke: #427782; stroke-width: 7; stroke-linecap: round; }
+.offering-range-point { fill: #315e68; }
+.offering-range svg * { vector-effect: non-scaling-stroke; }
+.offering-axis-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.offering-expand > summary { padding: 5px 16px 8px; color: var(--accent); font-size: 13px; cursor: pointer; line-height: 1.6; }
+.offering-expand > summary > span { color: var(--muted); margin-left: 8px; }
+.offering-expand[open] > summary { border-top: 1px solid var(--line); padding-top: 9px; background: #f8fafb; }
+.offering-expanded-body { padding: 8px 20px 16px; }
+.offering-full-name { margin: 3px 0 12px; color: var(--muted); font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+.offering-detail-sections { border-top: 1px solid var(--line); }
+.offering-section { border-bottom: 1px solid var(--line); }
+.offering-section > summary { display: list-item; cursor: pointer; padding: 12px 0; font-size: 15px; line-height: 1.6; }
+.offering-section > summary > span { margin-left: 12px; font-size: 14px; color: var(--muted); }
+.offering-section-body { padding: 4px 0 18px; }
+.offering-price-chart, .offering-price-point { max-width: 340px; margin-bottom: 14px; font-size: 16px; }
+.offering-price-point { display: flex; align-items: center; gap: 12px; }
+.offering-price-point i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #315e68; }
+.offering-allocation-bar { display: flex; height: 13px; border-radius: 4px; overflow: hidden; margin: 14px 0 8px; }
+.offering-allocation-hk, .offering-key-hk { background: #315e68; }
+.offering-allocation-international, .offering-key-international { background: #abc4c9; }
+.offering-allocation-labels { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.offering-allocation-labels > span:last-child { text-align: right; }
+.offering-allocation-labels i { width: 9px; height: 9px; display: inline-block; margin-right: 5px; border-radius: 2px; }
+.offering-allocation-labels small { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; }
+.offering-cornerstone-ratio { max-width: 500px; margin-bottom: 24px; font-size: 14px; }
+.offering-subscription { color: var(--accent); font-size: 15px; margin: 0 0 16px; }
+.offering-scenario-basis { font-size: 14px; line-height: 1.75; margin: 0 0 16px; color: var(--muted); }
+.offering-preipo-total, .offering-preipo-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 24px; margin: 12px 0 18px; font-size: 14px; line-height: 1.65; }
+.offering-preipo-total dt, .offering-preipo-grid dt { color: var(--muted); }
+.offering-preipo-total dd, .offering-preipo-grid dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.offering-investor { border-top: 1px solid var(--line); }
+.offering-investor > summary { display: flex; justify-content: space-between; gap: 10px 20px; cursor: pointer; padding: 12px 0; font-size: 14px; line-height: 1.6; }
+.offering-investor > summary::before { content: "+"; color: var(--accent); flex: 0 0 10px; }
+.offering-investor[open] > summary::before { content: "−"; }
+.offering-investor > summary > span:first-of-type { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.offering-investor > summary > span:last-of-type { text-align: right; font-variant-numeric: tabular-nums; }
+.offering-investor-role { display: block; color: var(--muted); font-size: 13px; }
+.offering-investor-body { padding: 0 10px 12px; }
+.offering-preipo .offering-cornerstone-legal { font-size: 14px; }
+.offering-context { margin-top: 12px; padding: 10px 0; border-top: 0; }
+@media (max-width: 1120px) and (min-width: 821px) {
+  .offering-comparison-head, .offering-overview { gap: 12px; grid-template-columns: minmax(160px,1.1fr) minmax(175px,1.2fr) minmax(130px,1fr) minmax(60px,.4fr); }
+}
+@media (max-width: 820px) {
+  .offering-comparison-head { display: none; }
+  .offering-overview { grid-template-columns: minmax(0,1fr) minmax(0,.6fr); gap: 13px 16px; padding: 14px 16px 8px; }
+  .offering-overview-company, .offering-overview-gross { grid-column: 1 / -1; }
+  .offering-mobile-label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; line-height: 1.5; }
+  .offering-overview-ratio { align-self: start; }
+  .offering-expand > summary { min-height: 44px; align-content: center; padding: 4px 16px; }
+  .offering-expand > summary > span { display: block; margin: 0 0 0 15px; }
+  .offering-quick-links a { min-height: 40px; }
+  .offering-expanded-body { padding: 8px 16px 16px; }
+  .offering-section > summary > span { display: block; margin: 2px 0 0 18px; }
+  .offering-research-columns, .offering-preipo-total, .offering-preipo-grid { grid-template-columns: minmax(0,1fr); }
+  .offering-investor > summary { flex-wrap: wrap; gap: 6px 10px; }
+  .offering-investor > summary > span:last-of-type { flex-basis: calc(100% - 20px); margin-left: 20px; text-align: left; }
+  .offering-facts > div { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); }
+}
