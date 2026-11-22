@@ -950,7 +950,270 @@ const offeringNoticeEvidence = [
     "pages": [
       2,
       3
-    ]
+    ],
+    "research": {
+      "date": "2026-10-30",
+      "offerShares": 55210000,
+      "newShares": 55210000,
+      "saleShares": 0,
+      "postShares": 452056576,
+      "hongKongShares": 5521000,
+      "internationalShares": 49689000,
+      "priceLow": 15.5,
+      "priceHigh": 18.9,
+      "priceAdjustmentLow": 14.0,
+      "capitalComponents": [
+        [
+          "未上市股份",
+          142877096
+        ],
+        [
+          "全流通转换 H 股",
+          253969480
+        ],
+        [
+          "本轮新发 H 股",
+          55210000
+        ]
+      ],
+      "denominatorPages": [
+        247,
+        24
+      ],
+      "quantityPages": [
+        2,
+        291
+      ],
+      "partyPages": [
+        77,
+        78
+      ],
+      "structurePages": [
+        291,
+        292
+      ],
+      "mechanism": "可酌情重分配至 15%",
+      "sponsors": [
+        {
+          "name": "SDIC Securities Corporate Finance (Hong Kong) Limited",
+          "shortName": "国投证券企业融资（香港）",
+          "roles": []
+        }
+      ],
+      "cmis": [
+        {
+          "name": "SDIC Securities (Hong Kong) Limited",
+          "shortName": "国投证券（香港）",
+          "roles": [
+            "保荐人整体协调人（Sponsor-OC）",
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "SPDB International Capital Limited",
+          "shortName": "浦银国际融资",
+          "roles": [
+            "整体协调人",
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "China Industrial Securities International Capital Limited",
+          "shortName": "兴证国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "CMB International Capital Limited",
+          "shortName": "招银国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "CCB International Capital Limited",
+          "shortName": "建银国际金融",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "BOCOM International Securities Limited",
+          "shortName": "交银国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Guosen Securities (HK) Brokerage Company, Limited",
+          "shortName": "国信证券（香港）经纪",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "uSmart Securities Limited",
+          "shortName": "盈立证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Patrons Securities Limited",
+          "shortName": "Patrons Securities",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "ABCI Capital Limited",
+          "shortName": "农银国际融资",
+          "roles": [
+            "联席账簿管理人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "ABCI Securities Company Limited",
+          "shortName": "农银国际证券",
+          "roles": [
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        }
+      ],
+      "cornerstoneStatus": "disclosed",
+      "cornerstoneScenarios": [
+        {
+          "price": 18.9,
+          "shares": 12041400
+        },
+        {
+          "price": 15.5,
+          "shares": 14682800
+        }
+      ],
+      "cornerstonePages": [
+        249,
+        251,
+        252,
+        253,
+        254,
+        255
+      ],
+      "cornerstones": [
+        {
+          "name": "GF Fund Management Co., Ltd.",
+          "shortName": "广发基金",
+          "type": "公募基金管理人",
+          "pdfPages": [
+            251,
+            252
+          ],
+          "capacity": "代表旗下基金",
+          "profileUrl": "https://www.gffunds.com.cn/gywm/gsjj/201606/t20160618_52960.shtml"
+        },
+        {
+          "name": "GF International Investment Management Limited",
+          "shortName": "广发国际（GF Fund HK）",
+          "type": "香港持牌资管",
+          "pdfPages": [
+            252
+          ],
+          "capacity": "代表旗下基金"
+        },
+        {
+          "name": "China Universal Asset Management Co., Ltd.",
+          "shortName": "汇添富基金",
+          "type": "公募基金管理人",
+          "pdfPages": [
+            252,
+            253
+          ],
+          "capacity": "代表旗下基金"
+        },
+        {
+          "name": "China Universal Asset Management (Hong Kong) Company Limited",
+          "shortName": "汇添富香港",
+          "type": "香港持牌资管",
+          "pdfPages": [
+            253
+          ],
+          "capacity": "代表 CUAM China-Hong Kong Strategy Fund"
+        },
+        {
+          "name": "Fullgoal Fund Management Co., Ltd.",
+          "shortName": "富国基金",
+          "type": "公募基金管理人",
+          "pdfPages": [
+            253,
+            254
+          ],
+          "capacity": "代表旗下基金"
+        },
+        {
+          "name": "Fullgoal Asset Management (HK) Limited",
+          "shortName": "富国香港",
+          "type": "香港持牌资管",
+          "pdfPages": [
+            254
+          ],
+          "capacity": "代表旗下基金"
+        },
+        {
+          "name": "E Fund Management Co., Ltd.",
+          "shortName": "易方达基金",
+          "type": "公募基金管理人",
+          "pdfPages": [
+            254
+          ],
+          "capacity": "代表旗下基金",
+          "profileUrl": "https://www.efunds.com.cn/lm/jgd-sy/"
+        }
+      ],
+      "announcementWording": "现时市况",
+      "market": {
+        "date": "2026-11-04",
+        "hsiClose": 23919.5,
+        "changePercent": 1.673,
+        "turnoverHkd": 236896230172,
+        "sourceLabel": "港交所日报",
+        "sourceUrl": "https://www.hkex.com.hk/chi/stat/smstat/dayquot/d261104c.htm",
+        "listedLast7Days": 0,
+        "listingReportUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+      },
+      "prospectusUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000029.pdf",
+      "prospectusSha256": "e7e3594bcd41dfe41516e274dccf857adbfe06495225b87357a8738f471780a7",
+      "ocSources": [
+        {
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108622/documents/sehk26060801741.pdf",
+          "date": "2026-06-08",
+          "sha256": "15efda2bb2315bd390333df71f130db2e18b56a759498a3e1065cef10fde9713",
+          "publishedDate": "08/06/2026"
+        }
+      ]
+    }
   },
   {
     "issuerId": "changzhou microintelligence co., ltd",
@@ -965,7 +1228,218 @@ const offeringNoticeEvidence = [
       1,
       2,
       3
-    ]
+    ],
+    "research": {
+      "date": "2026-10-20",
+      "offerShares": 37275800,
+      "newShares": 37275800,
+      "saleShares": 0,
+      "postShares": 372757356,
+      "hongKongShares": 3727600,
+      "internationalShares": 33548200,
+      "priceLow": 16.63,
+      "priceHigh": 21.46,
+      "capitalComponents": [
+        [
+          "全流通转换 H 股",
+          335481556
+        ],
+        [
+          "本轮新发 H 股",
+          37275800
+        ]
+      ],
+      "denominatorPages": [
+        232,
+        23,
+        119
+      ],
+      "quantityPages": [
+        2,
+        290
+      ],
+      "partyPages": [
+        73,
+        74,
+        75
+      ],
+      "structurePages": [
+        290,
+        291,
+        292
+      ],
+      "mechanism": "机制 B · 无强制回拨",
+      "sponsors": [
+        {
+          "name": "Orient Capital (Hong Kong) Limited",
+          "shortName": "东方融资（香港）",
+          "roles": []
+        }
+      ],
+      "cmis": [
+        {
+          "name": "Orient Securities (Hong Kong) Limited",
+          "shortName": "东方证券（香港）",
+          "roles": [
+            "保荐人整体协调人（Sponsor-OC）",
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "BOCI Asia Limited",
+          "shortName": "中银国际亚洲",
+          "roles": [
+            "整体协调人",
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "Futu Securities International (Hong Kong) Limited",
+          "shortName": "富途证券国际（香港）",
+          "roles": [
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "China Industrial Securities International Capital Limited",
+          "shortName": "兴证国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "CMBC Securities Company Limited",
+          "shortName": "民银证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "First Shanghai Securities Limited",
+          "shortName": "第一上海证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Huafu International Securities Limited",
+          "shortName": "华福国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "ICBC International Securities Limited",
+          "shortName": "工银国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Shanxi Securities International Limited",
+          "shortName": "山证国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "SPDB International Capital Limited",
+          "shortName": "浦银国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Tiger Brokers (HK) Global Limited",
+          "shortName": "老虎证券（香港）环球",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Yuet Sheung International Securities Limited",
+          "shortName": "粤商国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        }
+      ],
+      "cornerstoneStatus": "disclosed",
+      "cornerstoneScenarios": [
+        {
+          "price": 21.46,
+          "shares": 731300
+        },
+        {
+          "price": 16.63,
+          "shares": 943700
+        }
+      ],
+      "cornerstonePages": [
+        275,
+        277,
+        278
+      ],
+      "cornerstones": [
+        {
+          "name": "Elbe Rhein Investment Limited",
+          "shortName": "易北莱茵投资",
+          "type": "投资及资产管理",
+          "pdfPages": [
+            278
+          ],
+          "capacity": "Liu Jonas 全资持有"
+        }
+      ],
+      "announcementWording": "包括当时市况在内的多项因素",
+      "market": {
+        "date": "2026-10-23",
+        "hsiClose": 23093.37,
+        "changePercent": 0.692,
+        "turnoverHkd": 249783590343,
+        "sourceLabel": "港交所日报",
+        "sourceUrl": "https://www.hkex.com.hk/chi/stat/smstat/dayquot/d261023c.htm",
+        "listedLast7Days": 0,
+        "listingReportUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+      },
+      "prospectusUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000029.pdf",
+      "prospectusSha256": "0b2da8fb140c1a13a630e3e99eb157feb7a8096a1434f306c6f3423690f69434",
+      "ocSources": [
+        {
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108374/documents/sehk26033100372.pdf",
+          "date": "2026-03-31",
+          "sha256": "33c1a8a2df59c9ef7c8a0e30f2825320409256aa3f8c5321f8f2f5e2f224248f",
+          "publishedDate": "31/03/2026"
+        }
+      ]
+    }
   },
   {
     "issuerId": "jiangsu slender west lake cultural tourism co. ltd",
@@ -980,7 +1454,199 @@ const offeringNoticeEvidence = [
       1,
       2,
       3
-    ]
+    ],
+    "research": {
+      "date": "2026-10-14",
+      "offerShares": 44760000,
+      "newShares": 44760000,
+      "saleShares": 0,
+      "postShares": 179025816,
+      "hongKongShares": 4476000,
+      "internationalShares": 40284000,
+      "priceLow": 3.92,
+      "priceHigh": 5.07,
+      "capitalComponents": [
+        [
+          "原内资股",
+          134265816
+        ],
+        [
+          "本轮新发 H 股",
+          44760000
+        ]
+      ],
+      "denominatorPages": [
+        215,
+        18,
+        97
+      ],
+      "quantityPages": [
+        2,
+        288
+      ],
+      "partyPages": [
+        62,
+        63
+      ],
+      "structurePages": [
+        288,
+        289,
+        290
+      ],
+      "mechanism": "机制 B · 无强制回拨",
+      "sponsors": [
+        {
+          "name": "China Everbright Capital Limited",
+          "shortName": "中国光大融资",
+          "roles": []
+        }
+      ],
+      "cmis": [
+        {
+          "name": "China Everbright Securities (HK) Limited",
+          "shortName": "中国光大证券（香港）",
+          "roles": [
+            "独家整体协调人",
+            "独家全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "Bluestone Securities (HK) CO., Limited",
+          "shortName": "Bluestone Securities (HK)",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Caitong International Securities Company Limited",
+          "shortName": "财通国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "China Industrial Securities International Capital Limited",
+          "shortName": "兴证国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "China Renaissance Securities (Hong Kong) Limited",
+          "shortName": "华兴证券（香港）",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "CMB International Capital Limited",
+          "shortName": "招银国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "CMBC Securities Company Limited",
+          "shortName": "民银证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "ICBC International Securities Limited",
+          "shortName": "工银国际证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "South China Securities Limited",
+          "shortName": "南华证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "SPDB International Capital Limited",
+          "shortName": "浦银国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Sunfund Securities Limited",
+          "shortName": "Sunfund Securities",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Zheshang International Financial Holdings Co., Limited",
+          "shortName": "浙商国际金融控股",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        }
+      ],
+      "cornerstoneStatus": "not_disclosed",
+      "cornerstoneScenarios": [],
+      "cornerstonePages": [
+        440
+      ],
+      "cornerstones": [],
+      "announcementWording": "包括当时市况在内的多项因素",
+      "market": {
+        "date": "2026-10-20",
+        "hsiClose": 23867.74,
+        "changePercent": -1.319,
+        "turnoverHkd": 190454582738,
+        "sourceLabel": "港交所日报",
+        "sourceUrl": "https://www.hkex.com.hk/chi/stat/smstat/dayquot/d261020c.htm",
+        "listedLast7Days": 1,
+        "listingReportUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+      },
+      "prospectusUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1014/2026101400023.pdf",
+      "prospectusSha256": "cc25588930d424e1d7b221547d07aa1dd15ed7417637dcbfc861e899bf8d3131",
+      "ocSources": [
+        {
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108373/documents/sehk26100700094.pdf",
+          "date": "2026-10-07",
+          "sha256": "80ab64b67e2f6106fe08366c4c19c9251b31d59931a2bbb55644d0a6d4bb6a99",
+          "publishedDate": "07/10/2026"
+        },
+        {
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108373/documents/sehk26033100112.pdf",
+          "date": "2026-03-30",
+          "sha256": "17288d3b48172ee9a19d49c91f22f90f78afecfd9638efc8d664874a049d5895",
+          "publishedDate": "31/03/2026"
+        }
+      ]
+    }
   },
   {
     "issuerId": "shenzhen forms syntron information co., ltd.",
@@ -995,7 +1661,203 @@ const offeringNoticeEvidence = [
       1,
       2,
       3
-    ]
+    ],
+    "research": {
+      "date": "2026-09-14",
+      "offerShares": 58961100,
+      "newShares": 58961100,
+      "saleShares": 0,
+      "postShares": 589610375,
+      "hongKongShares": 5896200,
+      "internationalShares": 53064900,
+      "priceLow": null,
+      "priceHigh": 16.0,
+      "capitalComponents": [
+        [
+          "原 A 股",
+          530649275
+        ],
+        [
+          "本轮新发 H 股",
+          58961100
+        ]
+      ],
+      "denominatorPages": [
+        221,
+        27,
+        406
+      ],
+      "quantityPages": [
+        2,
+        288
+      ],
+      "partyPages": [
+        85
+      ],
+      "structurePages": [
+        288,
+        289,
+        290
+      ],
+      "mechanism": "机制 B · 无强制回拨",
+      "sponsors": [
+        {
+          "name": "CMB International Capital Limited",
+          "shortName": "招银国际融资",
+          "roles": []
+        },
+        {
+          "name": "Guosen Securities (HK) Capital Company Limited",
+          "shortName": "国信证券（香港）融资",
+          "roles": []
+        }
+      ],
+      "cmis": [
+        {
+          "name": "CMB International Capital Limited",
+          "shortName": "招银国际融资",
+          "roles": [
+            "保荐人整体协调人（Sponsor-OC）",
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "Guosen Securities (HK) Capital Company Limited",
+          "shortName": "国信证券（香港）融资",
+          "roles": [
+            "保荐人整体协调人（Sponsor-OC）",
+            "联席全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "Victory Securities Company Limited",
+          "shortName": "胜利证券",
+          "roles": [
+            "联席账簿管理人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Emperio Securities And Assets Management Limited",
+          "shortName": "Emperio Securities and Assets Management",
+          "roles": [
+            "联席账簿管理人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Futu Securities International (Hong Kong) Limited",
+          "shortName": "富途证券国际（香港）",
+          "roles": [
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Get Nice Securities Limited",
+          "shortName": "结好证券",
+          "roles": [
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Harmonia Capital Limited",
+          "shortName": "Harmonia Capital",
+          "roles": [
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Innovax Securities Limited",
+          "shortName": "建泉证券",
+          "roles": [
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        }
+      ],
+      "cornerstoneStatus": "disclosed",
+      "cornerstoneScenarios": [
+        {
+          "price": 16.0,
+          "shares": 7431200
+        }
+      ],
+      "cornerstonePages": [
+        216,
+        217,
+        218,
+        219,
+        465
+      ],
+      "cornerstones": [
+        {
+          "name": "Mr. Cheng Chi Heng",
+          "shortName": "郑志恒",
+          "type": "个人投资者",
+          "pdfPages": [
+            218
+          ]
+        },
+        {
+          "name": "Successful Lotus Limited",
+          "shortName": "Successful Lotus",
+          "type": "私人投资控股公司",
+          "pdfPages": [
+            218
+          ],
+          "capacity": "李家杰全资持有"
+        },
+        {
+          "name": "Thalassa Capital Dynamics SPC (acting for and on behalf of Thalassa Horizon SP)",
+          "shortName": "Thalassa Capital / Thalassa Horizon SP",
+          "type": "股权投资载体",
+          "pdfPages": [
+            218,
+            219
+          ],
+          "manager": "Seascape Synergy Group Limited"
+        },
+        {
+          "name": "Yeebo Alpha Limited",
+          "shortName": "Yeebo Alpha",
+          "type": "产业集团投资载体",
+          "pdfPages": [
+            219
+          ],
+          "capacity": "Yeebo (International Holdings) Limited（亿都）全资持有"
+        }
+      ],
+      "announcementWording": "包括当时市况在内的多项因素",
+      "market": {
+        "date": "2026-09-17",
+        "hsiClose": 24604.29,
+        "changePercent": -0.44,
+        "turnoverHkd": 185586000000,
+        "sourceLabel": "华富财经",
+        "sourceUrl": "https://quamnet.com/post/fkXPwq8pgktJkQOyqH1mk",
+        "listedLast7Days": 0,
+        "listingReportUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+      },
+      "prospectusUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0914/2026091400005.pdf",
+      "prospectusSha256": "af4d588ed2bcaf260f947aa695818b30e8c332b0051f0fb01ec39eef0f145251",
+      "ocSources": [
+        {
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108727/documents/sehk26070500184.pdf",
+          "date": "2026-07-05",
+          "sha256": "1c9eb68bcc8f399e3ebc354b3225af7f125fddf919bdf1e7dfb4c765f4f4abab",
+          "publishedDate": "05/07/2026"
+        }
+      ]
+    }
   },
   {
     "issuerId": "ekh limited",
@@ -1010,7 +1872,180 @@ const offeringNoticeEvidence = [
       1,
       2,
       3
-    ]
+    ],
+    "research": {
+      "date": "2026-06-30",
+      "offerShares": 51600000,
+      "newShares": 51600000,
+      "saleShares": 0,
+      "postShares": 438578285,
+      "hongKongShares": 5160000,
+      "internationalShares": 46440000,
+      "priceLow": 2.2,
+      "priceHigh": 2.68,
+      "capitalComponents": [
+        [
+          "已发行普通股",
+          285940889
+        ],
+        [
+          "上市前可转债转换",
+          80620476
+        ],
+        [
+          "上市前股份奖励",
+          20416920
+        ],
+        [
+          "本轮新发股份",
+          51600000
+        ]
+      ],
+      "denominatorPages": [
+        295,
+        28,
+        166
+      ],
+      "quantityPages": [
+        2,
+        370
+      ],
+      "partyPages": [
+        93,
+        94
+      ],
+      "structurePages": [
+        370,
+        371,
+        372
+      ],
+      "mechanism": "可酌情重分配至 15%",
+      "sponsors": [
+        {
+          "name": "Quam Capital Limited",
+          "shortName": "华富建业企业融资",
+          "roles": []
+        },
+        {
+          "name": "Alliance Capital Partners Limited",
+          "shortName": "同人融资",
+          "roles": []
+        }
+      ],
+      "cmis": [
+        {
+          "name": "Quam Securities Limited",
+          "shortName": "华富建业证券",
+          "roles": [
+            "保荐人整体协调人（Sponsor-OC）",
+            "独家全球协调人",
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": true
+        },
+        {
+          "name": "CEB International Capital Corporation Limited",
+          "shortName": "光银国际资本",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "CMB International Capital Limited",
+          "shortName": "招银国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Eddid Securities and Futures Limited",
+          "shortName": "艾德证券期货",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Grand China Securities Limited",
+          "shortName": "大中华证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "Orient Securities (Hong Kong) Limited",
+          "shortName": "东方证券（香港）",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "SBI E2-Capital Securities Limited",
+          "shortName": "SBI E2-Capital Securities",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "SPDB International Capital Limited",
+          "shortName": "浦银国际融资",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        },
+        {
+          "name": "uSmart Securities Limited",
+          "shortName": "盈立证券",
+          "roles": [
+            "联席账簿管理人",
+            "联席牵头经办人"
+          ],
+          "overallCoordinator": false
+        }
+      ],
+      "cornerstoneStatus": "not_disclosed",
+      "cornerstoneScenarios": [],
+      "cornerstonePages": [
+        586,
+        587
+      ],
+      "cornerstones": [],
+      "publicSubscription": "香港公开发售获超额认购",
+      "market": {
+        "date": "2026-07-08",
+        "hsiClose": 24199.46,
+        "changePercent": 2.99,
+        "turnoverHkd": 375835000000,
+        "sourceLabel": "新华社",
+        "sourceUrl": "https://www.xinhuanet.com/20260708/2afddbbd1ea040eba7ecf7e6a798da86/c.html",
+        "listedLast7Days": 6,
+        "listingReportUrl": "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR2026_Eng.xlsx"
+      },
+      "prospectusUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000027.pdf",
+      "prospectusSha256": "10cff38ca9c60fdabfe841e03ecea2a05ede66206f94732961ec6709b63017bb",
+      "ocSources": [
+        {
+          "url": "https://www1.hkexnews.hk/app/sehk/2026/108390/documents/sehk26040100606.pdf",
+          "date": "2026-03-31",
+          "sha256": "96382b718db76c824879ed6b0ce4422167107131f0c487b854d211711a262c1c",
+          "publishedDate": "01/04/2026"
+        }
+      ]
+    }
   }
 ];
 
@@ -1052,7 +2087,11 @@ function offeringNoticeLabels(notice) {
 
 function offeringSearchText(record) {
   const notice = currentOfferingNotice(record);
-  return notice ? ["发售搁置 暂停 paused", ...offeringNoticeLabels(notice), notice.date, notice.stockCode].join(" ") : "";
+  if (!notice) return "";
+  const facts = notice.research || {};
+  const institutions = [...(facts.sponsors || []), ...(facts.cmis || []), ...(facts.cornerstones || [])];
+  return ["发售搁置 暂停 paused", ...offeringNoticeLabels(notice), notice.date, notice.stockCode,
+    ...institutions.flatMap(item => [item.name, item.shortName, item.type, item.manager, item.capacity, ...(item.roles || [])])].filter(Boolean).join(" ");
 }
 
 function renderOfferingBadge(record) {
@@ -1060,6 +2099,86 @@ function renderOfferingBadge(record) {
   if (!notice) return "";
   const labels = offeringNoticeLabels(notice);
   return `<button type="button" class="offering-badge" data-offering-id="${escapeHtml(record.id)}" title="${escapeHtml(labels[1])} · ${notice.date}">${labels[2]} ↗</button>`;
+}
+
+
+function offeringNumber(value, decimals = 0) {
+  return Number(value).toLocaleString("en-US", {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+}
+
+function offeringPrice(facts) {
+  const high = offeringNumber(facts.priceHigh, 2);
+  return facts.priceLow === null ? `最高 HKD ${high}` : `HKD ${offeringNumber(facts.priceLow, 2)}–${high}`;
+}
+
+function offeringGross(facts) {
+  const high = offeringNumber(facts.offerShares * facts.priceHigh / 1000000, 2);
+  return facts.priceLow === null ? `最高 HKD ${high} 百万` : `HKD ${offeringNumber(facts.offerShares * facts.priceLow / 1000000, 2)}–${high} 百万`;
+}
+
+function offeringCornerstoneRatio(facts) {
+  const scenarios = facts.cornerstoneScenarios || [];
+  if (!scenarios.length) return "";
+  const rates = scenarios.map(item => item.shares / facts.offerShares * 100).sort((a,b) => a-b);
+  return rates.length > 1
+    ? `${offeringNumber(rates[0], 2)}%–${offeringNumber(rates.at(-1), 2)}%（指示价区间）`
+    : `${offeringNumber(rates[0], 2)}%（按 HKD ${offeringNumber(scenarios[0].price, 2)}、股数计算）`;
+}
+
+function renderOfferingOrganizations(items, withRoles = false) {
+  return `<ul class="offering-organizations">${items.map(item => `<li><span class="offering-org-name">${escapeHtml(item.shortName)}</span><span class="offering-legal-name">${escapeHtml(item.name)}</span>${withRoles ? `<span class="offering-org-role">${escapeHtml(item.roles.join(" / "))}</span>` : ""}</li>`).join("")}</ul>`;
+}
+
+function renderOfferingResearch(facts, notice) {
+  const n = offeringNumber, market = facts.market;
+  const row = (label, value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+  const cornerstones = facts.cornerstones || [];
+  const ocs = facts.cmis.filter(item => item.overallCoordinator), others = facts.cmis.filter(item => !item.overallCoordinator);
+  const marketDate = market.date === notice.date ? market.date : `${market.date}（前一交易日）`;
+  return `<dl class="offering-metrics">
+      ${row("计划发售股份 / Offer shares", `${n(facts.offerShares)} 股`)}
+      ${row("招股价 / Offer price", offeringPrice(facts))}
+      ${row("计划发售总额 / Gross offer", offeringGross(facts))}
+      ${row("发售比例 / Offer ÷ post-offer shares", `${n(facts.offerShares / facts.postShares * 100, 2)}%`)}
+    </dl>
+    <div class="offering-research-columns">
+      <section><h3>发售结构 <span>Offer structure</span></h3><dl class="offering-facts">
+        ${row("发售后总股本", `${n(facts.postShares)} 股`)}
+        ${row("香港公开发售（初始）", `${n(facts.hongKongShares)} 股 · ${n(facts.hongKongShares / facts.offerShares * 100, 2)}%`)}
+        ${row("发售股份性质", facts.saleShares ? `新股 ${n(facts.newShares)} 股；旧股 ${n(facts.saleShares)} 股` : "全部新股")}
+        ${row("分配机制", escapeHtml(facts.mechanism))}
+        ${facts.priceAdjustmentLow ? row("最低可调招股价", `HKD ${n(facts.priceAdjustmentLow, 2)}`) : ""}
+        ${cornerstones.length ? row("基石占发售股份", offeringCornerstoneRatio(facts)) : ""}
+      </dl><details class="offering-disclosure"><summary>股本构成</summary><dl class="offering-facts">${facts.capitalComponents.map(([label, shares]) => row(escapeHtml(label), `${n(shares)} 股`)).join("")}</dl></details></section>
+      <section><h3>公告日市场 <span>Market close</span></h3><dl class="offering-facts">
+        ${row("收市日期", marketDate)}
+        ${row("恒生指数", `${n(market.hsiClose, 2)} · ${market.changePercent > 0 ? "+" : ""}${n(market.changePercent, 2)}%`)}
+        ${row("主板成交额", `HKD ${n(market.turnoverHkd / 100000000, 2)} 亿`)}
+        ${row("此前 7 日主板挂牌（含公告日）", `${market.listedLast7Days} 宗`)}
+        ${facts.publicSubscription ? row("公开认购", escapeHtml(facts.publicSubscription)) : ""}
+      </dl></section>
+    </div>
+    <div class="offering-research-columns offering-parties">
+      <section><h3>保荐人 <span>Sponsors</span></h3>${renderOfferingOrganizations(facts.sponsors)}
+        <h3>整体协调人 <span>OC · ${ocs.length} 家</span></h3>${renderOfferingOrganizations(ocs)}
+        <details class="offering-disclosure"><summary>CMI 名单与角色（${facts.cmis.length} 家，含 OC）</summary>${renderOfferingOrganizations(facts.cmis, true)}</details>
+      </section>
+      <section><h3>基石投资者 <span>Cornerstone investors${cornerstones.length ? ` · ${cornerstones.length} 名签约方` : ""}</span></h3>
+        ${cornerstones.length ? `<ul class="offering-investors">${cornerstones.map(item => `<li><span>${escapeHtml(item.shortName)}</span><span class="offering-investor-type">${escapeHtml(item.type)}</span></li>`).join("")}</ul><details class="offering-disclosure"><summary>签约名称与管理人</summary><ul class="offering-organizations">${cornerstones.map(item => `<li><span class="offering-org-name">${escapeHtml(item.name)}</span>${item.manager ? `<span class="offering-legal-name">管理人：${escapeHtml(item.manager)}</span>` : ""}${item.capacity ? `<span class="offering-legal-name">${escapeHtml(item.capacity)}</span>` : ""}</li>`).join("")}</ul></details>` : '<p class="offering-undisclosed">招股书未披露基石名单</p>'}
+      </section>
+    </div>`;
+}
+
+function renderOfferingSources(facts, notice) {
+  const link = (url,label) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+  const pdf = (label,pages) => `<div><b>${label}</b>${pages.map(page => link(`${facts.prospectusUrl}#page=${page}`, `p.${page}`)).join(" ")}</div>`;
+  return `<details class="offering-sources"><summary>原件与页码 <span>Sources · PDF pages</span></summary><div class="offering-source-list">
+    <div><b>发售公告 ${notice.date}</b>${notice.pages.map(page => link(`${notice.url}#page=${page}`,`p.${page}`)).join(" ")}</div>
+    ${pdf(`招股书 ${facts.date} · 条款`,[2])}${pdf("股本",facts.denominatorPages)}${pdf("发售结构",facts.structurePages)}${pdf("保荐人 / CMI",facts.partyPages)}${pdf("基石",facts.cornerstonePages)}
+    <div><b>OC 公告</b>${facts.ocSources.map(source => link(`${source.url}#page=3`,`${source.date} p.3`)).join(" ")}</div>
+    <div><b>市场</b>${link(facts.market.sourceUrl,facts.market.sourceLabel)} ${link(facts.market.listingReportUrl,"港交所上市报告")}</div>
+    ${(facts.cornerstones || []).filter(item => item.profileUrl).map(item => `<div><b>机构介绍</b>${link(item.profileUrl,item.shortName)}</div>`).join("")}
+  </div></details>`;
 }
 
 function renderOfferings() {
@@ -1073,17 +2192,16 @@ function renderOfferings() {
   document.getElementById("offeringCount").textContent = `${rows.length} / ${all.length} 家 · ${postponed} 家延期 · ${all.length - postponed} 家本轮不进行`;
   document.getElementById("offeringSearch").value = state.offeringQuery;
   root.innerHTML = rows.map(({record, notice}) => {
-    const names = nameParts(record), labels = offeringNoticeLabels(notice);
-    const links = notice.pages.map(page => `<a href="${notice.url}#page=${page}" target="_blank" rel="noopener noreferrer">原文 PDF · p.${page}</a>`).join(" · ");
+    const names = nameParts(record), labels = offeringNoticeLabels(notice), facts = notice.research;
     return `<article class="offering-card" data-offering-card="${escapeHtml(record.id)}">
       <div class="offering-card-heading"><div><h2>${escapeHtml(foldTraditional(names.primary))}</h2><p>${escapeHtml(names.secondary)}</p></div><span class="offering-code">${notice.stockCode}<small>发售代码 / Offer code</small></span></div>
       <div class="offering-event"><div><strong>${labels[0]}</strong><small>${labels[1]}</small></div><time datetime="${notice.date}">${notice.date}</time></div>
+      ${renderOfferingResearch(facts, notice)}
       <dl class="offering-context">
-        <div><dt>监管备案 / CSRC filing</dt><dd>${escapeHtml(statusLabel(record.status))}<small>${escapeHtml(statusLabel(record.status, 1))}</small></dd></div>
-        <div><dt>港交所申请 / HKEX application</dt><dd>${escapeHtml(record.hkexApplicationStatusLabelZh || record.hkexPublicStatus)}<small>${escapeHtml(record.hkexPublicStatus)} · 当前 A1 ${notice.applicationDate}</small></dd></div>
+        <div><dt>监管备案 / CSRC filing</dt><dd>${escapeHtml(statusLabel(record.status))}<span>${escapeHtml(statusLabel(record.status, 1))}</span></dd></div>
+        <div><dt>港交所申请 / HKEX application</dt><dd>${escapeHtml(record.hkexApplicationStatusLabelZh || record.hkexPublicStatus)}<span>${escapeHtml(record.hkexPublicStatus)} · 当前 A1 ${notice.applicationDate}</span></dd></div>
       </dl>
-      <p class="offering-refund">认购款按公告安排退还；股票未发出，亦不交付申请人。<small>Application monies to be refunded; share certificates not issued or delivered.</small></p>
-      <div class="offering-links">${links}<button type="button" class="text-button" data-offering-detail="${escapeHtml(record.id)}">发行人详情 / Details</button></div>
+      <div class="offering-links">${renderOfferingSources(facts, notice)}<button type="button" class="text-button" data-offering-detail="${escapeHtml(record.id)}">发行人详情 / Details</button></div>
     </article>`;
   }).join("") || '<p class="muted">没有匹配项目 / No matching offerings</p>';
 }
