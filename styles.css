@@ -2899,3 +2899,396 @@ tr[role="button"]:focus-visible {
  .dossier-footer { padding: 10px 16px; }
  .dossier-footer a { min-height: 40px; display: inline-flex; align-items: center; }
 }
+
+/* Selected M&A precedents: explicit bases and same-event comparisons. */
+.transaction-filters {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;}
+.transaction-filters label {display:grid;gap:5px;font-size:12px;color:var(--muted);}
+.transaction-filters select {width:100%;min-width:0;padding:8px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit;}
+.transaction-caption {display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0;color:var(--muted);font-size:12px;}
+.transaction-caption p {margin:0;}
+.transaction-cards {display:grid;gap:12px;}
+.transaction-card {min-width:0;background:#fff;border:1px solid var(--line);border-radius:9px;overflow:clip;}
+.transaction-overview {display:grid;grid-template-columns:minmax(190px,1.3fr) minmax(180px,1fr) minmax(155px,.8fr) 120px;gap:18px;padding:18px 20px;align-items:center;}
+.transaction-name h2 {margin:0;font-size:17px;line-height:1.5;}
+.transaction-name h2 span {font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;}
+.transaction-name p {margin:4px 0;font-size:12px;color:var(--muted);}
+.transaction-overview small,.transaction-overview time {font-size:12px;color:var(--muted);}
+.transaction-headline {display:grid;gap:4px;}
+.transaction-headline>span {font-size:12px;color:var(--muted);}
+.transaction-headline>strong {font-size:20px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+.transaction-stage {display:grid;gap:7px;justify-items:start;}
+.transaction-status {border-radius:4px;background:#edf6f2;color:#245644;padding:4px 7px;font-size:12px;line-height:1.5;}
+.transaction-status.is-terminated {background:#f4efee;color:#74554d;}
+.transaction-status.is-active,.transaction-status.is-approved {background:#f4f2e9;color:#75612d;}
+.transaction-actions {display:grid;gap:9px;justify-items:end;}
+.transaction-actions label {font-size:13px;cursor:pointer;}
+.transaction-actions input {accent-color:#235d4b;}
+.transaction-source {font-size:11px;color:#476d60;text-decoration:none;overflow-wrap:anywhere;}
+.transaction-source:hover {text-decoration:underline;}
+.transaction-detail>summary,.transaction-documents>summary {cursor:pointer;padding:10px 20px;border-top:1px solid var(--line);font-size:12px;color:#456556;}
+.transaction-detail>summary span,.transaction-documents>summary span {margin-left:10px;color:var(--muted);}
+.transaction-detail[open]>summary span {display:none;}
+.transaction-detail-grid {display:grid;grid-template-columns:1.1fr 1fr;gap:24px;padding:18px 20px;}
+.transaction-detail h3 {font-size:13px;margin:0 0 12px;color:#345a4b;}
+.transaction-wide {grid-column:1/-1;}
+.transaction-terms {margin:0;display:grid;gap:12px;}
+.transaction-terms>div {display:grid;grid-template-columns:minmax(100px,.8fr) 1.2fr;gap:10px;}
+.transaction-terms dt,.transaction-parties dt {font-size:12px;color:var(--muted);}
+.transaction-terms dd {margin:0;display:grid;gap:3px;font-size:13px;}
+.transaction-terms dd strong {font-variant-numeric:tabular-nums;}
+.transaction-terms dd span {font-size:12px;color:var(--muted);}
+.transaction-parties {margin:20px 0 0;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:7px;}
+.transaction-parties>div {display:grid;grid-template-columns:65px 1fr;gap:8px;}
+.transaction-parties dd {margin:0;font-size:12px;overflow-wrap:anywhere;}
+.transaction-timeline {list-style:none;padding:0;margin:0;display:grid;gap:0;}
+.transaction-timeline li {display:grid;grid-template-columns:85px 1fr;gap:14px;position:relative;padding:0 0 16px 10px;border-left:1px solid #cddad4;}
+.transaction-timeline li::before {content:"";position:absolute;left:-3px;top:5px;width:5px;height:5px;background:#4d7866;border-radius:50%;}
+.transaction-timeline li.is-scheduled::before {background:white;border:1px solid #4d7866;left:-4px;}
+.transaction-timeline time {font-size:12px;font-variant-numeric:tabular-nums;}
+.transaction-timeline li>div {display:grid;gap:3px;}
+.transaction-timeline b {font-size:12px;font-weight:500;}
+.transaction-timeline small {font-size:11px;color:var(--muted);}
+.transaction-mandates {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px;}
+.transaction-mandates>div {display:grid;gap:4px;min-width:0;padding-bottom:10px;border-bottom:1px solid #edf0ee;}
+.transaction-mandates b {font-size:13px;overflow-wrap:anywhere;}
+.transaction-mandates span,.transaction-mandates small {font-size:12px;color:var(--muted);}
+.transaction-rules {display:flex;gap:10px;flex-wrap:wrap;}
+.transaction-rules>div {display:grid;gap:4px;padding:9px 12px;background:#f7f9f7;border-radius:5px;}
+.transaction-rules b,.transaction-rules span {font-size:12px;font-weight:500;}
+.transaction-documents>div {display:flex;gap:14px;flex-wrap:wrap;padding:8px 20px;font-size:12px;border-top:1px solid #f1f3f1;}
+.transaction-documents a {color:#34604c;}
+.transaction-documents time,.transaction-documents small {color:var(--muted);font-size:12px;}
+.transaction-documents {padding-bottom:8px;}
+.transaction-empty {padding:35px 20px;text-align:center;background:white;border:1px solid var(--line);border-radius:8px;color:var(--muted);}
+.transaction-comparison {margin:0 0 20px;background:white;border:1px solid #9fb8ac;border-radius:8px;overflow:clip;}
+.transaction-compare-heading {display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:#eef5f0;}
+.transaction-compare-heading h2 {font-size:15px;margin:0;}
+.transaction-compare-heading h2 span {font-weight:400;font-size:12px;margin-left:8px;color:var(--muted);}
+.transaction-compare-row {display:grid;grid-template-columns:150px repeat(var(--compare-count),minmax(0,1fr));}
+.transaction-compare-row>div {padding:10px 13px;border-top:1px solid var(--line);min-width:0;overflow-wrap:anywhere;font-size:12px;line-height:1.5;}
+.transaction-compare-row>div+div {border-left:1px solid var(--line);}
+.transaction-compare-row small {display:block;font-size:11px;color:var(--muted);margin-top:3px;}
+.transaction-compare-row strong {font-size:13px;font-variant-numeric:tabular-nums;}
+.transaction-compare-label {color:var(--muted);}
+.transaction-compare-names {background:#fafcf9;}
+.transaction-compare-names b {font-size:14px;}
+.transaction-compare-names button {font-size:11px;padding:3px 0;}
+@media (max-width:1100px) {.transaction-overview {grid-template-columns:minmax(160px,1.3fr) minmax(150px,1fr) minmax(130px,.8fr);gap:14px;}.transaction-actions {grid-column:1/-1;display:flex;justify-content:space-between;}.transaction-filters {grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media (max-width:680px) {.transaction-filters {grid-template-columns:repeat(2,minmax(0,1fr));}.transaction-overview {grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:15px;gap:12px;}.transaction-name {grid-column:1/-1;}.transaction-headline>strong {font-size:18px;}.transaction-stage {align-self:start;}.transaction-detail>summary,.transaction-documents>summary {padding:10px 15px;}.transaction-detail-grid {grid-template-columns:minmax(0,1fr);padding:15px;gap:22px;}.transaction-wide {grid-column:auto;}.transaction-mandates {grid-template-columns:minmax(0,1fr);}.transaction-compare-row {grid-template-columns:repeat(var(--compare-count),minmax(0,1fr));}.transaction-compare-row>div:first-child {grid-column:1/-1;background:#f5f8f5;font-size:11px;padding:6px 10px;}.transaction-compare-row>div {padding:9px 8px;}.transaction-compare-row>div:nth-child(2) {border-left:0;}.transaction-compare-row strong,.transaction-compare-names b {font-size:12px;}.transaction-compare-row small {font-size:10px;}.transaction-caption {font-size:11px;}.transaction-documents>div {padding:9px 15px;gap:6px 12px;}}
+
+/* Research brief; scoped to issuer dossiers and fee comparisons. */
+body:has(#dossiersView.is-visible),body:has(#feesView.is-visible){background:#f9f8f4}
+
+#dossiersView,#feesView{--ed-ink:#132c26;--ed-muted:#51645b;--ed-line:#d6ded5;--ed-accent:#15674d;color:var(--ed-ink);max-width:1050px;container-type:inline-size}
+#dossiersView .offering-toolbar,#feesView .offering-toolbar{margin:0 0 18px;max-width:480px;gap:8px}
+#dossiersView .search-box,#feesView .search-box{background:transparent;border:0;border-bottom:1px solid var(--ed-line);border-radius:0;padding-inline:0;min-width:0}
+#dossiersView .search-box>span,#feesView .search-box>span{display:none}
+#dossiersView .offering-toolbar button,#feesView .offering-toolbar button{border:none;background:transparent;color:var(--ed-muted);font-weight:500}
+#dossiersView .offering-count:empty{display:none}
+#feesView .offering-count{color:var(--ed-muted);font-size:12px;font-weight:500}
+#dossiersView .dossier-card{border:0;border-top:3px solid var(--ed-accent);border-bottom:1px solid var(--ed-line);border-radius:0;background:transparent;overflow:visible}
+#dossiersView .dossier-issuer{padding:26px 0 8px;gap:12px;align-items:end}
+#dossiersView .dossier-issuer h2{font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(31px,5cqw,50px);line-height:1.12;font-weight:720;letter-spacing:-.04em;margin:6px 0 0;color:var(--ed-ink)}
+#dossiersView .dossier-code,#dossiersView .dossier-listed{color:var(--ed-muted);font-size:12px;font-weight:550;background:transparent;padding:0;text-wrap:balance}
+#dossiersView .dossier-kpis{margin:19px 0 10px;padding:0;display:grid;grid-template-columns:1.23fr 1fr .8fr;gap:16px}
+#dossiersView .dossier-kpis>div+div{border-left:1px solid var(--ed-line);padding-inline-start:20px}
+#dossiersView .dossier-kpis dd{font-variant-numeric:tabular-nums;font-size:clamp(24px,4.5cqw,46px);line-height:1.14;letter-spacing:-.045em;margin-top:4px}
+#dossiersView .dossier-kpis>div:first-child dd{color:var(--ed-accent)}
+#dossiersView .dossier-kpis small{font-size:12px;letter-spacing:0;color:var(--ed-muted);margin-top:4px}
+#dossiersView .dossier-sponsors{padding:0;margin:15px 0 23px;color:var(--ed-muted);font-size:13px}
+#dossiersView .dossier-section,#dossiersView .dossier-fees>details{border-color:var(--ed-line)}
+#dossiersView .dossier-section>summary,#dossiersView .dossier-fees>details>summary{padding:14px 0;min-height:48px;border:0;background:none;font-size:15px}
+#dossiersView .dossier-section-body,#dossiersView .dossier-footer{padding-inline:0}
+#dossiersView .dossier-footer a,#feesView .fee-source a{color:var(--ed-accent);text-decoration-color:#91ac9f;text-underline-offset:3px}
+#feesView .fee-comparison-section{border:0;border-top:2px solid var(--ed-accent);background:transparent;border-radius:0;padding:17px 0 0;margin:0 0 29px}
+#feesView .fee-editorial-title{display:flex;align-items:end;justify-content:space-between;margin:0 0 12px}
+#feesView .fee-editorial-title h2,#feesView .fee-estimate-section h2{font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:25px;line-height:1.2}
+#feesView .fee-editorial-title p,#feesView .fee-editorial-title>span{font-size:12px;color:var(--ed-muted);margin:0 0 3px}
+#feesView .fee-editorial-table{table-layout:fixed;width:100%;border-collapse:collapse;text-align:right;font-variant-numeric:tabular-nums}
+#feesView .fee-editorial-table th:first-child{text-align:left;width:43%}
+#feesView .fee-editorial-table thead th{font-size:12px;font-weight:560;color:var(--ed-muted)}
+#feesView .fee-editorial-table :is(td,th){border-bottom:1px solid var(--ed-line);padding:10px 8px;vertical-align:middle;background:none}
+#feesView .fee-editorial-table :is(td,th):first-child{padding-left:0}
+#feesView .fee-editorial-table :is(td,th):last-child{padding-right:0}
+#feesView .fee-editorial-table .fee-company,#feesView .fee-priced-heading .fee-company{border:0;border-radius:0;background:none;text-decoration:underline;text-decoration-color:#a6b9ad;text-underline-offset:3px;min-height:32px}
+#feesView .fee-editorial-table time{display:block;font-size:11px;color:var(--ed-muted);font-weight:500}
+#feesView .fee-editorial-table .fee-upper{color:var(--ed-accent);font-weight:720}
+#feesView .fee-editorial-table .fee-source{font-size:11px;line-height:1.3;margin-top:1px;font-weight:400}
+#feesView .fee-expense-track{height:6px;background:#aabfb5;border-radius:0}
+#feesView .fee-expense-track>span{background:#287353}
+@container (max-width:510px){
+ #dossiersView .dossier-issuer{padding-top:18px}
+ #dossiersView .dossier-kpis{gap:7px;margin-top:15px}
+ #dossiersView .dossier-kpis>div+div{padding-inline-start:8px}
+ #dossiersView .dossier-kpis dd{font-size:clamp(19px,6cqw,28px)}
+ #dossiersView .dossier-kpis dt{font-size:11px}
+ #feesView .fee-editorial-table :is(td,th){padding-inline:3px;font-size:12px}
+ #feesView .fee-editorial-table th:first-child{width:39%}
+ #feesView .fee-company{gap:1px 5px}
+ #feesView .fee-company strong{font-size:13px}
+ #feesView .fee-editorial-table .fee-source a{min-height:22px}
+}
+#feesView .fee-upper .fee-rate-track{height:3px;margin:4px 0 2px auto;width:min(100%,102px);border-radius:0;background:#e3e9e3}
+#feesView .fee-upper .fee-rate-fixed{background:#347a60}
+#feesView .fee-upper .fee-rate-discretionary{background:#a5beb0}
+#feesView .fee-editorial-table button:focus-visible,#dossiersView summary:focus-visible{outline:2px solid var(--ed-accent);outline-offset:3px}
+
+/* One calm table; mobile rows use labelled metrics without horizontal scrolling. */
+#feesView{max-width:1150px;min-width:0}
+#feesView *{box-sizing:border-box}
+#feesView .offering-toolbar{max-width:560px;margin-bottom:16px}
+#feesView .fee-roster-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#feesView .fee-phase-tabs{display:flex;gap:18px;flex-wrap:wrap}
+#feesView .fee-phase-tabs button{background:none;border:0;border-bottom:2px solid transparent;border-radius:0;padding:10px 0;color:var(--ed-muted);font-size:14px;min-height:44px}
+#feesView .fee-phase-tabs button[aria-pressed=true]{border-color:var(--ed-accent);color:var(--ed-ink);font-weight:700}
+#feesView .fee-phase-tabs button span{font-size:12px;margin-left:6px;font-variant-numeric:tabular-nums}
+#feesView .fee-sort-label{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ed-muted)}
+#feesView select,#feesView input[type=date]{min-height:38px;max-width:100%;width:100%;border:1px solid var(--ed-line);border-radius:3px;background:transparent;color:var(--ed-ink);font-size:13px;padding:6px 8px}
+#feesView .fee-sort-label select{width:118px}
+#feesView .fee-filters{border-bottom:1px solid var(--ed-line);margin:0 0 12px;padding:2px 0}
+#feesView .fee-filters summary{cursor:pointer;font-size:13px;color:var(--ed-muted);padding:10px 0;min-height:44px}
+#feesView .fee-filter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 0 14px}
+#feesView .fee-filter-grid label{min-width:0;font-size:12px;color:var(--ed-muted);display:grid;gap:5px}
+#feesView .fee-filter-grid button{justify-self:start}
+#feesView .fee-editorial-title{gap:12px;flex-wrap:wrap}
+#feesView .fee-editorial-title h2{font-family:inherit;font-size:16px;letter-spacing:0;margin:0}
+#feesView .fee-editorial-title>span{font-size:12px;margin:0}
+#feesView .fee-roster-table{table-layout:fixed;width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;text-align:right}
+#feesView .fee-roster-table th:first-child{width:32%;text-align:left}
+#feesView .fee-roster-table th:nth-child(2){width:15%}
+#feesView .fee-roster-table th:last-child{width:17%}
+#feesView .fee-roster-table thead th{color:var(--ed-muted);font-size:12px;font-weight:500;vertical-align:bottom}
+#feesView .fee-roster-table :is(th,td){padding:13px 8px;border-bottom:1px solid var(--ed-line);vertical-align:middle;background:none;font-size:14px;overflow-wrap:anywhere}
+#feesView .fee-roster-table :is(th,td):first-child{padding-left:0}
+#feesView .fee-roster-table :is(th,td):last-child{padding-right:0}
+#feesView .fee-roster-table tbody tr.is-selected{background:#eaf1e8}
+#feesView .fee-company{display:block;text-align:left;border:0;background:none;padding:0;min-height:28px;max-width:100%;white-space:normal;line-height:1.5;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#a6b9ad}
+#feesView .fee-company strong{font-size:14px;font-weight:650}
+#feesView .fee-roster-meta{display:block;font-size:11px;color:var(--ed-muted);font-weight:400;line-height:1.55;margin-top:3px}
+#feesView .fee-roster-meta time{display:inline}
+#feesView .fee-upper{color:var(--ed-accent);font-weight:650}
+#feesView .fee-mini-rate{display:flex;margin:5px 0 0 auto;width:60px;max-width:100%;height:3px;background:#e0e7df}
+#feesView .fee-mini-rate i{height:3px;background:#387a60}
+#feesView .fee-mini-rate b{height:3px;background:#9eb9aa}
+#feesView .fee-sponsor-amount{font-size:13px}
+#feesView .fee-sponsor-amount small{display:block;font-size:11px;color:var(--ed-muted);font-weight:400}
+#feesView .fee-selection{border-top:2px solid var(--ed-accent);border-bottom:1px solid var(--ed-line);padding:20px 0 16px;margin:18px 0 24px}
+#feesView .fee-selection>header{display:flex;justify-content:space-between;align-items:start;gap:16px}
+#feesView .fee-selection h2{font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(24px,4cqw,34px);margin:4px 0 12px;line-height:1.3;overflow-wrap:anywhere}
+#feesView .fee-selection header p{margin:0;color:var(--ed-muted);font-size:12px}
+#feesView .fee-selection-facts{display:grid;grid-template-columns:1fr 1.5fr;gap:20px;margin:8px 0 18px}
+#feesView .fee-selection-facts>div{min-width:0}
+#feesView .fee-selection-facts dt{font-size:12px;color:var(--ed-muted);margin-bottom:6px}
+#feesView .fee-selection-facts dd{margin:0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+#feesView .fee-selection-facts>div:first-child dd{font-size:30px;color:var(--ed-accent);font-variant-numeric:tabular-nums;line-height:1.2}
+#feesView .fee-selection .fee-disclosure{border:0;border-top:1px solid var(--ed-line);border-radius:0;background:none}
+#feesView .fee-selection .fee-disclosure summary{padding-inline:0;background:none}
+#feesView .fee-selection .offering-section-body{padding-inline:0}
+#feesView .fee-selection-sources{font-size:12px;line-height:1.8;margin-top:12px}
+#feesView .fee-selection-sources a,#feesView .fee-selection footer a{color:var(--ed-accent);text-underline-offset:3px}
+#feesView .fee-selection footer{padding-top:12px;font-size:13px}
+#feePagination{display:flex;justify-content:end;align-items:center;gap:18px;font-size:13px;padding-bottom:25px}
+#feePagination button{min-height:40px;background:transparent;border:1px solid var(--ed-line);border-radius:3px;padding:6px 12px;color:var(--ed-ink)}
+#feesView :is(button,a,summary,input,select):focus-visible{outline:2px solid var(--ed-accent);outline-offset:3px}
+#feesView .fee-selection:focus{outline:none}
+@container (max-width:680px){
+ #feesView .fee-roster-table thead{display:none}
+ #feesView .fee-roster-table,#feesView .fee-roster-table tbody{display:block;width:100%}
+ #feesView .fee-roster-table tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px 10px;border-bottom:1px solid var(--ed-line);padding:14px 0}
+ #feesView .fee-roster-table :is(th,td){border:0;padding:0!important;width:auto!important;text-align:left;min-width:0;font-size:14px}
+ #feesView .fee-roster-table th:first-child{grid-column:1/-1}
+ #feesView .fee-roster-table td:before{content:attr(data-label);display:block;font-size:11px;color:var(--ed-muted);margin-bottom:4px;font-weight:400}
+ #feesView .fee-roster-table td.fee-gross{grid-column:span 2;color:var(--ed-ink);font-size:18px;order:1}
+ #feesView .fee-roster-table td.fee-sponsor-amount{order:2}
+ #feesView .fee-roster-table td[data-label="固定佣金"]{order:3}
+ #feesView .fee-roster-table td[data-label="酌情上限"]{order:4}
+ #feesView .fee-roster-table td.fee-upper{order:5}
+ #feesView .fee-mini-rate{margin-left:0;width:55px}
+ #feesView .fee-roster-table th .fee-company strong{font-size:16px}
+ #feesView .fee-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #feesView .fee-selection-facts{grid-template-columns:1fr;gap:14px}
+ #feesView .fee-selection-facts>div:first-child dd{font-size:30px}
+}
+@container (max-width:380px){
+ #feesView .fee-phase-tabs{gap:12px}
+ #feesView .fee-phase-tabs button{font-size:13px}
+ #feesView .fee-phase-tabs button span{margin-left:4px}
+ #feesView .fee-roster-toolbar{gap:6px}
+}
+
+/* P0 tokens and geometry. Reader facts are controlled by the round-level data projection. */
+:root{--bg-canvas:#F7F7F5;--bg-surface:#fff;--bg-table-head:#FBFBFA;--line-strong:#CBD2D9;--line-subtle:#ECEEF1;--ink-1:#111827;--ink-2:#4B5563;--ink-3:#6B7280;--accent:#0F4C5C;--font-sans:Inter,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+html{scroll-padding-top:60px}body{background:var(--bg-canvas)!important;color:var(--ink-1);font-family:var(--font-sans);font-size:13.5px;line-height:1.5;overflow-x:clip}
+body *{box-sizing:border-box}a{color:var(--accent);text-underline-offset:3px}button,input,select{font:inherit}button,a,input,select,summary{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent)!important;outline-offset:2px}
+.app-shell{display:block;min-width:0}.top-nav{height:48px;position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:32px;padding:0 max(24px,calc((100vw - 1392px)/2));background:#fff;border-bottom:1px solid var(--line-strong)}.brand-home{font-size:18px;font-weight:750;white-space:nowrap;text-decoration:none;color:var(--ink-1)}.brand-home span{font-size:12px;color:var(--ink-2);margin-left:6px}.nav-list{display:flex;align-items:stretch;gap:24px;height:48px;overflow:visible;padding:0;margin:0}.nav-item{display:flex;align-items:center;padding:0;border:0;border-bottom:2px solid transparent;border-radius:0;background:none;color:var(--ink-2);white-space:nowrap;font-size:14px;text-decoration:none}.nav-item.is-active{color:var(--accent);background:none;border-bottom-color:var(--accent)}.nav-item:hover{background:none;color:var(--accent)}.global-search-trigger{margin-left:auto;border:1px solid var(--line-subtle);border-radius:3px;background:var(--bg-canvas);color:var(--ink-3);min-height:30px;min-width:200px;text-align:left;padding:4px 10px}.global-search-trigger kbd{float:right}#mobileViewTitle{display:none}.workspace{max-width:1392px;margin:0 auto;padding:12px 24px 24px;min-width:0}.topbar{min-height:36px;padding:0;margin:0 0 10px;gap:12px;background:none;border:0}.topbar h1{font-size:20px;line-height:1.4;margin:0}.source-pill{background:none;border:0;padding:0;color:var(--ink-3);font-size:12px}.view-panel{min-width:0}.topbar-actions{gap:12px}.snapshot-meta{font-size:11px;margin:0}.view-panel h2{font-size:15px}.col-num,.days-td,.mcap-cell{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"cv05" 1;text-align:right!important;white-space:nowrap}th{white-space:nowrap}.metric,.duration-card,.feature-slab,.mini-panel{background-image:none!important}.days-cell,.days-cell>div{padding:0;border:0;background:none;border-radius:0}.data-missing{font-size:12px;font-weight:400;color:var(--ink-3)}.institution-label{max-width:100%;display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}#feesView,#dossiersView{max-width:none;--ed-ink:var(--ink-1);--ed-muted:var(--ink-3);--ed-line:var(--line-subtle);--ed-accent:var(--accent)}
+#feesView .offering-toolbar{margin:0 0 6px;max-width:400px;height:32px}#feesView .search-box{border:1px solid var(--line-strong);padding:3px 8px}#feesView .fee-phase-tabs{gap:24px}#feesView .fee-phase-tabs button{min-height:32px;padding:5px 0}#feesView .fee-roster-toolbar{min-height:32px}#feesView .fee-basis-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0;font-size:12px}#feesView .fee-basis-row button{padding:4px 7px;border:1px solid var(--line-strong);border-radius:2px;background:#fff;color:var(--ink-2);min-height:30px}#feesView .fee-basis-row button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}#feesView .fee-basis-row label{display:flex;align-items:center;gap:5px}#feesView .fee-basis-row input{width:72px;min-width:0;min-height:30px;padding:3px 6px;border:1px solid var(--line-strong);background:#fff;border-radius:2px}#feesView .fee-filters{border:0;margin:0;display:block}#feesView .fee-filters summary{padding:2px 0;min-height:24px}#feesView .offering-count{font-size:12px;margin:3px 0}#feeSummary{display:flex;gap:18px;font-size:12px;padding:4px 0 10px;flex-wrap:wrap;color:var(--ink-2)}#feeSummary small{font-size:10px;color:var(--ink-3);margin-left:5px}#feeSummary b{font-weight:650;color:var(--ink-1)}
+#feesView .fee-roster-table{table-layout:fixed;background:#fff;border-top:1.5px solid #182026}#feesView .fee-roster-table th:first-child{width:23%}#feesView .fee-roster-table th:nth-child(2){width:9%}#feesView .fee-roster-table th:nth-child(3){width:12%}#feesView .fee-roster-table th:nth-child(7){width:13%}#feesView .fee-roster-table th:nth-child(8){width:12%}#feesView .fee-roster-table th:last-child{width:7%}#feesView .fee-roster-table :is(td,th){padding:5px 7px;line-height:1.35;font-size:13px;border-bottom:1px solid var(--line-subtle)}#feesView .fee-roster-table thead th{height:36px;background:var(--bg-table-head);font-size:12px;vertical-align:middle;border-bottom:1px solid var(--line-strong)}#feesView .fee-roster-table thead button{border:0;padding:0;background:none;color:inherit;white-space:nowrap}#feesView .fee-roster-table tbody tr{height:48px}#feesView .fee-company{font-size:13.5px;color:var(--ink-1);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;min-height:0;line-height:1.4}#feesView .fee-company:hover{text-decoration:underline}#feesView .fee-roster-meta{display:block;font-size:11px;margin:2px 0 0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#feesView td small{display:block;font-size:10px;color:var(--ink-3);line-height:1.3}#feesView .fee-date{white-space:nowrap;font-variant-numeric:tabular-nums}#feesView .fee-expense{border-left:1px solid var(--line-strong);background:#fafafa}#feesView .fee-source{font-size:11px}#feesView .fee-roster-table tr:hover{background:#f4f7f8}#feesView .fee-roster-table .fee-upper{color:var(--ink-1);font-weight:500}.empty-state-row{min-height:100px;max-height:120px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:16px;border-bottom:1px solid var(--line-subtle);text-align:center;background:#fff}.empty-state-row p{width:100%;margin:0}.empty-state-row button{min-height:40px;border:1px solid var(--line-strong);border-radius:2px;background:#fff;padding:5px 10px}.empty-state-row>div{display:flex;gap:6px;flex-wrap:wrap}.footer-note{margin-top:16px}.footer-note .methodology-note{font-size:12px}.metric-en,.methodology-en,.day-mode-bar>span small,.listing-stage-title,.listing-stage-button small,.segment small,.sl-th-en,.sort-label-en{display:none!important}
+#globalSearchDialog{width:min(620px,calc(100% - 28px));border:1px solid var(--line-strong);padding:16px;border-radius:3px;max-height:80vh}#globalSearchDialog::backdrop{background:#11182755}#globalSearchDialog header{display:flex;justify-content:space-between;align-items:center}#globalSearchDialog h2{font-size:18px}#globalSearchInput{width:100%;padding:10px;border:1px solid var(--line-strong)}#globalSearchResults a,#globalSearchResults button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line-subtle);background:none;padding:10px 4px;color:var(--ink-1);text-decoration:none}
+@media(min-width:768px) and (max-width:1279px){.top-nav{gap:20px;padding:0 16px}.workspace{padding:12px 16px}.global-search-trigger{min-width:100px}#feesView .fee-roster-table :is(th,td):nth-child(6),#feesView .fee-roster-table :is(th,td):nth-child(8){display:none}#feesView .fee-roster-table th:first-child{width:27%}#feesView .fee-roster-table th:nth-child(7){width:17%}}
+@media(max-width:767px){body{padding-bottom:calc(52px + env(safe-area-inset-bottom))}.top-nav{height:48px;padding:0 14px;gap:12px}.brand-home{font-size:16px}.brand-home span{display:none}#mobileViewTitle{display:block;font-size:14px}.global-search-trigger{min-width:0;min-height:32px;border:0;padding:4px}.global-search-trigger kbd{display:none}.nav-list{position:fixed;top:auto;bottom:0;left:0;width:100%;height:calc(52px + env(safe-area-inset-bottom));padding:0 6px env(safe-area-inset-bottom);gap:0;background:#fff;border-top:1px solid var(--line-strong);justify-content:space-around}.nav-item{justify-content:center;width:33.333%;font-size:13px;border-bottom:0;border-top:2px solid transparent}.nav-item.is-active{border-top-color:var(--accent);border-bottom:0}.workspace{padding:8px 14px 16px}.topbar{display:none}#feesView .offering-toolbar{height:32px;margin-bottom:4px;width:100%;max-width:none}#feesView .fee-phase-tabs{gap:14px}#feesView .fee-phase-tabs button{font-size:12px;min-height:30px}#feesView .fee-basis-row{margin:4px 0;gap:6px}#feesView .fee-basis-row label{font-size:11px}#feesView .fee-basis-row input{width:53px}#feesView .fee-basis-row button{font-size:11px;min-height:26px;padding:3px 5px}#feesView .fee-filters summary{font-size:11px;min-height:20px}#feesView .offering-count{font-size:11px;margin:2px 0}#feeSummary{gap:8px;font-size:11px;padding:2px 0 7px}#feeSummary>span:first-child{display:none}#feeSummary small{font-size:9px;margin-left:3px}
+#feesView .fee-roster-table,#feesView .fee-roster-table tbody{display:block;width:100%;background:none}#feesView .fee-roster-table thead{display:none}#feesView .fee-roster-table tbody tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:auto;gap:6px 9px;padding:10px 0;border-bottom:1px solid var(--line-subtle);background:#fff}#feesView .fee-roster-table :is(th,td){border:0!important;padding:0!important;width:auto!important;min-width:0;background:none!important;overflow:visible;font-size:12px;text-align:right!important}#feesView .fee-roster-table th:first-child{grid-column:span 2;text-align:left!important;order:0}#feesView .fee-roster-table th .fee-company{font-size:14px;line-height:1.4;text-align:left;white-space:nowrap}#feesView .fee-roster-meta{font-size:10px;text-align:left}#feesView .fee-roster-table td:before{font-size:10px;margin-bottom:1px}#feesView .fee-roster-table td.fee-date{order:0;font-size:11px}#feesView .fee-date:before{display:none!important}#feesView .fee-roster-table td.fee-gross{order:1;grid-column:span 2;font-size:16px}#feesView .fee-roster-table td.fee-sponsor-amount{order:2;font-size:12px}#feesView .fee-roster-table td[data-label="固定佣金"]{order:3}#feesView .fee-roster-table td[data-label="酌情上限"]{order:4}#feesView .fee-roster-table td.fee-upper{order:5}#feesView .fee-roster-table td.fee-expense{display:none}#feesView .fee-roster-table td.fee-source{order:6;grid-column:1/-1;font-size:10px}#feesView .fee-source:before{display:none}#feePagination{padding-bottom:12px}.institution-label{max-width:130px}.fee-gross,.fee-sponsor-amount{white-space:nowrap}}
+#dossierReturn{display:flex;justify-content:space-between;gap:12px;padding:6px 0 12px;color:var(--ink-3);font-size:12px}#dossierReturn button{border:0;background:none;color:var(--accent);padding:0;min-height:32px}.deal-sheet{border-top:1.5px solid #182026;background:#fff;padding:12px 16px}.deal-header{display:flex;justify-content:space-between;align-items:start;gap:20px;padding-bottom:12px}.deal-header h2{font-size:22px!important;margin:3px 0;font-family:var(--font-sans)}.deal-header p{font-size:12px;color:var(--ink-2);margin:0}.deal-header nav{margin-top:8px;display:flex;gap:12px}.deal-header>div:last-child{font-size:12px;color:var(--ink-2);max-width:50%;overflow-wrap:anywhere}.deal-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0;padding:12px 0;border-top:1px solid var(--line-subtle);border-bottom:1px solid var(--line-strong)}.deal-kpis>div{min-width:0}.deal-kpis dt{font-size:12px;color:var(--ink-3)}.deal-kpis dd{font-size:22px;text-align:right;line-height:1.4;font-variant-numeric:tabular-nums;margin:5px 0 0;white-space:nowrap}.deal-kpis small{display:block;font-size:11px;color:var(--ink-3)}.deal-anchors{display:flex;gap:20px;font-size:12px;padding:10px 0;border-bottom:1px solid var(--line-subtle)}.deal-section{padding:14px 0;border-bottom:1px solid var(--line-strong);scroll-margin-top:56px}.deal-section>header{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.deal-section h3{font-size:15px;margin:0}.deal-section h4{font-size:13px;margin:8px 0}.deal-section header button{border:0;background:none;color:var(--accent);padding:0}.deal-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px}.deal-columns>div{min-width:0}.deal-facts{margin:0}.deal-facts>div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.deal-facts dt{font-size:12px;color:var(--ink-2)}.deal-facts dd{margin:0;font-size:13px;text-align:right;font-variant-numeric:tabular-nums}.deal-section p{margin:4px 0;font-size:12px;color:var(--ink-2);line-height:1.5}.deal-allocation-list>div{display:flex;justify-content:space-between;gap:12px;padding:4px 0;font-size:12px}.deal-allocation-list strong{font-weight:550}.deal-float-table{width:100%;border-collapse:collapse;font-size:12px;border-top:1px solid var(--line-strong)}.deal-float-table th{text-align:left;font-weight:500}.deal-float-table th,.deal-float-table td{padding:6px 4px;border-bottom:1px solid var(--line-subtle)}.deal-float-bars{display:grid;gap:4px;margin:12px 0}.deal-float-bars span{height:5px;background:var(--accent)}.deal-float-bars span:nth-child(2){opacity:.65}.deal-float-bars span:nth-child(3){opacity:.45}.deal-account-list{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:10px 0 6px}.deal-account-list article{border-top:1px solid var(--line-subtle);min-width:0;overflow-wrap:anywhere}.deal-account-list h4 span{float:right;font-size:12px;font-variant-numeric:tabular-nums}.deal-account-list a{font-size:11px}.deal-light-detail{border-top:1px solid var(--line-subtle);padding:8px 0;font-size:12px}.deal-expenses{border-left:1px solid var(--line-strong);padding-left:20px}.deal-timeline{display:flex;flex-wrap:wrap;gap:18px;margin:8px 0 12px;padding:0;list-style:none}.deal-timeline li{font-size:11px;color:var(--ink-2)}.deal-timeline time{display:block}.deal-timeline b{font-weight:500}.deal-execution{border-top:1px solid var(--line-subtle);padding:7px 0}.deal-execution div{font-size:11px}.deal-sheet .timeline,.deal-sheet .timeline-row,.deal-sheet .offering-section{border-radius:0;background:none;box-shadow:none}.deal-sheet .offering-section{border-width:1px 0 0}.deal-sheet .offering-source-list a{font-size:12px}
+@media(max-width:767px){.deal-sheet{padding:10px 0;background:none}.deal-header{display:block;padding-bottom:8px}.deal-header h2{font-size:20px!important}.deal-header>div:last-child{max-width:100%;font-size:11px;margin-top:7px}.deal-header p{font-size:11px}.deal-header nav{gap:12px;margin-top:4px;font-size:11px}.deal-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:10px 0}.deal-kpis dd{font-size:22px}.deal-kpis dt{font-size:11px}.deal-anchors{gap:18px;padding:8px 0}.deal-columns,.deal-account-list{grid-template-columns:1fr;gap:12px}.deal-section{padding:12px 0}.deal-section>header{align-items:start}.deal-section h3{font-size:14px}.deal-section header a,.deal-section header button{font-size:11px}.deal-expenses{border-left:0;border-top:1px solid var(--line-subtle);padding:10px 0 0}.deal-facts dd{font-size:12px}#dossierReturn{font-size:11px;padding:0 0 8px;gap:5px}.deal-account-list h4 span{float:none;display:block}.deal-timeline{gap:10px}}
+/* Regulatory cohort and compact case list. */
+#trackerView .listing-stage-panel{display:flex;gap:18px;padding:0;margin:0;border:0;background:none;height:32px;align-items:center}#trackerView .listing-stage-button{display:flex;align-items:center;width:auto;gap:5px;padding:3px 0;border:0;border-bottom:2px solid transparent;border-radius:0;background:none;color:var(--ink-2);font-size:12px;min-height:30px}#trackerView .listing-stage-button.is-active{border-color:var(--accent);color:var(--accent)}#trackerView .listing-stage-button strong{font-size:11px;font-weight:500}#snapshotMeta{font-size:10px;padding:0;line-height:16px}#trackerView .day-mode-bar{padding:2px 0;margin:0;min-height:26px;gap:10px;border:0;background:none}#trackerView .day-mode-bar>span{display:none}#trackerView .day-mode-button{padding:2px 6px;min-height:24px;font-size:11px}#dayModeHint{font-size:10px;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#trackerView .toolbar{display:flex;gap:12px;margin:4px 0;padding:0;min-height:30px;align-items:center}#trackerView .search-box{flex:1;max-width:330px;height:30px;padding:3px 8px;border:1px solid var(--line-strong);background:#fff;border-radius:2px}#trackerView .search-box input{min-height:0;padding:0;font-size:12px}#trackerView .segmented{gap:4px;flex-wrap:wrap;border:0;background:none}#trackerView .segment{padding:3px 6px;font-size:11px;min-height:28px;border-radius:2px}#trackerView .tracker-extra-filters{border:0;padding:0;margin:0}#trackerView .tracker-extra-filters summary{font-size:11px;min-height:24px;cursor:pointer}#trackerView .filter-grid{padding:6px 0;margin:0;background:none;border:0;border-radius:0;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}#trackerView .filter-control small,.th-en,.pending-en{display:none!important}#trackerView .filter-control select,#trackerView .filter-control input{min-height:30px;padding:4px;font-size:12px}#trackerView .filter-control span{font-size:11px}#trackerView .filter-control b{font-weight:500}.tracker-layout,.tracker-main{min-width:0}#metricsGrid{display:block;margin:0 0 8px;padding:0}.cohort-panel{border-block:1px solid var(--line-strong);padding:0 0 4px;background:#fff}.cohort-panel>header{display:flex;align-items:center;justify-content:space-between;gap:8px;height:32px;padding:0 8px}.cohort-panel button{border:0;border-radius:0;background:none;color:var(--ink-2);font-size:11px;padding:4px 6px}.cohort-panel header nav{display:flex;gap:14px}.cohort-panel button[aria-pressed=true]{color:var(--accent);border-bottom:2px solid var(--accent)}.cohort-labels,.cohort-month{display:grid!important;grid-template-columns:64px minmax(0,1fr) 76px;align-items:center;gap:8px;width:100%}.cohort-labels{font-size:10px;color:var(--ink-3);padding:1px 14px}.cohort-labels span:last-child,.cohort-month>span:last-child{text-align:right;font-variant-numeric:tabular-nums}.cohort-months{max-height:112px;overflow-y:auto;scrollbar-width:thin}.cohort-month{height:28px;text-align:left;padding:3px 14px!important}.cohort-month:hover,.cohort-month.is-active{background:#edf3f4}.cohort-track{position:relative;height:22px;display:flex;align-items:center;min-width:0}.cohort-track i{display:block;position:absolute;pointer-events:none}.cohort-iqr{height:6px;top:3px;background:#b7ced3;opacity:.75}.cohort-median{top:1px;height:10px;width:2px;background:var(--accent)}.cohort-wait{top:16px;height:0;border-top:2px dashed #a66f13}.cohort-track b{font-size:10px;font-weight:500;margin-left:auto;background:#ffffffdf;padding-left:4px;z-index:1}.cohort-track em{font-style:normal;color:#895d10}.cohort-key{display:flex;justify-content:space-between;margin:0;padding:2px 14px;font-size:10px;color:var(--ink-3)}.cohort-key button{padding:0;color:var(--accent)}.cohort-panel.is-collapsed{height:36px;padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:8px}.cohort-panel.is-collapsed>header{display:contents}.cohort-panel.is-collapsed>header nav{display:none}.cohort-panel.is-collapsed [data-cohort-collapse]{grid-column:2;grid-row:1;white-space:nowrap;min-height:32px}.cohort-panel.is-collapsed .cohort-summary{grid-column:1;grid-row:1;display:flex;justify-content:flex-start;gap:14px;min-width:0;padding:0 8px;line-height:16px;font-variant-numeric:tabular-nums}.cohort-summary>span{white-space:nowrap}.tracker-table{table-layout:fixed;width:100%!important;min-width:0!important}.table-wrap{overflow-x:visible!important}.tracker-table th{font-size:11px;padding:5px 6px;height:34px;white-space:nowrap}.tracker-table td{height:46px;padding:5px 6px;font-size:12px;line-height:1.3;border-bottom:1px solid var(--line-subtle);vertical-align:middle}.tracker-table .issuer-cell>strong{font-size:12.5px;display:block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tracker-table .issuer-cell>span{font-size:10px;display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.tracker-table .issuer-cell .offering-badge{font-size:10px;display:inline-block}.tracker-table .date-cell{white-space:nowrap;font-size:11px}.tracker-table .date-cell small,.tracker-table .date-cell .date-label{font-size:9px}.tracker-table .days-td{padding-right:9px;width:88px}.single-days{font-size:13px;font-weight:550;font-variant-numeric:tabular-nums}.tracker-table .days-metric-select{display:none}.tracker-table .tag-list{display:block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}.tracker-table .tag-list span{display:inline;padding:0;border:0;background:none;font-size:10px;margin-right:4px}.tracker-table td:last-child{max-width:150px;overflow:hidden;text-overflow:ellipsis}.tracker-table .status-badge{font-size:10px;max-width:100%;padding:2px 3px;border-radius:2px;white-space:nowrap}.tracker-table .col-issuer{width:19%}.tracker-table .col-date{width:9%}.tracker-table .days-header-cell{width:7%}.tracker-table .col-status{width:10%}.tracker-table .col-type{width:6%}.tracker-table .col-mcap{width:8%}.tracker-table .col-industry{width:8%}.tracker-table .days-header-cell .th-sort,.tracker-table .col-mcap .th-sort,.tracker-table .col-mcap-listing .th-sort{justify-content:flex-end;text-align:right}
+.institution-tabs{display:flex;gap:24px;margin:2px 0 10px}.institution-tabs button{background:none;border:0;border-bottom:1px solid var(--line-strong);padding:4px 0;font-size:12px;color:var(--accent)}.sponsor-league .sl-metric-strip,.sponsor-league .metric-strip{display:none!important}.sponsor-league .sl-meta-bar{gap:8px;min-height:20px;margin:0}.sponsor-league .sl-meta-count{font-size:10px;white-space:normal;overflow-wrap:anywhere}.sponsor-league .sl-notice-strip{margin:4px 0;padding:3px 0;background:none;border:0}.sponsor-league .sl-notice-strip summary{font-size:11px}.sponsor-league .sl-notice-strip small,.sponsor-league .sl-th-en{display:none}.sponsor-league th{font-size:11px;white-space:nowrap!important}.sponsor-league td{font-size:12px;padding:5px 6px;line-height:1.3;height:48px}.sponsor-league td[data-label=保荐人]{width:200px;max-width:200px;overflow:hidden}.sponsor-league .sponsor-cell button,.sponsor-league .sponsor-cell small{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}.sponsor-league .sponsor-cell button{font-size:13px}.sponsor-league .sponsor-cell small{font-size:10px}.sponsor-league .row-action{display:none}.sponsor-league td:not(.sponsor-cell),.sponsor-league th:not(:nth-child(2)){text-align:right;font-variant-numeric:tabular-nums}.sponsor-league .sl-th-sort{white-space:nowrap;justify-content:flex-end}.sponsor-league .leaderboard-table{table-layout:fixed}.sponsor-league .pk-versus{display:none}.sponsor-league .pk-card{background:#fff;box-shadow:none;border-radius:0}.sponsor-league .pk-card:before{display:none}
+@media(max-width:767px){#trackerView .listing-stage-panel{gap:12px;height:28px;justify-content:space-between}#trackerView .listing-stage-button{font-size:11px;gap:4px;min-height:26px}#snapshotMeta{display:none}#trackerView .day-mode-bar{min-height:24px}#dayModeHint{display:none}#trackerView .toolbar{display:block;margin:3px 0}#trackerView .search-box{max-width:none;width:100%;height:30px}#trackerView .segmented{display:flex;flex-wrap:nowrap;overflow:hidden;gap:2px;margin-top:3px;width:100%}#trackerView .segment{font-size:10px;padding:3px;min-height:24px;flex:1;white-space:nowrap}#trackerView .tracker-extra-filters summary{min-height:22px}#trackerView .filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cohort-panel header{height:30px;padding:0 3px}.cohort-panel header nav{gap:10px}.cohort-panel header button{padding:4px;font-size:11px}.cohort-months{max-height:84px}.cohort-labels,.cohort-month{grid-template-columns:52px minmax(0,1fr) 56px;gap:5px}.cohort-labels{padding:0 7px;font-size:9px}.cohort-month{padding:2px 7px!important;font-size:10px!important}.cohort-track b{font-size:9px}.cohort-key{padding:2px 7px;font-size:9px}.cohort-key time{display:none}.tracker-table,.tracker-table tbody{display:block;min-width:0!important;width:100%!important}.tracker-table thead{height:0;display:block;overflow:hidden}.tracker-table tbody tr{display:grid;grid-template-columns:minmax(0,1fr) 85px;gap:4px 8px;min-height:66px;height:auto;border-bottom:1px solid var(--line-subtle);padding:8px 0;background:#fff}.tracker-table td{height:auto;padding:0;border:0;min-width:0}.tracker-table td:not(.issuer-cell):not(.status-cell):not(.days-td):not(.type-cell){display:none!important}.tracker-table .issuer-cell{grid-column:1;grid-row:1;min-width:0}.tracker-table .issuer-cell>strong{font-size:13px}.tracker-table .issuer-cell>span{font-size:10px}.tracker-table .status-cell{grid-column:1;grid-row:2}.tracker-table .status-cell .status-badge{display:inline-block;font-size:10px}.tracker-table .days-td{grid-column:2;grid-row:1;width:auto;text-align:right!important;padding:0}.tracker-table .type-cell{grid-column:2;grid-row:2;text-align:right;font-size:10px}.tracker-table .single-days{font-size:14px}.pagination-bar{font-size:11px;gap:6px;padding:8px 0}.sponsor-league .sl-meta-bar{display:block}.sponsor-league .sl-meta-count{max-width:100%;line-height:1.4}.sponsor-league .sponsor-cell{max-width:none!important}.sponsor-league table{min-width:0!important;width:100%!important}.sponsor-league .table-wrap{overflow:visible!important}.institution-tabs{margin-bottom:6px}}
+#institutionCompareBar{position:sticky;bottom:12px;z-index:30;display:flex;align-items:center;gap:9px;border:1px solid var(--line-strong);background:#fff;padding:8px;font-size:12px}#institutionCompareBar[hidden]{display:none}#institutionCompareBar button{border:0;background:#f4f6f6;color:var(--accent);padding:6px;border-radius:2px}.sponsor-cell input[data-compare-firm]{float:left;margin-right:5px;accent-color:var(--accent)}#sponsorPkView .spk-shell{padding:0;background:none;border:0;border-radius:0;box-shadow:none}#sponsorPkView .spk-hero{padding:0 0 8px;background:none;border:0}#sponsorPkView .spk-hero h2{font-size:18px}#sponsorPkView .spk-kicker,#spkCardA,#spkCardB,#sponsorPkView .spk-vs-rail,#spkMetrics{display:none!important}#sponsorPkView .spk-hero p{font-size:11px;line-height:1.4}#sponsorPkView .spk-picker{padding:8px 0;background:none;border:0;border-radius:0;gap:8px}#sponsorPkView .spk-versus{display:grid;grid-template-columns:1fr 1fr;background:none;border:0;padding:0;gap:12px}#sponsorPkView .spk-side{padding:0;border:0;background:none}.institution-compare-table{width:100%;table-layout:fixed;border-collapse:collapse;background:#fff}.institution-compare-table th,.institution-compare-table td{padding:8px;border-bottom:1px solid var(--line-subtle);font-size:12px}.institution-compare-table th{font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.institution-compare-table th:first-child{width:23%;text-align:left}.institution-compare-table thead{border-top:1.5px solid #182026;border-bottom:1px solid var(--line-strong)}.institution-slot-switch{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.institution-slot-switch button{border:1px solid var(--line-subtle);background:#fff;font-size:11px;padding:4px}.institution-slot-switch [aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+@media(max-width:767px){#institutionCompareBar{bottom:56px;flex-wrap:wrap;gap:4px;padding:6px;font-size:11px}.institution-compare-table th,.institution-compare-table td{font-size:11px;padding:6px 3px}.institution-compare-table th:first-child{width:36%;white-space:normal}#sponsorPkView .spk-picker{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}#sponsorPkView .spk-versus{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#sponsorPkView .spk-hero-stat{display:none}}
+
+@media(max-width:767px){.cohort-panel.is-collapsed{column-gap:3px}.cohort-panel.is-collapsed .cohort-summary{display:block;padding:0 4px;font-size:10px;line-height:16px}.cohort-summary>span{display:block}.cohort-panel.is-collapsed [data-cohort-collapse]{font-size:10px;padding:3px;min-width:58px}}
+
+/* Same-round fee comparison: aligned columns, paired stacks on narrow screens. */
+#feesView .fee-company-choice{display:flex;align-items:center;gap:6px;min-width:0}
+#feesView .fee-company-choice .fee-company{flex:1;min-width:0}
+#feesView .fee-compare-toggle{flex:none;min-height:32px;padding:3px 5px;border:1px solid var(--line-strong);border-radius:2px;background:#fff;font-size:11px;white-space:nowrap;color:var(--ink-2)}
+#feesView .fee-compare-toggle[aria-pressed=true]{color:var(--accent);border-color:var(--accent);background:#f1f6f6}
+#feesView .fee-compare-toggle:disabled{opacity:.45;cursor:default}
+#feeSelection .fee-compare{border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);margin:0 0 10px;padding:5px 0;background:var(--bg-surface);min-width:0}
+#feeSelection .fee-compare-bar{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;font-size:12px;min-width:0}
+#feeSelection .fee-compare-picks{display:flex;flex-wrap:wrap;gap:5px;min-width:0}
+#feeSelection .fee-compare-bar button{min-height:32px;padding:3px 7px;border:1px solid var(--line-subtle);border-radius:2px;background:none;color:var(--accent);font-size:12px}
+#feeSelection .fee-compare-clear{margin-left:auto}
+#feeSelection details{min-width:0;border:0;margin:0;padding:0}
+#feeSelection summary{padding:6px 0;min-height:32px;font-size:12px;font-weight:600;cursor:pointer}
+#feeSelection summary span{font-weight:400;color:var(--ink-2);margin-left:8px}
+#feeSelection .fee-compare-grid{display:grid;grid-template-columns:repeat(var(--fee-compare-columns),minmax(0,1fr));gap:16px;padding:4px 0 8px;min-width:0}
+#feeSelection .fee-compare-column{min-width:0;border:0;border-left:1px solid var(--line-subtle);border-radius:0;padding:0 12px;background:none;box-shadow:none;overflow-wrap:anywhere}
+#feeSelection .fee-compare-column:first-child{border-left:0;padding-left:0}
+#feeSelection .fee-compare-column header{min-height:66px;padding:0;margin:0;display:block}
+#feeSelection .fee-compare-column header a{display:block;text-decoration:none}
+#feeSelection .fee-compare-column header a:hover strong{text-decoration:underline}
+#feeSelection .fee-compare-column strong{display:block;font-size:13px;font-weight:600;line-height:1.45}
+#feeSelection .fee-compare-column header span{display:block;font-size:11px;color:var(--ink-3);margin-top:3px}
+#feeSelection .fee-compare-column dl{display:grid;gap:7px;margin:0}
+#feeSelection .fee-compare-column dt{font-size:11px;color:var(--ink-2)}
+#feeSelection .fee-compare-column dd{margin:1px 0 0;font-size:15px;font-variant-numeric:tabular-nums;white-space:normal;line-height:1.4}
+#feeSelection .fee-compare-column dd small{display:block;font-size:11px;color:var(--ink-2)}
+#feeSelection .fee-compare-column footer{font-size:11px;margin-top:8px}
+@media(max-width:767px){
+ #feesView .fee-compare-toggle{min-height:36px;font-size:11px;padding:4px}
+ #feeSelection .fee-compare-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}
+ #feeSelection .fee-compare-column{padding:0 0 8px;border-left:0;border-bottom:1px solid var(--line-subtle)}
+ #feeSelection .fee-compare-column:nth-child(2n){border-left:1px solid var(--line-subtle);padding-left:10px}
+ #feeSelection .fee-compare-column header{min-height:76px}
+ #feeSelection .fee-compare-column dd{font-size:14px}
+ #feeSelection .fee-compare-bar{gap:4px 8px}
+ #feeSelection .fee-compare-bar button,#feeSelection summary{min-height:36px}
+}
+
+
+/* One transaction component: result/detail columns and a paired mobile comparison. */
+#precedentsView{--tx-ink:var(--ink-1);--tx-line:var(--line-subtle);color:var(--tx-ink)}
+#precedentsView [hidden]{display:none!important}
+#precedentsView button,#precedentsView select,#precedentsView input{font:inherit}
+#precedentsView button{cursor:pointer}
+#precedentsView button:disabled{opacity:.45;cursor:default}
+#precedentsView :is(a,button,select,input,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#precedentsView .offering-toolbar{margin:0 0 6px;gap:12px}
+#precedentsView .search-box{max-width:580px;height:36px}
+#precedentsView .transaction-filter-panel{border-bottom:1px solid var(--tx-line);padding:0 0 5px}
+#precedentsView .transaction-filter-panel>summary{font-size:12px;color:var(--ink-2);padding:7px 0;cursor:pointer}
+#precedentsView .transaction-filters{grid-template-columns:repeat(4,minmax(0,1fr));padding:6px 0 10px;gap:9px 14px}
+#precedentsView .transaction-filters label{font-size:11px;min-width:0}
+#precedentsView .transaction-filters select{font-size:12px;border-radius:2px;max-width:100%;min-height:34px}
+#precedentsView .transaction-caption{margin:8px 0;font-size:11px}
+#precedentsView .transaction-workspace{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.6fr);gap:24px;align-items:start}
+#precedentsView .transaction-results{min-width:0;border-top:1.5px solid var(--ink-1)}
+#precedentsView .transaction-result{padding:13px 10px;border-bottom:1px solid var(--line-strong);background:#fff}
+#precedentsView .transaction-result.is-selected{box-shadow:inset 3px 0 var(--accent);background:#f3f7f7}
+#precedentsView .transaction-result-title{display:flex;align-items:start;gap:8px}
+#precedentsView .transaction-title-link{color:var(--ink-1);font-weight:600;font-size:14px;text-decoration:none;overflow-wrap:anywhere;min-width:0;flex:1}
+#precedentsView .transaction-title-link span{display:block;font-size:11px;color:var(--ink-3);font-weight:400}
+#precedentsView .transaction-result-title button{min-height:32px;border:1px solid var(--line-strong);padding:3px 8px;border-radius:2px;color:var(--accent);background:#fff;font-size:11px;flex:none}
+#precedentsView .transaction-result-title button[aria-pressed=true]{background:#e8f0f1}
+#precedentsView .transaction-result p{font-size:12px;line-height:1.5;color:var(--ink-2);margin:6px 0}
+#precedentsView .transaction-result-value,#precedentsView .transaction-result-stage{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:11px;line-height:1.6}
+#precedentsView .transaction-result-value strong{font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#precedentsView .transaction-result-stage{color:var(--ink-2);margin-top:6px;flex-wrap:wrap}
+#precedentsView .transaction-detail-pane{min-width:0;background:#fff;border-top:1.5px solid var(--ink-1);padding:12px 18px}
+#precedentsView .transaction-detail-heading button,#precedentsView .transaction-compare-heading button{border:0;background:none;color:var(--accent);font-size:12px;padding:3px 0;min-height:32px}
+#precedentsView .transaction-detail-heading h2{font-size:22px;line-height:1.4;margin:8px 0 4px}
+#precedentsView .transaction-detail-heading h2 span{font-size:12px;color:var(--ink-3);font-weight:400}
+#precedentsView .transaction-detail-heading p{font-size:12px;color:var(--ink-2);margin:5px 0;line-height:1.5}
+#precedentsView .transaction-detail-value{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:13px 0 7px}
+#precedentsView .transaction-detail-value>span{font-size:12px;color:var(--ink-2)}
+#precedentsView .transaction-detail-value>strong{font-size:25px;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+#precedentsView .transaction-detail-status{padding-bottom:8px}
+#precedentsView .transaction-section{border-top:1px solid var(--line-strong)}
+#precedentsView .transaction-section>summary{padding:12px 0;font-size:13px;font-weight:600;cursor:pointer}
+#precedentsView .transaction-section>div{padding:0 0 14px}
+#precedentsView .transaction-terms>div{grid-template-columns:minmax(90px,.6fr) minmax(0,1.4fr)}
+#precedentsView .transaction-terms dd{font-size:14px}
+#precedentsView .transaction-terms dd>span{font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+#precedentsView .transaction-parties dd{line-height:1.5}
+#precedentsView .transaction-timeline{padding-left:4px}
+#precedentsView .transaction-timeline li{border-left:1px solid var(--accent);grid-template-columns:84px minmax(0,1fr);padding-bottom:18px}
+#precedentsView .transaction-timeline li:last-child{border-left-color:transparent;padding-bottom:0}
+#precedentsView .transaction-timeline li.is-scheduled{border-left:1px dashed #9A6700}
+#precedentsView .transaction-timeline li.is-scheduled:before{border-color:#9A6700;background:#fff}
+#precedentsView .transaction-timeline b{font-size:13px}
+#precedentsView .transaction-mandates{grid-template-columns:minmax(0,1fr);gap:12px}
+#precedentsView .transaction-mandates b{font-size:13px;line-height:1.5}
+#precedentsView .transaction-source{font-size:12px;color:var(--accent);display:inline-block;line-height:1.6}
+#precedentsView .transaction-rules>div{background:none;border-bottom:1px solid var(--tx-line);padding:6px 0;border-radius:0;width:100%}
+#precedentsView .transaction-process-event{display:grid;grid-template-columns:84px minmax(0,1fr);gap:4px 10px;padding:7px 0;font-size:12px}
+#precedentsView .transaction-process-event time{color:var(--ink-3);font-variant-numeric:tabular-nums}
+#precedentsView .transaction-process-event span,#precedentsView .transaction-process-event a{grid-column:2;line-height:1.6}
+#precedentsView .transaction-document{display:grid;gap:4px;padding:10px 0;border-bottom:1px solid var(--tx-line);font-size:12px;overflow-wrap:anywhere}
+#precedentsView .transaction-document a{color:var(--accent)}
+#precedentsView .transaction-document small,#precedentsView .transaction-document time{font-size:11px;color:var(--ink-3)}
+#precedentsView .transaction-detail-empty{padding:32px 16px;border-top:1px solid var(--line-strong);color:var(--ink-3);font-size:13px}
+#precedentsView .transaction-basket{position:sticky;bottom:12px;z-index:25;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--line-strong);padding:8px 12px;margin-top:14px;font-size:12px}
+#precedentsView .transaction-basket button{min-height:32px;border:1px solid var(--tx-line);background:#fff;padding:4px 7px;border-radius:2px;color:var(--accent)}
+#precedentsView .transaction-basket #transactionCompareOpen{margin-left:auto;border-color:var(--accent)}
+#precedentsView .transaction-comparison{border:0;border-top:1.5px solid var(--ink-1);border-radius:0;overflow:visible;margin:0}
+#precedentsView .transaction-compare-heading{padding:8px 0;background:var(--bg-canvas);flex-wrap:wrap}
+#precedentsView .transaction-compare-heading h2{font-size:16px}
+#precedentsView .transaction-differences{font-size:12px;margin-left:auto}
+#precedentsView .transaction-slot-switch{display:none}
+#precedentsView .transaction-compare-row{grid-template-columns:140px repeat(var(--compare-count),minmax(0,1fr))}
+#precedentsView .transaction-compare-row>div{min-width:0;font-size:12px;overflow-wrap:anywhere;line-height:1.6;padding:10px 12px}
+#precedentsView .transaction-compare-row strong{font-size:15px}
+#precedentsView .transaction-compare-row small{font-size:11px}
+#precedentsView .transaction-compare-names{position:sticky;top:48px;z-index:20;background:#fff}
+#precedentsView .transaction-compare-names button{border:0;background:none;color:var(--ink-3);font-size:11px;padding:5px 0}
+#precedentsView .transaction-compare-cell .transaction-title-link{display:block}
+#precedentsView .transaction-compare-cell .transaction-mandates{gap:10px}
+#precedentsView .transaction-compare-cell .transaction-mandates b{font-size:12px}
+#precedentsView .transaction-compare-cell .transaction-process-event{grid-template-columns:1fr;gap:2px}
+#precedentsView .transaction-compare-cell .transaction-process-event :is(span,a){grid-column:1}
+@media(max-width:1100px) and (min-width:768px){.top-nav{gap:16px}.nav-list{gap:18px}.nav-item{font-size:13px}.global-search-trigger{min-width:78px}.brand-home span{display:none}#precedentsView .transaction-workspace{gap:16px;grid-template-columns:minmax(245px,.85fr) minmax(0,1.15fr)}#precedentsView .transaction-compare-row{grid-template-columns:120px repeat(var(--compare-count),minmax(0,1fr))}#precedentsView .transaction-compare-row>div{padding:8px}}
+@media(max-width:767px){
+ .nav-item{width:25%;font-size:12px}
+ #precedentsView .transaction-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #precedentsView .offering-toolbar{gap:8px}#precedentsView .search-box{max-width:none;min-width:0;flex:1}
+ #precedentsView .transaction-caption{gap:2px;font-size:10px;margin:6px 0}
+ #precedentsView .transaction-workspace{display:block}
+ #precedentsView .transaction-workspace.has-detail .transaction-results{display:none}
+ #precedentsView .transaction-detail-empty{display:none}
+ #precedentsView .transaction-result{padding:11px 5px}
+ #precedentsView .transaction-detail-pane{padding:9px 0}
+ #precedentsView .transaction-detail-heading h2{font-size:20px}
+ #precedentsView .transaction-detail-value>strong{font-size:23px}
+ #precedentsView .transaction-section>summary{padding:13px 0;min-height:44px}
+ #precedentsView .transaction-basket{bottom:calc(52px + env(safe-area-inset-bottom));padding:6px;gap:5px;font-size:11px}
+ #precedentsView .transaction-slot-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;position:sticky;top:48px;z-index:21;background:#fff;border-bottom:1px solid var(--line-strong);padding:9px 0}
+ #precedentsView .transaction-slot-switch label{display:flex;align-items:center;min-width:0;gap:5px;font-size:12px}
+ #precedentsView .transaction-slot-switch select{min-width:0;max-width:100%;width:100%;font-size:12px;background:#fff;border:1px solid var(--line-strong);border-radius:2px;min-height:36px}
+ #precedentsView .transaction-compare-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #precedentsView .transaction-compare-row>div:first-child{grid-column:1/-1;background:var(--bg-table-head);padding:7px 5px;font-size:11px}
+ #precedentsView .transaction-compare-row>div{padding:9px 6px;font-size:12px}
+ #precedentsView .transaction-compare-cell:not(.tx-slot-a):not(.tx-slot-b){display:none}
+ #precedentsView .transaction-compare-cell.tx-slot-a{grid-column:1;grid-row:2;border-left:0}
+ #precedentsView .transaction-compare-cell.tx-slot-b{grid-column:2;grid-row:2}
+ #precedentsView .transaction-compare-names{position:static}
+ #precedentsView .transaction-compare-row strong{font-size:14px}
+ #precedentsView .transaction-compare-cell .transaction-title-link{font-size:13px}
+ #precedentsView .transaction-compare-cell :is(small,.transaction-source,.transaction-mandates span,.transaction-mandates small){font-size:11px}
+}
+
+#precedentsView .transaction-example-link{border:0;background:none;color:var(--accent);padding:7px 0;min-height:36px;font-size:12px;text-align:left}
+#precedentsView .transaction-lifecycle{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin:0 0 14px;font-size:12px}
+#precedentsView .transaction-lifecycle strong{font-size:18px;font-variant-numeric:tabular-nums}
+#precedentsView .transaction-signatories{overflow-wrap:anywhere}
+#precedentsView .transaction-result-value{flex-wrap:wrap}

@@ -1,20 +1,63 @@
+const P0_WAITING = {"asOf":"2026-11-21","calendar":{"holidays":["2017-01-01","2017-01-02","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-04-02","2017-04-03","2017-04-04","2017-05-01","2017-05-28","2017-05-29","2017-05-30","2017-10-01","2017-10-02","2017-10-03","2017-10-04","2017-10-05","2017-10-06","2017-10-07","2017-10-08","2018-01-01","2018-02-15","2018-02-16","2018-02-17","2018-02-18","2018-02-19","2018-02-20","2018-02-21","2018-04-05","2018-04-06","2018-04-07","2018-04-29","2018-04-30","2018-05-01","2018-06-18","2018-09-24","2018-10-01","2018-10-02","2018-10-03","2018-10-04","2018-10-05","2018-10-06","2018-10-07","2018-12-30","2018-12-31","2019-01-01","2019-02-04","2019-02-05","2019-02-06","2019-02-07","2019-02-08","2019-02-09","2019-02-10","2019-04-05","2019-05-01","2019-05-02","2019-05-03","2019-05-04","2019-06-07","2019-09-13","2019-10-01","2019-10-02","2019-10-03","2019-10-04","2019-10-05","2019-10-06","2019-10-07","2020-01-01","2020-01-24","2020-01-25","2020-01-26","2020-01-27","2020-01-28","2020-01-29","2020-01-30","2020-01-31","2020-02-01","2020-02-02","2020-04-04","2020-04-05","2020-04-06","2020-05-01","2020-05-02","2020-05-03","2020-05-04","2020-05-05","2020-06-25","2020-06-26","2020-06-27","2020-10-01","2020-10-02","2020-10-03","2020-10-04","2020-10-05","2020-10-06","2020-10-07","2020-10-08","2021-01-01","2021-01-02","2021-01-03","2021-02-11","2021-02-12","2021-02-13","2021-02-14","2021-02-15","2021-02-16","2021-02-17","2021-04-03","2021-04-04","2021-04-05","2021-05-01","2021-05-02","2021-05-03","2021-05-04","2021-05-05","2021-06-12","2021-06-13","2021-06-14","2021-09-19","2021-09-20","2021-09-21","2021-10-01","2021-10-02","2021-10-03","2021-10-04","2021-10-05","2021-10-06","2021-10-07","2022-01-01","2022-01-02","2022-01-03","2022-01-31","2022-02-01","2022-02-02","2022-02-03","2022-02-04","2022-02-05","2022-02-06","2022-04-03","2022-04-04","2022-04-05","2022-04-30","2022-05-01","2022-05-02","2022-05-03","2022-05-04","2022-06-03","2022-06-04","2022-06-05","2022-09-10","2022-09-11","2022-09-12","2022-10-01","2022-10-02","2022-10-03","2022-10-04","2022-10-05","2022-10-06","2022-10-07","2022-12-31","2023-01-01","2023-01-02","2023-01-21","2023-01-22","2023-01-23","2023-01-24","2023-01-25","2023-01-26","2023-01-27","2023-04-05","2023-04-29","2023-04-30","2023-05-01","2023-05-02","2023-05-03","2023-06-22","2023-06-23","2023-06-24","2023-09-29","2023-09-30","2023-10-01","2023-10-02","2023-10-03","2023-10-04","2023-10-05","2023-10-06","2024-01-01","2024-02-10","2024-02-11","2024-02-12","2024-02-13","2024-02-14","2024-02-15","2024-02-16","2024-02-17","2024-04-04","2024-04-05","2024-04-06","2024-05-01","2024-05-02","2024-05-03","2024-05-04","2024-05-05","2024-06-10","2024-09-15","2024-09-16","2024-09-17","2024-10-01","2024-10-02","2024-10-03","2024-10-04","2024-10-05","2024-10-06","2024-10-07","2025-01-01","2025-01-28","2025-01-29","2025-01-30","2025-01-31","2025-02-01","2025-02-02","2025-02-03","2025-02-04","2025-04-04","2025-04-05","2025-04-06","2025-05-01","2025-05-02","2025-05-03","2025-05-04","2025-05-05","2025-05-31","2025-06-01","2025-06-02","2025-10-01","2025-10-02","2025-10-03","2025-10-04","2025-10-05","2025-10-06","2025-10-07","2025-10-08","2026-01-01","2026-01-02","2026-01-03","2026-02-15","2026-02-16","2026-02-17","2026-02-18","2026-02-19","2026-02-20","2026-02-21","2026-02-22","2026-02-23","2026-04-04","2026-04-05","2026-04-06","2026-05-01","2026-05-02","2026-05-03","2026-05-04","2026-05-05","2026-06-19","2026-06-20","2026-06-21","2026-09-25","2026-09-26","2026-09-27","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2027-01-01","2027-01-02","2027-01-03","2027-02-05","2027-02-06","2027-02-07","2027-02-08","2027-02-09","2027-02-10","2027-02-11","2027-02-12","2027-02-13","2027-04-03","2027-04-04","2027-04-05","2027-05-01","2027-05-02","2027-05-03","2027-05-04","2027-05-05","2027-06-09","2027-09-15","2027-10-01","2027-10-02","2027-10-03","2027-10-04","2027-10-05","2027-10-06","2027-10-07"],"workdays":["2017-01-22","2017-02-04","2017-04-01","2017-05-27","2017-09-30","2018-02-11","2018-02-24","2018-04-08","2018-04-28","2018-09-29","2018-09-30","2018-12-29","2019-02-02","2019-02-03","2019-04-28","2019-05-05","2019-09-29","2019-10-12","2020-01-19","2020-04-26","2020-05-09","2020-06-28","2020-09-27","2020-10-10","2021-02-07","2021-02-20","2021-04-25","2021-05-08","2021-09-18","2021-09-26","2021-10-09","2022-01-29","2022-01-30","2022-04-02","2022-04-24","2022-05-07","2022-10-08","2022-10-09","2023-01-28","2023-01-29","2023-04-23","2023-05-06","2023-06-25","2023-10-07","2023-10-08","2024-02-04","2024-02-18","2024-04-07","2024-04-28","2024-05-11","2024-09-14","2024-09-29","2024-10-12","2025-01-26","2025-02-08","2025-04-27","2025-09-28","2025-10-11","2026-01-04","2026-02-14","2026-02-28","2026-05-09","2026-09-20","2026-10-10","2027-01-31","2027-02-14","2027-05-08","2027-09-26","2027-10-09"],"years":[2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027]},"dates":{"2019-04-08":{"calendar":2784,"business":1900},"2019-12-31":{"calendar":2517,"business":1715},"2020-07-10":{"calendar":2325,"business":1586},"2020-10-08":{"calendar":2235,"business":1527},"2021-02-10":{"calendar":2110,"business":1437},"2021-03-29":{"calendar":2063,"business":1408},"2021-04-14":{"calendar":2047,"business":1397},"2021-04-30":{"calendar":2031,"business":1384},"2021-05-31":{"calendar":2000,"business":1365},"2021-06-15":{"calendar":1985,"business":1355},"2021-06-24":{"calendar":1976,"business":1348},"2021-06-29":{"calendar":1971,"business":1345},"2021-06-30":{"calendar":1970,"business":1344},"2021-08-13":{"calendar":1926,"business":1312},"2021-08-25":{"calendar":1914,"business":1304},"2021-09-30":{"calendar":1878,"business":1278},"2021-10-29":{"calendar":1849,"business":1261},"2022-01-10":{"calendar":1776,"business":1211},"2022-01-24":{"calendar":1762,"business":1201},"2022-02-25":{"calendar":1730,"business":1180},"2022-02-28":{"calendar":1727,"business":1179},"2022-03-30":{"calendar":1697,"business":1157},"2022-04-19":{"calendar":1677,"business":1144},"2022-04-29":{"calendar":1667,"business":1135},"2022-05-20":{"calendar":1646,"business":1122},"2022-05-24":{"calendar":1642,"business":1120},"2022-05-27":{"calendar":1639,"business":1117},"2022-05-30":{"calendar":1636,"business":1116},"2022-05-31":{"calendar":1635,"business":1115},"2022-06-07":{"calendar":1628,"business":1111},"2022-06-15":{"calendar":1620,"business":1105},"2022-06-16":{"calendar":1619,"business":1104},"2022-06-17":{"calendar":1618,"business":1103},"2022-06-27":{"calendar":1608,"business":1097},"2022-06-28":{"calendar":1607,"business":1096},"2022-06-29":{"calendar":1606,"business":1095},"2022-06-30":{"calendar":1605,"business":1094},"2022-07-06":{"calendar":1599,"business":1090},"2022-07-21":{"calendar":1584,"business":1079},"2022-09-09":{"calendar":1534,"business":1043},"2022-10-24":{"calendar":1489,"business":1016},"2022-10-28":{"calendar":1485,"business":1012},"2022-11-09":{"calendar":1473,"business":1004},"2022-11-17":{"calendar":1465,"business":998},"2022-11-21":{"calendar":1461,"business":996},"2022-11-22":{"calendar":1460,"business":995},"2022-11-25":{"calendar":1457,"business":992},"2022-12-07":{"calendar":1445,"business":984},"2022-12-08":{"calendar":1444,"business":983},"2022-12-09":{"calendar":1443,"business":982},"2022-12-14":{"calendar":1438,"business":979},"2022-12-15":{"calendar":1437,"business":978},"2022-12-29":{"calendar":1423,"business":968},"2022-12-30":{"calendar":1422,"business":967},"2023-01-13":{"calendar":1408,"business":958},"2023-01-26":{"calendar":1395,"business":953},"2023-01-31":{"calendar":1390,"business":949},"2023-02-01":{"calendar":1389,"business":948},"2023-02-13":{"calendar":1377,"business":940},"2023-02-20":{"calendar":1370,"business":935},"2023-02-21":{"calendar":1369,"business":934},"2023-02-24":{"calendar":1366,"business":931},"2023-02-27":{"calendar":1363,"business":930},"2023-02-28":{"calendar":1362,"business":929},"2023-03-03":{"calendar":1359,"business":926},"2023-03-10":{"calendar":1352,"business":921},"2023-03-13":{"calendar":1349,"business":920},"2023-03-14":{"calendar":1348,"business":919},"2023-03-16":{"calendar":1346,"business":917},"2023-03-20":{"calendar":1342,"business":915},"2023-03-26":{"calendar":1336,"business":911},"2023-03-28":{"calendar":1334,"business":909},"2023-03-29":{"calendar":1333,"business":908},"2023-03-30":{"calendar":1332,"business":907},"2023-03-31":{"calendar":1331,"business":906},"2023-04-03":{"calendar":1328,"business":905},"2023-04-04":{"calendar":1327,"business":904},"2023-04-11":{"calendar":1320,"business":900},"2023-04-13":{"calendar":1318,"business":898},"2023-04-20":{"calendar":1311,"business":893},"2023-04-24":{"calendar":1307,"business":890},"2023-04-28":{"calendar":1303,"business":886},"2023-05-05":{"calendar":1296,"business":884},"2023-05-10":{"calendar":1291,"business":880},"2023-05-11":{"calendar":1290,"business":879},"2023-05-16":{"calendar":1285,"business":876},"2023-05-22":{"calendar":1279,"business":872},"2023-05-25":{"calendar":1276,"business":869},"2023-05-29":{"calendar":1272,"business":867},"2023-05-30":{"calendar":1271,"business":866},"2023-05-31":{"calendar":1270,"business":865},"2023-06-01":{"calendar":1269,"business":864},"2023-06-06":{"calendar":1264,"business":861},"2023-06-07":{"calendar":1263,"business":860},"2023-06-08":{"calendar":1262,"business":859},"2023-06-11":{"calendar":1259,"business":858},"2023-06-12":{"calendar":1258,"business":857},"2023-06-13":{"calendar":1257,"business":856},"2023-06-16":{"calendar":1254,"business":853},"2023-06-19":{"calendar":1251,"business":852},"2023-06-21":{"calendar":1249,"business":850},"2023-06-25":{"calendar":1245,"business":849},"2023-06-27":{"calendar":1243,"business":847},"2023-06-28":{"calendar":1242,"business":846},"2023-06-29":{"calendar":1241,"business":845},"2023-06-30":{"calendar":1240,"business":844},"2023-07-09":{"calendar":1231,"business":839},"2023-07-25":{"calendar":1215,"business":827},"2023-07-31":{"calendar":1209,"business":823},"2023-08-03":{"calendar":1206,"business":820},"2023-08-08":{"calendar":1201,"business":817},"2023-08-10":{"calendar":1199,"business":815},"2023-08-11":{"calendar":1198,"business":814},"2023-08-15":{"calendar":1194,"business":812},"2023-08-17":{"calendar":1192,"business":810},"2023-08-18":{"calendar":1191,"business":809},"2023-08-21":{"calendar":1188,"business":808},"2023-08-22":{"calendar":1187,"business":807},"2023-08-25":{"calendar":1184,"business":804},"2023-08-28":{"calendar":1181,"business":803},"2023-08-30":{"calendar":1179,"business":801},"2023-09-04":{"calendar":1174,"business":798},"2023-09-08":{"calendar":1170,"business":794},"2023-09-19":{"calendar":1159,"business":787},"2023-09-20":{"calendar":1158,"business":786},"2023-09-22":{"calendar":1156,"business":784},"2023-09-27":{"calendar":1151,"business":781},"2023-09-28":{"calendar":1150,"business":780},"2023-09-29":{"calendar":1149,"business":780},"2023-10-03":{"calendar":1145,"business":780},"2023-10-04":{"calendar":1144,"business":780},"2023-10-05":{"calendar":1143,"business":780},"2023-10-06":{"calendar":1142,"business":780},"2023-10-24":{"calendar":1124,"business":766},"2023-11-03":{"calendar":1114,"business":758},"2023-11-10":{"calendar":1107,"business":753},"2023-11-17":{"calendar":1100,"business":748},"2023-11-22":{"calendar":1095,"business":745},"2023-11-30":{"calendar":1087,"business":739},"2023-12-01":{"calendar":1086,"business":738},"2023-12-04":{"calendar":1083,"business":737},"2023-12-05":{"calendar":1082,"business":736},"2023-12-15":{"calendar":1072,"business":728},"2023-12-28":{"calendar":1059,"business":719},"2023-12-29":{"calendar":1058,"business":718},"2024-01-02":{"calendar":1054,"business":717},"2024-01-11":{"calendar":1045,"business":710},"2024-01-12":{"calendar":1044,"business":709},"2024-01-16":{"calendar":1040,"business":707},"2024-01-22":{"calendar":1034,"business":703},"2024-01-26":{"calendar":1030,"business":699},"2024-01-29":{"calendar":1027,"business":698},"2024-01-30":{"calendar":1026,"business":697},"2024-02-01":{"calendar":1024,"business":695},"2024-02-06":{"calendar":1019,"business":691},"2024-02-09":{"calendar":1016,"business":688},"2024-02-14":{"calendar":1011,"business":688},"2024-02-22":{"calendar":1003,"business":683},"2024-02-23":{"calendar":1002,"business":682},"2024-02-26":{"calendar":999,"business":681},"2024-02-27":{"calendar":998,"business":680},"2024-02-28":{"calendar":997,"business":679},"2024-02-29":{"calendar":996,"business":678},"2024-03-04":{"calendar":992,"business":676},"2024-03-06":{"calendar":990,"business":674},"2024-03-08":{"calendar":988,"business":672},"2024-03-12":{"calendar":984,"business":670},"2024-03-15":{"calendar":981,"business":667},"2024-03-18":{"calendar":978,"business":666},"2024-03-19":{"calendar":977,"business":665},"2024-03-20":{"calendar":976,"business":664},"2024-03-22":{"calendar":974,"business":662},"2024-03-25":{"calendar":971,"business":661},"2024-03-26":{"calendar":970,"business":660},"2024-03-27":{"calendar":969,"business":659},"2024-03-28":{"calendar":968,"business":658},"2024-04-03":{"calendar":962,"business":654},"2024-04-08":{"calendar":957,"business":652},"2024-04-19":{"calendar":946,"business":643},"2024-04-22":{"calendar":943,"business":642},"2024-04-26":{"calendar":939,"business":638},"2024-04-29":{"calendar":936,"business":636},"2024-04-30":{"calendar":935,"business":635},"2024-05-03":{"calendar":932,"business":635},"2024-05-10":{"calendar":925,"business":630},"2024-05-13":{"calendar":922,"business":628},"2024-05-15":{"calendar":920,"business":626},"2024-05-16":{"calendar":919,"business":625},"2024-05-17":{"calendar":918,"business":624},"2024-05-27":{"calendar":908,"business":618},"2024-05-28":{"calendar":907,"business":617},"2024-05-30":{"calendar":905,"business":615},"2024-05-31":{"calendar":904,"business":614},"2024-06-12":{"calendar":892,"business":607},"2024-06-25":{"calendar":879,"business":598},"2024-06-26":{"calendar":878,"business":597},"2024-06-27":{"calendar":877,"business":596},"2024-06-28":{"calendar":876,"business":595},"2024-07-01":{"calendar":873,"business":594},"2024-07-10":{"calendar":864,"business":587},"2024-07-16":{"calendar":858,"business":583},"2024-07-18":{"calendar":856,"business":581},"2024-07-24":{"calendar":850,"business":577},"2024-07-26":{"calendar":848,"business":575},"2024-07-29":{"calendar":845,"business":574},"2024-07-30":{"calendar":844,"business":573},"2024-07-31":{"calendar":843,"business":572},"2024-08-12":{"calendar":831,"business":564},"2024-08-23":{"calendar":820,"business":555},"2024-08-26":{"calendar":817,"business":554},"2024-08-27":{"calendar":816,"business":553},"2024-08-30":{"calendar":813,"business":550},"2024-09-02":{"calendar":810,"business":549},"2024-09-13":{"calendar":799,"business":540},"2024-09-19":{"calendar":793,"business":537},"2024-09-20":{"calendar":792,"business":536},"2024-09-22":{"calendar":790,"business":536},"2024-09-26":{"calendar":786,"business":532},"2024-09-29":{"calendar":783,"business":530},"2024-09-30":{"calendar":782,"business":529},"2024-10-01":{"calendar":781,"business":529},"2024-10-04":{"calendar":778,"business":529},"2024-10-09":{"calendar":773,"business":527},"2024-10-14":{"calendar":768,"business":523},"2024-10-29":{"calendar":753,"business":512},"2024-10-31":{"calendar":751,"business":510},"2024-11-01":{"calendar":750,"business":509},"2024-11-07":{"calendar":744,"business":505},"2024-11-08":{"calendar":743,"business":504},"2024-11-12":{"calendar":739,"business":502},"2024-11-13":{"calendar":738,"business":501},"2024-11-15":{"calendar":736,"business":499},"2024-11-18":{"calendar":733,"business":498},"2024-11-22":{"calendar":729,"business":494},"2024-11-24":{"calendar":727,"business":494},"2024-11-25":{"calendar":726,"business":493},"2024-11-28":{"calendar":723,"business":490},"2024-11-29":{"calendar":722,"business":489},"2024-12-02":{"calendar":719,"business":488},"2024-12-03":{"calendar":718,"business":487},"2024-12-04":{"calendar":717,"business":486},"2024-12-06":{"calendar":715,"business":484},"2024-12-08":{"calendar":713,"business":484},"2024-12-09":{"calendar":712,"business":483},"2024-12-11":{"calendar":710,"business":481},"2024-12-12":{"calendar":709,"business":480},"2024-12-13":{"calendar":708,"business":479},"2024-12-15":{"calendar":706,"business":479},"2024-12-16":{"calendar":705,"business":478},"2024-12-20":{"calendar":701,"business":474},"2024-12-23":{"calendar":698,"business":473},"2024-12-27":{"calendar":694,"business":469},"2024-12-30":{"calendar":691,"business":468},"2024-12-31":{"calendar":690,"business":467},"2025-01-01":{"calendar":689,"business":467},"2025-01-02":{"calendar":688,"business":466},"2025-01-03":{"calendar":687,"business":465},"2025-01-06":{"calendar":684,"business":464},"2025-01-13":{"calendar":677,"business":459},"2025-01-15":{"calendar":675,"business":457},"2025-01-16":{"calendar":674,"business":456},"2025-01-17":{"calendar":673,"business":455},"2025-01-20":{"calendar":670,"business":454},"2025-01-21":{"calendar":669,"business":453},"2025-01-23":{"calendar":667,"business":451},"2025-01-24":{"calendar":666,"business":450},"2025-01-27":{"calendar":663,"business":448},"2025-01-28":{"calendar":662,"business":448},"2025-02-07":{"calendar":652,"business":445},"2025-02-11":{"calendar":648,"business":442},"2025-02-13":{"calendar":646,"business":440},"2025-02-14":{"calendar":645,"business":439},"2025-02-17":{"calendar":642,"business":438},"2025-02-18":{"calendar":641,"business":437},"2025-02-20":{"calendar":639,"business":435},"2025-02-21":{"calendar":638,"business":434},"2025-02-24":{"calendar":635,"business":433},"2025-02-25":{"calendar":634,"business":432},"2025-02-26":{"calendar":633,"business":431},"2025-02-27":{"calendar":632,"business":430},"2025-02-28":{"calendar":631,"business":429},"2025-03-07":{"calendar":624,"business":424},"2025-03-11":{"calendar":620,"business":422},"2025-03-21":{"calendar":610,"business":414},"2025-03-25":{"calendar":606,"business":412},"2025-03-30":{"calendar":601,"business":409},"2025-03-31":{"calendar":600,"business":408},"2025-04-03":{"calendar":597,"business":405},"2025-04-08":{"calendar":592,"business":403},"2025-04-09":{"calendar":591,"business":402},"2025-04-10":{"calendar":590,"business":401},"2025-04-11":{"calendar":589,"business":400},"2025-04-14":{"calendar":586,"business":399},"2025-04-15":{"calendar":585,"business":398},"2025-04-16":{"calendar":584,"business":397},"2025-04-17":{"calendar":583,"business":396},"2025-04-18":{"calendar":582,"business":395},"2025-04-22":{"calendar":578,"business":393},"2025-04-23":{"calendar":577,"business":392},"2025-04-25":{"calendar":575,"business":390},"2025-04-28":{"calendar":572,"business":388},"2025-04-29":{"calendar":571,"business":387},"2025-04-30":{"calendar":570,"business":386},"2025-05-02":{"calendar":568,"business":386},"2025-05-07":{"calendar":563,"business":384},"2025-05-09":{"calendar":561,"business":382},"2025-05-16":{"calendar":554,"business":377},"2025-05-19":{"calendar":551,"business":376},"2025-05-22":{"calendar":548,"business":373},"2025-05-23":{"calendar":547,"business":372},"2025-05-26":{"calendar":544,"business":371},"2025-05-27":{"calendar":543,"business":370},"2025-05-28":{"calendar":542,"business":369},"2025-05-29":{"calendar":541,"business":368},"2025-05-30":{"calendar":540,"business":367},"2025-06-01":{"calendar":538,"business":367},"2025-06-03":{"calendar":536,"business":366},"2025-06-04":{"calendar":535,"business":365},"2025-06-08":{"calendar":531,"business":363},"2025-06-09":{"calendar":530,"business":362},"2025-06-10":{"calendar":529,"business":361},"2025-06-11":{"calendar":528,"business":360},"2025-06-13":{"calendar":526,"business":358},"2025-06-16":{"calendar":523,"business":357},"2025-06-17":{"calendar":522,"business":356},"2025-06-18":{"calendar":521,"business":355},"2025-06-19":{"calendar":520,"business":354},"2025-06-20":{"calendar":519,"business":353},"2025-06-23":{"calendar":516,"business":352},"2025-06-25":{"calendar":514,"business":350},"2025-06-26":{"calendar":513,"business":349},"2025-06-27":{"calendar":512,"business":348},"2025-06-29":{"calendar":510,"business":348},"2025-06-30":{"calendar":509,"business":347},"2025-07-01":{"calendar":508,"business":346},"2025-07-07":{"calendar":502,"business":342},"2025-07-08":{"calendar":501,"business":341},"2025-07-09":{"calendar":500,"business":340},"2025-07-10":{"calendar":499,"business":339},"2025-07-11":{"calendar":498,"business":338},"2025-07-15":{"calendar":494,"business":336},"2025-07-16":{"calendar":493,"business":335},"2025-07-18":{"calendar":491,"business":333},"2025-07-21":{"calendar":488,"business":332},"2025-07-22":{"calendar":487,"business":331},"2025-07-24":{"calendar":485,"business":329},"2025-07-25":{"calendar":484,"business":328},"2025-07-29":{"calendar":480,"business":326},"2025-07-30":{"calendar":479,"business":325},"2025-07-31":{"calendar":478,"business":324},"2025-08-01":{"calendar":477,"business":323},"2025-08-06":{"calendar":472,"business":320},"2025-08-07":{"calendar":471,"business":319},"2025-08-12":{"calendar":466,"business":316},"2025-08-13":{"calendar":465,"business":315},"2025-08-14":{"calendar":464,"business":314},"2025-08-15":{"calendar":463,"business":313},"2025-08-18":{"calendar":460,"business":312},"2025-08-20":{"calendar":458,"business":310},"2025-08-21":{"calendar":457,"business":309},"2025-08-22":{"calendar":456,"business":308},"2025-08-25":{"calendar":453,"business":307},"2025-08-26":{"calendar":452,"business":306},"2025-08-27":{"calendar":451,"business":305},"2025-08-28":{"calendar":450,"business":304},"2025-08-29":{"calendar":449,"business":303},"2025-08-31":{"calendar":447,"business":303},"2025-09-02":{"calendar":445,"business":301},"2025-09-04":{"calendar":443,"business":299},"2025-09-05":{"calendar":442,"business":298},"2025-09-08":{"calendar":439,"business":297},"2025-09-09":{"calendar":438,"business":296},"2025-09-10":{"calendar":437,"business":295},"2025-09-11":{"calendar":436,"business":294},"2025-09-12":{"calendar":435,"business":293},"2025-09-15":{"calendar":432,"business":292},"2025-09-16":{"calendar":431,"business":291},"2025-09-19":{"calendar":428,"business":288},"2025-09-22":{"calendar":425,"business":287},"2025-09-23":{"calendar":424,"business":286},"2025-09-24":{"calendar":423,"business":285},"2025-09-25":{"calendar":422,"business":284},"2025-09-26":{"calendar":421,"business":283},"2025-09-28":{"calendar":419,"business":282},"2025-09-29":{"calendar":418,"business":281},"2025-09-30":{"calendar":417,"business":280},"2025-10-02":{"calendar":415,"business":280},"2025-10-05":{"calendar":412,"business":280},"2025-10-08":{"calendar":409,"business":280},"2025-10-09":{"calendar":408,"business":279},"2025-10-10":{"calendar":407,"business":278},"2025-10-11":{"calendar":406,"business":277},"2025-10-13":{"calendar":404,"business":276},"2025-10-14":{"calendar":403,"business":275},"2025-10-15":{"calendar":402,"business":274},"2025-10-16":{"calendar":401,"business":273},"2025-10-17":{"calendar":400,"business":272},"2025-10-20":{"calendar":397,"business":271},"2025-10-22":{"calendar":395,"business":269},"2025-10-23":{"calendar":394,"business":268},"2025-10-24":{"calendar":393,"business":267},"2025-10-27":{"calendar":390,"business":266},"2025-10-28":{"calendar":389,"business":265},"2025-10-29":{"calendar":388,"business":264},"2025-10-30":{"calendar":387,"business":263},"2025-10-31":{"calendar":386,"business":262},"2025-11-02":{"calendar":384,"business":262},"2025-11-03":{"calendar":383,"business":261},"2025-11-05":{"calendar":381,"business":259},"2025-11-06":{"calendar":380,"business":258},"2025-11-07":{"calendar":379,"business":257},"2025-11-10":{"calendar":376,"business":256},"2025-11-11":{"calendar":375,"business":255},"2025-11-12":{"calendar":374,"business":254},"2025-11-13":{"calendar":373,"business":253},"2025-11-14":{"calendar":372,"business":252},"2025-11-17":{"calendar":369,"business":251},"2025-11-18":{"calendar":368,"business":250},"2025-11-20":{"calendar":366,"business":248},"2025-11-21":{"calendar":365,"business":247},"2025-11-22":{"calendar":364,"business":247},"2025-11-24":{"calendar":362,"business":246},"2025-11-25":{"calendar":361,"business":245},"2025-11-26":{"calendar":360,"business":244},"2025-11-27":{"calendar":359,"business":243},"2025-11-28":{"calendar":358,"business":242},"2025-11-30":{"calendar":356,"business":242},"2025-12-01":{"calendar":355,"business":241},"2025-12-02":{"calendar":354,"business":240},"2025-12-03":{"calendar":353,"business":239},"2025-12-04":{"calendar":352,"business":238},"2025-12-05":{"calendar":351,"business":237},"2025-12-06":{"calendar":350,"business":237},"2025-12-08":{"calendar":348,"business":236},"2025-12-09":{"calendar":347,"business":235},"2025-12-10":{"calendar":346,"business":234},"2025-12-11":{"calendar":345,"business":233},"2025-12-12":{"calendar":344,"business":232},"2025-12-14":{"calendar":342,"business":232},"2025-12-15":{"calendar":341,"business":231},"2025-12-17":{"calendar":339,"business":229},"2025-12-18":{"calendar":338,"business":228},"2025-12-19":{"calendar":337,"business":227},"2025-12-21":{"calendar":335,"business":227},"2025-12-22":{"calendar":334,"business":226},"2025-12-23":{"calendar":333,"business":225},"2025-12-24":{"calendar":332,"business":224},"2025-12-29":{"calendar":327,"business":221},"2025-12-30":{"calendar":326,"business":220},"2025-12-31":{"calendar":325,"business":219},"2026-01-01":{"calendar":324,"business":219},"2026-01-02":{"calendar":323,"business":219},"2026-01-04":{"calendar":321,"business":218},"2026-01-05":{"calendar":320,"business":217},"2026-01-06":{"calendar":319,"business":216},"2026-01-07":{"calendar":318,"business":215},"2026-01-08":{"calendar":317,"business":214},"2026-01-09":{"calendar":316,"business":213},"2026-01-12":{"calendar":313,"business":212},"2026-01-13":{"calendar":312,"business":211},"2026-01-14":{"calendar":311,"business":210},"2026-01-15":{"calendar":310,"business":209},"2026-01-16":{"calendar":309,"business":208},"2026-01-18":{"calendar":307,"business":208},"2026-01-19":{"calendar":306,"business":207},"2026-01-20":{"calendar":305,"business":206},"2026-01-21":{"calendar":304,"business":205},"2026-01-22":{"calendar":303,"business":204},"2026-01-23":{"calendar":302,"business":203},"2026-01-25":{"calendar":300,"business":203},"2026-01-26":{"calendar":299,"business":202},"2026-01-27":{"calendar":298,"business":201},"2026-01-28":{"calendar":297,"business":200},"2026-01-29":{"calendar":296,"business":199},"2026-01-30":{"calendar":295,"business":198},"2026-02-02":{"calendar":292,"business":197},"2026-02-03":{"calendar":291,"business":196},"2026-02-04":{"calendar":290,"business":195},"2026-02-05":{"calendar":289,"business":194},"2026-02-06":{"calendar":288,"business":193},"2026-02-08":{"calendar":286,"business":193},"2026-02-09":{"calendar":285,"business":192},"2026-02-10":{"calendar":284,"business":191},"2026-02-11":{"calendar":283,"business":190},"2026-02-12":{"calendar":282,"business":189},"2026-02-13":{"calendar":281,"business":188},"2026-02-14":{"calendar":280,"business":187},"2026-02-15":{"calendar":279,"business":187},"2026-02-16":{"calendar":278,"business":187},"2026-02-20":{"calendar":274,"business":187},"2026-02-24":{"calendar":270,"business":186},"2026-02-25":{"calendar":269,"business":185},"2026-02-26":{"calendar":268,"business":184},"2026-02-27":{"calendar":267,"business":183},"2026-03-02":{"calendar":264,"business":181},"2026-03-03":{"calendar":263,"business":180},"2026-03-04":{"calendar":262,"business":179},"2026-03-05":{"calendar":261,"business":178},"2026-03-06":{"calendar":260,"business":177},"2026-03-09":{"calendar":257,"business":176},"2026-03-11":{"calendar":255,"business":174},"2026-03-13":{"calendar":253,"business":172},"2026-03-15":{"calendar":251,"business":172},"2026-03-16":{"calendar":250,"business":171},"2026-03-17":{"calendar":249,"business":170},"2026-03-18":{"calendar":248,"business":169},"2026-03-19":{"calendar":247,"business":168},"2026-03-20":{"calendar":246,"business":167},"2026-03-23":{"calendar":243,"business":166},"2026-03-24":{"calendar":242,"business":165},"2026-03-25":{"calendar":241,"business":164},"2026-03-26":{"calendar":240,"business":163},"2026-03-27":{"calendar":239,"business":162},"2026-03-29":{"calendar":237,"business":162},"2026-03-30":{"calendar":236,"business":161},"2026-03-31":{"calendar":235,"business":160},"2026-04-01":{"calendar":234,"business":159},"2026-04-02":{"calendar":233,"business":158},"2026-04-03":{"calendar":232,"business":157},"2026-04-07":{"calendar":228,"business":156},"2026-04-08":{"calendar":227,"business":155},"2026-04-09":{"calendar":226,"business":154},"2026-04-10":{"calendar":225,"business":153},"2026-04-12":{"calendar":223,"business":153},"2026-04-13":{"calendar":222,"business":152},"2026-04-14":{"calendar":221,"business":151},"2026-04-15":{"calendar":220,"business":150},"2026-04-16":{"calendar":219,"business":149},"2026-04-17":{"calendar":218,"business":148},"2026-04-20":{"calendar":215,"business":147},"2026-04-21":{"calendar":214,"business":146},"2026-04-22":{"calendar":213,"business":145},"2026-04-23":{"calendar":212,"business":144},"2026-04-24":{"calendar":211,"business":143},"2026-04-27":{"calendar":208,"business":142},"2026-04-28":{"calendar":207,"business":141},"2026-04-29":{"calendar":206,"business":140},"2026-04-30":{"calendar":205,"business":139},"2026-05-04":{"calendar":201,"business":139},"2026-05-05":{"calendar":200,"business":139},"2026-05-06":{"calendar":199,"business":138},"2026-05-07":{"calendar":198,"business":137},"2026-05-08":{"calendar":197,"business":136},"2026-05-09":{"calendar":196,"business":135},"2026-05-10":{"calendar":195,"business":135},"2026-05-11":{"calendar":194,"business":134},"2026-05-12":{"calendar":193,"business":133},"2026-05-13":{"calendar":192,"business":132},"2026-05-14":{"calendar":191,"business":131},"2026-05-15":{"calendar":190,"business":130},"2026-05-18":{"calendar":187,"business":129},"2026-05-19":{"calendar":186,"business":128},"2026-05-20":{"calendar":185,"business":127},"2026-05-21":{"calendar":184,"business":126},"2026-05-22":{"calendar":183,"business":125},"2026-05-25":{"calendar":180,"business":124},"2026-05-26":{"calendar":179,"business":123},"2026-05-27":{"calendar":178,"business":122},"2026-05-28":{"calendar":177,"business":121},"2026-05-29":{"calendar":176,"business":120},"2026-05-31":{"calendar":174,"business":120},"2026-06-01":{"calendar":173,"business":119},"2026-06-02":{"calendar":172,"business":118},"2026-06-03":{"calendar":171,"business":117},"2026-06-04":{"calendar":170,"business":116},"2026-06-05":{"calendar":169,"business":115},"2026-06-07":{"calendar":167,"business":115},"2026-06-08":{"calendar":166,"business":114},"2026-06-09":{"calendar":165,"business":113},"2026-06-10":{"calendar":164,"business":112},"2026-06-11":{"calendar":163,"business":111},"2026-06-12":{"calendar":162,"business":110},"2026-06-14":{"calendar":160,"business":110},"2026-06-15":{"calendar":159,"business":109},"2026-06-16":{"calendar":158,"business":108},"2026-06-17":{"calendar":157,"business":107},"2026-06-18":{"calendar":156,"business":106},"2026-06-22":{"calendar":152,"business":105},"2026-06-23":{"calendar":151,"business":104},"2026-06-24":{"calendar":150,"business":103},"2026-06-25":{"calendar":149,"business":102},"2026-06-26":{"calendar":148,"business":101},"2026-06-29":{"calendar":145,"business":100},"2026-06-30":{"calendar":144,"business":99},"2026-07-01":{"calendar":143,"business":98},"2026-07-02":{"calendar":142,"business":97},"2026-07-03":{"calendar":141,"business":96},"2026-07-05":{"calendar":139,"business":96},"2026-07-06":{"calendar":138,"business":95},"2026-07-07":{"calendar":137,"business":94},"2026-07-08":{"calendar":136,"business":93},"2026-07-09":{"calendar":135,"business":92},"2026-07-10":{"calendar":134,"business":91},"2026-07-13":{"calendar":131,"business":90},"2026-07-14":{"calendar":130,"business":89},"2026-07-15":{"calendar":129,"business":88},"2026-07-16":{"calendar":128,"business":87},"2026-07-17":{"calendar":127,"business":86},"2026-07-19":{"calendar":125,"business":86},"2026-07-20":{"calendar":124,"business":85},"2026-07-22":{"calendar":122,"business":83},"2026-07-23":{"calendar":121,"business":82},"2026-07-24":{"calendar":120,"business":81},"2026-07-27":{"calendar":117,"business":80},"2026-07-28":{"calendar":116,"business":79},"2026-07-29":{"calendar":115,"business":78},"2026-07-30":{"calendar":114,"business":77},"2026-07-31":{"calendar":113,"business":76},"2026-08-03":{"calendar":110,"business":75},"2026-08-04":{"calendar":109,"business":74},"2026-08-06":{"calendar":107,"business":72},"2026-08-07":{"calendar":106,"business":71},"2026-08-09":{"calendar":104,"business":71},"2026-08-10":{"calendar":103,"business":70},"2026-08-11":{"calendar":102,"business":69},"2026-08-12":{"calendar":101,"business":68},"2026-08-13":{"calendar":100,"business":67},"2026-08-14":{"calendar":99,"business":66},"2026-08-17":{"calendar":96,"business":65},"2026-08-18":{"calendar":95,"business":64},"2026-08-19":{"calendar":94,"business":63},"2026-08-20":{"calendar":93,"business":62},"2026-08-21":{"calendar":92,"business":61},"2026-08-24":{"calendar":89,"business":60},"2026-08-25":{"calendar":88,"business":59},"2026-08-26":{"calendar":87,"business":58},"2026-08-27":{"calendar":86,"business":57},"2026-08-28":{"calendar":85,"business":56},"2026-08-30":{"calendar":83,"business":56},"2026-08-31":{"calendar":82,"business":55},"2026-09-01":{"calendar":81,"business":54},"2026-09-02":{"calendar":80,"business":53},"2026-09-03":{"calendar":79,"business":52},"2026-09-04":{"calendar":78,"business":51},"2026-09-08":{"calendar":74,"business":49},"2026-09-10":{"calendar":72,"business":47},"2026-09-11":{"calendar":71,"business":46},"2026-09-13":{"calendar":69,"business":46},"2026-09-14":{"calendar":68,"business":45},"2026-09-15":{"calendar":67,"business":44},"2026-09-16":{"calendar":66,"business":43},"2026-09-17":{"calendar":65,"business":42},"2026-09-18":{"calendar":64,"business":41},"2026-09-19":{"calendar":63,"business":41},"2026-09-21":{"calendar":61,"business":39},"2026-09-22":{"calendar":60,"business":38},"2026-09-23":{"calendar":59,"business":37},"2026-09-24":{"calendar":58,"business":36},"2026-09-27":{"calendar":55,"business":36},"2026-09-28":{"calendar":54,"business":35},"2026-09-29":{"calendar":53,"business":34},"2026-09-30":{"calendar":52,"business":33},"2026-10-02":{"calendar":50,"business":33},"2026-10-08":{"calendar":44,"business":32},"2026-10-10":{"calendar":42,"business":30},"2026-10-14":{"calendar":38,"business":27},"2026-10-19":{"calendar":33,"business":24},"2026-10-22":{"calendar":30,"business":21},"2026-10-26":{"calendar":26,"business":19},"2026-10-29":{"calendar":23,"business":16},"2026-11-02":{"calendar":19,"business":14},"2026-11-04":{"calendar":17,"business":12},"2026-11-10":{"calendar":11,"business":8},"2026-11-11":{"calendar":10,"business":7},"2026-11-12":{"calendar":9,"business":6},"2026-11-16":{"calendar":5,"business":4}}};
 // no-cache (not no-store) lets the browser revalidate with the CDN ETag and
 // skip re-downloading the multi-MB payload when the snapshot is unchanged.
 const DATA_URL = "data/csrc_tracker_public.json";
 const OFFERING_FEES_URL = "data/offering_fees.json";
+const FEE_ROSTER_URL = "data/fee_roster.json";
 const OFFERING_DOSSIERS_URL = "data/offering_dossiers.json";
+const TRANSACTION_CASES_URL = "data/transaction_cases.json";
 const PAGE_SIZE = 50;
 
 const defaults = {
   selectedId: null,
+  roundId: "",
+  returnTo: "",
+  peek: "",
+  sizeBand: "all",
+  shoeBasis: "offered",
+  feeMin: "",
+  feeMax: "",
+  feeType: "all",
+  feeSortDir: "desc",
+  feeCompare: "",
+  cohort: "",
+  cohortMetric: "a1ToReceived",
+  cohortCollapsed: false,
+  firm: "",
+  sponsorMode: "list",
   status: "all",
   hkexStage: "applying",
   query: "",
   offeringQuery: "",
   feeQuery: "",
+  feePhase: "listed",
+  feeBasis: "all",
+  feeIndustry: "all",
+  feeInstitution: "all",
+  feeCurrency: "all",
+  feeDateFrom: "",
+  feeDateTo: "",
+  feeSort: "date",
+  feeRoundId: "",
+  feePage: 1,
   dossierQuery: "",
   dossierId: "",
   dossierSection: "",
+  transactionId: '',
+  transactionMode: 'list',
+  transactionRule: 'all',
+  transactionCurrency: 'all',
+  transactionAdvisor: 'all',
+  transactionA: '',
+  transactionB: '',
+  transactionDifferences: '',
+  transactionQuery: "",
+  transactionCategory: "all",
+  transactionStatus: "all",
+  transactionRole: "all",
+  transactionService: "all",
+  transactionRecent: "all",
+  transactionCompare: "",
   view: "tracker",
   dateField: "a1Date",
   dateFrom: "",
@@ -34,7 +77,9 @@ const defaults = {
 const state = {
   data: null,
   feeData: null,
+  feeRosterData: null,
   dossierData: null,
+  transactionData: null,
   ...defaults
 };
 
@@ -51,12 +96,12 @@ const statusLabels = {
 };
 
 const viewTitles = {
-  tracker: "监管节奏追踪",
+  tracker: "监管节奏",
   offerings: "发售搁置",
-  fees: "发行费用",
-  sponsorLeaderboard: "保荐龙虎榜",
-  sponsorPk: "保荐人擂台",
-  precedents: "案例检索",
+  fees: "新股与费用",
+  sponsorLeaderboard: "机构与保荐",
+  sponsorPk: "机构比较",
+  precedents: "交易与重组",
   dossiers: "发行人档案",
   signals: "市场信号",
   research: "研究笔记"
@@ -99,15 +144,50 @@ const listedMetricDefinitions = [
 ];
 
 const trackedStateKeys = [
+  'transactionId',
+  'transactionMode',
+  'transactionRule',
+  'transactionCurrency',
+  'transactionAdvisor',
+  'transactionA',
+  'transactionB',
+  'transactionDifferences',
+
+  "roundId",
+  "returnTo",
+  "peek",
+  "sizeBand",
+  "shoeBasis",
+  "feeMin",
+  "feeMax",
+  "feeType",
+  "feeSortDir",
+  "feeCompare",
+  "cohort",
+  "cohortMetric",
+  "cohortCollapsed",
+  "firm",
+  "sponsorMode",
   "view",
   "status",
   "hkexStage",
   "query",
   "offeringQuery",
   "feeQuery",
+  "feePhase",
+  "feeBasis",
+  "feeIndustry",
+  "feeInstitution",
+  "feeCurrency",
+  "feeDateFrom",
+  "feeDateTo",
+  "feeSort",
+  "feeRoundId",
+  "feePage",
   "dossierQuery",
   "dossierId",
   "dossierSection",
+  "transactionQuery", "transactionCategory", "transactionStatus", "transactionRole", "transactionService", "transactionRecent", "transactionCompare",
   "dateField",
   "dateFrom",
   "dateTo",
@@ -459,30 +539,9 @@ function renderIssuerType(record) {
   return `<span class="issuer-type-primary">${escapeHtml(info.primary)}</span><span class="pending-en">${escapeHtml(info.secondary)}</span>`;
 }
 
-function formatMarketCap(record) {
-  const value = record.aShareMarketCapAtA1RmbBn;
-  if (!isAhCandidate(record)) return `<span class="not-applicable">不适用</span><span class="pending-en">N/A</span>`;
-  if (!Number.isFinite(value) || value <= 0) return formatPending();
-  const yiValue = value * 10;
-  return `
-    <span class="market-cap-value">${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">¥${rmbBnFormatter.format(value)}B</span>
-  `;
-}
+function formatMarketCap(record) {const v=record.aShareMarketCapAtA1RmbBn;return !isAhCandidate(record)?'不适用':Number.isFinite(v)&&v>0?`<span title="RMB ${offeringNumber(v*1e9)}">${offeringNumber(v*10,1)}亿</span>`:'—';}
 
-function formatListingMarketCap(record) {
-  const value = record.listingMarketCapHkdBn;
-  if (record.listingMarketCapSampleEligible !== true) {
-    return record.hkexListingDate ? "—" : "不适用";
-  }
-  if (!Number.isFinite(value) || value <= 0) return formatPending();
-  const yiValue = value * 10;
-  const estimate = record.listingMarketCapProvenance?.status === "estimate";
-  return `
-    <span class="market-cap-value">${estimate ? "约 " : ""}${rmbYiFormatter.format(yiValue)}亿</span>
-    <span class="pending-en">${estimate ? "Est. " : ""}HK$${rmbBnFormatter.format(value)}B</span>
-  `;
-}
+function formatListingMarketCap(record) {const v=record.listingMarketCapHkdBn;return record.listingMarketCapSampleEligible===true&&Number.isFinite(v)&&v>0?`<span title="HKD ${offeringNumber(v*1e9)}">${record.listingMarketCapProvenance?.status==='estimate'?'约 ':''}${offeringNumber(v*10,1)}亿</span>`:'—';}
 
 function renderValuationDetails(record, listing) {
   const data = record[listing ? "listingMarketCapProvenance" : "aShareMarketCapProvenance"];
@@ -2780,8 +2839,8 @@ function offeringPrice(facts) {
 }
 
 function offeringGross(facts) {
-  const high = offeringNumber(facts.offerShares * facts.priceHigh / 1000000, 2);
-  return facts.priceLow === null ? `最高 HKD ${high} 百万` : `HKD ${offeringNumber(facts.offerShares * facts.priceLow / 1000000, 2)}–${high} 百万`;
+  const high = offeringNumber(facts.offerShares * facts.priceHigh / 1000000, 1);
+  return facts.priceLow === null ? `最高 HKD ${high} 百万` : `HKD ${offeringNumber(facts.offerShares * facts.priceLow / 1000000, 1)}–${high} 百万`;
 }
 
 function offeringCornerstoneRatio(facts) {
@@ -2900,7 +2959,7 @@ function renderOfferingResearch(facts, notice) {
       <div class="offering-research-columns"><section><h3>招股价格</h3>${renderOfferingPriceRange(facts)}<dl class="offering-facts">
         ${facts.priceAdjustmentLow ? row("最低可调招股价",`HKD ${n(facts.priceAdjustmentLow,2)}`) : ""}
         ${row("计划发售总额",offeringGross(facts))}
-        ${row("计划上市市值（绿鞋前）",`HKD ${n(facts.plannedMarketCap.amountHkd / 1000000,facts.plannedMarketCap.decimals)} 百万 · ${escapeHtml(facts.plannedMarketCap.priceBasis)}`)}
+        ${row("计划上市市值（绿鞋前）",`HKD ${n(facts.plannedMarketCap.amountHkd / 1000000,1)} 百万 · ${escapeHtml(facts.plannedMarketCap.priceBasis)}`)}
         ${row("发售后总股本",`${n(facts.postShares)} 股`)}
         ${facts.saleShares ? row("新股 / 旧股",`${n(facts.newShares)} / ${n(facts.saleShares)} 股`) : ""}
       </dl><details class="offering-disclosure"><summary>股本构成</summary><dl class="offering-facts">${facts.capitalComponents.map(([label,shares])=>row(escapeHtml(label),`${n(shares)} 股`)).join("")}</dl></details></section>
@@ -2963,20 +3022,141 @@ function renderIssuerFees(record) {
   return fee ? renderOfferingFee(fee) : terms;
 }
 
-function renderFeeComparison() {
-  const root = document.getElementById("feeComparison");
-  if (!root) return;
-  const all = eligibleOfferingFees(), query = normalizeSearchText(state.feeQuery);
-  const rows = all.filter(fee => !query || normalizeSearchText([fee.name,fee.stockCode,fee.issuerId].join(" ")).includes(query));
-  document.getElementById("feeSearch").value = state.feeQuery;
-  document.getElementById("feeCount").textContent = state.feeData ? `${rows.length} / ${all.length} 个项目` : "费用资料暂未载入";
-  const terms = rows.filter(f => f.kind === "paused_terms"), priced = rows.filter(f => f.kind === "priced_estimate");
-  const company = f => `<button type="button" class="fee-company text-button" data-fee-detail="${escapeHtml(f.issuerId)}"><strong>${escapeHtml(f.name)}</strong><span>${f.stockCode}</span></button>`;
-  root.innerHTML = (terms.length ? `<section class="fee-comparison-section"><header><h2>招股承销条款</h2><p>搁置发售 · 费率按发售总额计</p></header><div class="fee-legend"><span><i class="fee-key-fixed"></i>约定佣金</span><span><i class="fee-key-discretionary"></i>额外酌情上限</span></div>
-    <div class="fee-comparison-head" aria-hidden="true"><span>公司 / 招股日期</span><div class="fee-axis"><span>0%</span><span>1.5%</span><span>3%</span><span>4.5%</span></div><span>合计上限</span></div>
-    ${terms.map(f => `<article class="fee-comparison-row" data-fee-round="${escapeHtml(f.roundId)}"><div>${company(f)}<time>${f.prospectusDate}</time></div><div>${feeRateBar(f)}<div class="fee-rate-values"><span>${feePercent(f.fixedBps)}</span><span>${f.discretionaryCapBps ? `+ 最高 ${feePercent(f.discretionaryCapBps)}` : "无额外酌情费"}</span></div></div><div class="fee-total"><strong>${feePercent(f.upperBps)}</strong><span class="fee-source">${feeSources(f.sources)}</span></div></article>`).join("")}</section>` : "") +
-    (priced.length ? `<section class="fee-comparison-section fee-estimate-section"><header><h2>最终定价下的估计开支</h2><p>绿鞋前 · HKD 百万</p></header>${priced.map(f => `<article data-fee-round="${escapeHtml(f.roundId)}"><div class="fee-priced-heading">${company(f)}<span>${f.listingDate} 上市</span></div><div class="fee-expense-track" role="img" aria-label="发售总额 ${offeringNumber(Number(f.grossHkd)/1000000,2)} 百万，估计开支 ${offeringNumber(Number(f.estimatedExpensesHkd)/1000000,2)} 百万，估计净额 ${offeringNumber(Number(f.netHkd)/1000000,2)} 百万"><span style="width:${Number(f.estimatedExpensesHkd)/Number(f.grossHkd)*100}%"></span></div><dl class="fee-estimate-metrics"><div><dt>发售总额</dt><dd>${offeringNumber(Number(f.grossHkd)/1000000,2)}</dd></div><div><dt>估计上市开支</dt><dd>${offeringNumber(Number(f.estimatedExpensesHkd)/1000000,2)} <span>· ${feePercent(f.estimatedExpenseBps)}</span></dd></div><div><dt>估计所得净额</dt><dd>${offeringNumber(Number(f.netHkd)/1000000,2)}</dd></div></dl><div class="fee-source">${feeSources(f.sources)}</div>${renderFeeContract(f.contractTerms)}</article>`).join("")}</section>` : "") || '<p class="muted">没有匹配项目</p>';
+// Shared round-level fee facts. Contract maxima and expense estimates stay separate.
+const FEE_ROSTER_PAGE_SIZE = 18;
+function eligibleFeeRoster() {
+  if (state.feeRosterData?.schemaVersion !== 3) return [];
+  const records = new Map((state.data?.records || []).map(r => [r.id,r]));
+  const exact = new Set(eligibleOfferingFees().map(f => f.roundId));
+  return [...state.feeRosterData.rows,...state.feeRosterData.paused].filter(row => {
+    const r = records.get(row.issuerId);
+    if (!r) return false;
+    if (row.route === "paused_offer") return exact.has(row.id);
+    if (r.hkexListingDate !== row.listingDate || r.hkexListingStockCode !== row.code) return false;
+    return row.route !== "listed_offering" || row.id === `offering:${row.code}:${r.hkexProspectusDate}`;
+  });
 }
+function feeRosterCriteria() {
+ return {phase:state.feePhase,query:state.feeQuery,industry:state.feeIndustry,institution:state.feeInstitution,currency:state.feeCurrency,dateFrom:state.feeDateFrom,dateTo:state.feeDateTo,sort:state.feeSort,dir:state.feeSortDir,shoeBasis:state.shoeBasis,sizeBand:state.sizeBand,min:state.feeMin,max:state.feeMax,type:state.feeType};
+}
+
+function feeRosterSearchText(r){const record=state.data?.records.find(x=>x.id===r.issuerId);const notice=r.route==='paused_offer'&&record?currentOfferingNotice(record):null;return normalizeSearchText([r.code,r.name,r.nameEn,r.issuerId,...r.aliases,...r.industryTags,...r.institutions.flatMap(i=>[i.legalName,i.displayName,i.sponsorId]),notice?'搁置 '+r.statusLabel+' '+getRecordText(record):''].join(' '));}
+
+function filterFeeRoster(rows,c={}) {
+ const phase=c.phase||'listed',q=normalizeSearchText(c.query||''),range=p0SizeRange(c),basis=c.shoeBasis||'offered';
+ const out=rows.filter(r=>{
+  const amount=p0FeeAmount(r,basis);
+  return (phase==='all'||(phase==='paused'?r.route==='paused_offer':phase==='other'?['transfer','introduction'].includes(r.route):r.route==='listed_offering'))&&
+   (!q||feeRosterSearchText(r).includes(q))&&(!c.basis||c.basis==='all'||r.gross?.basis===c.basis)&&(!c.industry||c.industry==='all'||r.industryTags.includes(c.industry))&&
+   (!c.institution||c.institution==='all'||r.institutions.some(i=>i.legalEntityId===c.institution||i.sponsorId===c.institution))&&
+   (!c.currency||c.currency==='all'||r.currencies.includes(c.currency))&&(!c.type||c.type==='all'||r.issuerType===c.type||(c.type==='a_h'&&r.isAH))&&
+   (!c.dateFrom||r.date>=c.dateFrom)&&(!c.dateTo||r.date<=c.dateTo)&&(!c.exactSponsorAmountsOnly||(r.sponsorFee&&!r.sponsorFee.approximate&&r.sponsorFee.exactComparisonEligible!==false))&&
+   (range.every(v=>v===null)||(r.route==='paused_offer'?((range[0]===null||r.gross.highHkd>=range[0])&&(range[1]===null||r.gross.lowHkd!==null&&r.gross.lowHkd<=range[1])):(amount!==null&&(range[0]===null||amount>=range[0])&&(range[1]===null||amount<=range[1]))));
+ });
+ const direction=c.dir==='asc'?1:-1;
+ const value=r=>c.sort==='gross'?(r.route==='paused_offer'?(r.gross?.highHkd==null?null:Number(r.gross.highHkd)):p0FeeAmount(r,basis)):c.sort==='fixed'?r.fixedBps??null:c.sort==='extra'?r.maximumExtraBps??null:c.sort==='upper'?r.upperBps??null:r.route==='paused_offer'?r.noticeDate:r.date;
+ return out.sort((a,b)=>{const av=value(a),bv=value(b);if(av===null&&bv!==null)return 1;if(bv===null&&av!==null)return-1;if(av!==null&&bv!==null&&av!==bv)return(typeof av==='number'?av-bv:String(av).localeCompare(String(bv)))*direction;return a.code.localeCompare(b.code);});
+}
+
+function feeCoverageLabel() {
+  const all=eligibleFeeRoster();
+  return all.length ? `${all.filter(r=>r.stage === "listed").length} 宗上市 · ${all.filter(r=>r.stage === "paused").length} 宗搁置` : "发行费用";
+}
+function feeRosterUrl(row, section = "fees") {
+  const p=new URLSearchParams(window.location.search);
+  p.set("view","dossiers");p.set("dossierId",row.id);p.set("dossierSection",section);p.delete("dossierQuery");
+  return `${window.location.pathname}?${p}`;
+}
+function feeRosterMillion(value) {return offeringNumber(Number(value)/1000000,1);}
+
+function feeRosterGross(row) {
+ if(row.route==='paused_offer'){const g=row.gross;return `${g.lowHkd==null?'最高 ':feeRosterMillion(g.lowHkd)+'–'}${feeRosterMillion(g.highHkd)}`;}
+ const n=p0FeeAmount(row,state.shoeBasis);return n===null?(row.route==='listed_offering'?p0ActualLabel(row):'—'):feeRosterMillion(n);
+}
+
+function feeRosterRate(value) { return value == null ? "—" : feePercent(value); }
+function feeRosterSource(url, label) {
+  return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>` : "";
+}
+function feeRosterSourceLabel(url,label) {
+  return `${label}${url?.match(/#page=(\d+)$/)?.[1] ? ` p.${url.match(/#page=(\d+)$/)[1]}` : ""}`;
+}
+function feeRosterOptions(items,current,all) {
+  return `<option value="all">${all}</option>`+items.map(([value,label])=>`<option value="${escapeHtml(value)}"${current === value ? " selected" : ""}>${escapeHtml(label)}</option>`).join("");
+}
+function renderFeeRosterControls(all) {
+ const root=document.getElementById('feeControls'),open=root.querySelector('details')?.open;
+ const counts={listed:all.filter(r=>r.route==='listed_offering').length,paused:all.filter(r=>r.route==='paused_offer').length,other:all.filter(r=>['transfer','introduction'].includes(r.route)).length};
+ const industries=[...new Set(all.flatMap(r=>r.industryTags))].sort().map(x=>[x,x]);
+ const firms=[...new Map(all.flatMap(r=>r.institutions).map(x=>[x.legalEntityId,x])).values()].sort((a,b)=>a.displayName.localeCompare(b.displayName)).map(i=>[i.legalEntityId,i.displayName]);
+ const select=(name,label,items,current)=>`<label>${label}<select data-fee-state="${name}">${feeRosterOptions(items,current,'全部')}</select></label>`;
+ root.innerHTML=`<div class="fee-roster-toolbar"><div class="fee-phase-tabs" role="group" aria-label="发售类别">${[['listed','已定价发售'],['paused','搁置发售'],['other','转板与介绍']].map(([k,l])=>`<button type="button" data-fee-phase="${k}" aria-pressed="${state.feePhase===k}">${l}<span>${counts[k]}</span></button>`).join('')}</div></div>
+ <div class="fee-basis-row">${state.feePhase==='listed'?`<div role="group" aria-label="募资口径"><button type="button" data-shoe-basis="offered" aria-pressed="${state.shoeBasis==='offered'}">绿鞋前最终额</button><button type="button" data-shoe-basis="actual" aria-pressed="${state.shoeBasis==='actual'}">绿鞋后实际额</button></div>`:state.feePhase==='paused'?'<span>拟定招股条款</span>':''}<label>规模 (HKDm)<input type="number" inputmode="decimal" data-fee-state="feeMin" value="${escapeHtml(state.feeMin)}" placeholder="下限" aria-label="发售规模下限"><span>–</span><input type="number" inputmode="decimal" data-fee-state="feeMax" value="${escapeHtml(state.feeMax)}" placeholder="上限" aria-label="发售规模上限"></label><button type="button" data-size-band="600_900" aria-pressed="${state.sizeBand==='600_900'}">6–9 亿</button><button type="button" data-fee-reset>重置</button></div>
+ <details class="fee-filters"${open?' open':''}><summary>更多筛选</summary><div class="fee-filter-grid">${select('feeType','类型',[['h_share','H股'],['a_h','A+H'],['red_chip','红筹']],state.feeType)}${select('feeIndustry','行业',industries,state.feeIndustry)}${select('feeInstitution','保荐机构',firms,state.feeInstitution)}${select('feeCurrency','合同币种',[['HKD','HKD'],['USD','USD'],['CNY','CNY']],state.feeCurrency)}<label>起始日<input type="date" data-fee-state="feeDateFrom" value="${escapeHtml(state.feeDateFrom)}"></label><label>截止日<input type="date" data-fee-state="feeDateTo" value="${escapeHtml(state.feeDateTo)}"></label></div></details>`;
+}
+
+function renderFeeRosterRow(r) {
+ const n=p0FeeAmount(r,state.shoeBasis),sponsor=p0SponsorFeeHtml(r);
+ const amountSource=r[state.shoeBasis]?.gross?.sources?.[0];const amountLink=amountSource?.url?amountSource.url+(amountSource.page?'#page='+amountSource.page:''):'';const exp=r.expenseSnapshot;const sources=r.commissionSource||r.discretionarySource||r.sources[0];
+ const names=r.institutions.map(i=>`<span title="${escapeHtml(i.legalName)}">${escapeHtml(i.displayName)}</span>`).join(' · ');
+ const url=p0DossierUrl(r.id);
+ return `<tr data-fee-round="${escapeHtml(r.id)}" class="${state.feeRoundId===r.id?'is-selected':''}"><th scope="row"><div class="fee-company-choice"><a class="fee-company" href="${escapeHtml(url)}" data-round-id="${escapeHtml(r.id)}">${escapeHtml(r.name)}</a>${p0FeeCompareButton(r)}</div><small class="fee-roster-meta">${r.code} · ${r.isAH?'A+H':r.issuerType==='h_share'?'H股':''} <span class="institution-label">${names}</span></small></th><td class="fee-date" data-label="${r.route==='paused_offer'?'公告日':'挂牌日'}">${r.noticeDate||r.date}<small>${r.route==='paused_offer'?escapeHtml(r.statusLabel):p0ShoeLabel(r)}</small></td><td class="col-num fee-gross" data-label="${r.route==='paused_offer'?'计划发售':'发行规模'} HKDm" title="${n===null?'':`HKD ${offeringNumber(n,2)}`}">${feeRosterGross(r)}</td><td class="col-num" data-label="固定佣金">${p0FeeRate(r,'fixed')}</td><td class="col-num" data-label="酌情上限">${p0FeeRate(r,'extra')}</td><td class="col-num fee-upper" data-label="合计上限">${p0FeeRate(r,'upper')}</td><td class="col-num fee-sponsor-amount" data-label="保荐费">${sponsor}</td><td class="col-num fee-expense" data-label="估计上市开支 HKDm">${exp?`<span title="HKD ${offeringNumber(Number(exp.estimatedExpensesHkd))}">${feeRosterMillion(exp.estimatedExpensesHkd)}</span><small>${feePercent(exp.estimatedExpenseBps)} · 估计总开支</small>`:'<span class="data-missing">待核实</span>'}</td><td class="fee-source">${feeRosterSource(sources,feeRosterSourceLabel(sources,'条款'))}${amountLink?'<br>'+feeRosterSource(amountLink,feeRosterSourceLabel(amountLink,'金额')):''}</td></tr>`;
+}
+
+function renderFeeRosterSelection(row) {
+  const root=document.getElementById("feeSelection");
+  if (!row) {root.innerHTML="";return;}
+  const exact=eligibleOfferingFees().find(f=>f.roundId===row.id);
+  const d=eligibleOfferingDossiers().find(d=>d.roundId===row.id);
+  const links=new Map();
+  for (const [url,label] of [[row.gross?.source,"规模"],[row.commissionSource,"佣金"],[row.discretionarySource,"酌情费"],[row.sponsorFee?.source,"保荐费"]]) {
+    if (url) links.set(url,links.has(url)?links.get(url)+" / "+label:label);
+  }
+  const sources=[...links].map(([url,label])=>feeRosterSource(url,feeRosterSourceLabel(url,label))).join(" · ") || row.sources.map((url,i)=>feeRosterSource(url,`原件 ${i+1}`)).join(" · ");
+  const facts=`<dl class="fee-selection-facts"><div><dt>${row.route === "paused_offer" ? "计划发售总额" : row.gross?.basis === "offered" ? "基础发售总额" : "最终发售总额"} · 百万港元</dt><dd>${feeRosterGross(row)}</dd></div><div><dt>保荐机构</dt><dd>${row.institutions.map(i=>escapeHtml(i.legalName)).join("<br>") || "—"}</dd></div></dl>`;
+  const rates=`<dl class="fee-detail-grid"><div><dt>固定承销佣金</dt><dd>${feeRosterRate(row.fixedBps)}</dd></div><div><dt>额外酌情上限</dt><dd>${feeRosterRate(row.maximumExtraBps)}</dd></div><div><dt>合计上限</dt><dd>${feeRosterRate(row.upperBps)}</dd></div>${row.sponsorFee?`<div><dt>${row.sponsorFee.scope === "joint_aggregate" ? "联席保荐费 · 合计" : "约定保荐费"}</dt><dd>${escapeHtml(row.sponsorFee.currency)} ${offeringNumber(Number(row.sponsorFee.value))}</dd></div>`:""}</dl>`;
+  let body=exact ? renderOfferingFee(exact).replace('<details class=', '<details open class=') : rates;
+  if (row.route !== "listed_offering" && row.route !== "paused_offer") body="";
+  root.innerHTML=`<article class="fee-selection" tabindex="-1"><header><div><p>${row.code} · ${row.date}</p><h2>${escapeHtml(row.name)}</h2></div><button type="button" class="text-button" data-fee-close aria-label="关闭发行费用详情">收起</button></header>${facts}${body}<div class="fee-selection-sources">${sources}</div><footer>${d?`<a href="${escapeHtml(feeRosterUrl(row))}" data-fee-dossier="${escapeHtml(row.id)}">发行人档案 ↗</a>`:`<button type="button" class="text-button" data-fee-issuer="${escapeHtml(row.issuerId)}">发行人详情 ↗</button>`}</footer></article>`;
+}
+function renderFeeComparison() {
+ const root=document.getElementById('feeComparison');if(!root)return;
+ const all=eligibleFeeRoster(),rows=filterFeeRoster(all,feeRosterCriteria());const pages=Math.max(1,Math.ceil(rows.length/FEE_ROSTER_PAGE_SIZE));state.feePage=Math.max(1,Math.min(pages,Number(state.feePage)||1));
+ document.getElementById('feeSearch').value=state.feeQuery;renderFeeRosterControls(all);
+ document.getElementById('feeCount').textContent=`${rows.length} 宗 · 上市记录至 ${state.feeRosterData?.listingCutoff||'—'}`;
+ document.getElementById('feeSummary').innerHTML=state.feePhase==='other'?'':p0FeeSummary(rows);
+ p0RenderFeeCompareSelection(all);
+ const headers=[['公司 / 代码',''],[state.feePhase==='paused'?'公告日':'挂牌日','date'],[state.feePhase==='paused'?'计划发售 (HKDm)':state.shoeBasis==='actual'?'实际额 (HKDm)':'发行规模 (HKDm)','gross'],['固定佣金','fixed'],['酌情上限','extra'],['合计上限','upper'],['保荐费 · 原币',''],['估计总开支',''],['原件','']];
+ root.innerHTML=rows.length?`<table class="fee-roster-table"><thead><tr>${headers.map(([label,key],i)=>`<th scope="col" class="${i>1&&i<8?'col-num':''}">${key?`<button type="button" data-fee-sort="${key}"${state.feePhase==='paused'&&key==='gross'?' aria-label="按计划发售上限排序"':''}>${label}${state.feeSort===key?(state.feeSortDir==='desc'?' ↓':' ↑'):''}</button>`:label}</th>`).join('')}</tr></thead><tbody>${rows.slice((state.feePage-1)*FEE_ROSTER_PAGE_SIZE,state.feePage*FEE_ROSTER_PAGE_SIZE).map(renderFeeRosterRow).join('')}</tbody></table>`:p0EmptyState('fees',all.filter(r=>state.feePhase==='paused'?r.route==='paused_offer':state.feePhase==='other'?r.route!=='listed_offering'&&r.route!=='paused_offer':r.route==='listed_offering').length);
+ document.getElementById('feePagination').innerHTML=pages>1?`<button type="button" data-fee-page="${state.feePage-1}"${state.feePage===1?' disabled':''}>上一页</button><span>${state.feePage} / ${pages}</span><button type="button" data-fee-page="${state.feePage+1}"${state.feePage===pages?' disabled':''}>下一页</button>`:'';
+}
+
+function handleFeeRosterChange(event) {
+ const key=event.target.dataset.feeState;if(!['feeType','feeMin','feeMax','feeIndustry','feeInstitution','feeCurrency','feeDateFrom','feeDateTo'].includes(key))return;
+ state[key]=event.target.value;if(['feeMin','feeMax'].includes(key))state.sizeBand='all';state.feePage=1;renderFeeComparison();syncUrl();document.querySelector(`[data-fee-state="${key}"]`)?.focus();
+}
+
+function handleFeeRosterClick(event) {
+ const el=event.target.closest('button,a');if(!el)return;
+ if(el.dataset.roundId){if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();openOfferingDossier(el.dataset.roundId);return;}
+ if(p0HandleFeeCompareClick(el))return;
+ if(el.dataset.feePhase){state.feePhase=el.dataset.feePhase;state.feePage=1;}
+ else if(el.dataset.feeSort){state.feeSortDir=state.feeSort===el.dataset.feeSort&&state.feeSortDir==='desc'?'asc':'desc';state.feeSort=el.dataset.feeSort;}
+ else if(el.dataset.shoeBasis){state.shoeBasis=el.dataset.shoeBasis;state.feePage=1;}
+ else if(el.dataset.sizeBand){state.sizeBand=state.sizeBand===el.dataset.sizeBand?'all':el.dataset.sizeBand;state.feeMin='';state.feeMax='';state.feePage=1;}
+ else if(el.hasAttribute('data-fee-reset')){p0Reset('fees');return;}
+ else if(el.dataset.feePage){state.feePage=Number(el.dataset.feePage);}
+ else return;
+ const focus=el.dataset.feeSort?`[data-fee-sort="${el.dataset.feeSort}"]`:el.dataset.shoeBasis?`[data-shoe-basis="${el.dataset.shoeBasis}"]`:el.dataset.feePhase?`[data-fee-phase="${el.dataset.feePhase}"]`:null;
+ renderFeeComparison();syncUrl();if(focus)document.querySelector(focus)?.focus({preventScroll:true});
+}
+
+window.YingSightOfferingFees=Object.freeze({schemaVersion:3,
+  getRows:()=>structuredClone(eligibleFeeRoster()),
+  select:criteria=>structuredClone(filterFeeRoster(eligibleFeeRoster(),criteria)),
+  getDisclosure:roundId=>structuredClone(eligibleOfferingFees().find(f=>f.roundId===roundId)||null),
+  getRound:roundId=>structuredClone(eligibleFeeRoster().find(r=>r.id===roundId)||null)});
+
 
 function eligibleOfferingDossiers() {
   if (state.dossierData?.schemaVersion !== 1) return [];
@@ -2989,47 +3169,34 @@ function eligibleOfferingDossiers() {
   });
 }
 function renderDossier(d) {
-  const o = d.offer, f = d.float, fee = eligibleOfferingFees().find(f => f.roundId === d.roundId);
-  const n = offeringNumber, million = value => n(Number(value) / 1000000,2);
-  const row = (label,value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
-  const source = (url,pages) => feeSources(pages.map(page => ({url:`${url}#page=${page}`,page})));
-  const details = (title,body,id) => `<details class="dossier-section"${state.dossierId === d.roundId && state.dossierSection === id ? " open" : ""}><summary>${title}</summary><div class="dossier-section-body">${body}</div></details>`;
-  const allocation = `<div class="offering-allocation-bar" role="img" aria-label="香港公开发售 ${n(o.publicShares/o.shares*100,2)}%，国际配售 ${n(o.internationalShares/o.shares*100,2)}%"><span class="offering-allocation-hk" style="width:${o.publicShares/o.shares*100}%"></span><span class="offering-allocation-international" style="width:${o.internationalShares/o.shares*100}%"></span></div><div class="offering-allocation-labels"><span>香港 ${n(o.publicShares/o.shares*100,2)}% · ${n(o.publicShares)} 股</span><span>国际 ${n(o.internationalShares/o.shares*100,2)}% · ${n(o.internationalShares)} 股</span></div>`;
-  const bar = (label,shares) => `<div class="dossier-float-row"><div><span>${label}</span><strong>${n(shares/1000000,3)}</strong></div><div class="dossier-float-track"><span style="width:${shares/o.shares*100}%"></span></div></div>`;
-  const sponsor = d.sponsors.map(x => `${escapeHtml(x.role)}：${escapeHtml(x.name)}`).join(" · ");
-  let fees = renderOfferingFee(fee);
-  if (state.dossierId === d.roundId && state.dossierSection === "fees") fees = fees.replace('<details class=', '<details open class=');
-  return `<article class="dossier-card" data-dossier-round="${escapeHtml(d.roundId)}"><header class="dossier-issuer"><div><div class="dossier-code">${d.code} · ${escapeHtml(d.issuerType)}</div><h2>${escapeHtml(d.issuer)}</h2></div><span class="dossier-listed">已上市 · ${d.listingDate}</span></header>
-    <dl class="dossier-kpis">${row("最终发售价",`${n(o.final,2)}<small>HKD / 股</small>`)}${row("发售总额",`${million(fee.grossHkd)}<small>HKD 百万</small>`)}${row("估计所得净额",`${million(fee.netHkd)}<small>HKD 百万</small>`)}</dl>
-    <p class="dossier-sponsors">${sponsor}</p>
-    ${details("发行概览",`<div class="dossier-price"><span>招股价 HKD ${n(o.low,2)}–${n(o.high,2)}</span><strong>最终 ${n(o.final,2)} · ${o.final === o.low ? "下限" : o.final === o.high ? "上限" : "区间内"}</strong>${renderOfferingRange(null,o.final,o.low,o.high,`最终价格 HKD ${n(o.final,2)}`)}</div><dl class="dossier-facts">${row("发售股份",`${n(o.shares)} 股`)}${row("发售比例",`${n(o.shares/o.postShares*100,2)}%`)}${row("发售后总股本",`${n(o.postShares)} 股`)}${row("发行价总市值",`HKD ${million(o.postShares*o.final)} 百万`)}</dl><div class="fee-source">${source(d.allotmentUrl,[2,3,16])}</div>`,"overview")}
-    ${details("配售与流通",`<dl class="dossier-facts">${row("香港公开发售认购",`${n(o.publicSubscription,2)} 倍`)}${row("国际配售认购",`${n(o.internationalSubscription,2)} 倍`)}${row("公众持股（港交所披露）",`${n(f.officialPublicRatio,2)}% · ${n(f.officialPublicShares)} 股`)}${row("基石获配",`${n(o.cornerstoneShares)} 股 · ${n(o.cornerstoneShares/o.shares*100,2)}%`)}</dl>${allocation}
-      <div class="dossier-float"><h3>上市时流通结构 <span>百万股</span></h3>${bar("基础发售",o.shares)}${bar("扣基石后：上市时无禁售",f.unlockedShares)}${bar("再扣现有股东及关联客户（追瑞）",f.adjustedShares)}<dl class="dossier-facts">${row("上市时无禁售 · 按发行价",`HKD ${million(f.unlockedHkd)} 百万`)}${row("扣除后余量 · 按发行价（追瑞）",`HKD ${million(f.adjustedHkd)} 百万`)}</dl></div>
-      <details class="dossier-subsection"><summary>获配名单与股数</summary><div class="dossier-allocation-list">${f.deductions.map(x=>`<div><span>${escapeHtml(x.name)}<small>${x.kind === "cornerstone" ? "基石" : x.kind === "connected_client" ? "配售商关联客户" : "现有股东及紧密联系人"}</small></span><strong>${n(x.shares)} 股</strong></div>`).join("")}</div><div class="fee-source">${source(d.allotmentUrl,[6,7,12])}</div></details>
-      <details class="dossier-subsection"><summary>关联客户 · 账户与经济敞口</summary>${f.accounts.map(a=>`<section class="dossier-account"><h4>${escapeHtml(a.displayName)} <span>${n(a.shares)} 股</span></h4><p>${escapeHtml(a.structure)} · ${escapeHtml(a.ownershipFact)}</p><dl class="dossier-facts">${row("法律获配方",escapeHtml(a.legalHolder))}${row("投资账户 / 经济敞口",escapeHtml(a.fund || a.economicParty))}${a.manager ? row("管理人",escapeHtml(a.manager)) : ""}</dl>${a.fundingFact ? `<p>${escapeHtml(a.fundingFact)}</p><p>${escapeHtml(a.rightsFact)}</p>` : ""}<div class="fee-source"><a href="${escapeHtml(a.source)}" target="_blank" rel="noopener noreferrer">配发原件</a>${a.structureSource ? ` · <a href="${escapeHtml(a.structureSource)}" target="_blank" rel="noopener noreferrer">TRS 条款</a>` : ""}</div></section>`).join("")}</details>
-      <details class="dossier-subsection"><summary>配售条件</summary><p>上市规则 10.04、附录 F1 第 1C(1) 及 1C(2) 段的豁免或同意。</p><div class="fee-source">${source(d.allotmentUrl,[7])}</div></details>
-      <div class="fee-source">${source(d.allotmentUrl,[3,6,16])} · <a href="https://www.hkexnews.hk/homeccasssearch.html" target="_blank" rel="noopener noreferrer">港交所 CCASS 查询</a></div>`,"allocation")}
-    <div class="dossier-fees">${fees}</div>
-    ${details("执行参考",d.execution.map(x=>`<details class="dossier-execution"><summary>${escapeHtml(x.title)}</summary><p>${escapeHtml(x.fact)}</p><p>${escapeHtml(x.action)}</p><div class="fee-source">${source(d.prospectusUrl,x.pages)}</div></details>`).join(""),"execution")}
-    <footer class="dossier-footer"><a href="${escapeHtml(d.prospectusUrl)}" target="_blank" rel="noopener noreferrer">招股书</a><a href="${escapeHtml(d.allotmentUrl)}" target="_blank" rel="noopener noreferrer">定价及配发</a><button type="button" class="text-button" data-dossier-fee-comparison>费用对照</button></footer></article>`;
+ const row=eligibleFeeRoster().find(r=>r.id===d.roundId),f=eligibleOfferingFees().find(f=>f.roundId===d.roundId),o=d.offer,fl=d.float;
+ const money=n=>`<span title="HKD ${offeringNumber(Number(n),2)}">${feeRosterMillion(n)}</span>`;
+ const src=(url,p,label='原件')=>feeRosterSource(`${url}#page=${p}`,`${label} p.${p} ↗`);
+ const stat=(name,value)=>`<div><dt>${name}</dt><dd>${value}</dd></div>`;
+ const exactRow=(label,shares,hkd)=>`<tr><th scope="row">${label}</th><td class="col-num" title="${offeringNumber(shares)} 股">${offeringNumber(shares/1e6,1)}</td><td class="col-num">${money(hkd)}</td></tr>`;
+ return `<article class="deal-sheet" data-dossier-round="${escapeHtml(d.roundId)}"><header class="deal-header"><div><p>${d.code}.HK · ${escapeHtml(d.issuerType)} · 已上市 ${d.listingDate}${p0ShoeLabel(row)?' · '+p0ShoeLabel(row):''}</p><h2>${escapeHtml(d.issuer)}</h2></div><div>${d.sponsors.map(s=>`<span title="${escapeHtml(s.name)}">${escapeHtml(s.role)}：${escapeHtml(s.name)}</span>`).join(' · ')}<nav>${feeRosterSource(d.prospectusUrl,'招股书 ↗')} ${feeRosterSource(d.allotmentUrl,'定价及配发 ↗')}</nav></div></header>
+ <dl class="deal-kpis">${stat('发行规模 · HKDm（绿鞋前）',money(o.gross))}${stat('最终发售价 · HKD / 股',`${offeringNumber(o.final,2)}<small>${offeringNumber(o.low,2)}–${offeringNumber(o.high,2)} · ${o.final===o.low?'下限定价':o.final===o.high?'上限定价':'区间内定价'}</small>`)}${stat('估计所得净额 · HKDm',money(f.netHkd))}${stat('发行价市值 · HKDm',`${money(o.postShares*o.final)}<small>发售比例 ${offeringNumber(o.shares/o.postShares*100,2)}%</small>`)}</dl>
+ <nav class="deal-anchors"><a href="#allocation">配售与流通</a><a href="#fees">费用条款</a><a href="#execution">执行与监管</a></nav>
+ <section class="deal-section" id="allocation"><header><h3>配售与上市时流通结构</h3>${src(d.allotmentUrl,16,'配发')}</header><div class="deal-columns"><div><dl class="deal-facts">${stat('香港公开发售',`${offeringNumber(o.publicShares)} 股 · ${offeringNumber(o.publicShares/o.shares*100,2)}%`)}${stat('公开发售认购',`${offeringNumber(o.publicSubscription,2)} 倍`)}${stat('国际配售认购',`${offeringNumber(o.internationalSubscription,2)} 倍`)}${stat('港交所公众持股',`${offeringNumber(fl.officialPublicShares)} 股 · ${offeringNumber(fl.officialPublicRatio,2)}%`)}</dl><h4>基石获配</h4><div class="deal-allocation-list">${d.cornerstones.map(c=>`<div><span>${escapeHtml(c.name)}</span><strong class="col-num">${offeringNumber(c.shares)} 股</strong></div>`).join('')}</div><p>${src(d.allotmentUrl,6,'基石')} · ${src(d.allotmentUrl,3,'认购')}</p></div><div><table class="deal-float-table"><thead><tr><th>流通拆解</th><th class="col-num">百万股</th><th class="col-num">HKDm</th></tr></thead><tbody>${exactRow('基础发售',o.shares,o.gross)}${exactRow('− 基石禁售',-o.cornerstoneShares,-o.cornerstoneShares*o.final)}${exactRow('上市时无禁售',fl.unlockedShares,fl.unlockedHkd)}${exactRow('− 现有股东及关联客户',-(fl.unlockedShares-fl.adjustedShares),-(fl.unlockedHkd-fl.adjustedHkd))}${exactRow('追瑞调整后余量',fl.adjustedShares,fl.adjustedHkd)}</tbody></table><div class="deal-float-bars" role="img" aria-label="基础发售至无禁售，再扣现有股东及关联客户获配"><span style="width:100%"></span><span style="width:${fl.unlockedShares/o.shares*100}%"></span><span style="width:${fl.adjustedShares/o.shares*100}%"></span></div></div></div>
+ <div class="deal-account-list">${fl.accounts.map(a=>`<article id="account-${a.id.replace(':','-')}"><h4>${escapeHtml(a.displayName)} · ${escapeHtml(a.structure)} <span>${offeringNumber(a.shares)} 股</span></h4><p>法律获配：${escapeHtml(a.legalHolder)} · ${a.fund?'账户：'+escapeHtml(a.fund):'经济敞口：'+escapeHtml(a.economicParty)}</p><p>${escapeHtml(a.ownershipFact)}${a.fundingFact?' · '+escapeHtml(a.fundingFact):''}${a.rightsFact?' · '+escapeHtml(a.rightsFact):''}</p>${feeRosterSource(a.source,'配发 p.12 ↗')} ${feeRosterSource(a.structureSource,'TRS p.14 ↗')}</article>`).join('')}</div>
+ <details class="deal-light-detail"><summary>其他获配及配售条件</summary>${fl.deductions.filter(x=>x.kind==='existing_shareholder_or_close_associate').map(x=>`<p>${escapeHtml(x.name)} · ${offeringNumber(x.shares)} 股 ${feeRosterSource(x.source,'配发 p.7 ↗')}</p>`).join('')}<p>上市规则 10.04、附录 F1 第 1C(1) 及 1C(2) 段的豁免或同意。${src(d.allotmentUrl,7,'配发')}</p><p>${feeRosterSource('https://www.hkexnews.hk/homeccasssearch.html','港交所 CCASS 查询 ↗')}</p></details></section>
+ <section class="deal-section" id="fees"><header><h3>发行费用与合同条款</h3><button type="button" data-same-size="${escapeHtml(d.roundId)}">${p0HasFeeOrigin()?'返回原费用筛选':'同规模费用横比'} →</button></header><div class="deal-columns"><div><h4>承销与保荐合同</h4><dl class="deal-facts">${stat('固定承销佣金',feePercent(f.contractTerms.fixedBps))}${stat('额外酌情上限',feePercent(f.contractTerms.discretionaryCapBps))}${stat('承销合计上限',feePercent(f.contractTerms.upperBps))}${stat('约定保荐费 · 整单',`HKD ${offeringNumber(Number(f.contractTerms.sponsorFee.value))}`)}</dl><p>${src(d.prospectusUrl,291,'佣金')} · ${src(d.prospectusUrl,292,'保荐费')}</p></div><div class="deal-expenses"><h4>估计上市总开支</h4><dl class="deal-facts">${stat('总开支 · HKDm',money(f.estimatedExpensesHkd))}${stat('占发售总额',feePercent(f.estimatedExpenseBps))}${stat('估计净募资 · HKDm',money(f.netHkd))}</dl><p>${src(d.allotmentUrl,3,'配发')}</p></div></div></section>
+ <section class="deal-section" id="execution"><header><h3>执行参考与监管</h3><button type="button" data-open-regulatory="${escapeHtml(d.issuerId)}">同案监管进度 →</button></header>${p0RegulatoryTimeline(d.issuerId)}${d.execution.map(x=>`<article class="deal-execution"><h4>${escapeHtml(x.title)}</h4><p>${escapeHtml(x.fact)}</p><p>${escapeHtml(x.action)}</p><div>${x.pages.map(p=>src(d.prospectusUrl,p,'招股书')).join(' · ')}</div></article>`).join('')}</section></article>`;
 }
+
 function renderDossiers() {
-  const root = document.getElementById("dossierCards");
-  if (!root) return;
-  const all = eligibleOfferingDossiers(), query = normalizeSearchText(state.dossierQuery);
-  const rows = all.filter(d => !query || normalizeSearchText([d.issuer,d.code,d.issuerId,...d.execution.flatMap(x=>[x.title,x.fact,x.action]),...d.float.accounts.flatMap(x=>[x.displayName,x.legalHolder,x.economicParty])].join(" ")).includes(query));
-  document.getElementById("dossierSearch").value = state.dossierQuery;
-  document.getElementById("dossierCount").textContent = `新股发行 · ${rows.length} / ${all.length} 家`;
-  root.innerHTML = rows.map(renderDossier).join("") || '<p class="muted">没有匹配的发行资料</p>';
+ const root=document.getElementById('dossierCards');if(!root)return;
+ const round=state.roundId||state.dossierId,row=eligibleFeeRoster().find(r=>r.id===round),full=eligibleOfferingDossiers().find(d=>d.roundId===round);
+ document.querySelector('#dossiersView .offering-toolbar').hidden=true;document.querySelector('#dossiersView .offering-toolbar').style.display='none';document.getElementById('dossierCount').hidden=true;
+ document.getElementById('dossierReturn').innerHTML=`<button type="button" data-return-context>← 返回新股与费用${history.state?.fromUrl?'（已保留筛选）':''}</button><span>${row?`本轮招股 ${row.prospectusDate||'—'}`:''}</span>`;
+ root.innerHTML=full?renderDossier(full):row?p0StandardDossier(row):'<div class="empty-state-row">未找到该发行轮次。<button type="button" data-return-context>返回发行总表</button></div>';
 }
-function openOfferingDossier(roundId, section = "") {
-  if (!eligibleOfferingDossiers().some(d=>d.roundId === roundId)) return false;
-  state.dossierId = roundId;
-  state.dossierSection = section;
-  state.dossierQuery = "";
-  closeDetail();
-  switchView("dossiers");
-  return true;
+
+function openOfferingDossier(roundId, section="") {
+  if(!eligibleFeeRoster().some(r=>r.id===roundId))return false;
+  state.roundId=roundId;state.dossierId=roundId;state.dossierSection=section;state.peek='';
+  closeDetail(false);switchView('dossiers');
+  document.querySelector('#dossierReturn button')?.focus({preventScroll:true});return true;
 }
 
 function renderOfferingSources(facts, notice) {
@@ -3406,7 +3573,7 @@ function compareSortKeys(aKey, bKey) {
 }
 
 function getFilteredRecords() {
-  const rows = getBaseFilteredRecords();
+  const rows = getBaseFilteredRecords().filter(r=>!state.cohort||p0CohortEntry(r)?.month===state.cohort);
   const direction = state.sortDir === "asc" ? 1 : -1;
   const decorated = rows.map((record) => {
     const key = sortKey(record, state.sortField);
@@ -3568,68 +3735,15 @@ function renderDurationMetric(metric, stats) {
   `;
 }
 
-function renderMetrics(records) {
-  const statusCounts = new Map();
-  for (const record of records) {
-    const key = publicStatusKey(record.status);
-    statusCounts.set(key, (statusCounts.get(key) || 0) + 1);
-  }
-  const statuses = new Set([...Object.keys(state.data?.meta?.statusLabels || statusLabels).map(publicStatusKey), ...statusCounts.keys()]);
-  const statusHtml = [...statuses].map((status) => {
-    const count = statusCounts.get(status) || 0;
-    const active = state.status !== "all" && publicStatusKey(state.status) === status;
-    return `<button type="button" data-count-status="${escapeHtml(status)}" aria-pressed="${active}">${escapeHtml(statusLabel(status))} ${formatNumber(count, "integer")}</button>`;
-  }).join("");
-  const metricSet = currentMetricDefinitions();
-  const titleZh = state.hkexStage === "listed" ? "已上市样本" : "筛选结果";
-  const titleEn = state.hkexStage === "listed" ? "Listed issuers" : "Filtered issuers";
-
-  const html = [
-    `
-      <article class="metric metric-count">
-        <div class="metric-title">
-          <span class="metric-zh">${titleZh}</span>
-          <span class="metric-en">${titleEn}</span>
-        </div>
-        <div class="metric-value">${formatNumber(records.length, "integer")}</div>
-        <div class="status-mini">${statusHtml}</div>
-      </article>
-    `,
-    ...metricSet.map((metric) => renderDurationMetric(metric, statsFor(records, metric)))
-  ];
-  document.getElementById("metricsGrid").innerHTML = html.join("");
+function renderMetrics() {
+ const records=getBaseFilteredRecords(),root=document.getElementById('metricsGrid'),groups=p0Cohorts(records),labels={a1ToReceived:'备案接收',receivedToNotice:'通知签发',a1ToListing:'A1 至上市'};
+ const max=Math.max(1,...groups.flatMap(g=>[g.p75||0,g.wait||0]));
+ root.innerHTML=`<section class="cohort-panel${state.cohortCollapsed?' is-collapsed':''}"><header><nav aria-label="监管阶段">${Object.entries(labels).map(([k,label])=>`<button type="button" data-cohort-metric="${k}" aria-pressed="${state.cohortMetric===k}">${label}</button>`).join('')}</nav><button type="button" data-cohort-collapse aria-label="${state.cohortCollapsed?'展开月度图':'收起月度图'}" aria-expanded="${!state.cohortCollapsed}">${state.cohortCollapsed?labels[state.cohortMetric]+' ↓':'收起 ↑'}</button></header>${state.cohortCollapsed?p0FoldedCohort(records):`<div class="cohort-labels"><span>起始月</span><span>中位 · P25–P75 · ${state.dayCountMode==='business'?'工作日':'自然日'}</span><span>完成 / 有效</span></div><div class="cohort-months">${groups.length?groups.map(g=>`<button type="button" class="cohort-month${state.cohort===g.month?' is-active':''}" data-cohort-month="${g.month}" title="${g.month}：完成 ${g.n}/${g.N}；${g.n?`中位 ${formatDayValue(g.mid)}，P25–P75 ${formatDayValue(g.p25)}–${formatDayValue(g.p75)}`:'尚无完成样本'}${g.wait!==null?`；在途 ${g.pending} 家，中位已等待 ${formatDayValue(g.wait)} 天（最短 ${formatDayValue(g.waitMin)} 天）`:''}"><time>${g.month}</time><span class="cohort-track">${g.n>=5?`<i class="cohort-iqr" style="left:${g.p25/max*75}%;width:${Math.max(1,(g.p75-g.p25)/max*75)}%"></i><i class="cohort-median" style="left:${g.mid/max*75}%"></i>`:''}${g.wait!==null?`<i class="cohort-wait" style="width:${g.wait/max*75}%"></i>`:''}<b>${g.n?formatDayValue(g.mid)+'d':''}${g.n<5&&g.n?' · 小样本':''}${g.wait!==null?` <em>≥${formatDayValue(g.wait)}d</em>`:''}</b></span><span>${g.n}/${g.N}</span></button>`).join(''):'<span>当前筛选暂无有效月度样本</span>'}</div><p class="cohort-key">实线：办结中位及四分位；虚线：在途中位已等待。${state.cohort?`<button type="button" data-cohort-month="">全部月份 ×</button>`:''}<time>截至 ${state.data.meta.generatedAt.slice(0,10)}</time></p>`}</section>`;
 }
 
 function renderDays(record) {
-  const days = (metric) => durationValueForStats(record, {metric});
-  if (state.hkexStage === "listed") {
-    return `
-      <div class="days-cell">
-        <div class="days-cell-mode">${dayUnitLabel()}</div>
-        <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayValue(days("a1ToNotice"))}</strong></div>
-        <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayValue(days("a1ToListing"))}</strong></div>
-      </div>
-    `;
-  }
-  const received = days("a1ToReceived");
-  const current = days("currentA1ToReceived");
-  const currentReceivedLine = Number.isFinite(current) && current !== received
-    ? `<div><span>当前A1至接收</span><strong>${formatDayValue(current)}</strong></div>`
-    : "";
-  const listingDays = days("a1ToListing");
-  const allStageListingLine = state.hkexStage === "all" && typeof listingDays === "number"
-    ? `<div class="days-cell-listing"><span title="首次A1至上市 First A1 to HKEX listing">A1→上市</span><strong>${formatDayValue(listingDays)}</strong></div>`
-    : "";
-  return `
-    <div class="days-cell">
-      <div class="days-cell-mode">${dayUnitLabel()}</div>
-      <div><span>${record.a1ReceiptTiming ? "A1至接收（同轮较长）" : "A1至接收"}</span><strong>${formatDayValue(received)}</strong></div>
-      ${currentReceivedLine}
-      <div><span>接收至通知</span><strong>${formatDayValue(days("receivedToNotice"))}</strong></div>
-      <div><span>备案锚点（A1日）至通知</span><strong>${formatDayValue(days("a1ToNotice"))}</strong></div>
-      ${allStageListingLine}
-    </div>
-  `;
+ const entry=p0CohortEntry(record,state.cohortMetric),v=durationValueForStats(record,{metric:state.cohortMetric});
+ return `<span class="single-days">${typeof v==='number'?formatDayValue(v)+'d':entry?.pending?'已等 '+formatDayValue(entry.days)+'d':'—'}</span>`;
 }
 
 function renderPagination(total, pageCount, startIndex, endIndex) {
@@ -3659,30 +3773,18 @@ function renderPagination(total, pageCount, startIndex, endIndex) {
 
 let lastModalTrigger = null;
 
-function closeDetail() {
-  const modal = document.getElementById("detailModal");
-  if (!modal || !modal.classList.contains("is-open")) return;
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-  if (lastModalTrigger && document.contains(lastModalTrigger)) lastModalTrigger.focus();
-  lastModalTrigger = null;
+function closeDetail(updateLocation=true) {
+ const modal=document.getElementById('detailModal');if(!modal?.classList.contains('is-open'))return;
+ modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';
+ const focus=lastModalTrigger;lastModalTrigger=null;if(focus&&document.contains(focus))focus.focus({preventScroll:true});
+ if(updateLocation!==false&&state.peek){state.peek='';if(history.state?.fromUrl)history.back();else syncUrl();}
 }
 
-function openDetail(recordId) {
-  const record = state.data.records.find((item) => item.id === recordId);
-  if (!record) return;
-  state.selectedId = recordId;
-  lastModalTrigger = document.activeElement;
-  renderDetail(record);
-  const modal = document.getElementById("detailModal");
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  document.getElementById("detailClose")?.focus();
-  document.querySelectorAll("#trackerRows [data-record-id]").forEach((row) => {
-    row.classList.toggle("is-selected", row.dataset.recordId === recordId);
-  });
+function openDetail(recordId, updateLocation=true, trigger=document.activeElement) {
+ const record=state.data?.records.find(r=>r.id===recordId);if(!record)return;
+ if(updateLocation){p0SaveLocation(trigger);const from=location.pathname+location.search;state.peek=recordId;syncUrl('push',from);}
+ state.selectedId=recordId;lastModalTrigger=trigger;renderDetail(record);
+ const modal=document.getElementById('detailModal');modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.getElementById('detailClose')?.focus();
 }
 
 function trapModalFocus(event) {
@@ -3701,8 +3803,8 @@ function trapModalFocus(event) {
   }
 }
 
-function selectRecord(recordId) {
-  openDetail(recordId);
+function selectRecord(recordId, trigger=document.activeElement) {
+  openDetail(recordId,true,trigger);
 }
 
 function focusRecordInTable(recordId, sortField, sortDir) {
@@ -3741,11 +3843,11 @@ function renderRows() {
     const visibleColumnCount = state.hkexStage === "all" ? 12 : 10;
     document.getElementById("trackerRows").innerHTML = `
       <tr>
-        <td colspan="${visibleColumnCount}" class="muted empty-row">${emptyMessage}</td>
+        <td colspan="${visibleColumnCount}" class="muted empty-row">${isLoadFailure?emptyMessage:p0EmptyState('tracker',getBaseFilteredRecords().length)}</td>
       </tr>
     `;
     document.getElementById("paginationBar").innerHTML = "";
-    closeDetail();
+    closeDetail(false);
     return;
   }
 
@@ -4259,27 +4361,223 @@ function trackerTitle() {
   return stageTitles[state.hkexStage] || "监管节奏追踪";
 }
 
-function switchView(view, updateLocation = true) {
-  state.view = viewTitles[view] ? view : "tracker";
-  const stagePanel = document.getElementById("listingStagePanel");
-  if (stagePanel) stagePanel.style.display = state.view === "tracker" ? "" : "none";
-  document.getElementById("viewTitle").textContent = state.view === "tracker"
-    ? trackerTitle()
-    : (viewTitles[state.view] || "追瑞");
-  document.querySelectorAll(".nav-item").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.view === state.view);
-  });
-  const activeNav = document.querySelector(`.nav-item[data-view="${state.view}"]`);
-  activeNav?.scrollIntoView({ block: "nearest", inline: "center" });
-  document.querySelectorAll(".view-panel").forEach((panel) => {
-    panel.classList.remove("is-visible");
-  });
-  document.getElementById(`${state.view}View`)?.classList.add("is-visible");
-  if (state.view === "offerings") renderOfferings();
-  if (state.view === "fees") renderFeeComparison();
-  if (state.view === "dossiers") renderDossiers();
-  document.getElementById("sourcePill").textContent = state.view === "dossiers" ? `新股发行 · ${eligibleOfferingDossiers().length} 家` : `公开披露 · ${formatNumber(state.data?.records?.length || 0,"integer")} 家`;
-  if (updateLocation) syncUrl();
+const transactionOpened = new Set();
+const transactionRoles = { FA:"FA 财务顾问", IFA:"IFA 独立财务顾问", Accountant:"会计师", Valuer:"估值师", IndependentExpertAU:"澳洲独立专家" };
+const transactionServices = {scheme_opinion:"私有化独立意见",offer_opinion:"要约独立意见",offer_advice:"要约财务顾问",takeovers_profit_forecast:"收购守则盈利预测报告",property_valuation:"物业估值",vessel_valuation:"船舶估值",acquisition_due_diligence:"收购及尽职审查",rto_opinion:"反向收购独立意见",australian_scheme_expert:"澳洲安排计划独立专家报告"};
+const transactionEvents = {first_announcement:"首次公告",dispatch:"通函／计划文件寄发",vote:"股东批准",court_sanction:"法院批准",effective:"计划生效",delisting:"撤销上市",control_completion:"控股权交割",completion:"合并完成",implementation:"计划实施及介绍上市",terminated:"协议终止"};
+const transactionMetricLabels = {last_full_day_premium_pct:"较最后交易日收盘溢价",vote_for_pct:"赞成票／无利害关系已投票",against_total_disinterested_pct:"反对票／全部无利害关系股份"};
+function normalizeTransactionText(value) { return String(value || "").normalize("NFKC").toLowerCase().replace(/[\s:：()（）.\-]/g, ""); }
+function transactionMatches(row, filters = state, asOf = state.transactionData?.asOf) {
+  if (filters.transactionCategory === "reorganisation" ? !["reverse_takeover","holding_substitution"].includes(row.category) : filters.transactionCategory !== "all" && row.category !== filters.transactionCategory) return false;
+  if (filters.transactionStatus !== "all" && row.stage.status !== filters.transactionStatus) return false;
+  if(filters.transactionRule && filters.transactionRule!=="all" && !row.rules.some(r=>r.code===filters.transactionRule))return false;
+  if(filters.transactionCurrency && filters.transactionCurrency!=="all" && !row.terms.some(t=>t.currency===filters.transactionCurrency))return false;
+  if (!row.mandates.some(m => (!filters.transactionAdvisor || filters.transactionAdvisor==="all" || m.firm===filters.transactionAdvisor) && (filters.transactionRole === "all" || m.role === filters.transactionRole) && (filters.transactionService === "all" || m.service === filters.transactionService))) return false;
+  if (filters.transactionRecent !== "all") {
+    const days = Number(filters.transactionRecent), age = (Date.parse(asOf) - Date.parse(row.progressDate)) / 86400000;
+    if (![30,90].includes(days) || age < 0 || age >= days) return false;
+  }
+  const text = normalizeTransactionText([row.name,row.code,...row.aliases,row.mechanism,...Object.values(row.parties),...row.rules.flatMap(r=>[r.code,r.label,r.application]),...row.mandates.flatMap(m=>[m.firm,m.role,transactionRoles[m.role],transactionServices[m.service],m.side,...(m.signatories||[])])].join(" "));
+  return String(filters.transactionQuery || "").trim().split(/\s+/).filter(Boolean).every(q=>text.includes(normalizeTransactionText(q)));
+}
+function transactionSource(evidence, text = "原件") {
+  const doc = state.transactionData?.documents?.[evidence?.documentId];
+  if (!doc) return "";
+  const pages = evidence.pages || [];
+  const suffix = pages.length ? ` · PDF ${pages.join("、")}页` : "";
+  return `<a class="transaction-source" href="${escapeHtml(doc.url + (pages.length ? `#page=${pages[0]}` : ""))}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(doc.title + ' · ' + doc.date)}">${escapeHtml(text + suffix)} ↗</a>`;
+}
+function transactionAmount(term) {
+  if (!term || !Number.isFinite(term.value)) return "—";
+  if (term.unit === "ratio") return term.value.toFixed(term.precision) + " : 1";
+  if (term.unit === "percent") return term.value.toFixed(term.precision) + "%";
+  const number = term.unit === "money" ? term.value / 1e6 : term.value;
+  const decimals = term.unit === "money" ? 2 : term.precision;
+  return `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}${number.toLocaleString("en-US",{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}${term.unit === "shares" ? " 股" : term.unit === "per_share" ? "／股" : "m"}`;
+}
+function transactionTerm(row, key) { return row.terms.find(t=>t.key === key); }
+function transactionSelection() {
+  const valid = new Set((state.transactionData?.cases || []).map(r=>r.id));
+  return [...new Set(state.transactionCompare.split(",").filter(id=>valid.has(id)))].slice(0,4);
+}
+function transactionComparisonRows(rows) {
+  const result = [ ["交易结构",r=>escapeHtml(r.mechanism)], ["已确认阶段",r=>`${escapeHtml(r.stage.label)}<small>${r.stage.date}</small>`] ];
+  const termKeys = ["scheme_cash","control_block","offer_value","offer_cash_cap","cash_settlement","proposed_purchase","translated_purchase","equity_value","asset_valuation","per_scheme_share","offer_price","issue_price","consideration_shares","exchange_ratio","enlarged_stake"];
+  for (const key of termKeys) {
+    const exemplar = rows.flatMap(r=>r.terms).find(t=>t.key === key);
+    if (exemplar) result.push([key==="consideration_shares"?"代价股份":exemplar.label,r=> { const t=transactionTerm(r,key); return t ? `<strong>${transactionAmount(t)}</strong><small>${escapeHtml(t.basis)}</small>${transactionSource(t.evidence)}` : "—"; }]);
+  }
+  for (const [key,label] of Object.entries(transactionMetricLabels)) {
+    if (rows.some(r=>Number.isFinite(r.comparables[key]))) result.push([label,r=>Number.isFinite(r.comparables[key]) ? `${r.comparables[key]}% ${transactionSource(r.comparisonEvidence[key])}` : "—"]);
+  }
+  for (const [key,label] of [["announcementToDispatch","首次公告 → 文件寄发"],["dispatchToVote","文件寄发 → 股东批准"],["voteToEffective","股东批准 → 计划生效"]]) {
+    if (rows.some(r=>Number.isInteger(r.intervals[key]))) result.push([label,r=>Number.isInteger(r.intervals[key]) ? `${r.intervals[key]} 天` : "—"]);
+  }
+  if(rows.some(r=>r.lifecycle)) result.push(["首次公告 → 完成／实施",r=>r.lifecycle?`<strong>${r.lifecycle.naturalDays} 天</strong><small>${r.lifecycle.start} → ${r.lifecycle.end}</small>`:"—"]);
+  result.push(["规则与分类",r=>r.rules.map(x=>`<div>${escapeHtml(x.label)}<small>${escapeHtml(x.application)}</small></div>`).join("")]);
+  result.push(["延寄与停复牌",r=>transactionProcess(r)],["中介与签署原件",r=>transactionMandates(r)]);
+  return result;
+}
+
+const transactionFilterControls=[["transactionSearch","transactionQuery"],["transactionCategory","transactionCategory"],["transactionStatus","transactionStatus"],["transactionRole","transactionRole"],["transactionService","transactionService"],["transactionRecent","transactionRecent"],["transactionRule","transactionRule"],["transactionCurrency","transactionCurrency"],["transactionAdvisor","transactionAdvisor"]];
+const transactionProcessLabels={dispatch_extension:"寄发延期",supplement:"补充文件",court_rescheduled:"法院排期调整",trading_halt:"股份停牌",trading_resume:"股份复牌"};
+let transactionDisclosureState=new Map();
+function transactionRows(filters=state){return (state.transactionData?.cases||[]).filter(r=>transactionMatches(r,{...defaults,...filters})).sort((a,b)=>b.progressDate.localeCompare(a.progressDate));}
+function transactionCase(id){return (state.transactionData?.cases||[]).find(r=>r.id===id);}
+function transactionUrl(id="",mode="list"){
+ const p=new URLSearchParams(location.search);
+ for(const k of trackedStateKeys){p.delete(k);const v=state[k];if(v!==defaults[k]&&v!==""&&v!=null)p.set(k,String(v));}
+ for(const k of ["compare","mode","group","focus","from","to"])p.delete(k);
+ p.set("view","transactions");if(id)p.set("transactionId",id);else p.delete("transactionId");
+ if(mode==="compare")p.set("transactionMode","compare");else p.delete("transactionMode");
+ return location.pathname+"?"+p;
+}
+function transactionTitleLink(row,origin="list"){
+ return '<a class="transaction-title-link" data-tx-open="'+escapeHtml(row.id)+'" data-tx-origin="'+origin+'" href="'+escapeHtml(transactionUrl(row.id))+'">'+escapeHtml(row.name)+' <span>'+row.code+'</span></a>';
+}
+function transactionMandates(row){
+ return '<div class="transaction-mandates">'+row.mandates.map(m=>{
+  const signed=["scheme_opinion","takeovers_profit_forecast","property_valuation","vessel_valuation","rto_opinion","australian_scheme_expert"].includes(m.service);
+  return '<div data-tx-id="'+row.id+'"><b>'+escapeHtml(m.firm)+'</b><span>'+escapeHtml(transactionRoles[m.role])+' · '+escapeHtml(transactionServices[m.service])+'</span><small>'+escapeHtml(m.side)+'</small>'+transactionSource(m.evidence,signed?"签署报告":"角色原件")+(m.signatureEvidence?'<span class="transaction-signatories">'+escapeHtml(m.signatories.join(" · "))+'</span>'+transactionSource(m.signatureEvidence,"签字页"):"")+'</div>';
+ }).join("")+'</div>';
+}
+function transactionProcess(row){
+ return (row.processEvents||[]).map(e=>'<div class="transaction-process-event"><time>'+e.date+'</time><b>'+escapeHtml(transactionProcessLabels[e.kind])+'</b>'+(e.detail?'<span>'+escapeHtml(e.detail)+'</span>':"")+transactionSource(e.evidence)+'</div>').join("")||"—";
+}
+function transactionDisclosure(row,key,title,body){
+ const k=row.id+":"+key,open=transactionDisclosureState.has(k)?transactionDisclosureState.get(k):!window.matchMedia?.("(max-width: 767px)").matches;
+ return '<details class="transaction-section" data-tx-section="'+escapeHtml(k)+'"'+(open?" open":"")+'><summary>'+title+'</summary><div>'+body+'</div></details>';
+}
+function transactionDetail(row){
+ const headline=transactionTerm(row,row.headlineKey),sourceIds=new Set([...row.terms,...row.mandates,...row.mandates.filter(m=>m.signatureEvidence).map(m=>({evidence:m.signatureEvidence})),...row.rules,...row.events,...(row.processEvents||[])].map(x=>x.evidence.documentId));
+ const docs=[...sourceIds].map(id=>state.transactionData.documents[id]).sort((a,b)=>b.date.localeCompare(a.date));
+ const terms='<dl class="transaction-terms">'+row.terms.map(t=>'<div><dt>'+escapeHtml(t.label)+'</dt><dd><strong>'+transactionAmount(t)+'</strong><span>'+escapeHtml(t.basis)+'</span>'+transactionSource(t.evidence)+'</dd></div>').join("")+'</dl><dl class="transaction-parties">'+Object.entries(row.parties).map(([k,v])=>'<div><dt>'+escapeHtml(k)+'</dt><dd>'+escapeHtml(v)+'</dd></div>').join("")+'</dl>';
+ const timeline='<ol class="transaction-timeline">'+row.events.map(e=>'<li class="'+(e.state==="actual"?"is-actual":"is-scheduled")+'" data-tx-id="'+row.id+'"><time>'+e.date+'</time><div><b>'+escapeHtml(transactionEvents[e.kind])+(e.state!=="actual"?"（公告预计）":"")+'</b>'+(e.timeZone==="America/Cayman"?'<small>开曼当地日期</small>':e.timeZone==="Australia/Perth"?'<small>澳洲珀斯日期</small>':"")+transactionSource(e.evidence)+'</div></li>').join("")+'</ol>';
+ const rules='<div class="transaction-rules">'+row.rules.map(r=>'<div><b>'+escapeHtml(r.label)+'</b><span>'+escapeHtml(r.application)+'</span>'+transactionSource(r.evidence)+'</div>').join("")+'</div>';
+ const documents=docs.map(d=>'<div class="transaction-document"><time>文件 '+d.date+'</time><a href="'+escapeHtml(d.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(d.title)+' ↗</a>'+(d.publishedAt?'<small>发布 '+escapeHtml(d.publishedAt.slice(0,16).replace("T"," "))+' 香港</small>':"")+'</div>').join("");
+ return '<header class="transaction-detail-heading"><button type="button" data-tx-return>← 返回结果</button><h2 id="transactionDetailTitle" tabindex="-1">'+escapeHtml(row.name)+' <span>'+row.code+'</span></h2><p>'+escapeHtml(row.mechanism)+'</p><div class="transaction-detail-value"><span>'+escapeHtml(headline.label)+'</span><strong>'+transactionAmount(headline)+'</strong>'+transactionSource(headline.evidence)+'</div><p class="transaction-detail-status">'+escapeHtml(row.stage.label)+' · '+row.stage.date+'</p></header>'+
+ transactionDisclosure(row,"structure","交易结构",terms)+transactionDisclosure(row,"events","批准与交割",(row.lifecycle?'<p class="transaction-lifecycle"><strong>'+row.lifecycle.naturalDays+' 天</strong><span>首次公告 → '+escapeHtml(transactionEvents[row.lifecycle.endKind])+'</span></p>':"")+timeline)+
+ ((row.processEvents||[]).length?transactionDisclosure(row,"process","延寄与停复牌",transactionProcess(row)):"")+
+ transactionDisclosure(row,"mandates","中介与签署原件",transactionMandates(row))+transactionDisclosure(row,"rules","规则与分类",rules)+transactionDisclosure(row,"documents","公告与通函 · "+docs.length,documents);
+}
+function transactionSlots(ids=transactionSelection()){
+ if(!ids.includes(state.transactionA))state.transactionA=ids[0]||"";
+ if(!ids.includes(state.transactionB)||state.transactionB===state.transactionA)state.transactionB=ids.find(id=>id!==state.transactionA)||"";
+ return [state.transactionA,state.transactionB];
+}
+function transactionSlotClass(id){return id===state.transactionA?" tx-slot-a":id===state.transactionB?" tx-slot-b":"";}
+function updateTransactionSlots(){
+ transactionSlots();
+ document.querySelectorAll("#transactionComparison [data-tx-id]").forEach(el=>{
+  el.classList.toggle("tx-slot-a",el.dataset.txId===state.transactionA);
+  el.classList.toggle("tx-slot-b",el.dataset.txId===state.transactionB);
+ });
+ for(const slot of ["A","B"]){const select=document.getElementById("transactionSlot"+slot);if(select){select.value=state["transaction"+slot];Array.from(select.options||[]).forEach(o=>o.disabled=o.value===state["transaction"+(slot==="A"?"B":"A")]);}}
+}
+function renderTransactionComparison(){
+ const node=document.getElementById("transactionComparison"),ids=transactionSelection(),rows=ids.map(transactionCase);
+ node.hidden=state.transactionMode!=="compare";if(node.hidden){node.innerHTML="";return;}
+ transactionSlots(ids);
+ const slot=(key)=>'<label>'+key+'<select id="transactionSlot'+key+'" data-tx-slot="'+key+'" aria-label="对比槽位 '+key+'">'+rows.map(r=>'<option value="'+r.id+'"'+(state["transaction"+key]===r.id?' selected':"")+'>'+escapeHtml(r.name)+' '+r.code+'</option>').join("")+'</select></label>';
+ node.innerHTML='<header class="transaction-compare-heading"><button type="button" data-tx-return>← 返回交易列表</button><h2 id="transactionCompareTitle" tabindex="-1">并列比较 <span>'+rows.length+' / 4</span></h2><label class="transaction-differences"><input type="checkbox" id="transactionDifferences"'+(state.transactionDifferences==="true"?" checked":"")+'>仅看差异</label></header><div class="transaction-slot-switch">'+slot("A")+slot("B")+'</div><div class="transaction-compare-grid" style="--compare-count:'+Math.max(rows.length,1)+'"><div class="transaction-compare-row transaction-compare-names"><div>项目</div>'+rows.map(r=>'<div class="transaction-compare-cell'+transactionSlotClass(r.id)+'" data-tx-id="'+r.id+'">'+transactionTitleLink(r,"comparison")+'<button type="button" data-remove-comparison="'+r.id+'" aria-label="移除 '+escapeHtml(r.name)+'">移除</button></div>').join("")+'</div>'+transactionComparisonRows(rows).filter(([,cell])=>state.transactionDifferences!=="true"||new Set(rows.map(r=>cell(r).replace(/<a\b[^>]*>.*?<\/a>/gs,"").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim())).size>1).map(([label,cell])=>'<div class="transaction-compare-row"><div class="transaction-compare-label">'+escapeHtml(label)+'</div>'+rows.map(r=>'<div class="transaction-compare-cell'+transactionSlotClass(r.id)+'" data-tx-id="'+r.id+'">'+cell(r)+'</div>').join("")+'</div>').join("")+'</div>';
+ updateTransactionSlots();
+}
+function renderTransactions(){
+ const all=state.transactionData?.cases||[],ids=transactionSelection();state.transactionCompare=ids.join(",");
+ const options=(id,values,label)=>{const n=document.getElementById(id);n.innerHTML='<option value="all">'+label+'</option>'+values.map(([v,t])=>'<option value="'+escapeHtml(v)+'">'+escapeHtml(t)+'</option>').join("");};
+ const rules=new Map(all.flatMap(r=>r.rules.map(x=>[x.code,x.label])));options("transactionRule",[...rules],"全部规则");
+ options("transactionCurrency",[...new Set(all.flatMap(r=>r.terms.map(t=>t.currency)).filter(Boolean))].sort().map(x=>[x,x]),"全部币种");
+ options("transactionAdvisor",[...new Set(all.flatMap(r=>r.mandates.map(m=>m.firm)))].sort().map(x=>[x,x]),"全部机构");
+ for(const [id,key] of transactionFilterControls)document.getElementById(id).value=state[key];
+ const rows=transactionRows(),row=transactionCase(state.transactionId),compare=state.transactionMode==="compare";
+ document.getElementById("transactionCount").textContent=state.transactionData?"精选交易 "+rows.length+" / "+all.length+" 宗 · "+state.transactionData.asOf:"交易资料暂时无法读取";
+ const workspace=document.getElementById("transactionWorkspace");workspace.hidden=compare;workspace.classList.toggle("has-detail",!!row);
+ document.getElementById("transactionCards").innerHTML=rows.length?rows.map(r=>{
+  const t=transactionTerm(r,r.headlineKey);
+  return '<article class="transaction-result'+(r.id===state.transactionId?' is-selected':"")+'" data-transaction-id="'+r.id+'"><div class="transaction-result-title">'+transactionTitleLink(r)+'<button type="button" data-compare-transaction="'+r.id+'" aria-pressed="'+ids.includes(r.id)+'" aria-label="'+(ids.includes(r.id)?"取消比较 ":"加入比较 ")+escapeHtml(r.name)+'"'+(ids.length>=4&&!ids.includes(r.id)?" disabled":"")+'>'+(ids.includes(r.id)?"已选":"比较")+'</button></div><p>'+escapeHtml(r.mechanism)+'</p><div class="transaction-result-value"><span>'+escapeHtml(t.label)+'</span><strong>'+transactionAmount(t)+'</strong></div><div class="transaction-result-stage"><span>'+escapeHtml(r.stage.label)+'</span><time>'+r.stage.date+'</time></div></article>';
+ }).join(""):'<div class="transaction-empty"><p>未找到符合筛选的交易</p><button type="button" data-tx-reset>清除筛选</button></div>';
+ const detail=document.getElementById("transactionDetail");detail.hidden=!row;detail.innerHTML=row?transactionDetail(row):"";
+ const empty=document.getElementById("transactionDetailEmpty");empty.hidden=!!row;empty.textContent="选择交易查看结构、进度与签署原件";
+ const basket=document.getElementById("transactionBasket");basket.hidden=!ids.length;
+ basket.innerHTML=ids.length?'<span>已选 '+ids.length+' / 4 宗</span>'+ids.map(id=>{const r=transactionCase(id);return '<button type="button" data-remove-comparison="'+id+'" aria-label="移除 '+escapeHtml(r.name)+'">'+escapeHtml(r.name)+' ×</button>';}).join("")+'<button type="button" id="transactionCompareOpen" data-tx-compare-open'+(ids.length<2?" disabled":"")+'>并排对比 ('+ids.length+')</button><button type="button" data-clear-comparison>清空</button>':"";
+ renderTransactionComparison();
+}
+function openTransaction(id,trigger=document.activeElement){
+ if(!transactionCase(id))return false;
+ p0SaveLocation(trigger);const previous=location.pathname+location.search;state.transactionId=id;state.transactionMode="list";state.view="precedents";syncUrl("push",previous);renderTransactions();document.getElementById("transactionDetailTitle")?.focus({preventScroll:true});if(window.matchMedia?.("(max-width: 767px)").matches)window.scrollTo(0,0);return true;
+}
+function openTransactionComparison(trigger=document.activeElement){
+ if(transactionSelection().length<2)return false;
+ p0SaveLocation(trigger);const previous=location.pathname+location.search;state.transactionId="";state.transactionMode="compare";transactionSlots();syncUrl("push",previous);renderTransactions();document.getElementById("transactionCompareTitle")?.focus({preventScroll:true});window.scrollTo(0,0);return true;
+}
+function returnTransaction(){
+ if(history.state?.fromUrl){history.back();return;}
+ const id=state.transactionId;state.transactionId="";state.transactionMode="list";renderTransactions();syncUrl();
+ (document.querySelector('#transactionCards [data-tx-open="'+CSS.escape(id)+'"]')||document.getElementById("transactionSearch"))?.focus({preventScroll:true});
+}
+function openReorganisationExamples(trigger=document.activeElement){
+ p0SaveLocation(trigger);const previous=location.pathname+location.search;
+ for(const [,key] of transactionFilterControls)state[key]=defaults[key];
+ state.transactionCategory="reorganisation";state.transactionId="";state.transactionMode="list";state.view="precedents";
+ renderTransactions();syncUrl("push",previous);document.getElementById("transactionSearch")?.focus({preventScroll:true});
+}
+function resetTransactionFilters(){
+ for(const [,key] of transactionFilterControls)state[key]=defaults[key];renderTransactions();syncUrl();document.getElementById("transactionSearch")?.focus({preventScroll:true});
+}
+function transactionCompareAction(button){
+ const toggle=button.dataset.compareTransaction,remove=button.dataset.removeComparison,clear=button.hasAttribute("data-clear-comparison"),id=toggle||remove;
+ if(!toggle&&!remove&&!clear)return false;
+ let ids=transactionSelection();
+ if(clear)ids=[];else if(remove)ids=ids.filter(x=>x!==remove);else if(ids.includes(id))ids=ids.filter(x=>x!==id);else if(transactionCase(id)&&ids.length<4)ids.push(id);else return true;
+ state.transactionCompare=ids.join(",");if(ids.length<2&&state.transactionMode==="compare")state.transactionMode="list";
+ renderTransactions();syncUrl();
+ const focus=clear?document.getElementById("transactionSearch"):state.transactionMode==="compare"?document.querySelector("#transactionComparison [data-remove-comparison]"):document.querySelector('#transactionCards [data-compare-transaction="'+CSS.escape(id)+'"]')||document.querySelector('#transactionBasket [data-remove-comparison]')||document.getElementById("transactionSearch");
+ focus?.focus({preventScroll:true});return true;
+}
+function bindTransactionControls(){
+ for(const [id,key] of transactionFilterControls)document.getElementById(id).addEventListener(id==="transactionSearch"?"input":"change",e=>{state[key]=e.target.value;renderTransactions();syncUrl();});
+ document.getElementById("clearTransactions").addEventListener("click",resetTransactionFilters);
+ const root=document.getElementById("precedentsView");
+ root.addEventListener("click",e=>{
+  const a=e.target.closest("a[data-tx-open]");
+  if(a&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&(e.button==null||e.button===0)){e.preventDefault();openTransaction(a.dataset.txOpen,a);return;}
+  const b=e.target.closest("button");if(!b)return;
+  if(b.hasAttribute("data-tx-reorganisation")){openReorganisationExamples(b);return;}
+  if(transactionCompareAction(b))return;
+  if(b.hasAttribute("data-tx-return"))returnTransaction();
+  else if(b.hasAttribute("data-tx-compare-open"))openTransactionComparison(b);
+  else if(b.hasAttribute("data-tx-reset"))resetTransactionFilters();
+ });
+ root.addEventListener("toggle",e=>{if(e.target.dataset?.txSection&&e.target.isConnected)transactionDisclosureState.set(e.target.dataset.txSection,e.target.open);},true);
+ root.addEventListener("change",e=>{
+  const slot=e.target.dataset.txSlot;
+  if(slot){const value=e.target.value,other=slot==="A"?"B":"A";if(transactionSelection().includes(value)&&value!==state["transaction"+other]){state["transaction"+slot]=value;updateTransactionSlots();syncUrl();}return;}
+  if(e.target.id==="transactionDifferences"){state.transactionDifferences=e.target.checked?"true":"";renderTransactionComparison();syncUrl();document.getElementById("transactionDifferences")?.focus({preventScroll:true});}
+ });
+}
+window.YingSightTransactions=Object.freeze({schemaVersion:1,getCases:()=>structuredClone(state.transactionData?.cases||[]),select:filters=>structuredClone(transactionRows({...defaults,...filters})),getCase:id=>structuredClone(transactionCase(id)||null),getDocuments:()=>structuredClone(state.transactionData?.documents||{})});
+
+function switchView(view, updateLocation=true) {
+  const aliases={pace:"tracker",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};view=aliases[view]||view;
+  if(view==="offerings"){view="fees";state.feePhase="paused";}
+  if(["signals","research"].includes(view))view="tracker";
+  const previous=window.location.pathname+window.location.search;
+  const moved=p0CanonicalLocationView()!==view||(view==='dossiers'&&(new URLSearchParams(location.search).get('roundId')||new URLSearchParams(location.search).get('dossierId'))!==(state.roundId||state.dossierId));
+  if(updateLocation&&moved)p0SaveLocation();
+  state.view=viewTitles[view]?view:"tracker";
+  document.querySelectorAll('.view-panel').forEach(p=>p.classList.toggle('is-visible',p.id===`${state.view}View`));
+  const active=state.view==="dossiers"?"fees":state.view==="sponsorPk"?"sponsorLeaderboard":state.view;
+  document.querySelectorAll('.nav-item').forEach(n=>{n.classList.toggle('is-active',n.dataset.view===active);if(n.dataset.view===active)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current');});
+  document.getElementById('viewTitle').textContent=viewTitles[state.view]||'追瑞';
+  document.getElementById('mobileViewTitle').textContent=active==="fees"?'新股与费用':active==="sponsorLeaderboard"?'机构与保荐':active==="precedents"?'交易与重组':'监管节奏';
+  document.getElementById('sourcePill').textContent=state.view==='fees'?feeCoverageLabel():state.view==='dossiers'?'':state.view==='tracker'?`${state.data?.records?.length||0} 家发行人`:'';
+  document.getElementById('listingStagePanel').style.display=state.view==='tracker'?'':'none';
+  if(state.view==='fees')renderFeeComparison();
+  if(state.view==='dossiers')renderDossiers();
+  if(state.view==='precedents')renderTransactions();
+  if(state.view==='tracker'&&state.data)renderRows();
+  if(updateLocation){syncUrl(moved?'push':'replace',previous);if(moved){window.scrollTo(0,0);if(state.view==='dossiers')renderDossiers();}}
+  window.dispatchEvent(new CustomEvent('yingsight:view',{detail:{view:state.view,firm:state.firm}}));
 }
 
 function renderChrome() {
@@ -4296,7 +4594,7 @@ function renderChrome() {
       ? `上市市值覆盖 ${coverage.total} 家：已核实 ${coverage.verified} 家，估算 ${coverage.estimate} 家，未纳入 ${coverage.excluded} 家。 / Listing market caps: ${coverage.verified} verified, ${coverage.estimate} estimated, ${coverage.excluded} excluded (${coverage.total} total).`
       : "";
   }
-  document.getElementById("sourcePill").textContent = `公开披露 · ${formatNumber(summary.trackedIssuers || state.data.records.length, "integer")} 家`;
+  document.getElementById("sourcePill").textContent = state.view === "fees" ? feeCoverageLabel() : state.view === "dossiers" ? `新股发行 · ${eligibleOfferingDossiers().length} 家` : `公开披露 · ${formatNumber(summary.trackedIssuers || state.data.records.length, "integer")} 家`;
   document.getElementById("dataMode").textContent =
     meta.sourceMode === "live_snapshot" ? "公开资料" : "限量样本";
   document.getElementById("snapshotMeta").textContent =
@@ -4319,28 +4617,32 @@ function emptyPayload(message) {
 }
 
 function applyStateFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  for (const key of trackedStateKeys) {
-    if (!params.has(key)) continue;
-    const value = params.get(key);
-    if (key === "page") {
-      state.page = Math.max(1, Number(value) || 1);
-    } else if (value !== null) {
-      state[key] = value;
-    }
-  }
+  const p=new URLSearchParams(window.location.search);
+  for(const k of trackedStateKeys) state[k]=defaults[k];
+  for(const k of trackedStateKeys) if(p.has(k)) state[k]=["page","feePage"].includes(k)?Math.max(1,Math.floor(Number(p.get(k))||1)):k==="cohortCollapsed"?p.get(k)==="true":p.get(k);
+  const alias={pace:"tracker",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};state.view=alias[state.view]||state.view;
+  if(p.get("view")==="offerings"){state.view="fees";state.feePhase="paused";state.feeQuery=state.offeringQuery||state.feeQuery;}
+  if(p.has("group"))state.feePhase={paused:"paused",priced:"listed",other:"other"}[p.get("group")]||state.feePhase;
+  state.roundId=p.get("roundId")||p.get("dossierId")||"";state.dossierId=state.roundId;
+  if(p.get("structure")==="AH")state.structure="a_h";
+  if(p.has("focus"))state.feeRoundId=p.get("focus");
+  if(p.has("compare"))state[state.view==="precedents"?"transactionCompare":"feeCompare"]=p.get("compare");
+  if(state.view==="precedents"&&p.get("mode")==="compare")state.transactionMode="compare";
+  if(p.has("from"))state[state.view==="fees"?"feeDateFrom":"dateFrom"]=p.get("from");
+  if(p.has("to"))state[state.view==="fees"?"feeDateTo":"dateTo"]=p.get("to");
 }
 
-function syncUrl() {
-  const params = new URLSearchParams();
-  for (const key of trackedStateKeys) {
-    const value = state[key];
-    if (value === defaults[key] || value === "" || value === null || value === undefined) continue;
-    params.set(key, String(value));
-  }
-  const query = params.toString();
-  const nextUrl = `${window.location.pathname}${query ? `?${query}` : ""}`;
-  window.history.replaceState(null, "", nextUrl);
+function syncUrl(mode="replace", fromUrl="") {
+  const p=new URLSearchParams(window.location.search);
+  for(const k of trackedStateKeys){p.delete(k);const v=state[k];if(v!==defaults[k]&&v!==""&&v!==null&&v!==undefined)p.set(k,String(v));}
+  p.set("view",({tracker:"pace",sponsorLeaderboard:"sponsors",dossiers:"dossier",precedents:"transactions"})[state.view]||state.view);
+  if(state.view==="dossiers"){p.set("roundId",state.roundId||state.dossierId);p.delete("dossierId");}
+  else {p.delete("roundId");p.delete("dossierId");}
+  for(const k of ["group","focus","compare","mode","from","to"])p.delete(k);
+  const next=window.location.pathname+"?"+p;
+  const current=window.history.state||{};
+  if(mode==="push")window.history.pushState({fromUrl,scrollY:0,triggerSelector:p0LastTrigger},"",next);
+  else window.history.replaceState({...current,scrollY:window.scrollY},"",next);
 }
 
 function syncControls() {
@@ -4429,10 +4731,12 @@ async function loadData() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return response.json();
   };
-  const [tracker, fees, dossiers] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL), read(OFFERING_DOSSIERS_URL)]);
+  const [tracker, fees, dossiers, transactions, roster] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL), read(OFFERING_DOSSIERS_URL), read(TRANSACTION_CASES_URL), read(FEE_ROSTER_URL)]);
   state.data = tracker.status === "fulfilled" ? tracker.value : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   state.feeData = fees.status === "fulfilled" ? fees.value : null;
+  state.feeRosterData = roster.status === "fulfilled" ? roster.value : null;
   state.dossierData = dossiers.status === "fulfilled" ? dossiers.value : null;
+  state.transactionData = transactions.status === "fulfilled" ? transactions.value : null;
   stageCountsCache = null;
   sponsorShortNameCache.clear();
   for (const record of state.data.records || []) {
@@ -4450,6 +4754,7 @@ async function loadData() {
   syncControls();
   render();
   switchView(state.view, false);
+  if(state.peek)openDetail(state.peek,false);
   window.setTimeout(() => setLoading(false), 160);
 }
 
@@ -4459,6 +4764,7 @@ function render() {
   renderOfferings();
   renderFeeComparison();
   renderDossiers();
+  renderTransactions();
 }
 
 document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
@@ -4560,11 +4866,11 @@ trackerRowsBody.addEventListener("click", (event) => {
     const record = state.data.records.find(item => item.id === offering.dataset.offeringId);
     state.offeringQuery = currentOfferingNotice(record)?.stockCode || "";
     closeDetail();
-    switchView("offerings");
+    state.feeQuery=state.offeringQuery;switchView("offerings");
     return;
   }
   const row = event.target.closest("[data-record-id]");
-  if (row) selectRecord(row.dataset.recordId);
+  if (row) selectRecord(row.dataset.recordId, row);
 });
 trackerRowsBody.addEventListener("keydown", (event) => {
   if (event.target.closest("[data-offering-id]")) return;
@@ -4572,7 +4878,7 @@ trackerRowsBody.addEventListener("keydown", (event) => {
   const row = event.target.closest("[data-record-id]");
   if (!row) return;
   event.preventDefault();
-  selectRecord(row.dataset.recordId);
+  selectRecord(row.dataset.recordId, row);
 });
 
 document.getElementById("metricsGrid").addEventListener("click", (event) => {
@@ -4595,7 +4901,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.getElementById("clearFilters").addEventListener("click", () => {
-  updateTracker({ ...defaults, view: state.view, hkexStage: state.hkexStage });
+  p0Reset('tracker');
 });
 
 document.getElementById("refreshButton").addEventListener("click", loadData);
@@ -4619,24 +4925,19 @@ document.getElementById("offeringCards").addEventListener("click", event => {
 
 document.getElementById("feeSearch").addEventListener("input", event => {
   state.feeQuery = event.target.value;
+  state.feePage = 1;
   renderFeeComparison();
   syncUrl();
 });
 document.getElementById("clearFeeSearch").addEventListener("click", () => {
   state.feeQuery = "";
+  state.feePage = 1;
   renderFeeComparison();
   syncUrl();
   document.getElementById("feeSearch").focus();
 });
-document.getElementById("feeComparison").addEventListener("click", event => {
-  const button = event.target.closest("[data-fee-detail]");
-  if (!button) return;
-  const dossier = eligibleOfferingDossiers().find(d=>d.issuerId === button.dataset.feeDetail);
-  if (dossier && openOfferingDossier(dossier.roundId,"fees")) return;
-  openDetail(button.dataset.feeDetail);
-  const disclosure = document.querySelector("#issuerDetail .fee-disclosure");
-  if (disclosure) { disclosure.open = true; disclosure.scrollIntoView({block: "center"}); }
-});
+document.getElementById("feesView").addEventListener("click", handleFeeRosterClick);
+document.getElementById("feesView").addEventListener("change", handleFeeRosterChange);
 
 document.getElementById("dossierSearch").addEventListener("input", event => {
   state.dossierQuery = event.target.value;
@@ -4650,12 +4951,143 @@ document.getElementById("clearDossierSearch").addEventListener("click", () => {
 });
 document.getElementById("dossierCards").addEventListener("click", event => {
   if (event.target.closest("[data-dossier-fee-comparison]")) {
-    state.feeQuery = "";
+    state.feePhase = "listed";
+    state.feeRoundId = state.dossierId || eligibleOfferingDossiers()[0]?.roundId || "";
     switchView("fees");
   }
 });
 
+let p0LastTrigger='';
+let p0FeeCompareExpanded=null;
+function p0FeeCompareRows(all=eligibleFeeRoster()) {
+ const eligible=new Map(all.filter(r=>r.route==='listed_offering').map(r=>[r.id,r]));
+ return [...new Set(String(state.feeCompare||'').split(',').map(id=>id.trim()))].map(id=>eligible.get(id)).filter(Boolean).slice(0,4);
+}
+function p0FeeCompareButton(r) {
+ if(state.feePhase!=='listed'||r.route!=='listed_offering')return '';
+ const selected=p0FeeCompareRows(),active=selected.some(row=>row.id===r.id),limit=selected.length>=4&&!active;
+ return `<button type="button" class="fee-compare-toggle" data-fee-compare-toggle="${escapeHtml(r.id)}" aria-pressed="${active}" aria-label="${active?'取消对比':'加入对比'} ${escapeHtml(r.name)} ${r.code}"${limit?' disabled':''}>${active?'已选':'＋对比'}</button>`;
+}
+function p0SponsorFeeHtml(r) {
+ const sp=r.sponsorFee,scope={sole_sponsor:'独家',engagement:'整单',per_sponsor:'每家',joint_aggregate:'联席合计'};
+ return sp?`${feeRosterSource(sp.source,(sp.approximate?'约 ':'')+sp.currency+' '+feeRosterMillion(sp.value)+'m')}<small>${scope[sp.scope]||''}</small>`:p0Missing(r.feeStates?.sponsor);
+}
+function p0RenderFeeCompareSelection(all) {
+ const root=document.getElementById('feeSelection');if(!root)return;
+ const previous=root.querySelector('details[data-fee-compare-details]');
+ if(previous?.tagName==='DETAILS')p0FeeCompareExpanded=previous.open;
+ const selected=p0FeeCompareRows(all);
+ if(state.feeRosterData?.schemaVersion===3&&Array.isArray(state.data?.records))state.feeCompare=selected.map(r=>r.id).join(',');
+ if(state.feePhase!=='listed'||!selected.length){root.innerHTML='';return;}
+ const count=selected.length,basis=state.shoeBasis==='actual'?'绿鞋后实际额':'绿鞋前最终额';
+ const open=p0FeeCompareExpanded??!window.matchMedia?.('(max-width:767px)').matches;
+ const columns=selected.map(r=>{
+  const amount=p0FeeAmount(r,state.shoeBasis),gross=feeRosterGross(r),source=r[state.shoeBasis]?.gross?.sources?.[0];
+  const grossLink=source?.url?source.url+(source.page?'#page='+source.page:''):'';
+  const sources=[...new Set([r.commissionSource,r.discretionarySource].filter(Boolean))].map(url=>feeRosterSource(url,feeRosterSourceLabel(url,'条款'))).join(' · ');
+  return `<article class="fee-compare-column" data-fee-compare-round="${escapeHtml(r.id)}"><header><a href="${escapeHtml(p0DossierUrl(r.id))}" data-round-id="${escapeHtml(r.id)}"><strong>${escapeHtml(r.name)}</strong><span>${r.code} · ${r.listingDate}</span></a></header><dl><div><dt>规模 · HKDm</dt><dd${amount===null?'':` title="HKD ${offeringNumber(amount,2)}"`}>${amount===null?escapeHtml(gross):grossLink?feeRosterSource(grossLink,gross):escapeHtml(gross)}</dd></div><div><dt>固定佣金</dt><dd>${p0FeeRate(r,'fixed')}</dd></div><div><dt>酌情上限</dt><dd>${p0FeeRate(r,'extra')}</dd></div><div><dt>保荐费 · 原币</dt><dd>${p0SponsorFeeHtml(r)}</dd></div></dl><footer>${sources}</footer></article>`;
+ }).join('');
+ root.innerHTML=`<section class="fee-compare" aria-label="发售费用对比"><div class="fee-compare-bar"><span role="status" aria-live="polite">已选 ${count}/4${count===1?' · 再选 1 宗开始对比':count===4?' · 已达上限':''}</span><div class="fee-compare-picks">${selected.map(r=>`<button type="button" data-fee-compare-remove="${escapeHtml(r.id)}" aria-label="移除 ${escapeHtml(r.name)} ${r.code}" title="${escapeHtml(r.name)}">${r.code} ×</button>`).join('')}</div><button type="button" class="fee-compare-clear" data-fee-compare-clear>清空</button></div>${count>=2?`<details data-fee-compare-details${open?' open':''}><summary>对比条款 <span>${basis}</span></summary><div class="fee-compare-grid" style="--fee-compare-columns:${count}">${columns}</div></details>`:''}</section>`;
+}
+function p0HandleFeeCompareClick(el) {
+ const toggle=el.dataset.feeCompareToggle,remove=el.dataset.feeCompareRemove,clear=el.hasAttribute('data-fee-compare-clear');
+ if(!toggle&&!remove&&!clear)return false;
+ if(state.feePhase!=='listed')return true;
+ const selected=p0FeeCompareRows(),id=toggle||remove;
+ if(clear){state.feeCompare='';p0FeeCompareExpanded=null;}
+ else if(remove)state.feeCompare=selected.filter(r=>r.id!==remove).map(r=>r.id).join(',');
+ else {
+  const row=eligibleFeeRoster().find(r=>r.id===toggle&&r.route==='listed_offering');if(!row)return true;
+  const active=selected.some(r=>r.id===toggle);if(!active&&selected.length>=4)return true;
+  state.feeCompare=(active?selected.filter(r=>r.id!==toggle):[...selected,row]).map(r=>r.id).join(',');
+ }
+ renderFeeComparison();syncUrl();
+ const focus=clear?document.getElementById('feeSearch'):document.querySelector(`#feeComparison [data-fee-compare-toggle="${CSS.escape(id)}"]`)||document.querySelector('#feeSelection [data-fee-compare-remove]')||document.getElementById('feeSearch');
+ focus?.focus({preventScroll:true});return true;
+}
+
+function p0CanonicalLocationView(){const v=new URLSearchParams(location.search).get('view')||'pace';return({pace:'tracker',sponsors:'sponsorLeaderboard',dossier:'dossiers',offerings:'fees',transactions:'precedents'})[v]||v;}
+function p0SaveLocation(el=document.activeElement){p0LastTrigger=el?.dataset?.txOpen?('#'+(el.dataset.txOrigin==='comparison'?'transactionComparison':'transactionCards')+' [data-tx-open="'+CSS.escape(el.dataset.txOpen)+'"]'):el?.dataset?.compareTransaction?('#transactionCards [data-compare-transaction="'+CSS.escape(el.dataset.compareTransaction)+'"]'):el?.dataset?.recordId&&el.closest?.('#trackerRows')?`#trackerRows [data-record-id="${CSS.escape(el.dataset.recordId)}"]`:el?.dataset?.roundId?`${el.closest?.('#feeSelection')?'#feeSelection ':el.closest?.('#feeComparison')?'#feeComparison ':''}[data-round-id="${CSS.escape(el.dataset.roundId)}"]`:el?.id?`#${CSS.escape(el.id)}`:el?.dataset?.recordId?`[data-record-id="${CSS.escape(el.dataset.recordId)}"]`:'';history.replaceState({...history.state,scrollY:window.scrollY,triggerSelector:p0LastTrigger},'',location.href);}
+function p0DossierUrl(roundId){const p=new URLSearchParams(location.search);for(const k of trackedStateKeys){p.delete(k);const v=state[k];if(v!==defaults[k]&&v!==''&&v!==null&&v!==undefined)p.set(k,String(v));}for(const k of ['group','focus','compare','from','to'])p.delete(k);p.set('view','dossier');p.set('roundId',roundId);p.delete('dossierId');return location.pathname+'?'+p;}
+function p0FeeAmount(row,basis='offered'){if(row.route==='paused_offer')return null;const v=row[basis]?.gross?.value;return v==null?null:Number(v);}
+function p0SizeRange(c){if(c.min!==''&&c.min!=null||c.max!==''&&c.max!=null)return[c.min===''||c.min==null?null:Number(c.min)*1e6,c.max===''||c.max==null?null:Number(c.max)*1e6];return({'600_900':[600e6,900e6],under500:[null,500e6],over2000:[2000e6,null]})[c.sizeBand]||[null,null];}
+function p0ActualLabel(r){return r.actualStatus==='stabilising'?'稳定期中':'尚未核实';}
+function p0ShoeLabel(r){return({full_exercised:'绿鞋全额行使',partially_exercised:'绿鞋部分行使',not_exercised:'绿鞋未行使',no_option:'无绿鞋权',full:'绿鞋全额行使',partial:'绿鞋部分行使',exercised:'绿鞋已行使'})[r.shoe?.value]||(r.actualStatus==='stabilising'?'稳定期中':'');}
+function p0Missing(status){return `<span class="data-missing">${status==='undisclosed'?'未披露':status==='conditional'?'条件费率*':'待核实'}</span>`;}
+function p0FeeRate(r,key){const value=r[{fixed:'fixedBps',extra:'maximumExtraBps',upper:'upperBps'}[key]];if(value==null)return p0Missing(r.feeStates?.[key]);return key==='extra'&&value===0?'无 (0.00%)':feePercent(value);}
+function p0Quantile(values,p){if(!values.length)return null;const a=[...values].sort((a,b)=>a-b),i=(a.length-1)*p,l=Math.floor(i);return a[l]+(a[Math.ceil(i)]-a[l])*(i-l);}
+function p0FeeSummary(rows){const fields=[['规模',r=>p0FeeAmount(r,state.shoeBasis),v=>feeRosterMillion(v)+'m'],['固定',r=>r.fixedBps,v=>feePercent(v)],['酌情',r=>r.maximumExtraBps,v=>feePercent(v)]];return `<span>样本中位</span>`+fields.filter(f=>state.feePhase!=='paused'||f[0]!=='规模').map(([name,get,fmt])=>{const values=rows.map(get).filter(v=>typeof v==='number'&&Number.isFinite(v));return `<span title="P25–P75 ${values.length?fmt(p0Quantile(values,.25))+'–'+fmt(p0Quantile(values,.75)):'—'}">${name} <b>${values.length?fmt(p0Quantile(values,.5)):'—'}</b><small>n=${values.length}</small></span>`}).join('');}
+function p0EmptyState(view,count){const fields=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo']:['query','structure','industry','sponsor','status','dateFrom','dateTo','cohort'];const chips=fields.filter(k=>state[k]!==defaults[k]&&state[k]!==''&&state[k]!=null).map(k=>`<button type="button" data-clear-filter="${k}" data-filter-view="${view}">${escapeHtml(state[k])} ×</button>`).join('');return `<div class="empty-state-row"><p>未找到匹配当前筛选条件的项目</p><div>${chips}</div><button type="button" data-reset-view="${view}">清除全部筛选，恢复全量${count?` (${count})`:''}</button></div>`;}
+function p0Reset(view){const keys=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo','feeSort','feeSortDir','feePage']:['query','structure','industry','sponsor','status','dateFrom','dateTo','dateField','marketCapMin','marketCapMax','cohort','page','sortField','sortDir','daySortField'];for(const key of keys)state[key]=defaults[key];if(view==='fees')renderFeeComparison();else{syncControls();renderRows();}syncUrl();document.getElementById(view==='fees'?'feeSearch':'issuerSearch')?.focus();}
+function p0Return(){if(history.state?.fromUrl){history.back();return;}state.roundId='';state.dossierId='';switchView('fees');}
+function restoreFromUrl(){closeDetail(false);applyStateFromUrl();if(state.data){syncControls();render();switchView(state.view,false);if(state.peek)openDetail(state.peek,false);}const y=history.state?.scrollY||0,selector=history.state?.triggerSelector;requestAnimationFrame(()=>requestAnimationFrame(()=>{window.scrollTo(0,y);if(selector)document.querySelector(selector)?.focus({preventScroll:true});}));}
+function initP0(){window.addEventListener('popstate',restoreFromUrl);document.addEventListener('click',e=>{const el=e.target.closest('button');if(!el)return;if(el.dataset.resetView)p0Reset(el.dataset.resetView);if(el.dataset.clearFilter){state[el.dataset.clearFilter]=defaults[el.dataset.clearFilter];if(el.dataset.filterView==='fees')renderFeeComparison();else{syncControls();renderRows();}syncUrl();}if(el.hasAttribute('data-return-context'))p0Return();});}
+function p0RegulatoryTimeline(issuerId){const r=state.data.records.find(r=>r.id===issuerId);if(!r)return'';return `<ol class="deal-timeline">${[['首轮 A1',r.a1Date],['证监会接收',r.csrcFirstReceivedDate||r.csrcReceivedDate],['当前 A1',r.currentA1Date!==r.a1Date?r.currentA1Date:null],['备案通知',r.noticeDate],['挂牌',r.hkexListingDate]].filter(x=>x[1]).sort((a,b)=>a[1].localeCompare(b[1])).map(([name,date])=>`<li><b>${escapeHtml(name)}</b><time>${date}</time></li>`).join('')}</ol>`;}
+function p0StandardDossier(row){const record=state.data.records.find(r=>r.id===row.issuerId),notice=row.route==='paused_offer'?currentOfferingNotice(record):null;const heading=`<header class="deal-header"><div><p>${row.code} · ${row.noticeDate||row.date}</p><h2>${escapeHtml(row.name)}</h2></div><nav>${row.sources.slice(0,3).map((u,i)=>feeRosterSource(u,`原件 ${i+1} ↗`)).join(' ')}</nav></header>`;if(notice)return `<article class="deal-sheet" data-dossier-round="${escapeHtml(row.id)}">${heading}${p0PausedOverview(notice.research)}${renderOfferingResearch(notice.research,notice)}${renderOfferingSources(notice.research,notice)}</article>`;const stat=(k,v)=>`<div><dt>${k}</dt><dd>${v}</dd></div>`;return `<article class="deal-sheet" data-dossier-round="${escapeHtml(row.id)}">${heading}<dl class="deal-kpis">${stat('发行规模 · HKDm（绿鞋前）',row.offered?.gross?.value?feeRosterMillion(row.offered.gross.value):'—')}${stat('最终发售价 · HKD / 股',row.offered?.price?.value?offeringNumber(row.offered.price.value,2):'—')}${stat('固定承销佣金',p0FeeRate(row,'fixed'))}${stat('额外酌情上限',p0FeeRate(row,'extra'))}</dl><section class="deal-section"><h3>费用合同与保荐机构</h3><p>${row.institutions.map(i=>`<span title="${escapeHtml(i.legalName)}">${escapeHtml(i.legalName)}</span>`).join(' · ')}</p>${p0RoundFeeTerms(row)}<p>${feeRosterSource(row.commissionSource,'佣金原件 ↗')} · ${feeRosterSource(row.sponsorFee?.source,'保荐费原件 ↗')}</p></section><section class="deal-section"><header><h3>监管时间线</h3><button type="button" data-open-regulatory="${escapeHtml(row.issuerId)}">监管详情 →</button></header>${p0RegulatoryTimeline(row.issuerId)}</section></article>`;}
+function p0GlobalSearch(){const q=normalizeSearchText(document.getElementById('globalSearchInput').value),root=document.getElementById('globalSearchResults');if(!q){root.innerHTML='';return;}const rounds=eligibleFeeRoster().filter(r=>feeRosterSearchText(r).includes(q)).slice(0,6),docs=eligibleOfferingDossiers().filter(d=>normalizeSearchText([...d.execution.flatMap(x=>[x.title,x.fact,x.action]),...d.float.accounts.flatMap(a=>[a.displayName,a.structure,a.legalHolder,a.economicParty])].join(' ')).includes(q));const seen=new Set(rounds.map(r=>r.id));for(const d of docs)if(!seen.has(d.roundId)){const r=eligibleFeeRoster().find(r=>r.id===d.roundId);if(r)rounds.push(r);}const issuers=(state.data?.records||[]).filter(r=>normalizeSearchText([r.issuerName,r.csrcName,r.hkexCoverChineseName,r.aShareCode].join(' ')).includes(q)&&!rounds.some(o=>o.issuerId===r.id)).slice(0,5);const firms=[...new Map(eligibleFeeRoster().flatMap(r=>r.institutions).filter(i=>i.sponsorId&&normalizeSearchText(i.displayName+' '+i.legalName).includes(q)).map(i=>[i.sponsorId,i])).values()].slice(0,4);root.innerHTML=rounds.map(r=>`<a href="${escapeHtml(p0DossierUrl(r.id))}" data-global-round="${escapeHtml(r.id)}">${r.code} · ${escapeHtml(r.name)} <small>${r.route==='paused_offer'?r.statusLabel:'已上市 '+r.date}</small></a>`).join('')+issuers.map(r=>`<button type="button" data-global-issuer="${escapeHtml(r.id)}">${escapeHtml(nameParts(r).primary)} · ${escapeHtml(statusLabel(r.status))}</button>`).join('')+firms.map(i=>`<button type="button" data-global-firm="${escapeHtml(i.sponsorId)}">机构 · ${escapeHtml(i.displayName)}</button>`).join('')||'<p>未找到匹配的已收录资料</p>';}
+function p0CohortEntry(r,metric=state.cohortMetric){
+ if(isSpecialTimingRoute(r))return null;
+ const completed=durationValueForStats(r,{metric}),stage=hkexListingStage(r);let start,end;
+ if(metric==='a1ToReceived'){start=r.a1ReceiptTiming?.a1Date||(stage!=='listed'&&r.calendarDaysA1ToReceived>180?r.currentA1Date:r.a1Date);end=r.a1ReceiptTiming?.receivedDate||r.csrcReceivedDate;}
+ else if(metric==='receivedToNotice'){start=r.csrcReceivedDate;end=r.noticeDate;}else{start=r.a1Date;end=r.hkexListingDate;}
+ if(typeof completed==='number'&&start)return{month:start.slice(0,7),days:completed,pending:false};
+ if(stage!=='applying'||r.hkexApplicationStatusGroup!=='active'||end||r.hkexConfidentialFilingDate||(r.timelineFlags||[]).includes('confidential_route_suspected')||metric!=='a1ToListing'&&(r.csrcFilingRequired!==true||r.noticeSupersededByCurrentFiling)||metric==='a1ToReceived'&&(r.status!=='waiting_received'||r.csrcCurrentReceivedDate||r.csrcFirstReceivedDate))return null;
+ if(metric==='a1ToReceived')start=r.currentA1Date||r.a1Date;
+ const days=P0_WAITING.asOf===state.data.meta.generatedAt?.slice(0,10)&&P0_WAITING.dates[start]?P0_WAITING.dates[start][state.dayCountMode]:p0Elapsed(start,state.dayCountMode);if(!start||start<(state.data.meta.csrcRegimeEffectiveDate||'2023-03-31')||typeof days!=='number')return null;
+ return{month:start.slice(0,7),days,pending:true};
+}
+function p0Cohorts(records){const groups=new Map();for(const r of records){const e=p0CohortEntry(r);if(!e)continue;if(!groups.has(e.month))groups.set(e.month,{month:e.month,complete:[],waiting:[]});groups.get(e.month)[e.pending?'waiting':'complete'].push(e.days);}return [...groups.values()].sort((a,b)=>b.month.localeCompare(a.month)).map(g=>({month:g.month,n:g.complete.length,N:g.complete.length+g.waiting.length,pending:g.waiting.length,mid:p0Quantile(g.complete,.5),p25:p0Quantile(g.complete,.25),p75:p0Quantile(g.complete,.75),wait:p0Quantile(g.waiting,.5),waitMin:g.waiting.length?Math.min(...g.waiting):null}));}
+function p0RecentCohortSummary(records,asOf) {
+ const d=new Date(asOf+'T00:00:00Z');
+ if(Number.isNaN(d.getTime()))return null;
+ const end=asOf.slice(0,7);
+ d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()-2);
+ const start=d.toISOString().slice(0,7);
+ const groups={complete:[],waiting:[]};
+ for(const r of records){const e=p0CohortEntry(r);
+  if(e&&e.month>=start&&e.month<=end)groups[e.pending?'waiting':'complete'].push(e.days);
+ }
+ return {start,end,completeN:groups.complete.length,waitingN:groups.waiting.length,
+  completeMedian:p0Quantile(groups.complete,.5),waitingMedian:p0Quantile(groups.waiting,.5)};
+}
+function p0FoldedCohort(records) {
+ const v=p0RecentCohortSummary(records,state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf);
+ if(!v)return '';
+ const t=(n,count,min=1)=>min>1&&count<min?'样本未熟（'+count+' 宗）':count?formatDayValue(n)+' 天（'+count+' 宗）':'—';
+ return `<p class="cohort-key cohort-summary" title="${v.start} 至 ${v.end} · ${state.dayCountMode==='business'?'工作日':'自然日'}"><span>近三个月 · 办结中位 ${t(v.completeMedian,v.completeN,5)}</span><span>在途中位已等待 ${t(v.waitingMedian,v.waitingN)}</span></p>`;
+}
+function p0BindInteractions(){
+ const dialog=document.getElementById('globalSearchDialog'),input=document.getElementById('globalSearchInput');let searchTrigger=null;
+ const openSearch=()=>{searchTrigger=document.activeElement;dialog.showModal();input.focus();};
+ const closeSearch=()=>{dialog.close();searchTrigger?.focus({preventScroll:true});};
+ document.getElementById('globalSearchOpen').addEventListener('click',openSearch);document.getElementById('globalSearchClose').addEventListener('click',closeSearch);dialog.addEventListener('close',()=>searchTrigger?.focus({preventScroll:true}));input.addEventListener('input',p0GlobalSearch);
+ document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch();}else if(e.key==='/'&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();document.getElementById(state.view==='fees'?'feeSearch':state.view==='sponsorLeaderboard'?'slSearchInput':'issuerSearch')?.focus();}});
+ document.addEventListener('click',e=>{const el=e.target.closest('button,a');if(!el)return;
+ if(el.dataset.globalRound){if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();closeSearch();openOfferingDossier(el.dataset.globalRound);}
+ if(el.dataset.globalIssuer){closeSearch();switchView('tracker');openDetail(el.dataset.globalIssuer);}
+ if(el.dataset.globalFirm){closeSearch();state.firm=el.dataset.globalFirm;switchView('sponsorLeaderboard');}
+ if(el.dataset.sameSize){if(p0HasFeeOrigin()){history.back();return;}state.feePhase='listed';state.feeQuery='';state.feeIndustry='all';state.feeInstitution='all';state.feeCurrency='all';state.feeType='all';state.feeDateFrom='';state.feeDateTo='';state.feeMin='';state.feeMax='';state.sizeBand='600_900';state.shoeBasis='offered';state.feeRoundId=el.dataset.sameSize;state.feePage=1;switchView('fees');}
+ if(el.dataset.openRegulatory){switchView('tracker');openDetail(el.dataset.openRegulatory);}
+ if(el.dataset.cohortMetric){state.cohortMetric=el.dataset.cohortMetric;state.cohort='';state.daySortField=dayMetricField(state.cohortMetric);state.sortField=state.daySortField;state.page=1;syncControls();renderRows();syncUrl();document.querySelector(`[data-cohort-metric="${state.cohortMetric}"]`)?.focus({preventScroll:true});}
+ if(el.hasAttribute('data-cohort-month')){state.cohort=state.cohort===el.dataset.cohortMonth?'':el.dataset.cohortMonth;state.page=1;renderRows();syncUrl();document.querySelector('.tracker-table thead')?.focus({preventScroll:true});}
+ if(el.hasAttribute('data-cohort-collapse')){state.cohortCollapsed=!state.cohortCollapsed;renderRows();syncUrl();const target=state.cohortCollapsed?document.querySelector('.tracker-table thead'):document.querySelector('[data-cohort-collapse]');target?.focus({preventScroll:true});target?.scrollIntoView({block:'nearest'});}
+ if(el.dataset.sponsorWorkbench)switchView(el.dataset.sponsorWorkbench==='compare'?'sponsorPk':'sponsorLeaderboard');
+ });
+}
+
+function p0PausedOverview(f){const stat=(label,value,exact="")=>`<div><dt>${label}</dt><dd${exact?` title="${escapeHtml(exact)}"`:""}>${value}</dd></div>`;return `<dl class="deal-kpis">${stat('计划发售总额 · HKDm',f.priceLow==null?'最高 '+feeRosterMillion(f.offerShares*f.priceHigh):feeRosterMillion(f.offerShares*f.priceLow)+'–'+feeRosterMillion(f.offerShares*f.priceHigh),f.priceLow==null?'最高 HKD '+offeringNumber(f.offerShares*f.priceHigh):'HKD '+offeringNumber(f.offerShares*f.priceLow)+'–'+offeringNumber(f.offerShares*f.priceHigh))}${stat('计划上市市值 · HKDm',feeRosterMillion(f.plannedMarketCap.amountHkd)+`<small>${escapeHtml(f.plannedMarketCap.priceBasis)}</small>`,'HKD '+offeringNumber(f.plannedMarketCap.amountHkd,2))}${stat('发售股份比例',offeringNumber(f.offerShares/f.postShares*100,2)+'%')}${stat('拟定招股价 · HKD / 股',f.priceLow==null?'最高 '+offeringNumber(f.priceHigh,2):offeringNumber(f.priceLow,2)+'–'+offeringNumber(f.priceHigh,2))}</dl>`;}
+
+function p0HasFeeOrigin(){try{return new URL(history.state?.fromUrl||"",location.href).searchParams.get("view")==="fees";}catch{return false;}}
+
+const p0ElapsedCache=new Map();
+function p0Elapsed(start,mode){const end=state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf;if(!start||start>end)return null;if(end===P0_WAITING.asOf&&P0_WAITING.dates[start])return P0_WAITING.dates[start][mode];const key=start+':'+end+':'+mode;if(p0ElapsedCache.has(key))return p0ElapsedCache.get(key);const from=Date.parse(start+'T00:00:00Z'),to=Date.parse(end+'T00:00:00Z');if(!Number.isFinite(from)||!Number.isFinite(to))return null;let n=0;if(mode==='calendar')n=(to-from)/864e5;else{const c=P0_WAITING.calendar,holidays=new Set(c.holidays),workdays=new Set(c.workdays);for(let y=Number(start.slice(0,4));y<=Number(end.slice(0,4));y++)if(!c.years.includes(y))return null;for(let t=from+864e5;t<=to;t+=864e5){const d=new Date(t),iso=d.toISOString().slice(0,10);if(!holidays.has(iso)&&(workdays.has(iso)||![0,6].includes(d.getUTCDay())))n++;}}p0ElapsedCache.set(key,n);return n;}
+
+function p0RoundFeeTerms(r){const field=(label,value)=>`<div><dt>${label}</dt><dd>${value}</dd></div>`,sp=r.sponsorFee;return `<dl class="deal-facts">${field('固定承销佣金',p0FeeRate(r,'fixed'))}${field('额外酌情上限',p0FeeRate(r,'extra'))}${field('承销合计上限',p0FeeRate(r,'upper'))}${field(sp?.scope==='joint_aggregate'?'联席保荐费 · 合计':'约定保荐费',sp?`${sp.approximate?'约 ':''}${escapeHtml(sp.currency)} ${feeRosterMillion(sp.value)}m`:p0Missing(r.feeStates?.sponsor))}</dl>`;}
+
 // Hydrate deep-link intent once, before yielding to any user input or fetch.
+bindTransactionControls();
 applyStateFromUrl();
-initVisitCounter();
+
 loadData();
+
+initP0();p0BindInteractions();

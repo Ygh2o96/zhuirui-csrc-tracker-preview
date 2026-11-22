@@ -1708,7 +1708,7 @@ function rowHtml(row, rank, showMarketCap) {
   return `<tr class="clickable-row" data-sponsor="${escapeHtml(row.sponsorId)}">
     <td data-label="排名" class="rank">${escapeHtml(rank)}</td>
     <td data-label="保荐人" class="sponsor-cell">
-      <button type="button" aria-label="查看${escapeHtml(row.displayNameZh)}详情">${escapeHtml(row.displayNameZh)}</button>
+      <input type="checkbox" aria-label="比较 ${escapeHtml(row.displayNameZh)}" data-compare-firm="${escapeHtml(row.sponsorId)}" ${p0CompareIds.includes(row.sponsorId)?'checked':''} ${p0CompareIds.length>=4&&!p0CompareIds.includes(row.sponsorId)?'disabled':''}><button type="button" id="sponsor-${escapeHtml(row.sponsorId)}" title="${escapeHtml((row.legalNames||[]).join(" · "))} ${escapeHtml(row.registeredEntity?.ce||"")}" aria-label="查看${escapeHtml(row.displayNameZh)}详情">${escapeHtml(row.displayNameZh)}</button>
       <small>${escapeHtml(row.displayNameEn)}</small>
       <span class="row-action">查看详情</span>
       ${scopePill}
@@ -1728,12 +1728,13 @@ function rowHtml(row, rank, showMarketCap) {
 
 function render() {
   if (!state.data) return;
+  p0SponsorUrl();
   const facts = creditedFacts(filteredFacts());
   const rows = aggregateFacts(facts);
   const showMarketCap = shouldShowMarketCap(rows);
   state.activeFacts = facts;
-  state.activeRows = rows;
-  els.metricStrip.innerHTML = metricCards(rows);
+  state.activeRows = rows;p0CompareBar();
+  els.metricStrip.innerHTML = "";els.metricStrip.hidden=true;
   els.primaryMetricHead.querySelector(".sl-th-label").textContent = metricLabels[state.metric] || "排名指标";
   els.marketCapHead.hidden = !showMarketCap;
   els.marketCapHead.querySelector(".sl-th-label").textContent = marketCapHeaderText();
@@ -1743,14 +1744,14 @@ function render() {
   }
   els.resultHint.textContent = `${compactNumber(rows.length)} 家保荐人/合并口径 · ${creditLabels[state.credit]}`;
   if (!rows.length) {
-    els.leaderboardRows.innerHTML = `<tr><td colspan="${showMarketCap ? 12 : 11}" class="empty-state">没有符合条件的样本</td></tr>`;
+    els.leaderboardRows.innerHTML = `<tr><td colspan="${showMarketCap ? 12 : 11}" class="empty-state">${p0SponsorEmpty()}</td></tr>`;
     return;
   }
   const ranks = metricRanks(rows);
   els.leaderboardRows.innerHTML = rows.map((row) => rowHtml(row, ranks.get(row.sponsorId), showMarketCap)).join("");
   els.leaderboardRows.querySelectorAll("tr[data-sponsor]").forEach((row) => {
     row.addEventListener("click", (event) => {
-      if (event.target instanceof Element && event.target.closest("a, details[data-app-group]")) return;
+      if (event.target instanceof Element && event.target.closest("a, input, details[data-app-group]")) return;
       openDrawer(row.dataset.sponsor);
     });
   });
@@ -1924,6 +1925,7 @@ function populatePkOptions(rows) {
 }
 
 function renderPk() {
+  p0SponsorUrl();
   if (!state.data || !pkRoot || !pkEls.versus || !pkEls.metrics) return;
   const scopedFacts = pkFilteredFacts();
   const rows = aggregateFactsForCredit(scopedFacts, pkState.credit);
@@ -1953,7 +1955,7 @@ function renderPk() {
   if (pkEls.cardA) pkEls.cardA.innerHTML = renderPkCard(rowA, "左侧");
   if (pkEls.cardB) pkEls.cardB.innerHTML = renderPkCard(rowB, "右侧");
   pkEls.metrics.innerHTML = pkMetricRows(rowA, rowB).map((metric) => renderPkMetric(metric, rowA, rowB)).join("");
-  bindApplicationDetails(pkEls.metrics, [rowA, rowB]);
+  bindApplicationDetails(pkEls.metrics, [rowA, rowB]);p0CompareTable(comparisonRows,selectorRows);
 }
 
 function drawerStats(row) {
@@ -2189,9 +2191,11 @@ function capacitySourcePills(row, field) {
   return names.concat(sources).join("");
 }
 
-function openDrawer(sponsorId) {
+function openDrawer(sponsorId,updateLocation=true) {
   const row = state.activeRows.find((item) => item.sponsorId === sponsorId);
   if (!row) return;
+  p0SponsorTrigger=document.activeElement;
+  if(updateLocation&&typeof window!=='undefined'&&typeof history!=='undefined'){const previous=location.pathname+location.search;history.replaceState({...history.state,scrollY:window.scrollY,triggerSelector:'#sponsor-'+CSS.escape(sponsorId)},'',previous);const p=new URLSearchParams(location.search);p.set('firm',sponsorId);history.pushState({fromUrl:previous,scrollY:window.scrollY},'',location.pathname+'?'+p);}
   const facts = [...row.facts].sort((a, b) => {
     const ad = a.listingDate || a.noticeDate || a.a1Date || "";
     const bd = b.listingDate || b.noticeDate || b.a1Date || "";
@@ -2224,13 +2228,10 @@ function openDrawer(sponsorId) {
     if (remaining.open) remaining.querySelector(".deal-list").innerHTML = facts.slice(40).map(projectLine).join("");
   }, { once: true });
   els.drawer.classList.add("is-open");
-  els.drawer.setAttribute("aria-hidden", "false");
+  els.drawer.setAttribute("aria-hidden", "false");els.drawerClose?.focus?.();
 }
 
-function closeDrawer() {
-  els.drawer.classList.remove("is-open");
-  els.drawer.setAttribute("aria-hidden", "true");
-}
+function closeDrawer(updateLocation=true) {if(!els.drawer?.classList.contains('is-open'))return;els.drawer.classList.remove('is-open');els.drawer.setAttribute('aria-hidden','true');p0SponsorTrigger?.focus({preventScroll:true});p0SponsorTrigger=null;if(updateLocation!==false){const p=new URLSearchParams(location.search);if(p.has('firm')){if(history.state?.fromUrl)history.back();else{p.delete('firm');history.replaceState(history.state,'',location.pathname+'?'+p);}}}}
 
 function bindControls() {
   ["searchInput", "metricSelect", "creditSelect", "stageSelect", "typeSelect", "natureSelect", "sectorSelect", "dateFieldSelect", "dateFrom", "dateTo"].forEach((id) => {
@@ -2259,7 +2260,7 @@ function bindControls() {
     state.sortHeaderKey = "projectCount";
     state.sortDir = null;
     state.credit = "creditAllFull";
-    setPreset("all");
+    p0SponsorReset();
   });
   els.drawerBackdrop.addEventListener("click", closeDrawer);
   els.drawerClose.addEventListener("click", closeDrawer);
@@ -2389,12 +2390,13 @@ async function init() {
   try {
     await loadData();
     const meta = state.data.meta || {};
-    els.coverageText.textContent = meta.coverageZh || "HKEX / CSRC tracker derived sponsor view";
+    els.coverageText.textContent = "机构与公开保荐项目";
     els.firmCount.textContent = compactNumber(meta.firmCount || state.data.firms.length, 0);
     const sourceNote = meta.sourceGeneratedAt ? ` · 源快照 ${meta.sourceGeneratedAt}` : "";
-    els.generatedAt.textContent = `生成 ${meta.generatedAt || "待披露"}${sourceNote}`;
+    els.generatedAt.textContent = `更新 ${String(meta.sourceGeneratedAt||meta.generatedAt||"").slice(0,10)}`;
     els.demoNote.textContent = "具名全部计入时，每家保荐人各计一个项目。平分时按具名保荐人数分摊；只计首名时，项目归入文件列示的第一家。";
     populateOptions();
+    p0SponsorRead();
     syncControls();
     render();
     if (pkRoot) {
@@ -2408,21 +2410,39 @@ async function init() {
 }
 
 // Load the sponsor payload only when a sponsor view is opened.
-let initStarted = false;
+let initStarted = false;let initPromise;
 
 function ensureInit() {
-  if (initStarted) return;
+  if (initStarted) return initPromise;
   initStarted = true;
-  init();
+  initPromise=init();return initPromise;
 }
+
+const p0SponsorDefaults=Object.fromEntries(['search','preset','metric','sortKey','sortHeaderKey','sortDir','credit','stage','type','nature','sector','dateField','dateFrom','dateTo','dateQuick'].map(k=>[k,state[k]]));
+let p0SponsorRestoring=false,p0SponsorTrigger=null;
+function p0SponsorUrl(){if(!viewRoot||typeof window==='undefined'||typeof history==='undefined'||p0SponsorRestoring)return;const p=new URLSearchParams(location.search);for(const [k,base] of Object.entries(p0SponsorDefaults)){if(state[k]!==base&&state[k]!=null&&state[k]!=='')p.set('s_'+k,state[k]);else p.delete('s_'+k);}for(const k of ['sponsorA','sponsorB','credit']){if(pkState[k])p.set('pk_'+k,pkState[k]);else p.delete('pk_'+k);}if(p0CompareIds.length)p.set('s_compare',p0CompareIds.join(','));else p.delete('s_compare');history.replaceState({...history.state,scrollY:window.scrollY},'',location.pathname+'?'+p);}
+function p0SponsorRead(){const p=new URLSearchParams(location.search);p0CompareIds=[...new Set((p.get('s_compare')||'').split(',').filter(Boolean))].slice(0,4);for(const [k,base] of Object.entries(p0SponsorDefaults))state[k]=p.has('s_'+k)?p.get('s_'+k):base;for(const k of ['sponsorA','sponsorB','credit'])if(p.has('pk_'+k))pkState[k]=p.get('pk_'+k);}
+function p0SponsorEmpty(){const labels={search:'搜索',type:'类型',sector:'行业',nature:'性质',stage:'阶段',dateFrom:'起始',dateTo:'截止'};return `<div class="empty-state-row"><p>未找到匹配当前筛选条件的项目</p><div>${Object.entries(labels).filter(([k])=>state[k]!==p0SponsorDefaults[k]).map(([k,l])=>`<button type="button" data-sponsor-clear="${k}">${l}：${escapeHtml(state[k])} ×</button>`).join('')}</div><button type="button" data-sponsor-reset>清除全部筛选，恢复全量</button></div>`;}
+function p0SponsorReset(){Object.assign(state,p0SponsorDefaults);syncControls();render();renderPk();els.searchInput.focus();}
+async function p0SponsorRoute(){const p=new URLSearchParams(location.search),v=p.get('view');if(!['sponsors','sponsorLeaderboard','sponsorPk'].includes(v))return;await ensureInit();if(!state.data)return;p0SponsorRestoring=true;closeDrawer(false);p0SponsorRead();syncControls();render();renderPk();const firm=p.get('firm');if(firm)openDrawer(firm,false);p0SponsorRestoring=false;}
+if(viewRoot&&typeof window!=='undefined')window.addEventListener('yingsight:view',e=>{if(['sponsorLeaderboard','sponsorPk'].includes(e.detail.view))p0SponsorRoute();});
+if(viewRoot&&typeof window!=='undefined')window.addEventListener('popstate',()=>{if(els.drawer)closeDrawer(false);p0SponsorRoute();});
+viewRoot?.addEventListener('click',e=>{const el=e.target.closest('button');if(!el)return;if(el.hasAttribute('data-sponsor-reset'))p0SponsorReset();if(el.dataset.sponsorClear){state[el.dataset.sponsorClear]=p0SponsorDefaults[el.dataset.sponsorClear];syncControls();render();renderPk();els.searchInput.focus();}});
+if(viewRoot)document.addEventListener('keydown',e=>{if(e.key!=='Tab'||!els.drawer?.classList.contains('is-open'))return;const items=[...els.drawer.querySelectorAll('button,a[href],summary,input,select,[tabindex="0"]')].filter(x=>!x.hidden),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}});
+let p0CompareIds=[],p0CompareOffset=0;
+function p0CompareBar(){const host=document.getElementById('institutionCompareBar');if(!host)return;host.hidden=!p0CompareIds.length;host.innerHTML=`<span>已选 ${p0CompareIds.length}/4 家</span>${p0CompareIds.map(id=>{const r=state.activeRows.find(x=>x.sponsorId===id);return `<button type="button" data-remove-firm="${escapeHtml(id)}">${escapeHtml(r?.displayNameZh||id)} ×</button>`}).join('')}<button type="button" data-sponsor-workbench="compare" ${p0CompareIds.length<2?'disabled':''}>并列比较 →</button><button type="button" data-clear-firms>清除</button>`;}
+function p0CompareTable(rows,selectors){const root=document.getElementById('institutionComparison');if(!root)return;const ids=p0CompareIds.length>=2?p0CompareIds:[pkState.sponsorA,pkState.sponsorB];const selected=ids.map(id=>pkComparableRow(id,rows,selectors)).filter(Boolean);if(selected.length<2){root.innerHTML='<p>请选择至少两家机构。</p>';return;}const narrow=window.matchMedia?.('(max-width:767px)').matches;const visible=narrow&&selected.length>2?selected.slice(p0CompareOffset,p0CompareOffset+2):selected;const metrics=pkMetricRows(visible[0],visible[1]).map(m=>m.key==='listedLifecycleAverageDays'?{...m,key:'listedLifecycleMedianDays',label:'A1→上市中位数',value:r=>r.listedLifecycleMedianDays,format:(v,r)=>formatDays(v,r.listedLifecycleN)}:m);root.innerHTML=(narrow&&selected.length>2?`<div class="institution-slot-switch">${selected.map((r,i)=>i<selected.length-1?`<button type="button" data-firm-pair="${i}" aria-pressed="${i===p0CompareOffset}">${escapeHtml(r.displayNameZh)} / ${escapeHtml(selected[i+1].displayNameZh)}</button>`:'').join('')}</div>`:'')+`<table class="institution-compare-table"><thead><tr><th>指标</th>${visible.map(r=>`<th data-institution-id="${escapeHtml(r.sponsorId)}" title="${escapeHtml(r.displayNameEn)}">${escapeHtml(r.displayNameZh)}</th>`).join('')}</tr></thead><tbody>${metrics.map(m=>`<tr><th scope="row">${escapeHtml(m.label.split(' / ')[0])}</th>${visible.map(r=>`<td data-institution-id="${escapeHtml(r.sponsorId)}" class="col-num">${escapeHtml(m.format(m.value(r),r))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;}
+viewRoot?.addEventListener('change',e=>{const id=e.target.dataset.compareFirm;if(!id)return;if(e.target.checked&&!p0CompareIds.includes(id)&&p0CompareIds.length<4)p0CompareIds.push(id);else p0CompareIds=p0CompareIds.filter(x=>x!==id);p0CompareOffset=0;p0SponsorUrl();render();document.querySelector(`[data-compare-firm="${CSS.escape(id)}"]`)?.focus({preventScroll:true});});
+if(viewRoot)document.addEventListener('click',e=>{const el=e.target.closest('button');if(!el)return;if(el.dataset.removeFirm||el.hasAttribute('data-clear-firms')){p0CompareIds=el.dataset.removeFirm?p0CompareIds.filter(x=>x!==el.dataset.removeFirm):[];p0SponsorUrl();render();if(el.dataset.removeFirm)document.querySelector(`[data-compare-firm="${CSS.escape(el.dataset.removeFirm)}"]`)?.focus({preventScroll:true});else els.searchInput.focus();}if(el.hasAttribute('data-firm-pair')){p0CompareOffset=Number(el.dataset.firmPair);renderPk();document.querySelector(`[data-firm-pair="${p0CompareOffset}"]`)?.focus({preventScroll:true});}});
+if(viewRoot&&typeof window!=='undefined')window.addEventListener('resize',()=>{if(state.data&&pkRoot.classList.contains('is-visible'))renderPk();});
 
 if (viewRoot) {
   document.querySelectorAll('.nav-item[data-view="sponsorLeaderboard"], .nav-item[data-view="sponsorPk"]').forEach((button) => {
     button.addEventListener("click", ensureInit);
   });
   const requestedView = new URLSearchParams(window.location.search).get("view");
-  if (requestedView === "sponsorLeaderboard" || requestedView === "sponsorPk") {
-    ensureInit();
+  if (["sponsors","sponsorLeaderboard","sponsorPk"].includes(requestedView)) {
+    p0SponsorRoute();
   }
 }
 

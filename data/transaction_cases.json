@@ -1,0 +1,1657 @@
+{
+  "asOf": "2026-11-22",
+  "cases": [
+    {
+      "aliases": [
+        "恒生銀行",
+        "Hang Seng Bank",
+        "HSBC"
+      ],
+      "category": "scheme",
+      "code": "00011",
+      "comparables": {
+        "against_total_disinterested_pct": 5.94,
+        "last_full_day_premium_pct": 30.3,
+        "vote_for_pct": 85.75
+      },
+      "comparisonEvidence": {
+        "against_total_disinterested_pct": {
+          "documentId": "YS-20260108-014c3baa4d94",
+          "pages": [
+            4
+          ]
+        },
+        "last_full_day_premium_pct": {
+          "documentId": "YS-20251009-0d58f08a7505",
+          "pages": [
+            10
+          ]
+        },
+        "vote_for_pct": {
+          "documentId": "YS-20260108-014c3baa4d94",
+          "pages": [
+            4
+          ]
+        }
+      },
+      "events": [
+        {
+          "date": "2025-10-09",
+          "evidence": {
+            "documentId": "YS-20251009-0d58f08a7505",
+            "section": "pp. 1, 12"
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-15",
+          "evidence": {
+            "documentId": "YS-20251215-62d0cdca2b82"
+          },
+          "kind": "dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-01-08",
+          "evidence": {
+            "documentId": "YS-20260108-014c3baa4d94",
+            "section": "pp. 2–3"
+          },
+          "kind": "vote",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-01-23",
+          "evidence": {
+            "documentId": "YS-20260123-f35e5df96f62",
+            "section": "p. 2"
+          },
+          "kind": "court_sanction",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-01-26",
+          "evidence": {
+            "documentId": "YS-20260126-3c0c94b4231d",
+            "section": "p. 2"
+          },
+          "kind": "effective",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-01-27",
+          "evidence": {
+            "documentId": "YS-20260128-3e1e6b1afbac"
+          },
+          "kind": "delisting",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "scheme_cash",
+      "id": "HK-00011-20251009-hsbc",
+      "intervals": {
+        "announcementToDispatch": 67,
+        "dispatchToVote": 24,
+        "voteToEffective": 18
+      },
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20251215-62d0cdca2b82",
+            "pages": [
+              94
+            ],
+            "section": "Part V · IFA 意见及签署"
+          },
+          "firm": "Somerley Capital Limited",
+          "role": "IFA",
+          "service": "scheme_opinion",
+          "side": "獨立董事委員會"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20251009-0d58f08a7505",
+            "pages": [
+              10,
+              31
+            ]
+          },
+          "firm": "Merrill Lynch (Asia Pacific) Limited",
+          "role": "FA",
+          "service": "offer_advice",
+          "side": "汇丰控股及收购方"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20251009-0d58f08a7505",
+            "pages": [
+              10,
+              32
+            ]
+          },
+          "firm": "Goldman Sachs (Asia) L.L.C.",
+          "role": "FA",
+          "service": "offer_advice",
+          "side": "汇丰控股及收购方"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20251009-0d58f08a7505",
+            "pages": [
+              10
+            ]
+          },
+          "firm": "The Hongkong and Shanghai Banking Corporation Limited",
+          "role": "FA",
+          "service": "offer_advice",
+          "side": "收购方"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20251009-0d58f08a7505",
+            "pages": [
+              35
+            ]
+          },
+          "firm": "Morgan Stanley Asia Limited",
+          "role": "FA",
+          "service": "offer_advice",
+          "side": "恒生银行"
+        }
+      ],
+      "mechanism": "协议安排私有化",
+      "name": "恒生银行",
+      "parties": {
+        "收购方": "香港上海汇丰银行有限公司",
+        "标的": "恒生银行计划股份"
+      },
+      "processEvents": [
+        {
+          "date": "2025-10-30",
+          "detail": "證監會同意最遲寄發日由 10 月 30 日改為 12 月 17 日；預備計劃文件及配合法院程序。",
+          "evidence": {
+            "documentId": "YS-20251030-1a15e903ec9b",
+            "section": "p. 2"
+          },
+          "kind": "dispatch_extension",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-17",
+          "evidence": {
+            "documentId": "YS-20251217-8492d23ca3df"
+          },
+          "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "progressDate": "2026-01-27",
+      "rules": [
+        {
+          "application": "正式要约公告",
+          "code": "TC:3.5",
+          "evidence": {
+            "documentId": "YS-20251009-0d58f08a7505",
+            "pages": [
+              1
+            ]
+          },
+          "label": "收购守则 3.5"
+        },
+        {
+          "application": "协议安排表决条件",
+          "code": "TC:2.10",
+          "evidence": {
+            "documentId": "YS-20260108-014c3baa4d94",
+            "pages": [
+              3,
+              4
+            ]
+          },
+          "label": "收购守则 2.10"
+        },
+        {
+          "application": "计划文件寄发延期",
+          "code": "TC:8.2",
+          "evidence": {
+            "documentId": "YS-20251030-1a15e903ec9b",
+            "pages": [
+              2
+            ]
+          },
+          "label": "收购守则 8.2"
+        },
+        {
+          "application": "撤销上市",
+          "code": "HKEX:6.15(2)",
+          "evidence": {
+            "documentId": "YS-20260126-3c0c94b4231d",
+            "pages": [
+              2
+            ]
+          },
+          "label": "上市规则 6.15(2)"
+        }
+      ],
+      "stage": {
+        "date": "2026-01-26",
+        "eventKind": "effective",
+        "label": "计划已生效",
+        "status": "closed"
+      },
+      "terms": [
+        {
+          "approximate": true,
+          "basis": "计划文件 · 未扣股息调整",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20251215-62d0cdca2b82",
+            "pages": [
+              42,
+              99
+            ]
+          },
+          "key": "scheme_cash",
+          "label": "计划股份现金对价",
+          "precision": 2,
+          "unit": "money",
+          "value": 106156000000
+        },
+        {
+          "approximate": false,
+          "basis": "计划股份 · 未扣股息调整",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20251215-62d0cdca2b82",
+            "pages": [
+              2
+            ]
+          },
+          "key": "per_scheme_share",
+          "label": "每股注销价",
+          "precision": 2,
+          "unit": "per_share",
+          "value": 155
+        },
+        {
+          "approximate": true,
+          "basis": "计划文件披露",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20251215-62d0cdca2b82",
+            "pages": [
+              42,
+              99
+            ]
+          },
+          "key": "equity_value",
+          "label": "全公司股权估值",
+          "precision": 2,
+          "unit": "money",
+          "value": 290305000000
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "鋑聯控股",
+        "Legend Upstar",
+        "Wealth Builder"
+      ],
+      "category": "scheme",
+      "code": "00459",
+      "comparables": {
+        "against_total_disinterested_pct": 1.22,
+        "last_full_day_premium_pct": 77.33,
+        "vote_for_pct": 90.22
+      },
+      "comparisonEvidence": {
+        "against_total_disinterested_pct": {
+          "documentId": "YS-20260220-3f5ee6e2312d",
+          "pages": [
+            3
+          ]
+        },
+        "last_full_day_premium_pct": {
+          "documentId": "YS-20260128-e39e4dddb3ee",
+          "pages": [
+            23
+          ]
+        },
+        "vote_for_pct": {
+          "documentId": "YS-20260220-3f5ee6e2312d",
+          "pages": [
+            3
+          ]
+        }
+      },
+      "events": [
+        {
+          "date": "2025-12-09",
+          "evidence": {
+            "documentId": "YS-20251209-fd8a9dd3d97e"
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-01-28",
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "section": "封面；平台於香港時間前一日晚發布"
+          },
+          "kind": "dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-02-20",
+          "evidence": {
+            "documentId": "YS-20260220-3f5ee6e2312d",
+            "section": "pp. 2–3"
+          },
+          "kind": "vote",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-03-19",
+          "evidence": {
+            "documentId": "YS-20260320-2862508a4844",
+            "section": "p. 2"
+          },
+          "kind": "court_sanction",
+          "state": "actual",
+          "timeZone": "America/Cayman"
+        },
+        {
+          "date": "2026-03-26",
+          "evidence": {
+            "documentId": "YS-20260327-c627caecdf39",
+            "section": "p. 2"
+          },
+          "kind": "effective",
+          "state": "actual",
+          "timeZone": "America/Cayman"
+        },
+        {
+          "date": "2026-03-30",
+          "evidence": {
+            "documentId": "YS-20260327-c627caecdf39",
+            "section": "p. 2"
+          },
+          "kind": "delisting",
+          "state": "scheduled_at_filing",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "scheme_cash",
+      "id": "HK-00459-20251209-wealth-builder",
+      "intervals": {
+        "announcementToDispatch": 50,
+        "dispatchToVote": 23,
+        "voteToEffective": 34
+      },
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              68
+            ],
+            "section": "Part V"
+          },
+          "firm": "Somerley Capital Limited",
+          "role": "IFA",
+          "service": "scheme_opinion",
+          "side": "獨立董事委員會"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              156,
+              157
+            ],
+            "section": "Appendix V"
+          },
+          "firm": "Somerley Capital Limited",
+          "role": "IFA",
+          "service": "takeovers_profit_forecast",
+          "side": "董事會"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              154,
+              155
+            ],
+            "section": "Appendix IV"
+          },
+          "firm": "PricewaterhouseCoopers",
+          "role": "Accountant",
+          "service": "takeovers_profit_forecast",
+          "side": "董事會"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              97,
+              100
+            ],
+            "section": "Appendix II; Part V p. 56"
+          },
+          "firm": "Jones Lang LaSalle Corporate Appraisal and Advisory Limited",
+          "role": "Valuer",
+          "service": "property_valuation",
+          "side": "上市公司"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              14,
+              26
+            ]
+          },
+          "firm": "Odysseus Capital Asia Limited",
+          "role": "FA",
+          "service": "offer_advice",
+          "side": "要约方"
+        }
+      ],
+      "mechanism": "协议安排私有化",
+      "name": "鋑联控股",
+      "parties": {
+        "收购方": "Wealth Builder Holdings Limited",
+        "标的": "鋑联控股计划股份"
+      },
+      "processEvents": [
+        {
+          "date": "2025-12-03",
+          "detail": "等待刊發聯合公告。",
+          "evidence": {
+            "documentId": "YS-20251209-fd8a9dd3d97e",
+            "section": "復牌段"
+          },
+          "kind": "trading_halt",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-10",
+          "detail": "聯合公告刊發後復牌。",
+          "evidence": {
+            "documentId": "YS-20251209-fd8a9dd3d97e",
+            "section": "復牌段"
+          },
+          "kind": "trading_resume",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-30",
+          "detail": "配合法院排期，證監會同意最遲寄發日由 12 月 30 日改為 1 月 29 日。",
+          "evidence": {
+            "documentId": "YS-20251230-67cf3f2500b8",
+            "section": "p. 2"
+          },
+          "kind": "dispatch_extension",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-03-13",
+          "detail": "配合開曼大法院排期，聆訊由 3 月 13 日改至 3 月 19 日。",
+          "evidence": {
+            "documentId": "YS-20260313-6186b1ae70f6",
+            "section": "p. 2"
+          },
+          "kind": "court_rescheduled",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "progressDate": "2026-03-26",
+      "rules": [
+        {
+          "application": "协议安排表决条件",
+          "code": "TC:2.10",
+          "evidence": {
+            "documentId": "YS-20260220-3f5ee6e2312d",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "label": "收购守则 2.10"
+        },
+        {
+          "application": "计划文件寄发延期",
+          "code": "TC:8.2",
+          "evidence": {
+            "documentId": "YS-20251230-67cf3f2500b8",
+            "pages": [
+              2
+            ]
+          },
+          "label": "收购守则 8.2"
+        },
+        {
+          "application": "盈利预测报告",
+          "code": "TC:10",
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              31,
+              154,
+              156
+            ]
+          },
+          "label": "收购守则 10"
+        },
+        {
+          "application": "盈利预测报告",
+          "code": "TC:10.4",
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              31,
+              154,
+              156
+            ]
+          },
+          "label": "收购守则 10.4"
+        }
+      ],
+      "stage": {
+        "date": "2026-03-26",
+        "eventKind": "effective",
+        "label": "计划已生效",
+        "status": "closed"
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "计划文件 · 假设股本不变",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              26,
+              72
+            ]
+          },
+          "key": "scheme_cash",
+          "label": "计划股份最高现金需求",
+          "precision": 2,
+          "unit": "money",
+          "value": 89472981
+        },
+        {
+          "approximate": false,
+          "basis": "计划股份",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20260128-e39e4dddb3ee",
+            "pages": [
+              23
+            ]
+          },
+          "key": "per_scheme_share",
+          "label": "每股注销价",
+          "precision": 3,
+          "unit": "per_share",
+          "value": 0.133
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "佩港控股",
+        "Peiport",
+        "Hong Kong Liye"
+      ],
+      "category": "offer",
+      "code": "02885",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "events": [
+        {
+          "date": "2026-11-09",
+          "evidence": {
+            "documentId": "YS-20261109-f4cbcca0c95a"
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-16",
+          "evidence": {
+            "documentId": "YS-20261116-ed004b3c42fd"
+          },
+          "kind": "control_completion",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "control_block",
+      "id": "HK-02885-20261109-liye",
+      "intervals": {},
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20261116-ed004b3c42fd",
+            "pages": [
+              1,
+              3
+            ]
+          },
+          "firm": "Shenwan Hongyuan Capital (H.K.) Limited",
+          "role": "FA",
+          "service": "offer_advice",
+          "side": "要约方"
+        },
+        {
+          "evidence": {
+            "documentId": "YS-20261109-f4cbcca0c95a",
+            "pages": [
+              19
+            ]
+          },
+          "firm": "Austrax Capital Limited",
+          "role": "IFA",
+          "service": "offer_opinion",
+          "side": "独立董事委员会"
+        }
+      ],
+      "mechanism": "控制权变更／强制全面要约",
+      "name": "彼岸控股",
+      "parties": {
+        "出售方": "Peiport Alpha Limited",
+        "收购方": "香港立业集团有限公司",
+        "标的": "彼岸控股 70% 股权"
+      },
+      "processEvents": [],
+      "progressDate": "2026-11-16",
+      "rules": [
+        {
+          "application": "强制无条件现金要约",
+          "code": "TC:26.1",
+          "evidence": {
+            "documentId": "YS-20261116-ed004b3c42fd",
+            "pages": [
+              3
+            ]
+          },
+          "label": "收购守则 26.1"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-16",
+        "eventKind": "control_completion",
+        "label": "控股权已交割 · 待综合文件",
+        "status": "active"
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "现金 · 控股权已交割",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20261116-ed004b3c42fd",
+            "pages": [
+              2
+            ]
+          },
+          "key": "control_block",
+          "label": "70% 控股权对价",
+          "precision": 2,
+          "unit": "money",
+          "value": 233800000
+        },
+        {
+          "approximate": false,
+          "basis": "强制无条件现金要约",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20261116-ed004b3c42fd",
+            "pages": [
+              3
+            ]
+          },
+          "key": "offer_price",
+          "label": "每股要约价",
+          "precision": 3,
+          "unit": "per_share",
+          "value": 0.835
+        },
+        {
+          "approximate": false,
+          "basis": "1.20 亿股要约范围",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20261109-f4cbcca0c95a",
+            "pages": [
+              3,
+              10
+            ]
+          },
+          "key": "offer_value",
+          "label": "要约股份总值",
+          "precision": 2,
+          "unit": "money",
+          "value": 100200000
+        },
+        {
+          "approximate": false,
+          "basis": "扣除承诺不接纳的 2,000 万股",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20261109-f4cbcca0c95a",
+            "pages": [
+              4,
+              11
+            ]
+          },
+          "key": "offer_cash_cap",
+          "label": "要约最高现金需求",
+          "precision": 2,
+          "unit": "money",
+          "value": 83500000
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Shaw Brothers",
+        "CMC Moon"
+      ],
+      "category": "acquisition",
+      "code": "00953",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "events": [
+        {
+          "date": "2026-01-21",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "section": "pp. 2, 27"
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-18",
+          "evidence": {
+            "documentId": "YS-20260918-3d2f24298784",
+            "section": "pp. 1–2"
+          },
+          "kind": "terminated",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "proposed_purchase",
+      "id": "HK-00953-20260121-cmc",
+      "intervals": {},
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              3,
+              27,
+              32
+            ]
+          },
+          "firm": "CITIC Securities (Hong Kong) Limited",
+          "role": "FA",
+          "service": "acquisition_due_diligence",
+          "side": "上市公司"
+        }
+      ],
+      "mechanism": "非常重大及关连收购",
+      "name": "邵氏兄弟控股",
+      "parties": {
+        "出售方": "CMC 透过 HoldCo",
+        "收购方": "邵氏兄弟控股有限公司",
+        "标的": "CMC Moon Holdings Limited 全部股权"
+      },
+      "processEvents": [],
+      "progressDate": "2026-09-18",
+      "rules": [
+        {
+          "application": "非常重大收购",
+          "code": "HKEX:14",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              2,
+              27
+            ]
+          },
+          "label": "上市规则第 14 章"
+        },
+        {
+          "application": "关连收购",
+          "code": "HKEX:14A",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              3,
+              27
+            ]
+          },
+          "label": "上市规则第 14A 章"
+        },
+        {
+          "application": "拟申请极端交易 · 协议已终止",
+          "classificationStatus": "proposed",
+          "code": "HKEX:14.06C",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              2,
+              27
+            ]
+          },
+          "label": "上市规则 14.06C"
+        },
+        {
+          "application": "终止后六个月限制",
+          "code": "TC:31.1(c)",
+          "evidence": {
+            "documentId": "YS-20260918-3d2f24298784",
+            "pages": [
+              2
+            ]
+          },
+          "label": "收购守则 31.1(c)"
+        }
+      ],
+      "stage": {
+        "date": "2026-09-18",
+        "eventKind": "terminated",
+        "label": "收购协议已终止",
+        "status": "terminated"
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "拟发股支付 · 协议已终止",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              6
+            ]
+          },
+          "key": "proposed_purchase",
+          "label": "原协议购买价",
+          "precision": 2,
+          "unit": "money",
+          "value": 4576500000
+        },
+        {
+          "approximate": true,
+          "basis": "协议汇率折算",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              6
+            ]
+          },
+          "key": "translated_purchase",
+          "label": "约定折算港元对价",
+          "precision": 2,
+          "unit": "money",
+          "value": 5097520000
+        },
+        {
+          "approximate": false,
+          "basis": "协议已终止",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              6
+            ]
+          },
+          "key": "consideration_shares",
+          "label": "拟发行对价股份",
+          "precision": 0,
+          "unit": "shares",
+          "value": 15929741365
+        },
+        {
+          "approximate": false,
+          "basis": "原协议条款",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20260121-df871db58953",
+            "pages": [
+              6
+            ]
+          },
+          "key": "issue_price",
+          "label": "对价股份发行价",
+          "precision": 3,
+          "unit": "per_share",
+          "value": 0.32
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "友聯國際教育租賃",
+        "Alliance International Education Leasing",
+        "XH Navigator"
+      ],
+      "category": "disposal",
+      "code": "01563",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "events": [
+        {
+          "date": "2026-05-21",
+          "evidence": {
+            "documentId": "YS-20260521-136fb17a261b",
+            "section": "pp. 1–4"
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-07-23",
+          "evidence": {
+            "documentId": "YS-20260723-0aa54905ff16",
+            "section": "p. 9"
+          },
+          "kind": "dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-08-27",
+          "evidence": {
+            "documentId": "YS-20260827-58f0efd584c0",
+            "section": "pp. 4–5"
+          },
+          "kind": "vote",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "cash_settlement",
+      "id": "HK-01563-20260521-xhnavigator",
+      "intervals": {
+        "announcementToDispatch": 63,
+        "dispatchToVote": 35
+      },
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20260723-0aa54905ff16",
+            "pages": [
+              26,
+              31
+            ],
+            "section": "Appendix III · 船舶估值及签署"
+          },
+          "firm": "BMI Appraisals Limited",
+          "role": "Valuer",
+          "service": "vessel_valuation",
+          "side": "上市公司"
+        }
+      ],
+      "mechanism": "主要交易 · 船舶处置／租约终止",
+      "name": "友联国际教育租赁",
+      "parties": {
+        "付款方": "Xie Hai Navigator Shipping Co., Limited",
+        "收款方": "Union Shipping Fund I — SPV2 Limited",
+        "标的": "XH Navigator 散货船及相关租约"
+      },
+      "processEvents": [],
+      "progressDate": "2026-08-27",
+      "rules": [
+        {
+          "application": "主要交易",
+          "code": "HKEX:14",
+          "evidence": {
+            "documentId": "YS-20260723-0aa54905ff16",
+            "pages": [
+              14
+            ]
+          },
+          "label": "上市规则第 14 章"
+        },
+        {
+          "application": "百分比率超过 25%、低于 75%",
+          "code": "HKEX:14.07",
+          "evidence": {
+            "documentId": "YS-20260723-0aa54905ff16",
+            "pages": [
+              14
+            ]
+          },
+          "label": "上市规则 14.07"
+        }
+      ],
+      "stage": {
+        "date": "2026-08-27",
+        "eventKind": "vote",
+        "label": "股东已批准",
+        "status": "approved"
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "租约终止及船舶交付安排",
+          "currency": "USD",
+          "evidence": {
+            "documentId": "YS-20260723-0aa54905ff16",
+            "pages": [
+              9
+            ]
+          },
+          "key": "cash_settlement",
+          "label": "现金结算额",
+          "precision": 2,
+          "unit": "money",
+          "value": 8950000
+        },
+        {
+          "approximate": false,
+          "basis": "估值日 2026-04-30",
+          "currency": "USD",
+          "evidence": {
+            "documentId": "YS-20260723-0aa54905ff16",
+            "pages": [
+              9,
+              31
+            ]
+          },
+          "key": "asset_valuation",
+          "label": "船舶市场估值",
+          "precision": 2,
+          "unit": "money",
+          "value": 9000000
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "億騰嘉和",
+        "嘉和生物",
+        "Genor Biopharma Holdings Limited",
+        "Edding Genor Group Holdings Limited",
+        "Edding Group Company Limited"
+      ],
+      "category": "reverse_takeover",
+      "code": "06998",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "events": [
+        {
+          "date": "2024-10-07",
+          "evidence": {
+            "documentId": "YS-20241007-70b49ee607f9",
+            "pages": [
+              1
+            ]
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-05",
+          "evidence": {
+            "documentId": "YS-20251205-01e78a31469b",
+            "section": "通函封面及股东特别大会通告"
+          },
+          "kind": "dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-22",
+          "evidence": {
+            "documentId": "YS-20251222-b5aa9430a060",
+            "pages": [
+              1
+            ]
+          },
+          "kind": "vote",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-30",
+          "evidence": {
+            "documentId": "YS-20251230-a4f2df0a0dbf",
+            "pages": [
+              2
+            ]
+          },
+          "kind": "completion",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "consideration_shares",
+      "id": "HK-06998-20241007-edding",
+      "intervals": {
+        "announcementToDispatch": 424,
+        "dispatchToVote": 17
+      },
+      "lifecycle": {
+        "end": "2025-12-30",
+        "endKind": "completion",
+        "naturalDays": 449,
+        "start": "2024-10-07"
+      },
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20251205-01e78a31469b",
+            "section": "独立财务顾问函件"
+          },
+          "firm": "Somerley Capital Limited",
+          "role": "IFA",
+          "service": "rto_opinion",
+          "side": "独立董事委员会及独立股东；合并、清洗豁免及特别交易"
+        }
+      ],
+      "mechanism": "反向收购 · 合并及发行代价股份",
+      "name": "亿腾嘉和",
+      "parties": {
+        "上市主体": "嘉和生物药业（开曼）控股有限公司 → 亿腾嘉和医药集团有限公司",
+        "标的": "Edding Group Company Limited"
+      },
+      "processEvents": [],
+      "progressDate": "2025-12-30",
+      "rules": [
+        {
+          "application": "合并构成反向收购并按新上市申请处理",
+          "classificationStatus": "confirmed",
+          "code": "HKEX:14.06B",
+          "evidence": {
+            "documentId": "YS-20241007-70b49ee607f9",
+            "pages": [
+              5
+            ]
+          },
+          "label": "LR 14.06B · 反向收购"
+        }
+      ],
+      "stage": {
+        "date": "2025-12-30",
+        "eventKind": "completion",
+        "label": "合并已完成",
+        "status": "closed"
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "合并完成时向标的股东实际发行",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20251230-a4f2df0a0dbf",
+            "pages": [
+              2
+            ]
+          },
+          "key": "consideration_shares",
+          "label": "已发行代价股份",
+          "precision": 0,
+          "unit": "shares",
+          "value": 1482921982
+        },
+        {
+          "approximate": false,
+          "basis": "每 1 股标的股份对应上市公司股份",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20251230-a4f2df0a0dbf",
+            "pages": [
+              2
+            ]
+          },
+          "key": "exchange_ratio",
+          "label": "换股比例",
+          "precision": 2,
+          "unit": "ratio",
+          "value": 3.3
+        },
+        {
+          "approximate": false,
+          "basis": "实际代价股份／合并完成后已发行股本",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20251230-a4f2df0a0dbf",
+            "pages": [
+              3
+            ]
+          },
+          "key": "enlarged_stake",
+          "label": "代价股份占扩大后股本",
+          "precision": 2,
+          "unit": "percent",
+          "value": 73.73
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "龍金資源",
+        "龙资源",
+        "龍資源",
+        "Dragon Mining Limited",
+        "Dragon Gold Mining Limited"
+      ],
+      "category": "holding_substitution",
+      "code": "01712",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "events": [
+        {
+          "date": "2026-04-29",
+          "evidence": {
+            "documentId": "YS-20260629-3b0a72af928e",
+            "pages": [
+              20
+            ],
+            "section": "Background to the Proposed Reorganisation"
+          },
+          "kind": "first_announcement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-06-29",
+          "evidence": {
+            "documentId": "YS-20260806-9ad98e74f9ed",
+            "pages": [
+              2
+            ]
+          },
+          "kind": "dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-08-06",
+          "evidence": {
+            "documentId": "YS-20260806-9ad98e74f9ed",
+            "pages": [
+              3
+            ]
+          },
+          "kind": "vote",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-08-13",
+          "evidence": {
+            "documentId": "YS-20260813-f1cd7600cd76",
+            "pages": [
+              1
+            ]
+          },
+          "kind": "court_sanction",
+          "state": "actual",
+          "timeZone": "Australia/Perth"
+        },
+        {
+          "date": "2026-08-13",
+          "evidence": {
+            "documentId": "YS-20260813-f1cd7600cd76",
+            "pages": [
+              2
+            ]
+          },
+          "kind": "effective",
+          "state": "actual",
+          "timeZone": "Australia/Perth"
+        },
+        {
+          "date": "2026-09-02",
+          "evidence": {
+            "documentId": "YS-20261112-31bbdc09d77d",
+            "pages": [
+              1
+            ]
+          },
+          "kind": "implementation",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "headlineKey": "exchange_ratio",
+      "id": "HK-01712-20260429-holdco",
+      "intervals": {
+        "announcementToDispatch": 61,
+        "dispatchToVote": 38,
+        "voteToEffective": 7
+      },
+      "lifecycle": {
+        "end": "2026-09-02",
+        "endKind": "implementation",
+        "naturalDays": 126,
+        "start": "2026-04-29"
+      },
+      "mandates": [
+        {
+          "evidence": {
+            "documentId": "YS-20260629-3b0a72af928e",
+            "pages": [
+              221
+            ]
+          },
+          "firm": "Grant Thornton Corporate Finance Pty Ltd",
+          "role": "IndependentExpertAU",
+          "service": "australian_scheme_expert",
+          "side": "澳大利亚 · 计划股东",
+          "signatories": [
+            "Andrea De Cian",
+            "Mark Butterfield"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20260629-3b0a72af928e",
+            "pages": [
+              230
+            ]
+          }
+        }
+      ],
+      "mechanism": "更换控股公司 · 安排计划及介绍上市",
+      "name": "龙金资源",
+      "parties": {
+        "原控股公司": "Dragon Mining Limited（澳大利亚）",
+        "实施路径": "澳洲《公司法》Part 5.1 安排计划",
+        "新控股公司": "Dragon Gold Mining Limited（香港）"
+      },
+      "processEvents": [],
+      "progressDate": "2026-09-02",
+      "rules": [
+        {
+          "application": "安排计划实施后撤销原公司股份上市；新控股公司介绍上市",
+          "classificationStatus": "confirmed",
+          "code": "HKEX:6.15(2)",
+          "evidence": {
+            "documentId": "YS-20260629-3b0a72af928e",
+            "pages": [
+              75
+            ]
+          },
+          "label": "LR 6.15(2) · 原股份撤销上市"
+        }
+      ],
+      "stage": {
+        "date": "2026-09-02",
+        "eventKind": "implementation",
+        "label": "计划已实施及介绍上市",
+        "status": "closed"
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "每 1 股计划股份换取 1 股新控股公司股份",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20260629-3b0a72af928e",
+            "pages": [
+              30
+            ]
+          },
+          "key": "exchange_ratio",
+          "label": "换股比例",
+          "precision": 0,
+          "unit": "ratio",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "coverage": "selected_verified_transactions",
+  "documents": {
+    "YS-20241007-70b49ee607f9": {
+      "caseId": "HK-06998-20241007-edding",
+      "date": "2024-10-07",
+      "id": "YS-20241007-70b49ee607f9",
+      "title": "合并及反向收购详公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/1007/2024100700009.pdf"
+    },
+    "YS-20251009-0d58f08a7505": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2025-10-09",
+      "id": "YS-20251009-0d58f08a7505",
+      "title": "Rule 3.5 聯合公告",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2025/oct/sea-251009-hsbc-holdings-plc-proposal-for-the-privatisation-of-hang-seng-bank.pdf"
+    },
+    "YS-20251030-1a15e903ec9b": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2025-10-30",
+      "id": "YS-20251030-1a15e903ec9b",
+      "title": "寄發計劃文件之時間更新",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2025/oct/sea-251030-e-extension-of-time-for-despatch-of-scheme-document.pdf"
+    },
+    "YS-20251205-01e78a31469b": {
+      "caseId": "HK-06998-20241007-edding",
+      "date": "2025-12-05",
+      "id": "YS-20251205-01e78a31469b",
+      "title": "合并、反向收购及清洗豁免通函",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1204/2025120402473_c.pdf"
+    },
+    "YS-20251209-fd8a9dd3d97e": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2025-12-09",
+      "id": "YS-20251209-fd8a9dd3d97e",
+      "title": "私有化建議及復牌",
+      "url": "https://static.midlandici.com.hk/cms/prod/1011_20251209123009.pdf"
+    },
+    "YS-20251215-62d0cdca2b82": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2025-12-15",
+      "id": "YS-20251215-62d0cdca2b82",
+      "title": "計劃文件",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2025/dec/sea-251215-e-proposal-for-the-privatisation-of-hang-seng-bank-limited.pdf"
+    },
+    "YS-20251217-49c87b50e69d": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2025-12-17",
+      "id": "YS-20251217-49c87b50e69d",
+      "title": "委任獨立財務顧問",
+      "url": "https://static.midlandici.com.hk/cms/prod/1017_20251217103056.pdf"
+    },
+    "YS-20251217-8492d23ca3df": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2025-12-17",
+      "id": "YS-20251217-8492d23ca3df",
+      "title": "計劃文件補充公告",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2025/dec/sea-251217-hsbc-holdings-plc-hang-seng-bank-scheme-document-supp.pdf"
+    },
+    "YS-20251222-b5aa9430a060": {
+      "caseId": "HK-06998-20241007-edding",
+      "date": "2025-12-22",
+      "id": "YS-20251222-b5aa9430a060",
+      "title": "股东特别大会表决结果",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1222/2025122200560.pdf"
+    },
+    "YS-20251230-67cf3f2500b8": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2025-12-30",
+      "id": "YS-20251230-67cf3f2500b8",
+      "title": "延遲寄發計劃文件",
+      "url": "https://static.midlandici.com.hk/cms/prod/1020_20251230141922.pdf"
+    },
+    "YS-20251230-a4f2df0a0dbf": {
+      "caseId": "HK-06998-20241007-edding",
+      "date": "2025-12-30",
+      "id": "YS-20251230-a4f2df0a0dbf",
+      "title": "合并及反向收购完成公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/2025123000025.pdf"
+    },
+    "YS-20260108-014c3baa4d94": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2026-01-08",
+      "id": "YS-20260108-014c3baa4d94",
+      "title": "法院會議及股東大會結果",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2026/jan/sea-260108-e-joint-announcement-privatisation-of-hang-seng-bank.pdf"
+    },
+    "YS-20260121-df871db58953": {
+      "caseId": "HK-00953-20260121-cmc",
+      "date": "2026-01-21",
+      "id": "YS-20260121-df871db58953",
+      "title": "收購 CMC Moon；潛在極端交易",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0121/2026012101177.pdf"
+    },
+    "YS-20260123-f35e5df96f62": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2026-01-23",
+      "id": "YS-20260123-f35e5df96f62",
+      "title": "高等法院批准計劃",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2026/jan/sea-260123-e-joint-announcement-privatisation-of-hang-seng-bank.pdf"
+    },
+    "YS-20260126-3c0c94b4231d": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2026-01-26",
+      "id": "YS-20260126-3c0c94b4231d",
+      "title": "計劃生效及撤銷上市",
+      "url": "https://www.hsbc.com/-/files/hsbc/investors/results-and-announcements/stock-exchange-announcements/2026/jan/sea-260126-privatisation-of-hang-seng-bank-scheme-effective.pdf"
+    },
+    "YS-20260128-3e1e6b1afbac": {
+      "caseId": "HK-00011-20251009-hsbc",
+      "date": "2026-01-28",
+      "id": "YS-20260128-3e1e6b1afbac",
+      "title": "恒生銀行私有化已完成",
+      "url": "https://www.hsbc.com/investors/hsbc-proposal-to-privatise-hang-seng-bank"
+    },
+    "YS-20260128-e39e4dddb3ee": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2026-01-28",
+      "id": "YS-20260128-e39e4dddb3ee",
+      "publishedAt": "2026-01-27T18:35:00+08:00",
+      "title": "計劃文件",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0127/2026012701181.pdf"
+    },
+    "YS-20260220-3f5ee6e2312d": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2026-02-20",
+      "id": "YS-20260220-3f5ee6e2312d",
+      "title": "法院會議及股東特別大會結果",
+      "url": "https://static.midlandici.com.hk/cms/prod/E26024215-Legend%20Upstar-PA.pdf"
+    },
+    "YS-20260313-6186b1ae70f6": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2026-03-13",
+      "id": "YS-20260313-6186b1ae70f6",
+      "title": "更改法院聆訊日期",
+      "url": "https://static.midlandici.com.hk/cms/prod/JOINT%20ANNOUNCEMENT%20-%20CHANGE%20OF%20COURT%20HEARING%20DATE.pdf"
+    },
+    "YS-20260320-2862508a4844": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2026-03-20",
+      "id": "YS-20260320-2862508a4844",
+      "title": "開曼大法院批准計劃",
+      "url": "https://static.midlandici.com.hk/cms/prod/JOINT%20ANNOUNCEMENT%20-%20%281%29%20SANCTION%20OF%20THE%20SCHEME%20BY%20THE%20GRAND%20COURT%3B%20%282%29.pdf"
+    },
+    "YS-20260327-c627caecdf39": {
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2026-03-27",
+      "id": "YS-20260327-c627caecdf39",
+      "title": "計劃生效及撤銷上市",
+      "url": "https://static.midlandici.com.hk/cms/prod/e_459_20260327.pdf"
+    },
+    "YS-20260521-136fb17a261b": {
+      "caseId": "HK-01563-20260521-xhnavigator",
+      "date": "2026-05-21",
+      "id": "YS-20260521-136fb17a261b",
+      "title": "船舶處置及租約終止公告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0521/2026052101496.pdf"
+    },
+    "YS-20260629-3b0a72af928e": {
+      "caseId": "HK-01712-20260429-holdco",
+      "date": "2026-06-29",
+      "id": "YS-20260629-3b0a72af928e",
+      "title": "更换控股公司、安排计划及介绍上市文件",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062901004.pdf"
+    },
+    "YS-20260723-0aa54905ff16": {
+      "caseId": "HK-01563-20260521-xhnavigator",
+      "date": "2026-07-23",
+      "id": "YS-20260723-0aa54905ff16",
+      "title": "船舶處置通函",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0723/2026072300738.pdf"
+    },
+    "YS-20260806-9ad98e74f9ed": {
+      "caseId": "HK-01712-20260429-holdco",
+      "date": "2026-08-06",
+      "id": "YS-20260806-9ad98e74f9ed",
+      "title": "安排计划股东大会表决结果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0806/2026080601853.pdf"
+    },
+    "YS-20260813-f1cd7600cd76": {
+      "caseId": "HK-01712-20260429-holdco",
+      "date": "2026-08-13",
+      "id": "YS-20260813-f1cd7600cd76",
+      "title": "法院批准及安排计划生效公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0813/2026081301322.pdf"
+    },
+    "YS-20260827-58f0efd584c0": {
+      "caseId": "HK-01563-20260521-xhnavigator",
+      "date": "2026-08-27",
+      "id": "YS-20260827-58f0efd584c0",
+      "title": "股東特別大會表決結果",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0827/2026082700862.pdf"
+    },
+    "YS-20260918-3d2f24298784": {
+      "caseId": "HK-00953-20260121-cmc",
+      "date": "2026-09-18",
+      "id": "YS-20260918-3d2f24298784",
+      "title": "終止收購及白洗豁免申請",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0918/2026091801474.pdf"
+    },
+    "YS-20261109-f4cbcca0c95a": {
+      "caseId": "HK-02885-20261109-liye",
+      "date": "2026-11-09",
+      "id": "YS-20261109-f4cbcca0c95a",
+      "title": "控股權交易及可能強制要約",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901215.pdf"
+    },
+    "YS-20261112-31bbdc09d77d": {
+      "caseId": "HK-01712-20260429-holdco",
+      "date": "2026-11-12",
+      "id": "YS-20261112-31bbdc09d77d",
+      "title": "核数师委任公告及计划实施日期确认",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111200687_c.pdf"
+    },
+    "YS-20261116-ed004b3c42fd": {
+      "caseId": "HK-02885-20261109-liye",
+      "date": "2026-11-16",
+      "id": "YS-20261116-ed004b3c42fd",
+      "title": "控股權交割及無條件強制現金要約",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111601369.pdf"
+    }
+  },
+  "schemaVersion": 1
+}

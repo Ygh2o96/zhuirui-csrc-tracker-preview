@@ -10,8 +10,8 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=49be3bf2bc4ffdf8" />
     <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=351204354685e3d1" />
+    <link rel="stylesheet" href="styles.css?v=9955b60717c38320" />
 
   </head>
   <body>
@@ -24,54 +24,21 @@
       </div>
     </div>
     <div class="app-shell">
-      <aside class="sidebar" aria-label="Primary navigation">
-        <div class="brand-block">
-          <div class="brand-mark" aria-hidden="true">追</div>
+      <header class="top-nav"><a class="brand-home" href="?view=pace" aria-label="追瑞首页">追瑞 <span>YingSight</span></a><span id="mobileViewTitle">监管节奏</span><nav class="nav-list" aria-label="主要栏目"><a class="nav-item" data-view="tracker" href="?view=pace">监管节奏</a><a class="nav-item" data-view="fees" href="?view=fees">新股与费用</a><a class="nav-item" data-view="precedents" href="?view=transactions" data-private-candidate="transactions">交易与重组</a><a class="nav-item" data-view="sponsorLeaderboard" href="?view=sponsors">机构与保荐</a></nav><button class="global-search-trigger" type="button" id="globalSearchOpen" aria-label="全局搜索">搜索 <kbd>⌘K</kbd></button><span id="dataMode" hidden></span></header>
+
+      <main class="workspace" id="workspaceMain">
+        <header class="topbar">
           <div>
-            <div class="brand-name">追瑞</div>
-            <div class="brand-subtitle">AI-native banker hub</div>
+            
+            <h1 id="viewTitle">监管节奏追踪</h1>
           </div>
-        </div>
+          <div class="topbar-actions">
+            <div class="source-pill" id="sourcePill">样例快照</div>
+            <button class="text-button compact-button" id="refreshButton" title="刷新数据" aria-label="刷新数据">刷新</button>
+          </div>
+        </header>
 
-        <nav class="nav-list">
-          <button class="nav-item is-active" data-view="tracker">
-            <span class="nav-icon" aria-hidden="true">监</span>
-            <span><b>监管节奏追踪</b><small>Regulatory Pace</small></span>
-          </button>
-          <button class="nav-item" data-view="offerings">
-            <span class="nav-icon" aria-hidden="true">售</span>
-            <span><b>发售搁置</b><small>Paused or not proceeding</small></span>
-          </button>
-          <button class="nav-item" data-view="fees">
-            <span class="nav-icon" aria-hidden="true">费</span>
-            <span><b>发行费用</b><small>Offering Fees</small></span>
-          </button>
-          <button class="nav-item" data-view="sponsorLeaderboard">
-            <span class="nav-icon" aria-hidden="true">榜</span>
-            <span><b>保荐龙虎榜</b><small>Sponsor League</small></span>
-          </button>
-          <button class="nav-item" data-view="sponsorPk">
-            <span class="nav-icon" aria-hidden="true">PK</span>
-            <span><b>保荐人擂台</b><small>Sponsor PK</small></span>
-          </button>
-          <button class="nav-item" data-view="precedents">
-            <span class="nav-icon" aria-hidden="true">例</span>
-            <span><b>案例检索</b><small>Precedents</small></span>
-          </button>
-          <button class="nav-item" data-view="dossiers">
-            <span class="nav-icon" aria-hidden="true">档</span>
-            <span><b>发行人档案</b><small>Issuer Dossiers</small></span>
-          </button>
-          <button class="nav-item" data-view="signals">
-            <span class="nav-icon" aria-hidden="true">仓</span>
-            <span><b>市场信号</b><small>Market Signals</small></span>
-          </button>
-          <button class="nav-item" data-view="research">
-            <span class="nav-icon" aria-hidden="true">研</span>
-            <span><b>研究笔记</b><small>Research</small></span>
-          </button>
-        </nav>
-
+        <section class="view-panel is-visible" id="trackerView" aria-label="监管节奏">
         <div class="listing-stage-panel" id="listingStagePanel" aria-label="Application pace filter">
           <div class="listing-stage-title">
             <b>申请节奏</b>
@@ -94,36 +61,16 @@
             <strong data-stage-count="other">0</strong>
           </button>
         </div>
-
-        <div class="sidebar-note">
-          <span class="status-dot"></span>
-          <span id="dataMode">限量预览</span>
-        </div>
-      </aside>
-
-      <main class="workspace" id="workspaceMain">
-        <header class="topbar">
-          <div>
-            <p class="eyebrow">资本市场情报 · Capital markets intelligence</p>
-            <h1 id="viewTitle">监管节奏追踪</h1>
-          </div>
-          <div class="topbar-actions">
-            <div class="source-pill" id="sourcePill">样例快照</div>
-            <button class="text-button compact-button" id="refreshButton" title="刷新数据" aria-label="刷新数据">刷新</button>
-          </div>
-        </header>
-
-        <section class="view-panel is-visible" id="trackerView" aria-label="CSRC tracker">
           <p class="snapshot-meta" id="snapshotMeta"></p>
           <div class="day-mode-bar" aria-label="天数口径">
             <span><b>天数口径</b><small>Days basis</small></span>
             <div class="day-mode-toggle" role="group" aria-label="天数口径">
-              <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日 Calendar</button>
-              <button class="day-mode-button" type="button" data-day-count-mode="business">工作日 Business</button>
+              <button class="day-mode-button is-active" type="button" data-day-count-mode="calendar">自然日</button>
+              <button class="day-mode-button" type="button" data-day-count-mode="business">工作日</button>
             </div>
             <small id="dayModeHint">默认自然日</small>
           </div>
-          <div class="metrics-grid" id="metricsGrid"></div>
+          
 
           <section class="tracker-layout">
             <div class="tracker-main">
@@ -142,7 +89,7 @@
                 </div>
               </div>
 
-              <div class="filter-grid" aria-label="Tracker filters">
+              <details class="tracker-extra-filters"><summary>类型、行业、日期及排序</summary><div class="filter-grid" aria-label="Tracker filters">
                 <label class="filter-control">
                   <span><b>日期口径</b><small>Date field</small></span>
                   <select id="dateField" name="dateField" autocomplete="off">
@@ -210,9 +157,9 @@
                 <p>发行人已终止上市计划，或港交所最近一轮申请已撤回、被拒绝或发回且未重递的，列入「搁置/撤回」。申请失效后，最近 A1 超过六个月且备案尚未接收，或备案停留在已接收或征询监管意见、最近 A1 超过一年未更新的，也列入此类。</p>
                 <p class="stage-criteria-en">Stalled/withdrawn includes terminated listing plans and the latest applications withdrawn, rejected or returned without a subsequent filing. Lapsed applications also qualify after six months without CSRC receipt, or after a year without a new A1 while the filing remains at receipt or regulator opinion.</p>
               </details>
-              <div class="table-wrap">
+              </details><div class="metrics-grid" id="metricsGrid"></div><div class="table-wrap">
                 <table class="tracker-table">
-                  <thead>
+                  <thead tabindex="-1">
                     <tr>
                       <th class="col-issuer"><button class="th-sort" type="button" data-sort-field="issuerName"><span class="th-zh">发行人</span><span class="th-en">Issuer</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="col-status"><button class="th-sort" type="button" data-sort-field="status"><span class="th-zh">状态</span><span class="th-en">Status</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
@@ -269,14 +216,17 @@
 
         <section class="view-panel fees-view" id="feesView" aria-label="发行费用 Offering fees">
           <div class="offering-toolbar">
-            <label class="search-box"><span>搜</span><input id="feeSearch" type="search" autocomplete="off" aria-label="搜索发行费用" placeholder="搜索公司、代码…" /></label>
-            <button type="button" class="text-button" id="clearFeeSearch">清除 / Clear</button>
+            <label class="search-box"><span>搜</span><input id="feeSearch" type="search" autocomplete="off" aria-label="搜索发行费用" placeholder="公司、代码、机构…" /></label>
+            <button type="button" class="text-button" id="clearFeeSearch">清除</button>
           </div>
+          <div id="feeControls"></div>
           <p class="offering-count" id="feeCount" role="status" aria-live="polite"></p>
+          <div id="feeSummary" role="status"></div><div id="feeSelection"></div>
           <div id="feeComparison"></div>
+          <nav id="feePagination" aria-label="发行费用分页"></nav>
         </section>
 
-        <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard">
+        <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard"><nav class="institution-tabs"><button type="button" data-sponsor-workbench="list">机构列表</button><button type="button" data-sponsor-workbench="compare">机构比较</button></nav>
           <div class="sl-meta-bar">
             <p class="snapshot-meta" id="slCoverageText">正在载入保荐人龙虎榜…</p>
             <p class="sl-meta-count"><strong id="slFirmCount">--</strong> 个保荐/合并口径 · <span id="slGeneratedAt">--</span></p>
@@ -420,7 +370,7 @@
             </div>
           </section>
 
-          <aside class="sl-drawer" id="slDrawer" aria-hidden="true">
+          <div id="institutionCompareBar" hidden></div><aside class="sl-drawer" id="slDrawer" aria-hidden="true">
             <button class="sl-drawer-backdrop" id="slDrawerBackdrop" type="button" aria-label="关闭"></button>
             <section class="sl-drawer-panel" role="dialog" aria-modal="true" aria-label="Sponsor detail">
               <button class="sl-drawer-close" id="slDrawerClose" type="button">关闭</button>
@@ -429,7 +379,7 @@
           </aside>
         </section>
 
-        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="保荐人擂台 Sponsor PK">
+        <section class="view-panel sponsor-league sponsor-pk" id="sponsorPkView" aria-label="保荐人擂台 Sponsor PK"><nav class="institution-tabs"><button type="button" data-sponsor-workbench="list">机构列表</button><button type="button" data-sponsor-workbench="compare">机构比较</button></nav>
           <div class="spk-shell">
             <section class="spk-hero">
               <div>
@@ -505,82 +455,39 @@
                 <div class="spk-card-slot" id="spkCardB"></div>
               </div>
             </section>
-            <section class="spk-metrics" id="spkMetrics" aria-label="Sponsor PK metrics"></section>
+            <div id="institutionComparison"></div><section class="spk-metrics" id="spkMetrics" aria-label="Sponsor PK metrics"></section>
           </div>
         </section>
 
-        <section class="view-panel" id="precedentsView" aria-label="Precedent search">
-          <div class="coming-grid">
-            <div class="feature-slab">
-              <div class="feature-kicker">Coming soon</div>
-              <h2>案例语义检索 <small>HKEX precedent search</small></h2>
-              <div class="mock-search">
-                <span>搜</span>
-                <input value="social insurance housing fund non-compliance" readonly />
-                <button disabled>Search</button>
-              </div>
-              <div class="result-skeleton">
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
-            <div class="mini-panel">
-              <h3>Evidence contract</h3>
-              <p>doc id, page range, snippet, source URL, retrieval basis, review flag.</p>
-            </div>
-          </div>
-        </section>
+        <section class="view-panel transactions-view" id="precedentsView" aria-label="交易与重组">
+ <div class="offering-toolbar"><label class="search-box"><span>搜</span><input id="transactionSearch" type="search" autocomplete="off" aria-label="搜索交易、规则或签署机构" placeholder="公司、代码、规则号、签署机构…" /></label><button type="button" class="text-button" id="clearTransactions">清除筛选</button></div>
+ <button id="transactionReorganisation" class="transaction-example-link" type="button" data-tx-reorganisation>跨分类比较 · 反向收购／控股公司重组</button>
+ <details class="transaction-filter-panel"><summary>规则、机构及交易筛选</summary><div class="transaction-filters">
+ <label>规则<select id="transactionRule"><option value="all">全部规则</option></select></label>
+ <label>签署机构<select id="transactionAdvisor"><option value="all">全部机构</option></select></label>
+ <label>交易类型<select id="transactionCategory"><option value="all">全部类型</option><option value="reorganisation">跨分类重组先例</option><option value="reverse_takeover">反向收购</option><option value="holding_substitution">更换控股公司</option><option value="scheme">协议安排私有化</option><option value="offer">控制权／全面要约</option><option value="acquisition">收购</option><option value="disposal">资产处置</option></select></label>
+ <label>已确认阶段<select id="transactionStatus"><option value="all">全部阶段</option><option value="active">要约进行中</option><option value="approved">股东已批准</option><option value="closed">已完成／已生效</option><option value="terminated">协议已终止</option></select></label>
+ <label>中介角色<select id="transactionRole"><option value="all">全部角色</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="Accountant">会计师</option><option value="Valuer">估值师</option><option value="IndependentExpertAU">澳洲独立专家</option></select></label>
+ <label>签署服务<select id="transactionService"><option value="all">全部服务</option><option value="rto_opinion">反向收购独立意见</option><option value="australian_scheme_expert">澳洲安排计划独立专家报告</option><option value="scheme_opinion">私有化独立意见</option><option value="offer_opinion">要约独立意见</option><option value="offer_advice">要约财务顾问</option><option value="takeovers_profit_forecast">收购守则盈利预测报告</option><option value="property_valuation">物业估值</option><option value="vessel_valuation">船舶估值</option><option value="acquisition_due_diligence">收购及尽职审查</option></select></label>
+ <label>对价币种<select id="transactionCurrency"><option value="all">全部币种</option></select></label>
+ <label>实质进度<select id="transactionRecent"><option value="all">全部日期</option><option value="30">近 30 日</option><option value="90">近 90 日</option></select></label>
+ </div></details>
+ <div class="transaction-caption"><p id="transactionCount" role="status" aria-live="polite"></p><span>金额：百万原币 · 每股价格另列</span></div>
+ <section id="transactionComparison" class="transaction-comparison" aria-label="交易并列比较" hidden></section>
+ <div id="transactionWorkspace" class="transaction-workspace"><div id="transactionCards" class="transaction-results" aria-label="交易搜索结果"></div><article id="transactionDetail" class="transaction-detail-pane" aria-label="交易详情" hidden></article><div id="transactionDetailEmpty" class="transaction-detail-empty"></div></div>
+ <div id="transactionBasket" class="transaction-basket" aria-label="交易对比篮" hidden></div>
+</section>
+
+
+
 
         <section class="view-panel dossiers-view" id="dossiersView" aria-label="发行人档案 Issuer dossiers">
           <div class="offering-toolbar">
             <label class="search-box"><span>搜</span><input id="dossierSearch" type="search" autocomplete="off" aria-label="搜索发行人档案" placeholder="搜索公司、代码、配售账户、执行事项…" /></label>
-            <button type="button" class="text-button" id="clearDossierSearch">清除 / Clear</button>
+            <button type="button" class="text-button" id="clearDossierSearch">清除</button>
           </div>
           <p class="offering-count" id="dossierCount" role="status" aria-live="polite"></p>
-          <div id="dossierCards"></div>
-        </section>
-
-        <section class="view-panel" id="signalsView" aria-label="Market signals">
-          <div class="coming-grid">
-            <div class="feature-slab">
-              <div class="feature-kicker">Coming soon</div>
-              <h2>持仓集中度 <small>CCASS concentration</small></h2>
-              <div class="bar-stack">
-                <span style="width: 44%"></span>
-                <span style="width: 25%"></span>
-                <span style="width: 17%"></span>
-                <span style="width: 14%"></span>
-              </div>
-            </div>
-            <div class="mini-panel">
-              <h3>Signal wording</h3>
-              <p>Participant-level custody signal, not beneficial ownership proof.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="view-panel" id="researchView" aria-label="Research">
-          <div class="coming-grid">
-            <div class="feature-slab">
-              <div class="feature-kicker">Private draft room</div>
-              <h2>研究笔记 <small>Research notes</small></h2>
-              <div class="research-preview">
-                <div class="claim-row">
-                  <span>Claim ledger</span>
-                  <strong>0 public</strong>
-                </div>
-                <div class="claim-row">
-                  <span>Source packs</span>
-                  <strong>Coming soon</strong>
-                </div>
-              </div>
-            </div>
-            <div class="mini-panel">
-              <h3>Publication gate</h3>
-              <p>Source-backed, reviewer-checked, versioned, and legally cautious.</p>
-            </div>
-          </div>
+          <div id="dossierReturn"></div><div id="dossierCards"></div>
         </section>
 
         <footer class="footer-note">
@@ -596,16 +503,15 @@
             <p>发行人已终止上市计划，或港交所最近一轮申请已撤回、被拒绝或发回且未重递的，列入「搁置/撤回」。申请失效后，最近 A1 超过六个月且备案尚未接收，或备案停留在已接收或征询监管意见、最近 A1 超过一年未更新的，也列入此类。</p>
             <p class="methodology-en">Stalled/withdrawn includes terminated listing plans and the latest applications withdrawn, rejected or returned without a subsequent filing. Lapsed applications also qualify after six months without CSRC receipt, or after a year without a new A1 while the filing remains at receipt or regulator opinion.</p>
           </details>
-          <span class="visit-counter" id="siteVisitCounter" style="display:none" aria-live="polite">
-            自上线累计 Since launch · 访问量 Visits <span id="busuanzi_value_site_pv">–</span> · 访客 Visitors <span id="busuanzi_value_site_uv">–</span>
-          </span>
-          <small id="visitCounterDisclosure">本页加载 Vercount 第三方脚本统计访问量与访客数。 A third-party Vercount script counts page views and visitors.</small>
+          
+          
         </footer>
       </main>
     </div>
 
-    <script src="app.js?v=0a84ac129c58afad"></script>
-    <script src="sponsor_leaderboard_demo.js?v=1d703686b3629137"></script>
-    <script defer src="https://events.vercount.one/js"></script>
+    <dialog id="globalSearchDialog" aria-labelledby="globalSearchTitle"><header><h2 id="globalSearchTitle">全局搜索</h2><button type="button" id="globalSearchClose" aria-label="关闭搜索">关闭</button></header><input id="globalSearchInput" type="search" placeholder="发行人、代码、机构、条款…" aria-label="搜索已收录资料"><div id="globalSearchResults"></div></dialog>
+<script src="app.js?v=320122cc0e533be8"></script>
+    <script src="sponsor_leaderboard_demo.js?v=aaaf77046ca9a5bb"></script>
+    
   </body>
 </html>
