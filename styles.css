@@ -2658,9 +2658,22 @@ tr[role="button"]:focus-visible {
 .offering-organizations li { margin: 9px 0; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
 .offering-org-name { display: block; font-weight: 550; }
 .offering-legal-name, .offering-org-role { display: block; font-size: 13px; color: var(--muted); }
-.offering-investors { list-style: none; padding: 0; margin: 0; }
-.offering-investors li { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin: 9px 0; font-size: 14px; line-height: 1.6; }
-.offering-investor-type { flex-shrink: 0; color: #375a64; background: #edf3f4; padding: 2px 7px; border-radius: 4px; font-size: 13px; }
+.offering-cornerstone-summary { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 0 0 12px; font-size: 14px; line-height: 1.6; }
+.offering-cornerstone-summary strong { flex-basis: 100%; font-weight: 600; }
+.offering-cornerstone-groups, .offering-cornerstone-members, .offering-cornerstone-tags { list-style: none; margin: 0; padding: 0; }
+.offering-cornerstone-groups > li { padding: 13px 0; border-top: 1px solid var(--line); min-width: 0; }
+.offering-cornerstone-name, .offering-cornerstone-members > li > div { display: flex; justify-content: space-between; gap: 5px 12px; flex-wrap: wrap; font-size: 14px; line-height: 1.6; }
+.offering-cornerstone-name strong { font-size: 15px; }
+.offering-cornerstone-name > span { font-variant-numeric: tabular-nums; }
+.offering-fee-basis { color: var(--muted); font-size: 13px; }
+.offering-cornerstone-legal, .offering-cornerstone-detail, .offering-cornerstone-members p { margin: 4px 0; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; color: var(--muted); }
+.offering-cornerstone-tags { display: flex; gap: 5px; flex-wrap: wrap; margin: 8px 0; }
+.offering-cornerstone-tags li { max-width: 100%; padding: 3px 7px; border-radius: 4px; color: #294d56; background: #edf3f4; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.offering-cornerstone-tags li > span { padding-right: 5px; color: #62767b; }
+.offering-cornerstone-rank { margin: 8px 0; font-size: 14px; line-height: 1.65; }
+.offering-cornerstone-rank > span { display: block; color: var(--muted); }
+.offering-cornerstone-members > li { margin: 10px 0; padding-left: 10px; border-left: 2px solid #dce7e9; }
+.offering-cornerstone-members strong { font-weight: 500; overflow-wrap: anywhere; }
 .offering-disclosure { margin: 10px 0; font-size: 14px; }
 .offering-disclosure summary, .offering-sources summary { cursor: pointer; line-height: 1.6; padding: 6px 0; color: var(--accent); }
 .offering-disclosure[open] { padding-bottom: 6px; }

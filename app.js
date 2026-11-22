@@ -1120,19 +1120,25 @@ const offeringNoticeEvidence = [
         252,
         253,
         254,
-        255
+        255,
+        439,
+        440
       ],
       "cornerstones": [
         {
           "name": "GF Fund Management Co., Ltd.",
           "shortName": "广发基金",
-          "type": "公募基金管理人",
+          "type": "中国内地公募基金管理人",
           "pdfPages": [
             251,
             252
           ],
-          "capacity": "代表旗下基金",
-          "profileUrl": "https://www.gffunds.com.cn/gywm/gsjj/201606/t20160618_52960.shtml"
+          "capacity": "代表旗下数只基金全权认购",
+          "profileUrl": "https://www.gffunds.com.cn/gywm/4/202609/t20260903_431076.shtml",
+          "id": "gf-mainland",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 9500000,
+          "feesIncluded": false
         },
         {
           "name": "GF International Investment Management Limited",
@@ -1141,17 +1147,25 @@ const offeringNoticeEvidence = [
           "pdfPages": [
             252
           ],
-          "capacity": "代表旗下基金"
+          "capacity": "代表旗下一只基金全权认购",
+          "id": "gf-hk",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 500000,
+          "feesIncluded": false
         },
         {
           "name": "China Universal Asset Management Co., Ltd.",
           "shortName": "汇添富基金",
-          "type": "公募基金管理人",
+          "type": "中国内地公募基金管理人",
           "pdfPages": [
             252,
             253
           ],
-          "capacity": "代表旗下基金"
+          "capacity": "代表旗下数只基金全权认购",
+          "id": "cuam-mainland",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 8000000,
+          "feesIncluded": false
         },
         {
           "name": "China Universal Asset Management (Hong Kong) Company Limited",
@@ -1160,17 +1174,25 @@ const offeringNoticeEvidence = [
           "pdfPages": [
             253
           ],
-          "capacity": "代表 CUAM China-Hong Kong Strategy Fund"
+          "capacity": "代表 CUAM China-Hong Kong Strategy Fund 全权认购",
+          "id": "cuam-hk",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 1000000,
+          "feesIncluded": false
         },
         {
           "name": "Fullgoal Fund Management Co., Ltd.",
           "shortName": "富国基金",
-          "type": "公募基金管理人",
+          "type": "中国内地公募基金管理人",
           "pdfPages": [
             253,
             254
           ],
-          "capacity": "代表旗下基金"
+          "capacity": "代表旗下数只公募基金全权认购",
+          "id": "fullgoal-mainland",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 5372000,
+          "feesIncluded": false
         },
         {
           "name": "Fullgoal Asset Management (HK) Limited",
@@ -1179,17 +1201,25 @@ const offeringNoticeEvidence = [
           "pdfPages": [
             254
           ],
-          "capacity": "代表旗下基金"
+          "capacity": "代表旗下一只基金全权认购",
+          "id": "fullgoal-hk",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 1628000,
+          "feesIncluded": false
         },
         {
           "name": "E Fund Management Co., Ltd.",
           "shortName": "易方达基金",
-          "type": "公募基金管理人",
+          "type": "中国内地公募基金管理人",
           "pdfPages": [
             254
           ],
-          "capacity": "代表旗下基金",
-          "profileUrl": "https://www.efunds.com.cn/lm/jgd-sy/"
+          "capacity": "以代理身份代表旗下一只基金全权认购",
+          "profileUrl": "https://www.efunds.com.cn/lm/jgd-sy/",
+          "id": "efund",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 3000000,
+          "feesIncluded": false
         }
       ],
       "announcementWording": "现时市况",
@@ -1211,6 +1241,133 @@ const offeringNoticeEvidence = [
           "date": "2026-06-08",
           "sha256": "15efda2bb2315bd390333df71f130db2e18b56a759498a3e1065cef10fde9713",
           "publishedDate": "08/06/2026"
+        }
+      ],
+      "cornerstoneCommitmentTotal": {
+        "currency": "USD",
+        "amount": 29000000,
+        "label": "计划认购额",
+        "basis": "原指示价 HKD 15.50–18.90"
+      },
+      "cornerstoneGroups": [
+        {
+          "id": "gf",
+          "name": "广发基金",
+          "memberIds": [
+            "gf-mainland",
+            "gf-hk"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "中国内地公募基金管理人"
+            },
+            {
+              "dimension": "认购",
+              "label": "代旗下基金全权认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "内地管理人及全资香港子公司"
+            }
+          ],
+          "pdfPages": [
+            251,
+            252,
+            254,
+            439
+          ],
+          "ranking": {
+            "metric": "非货公募规模",
+            "currency": "RMB",
+            "amountHundredMillion": 11209.42,
+            "rank": 3,
+            "asOf": "2026-06-30",
+            "dataProvider": "Wind、公司统计",
+            "sourceUrl": "https://static.cninfo.com.cn/finalpage/2026-08-29/1225532942.PDF#page=23",
+            "sourceLabel": "广发证券半年报 p.23",
+            "publicationDate": "2026-08-29"
+          }
+        },
+        {
+          "id": "cuam",
+          "name": "汇添富基金",
+          "memberIds": [
+            "cuam-mainland",
+            "cuam-hk"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "中国内地公募基金管理人"
+            },
+            {
+              "dimension": "认购",
+              "label": "代旗下基金全权认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "内地管理人及全资香港子公司"
+            }
+          ],
+          "pdfPages": [
+            252,
+            253,
+            254,
+            439
+          ]
+        },
+        {
+          "id": "fullgoal",
+          "name": "富国基金",
+          "memberIds": [
+            "fullgoal-mainland",
+            "fullgoal-hk"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "中国内地公募基金管理人"
+            },
+            {
+              "dimension": "认购",
+              "label": "代旗下基金全权认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "内地公募基金及香港基金账户"
+            }
+          ],
+          "pdfPages": [
+            253,
+            254,
+            439
+          ]
+        },
+        {
+          "id": "efund",
+          "name": "易方达基金",
+          "memberIds": [
+            "efund"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "中国内地公募基金管理人"
+            },
+            {
+              "dimension": "认购",
+              "label": "以代理身份代一只基金认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "QDII · 全球医疗健康投资"
+            }
+          ],
+          "pdfPages": [
+            254,
+            440
+          ]
         }
       ]
     }
@@ -1405,17 +1562,23 @@ const offeringNoticeEvidence = [
       "cornerstonePages": [
         275,
         277,
-        278
+        278,
+        412
       ],
       "cornerstones": [
         {
           "name": "Elbe Rhein Investment Limited",
           "shortName": "易北莱茵投资",
-          "type": "投资及资产管理",
+          "type": "私人投资及资产管理公司",
           "pdfPages": [
             278
           ],
-          "capacity": "Liu Jonas 全资持有"
+          "capacity": "公司直接签约认购",
+          "id": "elbe",
+          "commitmentCurrency": "USD",
+          "commitmentAmount": 2000000,
+          "feesIncluded": false,
+          "formerName": "Migao Corporation Limited (米高集团有限公司)"
         }
       ],
       "announcementWording": "包括当时市况在内的多项因素",
@@ -1437,6 +1600,40 @@ const offeringNoticeEvidence = [
           "date": "2026-03-31",
           "sha256": "33c1a8a2df59c9ef7c8a0e30f2825320409256aa3f8c5321f8f2f5e2f224248f",
           "publishedDate": "31/03/2026"
+        }
+      ],
+      "cornerstoneCommitmentTotal": {
+        "currency": "USD",
+        "amount": 2000000,
+        "label": "计划认购额",
+        "equivalentHkd": 15700000
+      },
+      "cornerstoneGroups": [
+        {
+          "id": "elbe",
+          "name": "易北莱茵投资",
+          "memberIds": [
+            "elbe"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "私人投资及资产管理公司"
+            },
+            {
+              "dimension": "认购",
+              "label": "公司直接签约认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "Liu Jonas 全资 · 科技及智能制造"
+            }
+          ],
+          "pdfPages": [
+            277,
+            278,
+            412
+          ]
         }
       ]
     }
@@ -1645,7 +1842,8 @@ const offeringNoticeEvidence = [
           "sha256": "17288d3b48172ee9a19d49c91f22f90f78afecfd9638efc8d664874a049d5895",
           "publishedDate": "31/03/2026"
         }
-      ]
+      ],
+      "cornerstoneGroups": []
     }
   },
   {
@@ -1805,7 +2003,12 @@ const offeringNoticeEvidence = [
           "type": "个人投资者",
           "pdfPages": [
             218
-          ]
+          ],
+          "id": "cheng",
+          "commitmentCurrency": "HKD",
+          "commitmentAmount": 40000000,
+          "capacity": "个人直接认购",
+          "feesIncluded": true
         },
         {
           "name": "Successful Lotus Limited",
@@ -1814,7 +2017,11 @@ const offeringNoticeEvidence = [
           "pdfPages": [
             218
           ],
-          "capacity": "李家杰全资持有"
+          "capacity": "李家杰全资持有的投资控股公司",
+          "id": "successful-lotus",
+          "commitmentCurrency": "HKD",
+          "commitmentAmount": 39600000,
+          "feesIncluded": false
         },
         {
           "name": "Thalassa Capital Dynamics SPC (acting for and on behalf of Thalassa Horizon SP)",
@@ -1824,7 +2031,12 @@ const offeringNoticeEvidence = [
             218,
             219
           ],
-          "manager": "Seascape Synergy Group Limited"
+          "manager": "Seascape Synergy Group Limited",
+          "id": "thalassa",
+          "commitmentCurrency": "HKD",
+          "commitmentAmount": 30000000,
+          "capacity": "通过 Thalassa Horizon SP 认购",
+          "feesIncluded": true
         },
         {
           "name": "Yeebo Alpha Limited",
@@ -1833,7 +2045,11 @@ const offeringNoticeEvidence = [
           "pdfPages": [
             219
           ],
-          "capacity": "Yeebo (International Holdings) Limited（亿都）全资持有"
+          "capacity": "亿都（国际控股）有限公司全资投资子公司",
+          "id": "yeebo-alpha",
+          "commitmentCurrency": "HKD",
+          "commitmentAmount": 10000000,
+          "feesIncluded": false
         }
       ],
       "announcementWording": "包括当时市况在内的多项因素",
@@ -1855,6 +2071,118 @@ const offeringNoticeEvidence = [
           "date": "2026-07-05",
           "sha256": "1c9eb68bcc8f399e3ebc354b3225af7f125fddf919bdf1e7dfb4c765f4f4abab",
           "publishedDate": "05/07/2026"
+        }
+      ],
+      "cornerstoneCommitmentTotal": {
+        "currency": "HKD",
+        "amount": 119600000,
+        "label": "计划认购额"
+      },
+      "cornerstoneGroups": [
+        {
+          "id": "cheng",
+          "name": "郑志恒",
+          "memberIds": [
+            "cheng"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "个人投资者"
+            },
+            {
+              "dimension": "认购",
+              "label": "个人直接认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "周大福珠宝副主席兼执行董事"
+            }
+          ],
+          "pdfPages": [
+            217,
+            218,
+            465
+          ]
+        },
+        {
+          "id": "successful-lotus",
+          "name": "Successful Lotus",
+          "memberIds": [
+            "successful-lotus"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "私人投资控股公司"
+            },
+            {
+              "dimension": "认购",
+              "label": "个人全资投资工具"
+            },
+            {
+              "dimension": "特征",
+              "label": "李家杰全资持有"
+            }
+          ],
+          "pdfPages": [
+            217,
+            218,
+            465
+          ]
+        },
+        {
+          "id": "thalassa",
+          "name": "Thalassa Capital",
+          "memberIds": [
+            "thalassa"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "股权投资载体"
+            },
+            {
+              "dimension": "认购",
+              "label": "开曼 SPC · 独立投资组合"
+            },
+            {
+              "dimension": "特征",
+              "label": "认购账户：Thalassa Horizon SP"
+            }
+          ],
+          "pdfPages": [
+            217,
+            218,
+            219,
+            465
+          ]
+        },
+        {
+          "id": "yeebo-alpha",
+          "name": "Yeebo Alpha",
+          "memberIds": [
+            "yeebo-alpha"
+          ],
+          "tags": [
+            {
+              "dimension": "身份",
+              "label": "上市产业集团投资子公司"
+            },
+            {
+              "dimension": "认购",
+              "label": "公司直接签约认购"
+            },
+            {
+              "dimension": "特征",
+              "label": "亿都（00259）全资 · 显示器件及 AI 算力"
+            }
+          ],
+          "pdfPages": [
+            217,
+            219,
+            465
+          ]
         }
       ]
     }
@@ -2044,7 +2372,8 @@ const offeringNoticeEvidence = [
           "sha256": "96382b718db76c824879ed6b0ce4422167107131f0c487b854d211711a262c1c",
           "publishedDate": "01/04/2026"
         }
-      ]
+      ],
+      "cornerstoneGroups": []
     }
   }
 ];
@@ -2091,7 +2420,8 @@ function offeringSearchText(record) {
   const facts = notice.research || {};
   const institutions = [...(facts.sponsors || []), ...(facts.cmis || []), ...(facts.cornerstones || [])];
   return ["发售搁置 暂停 paused", ...offeringNoticeLabels(notice), notice.date, notice.stockCode,
-    ...institutions.flatMap(item => [item.name, item.shortName, item.type, item.manager, item.capacity, ...(item.roles || [])])].filter(Boolean).join(" ");
+    ...institutions.flatMap(item => [item.name, item.shortName, item.type, item.manager, item.capacity, item.formerName, ...(item.roles || [])]),
+    ...(facts.cornerstoneGroups || []).flatMap(group => [group.name, ...group.tags.map(tag => tag.label), group.ranking?.metric, group.ranking?.asOf])].filter(Boolean).join(" ");
 }
 
 function renderOfferingBadge(record) {
@@ -2129,6 +2459,43 @@ function renderOfferingOrganizations(items, withRoles = false) {
   return `<ul class="offering-organizations">${items.map(item => `<li><span class="offering-org-name">${escapeHtml(item.shortName)}</span><span class="offering-legal-name">${escapeHtml(item.name)}</span>${withRoles ? `<span class="offering-org-role">${escapeHtml(item.roles.join(" / "))}</span>` : ""}</li>`).join("")}</ul>`;
 }
 
+function offeringCornerstoneGroups(facts) {
+  const byId = new Map((facts.cornerstones || []).map(item => [item.id, item]));
+  const seen = new Set();
+  return (facts.cornerstoneGroups || []).map(group => {
+    const members = group.memberIds.map(id => byId.get(id)).filter(item => {
+      if (!item) return false;
+      const key = item.name.trim().toLowerCase().replace(/\s+/g, " ");
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+    return {...group, members, amount: members.reduce((sum, item) => sum + item.commitmentAmount, 0)};
+  }).filter(group => group.members.length);
+}
+
+function renderOfferingCornerstones(facts) {
+  const groups = offeringCornerstoneGroups(facts);
+  const heading = '<h3>基石投资者 <span>Cornerstone investors</span></h3>';
+  if (!groups.length) return `${heading}<p class="offering-undisclosed">招股书未披露基石名单</p>`;
+  const total = facts.cornerstoneCommitmentTotal;
+  const amount = (currency, value) => `${escapeHtml(currency)} ${offeringNumber(value)}`;
+  const signatories = groups.reduce((sum, group) => sum + group.members.length, 0);
+  const totalAmount = groups.reduce((sum, group) => sum + group.amount, 0);
+  return `${heading}<div class="offering-cornerstone-summary"><span>${groups.length} 组</span><span>${signatories} 名法律签约方</span><strong>${escapeHtml(total.label)} ${amount(total.currency, totalAmount)}</strong>${total.basis ? `<span>${escapeHtml(total.basis)}</span>` : ""}${total.equivalentHkd ? `<span>约 HKD ${offeringNumber(total.equivalentHkd)}</span>` : ""}</div>
+    <ul class="offering-cornerstone-groups">${groups.map(group => {
+      const one = group.members.length === 1 ? group.members[0] : null;
+      const rank = group.ranking;
+      return `<li data-cornerstone-group="${escapeHtml(group.id)}"><div class="offering-cornerstone-name"><strong>${escapeHtml(group.name)}</strong><span>${amount(group.members[0].commitmentCurrency, group.amount)}${one?.feesIncluded ? ' <span class="offering-fee-basis">含费用</span>' : ""}</span></div>
+        ${one ? `<p class="offering-cornerstone-legal" data-cornerstone-signatory="${escapeHtml(one.id)}">${escapeHtml(one.name)}</p>` : ""}
+        <ul class="offering-cornerstone-tags">${group.tags.map(tag => `<li><span>${escapeHtml(tag.dimension)}</span>${escapeHtml(tag.label)}</li>`).join("")}</ul>
+        ${one?.manager ? `<p class="offering-cornerstone-detail">管理人：${escapeHtml(one.manager)}</p>` : ""}
+        ${rank ? `<p class="offering-cornerstone-rank">${escapeHtml(rank.metric)} ${escapeHtml(rank.currency)} ${offeringNumber(rank.amountHundredMillion, 2)} 亿元 · 行业第 ${rank.rank}<span>${escapeHtml(rank.asOf)} · ${escapeHtml(rank.dataProvider)}</span></p>` : ""}
+        ${group.members.length > 1 ? `<details class="offering-disclosure"><summary>法律签约方与原额 · ${group.members.length} 名</summary><ul class="offering-cornerstone-members">${group.members.map(item => `<li data-cornerstone-signatory="${escapeHtml(item.id)}"><div><strong>${escapeHtml(item.name)}</strong><span>${amount(item.commitmentCurrency, item.commitmentAmount)}</span></div><p>${escapeHtml(item.type)} · ${escapeHtml(item.capacity)}</p></li>`).join("")}</ul></details>` : ""}
+      </li>`;
+    }).join("")}</ul>`;
+}
+
 function renderOfferingResearch(facts, notice) {
   const n = offeringNumber, market = facts.market;
   const row = (label, value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
@@ -2163,9 +2530,7 @@ function renderOfferingResearch(facts, notice) {
         <h3>整体协调人 <span>OC · ${ocs.length} 家</span></h3>${renderOfferingOrganizations(ocs)}
         <details class="offering-disclosure"><summary>CMI 名单与角色（${facts.cmis.length} 家，含 OC）</summary>${renderOfferingOrganizations(facts.cmis, true)}</details>
       </section>
-      <section><h3>基石投资者 <span>Cornerstone investors${cornerstones.length ? ` · ${cornerstones.length} 名签约方` : ""}</span></h3>
-        ${cornerstones.length ? `<ul class="offering-investors">${cornerstones.map(item => `<li><span>${escapeHtml(item.shortName)}</span><span class="offering-investor-type">${escapeHtml(item.type)}</span></li>`).join("")}</ul><details class="offering-disclosure"><summary>签约名称与管理人</summary><ul class="offering-organizations">${cornerstones.map(item => `<li><span class="offering-org-name">${escapeHtml(item.name)}</span>${item.manager ? `<span class="offering-legal-name">管理人：${escapeHtml(item.manager)}</span>` : ""}${item.capacity ? `<span class="offering-legal-name">${escapeHtml(item.capacity)}</span>` : ""}</li>`).join("")}</ul></details>` : '<p class="offering-undisclosed">招股书未披露基石名单</p>'}
-      </section>
+      <section class="offering-cornerstones">${renderOfferingCornerstones(facts)}</section>
     </div>`;
 }
 
@@ -2178,6 +2543,7 @@ function renderOfferingSources(facts, notice) {
     <div><b>OC 公告</b>${facts.ocSources.map(source => link(`${source.url}#page=3`,`${source.date} p.3`)).join(" ")}</div>
     <div><b>市场</b>${link(facts.market.sourceUrl,facts.market.sourceLabel)} ${link(facts.market.listingReportUrl,"港交所上市报告")}</div>
     ${(facts.cornerstones || []).filter(item => item.profileUrl).map(item => `<div><b>机构介绍</b>${link(item.profileUrl,item.shortName)}</div>`).join("")}
+    ${(facts.cornerstoneGroups || []).filter(group => group.ranking).map(group => `<div><b>规模及排名</b>${link(group.ranking.sourceUrl,group.ranking.sourceLabel)}</div>`).join("")}
   </div></details>`;
 }
 
