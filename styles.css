@@ -2664,6 +2664,7 @@ tr[role="button"]:focus-visible {
 .offering-cornerstone-groups > li { padding: 13px 0; border-top: 1px solid var(--line); min-width: 0; }
 .offering-cornerstone-name, .offering-cornerstone-members > li > div { display: flex; justify-content: space-between; gap: 5px 12px; flex-wrap: wrap; font-size: 14px; line-height: 1.6; }
 .offering-cornerstone-name strong { font-size: 15px; }
+.offering-cornerstone-profile { margin: 4px 0; font-size: 14px; line-height: 1.65; overflow-wrap: anywhere; }
 .offering-cornerstone-name > span { font-variant-numeric: tabular-nums; }
 .offering-fee-basis { color: var(--muted); font-size: 13px; }
 .offering-cornerstone-legal, .offering-cornerstone-detail, .offering-cornerstone-members p { margin: 4px 0; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; color: var(--muted); }

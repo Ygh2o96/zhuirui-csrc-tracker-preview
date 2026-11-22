@@ -1561,6 +1561,7 @@ const offeringNoticeEvidence = [
       ],
       "cornerstonePages": [
         275,
+        276,
         277,
         278,
         412
@@ -1618,24 +1619,35 @@ const offeringNoticeEvidence = [
           "tags": [
             {
               "dimension": "身份",
-              "label": "私人投资及资产管理公司"
+              "label": "私人投资公司全资股东"
             },
             {
               "dimension": "认购",
-              "label": "公司直接签约认购"
+              "label": "透过易北莱茵投资签约"
             },
             {
               "dimension": "特征",
-              "label": "Liu Jonas 全资 · 科技及智能制造"
+              "label": "科技及智能制造投资"
             }
           ],
           "pdfPages": [
             277,
             278,
             412
-          ]
+          ],
+          "displayName": "Jonas Liu",
+          "displayRole": "全资持有人",
+          "ownership": "全资持有易北莱茵投资",
+          "profile": "微亿基石签约方 Elbe Rhein 的全资持有人；载体从事科技及智能制造投资"
         }
-      ]
+      ],
+      "cornerstoneFunding": {
+        "label": "认购资金（招股书列示）",
+        "description": "自身资金、股东资金或所管理资产；未细分本单来源",
+        "pdfPages": [
+          276
+        ]
+      }
     }
   },
   {
@@ -2103,7 +2115,10 @@ const offeringNoticeEvidence = [
             217,
             218,
             465
-          ]
+          ],
+          "displayName": "郑志恒",
+          "displayRole": "直接签约",
+          "profile": "周大福珠宝（01929）副主席兼执行董事（招股书当期）"
         },
         {
           "id": "successful-lotus",
@@ -2114,21 +2129,35 @@ const offeringNoticeEvidence = [
           "tags": [
             {
               "dimension": "身份",
-              "label": "私人投资控股公司"
+              "label": "个人投资者"
             },
             {
               "dimension": "认购",
-              "label": "个人全资投资工具"
+              "label": "透过全资投资控股公司签约"
             },
             {
               "dimension": "特征",
-              "label": "李家杰全资持有"
+              "label": "恒基地产主席兼董事总经理"
             }
           ],
           "pdfPages": [
             217,
             218,
             465
+          ],
+          "displayName": "李家杰",
+          "displayRole": "全资持有人",
+          "ownership": "全资持有 Successful Lotus",
+          "profile": "恒基兆业地产（00012）主席兼董事总经理，创办人李兆基之子",
+          "profileSources": [
+            {
+              "label": "恒基 · 李家杰职务",
+              "url": "https://www.hld.com/tc/about-the-group/our-leadership/dr-lee-ka-kit"
+            },
+            {
+              "label": "恒基 · 创办人资料",
+              "url": "https://www.hld.com/en/about-the-group/our-leadership/dr-lee-shau-kee?is_preload=1"
+            }
           ]
         },
         {
@@ -2140,15 +2169,15 @@ const offeringNoticeEvidence = [
           "tags": [
             {
               "dimension": "身份",
-              "label": "股权投资载体"
+              "label": "外部投资管理人"
             },
             {
               "dimension": "认购",
-              "label": "开曼 SPC · 独立投资组合"
+              "label": "管理 Thalassa Horizon SP 账户"
             },
             {
               "dimension": "特征",
-              "label": "认购账户：Thalassa Horizon SP"
+              "label": "开曼 SPC · 独立投资组合"
             }
           ],
           "pdfPages": [
@@ -2156,7 +2185,10 @@ const offeringNoticeEvidence = [
             218,
             219,
             465
-          ]
+          ],
+          "displayName": "Seascape Synergy",
+          "displayRole": "管理人",
+          "profile": "Thalassa Horizon SP 的外部管理人"
         },
         {
           "id": "yeebo-alpha",
@@ -2167,24 +2199,35 @@ const offeringNoticeEvidence = [
           "tags": [
             {
               "dimension": "身份",
-              "label": "上市产业集团投资子公司"
+              "label": "香港上市产业集团"
             },
             {
               "dimension": "认购",
-              "label": "公司直接签约认购"
+              "label": "透过全资投资子公司签约"
             },
             {
               "dimension": "特征",
-              "label": "亿都（00259）全资 · 显示器件及 AI 算力"
+              "label": "显示器件及 AI 算力"
             }
           ],
           "pdfPages": [
             217,
             219,
             465
-          ]
+          ],
+          "displayName": "亿都（00259）",
+          "displayRole": "母公司",
+          "ownership": "全资持有 Yeebo Alpha",
+          "profile": "香港上市产业集团；显示器件及 AI 算力业务"
         }
-      ]
+      ],
+      "cornerstoneFunding": {
+        "label": "认购资金（招股书列示）",
+        "description": "自身资金、股东资金或受托资产；未逐名细分",
+        "pdfPages": [
+          216
+        ]
+      }
     }
   },
   {
@@ -2421,7 +2464,7 @@ function offeringSearchText(record) {
   const institutions = [...(facts.sponsors || []), ...(facts.cmis || []), ...(facts.cornerstones || [])];
   return ["发售搁置 暂停 paused", ...offeringNoticeLabels(notice), notice.date, notice.stockCode,
     ...institutions.flatMap(item => [item.name, item.shortName, item.type, item.manager, item.capacity, item.formerName, ...(item.roles || [])]),
-    ...(facts.cornerstoneGroups || []).flatMap(group => [group.name, ...group.tags.map(tag => tag.label), group.ranking?.metric, group.ranking?.asOf])].filter(Boolean).join(" ");
+    ...(facts.cornerstoneGroups || []).flatMap(group => [group.name, group.displayName, group.displayRole, group.ownership, group.profile, ...group.tags.map(tag => tag.label), group.ranking?.metric, group.ranking?.asOf])].filter(Boolean).join(" ");
 }
 
 function renderOfferingBadge(record) {
@@ -2483,12 +2526,15 @@ function renderOfferingCornerstones(facts) {
   const signatories = groups.reduce((sum, group) => sum + group.members.length, 0);
   const totalAmount = groups.reduce((sum, group) => sum + group.amount, 0);
   return `${heading}<div class="offering-cornerstone-summary"><span>${groups.length} 组</span><span>${signatories} 名法律签约方</span><strong>${escapeHtml(total.label)} ${amount(total.currency, totalAmount)}</strong>${total.basis ? `<span>${escapeHtml(total.basis)}</span>` : ""}${total.equivalentHkd ? `<span>约 HKD ${offeringNumber(total.equivalentHkd)}</span>` : ""}</div>
+    ${facts.cornerstoneFunding ? `<p class="offering-cornerstone-detail">${escapeHtml(facts.cornerstoneFunding.label)}：${escapeHtml(facts.cornerstoneFunding.description)}</p>` : ""}
     <ul class="offering-cornerstone-groups">${groups.map(group => {
       const one = group.members.length === 1 ? group.members[0] : null;
       const rank = group.ranking;
-      return `<li data-cornerstone-group="${escapeHtml(group.id)}"><div class="offering-cornerstone-name"><strong>${escapeHtml(group.name)}</strong><span>${amount(group.members[0].commitmentCurrency, group.amount)}${one?.feesIncluded ? ' <span class="offering-fee-basis">含费用</span>' : ""}</span></div>
-        ${one ? `<p class="offering-cornerstone-legal" data-cornerstone-signatory="${escapeHtml(one.id)}">${escapeHtml(one.name)}</p>` : ""}
-        <ul class="offering-cornerstone-tags">${group.tags.map(tag => `<li><span>${escapeHtml(tag.dimension)}</span>${escapeHtml(tag.label)}</li>`).join("")}</ul>
+      return `<li data-cornerstone-group="${escapeHtml(group.id)}"><div class="offering-cornerstone-name"><strong>${escapeHtml(group.displayName || group.name)}${group.displayRole ? ` · ${escapeHtml(group.displayRole)}` : ""}</strong><span>${amount(group.members[0].commitmentCurrency, group.amount)}${one?.feesIncluded ? ' <span class="offering-fee-basis">含费用</span>' : ""}</span></div>
+        ${group.profile ? `<p class="offering-cornerstone-profile">${escapeHtml(group.profile)}</p>` : ""}
+        ${one ? `<p class="offering-cornerstone-legal" data-cornerstone-signatory="${escapeHtml(one.id)}">拟认购签约方：${escapeHtml(one.name)}</p>` : ""}
+        <ul class="offering-cornerstone-tags">${group.tags.filter(tag => !group.profile || tag.dimension !== "特征").map(tag => `<li><span>${escapeHtml(tag.dimension)}</span>${escapeHtml(tag.label)}</li>`).join("")}</ul>
+        ${group.ownership ? `<p class="offering-cornerstone-detail">持有：${escapeHtml(group.ownership)}</p>` : ""}
         ${one?.manager ? `<p class="offering-cornerstone-detail">管理人：${escapeHtml(one.manager)}</p>` : ""}
         ${rank ? `<p class="offering-cornerstone-rank">${escapeHtml(rank.metric)} ${escapeHtml(rank.currency)} ${offeringNumber(rank.amountHundredMillion, 2)} 亿元 · 行业第 ${rank.rank}<span>${escapeHtml(rank.asOf)} · ${escapeHtml(rank.dataProvider)}</span></p>` : ""}
         ${group.members.length > 1 ? `<details class="offering-disclosure"><summary>法律签约方与原额 · ${group.members.length} 名</summary><ul class="offering-cornerstone-members">${group.members.map(item => `<li data-cornerstone-signatory="${escapeHtml(item.id)}"><div><strong>${escapeHtml(item.name)}</strong><span>${amount(item.commitmentCurrency, item.commitmentAmount)}</span></div><p>${escapeHtml(item.type)} · ${escapeHtml(item.capacity)}</p></li>`).join("")}</ul></details>` : ""}
@@ -2544,6 +2590,7 @@ function renderOfferingSources(facts, notice) {
     <div><b>市场</b>${link(facts.market.sourceUrl,facts.market.sourceLabel)} ${link(facts.market.listingReportUrl,"港交所上市报告")}</div>
     ${(facts.cornerstones || []).filter(item => item.profileUrl).map(item => `<div><b>机构介绍</b>${link(item.profileUrl,item.shortName)}</div>`).join("")}
     ${(facts.cornerstoneGroups || []).filter(group => group.ranking).map(group => `<div><b>规模及排名</b>${link(group.ranking.sourceUrl,group.ranking.sourceLabel)}</div>`).join("")}
+    ${(facts.cornerstoneGroups || []).flatMap(group => group.profileSources || []).map(source => `<div><b>人物身份</b>${link(source.url,source.label)}</div>`).join("")}
   </div></details>`;
 }
 
