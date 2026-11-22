@@ -6273,8 +6273,7 @@ if (typeof window !== "undefined") {
 }
 
 function switchView(view, updateLocation=true) {
-  const aliases={ap:"directory",pace:"tracker",paused:"pausedOfferings",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};view=aliases[view]||view;
-  if(view==="offerings"){view="fees";state.feePhase="paused";}
+  const aliases={ap:"directory",pace:"tracker",paused:"pausedOfferings",offerings:"pausedOfferings",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};view=aliases[view]||view;
   if(["signals","research"].includes(view))view="tracker";
   const previous=window.location.pathname+window.location.search;
   const moved=p0CanonicalLocationView()!==view||(view==='dossiers'&&(new URLSearchParams(location.search).get('roundId')||new URLSearchParams(location.search).get('dossierId'))!==(state.roundId||state.dossierId));
@@ -6343,8 +6342,7 @@ function applyStateFromUrl() {
   const p=new URLSearchParams(window.location.search);
   for(const k of trackedStateKeys) state[k]=defaults[k];
   for(const k of trackedStateKeys) if(p.has(k)) state[k]=["page","feePage","dirPage"].includes(k)?Math.max(1,Math.floor(Number(p.get(k))||1)):k==="cohortCollapsed"?p.get(k)==="true":p.get(k);
-  const alias={ap:"directory",pace:"tracker",paused:"pausedOfferings",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};state.view=alias[state.view]||state.view;
-  if(p.get("view")==="offerings"){state.view="fees";state.feePhase="paused";state.feeQuery=state.offeringQuery||state.feeQuery;}
+  const alias={ap:"directory",pace:"tracker",paused:"pausedOfferings",offerings:"pausedOfferings",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};state.view=alias[state.view]||state.view;
   if(p.has("group"))state.feePhase={paused:"paused",priced:"listed",other:"other"}[p.get("group")]||state.feePhase;
   state.roundId=p.get("roundId")||p.get("dossierId")||"";state.dossierId=state.roundId;
   if(p.get("structure")==="AH")state.structure="a_h";
@@ -6637,7 +6635,7 @@ trackerRowsBody.addEventListener("click", (event) => {
     const record = state.data.records.find(item => item.id === offering.dataset.offeringId);
     state.offeringQuery = currentOfferingNotice(record)?.stockCode || "";
     closeDetail();
-    state.feeQuery=state.offeringQuery;switchView("offerings");
+    switchView("paused");
     return;
   }
   const row = event.target.closest("[data-record-id]");
@@ -6834,7 +6832,7 @@ function p0HandleFeeCompareClick(el) {
  focus?.focus({preventScroll:true});return true;
 }
 
-function p0CanonicalLocationView(){const v=new URLSearchParams(location.search).get('view')||'directory';return({ap:'directory',directory:'directory',pace:'tracker',paused:'pausedOfferings',cornerstones:'cornerstones',sponsors:'sponsorLeaderboard',dossier:'dossiers',offerings:'fees',transactions:'precedents'})[v]||v;}
+function p0CanonicalLocationView(){const v=new URLSearchParams(location.search).get('view')||'directory';return({ap:'directory',directory:'directory',pace:'tracker',paused:'pausedOfferings',cornerstones:'cornerstones',sponsors:'sponsorLeaderboard',dossier:'dossiers',offerings:'pausedOfferings',transactions:'precedents'})[v]||v;}
 function p0SaveLocation(el=document.activeElement){p0LastTrigger=el?.dataset?.txOpen?('#'+(el.dataset.txOrigin==='comparison'?'transactionComparison':'transactionCards')+' [data-tx-open="'+CSS.escape(el.dataset.txOpen)+'"]'):el?.dataset?.compareTransaction?('#transactionCards [data-compare-transaction="'+CSS.escape(el.dataset.compareTransaction)+'"]'):el?.dataset?.dirRecordId?`#directoryRows [data-dir-record-id="${CSS.escape(el.dataset.dirRecordId)}"]`:el?.dataset?.csId?`#cornerstoneListWrap [data-cs-id="${CSS.escape(el.dataset.csId)}"]`:el?.dataset?.recordId&&el.closest?.('#trackerRows')?`#trackerRows [data-record-id="${CSS.escape(el.dataset.recordId)}"]`:el?.dataset?.roundId?`${el.closest?.('#feeSelection')?'#feeSelection ':el.closest?.('#feeComparison')?'#feeComparison ':''}[data-round-id="${CSS.escape(el.dataset.roundId)}"]`:el?.id?`#${CSS.escape(el.id)}`:el?.dataset?.recordId?`[data-record-id="${CSS.escape(el.dataset.recordId)}"]`:'';history.replaceState({...history.state,scrollY:window.scrollY,triggerSelector:p0LastTrigger},'',location.href);}
 function p0DossierUrl(roundId){const p=new URLSearchParams(location.search);for(const k of trackedStateKeys){p.delete(k);const v=state[k];if(v!==defaults[k]&&v!==''&&v!==null&&v!==undefined)p.set(k,String(v));}for(const k of ['group','focus','compare','from','to'])p.delete(k);p.set('view','dossier');p.set('roundId',roundId);p.delete('dossierId');return location.pathname+'?'+p;}
 function p0FeeAmount(row,basis='offered'){if(row.route==='paused_offer')return null;const v=row[basis]?.gross?.value;return v==null?null:Number(v);}
@@ -6859,7 +6857,7 @@ function p0FromUrlInfo(){
  const raw=history.state?.fromUrl;if(!raw)return null;
  try{
   const u=new URL(raw,location.href),p=u.searchParams,rawView=p.get('view')||'directory';
-  const view=({ap:'directory',directory:'directory',pace:'tracker',paused:'pausedOfferings',cornerstones:'cornerstones',sponsors:'sponsorLeaderboard',dossier:'dossiers',offerings:'fees',transactions:'precedents'})[rawView]||rawView;
+  const view=({ap:'directory',directory:'directory',pace:'tracker',paused:'pausedOfferings',cornerstones:'cornerstones',sponsors:'sponsorLeaderboard',dossier:'dossiers',offerings:'pausedOfferings',transactions:'precedents'})[rawView]||rawView;
   return {raw,params:p,view};
  }catch{return null;}
 }
