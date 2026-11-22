@@ -3,7 +3,7 @@
 (() => {
 
 const DATA_URL = "data/sponsor_leaderboard_demo.json";
-const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=8a6c3a235a0c354e";
+const BUNDLED_DATA_URL = "data/sponsor_leaderboard_demo_data.js?v=78cb033744723797";
 
 // Integrated view root inside the main app shell (index.html). All sponsor
 // DOM ids carry an `sl` prefix to avoid colliding with tracker ids.
@@ -607,6 +607,10 @@ function timingSample(record, metric, field, currentReceiptField, stage, listing
     if (record.csrcFilingRequired !== true || record.durationSampleEligible === false) return null;
     if (record.noticeSupersededByCurrentFiling && ["a1ToNotice", "receivedToNotice"].includes(metric)) return null;
     if (timingNoticeGap(record, listingDate, regimeStart)) return null;
+    if (metric === "a1ToReceived" && record.a1ReceiptTiming?.policy === "longest_verified_same_cycle") {
+      const selected = record.a1ReceiptTiming[field.startsWith("business") ? "businessDays" : "calendarDays"];
+      return Number.isFinite(selected) ? selected : null;
+    }
     if (metric === "a1ToReceived" && stage !== "listed" && record.calendarDaysA1ToReceived > 180) {
       field = currentReceiptField;
     }
@@ -2096,18 +2100,7 @@ function projectMarketCapDetail(fact, kind) {
 }
 
 function sponsorSourceLink(link) {
-  link = link || {};
-  const secondary = secondarySourceNote(link.url);
-  const label = escapeHtml(link.label || "来源 / Source") + secondary;
-  if (link.availability === "unavailable") {
-    return `<span class="source-link">${label} · 链接不可用 / Unavailable</span>`;
-  }
-  if (!/^https?:\/\//.test(link.url || "")) {
-    return `<span class="source-link">${label} · 暂无链接 / URL unavailable</span>`;
-  }
-  const note = link.availability === "relocated" && !secondary ? " · 官方存档 / Archive"
-    : link.availability && link.availability !== "available" && !link.availabilityNote ? " · 待复核 / Pending verification" : "";
-  return `<a class="source-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${label}${note}</a>`;
+  return renderDocumentLink(link, "source-link");
 }
 
 function projectLine(fact) {

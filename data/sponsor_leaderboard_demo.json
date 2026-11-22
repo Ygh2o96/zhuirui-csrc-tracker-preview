@@ -67012,7 +67012,38 @@
           "label": "补充材料公示",
           "url": "https://www.csrc.gov.cn/csrc/c105983/c7604980/content.shtml"
         }
-      ]
+      ],
+      "a1ReceiptTiming": {
+        "policy": "longest_verified_same_cycle",
+        "reviewedAt": "2026-11-22",
+        "a1Date": "2026-05-31",
+        "receivedDate": "2026-08-10",
+        "calendarDays": 71,
+        "businessDays": 50,
+        "cycles": [
+          {
+            "a1Date": "2025-11-17",
+            "receivedDate": "2025-11-21",
+            "a1SourceUrl": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx",
+            "a1Locator": "Chengdu CRP Robot Technology Co., Ltd.; first public posting 2025-11-17",
+            "receivedSourceUrl": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html",
+            "receivedLocator": "CSRC status table as of 2026-01-09; Chengdu CRP Robot; received 2025-11-21",
+            "calendarDays": 4,
+            "businessDays": 4
+          },
+          {
+            "a1Date": "2026-05-31",
+            "receivedDate": "2026-08-10",
+            "a1SourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108609/documents/sehk26053100148.pdf",
+            "a1Locator": "Application 108609; Application Proof (1st submission), 2026-05-31",
+            "receivedSourceUrl": "https://www.csrc.gov.cn/csrc/c106251/c7672139/content.shtml",
+            "receivedLocator": "2026-11-20 XLSX, Sheet1 row 195; receipt 2026-08-10; 征求意见",
+            "receivedWorkbookSha256": "46c74635ed47a61d41d3e96f6a7f7862c02ad38724b33d452cc3b331552fb160",
+            "calendarDays": 71,
+            "businessDays": 50
+          }
+        ]
+      }
     },
     {
       "issuerId": "dst sustainable technology (shenzhen) co., ltd.",
@@ -305959,7 +305990,38 @@
       "sourceSponsorLegalNames": [
         "Guotai Junan Capital Limited"
       ],
-      "isSyntheticRollup": true
+      "isSyntheticRollup": true,
+      "a1ReceiptTiming": {
+        "policy": "longest_verified_same_cycle",
+        "reviewedAt": "2026-11-22",
+        "a1Date": "2026-05-31",
+        "receivedDate": "2026-08-10",
+        "calendarDays": 71,
+        "businessDays": 50,
+        "cycles": [
+          {
+            "a1Date": "2025-11-17",
+            "receivedDate": "2025-11-21",
+            "a1SourceUrl": "https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx",
+            "a1Locator": "Chengdu CRP Robot Technology Co., Ltd.; first public posting 2025-11-17",
+            "receivedSourceUrl": "https://fec.mofcom.gov.cn/article/zyfw/jrfw/jrfwywzn/ywznzq/202601/3289.html",
+            "receivedLocator": "CSRC status table as of 2026-01-09; Chengdu CRP Robot; received 2025-11-21",
+            "calendarDays": 4,
+            "businessDays": 4
+          },
+          {
+            "a1Date": "2026-05-31",
+            "receivedDate": "2026-08-10",
+            "a1SourceUrl": "https://www1.hkexnews.hk/app/sehk/2026/108609/documents/sehk26053100148.pdf",
+            "a1Locator": "Application 108609; Application Proof (1st submission), 2026-05-31",
+            "receivedSourceUrl": "https://www.csrc.gov.cn/csrc/c106251/c7672139/content.shtml",
+            "receivedLocator": "2026-11-20 XLSX, Sheet1 row 195; receipt 2026-08-10; 征求意见",
+            "receivedWorkbookSha256": "46c74635ed47a61d41d3e96f6a7f7862c02ad38724b33d452cc3b331552fb160",
+            "calendarDays": 71,
+            "businessDays": 50
+          }
+        ]
+      }
     },
     {
       "issuerId": "guangzhou eholly intelligent equipment co., ltd.",

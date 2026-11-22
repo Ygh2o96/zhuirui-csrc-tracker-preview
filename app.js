@@ -56,9 +56,9 @@ const viewTitles = {
 const metricDefinitions = [
   {
     metric: "a1ToReceived",
-    labelZh: "备案锚点（A1日）至接收天数",
-    labelEn: "CSRC A1 date anchor to received days",
-    note: "按有公开接收日样本；历史锚点超过180天时改用当前A1，当前A1后未接收则剔除"
+    labelZh: "A1至接收天数",
+    labelEn: "A1 to CSRC receipt days",
+    note: "已核实多轮取较长同轮周期；其余按既有有效日期口径"
   },
   {
     metric: "receivedToNotice",
@@ -322,6 +322,10 @@ function timingSample(record, metric, field, currentReceiptField, stage, listing
     if (record.csrcFilingRequired !== true || record.durationSampleEligible === false) return null;
     if (record.noticeSupersededByCurrentFiling && ["a1ToNotice", "receivedToNotice"].includes(metric)) return null;
     if (timingNoticeGap(record, listingDate, regimeStart)) return null;
+    if (metric === "a1ToReceived" && record.a1ReceiptTiming?.policy === "longest_verified_same_cycle") {
+      const selected = record.a1ReceiptTiming[field.startsWith("business") ? "businessDays" : "calendarDays"];
+      return Number.isFinite(selected) ? selected : null;
+    }
     if (metric === "a1ToReceived" && stage !== "listed" && record.calendarDaysA1ToReceived > 180) {
       field = currentReceiptField;
     }
@@ -3490,7 +3494,7 @@ function renderDays(record) {
   return `
     <div class="days-cell">
       <div class="days-cell-mode">${dayUnitLabel()}</div>
-      <div><span>备案锚点（A1日）至接收</span><strong>${formatDayValue(received)}</strong></div>
+      <div><span>${record.a1ReceiptTiming ? "A1至接收（同轮较长）" : "A1至接收"}</span><strong>${formatDayValue(received)}</strong></div>
       ${currentReceivedLine}
       <div><span>接收至通知</span><strong>${formatDayValue(days("receivedToNotice"))}</strong></div>
       <div><span>备案锚点（A1日）至通知</span><strong>${formatDayValue(days("a1ToNotice"))}</strong></div>
@@ -3733,6 +3737,23 @@ function secondarySourceNote(url) {
   return "";
 }
 
+function renderDocumentLink(source, className = "") {
+  const title = String(source?.originalLabel || source?.label || "来源 / Source").replace(
+    /(?: · (?:未核验 \/ Unchecked|核验已过期 \/ Recheck due|最近核查未确认 \/ Latest check inconclusive))+$/, "");
+  const url = source?.url;
+  const isWebLink = /^https?:\/\//i.test(url || "");
+  const dead = source?.availability === "unavailable";
+  const secondary = secondarySourceNote(url).replace(/^ · /, "");
+  const hint = dead ? "链接不可用 / Unavailable" : !isWebLink ? "暂无链接 / URL unavailable"
+    : source.availability === "relocated" && !secondary ? "官方存档 / Archive" : secondary;
+  const tooltip = hint ? ` title="${escapeHtml(hint)}"` : "";
+  if (dead || !isWebLink) {
+    return `<span class="${className || "muted"}" aria-disabled="true"${tooltip}>${escapeHtml(title)}</span>`;
+  }
+  const css = className ? ` class="${className}"` : "";
+  return `<a${css} href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"${tooltip}>${escapeHtml(title)}</a>`;
+}
+
 function renderListingEconomics(record) {
   const e = record.listingEconomics;
   if (!record.hkexListingDate || !record.hkexListingStockCode || !e) return "";
@@ -3928,15 +3949,7 @@ function renderDetail(record) {
   const regulatorList = (record.regulatoryTags || []).map((tag) => `<span>${escapeHtml(regulatorLabels[tag] || tag)}</span>`).join("");
   const sourceLinks = (record.sourceLinks || [])
     .filter((source) => /^https?:\/\//i.test(String(source.url || "")))
-    .map((source) => {
-      const secondary = secondarySourceNote(source.url);
-      const label = escapeHtml(source.label) + secondary;
-      if (source.availability === "unavailable") {
-        const note = secondary ? "链接不可用 / Unavailable" : "官方历史文件暂不可用 / Historical file unavailable";
-        return `<span class="muted" title="${escapeHtml(source.checkedAt || '')}">${label} · ${note}</span>`;
-      }
-      return `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${label}${source.availability === "relocated" && !secondary ? ' · 官方存档 / Archive' : ''}</a>`;
-    })
+    .map((source) => renderDocumentLink(source))
     .join("");
   const feedbackItems = (record.feedbackItems || [])
     .map((item) => {
@@ -4000,8 +4013,8 @@ function renderDetail(record) {
       `
     : `
           <div><span>备案计时至接收 A1→Received</span><strong>${formatDayNumber(durationValueForStats(record, {metric:"a1ToReceived"}), dayUnit)}</strong></div>
-          ${hkexListingStage(record) !== "listed" && record.calendarDaysA1ToReceived > 180 ? `<div><span>历史A1至接收 Historical A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>` : ""}
-          <div><span>当前A1至当前接收 Current A1→Received</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>
+          ${!record.a1ReceiptTiming && hkexListingStage(record) !== "listed" && record.calendarDaysA1ToReceived > 180 ? `<div><span>历史A1至接收 Historical A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>` : ""}
+          ${record.a1ReceiptTiming ? record.a1ReceiptTiming.cycles.map(cycle => `<div><span>${cycle.a1Date} → ${cycle.receivedDate}<br><a href="${escapeHtml(cycle.a1SourceUrl)}" target="_blank" rel="noreferrer">A1</a> · <a href="${escapeHtml(cycle.receivedSourceUrl)}" target="_blank" rel="noreferrer">接收</a></span><strong>${formatDayNumber(cycle[state.dayCountMode === "business" ? "businessDays" : "calendarDays"], dayUnit)}</strong></div>`).join("") : `<div><span>当前A1至当前接收 Current A1→Received</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>`}
           <div><span>接收至通知 Received→Notice</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
           <div><span>备案锚点（A1日）至通知 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
       `;
