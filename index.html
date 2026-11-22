@@ -10,8 +10,8 @@
     />
     <meta name="theme-color" content="#f5f7f8" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=f301ee40a486" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=20261120-capacity-sources" />
+    <link rel="stylesheet" href="styles.css?v=e3c5080dcd64dc0d" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=351204354685e3d1" />
 
   </head>
   <body>
@@ -41,6 +41,10 @@
           <button class="nav-item" data-view="offerings">
             <span class="nav-icon" aria-hidden="true">售</span>
             <span><b>发售搁置</b><small>Paused or not proceeding</small></span>
+          </button>
+          <button class="nav-item" data-view="fees">
+            <span class="nav-icon" aria-hidden="true">费</span>
+            <span><b>发行费用</b><small>Offering Fees</small></span>
           </button>
           <button class="nav-item" data-view="sponsorLeaderboard">
             <span class="nav-icon" aria-hidden="true">榜</span>
@@ -261,6 +265,15 @@
           <p class="offering-count" id="offeringCount" role="status" aria-live="polite"></p>
           <div class="offering-grid" id="offeringCards"></div>
           <p class="offering-asof">核查日期：2026-11-22（香港时间）</p>
+        </section>
+
+        <section class="view-panel fees-view" id="feesView" aria-label="发行费用 Offering fees">
+          <div class="offering-toolbar">
+            <label class="search-box"><span>搜</span><input id="feeSearch" type="search" autocomplete="off" aria-label="搜索发行费用" placeholder="搜索公司、代码…" /></label>
+            <button type="button" class="text-button" id="clearFeeSearch">清除 / Clear</button>
+          </div>
+          <p class="offering-count" id="feeCount" role="status" aria-live="polite"></p>
+          <div id="feeComparison"></div>
         </section>
 
         <section class="view-panel sponsor-league" id="sponsorLeaderboardView" aria-label="Sponsor leaderboard">
@@ -605,8 +618,8 @@
       </main>
     </div>
 
-    <script src="app.js?v=236e841d7566"></script>
-    <script src="sponsor_leaderboard_demo.js?v=a030bfd4195b"></script>
+    <script src="app.js?v=71946a04eef255d4"></script>
+    <script src="sponsor_leaderboard_demo.js?v=1d703686b3629137"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

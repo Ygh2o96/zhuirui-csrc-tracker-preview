@@ -1,0 +1,173 @@
+{
+  "asOf": "2026-11-22",
+  "offers": [
+    {
+      "discretionaryCapBps": 0,
+      "fixedBps": 350,
+      "issuerId": "ganzhou hemay pharmaceutical co., ltd. - b",
+      "kind": "paused_terms",
+      "name": "和美药业",
+      "prospectusDate": "2026-10-30",
+      "roundId": "offering:00054:2026-10-30",
+      "sources": [
+        {
+          "page": 289,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000029.pdf#page=289"
+        }
+      ],
+      "sponsorFee": {
+        "approximate": false,
+        "scope": "engagement",
+        "sources": [
+          {
+            "page": 456,
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000029.pdf#page=456"
+          }
+        ],
+        "unit": "CNY",
+        "value": "3600000"
+      },
+      "stockCode": "00054",
+      "upperBps": 350
+    },
+    {
+      "discretionaryCapBps": 150,
+      "fixedBps": 250,
+      "issuerId": "changzhou microintelligence co., ltd",
+      "kind": "paused_terms",
+      "name": "常州微亿智造",
+      "prospectusDate": "2026-10-20",
+      "roundId": "offering:03275:2026-10-20",
+      "sources": [
+        {
+          "page": 288,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000029.pdf#page=288"
+        }
+      ],
+      "sponsorFee": {
+        "approximate": false,
+        "scope": "engagement",
+        "sources": [
+          {
+            "page": 430,
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000029.pdf#page=430"
+          }
+        ],
+        "unit": "CNY",
+        "value": "5000000"
+      },
+      "stockCode": "03275",
+      "upperBps": 400
+    },
+    {
+      "discretionaryCapBps": 150,
+      "fixedBps": 200,
+      "issuerId": "jiangsu slender west lake cultural tourism co. ltd",
+      "kind": "paused_terms",
+      "name": "瘦西湖文旅",
+      "prospectusDate": "2026-10-14",
+      "roundId": "offering:06157:2026-10-14",
+      "sources": [
+        {
+          "page": 286,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1014/2026101400023.pdf#page=286"
+        },
+        {
+          "page": 287,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1014/2026101400023.pdf#page=287"
+        }
+      ],
+      "stockCode": "06157",
+      "upperBps": 350
+    },
+    {
+      "discretionaryCapBps": 100,
+      "fixedBps": 300,
+      "issuerId": "shenzhen forms syntron information co., ltd.",
+      "kind": "paused_terms",
+      "name": "四方精创",
+      "prospectusDate": "2026-09-14",
+      "roundId": "offering:06700:2026-09-14",
+      "sources": [
+        {
+          "page": 286,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0914/2026091400005.pdf#page=286"
+        }
+      ],
+      "sponsorFee": {
+        "approximate": true,
+        "scope": "per_sponsor",
+        "sources": [
+          {
+            "page": 286,
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0914/2026091400005.pdf#page=286"
+          }
+        ],
+        "unit": "USD",
+        "value": "450000"
+      },
+      "stockCode": "06700",
+      "upperBps": 400
+    },
+    {
+      "discretionaryCapBps": 100,
+      "fixedBps": 300,
+      "issuerId": "ekh limited",
+      "kind": "paused_terms",
+      "name": "永康控股",
+      "prospectusDate": "2026-06-30",
+      "roundId": "offering:02523:2026-06-30",
+      "sources": [
+        {
+          "page": 368,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000027.pdf#page=368"
+        }
+      ],
+      "stockCode": "02523",
+      "upperBps": 400
+    },
+    {
+      "contractTerms": {
+        "discretionaryCapBps": 100,
+        "fixedBps": 250,
+        "sources": [
+          {
+            "page": 291,
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1105/2026110500055.pdf#page=291"
+          }
+        ],
+        "sponsorFee": {
+          "approximate": false,
+          "scope": "engagement",
+          "sources": [
+            {
+              "page": 292,
+              "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1105/2026110500055.pdf#page=292"
+            }
+          ],
+          "unit": "HKD",
+          "value": "4800000"
+        },
+        "upperBps": 350
+      },
+      "estimatedExpenseBps": 1310,
+      "estimatedExpensesHkd": "98250000",
+      "grossHkd": "750010000",
+      "issuerId": "adaspace technology co., ltd.",
+      "kind": "priced_estimate",
+      "listingDate": "2026-11-13",
+      "name": "国星宇航",
+      "netHkd": "651760000",
+      "prospectusDate": "2026-11-05",
+      "roundId": "offering:06935:2026-11-05",
+      "sources": [
+        {
+          "page": 3,
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=3"
+        }
+      ],
+      "stockCode": "06935"
+    }
+  ],
+  "schemaVersion": 1
+}

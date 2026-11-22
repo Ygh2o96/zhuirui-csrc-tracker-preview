@@ -1,6 +1,7 @@
 // no-cache (not no-store) lets the browser revalidate with the CDN ETag and
 // skip re-downloading the multi-MB payload when the snapshot is unchanged.
 const DATA_URL = "data/csrc_tracker_public.json";
+const OFFERING_FEES_URL = "data/offering_fees.json";
 const PAGE_SIZE = 50;
 
 const defaults = {
@@ -9,6 +10,7 @@ const defaults = {
   hkexStage: "applying",
   query: "",
   offeringQuery: "",
+  feeQuery: "",
   view: "tracker",
   dateField: "a1Date",
   dateFrom: "",
@@ -27,6 +29,7 @@ const defaults = {
 
 const state = {
   data: null,
+  feeData: null,
   ...defaults
 };
 
@@ -45,6 +48,7 @@ const statusLabels = {
 const viewTitles = {
   tracker: "监管节奏追踪",
   offerings: "发售搁置",
+  fees: "发行费用",
   sponsorLeaderboard: "保荐龙虎榜",
   sponsorPk: "保荐人擂台",
   precedents: "案例检索",
@@ -95,6 +99,7 @@ const trackedStateKeys = [
   "hkexStage",
   "query",
   "offeringQuery",
+  "feeQuery",
   "dateField",
   "dateFrom",
   "dateTo",
@@ -2900,7 +2905,69 @@ function renderOfferingResearch(facts, notice) {
       <div class="offering-cornerstones">${renderOfferingCornerstones(facts)}</div>
     </div></details>
     ${renderOfferingPreIpo(facts)}
+    ${renderOfferingFee(eligibleOfferingFees().find(fee => fee.roundId === facts.roundId))}
   </div>`;
+}
+
+function eligibleOfferingFees() {
+  if (state.feeData?.schemaVersion !== 1) return [];
+  return (state.feeData.offers || []).filter(fee => {
+    const record = (state.data?.records || []).find(item => item.id === fee.issuerId);
+    if (!record || fee.roundId !== `offering:${fee.stockCode}:${fee.prospectusDate}`) return false;
+    if (fee.kind === "paused_terms") {
+      const notice = currentOfferingNotice(record);
+      return notice?.stockCode === fee.stockCode && notice.research?.roundId === fee.roundId;
+    }
+    return fee.kind === "priced_estimate" && record.hkexListingStockCode === fee.stockCode &&
+      record.hkexListingDate === fee.listingDate && record.hkexProspectusDate === fee.prospectusDate;
+  });
+}
+
+function offeringFeeForRecord(record) {
+  return eligibleOfferingFees().find(fee => fee.issuerId === record.id) || null;
+}
+
+function feePercent(bps) { return `${offeringNumber(bps / 100,2)}%`; }
+function feeSources(sources) {
+  return (sources || []).map(s => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">PDF p.${s.page}</a>`).join(" · ");
+}
+function feeRateBar(fee) {
+  return `<div class="fee-rate-track" role="img" aria-label="约定佣金 ${feePercent(fee.fixedBps)}，额外酌情上限 ${feePercent(fee.discretionaryCapBps)}，合计最高 ${feePercent(fee.upperBps)}" data-fixed-bps="${fee.fixedBps}" data-cap-bps="${fee.upperBps}"><span class="fee-rate-fixed" style="width:${fee.fixedBps / 450 * 100}%"></span><span class="fee-rate-discretionary" style="width:${fee.discretionaryCapBps / 450 * 100}%"></span></div>`;
+}
+function renderFeeContract(terms) {
+  if (!terms) return "";
+  const sponsor = terms.sponsorFee;
+  return `<div class="fee-contract"><span>约定佣金 <strong>${feePercent(terms.fixedBps)}</strong></span><span>额外酌情上限 <strong>${feePercent(terms.discretionaryCapBps)}</strong></span>${sponsor ? `<span>约定保荐费 <strong>${escapeHtml(sponsor.unit)} ${offeringNumber(Number(sponsor.value))}</strong></span>` : ""}<span class="fee-source">${feeSources(terms.sources)}${sponsor ? ` · ${feeSources(sponsor.sources)}` : ""}</span></div>`;
+}
+function renderOfferingFee(fee) {
+  if (!fee) return "";
+  const terms = fee.kind === "paused_terms", sponsor = fee.sponsorFee;
+  const row = (label,value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+  return `<details class="offering-section fee-disclosure" data-fee-round="${escapeHtml(fee.roundId)}"><summary><strong>发行费用</strong><span>${terms ? `约定佣金 ${feePercent(fee.fixedBps)}${fee.discretionaryCapBps ? ` · 合计最高 ${feePercent(fee.upperBps)}` : ""}` : `估计开支 HKD ${offeringNumber(Number(fee.estimatedExpensesHkd) / 1000000,2)} 百万`}</span></summary><div class="offering-section-body">
+    <p class="fee-basis">${terms ? "本轮招股条款 · 以发售总额计" : "最终定价 · 绿鞋前 · HKD 百万"}</p>
+    ${terms ? `${feeRateBar(fee)}<dl class="fee-detail-grid">${row("约定承销佣金",feePercent(fee.fixedBps))}${row("额外酌情奖励费",fee.discretionaryCapBps ? `最高 ${feePercent(fee.discretionaryCapBps)}` : "不拟支付")}${row("合计上限",feePercent(fee.upperBps))}${sponsor ? row("约定保荐费",`${sponsor.approximate ? "约 " : ""}${escapeHtml(sponsor.unit)} ${offeringNumber(Number(sponsor.value))}${sponsor.scope === "per_sponsor" ? " / 每名保荐人" : ""}<span class="fee-source">${feeSources(sponsor.sources)}</span>`) : ""}</dl>` : `<dl class="fee-detail-grid">${row("发售总额",offeringNumber(Number(fee.grossHkd)/1000000,2))}${row("估计上市开支",offeringNumber(Number(fee.estimatedExpensesHkd)/1000000,2))}${row("估计所得净额",offeringNumber(Number(fee.netHkd)/1000000,2))}${row("估计开支 / 发售总额",feePercent(fee.estimatedExpenseBps))}</dl>`}
+    <div class="fee-source">${feeSources(fee.sources)}</div>${renderFeeContract(fee.contractTerms)}
+  </div></details>`;
+}
+function renderIssuerFees(record) {
+  const fee = offeringFeeForRecord(record);
+  const terms = renderListingFeeTerms(record);
+  return fee ? renderOfferingFee(fee) : terms;
+}
+
+function renderFeeComparison() {
+  const root = document.getElementById("feeComparison");
+  if (!root) return;
+  const all = eligibleOfferingFees(), query = normalizeSearchText(state.feeQuery);
+  const rows = all.filter(fee => !query || normalizeSearchText([fee.name,fee.stockCode,fee.issuerId].join(" ")).includes(query));
+  document.getElementById("feeSearch").value = state.feeQuery;
+  document.getElementById("feeCount").textContent = state.feeData ? `${rows.length} / ${all.length} 个项目` : "费用资料暂未载入";
+  const terms = rows.filter(f => f.kind === "paused_terms"), priced = rows.filter(f => f.kind === "priced_estimate");
+  const company = f => `<button type="button" class="fee-company text-button" data-fee-detail="${escapeHtml(f.issuerId)}"><strong>${escapeHtml(f.name)}</strong><span>${f.stockCode}</span></button>`;
+  root.innerHTML = (terms.length ? `<section class="fee-comparison-section"><header><h2>招股承销条款</h2><p>搁置发售 · 费率按发售总额计</p></header><div class="fee-legend"><span><i class="fee-key-fixed"></i>约定佣金</span><span><i class="fee-key-discretionary"></i>额外酌情上限</span></div>
+    <div class="fee-comparison-head" aria-hidden="true"><span>公司 / 招股日期</span><div class="fee-axis"><span>0%</span><span>1.5%</span><span>3%</span><span>4.5%</span></div><span>合计上限</span></div>
+    ${terms.map(f => `<article class="fee-comparison-row" data-fee-round="${escapeHtml(f.roundId)}"><div>${company(f)}<time>${f.prospectusDate}</time></div><div>${feeRateBar(f)}<div class="fee-rate-values"><span>${feePercent(f.fixedBps)}</span><span>${f.discretionaryCapBps ? `+ 最高 ${feePercent(f.discretionaryCapBps)}` : "无额外酌情费"}</span></div></div><div class="fee-total"><strong>${feePercent(f.upperBps)}</strong><span class="fee-source">${feeSources(f.sources)}</span></div></article>`).join("")}</section>` : "") +
+    (priced.length ? `<section class="fee-comparison-section fee-estimate-section"><header><h2>最终定价下的估计开支</h2><p>绿鞋前 · HKD 百万</p></header>${priced.map(f => `<article data-fee-round="${escapeHtml(f.roundId)}"><div class="fee-priced-heading">${company(f)}<span>${f.listingDate} 上市</span></div><div class="fee-expense-track" role="img" aria-label="发售总额 ${offeringNumber(Number(f.grossHkd)/1000000,2)} 百万，估计开支 ${offeringNumber(Number(f.estimatedExpensesHkd)/1000000,2)} 百万，估计净额 ${offeringNumber(Number(f.netHkd)/1000000,2)} 百万"><span style="width:${Number(f.estimatedExpensesHkd)/Number(f.grossHkd)*100}%"></span></div><dl class="fee-estimate-metrics"><div><dt>发售总额</dt><dd>${offeringNumber(Number(f.grossHkd)/1000000,2)}</dd></div><div><dt>估计上市开支</dt><dd>${offeringNumber(Number(f.estimatedExpensesHkd)/1000000,2)} <span>· ${feePercent(f.estimatedExpenseBps)}</span></dd></div><div><dt>估计所得净额</dt><dd>${offeringNumber(Number(f.netHkd)/1000000,2)}</dd></div></dl><div class="fee-source">${feeSources(f.sources)}</div>${renderFeeContract(f.contractTerms)}</article>`).join("")}</section>` : "") || '<p class="muted">没有匹配项目</p>';
 }
 
 function renderOfferingSources(facts, notice) {
@@ -4105,7 +4172,7 @@ function renderDetail(record) {
         <div class="sponsor-detail-list">${(sponsorList + renderListingRole(record, true)) || "<span>待抽取</span>"}</div>
       </div>
       ${renderTransactionDisclosures(record)}
-      ${renderListingFeeTerms(record)}
+      ${renderIssuerFees(record)}
       ${renderListingEconomics(record)}
       <div class="detail-item">
         <span>证监会反馈 CSRC feedback</span>
@@ -4147,6 +4214,7 @@ function switchView(view, updateLocation = true) {
   });
   document.getElementById(`${state.view}View`)?.classList.add("is-visible");
   if (state.view === "offerings") renderOfferings();
+  if (state.view === "fees") renderFeeComparison();
   if (updateLocation) syncUrl();
 }
 
@@ -4292,13 +4360,14 @@ function updateSortField(field) {
 
 async function loadData() {
   setLoading(true);
-  try {
-    const response = await fetch(DATA_URL, { cache: "no-cache" });
+  const read = async url => {
+    const response = await fetch(url, { cache: "no-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    state.data = await response.json();
-  } catch (error) {
-    state.data = emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
-  }
+    return response.json();
+  };
+  const [tracker, fees] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL)]);
+  state.data = tracker.status === "fulfilled" ? tracker.value : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
+  state.feeData = fees.status === "fulfilled" ? fees.value : null;
   stageCountsCache = null;
   sponsorShortNameCache.clear();
   for (const record of state.data.records || []) {
@@ -4323,6 +4392,7 @@ function render() {
   renderChrome();
   renderRows();
   renderOfferings();
+  renderFeeComparison();
 }
 
 document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
@@ -4479,6 +4549,25 @@ document.getElementById("returnToTracker").addEventListener("click", () => switc
 document.getElementById("offeringCards").addEventListener("click", event => {
   const button = event.target.closest("[data-offering-detail]");
   if (button) openDetail(button.dataset.offeringDetail);
+});
+
+document.getElementById("feeSearch").addEventListener("input", event => {
+  state.feeQuery = event.target.value;
+  renderFeeComparison();
+  syncUrl();
+});
+document.getElementById("clearFeeSearch").addEventListener("click", () => {
+  state.feeQuery = "";
+  renderFeeComparison();
+  syncUrl();
+  document.getElementById("feeSearch").focus();
+});
+document.getElementById("feeComparison").addEventListener("click", event => {
+  const button = event.target.closest("[data-fee-detail]");
+  if (!button) return;
+  openDetail(button.dataset.feeDetail);
+  const disclosure = document.querySelector("#issuerDetail .fee-disclosure");
+  if (disclosure) { disclosure.open = true; disclosure.scrollIntoView({block: "center"}); }
 });
 
 // Hydrate deep-link intent once, before yielding to any user input or fetch.
