@@ -5757,9 +5757,241 @@
     };
   }
 
+  const REVIEWED_PN15_DRAFT={
+  "HK-01125-20261117-shanghai-hk-plaza-reit": {
+    "parent": "丽丰控股",
+    "target": "上海香港广场部分商办资产",
+    "structure": "资产拟纳入基础设施 REIT",
+    "market": "上交所",
+    "progress": "获港交所许可推进 · 尚待向内地提交",
+    "code": "01125",
+    "mechanism": "商业不动产REIT分拆",
+    "stageDate": "2026-11-17",
+    "stageLabel": "港交所准予推进 · 境内申请待提交",
+    "targetLegalName": "上海香港广场部分资产（上海丽兴房地产有限公司）",
+    "parentLegalName": "Lai Fung Holdings Limited",
+    "documentId": "YS-20261117-615377283a09",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1117/2026111700670.pdf",
+    "pages": [
+      1
+    ],
+    "section": null
+  },
+  "HK-01523-20260225-peplink-spin": {
+    "parent": "珩湾科技",
+    "target": "Peplink Holdings",
+    "structure": "现有股份拟按比例分派",
+    "market": "香港联交所",
+    "progress": "获港交所许可推进 · 分派仍有条件",
+    "code": "01523",
+    "mechanism": "按比例分派现有股份并拟单独挂牌",
+    "stageDate": "2026-02-25",
+    "stageLabel": "港交所准予推进 · 有条件实物分派",
+    "targetLegalName": "Peplink Holdings Limited",
+    "parentLegalName": "Plover Bay Technologies Limited",
+    "documentId": "YS-20260225-a458a3ff9807",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0225/2026022500598.pdf",
+    "pages": [
+      2,
+      6
+    ],
+    "section": null
+  },
+  "HK-01171-20260327-wubo-spin": {
+    "parent": "兖矿能源",
+    "target": "物泊科技",
+    "structure": "拟分拆子公司发行 H 股",
+    "market": "香港联交所",
+    "progress": "已递交上市申请 · 拟独立挂牌",
+    "code": "01171",
+    "mechanism": "分拆子公司拟发行H股",
+    "stageDate": "2026-06-30",
+    "stageLabel": "已递交香港上市申请 · 拟挂牌",
+    "targetLegalName": "Wubo Technology Co., Ltd.（物泊科技股份有限公司）",
+    "parentLegalName": "Yankuang Energy Group Company Limited",
+    "documentId": "YS-20260630-e2eca995b4d9",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063003933.pdf",
+    "pages": [
+      1
+    ],
+    "section": null
+  },
+  "HK-00017-20260917-shanghai-nwt-reit": {
+    "parent": "新世界发展",
+    "target": "上海香港新世界大厦",
+    "structure": "资产拟纳入基础设施 REIT",
+    "market": "上交所",
+    "progress": "上交所已受理 · 后续注册及挂牌待披露",
+    "code": "00017",
+    "mechanism": "商业不动产REIT分拆",
+    "stageDate": "2026-09-21",
+    "stageLabel": "上交所已受理申请 · 后续注册及挂牌待披露",
+    "targetLegalName": "上海香港新世界大厦（上海 K11 商场及办公楼）",
+    "parentLegalName": "New World Development Company Limited",
+    "documentId": "YS-20260921-b9b4e2624e9e",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092100137.pdf",
+    "pages": [
+      3
+    ],
+    "section": null
+  },
+  "HK-01548-20260904-probio-spin": {
+    "parent": "金斯瑞生物科技",
+    "target": "Probio Technology",
+    "structure": "拟分拆子公司全球发售",
+    "market": "香港联交所",
+    "progress": "获港交所许可推进分拆",
+    "code": "01548",
+    "mechanism": "分拆子公司拟在香港主板全球发售",
+    "stageDate": "2026-09-04",
+    "stageLabel": "港交所准予推进分拆",
+    "targetLegalName": "Probio Technology Limited",
+    "parentLegalName": "Genscript Biotech Corporation",
+    "documentId": "YS-20260904-892b82d78786",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0904/2026090400067.pdf",
+    "pages": [
+      1
+    ],
+    "section": null
+  },
+  "HK-02161-20260717-jpj-tcm-spin": {
+    "parent": "健倍苗苗",
+    "target": "JPJ (TCM)",
+    "structure": "拟分拆子公司全球发售",
+    "market": "香港联交所",
+    "progress": "已递交上市申请 · 拟独立挂牌",
+    "code": "02161",
+    "mechanism": "分拆子公司拟在香港主板全球发售",
+    "stageDate": "2026-07-17",
+    "stageLabel": "已递交香港上市申请 · 拟挂牌",
+    "targetLegalName": "JPJ (TCM) Limited",
+    "parentLegalName": "JBM (Healthcare) Limited",
+    "documentId": "YS-20260717-7ca880e0b807",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0717/2026071701272.pdf",
+    "pages": [
+      1
+    ],
+    "section": null
+  },
+  "HK-02382-20260105-sunny-auto-spin": {
+    "parent": "舜宇光学科技",
+    "target": "舜宇智行科技",
+    "structure": "拟分拆子公司发行 H 股",
+    "market": "香港联交所",
+    "progress": "2026 年 8 月 31 日公开新版申请文件",
+    "code": "02382",
+    "mechanism": "分拆子公司拟发行H股",
+    "stageDate": "2026-08-31",
+    "stageLabel": "新版上市申请已刊发 · 拟挂牌",
+    "targetLegalName": "Ningbo Sunny Smart Autotech Company Limited（寧波舜宇智行科技股份有限公司）",
+    "parentLegalName": "Sunny Optical Technology (Group) Company Limited",
+    "documentId": "YS-20260831-1d116266e6b7",
+    "url": "https://www1.hkexnews.hk/app/sehk/2026/108854/2026083102564_c.htm",
+    "pages": [],
+    "section": "申请版本索引：封面及申请人法律名称"
+  },
+  "HK-01530-20251120-mandi-spin": {
+    "parent": "三生制药",
+    "target": "Mandi Inc.",
+    "structure": "拟有条件实物分派及子公司新股发售",
+    "market": "香港联交所",
+    "progress": "股东已批准有条件分派 · 后续实施待披露",
+    "code": "01530",
+    "mechanism": "母公司实物分派＋子公司新股全球发售",
+    "stageDate": "2026-04-23",
+    "stageLabel": "股东已批准有条件分派 · 待实施",
+    "targetLegalName": "Mandi Inc.",
+    "parentLegalName": "3SBio Inc.",
+    "documentId": "YS-20260423-677f98e6ac33",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0423/2026042302638.pdf",
+    "pages": [
+      1,
+      2,
+      3
+    ],
+    "section": null
+  },
+  "HK-03337-20220829-tall-inspection-spin": {
+    "parent": "安东油田服务",
+    "target": "T-ALL Inspection Group",
+    "structure": "拟分拆子公司发行 H 股",
+    "market": "香港联交所",
+    "progress": "已递交上市申请 · 拟独立挂牌",
+    "code": "03337",
+    "mechanism": "分拆子公司拟发行H股",
+    "stageDate": "2026-06-30",
+    "stageLabel": "已递交香港上市申请 · 拟挂牌",
+    "targetLegalName": "T-ALL Inspection Group Co., Ltd.",
+    "parentLegalName": "Anton Oilfield Services Group",
+    "documentId": "YS-20260630-bc027e662c16",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063003739.pdf",
+    "pages": [
+      2
+    ],
+    "section": null
+  },
+  "HK-09888-20251207-kunlunxin-spin": {
+    "parent": "百度",
+    "target": "昆仑芯",
+    "structure": "拟分拆子公司全球发售",
+    "market": "香港联交所",
+    "progress": "已保密递交上市申请 · 拟独立挂牌",
+    "code": "09888",
+    "mechanism": "分拆子公司拟在香港主板全球发售",
+    "stageDate": "2026-01-02",
+    "stageLabel": "香港上市申请已保密递交",
+    "targetLegalName": "Kunlunxin (Beijing) Technology Co., Ltd.",
+    "parentLegalName": "Baidu, Inc.",
+    "documentId": "YS-20260102-416599b77928",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0102/2026010200013.pdf",
+    "pages": [
+      1,
+      2
+    ],
+    "section": null
+  }
+};
+  function buildPn15PlannedStructure(row,documents) {
+    if (!Object.hasOwn(REVIEWED_PN15_DRAFT,row.id))return null;
+    const m=REVIEWED_PN15_DRAFT[row.id], source=documents?.[m.documentId];
+    const stage=row.events?.find(e=>e.kind==="pn15_status_notice"&&e.state==="actual"&&e.date===m.stageDate);
+    if(row.category!=="spin_off"||row.code!==m.code||row.headlineKey!==null||row.stage?.status!=="active"||
+      row.stage.date!==m.stageDate||row.stage.label!==m.stageLabel||row.mechanism!==m.mechanism||
+      source?.caseId!==row.id||source.date!==m.stageDate||source.url!==m.url||
+      stage?.evidence?.documentId!==m.documentId||!m.pages.every(p=>stage.evidence.pages?.includes(p))||
+      (m.section&&stage.evidence.section!==m.section)||row.parties?.["分拆标的"]!==m.targetLegalName||
+      row.parties?.["上市母公司"]!==m.parentLegalName)return null;
+    const a=m.parent,b=m.target,venue=m.market,status="active";
+    const leftTitle="拟分拆结构",rightTitle="目的地及已披露阶段";
+    const top=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:425,status,leftTitle,rightTitle,
+      transitionLabel:"拟独立挂牌",outcomeBadge:m.progress}),[
+        {id:"li",panel:"left",x:37,y:165,w:241,h:83,role:"listed",title:a,subtitle:"上市母公司",code:m.code+".HK"},
+        {id:"la",panel:"left",x:372,y:165,w:240,h:83,role:"target",title:b,subtitle:"拟分拆标的"},
+        {id:"rm",panel:"right",x:734,y:112,w:280,h:82,role:"buyer",title:venue,subtitle:"拟上市目的地"},
+        {id:"rp",panel:"right",x:734,y:253,w:280,h:84,role:"target",title:b,subtitle:"拟独立挂牌"},
+      ],[],[
+        {id:"p",panel:"left",step:"①",kind:"asset",pathPoints:[[157,165],[157,92],[492,92],[492,165]],
+         label:m.structure,sublabel:"按已披露分拆方案",labelCenter:[323,92],labelWidth:368,labelHeight:46},
+      ]);
+    return {id:row.id,caseId:row.id,code:row.code,name:a,mechanism:row.mechanism,status,
+      stageLabel:m.stageLabel,stageDate:m.stageDate,archetype:"spin_off",modality:"in_kind",
+      caseArchetypeLabel:venue==="上交所"?"拟议 REIT 分拆":"拟议分拆",
+      caseModalityLabel:"拟独立挂牌",caseModalityShortLabel:"拟独立挂牌",
+      before:{title:leftTitle,nodes:[{id:"i",role:"listed",name:a},{id:"a",role:"target",name:b}],equityLinks:[]},
+      after:{title:rightTitle,outcomeBadge:m.progress,nodes:[{id:"m",role:"buyer",name:venue},{id:"p",role:"target",name:b}],equityLinks:[]},
+      flows:[{id:"1",kind:"asset",direction:"ltr",step:"1",fromLabel:a,toLabel:b,headline:m.structure,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"拟分拆法律主体",body:m.targetLegalName}],evidenceLinks:[{documentId:m.documentId,pages:m.pages,label:"已披露分拆阶段"}],
+      topology:top,compactSummary:m.progress,
+    };
+  }
+
   function getSpecForCase(txCase, documents) {
     if (!txCase || typeof txCase !== "object") {
       throw new Error("getSpecForCase requires a transaction case object");
+    }
+    if (Object.hasOwn(REVIEWED_PN15_DRAFT,txCase.id)) {
+      const draft=buildPn15PlannedStructure(txCase,documents);
+      return draft && validateDiagramSpec(draft);
     }
     if (txCase.id === "HK-00138-20260911-cb-second-amendment") {
       const verified=buildCctBondAmendment(txCase,documents);
