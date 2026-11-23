@@ -4875,10 +4875,17 @@ function cornerstoneAllocationIdentity(a){
  }
  if(/^offering:03308:2026-07-22:cornerstone:3$/.test(a.id)&&a.quantity===2369550&&a.amountHkd==="2322159000.00"&&
     /^(?:HHLRA|HHLR Advisors,? Ltd\.?)$/i.test(a.label)){
-  return {id:"hhlra",name:"高瓴",type:"asset_mgmt",label:"私募资产管理",names:["HHLR Advisors, Ltd."],
-   description:"HHLR Advisors 与 Hillhouse Investment Management 由同一方控制；中际旭创配发公告列名 HHLRA。",
+  return {id:"hhlra",name:"高瓴",type:"asset_mgmt",label:"基金及专户管理",names:["HHLR Advisors, Ltd.","HACF, L.P.","加拿大养老基金投资公司","阿布扎比投资局"],
+   description:"中际旭创：HHLR Advisors 代表基金和专户酌情管理。招股书列明开曼有限合伙基金 HACF, L.P.，以及加拿大养老基金投资公司和阿布扎比投资局的独立专户；最终配发按 HHLRA 合计披露。",
    source:"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0729/2026072901629.pdf#page=4",
    contextSource:"https://www.sec.gov/Archives/edgar/data/1762304/000091957426003551/xslForm13F_X01/primary_doc.xml"};
+ }
+ if(a.id==="offering:03308:2026-07-22:cornerstone:27"&&a.label==="CPP Investments"&&a.quantity===394900&&a.amountHkd==="387002000.00"
+    &&a.legalNames?.length===1&&a.legalNames[0]==="Canada Pension Plan Investment Board"){
+  return {id:"cpp-investments",name:"加拿大养老基金投资公司（CPP Investments）",type:"pension",label:"养老金投资机构",
+   names:["Canada Pension Plan Investment Board","CPP Investments"],description:"管理加拿大退休金计划基金。本宗为配发公告独立列示的基石认购。",
+   source:"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0729/2026072901629.pdf#page=5",
+   contextSource:"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=297"};
  }
  const legal=a.legalNames||[], rel=a.relationships||[];
  const managers=rel.filter(r=>cornerstoneManagerRole.test(r.role)&&!/(?:僅|仅|掉期|部分|非認購人|非认购人)/.test(r.role));
@@ -5115,7 +5122,15 @@ function buildCornerstoneProfiles() {
     })){
       const members=group.allocationIds.map(id=>allocations.get(id)), quantity=members.reduce((n,a)=>n+a.quantity,0), amount=members.reduce((n,a)=>n+Number(a.amountHkd),0);
       const names=[...new Set(members.flatMap(a=>a.legalNames))], relations=[...new Map(members.flatMap(a=>a.relationships).map(r=>[`${r.role}\n${r.name}\n${r.source}`,r])).values()];
-      const src=[...new Set(members.flatMap(a=>[...a.sources,...a.relationships.map(r=>r.source)]))];
+      if(members.some(m=>m.id==="offering:03308:2026-07-22:cornerstone:3"&&cornerstoneAllocationIdentity(m)?.id==="hhlra")){
+        const source="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=289";
+        relations.push(
+          {role:"开曼私募基金 · 招股书拟用",name:"HACF, L.P.",source},
+          {role:"养老金机构 · 招股书拟用独立专户",name:"加拿大养老基金投资公司（CPP Investments）",source},
+          {role:"主权投资机构 · 招股书拟用独立专户",name:"阿布扎比投资局（ADIA）",source}
+        );
+      }
+      const src=[...new Set([...members.flatMap(a=>a.sources),...relations.map(r=>r.source)])];
       const id=group.aliases[0]?.id||group.id;
       const classes=members.map(cornerstoneAllocationIdentity);
       const entity=classes[0]&&classes.every(x=>x?.id===classes[0].id)?classes[0]:null;
