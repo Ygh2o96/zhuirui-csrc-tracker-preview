@@ -7123,11 +7123,12 @@ function renderTransactionSummaryStrip(all, compare, row){
  for(const r of all)for(const firm of new Set((r.mandates||[]).map(m=>m.firm).filter(Boolean)))advisorCounts.set(firm,(advisorCounts.get(firm)||0)+1);
  const topAdvisors=[...advisorCounts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,3);
  const activePillar=txActivePillarForCategory(state.transactionCategory);
+ const currencies=[...new Set(all.flatMap(r=>(r.terms||[]).map(t=>t.currency)).filter(Boolean))];
  const pillarCards=[
   {key:"all",label:"全部先例",sub:`全量 ${all.length} 宗${noMandateCount?`（含 ${noMandateCount} 宗待披露中介）`:""}`,n:all.length,badge:`${all.length} 宗`},
   ...TRANSACTION_PILLAR_CONFIG.map(p=>{
    const cnt=all.filter(r=>transactionMatchesCategory(r,p.key)).length;
-   return {key:p.key,label:p.label,sub:p.sub,n:cnt,badge:cnt>0?`${cnt} 宗`:"架构就绪"};
+   return {key:p.key,label:p.label,sub:p.sub,n:cnt,badge:`${cnt} 宗`};
   })
  ];
  const subtierHtml=activePillar
@@ -7136,25 +7137,25 @@ function renderTransactionSummaryStrip(all, compare, row){
       <div class="tx-subtier-pills">${activePillar.subtiers.map(s=>{
        const cnt=all.filter(r=>transactionMatchesCategory(r,s.key)).length;
        const active=state.transactionCategory===s.key;
-       return `<button type="button" class="tx-subtier-pill${active?' is-active':''}" data-tx-cat="${escapeHtml(s.key)}" aria-pressed="${active}">${escapeHtml(s.label)} <em>${cnt>0?`${cnt}宗`:"图谱"}</em></button>`;
+       return `<button type="button" class="tx-subtier-pill${active?' is-active':''}" data-tx-cat="${escapeHtml(s.key)}" aria-pressed="${active}">${escapeHtml(s.label)}${cnt>0?` <em>${cnt}</em>`:""}</button>`;
       }).join('')}</div>
-      <button type="button" class="tx-subtier-atlas-btn" data-tx-open-atlas-arch="${escapeHtml(txDefaultArchetypeForCategory(state.transactionCategory)||activePillar.defaultArch)}">查看标准架构图谱 ↓</button>
      </div>`
   : "";
  strip.innerHTML=`<div class="terminal-stat-strip tx-insight-strip">
   <div class="stat-cell"><span class="stat-label">安排计划私有化阶段分布</span><strong class="stat-val col-num">${premiums.length?`中位溢价 ${offeringNumber(p0Quantile(premiums,.5),1)}%`:`${schemes.length} 宗`}</strong><small class="stat-sub">${escapeHtml(schemeStageSub)}</small></div>
-  <div class="stat-cell"><span class="stat-label">投行全谱系业务线覆盖</span><strong class="stat-val col-num">4 大板块 · 14 范式</strong><small class="stat-sub">FA / IFA 顾问 · 股票配售账簿 · CB 承销 · 供股包销${reorgDays.length?` · 重组 ${reorgDays[0]}–${reorgDays.at(-1)}天`:""}</small></div>
+  <div class="stat-cell"><span class="stat-label">重组周期与原币披露</span><strong class="stat-val col-num">${reorgDays.length?`${reorgDays[0]}–${reorgDays.at(-1)} 天`:`${currencies.length||1} 种原币`}</strong><small class="stat-sub">覆盖 ${currencies.length?currencies.join(" / "):"HKD"} 原币条款 · 14/14A 章、收购守则、重组与再融资</small></div>
   <div class="stat-cell"><span class="stat-label">活跃签署中介（仅点选时过滤）</span><div class="tx-advisor-pills">${topAdvisors.map(([firm,cnt])=>`<button type="button" class="tx-advisor-chip${state.transactionAdvisor===firm?' is-active':''}" data-tx-advisor-pick="${escapeHtml(firm)}">${escapeHtml(firm.replace(/ Limited$/i,''))} (${cnt})</button>`).join('')}</div><small class="stat-sub">默认展示全量案例（含暂未披露中介案例）</small></div>
  </div>
- <div class="terminal-stat-strip tx-category-strip">${pillarCards.map(c=>{const active=c.key==="all"?state.transactionCategory==="all":(activePillar?.key===c.key);return `<button type="button" class="stat-cell is-clickable tx-summary-card${active?' is-active':''}${c.n===0&&c.key!=='all'?' is-template-ready':''}" data-tx-cat="${c.key}" aria-pressed="${active}"><span class="stat-label">${c.label}</span><strong class="stat-val col-num">${c.badge}</strong><small class="stat-sub">${c.sub}</small></button>`;}).join('')}</div>${subtierHtml}`;
+ <div class="terminal-stat-strip tx-category-strip">${pillarCards.map(c=>{const active=c.key==="all"?state.transactionCategory==="all":(activePillar?.key===c.key);return `<button type="button" class="stat-cell is-clickable tx-summary-card${active?' is-active':''}" data-tx-cat="${c.key}" aria-pressed="${active}"><span class="stat-label">${c.label}</span><strong class="stat-val col-num">${c.badge}</strong><small class="stat-sub">${c.sub}</small></button>`;}).join('')}</div>${subtierHtml}`;
 }
 let activeTxAtlasArchetype="scheme";
 let activeTxAtlasPillar="takeovers";
 function renderTransactionArchetypeAtlas(all,compare,row){
  const atlas=document.getElementById("transactionArchetypeAtlas");
  const toggleBtn=document.getElementById("transactionAtlasToggle");
+ const devAtlas=typeof location!=="undefined"&&new URLSearchParams(location.search).get("devAtlas")==="1";
  const kit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
- if(!atlas||!kit||!kit.ARCHETYPES){
+ if(!devAtlas||!atlas||!kit||!kit.ARCHETYPES){
   if(atlas){atlas.hidden=true;atlas.innerHTML="";}
   if(toggleBtn)toggleBtn.hidden=true;
   return;
@@ -7209,11 +7210,7 @@ function renderTransactions(){
  renderTransactionSummaryStrip(all,compare,row);
  document.getElementById("transactionCount").textContent=state.transactionData?"精选交易 "+rows.length+" / "+all.length+" 宗 · 截至 "+state.transactionData.asOf:"交易资料暂时无法读取";
  const workspace=document.getElementById("transactionWorkspace");workspace.hidden=compare;workspace.classList.toggle("has-detail",!!row);
- const fallbackArchId=!rows.length&&!String(state.transactionQuery||"").trim()?txDefaultArchetypeForCategory(state.transactionCategory):"";
- const fallbackArch=fallbackArchId&&diagramKit?.ARCHETYPES?.[fallbackArchId]?diagramKit.ARCHETYPES[fallbackArchId]:null;
- const emptyTxHtml=fallbackArch
-  ? `<div class="transaction-empty empty-state-row"><p>未找到符合当前筛选的交易先例（${escapeHtml(fallbackArch.labelZh)}标准架构已就绪，披露实案持续接入中）</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button type="button" class="action-link-btn" data-tx-open-atlas-arch="${escapeHtml(fallbackArch.id)}">展开「${escapeHtml(fallbackArch.shortZh)}」标准交易架构图谱 ↓</button><button type="button" data-tx-reset>清除筛选条件</button></div></div>`
-  : '<div class="transaction-empty empty-state-row"><p>未找到符合当前筛选的交易先例</p><button type="button" data-tx-reset>清除筛选条件</button></div>';
+ const emptyTxHtml='<div class="transaction-empty empty-state-row"><p>未找到符合当前筛选的交易先例</p><button type="button" data-tx-reset>清除筛选条件</button></div>';
  document.getElementById("transactionCards").innerHTML=rows.length?'<div class="tx-table-wrap"><table class="tx-table"><thead><tr><th scope="col">公司 / 交易各方</th><th scope="col">交易结构与规则</th><th scope="col">确认阶段</th><th scope="col" class="col-num">核心对价 / 比率</th><th scope="col" class="col-num">首公→寄发 / 寄发→表决 / 总历时</th><th scope="col" class="col-action">比较</th></tr></thead><tbody>'+rows.map(r=>{
   const t=transactionTerm(r,r.headlineKey)||(r.terms||[])[0],partyEntry=Object.entries(r.parties||{})[0],advisors=[...new Set((r.mandates||[]).map(m=>m.firm).filter(Boolean))].slice(0,2).join(" · ");
   const rulePills=(r.rules||[]).slice(0,3).map(x=>'<span class="tx-rule-chip">'+escapeHtml(x.label)+'</span>').join("");
