@@ -16,6 +16,7 @@
   const VERSION = "2.0.0";
 
   const VALID_MODALITIES = new Set([
+    "in_kind",
     "cash",
     "shares",
     "cash_and_asset",
@@ -123,6 +124,7 @@
   };
 
   const MODALITY_BADGES = {
+    in_kind: { labelZh: "非现金债务抵偿", shortZh: "非现金" },
     cash: { labelZh: "全现金 Cash", shortZh: "全现金" },
     shares: { labelZh: "发行代价股 Shares", shortZh: "代价股" },
     cash_and_asset: { labelZh: "现金+资产交割", shortZh: "现金+资产" },
@@ -3127,7 +3129,507 @@
      5. CURATED SOURCE-EXACT SPECS + 2D SPATIAL TOPOLOGIES FOR ALL 7 REAL CASES
         (100% verified against web_mvp/data/transaction_cases.json!)
      ========================================================================= */
+  // Issuer filings and completion dates are case-specific; do not infer figures from an archetype.
+  const VERIFIED_ACQUISITIONS = {
+    "HK-03738-20261009-on-sun-international": {
+      code: "03738", date: "2026-10-20", completion: "YS-20261020-d81cbbb6faa9", modality: "shares",
+      authorities: [
+        ["YS-20261009-3b495bcba594", "2026/1009/2026100901351", 2, "法定买方、卖方及股份对价"],
+        ["YS-20261020-d81cbbb6faa9", "2026/1020/2026102001461", 1, "10月20日交割、发行价及全资持股"],
+        ["YS-20261020-d81cbbb6faa9", "2026/1020/2026102001461", 2, "实际发行股数及卖方持股"],
+      ],
+      expected: [
+        ["contract_consideration", 75000000, "money", "HKD", false, "YS-20261009-3b495bcba594", 2],
+        ["issued_shares", 20547945, "shares", null, false, "YS-20261020-d81cbbb6faa9", 2],
+        ["issue_price", 3.65, "per_share", "HKD", false, "YS-20261020-d81cbbb6faa9", 1],
+        ["target_equity_stake", 100, "percent", null, false, "YS-20261009-3b495bcba594", 2],
+      ],
+    },
+    "HK-01910-20260813-beis-85pct": {
+      code: "01910", date: "2026-10-01", completion: "YS-20261002-f50bec52e805", modality: "cash",
+      authorities: [
+        ["YS-20261002-f50bec52e805", "2026/1002/2026100200003", 1, "10月1日交割及85%持股"],
+        ["YS-20261112-176fe40fb31f", "2026/1112/2026111201360", 8, "基础现金对价及营运资金调整"],
+        ["YS-20260813-211f68dda7d2", "2026/0813/2026081300019", 3, "协议对价调整机制"],
+        ["YS-20260813-211f68dda7d2", "2026/0813/2026081300019", 4, "保留15%及期权安排"],
+        ["YS-20260813-211f68dda7d2", "2026/0813/2026081300019", 5, "行权时标的回购"],
+        ["YS-20260813-211f68dda7d2", "2026/0813/2026081300019", 8, "法定买方及四名卖方"],
+      ],
+      expected: [
+        ["closed_stake", 85, "percent", null, false, "YS-20261002-f50bec52e805", 1],
+        ["rollover_stake", 15, "percent", null, false, "YS-20260813-211f68dda7d2", 4],
+        ["base_cash_consideration", 178500000, "money", "USD", false, "YS-20261112-176fe40fb31f", 8],
+      ],
+      summary: "交割 85% · 基础现金 USD 178.5m（可调整）· 卖方保留 15%",
+      buyer: ["samsonite-llc", "Samsonite LLC", "buyer", null, "新秀丽间接全资附属公司"],
+      seller: ["beis-sellers", "四名卖方", "seller", null, "含 Home Beis, Inc."],
+      flows: [
+        ["target-equity", "asset", "ltr", 181, "转让 85% 标的权益", "Beis, LLC"],
+        ["cash", "cash", "rtl", 286, "基础现金对价 USD 178.5m", "受交割后营运资金调整"],
+      ],
+      after: [
+        ["samsonite-group", 697, 64, 168, 70, "listed", "新秀丽集团", "01910.HK", "Samsonite Group S.A."],
+        ["samsonite-llc", 697, 214, 168, 69, "buyer", "Samsonite LLC", null, "本次受让 85% 权益"],
+        ["home-beis", 888, 214, 165, 69, "public", "Home Beis, Inc.", null, "由 Shay Mitchell 持有", "保留股东"],
+        ["beis", 716, 354, 316, 70, "target", "Beis, LLC", null, "持有 BÉIS 品牌"],
+      ],
+      interests: [
+        ["parent-indirect", "samsonite-group", "samsonite-llc", 781, 134, 214, 174, 142, "间接全资持有", true, null],
+        ["closed-stake", "samsonite-llc", "beis", 781, 283, 354, 317, 141, "85% 已交割", false, 85],
+        ["retained-stake", "home-beis", "beis", 970, 283, 354, 317, 142, "15% 继续持有", false, 15],
+      ],
+      outcome: "新秀丽间接持有 85% · Home Beis 保留 15%",
+      notes: [
+        ["85% 收购的现金口径", "基础现金对价为 1.785 亿美元，受交割后营运资金调整；最终支付金额以调整结果为准。"],
+        ["剩余 15% 的期权", "Home Beis 保留 15%。期权在交割第三周年后方可行使；若行权，由 Beis 回购相应权益。"],
+      ],
+    },
+    "HK-01347-20250831-huali-micro": {
+      code: "01347", date: "2026-09-09", completion: "YS-20260911-bddbeff3e78a", modality: "mixed",
+      authorities: [
+        ["YS-20250831-af138066909b", "2025/0831/2025083100319", 1, "原持股及收购范围"],
+        ["YS-20260911-bddbeff3e78a", "2026/0911/2026091100436", 1, "代价股份与交割"],
+        ["YS-20260911-bddbeff3e78a", "2026/0911/2026091100436", 2, "交割后全资持股"],
+      ],
+      expected: [
+        ["target_interest_pct", 97.4988, "percent", null, false, "YS-20250831-af138066909b", 1],
+        ["consideration_shares", 190768392, "shares", null, false, "YS-20260911-bddbeff3e78a", 1],
+        ["issue_price", 43.34, "per_share", "CNY", false, "YS-20260911-bddbeff3e78a", 1],
+        ["contract_price", 8267902153.26, "money", "CNY", false, "YS-20260911-bddbeff3e78a", 1],
+      ],
+      summary: "190,768,392 股 A 股＋零碎股份折现 · 受让 97.4988%",
+      buyer: ["hua-hong", "华虹宏力半导体", "listed", "01347.HK", "亦于上交所上市 · 688347.SH"],
+      seller: ["four-vendors", "四名卖方", "seller", null, "华虹集团及三家基金"],
+      flows: [
+        ["target-equity", "asset", "ltr", 159, "转让 97.4988% 标的股权", "上海华力微电子"],
+        ["a-shares", "shares", "rtl", 238, "190,768,392 股华虹 A 股", "每股人民币 43.34 元"],
+        ["fractional-cash", "cash", "rtl", 317, "零碎股份折现", "人民币 43.98 元"],
+      ],
+      after: [
+        ["hua-hong", 710, 78, 328, 72, "listed", "华虹宏力半导体", "01347.HK", "亦于上交所上市 · 688347.SH"],
+        ["huali", 710, 316, 328, 76, "target", "上海华力微电子", null, "华虹直接及间接合计持股 100%"],
+      ],
+      interests: [
+        ["new-stake", "hua-hong", "huali", 786, 150, 316, 232, 150, "97.4988% 本次直接购入", false, 97.4988],
+        ["old-stake", "hua-hong", "huali", 962, 150, 316, 232, 150, "约 2.5012% 原间接持股", true, 2.5012],
+      ],
+      outcome: "华力微成为华虹全资附属公司",
+      notes: [
+        ["零碎股份折现", "收购代价合计人民币 8,267,902,153.26 元。扣除 190,768,392 股 A 股 × 人民币 43.34 元/股，折现差额为人民币 43.98 元。"],
+        ["原持与本次受让", "华虹交割前已间接持有约 2.5012%，本次向四名卖方直接受让 97.4988%。配套募资另计。"],
+      ],
+    },
+    "HK-06616-20260206-junheng-jihua": {
+      code: "06616", date: "2026-09-29", completion: "YS-20260930-1d4f98fcce7e", modality: "cash",
+      authorities: [
+        ["YS-20260813-0f1210ea7eec", "2026/0813/2026081301576", 49, "钧衡合伙结构"],
+        ["YS-20260917-cf3b038b7d25", "2026/0917/2026091700999", 57, "修订后协议现金价"],
+        ["YS-20260930-1d4f98fcce7e", "2026/0930/2026093002361", 1, "股份过户及控股"],
+      ],
+      expected: [
+        ["stake", 29.89, "percent", null, true, "YS-20260930-1d4f98fcce7e", 1],
+        ["acquired_shares", 202308616, "shares", null, false, "YS-20260930-1d4f98fcce7e", 1],
+        ["purchase_price", 1494515000, "money", "CNY", true, "YS-20260917-cf3b038b7d25", 57],
+      ],
+      summary: "协议现金 · 钧衡受让约 29.89% 并取得控股权",
+      buyer: ["junheng", "桐庐钧衡", "buyer", null, "合同买方 · 专设有限合伙"],
+      seller: ["jihua-vendors", "吉华原股东", "seller", null, "杭州锦辉机电、邵辉"],
+      flows: [
+        ["target-equity", "asset", "ltr", 181, "交割 202,308,616 股", "约占吉华集团已发行股本 29.89%"],
+        ["cash", "cash", "rtl", 286, "修订后协议现金价", "约人民币 14.94515 亿元"],
+      ],
+      after: [
+        ["shenzhen-chesir", 697, 64, 168, 73, "buyer", "深圳七色珠光", null, "06616 间接全资附属公司", "普通合伙人"],
+        ["hongzun", 888, 64, 165, 73, "public", "桐庐六安", null, "持有钧衡有限合伙份额", "有限合伙人"],
+        ["junheng", 716, 220, 316, 68, "buyer", "桐庐钧衡", null, "环球新材控制的非全资附属公司", "收购载体"],
+        ["jihua", 716, 354, 316, 70, "target", "吉华集团", "603980.SH", "钧衡为第一大股东及控股股东"],
+      ],
+      interests: [
+        ["gp", "shenzhen-chesir", "junheng", 781, 137, 220, 174, 154, "40% 合伙份额 · GP 管理", false, 40],
+        ["lp", "hongzun", "junheng", 970, 137, 220, 174, 144, "60% 合伙份额 · LP", true, 60],
+        ["stake", "junheng", "jihua", 874, 288, 354, 320, 164, "约 29.89% 标的股权", false, 29.89],
+      ],
+      outcome: "经非全资钧衡控股吉华 · 其他股东继续持股",
+      notes: [
+        ["钧衡的控制权", "深圳七色珠光是环球新材的间接全资子公司，持有钧衡 40% 合伙份额，并以普通合伙人身份负责日常管理。桐庐六安持有限合伙份额 60%。"],
+        ["交易价格与完成口径", "约人民币 14.94515 亿元是修订后协议现金价。完成公告确认股份过户，以及钧衡持有吉华约 29.89% 并成为控股股东。"],
+      ],
+    },
+  };
+
+  function matchesVerifiedAcquisition(txCase, shape, documents) {
+    if (txCase.code !== shape.code || txCase.stage?.status !== "closed" ||
+        txCase.stage?.eventKind !== "completion" || txCase.stage?.date !== shape.date ||
+        !txCase.events?.some(e => e.kind === "completion" && e.state === "actual" && e.date === shape.date &&
+          e.evidence?.documentId === shape.completion && e.evidence.pages?.includes(1)) ||
+        !shape.authorities.every(([id, path]) => documents?.[id]?.caseId === txCase.id &&
+          documents[id].url === `https://www1.hkexnews.hk/listedco/listconews/sehk/${path}.pdf`) ||
+        !shape.expected.every(([key, value, unit, currency, approximate, id, page]) => {
+          const terms = txCase.terms?.filter(t => t.key === key) || [];
+          return terms.length === 1 && terms[0].value === value && terms[0].unit === unit &&
+            terms[0].currency === currency && terms[0].approximate === approximate &&
+            terms[0].evidence?.documentId === id && terms[0].evidence.pages?.includes(page);
+        })) return false;
+    return true;
+  }
+
+  function verifiedAcquisitionSpec(txCase, documents) {
+    const shape = VERIFIED_ACQUISITIONS[txCase.id];
+    if (!matchesVerifiedAcquisition(txCase, shape, documents)) return null;
+    const [sellerId, sellerName, sellerRole,,sellerSubtitle] = shape.seller;
+    const [buyerId, buyerName, buyerRole, buyerCode,buyerSubtitle] = shape.buyer;
+    const outcomeBadge = shape.outcome;
+    const node = (id, role, name, code, sublabel) => ({ id, role, name, code, sublabel });
+    const flowArrow = ([id,kind,direction,y,label,sublabel],i) => {
+      const ltr=direction==="ltr", left=207, right=438;
+      return { id, panel:"left", kind, step:String(i+1), label, sublabel,
+        pathPoints:[[ltr?left:right,y],[ltr?right:left,y]],
+        labelCenter:[323,y], labelWidth:187, labelHeight:45 };
+    };
+    const topology = finalizeLayout(createDiagramCanvas({
+      width:MASTER_W, height:490, status:"closed", leftTitle:"交割流向及对价", rightTitle:"交割后持股及控制",
+      transitionLabel:"股份交割", outcomeBadge,
+    }), [
+      {id:sellerId,panel:"left",x:32,y:106,w:175,h:263,role:sellerRole,title:sellerName,subtitle:sellerSubtitle},
+      {id:buyerId,panel:"left",x:438,y:106,w:176,h:263,role:buyerRole,title:buyerName,code:buyerCode,subtitle:buyerSubtitle},
+      ...shape.after.map(([id,x,y,w,h,role,title,code,subtitle,roleLabel]) => ({id,panel:"right",x,y,w,h,role,title,code,subtitle,roleLabel})),
+    ], shape.interests.map(([id,from,to,x,y,endY,labelY,pillWidth,pctLabel,dashed]) => ({
+      id, panel:"right", from, to, pathPoints:[[x,y],[x,endY]], labelCenter:[x,labelY], pillWidth,pctLabel,dashed,
+    })), shape.flows.map(flowArrow));
+    return {
+      id:txCase.id, caseId:txCase.id, code:txCase.code, name:txCase.name, mechanism:txCase.mechanism,
+      stageLabel:txCase.stage.label, stageDate:shape.date, status:"closed", archetype:"acquisition", modality:shape.modality,
+      compactSummary:shape.summary, topology,
+      before:{title:"交割各方",nodes:[node(sellerId,sellerRole,sellerName,null,sellerSubtitle),node(buyerId,buyerRole,buyerName,buyerCode,buyerSubtitle)],equityLinks:[]},
+      after:{
+        title:"交割后持股架构",
+        nodes:shape.after.map(([id,,,,,role,name,code,sublabel])=>node(id,role,name,code,sublabel)),
+        equityLinks:shape.interests.map(([,from,to,,,,,,label,dashed,pct])=>({from,to,label,pct,style:dashed?"dashed":"solid"})),
+        outcomeBadge,
+      },
+      flows:shape.flows.map(([id,kind,direction,,headline,subline],i)=>({
+        id,kind,direction,step:String(i+1),headline,subline,
+        fromLabel:direction==="ltr"?sellerName:buyerName,toLabel:direction==="ltr"?buyerName:sellerName,
+      })),
+      annotations:shape.notes.map(([title,body],i)=>({tag:String(i+1),title,body})),
+      evidenceLinks:shape.authorities.map(([documentId,,page,label])=>({documentId,pages:[page],label})),
+    };
+  }
+
+  // Source-pinned asset flows: the facts view remains if amounts or stages change.
+  const ASSET_CASE_DIAGRAMS = {
+    "HK-02596-20260615-liya-hejin-property": {
+      doc: "YS-20260615-c21197f7e8f1", date: "2026-06-15", code: "02596", category: "acquisition",
+      sourceUrl: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0615/2026061501508.pdf",
+      total: ["contract_consideration", "CNY", 16000000, [1,3]], contractOnly: true,
+      requiredTerms: [
+        ["contract_consideration", "CNY", 16000000, [1,3]],
+        ["property_valuation", "CNY", 17424400, [4]],
+        ["property_book_value", "CNY", 12967500, [2]]
+      ],
+      expectedParties: {
+        "收购方": "宜宾市商业银行股份有限公司",
+        "卖方": "宜宾翠屏区丽雅房地产开发有限公司",
+        "标的": "丽雅和锦19号楼1楼及2楼两间临街商业单元，共989.18平方米"
+      },
+      title: "丽雅和锦物业现金买卖", buyer: "宜宾市商业银行", seller: "宜宾翠屏区丽雅房地产",
+      asset: "丽雅和锦两间临街商铺", assetDetail: "19号楼1、2楼 · 989.18平方米",
+      amount: "CNY 16,000,000", paymentLabel: "发票核实后按条件一次付款",
+      cashSublabel: "含税合同总价", delivery: "按约交付物业", deliverySublabel: "与全款支付同日",
+      pending: "已签约 · 交付日期未披露", purchase: "实物物业现金买卖",
+      archetype: "acquisition", caseArchetypeLabel: "关连物业收购",
+      caseModalityLabel: "现金买卖（合同）", caseModalityShortLabel: "合同现金",
+      assetContractLabel: "实物物业买卖",
+      scope: "宜宾市商业银行向宜宾翠屏区丽雅房地产开发有限公司购买两间临街商业单元，面积989.18平方米，含税合同总价为人民币1,600万元。",
+      evidenceLinks: [{documentId:"YS-20260615-c21197f7e8f1",pages:[1,3],label:"买卖合同与付款交付安排"}]
+    },
+    "HK-00990-20261120-penang-prai-offshore-equipment": {
+      doc: "YS-20261120-edd55890578e", total: ["usd_supply_price", "USD", 76682926.83],
+      paid: ["loi_advance_paid", "USD", 11055000], date: "2026-11-20",
+      title: "Prai 数据中心设备供应", buyer: "Deep Source (PN)", seller: "Longmotive DC Solutions",
+      asset: "Prai 离岸设备", assetDetail: "设备及附随 CIF 服务",
+      amount: "USD 76,682,926.83", paidLabel: "已付并抵扣 USD 11,055,000",
+      delivery: "按约供应设备", pending: "设备验收待证", purchase: "设备采购合同",
+      scope: "檳城 Prai 项目。设备及附随离岸服务，不含现场施工；预付款含于合同价。"
+    },
+    "HK-02878-20261106-bonson-wing-hong-office": {
+      doc: "YS-20261106-f176d62e171c", total: ["property_purchase_cash", "HKD", 130408000],
+      paid: ["initial_deposit_paid", "HKD", 6520400], date: "2026-11-06",
+      title: "永康街办公室收购", buyer: "Solomon Systech Ltd.", seller: "Bonson Holdings Ltd.",
+      asset: "永康街 18 个办公室", assetDetail: "永康街83号28楼",
+      amount: "HKD 130,408,000", paidLabel: "已付按金 HKD 6,520,400",
+      delivery: "拟交付空置物业", pending: "正式签约及交割待证", purchase: "物业临时买卖协议",
+      scope: "约 11,646 平方尺。其余价款为协议约定；交付时须腾空。"
+    }
+  };
+
+  function buildVerifiedAssetCase(txCase, f, documents) {
+    const matches = ([key,currency,value,pages]) => {
+      const terms = (txCase.terms || []).filter(t => t.key === key);
+      return terms.length === 1 && terms[0].unit === "money" && terms[0].currency === currency &&
+        terms[0].value === value && terms[0].evidence?.documentId === f.doc &&
+        (!pages || pages.every(p => terms[0].evidence.pages?.includes(p)));
+    };
+    if (f.contractOnly) {
+      const doc = documents?.[f.doc];
+      const anchored = (e, pages) => e?.documentId === f.doc && pages.every(p => e.pages?.includes(p));
+      if (txCase.code !== f.code || txCase.category !== f.category || txCase.headlineKey !== f.total[0] ||
+          doc?.id !== f.doc || doc.caseId !== txCase.id || doc.url !== f.sourceUrl || doc.date !== f.date ||
+          (txCase.terms || []).length !== f.requiredTerms.length || !f.requiredTerms.every(matches) ||
+          !txCase.terms.every(t => t.approximate === false) ||
+          !Object.entries(f.expectedParties).every(([key,value]) => txCase.parties?.[key] === value) ||
+          txCase.lifecycle || txCase.events?.length !== 1 || !anchored(txCase.events[0].evidence,[1,2]) ||
+          !txCase.rules?.some(r => r.code === "HKEX:14A" && anchored(r.evidence,[1,5]))) return null;
+    }
+    const actualStart = (txCase.events || []).some(e => e.kind === "first_announcement" &&
+      e.state === "actual" && e.date === f.date && e.evidence?.documentId === f.doc);
+    if (!actualStart || txCase.stage?.status !== "active" || txCase.stage?.date !== f.date ||
+        txCase.stage?.eventKind !== "first_announcement" || !matches(f.total) || (f.paid ? !matches(f.paid) : !f.contractOnly)) return null;
+    const paymentLabel = f.paidLabel || f.paymentLabel;
+    const outcomeBadge = f.pending;
+    const topology = finalizeLayout(createDiagramCanvas({
+      width: 1080, height: 460, status: "active", leftTitle: f.title,
+      rightTitle: "资产与履约状态", transitionLabel: "合同安排", outcomeBadge
+    }), [
+      {id:"L_buyer",panel:"left",x:34,y:110,w:192,h:154,role:"buyer",title:f.buyer,subtitle:"合同买方"},
+      {id:"L_seller",panel:"left",x:422,y:110,w:190,h:154,role:"seller",title:f.seller,subtitle:"合同卖方"},
+      {id:"R_asset",panel:"right",x:718,y:94,w:316,h:86,role:"target",title:f.asset,subtitle:f.assetDetail},
+      {id:"R_pending",panel:"right",x:718,y:268,w:316,h:88,role:"buyer",...(f.contractOnly ? {roleLabel:"履约状态"} : {}),title:f.pending,subtitle:paymentLabel}
+    ], [], [
+      {id:"A_cash",panel:"left",step:"1",kind:"cash",pathPoints:[[226,153],[422,153]],label:f.amount,
+       sublabel:f.cashSublabel || "合同价款",labelCenter:[324,153],labelWidth:168,labelHeight:38},
+      {id:"A_asset",panel:"left",step:"2",kind:"asset",pathPoints:[[422,217],[226,217]],label:f.delivery,
+       sublabel:f.deliverySublabel || f.assetDetail,labelCenter:[324,217],labelWidth:168,labelHeight:38}
+    ]);
+    return {
+      id:txCase.id, caseId:txCase.id,code:txCase.code,name:txCase.name,mechanism:f.purchase,
+      stageLabel:txCase.stage.label,stageDate:f.date,archetype:f.archetype || "disclosable_major",modality:"cash_and_asset",status:"active",
+      ...(f.contractOnly ? {caseArchetypeLabel:f.caseArchetypeLabel,caseModalityLabel:f.caseModalityLabel,caseModalityShortLabel:f.caseModalityShortLabel,assetContractLabel:f.assetContractLabel,evidenceLinks:f.evidenceLinks} : {}),
+      before:{title:f.title,nodes:[
+        {id:"buyer",role:"buyer",name:f.buyer,tier:0},
+        {id:"seller",role:"seller",name:f.seller,tier:0}],equityLinks:[]},
+      after:{title:"资产与履约状态",nodes:[{id:"asset",role:"target",name:f.asset,tier:0}],equityLinks:[],outcomeBadge},
+      flows:[
+        {id:"cash",kind:"cash",direction:"ltr",fromLabel:f.buyer,toLabel:f.seller,headline:f.amount,subline:paymentLabel},
+        {id:"delivery",kind:"asset",direction:"rtl",fromLabel:f.seller,toLabel:f.buyer,headline:f.delivery,subline:f.pending}
+      ],
+      annotations:[{tag:"①",title:"标的与合同价款",body:f.scope},{tag:"②",title:f.contractOnly ? "付款与交付安排" : "已付与履约",body:paymentLabel+"；"+f.pending+"。"}],
+      topology,compactSummary:f.amount+" · "+f.pending
+    };
+  }
+
+  // HKEX 2026080502047 pp. 1–7; 2026103000864 pp. 1–2. Keep the
+  // two recipients, and pre-/post-increase denominators, separate.
+  function buildShanghaiJiangcuAcquisition(txCase) {
+    const agreement = "YS-20260805-f652ae5bb2b8";
+    const latestUpdate = "YS-20261030-335be03e7aa2";
+    const events = [...(txCase.events || []), ...(txCase.processEvents || [])];
+    const verifiedEventKinds = new Set(["first_announcement", "dispatch_extension", "supplement"]);
+    const sourceEvent = (kind, date, documentId) => events.some(e =>
+      e.kind === kind && e.state === "actual" && e.date === date && e.evidence?.documentId === documentId);
+    const expectedTerms = [
+      ["deal_consideration", "money", "CNY", 164033300],
+      ["share_swap_consideration", "money", "CNY", 7700000],
+      ["consideration_shares", "shares", null, 2791250],
+      ["issue_price", "per_share", "HKD", 3.20],
+      ["target_capital_increase", "money", "CNY", 156333300],
+      ["enlarged_stake", "percent", null, 70.3],
+    ];
+    const termsMatch = expectedTerms.every(([key, unit, currency, value]) => {
+      const matches = (txCase.terms || []).filter(t => t.key === key);
+      return matches.length === 1 && matches[0].unit === unit &&
+        (matches[0].currency ?? null) === currency && matches[0].value === value &&
+        matches[0].evidence?.documentId === agreement;
+    });
+    if (txCase.code !== "08247" || txCase.stage?.status !== "active" ||
+        txCase.stage?.eventKind !== "first_announcement" || txCase.stage?.date !== "2026-08-05" ||
+        !sourceEvent("first_announcement", "2026-08-05", agreement) ||
+        !sourceEvent("dispatch_extension", "2026-10-30", latestUpdate) ||
+        events.some(e => e.state === "actual" && (!verifiedEventKinds.has(e.kind) || e.date > "2026-10-30")) ||
+        !termsMatch) return null;
+
+    const issuer = "中生北控生物科技";
+    const seller = "潘震河";
+    const target = "上海匠簇科技有限公司";
+    const leftTitle = "拟议交易：旧股换股及现金增资";
+    const rightTitle = "若交割：增资后股权架构";
+    const outcomeBadge = "待通函及股东批准 · 尚未交割";
+    const pendingStake = "拟持约 70.3%";
+    const topology = finalizeLayout(createDiagramCanvas({
+      width: MASTER_W, height: 460, status: "active", leftTitle, rightTitle,
+      transitionLabel: "若交割", outcomeBadge,
+    }), [
+      { id: "L_issuer", panel: "left", x: 34, y: 103, w: 191, h: 123, role: "listed",
+        title: issuer, code: "08247.HK", subtitle: "收购及增资方" },
+      { id: "L_seller", panel: "left", x: 424, y: 103, w: 188, h: 123, role: "seller",
+        title: seller, subtitle: "出售增资前 10% 旧股" },
+      { id: "L_target", panel: "left", x: 34, y: 345, w: 191, h: 79, role: "target",
+        title: target, roleLabel: "标的公司", subtitle: "标的及增资收款方" },
+      { id: "R_issuer", panel: "right", x: 734, y: 104, w: 280, h: 87, role: "listed",
+        title: issuer, code: "08247.HK", subtitle: "拟成为标的控股股东" },
+      { id: "R_target", panel: "right", x: 734, y: 288, w: 280, h: 87, role: "target",
+        title: target, roleLabel: "标的公司", subtitle: "3.3% 摊薄后旧股 + 67% 增资权益" },
+    ], [
+      { id: "E_existing_stake", panel: "left", from: "L_seller", to: "L_target",
+        pathPoints: [[518, 226], [518, 384.5], [225, 384.5]], pctLabel: "增资前持有 10%",
+        pillWidth: 130, labelCenter: [380, 384.5] },
+      { id: "E_pending_control", panel: "right", from: "R_issuer", to: "R_target",
+        dashed: true, pctLabel: pendingStake, pillWidth: 130, labelCenter: [874, 239] },
+    ], [
+      { id: "A_consideration_shares", panel: "left", step: "1", kind: "shares",
+        pathPoints: [[225, 135], [424, 135]], label: "拟发行代价 H 股",
+        sublabel: "2,791,250 股 · HKD 3.20/股", labelWidth: 176, labelHeight: 42 },
+      { id: "A_existing_equity", panel: "left", kind: "asset",
+        pathPoints: [[424, 196], [225, 196]], label: "拟转让 10% 旧股",
+        sublabel: "增资前 · 对价 CNY 7,700,000", labelWidth: 176, labelHeight: 42 },
+      { id: "A_capital_increase", panel: "left", step: "2", kind: "cash",
+        pathPoints: [[129.5, 226], [129.5, 345]], label: "拟向标的现金增资",
+        sublabel: "CNY 156,333,300", labelWidth: 179, labelHeight: 42 },
+    ]);
+    return {
+      id: txCase.id, caseId: txCase.id, code: txCase.code, name: txCase.name,
+      stageLabel: "已签附条件协议；通函延期", stageDate: "2026-10-30",
+      archetype: "disclosable_major", modality: "mixed", status: "active",
+      before: { title: leftTitle, nodes: [
+        { id: "issuer", role: "listed", name: issuer, code: "08247.HK", tier: 0 },
+        { id: "seller", role: "seller", name: seller, tier: 0 },
+        { id: "target", role: "target", name: target, tier: 1 },
+      ], equityLinks: [
+        { from: "seller", to: "target", label: "增资前持有 10%", pct: 10, style: "solid" },
+      ] },
+      flows: [
+        { id: "consideration_shares", kind: "shares", direction: "ltr", step: "1",
+          fromLabel: issuer, toLabel: seller, headline: "拟发行 2,791,250 股 H 股",
+          subline: "HKD 3.20/股；约定旧股对价 CNY 7,700,000", proposedOrTerminated: true },
+        { id: "existing_equity", kind: "asset", direction: "rtl", step: "1",
+          fromLabel: seller, toLabel: issuer, headline: "拟转让上海匠簇 10% 旧股",
+          subline: "10% 为增资前比例", proposedOrTerminated: true },
+        { id: "capital_increase", kind: "cash", direction: "ltr", step: "2",
+          fromLabel: issuer, toLabel: target, headline: "拟现金增资 CNY 156,333,300",
+          subline: "现金支付给标的，认取增资后约 67% 权益", proposedOrTerminated: true },
+      ],
+      after: { title: rightTitle, nodes: [
+        { id: "issuer_after", role: "listed", name: issuer, code: "08247.HK", tier: 0 },
+        { id: "target_after", role: "target", name: target, tier: 1 },
+      ], equityLinks: [
+        { from: "issuer_after", to: "target_after", label: pendingStake, pct: 70.3, style: "dashed" },
+      ], outcomeBadge },
+      annotations: [
+        { tag: "①", title: "旧股收购及发股", body: "潘震河拟转让增资前 10% 旧股，获发 2,791,250 股代价 H 股，发行价每股 HKD 3.20。" },
+        { tag: "②", title: "增资与摊薄", body: "CNY 156,333,300 现金拟注入上海匠簇，取得扩大后约 67%；首步旧股摊薄至约 3.3%，两步合计拟持约 70.3%。协议两步总对价 CNY 164,033,300。" },
+        { tag: "③", title: "主要交易及股东批准", body: "交易须获股东批准；一般授权下发行代价股份本身无需另行批准。", ruleCode: "HKEX:19" },
+        { tag: "④", title: "最新公告：通函再延期", body: "10 月 30 日公告预计于 2026 年 12 月 31 日或之前寄发通函。9 月 17 日法院解除卖方 10% 股权保全。" },
+      ],
+      topology, compactSummary: "拟发 H 股换入 10% 旧股并现金增资 · 若交割拟持约 70.3%",
+    };
+  }
+
+  function verifiedOnSunSpec(txCase, documents) {
+    const shape = VERIFIED_ACQUISITIONS[txCase.id];
+    if (!matchesVerifiedAcquisition(txCase, shape, documents)) return null;
+    const legal = {"上市发行人":"Vobile Group Limited","卖方":"Li Ye",
+      "收购方":"Vobile Investment Holdings Limited","法律标的":"On Sun International Limited"};
+    if (!Object.entries(legal).every(([key,name]) => txCase.parties?.[key]===name)) return null;
+
+    const seller="Li Ye", issuer="阜博集团", purchaser="Vobile Investment Holdings", target="安晴国际";
+    const outcomeBadge="Vobile Investment 全资持有安晴国际";
+    const topology=finalizeLayout(createDiagramCanvas({
+      width:MASTER_W,height:490,status:"closed",leftTitle:"股份支付及标的转让",rightTitle:"交割后持股架构",
+      transitionLabel:"股份交割",outcomeBadge,
+    }), [
+      {id:"L_seller",panel:"left",x:32,y:104,w:175,h:250,role:"seller",title:seller,subtitle:"安晴国际原股东"},
+      {id:"L_issuer",panel:"left",x:438,y:80,w:176,h:100,role:"listed",roleLabel:"股份发行人",title:issuer,code:"03738.HK",subtitle:"在一般授权下发行代价股"},
+      {id:"L_buyer",panel:"left",x:438,y:248,w:176,h:107,role:"buyer",roleLabel:"法定买方",title:purchaser,subtitle:"阜博集团直接全资附属"},
+      {id:"R_seller",panel:"right",x:715,y:51,w:318,h:62,role:"public",roleLabel:"新股东",title:seller,subtitle:"获发阜博集团股份"},
+      {id:"R_issuer",panel:"right",x:715,y:150,w:318,h:63,role:"listed",title:issuer,code:"03738.HK",subtitle:"Vobile Group Limited"},
+      {id:"R_buyer",panel:"right",x:715,y:252,w:318,h:66,role:"buyer",roleLabel:"法定买方",title:purchaser,subtitle:"Vobile Investment Holdings Limited"},
+      {id:"R_target",panel:"right",x:715,y:358,w:318,h:66,role:"target",title:target,subtitle:"On Sun International Limited"},
+    ], [
+      {id:"seller-minority",panel:"right",from:"R_seller",to:"R_issuer",dashed:true,pctLabel:"约 0.79% · 上市公司",pillWidth:146,labelCenter:[874,131]},
+      {id:"parent-buyer",panel:"right",from:"R_issuer",to:"R_buyer",pctLabel:"100% 直接持有",pillWidth:125,labelCenter:[874,232]},
+      {id:"buyer-target",panel:"right",from:"R_buyer",to:"R_target",pctLabel:"100% 已交割",pillWidth:118,labelCenter:[874,337]},
+    ], [
+      {id:"listed-issues-shares",panel:"left",step:"1",kind:"shares",pathPoints:[[438,127],[207,127]],label:"发行 20,547,945 股新股",sublabel:"每股发行价 3.65 港元",labelCenter:[323,127],labelWidth:192,labelHeight:45},
+      {id:"assets-to-legal-buyer",panel:"left",step:"2",kind:"asset",pathPoints:[[207,293],[438,293]],label:"转让安晴国际 100% 股权",sublabel:"卖方转予法定买方",labelCenter:[323,293],labelWidth:192,labelHeight:45},
+    ]);
+
+    const leftNodes=[["seller",seller,"seller"],["issuer",issuer,"listed"],["buyer",purchaser,"buyer"]];
+    const nodes = (tuples) => tuples.map(([id,name,role])=>({id,name,role}));
+    return {
+      id:txCase.id,caseId:txCase.id,code:txCase.code,name:txCase.name,mechanism:txCase.mechanism,
+      stageLabel:txCase.stage.label,stageDate:shape.date,status:"closed",archetype:"acquisition",caseArchetypeLabel:"股份交易",modality:shape.modality,
+      compactSummary:"法定买方收购 100% · 阜博发行 20,547,945 股 · 协议对价 7,500 万港元",
+      topology,
+      before:{title:"交割各方",nodes:nodes(leftNodes),equityLinks:[]},
+      after:{title:"交割后持股架构",nodes:nodes([...leftNodes,["target",target,"target"]]),equityLinks:[
+        {from:"seller",to:"issuer",label:"约 0.79% · 上市公司",pct:0.79,style:"dashed"},
+        {from:"issuer",to:"buyer",label:"100% 直接持有",pct:100,style:"solid"},
+        {from:"buyer",to:"target",label:"100% 已交割",pct:100,style:"solid"},
+      ],outcomeBadge},
+      flows:[
+        {id:"listed-issues-shares",kind:"shares",direction:"rtl",step:"1",fromLabel:issuer,toLabel:seller,
+          headline:"发行 20,547,945 股新股",subline:"每股发行价 3.65 港元"},
+        {id:"assets-to-legal-buyer",kind:"asset",direction:"ltr",step:"2",fromLabel:seller,toLabel:purchaser,
+          headline:"转让安晴国际 100% 股权"},
+      ],
+      annotations:[
+        {tag:"1",title:"股份对价",body:"协议对价为 7,500 万港元，全部以阜博新股支付。已发行股数乘发行价为 74,999,999.25 港元；相差 0.75 港元是两项数字的计算差额，公告未列现金补款。"},
+        {tag:"2",title:"发股与受让为不同主体",body:"阜博集团向 Li Ye 发股；阜博集团直接全资附属公司 Vobile Investment Holdings Limited 受让安晴全部股权。卖方取得的是阜博上市股份，约占交割后已发行股份的 0.79%。"},
+      ],
+      evidenceLinks:shape.authorities.map(([documentId,,page,label])=>({documentId,pages:[page],label})),
+    };
+  }
+
   const CURATED_BUILDERS = {
+    "HK-03738-20261009-on-sun-international": verifiedOnSunSpec,
+    "HK-01910-20260813-beis-85pct": verifiedAcquisitionSpec,
+    "HK-08247-20260805-shanghai-jiangcu": buildShanghaiJiangcuAcquisition,
+    "HK-03320-20260715-lier-chemical": function (r) {
+      const expected = {
+        proposed_consideration:[5656249662.43,"CNY","YS-20260730-77fd66557384"],
+        proposed_shares:[188102749,null,"YS-20260730-77fd66557384"],
+        proposed_equity:[23.5,null,"YS-20260730-77fd66557384"],
+        paid_contract_deposit:[1696874898.73,"CNY","YS-20260730-77fd66557384"],
+        paid_contract_deposit_ratio:[30,null,"YS-20261123-98e3588d8fec"]
+      };
+      for (const [key,[value,currency,documentId]] of Object.entries(expected)) {
+        if (!(r.terms||[]).some(t=>t.key===key && t.value===value && t.currency===currency && t.evidence?.documentId===documentId)) return null;
+      }
+      if (r.stage?.status!=="active" || !(r.processEvents||[]).some(e=>e.date==="2026-11-23" && e.state==="actual" && e.evidence?.documentId==="YS-20261123-98e3588d8fec")) return null;
+      const deal="拟股权转让 · 定金已付";
+      const topology=finalizeLayout(createDiagramCanvas({
+        status:"active",width:1080,height:460,leftTitle:"利尔化学股权转让安排",
+        rightTitle:"拟变动的持股关系",transitionLabel:"待交割",outcomeBadge:deal
+      }),[
+        {id:"L_buy",panel:"left",x:32,y:111,w:190,h:158,role:"listed",title:"华润双鹤",code:"600062.SH",subtitle:"法定买方"},
+        {id:"L_sell",panel:"left",x:422,y:111,w:190,h:158,role:"seller",title:"四川久远 · 四川化材",subtitle:"两名股份出让方"},
+        {id:"R_buy",panel:"right",x:724,y:86,w:306,h:86,role:"buyer",title:"华润双鹤",subtitle:"拟购合计 188,102,749 股"},
+        {id:"R_target",panel:"right",x:724,y:270,w:306,h:84,role:"target",title:"利尔化学",code:"002258.SZ",subtitle:"标的上市公司"}
+      ],[
+        {id:"r_stake",panel:"right",from:"R_buy",to:"R_target",pctLabel:"拟取得约23.50%",dashed:true,labelCenter:[877,220],pillWidth:142}
+      ],[
+        {id:"l_cash",panel:"left",step:"1",kind:"cash",pathPoints:[[222,152],[422,152]],label:"拟价 RMB 56.56亿",sublabel:"30% 合约定金已付",labelCenter:[322,152],labelWidth:174,labelHeight:38},
+        {id:"l_equity",panel:"left",step:"2",kind:"shares",pathPoints:[[422,218],[222,218]],label:"拟转让约 23.50%",sublabel:"188,102,749 股",labelCenter:[322,218],labelWidth:174,labelHeight:38}
+      ]);
+      return {
+        id:r.id,caseId:r.id,code:r.code,name:"华润双鹤收购利尔化学股权",mechanism:"现金协议转让",
+        stageLabel:"定金已付 · 待交割",stageDate:"2026-11-23",archetype:"disclosable_major",modality:"cash",status:"active",
+        before:{title:"利尔化学股权转让安排",nodes:[{id:"b",role:"buyer",name:"华润双鹤",tier:0},{id:"s",role:"seller",name:"四川久远与四川化材",tier:0}],equityLinks:[]},
+        after:{title:"拟变动的持股关系",nodes:[{id:"b1",role:"buyer",name:"华润双鹤",tier:0},{id:"t1",role:"target",name:"利尔化学",tier:1}],equityLinks:[{from:"b1",to:"t1",label:"拟取得约23.50%",pct:23.5,style:"dashed"}],outcomeBadge:deal},
+        flows:[
+          {id:"cash",kind:"cash",direction:"ltr",fromLabel:"华润双鹤",toLabel:"四川久远与四川化材",headline:"拟总代价 RMB 5,656,249,662.43",subline:"其中已付合约定金 RMB 1,696,874,898.73"},
+          {id:"equity",kind:"shares",direction:"rtl",fromLabel:"四川久远与四川化材",toLabel:"华润双鹤",headline:"拟转让利尔化学 188,102,749 股",subline:"约23.50%已发行股本；待过户"}
+        ],
+        annotations:[
+          {tag:"①",title:"两名卖方的现金安排",body:"拟定总代价 RMB 5,656,249,662.43；按合同分项合计已付 RMB 1,696,874,898.73，含转入的竞投定金。"},
+          {tag:"②",title:"11月23日进展",body:"已履行定金先决条件，其他先决条件待满足，期限由120日延至240日。"}
+        ],
+        topology,compactSummary:"拟购约23.50% · 定金已付 · 待交割"
+      };
+    },
+
+    "HK-01347-20250831-huali-micro": verifiedAcquisitionSpec,
+    "HK-06616-20260206-junheng-jihua": verifiedAcquisitionSpec,
     "HK-00011-20251009-hsbc": function (txCase) {
       return {
         id: txCase.id,
@@ -3991,8 +4493,36 @@
     return "acquisition";
   }
 
+  // A scheme beneficiary can receive cash even when the issuer restores capital
+  // with a separate issue to the bidder. Only classify supported, sourced term sets.
+  function exactCashSchemeTerms(terms, archetype) {
+    if (archetype !== "scheme") return null;
+    const model = {
+      scheme_cash: "money", scheme_cash_max: "money", scheme_cash_cap: "money",
+      scheme_cash_base: "money", scheme_cash_increment: "money", bond_cash_increment: "money",
+      base_scheme_shares: "shares", scheme_total: "money", scheme_price: "per_share", scheme_shares: "shares",
+      scheme_ref_shares: "shares", option_price: "per_share", against_shares: "shares",
+      vote_for_pct: "percent", against_all_pct: "percent",
+    };
+    if (!terms.every((t) => Object.hasOwn(model,t.key) && model[t.key] === t.unit)) return null;
+    const findKey = (keys) => terms.find((t) => keys.includes(t.key));
+    const anchorCash = terms.filter((t) => ["scheme_cash","scheme_cash_max","scheme_cash_cap","scheme_total"].includes(t.key));
+    const cash = anchorCash[0];
+    const price = findKey(["scheme_price"]);
+    const quantity = findKey(["scheme_shares","scheme_ref_shares","base_scheme_shares"]);
+    const scenarios = ["base_scheme_shares","scheme_cash_base","scheme_cash_increment","bond_cash_increment"];
+    const compound = terms.some((t) => scenarios.includes(t.key));
+    if (compound && (!scenarios.every((k) => terms.some((t) => t.key === k && t.evidence?.documentId))
+      || cash?.key !== "scheme_cash_max" || quantity?.key !== "base_scheme_shares")) return null;
+    const anchored = (t) => t && Number.isFinite(t.value) && t.value > 0 && t.evidence?.documentId;
+    return anchorCash.length === 1 && anchored(cash) && anchored(price) && anchored(quantity) && cash.currency
+      && cash.currency === price.currency && /现金/.test(cash.label || "")
+      && /注销/.test(price.label || "") ? { cash, price, quantity, compound } : null;
+  }
+
   function detectModality(txCase, archetype) {
     const terms = Array.isArray(txCase.terms) ? txCase.terms : [];
+    if (exactCashSchemeTerms(terms, archetype)) return "cash";
     const hasMoney = terms.some((t) => t.unit === "money" || t.unit === "per_share");
     const hasShares = terms.some((t) => t.unit === "shares" || t.unit === "ratio");
     if (archetype === "holding_substitution" || archetype === "ah_share_absorption") {
@@ -4279,6 +4809,10 @@
     const assetName = pickParty(parties, ["采购标的", "设备", "标的设备", "采购资产", "标的", "equipment", "asset", "target"], "生产设备 / 商业资产");
 
     const headlineTerm = terms.find((t) => t.key === txCase.headlineKey) || terms[0] || null;
+    const pendingCap = txCase.id === "HK-00950-20261119-nova-assembly-line-order" && status === "active" && headlineTerm?.key === "equipment_purchase_cap";
+    const buyerCode = pendingCap ? undefined : code;
+    const deliveryHeadline = pendingCap ? `拟交付 ${assetName}` : `交付 ${assetName}`;
+    const deliveryContext = pendingCap ? "卖方接纳订单后约 50 周" : `商业资产入账 · 适用 ${rules.map(r=>r.code).filter(Boolean).join(" · ")||"HKEX:14.06"}`;
     const secondaryTerms = terms.filter((t) => t !== headlineTerm);
     const primaryExact = headlineTerm
       ? `${headlineTerm.label} ${headlineTerm.approximate ? formatTermBrief(headlineTerm) : formatTermExact(headlineTerm)}`
@@ -4310,7 +4844,7 @@
       before: {
         title: "采购合同主体",
         nodes: [
-          { id: "buyer_entity", role: "listed", name: buyerParty, code, sublabel: "采购买方主体", tier: 0 },
+          { id: "buyer_entity", role: "listed", name: buyerParty, code:buyerCode, sublabel: "采购买方主体", tier: 0 },
           { id: "vendor_entity", role: "seller", name: vendorName, sublabel: "设备供应商 / 合同卖方", tier: 0 },
           { id: "equip_asset", role: "target", name: assetName, sublabel: "商业采购设备标的", tier: 1 },
         ],
@@ -4326,7 +4860,7 @@
           toLabel: vendorName,
           headline: primaryExact,
           subline: secondaryExact || "按采购协议里程碑结算货款",
-          proposedOrTerminated: isTerminated,
+          proposedOrTerminated: isTerminated || pendingCap,
         },
         {
           id: "proc_deliver",
@@ -4335,16 +4869,16 @@
           step: "02",
           fromLabel: vendorName,
           toLabel: buyerParty,
-          headline: `交付 ${assetName}`,
+          headline: deliveryHeadline,
           subline: `纯商业资产采购 · 适用 ${ruleSummary}`,
-          proposedOrTerminated: isTerminated,
+          proposedOrTerminated: isTerminated || pendingCap,
         },
       ],
       after: {
         title: "合同履约与资产入账状态",
         nodes: [
-          { id: "buyer_after", role: "listed", name: buyerParty, code, sublabel: isTerminated ? "采购合同已终止" : "结算合同款项 · 维持原有架构", tier: 0 },
-          { id: "equip_after", role: "target", name: assetName, sublabel: isTerminated ? "未交付" : "固定资产交付验收（非附属公司）", badge: isTerminated ? "已终止" : "商业资产", tier: 1 },
+          { id: "buyer_after", role: "listed", name: buyerParty, code:buyerCode, sublabel: isTerminated ? "采购合同已终止" : "结算合同款项 · 维持原有架构", tier: 0 },
+          { id: "equip_after", role: "target", name: assetName, sublabel: isTerminated ? "未交付" : "固定资产交付验收（非附属公司）", badge: isTerminated ? "已终止" : pendingCap ? "待交付" : "商业资产", tier: 1 },
         ],
         equityLinks: [],
         outcomeBadge: isTerminated ? "采购协议已终止" : `设备采购商业履约 · ${stageLabel}`,
@@ -4358,7 +4892,7 @@
         },
         {
           tag: "②",
-          title: "合同价款与预付款抵扣",
+          title: pendingCap ? "采购上限及付款条款" : "合同价款与预付款抵扣",
           body: terms.map((t) => `${t.label} ${t.approximate ? formatTermBrief(t) : formatTermExact(t)}${t.basis ? `（${t.basis}）` : ""}`).join("；") || `${primaryExact}。`,
           ruleCode: null,
         },
@@ -4371,7 +4905,7 @@
         {
           tag: "④",
           title: "履约阶段状态",
-          body: `${stageLabel}${stageDate ? `（${stageDate}）` : ""} · 属商业设备及固定资产采购合同，仅作资产购置入账。`,
+          body: `${stageLabel}${stageDate ? `（${stageDate}）` : ""}${pendingCap?"":" · 属商业设备及固定资产采购合同，仅作资产购置入账。"}`,
           ruleCode: null,
         },
       ],
@@ -4380,13 +4914,16 @@
     spec.topology = buildCommercialProcurementTopology({
       status,
       buyerName: buyerParty,
-      code,
+      code:buyerCode,
+      buyerSub:pendingCap ? "间接全资附属公司 · 采购方" : undefined,
+      rightTitle:pendingCap ? "采购订单履约安排" : undefined,
+      assetSub:pendingCap ? "预计交付后验收" : undefined,
       vendorName,
       assetName,
       payLabel: primaryExact,
       paySub: secondaryExact || "按采购协议结算价款",
-      deliveryLabel: `交付 ${assetName}`,
-      deliverySub: `商业资产入账 · 适用 ${ruleSummary}`,
+      deliveryLabel: deliveryHeadline,
+      deliverySub: deliveryContext,
       outcomeBadge: spec.after.outcomeBadge,
     });
 
@@ -4438,11 +4975,18 @@
       `${name} 相关标的`
     );
 
+    const cashScheme = exactCashSchemeTerms(terms, archetype);
     const amountHeadlineParts = [];
-    if (perShareTerm) amountHeadlineParts.push(formatTermBrief(perShareTerm));
-    if (moneyTerm) amountHeadlineParts.push(formatTermBrief(moneyTerm));
+    if (cashScheme) {
+      amountHeadlineParts.push(formatTermBrief(cashScheme.price));
+      const limit = ["scheme_cash_max","scheme_cash_cap"].includes(cashScheme.cash.key) ? "现金上限 " : "";
+      amountHeadlineParts.push(limit + formatTermBrief(cashScheme.cash));
+    } else {
+      if (perShareTerm) amountHeadlineParts.push(formatTermBrief(perShareTerm));
+      if (moneyTerm) amountHeadlineParts.push(formatTermBrief(moneyTerm));
+    }
     if (ratioTerm) amountHeadlineParts.push(`换股 ${formatTermBrief(ratioTerm)}`);
-    if (sharesTerm) amountHeadlineParts.push(`发行 ${formatTermBrief(sharesTerm)}`);
+    if (sharesTerm && !cashScheme) amountHeadlineParts.push(`发行 ${formatTermBrief(sharesTerm)}`);
     const primaryAmountText =
       amountHeadlineParts.filter(Boolean).join(" · ") ||
       (headlineTerm ? `${headlineTerm.label} ${formatTermBrief(headlineTerm)}` : txCase.mechanism || archInfo.labelZh);
@@ -4493,6 +5037,14 @@
     }
 
     spec.flows[0].headline = primaryAmountText;
+    if (cashScheme) {
+      spec.flows[0].subline = cashScheme.compound
+        ? "每股现金注销价（可扣股息） · 上限含期权与换债情景"
+        : "每股注销价 · 计划股份现金对价";
+      const action = cashScheme.compound ? "基准计划股"
+        : cashScheme.quantity.key === "scheme_ref_shares" ? "参考计划股" : "计划注销";
+      spec.flows[1].headline = `${action} ${formatTermBrief(cashScheme.quantity)}`;
+    }
     spec.flows[0].proposedOrTerminated = isTerminated;
     if (spec.flows[1]) {
       spec.flows[1].subline = `适用规则：${ruleSummary}`;
@@ -4539,9 +5091,735 @@
     return validateDiagramSpec(spec);
   }
 
-  function getSpecForCase(txCase) {
+  const ROAD_KING_RKE_CASE = "HK-01098-20261120-rke-stake-creditor-spv";
+
+  // Revalidate the dated source/terms before using this case-specific planned layout.
+  function roadKingRkeSpec(txCase, documents) {
+    const cir = "YS-20261123-bff054f0e2b1";
+    const ann = "YS-20261120-9f13a48ef590";
+    const may = "YS-20260527-bd443d3b6245";
+    const date = "2026-11-23";
+    const hke = "https://www1.hkexnews.hk/listedco/listconews/sehk/";
+    const sources = [
+      [cir, "2026/1123/2026112300059.pdf", date],
+      [ann, "2026/1120/2026112001173.pdf", "2026-11-20"],
+      [may, "2026/0527/2026052701516.pdf", "2026-05-27"],
+    ];
+    const anchored = (e, id, pages) => e?.documentId === id &&
+      pages.every(p => e.pages?.includes(p));
+    const termsAre = (key, value, unit, currency, approximate, pages) => {
+      const terms = txCase.terms?.filter(t => t.key === key) || [];
+      return terms.length === 1 && terms[0].value === value && terms[0].unit === unit &&
+        terms[0].currency === currency && terms[0].approximate === approximate &&
+        anchored(terms[0].evidence, cir, pages);
+    };
+    const events = txCase.events || [];
+    if (txCase.code !== "01098" || txCase.category !== "disposal" ||
+        txCase.stage?.status !== "active" || txCase.stage?.eventKind !== "dispatch" ||
+        txCase.stage?.date !== date || txCase.headlineKey !== "stake_fair_value_noncash_estimate" ||
+        !sources.every(([id, path, sourceDate]) => documents?.[id]?.caseId === txCase.id &&
+          documents[id].url === hke + path && documents[id].date === sourceDate) ||
+        !events.some(e => e.kind === "dispatch" && e.state === "actual" && e.date === date &&
+          anchored(e.evidence, cir, [1, 17])) ||
+        !events.some(e => e.kind === "first_announcement" && e.state === "actual" && e.date === "2026-11-20" &&
+          anchored(e.evidence, ann, [3, 4])) ||
+        events.some(e => e.state === "actual" && e.kind !== "dispatch" && e.kind !== "first_announcement") ||
+        !termsAre("rke_transferred_stake", 70, "percent", null, false, [41]) ||
+        !termsAre("rke_retained_stake", 5, "percent", null, false, [41]) ||
+        !termsAre("stake_fair_value_noncash_estimate", 2796564000, "money", "HKD", true, [120,122,160]) ||
+        !txCase.rules?.some(r => r.code === "HKEX:14" && anchored(r.evidence, cir, [50]))) return null;
+
+    const leftTitle = "债务重组与拟转让路径";
+    const rightTitle = "重组生效后的拟议持股";
+    const outcomeBadge = "通函已寄发 · 待批准和重组生效";
+    const boxes = [
+      {id:"rk-listed",panel:"left",x:33,y:51,w:174,h:68,role:"listed",title:"路劲基建",code:"01098.HK",subtitle:"境外债务重组发行人"},
+      {id:"rk-seller",panel:"left",x:33,y:164,w:174,h:78,role:"seller",title:"New Select",subtitle:"转让方 · 现持 RKE 75%"},
+      {id:"rk-spv-left",panel:"left",x:435,y:164,w:178,h:78,role:"holdco",roleLabel:"拟设载体",title:"债权人处置 SPV",subtitle:"BVI · 拟受让方"},
+      {id:"rk-creditors",panel:"left",x:208,y:383,w:231,h:67,role:"creditor",title:"New Select 计划债权人",subtitle:"债权解除、获配收费公路债券"},
+      {id:"rk-trust",panel:"right",x:698,y:57,w:138,h:66,role:"holdco",roleLabel:"目的信托",title:"债权人目的信托",subtitle:"拟持有处置 SPV"},
+      {id:"rk-spv-right",panel:"right",x:698,y:188,w:134,h:70,role:"holdco",roleLabel:"拟设载体",title:"处置 SPV",subtitle:"拟控制 RKE 董事会"},
+      {id:"rk-retain",panel:"right",x:852,y:188,w:97,h:70,role:"seller",title:"New Select",subtitle:"路劲全资附属"},
+      {id:"rk-third",panel:"right",x:969,y:188,w:82,h:70,role:"public",roleLabel:"存续股东",title:"第三方股东",subtitle:"原持股不变"},
+      {id:"rk-rke",panel:"right",x:703,y:363,w:345,h:62,role:"target",title:"路劲高速公路（RKE）",subtitle:"印尼收费公路权益控股平台"},
+    ];
+    const ownership = [
+      {id:"rk-old-parent",panel:"left",from:"rk-listed",to:"rk-seller",pctLabel:"100% 全资",pct:100,pillWidth:94},
+      {id:"rk-trust-spv",panel:"right",from:"rk-trust",to:"rk-spv-right",pctLabel:"拟持 100%",pct:100,dashed:true,pillWidth:91},
+      {id:"rk-new-stake",panel:"right",from:"rk-spv-right",to:"rk-rke",pathPoints:[[767,258],[767,363]],labelCenter:[767,315],pctLabel:"拟受让 70%",pct:70,dashed:true,pillWidth:110},
+      {id:"rk-kept-stake",panel:"right",from:"rk-retain",to:"rk-rke",pathPoints:[[902,258],[902,363]],labelCenter:[902,315],pctLabel:"拟保留 5%",pct:5,dashed:true,pillWidth:101},
+      {id:"rk-other-stake",panel:"right",from:"rk-third",to:"rk-rke",pathPoints:[[1010,258],[1010,363]],labelCenter:[1010,315],pctLabel:"维持 25%",pct:25,dashed:true,pillWidth:81},
+    ];
+    const flowDefs = [
+      {id:"rk-proposed-transfer",kind:"asset",from:"rk-seller",to:"rk-spv-left",direction:"ltr",pathPoints:[[207,203],[435,203]],labelCenter:[321,203],labelWidth:193,labelHeight:45,label:"拟转让 RKE 70% 股权",sublabel:"非现金估值约 HK$27.97 亿"},
+      {id:"rk-claim-release",kind:"cancel",from:"rk-creditors",to:"rk-seller",direction:"rtl",pathPoints:[[208,415],[120,415],[120,242]],labelCenter:[120,321],labelWidth:178,labelHeight:45,label:"拟解除合资格债权",sublabel:"依据 New Select 计划"},
+      {id:"rk-spv-bonds",kind:"asset",from:"rk-spv-left",to:"rk-creditors",direction:"rtl",pathPoints:[[524,242],[524,415],[439,415]],labelCenter:[524,321],labelWidth:177,labelHeight:45,label:"拟发收费公路债券",sublabel:"由 SPV 发行 · 零息有抵押"},
+    ];
+    const topology = finalizeLayout(createDiagramCanvas({
+      width:MASTER_W,height:490,status:"active",leftTitle,rightTitle,transitionLabel:"待生效",outcomeBadge,
+    }), boxes, ownership, flowDefs.map((f,i)=>({...f,panel:"left",step:String(i+1)})));
+    const box = id => boxes.find(b=>b.id===id);
+    const asNode = b => ({id:b.id,role:b.role,name:b.title,code:b.code,sublabel:b.subtitle});
+    const asLink = e => ({from:e.from,to:e.to,label:e.pctLabel,pct:e.pct,style:e.dashed?"dashed":"solid"});
+    const notes = [
+      ["标的与非现金对价","拟转让的是 RKE 70% 股权，而非直接转让印尼收费公路。70% 权益估值为 HK$2,796,564,000（估算，基准日为 2026 年 8 月 31 日）；New Select 不收取处置现金。"],
+      ["债权与证券分别入图","New Select 计划债权人拟解除合资格债权，并获配由处置 SPV 发行的有抵押零息收费公路债券。路劲本身境外重组方案中的新股和现金清扫房地产债券是另一证券链。"],
+      ["标的持股变化","处置 SPV 拟由债权人目的信托全资持有；New Select 由 75% 降至 5%，原第三方 25% 不变。若重组生效，RKE 将不再是路劲附属公司。"],
+      ["批准与时间","11 月 23 日已寄发通函。两项协议安排互为条件；非常重大出售须股东批准，法院与其他适用条件亦待落实。"],
+      ["顾问职责","Opus 的独立意见针对方案 2 相关关连证券安排；ValQuest 负责 RKE 股权估值；Crowe 核验计算、A&M 审阅估值预测。"],
+    ];
+    return {
+      id:txCase.id,caseId:txCase.id,code:txCase.code,name:txCase.name,mechanism:txCase.mechanism,
+      stageLabel:txCase.stage.label,stageDate:date,archetype:"disposal",modality:"in_kind",status:"active",
+      compactSummary:"拟以 RKE 70% 股权抵偿债务 · 非现金估值约 HK$27.97 亿",
+      before:{title:leftTitle,nodes:boxes.filter(b=>b.panel==="left").map(asNode),equityLinks:ownership.filter(e=>e.panel==="left").map(asLink)},
+      after:{title:rightTitle,nodes:boxes.filter(b=>b.panel==="right").map(asNode),equityLinks:ownership.filter(e=>e.panel==="right").map(asLink),outcomeBadge},
+      flows:flowDefs.map((f,i)=>({id:f.id,kind:f.kind,direction:f.direction,step:String(i+1),
+        fromLabel:box(f.from).title,toLabel:box(f.to).title,headline:f.label,subline:f.sublabel,proposedOrTerminated:true})),
+      annotations:notes.map(([title,body],i)=>({tag:String(i+1),title,body})),
+      evidenceLinks:[
+        {documentId:ann,pages:[11],label:"债权人计划：收费公路债券"},
+        {documentId:cir,pages:[41],label:"谁转让、受让及保留多少"},
+        {documentId:cir,pages:[160],label:"70% 权益非现金估值"},
+        {documentId:cir,pages:[50],label:"股东批准与适用规则"},
+        {documentId:cir,pages:[96],label:"Opus 独立意见范围"},
+        {documentId:cir,pages:[165],label:"Crowe 计算核验"},
+        {documentId:cir,pages:[167],label:"A&M 预测审阅"},
+        {documentId:cir,pages:[163],label:"ValQuest 估值报告"},
+      ],
+      topology,
+    };
+  }
+
+  const LIANFA_PROPERTY_CASE = "HK-02156-20260911-lianfa-property";
+
+  // A single completed share transfer. Contract instalments describe payables, not receipts.
+  function buildLianfaPropertyClosure(row, documents) {
+    const closingDate = "2026-11-05";
+    const signed = "YS-20260911-f624330bc2b4";
+    const circular = "YS-20261009-09d00ed8178d";
+    const vote = "YS-20261030-96e95aadad44";
+    const close = "YS-20261105-f276804539a2";
+    const sourceRoot = "https://www1.hkexnews.hk/listedco/listconews/sehk/";
+    const sources = [
+      [signed, "2026/0911/2026091101309.pdf", "2026-09-11"],
+      [circular, "2026/1009/2026100900294.pdf", "2026-10-09"],
+      [vote, "2026/1030/2026103000932.pdf", "2026-10-30"],
+      [close, "2026/1105/2026110501819.pdf", closingDate],
+    ];
+    const legalParties = {
+      "上市主体":"C&D Property Management Group Co., Ltd（建发物业管理集团有限公司）",
+      "法定买方":"Xiamen Lirong Investment Management Co., Ltd.（厦门利融投资管理有限公司）",
+      "法定卖方":"Xiamen Lianfa (Group) Real Estate Co., Limited（厦门联发（集团）房地产有限公司）",
+      "标的":"Xiamen Lianfa (Group) Property Services Company Limited（厦门联发（集团）物业服务有限公司）",
+    };
+    const anchored = (e, id, pages) => e?.documentId === id && pages.every(p => e.pages?.includes(p));
+    const termDefs = [
+      ["contract_cash_consideration",304410000,"money","CNY",circular,[7]],
+      ["initial_instalment_due",254410000,"money","CNY",circular,[7]],
+      ["deferred_instalment_due",50000000,"money","CNY",circular,[7,9,30]],
+      ["registered_stake",100,"percent",null,close,[1]],
+    ];
+    const actualDefs = [
+      ["first_announcement","2026-09-11",signed,[1,3]],
+      ["vote","2026-10-30",vote,[1,2]],
+      ["completion",closingDate,close,[1]],
+      ["supplement","2026-10-09",circular,[1]],
+    ];
+    const actual = [...(row.events || []), ...(row.processEvents || [])].filter(e => e.state === "actual");
+    if (row.code !== "02156" || row.category !== "acquisition" ||
+        row.stage?.status !== "closed" || row.stage?.eventKind !== "completion" || row.stage?.date !== closingDate ||
+        row.headlineKey !== "contract_cash_consideration" ||
+        !sources.every(([id, path, date]) => documents?.[id]?.id === id &&
+          documents[id].caseId === row.id && documents[id].date === date &&
+          documents[id].url === sourceRoot + path) ||
+        !Object.entries(legalParties).every(([key, value]) => row.parties?.[key] === value) ||
+        actual.length !== actualDefs.length ||
+        !actualDefs.every(([kind,date,documentId,pages]) => actual.filter(e =>
+          e.kind === kind && e.date === date && e.timeZone === "Asia/Hong_Kong" &&
+          anchored(e.evidence, documentId, pages)).length === 1) ||
+        row.terms?.length !== termDefs.length ||
+        !termDefs.every(([key,value,unit,currency,documentId,pages]) => row.terms.filter(t =>
+          t.key === key && t.value === value && t.unit === unit && t.currency === currency &&
+          t.approximate === false && anchored(t.evidence,documentId,pages)).length === 1) ||
+        !["HKEX:14","HKEX:14A"].every(code => row.rules?.some(r =>
+          r.code === code && anchored(r.evidence,circular,[14])))) return null;
+
+    const issuer = "建发物业管理集团";
+    const buyer = "厦门利融投资管理";
+    const seller = "厦门联发（集团）房地产";
+    const target = "厦门联发（集团）物业服务";
+    const leftTitle = "股权转让与两期合同付款";
+    const rightTitle = "交割后股权架构";
+    const outcomeBadge = "2026.11.05 · 100% 股权过户完成";
+    const mk = (id,panel,x,y,w,h,role,title,subtitle,code,tier) =>
+      ({id,panel,x,y,w,h,role,roleLabel:role === "target" ? "标的公司" : undefined,title,subtitle,code,tier});
+    const boxes = [
+      mk("lf-l-issuer","left",32,58,190,71,"listed",issuer,"港股上市母公司","02156.HK",0),
+      mk("lf-l-buyer","left",32,166,190,151,"buyer",buyer,"法定受让方及付款方",undefined,1),
+      mk("lf-l-seller","left",426,166,190,151,"seller",seller,"法定出让方及收款方",undefined,1),
+      mk("lf-l-target","left",426,381,190,65,"target",target,"股权标的",undefined,2),
+      mk("lf-r-issuer","right",709,59,330,73,"listed",issuer,"港股上市母公司","02156.HK",0),
+      mk("lf-r-buyer","right",709,192,330,72,"buyer",buyer,"标的登记股东",undefined,1),
+      mk("lf-r-target","right",709,327,330,74,"target",target,"建发物业间接全资附属",undefined,2),
+    ];
+    const ownership = [
+      ["lf-l-parent","left","lf-l-issuer","lf-l-buyer","100% 全资",[127,147.5]],
+      ["lf-l-original","left","lf-l-seller","lf-l-target","交割前 100%",[521,349]],
+      ["lf-r-parent","right","lf-r-issuer","lf-r-buyer","100% 全资",[874,162]],
+      ["lf-r-registered","right","lf-r-buyer","lf-r-target","100% 已登记",[874,295.5]],
+    ].map(([id,panel,from,to,pctLabel,labelCenter])=>({id,panel,from,to,pctLabel,labelCenter,pillWidth:110}));
+    const flowDefs = [
+      ["lf-share-transfer","shares","rtl","lf-l-seller","lf-l-buyer",193,"100% 股权已过户","2026 年 11 月 5 日",false],
+      ["lf-instalment-1","cash","ltr","lf-l-buyer","lf-l-seller",241,"首期应付 RMB 2.5441 亿","实付未披露",true],
+      ["lf-instalment-2","cash","ltr","lf-l-buyer","lf-l-seller",289,"尾款应付 RMB 5,000 万","实付未披露",true],
+    ];
+    const arrows = flowDefs.map(([id,kind,direction,,,y,label,sublabel],index)=>({
+      id, kind, panel:"left", step:index ? String(index) : undefined,
+      pathPoints:direction==="rtl" ? [[426,y],[222,y]] : [[222,y],[426,y]],
+      label,sublabel,labelCenter:[324,y],labelWidth:180,labelHeight:42,
+    }));
+    const topology = finalizeLayout(createDiagramCanvas({
+      width:MASTER_W,height:470,status:"closed",leftTitle,rightTitle,transitionLabel:"完成过户",outcomeBadge,
+    }), boxes, ownership, arrows);
+    const asNode = ({id,role,title,subtitle,code,tier}) => ({id,role,name:title,sublabel:subtitle,code,tier});
+    const asLink = ({from,to,pctLabel}) => ({from,to,label:pctLabel,pct:100,style:"solid"});
+    const nameFor = id => boxes.find(box=>box.id===id).title;
+    return {
+      id:row.id, caseId:row.id, code:row.code, name:row.name, mechanism:"关连现金股权转让 · 对价分两期",
+      stageLabel:"100% 股权过户完成", stageDate:closingDate, archetype:"acquisition", modality:"cash", status:"closed",
+      before:{title:leftTitle,nodes:boxes.filter(b=>b.panel==="left").map(asNode),
+        equityLinks:ownership.filter(e=>e.panel==="left").map(asLink)},
+      after:{title:rightTitle,nodes:boxes.filter(b=>b.panel==="right").map(asNode),
+        equityLinks:ownership.filter(e=>e.panel==="right").map(asLink),outcomeBadge},
+      flows:flowDefs.map(([id,kind,direction,from,to,,headline,subline,paymentUnverified])=>({
+        id,kind,direction,fromLabel:nameFor(from),toLabel:nameFor(to),headline,subline,
+        proposedOrTerminated:paymentUnverified,
+      })),
+      annotations:[
+        {tag:"①",title:"股权登记完成",body:"11 月 5 日，厦门利融投资管理有限公司登记为厦门联发（集团）物业服务有限公司唯一股东；建发物业透过其全资子公司厦门利融间接持有标的 100% 股权。"},
+        {tag:"②",title:"合同对价及付款安排",body:"向厦门联发（集团）房地产有限公司支付的合同总对价为人民币 304,410,000 元（含税）。首期 254,410,000 元于条件达成或获豁免并完成过户后 10 个营业日内应付；尾款 50,000,000 元于 2027 年 6 月 30 日起 10 个营业日内应付，按约可抵扣。交割公告未披露两期实付。"},
+        {tag:"③",title:"须予披露及关连交易",body:"9 月 11 日签订股权转让协议，10 月 30 日独立股东批准。",ruleCode:"HKEX:14 · HKEX:14A"},
+      ],
+      evidenceLinks:[
+        {documentId:signed,pages:[1],label:"9 月 11 日协议公告"},
+        {documentId:circular,pages:[7],label:"买卖双方、股权及两期对价"},
+        {documentId:circular,pages:[33],label:"尾款付款节点及抵扣条款"},
+        {documentId:circular,pages:[14],label:"上市规则与关连关系"},
+        {documentId:vote,pages:[2],label:"10 月 30 日独立股东表决"},
+        {documentId:close,pages:[1],label:"11 月 5 日唯一股东登记及交割"},
+      ],
+      topology, compactSummary:"11 月 5 日完成 100% 股权过户 · 合同对价 RMB 3.0441 亿，两期实付未披露",
+    };
+  }
+
+  const ERJIN_ACQUISITION_CASE = "HK-01918-20260824-erjin-management";
+
+  // The implementation milestone here concerns issuer shares, not target title.
+  function buildErjinImplementation(row, documents) {
+    const first = "YS-20260824-46e3196d57ae";
+    const supplement = "YS-20261020-7920c1843d33";
+    const circular = "YS-20261026-43104d602078";
+    const vote = "YS-20261111-3edfe2b9b6b4";
+    const issue = "YS-20261119-8a124e13cad5";
+    const issueDate = "2026-11-19";
+    const hke = "https://www1.hkexnews.hk/listedco/listconews/sehk/";
+    const sources = [
+      [first,"2026/0824/2026082401335.pdf","2026-08-24"],
+      [supplement,"2026/1020/2026102000769.pdf","2026-10-20"],
+      [circular,"2026/1026/2026102600558.pdf","2026-10-26"],
+      [vote,"2026/1111/2026111101055.pdf","2026-11-11"],
+      [issue,"2026/1119/2026111900641.pdf",issueDate],
+    ];
+    const parties = {
+      "上市发行人":"Sunac China Holdings Limited",
+      "卖方":"Sunus Holdings Limited",
+      "收购方":"Sunac Property Management Limited",
+      "法律标的":"Sun Success Investment Limited",
+      "间接业务标的":"Erjin Construction Management Group Co., Ltd.",
+    };
+    const supportedActual = [
+      ["first_announcement","2026-08-24",first,[1,2,18,19]],
+      ["supplement","2026-10-20",supplement,[1,2]],
+      ["supplement","2026-10-26",circular,[]],
+      ["vote","2026-11-11",vote,[1,2,3]],
+      ["implementation",issueDate,issue,[1]],
+    ];
+    const supportedTerms = [
+      ["contract_consideration",123150000,"money","CNY",first,[1,3]],
+      ["contract_hkd_equivalent",142361400,"money","HKD",first,[1,3]],
+      ["issued_shares",260258500,"shares",null,issue,[1]],
+      ["issue_price",0.547,"per_share","HKD",issue,[1]],
+      ["target_equity_stake",100,"percent",null,first,[1,2]],
+    ];
+    const supports = (e,id,pages) => e?.documentId===id && pages.every(p=>e.pages?.includes(p));
+    const actual = [...(row.events || []),...(row.processEvents || [])].filter(e=>e.state==="actual");
+    if (row.code!=="01918" || row.category!=="acquisition" ||
+        !["active","closed","implemented"].includes(row.stage?.status) ||
+        row.stage?.eventKind!=="implementation" || row.stage?.date!==issueDate ||
+        row.headlineKey!=="contract_consideration" || row.lifecycle?.endKind==="completion" ||
+        !Object.entries(parties).every(([key,value])=>row.parties?.[key]===value) ||
+        !sources.every(([id,p,date])=>documents?.[id]?.id===id && documents[id].caseId===row.id &&
+          documents[id].date===date && documents[id].url===hke+p) ||
+        actual.length!==supportedActual.length ||
+        !supportedActual.every(([kind,date,id,pages])=>actual.filter(e=>e.kind===kind&&
+          e.date===date&&e.timeZone==="Asia/Hong_Kong"&&supports(e.evidence,id,pages)).length===1) ||
+        row.terms?.length!==supportedTerms.length ||
+        !supportedTerms.every(([key,value,unit,currency,id,pages])=>row.terms.filter(t=>
+          t.key===key&&t.value===value&&t.unit===unit&&t.currency===currency&&
+          t.approximate===false&&supports(t.evidence,id,pages)).length===1) ||
+        ![["HKEX:14.06(1)",[2]],["HKEX:14A",[1,2]]].every(([code,pages])=>
+          row.rules?.some(r=>r.code===code&&supports(r.evidence,supplement,pages)))) return null;
+
+    const company = "融创中国";
+    const seller = "融者共创控股";
+    const buyer = "融创房地产管理";
+    const target = "融顺投资";
+    const operating = "而今建设管理集团";
+    const leftTitle = "签约结构与实际发股";
+    const rightTitle = "协议拟达成的持股链";
+    const outcomeBadge = "标的过户日期未单独披露";
+    const node = (id,panel,x,y,w,h,role,title,subtitle,tier,code,roleLabel)=>
+      ({id,panel,x,y,w,h,role,title,subtitle,tier,code,roleLabel});
+    const boxes = [
+      node("ej-l-company","left",33,74,189,79,"listed",company,"代价股发行主体",0,"01918.HK"),
+      node("ej-l-buyer","left",33,229,189,73,"buyer",buyer,"协议买方",1),
+      node("ej-l-seller","left",426,74,189,79,"seller",seller,"股份收取方",0),
+      node("ej-l-target","left",426,229,189,73,"target",target,"协议收购全部股权",1,undefined,"法律标的"),
+      node("ej-l-operating","left",426,381,189,75,"target",operating,"间接业务标的",2,undefined,"业务标的"),
+      node("ej-r-company","right",714,52,320,65,"listed",company,"代价股发行主体",0,"01918.HK"),
+      node("ej-r-buyer","right",714,151,320,65,"buyer",buyer,"协议买方",1),
+      node("ej-r-target","right",714,258,320,65,"target",target,"标的过户日未单列",2,undefined,"法律标的"),
+      node("ej-r-operating","right",714,363,320,62,"target",operating,"境内运营公司",3,undefined,"业务标的"),
+    ];
+    const interests = [
+      ["ej-l-buy-controlled","left","ej-l-company","ej-l-buyer","间接全资",100,true,[127.5,191]],
+      ["ej-l-seller-before","left","ej-l-seller","ej-l-target","签约时持有 100%",100,false,[520.5,191]],
+      ["ej-l-target-operating","left","ej-l-target","ej-l-operating","间接持有 100%",100,true,[520.5,341.5]],
+      ["ej-r-buy-controlled","right","ej-r-company","ej-r-buyer","间接全资",100,true,[874,134]],
+      ["ej-r-acquisition","right","ej-r-buyer","ej-r-target","协议拟取得 100%",100,true,[874,237]],
+      ["ej-r-target-operating","right","ej-r-target","ej-r-operating","间接持有 100%",100,true,[874,343]],
+    ].map(([id,panel,from,to,pctLabel,pct,dashed,labelCenter])=>({id,panel,from,to,pctLabel,pct,dashed,labelCenter,pillWidth:136}));
+    const topology = finalizeLayout(createDiagramCanvas({
+      width:MASTER_W,height:490,status:"active",leftTitle,rightTitle,transitionLabel:"发股已证",outcomeBadge,
+    }),boxes,interests,[
+      {id:"ej-share-issue",panel:"left",kind:"shares",pathPoints:[[222,113.5],[426,113.5]],
+       label:"已发 260,258,500 股",sublabel:"11 月 19 日 · HKD 0.547/股",
+       labelWidth:183,labelHeight:44,labelCenter:[324,113.5]},
+    ]);
+    const asNode=({id,role,title,subtitle,tier,code})=>({id,role,name:title,sublabel:subtitle,tier,code});
+    const asLink=({from,to,pctLabel,pct,dashed})=>({from,to,label:pctLabel,pct,style:dashed?"dashed":"solid"});
+    const panel=(side,title)=>({title,nodes:boxes.filter(b=>b.panel===side).map(asNode),
+      equityLinks:interests.filter(e=>e.panel===side).map(asLink)});
+    return {
+      id:row.id,caseId:row.id,code:row.code,name:"融创中国收购融顺投资及而今管理",
+      mechanism:"关连股份收购 · 特别授权发行代价股份",
+      stageLabel:"代价股份已发行 · 标的过户日未单列",stageDate:issueDate,
+      archetype:"acquisition",modality:"shares",status:"active",
+      before:panel("left",leftTitle),
+      after:{...panel("right",rightTitle),outcomeBadge},
+      flows:[{id:"ej-share-issue",kind:"shares",direction:"ltr",fromLabel:company,toLabel:seller,
+        headline:"已配发 260,258,500 股代价股份",subline:"11 月 19 日 · 发行价 HKD 0.547/股",proposedOrTerminated:false}],
+      annotations:[
+        {tag:"①",title:"两类股份，两个事实",body:"11 月 19 日，融创中国向融者共创控股配发 260,258,500 股代价股份，每股 0.547 港元。协议拟由融创房地产管理收购融顺投资的一股（全部已发行股本），从而间接取得而今建设管理集团 100%。通函约定交割时发股；翌日披露表未单独列明融顺投资的股权过户登记日期。"},
+        {tag:"②",title:"协议总对价",body:"人民币 123,150,000 元以发行代价股份支付；港元 142,361,400 元是协议按 1.156 换算的等值，不是额外一笔对价。"},
+        {tag:"③",title:"股份交易及关连交易",body:"10 月 20 日补充协议加入独立股东批准条件，改用特别授权发行；11 月 11 日独立股东通过议案。",ruleCode:"HKEX:14.06(1) · HKEX:14A"},
+      ],
+      evidenceLinks:[
+        {documentId:issue,pages:[1],label:"11 月 19 日实际发股及发行价"},
+        {documentId:circular,pages:[5],label:"协议买方、法律标的及一股口径"},
+        {documentId:circular,pages:[6],label:"法律卖方定义"},
+        {documentId:circular,pages:[8],label:"间接业务标的及协议对价"},
+        {documentId:circular,pages:[18],label:"交割触发条件与持股后果"},
+        {documentId:supplement,pages:[2],label:"关连交易与特别授权"},
+        {documentId:vote,pages:[2],label:"11 月 11 日表决及特别授权"},
+      ],
+      topology,compactSummary:"已发 260,258,500 股 · 标的股权过户日未单列",
+    };
+  }
+
+  function buildGetNiceScheme(txCase, documents) {
+    const d = "YS-20260928-7ffcd48f9d9d";
+    const id = "HK-00064-20260717-privatisation";
+    const doc = documents?.[d], stage = txCase.stage, terms = txCase.terms || [];
+    const event = txCase.events?.find(e => e.kind==="effective" && e.state==="actual" && e.date==="2026-11-05");
+    const anchored = (key,value,unit) => terms.some(t=>t.key===key && t.value===value && t.unit===unit &&
+      t.currency==="HKD" && t.evidence?.documentId===d);
+    if (txCase.id!==id || txCase.code!=="00064" || txCase.category!=="scheme"
+      || stage?.status!=="closed" || stage?.eventKind!=="delisting" || stage?.date!=="2026-11-06"
+      || event?.evidence?.documentId!=="YS-20261106-bc31c8416f9e"
+      || documents?.["YS-20261106-bc31c8416f9e"]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110600048_c.pdf"
+      || doc?.caseId!==id || doc.date!=="2026-09-28"
+      || doc.url!=="https://www.xn--2ov566aump.hk/sfc/services/dod/DIDoc?DocRef=bbebe90bd1d64d72a96a7f8a21e8915b"
+      || txCase.parties?.["要约方"]!=="Honeylink Agents Limited"
+      || txCase.headlineKey!=="combined_cash_for_scheme_holders"
+      || !terms.some(t=>t.key==="scheme_shares"&&t.value===298778970&&t.unit==="shares")
+      || !terms.some(t=>t.key==="issuer_special_dividend"&&t.value===2&&t.unit==="per_share"&&t.currency==="HKD")
+      || !anchored("bidder_cancel_price",2,"per_share") || !anchored("combined_scheme_price",4,"per_share")
+      || !anchored("bidder_cash_for_scheme_holders",597557940,"money")
+      || !anchored("issuer_dividend_for_scheme_holders",597557940,"money")
+      || !anchored("combined_cash_for_scheme_holders",1195115880,"money")) return null;
+    const offeror="Honeylink Agents Limited", issuer="结好控股", publicName="计划股东";
+    const outcome="2026.11.06 · 已撤销上市";
+    const common = {panel:"left",labelHeight:44,labelWidth:172};
+    const topology = finalizeLayout(createDiagramCanvas({
+      width:MASTER_W,height:515,status:"closed",leftTitle:"两笔现金与计划股份注销",
+      rightTitle:"私有化后股权架构",transitionLabel:"计划生效",outcomeBadge:outcome}),
+      [
+        {id:"L_bidder",panel:"left",x:38,y:134,w:191,h:83,role:"buyer",title:offeror,subtitle:"要约人 · 承担现金注销款"},
+        {id:"L_public",panel:"left",x:428,y:134,w:192,h:83,role:"public",title:publicName,subtitle:"合计每股获 4.00 港元"},
+        {id:"L_issuer",panel:"left",x:38,y:340,w:191,h:83,role:"listed",title:issuer,subtitle:"发行人 · 承担特别股息",code:"00064.HK"},
+        {id:"R_bidder",panel:"right",x:734,y:100,w:280,h:84,role:"buyer",title:offeror,subtitle:"唯一股东"},
+        {id:"R_issuer",panel:"right",x:734,y:280,w:280,h:84,role:"target",title:issuer,subtitle:"非上市全资附属公司",badge:"已撤销上市"},
+      ],
+      [{id:"E_right",panel:"right",from:"R_bidder",to:"R_issuer",pctLabel:"100% 全资控股",labelCenter:[874,233],pillWidth:116}],
+      [
+        {...common,id:"A_cancel_cash",step:"①",kind:"cash",pathPoints:[[229,171],[428,171]],label:"现金注销价 2.00 港元/股",sublabel:"要约人支付",labelCenter:[329,171]},
+        {...common,id:"A_dividend_cash",step:"②",kind:"cash",pathPoints:[[229,369],[390,369],[390,201],[428,201]],label:"特别股息 2.00 港元/股",sublabel:"结好控股支付",labelCenter:[324,369]},
+        {...common,id:"A_cancel_shares",step:"③",kind:"cancel",pathPoints:[[529,217],[529,461],[132,461],[132,423]],label:"注销 2.99 亿股计划股份",sublabel:"开曼时间 11 月 5 日生效",labelCenter:[326,461]},
+      ]);
+    return {
+      id,caseId:id,code:"00064",name:issuer,mechanism:txCase.mechanism,status:"closed",
+      stageLabel:stage.label,stageDate:stage.date,archetype:"scheme",modality:"cash",caseModalityShortLabel:"注销款＋特别股息",
+      before:{title:"计划生效前",nodes:[{id:"offeror",role:"buyer",name:offeror},{id:"shareholders",role:"public",name:publicName},{id:"issuer",role:"listed",name:issuer}],equityLinks:[]},
+      after:{title:"私有化后",outcomeBadge:outcome,nodes:[{id:"offeror_after",role:"buyer",name:offeror},{id:"issuer_after",role:"target",name:issuer}],equityLinks:[{from:"offeror_after",to:"issuer_after",label:"100% 全资控股",pct:100,style:"solid"}]},
+      flows:[
+        {id:"cash1",kind:"cash",direction:"ltr",step:"1",fromLabel:offeror,toLabel:publicName,headline:"现金注销价 2.00 港元/股"},
+        {id:"cash2",kind:"cash",direction:"ltr",step:"2",fromLabel:issuer,toLabel:publicName,headline:"特别股息 2.00 港元/股"},
+        {id:"cancel",kind:"cancel",direction:"rtl",step:"3",fromLabel:publicName,toLabel:issuer,headline:"注销 2.99 亿股计划股份"}
+      ],
+      annotations:[
+        {tag:"①",title:"计划股东收取现金",body:"按计划文件的 298,778,970 股计，注销款及特别股息各约 5.98 亿港元，合计约 11.95 亿港元。"},
+        {tag:"②",title:"特别股息范围",body:"要约人已放弃其原持有股份对应的特别股息。"},
+      ],
+      evidenceLinks:[{documentId:d,label:"计划文件 · 董事会函件，印刷页 12–14"},{documentId:"YS-20261106-bc31c8416f9e",pages:[2,3],label:"计划生效及撤销上市安排"}],
+      topology,compactSummary:"要约人付 2.00 港元/股 · 发行人派 2.00 港元/股 · 合计 4.00 港元/股",
+    };
+  }
+
+  function buildYueyunBuyback(txCase, documents) {
+    const gz = txCase.id === "HK-03399-20261119-guangzhou-motor-transport-buyback";
+    const hk = txCase.id === "HK-03399-20261119-hong-kong-motor-transport-buyback";
+    if (!gz && !hk) return null;
+    const id=txCase.id, did="YS-20261119-7837e945675a", doc=documents?.[did], stage=txCase.stage;
+    const prefix=gz?"gz":"hk", currency=gz?"CNY":"HKD", total=gz?9802700:119621500, half=total/2, page=gz?3:5;
+    const terms=txCase.terms||[];
+    const anchor=(key,value,p)=>terms.some(t=>t.key===prefix+"_"+key&&t.value===value&&t.unit==="money"&&
+      t.currency===currency&&t.evidence?.documentId===did&&t.evidence.pages?.includes(p)&&
+      (gz || t.evidence.contractPage===5));
+    const area=gz?"廣州":"香港", expectedName="粵運交通："+area+"附屬公司回購";
+    if(txCase.code!=="03399"||txCase.category!=="acquisition"||txCase.name!==expectedName||
+      txCase.headlineKey!==prefix+"_price"||stage?.status!=="active"||stage.date!=="2026-11-19"||
+      doc?.date!=="2026-11-19"||doc.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1119/2026111901253.pdf"||
+      txCase.parties?.["賣方"]!=="深圳市交通運輸有限公司"||
+      !anchor("price",total,page)||!anchor("first_due",half,gz?4:5)||!anchor("next_due",half,gz?4:5))return null;
+    const target=area+"附屬公司", seller="深圳市交通運輸", owner="粵運交通", other="真美旅遊貿易";
+    const term=terms.find(t=>t.key===prefix+"_price");
+    const value=formatTermBrief(term), cancel=gz?"回購並減資註銷 19% 股權":"回購並註銷 3,420 股（19%）";
+    const outcome="回購及註銷完成後 · 粵運交通約 76.54%";
+    const conditions=gz?"合同已生效 · 工商登記待確認":"同意及批准已取得 · 辭任及交割待完成確認";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:448,status:"active",
+      leftTitle:area+"附屬公司現金回購",rightTitle:"註銷後擬議股權",transitionLabel:"交割及註銷後",outcomeBadge:outcome}),
+      [
+        {id:"L_target",panel:"left",x:34,y:176,w:209,h:84,role:"listed",title:target,subtitle:"回購方 · 粵運交通原持股 62%"},
+        {id:"L_seller",panel:"left",x:407,y:176,w:209,h:84,role:"seller",title:seller,subtitle:"出售方 · 原持股 19%"},
+        {id:"R_owner",panel:"right",x:700,y:101,w:162,h:76,role:"buyer",title:owner,subtitle:"原持股 62%",code:"03399.HK"},
+        {id:"R_other",panel:"right",x:887,y:101,w:162,h:76,role:"public",title:other,subtitle:"原持股 19%"},
+        {id:"R_target",panel:"right",x:734,y:284,w:280,h:84,role:"target",title:target,subtitle:"仍為非全資附屬公司"},
+      ],[
+        {id:"E1",panel:"right",from:"R_owner",to:"R_target",anchorToRatio:.17,pctLabel:"約 76.54%",pillWidth:98,labelCenter:[786,232]},
+        {id:"E2",panel:"right",from:"R_other",to:"R_target",anchorToRatio:.83,pctLabel:"約 23.46%",pillWidth:98,labelCenter:[967,232]},
+      ],[
+        {id:"A_cash",panel:"left",step:"①",kind:"cash",pathPoints:[[138,176],[138,105],[512,105],[512,176]],
+          label:"現金回購 "+value,sublabel:"兩期各 50% · 合約付款",labelCenter:[325,105],labelWidth:340,labelHeight:46},
+        {id:"A_cancel",panel:"left",step:"②",kind:"cancel",pathPoints:[[512,260],[512,339],[138,339],[138,260]],
+          label:cancel,sublabel:"兩份回購各自完成",labelCenter:[325,339],labelWidth:325,labelHeight:46},
+      ]);
+    return {
+      id,caseId:id,code:"03399",name:expectedName,mechanism:txCase.mechanism,status:"active",
+      stageLabel:stage.label,stageDate:stage.date,archetype:"acquisition",modality:"cash",
+      caseArchetypeLabel:"附屬公司回購註銷",caseModalityShortLabel:"現金分期",
+      before:{title:"回購安排",nodes:[{id:"buyer",role:"buyer",name:target},{id:"seller",role:"seller",name:seller}],equityLinks:[]},
+      after:{title:"註銷後擬議股權",outcomeBadge:outcome,nodes:[{id:"o",role:"buyer",name:owner},{id:"m",role:"public",name:other},{id:"t",role:"target",name:target}],equityLinks:[
+        {from:"o",to:"t",label:"約 76.54%",pct:76.54,style:"dashed"},{from:"m",to:"t",label:"約 23.46%",pct:23.46,style:"dashed"}]},
+      flows:[
+        {id:"cash",kind:"cash",direction:"ltr",step:"1",fromLabel:target,toLabel:seller,headline:"現金回購 "+value,subline:"兩期各 50% · 合約付款",proposedOrTerminated:true},
+        {id:"cancel",kind:"cancel",direction:"rtl",step:"2",fromLabel:seller,toLabel:target,headline:cancel,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"最新階段",body:conditions},{tag:"②",title:"合約付款",body:gz?
+        "首期於生效後 15 個工作日內應付；後期於相關人員辭任及登記後 15 個工作日內應付。":
+        "首期於所須同意及批准取得後 15 個營業日內應付；餘款於交割時應付。"}],
+      evidenceLinks:[{documentId:did,pages:gz?[3,4]:[5,6],label:area+"回購條款"}],
+      topology,compactSummary:target+"回購並註銷 19% · "+value+" · 粵運交通擬升至約 76.54%",
+    };
+  }
+
+  function buildMostKwaiChungTwoAcquisitions(txCase, documents) {
+    const id="HK-01716-20260831-wannianfeng-zhousha";
+    const signed="YS-20260831-932ed7a0b39e", notice="YS-20261026-9d8f997730ac";
+    const defs=[
+      ["contract_cash_total",146300,[2,3]],["wannianfeng_cash",143300,[2,6]],["zhousha_cash",3000,[3,7]],
+    ];
+    if(txCase.id!==id||txCase.code!=="01716"||txCase.category!=="acquisition"||txCase.stage?.status!=="closed"||
+       txCase.stage.eventKind!=="completion_confirmed"||txCase.stage.date!=="2026-10-26"||txCase.lifecycle||
+       documents?.[signed]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083102393.pdf"||
+       documents?.[notice]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1026/2026102601085.pdf"||
+       txCase.parties?.["买方"]!=="Most Kwai Chung Limited"||
+       txCase.parties?.["卖方"]!=="Xiamen Kuangshi Lianmeng Network Technology Co., Ltd."||
+       !txCase.events?.some(e=>e.kind==="completion_confirmed"&&e.date==="2026-10-26"&&e.state==="actual"&&
+          e.evidence?.documentId===notice&&e.evidence.pages?.includes(1))||
+       txCase.headlineKey!=="contract_cash_total"||
+       !defs.every(([k,v,p])=>txCase.terms?.some(t=>t.key===k&&t.value===v&&t.unit==="money"&&t.currency==="CNY"&&
+          t.evidence?.documentId===signed&&p.every(n=>t.evidence.pages?.includes(n)))))return null;
+    const name="毛记葵涌", buyer="毛记葵涌集团", vendor="厦门旷世联盟", target1="厦门万年丰", target2="厦门洲沙";
+    const stageLabel=txCase.stage.label, outcome="10 月 26 日公告确认 · 两项均已完成";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:448,status:"closed",
+      leftTitle:"两项现金收购",rightTitle:"完成后股权",transitionLabel:"已完成",outcomeBadge:outcome}),[
+        {id:"lb",panel:"left",x:38,y:174,w:202,h:82,role:"buyer",title:buyer,subtitle:"现金买方",code:"01716.HK"},
+        {id:"ls",panel:"left",x:411,y:174,w:202,h:82,role:"seller",title:vendor,subtitle:"两项股权的卖方"},
+        {id:"rb",panel:"right",x:734,y:102,w:280,h:76,role:"buyer",title:buyer,subtitle:"间接持有两家标的"},
+        {id:"r1",panel:"right",x:697,y:294,w:163,h:74,role:"target",title:target1,subtitle:"标的 1"},
+        {id:"r2",panel:"right",x:888,y:294,w:163,h:74,role:"target",title:target2,subtitle:"标的 2"},
+      ],[
+        {id:"o1",panel:"right",from:"rb",to:"r1",anchorFromRatio:.17,pctLabel:"100%",pillWidth:74,labelCenter:[780,237]},
+        {id:"o2",panel:"right",from:"rb",to:"r2",anchorFromRatio:.83,pctLabel:"100%",pillWidth:74,labelCenter:[968,237]},
+      ],[
+        {id:"p",panel:"left",step:"①",kind:"cash",pathPoints:[[139,174],[139,98],[512,98],[512,174]],label:"合同价合计人民币 14.63 万元",
+         sublabel:"万年丰 14.33 万元 · 洲沙 3,000 元",labelCenter:[326,98],labelWidth:353,labelHeight:46},
+        {id:"e",panel:"left",step:"②",kind:"asset",pathPoints:[[512,256],[512,336],[139,336],[139,256]],label:"转让两家标的各 100% 股权",
+         sublabel:"登记完成由 10 月 26 日公告确认",labelCenter:[326,336],labelWidth:349,labelHeight:46},
+      ]);
+    return {id,caseId:id,code:"01716",name,mechanism:txCase.mechanism,stageLabel,stageDate:txCase.stage.date,status:"closed",
+      archetype:"acquisition",modality:"cash",caseArchetypeLabel:"两项现金股权收购",
+      before:{title:"收购方与卖方",nodes:[{id:"buyer",role:"buyer",name:buyer},{id:"seller",role:"seller",name:vendor}],equityLinks:[]},
+      after:{title:"完成后股权",outcomeBadge:outcome,nodes:[{id:"owner",role:"buyer",name:buyer},{id:"w",role:"target",name:target1},{id:"z",role:"target",name:target2}],
+       equityLinks:[{from:"owner",to:"w",label:"100%（间接）",pct:100,style:"solid"},{from:"owner",to:"z",label:"100%（间接）",pct:100,style:"solid"}]},
+      flows:[{id:"price",kind:"cash",direction:"ltr",step:"1",fromLabel:buyer,toLabel:vendor,headline:"两份合同约定价合计人民币 14.63 万元"},
+       {id:"transfer",kind:"asset",direction:"rtl",step:"2",fromLabel:vendor,toLabel:buyer,headline:"转让两个标的各 100% 股权"}],
+      annotations:[{tag:"①",title:"合同现金价",body:"万年丰人民币 14.33 万元；洲沙人民币 3,000 元。"},
+       {tag:"②",title:"确认日期",body:"10 月 26 日公告确认两项均已完成登记。"}],
+      evidenceLinks:[{documentId:signed,pages:[2,3],label:"两份协议和合同价"},{documentId:notice,pages:[1],label:"完成确认公告"}],
+      topology,compactSummary:"现金合同价人民币 14.63 万元 · 两项收购均已完成",
+    };
+  }
+
+  function buildWesternSolarJv(txCase,documents) {
+    const id="HK-00276-20261118-western-solar-energy-jv", sid="YS-20261118-a7989fd414ec";
+    const doc=documents?.[sid], check=[
+      ["issuer_commitment_cap",2205000,"money",3],["partner_commitment_cap",2295000,"money",3],
+      ["initial_capital_total",4500000,"money",3],["issuer_subscription_floor",100000,"money",4],
+      ["issuer_post_stake",49,"percent",4],["partner_post_stake",51,"percent",4],
+      ["partner_prior_cost_reimbursable",210000,"money",4],
+    ];
+    if(txCase.id!==id||txCase.code!=="00276"||txCase.stage?.status!=="active"||txCase.stage?.date!=="2026-11-18"||
+      txCase.headlineKey!=="issuer_commitment_cap"||doc?.caseId!==id||
+      doc.url!=="https://www.hkexnews.hk/listedco/listconews/sehk/2026/1118/2026111801048_c.pdf"||
+      txCase.parties?.["合营伙伴"]!=="New Progress Group LLC"||txCase.parties?.["合营公司"]!=="Western Solar Energy LLC"||
+      !check.every(([key,v,u,p])=>txCase.terms?.some(t=>t.key===key&&t.unit===u&&t.value===v&&
+       t.currency===(u==="money"?"USD":null)&&t.evidence?.documentId===sid&&t.evidence.pages?.includes(p))))return null;
+    const a="BVI Newco", b="New Progress Group", c="Western Solar Energy";
+    const out="合营完成后 · BVI Newco 49%／伙伴 51%";
+    const status="active", labels=["最高 220.5 万美元","最高 229.5 万美元"];
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:467,status,leftTitle:"合营资金承诺",
+      rightTitle:"合营完成后拟议股权",transitionLabel:"条件达成后",outcomeBadge:out}),[
+        {id:"la",panel:"left",x:38,y:116,w:239,h:80,role:"buyer",title:a,subtitle:"蒙古能源拟设全资载体"},
+        {id:"lb",panel:"left",x:370,y:116,w:243,h:80,role:"public",title:b,subtitle:"合营伙伴"},
+        {id:"lc",panel:"left",x:118,y:330,w:424,h:78,role:"target",title:c,subtitle:"初始资本需求合计 450 万美元"},
+        {id:"ra",panel:"right",x:700,y:112,w:161,h:80,role:"buyer",title:a,subtitle:"拟持有 49%"},
+        {id:"rb",panel:"right",x:888,y:112,w:163,h:80,role:"public",title:b,subtitle:"拟持有 51%"},
+        {id:"rc",panel:"right",x:734,y:306,w:280,h:80,role:"target",title:c,subtitle:"拟议合营公司"},
+      ],[
+        {id:"ea",panel:"right",from:"ra",to:"rc",anchorToRatio:.20,pctLabel:"49%",labelCenter:[786,246],pillWidth:74,dashed:true},
+        {id:"eb",panel:"right",from:"rb",to:"rc",anchorToRatio:.80,pctLabel:"51%",labelCenter:[962,246],pillWidth:74,dashed:true},
+      ],[
+        {id:"fa",panel:"left",kind:"cash",step:"①",pathPoints:[[155,196],[155,272],[224,272],[224,330]],label:labels[0],
+          sublabel:"股份认购及股东贷款",labelCenter:[162,272],labelWidth:205,labelHeight:46},
+        {id:"fb",panel:"left",kind:"cash",step:"②",pathPoints:[[491,196],[491,272],[434,272],[434,330]],label:labels[1],
+          sublabel:"股份认购及股东贷款",labelCenter:[490,272],labelWidth:205,labelHeight:46},
+      ]);
+    return {id,caseId:id,code:"00276",name:"蒙古能源",mechanism:txCase.mechanism,stageLabel:txCase.stage.label,stageDate:txCase.stage.date,status,
+      archetype:"acquisition",modality:"cash",caseArchetypeLabel:"合营投资",caseModalityShortLabel:"认购＋股东贷款",
+      before:{title:"合营资金",nodes:[{id:"a",role:"buyer",name:a},{id:"b",role:"public",name:b},{id:"c",role:"target",name:c}],equityLinks:[]},
+      after:{title:"合营完成后拟议股权",outcomeBadge:out,nodes:[{id:"aa",role:"buyer",name:a},{id:"bb",role:"public",name:b},{id:"cc",role:"target",name:c}],
+       equityLinks:[{from:"aa",to:"cc",label:"49%",pct:49,style:"dashed"},{from:"bb",to:"cc",label:"51%",pct:51,style:"dashed"}]},
+      flows:[{id:"a",kind:"cash",direction:"ltr",step:"1",fromLabel:a,toLabel:c,headline:labels[0],subline:"认购及股东贷款",proposedOrTerminated:true},
+       {id:"b",kind:"cash",direction:"rtl",step:"2",fromLabel:b,toLabel:c,headline:labels[1],subline:"认购及股东贷款",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"股权及资金安排",body:"完成涉及现有股份转让及合营公司发行新股。BVI Newco 认购款至少 10 万美元；余额以股东贷款提供。"},
+       {tag:"②",title:"合营伙伴前期垫款",body:"New Progress Group 已垫付 21 万美元，可由合营公司偿付。"}],
+      evidenceLinks:[{documentId:sid,pages:[3,4],label:"双方出资、资金形式及拟议股权"}],
+      topology,compactSummary:"蒙古能源拟持 49% · 认购及股东贷款承诺最多 220.5 万美元",
+    };
+  }
+
+  function buildTaizhouEquipmentBuyback(txCase,documents) {
+    const id="HK-06998-20261117-taizhou-equipment-buyback",did="YS-20261117-b1ff242e6efc";
+    const terms=txCase.terms||[], t=terms.find(x=>x.key==="original_cost_buyback_cap"), d=documents?.[did];
+    if(txCase.id!==id||txCase.code!=="06998"||txCase.category!=="disposal"||txCase.stage?.status!=="active"||
+      txCase.stage.date!=="2026-11-17"||!t||txCase.headlineKey!==t.key||t.unit!=="money"||t.currency!=="CNY"||t.value!==11000000||
+      t.evidence?.documentId!==did||![4,5,8].every(p=>t.evidence.pages?.includes(p))||
+      d?.caseId!==id||d.url!=="https://www.hkexnews.hk/listedco/listconews/sehk/2026/1117/2026111701390_c.pdf"||
+      txCase.parties?.["设备所有人"]!=="亿腾医药（珠海）有限公司"||txCase.parties?.["拟回购方"]!=="泰州亿腾景昂药业股份有限公司")return null;
+    const buyer="泰州亿腾景昂", seller="亿腾医药（珠海）", stage=txCase.stage;
+    const out="足额结清后 · 设备转由泰州方持有";
+    const top=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:452,status:"active",leftTitle:"设备回购与采购款抵扣",
+      rightTitle:"设备所有权",transitionLabel:"足额结清后",outcomeBadge:out}),[
+        {id:"b",panel:"left",x:37,y:167,w:238,h:87,role:"buyer",title:buyer,subtitle:"拟回购方"},
+        {id:"s",panel:"left",x:371,y:167,w:238,h:87,role:"seller",title:seller,subtitle:"结清前保留设备所有权"},
+        {id:"br",panel:"right",x:734,y:167,w:280,h:87,role:"buyer",title:buyer,subtitle:"拟取得设备所有权"},
+      ],[],[
+        {id:"offset",panel:"left",step:"①",kind:"asset",pathPoints:[[156,167],[156,93],[489,93],[489,167]],
+         label:"以采购款抵扣 · 回购上限人民币 1,100 万元",sublabel:"最终口径按设备原采购成本",labelCenter:[323,93],labelWidth:374,labelHeight:46},
+        {id:"title",panel:"left",step:"②",kind:"asset",pathPoints:[[489,254],[489,341],[156,341],[156,254]],
+         label:"足额结清后转移设备所有权",sublabel:"届满或提前终止时，泰州方可选择补差额",labelCenter:[323,341],labelWidth:370,labelHeight:46},
+      ]);
+    return {id,caseId:id,code:"06998",name:"亿腾嘉和：泰州设备回购安排",mechanism:txCase.mechanism,stageLabel:stage.label,stageDate:stage.date,
+      status:"active",archetype:"disposal",modality:"in_kind",caseArchetypeLabel:"设备回购",caseModalityLabel:"采购款抵扣 · 可选补差额",caseModalityShortLabel:"采购款抵扣",
+      before:{title:"回购条款",nodes:[{id:"a",role:"buyer",name:buyer},{id:"b",role:"seller",name:seller}],equityLinks:[]},
+      after:{title:"足额结清后",outcomeBadge:out,nodes:[{id:"br",role:"buyer",name:buyer}],equityLinks:[]},
+      flows:[{id:"f1",kind:"asset",direction:"ltr",step:"1",fromLabel:buyer,toLabel:seller,headline:"采购款抵扣，回购上限人民币 1,100 万元",proposedOrTerminated:true},
+       {id:"f2",kind:"asset",direction:"rtl",step:"2",fromLabel:seller,toLabel:buyer,headline:"足额结清后转移设备所有权",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"差额选择权",body:"协议届满或提前终止时，泰州方可支付尚未抵足的差额；若不选择回购，珠海方可收回设备。"}],
+      evidenceLinks:[{documentId:did,pages:[4,5,8,12,13],label:"回购、抵扣、所有权与一次性关连交易"}],
+      topology:top,compactSummary:"采购款抵扣 · 设备回购上限人民币 1,100 万元 · 结清后转移所有权",
+    };
+  }
+
+  function buildTuoketuoAbsorption(txCase,documents) {
+    const id="HK-00991-20261117-tuoketuo-ii-absorption", orig="YS-20261117-2d5e018f9044", sup="YS-20261123-96db35ddb7a1";
+    const fields=[["listed_issuer_post_stake",54.71,"percent",3],["survivor_equity_appraisal",10017000000,"money",2],
+      ["absorbed_equity_appraisal",3599000000,"money",2],["affiliate_post_stake",5.29,"percent",3]];
+    if(txCase.id!==id||txCase.code!=="00991"||txCase.stage?.status!=="active"||txCase.stage.date!=="2026-11-17"||
+      txCase.headlineKey!=="listed_issuer_post_stake"||
+      documents?.[orig]?.url!=="https://www.hkexnews.hk/listedco/listconews/sehk/2026/1117/2026111701502_c.pdf"||
+      documents?.[sup]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300696.pdf"||
+      !txCase.processEvents?.some(e=>e.kind==="supplement"&&e.state==="actual"&&e.date==="2026-11-23"&&e.evidence?.documentId===sup)||
+      !fields.every(([k,v,u,p])=>txCase.terms?.some(t=>t.key===k&&t.value===v&&t.unit===u&&
+        t.currency===(u==="money"?"CNY":null)&&t.evidence?.documentId===orig&&t.evidence.pages?.includes(p))))return null;
+    const a="托电公司",b="托二公司",m="托二原股东",o="大唐发电",out="工商变更完成后 · 大唐发电拟持 54.71%";
+    const top=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:"active",leftTitle:"吸收合并 · 权益与资产负债",
+      rightTitle:"合并后拟议架构",transitionLabel:"工商变更后",outcomeBadge:out}),[
+        {id:"la",panel:"left",x:38,y:178,w:232,h:89,role:"buyer",title:a,subtitle:"存续公司 · 提供自身股权"},
+        {id:"lm",panel:"left",x:392,y:143,w:219,h:81,role:"public",title:m,subtitle:"按折算安排取得存续方权益"},
+        {id:"lb",panel:"left",x:392,y:327,w:219,h:83,role:"target",title:b,subtitle:"被吸收主体 · 完成后注销"},
+        {id:"ro",panel:"right",x:734,y:115,w:280,h:86,role:"buyer",title:o,subtitle:"拟持 54.71%",code:"00991.HK"},
+        {id:"ra",panel:"right",x:734,y:295,w:280,h:86,role:"target",title:a,subtitle:"托二原业务及资产负债由其承接"},
+      ],[
+        {id:"r",panel:"right",from:"ro",to:"ra",pctLabel:"拟持 54.71%",pillWidth:110,labelCenter:[874,247],dashed:true},
+      ],[
+        {id:"q",panel:"left",kind:"shares",step:"①",pathPoints:[[153,178],[153,91],[501,91],[501,143]],
+          label:"存续方股权作为合并对价",sublabel:"依据两公司权益评估折算",labelCenter:[325,91],labelWidth:321,labelHeight:46},
+        {id:"a",panel:"left",kind:"asset",step:"②",pathPoints:[[392,369],[150,369],[150,267]],
+          label:"托二资产、负债、业务及人员并入",sublabel:"同一控制下 · 按账面价值入账",labelCenter:[259,369],labelWidth:248,labelHeight:46},
+      ]);
+    return {id,caseId:id,code:"00991",name:o,mechanism:txCase.mechanism,status:"active",stageLabel:txCase.stage.label,stageDate:txCase.stage.date,
+      archetype:"ah_share_absorption",modality:"share_swap",caseArchetypeLabel:"同一控制下吸收合并",caseModalityLabel:"权益换入资产与负债",caseModalityShortLabel:"权益换入",
+      before:{title:"合并双方",nodes:[{id:"a",role:"buyer",name:a},{id:"b",role:"target",name:b},{id:"m",role:"public",name:m}],equityLinks:[]},
+      after:{title:"合并后拟议架构",outcomeBadge:out,nodes:[{id:"ro",role:"buyer",name:o},{id:"ra",role:"target",name:a}],equityLinks:[{from:"ro",to:"ra",label:"拟持 54.71%",pct:54.71,style:"dashed"}]},
+      flows:[{id:"q",kind:"shares",direction:"ltr",step:"1",fromLabel:a,toLabel:m,headline:"存续方股权作为合并对价",proposedOrTerminated:true},
+       {id:"a",kind:"asset",direction:"rtl",step:"2",fromLabel:b,toLabel:a,headline:"承接资产、负债、业务及人员",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"拟议股权比例",body:"大唐发电 54.71%，京能电力 25%，华能蒙电 15%，大唐京津冀 5.29%。"},
+       {tag:"②",title:"权益评估",body:"托电人民币 100.17 亿元；托二人民币 35.99 亿元。天源以 2025 年末为基准采用收益法，天职香港核阅相关计算。"}],
+      evidenceLinks:[{documentId:orig,pages:[2,3],label:"合并结构、评估值及股权比例"},{documentId:sup,pages:[2,3,4,5],label:"盈利预测相关报告"}],
+      topology:top,compactSummary:"托电吸收托二 · 大唐发电拟持 54.71% · 双方无需额外支付",
+    };
+  }
+
+  function buildCctBondAmendment(txCase,documents) {
+    const id="HK-00138-20260911-cb-second-amendment", cir="YS-20261021-42caee12176d", proof="YS-20261118-d011c865bc22";
+    const trueTerm=(k,v,u,p)=>txCase.terms?.some(t=>t.key===k&&t.value===v&&t.unit===u&&t.currency==="HKD"&&
+      t.evidence?.documentId===cir&&t.evidence.pages?.includes(p));
+    if(txCase.id!==id||txCase.code!=="00138"||txCase.category!=="debt_restructuring"||txCase.headlineKey!=="existing_principal"||
+       txCase.stage?.status!=="closed"||txCase.stage.eventKind!=="debt_amendment_effective"||txCase.stage.date!=="2026-11-18"||
+       documents?.[cir]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1021/2026102100330.pdf"||
+       documents?.[proof]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1118/2026111800844.pdf"||
+       !txCase.events?.some(e=>e.kind==="debt_amendment_effective"&&e.state==="actual"&&e.date==="2026-11-18"&&e.evidence?.documentId===proof)||
+       !trueTerm("existing_principal",87920000,"money",8)||!trueTerm("treasure_goal_principal",83000000,"money",8)||
+       !trueTerm("cheer_fame_principal",4920000,"money",8)||!trueTerm("amended_conversion_price",.27,"per_share",10)) return null;
+    const issuer="中建富通",holders="现有债券持有人", outcome="2026.11.18 · 第二修订契据完成", status="closed";
+    const top=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:475,status,leftTitle:"既有可转债修订",
+      rightTitle:"修订后的债券条款",transitionLabel:"契据完成",outcomeBadge:outcome}),[
+        {id:"l1",panel:"left",x:37,y:159,w:235,h:84,role:"listed",title:issuer,subtitle:"原发行人",code:"00138.HK"},
+        {id:"l2",panel:"left",x:372,y:159,w:237,h:84,role:"creditor",title:holders,subtitle:"Treasure Goal 及 Cheer Fame"},
+        {id:"r1",panel:"right",x:734,y:111,w:280,h:74,role:"listed",title:"到期：2028 年 12 月 31 日",subtitle:"原到期日为 2025 年 12 月 31 日"},
+        {id:"r2",panel:"right",x:734,y:220,w:280,h:74,role:"creditor",title:"修订转股价：0.27 港元／股",subtitle:"行使转股权时适用"},
+        {id:"r3",panel:"right",x:734,y:329,w:280,h:74,role:"target",title:"年息：4.5% 调整至 0%",subtitle:"自 2026 年 9 月 11 日起按修订条款计息"},
+      ],[],[
+        {id:"a",panel:"left",kind:"asset",step:"①",pathPoints:[[155,159],[155,91],[492,91],[492,159]],
+          label:"第二修订契据",sublabel:"延长到期 · 修订转股价和票息",labelCenter:[323,91],labelWidth:306,labelHeight:46}
+      ]);
+    return {id,caseId:id,code:"00138",name:issuer,mechanism:txCase.mechanism,stageLabel:txCase.stage.label,stageDate:txCase.stage.date,status,
+      archetype:"debt_restructuring",modality:"in_kind",caseArchetypeLabel:"旧可转债条款修订",caseModalityLabel:"既有债券 · 契据修订",caseModalityShortLabel:"契据修订",
+      before:{title:"契据双方",nodes:[{id:"a",role:"listed",name:issuer},{id:"b",role:"creditor",name:holders}],equityLinks:[]},
+      after:{title:"修订条款",outcomeBadge:outcome,nodes:[{id:"i",role:"listed",name:issuer}],equityLinks:[]},
+      flows:[{id:"a",kind:"asset",direction:"ltr",step:"1",fromLabel:issuer,toLabel:holders,headline:"修订既有可转债条款"}],
+      annotations:[{tag:"①",title:"通函所列未偿本金",body:"合计 8,792 万港元：Treasure Goal 8,300 万港元，Cheer Fame 492 万港元。"}],
+      evidenceLinks:[{documentId:cir,pages:[8,9,10],label:"既有本金及修订条款"},{documentId:proof,pages:[1],label:"2026 年 11 月 18 日契据完成"}],
+      topology:top,compactSummary:"旧债本金 8,792 万港元 · 延至 2028 年末 · 契据已完成",
+    };
+  }
+
+  function getSpecForCase(txCase, documents) {
     if (!txCase || typeof txCase !== "object") {
       throw new Error("getSpecForCase requires a transaction case object");
+    }
+    if (txCase.id === "HK-00138-20260911-cb-second-amendment") {
+      const verified=buildCctBondAmendment(txCase,documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === "HK-00991-20261117-tuoketuo-ii-absorption") {
+      const verified=buildTuoketuoAbsorption(txCase,documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === "HK-06998-20261117-taizhou-equipment-buyback") {
+      const verified=buildTaizhouEquipmentBuyback(txCase,documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === "HK-00276-20261118-western-solar-energy-jv") {
+      const verified=buildWesternSolarJv(txCase,documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === "HK-00950-20261119-nova-assembly-line-order") {
+      const cap=txCase.terms?.find(t=>t.key==="equipment_purchase_cap");
+      const deposit=txCase.terms?.find(t=>t.key==="deposit_rate");
+      const doc=documents?.[cap?.evidence?.documentId];
+      if (txCase.stage?.status!=="active" || cap?.value!==7668400 || cap.currency!=="USD" ||
+          cap.evidence?.pages?.join(",")!=="1,2" || deposit?.value!==30 || deposit.unit!=="percent" ||
+          deposit.evidence?.documentId!==doc?.id || !deposit.evidence?.pages?.includes(2) ||
+          doc?.caseId!==txCase.id || doc.url!=="https://www.hkexnews.hk/listedco/listconews/sehk/2026/1119/2026111900018_c.pdf" ||
+          doc.date!=="2026-11-19" || txCase.parties?.["采购方"]!=="Nova Pneuma Incorporated" ||
+          txCase.parties?.["供应商"]!=="Automation Tool Company（ATC Automation）") return null;
+      return deriveCommercialProcurementCase(txCase);
+    }
+    if (txCase.id === "HK-01716-20260831-wannianfeng-zhousha") {
+      const verified=buildMostKwaiChungTwoAcquisitions(txCase,documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === "HK-03399-20261119-guangzhou-motor-transport-buyback" ||
+        txCase.id === "HK-03399-20261119-hong-kong-motor-transport-buyback") {
+      const verified = buildYueyunBuyback(txCase, documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === "HK-00064-20260717-privatisation") {
+      const verified = buildGetNiceScheme(txCase, documents);
+      return verified && validateDiagramSpec(verified);
+    }
+    if (txCase.id === ERJIN_ACQUISITION_CASE) {
+      const spec = buildErjinImplementation(txCase, documents);
+      if (spec) spec.caseArchetypeLabel = "股份交易及关连收购";
+      return spec && validateDiagramSpec(spec);
+    }
+    if (txCase.id === LIANFA_PROPERTY_CASE) {
+      const spec = buildLianfaPropertyClosure(txCase, documents);
+      if (spec) spec.caseArchetypeLabel = "须予披露及关连收购";
+      if (spec) { spec.caseModalityLabel = "现金对价（合同）"; spec.caseModalityShortLabel = "合同现金"; }
+      return spec && validateDiagramSpec(spec);
+    }
+    if (txCase.id === ROAD_KING_RKE_CASE) {
+      const spec = roadKingRkeSpec(txCase, documents);
+      return spec && validateDiagramSpec(spec);
+    }
+    if (Object.hasOwn(VERIFIED_ACQUISITIONS, txCase.id)) {
+      const spec = CURATED_BUILDERS[txCase.id](txCase, documents);
+      return spec && validateDiagramSpec(spec);
     }
     if (txCase.diagramSpec && typeof txCase.diagramSpec === "object") {
       const merged = {
@@ -4557,9 +5835,15 @@
       if (!merged.topology) merged.topology = synthesizeTopologyFromSpec(merged);
       return validateDiagramSpec(merged);
     }
+    const assetFacts = ASSET_CASE_DIAGRAMS[txCase.id];
+    if (assetFacts) {
+      const spec = buildVerifiedAssetCase(txCase, assetFacts, documents);
+      return spec ? validateDiagramSpec(spec) : null;
+    }
     const builder = txCase.id ? CURATED_BUILDERS[txCase.id] : null;
     if (builder) {
-      return validateDiagramSpec(builder(txCase));
+      const spec = builder(txCase);
+      return spec ? validateDiagramSpec(spec) : null;
     }
     return deriveDiagramFromCase(txCase);
   }
@@ -4637,6 +5921,15 @@
     return edgesSvg + boxesSvg + arrowsSvg;
   }
 
+  function verifiedDiagramDescription(spec, panel) {
+    if (!spec.evidenceLinks?.length) return "";
+    const flows = spec.flows.map(f => `${f.fromLabel}向${f.toLabel}：${f.headline}${f.subline ? "，"+f.subline : ""}`);
+    const names = new Map(spec.after.nodes.map(n => [n.id, n.name]));
+    const interests = [...spec.after.equityLinks.map(e => `${names.get(e.from)}至${names.get(e.to)}：${e.label}`), spec.after.outcomeBadge];
+    const facts = panel === "left" ? flows : panel === "right" ? interests : [...flows, ...interests];
+    return ` aria-description="${escapeHtml(facts.join("；"))}"`;
+  }
+
   function renderDesktopSvg(layout, spec) {
     const leftFrame = renderPanelFrameSvg(
       layout.leftPanel,
@@ -4659,7 +5952,7 @@
       layout.status
     );
 
-    return `<svg class="ddk-svg-desktop" viewBox="0 0 ${layout.width} ${layout.height}" role="img" aria-label="${escapeHtml((spec.name || "") + " " + layout.leftTitle + " 与 " + layout.rightTitle)}">
+    return `<svg class="ddk-svg-desktop" viewBox="0 0 ${layout.width} ${layout.height}" role="img" aria-label="${escapeHtml((spec.name || "") + " " + layout.leftTitle + " 与 " + layout.rightTitle)}"${verifiedDiagramDescription(spec)}>
       ${leftFrame}
       ${rightFrame}
       ${gate}
@@ -4683,7 +5976,7 @@
     );
 
     return `<div class="ddk-svg-mobile">
-      <svg class="ddk-svg-panel" viewBox="0 0 ${lp.w} ${lp.h}" role="img" aria-label="${escapeHtml(layout.leftTitle)}">
+      <svg class="ddk-svg-panel" viewBox="0 0 ${lp.w} ${lp.h}" role="img" aria-label="${escapeHtml(layout.leftTitle)}"${verifiedDiagramDescription(spec, "left")}>
         <g transform="translate(${-lp.x}, ${-lp.y})">
           ${leftFrame}
           ${leftBody}
@@ -4692,7 +5985,7 @@
       <div class="ddk-mobile-gate is-status-${escapeHtml(layout.status)}" aria-hidden="true">
         <span>▼ ${escapeHtml(layout.transitionLabel || "交割后")}</span>
       </div>
-      <svg class="ddk-svg-panel is-right" viewBox="0 0 ${rp.w} ${rp.h}" role="img" aria-label="${escapeHtml(layout.rightTitle)}">
+      <svg class="ddk-svg-panel is-right" viewBox="0 0 ${rp.w} ${rp.h}" role="img" aria-label="${escapeHtml(layout.rightTitle)}"${verifiedDiagramDescription(spec, "right")}>
         <g transform="translate(${-rp.x}, ${-rp.y})">
           ${rightFrame}
           ${rightBody}
@@ -4702,7 +5995,7 @@
     </div>`;
   }
 
-  function resolveSpec(txCaseOrSpec) {
+  function resolveSpec(txCaseOrSpec, documents) {
     if (!txCaseOrSpec || typeof txCaseOrSpec !== "object") {
       throw new Error("renderDealDiagram requires a transaction case or DiagramSpec object");
     }
@@ -4712,12 +6005,13 @@
         : { ...txCaseOrSpec, topology: synthesizeTopologyFromSpec(txCaseOrSpec) };
       return validateDiagramSpec(spec);
     }
-    return getSpecForCase(txCaseOrSpec);
+    return getSpecForCase(txCaseOrSpec, documents);
   }
 
   function renderDealDiagram(txCaseOrSpec, opts) {
-    const spec = resolveSpec(txCaseOrSpec);
     const options = opts && typeof opts === "object" ? opts : {};
+    const spec = resolveSpec(txCaseOrSpec, options.documents);
+    if (!spec) return "";
     const initialFilter = VALID_FILTERS.has(options.initialFilter) ? options.initialFilter : "all";
     const showAnnotations = options.showAnnotations !== false;
     const archInfo = ARCHETYPES[spec.archetype];
@@ -4762,21 +6056,21 @@
           .join("")}</aside>`
       : "";
 
-    const headerPillTitle = isPureAssetContract && spec.mechanism ? spec.mechanism : archInfo.labelZh;
+    const headerPillTitle = spec.caseArchetypeLabel || (isPureAssetContract && spec.mechanism ? spec.mechanism : archInfo.labelZh);
     const legendHtml = isPureAssetContract
       ? `<span class="ddk-legend-item"><i class="is-cash"></i>合同价款结算</span>
         <span class="ddk-legend-item"><i class="is-asset"></i>设备 / 商业资产交付</span>
-        <span class="ddk-legend-item">纯商业采购合同（非公司收购）</span>`
+        <span class="ddk-legend-item">${escapeHtml(spec.assetContractLabel || "纯商业采购合同（非公司收购）")}</span>`
       : `<span class="ddk-legend-item"><i class="is-cash"></i>现金对价</span>
         <span class="ddk-legend-item"><i class="is-shares"></i>股权 / 换股</span>
         <span class="ddk-legend-item"><i class="is-asset"></i>资产交付 / 注销退市</span>
-        <span class="ddk-legend-item"><i class="is-edge-solid"></i>实线控股 · 虚线公众/少数</span>`;
+        <span class="ddk-legend-item"><i class="is-edge-solid"></i>${spec.evidenceLinks?.length ? "实线直接持股或管理 · 虚线间接或非管理权益" : "实线控股 · 虚线公众/少数"}</span>`;
 
     return `<section class="ddk-board is-status-${escapeHtml(spec.status)}${isTerminated ? " is-terminated" : ""}${options.compact ? " is-compact" : ""}" data-ddk-case="${escapeHtml(caseAttr)}" data-ddk-archetype="${escapeHtml(spec.archetype)}" data-ddk-filter="${escapeHtml(initialFilter)}" aria-label="交易架构与对价流向图">
       <header class="ddk-header">
         <div class="ddk-header-meta">
           <span class="ddk-archetype-pill">${escapeHtml(headerPillTitle)}<small>${escapeHtml(archInfo.id.toUpperCase())}</small></span>
-          <span class="ddk-modality-pill is-modality-${escapeHtml(spec.modality)}">${escapeHtml(modalityInfo.labelZh)}</span>
+          <span class="ddk-modality-pill is-modality-${escapeHtml(spec.modality)}">${escapeHtml(spec.caseModalityLabel || modalityInfo.labelZh)}</span>
           <span class="ddk-status-pill is-status-${escapeHtml(spec.status)}">${escapeHtml(spec.stageLabel || statusInfo.labelZh)}${spec.stageDate ? `<time>${escapeHtml(spec.stageDate)}</time>` : ""}</span>
         </div>
         <div class="ddk-filter-bar" role="group" aria-label="交易流向筛选">${filterBtnsHtml}</div>
@@ -4789,12 +6083,15 @@
         ${legendHtml}
         <span class="ddk-filter-note" data-ddk-filter-note hidden></span>
       </div>
-      ${annotationsHtml}
+      ${annotationsHtml}${(spec.evidenceLinks?.length && typeof options.sourceLink === "function") ?
+        `
+      <div class="ddk-legend-bar" aria-label="交易结构披露原件">${spec.evidenceLinks.map(e => options.sourceLink(e, e.label)).join("")}</div>` : ""}
     </section>`;
   }
 
-  function renderCompactFlowBadge(txCase) {
-    const spec = resolveSpec(txCase);
+  function renderCompactFlowBadge(txCase, documents) {
+    const spec = resolveSpec(txCase, documents);
+    if (!spec) return "";
     const archInfo = ARCHETYPES[spec.archetype];
     const modalityInfo = MODALITY_BADGES[spec.modality];
     const caseAttr = spec.caseId || spec.id || spec.archetype;
@@ -4803,8 +6100,8 @@
       `${spec.flows[0].headline} → ${spec.after.outcomeBadge}`;
 
     return `<div class="ddk-compact-flow is-status-${escapeHtml(spec.status)} is-modality-${escapeHtml(spec.modality)}" data-ddk-case="${escapeHtml(caseAttr)}" data-ddk-archetype="${escapeHtml(spec.archetype)}">
-      <span class="ddk-cf-archetype">${escapeHtml(archInfo.shortZh)}</span>
-      <span class="ddk-cf-modality is-modality-${escapeHtml(spec.modality)}">${escapeHtml(modalityInfo.shortZh)}</span>
+      <span class="ddk-cf-archetype">${escapeHtml(spec.caseArchetypeLabel || archInfo.shortZh)}</span>
+      <span class="ddk-cf-modality is-modality-${escapeHtml(spec.modality)}">${escapeHtml(spec.caseModalityShortLabel || modalityInfo.shortZh)}</span>
       <span class="ddk-cf-summary">${escapeHtml(summary)}</span>
     </div>`;
   }

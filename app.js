@@ -4512,12 +4512,12 @@ if (typeof window !== "undefined") {
 
 function eligibleOfferingDossiers() {
   if (state.dossierData?.schemaVersion !== 1) return [];
-  const fees = eligibleOfferingFees();
+  const fees = eligibleOfferingFees(), roster = eligibleFeeRoster();
   return (state.dossierData.offers || []).filter(d => {
     const record = (state.data?.records || []).find(r => r.id === d.issuerId);
     return d.roundId === `offering:${d.code}:${d.prospectusDate}` && record?.hkexListingStockCode === d.code &&
       record.hkexListingDate === d.listingDate && record.hkexProspectusDate === d.prospectusDate &&
-      fees.some(f => f.roundId === d.roundId && f.issuerId === d.issuerId);
+      (d.disclosureStates ? roster.some(r => r.id === d.roundId && r.issuerId === d.issuerId && r.route === "listed_offering" && r.listingDate === d.listingDate && r.prospectusDate === d.prospectusDate) : fees.some(f => f.roundId === d.roundId && f.issuerId === d.issuerId));
   });
 }
 function renderDossier(d) {
@@ -4578,11 +4578,11 @@ function renderDossiers() {
     :'← 返回新股与费用（已保留筛选）')
   :(row?.route==='paused_offer'?'← 返回发售搁置工作台':'← 返回新股与费用');
  document.getElementById('dossierReturn').innerHTML=`<button type="button" data-return-context>${backLabel}</button><span>${row?`本轮招股 ${row.prospectusDate||'—'}`:''}</span>`;
- root.innerHTML=full?renderDossier(full):row?p0StandardDossier(row):'<div class="empty-state-row">未找到该发行轮次。<button type="button" data-return-context>返回发行总表</button></div>';
+ root.innerHTML=full&&!full.disclosureStates?renderDossier(full):row?p0StandardDossier(row):eligibleCornerstoneCoverage().some(o=>o.roundId===round)?p0CornerstoneOnlyDossier(eligibleCornerstoneCoverage().find(o=>o.roundId===round)):'<div class="empty-state-row">未找到该发行轮次。<button type="button" data-return-context>返回发行总表</button></div>';
 }
 
 function openOfferingDossier(roundId, section="") {
-  if(!findAnyOfferingRound(roundId))return false;
+  if(!findAnyOfferingRound(roundId)&&!eligibleCornerstoneCoverage().some(o=>o.roundId===roundId))return false;
   state.roundId=roundId;state.dossierId=roundId;state.dossierSection=section;state.peek='';
   closeDetail(false);switchView('dossiers');
   document.querySelector('#dossierReturn button')?.focus({preventScroll:true});return true;
@@ -4806,9 +4806,40 @@ function classifyCornerstoneArchetype(tagsText, roleText = "") {
   return { key: "asset_mgmt", label: "跨境私募 / 资管 / TRS" };
 }
 
+function eligibleCornerstoneCoverage() {
+  const coverage=state.dossierData?.cornerstoneCoverage;
+  if(coverage?.schemaVersion!==1)return [];
+  const rows=new Map(eligibleFeeRoster().filter(r=>r.route==='listed_offering').map(r=>[r.id,r]));
+  return (coverage.offers||[]).filter(o=>{const r=rows.get(o.roundId);return r?r.issuerId===o.issuerId&&r.code===o.code&&r.listingDate===o.listingDate&&r.prospectusDate===o.prospectusDate:o.board==='GEM'&&o.issuerId===null&&o.roundId===`offering:${o.code}:${o.prospectusDate}`&&Boolean(o.listingSource)&&Boolean(o.documents?.length);});
+}
+function selectCornerstoneOfferings(criteria={}) {
+ const boards=criteria.boards||[], industries=criteria.industries||[];
+ return [...new Map(eligibleCornerstoneCoverage().filter(o=>(!boards.length||boards.includes(o.board))&&(!criteria.from||o.listingDate>=criteria.from)&&(!criteria.to||o.listingDate<=criteria.to)&&(!industries.length||industries.some(tag=>(o.industryTags||[]).includes(tag)))).map(o=>[o.roundId,o])).values()];
+}
+function summarizeCornerstoneOfferings(criteria={}) {
+ const offers=selectCornerstoneOfferings(criteria),allocations=offers.flatMap(o=>o.allocations),cutoff=state.dossierData?.cornerstoneCoverage?.listingCutoff;
+ const money=values=>{const cents=values.reduce((n,v)=>{const [whole,fraction='']=String(v||'0').split('.');return n+BigInt(whole)*100n+BigInt((fraction+'00').slice(0,2));},0n);return `${cents/100n}.${String(cents%100n).padStart(2,'0')}`;};
+ return {listingCutoff:cutoff,outsideCutoff:Boolean(criteria.from&&criteria.from>cutoff),offeringCount:offers.length,disclosedCount:offers.filter(o=>o.status==='known').length,notDisclosedCount:offers.filter(o=>o.status==='confirmed_zero').length,unknownCount:offers.filter(o=>o.status==='unknown').length,allocationCount:allocations.length,offeringAmountHkd:money(offers.map(o=>o.amountHkd)),allocationAmountHkd:money(allocations.map(a=>a.amountHkd))};
+}
+function cornerstoneProfileMatch(profile,id){return profile.id===id||(profile.aliases||[]).includes(id);}
+function cornerstoneUnit(unit){return unit==='HDR'?'份 HDR':'股';}
+function p0CornerstoneOnlyDossier(offer){
+ if(!offer)return '';
+ return `<article class="deal-sheet" data-dossier-round="${escapeHtml(offer.roundId)}"><header class="deal-header"><div><p><span class="deal-status-pill is-listed">已上市 ${offer.listingDate}</span> · ${offer.code}.HK · ${escapeHtml(offer.board)}</p><h2>${escapeHtml(offer.issuer)}</h2></div></header><dl class="deal-kpis"><div><dt>最终发售价（HKD／${offer.unit==='HDR'?'HDR':'股'}）</dt><dd>${offeringNumber(offer.priceHkd,2)}</dd></div></dl>${p0CornerstoneCoverageSection({id:offer.roundId})}<section class="deal-section deal-sources-index" id="sources"><header><h3>披露原件与页码索引</h3></header><div class="consolidated-page-links">${[...new Set([offer.listingSource,...offer.documents])].map(u=>feeRosterSource(u,'发行原件 ↗')).join('')}</div></section></article>`;
+}
+function p0CornerstoneCoverageSection(row){
+ const offer=eligibleCornerstoneCoverage().find(o=>o.roundId===row.id);
+ if(!offer||offer.status==='unknown')return '';
+ const sources=offer.sources.map(u=>feeRosterSource(u,'原件 ↗')).join(' ');
+ if(offer.status==='confirmed_zero')return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石配售</h3></header><p>未披露基石配售</p><div class="consolidated-page-links">${sources}</div></section>`;
+ const profiles=buildCornerstoneProfiles().filter(p=>p.allocationIds?.length&&p.deals.some(d=>d.roundId===row.id));
+ return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石获配 · ${offeringNumber(offer.quantity)} ${cornerstoneUnit(offer.unit)}</h3></header><dl class="deal-facts"><div><dt>${offer.allocations.length?'按最终发售价':'仅发行总额'}</dt><dd>HKD ${feeRosterMillion(offer.amountHkd)} 百万</dd></div></dl>${offer.offerStructure?`<dl class="deal-facts"><div><dt>发售结构</dt><dd>股东出售 · ${offeringNumber(offer.offerStructure.offeredQuantity)} ${cornerstoneUnit(offer.unit)}</dd></div><div><dt>发行人所得</dt><dd>HKD ${offeringNumber(offer.offerStructure.issuerGrossHkd,2)} ${feeRosterSource(offer.offerStructure.source,'原件 ↗')}</dd></div></dl>`:''}${profiles.length?`<div class="deal-allocation-list">${profiles.map(p=>`<div><button type="button" class="cs-inline-jump" data-open-cornerstone="${escapeHtml(p.id)}">${escapeHtml(p.name)} <small>画像 →</small></button><strong class="col-num">${escapeHtml(p.deals[0].commitmentText)}</strong></div>`).join('')}</div>`:''}<div class="consolidated-page-links">${sources}</div></section>`;
+}
+
 function buildCornerstoneProfiles() {
   const profiles = [];
   const rosterByRound = new Map(eligibleFeeRoster().map(r => [r.id, r]));
+  const coverage=eligibleCornerstoneCoverage(), coveredRounds=new Set(coverage.map(o=>o.roundId));
 
   // 1. Paused offerings verified cornerstone groups (00054, 03275, 06700)
   for (const notice of offeringNoticeEvidence) {
@@ -4882,16 +4913,16 @@ function buildCornerstoneProfiles() {
     const rosterRow = rosterByRound.get(d.roundId);
     const dealSponsors = (rosterRow?.institutions?.length ? rosterRow.institutions.map(i => ({ name: i.displayName, sponsorId: i.sponsorId })) : d.sponsors.map(s => ({ name: s.name, sponsorId: sponsorIdForName(s.name) })));
     const finalPrice = Number(d.offer?.final || 0);
-    for (const [idx, c] of (d.cornerstones || []).entries()) {
+    for (const [idx, c] of (coveredRounds.has(d.roundId) ? [] : (d.cornerstones || [])).entries()) {
       const approxHkd = finalPrice ? c.shares * finalPrice : null;
-      const arch = /能源|晶科|制造|科技/.test(c.name) ? { key: "strategic", label: "产业战投" } : { key: "strategic", label: "基石投资者" };
+      const arch = !d.disclosureStates && /能源|晶科|制造|科技/.test(c.name) ? { key: "strategic", label: "产业战投" } : { key: "strategic", label: "基石投资者" };
       profiles.push({
         id: `cs:${d.code}-cs-${idx}`,
         name: c.name,
         roleLabel: "已上市基石获配方",
         archetype: arch.key,
         archetypeLabel: arch.label,
-        channel: "基石配售 · 上市起 6 个月禁售",
+        channel: d.disclosureStates ? "基石配售" : "基石配售 · 上市起 6 个月禁售",
         profile: `${d.issuer} (${d.code}.HK) 招股及配发结果披露之基石获配主体。`,
         ownership: "",
         ranking: null,
@@ -4914,7 +4945,7 @@ function buildCornerstoneProfiles() {
           sponsors: dealSponsors
         }],
         coSponsors: dealSponsors,
-        sources: [
+        sources: d.disclosureStates ? [{ label: `${d.issuer} 基石获配原件`, url: c.source }] : [
           { label: `${d.issuer} 配发结果公告 · 基石获配 p.6`, url: `${d.allotmentUrl}#page=6` },
           { label: `${d.issuer} 招股章程全文`, url: d.prospectusUrl }
         ]
@@ -4927,12 +4958,12 @@ function buildCornerstoneProfiles() {
         name: a.displayName,
         roleLabel: a.structure,
         archetype: "asset_mgmt",
-        archetypeLabel: "跨境私募 / 资管 / TRS",
+        archetypeLabel: d.disclosureStates ? "资管账户" : "跨境私募 / 资管 / TRS",
         channel: a.structure,
         profile: [a.ownershipFact, a.fundingFact, a.rightsFact].filter(Boolean).join(" · "),
         ownership: a.fund ? `账户：${a.fund}` : `经济敞口：${a.economicParty}`,
         ranking: null,
-        signatories: [{ id: a.id, name: a.legalHolder, shortName: a.displayName, type: a.structure, capacity: `法律获配 ${offeringNumber(a.shares)} 股`, currency: "HKD", amount: approxHkd, feesIncluded: false, manager: a.economicParty || "" }],
+        signatories: [{ id: a.id, name: a.legalHolder, shortName: a.displayName, type: a.structure, capacity: `法律获配 ${offeringNumber(a.shares)} 股`, currency: "HKD", amount: approxHkd, feesIncluded: false, manager: d.disclosureStates ? (a.manager || "") : (a.economicParty || "") }],
         currency: approxHkd ? "HKD" : "",
         commitmentAmount: approxHkd,
         commitmentText: `${offeringNumber(a.shares)} 股${approxHkd ? `（约 ${formatChineseUnitAmount(approxHkd, "HKD")}）` : ""}`,
@@ -4951,39 +4982,57 @@ function buildCornerstoneProfiles() {
           sponsors: dealSponsors
         }],
         coSponsors: dealSponsors,
-        sources: [
+        sources: d.disclosureStates ? [{ label: `${d.issuer} 获配账户原件`, url: a.source }, ...(a.structureSource ? [{ label: "账户结构原件", url: a.structureSource }] : [])] : [
           { label: `${d.issuer} 配发结果公告 · 获配名单 p.12`, url: `${d.allotmentUrl}#page=12` },
           { label: `${d.issuer} 配发结果公告 · TRS/架构 p.14`, url: `${d.allotmentUrl}#page=14` }
         ]
       });
     }
   }
+  for(const offer of coverage){
+    const row=rosterByRound.get(offer.roundId), sponsorList=(row?.institutions||[]).map(i=>({name:i.displayName,sponsorId:i.sponsorId}));
+    const allocations=new Map(offer.allocations.map(a=>[a.id,a]));
+    for(const group of offer.groups){
+      const members=group.allocationIds.map(id=>allocations.get(id)), quantity=members.reduce((n,a)=>n+a.quantity,0), amount=members.reduce((n,a)=>n+Number(a.amountHkd),0);
+      const names=[...new Set(members.flatMap(a=>a.legalNames))], relations=[...new Map(members.flatMap(a=>a.relationships).map(r=>[`${r.role}\n${r.name}\n${r.source}`,r])).values()];
+      const src=[...new Set(members.flatMap(a=>[...a.sources,...a.relationships.map(r=>r.source)]))];
+      const id=group.aliases[0]?.id||group.id;
+      profiles.push({id,aliases:[group.id,...group.aliases.map(a=>a.id)],name:group.name,roleLabel:group.roleLabel,archetype:'disclosed',archetypeLabel:'基石获配主体',channel:'基石最终配售',profile:relations.slice(0,2).map(r=>`${r.role}：${r.name}`).join(' · '),ownership:'',ranking:null,
+        signatories:names.map(name=>({id:name,name,shortName:name,type:'法律认购名',capacity:'',currency:'HKD',amount:null,manager:''})),
+        allocations:members,allocationIds:group.allocationIds,relationships:relations,currency:'HKD',commitmentAmount:amount,commitmentText:`${offeringNumber(quantity)} ${cornerstoneUnit(offer.unit)} · ${formatChineseUnitAmount(amount,'HKD')}`,
+        deals:[{roundId:offer.roundId,code:offer.code,issuer:offer.issuer,status:'listed',statusLabel:'已挂牌上市',date:offer.listingDate,commitmentText:`${offeringNumber(quantity)} ${cornerstoneUnit(offer.unit)}`,rawCommitment:`HKD ${offeringNumber(amount,2)}（按最终发售价）`,shares:offer.unit==='HDR'?null:quantity,units:quantity,unit:offer.unit,ratioText:offer.offeredQuantity?`${offeringNumber(quantity/offer.offeredQuantity*100,2)}% 发售${offer.unit==='HDR'?' HDR':'股'}`:'',roleTag:'基石获配',sponsors:sponsorList}],coSponsors:sponsorList,sources:src.map(url=>({label:`${offer.issuer} ${url.includes('#page=')?'p.'+url.split('#page=')[1]:'披露原件'}`,url}))});
+    }
+  }
   return profiles;
 }
+
 
 function renderCornerstones() {
   const listWrap = document.getElementById("cornerstoneListWrap");
   const profilePane = document.getElementById("cornerstoneProfilePane");
   if (!listWrap || !profilePane) return;
   const all = buildCornerstoneProfiles();
+  const coverage=eligibleCornerstoneCoverage(),known=coverage.filter(o=>o.status==="known").length,none=coverage.filter(o=>o.status==="confirmed_zero").length;
+  const allocationRounds=coverage.filter(o=>o.status==="known"&&o.allocations.length).length;
   const q = normalizeSearchText(state.csQuery || "");
   const searchEl = document.getElementById("csSearch");
   if (searchEl && searchEl.value !== state.csQuery) searchEl.value = state.csQuery;
 
   // Coverage meta & Insight Strip
   const metaEl = document.getElementById("csCoverageMeta");
-  if (metaEl) metaEl.textContent = `已收录 ${all.length} 组基石与机构获配档案 · 覆盖 4 宗港股新股`;
+  if (metaEl) metaEl.textContent = `覆盖 ${coverage.length} 轮（主板 ${coverage.filter(o=>o.board==="Main").length} / GEM ${coverage.filter(o=>o.board==="GEM").length}）· 已披露基石 ${known} 宗 · 无基石 ${none} 宗 · 截至 ${state.dossierData?.cornerstoneCoverage?.listingCutoff}`;
   const insightEl = document.getElementById("csInsightStrip");
   const thermoEl = document.getElementById("csThermometer");
   const archMeta = [
     { key: "public_fund", label: "内地头部公募 / QDII", cls: "is-public-fund" },
     { key: "hk_family", label: "港资家族与个人大户", cls: "is-hk-family" },
     { key: "strategic", label: "产业战投", cls: "is-strategic" },
-    { key: "asset_mgmt", label: "跨境私募 / TRS", cls: "is-asset-mgmt" }
+    { key: "asset_mgmt", label: "跨境私募 / TRS", cls: "is-asset-mgmt" },
+    { key: "disclosed", label: "披露获配主体", cls: "is-disclosed" }
   ];
   if (insightEl) {
     const sigCount = all.reduce((s, p) => s + p.signatories.length, 0);
-    const byArch = { public_fund: 0, hk_family: 0, strategic: 0, asset_mgmt: 0 };
+    const byArch = { public_fund: 0, hk_family: 0, strategic: 0, asset_mgmt: 0, disclosed: 0 };
     const usdTotal = all.filter(p => p.deals[0]?.status === "paused" && p.currency === "USD").reduce((s, p) => s + (p.commitmentAmount || 0), 0);
     const hkdTotal = all.filter(p => p.deals[0]?.status === "paused" && p.currency === "HKD").reduce((s, p) => s + (p.commitmentAmount || 0), 0);
     const spSet = new Map();
@@ -4992,15 +5041,15 @@ function renderCornerstones() {
       for (const sp of p.coSponsors) if (sp.sponsorId) spSet.set(sp.sponsorId, sp.name);
     }
     insightEl.innerHTML = `
-      <div class="stat-cell"><span class="stat-label">基石与机构主体</span><strong class="stat-val col-num">${all.length} 组</strong><small class="stat-sub">${sigCount} 名法律签约方 · 覆盖 4 宗港股新股</small></div>
-      <div class="stat-cell"><span class="stat-label">投资者画像分布</span><strong class="stat-val col-num">公募 ${byArch.public_fund} · 港资 ${byArch.hk_family} · 战投 ${byArch.strategic} · 私募/TRS ${byArch.asset_mgmt}</strong><small class="stat-sub">按招股书及配发结果归类</small></div>
+      <div class="stat-cell"><span class="stat-label">基石与机构主体</span><strong class="stat-val col-num">${all.length} 组</strong><small class="stat-sub">${sigCount} 个已披露法律名称 · 已上市配发明细 ${allocationRounds} 宗</small></div>
+      <div class="stat-cell"><span class="stat-label">投资者画像分布</span><strong class="stat-val col-num">公募 ${byArch.public_fund} · 港资 ${byArch.hk_family} · 战投 ${byArch.strategic} · 私募/TRS ${byArch.asset_mgmt} · 披露主体 ${byArch.disclosed}</strong><small class="stat-sub">按招股书及配发结果归类</small></div>
       <div class="stat-cell"><span class="stat-label">原币认购承诺（搁置轮）</span><strong class="stat-val col-num">USD ${offeringNumber(usdTotal / 1e4, 0)}万 · HKD ${offeringNumber(hkdTotal / 1e8, 2)}亿</strong><small class="stat-sub">USD 与 HKD 原币认购承诺</small></div>
       <div class="stat-cell"><span class="stat-label">联动保荐人网络</span><strong class="stat-val col-num">${spSet.size} 家保荐机构</strong><small class="stat-sub">${[...spSet.values()].slice(0, 5).join(" · ")}</small></div>
     `;
   }
 
   // Profile View Mode
-  const activeProfile = state.csId ? all.find(p => p.id === state.csId) : null;
+  const activeProfile = state.csId ? all.find(p => cornerstoneProfileMatch(p,state.csId)) : null;
   if (thermoEl) {
     thermoEl.hidden = Boolean(activeProfile) || !all.length;
     if (!thermoEl.hidden) {
@@ -5068,9 +5117,10 @@ function renderCornerstones() {
           ${activeProfile.profile ? `<p class="cs-profile-lead">${escapeHtml(activeProfile.profile)}</p>` : ""}
           ${activeProfile.ownership ? `<p class="cs-profile-sub">持有 / 架构：${escapeHtml(activeProfile.ownership)}</p>` : ""}
           ${activeProfile.ranking ? `<div class="offering-cornerstone-rank">${escapeHtml(activeProfile.ranking.metric)} ${escapeHtml(activeProfile.ranking.currency)} ${offeringNumber(activeProfile.ranking.amountHundredMillion, 2)} 亿元 · 行业第 ${activeProfile.ranking.rank}<span>截至 ${escapeHtml(activeProfile.ranking.asOf)} · ${escapeHtml(activeProfile.ranking.dataProvider)}</span></div>` : ""}
-          <h4>法律签约实体（${activeProfile.signatories.length} 名）</h4>
+          ${activeProfile.signatories.length?`<h4>${activeProfile.allocations?'披露法律认购名':'法律签约实体'}（${activeProfile.signatories.length} 名）</h4>`:''}
           <ul class="offering-cornerstone-members">${activeProfile.signatories.map(s => `<li><div><strong>${escapeHtml(s.name)}</strong><span class="col-num">${s.amount ? `${escapeHtml(s.currency)} ${offeringNumber(s.amount, 0)}` : ""}</span></div><p>${escapeHtml(s.type)} · ${escapeHtml(s.capacity)}${s.manager ? ` · 管理人：${escapeHtml(s.manager)}` : ""}${s.feesIncluded ? " · 含经纪佣金及征费" : ""}</p></li>`).join("")}</ul>
         </section>
+        ${activeProfile.allocations?`<section class="deal-section"><header><h3>获配明细</h3></header><div class="deal-allocation-list">${activeProfile.allocations.map(a=>`<div><strong>${escapeHtml(a.label)}</strong><span class="col-num">${offeringNumber(a.quantity)} ${cornerstoneUnit(activeProfile.deals[0].unit)} · HKD ${offeringNumber(a.amountHkd,2)}</span>${feeRosterSource(a.source,'原件 ↗')}</div>`).join('')}</div>${activeProfile.relationships.length?`<details class="deal-light-detail"><summary>认购关系</summary>${activeProfile.relationships.map(r=>`<p>${escapeHtml(r.role)}：${escapeHtml(r.name)} ${feeRosterSource(r.source,'原件 ↗')}</p>`).join('')}</details>`:''}</section>`:''}
         <section class="deal-section">
           <header><h3>联动保荐机构（Co-Sponsor Affinity）</h3></header>
           <p class="cs-profile-sub">同单保荐及协调机构：</p>
@@ -5101,6 +5151,8 @@ function renderCornerstones() {
     const text = normalizeSearchText([
       p.name, p.roleLabel, p.archetypeLabel, p.channel, p.profile, p.ownership,
       ...p.signatories.map(s => `${s.name} ${s.shortName} ${s.manager}`),
+      ...(p.allocations||[]).map(a=>a.label),
+      ...(p.relationships||[]).map(r=>`${r.role} ${r.name}`),
       ...p.deals.map(d => `${d.code} ${d.issuer} ${d.roleTag}`),
       ...p.coSponsors.map(sp => sp.name)
     ].join(" "));
@@ -5139,7 +5191,7 @@ function renderCornerstones() {
 }
 
 function openCornerstoneProfile(csId, trigger = document.activeElement) {
-  if (!buildCornerstoneProfiles().some(p => p.id === csId)) return false;
+  if (!buildCornerstoneProfiles().some(p => cornerstoneProfileMatch(p,csId))) return false;
   p0SaveLocation(trigger);
   const previous = location.pathname + location.search;
   state.csId = csId;
@@ -5170,7 +5222,11 @@ if (typeof window !== "undefined") {
   window.YingSightCornerstones = Object.freeze({
     schemaVersion: 1,
     getProfiles: () => structuredClone(buildCornerstoneProfiles()),
-    getProfile: id => structuredClone(buildCornerstoneProfiles().find(p => p.id === id) || null)
+    getProfile: id => structuredClone(buildCornerstoneProfiles().find(p => cornerstoneProfileMatch(p,id)) || null),
+    getOfferings: () => structuredClone(eligibleCornerstoneCoverage()),
+    selectOfferings: criteria => structuredClone(selectCornerstoneOfferings(criteria)),
+    summarizeOfferings: criteria => structuredClone(summarizeCornerstoneOfferings(criteria)),
+    getAllocations: () => structuredClone(eligibleCornerstoneCoverage().flatMap(o=>o.allocations.map(a=>({...a,roundId:o.roundId,unit:o.unit}))))
   });
 }
 
@@ -7045,6 +7101,8 @@ const transactionEvents = {
   first_closing: "首个要约截止",
   final_closing: "最终要约截止",
   completion: "合并／交割完成",
+  completion_confirmed: "公告确认已完成",
+  debt_amendment_effective: "旧可转债修订生效",
   implementation: "计划实施及介绍上市",
   placing_completion: "配售／发行交割",
   lapsed: "要约／计划失效",
@@ -7062,6 +7120,7 @@ const TRANSACTION_TIMEZONE_LABELS = {
 };
 function transactionEventLabel(e) {
   if (!e) return "进展节点";
+  if(e.kind==="implementation"&&e.scope==="consideration_shares")return "代价股份已发行";
   return e.label || transactionEvents[e.kind] || e.kind || "进展节点";
 }
 function transactionTimezoneNote(tz) {
@@ -7130,6 +7189,7 @@ function transactionMatchesCategory(row, cat) {
       return c === cat;
   }
 }
+const FIRST_BATCH_PENDING_DIAGRAMS = new Set(["HK-01521-20261109-sanrex", "HK-00848-20260929-wf-scheme", "HK-01086-20260927-crystal-aurora", "HK-00751-20260120-scheme-buyback-photovoltaic", "HK-02688-20250326-xinneng-mixed-scheme-lapsed", "HK-09956-20251017-celestia-cayman-mixed-scheme"]);
 const TX_LEAD_IB_ROLES = new Set(["Sponsor", "FA", "RestructuringFA", "PlacingAgent", "Underwriter"]);
 const TX_ROLE_SORT_RANK = { Sponsor: 1, FA: 2, RestructuringFA: 3, PlacingAgent: 4, Underwriter: 5, IFA: 10, IndependentExpertAU: 11, Accountant: 12, Valuer: 13 };
 const TX_CASE_ENRICHMENTS = {
@@ -7344,7 +7404,7 @@ function transactionConsolidatedSources(row) {
 function transactionComparisonRows(rows) {
   const diagramKit = typeof window !== "undefined" ? window.YingSightDealDiagramKit : null;
   const result = [
-    ["交易结构", r => `${escapeHtml(r.mechanism)}${diagramKit ? diagramKit.renderCompactFlowBadge(r) : ""}`],
+    ["交易结构", r => `${escapeHtml(r.mechanism)}${diagramKit && !FIRST_BATCH_PENDING_DIAGRAMS.has(r.id) ? diagramKit.renderCompactFlowBadge(r,state.transactionData?.documents) : ""}`],
     ["已确认阶段", r => `<span class="tx-stage-pill is-${escapeHtml(r.stage?.status || "active")}">${escapeHtml(r.stage?.label || "—")}</span><small>${r.stage?.date || ""}</small>`],
     ["核心条款（各案原币）", r => {
       const h = transactionTerm(r, r.headlineKey) || (r.terms || [])[0];
@@ -7427,7 +7487,16 @@ function transactionTimingMetrics(row, asOf = state.transactionData?.asOf){
  const vote=Number.isInteger(row.intervals?.dispatchToVote)?`${row.intervals.dispatchToVote} 天`:"—";
  const firstDate=row.events?.[0]?.date||"";
  let totalLabel="总历时",totalVal="—",totalSub="",isLive=false;
- if(row.lifecycle&&Number.isInteger(row.lifecycle.naturalDays)){
+ const issue=(row.events||[]).find(e=>e.kind==="implementation"&&e.scope==="consideration_shares"&&e.state==="actual");
+ if(issue&&row.stage.status==="implemented"){
+  totalLabel="首公至发股";totalVal=`${dayDiff(firstDate,issue.date)} 天`;totalSub=`${firstDate} → ${issue.date}`;
+ }else if(row.stage.eventKind==="debt_amendment_effective"&&row.stage.status==="closed"){
+  const d=dayDiff(firstDate,row.stage.date);
+  totalLabel="首公至修订生效";totalVal=d!=null?`${d} 天`:"—";totalSub=`生效日 ${row.stage.date}`;
+ }else if(row.stage.eventKind==="completion_confirmed"&&row.stage.status==="closed"){
+  const d=dayDiff(firstDate,row.stage.date);
+  totalLabel="首公至完成公告";totalVal=d!=null?`${d} 天`:"—";totalSub=`公告日 ${row.stage.date}`;
+ }else if(row.lifecycle&&Number.isInteger(row.lifecycle.naturalDays)){
   totalLabel="总历时";totalVal=`${row.lifecycle.naturalDays} 天`;totalSub=`${row.lifecycle.start} → ${row.lifecycle.end}`;
  }else if(row.stage.status==="closed"){
   const d=dayDiff(firstDate,row.stage.date);
@@ -7497,7 +7566,7 @@ function transactionDetail(row){
  const compBadges=Object.entries(transactionMetricLabels).filter(([k])=>Number.isFinite(row.comparables?.[k])).map(([k,l])=>`<span class="tx-hero-comp">${escapeHtml(l)} <strong class="col-num">${row.comparables[k]}%</strong></span>`).join("");
  const issuerLinkHtml=renderTransactionIssuerLinkButtons(row,false);
  const diagramKit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
- const diagramHtml=diagramKit?diagramKit.renderDealDiagram(row):"";
+ const diagramHtml=diagramKit && !FIRST_BATCH_PENDING_DIAGRAMS.has(row.id)?diagramKit.renderDealDiagram(row,{documents:state.transactionData?.documents,sourceLink:transactionSource}):"";
  const tm=transactionTimingMetrics(row);
  const timingStripHtml=`<div class="tx-timing-strip"><div><span>首公 → 寄发</span><strong class="col-num">${escapeHtml(tm.disp)}</strong></div><div><span>寄发 → 表决</span><strong class="col-num">${escapeHtml(tm.vote)}</strong></div><div class="${tm.isLive?"is-live":""}"><span>${escapeHtml(tm.totalLabel)}</span><strong class="col-num">${escapeHtml(tm.totalVal)}</strong><small>${escapeHtml(tm.totalSub)}</small></div></div>`;
  const txFrom=p0FromUrlInfo();
@@ -7736,7 +7805,7 @@ function renderTransactions(){
   const effM=effectiveTransactionMandates(r),leadM=effM.filter(m=>TX_LEAD_IB_ROLES.has(m.role));
   const t=transactionTerm(r,r.headlineKey)||(r.terms||[])[0],partyEntry=Object.entries(r.parties||{})[0],advisors=[...new Set((leadM.length?leadM:effM).map(m=>m.firmZh||m.firm).filter(Boolean))].slice(0,3).join(" · ");
   const rulePills=(r.rules||[]).slice(0,3).map(x=>'<span class="tx-rule-chip">'+escapeHtml(x.label)+'</span>').join("");
-  const flowBadge=diagramKit?diagramKit.renderCompactFlowBadge(r):"";
+  const flowBadge=diagramKit && !FIRST_BATCH_PENDING_DIAGRAMS.has(r.id)?diagramKit.renderCompactFlowBadge(r,state.transactionData?.documents):"";
   const ratioTerm=transactionTerm(r,"exchange_ratio");
   const extraMetric=Number.isFinite(r.comparables?.last_full_day_premium_pct)?`溢价 ${r.comparables.last_full_day_premium_pct}%`:(ratioTerm&&ratioTerm.key!==t?.key?`换股 ${transactionAmount(ratioTerm)}`:"");
   const tm=transactionTimingMetrics(r);
@@ -8710,8 +8779,23 @@ function p0PausedWindowBar(f){
   <div><span>${f.publicSubscription?'公开发售认购披露':'公告措辞'}</span><strong>${f.publicSubscription?`<span class="paused-sub-pill">${escapeHtml(f.publicSubscription)}</span>`:escapeHtml(f.announcementWording||'现时市况')}</strong></div>
  </div>`;
 }
+function p0DossierDisclosures(d){
+ const o=d.offer,fl=d.float,states=d.disclosureStates;
+ const fact=(label,value)=>`<div><dt>${label}</dt><dd>${value}</dd></div>`;
+ const shares=n=>n==null?'—':`${offeringNumber(n)} 股`;
+ const count=n=>n==null?'—':`${offeringNumber(n,2)} 倍`;
+ const money=n=>n==null?'—':`HKD ${feeRosterMillion(n)} 百万`;
+ const csState=states.cornerstones.state;
+ const csHtml=csState==='confirmed_zero'?'<p>无基石投资者</p>':csState==='unknown'?'<p>基石资料待核</p>':`<div class="deal-allocation-list">${d.cornerstones.map((c,i)=>`<div><button type="button" class="cs-inline-jump" data-open-cornerstone="cs:${d.code}-cs-${i}">${escapeHtml(c.name)} <small>画像 →</small></button><strong class="col-num">${shares(c.shares)}</strong>${feeRosterSource(c.source,'原件 ↗')}</div>`).join('')}</div>`;
+ const allocations=fl.deductions.filter(x=>x.kind!=='cornerstone');
+ const details=allocations.length?`<details class="deal-light-detail"><summary>其他已披露获配 · ${allocations.length}</summary>${allocations.map(x=>`<p>${escapeHtml(x.name)} · ${shares(x.shares)} ${feeRosterSource(x.source,'原件 ↗')}</p>`).join('')}${fl.accounts.map(a=>`<article><h4>${escapeHtml(a.displayName)} · ${escapeHtml(a.structure||'')}</h4><p>法律获配：${escapeHtml(a.legalHolder)}${a.manager?' · 管理人：'+escapeHtml(a.manager):''}</p>${a.fund||a.economicParty?`<p>${a.fund?'账户：'+escapeHtml(a.fund):''}${a.fund&&a.economicParty?' · ':''}${a.economicParty?'经济敞口：'+escapeHtml(a.economicParty):''}</p>`:''}${[a.ownershipFact,a.fundingFact,a.rightsFact].filter(Boolean).map(t=>`<p>${escapeHtml(t)}</p>`).join('')}${feeRosterSource(a.source,'账户原件 ↗')}${a.structureSource?feeRosterSource(a.structureSource,'结构原件 ↗'):''}</article>`).join('')}</details>`:'';
+ const execution=d.execution.length?`<section class="deal-section" id="execution"><details class="deal-light-detail"><summary>执行参考 · ${d.execution.length} 项</summary>${d.execution.map(x=>`<article class="deal-execution"><div class="deal-exec-head"><h4>${escapeHtml(x.title)}</h4><button type="button" class="exec-ref-search-btn" data-exec-search="${escapeHtml(x.title)}">检索执行先例 ⌕</button></div><p>${escapeHtml(x.fact)}</p>${x.action?`<p class="deal-execution-action">${escapeHtml(x.action)}</p>`:''}<div class="consolidated-page-links">${x.pages.map(p=>feeRosterSource(`${x.sourceUrl}#page=${p}`,`原件 p.${p} ↗`)).join('')}</div></article>`).join('')}</details></section>`:'';
+ return `<section class="deal-section" id="allocation"><header><h3>配售与上市时流通结构</h3></header><div class="deal-columns"><div><dl class="deal-facts">${fact('招股区间',`HKD ${offeringNumber(o.low,2)}–${offeringNumber(o.high,2)}`)}${fact('香港公开发售（最终分配）',`${shares(o.publicShares)} · ${offeringNumber(o.publicShares/o.shares*100,2)}%`)}${fact('公开发售认购',count(o.publicSubscription))}${fact('国际配售认购',count(o.internationalSubscription))}${fact('估计所得净额',o.netReportedMillions==null?'—':`HKD ${offeringNumber(o.netReportedMillions,2)} 百万`)}</dl><h4>基石获配${csState==='unknown'?'':` · ${shares(o.cornerstoneShares)}`}</h4>${csHtml}</div><div><dl class="deal-facts">${fact('港交所公众持股',`${shares(fl.officialPublicShares)}${fl.officialPublicRatio==null?'':` · ${offeringNumber(fl.officialPublicRatio,2)}%`}`)}${fact('官披自由流通市值',money(fl.officialFreeFloatHkd))}${fact('官披上市时无禁售股数',shares(fl.unlockedShares))}${states.adjustedShares.state==='unknown'?'':fact('发售调整余量',shares(fl.adjustedShares))}</dl>${details}</div></div></section>${execution}`;
+}
+
 function p0StandardDossier(row){
  const record=state.data.records.find(r=>r.id===row.issuerId),notice=row.route==='paused_offer'?currentOfferingNotice(record):null;
+ const dossier=eligibleOfferingDossiers().find(d=>d.roundId===row.id&&d.disclosureStates);
  const spEff=p0EffectiveSponsorFee(row);
  const desktopOpen=!window.matchMedia?.('(max-width: 767px)').matches;
  const sponsorLinks=(row.institutions||[]).map(i=>renderSponsorJumpChip(i.legalName,i.sponsorId,i.displayName)).join(' · ');
@@ -8734,7 +8818,7 @@ function p0StandardDossier(row){
   return `<article class="deal-sheet is-paused-sheet" data-dossier-round="${escapeHtml(row.id)}">${pausedHeading}${p0PausedOverview(f)}${p0PausedWindowBar(f)}${rlInfo?renderRelaunchComparisonPanel(row.code,{context:'paused'}):''}${anchors}${renderOfferingResearch(f,notice,{openPrimary:desktopOpen})}${hasValLadder?renderHemeiValuationLadder(f,desktopOpen):''}<section class="deal-section" id="paused-timeline"><header><h3>监管申报时间线</h3><button type="button" class="action-link-btn" data-open-regulatory="${escapeHtml(row.issuerId)}">完整监管档案 →</button></header>${p0RegulatoryTimeline(row.issuerId)}</section>${renderOfferingSources(f,notice,feeObj)}</article>`;
  }
 
- const mcapBn=Number.isFinite(Number(row.marketCapHkdBn))?Number(row.marketCapHkdBn):(record?.listingMarketCapSampleEligible&&Number.isFinite(Number(record.listingMarketCapHkdBn))?Number(record.listingMarketCapHkdBn):null);
+ const mcapBn=dossier?dossier.offer.postShares*dossier.offer.final/1e9:Number.isFinite(Number(row.marketCapHkdBn))?Number(row.marketCapHkdBn):(record?.listingMarketCapSampleEligible&&Number.isFinite(Number(record.listingMarketCapHkdBn))?Number(record.listingMarketCapHkdBn):null);
  const closeQ=record?.hkListingSessionClose,offerPrice=Number(row.offered?.price?.value);
  let debutHtml='';
  if(closeQ&&Number.isFinite(Number(closeQ.price))&&Number.isFinite(offerPrice)&&offerPrice>0){
@@ -8754,7 +8838,7 @@ function p0StandardDossier(row){
  (row.sources||[]).forEach((u,i)=>addSrc(u,`公告原件 ${i+1}`));
 
  const heading=`<header class="deal-header"><div><p><span class="deal-status-pill is-listed">已上市 ${row.listingDate||row.date}</span> · ${row.code}.HK${p0ShoeLabel(row)?' · '+p0ShoeLabel(row):''}</p><h2>${escapeHtml(row.name)}</h2></div><div class="deal-header-meta"><div class="deal-sponsors-line">${sponsorLinks}</div></div></header>`;
- return `<article class="deal-sheet" data-dossier-round="${escapeHtml(row.id)}">${heading}<dl class="deal-kpis">${stat('发行规模（绿鞋前 · HKD 百万）',row.offered?.gross?.value?feeRosterMillion(row.offered.gross.value):'—')}${stat('最终发售价（HKD／股）',`${row.offered?.price?.value?offeringNumber(row.offered.price.value,2):'—'}${debutHtml}`)}${stat('上市日总市值',mcapBn!==null?`HKD ${rmbYiFormatter.format(mcapBn*10)}亿`:'—')}${stat('承销合计上限',`${p0FeeRate(row,'upper')}<small>固定 ${p0FeeRate(row,'fixed')} · 酌情 ${p0FeeRate(row,'extra')}</small>`)}</dl>${RELAUNCH_COMPARISONS[row.code]?renderRelaunchComparisonPanel(row.code):''}<section class="deal-section"><header><h3>费用合同与保荐机构</h3><button type="button" class="action-link-btn" data-open-regulatory="${escapeHtml(row.issuerId)}">监管与申报档案 →</button></header><p class="deal-sponsors-line">${sponsorLinks}</p>${p0RoundFeeTerms(row)}</section><section class="deal-section"><header><h3>监管时间线</h3></header>${p0RegulatoryTimeline(row.issuerId)}</section><details class="deal-sources-fold" id="sources"><summary><span>公告与招股章程原件</span><small>展开备查链接</small></summary><div class="deal-sources-fold-body"><div class="consolidated-page-links">${srcItems.join('')}</div></div></details></article>`;
+ return `<article class="deal-sheet" data-dossier-round="${escapeHtml(row.id)}">${heading}<dl class="deal-kpis">${stat('发行规模（绿鞋前 · HKD 百万）',row.offered?.gross?.value?feeRosterMillion(row.offered.gross.value):'—')}${stat('最终发售价（HKD／股）',`${row.offered?.price?.value?offeringNumber(row.offered.price.value,2):'—'}${debutHtml}`)}${stat(dossier?'发行价总市值':'上市日总市值',mcapBn!==null?`HKD ${rmbYiFormatter.format(mcapBn*10)}亿`:'—')}${stat('承销合计上限',`${p0FeeRate(row,'upper')}<small>固定 ${p0FeeRate(row,'fixed')} · 酌情 ${p0FeeRate(row,'extra')}</small>`)}</dl>${RELAUNCH_COMPARISONS[row.code]?renderRelaunchComparisonPanel(row.code):''}<section class="deal-section"><header><h3>费用合同与保荐机构</h3><button type="button" class="action-link-btn" data-open-regulatory="${escapeHtml(row.issuerId)}">监管与申报档案 →</button></header><p class="deal-sponsors-line">${sponsorLinks}</p>${p0RoundFeeTerms(row)}</section>${dossier?p0DossierDisclosures(dossier):p0CornerstoneCoverageSection(row)}<section class="deal-section"><header><h3>监管时间线</h3></header>${p0RegulatoryTimeline(row.issuerId)}</section><details class="deal-sources-fold" id="sources"><summary><span>公告与招股章程原件</span><small>展开备查链接</small></summary><div class="deal-sources-fold-body"><div class="consolidated-page-links">${srcItems.join('')}</div></div></details></article>`;
 }
 function p0GlobalSearch(){
  const rawQ=document.getElementById('globalSearchInput').value,q=normalizeSearchText(rawQ),root=document.getElementById('globalSearchResults');if(!q){root.innerHTML='';return;}
@@ -8763,7 +8847,7 @@ function p0GlobalSearch(){
  const rounds=[...liveHits,...eligibleFeeRoster().filter(r=>feeRosterSearchText(r).includes(q))].slice(0,6),docs=eligibleOfferingDossiers().filter(d=>normalizeSearchText(['执行参考',...d.execution.flatMap(x=>[x.title,x.fact,x.action]),...d.float.accounts.flatMap(a=>[a.displayName,a.structure,a.legalHolder,a.economicParty])].join(' ')).includes(q));
  const execHits=eligibleOfferingDossiers().flatMap(d=>d.execution.filter(x=>normalizeSearchText(`执行参考 ${x.title} ${x.fact} ${x.action} ${d.issuer} ${d.code}`).includes(q)).map(x=>({d,x})));
  const seen=new Set(rounds.map(r=>r.id));for(const d of docs)if(!seen.has(d.roundId)){const r=eligibleFeeRoster().find(r=>r.id===d.roundId);if(r)rounds.push(r);}
- const csMatches=buildCornerstoneProfiles().filter(p=>normalizeSearchText([p.name,p.roleLabel,p.profile,...p.signatories.map(s=>s.name)].join(' ')).includes(q)).slice(0,4);
+ const csMatches=buildCornerstoneProfiles().filter(p=>normalizeSearchText([p.name,p.roleLabel,p.profile,...p.signatories.map(s=>s.name),...(p.allocations||[]).map(a=>a.label),...(p.relationships||[]).map(r=>`${r.role} ${r.name}`)].join(' ')).includes(q)).slice(0,4);
  const issuers=(state.data?.records||[]).filter(r=>normalizeSearchText([r.issuerName,r.csrcName,r.hkexCoverChineseName,r.aShareCode].join(' ')).includes(q)&&!rounds.some(o=>o.issuerId===r.id)).slice(0,5);
  const firms=[...new Map(eligibleFeeRoster().flatMap(r=>r.institutions).filter(i=>i.sponsorId&&normalizeSearchText(i.displayName+' '+i.legalName).includes(q)).map(i=>[i.sponsorId,i])).values()].slice(0,4);
  root.innerHTML=execHits.map(({d,x})=>`<a href="${escapeHtml(p0DossierUrl(d.roundId))}#execution" data-global-round="${escapeHtml(d.roundId)}"><span class="exec-ref-tag">执行参考</span> ${escapeHtml(x.title)} · ${escapeHtml(d.issuer)} (${d.code}) <small>${escapeHtml(x.fact)}</small></a>`).join('')
