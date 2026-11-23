@@ -4865,20 +4865,29 @@ const publicCornerstoneKey=s=>String(s||"").normalize("NFKC").toLowerCase().repl
 const publicCornerstoneRegistryByName=new Map(publicCornerstoneRegistry.flatMap(e=>e.names.map(n=>[publicCornerstoneKey(n),e])));
 const publicCornerstoneRegistryByAllocation=new Map(publicCornerstoneRegistry.flatMap(e=>(e.exactAllocations||[]).map(n=>[n,e])));
 const cornerstoneManagerRole=/^(?:投資|投资|基金|酌情|簽約|签约|相關|相关|代表基金|主要|受委託|受委托|副投資|副投资).*(?:管理人|管理機構|管理机构|管理代理人)$/;
+const verifiedCornerstoneBrandRows = {"offering:03308:2026-07-22:cornerstone:3":{"entity":"hhlra","label":"HHLRA","shares":2369550,"amount":"2322159000.00","bucket":"合计披露","detail":"HACF, L.P.；加拿大养老基金投资公司、阿布扎比投资局独立专户","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=289"},"offering:02475:2026-06-30:cornerstone:3":{"entity":"hhlra","label":"HHLRA (fund account)","shares":24765100,"amount":"1567135528.00","bucket":"管理基金","detail":"HACF, L.P.（招股书列名载体）","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000097.pdf#page=266"},"offering:02475:2026-06-30:cornerstone:4":{"entity":"hhlra","label":"HHLRA (CPP Investments SMA)","shares":1857300,"amount":"117529944.00","bucket":"独立专户","detail":"加拿大养老基金投资公司专户","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801342.pdf#page=6"},"offering:03661:2026-06-17:cornerstone:12":{"entity":"hhlra","label":"HHLRA (fund allocation)","shares":3586200,"amount":"305544240.00","bucket":"管理基金","detail":"HACF, L.P.（权益披露列名）","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0625/2026062502076.pdf#page=6"},"offering:03661:2026-06-17:cornerstone:13":{"entity":"hhlra","label":"HHLRA (CPP Investments SMA)","shares":919500,"amount":"78341400.00","bucket":"独立专户","detail":"加拿大养老基金投资公司专户","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0625/2026062502076.pdf#page=6"},"offering:03308:2026-07-22:cornerstone:6":{"entity":"blackrock-brand","label":"BlackRock","shares":1974600,"amount":"1935108000.00","bucket":"合计披露","detail":"贝莱德旗下投资管理子公司酌情管理的基金及独立专户","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=290"},"offering:07666:2026-05-05:cornerstone:1":{"entity":"blackrock-brand","label":"BlackRock","shares":37304500,"amount":"391697250.00","bucket":"合计披露","detail":"协议列名基金及机构包括英国矿工养老金、韩国国民年金及加拿大公共部门养老金投资委员会","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500020_c.pdf#page=383"},"offering:06880:2026-06-29:cornerstone:3":{"entity":"blackrock-brand","label":"BlackRock","shares":662680,"amount":"195888208.00","bucket":"合计披露","detail":"协议列名基金及机构包括 Future of Transport Fund、韩国国民年金及 Government Employees Pension Fund","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900057.pdf#page=424"},"offering:01879:2026-04-20:cornerstone:4":{"entity":"blackrock-brand","label":"BlackRock","shares":641355,"amount":"117496236.00","bucket":"合计披露","detail":"协议列名基金及机构包括 China Fund、加拿大公共部门养老金投资委员会及韩国国民年金","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000021.pdf"},"offering:01768:2026-01-20:cornerstone:3":{"entity":"blackrock-brand","label":"BlackRock","shares":1153000,"amount":"272799800.00","bucket":"合计披露","detail":"协议列名基金及机构包括 IBERCAJA EMERGENTES、China Fund 和韩国国民年金","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0120/2026012000025.pdf"}};
+const verifiedCornerstoneBrands = {
+ hhlra:{id:"hhlra",name:"高瓴",type:"asset_mgmt",label:"基金及专户管理",names:["HHLR Advisors, Ltd.","Hillhouse Investment Management, Ltd.","HACF, L.P.","高瓴"],
+  description:"HHLR Advisors 与 Hillhouse Investment Management 由同一方控制。以下按每宗获配的基金、专户或合计披露金额列示。",
+  source:"https://www.sec.gov/Archives/edgar/data/1762304/000091957426003551/xslForm13F_X01/primary_doc.xml",
+  contextSource:"https://reports.adviserinfo.sec.gov/reports/ADV/166112/PDF/166112.pdf"},
+ "blackrock-brand":{id:"blackrock-brand",name:"贝莱德",type:"international",label:"国际资产管理",names:["BlackRock, Inc.","BlackRock Funds","贝莱德"],
+  description:"旗下投资管理公司代表基金及客户专户管理。逐宗列示配发公告的合计与招股文件中列名的参与方。",
+  source:"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=290"}
+};
+function cornerstoneBrandProof(a){
+ const v=verifiedCornerstoneBrandRows[a?.id];
+ return v&&a.label===v.label&&a.quantity===v.shares&&a.amountHkd===v.amount?v:null;
+}
 function cornerstoneAllocationIdentity(a){
+ const brand=cornerstoneBrandProof(a);
+ if(brand)return verifiedCornerstoneBrands[brand.entity];
  const exact=publicCornerstoneRegistryByAllocation.get(a.id);
  if(exact){
   const proof=exact.exactAllocationProofs?.[a.id];
   if(!proof)return exact;
   return a.label===proof.exactLabel&&a.quantity===proof.shares&&a.amountHkd===proof.amountHkd&&
    JSON.stringify(a.legalNames)===JSON.stringify(proof.legalNames)?exact:null;
- }
- if(/^offering:03308:2026-07-22:cornerstone:3$/.test(a.id)&&a.quantity===2369550&&a.amountHkd==="2322159000.00"&&
-    /^(?:HHLRA|HHLR Advisors,? Ltd\.?)$/i.test(a.label)){
-  return {id:"hhlra",name:"高瓴",type:"asset_mgmt",label:"基金及专户管理",names:["HHLR Advisors, Ltd.","HACF, L.P.","加拿大养老基金投资公司","阿布扎比投资局"],
-   description:"中际旭创：HHLR Advisors 代表基金和专户酌情管理。招股书列明开曼有限合伙基金 HACF, L.P.，以及加拿大养老基金投资公司和阿布扎比投资局的独立专户；最终配发按 HHLRA 合计披露。",
-   source:"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0729/2026072901629.pdf#page=4",
-   contextSource:"https://www.sec.gov/Archives/edgar/data/1762304/000091957426003551/xslForm13F_X01/primary_doc.xml"};
  }
  if(a.id==="offering:03308:2026-07-22:cornerstone:27"&&a.label==="CPP Investments"&&a.quantity===394900&&a.amountHkd==="387002000.00"
     &&a.legalNames?.length===1&&a.legalNames[0]==="Canada Pension Plan Investment Board"){
@@ -5114,11 +5123,10 @@ function buildCornerstoneProfiles() {
     const row=rosterByRound.get(offer.roundId), sponsorList=(row?.institutions||[]).map(i=>({name:i.displayName,sponsorId:i.sponsorId}));
     const allocations=new Map(offer.allocations.map(a=>[a.id,a]));
     for(const group of offer.groups.flatMap(g=>{
-      if(g.id!=="cs:allocation:1e2bff0dde2457cb2355"||g.allocationIds.length!==2)return [g];
-      const pensionId="offering:02475:2026-06-30:cornerstone:4";
-      if(!g.allocationIds.includes(pensionId)||cornerstoneAllocationIdentity(allocations.get(pensionId))?.id!=="cpp-sma-hhlra")return [g];
-      return [{...g,allocationIds:g.allocationIds.filter(x=>x!==pensionId)},
-        {...g,id:g.id+":cpp-sma",allocationIds:[pensionId],aliases:[],name:"HHLRA (CPP Investments SMA)"}];
+      const classes=g.allocationIds.map(id=>cornerstoneAllocationIdentity(allocations.get(id))?.id);
+      if(g.allocationIds.length<2 || classes.every(c=>c===classes[0]) || !g.allocationIds.some(id=>cornerstoneBrandProof(allocations.get(id))))return [g];
+      return g.allocationIds.map((id,i)=>({...g,id:i?g.id+":"+i:g.id,aliases:i?[]:g.aliases,
+        allocationIds:[id],name:allocations.get(id).label}));
     })){
       const members=group.allocationIds.map(id=>allocations.get(id)), quantity=members.reduce((n,a)=>n+a.quantity,0), amount=members.reduce((n,a)=>n+Number(a.amountHkd),0);
       const names=[...new Set(members.flatMap(a=>a.legalNames))], relations=[...new Map(members.flatMap(a=>a.relationships).map(r=>[`${r.role}\n${r.name}\n${r.source}`,r])).values()];
@@ -5145,6 +5153,19 @@ function buildCornerstoneProfiles() {
   return cornerstoneSortProfiles(cornerstoneMergeProfiles(profiles));
 }
 
+
+function renderCornerstoneBrandBreakdown(p) {
+ const verified=p.allocations?.map(a=>({a,v:cornerstoneBrandProof(a)})).filter(x=>x.v&&x.v.entity===p.entity?.id)||[];
+ if (!verified.length) return "";
+ const totals=new Map();
+ for (const {a,v} of verified) totals.set(v.bucket,(totals.get(v.bucket)||0n)+cornerstoneMoneyCents(a.amountHkd));
+ const order=["自有资金","管理基金","独立专户","合计披露"];
+ const items=verified.map(({a,v})=>{
+  const d=p.deals.find(d=>a.id.startsWith(d.roundId+":"));
+  return `<div><div><strong>${escapeHtml(d?d.issuer+" ("+d.code+")":a.label)}</strong><small>${escapeHtml(v.bucket)} · ${escapeHtml(v.detail)}</small></div><span class="col-num">${formatChineseUnitAmount(Number(a.amountHkd),"HKD")}</span>${feeRosterSource(a.source,"配发结果 ↗")}${feeRosterSource(v.source,"认购架构 ↗")}</div>`;
+ });
+ return `<section class="deal-section"><header><h3>按获配渠道</h3></header><dl class="deal-facts">${order.filter(k=>totals.has(k)).map(k=>`<div><dt>${k}</dt><dd>${formatChineseUnitAmount(cornerstoneNumberFromCents(totals.get(k)),"HKD")}</dd></div>`).join("")}</dl><div class="deal-allocation-list">${items.join("")}</div></section>`;
+}
 
 function renderCornerstones() {
   const listWrap = document.getElementById("cornerstoneListWrap");
@@ -5250,7 +5271,7 @@ function renderCornerstones() {
           ${activeProfile.signatories.length?`<h4>${activeProfile.allocations?'披露法律认购名':'法律签约实体'}（${activeProfile.signatories.length} 名）</h4>`:''}
           <ul class="offering-cornerstone-members">${activeProfile.signatories.map(s => `<li><div><strong>${escapeHtml(s.name)}</strong><span class="col-num">${s.amount ? `${escapeHtml(s.currency)} ${offeringNumber(s.amount, 0)}` : ""}</span></div><p>${escapeHtml(s.type)} · ${escapeHtml(s.capacity)}${s.manager ? ` · 管理人：${escapeHtml(s.manager)}` : ""}${s.feesIncluded ? " · 含经纪佣金及征费" : ""}</p></li>`).join("")}</ul>
         </section>
-        ${activeProfile.allocations?`<section class="deal-section"><header><h3>获配明细</h3></header><div class="deal-allocation-list">${activeProfile.allocations.map(a=>`<div><strong>${escapeHtml(a.label)}</strong><span class="col-num">${offeringNumber(a.quantity)} ${cornerstoneUnit(activeProfile.deals[0].unit)} · HKD ${offeringNumber(a.amountHkd,2)}</span>${feeRosterSource(a.source,'原件 ↗')}</div>`).join('')}</div>${activeProfile.relationships.length?`<details class="deal-light-detail"><summary>认购关系</summary>${activeProfile.relationships.map(r=>`<p>${escapeHtml(r.role)}：${escapeHtml(r.name)} ${feeRosterSource(r.source,'原件 ↗')}</p>`).join('')}</details>`:''}</section>`:''}
+        ${renderCornerstoneBrandBreakdown(activeProfile) || (activeProfile.allocations?`<section class="deal-section"><header><h3>获配明细</h3></header><div class="deal-allocation-list">${activeProfile.allocations.map(a=>`<div><strong>${escapeHtml(a.label)}</strong><span class="col-num">${offeringNumber(a.quantity)} ${cornerstoneUnit(activeProfile.deals[0].unit)} · HKD ${offeringNumber(a.amountHkd,2)}</span>${feeRosterSource(a.source,'原件 ↗')}</div>`).join('')}</div>${activeProfile.relationships.length?`<details class="deal-light-detail"><summary>认购关系</summary>${activeProfile.relationships.map(r=>`<p>${escapeHtml(r.role)}：${escapeHtml(r.name)} ${feeRosterSource(r.source,'原件 ↗')}</p>`).join('')}</details>`:''}</section>`:'')}
         <section class="deal-section">
           <header><h3>联动保荐机构（Co-Sponsor Affinity）</h3></header>
           <p class="cs-profile-sub">同单保荐及协调机构：</p>
