@@ -3266,14 +3266,10 @@ function p0ComparableSponsorFee(r,currency='HKD') {
  const source=sp.source||'',documentUrl=source.split('#')[0];
  if(!/^https:\/\//.test(source)||!(r.sources||[]).includes(documentUrl))return null;
  let multiplier=1;
- if(sp.fallback){
-  const record=state.data?.records?.find(x=>x.id===r.issuerId);
-  if(record?.hkexListingStockCode!==r.code||record?.hkexProspectusDate!==r.prospectusDate||record?.hkexListingDate!==r.listingDate)return null;
-  // The fallback only carries an explicit amount scope when the source gives a per-sponsor count.
-  if(sp.scope!=='per_sponsor')return null;
- }
+ // An unreviewed tracker amount may already be an aggregate; count is not amount scope.
+ if(sp.fallback)return null;
  if(sp.scope==='per_sponsor'){
-  const count=sp.fallback?state.data?.records?.find(x=>x.id===r.issuerId)?.listingFeeTerms?.fee?.perSponsorCount:sp.perSponsorCount;
+  const count=sp.perSponsorCount;
   if(!Number.isInteger(count)||count<1)return null;
   multiplier=count;
  }else if(!['sole_sponsor','joint_aggregate','engagement'].includes(sp.scope))return null;
@@ -6816,13 +6812,13 @@ function p0EffectiveSponsorFee(r) {
  if(!fb||fb.value==null||!Number.isFinite(Number(fb.value)))return null;
  const page=Array.isArray(fb.pages)&&fb.pages[0]?fb.pages[0]:null;
  const source=ft?.url?(page?`${ft.url}#page=${page}`:ft.url):'';
- const scopeLabel=fb.perSponsorCount?`每家 · 共${fb.perSponsorCount}家`:(r.institutions?.length===1?'独家':'招股书披露');
+ const scopeLabel=r.institutions?.length===1?'独家':'招股书披露';
  return {
   currency:fb.currency,
   value:fb.value,
   approximate:Boolean(ft?.feeApprox&&!ft?.fee),
-  exactComparisonEligible:!(ft?.feeApprox&&!ft?.fee),
-  scope:fb.perSponsorCount?'per_sponsor':(r.institutions?.length===1?'sole_sponsor':'disclosed'),
+  exactComparisonEligible:false,
+  scope:r.institutions?.length===1?'sole_sponsor':'disclosed',
   scopeLabel,
   source,
   fallback:true

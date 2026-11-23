@@ -3677,7 +3677,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083100047.pdf#page=332",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083100047.pdf#page=332",
       "upperBps": 250,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1500000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083100047.pdf#page=578"
+      },
       "nameEn": "Shenzhen Longsys Electronics Co., Ltd.",
       "aliases": [
         "Shenzhen Longsys Electronics Co., Ltd.",
@@ -3884,7 +3891,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -4056,7 +4063,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400017.pdf#page=303",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400017.pdf#page=303",
       "upperBps": 400,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400017.pdf#page=419"
+      },
       "nameEn": "Mech-Mind Robotics Technologies Co., Ltd. - H Shares",
       "aliases": [
         "Mech-Mind Robotics Technologies Co., Ltd. - H Shares",
@@ -4263,7 +4277,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -4290,7 +4304,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400019.pdf#page=304",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400019.pdf#page=304",
       "upperBps": 225,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "900000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400019.pdf#page=475"
+      },
       "nameEn": "SHEIN Global Holdings Limited - W",
       "aliases": [
         "SHEIN Global Holdings Limited - W",
@@ -4487,7 +4508,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -4979,7 +5000,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=308",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=308",
       "upperBps": 80,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "2000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=471"
+      },
       "nameEn": "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
       "aliases": [
         "ZHONGJI INNOLIGHT CO., LTD. - H Shares",
@@ -5184,7 +5212,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -6863,7 +6891,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000041.pdf#page=274",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000041.pdf#page=274",
       "upperBps": 200,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "600000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000041.pdf#page=454"
+      },
       "nameEn": "Guangdong Dtech Technology Co., Ltd.",
       "aliases": [
         "Guangdong Dtech Technology Co., Ltd.",
@@ -7071,7 +7106,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -8040,7 +8075,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900057.pdf#page=305",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900057.pdf#page=305",
       "upperBps": 350,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900057.pdf#page=444"
+      },
       "nameEn": "MOMENTA GLOBAL LIMITED - W",
       "aliases": [
         "MOMENTA GLOBAL LIMITED - W",
@@ -8242,7 +8284,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -8501,7 +8543,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/2026062300037.pdf#page=260",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/2026062300037.pdf#page=260",
       "upperBps": 120,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "600000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/2026062300037.pdf#page=406"
+      },
       "nameEn": "Anker Innovations Technology Co., Ltd.",
       "aliases": [
         "Anker Innovations Technology Co., Ltd.",
@@ -8715,7 +8764,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -16174,7 +16223,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500019.pdf#page=293",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500019.pdf#page=293",
       "upperBps": 400,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1050000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500019.pdf#page=402"
+      },
       "nameEn": "Metis TechBio Co., Ltd. - P",
       "aliases": [
         "Metis TechBio Co., Ltd. - P",
@@ -16393,7 +16449,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -16420,7 +16476,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500023.pdf#page=300",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500023.pdf#page=300",
       "upperBps": 550,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500023.pdf#page=394"
+      },
       "nameEn": "IMPACT Therapeutics, Inc. - B",
       "aliases": [
         "IMPACT Therapeutics, Inc. - B",
@@ -16633,7 +16696,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -16660,7 +16723,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0430/2026043000099.pdf#page=265",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0430/2026043000099.pdf#page=265",
       "upperBps": 450,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "500000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0430/2026043000099.pdf#page=441"
+      },
       "nameEn": "SHENZHEN LDROBOT CO., LTD",
       "aliases": [
         "SHENZHEN LDROBOT CO., LTD",
@@ -16867,7 +16937,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -17582,7 +17652,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000011.pdf#page=302",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000011.pdf#page=302",
       "upperBps": 400,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042000011.pdf#page=426"
+      },
       "nameEn": "Mabwell (Shanghai) Bioscience Co., Ltd. - B",
       "aliases": [
         "Mabwell (Shanghai) Bioscience Co., Ltd. - B",
@@ -17793,7 +17870,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -18577,7 +18654,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900047.pdf#page=287",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900047.pdf#page=287",
       "upperBps": 300,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "500000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900047.pdf#page=483"
+      },
       "nameEn": "Gpixel Changchun Microelectronics Inc.",
       "aliases": [
         "Gpixel Changchun Microelectronics Inc.",
@@ -18784,7 +18868,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -18811,7 +18895,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900025.pdf#page=283",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900025.pdf#page=283",
       "upperBps": 600,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900025.pdf#page=422"
+      },
       "nameEn": "Manycore Tech Inc.",
       "aliases": [
         "Manycore Tech Inc.",
@@ -19015,7 +19106,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -19042,7 +19133,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0408/2026040800017.pdf#page=274",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0408/2026040800017.pdf#page=274",
       "upperBps": 350,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "900000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0408/2026040800017.pdf#page=390"
+      },
       "nameEn": "Sigenergy Technology Co., Ltd.",
       "aliases": [
         "Sigenergy Technology Co., Ltd.",
@@ -19248,7 +19346,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -20593,7 +20691,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031600013.pdf#page=288",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031600013.pdf#page=288",
       "upperBps": 350,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "4000000",
+        "currency": "HKD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031600013.pdf#page=461"
+      },
       "nameEn": "Zhejiang Galaxis Technology Group Co., Ltd. - H Shares",
       "aliases": [
         "Zhejiang Galaxis Technology Group Co., Ltd. - H Shares",
@@ -20784,7 +20889,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -23135,7 +23240,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/2026020300009.pdf#page=375",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/2026020300009.pdf#page=375",
       "upperBps": 200,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "600000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/2026020300009.pdf#page=591"
+      },
       "nameEn": "WUXI LEAD INTELLIGENT EQUIPMENT CO., LTD. - H shares",
       "aliases": [
         "WUXI LEAD INTELLIGENT EQUIPMENT CO., LTD. - H shares",
@@ -23343,7 +23455,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -25251,7 +25363,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0120/2026012000025.pdf#page=359",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0120/2026012000025.pdf#page=359",
       "upperBps": 400,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "700000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0120/2026012000025.pdf#page=596"
+      },
       "nameEn": "BUSY MING GROUP CO., LTD.- H shares",
       "aliases": [
         "BUSY MING GROUP CO., LTD.- H shares",
@@ -25443,7 +25562,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -25711,7 +25830,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100035.pdf#page=366",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100035.pdf#page=366",
       "upperBps": 80,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "200000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100035.pdf#page=597"
+      },
       "nameEn": "GigaDevice Semiconductor Inc. - H shares",
       "aliases": [
         "GigaDevice Semiconductor Inc. - H shares",
@@ -25918,7 +26044,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -26419,7 +26545,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100037.pdf#page=502",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100037.pdf#page=502",
       "upperBps": 450,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100037.pdf#page=723"
+      },
       "nameEn": "Suzhou Ribo Life Science Co., Ltd. - B - H shares",
       "aliases": [
         "Suzhou Ribo Life Science Co., Ltd. - B - H shares",
@@ -26628,7 +26761,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -26895,7 +27028,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100025.pdf#page=498",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100025.pdf#page=498",
       "upperBps": 350,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "2000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100025.pdf#page=710"
+      },
       "nameEn": "MiniMax Group Inc. - W - P",
       "aliases": [
         "MiniMax Group Inc. - W - P",
@@ -27099,7 +27239,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
@@ -27354,7 +27494,14 @@
       "commissionSource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/2025123000029.pdf#page=530",
       "discretionarySource": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/2025123000029.pdf#page=530",
       "upperBps": 400,
-      "sponsorFee": null,
+      "sponsorFee": {
+        "value": "1000000",
+        "currency": "USD",
+        "scope": "joint_aggregate",
+        "approximate": false,
+        "exactComparisonEligible": true,
+        "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1230/2025123000029.pdf#page=701"
+      },
       "nameEn": "Shenzhen Edge Medical Co., Ltd.- B - H shares",
       "aliases": [
         "Shenzhen Edge Medical Co., Ltd.- B - H shares",
@@ -27564,7 +27711,7 @@
         "fixed": "confirmed",
         "extra": "confirmed",
         "upper": "confirmed",
-        "sponsor": "unverified"
+        "sponsor": "confirmed"
       },
       "actualStatus": "confirmed",
       "expenseSnapshot": null
