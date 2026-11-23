@@ -4308,6 +4308,30 @@ function renderFeeDealRankLane(all, rows) {
   <div class="fel-grid">${cardsHtml}</div>`;
 }
 
+function listingDebutClose(record, round) {
+ const date=round?.listingDate, code=round?.code;
+ if(!record || round?.route!=="listed_offering" || record.id!==round.issuerId ||
+    !/^\d{5}$/.test(code||"") || record.hkexListingStockCode!==code ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(date||"") || record.hkexListingDate!==date ||
+    (round.prospectusDate && record.hkexProspectusDate!==round.prospectusDate) ||
+    round.offered?.currency!=="HKD")return null;
+ const validPrice=v=>/^(?:\d+)(?:\.\d+)?$/.test(String(v??"")) && Number.isFinite(Number(v)) && Number(v)>0;
+ const priced=q=>q?.priceDate===date && q?.priceCurrency==="HKD" && validPrice(q.price);
+ const kinds=new Set(["official_close","unadjusted_vendor_close"]);
+ const https=url=>typeof url==="string" && /^https:\/\//i.test(url);
+ const direct=record.hkListingSessionClose;
+ if(priced(direct)&&kinds.has(direct.priceKind)&&https(direct.sourceUrl))return direct;
+ const provenance=record.listingMarketCapProvenance;
+ if(provenance?.status!=="verified" || provenance?.policy!=="ah_components_ex_treasury" || provenance?.anchorDate!==date)return null;
+ const legs=Array.isArray(provenance.components)?provenance.components.filter(c=>c?.class==="H"&&c.securityCode===code):[];
+ if(legs.length!==1)return null;
+ const leg=legs[0], evidence=leg.priceEvidence, facts=evidence?.facts;
+ if(leg.priceStatus!=="verified" || !priced(leg) || !kinds.has(leg.priceKind) || !https(evidence?.sourceUrl) ||
+    facts?.class!=="H" || facts.securityCode!==code || facts.priceDate!==date || facts.priceCurrency!=="HKD" ||
+    facts.priceKind!==leg.priceKind || !validPrice(facts.price) || Number(facts.price)!==Number(leg.price))return null;
+ return {price:leg.price,priceDate:leg.priceDate,priceCurrency:leg.priceCurrency,priceKind:leg.priceKind,sourceUrl:evidence.sourceUrl};
+}
+
 function renderFeeRosterRow(r) {
  const n=p0FeeAmount(r,state.shoeBasis),sponsor=p0SponsorFeeHtml(r,false);
  const isPaused=state.feePhase==='paused',isBook=state.feePhase==='bookbuilding'||r.route==='bookbuilding',isNonOffer=r.route==='transfer'||r.route==='introduction';
@@ -4330,7 +4354,7 @@ function renderFeeRosterRow(r) {
  const rateCell=k=>isNonOffer?'<span class="data-missing">不适用</span>':p0FeeRate(r,k);
  const spCell=isNonOffer?'<span class="data-missing">不适用</span>':sponsor;
  const mcapBn=Number.isFinite(Number(r.marketCapHkdBn))?Number(r.marketCapHkdBn):(rec?.listingMarketCapSampleEligible&&Number.isFinite(Number(rec.listingMarketCapHkdBn))?Number(rec.listingMarketCapHkdBn):null);
- const closeQ=rec?.hkListingSessionClose,offerPrice=Number(r.offered?.price?.value);
+ const closeQ=listingDebutClose(rec,r),offerPrice=Number(r.offered?.price?.value);
  let closeHint='';
  if(closeQ&&Number.isFinite(Number(closeQ.price))&&Number.isFinite(offerPrice)&&offerPrice>0){
   const rawChg=(Number(closeQ.price)/offerPrice-1)*100,chg=Math.abs(rawChg)<0.05?0:rawChg;
@@ -4833,7 +4857,89 @@ function p0CornerstoneCoverageSection(row){
  const sources=offer.sources.map(u=>feeRosterSource(u,'原件 ↗')).join(' ');
  if(offer.status==='confirmed_zero')return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石配售</h3></header><p>未披露基石配售</p><div class="consolidated-page-links">${sources}</div></section>`;
  const profiles=buildCornerstoneProfiles().filter(p=>p.allocationIds?.length&&p.deals.some(d=>d.roundId===row.id));
- return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石获配 · ${offeringNumber(offer.quantity)} ${cornerstoneUnit(offer.unit)}</h3></header><dl class="deal-facts"><div><dt>${offer.allocations.length?'按最终发售价':'仅发行总额'}</dt><dd>HKD ${feeRosterMillion(offer.amountHkd)} 百万</dd></div></dl>${offer.offerStructure?`<dl class="deal-facts"><div><dt>发售结构</dt><dd>股东出售 · ${offeringNumber(offer.offerStructure.offeredQuantity)} ${cornerstoneUnit(offer.unit)}</dd></div><div><dt>发行人所得</dt><dd>HKD ${offeringNumber(offer.offerStructure.issuerGrossHkd,2)} ${feeRosterSource(offer.offerStructure.source,'原件 ↗')}</dd></div></dl>`:''}${profiles.length?`<div class="deal-allocation-list">${profiles.map(p=>`<div><button type="button" class="cs-inline-jump" data-open-cornerstone="${escapeHtml(p.id)}">${escapeHtml(p.name)} <small>画像 →</small></button><strong class="col-num">${escapeHtml(p.deals[0].commitmentText)}</strong></div>`).join('')}</div>`:''}<div class="consolidated-page-links">${sources}</div></section>`;
+ return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石获配 · ${offeringNumber(offer.quantity)} ${cornerstoneUnit(offer.unit)}</h3></header><dl class="deal-facts"><div><dt>${offer.allocations.length?'按最终发售价':'仅发行总额'}</dt><dd>HKD ${feeRosterMillion(offer.amountHkd)} 百万</dd></div></dl>${offer.offerStructure?`<dl class="deal-facts"><div><dt>发售结构</dt><dd>股东出售 · ${offeringNumber(offer.offerStructure.offeredQuantity)} ${cornerstoneUnit(offer.unit)}</dd></div><div><dt>发行人所得</dt><dd>HKD ${offeringNumber(offer.offerStructure.issuerGrossHkd,2)} ${feeRosterSource(offer.offerStructure.source,'原件 ↗')}</dd></div></dl>`:''}${profiles.length?`<div class="deal-allocation-list">${profiles.map(p=>`<div><button type="button" class="cs-inline-jump" data-open-cornerstone="${escapeHtml(p.id)}">${escapeHtml(p.name)} <small>画像 →</small></button><strong class="col-num">${escapeHtml(p.deals.find(d=>d.roundId===row.id).commitmentText)}</strong></div>`).join('')}</div>`:''}<div class="consolidated-page-links">${sources}</div></section>`;
+}
+
+const publicCornerstoneRegistry = [{"id":"transsion","name":"传音控股","type":"strategic","label":"产业投资","description":"A+H上市公司 · 智能终端与移动互联网（688036.SH／02636.HK）；传音国际经深圳市泰衡诺科技有限公司持有。","source":"https://www.hkexnews.hk/listedco/listconews/sehk/2026/1104/2026110402294_c.pdf","contextSource":"https://www.transsion.com/zh-CN/about","names":["Shenzhen Transsion Holdings Co., Ltd.","深圳传音控股股份有限公司","深圳傳音控股股份有限公司"],"exactAllocations":["offering:02681:2026-10-30:cornerstone:3"]},{"id":"gf-fund","name":"广发基金","type":"public_fund","label":"内地公募管理人","description":"广发基金管理有限公司 · 旗下境内及香港管理实体","source":"https://www.gffunds.com.cn/gywm/gsjj/","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000027.pdf#page=271","names":["GF Fund Management Co., Ltd.","GF International Investment Management Limited","廣發基金管理有限公司","广发基金管理有限公司","廣發國際資產管理有限公司","广发国际资产管理有限公司"],"displayAliases":["GF Fund","GF Fund HK","GF Fund Management","GF Fund Management (Hong Kong) Co., Limited"],"exactAllocations":["offering:09856:2026-09-14:cornerstone:16"]},{"id":"fullgoal","name":"富国基金","type":"public_fund","label":"内地公募管理人","description":"富国基金管理有限公司 · 富国香港为其全资子公司","source":"https://www.fullgoal.com.cn/main/AboutFuguo/CompanyProfile/index.html","contextSource":"https://www.fullgoal.com.hk/hken/enAboutUs/index.html","names":["Fullgoal Fund Management Co., Ltd.","Fullgoal Fund Management Company Limited","Fullgoal Asset Management (HK) Limited","富國基金管理有限公司","富国基金管理有限公司","富國資產管理（香港）有限公司","富国资产管理（香港）有限公司"]},{"id":"e-fund","name":"易方达基金","type":"public_fund","label":"内地公募管理人","description":"易方达基金管理有限公司 · 旗下境内及香港管理实体","source":"https://www.efunds.com.hk/sc/aboutus/","contextSource":"https://www.efunds.com.hk/uploadfiles/files/2026_02_13/_61WakUfaMo.pdf","names":["E Fund Management Co., Ltd.","E Fund Management (Hong Kong) Co., Ltd.","E Fund Management (Hong Kong) Co., Limited","易方達基金管理有限公司","易方达基金管理有限公司","易方達資產管理（香港）有限公司","易方达资产管理（香港）有限公司"],"displayAliases":["E Fund","易方达"]},{"id":"ubs-am-sg","name":"瑞银资产管理（新加坡）","type":"international","label":"国际资产管理","description":"新加坡金融管理局名录所列的基金管理机构。","source":"https://eservices.mas.gov.sg/fid/institution/detail/773-UBS-ASSET-MANAGEMENT-SINGAPORE-LTD","contextSource":"https://eservices.mas.gov.sg/fid/institution/detail/773-UBS-ASSET-MANAGEMENT-SINGAPORE-LTD","names":["UBS Asset Management (Singapore) Ltd."]},{"id":"icbc-wealth","name":"工银理财","type":"bank_wm","label":"银行理财","description":"中国工商银行全资理财子公司。","source":"https://www.icbc.com.cn/icbc/gxk_1/12861.htm","contextSource":"https://www.icbc.com.cn/icbc/%E9%87%8D%E8%A6%81%E5%85%AC%E5%91%8A/%E5%85%B3%E4%BA%8E%E5%8F%98%E6%9B%B4%E9%83%A8%E5%88%86%E7%90%86%E8%B4%A2%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86%E4%BA%BA%E7%9A%84%E5%85%AC%E5%91%8A.htm","names":["ICBC Wealth Management Co., Ltd.","工银理财有限责任公司","工銀理財有限責任公司"]},{"id":"gic","name":"GIC（新加坡政府投资公司）","type":"sovereign","label":"主权财富管理机构","description":"新加坡政府全资拥有，受托管理新加坡外汇储备。","source":"https://www.gic.com.sg/who-we-are/faqs/","contextSource":"https://www.gic.com.sg/who-we-are/our-governance/","names":["GIC Private Limited"]},{"id":"taikang-life","name":"泰康人寿","type":"insurance","label":"保险机构","description":"泰康保险集团全资寿险子公司。","source":"https://images.taikang.com/informationFile/2025/01/15/ff74c243-e42d-43ca-9310-94d25f7dfdda.pdf","contextSource":"https://www.taikang.com/about/company-introduction","names":["Taikang Life Insurance Co., Ltd","Taikang Life Insurance Co., Ltd.","泰康人寿保险有限责任公司"]},{"id":"taikang-group","name":"泰康保险集团","type":"insurance","label":"保险集团","description":"业务涵盖保险、资产管理、医养，旗下泰康人寿为全资寿险子公司。","source":"https://www.taikang.com/about/company-introduction","contextSource":"https://images.taikang.com/informationFile/2025/01/15/ff74c243-e42d-43ca-9310-94d25f7dfdda.pdf","names":["Taikang Insurance Group Inc.","泰康保险集团股份有限公司"]},{"id":"hhlra","name":"HHLR Advisors（高瓴旗下）","type":"asset_mgmt","label":"私募资产管理","description":"高瓴集团旗下投资管理人，管理基金和独立委托账户。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0227/2026022700015.pdf","contextSource":"https://reports.adviserinfo.sec.gov/reports/ADV/166112/PDF/166112.pdf","names":["HHLR Advisors, Ltd."]},{"id":"3w","name":"3W Fund Management","type":"asset_mgmt","label":"香港私募资管","description":"香港持牌资产管理公司，为私募基金提供投资顾问与管理服务。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041500011.pdf","contextSource":"https://www.sec.gov/Archives/edgar/data/1700194/000092963818000308/a71439_sc13g.htm","names":["3W Fund Management Limited"]},{"id":"jpm-am-ap","name":"摩根资产管理（亚太）","type":"international","label":"国际资产管理","description":"摩根资产管理旗下亚太投资管理机构。","source":"https://am.jpmorgan.com/content/dam/jpm-am-aem/asiapacific/hk/en/literature/offering-document/offerdoc_jf.pdf","contextSource":"https://www.sfc.hk/en/regulatory-functions/corporates/takeovers-and-mergers/exempt-status/fund-managers","names":["JPMorgan Asset Management (Asia Pacific) Limited","摩根資產管理（亞太）有限公司"]},{"id":"eastspring-sg","name":"瀚亚投资（新加坡）","type":"international","label":"国际资产管理","description":"保诚集团旗下的瀚亚投资机构，获新加坡金融管理局基金管理许可。","source":"https://eservices.mas.gov.sg/fid/institution/detail/808-EASTSPRING-INVESTMENTS-SINGAPORE-LIMITED","contextSource":"https://www.eastspring.com/hkdocs/kfs/ei_asiaesgbondfund_kfs_en.pdf","names":["Eastspring Investments (Singapore) Limited"]},{"id":"eastspring-hk","name":"瀚亚投资（香港）","type":"international","label":"国际资产管理","description":"英国保诚集团全资附属公司。","source":"https://www.eastspring.com/hk/zh-cht/funddetails/eastspring-investments-asian-equity-fund-a/lu0163747925","contextSource":"https://www.eastspring.com/hk/zh-cht/funddetails/eastspring-investments-asian-equity-fund-a/lu0163747925","names":["Eastspring Investments (Hong Kong) Limited","瀚亞投資(香港)有限公司"]},{"id":"tencent","name":"腾讯控股","type":"strategic","label":"产业投资","description":"港股上市的互联网及科技集团；Huang River 为腾讯控股全资投资载体。","source":"https://www.tencent.com/zh-cn/investors/","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0120/2026012000025.pdf#page=339","names":["Tencent Holdings Limited","Huang River Investment Limited"]},{"id":"byd","name":"比亚迪","type":"strategic","label":"产业投资","description":"A+H 上市的新能源汽车产业集团；Golden Link Worldwide 经比亚迪香港由集团全资控制。","source":"https://www.byd.com/eu/blog/Hello-we-are-BYD.html","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1007/2026100700007.pdf#page=225","names":["BYD Company Limited","BYD (H.K.) Co., Limited","Golden Link Worldwide Limited"]},{"id":"longsys","name":"江波龙","type":"strategic","label":"产业投资","description":"A+H 上市的存储产品产业集团，江波龙投资有限公司为其全资子公司。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1007/2026100700007.pdf#page=215","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000025.pdf#page=269","names":["Shenzhen Longsys Electronics Co., Ltd.","Longsys Investment Co., Limited","深圳市江波龙电子股份有限公司"]},{"id":"greenwoods-hk","name":"香港景林","type":"asset_mgmt","label":"香港私募资管","description":"景林资产管理香港有限公司，主要投资大中华区企业；与上海景林互为关联公司，获配按对应法人及账户分列。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900048_c.pdf","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901954.pdf","names":["Greenwoods Asset Management Hong Kong Limited","景林資產管理香港有限公司","景林资产管理香港有限公司"]},{"id":"greenwoods-sh","name":"上海景林","type":"asset_mgmt","label":"内地私募资管","description":"上海景林资产管理有限公司，在中国证券投资基金业协会登记为私募基金管理人；通过掉期参与的逐笔保留交易对手和经济敞口。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0312/2026031200004_c.pdf","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0212/2026021201492.pdf","names":["Shanghai Greenwoods Asset Management Co., Ltd.","上海景林資產管理有限公司","上海景林资产管理有限公司"]},{"id":"perseverance-sg","name":"Perseverance Asset Management（新加坡）","type":"asset_mgmt","label":"私募资产管理","description":"新加坡持牌基金管理公司，与上海高毅为关联机构；认购按具名基金及独立账户披露。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0512/2025051200005.pdf","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040900048_c.pdf","names":["Perseverance Asset Management International (Singapore) Pte. Ltd."],"displayAliases":["Perseverance Asset Management"]},{"id":"wt-am","name":"WT Asset Management","type":"asset_mgmt","label":"香港私募资管","description":"香港持牌资产管理机构，旗下投资基金和独立管理账户逐笔列示。","source":"https://www.hkexnews.hk/listedco/listconews/sehk/2025/0908/11833388/2025090800058_c.pdf","contextSource":"https://www.hkexnews.hk/listedco/listconews/sehk/2025/0908/11833388/2025090800058_c.pdf","names":["WT Asset Management Limited"]},{"id":"gbadfm","name":"大湾区发展基金管理","type":"asset_mgmt","label":"香港资产管理","description":"大湾区发展基金管理有限公司，招股书披露可代表独立管理账户认购；账户、管理人及出资人分开标示。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400053.pdf","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400053.pdf","names":["Greater Bay Area Development Fund Management Limited","大灣區發展基金管理有限公司","大湾区发展基金管理有限公司"]},{"id":"boyu-sg","name":"博裕投资","type":"asset_mgmt","label":"私募投资管理","description":"博裕集团旗下新加坡投资管理机构；持新加坡金管局资本市场服务牌照。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0408/2026040800017.pdf","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2022/0927/2022092700168_c.pdf","names":["Boyu Capital Management (Singapore) Pte. Ltd."]},{"id":"pinpoint-hk","name":"Pinpoint Asset Management","type":"asset_mgmt","label":"香港私募资管","description":"香港持牌独立资产管理机构，为开曼基金等提供投资顾问服务。","source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/2026020300009.pdf","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/12010168/2026020300025.pdf","names":["Pinpoint Asset Management Limited"]},{"id":"millennium-sg","name":"Millennium Capital Management（新加坡）","type":"asset_mgmt","label":"私募资产管理","description":"新加坡持牌的 Millennium 集团投管机构；Integrated Core Strategies (Asia) 在招股书中为该机构酌情管理的基石投资主体。","source":"https://eservices.mas.gov.sg/fid/institution/detail/1739-MILLENNIUM-CAPITAL-MANAGEMENT-SINGAPORE-PTE-LTD","contextSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/2026020300009.pdf","names":["Millennium Capital Management (Singapore) Pte. Ltd.","Integrated Core Strategies (Asia) Pte. Ltd."]}];
+const publicCornerstoneKey=s=>String(s||"").normalize("NFKC").toLowerCase().replace(/[.,，。]/g,"").replace(/\s+/g," ").trim();
+const publicCornerstoneRegistryByName=new Map(publicCornerstoneRegistry.flatMap(e=>e.names.map(n=>[publicCornerstoneKey(n),e])));
+const publicCornerstoneRegistryByAllocation=new Map(publicCornerstoneRegistry.flatMap(e=>(e.exactAllocations||[]).map(n=>[n,e])));
+const cornerstoneManagerRole=/^(?:投資|投资|基金|酌情|簽約|签约|相關|相关|代表基金|主要|受委託|受委托|副投資|副投资).*(?:管理人|管理機構|管理机构|管理代理人)$/;
+function cornerstoneAllocationIdentity(a){
+ const exact=publicCornerstoneRegistryByAllocation.get(a.id);
+ if(exact)return exact;
+ const legal=a.legalNames||[], rel=a.relationships||[];
+ const managers=rel.filter(r=>cornerstoneManagerRole.test(r.role)&&!/(?:僅|仅|掉期|部分|非認購人|非认购人)/.test(r.role));
+ const managerKeys=new Set(managers.map(r=>publicCornerstoneKey(r.name)));
+ const trusted=managers.map(r=>publicCornerstoneRegistryByName.get(publicCornerstoneKey(r.name)));
+ const identified=legal.map(n=>publicCornerstoneRegistryByName.get(publicCornerstoneKey(n)));
+ const set=new Set([...trusted,...identified].filter(Boolean));
+ const unassigned=legal.some((n,i)=>!identified[i]&&!managerKeys.has(publicCornerstoneKey(n)));
+ // Unknown jointly allocated parties must not be assigned wholly to a known umbrella.
+ if(set.size!==1||trusted.some(x=>!x)||unassigned)return null;
+ // A covered mixed swap or explicit unaffiliated customer must retain its separate presentation.
+ if(rel.some(r=>/掉期|TRS|经济敞口|經濟敞口/.test(r.role)))return null;
+ const candidate=[...set][0];
+ if(candidate.id==="hhlra"&&[a.label,...legal,...rel.flatMap(r=>[r.role,r.name])].some(x=>/\bSMA\b|CPP Investments|Canada Pension|加拿大養老|加拿大养老|独立委托账户|獨立委託賬戶/i.test(x)))return null;
+ return candidate;
+}
+function cornerstoneFallbackClass(members){
+ const roles=members.flatMap(a=>(a.relationships||[]).map(r=>r.role));
+ if(roles.some(x=>/掉期|TRS/.test(x)))return ["swap","掉期安排"];
+ if(roles.some(x=>/^(个人认购方|個人認購方)$/.test(x)))return ["individual","个人认购"];
+ if(roles.some(x=>cornerstoneManagerRole.test(x)))return ["manager","披露投资管理关系"];
+ if(roles.some(x=>/^(普通合伙人|普通合夥人|基金普通合伙人|直接普通合伙人|受管理基金|基金受托人|列名基金载体|列名基金載體)$/.test(x)))return ["fund_vehicle","披露基金架构"];
+ if(roles.some(x=>/^(直接母公司|间接母公司|母公司|间接全资母公司|全资母公司|最终母公司|最终控制人|最终实益拥有人|唯一股东)$/.test(x)))return ["ownership","披露持股或控制关系"];
+ return ["disclosed","其他披露主体"];
+}
+const cornerstoneMoneyCents=v=>{const [a,b=""]=String(v||"0").split(".");return BigInt(a)*100n+BigInt((b+"00").slice(0,2));};
+const cornerstoneNumberFromCents=c=>Number(c)/100;
+const cornerstoneUniq=(a,key)=>[...new Map(a.map(x=>[key(x),x])).values()];
+function cornerstoneMergeProfiles(rows){
+ const grouped=new Map(), ungrouped=[];
+ for(const p of rows){
+  if(!p.entity){ungrouped.push(p);continue;}
+  (grouped.get(p.entity.id)||grouped.set(p.entity.id,[]).get(p.entity.id)).push(p);
+ }
+ for(const parts of grouped.values()){
+  const first=parts[0],entity=first.entity;
+  const allocations=cornerstoneUniq(parts.flatMap(x=>x.allocations),a=>a.id);
+  const byRound=new Map();
+  for(const row of parts)for(const d of row.deals){
+   const existing=byRound.get(d.roundId);
+   if(!existing)byRound.set(d.roundId,{...d});
+   else {
+    existing.cents+=d.cents;existing.units+=d.units;
+    existing.shares=existing.unit==="HDR"?null:existing.units;
+   }
+  }
+  const deals=[...byRound.values()].sort((a,b)=>a.cents===b.cents?b.date.localeCompare(a.date):a.cents>b.cents?-1:1);
+  for(const d of deals) {
+   d.commitmentText=formatChineseUnitAmount(cornerstoneNumberFromCents(d.cents),"HKD");
+   d.rawCommitment=`按最终发售价折算 · ${offeringNumber(d.units)} ${cornerstoneUnit(d.unit)}`;
+   d.ratioText=d.offeredQuantity?`${offeringNumber(d.units/d.offeredQuantity*100,2)}% 发售${d.unit==="HDR"?" HDR":"股"}`:"";
+  }
+  const cents=allocations.reduce((n,a)=>n+cornerstoneMoneyCents(a.amountHkd),0n);
+  const sources=cornerstoneUniq([{label:"机构背景与分类",url:entity.source},...(entity.contextSource?[{label:"机构关系原件",url:entity.contextSource}]:[]),...parts.flatMap(x=>x.sources)],s=>s.url);
+  ungrouped.push({...first,id:`cs:institution:${entity.id}`,aliases:[...new Set(parts.flatMap(x=>[x.id,...x.aliases]))],
+   searchNames:[...new Set(parts.flatMap(x=>[x.name,...x.searchNames]))],
+   name:entity.name, roleLabel:entity.id==="transsion"?"上市母公司":entity.label,
+   archetype:entity.type,archetypeLabel:entity.label,profile:entity.description,
+   signatories:cornerstoneUniq(parts.flatMap(x=>x.signatories),s=>s.name), allocations,
+   allocationIds:allocations.map(a=>a.id),relationships:cornerstoneUniq(parts.flatMap(x=>x.relationships),r=>[r.role,r.name,r.source].join("\n")),
+   deals,coSponsors:cornerstoneUniq(parts.flatMap(x=>x.coSponsors),s=>s.sponsorId||s.name),sources,
+   commitmentAmount:cornerstoneNumberFromCents(cents),commitmentText:formatChineseUnitAmount(cornerstoneNumberFromCents(cents),"HKD")});
+ }
+ return ungrouped;
+}
+function cornerstoneSortProfiles(rows){
+ const amount=p=>Number(p.commitmentAmount||0);
+ const final=p=>p.deals[0]?.status==="listed"&&p.currency==="HKD"&&amount(p)>0;
+ return [...rows].sort((a,b)=>{
+  const ra=final(a)?0:a.deals[0]?.status==="listed"?1:a.currency==="HKD"?2:a.currency==="USD"?3:4;
+  const rb=final(b)?0:b.deals[0]?.status==="listed"?1:b.currency==="HKD"?2:b.currency==="USD"?3:4;
+  return ra-rb||amount(b)-amount(a)||a.id.localeCompare(b.id);
+ });
 }
 
 function buildCornerstoneProfiles() {
@@ -4997,13 +5103,17 @@ function buildCornerstoneProfiles() {
       const names=[...new Set(members.flatMap(a=>a.legalNames))], relations=[...new Map(members.flatMap(a=>a.relationships).map(r=>[`${r.role}\n${r.name}\n${r.source}`,r])).values()];
       const src=[...new Set(members.flatMap(a=>[...a.sources,...a.relationships.map(r=>r.source)]))];
       const id=group.aliases[0]?.id||group.id;
-      profiles.push({id,aliases:[group.id,...group.aliases.map(a=>a.id)],name:group.name,roleLabel:group.roleLabel,archetype:'disclosed',archetypeLabel:'基石获配主体',channel:'基石最终配售',profile:relations.slice(0,2).map(r=>`${r.role}：${r.name}`).join(' · '),ownership:'',ranking:null,
+      const classes=members.map(cornerstoneAllocationIdentity);
+      const entity=classes[0]&&classes.every(x=>x?.id===classes[0].id)?classes[0]:null;
+      const [archetype,archetypeLabel]=entity?[entity.type,entity.label]:cornerstoneFallbackClass(members);
+      const searchNames=[group.name,...(entity?.names||[]),...(entity?.displayAliases||[])];
+      profiles.push({id,aliases:[group.id,...group.aliases.map(a=>a.id)],name:group.name,searchNames,entity,roleLabel:group.roleLabel,archetype,archetypeLabel,channel:'基石最终配售',profile:relations.slice(0,2).map(r=>`${r.role}：${r.name}`).join(' · '),ownership:'',ranking:null,
         signatories:names.map(name=>({id:name,name,shortName:name,type:'法律认购名',capacity:'',currency:'HKD',amount:null,manager:''})),
         allocations:members,allocationIds:group.allocationIds,relationships:relations,currency:'HKD',commitmentAmount:amount,commitmentText:`${offeringNumber(quantity)} ${cornerstoneUnit(offer.unit)} · ${formatChineseUnitAmount(amount,'HKD')}`,
-        deals:[{roundId:offer.roundId,code:offer.code,issuer:offer.issuer,status:'listed',statusLabel:'已挂牌上市',date:offer.listingDate,commitmentText:`${offeringNumber(quantity)} ${cornerstoneUnit(offer.unit)}`,rawCommitment:`HKD ${offeringNumber(amount,2)}（按最终发售价）`,shares:offer.unit==='HDR'?null:quantity,units:quantity,unit:offer.unit,ratioText:offer.offeredQuantity?`${offeringNumber(quantity/offer.offeredQuantity*100,2)}% 发售${offer.unit==='HDR'?' HDR':'股'}`:'',roleTag:'基石获配',sponsors:sponsorList}],coSponsors:sponsorList,sources:src.map(url=>({label:`${offer.issuer} ${url.includes('#page=')?'p.'+url.split('#page=')[1]:'披露原件'}`,url}))});
+        deals:[{roundId:offer.roundId,code:offer.code,issuer:offer.issuer,status:'listed',statusLabel:'已挂牌上市',date:offer.listingDate,cents:Math.round(amount*100),offeredQuantity:offer.offeredQuantity,commitmentText:formatChineseUnitAmount(amount,'HKD'),rawCommitment:`按最终发售价折算 · ${offeringNumber(quantity)} ${cornerstoneUnit(offer.unit)}`,shares:offer.unit==='HDR'?null:quantity,units:quantity,unit:offer.unit,ratioText:offer.offeredQuantity?`${offeringNumber(quantity/offer.offeredQuantity*100,2)}% 发售${offer.unit==='HDR'?' HDR':'股'}`:'',roleTag:'基石获配',sponsors:sponsorList}],coSponsors:sponsorList,sources:src.map(url=>({label:`${offer.issuer} ${url.includes('#page=')?'p.'+url.split('#page=')[1]:'披露原件'}`,url}))});
     }
   }
-  return profiles;
+  return cornerstoneSortProfiles(cornerstoneMergeProfiles(profiles));
 }
 
 
@@ -5024,11 +5134,20 @@ function renderCornerstones() {
   const insightEl = document.getElementById("csInsightStrip");
   const thermoEl = document.getElementById("csThermometer");
   const archMeta = [
-    { key: "public_fund", label: "内地头部公募 / QDII", cls: "is-public-fund" },
+    { key: "public_fund", label: "内地公募管理人", cls: "is-public-fund" },
     { key: "hk_family", label: "港资家族与个人大户", cls: "is-hk-family" },
-    { key: "strategic", label: "产业战投", cls: "is-strategic" },
+    { key: "strategic", label: "产业投资", cls: "is-strategic" },
     { key: "asset_mgmt", label: "跨境私募 / TRS", cls: "is-asset-mgmt" },
-    { key: "disclosed", label: "披露获配主体", cls: "is-disclosed" }
+    { key: "international", label: "国际资产管理", cls: "is-public-fund" },
+    { key: "sovereign", label: "主权投资机构", cls: "is-strategic" },
+    { key: "insurance", label: "保险机构", cls: "is-hk-family" },
+    { key: "bank_wm", label: "银行理财", cls: "is-public-fund" },
+    { key: "manager", label: "披露投资管理关系", cls: "is-asset-mgmt" },
+    { key: "swap", label: "掉期安排", cls: "is-asset-mgmt" },
+    { key: "fund_vehicle", label: "披露基金架构", cls: "is-asset-mgmt" },
+    { key: "ownership", label: "披露持股或控制关系", cls: "is-asset-mgmt" },
+    { key: "individual", label: "个人认购", cls: "is-hk-family" },
+    { key: "disclosed", label: "其他披露主体", cls: "is-asset-mgmt" }
   ];
   if (insightEl) {
     const sigCount = all.reduce((s, p) => s + p.signatories.length, 0);
@@ -5042,7 +5161,7 @@ function renderCornerstones() {
     }
     insightEl.innerHTML = `
       <div class="stat-cell"><span class="stat-label">基石与机构主体</span><strong class="stat-val col-num">${all.length} 组</strong><small class="stat-sub">${sigCount} 个已披露法律名称 · 已上市配发明细 ${allocationRounds} 宗</small></div>
-      <div class="stat-cell"><span class="stat-label">投资者画像分布</span><strong class="stat-val col-num">公募 ${byArch.public_fund} · 港资 ${byArch.hk_family} · 战投 ${byArch.strategic} · 私募/TRS ${byArch.asset_mgmt} · 披露主体 ${byArch.disclosed}</strong><small class="stat-sub">按招股书及配发结果归类</small></div>
+      <div class="stat-cell"><span class="stat-label">投资者画像分布</span><strong class="stat-val col-num">公募 ${byArch.public_fund} · 港资 ${byArch.hk_family} · 战投 ${byArch.strategic} · 私募/TRS ${byArch.asset_mgmt} · 其他披露主体 ${byArch.disclosed}</strong><small class="stat-sub">按招股书及配发结果归类</small></div>
       <div class="stat-cell"><span class="stat-label">原币认购承诺（搁置轮）</span><strong class="stat-val col-num">USD ${offeringNumber(usdTotal / 1e4, 0)}万 · HKD ${offeringNumber(hkdTotal / 1e8, 2)}亿</strong><small class="stat-sub">USD 与 HKD 原币认购承诺</small></div>
       <div class="stat-cell"><span class="stat-label">联动保荐人网络</span><strong class="stat-val col-num">${spSet.size} 家保荐机构</strong><small class="stat-sub">${[...spSet.values()].slice(0, 5).join(" · ")}</small></div>
     `;
@@ -5053,21 +5172,15 @@ function renderCornerstones() {
   if (thermoEl) {
     thermoEl.hidden = Boolean(activeProfile) || !all.length;
     if (!thermoEl.hidden) {
-      const totalGroups = all.length;
+      const allocationProfiles=all.filter(p=>p.allocations?.length);
+      const totalMoney=allocationProfiles.reduce((n,p)=>n+p.commitmentAmount,0);
       const segments = archMeta.map(m => {
-        const items = all.filter(p => p.archetype === m.key);
-        const pct = totalGroups ? items.length / totalGroups * 100 : 0;
-        const usd = items.filter(p => p.deals[0]?.status === "paused" && p.currency === "USD").reduce((s, p) => s + (p.commitmentAmount || 0), 0);
-        const hkd = items.filter(p => p.deals[0]?.status === "paused" && p.currency === "HKD").reduce((s, p) => s + (p.commitmentAmount || 0), 0);
-        const shares = items.reduce((s, p) => s + (p.deals[0]?.shares || 0), 0);
-        const parts = [];
-        if (usd > 0) parts.push(formatChineseUnitAmount(usd, "USD"));
-        if (hkd > 0) parts.push(formatChineseUnitAmount(hkd, "HKD"));
-        if (shares > 0) parts.push(`${offeringNumber(shares / 1e4, 0)}万股`);
-        return { ...m, count: items.length, pct, amountText: parts.join(" + ") || "—" };
-      });
-      thermoEl.innerHTML = `<div class="cs-thermo-head"><strong>资金构成温度条 <span>Capital Archetype Mix</span></strong><small>按实证基石与机构获配分组占比 · 点击可按类别筛选</small></div>
-        <div class="cs-thermo-bar" role="group" aria-label="按资金类型占比筛选">${segments.map(s => `<button type="button" class="cs-thermo-seg ${s.cls}${state.csArchetype === s.key ? " is-active" : ""}" style="width:${s.pct.toFixed(2)}%" data-cs-archetype="${s.key}" title="${escapeHtml(s.label)}：${s.count} 组 (${offeringNumber(s.pct, 1)}%) · ${escapeHtml(s.amountText)}" aria-pressed="${state.csArchetype === s.key}"><span>${offeringNumber(s.pct, 0)}%</span></button>`).join("")}</div>
+        const items = allocationProfiles.filter(p => p.archetype === m.key);
+        const amount=items.reduce((n,p)=>n+p.commitmentAmount,0);
+        return {...m,count:items.length,pct:totalMoney?amount/totalMoney*100:0,amountText:formatChineseUnitAmount(amount,"HKD")};
+      }).filter(s=>s.count).sort((a,b)=>b.pct-a.pct||a.key.localeCompare(b.key));
+      thermoEl.innerHTML = `<div class="cs-thermo-head"><strong>基石资金构成 <span>Cornerstone Allocation Mix</span></strong><small>按最终发售价折算港元 · 点击筛选</small></div>
+        <div class="cs-thermo-bar" role="group" aria-label="按资金类型占比筛选">${segments.map(s => `<button type="button" class="cs-thermo-seg ${s.cls}${state.csArchetype === s.key ? " is-active" : ""}" style="flex:0 0 ${s.pct.toFixed(2)}%;min-width:0;width:${s.pct.toFixed(2)}%" data-cs-archetype="${s.key}" title="${escapeHtml(s.label)}：${s.count} 组 (${offeringNumber(s.pct, 1)}%) · ${escapeHtml(s.amountText)}" aria-pressed="${state.csArchetype === s.key}"><span>${s.pct>=5?offeringNumber(s.pct,0)+"%":""}</span></button>`).join("")}</div>
         <div class="cs-thermo-legend">${segments.map(s => `<button type="button" class="cs-thermo-key${state.csArchetype === s.key ? " is-active" : ""}" data-cs-archetype="${s.key}"><i class="${s.cls}"></i><div><strong>${escapeHtml(s.label)} <em class="col-num">${s.count}组 · ${offeringNumber(s.pct, 1)}%</em></strong><small class="col-num">${escapeHtml(s.amountText)}</small></div></button>`).join("")}</div>`;
     } else {
       thermoEl.innerHTML = "";
@@ -5107,14 +5220,14 @@ function renderCornerstones() {
           ${spvNames.length ? `<p class="cs-spv-nest">法律签约载体：${escapeHtml(spvNames.join(" · "))}</p>` : ""}
         </div>
         <div class="cs-profile-commitment">
-          <span>代表披露规模 / 获配</span>
+          <span>${activeProfile.allocations?.length?"累计实际获配（港元）":"披露规模"}</span>
           <strong class="col-num">${escapeHtml(activeProfile.commitmentText)}</strong>
         </div>
       </header>
       <div class="cs-profile-grid">
         <section class="deal-section">
           <header><h3>主体背景与认购架构</h3></header>
-          ${activeProfile.profile ? `<p class="cs-profile-lead">${escapeHtml(activeProfile.profile)}</p>` : ""}
+          ${activeProfile.profile && !activeProfile.entity ? `<p class="cs-profile-lead">${escapeHtml(activeProfile.profile)}</p>` : ""}
           ${activeProfile.ownership ? `<p class="cs-profile-sub">持有 / 架构：${escapeHtml(activeProfile.ownership)}</p>` : ""}
           ${activeProfile.ranking ? `<div class="offering-cornerstone-rank">${escapeHtml(activeProfile.ranking.metric)} ${escapeHtml(activeProfile.ranking.currency)} ${offeringNumber(activeProfile.ranking.amountHundredMillion, 2)} 亿元 · 行业第 ${activeProfile.ranking.rank}<span>截至 ${escapeHtml(activeProfile.ranking.asOf)} · ${escapeHtml(activeProfile.ranking.dataProvider)}</span></div>` : ""}
           ${activeProfile.signatories.length?`<h4>${activeProfile.allocations?'披露法律认购名':'法律签约实体'}（${activeProfile.signatories.length} 名）</h4>`:''}
@@ -5150,6 +5263,7 @@ function renderCornerstones() {
     if (!q) return true;
     const text = normalizeSearchText([
       p.name, p.roleLabel, p.archetypeLabel, p.channel, p.profile, p.ownership,
+      ...(p.searchNames||[]),
       ...p.signatories.map(s => `${s.name} ${s.shortName} ${s.manager}`),
       ...(p.allocations||[]).map(a=>a.label),
       ...(p.relationships||[]).map(r=>`${r.role} ${r.name}`),
@@ -5164,10 +5278,15 @@ function renderCornerstones() {
       <th scope="col">实控主体 / 背景与签约载体</th>
       <th scope="col">画像与认购通道</th>
       <th scope="col">参与项目与角色</th>
-      <th scope="col" class="col-num">承诺金额 / 获配股数</th>
+      <th scope="col" class="col-num">实际获配金额 ↓</th>
       <th scope="col">联动保荐机构</th>
     </tr></thead>
-    <tbody>${filtered.map(p => {
+    <tbody>${filtered.map((p,rank) => {
+      const pending=p.deals[0]?.status==="paused";
+      const currencyGroup=pending?p.currency:"listed";
+      const prior=filtered[rank-1];
+      const previousGroup=prior?.deals[0]?.status==="paused"?prior.currency:"listed";
+      const groupHead=(rank===0||previousGroup!==currencyGroup)?`<tr><th scope="colgroup" colspan="5">${pending?"搁置发售 · "+escapeHtml(currencyGroup||"原币")+" 认购承诺":"已上市 · 按港元获配金额降序"}</th></tr>`:"";
       const deal = p.deals[0];
       const uboBg = p.ranking
         ? `${p.ranking.metric} ${p.ranking.currency} ${offeringNumber(p.ranking.amountHundredMillion, 0)}亿 · 行业第 ${p.ranking.rank}`
@@ -5176,15 +5295,15 @@ function renderCornerstones() {
       const spvLine = spvList.length
         ? `<span class="cs-spv-nest">签约载体：${escapeHtml(spvList.slice(0, 2).join(" / "))}${spvList.length > 2 ? ` 等 ${spvList.length} 家` : ""}</span>`
         : (p.ownership ? `<span class="cs-spv-nest">${escapeHtml(p.ownership)}</span>` : "");
-      return `<tr class="cs-row" data-cs-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(p.name)} 基石画像">
+      return `${groupHead}<tr class="cs-row" data-cs-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(p.name)} 基石画像">
         <th scope="row" class="cs-ubo-cell">
           <div class="cs-ubo-head"><strong>${escapeHtml(p.name)}</strong><span class="cs-ubo-role">${escapeHtml(p.roleLabel)}</span></div>
           ${uboBg ? `<div class="cs-ubo-bg">${escapeHtml(uboBg)}</div>` : ""}
           ${spvLine}
         </th>
         <td><span class="cs-arch-badge">${escapeHtml(p.archetypeLabel)}</span><small>${escapeHtml(p.channel)}</small></td>
-        <td><div class="cs-deal-cell"><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(deal.roundId)}">${escapeHtml(deal.issuer)} (${deal.code}) ↗</button><small>${escapeHtml(deal.statusLabel)} · ${escapeHtml(deal.roleTag)}</small></div></td>
-        <td class="col-num" title="${escapeHtml(deal.rawCommitment)}"><strong>${escapeHtml(deal.commitmentText)}</strong><small>${escapeHtml(deal.ratioText ? deal.ratioText.replace(/（.*）/, "") : "")}</small></td>
+        <td><div class="cs-deal-cell"><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(deal.roundId)}">${escapeHtml(deal.issuer)} (${deal.code}) ↗</button><small>${escapeHtml(deal.statusLabel)} · ${escapeHtml(deal.roleTag)}${p.deals.length>1?` · 共 ${p.deals.length} 宗`:""}</small></div></td>
+        <td class="col-num" title="${escapeHtml(deal.rawCommitment)}"><strong>${escapeHtml(p.allocations?.length?p.commitmentText:deal.commitmentText)}</strong><small>${escapeHtml(deal.ratioText ? deal.ratioText.replace(/（.*）/, "") : "")}</small></td>
         <td><div class="cs-sponsors-cell">${p.coSponsors.map(sp => renderSponsorJumpChip(sp.name, sp.sponsorId, sp.name)).join(" · ")}</div></td>
       </tr>`;
     }).join("")}</tbody></table></div>` : `<div class="empty-state-row"><p>未找到匹配的基石投资者</p><button type="button" data-cs-reset>清除筛选</button></div>`;
@@ -7715,7 +7834,7 @@ function renderTransactionSummaryStrip(all, compare, row){
  const activePillar=txActivePillarForCategory(state.transactionCategory);
  const currencies=[...new Set(all.flatMap(r=>(r.terms||[]).map(t=>t.currency)).filter(Boolean))];
  const pillarCards=[
-  {key:"all",label:"全部先例",sub:`全量 ${all.length} 宗${noMandateCount?`（含 ${noMandateCount} 宗待披露中介）`:""}`,n:all.length,badge:`${all.length} 宗`},
+  {key:"all",label:"全部先例",sub:`已收录 ${all.length} 宗${noMandateCount?`（含 ${noMandateCount} 宗待披露中介）`:""}`,n:all.length,badge:`${all.length} 宗`},
   ...TRANSACTION_PILLAR_CONFIG.map(p=>{
    const cnt=all.filter(r=>transactionMatchesCategory(r,p.key)).length;
    return {key:p.key,label:p.label,sub:p.sub,n:cnt,badge:`${cnt} 宗`};
@@ -8819,7 +8938,7 @@ function p0StandardDossier(row){
  }
 
  const mcapBn=dossier?dossier.offer.postShares*dossier.offer.final/1e9:Number.isFinite(Number(row.marketCapHkdBn))?Number(row.marketCapHkdBn):(record?.listingMarketCapSampleEligible&&Number.isFinite(Number(record.listingMarketCapHkdBn))?Number(record.listingMarketCapHkdBn):null);
- const closeQ=record?.hkListingSessionClose,offerPrice=Number(row.offered?.price?.value);
+ const closeQ=listingDebutClose(record,row),offerPrice=Number(row.offered?.price?.value);
  let debutHtml='';
  if(closeQ&&Number.isFinite(Number(closeQ.price))&&Number.isFinite(offerPrice)&&offerPrice>0){
   const rawChg=(Number(closeQ.price)/offerPrice-1)*100,chg=Math.abs(rawChg)<0.05?0:rawChg;
@@ -8847,7 +8966,7 @@ function p0GlobalSearch(){
  const rounds=[...liveHits,...eligibleFeeRoster().filter(r=>feeRosterSearchText(r).includes(q))].slice(0,6),docs=eligibleOfferingDossiers().filter(d=>normalizeSearchText(['执行参考',...d.execution.flatMap(x=>[x.title,x.fact,x.action]),...d.float.accounts.flatMap(a=>[a.displayName,a.structure,a.legalHolder,a.economicParty])].join(' ')).includes(q));
  const execHits=eligibleOfferingDossiers().flatMap(d=>d.execution.filter(x=>normalizeSearchText(`执行参考 ${x.title} ${x.fact} ${x.action} ${d.issuer} ${d.code}`).includes(q)).map(x=>({d,x})));
  const seen=new Set(rounds.map(r=>r.id));for(const d of docs)if(!seen.has(d.roundId)){const r=eligibleFeeRoster().find(r=>r.id===d.roundId);if(r)rounds.push(r);}
- const csMatches=buildCornerstoneProfiles().filter(p=>normalizeSearchText([p.name,p.roleLabel,p.profile,...p.signatories.map(s=>s.name),...(p.allocations||[]).map(a=>a.label),...(p.relationships||[]).map(r=>`${r.role} ${r.name}`)].join(' ')).includes(q)).slice(0,4);
+ const csMatches=buildCornerstoneProfiles().filter(p=>normalizeSearchText([p.name,p.roleLabel,p.profile,...(p.searchNames||[]),...p.signatories.map(s=>s.name),...(p.allocations||[]).map(a=>a.label),...(p.relationships||[]).map(r=>`${r.role} ${r.name}`)].join(' ')).includes(q)).slice(0,4);
  const issuers=(state.data?.records||[]).filter(r=>normalizeSearchText([r.issuerName,r.csrcName,r.hkexCoverChineseName,r.aShareCode].join(' ')).includes(q)&&!rounds.some(o=>o.issuerId===r.id)).slice(0,5);
  const firms=[...new Map(eligibleFeeRoster().flatMap(r=>r.institutions).filter(i=>i.sponsorId&&normalizeSearchText(i.displayName+' '+i.legalName).includes(q)).map(i=>[i.sponsorId,i])).values()].slice(0,4);
  root.innerHTML=execHits.map(({d,x})=>`<a href="${escapeHtml(p0DossierUrl(d.roundId))}#execution" data-global-round="${escapeHtml(d.roundId)}"><span class="exec-ref-tag">执行参考</span> ${escapeHtml(x.title)} · ${escapeHtml(d.issuer)} (${d.code}) <small>${escapeHtml(x.fact)}</small></a>`).join('')
