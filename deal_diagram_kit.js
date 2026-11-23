@@ -342,6 +342,18 @@
     return `${Math.round(num).toLocaleString("en-US")}股`;
   }
 
+  function formatTermExact(term) {
+    if (!term || !Number.isFinite(Number(term.value))) return "";
+    if (term.unit === "money") {
+      const num = Number(term.value);
+      const hasFrac = Math.abs(num - Math.round(num)) > 1e-6;
+      const dec = hasFrac ? Math.max(2, Number.isInteger(term.precision) ? term.precision : 2) : 0;
+      const prefix = `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}`;
+      return `${prefix}${num.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec })}`;
+    }
+    return formatTermBrief(term);
+  }
+
   function formatTermBrief(term) {
     if (!term || !Number.isFinite(Number(term.value))) return "";
     if (term.unit === "money") {
@@ -1145,14 +1157,15 @@
 
   function buildSchemeTopology(p) {
     const isTerm = p.status === "terminated";
+    const isClosed = p.status === "closed";
     const canvas = createDiagramCanvas({
       width: MASTER_W,
       height: 452,
       status: p.status,
       terminated: isTerm,
       leftTitle: p.leftTitle || "协议安排私有化交易流向",
-      rightTitle: p.rightTitle || (isTerm ? "终止后维持架构" : "私有化后股权架构"),
-      transitionLabel: p.transitionLabel || (isTerm ? "协议终止" : "计划生效"),
+      rightTitle: p.rightTitle || (isTerm ? "终止后维持架构" : isClosed ? "私有化后股权架构" : "拟议私有化后架构"),
+      transitionLabel: p.transitionLabel || (isTerm ? "协议终止" : isClosed ? "计划生效" : "推进中"),
       outcomeBadge: p.outcomeBadge,
     });
     return finalizeLayout(
@@ -1169,8 +1182,8 @@
               { id: "R_listed", panel: "right", x: 734, y: 282, w: 280, h: 82, role: "listed", title: p.listedName, code: p.code, subtitle: "维持主板上市" },
             ]
           : [
-              { id: "R_buyer", panel: "right", x: 734, y: 96, w: 280, h: 84, role: "buyer", title: p.buyerName, subtitle: p.afterBuyerSub || "唯一全资控股股东" },
-              { id: "R_target", panel: "right", x: 734, y: 274, w: 280, h: 84, role: "target", title: p.listedName, jurisdiction: p.jurisdiction, subtitle: p.afterTargetSub || "非上市全资附属公司", badge: p.afterTargetBadge || "已撤销上市" },
+              { id: "R_buyer", panel: "right", x: 734, y: 96, w: 280, h: 84, role: "buyer", title: p.buyerName, subtitle: p.afterBuyerSub || (isClosed ? "唯一全资控股股东" : "拟议全资控股股东") },
+              { id: "R_target", panel: "right", x: 734, y: 274, w: 280, h: 84, role: "target", title: p.listedName, jurisdiction: p.jurisdiction, subtitle: p.afterTargetSub || (isClosed ? "非上市全资附属公司" : "待法院批准及计划生效"), badge: p.afterTargetBadge || (isClosed ? "已撤销上市" : "拟议退市") },
             ]),
       ],
       [
@@ -1182,7 +1195,7 @@
               { id: "E_R2", panel: "right", from: "R_public", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.83, pctLabel: "公众持股", pillWidth: 94, labelCenter: [967, 238], dashed: true },
             ]
           : [
-              { id: "E_R1", panel: "right", from: "R_buyer", to: "R_target", pctLabel: "100% 全资控股", pillWidth: 132, labelCenter: [874, 227], dashed: false },
+              { id: "E_R1", panel: "right", from: "R_buyer", to: "R_target", pctLabel: isClosed ? "100% 全资控股" : "拟 100% 控股", pillWidth: 132, labelCenter: [874, 227], dashed: false },
             ]),
       ],
       [
@@ -1212,6 +1225,58 @@
           sublabel: p.cancelSub,
           labelCenter: [506, 356],
           labelWidth: 214,
+          labelHeight: 46,
+        },
+      ]
+    );
+  }
+
+  function buildCommercialProcurementTopology(p) {
+    const isTerm = p.status === "terminated";
+    const canvas = createDiagramCanvas({
+      width: MASTER_W,
+      height: 432,
+      status: p.status,
+      terminated: isTerm,
+      leftTitle: p.leftTitle || "商业设备 / 资产采购合同流向",
+      rightTitle: p.rightTitle || "合同履约与资产入账状态",
+      transitionLabel: p.transitionLabel || (isTerm ? "合同终止" : "商业履约"),
+      outcomeBadge: p.outcomeBadge,
+    });
+    return finalizeLayout(
+      canvas,
+      [
+        { id: "L_buyer", panel: "left", x: 34, y: 158, w: 252, h: 86, role: "listed", roleLabel: "采购买方", title: p.buyerName, code: p.code, subtitle: p.buyerSub || "港股买方主体（设备采购方）" },
+        { id: "L_vendor", panel: "left", x: 360, y: 158, w: 252, h: 86, role: "seller", roleLabel: "供应商", title: p.vendorName, subtitle: p.vendorSub || "独立设备供应商 / 合同卖方" },
+        { id: "R_buyer", panel: "right", x: 734, y: 104, w: 280, h: 86, role: "listed", roleLabel: "买方主体", title: p.buyerName, code: p.code, subtitle: isTerm ? "采购合同已终止" : "按约结算货款 · 维持原架构" },
+        { id: "R_asset", panel: "right", x: 734, y: 256, w: 280, h: 86, role: "target", roleLabel: "采购设备", title: p.assetName, subtitle: isTerm ? "未交付" : (p.assetSub || "固定资产 / 产线设备交付验收"), badge: isTerm ? "已终止" : "商业资产" },
+      ],
+      [],
+      [
+        {
+          id: "A_proc_cash",
+          panel: "left",
+          step: "①",
+          kind: "cash",
+          terminated: isTerm,
+          pathPoints: [[160, 158], [160, 92], [486, 92], [486, 158]],
+          label: p.payLabel || "支付采购合同价款",
+          sublabel: p.paySub || "按里程碑结算及抵扣预付款",
+          labelCenter: [323, 92],
+          labelWidth: 382,
+          labelHeight: 46,
+        },
+        {
+          id: "A_proc_asset",
+          panel: "left",
+          step: "②",
+          kind: "asset",
+          terminated: isTerm,
+          pathPoints: [[486, 244], [486, 336], [160, 336], [160, 244]],
+          label: p.deliveryLabel || "交付采购设备及安装验收",
+          sublabel: p.deliverySub || "纯商业资产采购 · 不涉及子公司收购",
+          labelCenter: [323, 336],
+          labelWidth: 382,
           labelHeight: 46,
         },
       ]
@@ -1663,9 +1728,264 @@
     );
   }
 
+  function buildTopupPlacingTopology(p) {
+    const canvas = createDiagramCanvas({
+      width: MASTER_W,
+      height: 468,
+      status: p.status,
+      leftTitle: p.leftTitle || "先旧后新闪电配售 / 新股配售流向",
+      rightTitle: p.rightTitle || "配售完成后股本结构",
+      transitionLabel: p.transitionLabel || "认新完成",
+      outcomeBadge: p.outcomeBadge,
+    });
+    return finalizeLayout(
+      canvas,
+      [
+        { id: "L_vendor", panel: "left", x: 34, y: 66, w: 220, h: 78, role: "seller", title: p.vendorName || "控股股东（卖旧认新）", subtitle: "T+2 先行出售既有老股" },
+        { id: "L_listed", panel: "left", x: 34, y: 248, w: 220, h: 86, role: "listed", title: p.listedName, code: p.code, subtitle: "一般性授权增发主体" },
+        { id: "L_placees", panel: "left", x: 404, y: 162, w: 210, h: 84, role: "buyer", title: p.placeesName || "不少于6名独立承配人", subtitle: "配售代理簿记建档承配" },
+        { id: "R_vendor", panel: "right", x: 700, y: 110, w: 162, h: 84, role: "seller", title: "控股股东", subtitle: "股数还原 · 持股比微摊" },
+        { id: "R_placees", panel: "right", x: 886, y: 110, w: 162, h: 84, role: "public", title: "承配人及公众股东", subtitle: "公众流通盘扩大" },
+        { id: "R_listed", panel: "right", x: 734, y: 292, w: 280, h: 84, role: "listed", title: p.listedName, code: p.code, subtitle: "募资净额入账 · 扩大已发行股本" },
+      ],
+      [
+        { id: "E_L1", panel: "left", from: "L_vendor", to: "L_listed", pctLabel: "既有控股股权", pillWidth: 112, labelCenter: [144, 196], dashed: false },
+        { id: "E_R1", panel: "right", from: "R_vendor", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.17, pctLabel: "摊薄后控股", pillWidth: 104, labelCenter: [781, 243], dashed: false },
+        { id: "E_R2", panel: "right", from: "R_placees", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.83, pctLabel: "扩大公众股", pillWidth: 104, labelCenter: [967, 243], dashed: true },
+      ],
+      [
+        {
+          id: "A_topup_old",
+          panel: "left",
+          step: "①",
+          kind: "shares",
+          terminated: p.status === "terminated",
+          pathPoints: [[254, 105], [509, 105], [509, 162]],
+          label: p.oldLabel || "先旧：折让配售老股 · T+2 交割",
+          sublabel: p.oldSub || "配售代理独家/联席簿记 · 不少于6名独立承配人",
+          labelCenter: [442, 105],
+          labelWidth: 274,
+          labelHeight: 46,
+        },
+        {
+          id: "A_topup_cash",
+          panel: "left",
+          step: "②",
+          kind: "cash",
+          terminated: p.status === "terminated",
+          pathPoints: [[509, 246], [509, 394], [144, 394], [144, 334]],
+          label: p.cashLabel || "后新：扣配售佣金净额认购等额新股",
+          sublabel: p.cashSub || "14日内完成新股认购 · 适用 LR 14A.92(4) 豁免",
+          labelCenter: [346, 394],
+          labelWidth: 288,
+          labelHeight: 46,
+        },
+      ]
+    );
+  }
+
+  function buildCbTopology(p) {
+    const canvas = createDiagramCanvas({
+      width: MASTER_W,
+      height: 468,
+      status: p.status,
+      leftTitle: p.leftTitle || "可转债 / 可交换债簿记发行流向",
+      rightTitle: p.rightTitle || "发行后资本与潜在转股架构",
+      transitionLabel: p.transitionLabel || "债券交割",
+      outcomeBadge: p.outcomeBadge,
+    });
+    return finalizeLayout(
+      canvas,
+      [
+        { id: "L_sh", panel: "left", x: 34, y: 66, w: 220, h: 78, role: "public", title: p.shName || "现有控股及公众股东", subtitle: "转股前既有股东" },
+        { id: "L_listed", panel: "left", x: 34, y: 244, w: 220, h: 90, role: "listed", title: p.listedName, code: p.code, subtitle: "可转债发行人 / 担保主体" },
+        { id: "L_inv", panel: "left", x: 404, y: 204, w: 210, h: 88, role: "creditor", title: p.invName || "境外机构债券认购人", subtitle: "Reg S 专业投资者簿记" },
+        { id: "R_sh", panel: "right", x: 700, y: 112, w: 162, h: 84, role: "public", title: "既有股东", subtitle: "未转股前零即时摊薄" },
+        { id: "R_cb", panel: "right", x: 886, y: 112, w: 162, h: 84, role: "creditor", title: "可转债持有人", subtitle: "票息保底 + 溢价转股权" },
+        { id: "R_listed", panel: "right", x: 734, y: 292, w: 280, h: 84, role: "listed", title: p.listedName, code: p.code, subtitle: "境外债券挂牌 · 潜在转股扩股" },
+      ],
+      [
+        { id: "E_L1", panel: "left", from: "L_sh", to: "L_listed", pctLabel: "100% 既有股本", pillWidth: 114, labelCenter: [144, 194], dashed: false },
+        { id: "E_R1", panel: "right", from: "R_sh", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.17, pctLabel: "既有普通股", pillWidth: 104, labelCenter: [781, 244], dashed: false },
+        { id: "E_R2", panel: "right", from: "R_cb", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.83, pctLabel: "潜在转股权益", pillWidth: 108, labelCenter: [967, 244], dashed: true },
+      ],
+      [
+        {
+          id: "A_cb_cash",
+          panel: "left",
+          step: "①",
+          kind: "cash",
+          terminated: p.status === "terminated",
+          pathPoints: [[509, 204], [509, 118], [296, 118], [296, 266], [254, 266]],
+          label: p.cashLabel || "认购可转债本金 · 扣承销佣金净额",
+          sublabel: p.cashSub || "牵头经办人簿记定价 · 低息或零息长期资金",
+          labelCenter: [452, 118],
+          labelWidth: 274,
+          labelHeight: 46,
+        },
+        {
+          id: "A_cb_conv",
+          panel: "left",
+          step: "②",
+          kind: "shares",
+          terminated: p.status === "terminated",
+          pathPoints: [[144, 334], [144, 394], [509, 394], [509, 292]],
+          label: p.convLabel || "按初始转股价附条件换股新股",
+          sublabel: p.convSub || "较参考股价溢价转股 · 一般或特别授权",
+          labelCenter: [344, 394],
+          labelWidth: 288,
+          labelHeight: 46,
+        },
+      ]
+    );
+  }
+
+  function buildRightsIssueTopology(p) {
+    const canvas = createDiagramCanvas({
+      width: MASTER_W,
+      height: 468,
+      status: p.status,
+      leftTitle: p.leftTitle || "供股 / 公开招股与包销流向",
+      rightTitle: p.rightTitle || "供股完成后股本结构",
+      transitionLabel: p.transitionLabel || "供股交割",
+      outcomeBadge: p.outcomeBadge,
+    });
+    return finalizeLayout(
+      canvas,
+      [
+        { id: "L_qsh", panel: "left", x: 34, y: 66, w: 220, h: 78, role: "public", title: p.qshName || "合资格现有股东", subtitle: "按持股比例获配供股权" },
+        { id: "L_listed", panel: "left", x: 34, y: 248, w: 220, h: 86, role: "listed", title: p.listedName, code: p.code, subtitle: "供股 / 公开招股发行人" },
+        { id: "L_uw", panel: "left", x: 404, y: 162, w: 210, h: 84, role: "buyer", title: p.uwName || "包销商 / 独立承配人", subtitle: "余额包销或未获认购补偿配售" },
+        { id: "R_qsh", panel: "right", x: 700, y: 110, w: 162, h: 84, role: "public", title: "参与供股股东", subtitle: "按比例认购免受摊薄" },
+        { id: "R_uw", panel: "right", x: 886, y: 110, w: 162, h: 84, role: "buyer", title: "包销商 / 承配人", subtitle: "承接未获认购股份" },
+        { id: "R_listed", panel: "right", x: 734, y: 292, w: 280, h: 84, role: "listed", title: p.listedName, code: p.code, subtitle: "募集净额入账 · 股本相应扩大" },
+      ],
+      [
+        { id: "E_L1", panel: "left", from: "L_qsh", to: "L_listed", pctLabel: "按比例供股基准", pillWidth: 118, labelCenter: [144, 196], dashed: true },
+        { id: "E_R1", panel: "right", from: "R_qsh", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.17, pctLabel: "供股后权益", pillWidth: 104, labelCenter: [781, 243], dashed: false },
+        { id: "E_R2", panel: "right", from: "R_uw", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.83, pctLabel: "包销/承配股", pillWidth: 104, labelCenter: [967, 243], dashed: true },
+      ],
+      [
+        {
+          id: "A_ri_sub",
+          panel: "left",
+          step: "①",
+          kind: "cash",
+          terminated: p.status === "terminated",
+          pathPoints: [[254, 105], [509, 105], [509, 162]],
+          label: p.subLabel || "折让认购供股股款 · 余额转包销商",
+          sublabel: p.subSub || "供股可买卖未缴股款供股权 · 公开招股不可转让",
+          labelCenter: [442, 105],
+          labelWidth: 274,
+          labelHeight: 46,
+        },
+        {
+          id: "A_ri_uw",
+          panel: "left",
+          step: "②",
+          kind: "shares",
+          terminated: p.status === "terminated",
+          pathPoints: [[509, 246], [509, 394], [144, 394], [144, 334]],
+          label: p.uwLabel || "配发供股新股 · 支付包销及顾问费",
+          sublabel: p.uwSub || "增发 >50% 须 LR 7.19A 独立股东批准及 IFA",
+          labelCenter: [346, 394],
+          labelWidth: 288,
+          labelHeight: 46,
+        },
+      ]
+    );
+  }
+
+  function buildConnectedWhitewashTopology(p) {
+    const canvas = createDiagramCanvas({
+      width: MASTER_W,
+      height: 468,
+      status: p.status,
+      leftTitle: p.leftTitle || "14A 章非豁免关连 / 清洗豁免程序",
+      rightTitle: p.rightTitle || "独立股东批准交割后架构",
+      transitionLabel: p.transitionLabel || "独立批准",
+      outcomeBadge: p.outcomeBadge,
+    });
+    return finalizeLayout(
+      canvas,
+      [
+        { id: "L_conn", panel: "left", x: 34, y: 66, w: 220, h: 78, role: "seller", title: p.connName || "控股股东 / 关连人士", subtitle: "利害关系方 · 股东会回避表决" },
+        { id: "L_listed", panel: "left", x: 34, y: 244, w: 220, h: 90, role: "listed", title: p.listedName, code: p.code, subtitle: "设独立董事委员会 (IBC)" },
+        { id: "L_ish", panel: "left", x: 404, y: 204, w: 210, h: 88, role: "public", title: p.ishName || "无利害独立股东 + IFA", subtitle: "审阅独立财务顾问函件表决" },
+        { id: "R_conn", panel: "right", x: 700, y: 112, w: 162, h: 84, role: "seller", title: "关连方 / 认购人", subtitle: "完成交割 · 豁免 MGO" },
+        { id: "R_ish", panel: "right", x: 886, y: 112, w: 162, h: 84, role: "public", title: "独立公众股东", subtitle: "维持最低公众持股量" },
+        { id: "R_listed", panel: "right", x: 734, y: 292, w: 280, h: 84, role: "listed", title: p.listedName, code: p.code, subtitle: "完成关连资产交割或新股增发" },
+      ],
+      [
+        { id: "E_L1", panel: "left", from: "L_conn", to: "L_listed", pctLabel: "关连持股 ≥10%/30%", pillWidth: 126, labelCenter: [144, 194], dashed: false },
+        { id: "E_R1", panel: "right", from: "R_conn", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.17, pctLabel: "交割后持股", pillWidth: 104, labelCenter: [781, 244], dashed: false },
+        { id: "E_R2", panel: "right", from: "R_ish", to: "R_listed", anchorFromRatio: 0.5, anchorToRatio: 0.83, pctLabel: "独立公众股", pillWidth: 104, labelCenter: [967, 244], dashed: true },
+      ],
+      [
+        {
+          id: "A_cw_ifa",
+          panel: "left",
+          step: "①",
+          kind: "asset",
+          terminated: p.status === "terminated",
+          pathPoints: [[509, 204], [509, 118], [296, 118], [296, 266], [254, 266]],
+          label: p.ifaLabel || "IFA 出具独立意见 · 独立股东表决",
+          sublabel: p.ifaSub || "14A章普通决议 >50% · 清洗豁免须 ≥75% 赞成",
+          labelCenter: [452, 118],
+          labelWidth: 274,
+          labelHeight: 46,
+        },
+        {
+          id: "A_cw_tx",
+          panel: "left",
+          step: "②",
+          kind: "shares",
+          terminated: p.status === "terminated",
+          pathPoints: [[144, 334], [144, 394], [509, 394], [509, 292]],
+          label: p.txLabel || "关连收售对价结算 / 增发新股免全面要约",
+          sublabel: p.txSub || "寄发通函并经联交所及证监会执行人员审阅",
+          labelCenter: [344, 394],
+          labelWidth: 288,
+          labelHeight: 46,
+        },
+      ]
+    );
+  }
+
   /* =========================================================================
-     4. 9 CANONICAL HKEX DEAL ARCHETYPES (WITH LIVE 2D TOPOLOGY TEMPLATES)
+     4. 14 CANONICAL HKEX IB DEAL & ECM ARCHETYPES (ORGANIZED BY 4 REVENUE PILLARS)
      ========================================================================= */
+  const PILLAR_GROUPS = [
+    {
+      id: "ch14_14a",
+      labelZh: "第 14 / 14A 章 · 并购与关连",
+      shortZh: "14 / 14A 章并购关连",
+      subZh: "须予披露 (5–25%) · 主要交易 (Major) · VSA/VSD · 14A 关连",
+      archetypes: ["disclosable_major", "acquisition", "disposal", "connected_whitewash"],
+    },
+    {
+      id: "takeovers",
+      labelZh: "收购守则 · 私有化与要约",
+      shortZh: "收购守则与要约",
+      subZh: "TC 2.10 私有化 · TC 26.1 全面要约 · 清洗豁免 / 回购",
+      archetypes: ["scheme", "offer", "connected_whitewash"],
+    },
+    {
+      id: "reorg",
+      labelZh: "集团重组 · 分拆与化债",
+      shortZh: "重组 · 分拆 · 化债",
+      subZh: "LR 14.06B 反收购 · PN15 分拆 · 控司/A+H 换股 · 境外债重组",
+      archetypes: ["reverse_takeover", "spin_off", "holding_substitution", "ah_share_absorption", "debt_restructuring"],
+    },
+    {
+      id: "ecm",
+      labelZh: "再融资配售 · CB 与供股",
+      shortZh: "再融资 · 配售 · CB",
+      subZh: "先旧后新 / 新股配售 · 可转债 CB/EB · 供股 / 公开招股包销",
+      archetypes: ["topup_placing", "convertible_bond", "rights_open_offer"],
+    },
+  ];
+
   const ARCHETYPES = {
     scheme: {
       id: "scheme",
@@ -2411,6 +2731,393 @@
           absorbedName: "被吸收合并方 (H股)",
           code: "00000.HK",
           outcomeBadge: "A+H 旗舰平台合一 · 被吸收方撤销上市",
+        }),
+      },
+    },
+
+    disclosable_major: {
+      id: "disclosable_major",
+      labelZh: "第 14 章须予披露 / 主要并购",
+      shortZh: "须予披露/主要交易",
+      labelEn: "Ch.14 Discloseable & Major M&A",
+      modalityLabelZh: "5%–25% 仅公告 · 25%+ 通函及股东批准",
+      ruleTriggers: ["HKEX:14.06(2)", "HKEX:14.06(3)", "HKEX:14.44"],
+      summaryZh:
+        "按五项百分比率（资产/盈利/收益/代价/股本）分级监管：5%–25% 须予披露交易仅刊发公告；25%–100%（出售 <75%）主要交易须刊发会计师/估值通函并获股东大会或 LR 14.44 书面股东批准。",
+      codexTemplate: {
+        id: "TEMPLATE-disclosable-major",
+        archetype: "disclosable_major",
+        modality: "cash",
+        status: "approved",
+        before: {
+          title: "交易前权属架构",
+          nodes: [
+            { id: "listed", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "收购方 / 买方", tier: 0 },
+            { id: "seller", role: "seller", name: "独立第三方卖方", sublabel: "非关连出售方", tier: 0 },
+            { id: "target", role: "target", name: "目标公司 / 营业资产", sublabel: "五项百分比率测算标的", tier: 1 },
+          ],
+          equityLinks: [{ from: "seller", to: "target", label: "标的控股权", style: "solid" }],
+        },
+        flows: [
+          {
+            id: "f1",
+            kind: "cash",
+            direction: "ltr",
+            step: "01",
+            fromLabel: "港股上市主体",
+            toLabel: "独立第三方卖方",
+            headline: "现金分期结算或配发一般授权代价股",
+            subline: "5%–25% 须予披露免股东会 · ≥25% 主要交易须通函及股东批准",
+            proposedOrTerminated: false,
+          },
+          {
+            id: "f2",
+            kind: "asset",
+            direction: "rtl",
+            step: "02",
+            fromLabel: "独立第三方卖方",
+            toLabel: "港股上市主体",
+            headline: "交割目标股权 · 并入合并报表",
+            subline: "主要交易可凭控股股东 >50% 书面批准（LR 14.44）免召开实体股东会",
+            proposedOrTerminated: false,
+          },
+        ],
+        after: {
+          title: "交割后并表架构",
+          nodes: [
+            { id: "seller_after", role: "seller", name: "原独立卖方", sublabel: "收取现金或代价股", tier: 0 },
+            { id: "listed_after", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "主业并表扩张", tier: 1 },
+            { id: "target_after", role: "target", name: "目标附属公司", sublabel: "控股并表附属", tier: 2 },
+          ],
+          equityLinks: [
+            { from: "listed_after", to: "target_after", label: "控股并表", style: "solid" },
+          ],
+          outcomeBadge: "第 14 章并购完成交割 · 标的并表",
+        },
+        annotations: [
+          { tag: "①", title: "五项百分比率分级", body: "按资产、盈利、收益、代价及股本比率孰高判定股份交易(<5%)、须予披露(5–25%)或主要交易(≥25%)。", ruleCode: "HKEX:14.07" },
+          { tag: "②", title: "对价与业绩对赌", body: "列明现金分期节奏、代价股发行价或卖方盈利保证条款。", ruleCode: null },
+          { tag: "③", title: "通函与书面批准捷径", body: "须予披露交易仅需董事会批准公告；主要交易如无股东具重大利益，可适用 LR 14.44 控股股东书面批准。", ruleCode: "HKEX:14.06(2) · HKEX:14.06(3)" },
+          { tag: "④", title: "中介角色与文件", body: "涉及财务顾问（FA）、独立估值师（LR 14.61 贴现现金流须会计师及 FA 核证）及申报会计师。", ruleCode: null },
+        ],
+        topology: buildAcquisitionTopology({
+          status: "approved",
+          leftTitle: "第 14 章须予披露 / 主要并购流向",
+          rightTitle: "交割后并表架构",
+          transitionLabel: "分级审批",
+          listedName: "港股上市主体",
+          code: "00000.HK",
+          sellerName: "独立第三方卖方",
+          targetName: "目标公司 / 资产",
+          payKind: "cash",
+          payLabel: "支付现金或配发代价股",
+          paySub: "5–25% 仅公告 · ≥25% 通函+股东/书面批准",
+          assetLabel: "交割目标股权并表",
+          assetSub: "LR 14.06(2)/(3) · 五项百分比率核定",
+          outcomeBadge: "第 14 章并购完成交割 · 标的并表",
+        }),
+      },
+    },
+
+    connected_whitewash: {
+      id: "connected_whitewash",
+      labelZh: "14A 章非豁免关连 / 清洗豁免",
+      shortZh: "14A关连/清洗豁免",
+      labelEn: "Ch.14A Non-Exempt Connected & Whitewash Waiver",
+      modalityLabelZh: "独董委 + IFA 函件 + 独立股东表决",
+      ruleTriggers: ["HKEX:14A.36", "TC:Note1-Rule26", "TC:ScheduleVI"],
+      summaryZh:
+        "与控股股东/关连人士进行 ≥5% 收售或持续关连交易（年度上限），或向认购方定向发股跨 30% 申请清洗豁免：利害股东须回避，由独立董事委员会（IBC）及独立财务顾问（IFA）向独立股东出具意见。",
+      codexTemplate: {
+        id: "TEMPLATE-connected-whitewash",
+        archetype: "connected_whitewash",
+        modality: "mixed",
+        status: "approved",
+        before: {
+          title: "交易前关连架构",
+          nodes: [
+            { id: "conn", role: "seller", name: "控股股东 / 关连人士", sublabel: "利害关系方 · 回避投票", tier: 0 },
+            { id: "ish", role: "public", name: "无利害独立股东 + IFA", sublabel: "股东特别大会表决主体", tier: 0 },
+            { id: "listed", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "成立独立董事委员会 (IBC)", tier: 1 },
+          ],
+          equityLinks: [
+            { from: "conn", to: "listed", label: "关连持股 ≥10%/30%", style: "solid" },
+            { from: "ish", to: "listed", label: "独立股东权益", style: "dashed" },
+          ],
+        },
+        flows: [
+          {
+            id: "f1",
+            kind: "asset",
+            direction: "rtl",
+            step: "01",
+            fromLabel: "独立财务顾问 (IFA)",
+            toLabel: "独立董事委员会及独立股东",
+            headline: "IFA 独立意见函件 + 独立股东投票批准",
+            subline: "14A章普通决议 >50% 赞成 · 清洗豁免须 ≥75% 独立股东赞成",
+            proposedOrTerminated: false,
+          },
+          {
+            id: "f2",
+            kind: "shares",
+            direction: "ltr",
+            step: "02",
+            fromLabel: "港股上市主体",
+            toLabel: "关连方 / 认购人",
+            headline: "执行关连收售 / 持续年度上限 / 增发新股免 MGO",
+            subline: "0.1%–5% 仅公告豁免通函 · ≥5% 须寄发通函并经监管审阅",
+            proposedOrTerminated: false,
+          },
+        ],
+        after: {
+          title: "批准交割后架构",
+          nodes: [
+            { id: "conn_after", role: "seller", name: "关连方 / 认购人", sublabel: "完成交割 · 豁免全面要约", tier: 0 },
+            { id: "ish_after", role: "public", name: "独立公众股东", sublabel: "维持最低公众持股量", tier: 0 },
+            { id: "listed_after", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "完成关连交易或特定授权增发", tier: 1 },
+          ],
+          equityLinks: [
+            { from: "conn_after", to: "listed_after", label: "交割后持股", style: "solid" },
+            { from: "ish_after", to: "listed_after", label: "独立公众股", style: "dashed" },
+          ],
+          outcomeBadge: "获独立股东正式批准 · 完成关连或清洗交割",
+        },
+        annotations: [
+          { tag: "①", title: "关连关系与回避", body: "核定关连人士身份（控股股东、董事、主要股东或联系人）及须放弃表决权的股份数。", ruleCode: "HKEX:14A" },
+          { tag: "②", title: "豁门门槛与年度上限", body: "0.1%–5%（LR 14A.76(2)）仅需公告；≥5% 一次性交易及持续关连三年年度上限须独立股东批准。", ruleCode: "HKEX:14A.76" },
+          { tag: "③", title: "清洗豁免双重门槛", body: "定向发股跨 30% 触发清洗豁免时，须证监会执行人员授出豁免且独立股东 ≥75% 投票通过。", ruleCode: "TC:Note1-Rule26" },
+          { tag: "④", title: "高频 IFA 创收场景", body: "必须委任持牌 6 号牌独立财务顾问（IFA）就条款公平合理出具签署意见函件。", ruleCode: null },
+        ],
+        topology: buildConnectedWhitewashTopology({
+          status: "approved",
+          listedName: "港股上市主体",
+          code: "00000.HK",
+          outcomeBadge: "获独立股东正式批准 · 完成关连或清洗交割",
+        }),
+      },
+    },
+
+    topup_placing: {
+      id: "topup_placing",
+      labelZh: "先旧后新闪电配售 / 新股配售",
+      shortZh: "先旧后新/配售",
+      labelEn: "Top-up & New Share Placing",
+      modalityLabelZh: "配售代理簿记 · T+2 交割 + 14日认新",
+      ruleTriggers: ["HKEX:13.36(2)(b)", "HKEX:14A.92(4)", "HKEX:13.28"],
+      summaryZh:
+        "港股再融资最高频品种：大股东透过配售代理向不少于 6 名独立承配人折让出售老股（T+2 闪电交割），同时按净配售价认购上市公司根据一般性授权发行的等额新股，于 14 日内完成。",
+      codexTemplate: {
+        id: "TEMPLATE-topup-placing",
+        archetype: "topup_placing",
+        modality: "mixed",
+        status: "closed",
+        before: {
+          title: "配售前股本架构",
+          nodes: [
+            { id: "vendor", role: "seller", name: "控股股东（卖旧认新）", sublabel: "T+2 出售既有老股", tier: 0 },
+            { id: "placees", role: "buyer", name: "不少于6名独立承配人", sublabel: "经配售代理簿记承配", tier: 0 },
+            { id: "listed", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "动用 20% 一般性授权", tier: 1 },
+          ],
+          equityLinks: [{ from: "vendor", to: "listed", label: "既有控股股权", style: "solid" }],
+        },
+        flows: [
+          {
+            id: "f1",
+            kind: "shares",
+            direction: "ltr",
+            step: "01",
+            fromLabel: "控股股东",
+            toLabel: "独立承配人",
+            headline: "先旧：折让配售老股 · T+2 即时交割",
+            subline: "折让幅度须 <20%（LR 13.36(5)）· 配售代理收取配售佣金",
+            proposedOrTerminated: false,
+          },
+          {
+            id: "f2",
+            kind: "cash",
+            direction: "rtl",
+            step: "02",
+            fromLabel: "配售所得净额",
+            toLabel: "上市主体增发等额新股",
+            headline: "后新：大股东按净额认购等额新股",
+            subline: "自签协议起 14 日内完成新股发行 · 适用 LR 14A.92(4) 关连豁免",
+            proposedOrTerminated: false,
+          },
+        ],
+        after: {
+          title: "认新完成后股本架构",
+          nodes: [
+            { id: "vendor_after", role: "seller", name: "控股股东", sublabel: "持股股数不变 · 比例微摊", tier: 0 },
+            { id: "placees_after", role: "public", name: "承配人及公众股东", sublabel: "公众流通盘扩大", tier: 0 },
+            { id: "listed_after", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "募集净额入账 · 扩大股本", tier: 1 },
+          ],
+          equityLinks: [
+            { from: "vendor_after", to: "listed_after", label: "摊薄后控股", style: "solid" },
+            { from: "placees_after", to: "listed_after", label: "扩大公众股", style: "dashed" },
+          ],
+          outcomeBadge: "闪电配售及认新完成 · 募集净额入账",
+        },
+        annotations: [
+          { tag: "①", title: "先旧后新效率优势", body: "承配人 T+2 即可获配自由流通老股，较直接发行新股大幅缩短联交所上市批准等待期。", ruleCode: null },
+          { tag: "②", title: "折让上限与一般授权", body: "配售价较基准价折让不得达 20% 或以上（LR 13.36(5)），且股数不超过年度 20% 一般性授权。", ruleCode: "HKEX:13.36(5)" },
+          { tag: "③", title: "14 日关连豁免铁律", body: "认购新股股数不得超过卖旧股数，且须于协议后 14 日内完成，方可豁免 14A 章独立股东批准。", ruleCode: "HKEX:14A.92(4)" },
+          { tag: "④", title: "投行配售佣金", body: "整体协调人 / 独家或联席配售代理（Placing Agent）按配售总额收取配售及包销佣金。", ruleCode: null },
+        ],
+        topology: buildTopupPlacingTopology({
+          status: "closed",
+          listedName: "港股上市主体",
+          code: "00000.HK",
+          outcomeBadge: "闪电配售及认新完成 · 募集净额入账",
+        }),
+      },
+    },
+
+    convertible_bond: {
+      id: "convertible_bond",
+      labelZh: "可转换债券 / 可交换债发行",
+      shortZh: "可转债 CB/EB",
+      labelEn: "Convertible & Exchangeable Bond Offering",
+      modalityLabelZh: "境外簿记发行 · 票息 + 溢价转股权",
+      ruleTriggers: ["HKEX:Ch.15", "HKEX:13.36", "HKEX:13.28"],
+      summaryZh:
+        "上市公司（或境外 SPV 经母公司担保）向境外机构投资者簿记发行可转换债券（CB）或可交换债（EB），兼具低息债权成本与较现价溢价转股结构，部分大型交易同步配套股份回购对冲。",
+      codexTemplate: {
+        id: "TEMPLATE-convertible-bond",
+        archetype: "convertible_bond",
+        modality: "mixed",
+        status: "closed",
+        before: {
+          title: "发行前资本架构",
+          nodes: [
+            { id: "sh", role: "public", name: "现有控股及公众股东", sublabel: "转股前既有股东", tier: 0 },
+            { id: "inv", role: "creditor", name: "境外机构债券认购人", sublabel: "Reg S 簿记认购方", tier: 0 },
+            { id: "listed", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "CB 发行人 / 担保人", tier: 1 },
+          ],
+          equityLinks: [{ from: "sh", to: "listed", label: "100% 既有股本", style: "solid" }],
+        },
+        flows: [
+          {
+            id: "f1",
+            kind: "cash",
+            direction: "rtl",
+            step: "01",
+            fromLabel: "境外债券认购人",
+            toLabel: "港股上市主体",
+            headline: "认购可转债本金 · 募集净额入账",
+            subline: "独家/联席全球协调人簿记承销 · 低票息或零息结构",
+            proposedOrTerminated: false,
+          },
+          {
+            id: "f2",
+            kind: "shares",
+            direction: "ltr",
+            step: "02",
+            fromLabel: "港股上市主体",
+            toLabel: "可转债持有人",
+            headline: "按初始转股价授予溢价换股权",
+            subline: "转股股份由一般性授权或股东特别大会特定授权覆盖",
+            proposedOrTerminated: false,
+          },
+        ],
+        after: {
+          title: "交割后资本与转股架构",
+          nodes: [
+            { id: "sh_after", role: "public", name: "既有股东", sublabel: "转股前零即时摊薄", tier: 0 },
+            { id: "cb_after", role: "creditor", name: "可转债持有人", sublabel: "债权本息 + 溢价看涨期权", tier: 0 },
+            { id: "listed_after", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "债券挂牌 · 潜在转股扩股", tier: 1 },
+          ],
+          equityLinks: [
+            { from: "sh_after", to: "listed_after", label: "既有普通股", style: "solid" },
+            { from: "cb_after", to: "listed_after", label: "潜在转股权益", style: "dashed" },
+          ],
+          outcomeBadge: "可转债完成簿记交割 · 换股授权生效",
+        },
+        annotations: [
+          { tag: "①", title: "债券规模与期限", body: "披露发行本金总额、币种、到期年限、票面利率、到期赎回价及持有人回售权（Put Option）。", ruleCode: null },
+          { tag: "②", title: "初始转股价与溢价", body: "列示初始转股价、较参考收市价转股溢价率，以及悉数转股占扩大后股本比例。", ruleCode: null },
+          { tag: "③", title: "授权口径与发改委备案", body: "核验转股股份使用一般性授权或特别授权，中资主体同步履行发改委外债及证监会备案。", ruleCode: "HKEX:13.36" },
+          { tag: "④", title: "投行承销角色", body: "由牵头经办人 / 账簿管理人（JGC / JBR）负责境外簿记定价、掉期对冲及承销结算。", ruleCode: null },
+        ],
+        topology: buildCbTopology({
+          status: "closed",
+          listedName: "港股上市主体",
+          code: "00000.HK",
+          outcomeBadge: "可转债完成簿记交割 · 换股授权生效",
+        }),
+      },
+    },
+
+    rights_open_offer: {
+      id: "rights_open_offer",
+      labelZh: "供股 / 公开招股包销",
+      shortZh: "供股/公开招股",
+      labelEn: "Rights Issue & Open Offer",
+      modalityLabelZh: "按比例折让供股 + 包销商或补偿安排",
+      ruleTriggers: ["HKEX:7.19A", "HKEX:7.24A", "HKEX:7.27B"],
+      summaryZh:
+        "向全体合资格股东按现有持股比例折让发行新股（供股可转让未缴股款供股权，公开招股不可转让），未获认购股份通过补偿安排配售或由包销商包销；增发超 50% 须独立股东批准并聘 IFA。",
+      codexTemplate: {
+        id: "TEMPLATE-rights-issue",
+        archetype: "rights_open_offer",
+        modality: "mixed",
+        status: "approved",
+        before: {
+          title: "供股前股权架构",
+          nodes: [
+            { id: "qsh", role: "public", name: "合资格现有股东", sublabel: "按持股比例获配供股权", tier: 0 },
+            { id: "uw", role: "buyer", name: "包销商 / 独立承配人", sublabel: "包销协议或补偿配售代理", tier: 0 },
+            { id: "listed", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "供股 / 公开招股发行人", tier: 1 },
+          ],
+          equityLinks: [{ from: "qsh", to: "listed", label: "按比例供股基准", style: "dashed" }],
+        },
+        flows: [
+          {
+            id: "f1",
+            kind: "cash",
+            direction: "ltr",
+            step: "01",
+            fromLabel: "合资格股东 / 包销商",
+            toLabel: "港股上市主体",
+            headline: "按供股价认购缴款 · 余额由包销商包销",
+            subline: "理论摊薄效应不得达 25% 或以上（LR 7.27B，特殊困难除外）",
+            proposedOrTerminated: false,
+          },
+          {
+            id: "f2",
+            kind: "shares",
+            direction: "rtl",
+            step: "02",
+            fromLabel: "港股上市主体",
+            toLabel: "参与股东及包销商",
+            headline: "配发缴足供股股份 · 结算包销佣金",
+            subline: "12 个月累计股本或市值增幅 >50% 须独立股东会批准及 IFA 意见",
+            proposedOrTerminated: false,
+          },
+        ],
+        after: {
+          title: "供股完成后股本架构",
+          nodes: [
+            { id: "qsh_after", role: "public", name: "参与供股股东", sublabel: "维持权益比例", tier: 0 },
+            { id: "uw_after", role: "buyer", name: "包销商 / 承配人", sublabel: "承接未获认购股份", tier: 0 },
+            { id: "listed_after", role: "listed", name: "港股上市主体", code: "00000.HK", sublabel: "募集资金净额入账", tier: 1 },
+          ],
+          equityLinks: [
+            { from: "qsh_after", to: "listed_after", label: "供股后权益", style: "solid" },
+            { from: "uw_after", to: "listed_after", label: "包销/承配股", style: "dashed" },
+          ],
+          outcomeBadge: "供股及包销交割完成 · 新股开始买卖",
+        },
+        annotations: [
+          { tag: "①", title: "供股比例与未缴股款权", body: "列示每持有 X 股供 Y 股基准、认购价折让、理论除权价（TERP）及未缴股款供股权交易期。", ruleCode: null },
+          { tag: "②", title: "包销与补偿安排", body: "包销模式下包销商收取包销佣金；非包销模式须设置未获认购股份补偿配售机制（LR 7.21）。", ruleCode: "HKEX:7.21" },
+          { tag: "③", title: "50% 独立股东门槛与 25% 摊薄上限", body: "股本扩幅 >50% 触发 LR 7.19A/7.24A 控股股东回避、通函及 IFA 意见；理论摊薄上限 25%（LR 7.27B）。", ruleCode: "HKEX:7.19A · HKEX:7.27B" },
+          { tag: "④", title: "潜在清洗豁免联动", body: "若大股东担任包销商导致持股跨越 30% 或 2% 自由增购率，须同步申请清洗豁免。", ruleCode: null },
+        ],
+        topology: buildRightsIssueTopology({
+          status: "approved",
+          listedName: "港股上市主体",
+          code: "00000.HK",
+          outcomeBadge: "供股及包销交割完成 · 新股开始买卖",
         }),
       },
     },
@@ -3253,8 +3960,20 @@
     if (txCase.category && Object.prototype.hasOwnProperty.call(ARCHETYPES, txCase.category)) {
       return txCase.category;
     }
+    if (txCase.category === "disclosable" || txCase.category === "major" || txCase.category === "share_transaction") {
+      return "disclosable_major";
+    }
+    if (txCase.category === "connected" || txCase.category === "continuing_connected" || txCase.category === "whitewash") {
+      return "connected_whitewash";
+    }
+    if (txCase.category === "placing") return "topup_placing";
+    if (txCase.category === "rights_issue" || txCase.category === "open_offer") return "rights_open_offer";
     const rules = (txCase.rules || []).map((r) => String(r.code || "").toUpperCase());
     const text = `${txCase.mechanism || ""} ${txCase.name || ""} ${rules.join(" ")}`.toLowerCase();
+    if (/先旧后新|闪电配售|配售新股|top.?up|placing/.test(text)) return "topup_placing";
+    if (/可转债|可转换债券|可交换债|convertible.?bond|exchangeable.?bond/.test(text)) return "convertible_bond";
+    if (/供股|公开招股|rights.?issue|open.?offer/.test(text)) return "rights_open_offer";
+    if (/清洗豁免|whitewash|持续关连|continuing.?connected/.test(text)) return "connected_whitewash";
     if (/pn15|分拆|spin.?off/.test(text)) return "spin_off";
     if (/债转股|债务重组|debt.?restruct|creditor.?scheme/.test(text)) return "debt_restructuring";
     if (/吸收合并|换股合并|absorption.?merger/.test(text)) return "ah_share_absorption";
@@ -3263,6 +3982,12 @@
     if (/26\.1|强制.*要约|全面要约|mandatory.*offer/.test(text)) return "offer";
     if (/2\.10|私有化|协议安排|privatisation|scheme/.test(text)) return "scheme";
     if (/处置|出售|剥离|disposal/.test(text)) return "disposal";
+    if (/14\.06\(2\)|14\.06\(3\)|须予披露|discloseable|主要交易|major.?transaction/.test(text) && !/14\.06c|非常重大|vsa/.test(text)) {
+      return "disclosable_major";
+    }
+    if (/14a|关连交易|connected.?transaction/.test(text) && !/14\.06c|非常重大|vsa/.test(text)) {
+      return "connected_whitewash";
+    }
     return "acquisition";
   }
 
@@ -3430,6 +4155,82 @@
         outcomeBadge: spec.after.outcomeBadge,
       });
     }
+    if (spec.archetype === "topup_placing") {
+      return buildTopupPlacingTopology({
+        status: spec.status,
+        vendorName: findByRole(spec.before, "seller", "控股股东（卖旧认新）"),
+        placeesName: findByRole(spec.before, "buyer", "不少于6名独立承配人"),
+        listedName: spec.name || listedNode.name,
+        code,
+        oldLabel: f0.headline,
+        oldSub: f0.subline || "折让配售老股 · T+2 交割",
+        cashLabel: f1.headline,
+        cashSub: f1.subline || "14日内按净额认购新股",
+        outcomeBadge: spec.after.outcomeBadge,
+      });
+    }
+    if (spec.archetype === "convertible_bond") {
+      return buildCbTopology({
+        status: spec.status,
+        shName: findByRole(spec.before, "public", "现有控股及公众股东"),
+        invName: findByRole(spec.before, "creditor", "境外机构债券认购人"),
+        listedName: spec.name || listedNode.name,
+        code,
+        cashLabel: f0.headline,
+        cashSub: f0.subline || "认购可转债本金 · 募集净额",
+        convLabel: f1.headline,
+        convSub: f1.subline || "按初始转股价附条件换股",
+        outcomeBadge: spec.after.outcomeBadge,
+      });
+    }
+    if (spec.archetype === "rights_open_offer") {
+      return buildRightsIssueTopology({
+        status: spec.status,
+        qshName: findByRole(spec.before, "public", "合资格现有股东"),
+        uwName: findByRole(spec.before, "buyer", "包销商 / 独立承配人"),
+        listedName: spec.name || listedNode.name,
+        code,
+        subLabel: f0.headline,
+        subSub: f0.subline || "按供股价认购 · 余额包销",
+        uwLabel: f1.headline,
+        uwSub: f1.subline || "配发供股新股",
+        outcomeBadge: spec.after.outcomeBadge,
+      });
+    }
+    if (spec.archetype === "connected_whitewash") {
+      return buildConnectedWhitewashTopology({
+        status: spec.status,
+        connName: findByRole(spec.before, "seller", "控股股东 / 关连人士"),
+        ishName: findByRole(spec.before, "public", "无利害独立股东 + IFA"),
+        listedName: spec.name || listedNode.name,
+        code,
+        ifaLabel: f0.headline,
+        ifaSub: f0.subline || "IFA 独立意见 + 独立股东批准",
+        txLabel: f1.headline,
+        txSub: f1.subline || "关连交割 / 清洗豁免生效",
+        outcomeBadge: spec.after.outcomeBadge,
+      });
+    }
+    if (
+      (spec.archetype === "acquisition" || spec.archetype === "disclosable_major") &&
+      Array.isArray(spec.before?.equityLinks) &&
+      spec.before.equityLinks.length === 0 &&
+      Array.isArray(spec.after?.equityLinks) &&
+      spec.after.equityLinks.length === 0
+    ) {
+      return buildCommercialProcurementTopology({
+        status: spec.status,
+        buyerName: spec.name || listedNode.name,
+        code,
+        vendorName: findByRole(spec.before, "seller", "独立设备供应商"),
+        assetName: findByRole(spec.before, "target", "采购标的设备 / 资产"),
+        payLabel: f0.headline,
+        paySub: f0.subline || "按采购合同结算价款",
+        deliveryLabel: f1.headline,
+        deliverySub: f1.subline || "商业设备交付验收 · 非附属公司收购",
+        outcomeBadge: spec.after.outcomeBadge,
+      });
+    }
     return buildAcquisitionTopology({
       status: spec.status,
       listedName: spec.name || listedNode.name,
@@ -3445,9 +4246,159 @@
     });
   }
 
+  function isCommercialProcurementCase(txCase) {
+    if (!txCase || typeof txCase !== "object") return false;
+    const cat = String(txCase.category || "").toLowerCase();
+    if (["equipment_purchase", "equipment_procurement", "asset_purchase", "procurement", "capex_purchase"].includes(cat)) {
+      return true;
+    }
+    const terms = Array.isArray(txCase.terms) ? txCase.terms : [];
+    if (terms.some((t) => t.unit === "shares" || t.unit === "ratio" || t.key === "enlarged_stake")) {
+      return false;
+    }
+    const partiesBlob = Object.entries(txCase.parties || {}).map(([k, v]) => `${k} ${v}`).join(" ");
+    const termsBlob = terms.map((t) => `${t.key || ""} ${t.label || ""} ${t.basis || ""}`).join(" ");
+    const blob = `${txCase.mechanism || ""} ${txCase.name || ""} ${partiesBlob} ${termsBlob}`;
+    const hasEquip = /设备采购|采购设备|机器采购|采购机器|生产线采购|采购合同|设备供应|船舶建造|飞机购买|槟城.*设备|equipment\s*(?:purchase|procurement|supply)|machinery\s*purchase/i.test(blob);
+    const hasEquityTarget = /目标公司.*股权|收购.*%.*股权|待售股份|目标集团股权/i.test(blob);
+    return hasEquip && !hasEquityTarget;
+  }
+
+  function deriveCommercialProcurementCase(txCase) {
+    const rawStatus = txCase.stage?.status;
+    const status = VALID_STATUSES.has(rawStatus) ? rawStatus : "active";
+    const isTerminated = status === "terminated";
+    const name = String(txCase.name || "港股买方主体").trim();
+    const code = txCase.code ? `${String(txCase.code).replace(/\.HK$/i, "")}.HK` : undefined;
+    const parties = txCase.parties || {};
+    const terms = Array.isArray(txCase.terms) ? txCase.terms : [];
+    const rules = Array.isArray(txCase.rules) ? txCase.rules : [];
+
+    const buyerParty = pickParty(parties, ["买方", "采购方", "订购方", "付款方", "buyer", "purchaser"], name);
+    const vendorName = pickParty(parties, ["卖方", "供应商", "承包商", "收款方", "设备供应商", "vendor", "supplier", "seller"], "独立设备供应商");
+    const assetName = pickParty(parties, ["采购标的", "设备", "标的设备", "采购资产", "标的", "equipment", "asset", "target"], "生产设备 / 商业资产");
+
+    const headlineTerm = terms.find((t) => t.key === txCase.headlineKey) || terms[0] || null;
+    const secondaryTerms = terms.filter((t) => t !== headlineTerm);
+    const primaryExact = headlineTerm
+      ? `${headlineTerm.label} ${headlineTerm.approximate ? formatTermBrief(headlineTerm) : formatTermExact(headlineTerm)}`
+      : (txCase.mechanism || "商业设备采购");
+    const secondaryExact = secondaryTerms
+      .slice(0, 2)
+      .map((t) => `${t.label} ${t.approximate ? formatTermBrief(t) : formatTermExact(t)}`)
+      .filter(Boolean)
+      .join(" · ");
+
+    const ruleCodes = rules.map((r) => r.code).filter(Boolean);
+    const ruleSummary = ruleCodes.length ? ruleCodes.join(" · ") : "HKEX:14.06";
+    const stageLabel = txCase.stage?.label || STATUS_META[status].labelZh;
+    const stageDate = txCase.stage?.date || txCase.progressDate || "";
+    const archetype = detectArchetype(txCase) === "disclosable_major" ? "disclosable_major" : "acquisition";
+
+    const spec = {
+      id: txCase.id || `SYN-${txCase.code || "00000"}-procurement`,
+      caseId: txCase.id || `SYN-${txCase.code || "00000"}-procurement`,
+      code: txCase.code || undefined,
+      name,
+      mechanism: txCase.mechanism || "商业设备采购",
+      stageLabel,
+      stageDate: stageDate || undefined,
+      archetype,
+      modality: "cash_and_asset",
+      status,
+      compactSummary: `${name} · ${primaryExact}${secondaryExact ? `（${secondaryExact}）` : ""} → 商业设备采购履约`,
+      before: {
+        title: "采购合同主体",
+        nodes: [
+          { id: "buyer_entity", role: "listed", name: buyerParty, code, sublabel: "采购买方主体", tier: 0 },
+          { id: "vendor_entity", role: "seller", name: vendorName, sublabel: "设备供应商 / 合同卖方", tier: 0 },
+          { id: "equip_asset", role: "target", name: assetName, sublabel: "商业采购设备标的", tier: 1 },
+        ],
+        equityLinks: [],
+      },
+      flows: [
+        {
+          id: "proc_pay",
+          kind: "cash",
+          direction: "ltr",
+          step: "01",
+          fromLabel: buyerParty,
+          toLabel: vendorName,
+          headline: primaryExact,
+          subline: secondaryExact || "按采购协议里程碑结算货款",
+          proposedOrTerminated: isTerminated,
+        },
+        {
+          id: "proc_deliver",
+          kind: "asset",
+          direction: "rtl",
+          step: "02",
+          fromLabel: vendorName,
+          toLabel: buyerParty,
+          headline: `交付 ${assetName}`,
+          subline: `纯商业资产采购 · 适用 ${ruleSummary}`,
+          proposedOrTerminated: isTerminated,
+        },
+      ],
+      after: {
+        title: "合同履约与资产入账状态",
+        nodes: [
+          { id: "buyer_after", role: "listed", name: buyerParty, code, sublabel: isTerminated ? "采购合同已终止" : "结算合同款项 · 维持原有架构", tier: 0 },
+          { id: "equip_after", role: "target", name: assetName, sublabel: isTerminated ? "未交付" : "固定资产交付验收（非附属公司）", badge: isTerminated ? "已终止" : "商业资产", tier: 1 },
+        ],
+        equityLinks: [],
+        outcomeBadge: isTerminated ? "采购协议已终止" : `设备采购商业履约 · ${stageLabel}`,
+      },
+      annotations: [
+        {
+          tag: "①",
+          title: "采购方、供应商与设备标的",
+          body: Object.entries(parties).map(([k, v]) => `${k}：${v}`).join("；") || `${buyerParty} 向 ${vendorName} 采购 ${assetName}（纯商业设备采购）。`,
+          ruleCode: null,
+        },
+        {
+          tag: "②",
+          title: "合同价款与预付款抵扣",
+          body: terms.map((t) => `${t.label} ${t.approximate ? formatTermBrief(t) : formatTermExact(t)}${t.basis ? `（${t.basis}）` : ""}`).join("；") || `${primaryExact}。`,
+          ruleCode: null,
+        },
+        {
+          tag: "③",
+          title: "上市规则分类",
+          body: rules.length ? rules.map((r) => `${r.label || r.code}（${r.application || "适用规则"}）`).join("；") : "按上市规则第 14 章百分比率披露商业资本开支采购。",
+          ruleCode: ruleSummary,
+        },
+        {
+          tag: "④",
+          title: "履约阶段状态",
+          body: `${stageLabel}${stageDate ? `（${stageDate}）` : ""} · 属商业设备及固定资产采购合同，仅作资产购置入账。`,
+          ruleCode: null,
+        },
+      ],
+    };
+
+    spec.topology = buildCommercialProcurementTopology({
+      status,
+      buyerName: buyerParty,
+      code,
+      vendorName,
+      assetName,
+      payLabel: primaryExact,
+      paySub: secondaryExact || "按采购协议结算价款",
+      deliveryLabel: `交付 ${assetName}`,
+      deliverySub: `商业资产入账 · 适用 ${ruleSummary}`,
+      outcomeBadge: spec.after.outcomeBadge,
+    });
+
+    return validateDiagramSpec(spec);
+  }
+
   function deriveDiagramFromCase(txCase) {
     if (!txCase || typeof txCase !== "object") {
       throw new Error("deriveDiagramFromCase requires a transaction case object");
+    }
+    if (isCommercialProcurementCase(txCase)) {
+      return deriveCommercialProcurementCase(txCase);
     }
     const archetype = detectArchetype(txCase);
     const archInfo = ARCHETYPES[archetype];
@@ -3776,7 +4727,22 @@
     const isTerminated = spec.status === "terminated";
     const layout = spec.topology || synthesizeTopologyFromSpec(spec);
 
-    const filterBtnsHtml = FILTER_BUTTONS.map((btn) => {
+    const isPureAssetContract =
+      Array.isArray(spec.before?.equityLinks) &&
+      spec.before.equityLinks.length === 0 &&
+      Array.isArray(spec.after?.equityLinks) &&
+      spec.after.equityLinks.length === 0 &&
+      !spec.flows.some((f) => f.kind === "shares");
+
+    const activeFilterButtons = isPureAssetContract
+      ? [
+          { key: "all", labelZh: "全部流向" },
+          { key: "cash", labelZh: "合同价款流" },
+          { key: "structural", labelZh: "设备·资产交付" },
+        ]
+      : FILTER_BUTTONS;
+
+    const filterBtnsHtml = activeFilterButtons.map((btn) => {
       const active = btn.key === initialFilter;
       return `<button type="button" class="ddk-filter-btn${active ? " is-active" : ""}" data-ddk-filter-btn="${btn.key}" aria-pressed="${active ? "true" : "false"}">${escapeHtml(btn.labelZh)}</button>`;
     }).join("");
@@ -3796,10 +4762,20 @@
           .join("")}</aside>`
       : "";
 
+    const headerPillTitle = isPureAssetContract && spec.mechanism ? spec.mechanism : archInfo.labelZh;
+    const legendHtml = isPureAssetContract
+      ? `<span class="ddk-legend-item"><i class="is-cash"></i>合同价款结算</span>
+        <span class="ddk-legend-item"><i class="is-asset"></i>设备 / 商业资产交付</span>
+        <span class="ddk-legend-item">纯商业采购合同（非公司收购）</span>`
+      : `<span class="ddk-legend-item"><i class="is-cash"></i>现金对价</span>
+        <span class="ddk-legend-item"><i class="is-shares"></i>股权 / 换股</span>
+        <span class="ddk-legend-item"><i class="is-asset"></i>资产交付 / 注销退市</span>
+        <span class="ddk-legend-item"><i class="is-edge-solid"></i>实线控股 · 虚线公众/少数</span>`;
+
     return `<section class="ddk-board is-status-${escapeHtml(spec.status)}${isTerminated ? " is-terminated" : ""}${options.compact ? " is-compact" : ""}" data-ddk-case="${escapeHtml(caseAttr)}" data-ddk-archetype="${escapeHtml(spec.archetype)}" data-ddk-filter="${escapeHtml(initialFilter)}" aria-label="交易架构与对价流向图">
       <header class="ddk-header">
         <div class="ddk-header-meta">
-          <span class="ddk-archetype-pill">${escapeHtml(archInfo.labelZh)}<small>${escapeHtml(archInfo.id.toUpperCase())}</small></span>
+          <span class="ddk-archetype-pill">${escapeHtml(headerPillTitle)}<small>${escapeHtml(archInfo.id.toUpperCase())}</small></span>
           <span class="ddk-modality-pill is-modality-${escapeHtml(spec.modality)}">${escapeHtml(modalityInfo.labelZh)}</span>
           <span class="ddk-status-pill is-status-${escapeHtml(spec.status)}">${escapeHtml(spec.stageLabel || statusInfo.labelZh)}${spec.stageDate ? `<time>${escapeHtml(spec.stageDate)}</time>` : ""}</span>
         </div>
@@ -3810,10 +4786,7 @@
         ${renderMobileStackedSvgs(layout, spec)}
       </div>
       <div class="ddk-legend-bar" aria-label="图例与筛选状态">
-        <span class="ddk-legend-item"><i class="is-cash"></i>现金对价</span>
-        <span class="ddk-legend-item"><i class="is-shares"></i>股权 / 换股</span>
-        <span class="ddk-legend-item"><i class="is-asset"></i>资产交付 / 注销退市</span>
-        <span class="ddk-legend-item"><i class="is-edge-solid"></i>实线控股 · 虚线公众/少数</span>
+        ${legendHtml}
         <span class="ddk-filter-note" data-ddk-filter-note hidden></span>
       </div>
       ${annotationsHtml}
@@ -3911,6 +4884,7 @@
 
   return {
     VERSION,
+    PILLAR_GROUPS,
     ARCHETYPES,
     primitives: {
       createDiagramCanvas,

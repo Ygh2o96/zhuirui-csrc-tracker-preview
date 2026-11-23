@@ -12,7 +12,7 @@
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=954e91db19b37cd6" />
     <link rel="stylesheet" href="deal_diagram_kit.css?v=1759464c1aca8a91" />
-    <link rel="stylesheet" href="styles.css?v=d8c21bbbd030b0b5" />
+    <link rel="stylesheet" href="styles.css?v=92b62fdb6d2294c0" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -394,6 +394,7 @@
           <section class="terminal-stat-strip fee-insight-strip" id="feeInsightStrip" aria-label="新股费用跨维度洞察"></section>
           <section class="terminal-stat-strip fee-benchmark-strip" id="feeBenchmarkStrip" aria-label="发行规模分档费用基准"></section>
           <details class="fee-curve-panel" id="feeScaleCurvePanel" hidden></details>
+          <section class="fee-econ-lane" id="feeDealRankLane" aria-label="最赚钱新股项目创收榜" hidden></section>
           <div class="fees-meta-strip">
             <p class="offering-count" id="feeCount" role="status" aria-live="polite"></p>
             <div id="feeSummary" role="status"></div>
@@ -652,19 +653,43 @@
           <div class="tx-toolbar-primary">
             <label class="search-box tx-search-box">
               <span class="search-glyph" aria-hidden="true">⌕</span>
-              <input id="transactionSearch" type="search" autocomplete="off" aria-label="搜索交易、规则或签署机构" placeholder="搜索公司、代码、上市规则 (14.06B) / 收购守则 (TC:2.10)、签署机构…" />
+              <input id="transactionSearch" type="search" autocomplete="off" aria-label="搜索交易、规则或签署机构" placeholder="搜索公司、代码、14/14A章、收购守则、配售/CB、签署机构…" />
             </label>
             <label class="inline-select-pill">
               <span>结构</span>
               <select id="transactionCategory" aria-label="交易类型">
-                <option value="all">全部结构</option>
-                <option value="reorganisation">反向收购／控股重组</option>
-                <option value="reverse_takeover">反向收购 (RTO)</option>
-                <option value="holding_substitution">更换控股公司</option>
-                <option value="scheme">协议安排私有化</option>
-                <option value="offer">控制权／全面要约</option>
-                <option value="acquisition">收购</option>
-                <option value="disposal">资产处置</option>
+                <option value="all">全部结构（四大板块）</option>
+                <optgroup label="第 14 / 14A 章 · 并购与关连">
+                  <option value="ch14_14a">14 / 14A 章全部</option>
+                  <option value="disclosable">须予披露 / 股份交易 (&lt;25%)</option>
+                  <option value="major">主要交易 (Major · 25%+)</option>
+                  <option value="vsa_vsd">非常重大 / 极端交易 (VSA / VSD)</option>
+                  <option value="acquisition">收购 (Acquisition)</option>
+                  <option value="disposal">资产处置 (Disposal)</option>
+                  <option value="connected">14A 关连及持续关连 (CCT)</option>
+                </optgroup>
+                <optgroup label="收购守则 · 私有化与要约">
+                  <option value="takeovers">收购守则全部</option>
+                  <option value="scheme">协议安排私有化 (TC 2.10)</option>
+                  <option value="offer">控制权／全面及部分要约 (TC 26.1/28)</option>
+                  <option value="whitewash">清洗豁免／特别交易</option>
+                  <option value="share_buyback">场外／全面股份回购</option>
+                </optgroup>
+                <optgroup label="集团重组 · 分拆与化债">
+                  <option value="reorg">重组 · 分拆 · 化债全部</option>
+                  <option value="reorganisation">反向收购／控股重组</option>
+                  <option value="reverse_takeover">反向收购 (RTO · LR 14.06B)</option>
+                  <option value="spin_off">PN15 分拆上市</option>
+                  <option value="holding_substitution">更换控股公司</option>
+                  <option value="ah_share_absorption">A+H 换股吸收合并</option>
+                  <option value="debt_restructuring">境外债务重组／债转股</option>
+                </optgroup>
+                <optgroup label="再融资配售 · CB 与供股 (ECM)">
+                  <option value="ecm">再融资 ECM 全部</option>
+                  <option value="topup_placing">先旧后新／新股配售</option>
+                  <option value="convertible_bond">可转债／可交换债 (CB/EB)</option>
+                  <option value="rights_open_offer">供股／公开招股包销</option>
+                </optgroup>
               </select>
             </label>
             <label class="inline-select-pill">
@@ -679,7 +704,7 @@
               <span>阶段</span>
               <select id="transactionStatus" aria-label="已确认阶段">
                 <option value="all">全部阶段</option>
-                <option value="active">要约进行中</option>
+                <option value="active">要约／推进中</option>
                 <option value="approved">股东已批准</option>
                 <option value="closed">已完成／已生效</option>
                 <option value="terminated">协议已终止</option>
@@ -692,13 +717,13 @@
             <div class="tx-preset-strip">
               <span class="tx-preset-label">快速样本：</span>
               <button id="transactionReorganisation" class="transaction-example-link" type="button" data-tx-reorganisation>反向收购 vs 控股重组（亿腾嘉和 · 龙金资源）</button>
-              <button id="transactionAtlasToggle" class="transaction-example-link" type="button" data-tx-atlas-toggle>九大标准架构图谱 ▾</button>
+              <button id="transactionAtlasToggle" class="transaction-example-link" type="button" data-tx-atlas-toggle>十四大标准架构图谱 ▾</button>
             </div>
             <details class="transaction-filter-panel">
-              <summary>顾问角色、签署服务、币种与近况</summary>
+              <summary>顾问／配售角色、签署服务、币种与近况</summary>
               <div class="transaction-filters">
-                <label><span>中介角色</span><select id="transactionRole"><option value="all">全部角色</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="Accountant">会计师</option><option value="Valuer">估值师</option><option value="IndependentExpertAU">澳洲独立专家</option></select></label>
-                <label><span>签署服务</span><select id="transactionService"><option value="all">全部服务</option><option value="rto_opinion">反向收购独立意见</option><option value="australian_scheme_expert">澳洲安排计划独立专家报告</option><option value="scheme_opinion">私有化独立意见</option><option value="offer_opinion">要约独立意见</option><option value="offer_advice">要约财务顾问</option><option value="takeovers_profit_forecast">收购守则盈利预测报告</option><option value="property_valuation">物业估值</option><option value="vessel_valuation">船舶估值</option><option value="acquisition_due_diligence">收购及尽职审查</option></select></label>
+                <label><span>中介角色</span><select id="transactionRole"><option value="all">全部角色</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="PlacingAgent">配售代理／账簿管理人</option><option value="Underwriter">包销商（供股／公开发售）</option><option value="Sponsor">保荐人（RTO／分拆）</option><option value="RestructuringFA">债务重组财务顾问</option><option value="Accountant">申报会计师</option><option value="Valuer">独立估值师</option><option value="IndependentExpertAU">澳洲独立专家</option></select></label>
+                <label><span>签署服务</span><select id="transactionService"><option value="all">全部服务</option><option value="scheme_opinion">私有化独立意见</option><option value="offer_opinion">要约独立意见</option><option value="offer_advice">要约财务顾问</option><option value="connected_ifa_opinion">14A 关连交易独立意见</option><option value="major_vsa_ifa_opinion">主要／非常重大交易意见</option><option value="whitewash_opinion">清洗豁免独立意见</option><option value="rto_opinion">反向收购独立意见</option><option value="spinoff_advisory">PN15 分拆财务顾问／保荐</option><option value="debt_restructuring_advisory">境外债务重组顾问</option><option value="placing_bookrunning">股票配售代理／账簿管理</option><option value="cb_bookrunning">可转债／可交换债承销</option><option value="rights_underwriting">供股／公开招股包销</option><option value="takeovers_profit_forecast">收购守则盈利预测报告</option><option value="property_valuation">物业估值</option><option value="vessel_valuation">船舶估值</option><option value="acquisition_due_diligence">收购及尽职审查</option><option value="australian_scheme_expert">澳洲安排计划独立专家报告</option></select></label>
                 <label><span>对价币种</span><select id="transactionCurrency"><option value="all">全部币种</option></select></label>
                 <label><span>更新窗口</span><select id="transactionRecent"><option value="all">全部日期</option><option value="30">近 30 日</option><option value="90">近 90 日</option></select></label>
               </div>
@@ -707,7 +732,7 @@
 
           <div class="transaction-caption">
             <p id="transactionCount" role="status" aria-live="polite"></p>
-            <span>金额按披露原币列示（亿／万）· 覆盖上市规则第 14 章与香港收购守则先例</span>
+            <span>金额按披露原币列示（亿／万）· 覆盖第 14 / 14A 章、收购守则、重组分拆化债及再融资配售 / CB</span>
           </div>
 
           <section id="transactionComparison" class="transaction-comparison" aria-label="交易并列比较" hidden></section>
@@ -765,9 +790,9 @@
       <div id="globalSearchResults"></div>
     </dialog>
 
-    <script src="deal_diagram_kit.js?v=ae7cb0cb79c088db"></script>
-    <script src="app.js?v=21194f2b9f6e7fdf"></script>
-    <script src="sponsor_leaderboard_demo.js?v=7080e6aa9753ef72"></script>
+    <script src="deal_diagram_kit.js?v=672b4bc7a337a889"></script>
+    <script src="app.js?v=299ddc7fab06de54"></script>
+    <script src="sponsor_leaderboard_demo.js?v=5573a320a49770c0"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

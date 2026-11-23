@@ -46,6 +46,9 @@ const defaults = {
   feeBasis: "all",
   feeIndustry: "all",
   feeInstitution: "all",
+  feeSponsorRole: "all",
+  feeEconMetric: "totalEcon",
+  feeEconSplit: "total",
   feeCurrency: "all",
   feeDateFrom: "",
   feeDateTo: "",
@@ -205,6 +208,9 @@ const trackedStateKeys = [
   "feeBasis",
   "feeIndustry",
   "feeInstitution",
+  "feeSponsorRole",
+  "feeEconMetric",
+  "feeEconSplit",
   "feeCurrency",
   "feeDateFrom",
   "feeDateTo",
@@ -2955,9 +2961,22 @@ function renderSponsorJumpChip(label, sponsorId, fullTitle = "") {
   return `<span title="${escapeHtml(title)}">${escapeHtml(label)}</span>`;
 }
 
+function txsForRecord(record) {
+  if (!record?.id) return [];
+  const explicitCaseIds = new Set([
+    ...(Array.isArray(record.transactionCaseIds) ? record.transactionCaseIds : []),
+    ...(Array.isArray(record.transactionIds) ? record.transactionIds : []),
+    ...(Array.isArray(record.relatedTransactionIds) ? record.relatedTransactionIds : []),
+    ...(Array.isArray(record.relatedTransactions) ? record.relatedTransactions.map(x => typeof x === "string" ? x : x?.caseId || x?.id) : [])
+  ].filter(Boolean));
+  return (state.transactionData?.cases || []).filter(c => {
+    if (explicitCaseIds.has(c.id)) return true;
+    const { records } = resolveTransactionIssuerLinks(c);
+    return records.some(r => r.id === record.id);
+  });
+}
 function txForRecord(record) {
-  if (!record?.hkexListingStockCode) return null;
-  return (state.transactionData?.cases || []).find(c => c.code === record.hkexListingStockCode) || null;
+  return txsForRecord(record)[0] || null;
 }
 
 function renderOfferingOrganizations(items, withRoles = false) {
@@ -3165,25 +3184,195 @@ function eligibleFeeRoster() {
     return row.route !== "listed_offering" || row.id === `offering:${row.code}:${r.hkexProspectusDate}`;
   });
 }
+function feeInstMatches(item, inst) {
+ return Boolean(inst && inst !== "all" && item && (item.sponsorId === inst || item.legalEntityId === inst));
+}
+function feeSponsorRoleForRow(row, inst = "all") {
+ const items = Array.isArray(row?.institutions) ? row.institutions : [];
+ if (!items.length) return "none";
+ if (inst && inst !== "all") {
+  const idx = items.findIndex(i => feeInstMatches(i, inst));
+  if (idx < 0) return "none";
+  return items.length === 1 ? "sole" : idx === 0 ? "joint_lead" : "joint_co";
+ }
+ return items.length === 1 ? "sole" : "joint";
+}
+function feeMatchesSponsorRole(row, inst = "all", role = "all") {
+ if (!role || role === "all") return true;
+ const rRole = feeSponsorRoleForRow(row, inst);
+ if (inst && inst !== "all") {
+  if (role === "lead_all") return rRole === "sole" || rRole === "joint_lead";
+  if (role === "joint") return rRole === "joint_lead" || rRole === "joint_co";
+  return rRole === role;
+ }
+ if (role === "sole") return rRole === "sole";
+ if (role === "joint" || role === "joint_lead" || role === "joint_co") return rRole === "joint";
+ if (role === "lead_all") return rRole !== "none";
+ return true;
+}
+function feeSponsorRoleLabel(role) {
+ return ({
+  all: "全部角色",
+  sole: "独家保荐",
+  joint_lead: "牵头联席",
+  joint_co: "非牵头联席",
+  joint: "联席保荐",
+  lead_all: "独家及牵头"
+ })[role] || role;
+}
+function feeInstitutionLabel(inst, all = eligibleFeeRoster()) {
+ if (!inst || inst === "all") return "";
+ const hit = all.flatMap(r => r.institutions || []).find(i => feeInstMatches(i, inst));
+ return hit?.displayName || "";
+}
+function p0PoolSponsorFeeMedian(rows) {
+ const exactByCur = new Map(), allByCur = new Map();
+ for (const r of rows) {
+  const sp = p0EffectiveSponsorFee(r);
+  if (!sp || sp.value == null || !Number.isFinite(Number(sp.value))) continue;
+  const val = Number(sp.value);
+  if (!allByCur.has(sp.currency)) allByCur.set(sp.currency, []);
+  allByCur.get(sp.currency).push(val);
+  if (!sp.approximate && sp.exactComparisonEligible !== false) {
+   if (!exactByCur.has(sp.currency)) exactByCur.set(sp.currency, []);
+   exactByCur.get(sp.currency).push(val);
+  }
+ }
+ const srcMap = exactByCur.size ? exactByCur : allByCur;
+ if (!srcMap.size) return "—";
+ const [cur, vals] = [...srcMap.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))[0];
+ return formatChineseUnitAmount(p0Quantile(vals, 0.5), cur);
+}
+const FEE_FX_TO_HKD = { HKD: 1, USD: 7.8, CNY: 1.08, RMB: 1.08 };
+function p0DealSponsorFeeHkd(row) {
+ if (!row) return { hkd: null, raw: null, confirmed: false };
+ const sp = p0EffectiveSponsorFee(row);
+ if (!sp || sp.value == null || !Number.isFinite(Number(sp.value)) || Number(sp.value) < 0) {
+  return { hkd: null, raw: null, confirmed: false };
+ }
+ const fx = FEE_FX_TO_HKD[sp.currency] || null;
+ if (!fx) return { hkd: null, raw: sp, confirmed: false };
+ const instLen = Array.isArray(row.institutions) ? row.institutions.length : 0;
+ let mult = null;
+ if (!sp.fallback) {
+  if (["sole_sponsor", "joint_aggregate", "engagement"].includes(sp.scope)) mult = 1;
+  else if (sp.scope === "per_sponsor" && Number.isInteger(sp.perSponsorCount) && sp.perSponsorCount >= 1) mult = sp.perSponsorCount;
+ } else if (instLen === 1) {
+  mult = 1;
+ }
+ if (mult === null) return { hkd: null, raw: sp, confirmed: false };
+ return { hkd: Number(sp.value) * mult * fx, raw: sp, confirmed: !sp.fallback };
+}
+function p0DealCommissionAmounts(row, basis = state.shoeBasis || "offered") {
+ const sponsorCount = Math.max(1, Array.isArray(row?.institutions) ? row.institutions.length : 1);
+ const spInfo = p0DealSponsorFeeHkd(row);
+ if (!row) return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: null, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount: 1 };
+ if (row.route === "paused_offer") {
+  const g = row.gross?.highHkd != null ? Number(row.gross.highHkd) : null;
+  if (!Number.isFinite(g) || g <= 0) return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: spInfo.hkd, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount };
+  const fixedComm = typeof row.fixedBps === "number" && Number.isFinite(row.fixedBps) ? g * (row.fixedBps / 10000) : null;
+  const extraComm = typeof row.maximumExtraBps === "number" && Number.isFinite(row.maximumExtraBps) ? g * (row.maximumExtraBps / 10000) : null;
+  const upperComm = typeof row.upperBps === "number" && Number.isFinite(row.upperBps) ? g * (row.upperBps / 10000) : null;
+  const totalEconHkd = fixedComm !== null ? fixedComm + (spInfo.hkd || 0) : null;
+  return { gross: g, fixedComm, extraComm, upperComm, spHkd: spInfo.hkd, totalEconHkd, perSponsorCommHkd: fixedComm !== null ? fixedComm / sponsorCount : null, perSponsorEconHkd: totalEconHkd !== null ? totalEconHkd / sponsorCount : null, sponsorCount };
+ }
+ const gross = p0FeeAmount(row, basis);
+ if (gross === null || !Number.isFinite(gross) || gross <= 0) {
+  return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: spInfo.hkd, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount };
+ }
+ const phase = row[basis] || {};
+ const estVal = phase.estimate?.value != null ? Number(phase.estimate.value) : NaN;
+ const rateVal = phase.rate?.value != null ? Number(phase.rate.value) : NaN;
+ const fixedComm = Number.isFinite(estVal)
+  ? estVal
+  : Number.isFinite(rateVal)
+   ? gross * rateVal
+   : typeof row.fixedBps === "number" && Number.isFinite(row.fixedBps)
+    ? gross * (row.fixedBps / 10000)
+    : null;
+ const extraComm = typeof row.maximumExtraBps === "number" && Number.isFinite(row.maximumExtraBps)
+  ? gross * (row.maximumExtraBps / 10000)
+  : null;
+ const upperComm = typeof row.upperBps === "number" && Number.isFinite(row.upperBps)
+  ? (fixedComm !== null && extraComm !== null ? fixedComm + extraComm : gross * (row.upperBps / 10000))
+  : null;
+ const totalEconHkd = fixedComm !== null ? fixedComm + (spInfo.hkd || 0) : null;
+ return {
+  gross,
+  fixedComm,
+  extraComm,
+  upperComm,
+  spHkd: spInfo.hkd,
+  totalEconHkd,
+  perSponsorCommHkd: fixedComm !== null ? fixedComm / sponsorCount : null,
+  perSponsorEconHkd: totalEconHkd !== null ? totalEconHkd / sponsorCount : null,
+  sponsorCount
+ };
+}
+function p0EffectiveCommissionStats(rows, basis = state.shoeBasis || "offered") {
+ let totalGross = 0, grossN = 0;
+ let fixedComm = 0, fixedGross = 0, fixedN = 0;
+ let extraComm = 0, extraGross = 0, extraN = 0;
+ let upperComm = 0, upperGross = 0, upperN = 0;
+ for (const r of rows || []) {
+  const a = p0DealCommissionAmounts(r, basis);
+  if (a.gross !== null) {
+   totalGross += a.gross;
+   grossN += 1;
+   if (a.fixedComm !== null) { fixedComm += a.fixedComm; fixedGross += a.gross; fixedN += 1; }
+   if (a.extraComm !== null) { extraComm += a.extraComm; extraGross += a.gross; extraN += 1; }
+   if (a.upperComm !== null) { upperComm += a.upperComm; upperGross += a.gross; upperN += 1; }
+  }
+ }
+ return {
+  totalGross,
+  grossN,
+  fixedComm,
+  fixedGross,
+  fixedN,
+  effectiveFixedBps: fixedGross > 0 ? (fixedComm / fixedGross) * 10000 : null,
+  medianFixedBps: median((rows || []).map(r => r?.fixedBps).filter(Number.isFinite)),
+  extraComm,
+  extraGross,
+  extraN,
+  effectiveExtraBps: extraGross > 0 ? (extraComm / extraGross) * 10000 : null,
+  upperComm,
+  upperGross,
+  upperN,
+  effectiveUpperBps: upperGross > 0 ? (upperComm / upperGross) * 10000 : null
+ };
+}
 function feeRosterCriteria() {
- return {phase:state.feePhase,query:state.feeQuery,industry:state.feeIndustry,institution:state.feeInstitution,currency:state.feeCurrency,dateFrom:state.feeDateFrom,dateTo:state.feeDateTo,sort:state.feeSort,dir:state.feeSortDir,shoeBasis:state.shoeBasis,sizeBand:state.sizeBand,min:state.feeMin,max:state.feeMax,type:state.feeType};
+ return {phase:state.feePhase,query:state.feeQuery,industry:state.feeIndustry,institution:state.feeInstitution,sponsorRole:state.feeSponsorRole,econMetric:state.feeEconMetric,econSplit:state.feeEconSplit,currency:state.feeCurrency,dateFrom:state.feeDateFrom,dateTo:state.feeDateTo,sort:state.feeSort,dir:state.feeSortDir,shoeBasis:state.shoeBasis,sizeBand:state.sizeBand,min:state.feeMin,max:state.feeMax,type:state.feeType};
 }
 
 function feeRosterSearchText(r){const record=state.data?.records.find(x=>x.id===r.issuerId);const notice=r.route==='paused_offer'&&record?currentOfferingNotice(record):null;return normalizeSearchText([r.code,r.name,r.nameEn,r.issuerId,...r.aliases,...r.industryTags,...r.institutions.flatMap(i=>[i.legalName,i.displayName,i.sponsorId]),notice?'搁置 '+r.statusLabel+' '+getRecordText(record):''].join(' '));}
 
 function filterFeeRoster(rows,c={}) {
- const phase=c.phase||'listed',q=normalizeSearchText(c.query||''),range=p0SizeRange(c),basis=c.shoeBasis||'offered';
+ const phase=c.phase||'listed',q=normalizeSearchText(c.query||''),range=p0SizeRange(c),basis=c.shoeBasis||'offered',split=c.econSplit||state.feeEconSplit||'total';
  const out=rows.filter(r=>{
   const amount=p0FeeAmount(r,basis);
   return (phase==='all'||(phase==='paused'?r.route==='paused_offer':phase==='other'?['transfer','introduction'].includes(r.route):r.route==='listed_offering'))&&
    (!q||feeRosterSearchText(r).includes(q))&&(!c.basis||c.basis==='all'||r.gross?.basis===c.basis)&&(!c.industry||c.industry==='all'||r.industryTags.includes(c.industry))&&
-   (!c.institution||c.institution==='all'||r.institutions.some(i=>i.legalEntityId===c.institution||i.sponsorId===c.institution))&&
+   (!c.institution||c.institution==='all'||r.institutions.some(i=>feeInstMatches(i,c.institution)))&&
+   feeMatchesSponsorRole(r,c.institution||'all',c.sponsorRole||'all')&&
    (!c.currency||c.currency==='all'||r.currencies.includes(c.currency))&&(!c.type||c.type==='all'||r.issuerType===c.type||(c.type==='a_h'&&r.isAH))&&
    (!c.dateFrom||r.date>=c.dateFrom)&&(!c.dateTo||r.date<=c.dateTo)&&(!c.exactSponsorAmountsOnly||(r.sponsorFee&&!r.sponsorFee.approximate&&r.sponsorFee.exactComparisonEligible!==false))&&
    (range.every(v=>v===null)||(r.route==='paused_offer'?((range[0]===null||r.gross.highHkd>=range[0])&&(range[1]===null||r.gross.lowHkd!==null&&r.gross.lowHkd<=range[1])):(amount!==null&&(range[0]===null||amount>=range[0])&&(range[1]===null||amount<=range[1]))));
  });
  const direction=c.dir==='asc'?1:-1;
- const value=r=>c.sort==='gross'?(r.route==='paused_offer'?(r.gross?.highHkd==null?null:Number(r.gross.highHkd)):p0FeeAmount(r,basis)):c.sort==='fixed'?r.fixedBps??null:c.sort==='extra'?r.maximumExtraBps??null:c.sort==='upper'?r.upperBps??null:r.route==='paused_offer'?r.noticeDate:r.date;
+ const mcapOf=r=>{if(Number.isFinite(Number(r.marketCapHkdBn)))return Number(r.marketCapHkdBn);const rec=state.data?.records?.find(x=>x.id===r.issuerId);return rec?.listingMarketCapSampleEligible&&Number.isFinite(Number(rec.listingMarketCapHkdBn))?Number(rec.listingMarketCapHkdBn):null;};
+ const value=r=>{
+  if(c.sort==='gross')return r.route==='paused_offer'?(r.gross?.highHkd==null?null:Number(r.gross.highHkd)):p0FeeAmount(r,basis);
+  if(c.sort==='totalEcon'){const a=p0DealCommissionAmounts(r,basis);return split==='per_sponsor'?a.perSponsorEconHkd:a.totalEconHkd;}
+  if(c.sort==='estComm'){const a=p0DealCommissionAmounts(r,basis);return split==='per_sponsor'?a.perSponsorCommHkd:a.fixedComm;}
+  if(c.sort==='fixed')return r.fixedBps??null;
+  if(c.sort==='extra')return r.maximumExtraBps??null;
+  if(c.sort==='upper')return r.upperBps??null;
+  if(c.sort==='sponsorFee')return p0DealSponsorFeeHkd(r).hkd;
+  if(c.sort==='mcap')return mcapOf(r);
+  return r.route==='paused_offer'?r.noticeDate:r.date;
+ };
  return out.sort((a,b)=>{const av=value(a),bv=value(b);if(av===null&&bv!==null)return 1;if(bv===null&&av!==null)return-1;if(av!==null&&bv!==null&&av!==bv)return(typeof av==='number'?av-bv:String(av).localeCompare(String(bv)))*direction;return a.code.localeCompare(b.code);});
 }
 
@@ -3217,40 +3406,87 @@ function renderFeeRosterControls(all) {
  const root=document.getElementById('feeControls'),open=root.querySelector('details')?.open;
  const counts={listed:all.filter(r=>r.route==='listed_offering').length,paused:all.filter(r=>r.route==='paused_offer').length,other:all.filter(r=>['transfer','introduction'].includes(r.route)).length};
  const industries=[...new Set(all.flatMap(r=>r.industryTags))].sort().map(x=>[x,x]);
- const firmMap=new Map(all.flatMap(r=>r.institutions).map(x=>[x.legalEntityId,x]));
- const firms=[...firmMap.values()].sort((a,b)=>a.displayName.localeCompare(b.displayName)).map(i=>[i.legalEntityId,i.displayName]);
- const matchedBySponsorId=state.feeInstitution!=='all'&&!firmMap.has(state.feeInstitution)
-  ? all.flatMap(r=>r.institutions).find(i=>i.sponsorId===state.feeInstitution)
-  : null;
- if(matchedBySponsorId) firms.unshift([matchedBySponsorId.sponsorId, `${matchedBySponsorId.displayName}（全主体）`]);
- const activeInstLabel=matchedBySponsorId?matchedBySponsorId.displayName:firmMap.get(state.feeInstitution)?.displayName||'';
- const activeInstChip=activeInstLabel?`<span class="active-inst-chip">保荐机构：<strong>${escapeHtml(activeInstLabel)}</strong>${matchedBySponsorId?.sponsorId||firmMap.get(state.feeInstitution)?.sponsorId?`<button type="button" class="sponsor-jump-link" data-global-firm="${escapeHtml(matchedBySponsorId?.sponsorId||firmMap.get(state.feeInstitution)?.sponsorId)}">龙虎榜档案 ↗</button>`:''}<button type="button" data-clear-filter="feeInstitution" data-filter-view="fees" aria-label="清除保荐机构筛选">×</button></span>`:'';
+ const phasePool=all.filter(r=>state.feePhase==='paused'?r.route==='paused_offer':state.feePhase==='other'?['transfer','introduction'].includes(r.route):r.route==='listed_offering');
+ const firmByKey=new Map();
+ for(const r of all){
+  for(const i of (r.institutions||[])){
+   const key=i.sponsorId||i.legalEntityId;
+   if(!key)continue;
+   if(!firmByKey.has(key))firmByKey.set(key,{key,sponsorId:i.sponsorId||'',displayName:i.displayName,legalEntityIds:new Set(),phaseCount:0,totalCount:0});
+   const entry=firmByKey.get(key);
+   if(i.legalEntityId)entry.legalEntityIds.add(i.legalEntityId);
+   entry.totalCount+=1;
+  }
+ }
+ for(const r of phasePool){
+  for(const i of (r.institutions||[])){
+   const key=i.sponsorId||i.legalEntityId;
+   if(key&&firmByKey.has(key))firmByKey.get(key).phaseCount+=1;
+  }
+ }
+ const sortedFirms=[...firmByKey.values()].sort((a,b)=>b.phaseCount-a.phaseCount||b.totalCount-a.totalCount||a.displayName.localeCompare(b.displayName,'zh-Hans-CN'));
+ const firms=sortedFirms.map(f=>[f.key,`${f.displayName}（${f.phaseCount}）`]);
+ let activeFirmEntry=firmByKey.get(state.feeInstitution)||null;
+ if(state.feeInstitution!=='all'&&!activeFirmEntry){
+  activeFirmEntry=sortedFirms.find(f=>f.legalEntityIds.has(state.feeInstitution))||null;
+  if(activeFirmEntry)firms.unshift([state.feeInstitution,`${activeFirmEntry.displayName}（指定主体）`]);
+ }
+ const activeInstLabel=activeFirmEntry?.displayName||'';
+ const activeSponsorId=activeFirmEntry?.sponsorId||'';
+ const activePhaseFirmCount=sortedFirms.filter(f=>f.phaseCount>0).length||sortedFirms.length;
+ const roleBaseCriteria={...feeRosterCriteria(),sponsorRole:'all'};
+ const roleBaseRows=filterFeeRoster(all,roleBaseCriteria);
+ const roleTabs=[
+  ['all','全部'],
+  ['sole','独家保荐'],
+  ['joint_lead','牵头联席'],
+  ['joint_co','非牵头联席']
+ ].map(([k,lbl])=>{
+  const cnt=k==='all'?roleBaseRows.length:filterFeeRoster(roleBaseRows,{...roleBaseCriteria,sponsorRole:k}).length;
+  const active=state.feeSponsorRole===k;
+  const zero=cnt===0&&!active;
+  const tip=k==='joint_lead'?'联席保荐项目 · 招股书封面首位列明（牵头）':k==='joint_co'?'联席保荐项目 · 非首位参团联席保荐人':k==='sole'?'独家保荐项目（单一保荐机构）':'全部保荐角色';
+  return `<button type="button" data-fee-role="${k}" class="${zero?'is-zero':''}" aria-pressed="${active}" title="${tip}">${lbl}<span>${cnt}</span></button>`;
+ }).join('');
+ const quickFirmIds=['cicc','citic','huatai','gtja','ms','gs'];
+ const quickFirmsHtml=state.feeInstitution==='all'&&state.feePhase==='listed'
+  ? `<div class="fee-quick-firms" role="group" aria-label="头部保荐机构速选">${quickFirmIds.map(id=>firmByKey.get(id)).filter(f=>f&&f.phaseCount>0).map(f=>`<button type="button" class="fee-quick-firm-chip" data-fee-inst-quick="${escapeHtml(f.key)}">${escapeHtml(f.displayName)} <em>${f.phaseCount}</em></button>`).join('')}</div>`
+  : '';
+ const activeInstActions=activeInstLabel
+  ? `<div class="fee-inst-active-actions">${activeSponsorId?`<button type="button" class="sponsor-jump-link" data-global-firm="${escapeHtml(activeSponsorId)}">龙虎榜档案 ↗</button>`:''}<button type="button" class="fee-inst-clear" data-clear-filter="feeInstitution" data-filter-view="fees" aria-label="清除保荐机构筛选" title="清除保荐机构筛选">清除机构 ×</button></div>`
+  : '';
+ const sponsorBarHtml=state.feePhase!=='other'
+  ? `<div class="fee-sponsor-bar"><div class="fee-sponsor-bar-left"><label class="fee-inst-picker${activeInstLabel?' is-active':''}"><span>保荐机构</span><select data-fee-state="feeInstitution" aria-label="按保荐机构筛选">${feeRosterOptions(firms,state.feeInstitution,`全部机构（${activePhaseFirmCount}家）`)}</select></label>${activeInstActions}${quickFirmsHtml}</div><div class="fee-role-tabs" role="group" aria-label="保荐角色筛选">${roleTabs}</div></div>`
+  : '';
  const select=(name,label,items,current)=>`<label>${label}<select data-fee-state="${name}">${feeRosterOptions(items,current,'全部')}</select></label>`;
- root.innerHTML=`<div class="fee-roster-toolbar"><div class="fee-phase-tabs" role="group" aria-label="发售类别">${[['listed','已定价发售'],['paused','搁置发售'],['other','转板与介绍']].map(([k,l])=>`<button type="button" data-fee-phase="${k}" aria-pressed="${state.feePhase===k}">${l}<span>${counts[k]}</span></button>`).join('')}</div><button type="button" class="action-link-btn fee-paused-workbench-link" data-jump-view="pausedOfferings">发售搁置专题工作台 →</button>${activeInstChip}</div>
- <div class="fee-basis-row">${state.feePhase==='listed'?`<div class="segmented-inline" role="group" aria-label="募资口径"><button type="button" data-shoe-basis="offered" aria-pressed="${state.shoeBasis==='offered'}">绿鞋前最终额</button><button type="button" data-shoe-basis="actual" aria-pressed="${state.shoeBasis==='actual'}">绿鞋后实际额</button></div>`:state.feePhase==='paused'?'<span class="basis-pill-note">拟定招股区间 · 绿鞋前毛额</span>':'<span class="basis-pill-note">非公开发售上市事件</span>'}${state.feePhase!=='other'?`<div class="size-band-group" role="group" aria-label="规模档位"><button type="button" data-size-band="under500" aria-pressed="${state.sizeBand==='under500'}">&lt;5 亿</button><button type="button" data-size-band="600_900" aria-pressed="${state.sizeBand==='600_900'}">6–9 亿</button><button type="button" data-size-band="over2000" aria-pressed="${state.sizeBand==='over2000'}">&gt;20 亿</button></div><label class="range-inputs-label"><span>规模 (HKD 百万)</span><input type="number" inputmode="decimal" data-fee-state="feeMin" value="${escapeHtml(state.feeMin)}" placeholder="下限" aria-label="发售规模下限"><span>–</span><input type="number" inputmode="decimal" data-fee-state="feeMax" value="${escapeHtml(state.feeMax)}" placeholder="上限" aria-label="发售规模上限"></label>`:''}<details class="fee-filters"${open?' open':''}><summary>行业、机构与日期筛选</summary><div class="fee-filter-grid">${select('feeType','发行类别',[['h_share','H股'],['a_h','A+H'],['red_chip','红筹']],state.feeType)}${select('feeIndustry','行业',industries,state.feeIndustry)}${select('feeInstitution','保荐机构',firms,state.feeInstitution)}${select('feeCurrency','保荐费币种',[['HKD','HKD'],['USD','USD'],['CNY','CNY']],state.feeCurrency)}<label>起始日<input type="date" data-fee-state="feeDateFrom" value="${escapeHtml(state.feeDateFrom)}"></label><label>截止日<input type="date" data-fee-state="feeDateTo" value="${escapeHtml(state.feeDateTo)}"></label></div></details><button type="button" class="clear-button" data-fee-reset>重置</button></div>`;
+ root.innerHTML=`<div class="fee-roster-toolbar"><div class="fee-phase-tabs" role="group" aria-label="发售类别">${[['listed','已定价发售'],['paused','搁置发售'],['other','转板与介绍']].map(([k,l])=>`<button type="button" data-fee-phase="${k}" aria-pressed="${state.feePhase===k}">${l}<span>${counts[k]}</span></button>`).join('')}</div><button type="button" class="action-link-btn fee-paused-workbench-link" data-jump-view="pausedOfferings">发售搁置专题工作台 →</button></div>
+ ${sponsorBarHtml}
+ <div class="fee-basis-row">${state.feePhase==='listed'?`<div class="segmented-inline" role="group" aria-label="募资口径"><button type="button" data-shoe-basis="offered" aria-pressed="${state.shoeBasis==='offered'}">绿鞋前最终额</button><button type="button" data-shoe-basis="actual" aria-pressed="${state.shoeBasis==='actual'}">绿鞋后实际额</button></div>`:state.feePhase==='paused'?'<span class="basis-pill-note">拟定招股区间 · 绿鞋前毛额</span>':'<span class="basis-pill-note">非公开发售上市事件</span>'}${state.feePhase!=='other'?`<div class="size-band-group" role="group" aria-label="规模档位"><button type="button" data-size-band="under500" aria-pressed="${state.sizeBand==='under500'}">&lt;5 亿</button><button type="button" data-size-band="600_900" aria-pressed="${state.sizeBand==='600_900'}">6–9 亿</button><button type="button" data-size-band="over2000" aria-pressed="${state.sizeBand==='over2000'}">&gt;20 亿</button></div><label class="range-inputs-label"><span>规模 (HKD 百万)</span><input type="number" inputmode="decimal" data-fee-state="feeMin" value="${escapeHtml(state.feeMin)}" placeholder="下限" aria-label="发售规模下限"><span>–</span><input type="number" inputmode="decimal" data-fee-state="feeMax" value="${escapeHtml(state.feeMax)}" placeholder="上限" aria-label="发售规模上限"></label>`:''}<details class="fee-filters"${open?' open':''}><summary>行业、类别与日期筛选</summary><div class="fee-filter-grid">${select('feeType','发行类别',[['h_share','H股'],['a_h','A+H'],['red_chip','红筹']],state.feeType)}${select('feeIndustry','行业',industries,state.feeIndustry)}${select('feeCurrency','保荐费币种',[['HKD','HKD'],['USD','USD'],['CNY','CNY']],state.feeCurrency)}<label>起始日<input type="date" data-fee-state="feeDateFrom" value="${escapeHtml(state.feeDateFrom)}"></label><label>截止日<input type="date" data-fee-state="feeDateTo" value="${escapeHtml(state.feeDateTo)}"></label></div></details><button type="button" class="clear-button" data-fee-reset>重置</button></div>`;
 }
 
-function renderFeeInsightStrip(all) {
+function renderFeeInsightStrip(all, rows = null) {
  const el=document.getElementById('feeInsightStrip');if(!el)return;
  if(state.feePhase!=='listed'){el.hidden=true;el.innerHTML='';return;}
  const listed=all.filter(r=>r.route==='listed_offering');
  if(!listed.length){el.hidden=true;el.innerHTML='';return;}
+ const pool=Array.isArray(rows)&&rows.length?rows:listed;
+ const narrowed=pool.length<listed.length;
  const basis=state.shoeBasis||'offered';
- const medFixed=list=>{const v=list.map(r=>r.fixedBps).filter(x=>typeof x==='number'&&Number.isFinite(x));return v.length?feePercent(p0Quantile(v,.5)):'—';};
- const avgGross=list=>{const v=list.map(r=>p0FeeAmount(r,basis)).filter(x=>typeof x==='number'&&Number.isFinite(x));return v.length?formatChineseUnitAmount(v.reduce((a,b)=>a+b,0)/v.length,'HKD'):'—';};
- const small=listed.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a<500e6;});
- const mid=listed.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a>=500e6&&a<=2000e6;});
- const large=listed.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a>2000e6;});
- const ah=listed.filter(r=>r.isAH),nonAh=listed.filter(r=>!r.isAH);
- const shoeConfirmed=listed.filter(r=>r.shoe?.value&&['full_exercised','partially_exercised','not_exercised','no_option','full','partial','exercised'].includes(r.shoe.value));
+ const effFixed=list=>{const st=p0EffectiveCommissionStats(list,basis);return st.effectiveFixedBps!==null?feePercent(st.effectiveFixedBps):'—';};
+ const sumGross=list=>{const st=p0EffectiveCommissionStats(list,basis);return st.grossN?formatChineseUnitAmount(st.totalGross,'HKD'):'—';};
+ const small=pool.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a<500e6;});
+ const mid=pool.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a>=500e6&&a<=2000e6;});
+ const large=pool.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a>2000e6;});
+ const ah=pool.filter(r=>r.isAH),nonAh=pool.filter(r=>!r.isAH);
+ const shoeConfirmed=pool.filter(r=>r.shoe?.value&&['full_exercised','partially_exercised','not_exercised','no_option','full','partial','exercised'].includes(r.shoe.value));
  const shoeFull=shoeConfirmed.filter(r=>['full_exercised','full'].includes(r.shoe.value)).length;
  const shoePart=shoeConfirmed.filter(r=>['partially_exercised','partial','exercised'].includes(r.shoe.value)).length;
  const shoeNone=shoeConfirmed.filter(r=>r.shoe.value==='not_exercised').length;
  const shoeExRate=shoeConfirmed.length?offeringNumber((shoeFull+shoePart)/shoeConfirmed.length*100,1)+'%':'—';
  el.hidden=false;
- el.innerHTML=`<div class="stat-cell"><span class="stat-label">规模阶梯 · 固定佣金中位</span><strong class="stat-val col-num">${medFixed(small)} <small>→</small> ${medFixed(mid)} <small>→</small> ${medFixed(large)}</strong><small class="stat-sub">&lt;5亿 (${small.length}) · 5–20亿 (${mid.length}) · &gt;20亿 (${large.length})</small></div>
-  <div class="stat-cell"><span class="stat-label">A+H vs 非A+H 费率与规模</span><strong class="stat-val col-num">A+H ${medFixed(ah)} · 非A+H ${medFixed(nonAh)}</strong><small class="stat-sub">均募资：A+H ${avgGross(ah)} (${ah.length}宗) · 非A+H ${avgGross(nonAh)} (${nonAh.length}宗)</small></div>
-  <div class="stat-cell"><span class="stat-label">超额配股权（绿鞋）行使率</span><strong class="stat-val col-num">${shoeExRate}</strong><small class="stat-sub">已核实 ${shoeConfirmed.length} 宗：全额 ${shoeFull} · 部分 ${shoePart} · 未行使 ${shoeNone}</small></div>`;
+ el.innerHTML=`<div class="stat-cell" title="各规模档位内：所有项目固定佣金总和 ÷ 发行规模总和"><span class="stat-label">${narrowed?'当前筛选 · 规模阶梯有效佣金':'规模阶梯 · 有效固定佣金率'}</span><strong class="stat-val col-num">${effFixed(small)} <small>→</small> ${effFixed(mid)} <small>→</small> ${effFixed(large)}</strong><small class="stat-sub">&lt;5亿 (${small.length}) · 5–20亿 (${mid.length}) · &gt;20亿 (${large.length}) · Σ佣金/Σ规模</small></div>
+  <div class="stat-cell" title="A+H 与非 A+H 板块各自：所有项目固定佣金总和 ÷ 发行规模总和"><span class="stat-label">${narrowed?'当前筛选 · A+H vs 非A+H 有效佣金':'A+H vs 非A+H 有效佣金率'}</span><strong class="stat-val col-num">A+H ${effFixed(ah)} · 非A+H ${effFixed(nonAh)}</strong><small class="stat-sub">总募资：A+H ${sumGross(ah)} (${ah.length}宗) · 非A+H ${sumGross(nonAh)} (${nonAh.length}宗)</small></div>
+  <div class="stat-cell"><span class="stat-label">${narrowed?'当前筛选 · 绿鞋行使率':'超额配股权（绿鞋）行使率'}</span><strong class="stat-val col-num">${shoeExRate}</strong><small class="stat-sub">已核实 ${shoeConfirmed.length} 宗：全额 ${shoeFull} · 部分 ${shoePart} · 未行使 ${shoeNone}</small></div>`;
 }
 
 // Exact comparisons use whole-engagement amounts in one explicitly selected currency.
@@ -3313,11 +3549,10 @@ function renderFeeBenchmarkStrip(all) {
  const baseCriteria={...feeRosterCriteria(),sizeBand:'all',min:'',max:''};
  if(state.feePhase==='paused'){
   const paused=filterFeeRoster(all,baseCriteria);
-  const medFixed=paused.map(r=>r.fixedBps).filter(Number.isFinite);
-  const medUpper=paused.map(r=>r.upperBps).filter(Number.isFinite);
+  const pst=p0EffectiveCommissionStats(paused,'offered');
   el.hidden=false;
   el.innerHTML=`<div class="stat-cell"><span class="stat-label">搁置发售轮次</span><strong class="stat-val col-num">${paused.length} 宗</strong><small class="stat-sub">延期发售或本轮不进行 · 招股条款与基石档案</small></div>
-   <div class="stat-cell"><span class="stat-label">约定固定佣金中位</span><strong class="stat-val col-num">${medFixed.length?feePercent(p0Quantile(medFixed,.5)):'—'}</strong><small class="stat-sub">合计上限中位 ${medUpper.length?feePercent(p0Quantile(medUpper,.5)):'—'}</small></div>
+   <div class="stat-cell"><span class="stat-label">约定有效固定佣金率</span><strong class="stat-val col-num">${pst.effectiveFixedBps!==null?feePercent(pst.effectiveFixedBps):'—'}</strong><small class="stat-sub">有效合计上限 ${pst.effectiveUpperBps!==null?feePercent(pst.effectiveUpperBps):'—'} · 按拟募上限加权</small></div>
    <button type="button" class="stat-cell is-clickable" data-jump-view="pausedOfferings"><span class="stat-label">专题对比工作台</span><strong class="stat-val">5 宗并排拆解 →</strong><small class="stat-sub">机制 B 占比 · 基石名单 · 承销团矩阵</small></button>`;
   return;
  }
@@ -3331,43 +3566,69 @@ function renderFeeBenchmarkStrip(all) {
  el.hidden=false;
  el.innerHTML=tiers.map(t=>{
   const subset=pool.filter(t.filter);
-  const grossVals=subset.map(r=>p0FeeAmount(r,basis)).filter(x=>typeof x==='number'&&Number.isFinite(x));
-  const fixedVals=subset.map(r=>r.fixedBps).filter(Number.isFinite);
-  const upperVals=subset.map(r=>r.upperBps).filter(Number.isFinite);
+  const st=p0EffectiveCommissionStats(subset,basis);
   const sponsorBenchmark=p0SponsorFeeBenchmark(subset,p0SponsorComparisonCurrency());
   const active=(t.key==='all'&&state.sizeBand==='all'&&!state.feeMin&&!state.feeMax)||(t.key!=='all'&&state.sizeBand===t.key&&!state.feeMin&&!state.feeMax);
-  return `<button type="button" class="stat-cell is-clickable fee-tier-card${active?' is-active':''}" data-fee-tier="${t.key}" aria-pressed="${active}"><span class="stat-label">${t.label} <em>${subset.length} 宗</em></span><strong class="stat-val col-num">${fixedVals.length?feePercent(p0Quantile(fixedVals,.5)):'—'} <small>固定 · 上限 ${upperVals.length?feePercent(p0Quantile(upperVals,.5)):'—'}</small></strong><small class="stat-sub">中位募资 ${grossVals.length?formatChineseUnitAmount(p0Quantile(grossVals,.5),'HKD'):'—'} · ${escapeHtml(sponsorBenchmark.currency)} 整单保荐费 ${escapeHtml(sponsorBenchmark.text)}</small></button>`;
+  const subVolume=st.fixedN?`佣金 ${formatChineseUnitAmount(st.fixedComm,'HKD')} / 募资 ${formatChineseUnitAmount(st.fixedGross,'HKD')}`:(st.grossN?`总募资 ${formatChineseUnitAmount(st.totalGross,'HKD')}`:'—');
+  return `<button type="button" class="stat-cell is-clickable fee-tier-card${active?' is-active':''}" data-fee-tier="${t.key}" aria-pressed="${active}" title="有效佣金率 = 该档位所有项目佣金总和 ÷ 发行规模总和"><span class="stat-label">${t.label} <em>${subset.length} 宗</em></span><strong class="stat-val col-num">${st.effectiveFixedBps!==null?feePercent(st.effectiveFixedBps):'—'} <small>有效固定 · 上限 ${st.effectiveUpperBps!==null?feePercent(st.effectiveUpperBps):'—'}</small></strong><small class="stat-sub">${escapeHtml(subVolume)} · ${escapeHtml(sponsorBenchmark.currency)} 整单保荐费 ${escapeHtml(sponsorBenchmark.text)}</small></button>`;
  }).join('');
 }
 
 let feeCurveExpanded = null;
+let lastFeeCurvePts = [];
+const FEE_CURVE_STAGE = { W: 620, H: 228 };
 
-function renderFeeScaleCurvePanel(all) {
+function renderFeeScaleCurvePanel(all, rows = null) {
  const panel = document.getElementById("feeScaleCurvePanel");
  if (!panel) return;
  if (panel.innerHTML && typeof panel.open === "boolean") feeCurveExpanded = panel.open;
  if (state.feePhase !== "listed") {
   panel.hidden = true;
   panel.innerHTML = "";
+  lastFeeCurvePts = [];
   return;
  }
+ loadFeeSponsorFirms();
+ const currency = p0SponsorComparisonCurrency();
  const basis = state.shoeBasis || "offered";
  const listed = all.filter(r => r.route === "listed_offering");
- const pts = listed.map(r => {
+ const activeRows = Array.isArray(rows) ? rows : filterFeeRoster(all, feeRosterCriteria());
+ const matchedIds = new Set(activeRows.map(r => r.id));
+ const hasInstFilter = state.feeInstitution !== "all";
+ const hasActiveFilter = Boolean(
+  hasInstFilter ||
+  state.feeSponsorRole !== "all" ||
+  state.sizeBand !== "all" ||
+  state.feeMin !== "" ||
+  state.feeMax !== "" ||
+  state.feeIndustry !== "all" ||
+  state.feeCurrency !== "all" ||
+  state.feeType !== "all" ||
+  String(state.feeQuery || "").trim() !== "" ||
+  state.feeDateFrom !== "" ||
+  state.feeDateTo !== ""
+ );
+ const activeInstName = hasInstFilter ? feeInstitutionLabel(state.feeInstitution, all) : "";
+ const W = FEE_CURVE_STAGE.W, H = FEE_CURVE_STAGE.H, padL = 44, padR = 16, padT = 18, padB = 34;
+ const minLog = Math.log10(80), maxLog = Math.log10(60000);
+ const rawPts = listed.map(r => {
   const gross = p0FeeAmount(r, basis);
   if (gross === null || gross <= 0 || typeof r.fixedBps !== "number" || !Number.isFinite(r.fixedBps)) return null;
-  return { r, grossM: gross / 1e6, gross, fixedPct: r.fixedBps / 100 };
+  const matched = matchedIds.has(r.id);
+  const instRole = hasInstFilter ? feeSponsorRoleForRow(r, state.feeInstitution) : (r.institutions.length === 1 ? "sole" : "joint");
+  return { r, grossM: gross / 1e6, gross, fixedPct: r.fixedBps / 100, matched, instRole };
  }).filter(Boolean);
- if (!pts.length) {
+ if (!rawPts.length) {
   panel.hidden = true;
   panel.innerHTML = "";
+  lastFeeCurvePts = [];
   return;
  }
- const W = 620, H = 224, padL = 44, padR = 16, padT = 18, padB = 34;
- const minLog = Math.log10(80), maxLog = Math.log10(60000);
- const maxPct = Math.max(4.2, Math.min(6, Math.ceil(Math.max(...pts.map(p => p.fixedPct)) * 2) / 2));
+ const maxPct = Math.max(4.2, Math.min(6, Math.ceil(Math.max(...rawPts.map(p => p.fixedPct)) * 2) / 2));
  const xOf = m => padL + (Math.min(maxLog, Math.max(minLog, Math.log10(m))) - minLog) / (maxLog - minLog) * (W - padL - padR);
  const yOf = pct => padT + (1 - Math.min(maxPct, Math.max(0, pct)) / maxPct) * (H - padT - padB);
+ const pts = rawPts.map(p => ({ ...p, cx: xOf(p.grossM), cy: yOf(p.fixedPct) }));
+ lastFeeCurvePts = pts;
  const xTicks = [[100, "1亿"], [300, "3亿"], [1000, "10亿"], [3000, "30亿"], [10000, "100亿"], [50000, "500亿"]];
  const yTicks = [0, 1, 2, 3, 4].filter(t => t <= maxPct + 0.01);
  const bandDefs = [
@@ -3376,63 +3637,314 @@ function renderFeeScaleCurvePanel(all) {
   { mid: 1600, list: pts.filter(p => p.grossM >= 1000 && p.grossM < 2500) },
   { mid: 6500, list: pts.filter(p => p.grossM >= 2500) }
  ];
- const trendPts = bandDefs.filter(b => b.list.length >= 3).map(b => `${xOf(b.mid).toFixed(1)},${yOf(p0Quantile(b.list.map(p => p.fixedPct), 0.5)).toFixed(1)}`);
+ const bandEffPct = list => {
+  const st = p0EffectiveCommissionStats(list.map(p => p.r), basis);
+  return st.effectiveFixedBps !== null ? st.effectiveFixedBps / 100 : null;
+ };
+ const trendPts = bandDefs.filter(b => b.list.length >= 3).map(b => {
+  const ep = bandEffPct(b.list);
+  return ep !== null ? `${xOf(b.mid).toFixed(1)},${yOf(ep).toFixed(1)}` : "";
+ }).filter(Boolean);
  const gridSvg = yTicks.map(t => `<line class="fee-curve-grid" x1="${padL}" x2="${W - padR}" y1="${yOf(t).toFixed(1)}" y2="${yOf(t).toFixed(1)}" /><text class="fee-curve-axis-label" x="${padL - 7}" y="${(yOf(t) + 3.5).toFixed(1)}" text-anchor="end">${t}%</text>`).join("")
   + xTicks.map(([v, label]) => `<line class="fee-curve-grid is-x" x1="${xOf(v).toFixed(1)}" x2="${xOf(v).toFixed(1)}" y1="${padT}" y2="${H - padB}" /><text class="fee-curve-axis-label" x="${xOf(v).toFixed(1)}" y="${H - 12}" text-anchor="middle">${label}</text>`).join("");
- const trendSvg = trendPts.length >= 2 ? `<polyline class="fee-curve-trend" points="${trendPts.join(" ")}" fill="none" />` : "";
- const dotsSvg = pts.map(p => {
-  const cx = xOf(p.grossM).toFixed(1), cy = yOf(p.fixedPct).toFixed(1);
-  const tip = `${p.r.name} (${p.r.code}.HK) · 募资 ${formatChineseUnitAmount(p.gross, "HKD")} · 固定佣金 ${feePercent(p.r.fixedBps)}${p.r.upperBps != null ? ` · 上限 ${feePercent(p.r.upperBps)}` : ""}`;
-  return `<circle class="fee-curve-dot ${p.r.isAH ? "is-ah" : "is-nonah"}" cx="${cx}" cy="${cy}" r="4.2" data-fee-dot-round="${escapeHtml(p.r.id)}" tabindex="0" role="button" aria-label="${escapeHtml(tip)}"><title>${escapeHtml(tip)}</title></circle>`;
- }).join("");
- const ahCount = pts.filter(p => p.r.isAH).length;
- const nonAhCount = pts.length - ahCount;
+ const trendSvg = trendPts.length >= 2 ? `<polyline class="fee-curve-trend${hasActiveFilter ? " is-backdrop" : ""}" points="${trendPts.join(" ")}" fill="none" />` : "";
 
- // Sponsor nature is the same disclosed taxonomy used by the institution view.
- loadFeeSponsorFirms();
- const currency=p0SponsorComparisonCurrency();
- const camps=p0FeeSponsorCamps(listed);
- const campRowsHtml = camps.map(c => {
-  const fixedVals = c.rows.map(r => r.fixedBps).filter(Number.isFinite);
-  const grossVals = c.rows.map(r => p0FeeAmount(r, basis)).filter(x => typeof x === "number" && Number.isFinite(x));
-  const sponsorBenchmark=p0SponsorFeeBenchmark(c.rows,currency);
-  const medFix = fixedVals.length ? p0Quantile(fixedVals, 0.5) : null;
-  const barW = medFix != null ? Math.min(100, Math.max(8, medFix / 400 * 100)) : 0;
-  return `<tr data-fee-camp="${c.key}">
-   <th scope="row"><strong>${c.label}</strong><small>${c.rows.length} 宗 · 中位募资 ${grossVals.length ? formatChineseUnitAmount(p0Quantile(grossVals, 0.5), "HKD") : "—"}</small></th>
-   <td class="col-num"><div class="fee-camp-bar-cell"><strong>${medFix != null ? feePercent(medFix) : "—"}</strong><span class="fee-camp-bar" aria-hidden="true"><i style="width:${barW.toFixed(1)}%"></i></span></div></td>
+ const litPts = hasActiveFilter ? pts.filter(p => p.matched) : pts;
+ const dimPts = hasActiveFilter ? pts.filter(p => !p.matched) : [];
+
+ const buildDotAria = p => {
+  const roleNote = hasInstFilter && p.instRole !== "none"
+   ? ` · ${activeInstName}：${feeSponsorRoleLabel(p.instRole)}`
+   : ` · ${p.r.institutions.length === 1 ? "独家保荐" : `联席保荐(${p.r.institutions[0]?.displayName || ""}牵头)`}`;
+  return `${p.r.name} (${p.r.code}.HK)${roleNote} · 募资 ${formatChineseUnitAmount(p.gross, "HKD")} · 固定佣金 ${feePercent(p.r.fixedBps)}`;
+ };
+
+ let dotsSvg = "";
+ let subGuideSvg = "";
+ if (!hasActiveFilter) {
+  dotsSvg = pts.map(p => {
+   const cx = p.cx.toFixed(1), cy = p.cy.toFixed(1);
+   return `<circle class="fee-curve-dot ${p.r.isAH ? "is-ah" : "is-nonah"}" cx="${cx}" cy="${cy}" r="4.3" data-fee-dot-round="${escapeHtml(p.r.id)}" tabindex="0" role="button" aria-label="${escapeHtml(buildDotAria(p))}"></circle>`;
+  }).join("");
+ } else {
+  const backdropSvg = dimPts.map(p => {
+   const cx = p.cx.toFixed(1), cy = p.cy.toFixed(1);
+   return `<circle class="fee-curve-dot is-dimmed ${p.r.isAH ? "is-ah" : "is-nonah"}" cx="${cx}" cy="${cy}" r="3.3" data-fee-dot-round="${escapeHtml(p.r.id)}" tabindex="-1" aria-label="${escapeHtml(buildDotAria(p))}"></circle>`;
+  }).join("");
+  const litEff = p0EffectiveCommissionStats(activeRows, basis);
+  if (litPts.length >= 1 && litEff.effectiveFixedBps !== null) {
+   const effPct = litEff.effectiveFixedBps / 100;
+   const my = yOf(effPct);
+   const lblY = my > padT + 15 ? (my - 5).toFixed(1) : (my + 12).toFixed(1);
+   subGuideSvg = `<g class="fee-curve-sub-guide" pointer-events="none"><line class="fee-curve-sub-median" x1="${padL}" x2="${W - padR}" y1="${my.toFixed(1)}" y2="${my.toFixed(1)}" /><text class="fee-curve-sub-label" x="${W - padR - 2}" y="${lblY}" text-anchor="end">有效佣金率 ${effPct.toFixed(2)}%</text></g>`;
+  }
+  const activeSvg = litPts.map(p => {
+   const cx = p.cx.toFixed(1), cy = p.cy.toFixed(1);
+   const roleCls = hasInstFilter
+    ? (p.instRole === "sole" ? "is-role-sole" : p.instRole === "joint_lead" ? "is-role-lead" : "is-role-co")
+    : (p.r.isAH ? "is-ah" : "is-nonah");
+   return `<g class="fee-dot-lit-group"><circle class="fee-curve-halo ${roleCls}" cx="${cx}" cy="${cy}" r="8.4" pointer-events="none" /><circle class="fee-curve-dot is-highlighted ${roleCls}" cx="${cx}" cy="${cy}" r="5.5" data-fee-dot-round="${escapeHtml(p.r.id)}" tabindex="0" role="button" aria-label="${escapeHtml(buildDotAria(p))}"></circle></g>`;
+  }).join("");
+  dotsSvg = `<g class="fee-dots-backdrop">${backdropSvg}</g>${subGuideSvg}<g class="fee-dots-active">${activeSvg}</g>`;
+ }
+
+ let legendHtml = "";
+ if (!hasActiveFilter) {
+  const ahCount = pts.filter(p => p.r.isAH).length;
+  const nonAhCount = pts.length - ahCount;
+  legendHtml = `<span><i class="is-ah"></i>A+H (${ahCount})</span>
+   <span><i class="is-nonah"></i>H股 / 红筹 (${nonAhCount})</span>
+   <span><i class="is-trend"></i>分档有效佣金率</span>`;
+ } else if (hasInstFilter) {
+  const litSole = litPts.filter(p => p.instRole === "sole").length;
+  const litLead = litPts.filter(p => p.instRole === "joint_lead").length;
+  const litCo = litPts.filter(p => p.instRole === "joint_co").length;
+  legendHtml = `<span><i class="is-role-sole"></i>独家保荐 (${litSole})</span>
+   <span><i class="is-role-lead"></i>牵头联席 (${litLead})</span>
+   <span><i class="is-role-co"></i>非牵头联席 (${litCo})</span>
+   <span><i class="is-dimmed-dot"></i>其他市场样本 (${dimPts.length})</span>
+   <span><i class="is-trend is-dashed"></i>市场分档基准</span>`;
+ } else {
+  const litAh = litPts.filter(p => p.r.isAH).length;
+  const litNonAh = litPts.length - litAh;
+  legendHtml = `<span><i class="is-ah"></i>命中 A+H (${litAh})</span>
+   <span><i class="is-nonah"></i>命中 H股/红筹 (${litNonAh})</span>
+   <span><i class="is-dimmed-dot"></i>其他市场样本 (${dimPts.length})</span>
+   <span><i class="is-trend is-dashed"></i>市场分档基准</span>`;
+ }
+
+ const renderBreakdownRow = (label, subset, opts = {}) => {
+  const { roleKey = "", campKey = "", dotCls = "" } = opts;
+  const st = p0EffectiveCommissionStats(subset, basis);
+  const effFix = st.effectiveFixedBps;
+  const barW = effFix != null ? Math.min(100, Math.max(8, effFix / 320 * 100)) : 0;
+  const sponsorBenchmark = p0SponsorFeeBenchmark(subset, currency);
+  const isRoleActive = Boolean(roleKey && state.feeSponsorRole === roleKey);
+  const rowAttrs = [
+   campKey ? `data-fee-camp="${escapeHtml(campKey)}"` : "",
+   roleKey ? `data-fee-role="${escapeHtml(roleKey)}" tabindex="0" role="button" aria-pressed="${isRoleActive}"` : "",
+   `class="fee-camp-row${roleKey ? " is-clickable" : ""}${isRoleActive ? " is-active" : ""}${roleKey && !subset.length ? " is-zero" : ""}"`
+  ].filter(Boolean).join(" ");
+  return `<tr ${rowAttrs}>
+   <th scope="row"><div class="fee-camp-row-title">${dotCls ? `<i class="fee-camp-dot ${dotCls}"></i>` : ""}<strong>${escapeHtml(label)}</strong></div><small>${subset.length} 宗 · 总募资 ${st.grossN ? formatChineseUnitAmount(st.totalGross, "HKD") : "—"}</small></th>
+   <td class="col-num"><div class="fee-camp-bar-cell"><strong>${effFix != null ? feePercent(effFix) : "—"}</strong>${st.fixedN ? `<small class="fee-camp-comm-sub">佣金 ${escapeHtml(formatChineseUnitAmount(st.fixedComm, "HKD"))}</small>` : ""}<span class="fee-camp-bar" aria-hidden="true"><i class="${dotCls}" style="width:${barW.toFixed(1)}%"></i></span></div></td>
    <td class="col-num"><span class="fee-camp-sp">${escapeHtml(sponsorBenchmark.compact)}</span><small class="fee-camp-sample">n=${sponsorBenchmark.count}</small></td>
   </tr>`;
- }).join("");
+ };
 
- const isOpen = feeCurveExpanded ?? !window.matchMedia?.("(max-width: 767px)").matches;
+ let rightPanelTitle = "";
+ let rightHeadCol = "";
+ let campTbodyHtml = "";
+ if (hasInstFilter) {
+  const instBaseCriteria = { ...feeRosterCriteria(), sponsorRole: "all" };
+  const instPool = filterFeeRoster(all, instBaseCriteria);
+  const soleRows = instPool.filter(r => feeSponsorRoleForRow(r, state.feeInstitution) === "sole");
+  const leadRows = instPool.filter(r => feeSponsorRoleForRow(r, state.feeInstitution) === "joint_lead");
+  const coRows = instPool.filter(r => feeSponsorRoleForRow(r, state.feeInstitution) === "joint_co");
+  rightPanelTitle = `${activeInstName || "已选机构"} · 保荐角色 · ${currency} 整单明确金额`;
+  rightHeadCol = "机构角色 / 总募资";
+  campTbodyHtml = [
+   renderBreakdownRow("独家保荐", soleRows, { roleKey: "sole", dotCls: "is-role-sole" }),
+   renderBreakdownRow("牵头联席（首位）", leadRows, { roleKey: "joint_lead", dotCls: "is-role-lead" }),
+   renderBreakdownRow("非牵头联席", coRows, { roleKey: "joint_co", dotCls: "is-role-co" }),
+   renderBreakdownRow("该机构合计", instPool, { roleKey: "all" })
+  ].join("");
+ } else {
+  const camps = p0FeeSponsorCamps(listed);
+  rightPanelTitle = `保荐阵营 · ${currency} 整单明确金额`;
+  rightHeadCol = "保荐阵营 / 总募资";
+  campTbodyHtml = feeSponsorFirms
+   ? camps.map(c => renderBreakdownRow(c.label, c.rows, { campKey: c.key })).join("")
+   : '<tr><td colspan="3">机构分类待载入</td></tr>';
+ }
+
+ const filterSummaryTags = [];
+ if (activeInstName) filterSummaryTags.push(activeInstName);
+ if (state.feeSponsorRole !== "all") filterSummaryTags.push(feeSponsorRoleLabel(state.feeSponsorRole));
+ if (state.sizeBand !== "all") filterSummaryTags.push(({ under500: "<5亿", "600_900": "6–9亿", over2000: ">20亿" })[state.sizeBand] || state.sizeBand);
+ if (state.feeType !== "all") filterSummaryTags.push(({ h_share: "H股", a_h: "A+H", red_chip: "红筹" })[state.feeType] || state.feeType);
+ if (state.feeIndustry !== "all") filterSummaryTags.push(state.feeIndustry);
+ if (String(state.feeQuery || "").trim()) filterSummaryTags.push(`“${String(state.feeQuery).trim()}”`);
+ const unplottedMatched = Math.max(0, activeRows.length - litPts.length);
+ const summaryMeta = hasActiveFilter
+  ? `点亮 ${litPts.length} / ${pts.length} 宗散点${filterSummaryTags.length ? `（${escapeHtml(filterSummaryTags.join(" · "))}）` : ""}${unplottedMatched ? ` · 另 ${unplottedMatched} 宗待核/条件费率` : ""}`
+  : `${pts.length} 宗定价样本 · 悬浮散点看项目详情 · 点击直达档案`;
+
+ const isOpen = feeCurveExpanded ?? (hasActiveFilter || !window.matchMedia?.("(max-width: 767px)").matches);
  panel.hidden = false;
  panel.open = Boolean(isOpen);
- panel.innerHTML = `<summary><span>2026 新股规模—费率实证分布与保荐阵营对照</span><small class="col-num">${pts.length} 宗定价样本 · X 轴对数募资额 · Y 轴固定佣金率</small></summary>
+ panel.classList.toggle("is-filtered", hasActiveFilter);
+ panel.innerHTML = `<summary><span>${hasInstFilter ? `2026 新股规模—费率分布 · ${escapeHtml(activeInstName)} 高亮对照` : "2026 新股规模—费率实证分布与有效佣金率对照"}</span><small class="col-num">${summaryMeta}</small></summary>
   <div class="fee-curve-body">
-   <div class="fee-curve-chart-wrap">
-    <div class="fee-curve-legend">
-     <span><i class="is-ah"></i>A+H (${ahCount})</span>
-     <span><i class="is-nonah"></i>H股 / 红筹 (${nonAhCount})</span>
-     <span><i class="is-trend"></i>分档中位趋势</span>
-    </div>
+   <div class="fee-curve-chart-wrap" id="feeCurveChartWrap">
+    <div class="fee-curve-legend">${legendHtml}</div>
     <svg class="fee-curve-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="2026 港股新股发行规模与固定承销佣金率散点分布">${gridSvg}${trendSvg}${dotsSvg}</svg>
+    <div class="fee-dot-popover" id="feeDotPopover" role="tooltip" hidden></div>
    </div>
    <div class="fee-camp-panel">
-    <h4>保荐阵营 · ${escapeHtml(currency)} 整单明确金额</h4>
+    <h4>${escapeHtml(rightPanelTitle)}</h4>
     <table class="fee-camp-table">
-     <thead><tr><th scope="col">保荐阵营 / 中位募资</th><th scope="col" class="col-num">固定佣金中位</th><th scope="col" class="col-num">整单保荐费</th></tr></thead>
-     <tbody>${feeSponsorFirms?campRowsHtml:'<tr><td colspan="3">机构分类待载入</td></tr>'}</tbody>
+     <thead><tr><th scope="col">${escapeHtml(rightHeadCol)}</th><th scope="col" class="col-num">有效佣金率 (Σ佣/Σ募)</th><th scope="col" class="col-num">整单保荐费</th></tr></thead>
+     <tbody>${campTbodyHtml}</tbody>
     </table>
    </div>
   </div>`;
+}
+
+function showFeeDotPopover(dotEl, pinned = false) {
+ const pop = document.getElementById("feeDotPopover");
+ const wrap = document.getElementById("feeCurveChartWrap");
+ const svg = wrap?.querySelector?.(".fee-curve-svg");
+ if (!pop || !wrap || !svg || !dotEl) return;
+ const roundId = dotEl.dataset?.feeDotRound || dotEl.getAttribute?.("data-fee-dot-round");
+ const pt = lastFeeCurvePts.find(p => p.r.id === roundId);
+ if (!pt) return;
+ const r = pt.r;
+ const basis = state.shoeBasis || "offered";
+ const dc = p0DealCommissionAmounts(r, basis);
+ const sp = p0EffectiveSponsorFee(r);
+ const typeLabel = r.isAH ? "A+H" : r.issuerType === "h_share" ? "H股" : "红筹/其他";
+ const instHtml = (r.institutions || []).map((inst, idx) => {
+  const roleTxt = r.institutions.length === 1 ? "独家" : idx === 0 ? "牵头" : "联席";
+  const isAct = feeInstMatches(inst, state.feeInstitution);
+  return `<span class="fdp-inst${isAct ? " is-active" : ""}">${escapeHtml(inst.displayName)}<em>${roleTxt}</em></span>`;
+ }).join("");
+ const coLocated = lastFeeCurvePts.filter(o => o.r.id !== r.id && Math.hypot(o.cx - pt.cx, o.cy - pt.cy) < 5.5);
+ const overlapNote = coLocated.length
+  ? `<div class="fdp-overlap">同坐标邻近：${coLocated.slice(0, 3).map(o => `${escapeHtml(o.r.name)} (${o.r.code})`).join(" · ")}${coLocated.length > 3 ? ` 等${coLocated.length}宗` : ""}</div>`
+  : "";
+ const spText = sp && sp.value != null ? formatChineseUnitAmount(sp.value, sp.currency, Boolean(sp.approximate)) : "未单列";
+ const econTotalStr = dc.totalEconHkd !== null ? formatChineseUnitAmount(dc.totalEconHkd, "HKD") : "—";
+ const econPerStr = dc.perSponsorEconHkd !== null && dc.sponsorCount > 1 ? ` · 平分 ${formatChineseUnitAmount(dc.perSponsorEconHkd, "HKD")}/家` : "";
+ pop.classList.toggle("is-pinned", Boolean(pinned));
+ pop.dataset.pinnedRound = pinned ? r.id : "";
+ pop.innerHTML = `<div class="fdp-head"><div><strong>${escapeHtml(r.name)}</strong> <span class="mono-code">${r.code}.HK</span></div><span class="fdp-badge">${typeLabel} · ${r.listingDate || r.date}</span></div>
+  <div class="fdp-sponsors">${instHtml}</div>
+  <dl class="fdp-grid">
+   <div><dt>发行规模</dt><dd class="col-num">${escapeHtml(formatChineseUnitAmount(pt.gross, "HKD"))}</dd></div>
+   <div><dt>固定佣金</dt><dd class="col-num"><strong>${feePercent(r.fixedBps)}</strong>${dc.fixedComm !== null ? ` <em>(${escapeHtml(formatChineseUnitAmount(dc.fixedComm, "HKD"))})</em>` : ""}</dd></div>
+   <div><dt>项目总经济</dt><dd class="col-num">${escapeHtml(econTotalStr)}${escapeHtml(econPerStr)}</dd></div>
+   <div><dt>上限 / 保荐费</dt><dd class="col-num">${r.upperBps != null ? feePercent(r.upperBps) : "—"} · ${escapeHtml(spText)}</dd></div>
+  </dl>
+  ${overlapNote}
+  ${pinned ? `<button type="button" class="fdp-open-btn" data-round-id="${escapeHtml(r.id)}">查看新股完整档案 →</button>` : `<div class="fdp-foot">点击圆点直达新股档案 →</div>`}`;
+ pop.hidden = false;
+
+ const wrapRect = wrap.getBoundingClientRect?.();
+ const svgRect = svg.getBoundingClientRect?.();
+ if (wrapRect && svgRect && svgRect.width > 0 && svgRect.height > 0) {
+  const pxX = (svgRect.left - wrapRect.left) + (pt.cx / FEE_CURVE_STAGE.W) * svgRect.width;
+  const pxY = (svgRect.top - wrapRect.top) + (pt.cy / FEE_CURVE_STAGE.H) * svgRect.height;
+  const popW = Math.min(296, Math.max(224, wrapRect.width - 16));
+  pop.style.width = `${popW}px`;
+  const popH = pop.offsetHeight || 176;
+  const placeLeft = pt.cx > FEE_CURVE_STAGE.W * 0.54;
+  let left = placeLeft ? pxX - popW - 12 : pxX + 12;
+  left = Math.max(6, Math.min(wrapRect.width - popW - 6, left));
+  let top = pxY > wrapRect.height * 0.58 ? pxY - popH - 8 : pxY - 36;
+  top = Math.max(6, Math.min(Math.max(6, wrapRect.height - popH - 6), top));
+  pop.style.left = `${left.toFixed(0)}px`;
+  pop.style.top = `${top.toFixed(0)}px`;
+ }
+}
+
+function hideFeeDotPopover(force = false) {
+ const pop = document.getElementById("feeDotPopover");
+ if (!pop) return;
+ if (!force && pop.classList.contains("is-pinned")) return;
+ pop.hidden = true;
+ pop.classList.remove("is-pinned");
+}
+
+function renderFeeDealRankLane(all, rows) {
+ const lane = document.getElementById("feeDealRankLane");
+ if (!lane) return;
+ if (state.feePhase !== "listed" || !rows.length) {
+  lane.hidden = true;
+  lane.innerHTML = "";
+  return;
+ }
+ const basis = state.shoeBasis || "offered";
+ const metric = state.feeEconMetric === "estComm" ? "estComm" : "totalEcon";
+ const split = state.feeEconSplit === "per_sponsor" ? "per_sponsor" : "total";
+ const scored = rows.map(r => {
+  const dc = p0DealCommissionAmounts(r, basis);
+  const val = metric === "estComm"
+   ? (split === "per_sponsor" ? dc.perSponsorCommHkd : dc.fixedComm)
+   : (split === "per_sponsor" ? dc.perSponsorEconHkd : dc.totalEconHkd);
+  return val !== null && Number.isFinite(val) && val > 0 ? { r, dc, val } : null;
+ }).filter(Boolean).sort((a, b) => b.val - a.val || a.r.code.localeCompare(b.r.code));
+
+ if (!scored.length) {
+  lane.hidden = true;
+  lane.innerHTML = "";
+  return;
+ }
+ const top5 = scored.slice(0, 5);
+ const maxVal = top5[0].val || 1;
+ const activeInstName = state.feeInstitution !== "all" ? feeInstitutionLabel(state.feeInstitution, all) : "";
+ const laneTitle = activeInstName
+  ? `${activeInstName}${state.feeSponsorRole !== "all" ? ` · ${feeSponsorRoleLabel(state.feeSponsorRole)}` : ""} · 最赚钱项目 Top ${top5.length}`
+  : `项目创收榜 · 最赚钱 IPO Top ${top5.length}`;
+ const tableSynced = state.feeSort === metric;
+
+ const cardsHtml = top5.map((item, idx) => {
+  const { r, dc, val } = item;
+  const pct = Math.max(10, Math.min(100, (val / maxVal) * 100));
+  const valStr = `${formatChineseUnitAmount(val, "HKD")}${split === "per_sponsor" ? "/家" : ""}`;
+  const spSub = dc.spHkd ? `保荐费 ${formatChineseUnitAmount(dc.spHkd, "HKD")}` : "未单列保荐费";
+  const subStr = split === "per_sponsor"
+   ? (dc.sponsorCount === 1 ? `独家独享 · 估佣 ${formatChineseUnitAmount(dc.fixedComm, "HKD")}` : `整单 ${formatChineseUnitAmount(metric === "estComm" ? dc.fixedComm : dc.totalEconHkd, "HKD")} ÷ ${dc.sponsorCount}家`)
+   : (metric === "totalEcon" ? `估佣 ${formatChineseUnitAmount(dc.fixedComm, "HKD")} · ${spSub}` : `募资 ${formatChineseUnitAmount(dc.gross, "HKD")} × ${feePercent(r.fixedBps)}`);
+  const roleBadge = dc.sponsorCount === 1
+   ? `<span class="fel-split-tag is-sole">独家</span>`
+   : `<span class="fel-split-tag">${dc.sponsorCount}家联席</span>`;
+  return `<button type="button" class="fel-card" data-round-id="${escapeHtml(r.id)}" title="点击查看 ${escapeHtml(r.name)} (${r.code}.HK) 发行档案">
+   <div class="fel-card-top"><span class="fel-rank">#${idx + 1}</span><span class="fel-name">${escapeHtml(r.name)}</span><span class="mono-code">${r.code}</span>${roleBadge}</div>
+   <div class="fel-card-val col-num"><strong>${escapeHtml(valStr)}</strong></div>
+   <span class="fel-bar" aria-hidden="true"><i style="width:${pct.toFixed(1)}%"></i></span>
+   <small class="fel-sub col-num">${escapeHtml(subStr)}</small>
+  </button>`;
+ }).join("");
+
+ lane.hidden = false;
+ lane.innerHTML = `<div class="fel-head">
+   <div class="fel-title-group">
+    <h4>${escapeHtml(laneTitle)}</h4>
+    <span>总经济 = 固定估佣 + 已核实整单保荐费（USD 按 7.80 折算）</span>
+   </div>
+   <div class="fel-controls">
+    <div class="segmented-inline" role="group" aria-label="创收口径">
+     <button type="button" data-fee-econ-metric="totalEcon" aria-pressed="${metric === "totalEcon"}">总经济</button>
+     <button type="button" data-fee-econ-metric="estComm" aria-pressed="${metric === "estComm"}">固定估佣</button>
+    </div>
+    <div class="segmented-inline" role="group" aria-label="分配口径">
+     <button type="button" data-fee-econ-split="total" aria-pressed="${split === "total"}">整单总计</button>
+     <button type="button" data-fee-econ-split="per_sponsor" aria-pressed="${split === "per_sponsor"}">保荐人平分</button>
+    </div>
+    <button type="button" class="fel-sort-sync${tableSynced ? " is-active" : ""}" data-fee-apply-econ-sort aria-pressed="${tableSynced}">${tableSynced ? "列表已按此排序 ↓" : "列表按此排序 ↓"}</button>
+   </div>
+  </div>
+  <div class="fel-grid">${cardsHtml}</div>`;
 }
 
 function renderFeeRosterRow(r) {
  const n=p0FeeAmount(r,state.shoeBasis),sponsor=p0SponsorFeeHtml(r,false);
  const isPaused=state.feePhase==='paused',isNonOffer=r.route==='transfer'||r.route==='introduction';
  const rec=state.data?.records?.find(x=>x.id===r.issuerId);
- const names=r.institutions.map(i=>renderSponsorJumpChip(i.displayName,i.sponsorId,i.legalName)).join(' · ');
+ const instCount=(r.institutions||[]).length;
+ const names=(r.institutions||[]).map((i,idx)=>{
+  const matched=feeInstMatches(i,state.feeInstitution);
+  const chip=renderSponsorJumpChip(i.displayName,i.sponsorId,i.legalName);
+  const roleTag=instCount===1
+   ? `<span class="fee-role-tag is-sole${matched?' is-active':''}">独家</span>`
+   : idx===0
+    ? `<span class="fee-role-tag is-lead${matched?' is-active':''}">牵头</span>`
+    : matched
+     ? `<span class="fee-role-tag is-co is-active">非牵头</span>`
+     : '';
+  return matched?`<span class="fee-inst-match">${chip}${roleTag}</span>`:`${chip}${roleTag}`;
+ }).join(' · ');
  const url=p0DossierUrl(r.id);
  const typeLabel=r.isAH?'A+H':r.issuerType==='h_share'?'H股':r.route==='transfer'?'GEM转主板':r.route==='introduction'?'介绍上市':'红筹/其他';
  const rateCell=k=>isNonOffer?'<span class="data-missing">不适用</span>':p0FeeRate(r,k);
@@ -3445,10 +3957,28 @@ function renderFeeRosterRow(r) {
   closeHint=`<small class="debut-chg ${chg>0?'is-up':chg<0?'is-down':''}" title="首日收盘 HK$${escapeHtml(closeQ.price)} (${escapeHtml(closeQ.priceDate||'')})">首日 ${chg>0?'+':''}${offeringNumber(chg,1)}%</small>`;
  }
  const mcapTd=isPaused?'':`<td class="col-num fee-mcap" data-label="上市总市值">${mcapBn!==null?`<span title="HKD ${offeringNumber(mcapBn*1e9,0)}">HKD ${rmbYiFormatter.format(mcapBn*10)}亿</span>${closeHint}`:'<span class="data-missing">—</span>'}</td>`;
- const estFixedComm=(!isPaused&&!isNonOffer&&n!==null&&typeof r.fixedBps==='number')?n*r.fixedBps/10000:null;
- const grossSub=estFixedComm!==null?`<small title="按${state.shoeBasis==='actual'?'实际额':'基础额'} × 固定佣金率测算">估佣 ${escapeHtml(formatChineseUnitAmount(estFixedComm,'HKD'))}</small>`:'';
+ let econTd='';
+ if(!isPaused){
+  if(isNonOffer){
+   econTd='<td class="col-num fee-econ-col" data-label="总经济 / 估佣"><span class="data-missing">不适用</span></td>';
+  }else{
+   const dc=p0DealCommissionAmounts(r,state.shoeBasis);
+   const showEstOnly=state.feeSort==='estComm'||state.feeEconMetric==='estComm';
+   const perMode=state.feeEconSplit==='per_sponsor';
+   const mainVal=showEstOnly?(perMode?dc.perSponsorCommHkd:dc.fixedComm):(perMode?dc.perSponsorEconHkd:dc.totalEconHkd);
+   if(mainVal===null){
+    econTd=`<td class="col-num fee-econ-col" data-label="总经济 / 估佣">${p0Missing(r.feeStates?.fixed)}</td>`;
+   }else{
+    const mainTxt=`${formatChineseUnitAmount(mainVal,'HKD')}${perMode?'/家':''}`;
+    const subTxt=perMode
+     ?(dc.sponsorCount===1?'独家独享':`整单 ${formatChineseUnitAmount(showEstOnly?dc.fixedComm:dc.totalEconHkd,'HKD')} ÷ ${dc.sponsorCount}`)
+     :(showEstOnly?(dc.sponsorCount>1?`平分 ${formatChineseUnitAmount(dc.perSponsorCommHkd,'HKD')}/家`:'独家保荐'):`估佣 ${formatChineseUnitAmount(dc.fixedComm,'HKD')}${dc.sponsorCount>1?` · 平分 ${formatChineseUnitAmount(dc.perSponsorEconHkd,'HKD')}`:''}`);
+    econTd=`<td class="col-num fee-econ-col" data-label="总经济 / 估佣"><strong>${escapeHtml(mainTxt)}</strong><small>${escapeHtml(subTxt)}</small></td>`;
+   }
+  }
+ }
  const subDate=r.route==='paused_offer'?`<span class="paused-state-tag">${escapeHtml(r.statusLabel)}</span>`:`<small>${p0ShoeLabel(r)}</small>`;
- return `<tr data-fee-round="${escapeHtml(r.id)}" tabindex="0" class="fee-clickable-row${state.feeRoundId===r.id?' is-selected':''}"><th scope="row"><div class="fee-company-choice"><a class="fee-company" href="${escapeHtml(url)}" data-round-id="${escapeHtml(r.id)}">${escapeHtml(r.name)}</a>${p0FeeCompareButton(r)}</div><small class="fee-roster-meta"><span class="mono-code">${r.code}</span> · ${typeLabel}${names?' · ':''}<span class="institution-label">${names}</span></small></th><td class="fee-date" data-label="${r.route==='paused_offer'?'公告日':'挂牌日'}"><span class="date-val">${r.noticeDate||r.date}</span>${subDate}</td><td class="col-num fee-gross" data-label="${r.route==='paused_offer'?'计划发售 (HKD百万)':'规模 (HKD百万)'}" title="${n===null?'':`HKD ${offeringNumber(n,2)}`}">${isNonOffer?'<span class="data-missing">无公开发售</span>':`<span>${feeRosterGross(r)}</span>${grossSub}`}</td><td class="col-num" data-label="固定佣金">${rateCell('fixed')}</td><td class="col-num" data-label="酌情上限">${rateCell('extra')}</td><td class="col-num fee-upper" data-label="合计上限">${rateCell('upper')}</td><td class="col-num fee-sponsor-amount" data-label="保荐费">${spCell}</td>${mcapTd}</tr>`;
+ return `<tr data-fee-round="${escapeHtml(r.id)}" tabindex="0" class="fee-clickable-row${state.feeRoundId===r.id?' is-selected':''}"><th scope="row"><div class="fee-company-choice"><a class="fee-company" href="${escapeHtml(url)}" data-round-id="${escapeHtml(r.id)}">${escapeHtml(r.name)}</a>${p0FeeCompareButton(r)}</div><small class="fee-roster-meta"><span class="mono-code">${r.code}</span> · ${typeLabel}${names?' · ':''}<span class="institution-label">${names}</span></small></th><td class="fee-date" data-label="${r.route==='paused_offer'?'公告日':'挂牌日'}"><span class="date-val">${r.noticeDate||r.date}</span>${subDate}</td><td class="col-num fee-gross" data-label="${r.route==='paused_offer'?'计划发售 (HKD百万)':'规模 (HKD百万)'}" title="${n===null?'':`HKD ${offeringNumber(n,2)}`}">${isNonOffer?'<span class="data-missing">无公开发售</span>':`<span>${feeRosterGross(r)}</span>`}</td>${econTd}<td class="col-num" data-label="固定佣金">${rateCell('fixed')}</td><td class="col-num" data-label="酌情上限">${rateCell('extra')}</td><td class="col-num fee-upper" data-label="合计上限">${rateCell('upper')}</td><td class="col-num fee-sponsor-amount" data-label="保荐费">${spCell}</td>${mcapTd}</tr>`;
 }
 
 function renderFeeRosterSelection(row) {
@@ -3472,34 +4002,60 @@ function renderFeeComparison() {
  const root=document.getElementById('feeComparison');if(!root)return;
  const all=eligibleFeeRoster(),rows=filterFeeRoster(all,feeRosterCriteria());const pages=Math.max(1,Math.ceil(rows.length/FEE_ROSTER_PAGE_SIZE));state.feePage=Math.max(1,Math.min(pages,Number(state.feePage)||1));
  document.getElementById('feeSearch').value=state.feeQuery;renderFeeRosterControls(all);
- renderFeeInsightStrip(all);
+ renderFeeInsightStrip(all,rows);
  renderFeeBenchmarkStrip(all);
- renderFeeScaleCurvePanel(all);
+ renderFeeScaleCurvePanel(all,rows);
+ renderFeeDealRankLane(all,rows);
  document.getElementById('feeCount').textContent=`${rows.length} 宗 · 上市记录至 ${state.feeRosterData?.listingCutoff||'—'}`;
  document.getElementById('feeSummary').innerHTML=state.feePhase==='other'?'':p0FeeSummary(rows);
  p0RenderFeeCompareSelection(all);
+ const sortArrow=k=>state.feeSort===k?(state.feeSortDir==='desc'?' ↓':' ↑'):'';
+ const econHeadHtml=`<div class="th-econ-dual"><button type="button" data-fee-sort="totalEcon" class="${state.feeSort==='totalEcon'?'is-active':''}">总经济${sortArrow('totalEcon')}</button><span class="th-sep">/</span><button type="button" data-fee-sort="estComm" class="${state.feeSort==='estComm'?'is-active':''}">估佣${sortArrow('estComm')}</button><button type="button" class="th-split-chip" data-fee-split-toggle title="切换整单总计 / 保荐人平分">${state.feeEconSplit==='per_sponsor'?'平分':'总计'}</button></div>`;
  const headers=[
-  ['发行人 / 保荐机构','',''],
-  [state.feePhase==='paused'?'公告日':'挂牌日','date',''],
-  [state.feePhase==='paused'?'计划发售 (HKD 百万)':state.shoeBasis==='actual'?'实际额 (HKD 百万)':'发行规模 (HKD 百万)','gross',state.feePhase==='paused'?'计划发售 (HKDm)':'' ],
-  ['固定佣金','fixed',''],
-  ['酌情上限','extra',''],
-  ['合计上限','upper',''],
-  ['保荐费 (原币)','',''],
-  ...(state.feePhase==='paused'?[]:[['上市总市值 (HKD 亿)','','']])
+  ['发行人 / 保荐机构','','',false],
+  [state.feePhase==='paused'?'公告日':'挂牌日','date','',false],
+  [state.feePhase==='paused'?'计划发售 (HKD 百万)':state.shoeBasis==='actual'?'实际额 (HKD 百万)':'发行规模 (HKD 百万)','gross',state.feePhase==='paused'?'计划发售 (HKDm)':'',false],
+  ...(state.feePhase==='paused'?[]:[[econHeadHtml,'','',true]]),
+  ['固定佣金','fixed','',false],
+  ['酌情上限','extra','',false],
+  ['合计上限','upper','',false],
+  ['保荐费 (原币)','sponsorFee','',false],
+  ...(state.feePhase==='paused'?[]:[['上市总市值 (HKD 亿)','mcap','',false]])
  ];
- root.innerHTML=rows.length?`<div class="fee-table-wrap"><table class="fee-roster-table"><thead><tr>${headers.map(([label,key,spec],i)=>`<th scope="col" class="${i>1?'col-num':''}${i===7?' col-mcap-head':''}"${spec?` data-col-spec="${spec}"`:''}>${key?`<button type="button" data-fee-sort="${key}"${state.feePhase==='paused'&&key==='gross'?' aria-label="按计划发售上限排序"':''}>${label}${state.feeSort===key?(state.feeSortDir==='desc'?' ↓':' ↑'):''}</button>`:label}</th>`).join('')}</tr></thead><tbody>${rows.slice((state.feePage-1)*FEE_ROSTER_PAGE_SIZE,state.feePage*FEE_ROSTER_PAGE_SIZE).map(renderFeeRosterRow).join('')}</tbody></table></div>`:p0EmptyState('fees',all.filter(r=>state.feePhase==='paused'?r.route==='paused_offer':state.feePhase==='other'?r.route!=='listed_offering'&&r.route!=='paused_offer':r.route==='listed_offering').length);
+ root.innerHTML=rows.length?`<div class="fee-table-wrap"><table class="fee-roster-table"><thead><tr>${headers.map(([label,key,spec,rawHtml],i)=>`<th scope="col" class="${i>1?'col-num':''}${key==='mcap'?' col-mcap-head':''}"${spec?` data-col-spec="${spec}"`:''}>${rawHtml?label:key?`<button type="button" data-fee-sort="${key}" class="${state.feeSort===key?'is-active':''}"${state.feePhase==='paused'&&key==='gross'?' aria-label="按计划发售上限排序"':''}>${label}${sortArrow(key)}</button>`:label}</th>`).join('')}</tr></thead><tbody>${rows.slice((state.feePage-1)*FEE_ROSTER_PAGE_SIZE,state.feePage*FEE_ROSTER_PAGE_SIZE).map(renderFeeRosterRow).join('')}</tbody></table></div>`:p0EmptyState('fees',all.filter(r=>state.feePhase==='paused'?r.route==='paused_offer':state.feePhase==='other'?r.route!=='listed_offering'&&r.route!=='paused_offer':r.route==='listed_offering').length);
  document.getElementById('feePagination').innerHTML=pages>1?`<button type="button" data-fee-page="${state.feePage-1}"${state.feePage===1?' disabled':''}>上一页</button><span>${state.feePage} / ${pages}</span><button type="button" data-fee-page="${state.feePage+1}"${state.feePage===pages?' disabled':''}>下一页</button>`:'';
 }
 
 function handleFeeRosterChange(event) {
- const key=event.target.dataset.feeState;if(!['feeType','feeMin','feeMax','feeIndustry','feeInstitution','feeCurrency','feeDateFrom','feeDateTo'].includes(key))return;
- state[key]=event.target.value;if(['feeMin','feeMax'].includes(key))state.sizeBand='all';state.feePage=1;renderFeeComparison();syncUrl();document.querySelector(`[data-fee-state="${key}"]`)?.focus();
+ const key=event.target.dataset.feeState;if(!['feeType','feeMin','feeMax','feeIndustry','feeInstitution','feeSponsorRole','feeCurrency','feeDateFrom','feeDateTo'].includes(key))return;
+ state[key]=event.target.value;
+ if(key==='feeInstitution'&&state.feeInstitution==='all'&&['joint_lead','joint_co'].includes(state.feeSponsorRole))state.feeSponsorRole='all';
+ if(['feeMin','feeMax'].includes(key))state.sizeBand='all';
+ state.feePage=1;renderFeeComparison();syncUrl();document.querySelector(`[data-fee-state="${key}"]`)?.focus();
 }
 
 function handleFeeRosterClick(event) {
  const dot=event.target.closest?.('[data-fee-dot-round]');
- if(dot?.dataset?.feeDotRound){openOfferingDossier(dot.dataset.feeDotRound);return;}
+ if(dot?.dataset?.feeDotRound){
+  const pop=document.getElementById('feeDotPopover');
+  const isTouchUi=event.pointerType==='touch'||Boolean(window.matchMedia?.('(hover: none), (max-width: 767px)')?.matches);
+  if(isTouchUi&&!(pop&&!pop.hidden&&pop.classList.contains('is-pinned')&&pop.dataset.pinnedRound===dot.dataset.feeDotRound)){
+   event.preventDefault?.();
+   showFeeDotPopover(dot,true);
+   return;
+  }
+  openOfferingDossier(dot.dataset.feeDotRound);
+  return;
+ }
+ if(!event.target.closest?.('#feeDotPopover'))hideFeeDotPopover(true);
+ const roleEl=event.target.closest?.('[data-fee-role]');
+ if(roleEl?.dataset?.feeRole){
+  const r=roleEl.dataset.feeRole;
+  state.feeSponsorRole=r==='all'?'all':(state.feeSponsorRole===r?'all':r);
+  state.feePage=1;renderFeeComparison();syncUrl();
+  document.querySelector(`.fee-role-tabs [data-fee-role="${state.feeSponsorRole}"]`)?.focus({preventScroll:true});
+  return;
+ }
  const el=event.target.closest?.('button,a,summary,select,input,label');
  if(!el){
   const card=event.target.closest?.('tr[data-fee-round],article[data-fee-compare-round]');
@@ -3511,15 +4067,39 @@ function handleFeeRosterClick(event) {
  if(el.dataset.globalFirm||el.dataset.jumpView||el.dataset.clearFilter)return;
  if(el.dataset.roundId){if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();openOfferingDossier(el.dataset.roundId);return;}
  if(p0HandleFeeCompareClick(el))return;
- if(el.dataset.feePhase){state.feePhase=el.dataset.feePhase;state.feePage=1;}
+ if(el.dataset.feeEconMetric){
+  state.feeEconMetric=el.dataset.feeEconMetric;
+  if(state.feeSort==='totalEcon'||state.feeSort==='estComm'){state.feeSort=state.feeEconMetric;state.feeSortDir='desc';state.feePage=1;}
+ }
+ else if(el.dataset.feeEconSplit){
+  state.feeEconSplit=el.dataset.feeEconSplit;
+  if(state.feeSort==='totalEcon'||state.feeSort==='estComm')state.feePage=1;
+ }
+ else if(el.hasAttribute('data-fee-split-toggle')){
+  state.feeEconSplit=state.feeEconSplit==='per_sponsor'?'total':'per_sponsor';
+  if(state.feeSort!=='totalEcon'&&state.feeSort!=='estComm'){state.feeSort=state.feeEconMetric||'totalEcon';state.feeSortDir='desc';}
+  state.feePage=1;
+ }
+ else if(el.hasAttribute('data-fee-apply-econ-sort')){
+  state.feeSort=state.feeEconMetric||'totalEcon';
+  state.feeSortDir='desc';
+  state.feePage=1;
+ }
+ else if(el.dataset.feeInstQuick){state.feeInstitution=state.feeInstitution===el.dataset.feeInstQuick?'all':el.dataset.feeInstQuick;state.feePage=1;}
+ else if(el.dataset.feePhase){state.feePhase=el.dataset.feePhase;state.feePage=1;}
  else if(el.dataset.feeTier){state.sizeBand=el.dataset.feeTier==='all'?'all':(state.sizeBand===el.dataset.feeTier?'all':el.dataset.feeTier);state.feeMin='';state.feeMax='';state.feePage=1;}
- else if(el.dataset.feeSort){state.feeSortDir=state.feeSort===el.dataset.feeSort&&state.feeSortDir==='desc'?'asc':'desc';state.feeSort=el.dataset.feeSort;}
+ else if(el.dataset.feeSort){
+  state.feeSortDir=state.feeSort===el.dataset.feeSort&&state.feeSortDir==='desc'?'asc':'desc';
+  state.feeSort=el.dataset.feeSort;
+  if(el.dataset.feeSort==='totalEcon'||el.dataset.feeSort==='estComm')state.feeEconMetric=el.dataset.feeSort;
+  state.feePage=1;
+ }
  else if(el.dataset.shoeBasis){state.shoeBasis=el.dataset.shoeBasis;state.feePage=1;}
  else if(el.dataset.sizeBand){state.sizeBand=state.sizeBand===el.dataset.sizeBand?'all':el.dataset.sizeBand;state.feeMin='';state.feeMax='';state.feePage=1;}
  else if(el.hasAttribute('data-fee-reset')){p0Reset('fees');return;}
  else if(el.dataset.feePage){state.feePage=Number(el.dataset.feePage);}
  else return;
- const focus=el.dataset.feeSort?`[data-fee-sort="${el.dataset.feeSort}"]`:el.dataset.shoeBasis?`[data-shoe-basis="${el.dataset.shoeBasis}"]`:el.dataset.feePhase?`[data-fee-phase="${el.dataset.feePhase}"]`:el.dataset.feeTier?`[data-fee-tier="${el.dataset.feeTier}"]`:null;
+ const focus=el.dataset.feeInstQuick?'[data-fee-state="feeInstitution"]':el.dataset.feeSort?`[data-fee-sort="${el.dataset.feeSort}"]`:el.dataset.shoeBasis?`[data-shoe-basis="${el.dataset.shoeBasis}"]`:el.dataset.feePhase?`[data-fee-phase="${el.dataset.feePhase}"]`:el.dataset.feeTier?`[data-fee-tier="${el.dataset.feeTier}"]`:null;
  renderFeeComparison();syncUrl();if(focus)document.querySelector(focus)?.focus({preventScroll:true});
 }
 
@@ -5062,18 +5642,24 @@ function renderListingFeeTerms(record) {
   const f = record.listingFeeTerms;
   if (!record.hkexListingDate || !f || !listingPdfUrl(f.url)) return "";
   const pct = n => new Intl.NumberFormat("zh-HK", { style: "percent", maximumFractionDigits: 4 }).format(n);
+  const allPages = new Set();
+  const collectPages = item => {
+    for (const p of (Array.isArray(item?.pages) ? item.pages : [])) {
+      if (Number.isInteger(p) && p > 0) allPages.add(p);
+    }
+  };
   const row = (label, value, item) => {
-    const links = (Array.isArray(item?.pages) ? item.pages : []).filter(p => Number.isInteger(p) && p > 0)
-      .map(p => `<a href="${escapeHtml(f.url)}#page=${p}" target="_blank" rel="noreferrer" aria-label="招股书 PDF 第 ${p} 页">PDF p.${p}</a>`).join(" · ");
-    return `<div class="timeline-row"><span>${label}</span><div><strong>${escapeHtml(value)}</strong>${links ? `<small class="source-list">${links}</small>` : ""}</div></div>`;
+    collectPages(item);
+    return `<div class="timeline-row"><span>${label}</span><strong>${escapeHtml(value)}</strong></div>`;
   };
   const fee = f.fee || f.feeApprox;
   const rows = [fee
     ? row("保荐费（招股书披露）", `${f.fee ? "" : "约 "}${fee.currency} ${fee.value.toLocaleString("en-US")}${fee.perSponsorCount ? "（按各保荐人约定费用合计）" : ""}`, fee)
     : row("保荐费（招股书披露）", f.feeUnresolved ? "原文披露不一致" : "暂无可核实金额", f.feeUnresolved)];
   const route = economicsRoute(record);
-  if (route === "introduction" || route === "transfer") rows.push(row("承销佣金率", route === "transfer" ? "不适用（转板上市）" : "不适用（介绍上市）"));
-  else {
+  if (route === "introduction" || route === "transfer") {
+    rows.push(row("承销佣金率", route === "transfer" ? "不适用（GEM转主板）" : "不适用（介绍上市）"));
+  } else {
     if (f.rate) rows.push(row("固定承销佣金率", pct(f.rate.value), f.rate));
     if (f.hkRate) rows.push(row("香港公开发售佣金率", pct(f.hkRate.value), f.hkRate));
     if (f.intRate) rows.push(row("国际配售佣金率", pct(f.intRate.value), f.intRate));
@@ -5082,13 +5668,15 @@ function renderListingFeeTerms(record) {
       const bound = Number.isFinite(d?.rate) && Object.keys(d).length === 2 && d.rate >= 0 && d.rate <= 1 && Array.isArray(p) &&
         p.length === 1 && Number.isInteger(p[0]) && p[0] > 0 && d.source === `${f.url}#page=${p[0]}`;
       rows.push(bound
-        ? row("附条件承销佣金率", `${d.rate.toLocaleString("zh-HK", {style: "percent", maximumSignificantDigits: 17})}（适用条件见招股书）`, item)
-        : row("固定承销佣金率", item ? "视发售条款而定" : "暂无可核实费率", item));
+        ? row("附条件承销佣金率", `${d.rate.toLocaleString("zh-HK", {style: "percent", maximumSignificantDigits: 17})}（附条件）`, item)
+        : row("固定承销佣金率", item ? "附条件费率" : "待核实", item));
     }
-    if (f.discMax) rows.push(row("酌情奖励费上限", pct(f.discMax.value), f.discMax));
-    else if (f.discRate) rows.push(row("酌情奖励费率（非承诺支付）", pct(f.discRate.value), f.discRate));
+    if (f.discMax) rows.push(row("酌情奖励费上限", f.discMax.value === 0 ? "无 (0%)" : pct(f.discMax.value), f.discMax));
+    else if (f.discRate) rows.push(row("酌情奖励费率", pct(f.discRate.value), f.discRate));
   }
-  return `<div class="detail-item"><span>发行费用 Offering fees</span><div class="timeline">${rows.join("")}</div></div>`;
+  const pageLinks = [...allPages].sort((a, b) => a - b)
+    .map(p => `<a href="${escapeHtml(f.url)}#page=${p}" target="_blank" rel="noreferrer">招股书 p.${p}</a>`).join(" · ");
+  return `<div class="detail-item"><span>发行费用条款</span><div class="timeline">${rows.join("")}</div>${pageLinks ? `<div class="econ-quiet-sources">原件页码：${pageLinks}</div>` : ""}</div>`;
 }
 
 // The exporter binds these outcome pages to an issuer. The UI checks only publisher/path syntax.
@@ -5137,11 +5725,11 @@ function renderDocumentLink(source, className = "") {
 function renderListingEconomics(record) {
   const e = record.listingEconomics;
   if (!record.hkexListingDate || !record.hkexListingStockCode || !e) return "";
-  const missing = "暂无可核实数据 / Unverified";
+  const missing = "待核实";
   const validPage = page => Number.isInteger(page) && page >= 1 && page <= 2147483647;
   const sourcesOf = f => Array.isArray(f?.sources) ? f.sources : [];
   const issued = e.actual?.sizeBasis === "issuer_issued_ipo";
-  const unitsOnly = issued && e.actual.grossMethod === "issued_units_cash_unreconciled";
+  const unitsOnly = issued && e.actual?.grossMethod === "issued_units_cash_unreconciled";
   const outcomePages = new Map();
   if (e.route?.value === "offering" && (e.shoe?.value === "not_exercised" || (issued && e.shoe?.value === "no_option"))) {
     for (const s of sourcesOf(e.shoe)) {
@@ -5149,14 +5737,14 @@ function renderListingEconomics(record) {
       if (publisher && validPage(s.page)) outcomePages.set(s.url + "#page=" + s.page, publisher);
     }
   }
-  const sourceLinks = (facts, allowOutcome = false) => {
-    const links = new Map();
+  const collectedLinks = new Map();
+  const collectSources = (facts, allowOutcome = false) => {
     for (const f of facts) for (const s of sourcesOf(f)) {
       if (typeof s?.url !== "string" || /[^\x21-\x7e]/.test(s.url)) continue;
       const year = String(record.hkexListingDate).slice(0, 4);
       if (f === e.route && /^\d{4}$/.test(year) && s.url === "https://www2.hkexnews.hk/-/media/HKEXnews/Homepage/New-Listings/New-Listing-Information/New-Listing-Report/Main/NLR" + year + "_Eng.xlsx" &&
           Number.isSafeInteger(s.row) && s.row > 0 && s.row <= 1048576) {
-        links.set(s.url + ":" + s.row, '<a target="_blank" rel="noreferrer" href="' + escapeHtml(s.url) + '">NLR row ' + s.row + '</a>');
+        collectedLinks.set(s.url + ":" + s.row, '<a target="_blank" rel="noreferrer" href="' + escapeHtml(s.url) + '">港交所新股月报 #' + s.row + '</a>');
         continue;
       }
       if (!validPage(s.page)) continue;
@@ -5167,72 +5755,105 @@ function renderListingEconomics(record) {
         (allowOutcome && outcomePages.get(href)) || (listingPdfUrl(s.url) && "PDF");
       if (!publisher) continue;
       const file = s.url.split("/").pop();
-      links.set(href, '<a target="_blank" rel="noreferrer" href="' + escapeHtml(href) +
-        '" title="' + escapeHtml(file) + '" aria-label="' + escapeHtml(file) + ', page ' + s.page + '">' + publisher + ' p.' + s.page + '</a>');
+      const shortPub = publisher === "PDF" ? "披露文件" : publisher === "HKEX" ? "绿鞋公告" : publisher;
+      collectedLinks.set(href, '<a target="_blank" rel="noreferrer" href="' + escapeHtml(href) +
+        '" title="' + escapeHtml(file) + '">' + shortPub + " p." + s.page + "</a>");
     }
-    return links.size ? '<small class="econ-sources">' + [...links.values()].join(" · ") + "</small>" : "";
   };
-  const fieldLine = allowOutcome => (label, value, ...facts) => '<div class="econ-line"><dt>' + escapeHtml(label) +
-    "</dt><dd><strong>" + escapeHtml(value) + "</strong>" + sourceLinks(facts, allowOutcome) + "</dd></div>";
-  const line = fieldLine(false), outcomeLine = fieldLine(true);
   const pct = f => {
-    const digits = listingDecimal(f.value, 0, 2);
+    const digits = listingDecimal(f?.value, 0, 2);
     return digits ? digits + "%" : missing;
   };
-  const money = (p, f) => {
-    const digits = listingDecimal(f.value, 2);
-    return digits ? p.currency + " " + digits : missing;
+  const moneyExact = (p, f) => {
+    const digits = listingDecimal(f?.value, 2);
+    return digits ? `${p.currency} ${digits}` : "";
+  };
+  const moneyClean = (p, f) => {
+    if (!f?.value) return missing;
+    const num = Number(f.value);
+    const exact = moneyExact(p, f);
+    if (Number.isFinite(num) && num >= 1e5) {
+      return `<span title="${escapeHtml(exact)}">${escapeHtml(formatChineseUnitAmount(num, p.currency))}</span>`;
+    }
+    return escapeHtml(exact || missing);
+  };
+  const priceClean = (p, f) => {
+    const digits = listingDecimal(f?.value, 2);
+    return digits ? escapeHtml(`${p.currency} ${digits}`) : missing;
   };
   const reasons = {
-    cap: "仅披露上限 / Cap only", nonuniform: "费率不统一 / Nonuniform rates",
-    unallocated: "各档基数未确定 / Bases not allocated", conditional: "费率有条件 / Conditional rate"
+    cap: "仅披露上限", nonuniform: "分档费率", unallocated: "基数待定", conditional: "附条件费率"
   };
   const states = {
-    not_exercised: "未行使 / Not exercised",
-    no_option: "无超额配股权 / No option", partial: "部分行使 / Partially exercised", full: "全数行使 / Fully exercised",
-    exercised: "已行使 / Exercised", confirmed_zero: "无额外配发 / No additional allotment"
+    not_exercised: "超额配股权未行使",
+    no_option: "无超额配股权",
+    partial: "部分行使",
+    full: "全额行使",
+    exercised: "已行使",
+    confirmed_zero: "无额外配发"
   };
-  const phase = (title, p, isActual = false) => {
-    const sizeLine = isActual ? outcomeLine : line;
-    const finalIssue = isActual && issued;
-    const grossLabels = {
-      issued_units_cash_unreconciled: "确切募集总额 / Exact gross proceeds",
-      reported: "新股发行总额（披露）/ Reported gross on new shares",
-      reconciled_components: "新股发行总额（按披露金额合计）/ Gross from disclosed amounts",
-      shares_times_price: "新股发行总额（股数 × 发售价）/ Gross from shares × price"
-    };
-    const rows = [sizeLine(finalIssue ? grossLabels[p.grossMethod] : "发行总额 / Gross proceeds", p?.gross ? money(p, p.gross) : missing, p?.gross)];
-    if (p?.shares) rows.push(sizeLine(finalIssue ? "发行人新发股数 / New shares issued" : e.unit === "HDR" ? "发售预托证券 / Offer HDRs" : "发售股数 / Offer shares", listingDecimal(p.shares.value) || missing, p.shares));
-    if (p?.price) rows.push(line("最终发售价 / Final price", money(p, p.price), p.price));
-    if (isActual && unitsOnly) {
-      rows.push(sizeLine("发行人披露的募集总额 / Issuer-reported gross", money(p, p.reportedGross), p.reportedGross));
-      rows.push(sizeLine("股数 × 发售价（仅作说明）/ Shares × price (illustrative only)", money(p, p.unitsTimesPrice), p.unitsTimesPrice));
-    }
-    if (p?.rate) rows.push(line("适用固定费率 / Fixed rate", pct(p.rate), p.rate, p.basis));
-    for (const [k, label] of [["hk", "香港公开发售 / HK public offer"], ["international", "国际配售 / International placing"]]) {
-      const t = p?.tranches?.[k];
-      if (t) rows.push(line(label, money(p, t.gross) + " × " + pct(t.rate), t.gross, t.rate, p.basis));
-    }
-    rows.push((p?.estimate ? sizeLine : line)(finalIssue ? "新股固定佣金测算 / Illustrative fixed commission on new shares" : "估算固定佣金 / Est. fixed commission", p?.estimate ? money(p, p.estimate) :
-      reasons[p?.basis?.value] || missing, p?.estimate || p?.basis));
-    return "<section><h4>" + title + "</h4><dl>" + rows.join("") + "</dl></section>";
-  };
+  const rowHtml = (label, valHtml) => `<div class="econ-line"><dt>${escapeHtml(label)}</dt><dd><strong class="col-num">${valHtml}</strong></dd></div>`;
+
   const kind = economicsRoute(record);
-  let body;
+  let body = "";
   if (kind === "introduction" || kind === "transfer") {
-    body = '<p class="econ-note">' + (kind === "introduction" ? "介绍上市 / Listing by introduction" :
-      "转板上市 / Board transfer") + " · 不适用 / N/A" + sourceLinks([e.route]) + "</p>";
+    collectSources([e.route], false);
+    body = `<p class="econ-note">${kind === "introduction" ? "介绍上市（无公开发售募资）" : "GEM 转主板（无公开发售募资）"}</p>`;
   } else if (!e.route) {
-    body = '<p class="econ-note">' + missing + "</p>";
+    body = `<p class="econ-note">${missing}</p>`;
   } else {
-    body = phase("基础发售（不含超额配股）/ Base offer, excluding option", e.offered) + "<dl>" +
-      outcomeLine("超额配股权 / Over-allotment", states[e.shoe?.value] || "未核实超额配股权行使结果 / Exercise outcome unverified", e.shoe) + "</dl>" +
-      (issued ? phase("最终发行（仅发行人新股）/ Final issuance (issuer-issued shares only)", e.actual, true) : e.shoe?.value === "pending" || (!e.shoe && !e.actual) ? '<p class="econ-note">鞋后实际发行规模未核实 / Final offer size unverified</p>' :
-        phase("最终发售（含实际超额配股）/ Final offer after over-allotment", e.actual, true)) +
-      '<p class="econ-note">估算佣金 = 适用发售总额 × 固定费率，不含酌情费用。' +
-      ' Estimated commission = applicable gross proceeds × fixed rate, excluding discretionary fees.</p>';
+    const o = e.offered || {}, a = e.actual || null;
+    collectSources([o.gross, o.shares, o.price, o.rate, o.basis, o.estimate, o.tranches?.hk?.gross, o.tranches?.hk?.rate, o.tranches?.international?.gross, o.tranches?.international?.rate], false);
+    collectSources([e.shoe], true);
+    if (a) collectSources([a.gross, a.shares, a.price, a.rate, a.basis, a.estimate, a.reportedGross, a.unitsTimesPrice], true);
+
+    const shoeText = states[e.shoe?.value] || (e.shoe?.value === "pending" || (!e.shoe && !a) ? "稳定期或待披露" : "待核实");
+    const sameAsBase = Boolean(
+      a &&
+      !issued &&
+      a.gross?.value &&
+      o.gross?.value &&
+      a.gross.value === o.gross.value &&
+      (!a.shares?.value || a.shares.value === o.shares?.value)
+    );
+    const hasDistinctActual = Boolean(a && !sameAsBase && (a.gross?.value || a.shares?.value));
+    const shareUnit = e.unit === "HDR" ? "份预托证券" : "股";
+
+    if (!hasDistinctActual) {
+      const rows = [
+        rowHtml("发售募集总额", o.gross ? moneyClean(o, o.gross) : missing),
+        o.shares ? rowHtml("发售股数", escapeHtml(`${listingDecimal(o.shares.value) || missing} ${shareUnit}`)) : "",
+        o.price ? rowHtml("最终发售价", priceClean(o, o.price)) : "",
+        o.rate ? rowHtml("固定承销费率", escapeHtml(pct(o.rate))) : "",
+        ...(["hk", "international"].map(k => {
+          const t = o.tranches?.[k];
+          if (!t) return "";
+          return rowHtml(k === "hk" ? "香港公开发售部分" : "国际配售部分", `${moneyClean(o, t.gross)} × ${escapeHtml(pct(t.rate))}`);
+        })),
+        rowHtml("固定承销佣金", o.estimate ? moneyClean(o, o.estimate) : escapeHtml(reasons[o.basis?.value] || missing)),
+        rowHtml("超额配股权", escapeHtml(shoeText))
+      ].filter(Boolean);
+      body = `<dl class="econ-clean-list">${rows.join("")}</dl>`;
+    } else {
+      const topMeta = [
+        o.price ? `<span>最终发售价 <strong class="col-num">${priceClean(o, o.price)}</strong></span>` : "",
+        o.rate ? `<span>固定费率 <strong class="col-num">${escapeHtml(pct(o.rate))}</strong></span>` : "",
+        `<span>超额配股权 <strong>${escapeHtml(shoeText)}</strong></span>`
+      ].filter(Boolean).join("");
+      const colCard = (title, p, isFinal) => {
+        const rows = [
+          rowHtml(isFinal && issued ? "新发募集总额" : "募集总额", p?.gross ? moneyClean(p, p.gross) : missing),
+          p?.shares ? rowHtml(isFinal && issued ? "新发股数" : "发售股数", escapeHtml(`${listingDecimal(p.shares.value) || missing} ${shareUnit}`)) : "",
+          isFinal && unitsOnly && p?.reportedGross ? rowHtml("披露募集总额", moneyClean(p, p.reportedGross)) : "",
+          rowHtml("固定承销佣金", p?.estimate ? moneyClean(p, p.estimate) : escapeHtml(reasons[p?.basis?.value] || missing))
+        ].filter(Boolean);
+        return `<section class="econ-phase-col"><h4>${escapeHtml(title)}</h4><dl class="econ-clean-list">${rows.join("")}</dl></section>`;
+      };
+      body = `<div class="econ-shared-strip">${topMeta}</div><div class="econ-dual-cols">${colCard("绿鞋前基础发售", o, false)}${colCard(issued ? "最终发行（发行人新股）" : "绿鞋行使后最终发售", a, true)}</div>`;
+    }
   }
-  return '<div class="detail-item listing-economics"><h3>发行规模 / 承销佣金测算<small>Offer size &amp; estimated underwriting commission</small></h3>' + body + "</div>";
+  const footerLinks = collectedLinks.size ? `<div class="econ-quiet-sources">原件页码：${[...collectedLinks.values()].slice(0, 6).join(" · ")}</div>` : "";
+  return `<div class="detail-item listing-economics"><span>发行规模与承销佣金</span>${body}${footerLinks}</div>`;
 }
 
 function renderTransactionDisclosures(record) {
@@ -5375,7 +5996,7 @@ function renderDetail(record) {
     .map((label) => `<span>${escapeHtml(label)}</span>`)
     .join("");
   const historicalAnchorLine = record.historicalTimelineAnchorDate && record.historicalTimelineAnchorDate !== record.a1Date
-    ? `<div class="timeline-row"><span>历史最早A1 Earliest A1</span><strong>${formatDate(record.historicalTimelineAnchorDate)}</strong></div>`
+    ? `<div class="timeline-row"><span>历史最早 A1</span><strong>${formatDate(record.historicalTimelineAnchorDate)}</strong></div>`
     : "";
   const dayFields = {
     a1ToReceived: dayMetricField("a1ToReceived"),
@@ -5389,21 +6010,21 @@ function renderDetail(record) {
   const matchedTx = txForRecord(record);
   const listedTimelineRows = listedPage
     ? `
-          <div class="timeline-row"><span>${record.transactionDisclosures?.kind === "holding_company_substitution" ? "重组计划文件 Scheme booklet" : "HKEX招股书 Prospectus"}</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
-          <div class="timeline-row"><span>HKEX上市日 Listing</span><strong>${formatDate(record.hkexListingDate)}</strong></div>
+          <div class="timeline-row"><span>${record.transactionDisclosures?.kind === "holding_company_substitution" ? "重组计划文件" : "港交所招股章程"}</span><strong>${formatDate(record.hkexProspectusDate)}</strong></div>
+          <div class="timeline-row"><span>港交所挂牌日</span><strong>${formatDate(record.hkexListingDate)}</strong></div>
       `
     : "";
   const daysRows = listedPage
     ? `
-          <div><span>首次A1至备案通过 A1→Notice</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToNotice"), dayUnit)}</strong></div>
-          <div><span>首次A1至上市 A1→Listing</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToListing"), dayUnit)}</strong></div>
+          <div><span>首次 A1 至备案通过</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToNotice"), dayUnit)}</strong></div>
+          <div><span>首次 A1 至挂牌</span><strong>${formatDayNumber(durationValueForDisplay(record, "a1ToListing"), dayUnit)}</strong></div>
       `
     : `
-          <div><span>备案计时至接收 A1→Received</span><strong>${formatDayNumber(durationValueForStats(record, {metric:"a1ToReceived"}), dayUnit)}</strong></div>
-          ${!record.a1ReceiptTiming && hkexListingStage(record) !== "listed" && record.calendarDaysA1ToReceived > 180 ? `<div><span>历史A1至接收 Historical A1→Received</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>` : ""}
-          ${record.a1ReceiptTiming ? record.a1ReceiptTiming.cycles.map(cycle => `<div><span>${cycle.a1Date} → ${cycle.receivedDate}<br><a href="${escapeHtml(cycle.a1SourceUrl)}" target="_blank" rel="noreferrer">A1</a> · <a href="${escapeHtml(cycle.receivedSourceUrl)}" target="_blank" rel="noreferrer">接收</a></span><strong>${formatDayNumber(cycle[state.dayCountMode === "business" ? "businessDays" : "calendarDays"], dayUnit)}</strong></div>`).join("") : `<div><span>当前A1至当前接收 Current A1→Received</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>`}
-          <div><span>接收至通知 Received→Notice</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
-          <div><span>备案锚点（A1日）至通知 A1→Notice</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
+          <div><span>备案计时至接收</span><strong>${formatDayNumber(durationValueForStats(record, {metric:"a1ToReceived"}), dayUnit)}</strong></div>
+          ${!record.a1ReceiptTiming && hkexListingStage(record) !== "listed" && record.calendarDaysA1ToReceived > 180 ? `<div><span>历史 A1 至接收</span><strong>${formatDayNumber(record[dayFields.a1ToReceived], dayUnit)}</strong></div>` : ""}
+          ${record.a1ReceiptTiming ? record.a1ReceiptTiming.cycles.map(cycle => `<div><span>${cycle.a1Date} → ${cycle.receivedDate}<br><a href="${escapeHtml(cycle.a1SourceUrl)}" target="_blank" rel="noreferrer">A1</a> · <a href="${escapeHtml(cycle.receivedSourceUrl)}" target="_blank" rel="noreferrer">接收</a></span><strong>${formatDayNumber(cycle[state.dayCountMode === "business" ? "businessDays" : "calendarDays"], dayUnit)}</strong></div>`).join("") : `<div><span>当前 A1 至当前接收</span><strong>${formatDayNumber(record[dayFields.currentA1ToReceived], dayUnit)}</strong></div>`}
+          <div><span>接收至备案通知</span><strong>${formatDayNumber(record[dayFields.receivedToNotice], dayUnit)}</strong></div>
+          <div><span>备案锚点至通知</span><strong>${formatDayNumber(record[dayFields.a1ToNotice], dayUnit)}</strong></div>
       `;
 
   const noticePredatesKnownAnchor = (record.timelineFlags || []).includes(
@@ -5438,6 +6059,7 @@ function renderDetail(record) {
         ${matchedTx ? `<a class="dossier-jump-btn is-tx" href="${escapeHtml(transactionUrl(matchedTx.id))}" data-global-tx="${escapeHtml(matchedTx.id)}">交易与重组先例 →</a>` : ""}
       </div>
     </div>
+    ${p0RegulatoryTimeline(record.id, { includeLiveTail: true, compactHeader: true })}
     <div class="detail-grid">
       <div class="detail-item">
         <span>备案与上市状态</span>
@@ -5921,23 +6543,187 @@ function bindPausedOfferingControls() {
 }
 
 const transactionOpened = new Set();
-const transactionRoles = { FA:"FA 财务顾问", IFA:"IFA 独立财务顾问", Accountant:"会计师", Valuer:"估值师", IndependentExpertAU:"澳洲独立专家" };
-const transactionServices = {scheme_opinion:"私有化独立意见",offer_opinion:"要约独立意见",offer_advice:"要约财务顾问",takeovers_profit_forecast:"收购守则盈利预测报告",property_valuation:"物业估值",vessel_valuation:"船舶估值",acquisition_due_diligence:"收购及尽职审查",rto_opinion:"反向收购独立意见",australian_scheme_expert:"澳洲安排计划独立专家报告"};
-const transactionEvents = {first_announcement:"首次公告",dispatch:"通函／计划文件寄发",vote:"股东批准",court_sanction:"法院批准",effective:"计划生效",delisting:"撤销上市",control_completion:"控股权交割",completion:"合并完成",implementation:"计划实施及介绍上市",terminated:"协议终止"};
-const transactionMetricLabels = {last_full_day_premium_pct:"较最后交易日收盘溢价",vote_for_pct:"赞成票／无利害关系已投票",against_total_disinterested_pct:"反对票／全部无利害关系股份"};
-function normalizeTransactionText(value) { return String(value || "").normalize("NFKC").toLowerCase().replace(/[\s:：()（）.\-]/g, ""); }
-function transactionMatches(row, filters = state, asOf = state.transactionData?.asOf) {
-  if (filters.transactionCategory === "reorganisation" ? !["reverse_takeover","holding_substitution"].includes(row.category) : filters.transactionCategory !== "all" && row.category !== filters.transactionCategory) return false;
-  if (filters.transactionStatus !== "all" && row.stage.status !== filters.transactionStatus) return false;
-  if(filters.transactionRule && filters.transactionRule!=="all" && !row.rules.some(r=>r.code===filters.transactionRule))return false;
-  if(filters.transactionCurrency && filters.transactionCurrency!=="all" && !row.terms.some(t=>t.currency===filters.transactionCurrency))return false;
-  if (!row.mandates.some(m => (!filters.transactionAdvisor || filters.transactionAdvisor==="all" || m.firm===filters.transactionAdvisor) && (filters.transactionRole === "all" || m.role === filters.transactionRole) && (filters.transactionService === "all" || m.service === filters.transactionService))) return false;
-  if (filters.transactionRecent !== "all") {
-    const days = Number(filters.transactionRecent), age = (Date.parse(asOf) - Date.parse(row.progressDate)) / 86400000;
-    if (![30,90].includes(days) || age < 0 || age >= days) return false;
+const transactionRoles = {
+  FA: "FA 财务顾问",
+  IFA: "IFA 独立财务顾问",
+  PlacingAgent: "配售代理／账簿管理人",
+  Underwriter: "包销商",
+  Sponsor: "保荐人",
+  RestructuringFA: "债务重组财务顾问",
+  Accountant: "申报会计师",
+  Valuer: "独立估值师",
+  IndependentExpertAU: "澳洲独立专家"
+};
+const transactionServices = {
+  scheme_opinion: "私有化独立意见",
+  offer_opinion: "要约独立意见",
+  offer_advice: "要约财务顾问",
+  connected_ifa_opinion: "14A 关连交易独立意见",
+  major_vsa_ifa_opinion: "主要／非常重大交易意见",
+  whitewash_opinion: "清洗豁免独立意见",
+  rto_opinion: "反向收购独立意见",
+  spinoff_advisory: "PN15 分拆财务顾问／保荐",
+  debt_restructuring_advisory: "境外债务重组顾问",
+  placing_bookrunning: "股票配售代理／账簿管理",
+  cb_bookrunning: "可转债／可交换债承销",
+  rights_underwriting: "供股／公开招股包销",
+  takeovers_profit_forecast: "收购守则盈利预测报告",
+  property_valuation: "物业估值",
+  vessel_valuation: "船舶估值",
+  acquisition_due_diligence: "收购及尽职审查",
+  australian_scheme_expert: "澳洲安排计划独立专家报告"
+};
+const transactionEvents = {
+  initial_disclosure: "首次披露",
+  first_disclosure: "首次披露",
+  announcement: "首次披露",
+  first_announcement: "首次披露",
+  rule_3_5_announcement: "首次披露（3.5 公告）",
+  rule_3_7: "首次披露（3.7 公告）",
+  memorandum: "首次披露（谅解备忘录）",
+  ifa_appointed: "委任独立财务顾问",
+  dispatch: "通函／计划文件寄发",
+  circular_dispatch: "通函寄发",
+  composite_dispatch: "综合要约文件寄发",
+  court_meeting: "法院会议表决",
+  vote: "股东批准",
+  egm: "股东特别大会批准",
+  sgm: "股东特别大会批准",
+  unconditional: "宣布无条件",
+  court_sanction: "法院批准",
+  effective: "计划生效",
+  delisting: "撤销上市",
+  control_completion: "控股权交割",
+  share_sale_completion: "控股权交割",
+  offer_close: "要约截止",
+  offer_closing: "要约截止",
+  close_of_offer: "要约截止",
+  first_closing: "首个要约截止",
+  final_closing: "最终要约截止",
+  completion: "合并／交割完成",
+  implementation: "计划实施及介绍上市",
+  placing_completion: "配售／发行交割",
+  lapsed: "要约／计划失效",
+  terminated: "协议终止"
+};
+const TRANSACTION_TIMEZONE_LABELS = {
+  "Atlantic/Bermuda": "百慕大当地日期",
+  "America/Cayman": "开曼当地日期",
+  "Australia/Perth": "澳洲珀斯日期",
+  "Australia/Sydney": "澳洲悉尼日期",
+  "America/New_York": "美东当地日期",
+  "Europe/London": "伦敦当地日期",
+  "Asia/Shanghai": "中国内地日期",
+  "Asia/Singapore": "新加坡当地日期"
+};
+function transactionEventLabel(e) {
+  if (!e) return "进展节点";
+  return e.label || transactionEvents[e.kind] || e.kind || "进展节点";
+}
+function transactionTimezoneNote(tz) {
+  if (!tz || tz === "Asia/Hong_Kong") return "";
+  return TRANSACTION_TIMEZONE_LABELS[tz] || `${tz} 当地日期`;
+}
+const transactionMetricLabels = {last_full_day_premium_pct:"较最后交易日收盘溢价",placing_discount_pct:"配售价折让",conversion_premium_pct:"初始转股溢价",vote_for_pct:"赞成票／无利害关系已投票",against_total_disinterested_pct:"反对票／全部无利害关系股份"};
+function normalizeTransactionText(value) { return String(value || "").normalize("NFKC").toLowerCase().replace(/[\s:：()（）.,，\-]/g, ""); }
+function transactionMatchesCategory(row, cat) {
+  if (!cat || cat === "all") return true;
+  const c = String(row?.category || "");
+  const rulesBlob = (row?.rules || []).map(r => `${r.code || ""} ${r.label || ""} ${r.application || ""}`).join(" ");
+  switch (cat) {
+    case "ch14_14a":
+      return ["disclosable","discloseable","disclosable_acquisition","disclosable_disposal","share_transaction","major","major_acquisition","major_disposal","vsa","vsd","vsa_vsd","very_substantial_acquisition","very_substantial_disposal","extreme","acquisition","disposal","equipment_purchase","asset_purchase","procurement","connected","continuing_connected"].includes(c)
+        || (c !== "reverse_takeover" && /HKEX:14(\.06\([1-5]\)|\.06C|\.33|\.44|A)/i.test(rulesBlob));
+    case "disclosable":
+      return ["disclosable","discloseable","disclosable_acquisition","disclosable_disposal","share_transaction","equipment_purchase"].includes(c) || /HKEX:14\.06\([12]\)|须予披露|股份交易/.test(rulesBlob);
+    case "share_transaction":
+      return c === "share_transaction" || /HKEX:14\.06\(1\)|股份交易/.test(rulesBlob);
+    case "major":
+      return ["major","major_acquisition","major_disposal"].includes(c) || (["acquisition","disposal"].includes(c) && /HKEX:14\.06\(3\)|HKEX:14\.44|主要交易|主要出售|主要收购/.test(rulesBlob));
+    case "vsa_vsd":
+      return ["vsa","vsd","vsa_vsd","very_substantial_acquisition","very_substantial_disposal","extreme"].includes(c) || (["acquisition","disposal"].includes(c) && /HKEX:14\.06\([45]\)|HKEX:14\.06C|非常重大|极端交易/.test(rulesBlob));
+    case "acquisition":
+      return ["acquisition","vsa","major_acquisition","disclosable_acquisition","equipment_purchase","asset_purchase"].includes(c);
+    case "disposal":
+      return ["disposal","vsd","major_disposal","disclosable_disposal"].includes(c);
+    case "connected":
+      return ["connected","continuing_connected"].includes(c) || /HKEX:14A|关连交易|持续关连/.test(rulesBlob);
+    case "continuing_connected":
+      return c === "continuing_connected" || /14A\.31|14A\.53|持续关连/.test(rulesBlob);
+    case "takeovers":
+      return ["scheme","offer","partial_offer","voluntary_offer","mandatory_offer","whitewash","special_deal","share_buyback"].includes(c);
+    case "scheme":
+      return c === "scheme";
+    case "offer":
+      return ["offer","partial_offer","voluntary_offer","mandatory_offer"].includes(c);
+    case "whitewash":
+      return ["whitewash","special_deal"].includes(c) || /清洗豁免|Whitewash|TC:25/i.test(rulesBlob);
+    case "share_buyback":
+      return c === "share_buyback" || /股份回购守则|Share Buy-backs/i.test(rulesBlob);
+    case "reorg":
+      return ["reverse_takeover","holding_substitution","spin_off","ah_share_absorption","debt_restructuring"].includes(c);
+    case "reorganisation":
+      return ["reverse_takeover","holding_substitution"].includes(c);
+    case "reverse_takeover":
+      return c === "reverse_takeover";
+    case "spin_off":
+      return c === "spin_off" || /PN15|第15项应用指引/i.test(rulesBlob);
+    case "holding_substitution":
+      return c === "holding_substitution";
+    case "ah_share_absorption":
+      return c === "ah_share_absorption";
+    case "debt_restructuring":
+      return c === "debt_restructuring";
+    case "ecm":
+      return ["topup_placing","placing","subscription","convertible_bond","exchangeable_bond","cb","rights_issue","open_offer","rights_open_offer"].includes(c);
+    case "topup_placing":
+      return ["topup_placing","placing","subscription"].includes(c);
+    case "convertible_bond":
+      return ["convertible_bond","exchangeable_bond","cb"].includes(c);
+    case "rights_open_offer":
+      return ["rights_issue","open_offer","rights_open_offer"].includes(c);
+    default:
+      return c === cat;
   }
-  const text = normalizeTransactionText([row.name,row.code,...row.aliases,row.mechanism,...Object.values(row.parties),...row.rules.flatMap(r=>[r.code,r.label,r.application]),...row.mandates.flatMap(m=>[m.firm,m.role,transactionRoles[m.role],transactionServices[m.service],m.side,...(m.signatories||[])])].join(" "));
-  return String(filters.transactionQuery || "").trim().split(/\s+/).filter(Boolean).every(q=>text.includes(normalizeTransactionText(q)));
+}
+function transactionMatches(row, filters = state, asOf = state.transactionData?.asOf) {
+  if (!transactionMatchesCategory(row, filters.transactionCategory)) return false;
+  if (filters.transactionStatus !== "all" && row.stage?.status !== filters.transactionStatus) return false;
+  const rules = Array.isArray(row.rules) ? row.rules : [];
+  const terms = Array.isArray(row.terms) ? row.terms : [];
+  const mandates = Array.isArray(row.mandates) ? row.mandates : [];
+  if (filters.transactionRule && filters.transactionRule !== "all" && !rules.some(r => r.code === filters.transactionRule)) return false;
+  if (filters.transactionCurrency && filters.transactionCurrency !== "all" && !terms.some(t => t.currency === filters.transactionCurrency)) return false;
+  const hasMandateFilter =
+    (filters.transactionAdvisor && filters.transactionAdvisor !== "all") ||
+    (filters.transactionRole && filters.transactionRole !== "all") ||
+    (filters.transactionService && filters.transactionService !== "all");
+  if (hasMandateFilter) {
+    if (!mandates.some(m =>
+      (!filters.transactionAdvisor || filters.transactionAdvisor === "all" || m.firm === filters.transactionAdvisor) &&
+      (!filters.transactionRole || filters.transactionRole === "all" || m.role === filters.transactionRole) &&
+      (!filters.transactionService || filters.transactionService === "all" || m.service === filters.transactionService)
+    )) return false;
+  }
+  if (filters.transactionRecent && filters.transactionRecent !== "all") {
+    const days = Number(filters.transactionRecent), age = (Date.parse(asOf) - Date.parse(row.progressDate)) / 86400000;
+    if (![30, 90].includes(days) || age < 0 || age >= days) return false;
+  }
+  const qRaw = String(filters.transactionQuery || "").trim();
+  if (!qRaw) return true;
+  const text = normalizeTransactionText([
+    row.name,
+    row.code,
+    ...(row.aliases || []),
+    row.mechanism,
+    row.category,
+    row.stage?.label,
+    ...Object.entries(row.parties || {}).flatMap(([k, v]) => [k, v]),
+    ...rules.flatMap(r => [r.code, r.label, r.application]),
+    ...terms.flatMap(t => [t.label, t.currency, t.basis, t.value != null ? String(t.value) : ""]),
+    ...mandates.flatMap(m => [m.firm, m.role, transactionRoles[m.role], transactionServices[m.service], m.side, ...(m.signatories || [])])
+  ].join(" "));
+  return qRaw.split(/\s+/).filter(Boolean).every(q => text.includes(normalizeTransactionText(q)));
 }
 function transactionSource(evidence, text = "原件") {
   const doc = state.transactionData?.documents?.[evidence?.documentId];
@@ -5954,14 +6740,82 @@ function transactionAmount(term) {
   const decimals = term.unit === "money" ? 2 : term.precision;
   return `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}${number.toLocaleString("en-US",{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}${term.unit === "shares" ? " 股" : term.unit === "per_share" ? "／股" : "m"}`;
 }
-function transactionDisplayAmount(term) {
+function transactionExactMoney(term) {
+  if (!term || !Number.isFinite(term.value) || term.unit !== "money") return "";
+  const num = Number(term.value);
+  const hasFrac = Math.abs(num - Math.round(num)) > 1e-6;
+  const dec = hasFrac ? Math.max(2, Number.isInteger(term.precision) ? term.precision : 2) : 0;
+  return `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}${num.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec })}`;
+}
+function transactionDisplayAmount(term, preferExact = false) {
   if (!term || !Number.isFinite(term.value)) return "—";
   const raw = transactionAmount(term);
   if (term.unit !== "money") return escapeHtml(raw);
   const cn = formatChineseUnitAmount(term.value, term.currency || "", Boolean(term.approximate));
-  return `<span class="amt-cn" title="${escapeHtml(raw)}">${escapeHtml(cn)}</span>`;
+  const exact = transactionExactMoney(term);
+  const hasSubMillionPrecision = !term.approximate && (Math.abs(term.value - Math.round(term.value)) > 1e-6 || Math.abs(term.value % 1000000) > 0.5);
+  if (preferExact && !term.approximate) {
+    return `<span class="amt-cn" title="${escapeHtml(raw + " · " + cn)}">${escapeHtml(exact)}</span>`;
+  }
+  if (hasSubMillionPrecision && term.value < 1e9) {
+    return `<span class="amt-cn" title="${escapeHtml(raw + " · " + cn)}">${escapeHtml(exact)}</span>`;
+  }
+  return `<span class="amt-cn" title="${escapeHtml(raw + (exact ? " · " + exact : ""))}">${escapeHtml(cn)}</span>`;
 }
-function transactionTerm(row, key) { return row.terms.find(t=>t.key === key); }
+function transactionTerm(row, key) { return (row.terms || []).find(t => t.key === key); }
+function resolveTransactionIssuerLinks(row) {
+  if (!row) return { records: [], rounds: [] };
+  const issuerIds = new Set();
+  const roundIds = new Set();
+  const addIssuer = v => { if (typeof v === "string" && v.trim()) issuerIds.add(v.trim()); };
+  const addRound = v => { if (typeof v === "string" && v.trim()) roundIds.add(v.trim()); };
+  addIssuer(row.issuerId);
+  addIssuer(row.relatedIssuerId);
+  addIssuer(row.trackerIssuerId);
+  addRound(row.roundId);
+  addRound(row.offeringRoundId);
+  addRound(row.dossierId);
+  for (const obj of [row.issuerLink, row.issuerRelation, row.linkedIssuer, ...(Array.isArray(row.relatedIssuers) ? row.relatedIssuers : []), ...(Array.isArray(row.issuerLinks) ? row.issuerLinks : [])]) {
+    if (!obj) continue;
+    if (typeof obj === "string") addIssuer(obj);
+    else if (typeof obj === "object") {
+      addIssuer(obj.issuerId || obj.id || obj.recordId);
+      addRound(obj.roundId || obj.offeringRoundId || obj.dossierId);
+    }
+  }
+  const allRecords = state.data?.records || [];
+  const allRounds = eligibleFeeRoster();
+  const matchedRecords = [...issuerIds].map(id => allRecords.find(x => x.id === id)).filter(Boolean);
+  const matchedRounds = [...roundIds].map(id => allRounds.find(x => x.id === id)).filter(Boolean);
+  for (const rec of matchedRecords) {
+    const rHit = allRounds.find(x => x.issuerId === rec.id);
+    if (rHit && !matchedRounds.some(m => m.id === rHit.id)) matchedRounds.push(rHit);
+  }
+  return { records: matchedRecords, rounds: matchedRounds };
+}
+function renderTransactionIssuerLinkButtons(row, compact = false) {
+  const { records, rounds } = resolveTransactionIssuerLinks(row);
+  if (!records.length && !rounds.length) return "";
+  const btns = [];
+  for (const rd of rounds) {
+    btns.push(`<button type="button" class="${compact ? "tx-advisor-chip" : "action-link-btn"} tx-issuer-jump" data-tx-jump-round="${escapeHtml(rd.id)}">${compact ? "新股档案 ↗" : `关联新股档案：${escapeHtml(rd.name)} (${rd.code}) ↗`}</button>`);
+  }
+  for (const rec of records) {
+    if (rounds.some(rd => rd.issuerId === rec.id) && compact) continue;
+    const nm = rec.issuerName || rec.csrcName || rec.hkexCoverChineseName || rec.id;
+    btns.push(`<button type="button" class="${compact ? "tx-advisor-chip" : "action-link-btn"} tx-issuer-jump" data-tx-jump-issuer="${escapeHtml(rec.id)}">${compact ? "申报档案 ↗" : `关联发行人申报档案：${escapeHtml(nm)} ↗`}</button>`);
+  }
+  return `<div class="tx-issuer-links">${btns.join("")}</div>`;
+}
+function renderIssuerRelatedTransactions(issuerId) {
+  if (!issuerId) return "";
+  const cases = (state.transactionData?.cases || []).filter(c => {
+    const { records } = resolveTransactionIssuerLinks(c);
+    return records.some(r => r.id === issuerId);
+  });
+  if (!cases.length) return "";
+  return `<div class="issuer-tx-crosslinks">${cases.map(c => `<a class="action-link-btn" href="${escapeHtml(transactionUrl(c.id))}" data-global-tx="${escapeHtml(c.id)}">关联并购／重组先例：${escapeHtml(c.name)} (${c.code}) · ${escapeHtml(c.mechanism)} ↗</a>`).join("")}</div>`;
+}
 function transactionSelection() {
   const valid = new Set((state.transactionData?.cases || []).map(r=>r.id));
   return [...new Set(state.transactionCompare.split(",").filter(id=>valid.has(id)))].slice(0,4);
@@ -5972,35 +6826,52 @@ function transactionConsolidatedSources(row) {
     const html = transactionSource(ev, label);
     if (html && !seen.has(html)) { seen.add(html); out.push(html); }
   };
-  for (const m of row.mandates) {
-    const signed = ["scheme_opinion","takeovers_profit_forecast","property_valuation","vessel_valuation","rto_opinion","australian_scheme_expert"].includes(m.service);
+  for (const m of (row.mandates || [])) {
+    const signed = ["scheme_opinion","takeovers_profit_forecast","property_valuation","vessel_valuation","rto_opinion","australian_scheme_expert","connected_ifa_opinion","major_vsa_ifa_opinion","whitewash_opinion"].includes(m.service);
     push(m.evidence, signed ? "签署报告" : "角色原件");
     if (m.signatureEvidence) push(m.signatureEvidence, "签字页");
   }
-  for (const t of row.terms) push(t.evidence, t.label);
+  for (const t of (row.terms || [])) push(t.evidence, t.label);
   for (const [, ev] of Object.entries(row.comparisonEvidence || {})) push(ev, "披露");
-  for (const r of row.rules) push(r.evidence, r.label);
-  for (const e of row.processEvents || []) push(e.evidence, transactionProcessLabels[e.kind] || "进展");
-  return `<div class="tx-consolidated-links">${out.join("")}</div>`;
+  for (const r of (row.rules || [])) push(r.evidence, r.label);
+  for (const e of (row.processEvents || [])) push(e.evidence, e.label || transactionProcessLabels[e.kind] || "进展");
+  return `<div class="tx-consolidated-links">${out.join("") || '<span class="data-missing">—</span>'}</div>`;
 }
 function transactionComparisonRows(rows) {
   const diagramKit = typeof window !== "undefined" ? window.YingSightDealDiagramKit : null;
-  const result = [ ["交易结构",r=>`${escapeHtml(r.mechanism)}${diagramKit?diagramKit.renderCompactFlowBadge(r):""}`], ["已确认阶段",r=>`<span class="tx-stage-pill is-${escapeHtml(r.stage.status)}">${escapeHtml(r.stage.label)}</span><small>${r.stage.date}</small>`] ];
-  const termKeys = ["scheme_cash","control_block","offer_value","offer_cash_cap","cash_settlement","proposed_purchase","translated_purchase","equity_value","asset_valuation","per_scheme_share","offer_price","issue_price","consideration_shares","exchange_ratio","enlarged_stake"];
-  for (const key of termKeys) {
-    const exemplar = rows.flatMap(r=>r.terms).find(t=>t.key === key);
-    if (exemplar) result.push([key==="consideration_shares"?"代价股份":exemplar.label,r=> { const t=transactionTerm(r,key); return t ? `<strong class="col-num">${transactionDisplayAmount(t)}</strong><small>${escapeHtml(t.basis)}</small>` : '<span class="data-missing">—</span>'; }]);
+  const result = [
+    ["交易结构", r => `${escapeHtml(r.mechanism)}${diagramKit ? diagramKit.renderCompactFlowBadge(r) : ""}`],
+    ["已确认阶段", r => `<span class="tx-stage-pill is-${escapeHtml(r.stage?.status || "active")}">${escapeHtml(r.stage?.label || "—")}</span><small>${r.stage?.date || ""}</small>`],
+    ["核心条款（各案原币）", r => {
+      const h = transactionTerm(r, r.headlineKey) || (r.terms || [])[0];
+      if (!h) return '<span class="data-missing">—</span>';
+      const ccyTag = h.currency ? `<span class="tx-ccy-pill">${escapeHtml(h.currency)}</span> ` : "";
+      return `${ccyTag}<strong class="col-num">${transactionDisplayAmount(h, true)}</strong><small>${escapeHtml(h.label + (h.basis ? " · " + h.basis : ""))}</small>`;
+    }]
+  ];
+  const preferredKeys = ["scheme_cash","control_block","offer_value","offer_cash_cap","cash_settlement","contract_price","prepayment_offset","advance_payment_offset","proposed_purchase","translated_purchase","equity_value","asset_valuation","gross_proceeds","net_proceeds","annual_cap","per_scheme_share","offer_price","issue_price","placing_price","conversion_price","subscription_price","consideration_shares","exchange_ratio","enlarged_stake","highest_percentage_ratio_pct","placing_commission_bps","underwriting_commission_bps","coupon_pct"];
+  const presentKeys = [...new Set(rows.flatMap(r => (r.terms || []).map(t => t.key)).filter(Boolean))];
+  const orderedKeys = [...new Set([...preferredKeys.filter(k => presentKeys.includes(k)), ...presentKeys])];
+  for (const key of orderedKeys) {
+    const exemplar = rows.flatMap(r => r.terms || []).find(t => t.key === key);
+    if (exemplar) result.push([key === "consideration_shares" ? "代价股份" : exemplar.label, r => {
+      const t = transactionTerm(r, key);
+      return t ? `<strong class="col-num">${transactionDisplayAmount(t, true)}</strong><small>${escapeHtml(t.basis || "")}</small>` : '<span class="data-missing">—</span>';
+    }]);
   }
-  for (const [key,label] of Object.entries(transactionMetricLabels)) {
-    if (rows.some(r=>Number.isFinite(r.comparables[key]))) result.push([label,r=>Number.isFinite(r.comparables[key]) ? `<strong class="col-num">${r.comparables[key]}%</strong>` : '<span class="data-missing">—</span>']);
+  for (const [key, label] of Object.entries(transactionMetricLabels)) {
+    if (rows.some(r => Number.isFinite(r.comparables?.[key]))) result.push([label, r => Number.isFinite(r.comparables?.[key]) ? `<strong class="col-num">${r.comparables[key]}%</strong>` : '<span class="data-missing">—</span>']);
   }
-  for (const [key,label] of [["announcementToDispatch","首次公告 → 文件寄发"],["dispatchToVote","文件寄发 → 股东批准"],["voteToEffective","股东批准 → 计划生效"]]) {
-    if (rows.some(r=>Number.isInteger(r.intervals[key]))) result.push([label,r=>Number.isInteger(r.intervals[key]) ? `<strong class="col-num">${r.intervals[key]} 天</strong>` : '<span class="data-missing">—</span>']);
+  for (const [key, label] of [["announcementToDispatch","首次公告 → 文件寄发"],["dispatchToVote","文件寄发 → 股东批准"],["voteToEffective","股东批准 → 计划生效"]]) {
+    if (rows.some(r => Number.isInteger(r.intervals?.[key]))) result.push([label, r => Number.isInteger(r.intervals?.[key]) ? `<strong class="col-num">${r.intervals[key]} 天</strong>` : '<span class="data-missing">—</span>']);
   }
-  if(rows.some(r=>r.lifecycle)) result.push(["首次公告 → 完成／实施",r=>r.lifecycle?`<strong class="col-num">${r.lifecycle.naturalDays} 天</strong><small>${r.lifecycle.start} → ${r.lifecycle.end}</small>`:'<span class="data-missing">—</span>']);
-  result.push(["规则与分类",r=>r.rules.map(x=>`<div class="tx-rule-line"><b>${escapeHtml(x.label)}</b><small>${escapeHtml(x.application)}</small></div>`).join("")]);
-  result.push(["延寄与停复牌",r=>transactionProcess(r)],["中介与签署原件",r=>transactionMandates(r)]);
-  result.push(["披露原件与页码",r=>transactionConsolidatedSources(r)]);
+  if (rows.some(r => r.lifecycle)) result.push(["首次公告 → 完成／实施", r => r.lifecycle ? `<strong class="col-num">${r.lifecycle.naturalDays} 天</strong><small>${r.lifecycle.start} → ${r.lifecycle.end}</small>` : '<span class="data-missing">—</span>']);
+  if (rows.some(r => resolveTransactionIssuerLinks(r).records.length || resolveTransactionIssuerLinks(r).rounds.length)) {
+    result.push(["关联发行人档案", r => renderTransactionIssuerLinkButtons(r, true) || '<span class="data-missing">—</span>']);
+  }
+  result.push(["规则与分类", r => (r.rules || []).map(x => `<div class="tx-rule-line"><b>${escapeHtml(x.label)}</b><small>${escapeHtml(x.application)}</small></div>`).join("") || '<span class="data-missing">—</span>']);
+  result.push(["延寄与停复牌", r => transactionProcess(r)], ["中介与签署原件", r => transactionMandates(r)]);
+  result.push(["披露原件与页码", r => transactionConsolidatedSources(r)]);
   return result;
 }
 
@@ -6029,8 +6900,17 @@ const TRANSACTION_MANDATE_LABELS = {
  "IndependentExpertAU:australian_scheme_expert": "澳洲独立专家｜Part 5.1 报告",
  "IFA:rto_opinion": "IFA 独立财务顾问｜反向收购独立意见",
  "IFA:offer_opinion": "IFA 独立财务顾问｜全面要约独立意见",
+ "IFA:connected_ifa_opinion": "IFA 独立财务顾问｜14A 关连交易意见",
+ "IFA:major_vsa_ifa_opinion": "IFA 独立财务顾问｜主要／非常重大交易意见",
+ "IFA:whitewash_opinion": "IFA 独立财务顾问｜清洗豁免意见",
  "FA:offer_advice": "FA 财务顾问｜要约财务顾问",
- "FA:acquisition_due_diligence": "FA 财务顾问｜收购及尽职审查"
+ "FA:acquisition_due_diligence": "FA 财务顾问｜收购及尽职审查",
+ "FA:spinoff_advisory": "FA 财务顾问｜PN15 分拆财务顾问",
+ "Sponsor:spinoff_advisory": "保荐人｜PN15 分拆上市保荐",
+ "RestructuringFA:debt_restructuring_advisory": "重组财务顾问｜境外债务重组",
+ "PlacingAgent:placing_bookrunning": "配售代理／账簿管理人｜股票配售",
+ "PlacingAgent:cb_bookrunning": "牵头经办／配售代理｜可转债承销",
+ "Underwriter:rights_underwriting": "包销商｜供股／公开招股包销"
 };
 function transactionMandateDisplay(m){
  return TRANSACTION_MANDATE_LABELS[`${m.role}:${m.service}`] || `${transactionRoles[m.role]||m.role}｜${transactionServices[m.service]||m.service}`;
@@ -6057,29 +6937,31 @@ function transactionTimingMetrics(row, asOf = state.transactionData?.asOf){
  return {disp,vote,totalLabel,totalVal,totalSub,isLive};
 }
 function transactionMandates(row){
- return '<div class="transaction-mandates">'+row.mandates.map(m=>'<div class="tx-mandate-card" data-tx-id="'+row.id+'"><div class="tx-mandate-head"><b>'+escapeHtml(m.firm)+'</b><small>'+escapeHtml(m.side)+'</small></div><span class="tx-mandate-role">'+escapeHtml(transactionMandateDisplay(m))+'</span>'+(m.signatureEvidence?'<span class="transaction-signatories">签署人：'+escapeHtml(m.signatories.join(" · "))+'</span>':"")+'</div>').join("")+'</div>';
+ const list=Array.isArray(row.mandates)?row.mandates:[];
+ if(!list.length)return '<span class="data-missing">公告暂未披露外聘中介机构</span>';
+ return '<div class="transaction-mandates">'+list.map(m=>'<div class="tx-mandate-card" data-tx-id="'+row.id+'"><div class="tx-mandate-head"><b>'+escapeHtml(m.firm)+'</b><small>'+escapeHtml(m.side||"")+'</small></div><span class="tx-mandate-role">'+escapeHtml(transactionMandateDisplay(m))+'</span>'+(m.signatureEvidence&&Array.isArray(m.signatories)&&m.signatories.length?'<span class="transaction-signatories">签署人：'+escapeHtml(m.signatories.join(" · "))+'</span>':"")+'</div>').join("")+'</div>';
 }
 function transactionProcess(row){
- return (row.processEvents||[]).map(e=>'<div class="transaction-process-event"><time>'+e.date+'</time><b>'+escapeHtml(transactionProcessLabels[e.kind])+'</b>'+(e.detail?'<span>'+escapeHtml(e.detail)+'</span>':"")+'</div>').join("")||'<span class="data-missing">—</span>';
+ return (row.processEvents||[]).map(e=>'<div class="transaction-process-event"><time>'+e.date+'</time><b>'+escapeHtml(e.label||transactionProcessLabels[e.kind]||e.kind||"进展")+'</b>'+(e.detail?'<span>'+escapeHtml(e.detail)+'</span>':"")+'</div>').join("")||'<span class="data-missing">—</span>';
 }
 function transactionDisclosure(row,key,title,body){
  const k=row.id+":"+key,open=transactionDisclosureState.has(k)?transactionDisclosureState.get(k):!window.matchMedia?.("(max-width: 767px)").matches;
  return '<details class="transaction-section" data-tx-section="'+escapeHtml(k)+'"'+(open?" open":"")+'><summary>'+title+'</summary><div class="transaction-section-body">'+body+'</div></details>';
 }
 function transactionDetail(row){
- const headline=transactionTerm(row,row.headlineKey),ids=transactionSelection(),inCompare=ids.includes(row.id);
+ const headline=transactionTerm(row,row.headlineKey)||(row.terms||[])[0],ids=transactionSelection(),inCompare=ids.includes(row.id);
  const allRefs=[
-  ...row.mandates.flatMap(m=>{const signed=["scheme_opinion","takeovers_profit_forecast","property_valuation","vessel_valuation","rto_opinion","australian_scheme_expert"].includes(m.service);return [{evidence:m.evidence,label:signed?"签署报告":"角色原件"},...(m.signatureEvidence?[{evidence:m.signatureEvidence,label:"签字页"}]:[])];}),
-  ...row.terms.map(t=>({evidence:t.evidence,label:t.label})),
-  ...row.rules.map(r=>({evidence:r.evidence,label:r.label})),
-  ...row.events.map(e=>({evidence:e.evidence,label:transactionEvents[e.kind]})),
-  ...(row.processEvents||[]).map(e=>({evidence:e.evidence,label:transactionProcessLabels[e.kind]}))
- ];
+  ...(row.mandates||[]).flatMap(m=>{const signed=["scheme_opinion","takeovers_profit_forecast","property_valuation","vessel_valuation","rto_opinion","australian_scheme_expert","connected_ifa_opinion","major_vsa_ifa_opinion","whitewash_opinion"].includes(m.service);return [{evidence:m.evidence,label:signed?"签署报告":"角色原件"},...(m.signatureEvidence?[{evidence:m.signatureEvidence,label:"签字页"}]:[])];}),
+  ...(row.terms||[]).map(t=>({evidence:t.evidence,label:t.label})),
+  ...(row.rules||[]).map(r=>({evidence:r.evidence,label:r.label})),
+  ...(row.events||[]).map(e=>({evidence:e.evidence,label:transactionEventLabel(e)})),
+  ...(row.processEvents||[]).map(e=>({evidence:e.evidence,label:e.label||transactionProcessLabels[e.kind]||e.kind||"进展"}))
+ ].filter(x=>x.evidence?.documentId);
  const sourceIds=new Set(allRefs.map(x=>x.evidence.documentId));
- const docs=[...sourceIds].map(id=>state.transactionData.documents[id]).sort((a,b)=>b.date.localeCompare(a.date));
- const terms='<dl class="transaction-terms">'+row.terms.map(t=>'<div><dt>'+escapeHtml(t.label)+'</dt><dd><strong class="col-num">'+transactionDisplayAmount(t)+'</strong><span>'+escapeHtml(t.basis)+'</span></dd></div>').join("")+'</dl><dl class="transaction-parties">'+Object.entries(row.parties).map(([k,v])=>'<div><dt>'+escapeHtml(k)+'</dt><dd>'+escapeHtml(v)+'</dd></div>').join("")+'</dl>';
- const timeline='<ol class="transaction-timeline">'+row.events.map(e=>'<li class="'+(e.state==="actual"?"is-actual":"is-scheduled")+'" data-tx-id="'+row.id+'"><time>'+e.date+'</time><div><b>'+escapeHtml(transactionEvents[e.kind])+(e.state!=="actual"?"（公告预计）":"")+'</b>'+(e.timeZone==="America/Cayman"?'<small>开曼当地日期</small>':e.timeZone==="Australia/Perth"?'<small>澳洲珀斯日期</small>':"")+'</div></li>').join("")+'</ol>';
- const rules='<div class="transaction-rules">'+row.rules.map(r=>'<div><b>'+escapeHtml(r.label)+'</b><span>'+escapeHtml(r.application)+'</span></div>').join("")+'</div>';
+ const docs=[...sourceIds].map(id=>state.transactionData?.documents?.[id]).filter(Boolean).sort((a,b)=>String(b.date||b.documentDate||"").localeCompare(String(a.date||a.documentDate||"")));
+ const terms='<dl class="transaction-terms">'+(row.terms||[]).map(t=>'<div><dt>'+escapeHtml(t.label)+'</dt><dd><strong class="col-num">'+transactionDisplayAmount(t,true)+'</strong><span>'+escapeHtml(t.basis||"")+'</span></dd></div>').join("")+'</dl><dl class="transaction-parties">'+Object.entries(row.parties||{}).map(([k,v])=>'<div><dt>'+escapeHtml(k)+'</dt><dd>'+escapeHtml(v)+'</dd></div>').join("")+'</dl>';
+ const timeline='<ol class="transaction-timeline">'+(row.events||[]).map(e=>{const tzNote=transactionTimezoneNote(e.timeZone||e.timezone);return '<li class="'+(e.state==="actual"?"is-actual":"is-scheduled")+'" data-tx-id="'+row.id+'" data-tx-event-kind="'+escapeHtml(e.kind||"")+'"><time>'+e.date+'</time><div><b>'+escapeHtml(transactionEventLabel(e))+(e.state!=="actual"?"（公告预计）":"")+'</b>'+(tzNote?'<small>'+escapeHtml(tzNote)+'</small>':"")+'</div></li>';}).join("")+'</ol>';
+ const rules='<div class="transaction-rules">'+(row.rules||[]).map(r=>'<div><b>'+escapeHtml(r.label)+'</b><span>'+escapeHtml(r.application||"")+'</span></div>').join("")+'</div>';
  const documents='<div class="transaction-doc-list">'+docs.map(d=>{
   const docRefs=[],seenHref=new Set();
   for(const ref of allRefs.filter(x=>x.evidence.documentId===d.id)){
@@ -6089,9 +6971,10 @@ function transactionDetail(row){
    const dedupKey=isMandateLabel?linkHtml:(ref.evidence.pages||[]).join(",");
    if(linkHtml&&!seenHref.has(dedupKey)){seenHref.add(dedupKey);docRefs.push(linkHtml);}
   }
-  return '<div class="transaction-document"><div class="tx-doc-main"><time>文件 '+d.date+'</time><a href="'+escapeHtml(d.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(d.title)+' ↗</a>'+(d.publishedAt?'<small>发布 '+escapeHtml(d.publishedAt.slice(0,16).replace("T"," "))+' 香港</small>':"")+'</div>'+(docRefs.length?'<div class="tx-doc-pages">'+docRefs.join("")+'</div>':"")+'</div>';
+  return '<div class="transaction-document"><div class="tx-doc-main"><time>文件 '+(d.date||d.documentDate||"")+'</time><a href="'+escapeHtml(d.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(d.title)+' ↗</a>'+(d.publishedAt?'<small>发布 '+escapeHtml(d.publishedAt.slice(0,16).replace("T"," "))+' 香港</small>':"")+'</div>'+(docRefs.length?'<div class="tx-doc-pages">'+docRefs.join("")+'</div>':"")+'</div>';
  }).join("")+'</div>';
  const compBadges=Object.entries(transactionMetricLabels).filter(([k])=>Number.isFinite(row.comparables?.[k])).map(([k,l])=>`<span class="tx-hero-comp">${escapeHtml(l)} <strong class="col-num">${row.comparables[k]}%</strong></span>`).join("");
+ const issuerLinkHtml=renderTransactionIssuerLinkButtons(row,false);
  const diagramKit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
  const diagramHtml=diagramKit?diagramKit.renderDealDiagram(row):"";
  const tm=transactionTimingMetrics(row);
@@ -6102,8 +6985,8 @@ function transactionDetail(row){
  const txBackBar=txFromCompare
   ? '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><button type="button" class="back-pill" data-tx-return>← 返回并列比较</button><button type="button" class="back-pill" data-tx-force-list>返回交易列表</button></div>'
   : '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><button type="button" class="back-pill" data-tx-return>← 返回交易列表</button>'+(txOtherOrigin?'<button type="button" class="back-pill" data-tx-origin-back>↩ 返回'+escapeHtml(txOtherOrigin)+'</button>':'')+'</div>';
- return '<header class="transaction-detail-heading"><div class="tx-detail-topbar">'+txBackBar+'<button type="button" class="tx-compare-btn" data-compare-transaction="'+row.id+'" aria-pressed="'+inCompare+'"'+(ids.length>=4&&!inCompare?" disabled":"")+'>'+(inCompare?"已入对比篮 ✓":"＋ 加入对比篮")+'</button></div><div class="tx-detail-hero"><div><p class="tx-detail-kicker"><span class="tx-stage-pill is-'+escapeHtml(row.stage.status)+'">'+escapeHtml(row.stage.label)+'</span> · 更新至 '+row.stage.date+'</p><h2 id="transactionDetailTitle" tabindex="-1">'+escapeHtml(row.name)+' <span class="mono-code">'+row.code+'.HK</span></h2><p class="tx-detail-mech">'+escapeHtml(row.mechanism)+'</p>'+(compBadges?'<div class="tx-hero-comps">'+compBadges+'</div>':"")+'</div><div class="transaction-detail-value"><span>'+escapeHtml(headline.label)+'</span><strong class="col-num">'+transactionDisplayAmount(headline)+'</strong></div></div></header>'+diagramHtml+'<div class="tx-detail-grid">'+
- transactionDisclosure(row,"structure","交易结构与核心条款",terms)+transactionDisclosure(row,"events","批准与交割时间线",timingStripHtml+(row.lifecycle?'<p class="transaction-lifecycle"><strong class="col-num">'+row.lifecycle.naturalDays+' 天</strong><span>首次公告 → '+escapeHtml(transactionEvents[row.lifecycle.endKind])+'（'+row.lifecycle.start+' → '+row.lifecycle.end+'）</span></p>':"")+timeline)+
+ return '<header class="transaction-detail-heading"><div class="tx-detail-topbar">'+txBackBar+'<button type="button" class="tx-compare-btn" data-compare-transaction="'+row.id+'" aria-pressed="'+inCompare+'"'+(ids.length>=4&&!inCompare?" disabled":"")+'>'+(inCompare?"已入对比篮 ✓":"＋ 加入对比篮")+'</button></div><div class="tx-detail-hero"><div><p class="tx-detail-kicker"><span class="tx-stage-pill is-'+escapeHtml(row.stage.status)+'">'+escapeHtml(row.stage.label)+'</span> · 更新至 '+row.stage.date+'</p><h2 id="transactionDetailTitle" tabindex="-1">'+escapeHtml(row.name)+' <span class="mono-code">'+row.code+'.HK</span></h2><p class="tx-detail-mech">'+escapeHtml(row.mechanism)+'</p>'+(compBadges?'<div class="tx-hero-comps">'+compBadges+'</div>':"")+issuerLinkHtml+'</div>'+(headline?'<div class="transaction-detail-value"><span>'+escapeHtml(headline.label)+'</span><strong class="col-num">'+transactionDisplayAmount(headline,true)+'</strong></div>':"")+'</div></header>'+diagramHtml+'<div class="tx-detail-grid">'+
+ transactionDisclosure(row,"structure","交易结构与核心条款",terms)+transactionDisclosure(row,"events","批准与交割时间线",timingStripHtml+(row.lifecycle?'<p class="transaction-lifecycle"><strong class="col-num">'+row.lifecycle.naturalDays+' 天</strong><span>首次公告 → '+escapeHtml(transactionEvents[row.lifecycle.endKind]||row.lifecycle.endKind)+'（'+row.lifecycle.start+' → '+row.lifecycle.end+'）</span></p>':"")+timeline)+
  ((row.processEvents||[]).length?transactionDisclosure(row,"process","延寄与停复牌事件",transactionProcess(row)):"")+
  transactionDisclosure(row,"mandates","中介与签署机构",transactionMandates(row))+transactionDisclosure(row,"rules","规则与分类依据",rules)+transactionDisclosure(row,"documents","披露原件与页码索引 · "+docs.length,documents)+'</div>';
 }
@@ -6129,34 +7012,144 @@ function renderTransactionComparison(){
  node.innerHTML='<header class="transaction-compare-heading"><button type="button" class="back-pill" data-tx-return>← 返回交易列表</button><h2 id="transactionCompareTitle" tabindex="-1">交易先例并列比较 <span>'+rows.length+' / 4 宗</span></h2><label class="transaction-differences"><input type="checkbox" id="transactionDifferences"'+(state.transactionDifferences==="true"?" checked":"")+'>仅看差异</label></header><div class="transaction-slot-switch">'+slot("A")+slot("B")+'</div><div class="transaction-compare-grid" style="--compare-count:'+Math.max(rows.length,1)+'"><div class="transaction-compare-row transaction-compare-names"><div class="transaction-compare-label">先例项目</div>'+rows.map(r=>'<div class="transaction-compare-cell'+transactionSlotClass(r.id)+'" data-tx-id="'+r.id+'">'+transactionTitleLink(r,"comparison")+'<button type="button" class="tx-remove-inline" data-remove-comparison="'+r.id+'" aria-label="移除 '+escapeHtml(r.name)+'">移除</button></div>').join("")+'</div>'+transactionComparisonRows(rows).filter(([,cell])=>state.transactionDifferences!=="true"||new Set(rows.map(r=>cell(r).replace(/<a\b[^>]*>.*?<\/a>/gs,"").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim())).size>1).map(([label,cell])=>'<div class="transaction-compare-row"><div class="transaction-compare-label">'+escapeHtml(label)+'</div>'+rows.map(r=>'<div class="transaction-compare-cell'+transactionSlotClass(r.id)+'" data-tx-id="'+r.id+'">'+cell(r)+'</div>').join("")+'</div>').join("")+'</div>';
  updateTransactionSlots();
 }
+const TRANSACTION_PILLAR_CONFIG = [
+ {
+  key: "ch14_14a",
+  label: "第 14 / 14A 章 · 并购与关连",
+  sub: "须予披露 (<25%) · 主要 · VSA/VSD · 14A",
+  defaultArch: "disclosable_major",
+  subtiers: [
+   { key: "ch14_14a", label: "全部 14/14A 章", arch: "disclosable_major" },
+   { key: "disclosable", label: "须予披露 / 股份 (<25% · 仅公告)", arch: "disclosable_major" },
+   { key: "major", label: "主要交易 (Major · 25%+)", arch: "disclosable_major" },
+   { key: "vsa_vsd", label: "非常重大 / 极端 (VSA / VSD)", arch: "acquisition" },
+   { key: "connected", label: "14A 关连及持续关连 (CCT)", arch: "connected_whitewash" }
+  ]
+ },
+ {
+  key: "takeovers",
+  label: "收购守则 · 私有化与要约",
+  sub: "TC 2.10 私有化 · TC 26.1 要约 · 清洗豁免",
+  defaultArch: "scheme",
+  subtiers: [
+   { key: "takeovers", label: "全部收购守则", arch: "scheme" },
+   { key: "scheme", label: "协议安排私有化 (TC 2.10)", arch: "scheme" },
+   { key: "offer", label: "全面 / 部分要约 (TC 26.1 / 28)", arch: "offer" },
+   { key: "whitewash", label: "清洗豁免 / 特别交易", arch: "connected_whitewash" },
+   { key: "share_buyback", label: "场外 / 要约股份回购", arch: "offer" }
+  ]
+ },
+ {
+  key: "reorg",
+  label: "集团重组 · 分拆与化债",
+  sub: "RTO · PN15 分拆 · 控司/A+H 换股 · 化债",
+  defaultArch: "reverse_takeover",
+  subtiers: [
+   { key: "reorg", label: "全部重组分拆", arch: "reverse_takeover" },
+   { key: "reorganisation", label: "反收购 / 更换控司", arch: "reverse_takeover" },
+   { key: "reverse_takeover", label: "反向收购 RTO (LR 14.06B)", arch: "reverse_takeover" },
+   { key: "spin_off", label: "PN15 分拆上市", arch: "spin_off" },
+   { key: "ah_share_absorption", label: "A+H 换股吸收合并", arch: "ah_share_absorption" },
+   { key: "debt_restructuring", label: "境外债务重组 / 债转股", arch: "debt_restructuring" }
+  ]
+ },
+ {
+  key: "ecm",
+  label: "再融资配售 · CB 与供股",
+  sub: "先旧后新 / 新股配售 · 可转债 CB · 供股包销",
+  defaultArch: "topup_placing",
+  subtiers: [
+   { key: "ecm", label: "全部再融资 ECM", arch: "topup_placing" },
+   { key: "topup_placing", label: "先旧后新 / 新股配售", arch: "topup_placing" },
+   { key: "convertible_bond", label: "可转债 / 可交换债 (CB/EB)", arch: "convertible_bond" },
+   { key: "rights_open_offer", label: "供股 / 公开招股包销", arch: "rights_open_offer" }
+  ]
+ }
+];
+function txActivePillarForCategory(cat) {
+ if (!cat || cat === "all") return null;
+ if (["acquisition","disposal","share_transaction","continuing_connected"].includes(cat)) {
+  return TRANSACTION_PILLAR_CONFIG[0];
+ }
+ if (cat === "holding_substitution") return TRANSACTION_PILLAR_CONFIG[2];
+ return TRANSACTION_PILLAR_CONFIG.find(p => p.key === cat || p.subtiers.some(s => s.key === cat)) || null;
+}
+function txDefaultArchetypeForCategory(cat) {
+ const map = {
+  ch14_14a: "disclosable_major",
+  disclosable: "disclosable_major",
+  share_transaction: "disclosable_major",
+  major: "disclosable_major",
+  vsa_vsd: "acquisition",
+  acquisition: "acquisition",
+  disposal: "disposal",
+  connected: "connected_whitewash",
+  continuing_connected: "connected_whitewash",
+  takeovers: "scheme",
+  scheme: "scheme",
+  offer: "offer",
+  whitewash: "connected_whitewash",
+  share_buyback: "offer",
+  reorg: "reverse_takeover",
+  reorganisation: "reverse_takeover",
+  reverse_takeover: "reverse_takeover",
+  spin_off: "spin_off",
+  holding_substitution: "holding_substitution",
+  ah_share_absorption: "ah_share_absorption",
+  debt_restructuring: "debt_restructuring",
+  ecm: "topup_placing",
+  topup_placing: "topup_placing",
+  convertible_bond: "convertible_bond",
+  rights_open_offer: "rights_open_offer"
+ };
+ return map[cat] || "";
+}
 function renderTransactionSummaryStrip(all, compare, row){
  const strip=document.getElementById("transactionSummaryStrip");if(!strip)return;
  strip.hidden=compare||Boolean(row)||!all.length;
  if(strip.hidden){strip.innerHTML="";return;}
- const schemes=all.filter(r=>r.category==="scheme");
+ const schemes=all.filter(r=>["scheme","scheme_privatisation"].includes(r.category));
+ const schemeClosed=schemes.filter(r=>["closed","completed","effective"].includes(r.stage?.status)).length;
+ const schemeActive=schemes.filter(r=>["active","approved"].includes(r.stage?.status)).length;
+ const schemeTerm=schemes.filter(r=>["terminated","lapsed"].includes(r.stage?.status)).length;
+ const schemeStageSub=schemes.length
+  ? `安排计划 ${schemes.length} 宗：${schemeClosed} 完成 · ${schemeActive} 进行中${schemeTerm?` · ${schemeTerm} 终止`:""}`
+  : "暂无安排计划样本";
  const premiums=schemes.map(r=>r.comparables?.last_full_day_premium_pct).filter(Number.isFinite);
- const dispDays=schemes.map(r=>r.intervals?.announcementToDispatch).filter(Number.isInteger);
  const reorgs=all.filter(r=>["reverse_takeover","holding_substitution"].includes(r.category));
  const reorgDays=reorgs.map(r=>r.lifecycle?.naturalDays).filter(Number.isInteger).sort((a,b)=>a-b);
+ const noMandateCount=all.filter(r=>!(r.mandates||[]).length).length;
  const advisorCounts=new Map();
- for(const r of all)for(const firm of new Set(r.mandates.map(m=>m.firm)))advisorCounts.set(firm,(advisorCounts.get(firm)||0)+1);
+ for(const r of all)for(const firm of new Set((r.mandates||[]).map(m=>m.firm).filter(Boolean)))advisorCounts.set(firm,(advisorCounts.get(firm)||0)+1);
  const topAdvisors=[...advisorCounts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,3);
- const cats=[
-  {key:"all",label:"全部先例",sub:"上市规则 + 收购守则",n:all.length},
-  {key:"scheme",label:"协议安排私有化",sub:"TC 2.10 · 法院批准",n:schemes.length},
-  {key:"offer",label:"控制权 / 全面要约",sub:"TC 26.1 · 要约进行中",n:all.filter(r=>r.category==="offer").length},
-  {key:"reorganisation",label:"反向收购 / 控股重组",sub:"LR 14.06B · LR 6.15(2)",n:reorgs.length},
-  {key:"acquisition",label:"非常重大收购",sub:"LR 14.06C · 关连收购",n:all.filter(r=>r.category==="acquisition").length},
-  {key:"disposal",label:"主要资产处置",sub:"船舶处置 / 股东批准",n:all.filter(r=>r.category==="disposal").length}
+ const activePillar=txActivePillarForCategory(state.transactionCategory);
+ const pillarCards=[
+  {key:"all",label:"全部先例",sub:`全量 ${all.length} 宗${noMandateCount?`（含 ${noMandateCount} 宗待披露中介）`:""}`,n:all.length,badge:`${all.length} 宗`},
+  ...TRANSACTION_PILLAR_CONFIG.map(p=>{
+   const cnt=all.filter(r=>transactionMatchesCategory(r,p.key)).length;
+   return {key:p.key,label:p.label,sub:p.sub,n:cnt,badge:cnt>0?`${cnt} 宗`:"架构就绪"};
+  })
  ];
+ const subtierHtml=activePillar
+  ? `<div class="tx-subtier-ribbon" role="group" aria-label="${escapeHtml(activePillar.label)} 细分结构">
+      <span class="tx-subtier-kicker">${escapeHtml(activePillar.label)} · 细分：</span>
+      <div class="tx-subtier-pills">${activePillar.subtiers.map(s=>{
+       const cnt=all.filter(r=>transactionMatchesCategory(r,s.key)).length;
+       const active=state.transactionCategory===s.key;
+       return `<button type="button" class="tx-subtier-pill${active?' is-active':''}" data-tx-cat="${escapeHtml(s.key)}" aria-pressed="${active}">${escapeHtml(s.label)} <em>${cnt>0?`${cnt}宗`:"图谱"}</em></button>`;
+      }).join('')}</div>
+      <button type="button" class="tx-subtier-atlas-btn" data-tx-open-atlas-arch="${escapeHtml(txDefaultArchetypeForCategory(state.transactionCategory)||activePillar.defaultArch)}">查看标准架构图谱 ↓</button>
+     </div>`
+  : "";
  strip.innerHTML=`<div class="terminal-stat-strip tx-insight-strip">
-  <div class="stat-cell"><span class="stat-label">协议安排私有化（TC 2.10）</span><strong class="stat-val col-num">${premiums.length?`溢价 ${offeringNumber(p0Quantile(premiums,.5),1)}%`:`${schemes.length} 宗`}</strong><small class="stat-sub">公告→寄发 ${dispDays.length?`${Math.min(...dispDays)}–${Math.max(...dispDays)} 天`:'—'} · 均已完成</small></div>
-  <div class="stat-cell"><span class="stat-label">反向收购 / 控股重组</span><strong class="stat-val col-num">${reorgDays.length?`${reorgDays[0]}–${reorgDays.at(-1)} 天`:`${reorgs.length} 宗`}</strong><small class="stat-sub">LR 14.06B 反向收购 vs LR 6.15(2) 更换控司</small></div>
-  <div class="stat-cell"><span class="stat-label">活跃签署中介（点击快筛）</span><div class="tx-advisor-pills">${topAdvisors.map(([firm,cnt])=>`<button type="button" class="tx-advisor-chip${state.transactionAdvisor===firm?' is-active':''}" data-tx-advisor-pick="${escapeHtml(firm)}">${escapeHtml(firm.replace(/ Limited$/i,''))} (${cnt})</button>`).join('')}</div><small class="stat-sub">覆盖 FA / IFA / 独立专家 / 估值师</small></div>
+  <div class="stat-cell"><span class="stat-label">安排计划私有化阶段分布</span><strong class="stat-val col-num">${premiums.length?`中位溢价 ${offeringNumber(p0Quantile(premiums,.5),1)}%`:`${schemes.length} 宗`}</strong><small class="stat-sub">${escapeHtml(schemeStageSub)}</small></div>
+  <div class="stat-cell"><span class="stat-label">投行全谱系业务线覆盖</span><strong class="stat-val col-num">4 大板块 · 14 范式</strong><small class="stat-sub">FA / IFA 顾问 · 股票配售账簿 · CB 承销 · 供股包销${reorgDays.length?` · 重组 ${reorgDays[0]}–${reorgDays.at(-1)}天`:""}</small></div>
+  <div class="stat-cell"><span class="stat-label">活跃签署中介（仅点选时过滤）</span><div class="tx-advisor-pills">${topAdvisors.map(([firm,cnt])=>`<button type="button" class="tx-advisor-chip${state.transactionAdvisor===firm?' is-active':''}" data-tx-advisor-pick="${escapeHtml(firm)}">${escapeHtml(firm.replace(/ Limited$/i,''))} (${cnt})</button>`).join('')}</div><small class="stat-sub">默认展示全量案例（含暂未披露中介案例）</small></div>
  </div>
- <div class="terminal-stat-strip tx-category-strip">${cats.map(c=>{const active=state.transactionCategory===c.key;return `<button type="button" class="stat-cell is-clickable tx-summary-card${active?' is-active':''}" data-tx-cat="${c.key}" aria-pressed="${active}"><span class="stat-label">${c.label}</span><strong class="stat-val col-num">${c.n} 宗</strong><small class="stat-sub">${c.sub}</small></button>`;}).join('')}</div>`;
+ <div class="terminal-stat-strip tx-category-strip">${pillarCards.map(c=>{const active=c.key==="all"?state.transactionCategory==="all":(activePillar?.key===c.key);return `<button type="button" class="stat-cell is-clickable tx-summary-card${active?' is-active':''}${c.n===0&&c.key!=='all'?' is-template-ready':''}" data-tx-cat="${c.key}" aria-pressed="${active}"><span class="stat-label">${c.label}</span><strong class="stat-val col-num">${c.badge}</strong><small class="stat-sub">${c.sub}</small></button>`;}).join('')}</div>${subtierHtml}`;
 }
 let activeTxAtlasArchetype="scheme";
+let activeTxAtlasPillar="takeovers";
 function renderTransactionArchetypeAtlas(all,compare,row){
  const atlas=document.getElementById("transactionArchetypeAtlas");
  const toggleBtn=document.getElementById("transactionAtlasToggle");
@@ -6171,6 +7164,12 @@ function renderTransactionArchetypeAtlas(all,compare,row){
  if(atlas.hidden)return;
  const archetypes=Object.values(kit.ARCHETYPES);
  if(!kit.ARCHETYPES[activeTxAtlasArchetype])activeTxAtlasArchetype=archetypes[0]?.id||"scheme";
+ const pillars=Array.isArray(kit.PILLAR_GROUPS)&&kit.PILLAR_GROUPS.length?kit.PILLAR_GROUPS:[{id:"all",labelZh:"全部标准架构",shortZh:"全部架构",subZh:"",archetypes:archetypes.map(a=>a.id)}];
+ if(!pillars.some(p=>p.id===activeTxAtlasPillar||p.archetypes.includes(activeTxAtlasArchetype))){
+  activeTxAtlasPillar=pillars[0].id;
+ }
+ const activePillarObj=pillars.find(p=>p.id===activeTxAtlasPillar&&p.archetypes.includes(activeTxAtlasArchetype))||pillars.find(p=>p.archetypes.includes(activeTxAtlasArchetype))||pillars[0];
+ activeTxAtlasPillar=activePillarObj.id;
  const liveByArch=new Map();
  for(const c of all){
   const k=kit.detectArchetype(c);
@@ -6179,7 +7178,15 @@ function renderTransactionArchetypeAtlas(all,compare,row){
  }
  const current=kit.ARCHETYPES[activeTxAtlasArchetype];
  const currentCases=liveByArch.get(current.id)||[];
- const tabsHtml=archetypes.map(a=>{
+ const pillarTabsHtml=pillars.length>1
+  ? `<div class="tx-atlas-pillar-bar" role="tablist" aria-label="四大投行收入板块">${pillars.map(p=>{
+     const active=p.id===activePillarObj.id;
+     const liveCnt=[...new Set(p.archetypes)].reduce((sum,aid)=>sum+(liveByArch.get(aid)?.length||0),0);
+     return `<button type="button" class="tx-atlas-pillar-btn${active?" is-active":""}" data-tx-atlas-pillar="${escapeHtml(p.id)}" aria-pressed="${active}"><span>${escapeHtml(p.shortZh||p.labelZh)}</span><small>${p.archetypes.length} 范式${liveCnt?` · ${liveCnt}实案`:""}</small></button>`;
+    }).join("")}</div>`
+  : "";
+ const visibleArchetypes=activePillarObj.archetypes.map(id=>kit.ARCHETYPES[id]).filter(Boolean);
+ const tabsHtml=visibleArchetypes.map(a=>{
   const cnt=(liveByArch.get(a.id)||[]).length;
   const active=a.id===current.id;
   return `<button type="button" class="dir-stage-btn${active?" is-active":""}" data-tx-atlas-arch="${escapeHtml(a.id)}" aria-pressed="${active}">${escapeHtml(a.shortZh)}<strong>${cnt?`${cnt}宗`:"模板"}</strong></button>`;
@@ -6187,31 +7194,36 @@ function renderTransactionArchetypeAtlas(all,compare,row){
  const rulesHtml=(current.ruleTriggers||[]).map(r=>`<span class="tx-rule-chip">${escapeHtml(r)}</span>`).join("");
  const caseLinksHtml=currentCases.length
   ? currentCases.map(c=>`<button type="button" class="tx-advisor-chip" data-tx-atlas-case="${escapeHtml(c.id)}">查看实案：${escapeHtml(c.name)} (${c.code}) →</button>`).join("")
-  : '<span class="ddk-rule-pill">标准交易架构范式</span>';
- atlas.innerHTML=`<summary><span>港股并购重组九大标准架构图谱 <small style="font-weight:500;color:var(--muted);margin-left:6px">含分拆 / 债务重组 / A+H 吸收合并模板 · 9 大范式</small></span></summary><div class="transaction-section-body"><div class="dir-stage-tabs" role="tablist" aria-label="港股并购重组九大标准架构" style="width:100%;margin-bottom:10px">${tabsHtml}</div><div style="display:flex;align-items:center;justify-content:space-between;gap:8px 14px;flex-wrap:wrap;padding:8px 12px;background:var(--bg-subtle);border:1px solid var(--line);border-radius:4px;font-size:12px"><div style="min-width:0;flex:1 1 360px"><strong>${escapeHtml(current.labelZh)}</strong> <span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-left:4px">${escapeHtml(current.labelEn)}</span><p style="margin:4px 0 0;color:var(--ink-2);line-height:1.45">${escapeHtml(current.summaryZh)}</p></div><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">${rulesHtml}${caseLinksHtml}</div></div>${kit.renderDealDiagram(current.codexTemplate)}</div>`;
+  : '<span class="ddk-rule-pill">标准交易架构与收费范式</span>';
+ atlas.innerHTML=`<summary><span>港股投行并购重组与再融资十四大标准架构图谱 <small style="font-weight:500;color:var(--muted);margin-left:6px">14/14A 章 · 收购守则 · 重组分拆化债 · 配售 / CB / 供股 · 14 大范式</small></span></summary><div class="transaction-section-body">${pillarTabsHtml}<div class="dir-stage-tabs" role="tablist" aria-label="${escapeHtml(activePillarObj.labelZh)}标准架构" style="width:100%;margin-bottom:10px">${tabsHtml}</div><div style="display:flex;align-items:center;justify-content:space-between;gap:8px 14px;flex-wrap:wrap;padding:8px 12px;background:var(--bg-subtle);border:1px solid var(--line);border-radius:4px;font-size:12px"><div style="min-width:0;flex:1 1 360px"><strong>${escapeHtml(current.labelZh)}</strong> <span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-left:4px">${escapeHtml(current.labelEn)}</span><p style="margin:4px 0 0;color:var(--ink-2);line-height:1.45">${escapeHtml(current.summaryZh)}</p></div><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">${rulesHtml}${caseLinksHtml}</div></div>${kit.renderDealDiagram(current.codexTemplate)}</div>`;
 }
 function renderTransactions(){
  const all=state.transactionData?.cases||[],ids=transactionSelection();state.transactionCompare=ids.join(",");
  const diagramKit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
  const options=(id,values,label)=>{const n=document.getElementById(id);n.innerHTML='<option value="all">'+label+'</option>'+values.map(([v,t])=>'<option value="'+escapeHtml(v)+'">'+escapeHtml(t)+'</option>').join("");};
- const rules=new Map(all.flatMap(r=>r.rules.map(x=>[x.code,x.label])));options("transactionRule",[...rules],"全部规则");
- options("transactionCurrency",[...new Set(all.flatMap(r=>r.terms.map(t=>t.currency)).filter(Boolean))].sort().map(x=>[x,x]),"全部币种");
- options("transactionAdvisor",[...new Set(all.flatMap(r=>r.mandates.map(m=>m.firm)))].sort().map(x=>[x,x]),"全部机构");
+ const rules=new Map(all.flatMap(r=>(r.rules||[]).map(x=>[x.code,x.label])));options("transactionRule",[...rules],"全部规则");
+ options("transactionCurrency",[...new Set(all.flatMap(r=>(r.terms||[]).map(t=>t.currency)).filter(Boolean))].sort().map(x=>[x,x]),"全部币种");
+ options("transactionAdvisor",[...new Set(all.flatMap(r=>(r.mandates||[]).map(m=>m.firm)).filter(Boolean))].sort().map(x=>[x,x]),"全部机构");
  for(const [id,key] of transactionFilterControls)document.getElementById(id).value=state[key];
  const rows=transactionRows(),row=transactionCase(state.transactionId),compare=state.transactionMode==="compare";
  renderTransactionSummaryStrip(all,compare,row);
  document.getElementById("transactionCount").textContent=state.transactionData?"精选交易 "+rows.length+" / "+all.length+" 宗 · 截至 "+state.transactionData.asOf:"交易资料暂时无法读取";
  const workspace=document.getElementById("transactionWorkspace");workspace.hidden=compare;workspace.classList.toggle("has-detail",!!row);
+ const fallbackArchId=!rows.length&&!String(state.transactionQuery||"").trim()?txDefaultArchetypeForCategory(state.transactionCategory):"";
+ const fallbackArch=fallbackArchId&&diagramKit?.ARCHETYPES?.[fallbackArchId]?diagramKit.ARCHETYPES[fallbackArchId]:null;
+ const emptyTxHtml=fallbackArch
+  ? `<div class="transaction-empty empty-state-row"><p>未找到符合当前筛选的交易先例（${escapeHtml(fallbackArch.labelZh)}标准架构已就绪，披露实案持续接入中）</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button type="button" class="action-link-btn" data-tx-open-atlas-arch="${escapeHtml(fallbackArch.id)}">展开「${escapeHtml(fallbackArch.shortZh)}」标准交易架构图谱 ↓</button><button type="button" data-tx-reset>清除筛选条件</button></div></div>`
+  : '<div class="transaction-empty empty-state-row"><p>未找到符合当前筛选的交易先例</p><button type="button" data-tx-reset>清除筛选条件</button></div>';
  document.getElementById("transactionCards").innerHTML=rows.length?'<div class="tx-table-wrap"><table class="tx-table"><thead><tr><th scope="col">公司 / 交易各方</th><th scope="col">交易结构与规则</th><th scope="col">确认阶段</th><th scope="col" class="col-num">核心对价 / 比率</th><th scope="col" class="col-num">首公→寄发 / 寄发→表决 / 总历时</th><th scope="col" class="col-action">比较</th></tr></thead><tbody>'+rows.map(r=>{
-  const t=transactionTerm(r,r.headlineKey),partyEntry=Object.entries(r.parties)[0],advisors=[...new Set(r.mandates.map(m=>m.firm))].slice(0,2).join(" · ");
-  const rulePills=r.rules.slice(0,3).map(x=>'<span class="tx-rule-chip">'+escapeHtml(x.label)+'</span>').join("");
+  const t=transactionTerm(r,r.headlineKey)||(r.terms||[])[0],partyEntry=Object.entries(r.parties||{})[0],advisors=[...new Set((r.mandates||[]).map(m=>m.firm).filter(Boolean))].slice(0,2).join(" · ");
+  const rulePills=(r.rules||[]).slice(0,3).map(x=>'<span class="tx-rule-chip">'+escapeHtml(x.label)+'</span>').join("");
   const flowBadge=diagramKit?diagramKit.renderCompactFlowBadge(r):"";
   const ratioTerm=transactionTerm(r,"exchange_ratio");
   const extraMetric=Number.isFinite(r.comparables?.last_full_day_premium_pct)?`溢价 ${r.comparables.last_full_day_premium_pct}%`:(ratioTerm&&ratioTerm.key!==t?.key?`换股 ${transactionAmount(ratioTerm)}`:"");
   const tm=transactionTimingMetrics(r);
   const cycleHtml=`<div class="tx-timing-mini"><strong class="col-num${tm.isLive?" is-live":""}">${escapeHtml(tm.totalLabel)} ${escapeHtml(tm.totalVal)}</strong><small class="col-num">寄发 ${escapeHtml(tm.disp)} · 表决 ${escapeHtml(tm.vote)}</small><small>${escapeHtml(tm.totalSub)}</small></div>`;
-  return '<tr tabindex="0" role="button" class="transaction-result'+(r.id===state.transactionId?' is-selected':"")+'" data-transaction-id="'+r.id+'"><th scope="row" class="tx-col-company">'+transactionTitleLink(r)+(partyEntry?'<small class="tx-party-sub">'+escapeHtml(partyEntry[0]+'：'+partyEntry[1])+'</small>':"")+'</th><td class="tx-col-mech" data-label="结构与规则"><span class="tx-mech-text">'+escapeHtml(r.mechanism)+'</span><div class="tx-rule-chips">'+rulePills+'</div>'+flowBadge+(advisors?'<small class="tx-advisor-sub">'+escapeHtml(advisors)+'</small>':"")+'</td><td class="tx-col-stage" data-label="阶段"><span class="tx-stage-pill is-'+escapeHtml(r.stage.status)+'">'+escapeHtml(r.stage.label)+'</span><time>'+r.stage.date+'</time></td><td class="col-num tx-col-amount" data-label="核心条款"><div class="transaction-result-value"><strong>'+transactionDisplayAmount(t)+'</strong><span>'+escapeHtml(t.label)+(extraMetric?' · '+escapeHtml(extraMetric):'')+'</span></div></td><td class="col-num tx-col-cycle" data-label="节点周期">'+cycleHtml+'</td><td class="tx-col-action"><button type="button" data-compare-transaction="'+r.id+'" class="tx-compare-btn" aria-pressed="'+ids.includes(r.id)+'" aria-label="'+(ids.includes(r.id)?"取消比较 ":"加入比较 ")+escapeHtml(r.name)+'"'+(ids.length>=4&&!ids.includes(r.id)?" disabled":"")+'>'+(ids.includes(r.id)?"已选 ✓":"＋对比")+'</button></td></tr>';
- }).join("")+'</tbody></table></div>':'<div class="transaction-empty empty-state-row"><p>未找到符合当前筛选的交易先例</p><button type="button" data-tx-reset>清除筛选条件</button></div>';
+  return '<tr tabindex="0" role="button" class="transaction-result'+(r.id===state.transactionId?' is-selected':"")+'" data-transaction-id="'+r.id+'"><th scope="row" class="tx-col-company">'+transactionTitleLink(r)+(partyEntry?'<small class="tx-party-sub">'+escapeHtml(partyEntry[0]+'：'+partyEntry[1])+'</small>':"")+'</th><td class="tx-col-mech" data-label="结构与规则"><span class="tx-mech-text">'+escapeHtml(r.mechanism)+'</span><div class="tx-rule-chips">'+rulePills+'</div>'+flowBadge+(advisors?'<small class="tx-advisor-sub">'+escapeHtml(advisors)+'</small>':"")+'</td><td class="tx-col-stage" data-label="阶段"><span class="tx-stage-pill is-'+escapeHtml(r.stage.status)+'">'+escapeHtml(r.stage.label)+'</span><time>'+r.stage.date+'</time></td><td class="col-num tx-col-amount" data-label="核心条款"><div class="transaction-result-value"><strong>'+(t?transactionDisplayAmount(t):'—')+'</strong><span>'+(t?escapeHtml(t.label)+(extraMetric?' · '+escapeHtml(extraMetric):''):'')+'</span></div></td><td class="col-num tx-col-cycle" data-label="节点周期">'+cycleHtml+'</td><td class="tx-col-action"><button type="button" data-compare-transaction="'+r.id+'" class="tx-compare-btn" aria-pressed="'+ids.includes(r.id)+'" aria-label="'+(ids.includes(r.id)?"取消比较 ":"加入比较 ")+escapeHtml(r.name)+'"'+(ids.length>=4&&!ids.includes(r.id)?" disabled":"")+'>'+(ids.includes(r.id)?"已选 ✓":"＋对比")+'</button></td></tr>';
+ }).join("")+'</tbody></table></div>':emptyTxHtml;
  const detail=document.getElementById("transactionDetail");detail.hidden=!row;detail.innerHTML=row?transactionDetail(row):"";
  const empty=document.getElementById("transactionDetailEmpty");empty.hidden=true;empty.textContent="";
  renderTransactionArchetypeAtlas(all,compare,row);
@@ -6225,7 +7237,7 @@ function openTransaction(id,trigger=document.activeElement){
 }
 function openTransactionComparison(trigger=document.activeElement){
  if(transactionSelection().length<2)return false;
- p0SaveLocation(trigger);const previous=location.pathname+location.search;state.transactionId="";state.transactionMode="compare";transactionSlots();syncUrl("push",previous);renderTransactions();document.getElementById("transactionCompareTitle")?.focus({preventScroll:true});window.scrollTo(0,0);return true;
+ p0SaveLocation(trigger);const previous=location.pathname+location.search;state.view="precedents";state.transactionId="";state.transactionMode="compare";transactionSlots();syncUrl("push",previous);renderTransactions();document.getElementById("transactionCompareTitle")?.focus({preventScroll:true});window.scrollTo(0,0);return true;
 }
 function returnTransaction(forceList=false){
  const info=p0FromUrlInfo();
@@ -6270,6 +7282,28 @@ function bindTransactionControls(){
     if(atlas){atlas.hidden=false;atlas.open=!atlas.open;if(atlas.open)atlas.scrollIntoView?.({behavior:"smooth",block:"nearest"});}
     return;
    }
+   if(b.dataset.txAtlasPillar){
+    const kit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
+    const pObj=kit?.PILLAR_GROUPS?.find(p=>p.id===b.dataset.txAtlasPillar);
+    if(pObj){
+     activeTxAtlasPillar=pObj.id;
+     if(!pObj.archetypes.includes(activeTxAtlasArchetype))activeTxAtlasArchetype=pObj.archetypes[0];
+     renderTransactionArchetypeAtlas(state.transactionData?.cases||[],state.transactionMode==="compare",transactionCase(state.transactionId));
+     const atlas=document.getElementById("transactionArchetypeAtlas");
+     if(atlas)atlas.open=true;
+    }
+    return;
+   }
+   if(b.dataset.txOpenAtlasArch){
+    activeTxAtlasArchetype=b.dataset.txOpenAtlasArch;
+    const kit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
+    const pObj=kit?.PILLAR_GROUPS?.find(p=>p.archetypes.includes(activeTxAtlasArchetype));
+    if(pObj)activeTxAtlasPillar=pObj.id;
+    renderTransactionArchetypeAtlas(state.transactionData?.cases||[],state.transactionMode==="compare",transactionCase(state.transactionId));
+    const atlas=document.getElementById("transactionArchetypeAtlas");
+    if(atlas){atlas.hidden=false;atlas.open=true;atlas.scrollIntoView?.({behavior:"smooth",block:"nearest"});}
+    return;
+   }
    if(b.dataset.txAtlasArch){
     activeTxAtlasArchetype=b.dataset.txAtlasArch;
     renderTransactionArchetypeAtlas(state.transactionData?.cases||[],state.transactionMode==="compare",transactionCase(state.transactionId));
@@ -6277,8 +7311,21 @@ function bindTransactionControls(){
     if(atlas)atlas.open=true;
     return;
    }
+   if(b.dataset.txJumpRound){openOfferingDossier(b.dataset.txJumpRound);return;}
+   if(b.dataset.txJumpIssuer){openDetail(b.dataset.txJumpIssuer);return;}
    if(b.dataset.txAtlasCase){openTransaction(b.dataset.txAtlasCase,b);return;}
-   if(b.dataset.txCat){state.transactionCategory=b.dataset.txCat==="all"?"all":(state.transactionCategory===b.dataset.txCat?"all":b.dataset.txCat);state.transactionId="";renderTransactions();syncUrl();return;}
+   if(b.dataset.txCat){
+    const targetCat=b.dataset.txCat;
+    state.transactionCategory=targetCat==="all"?"all":(state.transactionCategory===targetCat?"all":targetCat);
+    const syncedArch=txDefaultArchetypeForCategory(state.transactionCategory);
+    if(syncedArch){
+     activeTxAtlasArchetype=syncedArch;
+     const kit=typeof window!=="undefined"?window.YingSightDealDiagramKit:null;
+     const pObj=kit?.PILLAR_GROUPS?.find(p=>p.archetypes.includes(syncedArch));
+     if(pObj)activeTxAtlasPillar=pObj.id;
+    }
+    state.transactionId="";renderTransactions();syncUrl();return;
+   }
    if(b.dataset.txAdvisorPick){state.transactionAdvisor=state.transactionAdvisor===b.dataset.txAdvisorPick?"all":b.dataset.txAdvisorPick;state.transactionId="";renderTransactions();syncUrl();return;}
    if(b.hasAttribute("data-tx-reorganisation")){openReorganisationExamples(b);return;}
    if(transactionCompareAction(b))return;
@@ -6761,10 +7808,36 @@ document.getElementById("clearFeeSearch").addEventListener("click", () => {
 });
 document.getElementById("feesView").addEventListener("click", handleFeeRosterClick);
 document.getElementById("feesView").addEventListener("change", handleFeeRosterChange);
+document.getElementById("feesView").addEventListener("mouseover", event => {
+  const dot = event.target?.closest?.("[data-fee-dot-round]");
+  if (dot) showFeeDotPopover(dot, false);
+});
+document.getElementById("feesView").addEventListener("mouseout", event => {
+  const dot = event.target?.closest?.("[data-fee-dot-round]");
+  if (dot && !dot.contains?.(event.relatedTarget)) hideFeeDotPopover(false);
+});
+document.getElementById("feesView").addEventListener("focusin", event => {
+  const dot = event.target?.closest?.("[data-fee-dot-round]");
+  if (dot) showFeeDotPopover(dot, false);
+});
+document.getElementById("feesView").addEventListener("focusout", event => {
+  const dot = event.target?.closest?.("[data-fee-dot-round]");
+  if (dot) hideFeeDotPopover(false);
+});
 document.getElementById("feesView").addEventListener("keydown", event => {
   if (event.key !== "Enter" && event.key !== " ") return;
   const dot = event.target.closest("[data-fee-dot-round]");
   if (dot?.dataset?.feeDotRound) { event.preventDefault(); openOfferingDossier(dot.dataset.feeDotRound); return; }
+  const roleRow = event.target.closest("[data-fee-role]");
+  if (roleRow?.dataset?.feeRole && roleRow.tagName !== "BUTTON") {
+    event.preventDefault();
+    const r = roleRow.dataset.feeRole;
+    state.feeSponsorRole = r === "all" ? "all" : (state.feeSponsorRole === r ? "all" : r);
+    state.feePage = 1;
+    renderFeeComparison();
+    syncUrl();
+    return;
+  }
   if (event.target.closest("button,a,input,select,summary")) return;
   const card = event.target.closest("tr[data-fee-round],article[data-fee-compare-round]");
   const roundId = card?.dataset?.feeRound || card?.dataset?.feeCompareRound;
@@ -6885,10 +7958,22 @@ function p0ShoeLabel(r){return({full_exercised:'绿鞋全额行使',partially_ex
 function p0Missing(status){return `<span class="data-missing">${status==='undisclosed'?'未披露':status==='conditional'?'条件费率*':'待核实'}</span>`;}
 function p0FeeRate(r,key){const value=r[{fixed:'fixedBps',extra:'maximumExtraBps',upper:'upperBps'}[key]];if(value==null)return p0Missing(r.feeStates?.[key]);return key==='extra'&&value===0?'无 (0.00%)':feePercent(value);}
 function p0Quantile(values,p){if(!values.length)return null;const a=[...values].sort((a,b)=>a-b),i=(a.length-1)*p,l=Math.floor(i);return a[l]+(a[Math.ceil(i)]-a[l])*(i-l);}
-function p0FeeSummary(rows){const fields=[['规模',r=>p0FeeAmount(r,state.shoeBasis),v=>'HKD '+feeRosterMillion(v)+'百万'],['固定佣金',r=>r.fixedBps,v=>feePercent(v)],['酌情上限',r=>r.maximumExtraBps,v=>feePercent(v)]];return `<span class="summary-kicker">样本中位</span>`+fields.filter(f=>state.feePhase!=='paused'||f[0]!=='规模').map(([name,get,fmt])=>{const values=rows.map(get).filter(v=>typeof v==='number'&&Number.isFinite(v));return `<span class="summary-stat" title="P25–P75 ${values.length?fmt(p0Quantile(values,.25))+'–'+fmt(p0Quantile(values,.75)):'—'}">${name} <b>${values.length?fmt(p0Quantile(values,.5)):'—'}</b><small>n=${values.length}</small></span>`}).join('');}
-function p0EmptyState(view,count){const fields=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo']:['query','structure','industry','sponsor','status','dateFrom','dateTo','cohort'];const chips=fields.filter(k=>state[k]!==defaults[k]&&state[k]!==''&&state[k]!=null).map(k=>`<button type="button" data-clear-filter="${k}" data-filter-view="${view}">${escapeHtml(state[k])} ×</button>`).join('');return `<div class="empty-state-row"><p>未找到匹配当前筛选条件的项目</p><div>${chips}</div><button type="button" data-reset-view="${view}">清除全部筛选，恢复全量${count?` (${count})`:''}</button></div>`;}
+function p0FeeSummary(rows){
+ const basis=state.shoeBasis||'offered';
+ const st=p0EffectiveCommissionStats(rows,basis);
+ if(state.feePhase==='paused'){
+  return `<span class="summary-kicker">搁置样本有效费率</span><span class="summary-stat" title="按拟募上限总额加权">有效固定佣金 <b>${st.effectiveFixedBps!==null?feePercent(st.effectiveFixedBps):'—'}</b><small>n=${st.fixedN}</small></span><span class="summary-stat" title="按拟募上限总额加权">有效酌情上限 <b>${st.effectiveExtraBps!==null?feePercent(st.effectiveExtraBps):'—'}</b><small>n=${st.extraN}</small></span><span class="summary-stat" title="按拟募上限总额加权">有效合计上限 <b>${st.effectiveUpperBps!==null?feePercent(st.effectiveUpperBps):'—'}</b><small>n=${st.upperN}</small></span>`;
+ }
+ return `<span class="summary-kicker">合计与有效佣金率</span><span class="summary-stat" title="当前筛选样本总发行规模">总发行规模 <b>${st.grossN?escapeHtml(formatChineseUnitAmount(st.totalGross,'HKD')):'—'}</b><small>n=${st.grossN}</small></span><span class="summary-stat" title="当前筛选样本预估固定承销佣金总和">总固定佣金 <b>${st.fixedN?escapeHtml(formatChineseUnitAmount(st.fixedComm,'HKD')):'—'}</b><small>n=${st.fixedN}</small></span><span class="summary-stat" title="有效固定佣金率 = 所有项目固定佣金总和 ÷ 对应发行规模总和">有效固定佣金率 <b>${st.effectiveFixedBps!==null?feePercent(st.effectiveFixedBps):'—'}</b><small>Σ佣金/Σ规模</small></span><span class="summary-stat" title="有效合计上限费率 = 所有项目最高总佣金总和 ÷ 对应发行规模总和">有效合计上限 <b>${st.effectiveUpperBps!==null?feePercent(st.effectiveUpperBps):'—'}</b>${st.effectiveExtraBps!==null?`<small>含酌情 ${feePercent(st.effectiveExtraBps)}</small>`:`<small>n=${st.upperN}</small>`}</span>`;
+}
+function p0EmptyFilterChipText(key, val) {
+ if (key === 'feeSponsorRole') return feeSponsorRoleLabel(val);
+ if (key === 'feeInstitution') return feeInstitutionLabel(val) || val;
+ return val;
+}
+function p0EmptyState(view,count){const fields=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeSponsorRole','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo']:['query','structure','industry','sponsor','status','dateFrom','dateTo','cohort'];const chips=fields.filter(k=>state[k]!==defaults[k]&&state[k]!==''&&state[k]!=null).map(k=>`<button type="button" data-clear-filter="${k}" data-filter-view="${view}">${escapeHtml(p0EmptyFilterChipText(k,state[k]))} ×</button>`).join('');return `<div class="empty-state-row"><p>未找到匹配当前筛选条件的项目</p><div>${chips}</div><button type="button" data-reset-view="${view}">清除全部筛选，恢复全量${count?` (${count})`:''}</button></div>`;}
 function p0Reset(view){
- const keys=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo','feeSort','feeSortDir','feePage']:view==='directory'?['dirQuery','dirStage','dirType','dirIndustry','dirSponsor','dirDocStatus','dirSort','dirSortDir','dirPage']:['query','structure','industry','sponsor','status','dateFrom','dateTo','dateField','marketCapMin','marketCapMax','cohort','page','sortField','sortDir','daySortField'];
+ const keys=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeSponsorRole','feeEconMetric','feeEconSplit','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo','feeSort','feeSortDir','feePage']:view==='directory'?['dirQuery','dirStage','dirType','dirIndustry','dirSponsor','dirDocStatus','dirSort','dirSortDir','dirPage']:['query','structure','industry','sponsor','status','dateFrom','dateTo','dateField','marketCapMin','marketCapMax','cohort','page','sortField','sortDir','daySortField'];
  for(const key of keys)state[key]=defaults[key];
  if(view==='fees')renderFeeComparison();
  else if(view==='directory')renderDirectory();
@@ -6917,12 +8002,174 @@ function initP0(){
  document.addEventListener('click',e=>{
   const el=e.target.closest('button');if(!el)return;
   if(el.dataset.resetView)p0Reset(el.dataset.resetView);
-  if(el.dataset.clearFilter){state[el.dataset.clearFilter]=defaults[el.dataset.clearFilter];if(el.dataset.filterView==='fees')renderFeeComparison();else if(el.dataset.filterView==='directory')renderDirectory();else{syncControls();renderRows();}syncUrl();}
+  if(el.dataset.clearFilter){
+   state[el.dataset.clearFilter]=defaults[el.dataset.clearFilter];
+   if(el.dataset.clearFilter==='feeInstitution'&&['joint_lead','joint_co'].includes(state.feeSponsorRole))state.feeSponsorRole='all';
+   if(el.dataset.filterView==='fees'){state.feePage=1;renderFeeComparison();}
+   else if(el.dataset.filterView==='directory')renderDirectory();
+   else{syncControls();renderRows();}
+   syncUrl();
+  }
   if(el.hasAttribute('data-return-context'))p0Return();
  });
  initVisitCounter();
 }
-function p0RegulatoryTimeline(issuerId){const r=state.data.records.find(r=>r.id===issuerId);if(!r)return'';return `<ol class="deal-timeline">${[['首轮 A1',r.a1Date],['证监会接收',r.csrcFirstReceivedDate||r.csrcReceivedDate],['当前 A1',r.currentA1Date!==r.a1Date?r.currentA1Date:null],['备案通知',r.noticeDate],['挂牌',r.hkexListingDate]].filter(x=>x[1]).sort((a,b)=>a[1].localeCompare(b[1])).map(([name,date])=>`<li><b>${escapeHtml(name)}</b><time>${date}</time></li>`).join('')}</ol>`;}
+function p0RegulatoryTimeline(issuerOrId, options = {}) {
+ const r = issuerOrId && typeof issuerOrId === "object"
+  ? issuerOrId
+  : state.data?.records?.find(x => x.id === issuerOrId);
+ if (!r) return "";
+ const notice = currentOfferingNotice(r);
+ const firstRec = r.csrcFirstReceivedDate || r.csrcReceivedDate;
+ const rawItems = [
+  ["首轮 A1", r.a1Date, "a1"],
+  ["证监会接收", firstRec, "received"],
+  ["当前 A1", r.currentA1Date && r.currentA1Date !== r.a1Date ? r.currentA1Date : null, "a1_renew"],
+  ["当前接收", r.csrcCurrentReceivedDate && r.csrcCurrentReceivedDate !== firstRec ? r.csrcCurrentReceivedDate : null, "received"],
+  ["备案通知", r.noticeDate, "notice"],
+  ...(notice
+   ? [
+      ["招股章程", notice.research?.date || null, "prospectus"],
+      [offeringNoticeLabels(notice)[0] || "发售搁置", notice.date || null, "paused"]
+     ]
+   : [["挂牌", r.hkexListingDate, "listed"]])
+ ]
+  .filter(([, d]) => d && /^\d{4}-\d{2}-\d{2}$/.test(String(d)))
+  .map(([name, date, kind]) => ({ name, date: String(date), kind, proposed: false }))
+  .sort((a, b) => a.date.localeCompare(b.date));
+
+ const merged = [];
+ for (const item of rawItems) {
+  const prev = merged.at(-1);
+  if (prev && prev.date === item.date) {
+   if (!prev.name.includes(item.name)) prev.name += ` / ${item.name}`;
+   prev.kind = item.kind;
+  } else {
+   merged.push({ ...item });
+  }
+ }
+
+ const asOf = state.data?.meta?.generatedAt?.slice(0, 10) || P0_WAITING.asOf;
+ if (
+  options.includeLiveTail &&
+  merged.length >= 1 &&
+  hkexListingStage(r) === "applying" &&
+  r.hkexApplicationStatusGroup === "active" &&
+  !notice &&
+  asOf &&
+  /^\d{4}-\d{2}-\d{2}$/.test(asOf) &&
+  asOf > merged.at(-1).date
+ ) {
+  merged.push({ name: "在审至今", date: asOf, kind: "live_wait", proposed: true });
+ }
+
+ if (!merged.length) return "";
+ if (merged.length === 1) {
+  const m = merged[0];
+  return `<div class="prop-timeline is-single"><div class="prop-timeline-head"><span class="prop-timeline-title">关键节点</span><span class="prop-timeline-span col-num"><strong>${escapeHtml(m.name)}</strong> · ${m.date}</span></div></div>`;
+ }
+
+ const parseUtc = iso => Date.parse(`${iso}T00:00:00Z`);
+ const t0 = parseUtc(merged[0].date);
+ const tEnd = parseUtc(merged.at(-1).date);
+ const totalDays = Math.max(1, Math.round((tEnd - t0) / 864e5));
+
+ const W = 860, H = 132, padL = 64, padR = 64, trackY = 66, trackW = W - padL - padR;
+ const nodes = merged.map((m, i) => {
+  const ms = parseUtc(m.date);
+  const daysFromStart = Math.round((ms - t0) / 864e5);
+  const deltaDays = i === 0 ? 0 : Math.round((ms - parseUtc(merged[i - 1].date)) / 864e5);
+  const dotX = padL + (daysFromStart / totalDays) * trackW;
+  const lane = i % 2 === 0 ? "top" : "bottom";
+  return { ...m, i, daysFromStart, deltaDays, dotX, labelX: dotX, lane };
+ });
+
+ // Relax labelX within each lane separately so close dates never collide while dots stay 100% proportionate
+ const minGap = 132, minX = 56, maxX = W - 56;
+ for (const laneName of ["top", "bottom"]) {
+  const ln = nodes.filter(n => n.lane === laneName);
+  if (!ln.length) continue;
+  for (const n of ln) n.labelX = Math.min(maxX, Math.max(minX, n.dotX));
+  for (let j = 1; j < ln.length; j++) {
+   if (ln[j].labelX - ln[j - 1].labelX < minGap) ln[j].labelX = ln[j - 1].labelX + minGap;
+  }
+  if (ln.at(-1).labelX > maxX) ln.at(-1).labelX = maxX;
+  for (let j = ln.length - 2; j >= 0; j--) {
+   if (ln[j + 1].labelX - ln[j].labelX < minGap) ln[j].labelX = ln[j + 1].labelX - minGap;
+  }
+  for (const n of ln) n.labelX = Math.min(maxX, Math.max(minX, n.labelX));
+ }
+
+ const segsSvg = [];
+ const inlineBadgesSvg = [];
+ for (let i = 1; i < nodes.length; i++) {
+  const prev = nodes[i - 1], curr = nodes[i];
+  const segW = curr.dotX - prev.dotX;
+  const segCls = curr.proposed
+   ? "is-wait"
+   : curr.kind === "paused"
+    ? "is-paused"
+    : curr.kind === "listed"
+     ? "is-listed"
+     : curr.kind === "a1_renew"
+      ? "is-renew"
+      : "is-core";
+  segsSvg.push(`<line class="ptl-seg ${segCls}" x1="${prev.dotX.toFixed(1)}" y1="${trackY}" x2="${curr.dotX.toFixed(1)}" y2="${trackY}" />`);
+  if (segW >= 54) {
+   curr.hasInlineDelta = true;
+   const midX = (prev.dotX + curr.dotX) / 2;
+   const txt = `+${curr.deltaDays}d`;
+   const pillW = Math.max(36, txt.length * 6.8 + 10);
+   inlineBadgesSvg.push(`<g class="ptl-delta-pill ${segCls}"><rect x="${(midX - pillW / 2).toFixed(1)}" y="${(trackY - 8.5).toFixed(1)}" width="${pillW.toFixed(1)}" height="17" rx="8.5" /><text x="${midX.toFixed(1)}" y="${(trackY + 3.5).toFixed(1)}" text-anchor="middle">${txt}</text></g>`);
+  } else {
+   curr.hasInlineDelta = false;
+  }
+ }
+
+ const nodesSvg = nodes.map(n => {
+  const isTop = n.lane === "top";
+  const stemY1 = isTop ? trackY - 7 : trackY + 7;
+  const kneeY = isTop ? trackY - 15 : trackY + 15;
+  const stemY2 = isTop ? trackY - 24 : trackY + 24;
+  const titleY = isTop ? 22 : 103;
+  const dateY = isTop ? 37 : 118;
+  const shortDelta = n.i > 0 && !n.hasInlineDelta ? ` (+${n.deltaDays}d)` : "";
+  const tip = `${n.name}：${n.date}${n.i > 0 ? `（距上一节点 ${n.deltaDays} 天，距起点 ${n.daysFromStart} 天）` : "（起点）"}`;
+  return `<g class="ptl-node is-${n.kind}">
+   <title>${escapeHtml(tip)}</title>
+   <polyline class="ptl-stem" points="${n.dotX.toFixed(1)},${stemY1} ${n.dotX.toFixed(1)},${kneeY} ${n.labelX.toFixed(1)},${stemY2}" fill="none" />
+   ${n.kind === "listed" || n.kind === "paused" ? `<circle class="ptl-halo is-${n.kind}" cx="${n.dotX.toFixed(1)}" cy="${trackY}" r="9" />` : ""}
+   <circle class="ptl-dot is-${n.kind}" cx="${n.dotX.toFixed(1)}" cy="${trackY}" r="5.5" />
+   <text class="ptl-title" x="${n.labelX.toFixed(1)}" y="${titleY}" text-anchor="middle">${escapeHtml(n.name)}${shortDelta ? `<tspan class="ptl-inline-delta">${escapeHtml(shortDelta)}</tspan>` : ""}</text>
+   <text class="ptl-date" x="${n.labelX.toFixed(1)}" y="${dateY}" text-anchor="middle">${n.date}</text>
+  </g>`;
+ }).join("");
+
+ const maxDelta = Math.max(1, ...nodes.slice(1).map(n => n.deltaDays));
+ const mobileItemsHtml = nodes.map((n, i) => {
+  const segH = i === 0 ? 0 : Math.round(18 + (n.deltaDays / maxDelta) * 52);
+  const segCls = n.proposed ? "is-wait" : n.kind === "paused" ? "is-paused" : n.kind === "listed" ? "is-listed" : n.kind === "a1_renew" ? "is-renew" : "is-core";
+  return `<li class="ptl-m-step is-${n.kind}">
+   ${i > 0 ? `<div class="ptl-m-connector ${segCls}" style="height:${segH}px"><span>+${n.deltaDays}d</span></div>` : ""}
+   <div class="ptl-m-row"><i class="ptl-m-dot is-${n.kind}" aria-hidden="true"></i><b>${escapeHtml(n.name)}</b><time>${n.date}</time>${i > 0 ? `<em class="col-num">累计 ${n.daysFromStart}d</em>` : `<em class="col-num">起点</em>`}</div>
+  </li>`;
+ }).join("");
+
+ const endLabel = merged.at(-1).proposed ? "在审累计" : `${merged[0].name} → ${merged.at(-1).name}`;
+ return `<div class="prop-timeline${options.compactHeader ? " is-modal-banner" : ""}" role="group" aria-label="监管申报与挂牌时间线">
+  <div class="prop-timeline-head">
+   <span class="prop-timeline-title">${options.compactHeader ? "申报与挂牌里程碑" : `${nodes.length} 个披露节点`}</span>
+   <span class="prop-timeline-span col-num">${escapeHtml(endLabel)} · <strong>${totalDays} 天</strong> <small>（${merged[0].date} → ${merged.at(-1).date}）</small></span>
+  </div>
+  <svg class="prop-timeline-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${escapeHtml(nodes.map(n => `${n.name} ${n.date}`).join(" → "))}">
+   <line class="ptl-rail-bg" x1="${padL}" y1="${trackY}" x2="${W - padR}" y2="${trackY}" />
+   ${segsSvg.join("")}
+   ${inlineBadgesSvg.join("")}
+   ${nodesSvg}
+  </svg>
+  <ol class="deal-timeline prop-timeline-mobile">${mobileItemsHtml}</ol>
+ </div>`;
+}
 function p0PausedWindowBar(f){
  const m=f?.market;if(!m)return '';
  const chg=Number(m.changePercent),chgStr=`${chg>0?'+':''}${offeringNumber(chg,2)}%`;
@@ -7029,11 +8276,11 @@ function p0BindInteractions(){
  if(el.dataset.globalRound){if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();closeSearch();openOfferingDossier(el.dataset.globalRound);}
  if(el.dataset.globalIssuer){closeSearch();if(state.view!=='directory'&&state.view!=='tracker')switchView('directory');openDetail(el.dataset.globalIssuer);}
  if(el.dataset.globalFirm){e.stopPropagation();closeSearch();closeDetail(false);state.firm=el.dataset.globalFirm;switchView('sponsorLeaderboard');}
- if(el.dataset.jumpSponsorFees){e.stopPropagation();closeSearch();closeDetail(false);state.feePhase='listed';p0Reset('fees');state.feeInstitution=el.dataset.jumpSponsorFees;state.feePage=1;renderFeeComparison();switchView('fees');}
+ if(el.dataset.jumpSponsorFees){e.stopPropagation();closeSearch();closeDetail(false);state.feePhase='listed';p0Reset('fees');state.feeInstitution=el.dataset.jumpSponsorFees;state.feeSponsorRole=el.dataset.jumpSponsorRole||'all';state.feePage=1;renderFeeComparison();switchView('fees');}
  if(el.dataset.jumpView){e.stopPropagation();switchView(el.dataset.jumpView);}
  if(el.dataset.execSearch){e.stopPropagation();openSearch();input.value=el.dataset.execSearch;p0GlobalSearch();return;}
  if(el.dataset.openCornerstone){e.stopPropagation();closeSearch();closeDetail(false);openCornerstoneProfile(el.dataset.openCornerstone,el);}
- if(el.dataset.sameSize){if(p0HasFeeOrigin()){history.back();return;}state.feePhase='listed';state.feeQuery='';state.feeIndustry='all';state.feeInstitution='all';state.feeCurrency='all';state.feeType='all';state.feeDateFrom='';state.feeDateTo='';state.feeMin='';state.feeMax='';state.sizeBand='600_900';state.shoeBasis='offered';state.feeRoundId=el.dataset.sameSize;state.feePage=1;switchView('fees');}
+ if(el.dataset.sameSize){if(p0HasFeeOrigin()){history.back();return;}state.feePhase='listed';state.feeQuery='';state.feeIndustry='all';state.feeInstitution='all';state.feeSponsorRole='all';state.feeCurrency='all';state.feeType='all';state.feeDateFrom='';state.feeDateTo='';state.feeMin='';state.feeMax='';state.sizeBand='600_900';state.shoeBasis='offered';state.feeRoundId=el.dataset.sameSize;state.feePage=1;switchView('fees');}
  if(el.dataset.openRegulatory){switchView('tracker');openDetail(el.dataset.openRegulatory);}
  if(el.dataset.cohortMetric){state.cohortMetric=el.dataset.cohortMetric;state.cohort='';state.daySortField=dayMetricField(state.cohortMetric);state.sortField=state.daySortField;state.page=1;syncControls();renderRows();syncUrl();document.querySelector(`[data-cohort-metric="${state.cohortMetric}"]`)?.focus({preventScroll:true});}
  if(el.hasAttribute('data-cohort-month')){state.cohort=state.cohort===el.dataset.cohortMonth?'':el.dataset.cohortMonth;state.page=1;renderRows();syncUrl();document.querySelector('.tracker-table thead')?.focus({preventScroll:true});}
