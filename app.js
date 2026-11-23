@@ -5167,6 +5167,26 @@ function renderCornerstoneBrandBreakdown(p) {
  return `<section class="deal-section"><header><h3>按获配渠道</h3></header><dl class="deal-facts">${order.filter(k=>totals.has(k)).map(k=>`<div><dt>${k}</dt><dd>${formatChineseUnitAmount(cornerstoneNumberFromCents(totals.get(k)),"HKD")}</dd></div>`).join("")}</dl><div class="deal-allocation-list">${items.join("")}</div></section>`;
 }
 
+const cornerstoneVerifiedBankRosters = {"offering:03308:2026-07-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=1","banks":["高盛","中金","摩根士丹利","广发","国泰海通","花旗","汇丰","中国银河"]},"offering:02475:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801342.pdf#page=3","banks":["中信证券","高盛","中金"]},"offering:03661:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0625/2026062502076.pdf#page=2","banks":["中金","华泰国际"]},"offering:07666:2026-05-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0512/2026051201482.pdf#page=2","banks":["杰富瑞","德意志银行","中信证券","招银国际"]},"offering:06880:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0707/2026070701963.pdf#page=2","banks":["中金","德意志银行"]},"offering:01879:2026-04-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042703526.pdf#page=2","banks":["中金","国泰海通","汇丰"]},"offering:01768:2026-01-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0127/2026012701713.pdf#page=2","banks":["高盛","华泰国际","德意志银行"]}};
+function cornerstoneRepeatedBanks(deals, rosters=cornerstoneVerifiedBankRosters) {
+ const verified=[...new Map(deals.filter(d=>d.status==="listed"&&rosters[d.roundId]).map(d=>[d.roundId,d])).values()];
+ const occur=new Map();
+ for(const d of verified)for(const b of new Set(rosters[d.roundId].banks)){
+  if(!occur.has(b))occur.set(b,[]);
+  occur.get(b).push(d);
+ }
+ const ranked=[...occur].filter(([,d])=>d.length>=2).map(([bank,deals])=>({bank,deals})).sort((a,b)=>b.deals.length-a.deals.length||a.bank.localeCompare(b.bank,"zh-Hant"));
+ const cutoff=ranked[Math.min(2,ranked.length-1)]?.deals.length;
+ return {verified:verified.length, ranked:ranked.filter(r=>r.deals.length>=cutoff)};
+}
+function renderCornerstoneRepeatedBanks(p){
+ const r=cornerstoneRepeatedBanks(p.deals);
+ if(!r.ranked.length)return "";
+ const cutoffTie=r.ranked.length>3;
+ return `<section class="deal-section"><header><h3>重复同单投行</h3><small>已核验 ${r.verified} 宗 · 保荐人及整体协调人${cutoffTie?" · 第三位并列":""}</small></header>
+ <div class="deal-allocation-list">${r.ranked.map(x=>`<div><details><summary><strong>${escapeHtml(x.bank)}</strong> · ${x.deals.length}/${r.verified} 宗</summary><ul>${x.deals.map(d=>`<li><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(d.roundId)}">${escapeHtml(d.issuer)} (${escapeHtml(d.code)})</button> ${feeRosterSource(cornerstoneVerifiedBankRosters[d.roundId].source,"发行原件 ↗")}</li>`).join("")}</ul></details></div>`).join("")}</div></section>`;
+}
+
 function renderCornerstones() {
   const listWrap = document.getElementById("cornerstoneListWrap");
   const profilePane = document.getElementById("cornerstoneProfilePane");
@@ -5272,11 +5292,9 @@ function renderCornerstones() {
           <ul class="offering-cornerstone-members">${activeProfile.signatories.map(s => `<li><div><strong>${escapeHtml(s.name)}</strong><span class="col-num">${s.amount ? `${escapeHtml(s.currency)} ${offeringNumber(s.amount, 0)}` : ""}</span></div><p>${escapeHtml(s.type)} · ${escapeHtml(s.capacity)}${s.manager ? ` · 管理人：${escapeHtml(s.manager)}` : ""}${s.feesIncluded ? " · 含经纪佣金及征费" : ""}</p></li>`).join("")}</ul>
         </section>
         ${renderCornerstoneBrandBreakdown(activeProfile) || (activeProfile.allocations?`<section class="deal-section"><header><h3>获配明细</h3></header><div class="deal-allocation-list">${activeProfile.allocations.map(a=>`<div><strong>${escapeHtml(a.label)}</strong><span class="col-num">${offeringNumber(a.quantity)} ${cornerstoneUnit(activeProfile.deals[0].unit)} · HKD ${offeringNumber(a.amountHkd,2)}</span>${feeRosterSource(a.source,'原件 ↗')}</div>`).join('')}</div>${activeProfile.relationships.length?`<details class="deal-light-detail"><summary>认购关系</summary>${activeProfile.relationships.map(r=>`<p>${escapeHtml(r.role)}：${escapeHtml(r.name)} ${feeRosterSource(r.source,'原件 ↗')}</p>`).join('')}</details>`:''}</section>`:'')}
+        ${renderCornerstoneRepeatedBanks(activeProfile)}
         <section class="deal-section">
-          <header><h3>联动保荐机构（Co-Sponsor Affinity）</h3></header>
-          <p class="cs-profile-sub">同单保荐及协调机构：</p>
-          <div class="cs-sponsor-affinity">${activeProfile.coSponsors.map(sp => renderSponsorJumpChip(sp.name, sp.sponsorId, sp.name)).join("")}</div>
-          <h4>参与港股项目记录</h4>
+          <header><h3>参与港股项目记录</h3></header>
           <div class="table-wrap"><table class="cs-deals-table">
             <thead><tr><th>项目 / 代码</th><th>状态 / 角色</th><th class="col-num">披露金额 / 获配</th><th>占发售比</th></tr></thead>
             <tbody>${activeProfile.deals.map(deal => `<tr class="cs-deal-row" data-cs-deal-round="${escapeHtml(deal.roundId)}" tabindex="0" role="button"><th scope="row"><strong>${escapeHtml(deal.issuer)}</strong> <span class="mono-code">${deal.code}.HK</span></th><td><span class="deal-status-pill is-${deal.status === "listed" ? "listed" : "paused"}">${escapeHtml(deal.statusLabel)}</span> <small>${escapeHtml(deal.roleTag)} · ${deal.date}</small></td><td class="col-num" title="${escapeHtml(deal.rawCommitment)}"><strong>${escapeHtml(deal.commitmentText)}</strong></td><td>${escapeHtml(deal.ratioText || "—")}</td></tr>`).join("")}</tbody>
@@ -5342,7 +5360,7 @@ function renderCornerstones() {
         <td><span class="cs-arch-badge">${escapeHtml(p.archetypeLabel)}</span><small>${escapeHtml(p.channel)}</small></td>
         <td><div class="cs-deal-cell"><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(deal.roundId)}">${escapeHtml(deal.issuer)} (${deal.code}) ↗</button><small>${escapeHtml(deal.statusLabel)} · ${escapeHtml(deal.roleTag)}${p.deals.length>1?` · 共 ${p.deals.length} 宗`:""}</small></div></td>
         <td class="col-num" title="${escapeHtml(deal.rawCommitment)}"><strong>${escapeHtml(p.allocations?.length?p.commitmentText:deal.commitmentText)}</strong><small>${escapeHtml(deal.ratioText ? deal.ratioText.replace(/（.*）/, "") : "")}</small></td>
-        <td><div class="cs-sponsors-cell">${p.coSponsors.map(sp => renderSponsorJumpChip(sp.name, sp.sponsorId, sp.name)).join(" · ")}</div></td>
+        <td><div class="cs-sponsors-cell">${cornerstoneRepeatedBanks(p.deals).ranked.map(x=>escapeHtml(x.bank)+" · "+x.deals.length+"宗").join(" / ")}</div></td>
       </tr>`;
     }).join("")}</tbody></table></div>` : `<div class="empty-state-row"><p>未找到匹配的基石投资者</p><button type="button" data-cs-reset>清除筛选</button></div>`;
 }
