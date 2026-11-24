@@ -8146,6 +8146,15 @@ function renderDirectoryPulse() {
   });
 }
 
+function directoryListedPublicOfferAnchor(record, round) {
+  if (record.specialListingRoute || round?.route !== "listed_offering" || round.issuerId !== record.id
+      || round.code !== record.hkexListingStockCode || round.listingDate !== record.hkexListingDate) return "";
+  if (round.offered?.currency !== "HKD") return "";
+  const gross = Number(round.offered?.gross?.value);
+  if (!Number.isFinite(gross) || gross <= 0) return "";
+  return `<strong>${formatChineseUnitAmount(gross, "HKD")}</strong><small>公开发售 · 募资总额（绿鞋前）</small>`;
+}
+
 function renderDirectory() {
   const tbody = document.getElementById("directoryRows");
   if (!tbody || !state.data?.records) return;
@@ -8267,6 +8276,9 @@ function renderDirectory() {
       anchorHtml = `<strong>De-SPAC 并购上市</strong><small>继承公司挂牌 ${escapeHtml(record.hkexListingDate || "—")}</small>`;
     } else if (spRoute === "gem_to_main_transfer" && stage === "listed") {
       anchorHtml = `<strong>GEM 转主板上市</strong><small>转板生效 ${escapeHtml(record.hkexListingDate || "—")}</small>`;
+    } else if (stage === "listed") {
+      anchorHtml = directoryListedPublicOfferAnchor(record, matchedRound) ||
+        `<strong>已挂牌</strong><small>上市日总市值待补</small>`;
     } else if (isAhCandidate(record) && Number.isFinite(record.aShareMarketCapAtA1RmbBn) && record.aShareMarketCapAtA1RmbBn > 0) {
       anchorHtml = `<strong>CNY ${rmbYiFormatter.format(record.aShareMarketCapAtA1RmbBn * 10)}亿</strong><small>A1 日 A 股参考市值</small>`;
     }
@@ -8274,7 +8286,7 @@ function renderDirectory() {
       const a1 = record.a1Date || record.currentA1Date;
       const elapsed = a1 && typeof p0Elapsed === "function" ? p0Elapsed(a1, "calendar") : null;
       anchorHtml = a1
-        ? `<strong>首轮 ${escapeHtml(a1)}</strong><small>${stage === "applying" && typeof elapsed === "number" ? `在途 ${formatDayValue(elapsed)} 自然日` : stage === "listed" ? "非公开发售/特殊路径" : "历史申报轮次"}</small>`
+        ? `<strong>首轮 ${escapeHtml(a1)}</strong><small>${stage === "applying" && typeof elapsed === "number" ? `在途 ${formatDayValue(elapsed)} 自然日` : "历史申报轮次"}</small>`
         : `<strong>${escapeHtml(csrcShort)}</strong><small>${escapeHtml(record.noticeDate || record.csrcReceivedDate || "公开备案")}</small>`;
     }
 
