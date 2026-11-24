@@ -445,7 +445,7 @@ function isHkexListed(record) {
   return Boolean(record.hkexListingDate) || rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
 }
 
-const pendingPublishedListingFact = {"id":"csrc_notice:7598251","expectedName":"Beijing Sinotau International Pharmaceutical Technology Co., Ltd. - B","noticeDate":"2025-11-25","r":{"hkexListingDate":"2026-11-24","hkexPublicStatus":"Listed","practicalStage":"listed","hkexApplicationStatusGroup":null,"hkexListingDateBasis":"hkex_new_listing_trading_arrangement","hkexListingSourceUrl":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e9941a_261120.htm","hkexListingStockCode":"09941","hkexListingCompanyName":"Beijing Sinotau International Pharmaceutical Technology Co., Ltd. - B","hkexProspectusDate":"2026-11-16","listingDurationSampleEligible":true,"calendarDaysA1ToListing":547,"businessDaysA1ToListing":373,"hkexApplicationStatusLabelZh":"已上市","statusTags":["已上市","PHIP已公开"],"listingBoard":"Main","sourceLinks":[{"label":"备案通知书","url":"https://www.csrc.gov.cn/csrc/c105984/c7598251/content.shtml"},{"label":"HKEX Main Board Consolidated Index","url":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"},{"label":"历史备案情况表转载（接收日期核验）","url":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"},{"label":"HKEX PHIP","url":"https://www1.hkexnews.hk/app/sehk/2026/109006/documents/sehk26102801584.pdf","originalLabel":"HKEX PHIP","availability":"available","freshness":"fresh","lastKnownAvailability":"available","checkedAt":"2026-11-19T18:21:54.338056+00:00","lastAttemptAt":"2026-11-19T18:21:54.338056+00:00","lastAttemptState":"available"},{"label":"补充材料公示","url":"https://www.csrc.gov.cn/csrc/c105983/c7570804/content.shtml"},{"label":"港交所新股买卖安排","url":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e9941a_261120.htm"},{"label":"配发结果","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112301691.pdf"}]}};
+const pendingPublishedListingFact = {"id":"csrc_notice:7598251","expectedName":"Beijing Sinotau International Pharmaceutical Technology Co., Ltd. - B","noticeDate":"2025-11-25","r":{"hkexListingDate":"2026-11-24","hkexPublicStatus":"Listed","practicalStage":"listed","hkexApplicationStatusGroup":null,"hkexListingDateBasis":"hkex_new_listing_trading_arrangement","hkexListingSourceUrl":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e9941a_261120.htm","hkexListingStockCode":"09941","hkexListingCompanyName":"Beijing Sinotau International Pharmaceutical Technology Co., Ltd. - B","hkexProspectusDate":"2026-11-16","listingDurationSampleEligible":true,"calendarDaysA1ToListing":547,"businessDaysA1ToListing":373,"hkexApplicationStatusLabelZh":"已上市","statusTags":["已上市","PHIP已公开"],"listingBoard":"Main","sourceLinks":[{"label":"备案通知书","url":"https://www.csrc.gov.cn/csrc/c105984/c7598251/content.shtml"},{"label":"HKEX Main Board Consolidated Index","url":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"},{"label":"历史备案情况表转载（接收日期核验）","url":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"},{"label":"HKEX PHIP","url":"https://www1.hkexnews.hk/app/sehk/2026/109006/documents/sehk26102801584.pdf","originalLabel":"HKEX PHIP","availability":"available","freshness":"fresh","lastKnownAvailability":"available","checkedAt":"2026-11-19T18:21:54.338056+00:00","lastAttemptAt":"2026-11-19T18:21:54.338056+00:00","lastAttemptState":"available"},{"label":"补充材料公示","url":"https://www.csrc.gov.cn/csrc/c105983/c7570804/content.shtml"},{"label":"港交所新股买卖安排","url":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e9941a_261120.htm"},{"label":"配发结果","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112301691.pdf"}],"hkListingSessionClose":{"price":"40.00","priceDate":"2026-11-24","priceCurrency":"HKD","priceKind":"unadjusted_vendor_close","sourceUrl":"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk09941,day,2026-11-24,2026-11-24,2,bfq"}}};
 function applyPublishedListingFact(payload) {
   const fact=pendingPublishedListingFact;
   if (!Array.isArray(payload?.records) || payload.records.some(r=>r.hkexListingStockCode===fact.r.hkexListingStockCode)) return payload;
@@ -10389,7 +10389,22 @@ function p0CohortEntry(r,metric=state.cohortMetric){
  if(metric==='a1ToReceived'){start=r.a1ReceiptTiming?.a1Date||(stage!=='listed'&&r.calendarDaysA1ToReceived>180?r.currentA1Date:r.a1Date);end=r.a1ReceiptTiming?.receivedDate||r.csrcReceivedDate;}
  else if(metric==='a1ToNotice'){start=r.a1Date;end=r.noticeDate;}
  else if(metric==='receivedToNotice'){start=r.csrcReceivedDate;end=r.noticeDate;}else{start=r.a1Date;end=r.hkexListingDate;}
- if(typeof completed==='number'&&start)return{month:start.slice(0,7),days:completed,pending:false};
+ if(typeof completed==='number'&&start){
+  const delta=(a,b)=>a&&b?(Date.parse(b)-Date.parse(a))/86400000:NaN;
+  if(metric==='a1ToNotice'&&!r.noticeSupersededByCurrentFiling&&delta(start,r.noticeDate)!==r.calendarDaysA1ToNotice){
+   const a=r.regulatoryTimelineAnchorDate||r.statsAnchorDate;
+   if(delta(a,r.noticeDate)===r.calendarDaysA1ToNotice)start=a;
+  }
+  if(metric==='a1ToReceived'&&!r.a1ReceiptTiming){
+   if(stage!=='listed'&&r.calendarDaysA1ToReceived>180){
+    end=r.csrcCurrentReceivedDate;
+   }else if(delta(start,end)!==r.calendarDaysA1ToReceived){
+    const a=r.regulatoryTimelineAnchorDate||r.statsAnchorDate;
+    if(delta(a,end)===r.calendarDaysA1ToReceived)start=a;
+   }
+  }
+  return{month:start.slice(0,7),days:completed,pending:false};
+ }
  if(stage!=='applying'||r.hkexApplicationStatusGroup!=='active'||end||r.hkexConfidentialFilingDate||(r.timelineFlags||[]).includes('confidential_route_suspected')||metric!=='a1ToListing'&&(r.csrcFilingRequired!==true||r.noticeSupersededByCurrentFiling)||metric==='a1ToReceived'&&(r.status!=='waiting_received'||r.csrcCurrentReceivedDate||r.csrcFirstReceivedDate))return null;
  if(metric==='a1ToReceived')start=r.currentA1Date||r.a1Date;
  else if(metric==='a1ToNotice')start=r.a1Date||r.currentA1Date;
