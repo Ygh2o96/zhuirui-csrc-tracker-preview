@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -72,6 +72,18 @@ jobs:
 
       - name: Deploy
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
+
+      - name: Allow Pages artifact lookup to settle
+        if: ${{ !cancelled() && steps.deployment.outcome == 'failure' }}
+        run: sleep 20
+
+      - name: Retry deploying the same artifact once
+        id: deployment-retry
+        if: ${{ success() && steps.deployment.outcome == 'failure' }}
         uses: actions/deploy-pages@v5
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
