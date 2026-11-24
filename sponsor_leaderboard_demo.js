@@ -3829,6 +3829,30 @@ function cachePkElements() {
   pkEls.dateTo = document.getElementById("spkDateTo");
 }
 
+// Keep the two public views on the same confirmed listing fact until the next native export.
+function applySharedConfirmedListing(payload) {
+  if (typeof pendingPublishedListingFact === "undefined") return payload;
+  const fact = pendingPublishedListingFact, listing = fact.r;
+  if (listing.practicalStage !== "listed" || !listing.hkexListingDate || !listing.hkexListingStockCode) return payload;
+  const next = payload.projectFacts.map(row => {
+    if (row.issuerId !== fact.id || row.issuerName !== fact.expectedName || row.noticeDate !== fact.noticeDate
+      || row.hkexStage !== "applying" || row.listingDate || row.hkexListingStockCode) return row;
+    const sameA1 = dateDiffDays(row.a1Date, listing.hkexListingDate) === listing.calendarDaysA1ToListing;
+    const sourceLinks = [...(row.sourceLinks || [])];
+    for (const src of (listing.sourceLinks || []).filter(x => x.label === "港交所新股买卖安排" || x.label === "配发结果")) {
+      if (!sourceLinks.some(existing => existing.url === src.url)) sourceLinks.push(src);
+    }
+    return {...row,
+      hkexStage:"listed", hkexPublicStatus:listing.hkexPublicStatus,
+      hkexListingStockCode:listing.hkexListingStockCode, hkexListingCompanyName:listing.hkexListingCompanyName,
+      listingDate:listing.hkexListingDate, applicationStatusGroup:null, applicationStatusLabelZh:null,
+      calendarDaysA1ToListing:sameA1 ? listing.calendarDaysA1ToListing : null,
+      listingDurationSampleEligible:sameA1 && listing.listingDurationSampleEligible === true, sourceLinks
+    };
+  });
+  return next.some((row,i) => row !== payload.projectFacts[i]) ? {...payload,projectFacts:next} : payload;
+}
+
 function validatePayload(payload) {
   if (!Array.isArray(payload.firms) || !Array.isArray(payload.projectFacts)) {
     throw new Error("Sponsor demo payload missing firms/projectFacts arrays");
@@ -3861,7 +3885,7 @@ async function loadData() {
     }
   }
   validatePayload(payload);
-  state.data = payload;
+  state.data = applySharedConfirmedListing(payload);
   ensureCsrcRecordsLoaded();
 }
 
