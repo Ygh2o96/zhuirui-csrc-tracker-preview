@@ -446,6 +446,20 @@ function isHkexListed(record) {
 }
 
 const pendingPublishedListingFact = {"id":"csrc_notice:7598251","expectedName":"Beijing Sinotau International Pharmaceutical Technology Co., Ltd. - B","noticeDate":"2025-11-25","r":{"hkexListingDate":"2026-11-24","hkexPublicStatus":"Listed","practicalStage":"listed","hkexApplicationStatusGroup":null,"hkexListingDateBasis":"hkex_new_listing_trading_arrangement","hkexListingSourceUrl":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e9941a_261120.htm","hkexListingStockCode":"09941","hkexListingCompanyName":"Beijing Sinotau International Pharmaceutical Technology Co., Ltd. - B","hkexProspectusDate":"2026-11-16","listingDurationSampleEligible":true,"calendarDaysA1ToListing":547,"businessDaysA1ToListing":373,"hkexApplicationStatusLabelZh":"已上市","statusTags":["已上市","PHIP已公开"],"listingBoard":"Main","sourceLinks":[{"label":"备案通知书","url":"https://www.csrc.gov.cn/csrc/c105984/c7598251/content.shtml"},{"label":"HKEX Main Board Consolidated Index","url":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex_c.xlsx"},{"label":"历史备案情况表转载（接收日期核验）","url":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx"},{"label":"HKEX PHIP","url":"https://www1.hkexnews.hk/app/sehk/2026/109006/documents/sehk26102801584.pdf","originalLabel":"HKEX PHIP","availability":"available","freshness":"fresh","lastKnownAvailability":"available","checkedAt":"2026-11-19T18:21:54.338056+00:00","lastAttemptAt":"2026-11-19T18:21:54.338056+00:00","lastAttemptState":"available"},{"label":"补充材料公示","url":"https://www.csrc.gov.cn/csrc/c105983/c7570804/content.shtml"},{"label":"港交所新股买卖安排","url":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e9941a_261120.htm"},{"label":"配发结果","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112301691.pdf"}],"hkListingSessionClose":{"price":"40.00","priceDate":"2026-11-24","priceCurrency":"HKD","priceKind":"unadjusted_vendor_close","sourceUrl":"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=hk09941,day,2026-11-24,2026-11-24,2,bfq"}}};
+const issuerDisclosedRegulatoryFact={"issuerId":"sigmastar technology ltd.","issuerName":"SigmaStar Technology Ltd.","aShareCode":"301536","filing":{"documentNumber":"国合函〔2026〕2559号","maxHShares":85583300,"issuerDocumentNumber":"2026-064","issuerDocumentDate":"2026-11-06","issuerAnnouncementUrl":"https://pdf.dfcfw.com/pdf/H2_AN202611051831449788_1.pdf?1793893595000.pdf="},"hearing":{"hearingDate":"2026-11-19","sponsorReviewLetterReceiptDate":"2026-11-20","issuerDocumentNumber":"2026-065","issuerDocumentDate":"2026-11-21","issuerAnnouncementUrl":"https://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2026/2026-11/2026-11-21/12717802.PDF"}};
+function applyIssuerDisclosedRegulatoryFact(payload) {
+ const f=issuerDisclosedRegulatoryFact;
+ if(!Array.isArray(payload?.records))return payload;
+ const k=payload.records.findIndex(r=>r.id===f.issuerId && r.issuerName===f.issuerName && r.aShareCode===f.aShareCode &&
+  r.status==="regulator_opinion" && r.practicalStage==="applying" && !r.noticeDate && !r.issuerDisclosedFilingNotice);
+ if(k<0)return payload;
+ const old=payload.records[k],records=[...payload.records];
+ records[k]={...old,status:"notice_issued",backendStageZh:"公司公告已收到备案通知书",
+  issuerDisclosedFilingNotice:f.filing,issuerDisclosedHearing:f.hearing,
+  sourceLinks:[...(old.sourceLinks||[]),{label:"公司公告：已收到备案通知书",url:f.filing.issuerAnnouncementUrl},
+   {label:"公司公告：港交所上市聆讯及审阅函",url:f.hearing.issuerAnnouncementUrl}]};
+ return {...payload,records};
+}
 function applyPublishedListingFact(payload) {
   const fact=pendingPublishedListingFact;
   if (!Array.isArray(payload?.records) || payload.records.some(r=>r.hkexListingStockCode===fact.r.hkexListingStockCode)) return payload;
@@ -6775,6 +6789,9 @@ function renderListingCell(record, showStockCode = true) {
 }
 
 function renderNoticeCell(record, compactLive = false) {
+  const disclosed=record.issuerDisclosedFilingNotice;
+  if(!record.noticeDate && record.status==="notice_issued" && disclosed?.issuerAnnouncementUrl)
+    return compactLive ? '<span class="cell-live-pill">公司已公告收到</span>' : `<a href="${escapeHtml(disclosed.issuerAnnouncementUrl)}" target="_blank" rel="noreferrer">公司已公告收到 · ${escapeHtml(disclosed.documentNumber)} ↗</a>`;
   if (record.transactionDisclosures?.kind === "reverse_takeover_filing_notice") {
     return `${formatDate(record.transactionDisclosures.signedDate)}<span class="date-secondary">反向收购备案 / RTO notice</span>`;
   }
@@ -7994,6 +8011,7 @@ function renderDetail(record) {
             `<div class="timeline-row"><span>全流通备案通知书</span><strong><a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noreferrer" title="${escapeHtml(item.title || "")}">${escapeHtml(item.noticeDate || item.publishedDate || "查看通知书")} ↗</a></strong></div>`
           ).join("")}
           <div class="timeline-row"><span>${record.noticeSupersededByCurrentFiling ? "历史备案通知书" : "备案通知书"}</span><strong>${renderNoticeCell(record)}</strong></div>
+          ${record.issuerDisclosedHearing ? `<div class="timeline-row"><span>港交所上市聆讯（公司公告）</span><strong><a href="${escapeHtml(record.issuerDisclosedHearing.issuerAnnouncementUrl)}" target="_blank" rel="noreferrer">${formatDate(record.issuerDisclosedHearing.hearingDate)} ↗</a></strong></div>` : ""}
           ${record.noticePublishedDate && record.noticePublishedDate !== record.noticeDate ? `<div class="timeline-row"><span>通知网页发布日</span><strong>${formatDate(record.noticePublishedDate)}</strong></div>` : ""}
           ${record.transactionCompletionDate && record.transactionDisclosures?.kind !== "reverse_takeover_filing_notice" ? `<div class="timeline-row"><span>反向收购完成日</span><strong>${formatDate(record.transactionCompletionDate)}</strong></div>` : ""}
           ${listedTimelineRows}
@@ -9648,7 +9666,7 @@ async function loadData() {
     return response.json();
   };
   const [tracker, fees, dossiers, transactions, roster] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL), read(OFFERING_DOSSIERS_URL), read(TRANSACTION_CASES_URL), read(FEE_ROSTER_URL)]);
-  state.data = tracker.status === "fulfilled" ? applyPublishedListingFact(applyVerifiedReceiptCycles(tracker.value)) : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
+  state.data = tracker.status === "fulfilled" ? applyIssuerDisclosedRegulatoryFact(applyPublishedListingFact(applyVerifiedReceiptCycles(tracker.value))) : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   if (typeof window !== "undefined") window.__yingsightCsrcRecords = state.data.records || [];
   state.feeData = fees.status === "fulfilled" ? fees.value : null;
   state.feeRosterData = roster.status === "fulfilled" ? roster.value : null;
