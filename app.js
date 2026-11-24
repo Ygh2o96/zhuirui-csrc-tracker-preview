@@ -8988,7 +8988,7 @@ function transactionTimingMetrics(row, asOf = state.transactionData?.asOf){
  const dayDiff=(a,b)=>{if(!a||!b)return null;const d=Math.round((Date.parse(b)-Date.parse(a))/86400000);return Number.isFinite(d)&&d>=0?d:null;};
  const disp=Number.isInteger(row.intervals?.announcementToDispatch)?`${row.intervals.announcementToDispatch} 天`:(row.stage.status==="active"?"待寄发":"—");
  const vote=Number.isInteger(row.intervals?.dispatchToVote)?`${row.intervals.dispatchToVote} 天`:"—";
- const firstDate=row.events?.[0]?.date||"";
+ const firstDate=(row.events||[]).filter(e=>e.kind==="first_announcement"&&e.state==="actual").map(e=>e.date).sort()[0]||"";
  let totalLabel="总历时",totalVal="—",totalSub="",isLive=false;
  const issue=(row.events||[]).find(e=>e.kind==="implementation"&&e.scope==="consideration_shares"&&e.state==="actual");
  if(issue&&row.stage.status==="implemented"){
@@ -9003,7 +9003,7 @@ function transactionTimingMetrics(row, asOf = state.transactionData?.asOf){
   totalLabel="总历时";totalVal=`${row.lifecycle.naturalDays} 天`;totalSub=`${row.lifecycle.start} → ${row.lifecycle.end}`;
  }else if(row.stage.status==="closed"){
   const d=dayDiff(firstDate,row.stage.date);
-  totalLabel="总历时";totalVal=d!=null?`${d} 天`:"—";totalSub=firstDate?`${firstDate} → ${row.stage.date}`:row.stage.date;
+  totalLabel=d==null&&firstDate&&row.stage.eventKind==="completion"&&row.stage.date<firstDate?"交割早于首公":"总历时";totalVal=d!=null?`${d} 天`:"—";totalSub=firstDate?`${firstDate} → ${row.stage.date}`:row.stage.date;
  }else if(row.stage.status==="terminated"){
   const d=dayDiff(firstDate,row.stage.date);
   totalLabel="历时至终止";totalVal=d!=null?`${d} 天`:"—";totalSub=firstDate?`${firstDate} → ${row.stage.date}`:row.stage.date;
