@@ -5215,6 +5215,13 @@ function ensureCornerstoneCache() {
       trackingBasis: "",
     });
   }
+  const quoteMetaByKey = new Map(offerMetaByRound);
+  for (const o of coverage) {
+    if (o.lockupPolicy !== "per_allocation") continue;
+    const base = offerMetaByRound.get(o.roundId);
+    const tranchesByAllocation = csRegisterLockupTranches(o, base, quoteMetaByKey);
+    offerMetaByRound.set(o.roundId, {...base, tranchesByAllocation});
+  }
   const bankIndex = cornerstoneBankIndex();
   csMemoState = {
     dossierData: state.dossierData,
@@ -5224,6 +5231,7 @@ function ensureCornerstoneCache() {
     profiles,
     allocProfilesByRound,
     offerMetaByRound,
+    quoteMetaByKey,
     bankIndex,
   };
   return csMemoState;
@@ -5550,6 +5558,47 @@ function renderCsTicketWhisker(tm, wide = false) {
 const CS_VERIFIED_LOCKUP_CLOSES = {"offering:00501:2025-12-31":[78.65,"2026-07-10","2026-07-12"],"offering:06872:2026-05-14":[73.3,"2026-11-20","2026-11-22"],"offering:07688:2026-05-12":[7.7,"2026-11-20","2026-11-20"],"offering:01511:2026-05-12":[46.44,"2026-11-20","2026-11-20"],"offering:06871:2026-05-08":[17.16,"2026-11-18","2026-11-18"],"offering:07666:2026-05-05":[8.36,"2026-11-13","2026-11-13"],"offering:07630:2026-05-05":[9.115,"2026-11-13","2026-11-13"],"offering:01236:2026-04-30":[20.98,"2026-11-11","2026-11-11"],"offering:01187:2026-04-27":[27.66,"2026-11-06","2026-11-06"],"offering:01609:2026-04-24":[54.85,"2026-11-05","2026-11-05"],"offering:06810:2026-04-21":[76.0,"2026-10-29","2026-10-29"],"offering:02493:2026-04-20":[18.62,"2026-10-28","2026-10-28"],"offering:01879:2026-04-20":[193.0,"2026-10-28","2026-10-28"],"offering:03296:2026-04-15":[74.9,"2026-10-23","2026-10-23"],"offering:02476:2026-04-13":[157.0,"2026-10-21","2026-10-21"],"offering:03277:2026-04-09":[55.85,"2026-10-16","2026-10-17"],"offering:00068:2026-04-09":[4.77,"2026-10-16","2026-10-17"],"offering:06656:2026-04-08":[207.4,"2026-10-16","2026-10-16"],"offering:03625:2026-03-23":[51.2,"2026-09-30","2026-09-30"],"offering:00664:2026-03-23":[11.43,"2026-09-30","2026-09-30"],"offering:06636:2026-03-20":[71.5,"2026-09-30","2026-09-30"],"offering:02726:2026-03-20":[89.8,"2026-09-30","2026-09-30"],"offering:02526:2026-03-20":[254.0,"2026-09-30","2026-09-30"],"offering:01021:2026-03-20":[8.25,"2026-09-30","2026-09-30"],"offering:02729:2026-03-16":[28.08,"2026-09-24","2026-09-24"],"offering:02632:2026-03-16":[62.0,"2026-09-24","2026-09-24"],"offering:03355:2026-03-13":[39.24,"2026-09-23","2026-09-23"],"offering:02701:2026-03-13":[8.745,"2026-09-23","2026-09-23"],"offering:01989:2026-03-12":[107.6,"2026-09-18","2026-09-20"],"offering:03268:2026-02-27":[19.75,"2026-09-10","2026-09-10"],"offering:02715:2026-02-27":[15.24,"2026-09-09","2026-09-09"],"offering:02692:2026-02-27":[38.66,"2026-09-09","2026-09-09"],"offering:02649:2026-02-27":[3.9,"2026-09-09","2026-09-09"],"offering:09981:2026-02-05":[10.65,"2026-08-13","2026-08-13"],"offering:02706:2026-02-05":[43.72,"2026-08-13","2026-08-13"],"offering:00470:2026-02-03":[31.38,"2026-08-11","2026-08-11"],"offering:02720:2026-01-30":[24.14,"2026-08-10","2026-08-10"],"offering:00600:2026-01-30":[13.65,"2026-08-10","2026-08-10"],"offering:06809:2026-01-30":[269.2,"2026-08-07","2026-08-09"],"offering:03200:2026-01-29":[102.5,"2026-08-06","2026-08-06"],"offering:02714:2026-01-29":[31.52,"2026-08-06","2026-08-06"],"offering:02677:2026-01-29":[21.6,"2026-08-06","2026-08-06"],"offering:02768:2026-01-27":[46.0872,"2026-08-04","2026-08-04"],"offering:09980:2026-01-26":[155.09,"2026-08-03","2026-08-03"],"offering:01768:2026-01-20":[382.4,"2026-07-28","2026-07-28"],"offering:09611:2026-01-14":[21.74,"2026-07-22","2026-07-22"],"offering:03986:2025-12-31":[629.0,"2026-07-13","2026-07-13"],"offering:01641:2025-12-31":[4.3,"2026-07-13","2026-07-13"],"offering:06938:2025-12-31":[48.54,"2026-07-09","2026-07-09"],"offering:03636:2025-12-31":[13.43,"2026-07-09","2026-07-09"],"offering:00100:2025-12-31":[297.4,"2026-07-09","2026-07-09"],"offering:09903:2025-12-30":[560.0,"2026-07-08","2026-07-08"],"offering:02675:2025-12-30":[39.98,"2026-07-08","2026-07-08"],"offering:02513:2025-12-30":[1825.0,"2026-07-08","2026-07-08"],"offering:06082:2025-12-22":[48.32,"2026-07-02","2026-07-02"]};
 const CS_POST_IPO_SPLITS = { "offering:02723:2026-05-18": 10 };
 
+function csRegisterLockupTranches(offer, base, quoteMeta) {
+  quoteMeta.delete(offer.roundId);
+  const byAllocation = new Map();
+  for (const a of offer.allocations || []) {
+    const last = a.lockupLastRestrictedDate;
+    const end = a.lockupEndDate;
+    const hkd = Number(a.amountHkd);
+    if (!a.lockupDateSourceUrl || !last || csAddDaysIso(last, 1) !== end || !(hkd > 0)) continue;
+    const key = `${offer.roundId}|lockup:${end}:${last}`;
+    const meta = {...base, roundId:offer.roundId, lockupEndDate:end, lockupPriceCutoff:last,
+      lockupDisclosed:true, trackingCloseHkd:null, trackingPriceDate:""};
+    quoteMeta.set(key, meta);
+    byAllocation.set(a.id, {key, meta, hkd});
+  }
+  return byAllocation;
+}
+
+function csTrancheReturn(meta, allocationIds, today) {
+  const list = [...new Set(allocationIds)].map(id => meta.tranchesByAllocation.get(id));
+  const empty = {state:"unavailable", unlocked:false, lockupEndDate:"", lockupDisclosed:false,
+    offerPriceHkd:meta.offerPriceHkd, closeHkd:null, priceDate:"", retPct:null, pnlHkd:null, pnlUsd:null, costHkd:0, distinctLockups:[]};
+  if (!list.length || list.some(t => !t)) return empty;
+  const dates = [...new Set(list.map(t => t.meta.lockupEndDate))].sort();
+  const out = {...empty, unlocked:dates.every(end=>today>=end), lockupEndDate:dates.at(-1), lockupDisclosed:true, distinctLockups:dates};
+  let totalCost = 0, weightedPrice = 0;
+  const priceDates = new Set();
+  for (const t of list) {
+    const q = csQuoteStore.get(t.key);
+    if (!q || !csQuoteMatchesTerm(q,t.meta,today)) return {...out,state:"loading"};
+    if (q.status !== "ready" || !Number.isFinite(q.closeHkd) || q.closeHkd <= 0) return out;
+    priceDates.add(q.priceDate);
+    totalCost += t.hkd;
+    weightedPrice += t.hkd*q.closeHkd;
+  }
+  if (!(meta.offerPriceHkd > 0)) return out;
+  const closeHkd = weightedPrice/totalCost;
+  const ret = closeHkd/meta.offerPriceHkd-1;
+  return {...out,state:"ready",closeHkd,priceDate:priceDates.size===1?[...priceDates][0]:"",
+    retPct:ret*100,pnlHkd:totalCost*ret,pnlUsd:totalCost*ret/CS_HKD_PER_USD,costHkd:totalCost};
+}
+
 function csQuoteMatchesTerm(q, meta, today) {
   if (!meta?.lockupEndDate || q?.lockupEndDate !== meta.lockupEndDate) return false;
   const unlocked = today >= meta.lockupEndDate;
@@ -5661,7 +5710,7 @@ function loadTencentQuoteScriptBatch(codes) {
 function ensureCornerstoneQuotesLoaded() {
   const cache = ensureCornerstoneCache();
   const today = csTodayHkt();
-  hydrateCsQuotesFromBackendAndStorage(cache.offerMetaByRound, today);
+  hydrateCsQuotesFromBackendAndStorage(cache.quoteMetaByKey || cache.offerMetaByRound, today);
   if (csQuotesFetchPromise) return csQuotesFetchPromise;
   if (
     typeof window === "undefined" ||
@@ -5672,7 +5721,7 @@ function ensureCornerstoneQuotesLoaded() {
   }
   const lockedPending = [];
   const unlockedPending = [];
-  for (const [roundId, meta] of cache.offerMetaByRound.entries()) {
+  for (const [roundId, meta] of (cache.quoteMetaByKey || cache.offerMetaByRound).entries()) {
     if (csQuoteStore.has(roundId)) continue;
     if (!meta.code || !meta.listingDate || !meta.offerPriceHkd) continue;
     const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
@@ -5681,12 +5730,13 @@ function ensureCornerstoneQuotesLoaded() {
       unlockedPending.push({
         roundId,
         code: meta.code,
+        sourceRoundId: meta.roundId,
         startDate: csAddDaysIso(cutoff, -25),
         endDate: cutoff,
         lockupEndDate: meta.lockupEndDate,
       });
     } else {
-      lockedPending.push({ roundId, code: meta.code, lockupEndDate: meta.lockupEndDate });
+      lockedPending.push({ roundId, sourceRoundId:meta.roundId, code: meta.code, lockupEndDate: meta.lockupEndDate });
     }
   }
   if (!lockedPending.length && !unlockedPending.length) return null;
@@ -5714,7 +5764,7 @@ function ensureCornerstoneQuotesLoaded() {
             const lastPx = Number(parts[3]);
             const prevPx = Number(parts[4]);
             const basePx = Number.isFinite(lastPx) && lastPx > 0 ? lastPx : prevPx;
-            const mult = CS_POST_IPO_SPLITS[item.roundId] || 1;
+            const mult = CS_POST_IPO_SPLITS[item.sourceRoundId || item.roundId] || 1;
             const rawDate = String(parts[30] || "").slice(0, 10).replace(/\//g, "-");
             if (Number.isFinite(basePx) && basePx > 0) {
               csQuoteStore.set(item.roundId, {
@@ -5747,7 +5797,7 @@ function ensureCornerstoneQuotesLoaded() {
             const eligible = klines.map((k) => String(k).split(",")).filter((p) => p[0] <= item.endDate);
             const last = eligible.at(-1);
             const px = last ? Number(last[1]) : NaN;
-            const mult = CS_POST_IPO_SPLITS[item.roundId] || 1;
+            const mult = CS_POST_IPO_SPLITS[item.sourceRoundId || item.roundId] || 1;
             if (Number.isFinite(px) && px > 0) {
               csQuoteStore.set(item.roundId, {
                 closeHkd: Number((px * mult).toFixed(4)),
@@ -5781,6 +5831,10 @@ function csDealReturnInfo(p, d, offerMetaByRound, today = csTodayHkt()) {
     return { state: "paused", lockupEndDate: "", unlocked: false, offerPriceHkd: null, closeHkd: null, priceDate: "", retPct: null, pnlHkd: null, pnlUsd: null };
   }
   const meta = offerMetaByRound.get(d.roundId);
+  if (meta?.tranchesByAllocation) {
+    const ids = (p.allocations || []).filter(a => a.id.startsWith(`${d.roundId}:cornerstone:`)).map(a => a.id);
+    return csTrancheReturn(meta, ids, today);
+  }
   const lockupEndDate = meta?.lockupEndDate || csAddMonthsIso(d.date, 6);
   const unlocked = Boolean(lockupEndDate && today >= lockupEndDate);
   const offerPriceHkd = meta?.offerPriceHkd || null;
@@ -5898,7 +5952,7 @@ function csMatchesArchetypeFilter(p, filterKey) {
   return a === filterKey;
 }
 
-const cornerstoneVerifiedBankRosters = {"offering:09980:2026-01-26":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0126/2026012600003.pdf#page=1","banks":["华泰国际","摩根士丹利","瑞银"]},"offering:03308:2026-07-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=1","banks":["高盛","中金","摩根士丹利","广发","国泰海通","花旗","汇丰","中国银河"]},"offering:02475:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801342.pdf#page=3","banks":["中信证券","高盛","中金"]},"offering:03661:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0625/2026062502076.pdf#page=2","banks":["中金","华泰国际"]},"offering:07666:2026-05-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0512/2026051201482.pdf#page=2","banks":["杰富瑞","德意志银行","中信证券","招银国际"]},"offering:06880:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0707/2026070701963.pdf#page=2","banks":["中金","德意志银行"]},"offering:01879:2026-04-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042703526.pdf#page=2","banks":["中金","国泰海通","汇丰"]},"offering:01768:2026-01-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0127/2026012701713.pdf#page=2","banks":["高盛","华泰国际","德意志银行"]},"offering:06715:2026-06-22":{"source":"https://www.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062200025.pdf#page=2","banks":["中信证券","中信建投","兴证国际","华福国际"]},"offering:06656:2026-04-08":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041501574.pdf#page=2","banks":["中信证券","法巴","中金"]},"offering:01081:2026-05-28":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0604/2026060402919.pdf#page=2","banks":["华泰国际","招商证券国际","中金","平安证券"]},"offering:01021:2026-03-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032703804.pdf#page=2","banks":["中金","德意志银行"]},"offering:03277:2026-04-09":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0416/2026041602158.pdf#page=2","banks":["中信证券","国泰海通"]},"offering:02692:2026-02-27":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0306/2026030601575.pdf#page=2","banks":["招商证券国际","德意志银行","中信证券"]},"offering:03200:2026-01-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0205/2026020502290.pdf#page=2","banks":["中金","德意志银行"]},"offering:00668:2026-06-23":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063003481.pdf#page=2","banks":["中金","高盛","摩根大通"]},"offering:07688:2026-05-12":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0519/2026051901261.pdf#page=2","banks":["国泰海通","建银国际"]},"offering:06106:2026-06-15":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/2026062302143.pdf#page=2","banks":["中金","招银国际"]},"offering:02476:2026-04-13":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042001650.pdf#page=2","banks":["摩根大通","中信建投","广发","农银国际","中金"]},"offering:01377:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801372.pdf#page=2","banks":["中信证券","汇丰","农银国际","广发","华泰国际"]},"offering:02249:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070901289.pdf#page=2","banks":["中金","中信证券","华泰国际"]},"offering:00537:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801336.pdf#page=2","banks":["中信证券","招银国际","工银国际"]},"offering:09630:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/2026061700039.pdf#page=1","banks":["中金","招银国际","国元国际"]},"offering:09981:2026-02-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0212/2026021201492.pdf#page=2","banks":["中信建投","招商证券国际","山证国际"]},"offering:00470:2026-02-03":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0210/2026021001338.pdf#page=2","banks":["中信证券","摩根大通"]},"offering:06809:2026-01-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/2026020601350.pdf#page=2","banks":["中金","摩根士丹利","瑞银","高盛","中信证券"]},"offering:00100:2025-12-31":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0108/2026010801342.pdf#page=2","banks":["中金","瑞银","高盛","摩根士丹利"]},"offering:06082:2025-12-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123102783.pdf#page=2","banks":["中金","平安证券","中银国际","中信证券","东吴证券国际"]},"offering:02384:2026-10-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000017.pdf#page=1","banks":["瑞银","国泰海通","广发","中信证券","汇丰"]},"offering:03228:2026-09-21":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092100035.pdf#page=1","banks":["中信证券","美银","国联证券国际"]},"offering:06951:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000323.pdf#page=1","banks":["中国银河"]},"offering:07687:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900135.pdf#page=1","banks":["国泰海通","麦格理"]},"offering:03296:2026-04-15":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041500011.pdf#page=1","banks":["中金","美银","高盛","中信证券"]},"offering:02636:2026-10-07":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1014/2026101401159.pdf#page=2","banks":["中信证券","摩根大通","中金","国泰海通","德意志银行"]},"offering:09637:2026-06-18":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062603033.pdf#page=2","banks":["杰富瑞","美银","华泰国际","中信证券","中银国际"]},"offering:02675:2025-12-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0107/2026010701900.pdf#page=2","banks":["摩根士丹利","广发","中金","中信证券"]},"offering:01256:2026-09-28":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1008/2026100801417.pdf#page=2","banks":["中信证券","中信建投","华泰国际","广发"]},"offering:09856:2026-09-14":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092101567.pdf#page=2","banks":["花旗","中信证券"]},"offering:03388:2026-05-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0528/2026052802543.pdf#page=2","banks":["中金","德意志银行"]},"offering:06935:2026-11-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=2","banks":["国泰海通","建银国际"]},"offering:02681:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111101283.pdf#page=2","banks":["中信建投"]},"offering:07672:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901273.pdf#page=2","banks":["华泰国际","华福国际","第一上海"]},"offering:02065:2026-10-31":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111101359.pdf#page=2","banks":["中信建投","国泰海通"]},"offering:09917:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901211.pdf#page=2","banks":["中信证券","中信建投","中银国际","交银国际","农银国际","浦银国际","华福国际"]},"offering:09621:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601520.pdf#page=2","banks":["招银国际","中银国际"]},"offering:00625:2026-08-24":{"banks":["高盛","摩根士丹利","摩根大通","国泰海通","瑞银"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083102409.pdf#page=2"},"offering:09615:2026-08-24":{"banks":["中信建投","中信证券","大和资本","麦格理"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083102433.pdf#page=2"},"offering:09976:2026-08-31":{"banks":["中信证券","花旗","中信建投"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0907/2026090701320_c.pdf#page=2"},"offering:06802:2026-09-22":{"banks":["中金","国信证券","广发"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/2026092901927.pdf#page=2"},"offering:09607:2026-09-21":{"banks":["国泰海通","富强证券"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0928/2026092801809.pdf#page=2"},"offering:06731:2026-09-21":{"banks":["中信证券"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0928/2026092802011.pdf#page=2"},"offering:06727:2026-09-11":{"banks":["国泰海通","富途证券","申万宏源香港"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0918/2026091801414.pdf#page=2"},"offering:03231:2026-08-31":{"banks":["银丰证券","光银国际","民银资本"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0908/2026090800985.pdf#page=2"},"offering:03223:2026-08-17":{"banks":["国泰海通","华泰国际","平安证券"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082401907.pdf#page=2"},"offering:06745:2026-06-30":{"banks":["华泰国际","建银国际","中泰国际"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070901273.pdf#page=2"},"offering:03752:2026-06-30":{"banks":["中金","国泰海通"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801234.pdf#page=2"},"offering:02667:2026-06-26":{"banks":["中金"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0706/2026070602117.pdf#page=2"},"offering:03952:2026-06-22":{"banks":["招银国际"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062902089.pdf#page=2"},"offering:01609:2026-04-24":{"banks":["中信证券","建银国际","中国银河","民银资本"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0504/2026050403728.pdf#page=2"},"offering:03986:2025-12-31":{"banks":["中金","华泰国际"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/2026011201539.pdf#page=2"}};
+const cornerstoneVerifiedBankRosters = {"offering:09980:2026-01-26":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0126/2026012600003.pdf#page=1","banks":["华泰国际","摩根士丹利","瑞银"]},"offering:03308:2026-07-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=1","banks":["高盛","中金","摩根士丹利","广发","国泰海通","花旗","汇丰","中国银河"]},"offering:02475:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801342.pdf#page=3","banks":["中信证券","高盛","中金"]},"offering:03661:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0625/2026062502076.pdf#page=2","banks":["中金","华泰国际"]},"offering:07666:2026-05-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0512/2026051201482.pdf#page=2","banks":["杰富瑞","德意志银行","中信证券","招银国际"]},"offering:06880:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0707/2026070701963.pdf#page=2","banks":["中金","德意志银行"]},"offering:01879:2026-04-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042703526.pdf#page=2","banks":["中金","国泰海通","汇丰"]},"offering:01768:2026-01-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0127/2026012701713.pdf#page=2","banks":["高盛","华泰国际","德意志银行"]},"offering:06715:2026-06-22":{"source":"https://www.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062200025.pdf#page=2","banks":["中信证券","中信建投","兴证国际","华福国际"]},"offering:06656:2026-04-08":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041501574.pdf#page=2","banks":["中信证券","法巴","中金"]},"offering:01081:2026-05-28":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0604/2026060402919.pdf#page=2","banks":["华泰国际","招商证券国际","中金","平安证券"]},"offering:01021:2026-03-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032703804.pdf#page=2","banks":["中金","德意志银行"]},"offering:03277:2026-04-09":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0416/2026041602158.pdf#page=2","banks":["中信证券","国泰海通"]},"offering:02692:2026-02-27":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0306/2026030601575.pdf#page=2","banks":["招商证券国际","德意志银行","中信证券"]},"offering:03200:2026-01-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0205/2026020502290.pdf#page=2","banks":["中金","德意志银行"]},"offering:00668:2026-06-23":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063003481.pdf#page=2","banks":["中金","高盛","摩根大通"]},"offering:07688:2026-05-12":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0519/2026051901261.pdf#page=2","banks":["国泰海通","建银国际"]},"offering:06106:2026-06-15":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/2026062302143.pdf#page=2","banks":["中金","招银国际"]},"offering:02476:2026-04-13":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042001650.pdf#page=2","banks":["摩根大通","中信建投","广发","农银国际","中金"]},"offering:01377:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801372.pdf#page=2","banks":["中信证券","汇丰","农银国际","广发","华泰国际"]},"offering:02249:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070901289.pdf#page=2","banks":["中金","中信证券","华泰国际"]},"offering:00537:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801336.pdf#page=2","banks":["中信证券","招银国际","工银国际"]},"offering:09630:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/2026061700039.pdf#page=1","banks":["中金","招银国际","国元国际"]},"offering:09981:2026-02-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0212/2026021201492.pdf#page=2","banks":["中信建投","招商证券国际","山证国际"]},"offering:00470:2026-02-03":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0210/2026021001338.pdf#page=2","banks":["中信证券","摩根大通"]},"offering:06809:2026-01-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/2026020601350.pdf#page=2","banks":["中金","摩根士丹利","瑞银","高盛","中信证券"]},"offering:00100:2025-12-31":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0108/2026010801342.pdf#page=2","banks":["中金","瑞银","高盛","摩根士丹利"]},"offering:06082:2025-12-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123102783.pdf#page=2","banks":["中金","平安证券","中银国际","中信证券","东吴证券国际"]},"offering:02384:2026-10-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000017.pdf#page=1","banks":["瑞银","国泰海通","广发","中信证券","汇丰"]},"offering:03228:2026-09-21":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092100035.pdf#page=1","banks":["中信证券","美银","国联证券国际"]},"offering:06951:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000323.pdf#page=1","banks":["中国银河"]},"offering:07687:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900135.pdf#page=1","banks":["国泰海通","麦格理"]},"offering:03296:2026-04-15":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041500011.pdf#page=1","banks":["中金","美银","高盛","中信证券"]},"offering:02636:2026-10-07":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1014/2026101401159.pdf#page=2","banks":["中信证券","摩根大通","中金","国泰海通","德意志银行"]},"offering:09637:2026-06-18":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062603033.pdf#page=2","banks":["杰富瑞","美银","华泰国际","中信证券","中银国际"]},"offering:02675:2025-12-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0107/2026010701900.pdf#page=2","banks":["摩根士丹利","广发","中金","中信证券"]},"offering:01256:2026-09-28":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1008/2026100801417.pdf#page=2","banks":["中信证券","中信建投","华泰国际","广发"]},"offering:09856:2026-09-14":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092101567.pdf#page=2","banks":["花旗","中信证券"]},"offering:03388:2026-05-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0528/2026052802543.pdf#page=2","banks":["中金","德意志银行"]},"offering:06935:2026-11-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=2","banks":["国泰海通","建银国际"]},"offering:02681:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111101283.pdf#page=2","banks":["中信建投"]},"offering:07672:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901273.pdf#page=2","banks":["华泰国际","华福国际","第一上海"]},"offering:02065:2026-10-31":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111101359.pdf#page=2","banks":["中信建投","国泰海通"]},"offering:09917:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901211.pdf#page=2","banks":["中信证券","中信建投","中银国际","交银国际","农银国际","浦银国际","华福国际"]},"offering:09621:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601520.pdf#page=2","banks":["招银国际","中银国际"]},"offering:00625:2026-08-24":{"banks":["高盛","摩根士丹利","摩根大通","国泰海通","瑞银"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083102409.pdf#page=2"},"offering:09615:2026-08-24":{"banks":["中信建投","中信证券","大和资本","麦格理"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083102433.pdf#page=2"},"offering:09976:2026-08-31":{"banks":["中信证券","花旗","中信建投"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0907/2026090701320_c.pdf#page=2"},"offering:06802:2026-09-22":{"banks":["中金","国信证券","广发"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/2026092901927.pdf#page=2"},"offering:09607:2026-09-21":{"banks":["国泰海通","富强证券"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0928/2026092801809.pdf#page=2"},"offering:06731:2026-09-21":{"banks":["中信证券"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0928/2026092802011.pdf#page=2"},"offering:06727:2026-09-11":{"banks":["国泰海通","富途证券","申万宏源香港"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0918/2026091801414.pdf#page=2"},"offering:03231:2026-08-31":{"banks":["银丰证券","光银国际","民银资本"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0908/2026090800985.pdf#page=2"},"offering:03223:2026-08-17":{"banks":["国泰海通","华泰国际","平安证券"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082401907.pdf#page=2"},"offering:06745:2026-06-30":{"banks":["华泰国际","建银国际","中泰国际"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070901273.pdf#page=2"},"offering:03752:2026-06-30":{"banks":["中金","国泰海通"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801234.pdf#page=2"},"offering:02667:2026-06-26":{"banks":["中金"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0706/2026070602117.pdf#page=2"},"offering:03952:2026-06-22":{"banks":["招银国际"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062902089.pdf#page=2"},"offering:01609:2026-04-24":{"banks":["中信证券","建银国际","中国银河","民银资本"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0504/2026050403728.pdf#page=2"},"offering:03986:2025-12-31":{"banks":["中金","华泰国际"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0112/2026011201539.pdf#page=2"},"offering:02706:2026-02-05":{"banks":["招银国际","中银国际","申万宏源香港"],"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0212/2026021201324.pdf#page=2"}};
 function cornerstoneBankName(name) {
  const labels={"国泰君安":"国泰海通","海通国际":"国泰海通","国泰海通／海通国际":"国泰海通","德银":"德意志银行","华泰":"华泰国际","银河国际":"中国银河"};
  return labels[name]||name;
@@ -6017,6 +6071,17 @@ function renderCornerstones() {
     for (const o of coverage) {
       if (o.status !== "known" || !o.allocations?.length) continue;
       const meta = offerMetaByRound.get(o.roundId);
+      if (meta?.tranchesByAllocation) {
+        const t = csTrancheReturn(meta, o.allocations.map(a=>a.id), today);
+        if (t.unlocked) unlockedOffers += 1;
+        else lockedOffers += 1;
+        if (t.state === "ready") {
+          mktPnlHkd += t.pnlHkd;
+          mktCostHkd += t.costHkd;
+          pricedOffers += 1;
+        }
+        continue;
+      }
       const isUnlocked = Boolean(meta?.lockupEndDate && today >= meta.lockupEndDate);
       if (isUnlocked) unlockedOffers += 1;
       else lockedOffers += 1;
@@ -6143,6 +6208,10 @@ function renderCornerstones() {
         sourceCellHtml = firstSrc ? feeRosterSource(firstSrc, "原件 ↗") : "—";
       }
 
+      const lockupSrc = cache.offerMetaByRound.get(deal.roundId)?.tranchesByAllocation && activeProfile.allocations
+        ?.find(a => a.id.startsWith(`${deal.roundId}:cornerstone:`) && a.lockupDateSourceUrl)?.lockupDateSourceUrl;
+      if (lockupSrc) sourceCellHtml += feeRosterSource(lockupSrc, "禁售条款 ↗");
+
       const ticketMain = usd ? formatCsUsd(usd) : deal.commitmentText;
       const ticketSub = hkd ? `${formatChineseUnitAmount(hkd, "HKD")}${deal.ratioText ? ` · ${deal.ratioText}` : ""}` : (deal.rawCommitment || "");
 
@@ -6152,11 +6221,15 @@ function renderCornerstones() {
         priceTrackHtml = `<span class="deal-status-pill is-paused">${escapeHtml(deal.statusLabel)}</span><small>招股未交割 · 无二级市场交投</small>`;
         retCellHtml = `<span class="cs-ret-muted">搁置未上市</span>`;
       } else {
-        const lockBadge = ret.unlocked
+        const lockBadge = !ret.lockupEndDate
+          ? '<span class="cs-lock-tag">禁售日期待补</span>'
+          : ret.distinctLockups?.length > 1
+          ? `<span class="cs-lock-tag">分批解禁 · ${ret.distinctLockups.map(escapeHtml).join("／")}</span>`
+          : ret.unlocked
           ? `<span class="cs-lock-tag is-unlocked">已解禁封顶 · ${escapeHtml(ret.lockupEndDate)}</span>`
-          : `<span class="cs-lock-tag is-locked">禁售中 · ${escapeHtml(ret.lockupEndDate)} ${cache.offerMetaByRound.get(deal.roundId)?.lockupDisclosed ? "解禁" : "预计解禁"}</span>`;
+          : `<span class="cs-lock-tag is-locked">禁售中 · ${escapeHtml(ret.lockupEndDate)} ${(ret.lockupDisclosed || cache.offerMetaByRound.get(deal.roundId)?.lockupDisclosed) ? "解禁" : "预计解禁"}</span>`;
         if (ret.state === "ready") {
-          priceTrackHtml = `<div class="cs-px-line col-num">HK$${offeringNumber(ret.offerPriceHkd, 2)} → <strong>HK$${offeringNumber(ret.closeHkd, 2)}</strong></div>${lockBadge}`;
+          priceTrackHtml = `<div class="cs-px-line col-num">HK$${offeringNumber(ret.offerPriceHkd, 2)} → <strong>HK$${offeringNumber(ret.closeHkd, 2)}</strong>${ret.distinctLockups?.length > 1 ? ' <small>加权</small>' : ''}</div>${lockBadge}`;
           retCellHtml = `<span class="cs-ret-badge col-num ${csReturnToneClass(ret.retPct)}">${formatCsPct(ret.retPct)}</span>${ret.pnlUsd != null ? `<small class="col-num cs-pnl-sub ${csReturnToneClass(ret.retPct)}">${formatCsUsdSigned(ret.pnlUsd)}</small>` : ""}`;
         } else if (ret.state === "loading") {
           priceTrackHtml = `${ret.offerPriceHkd ? `<div class="cs-px-line col-num">发售价 HK$${offeringNumber(ret.offerPriceHkd, 2)}</div>` : ""}${lockBadge}`;
