@@ -5119,6 +5119,7 @@ function ensureCornerstoneCache() {
       listingDate: o.listingDate || "",
       offerPriceHkd: Number.isFinite(px) && px > 0 ? px : null,
       lockupEndDate,
+      lockupPriceCutoff: o.lockupLastRestrictedDate || lockupEndDate,
       trackingCloseHkd: o.trackingCloseHkd != null && Number.isFinite(Number(o.trackingCloseHkd)) ? Number(o.trackingCloseHkd) : null,
       trackingPriceDate: o.trackingPriceDate || "",
       trackingBasis: o.trackingBasis || "",
@@ -5473,13 +5474,27 @@ function renderCsTicketWhisker(tm, wide = false) {
 const CS_VERIFIED_LOCKUP_CLOSES = {"offering:00501:2025-12-31":[78.65,"2026-07-10","2026-07-12"],"offering:06872:2026-05-14":[73.3,"2026-11-20","2026-11-22"],"offering:07688:2026-05-12":[7.7,"2026-11-20","2026-11-20"],"offering:01511:2026-05-12":[46.44,"2026-11-20","2026-11-20"],"offering:06871:2026-05-08":[17.16,"2026-11-18","2026-11-18"],"offering:07666:2026-05-05":[8.36,"2026-11-13","2026-11-13"],"offering:07630:2026-05-05":[9.115,"2026-11-13","2026-11-13"],"offering:01236:2026-04-30":[20.98,"2026-11-11","2026-11-11"],"offering:01187:2026-04-27":[27.66,"2026-11-06","2026-11-06"],"offering:01609:2026-04-24":[54.85,"2026-11-05","2026-11-05"],"offering:06810:2026-04-21":[76.0,"2026-10-29","2026-10-29"],"offering:02493:2026-04-20":[18.62,"2026-10-28","2026-10-28"],"offering:01879:2026-04-20":[193.0,"2026-10-28","2026-10-28"],"offering:03296:2026-04-15":[74.9,"2026-10-23","2026-10-23"],"offering:02476:2026-04-13":[157.0,"2026-10-21","2026-10-21"],"offering:03277:2026-04-09":[55.85,"2026-10-16","2026-10-17"],"offering:00068:2026-04-09":[4.77,"2026-10-16","2026-10-17"],"offering:06656:2026-04-08":[207.4,"2026-10-16","2026-10-16"],"offering:03625:2026-03-23":[51.2,"2026-09-30","2026-09-30"],"offering:00664:2026-03-23":[11.43,"2026-09-30","2026-09-30"],"offering:06636:2026-03-20":[71.5,"2026-09-30","2026-09-30"],"offering:02726:2026-03-20":[89.8,"2026-09-30","2026-09-30"],"offering:02526:2026-03-20":[254.0,"2026-09-30","2026-09-30"],"offering:01021:2026-03-20":[8.25,"2026-09-30","2026-09-30"],"offering:02729:2026-03-16":[28.08,"2026-09-24","2026-09-24"],"offering:02632:2026-03-16":[62.0,"2026-09-24","2026-09-24"],"offering:03355:2026-03-13":[39.24,"2026-09-23","2026-09-23"],"offering:02701:2026-03-13":[8.745,"2026-09-23","2026-09-23"],"offering:01989:2026-03-12":[107.6,"2026-09-18","2026-09-20"],"offering:03268:2026-02-27":[19.75,"2026-09-10","2026-09-10"],"offering:02715:2026-02-27":[15.24,"2026-09-09","2026-09-09"],"offering:02692:2026-02-27":[38.66,"2026-09-09","2026-09-09"],"offering:02649:2026-02-27":[3.9,"2026-09-09","2026-09-09"],"offering:09981:2026-02-05":[10.65,"2026-08-13","2026-08-13"],"offering:02706:2026-02-05":[43.72,"2026-08-13","2026-08-13"],"offering:00470:2026-02-03":[31.38,"2026-08-11","2026-08-11"],"offering:02720:2026-01-30":[24.14,"2026-08-10","2026-08-10"],"offering:00600:2026-01-30":[13.65,"2026-08-10","2026-08-10"],"offering:06809:2026-01-30":[269.2,"2026-08-07","2026-08-09"],"offering:03200:2026-01-29":[102.5,"2026-08-06","2026-08-06"],"offering:02714:2026-01-29":[31.52,"2026-08-06","2026-08-06"],"offering:02677:2026-01-29":[21.6,"2026-08-06","2026-08-06"],"offering:02768:2026-01-27":[46.0872,"2026-08-04","2026-08-04"],"offering:09980:2026-01-26":[155.09,"2026-08-03","2026-08-03"],"offering:01768:2026-01-20":[382.4,"2026-07-28","2026-07-28"],"offering:09611:2026-01-14":[21.74,"2026-07-22","2026-07-22"],"offering:03986:2025-12-31":[629.0,"2026-07-13","2026-07-13"],"offering:01641:2025-12-31":[4.3,"2026-07-13","2026-07-13"],"offering:06938:2025-12-31":[48.54,"2026-07-09","2026-07-09"],"offering:03636:2025-12-31":[13.43,"2026-07-09","2026-07-09"],"offering:00100:2025-12-31":[297.4,"2026-07-09","2026-07-09"],"offering:09903:2025-12-30":[560.0,"2026-07-08","2026-07-08"],"offering:02675:2025-12-30":[39.98,"2026-07-08","2026-07-08"],"offering:02513:2025-12-30":[1825.0,"2026-07-08","2026-07-08"],"offering:06082:2025-12-22":[48.32,"2026-07-02","2026-07-02"]};
 const CS_POST_IPO_SPLITS = { "offering:02723:2026-05-18": 10 };
 
+function csQuoteMatchesTerm(q, meta, today) {
+  if (!meta?.lockupEndDate || q?.lockupEndDate !== meta.lockupEndDate) return false;
+  const unlocked = today >= meta.lockupEndDate;
+  if (q.unlocked !== unlocked) return false;
+  return q.status !== "ready" || (!unlocked || (Boolean(q.priceDate) && q.priceDate <= (meta.lockupPriceCutoff || meta.lockupEndDate)));
+}
+
 function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
+  for (const [roundId, quote] of csQuoteStore) {
+    if (!csQuoteMatchesTerm(quote, offerMetaByRound.get(roundId), today)) csQuoteStore.delete(roundId);
+  }
   for (const [roundId, meta] of offerMetaByRound.entries()) {
-    if (meta.trackingCloseHkd != null && meta.trackingCloseHkd > 0) {
+    const cutoff = meta.lockupPriceCutoff || meta.lockupEndDate;
+    const hasDatedTrackingPrice = /^\d{4}-\d{2}-\d{2}$/.test(meta.trackingPriceDate || "");
+    if (meta.trackingCloseHkd != null && meta.trackingCloseHkd > 0
+      && hasDatedTrackingPrice && meta.trackingPriceDate <= today
+      && (today < meta.lockupEndDate || meta.trackingPriceDate <= cutoff)) {
       const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
       csQuoteStore.set(roundId, {
         closeHkd: meta.trackingCloseHkd,
-        priceDate: meta.trackingPriceDate || (unlocked ? meta.lockupEndDate : today),
+        priceDate: meta.trackingPriceDate,
         lockupEndDate: meta.lockupEndDate,
         unlocked,
         status: "ready",
@@ -5487,7 +5502,7 @@ function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
       continue;
     }
     const ver = CS_VERIFIED_LOCKUP_CLOSES[roundId];
-    if (ver && today >= ver[2] && !csQuoteStore.has(roundId)) {
+    if (ver && ver[2] === meta.lockupEndDate && ver[1] <= cutoff && today >= meta.lockupEndDate && !csQuoteStore.has(roundId)) {
       csQuoteStore.set(roundId, {
         closeHkd: ver[0],
         priceDate: ver[1],
@@ -5505,7 +5520,7 @@ function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
       const perm = JSON.parse(permRaw);
       if (perm && typeof perm === "object") {
         for (const [roundId, q] of Object.entries(perm)) {
-          if (q?.unlocked && Number.isFinite(Number(q.closeHkd)) && Number(q.closeHkd) > 0 && !csQuoteStore.has(roundId)) {
+          if (q?.unlocked && csQuoteMatchesTerm(q, offerMetaByRound.get(roundId), today) && Number.isFinite(Number(q.closeHkd)) && Number(q.closeHkd) > 0 && !csQuoteStore.has(roundId)) {
             csQuoteStore.set(roundId, q);
           }
         }
@@ -5516,7 +5531,7 @@ function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed === "object") {
         for (const [roundId, q] of Object.entries(parsed)) {
-          if (q && Number.isFinite(Number(q.closeHkd)) && Number(q.closeHkd) > 0 && !csQuoteStore.has(roundId)) {
+          if (csQuoteMatchesTerm(q, offerMetaByRound.get(roundId), today) && Number.isFinite(Number(q.closeHkd)) && Number(q.closeHkd) > 0 && !csQuoteStore.has(roundId)) {
             csQuoteStore.set(roundId, q);
           }
         }
@@ -5586,11 +5601,12 @@ function ensureCornerstoneQuotesLoaded() {
     if (!meta.code || !meta.listingDate || !meta.offerPriceHkd) continue;
     const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
     if (unlocked) {
+      const cutoff = meta.lockupPriceCutoff || meta.lockupEndDate;
       unlockedPending.push({
         roundId,
         code: meta.code,
-        startDate: csAddDaysIso(meta.lockupEndDate, -25),
-        endDate: meta.lockupEndDate,
+        startDate: csAddDaysIso(cutoff, -25),
+        endDate: cutoff,
         lockupEndDate: meta.lockupEndDate,
       });
     } else {
