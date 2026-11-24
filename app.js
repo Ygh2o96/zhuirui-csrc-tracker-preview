@@ -5834,7 +5834,7 @@ function sortKey(record, field) {
   if (field === "sponsors") return { value: firstTextValue(sponsorLabels(record)), type: "text" };
   if (field === "structureType") return { value: issuerTypeInfo(record).rank, type: "number" };
   const durationMetric = dayMetricForField(field);
-  if (durationMetric) return { value: durationValueForStats(record, {metric: durationMetric}), type: "number" };
+  if (durationMetric) return { value: trackerRowDays(record, durationMetric).days, type: "number" };
   if (field === "issuerName") {
     const names = nameParts(record);
     return { value: `${names.primary || ""} ${names.secondary || ""}`.trim(), type: "text" };
@@ -6153,11 +6153,39 @@ function renderMetrics() {
  root.innerHTML=`<section class="cohort-panel${state.cohortCollapsed?' is-collapsed':''}"><header><div class="cohort-header-left"><nav aria-label="监管阶段">${Object.entries(labels).map(([k,label])=>`<button type="button" data-cohort-metric="${k}" aria-pressed="${state.cohortMetric===k}">${label}</button>`).join('')}</nav></div><button type="button" class="cohort-toggle-btn" data-cohort-collapse aria-label="${state.cohortCollapsed?'展开月度图':'收起月度图'}" aria-expanded="${!state.cohortCollapsed}">${state.cohortCollapsed?(allLabels[state.cohortMetric]||'趋势图')+' · 展开趋势图 ↓':'收起趋势图 ↑'}</button></header>${overallStrip}${paceIntelStrip}${scopeContextNote}${state.cohortCollapsed?p0FoldedCohort(records):`<div class="cohort-labels"><span>起始月</span><span class="cohort-track cohort-axis-track" aria-hidden="true">${[0,step,step*2,step*3].map(t=>`<i class="axis-tick" style="left:${pos(t)}%">${t?t+'d':'0'}</i>`).join('')}</span><span class="col-num">已办结</span><span class="col-num">在途进度</span></div>${totalTrack}<div class="cohort-months">${groups.length?groups.map(g=>`<button type="button" class="cohort-month${state.cohort===g.month?' is-active':''}" data-cohort-month="${g.month}" title="${g.month}：办结 ${g.n}/${g.N}；${g.n?`中位 ${formatDayValue(g.mid)}d，P25–P75 ${formatDayValue(g.p25)}–${formatDayValue(g.p75)}d`:'尚无办结样本'}${g.wait!==null?`；在途 ${g.pending} 家，中位已等 ${formatDayValue(g.wait)} 天（最短 ${formatDayValue(g.waitMin)} 天）`:''}"><time>${g.month}</time><span class="cohort-track">${trackContent(g.n,g.p25,g.p75,g.mid,g.pts)}</span><span class="cohort-done-col col-num">办结 ${g.n}/${g.N}</span><span class="cohort-wait-col col-num">${g.pending?`在途 ${g.pending} · ≥${formatDayValue(g.wait)}d`:'全部办结'}</span></button>`).join(''):'<span class="cohort-empty-msg">当前筛选暂无有效月度样本</span>'}</div><p class="cohort-key"><span><i class="legend-swatch is-solid"></i>已办结四分位与中位 (n≥5)　<i class="legend-swatch is-dot"></i>小样本实证点 (1≤n&lt;5)　右列单独列示在途数量与已等下限</span><span>${state.cohort?`<button type="button" class="cohort-clear-btn" data-cohort-month="">显示全部月份 (${state.cohort} ×)</button>`:''}<time>截至 ${state.data.meta.generatedAt.slice(0,10)}</time></span></p>`}</section>`;
 }
 
+// Row-level reading stays separate from cohort eligibility: an HKEX application
+// lapse is not a CSRC filing disposition, and an old notice is not a new-round end.
+function trackerNoticeWait(record) {
+  if(hkexListingStage(record)!=="applying"||record.csrcFilingRequired!==true||
+     !["csrc_received","regulator_opinion","supplement_requested","waiting_received"].includes(record.status)||
+     (record.noticeDate&&!record.noticeSupersededByCurrentFiling)) return null;
+  const current=record.csrcCurrentReceivedDate;
+  const historic=record.csrcReceivedDate||record.csrcFirstReceivedDate;
+  const start=current?(!record.csrcCurrentReceivedDateIsAsOf?current:null):
+    (!record.noticeSupersededByCurrentFiling&&!record.csrcReceivedDateIsAsOf&&!record.csrcFirstReceivedDateIsAsOf?historic:null);
+  if(!start) return {days:null,label:record.status==="waiting_received"?"待接收":"接收日未披露",detail:"通知耗时自公开的备案接收日起计"};
+  if(record.noticeSupersededByCurrentFiling&&start<=record.noticeDate) return null;
+  const asOf=state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf;
+  const isStale=(record.timelineFlags||[]).includes("csrc_status_absent_from_latest_official_snapshot");
+  const reference=isStale?record.csrcCurrentStatusSourceSnapshotDate:asOf;
+  const days=reference&&reference<=asOf?p0Elapsed(start,state.dayCountMode,reference):null;
+  if(typeof days!=="number")return null;
+  return {days,label:isStale?"上次披露":"已等",detail:`${start} 接收 · 截至 ${reference} · ${isStale?"最后一次可核的备案状态":"当前备案轮次"}`};
+}
+function trackerRowDays(record,metric) {
+  const done=durationValueForStats(record,{metric});
+  if(typeof done==="number") return {days:done,label:"",detail:""};
+  if(metric==="receivedToNotice"){
+    const notice=trackerNoticeWait(record);
+    if(notice)return notice;
+  }
+  const entry=p0CohortEntry(record,metric);
+  return entry?.pending?{days:entry.days,label:"已等",detail:""}:{days:null,label:"",detail:""};
+}
 function renderDays(record) {
- const metric=state.cohortMetric||'a1ToReceived';
- const entry=typeof p0CohortEntry==='function'?p0CohortEntry(record,metric):null;
- const v=durationValueForStats(record,{metric});
- return `<span class="single-days">${typeof v==='number'?formatDayValue(v)+'d':entry?.pending?'已等 '+formatDayValue(entry.days)+'d':'—'}</span>`;
+ const m=trackerRowDays(record,state.cohortMetric||"a1ToReceived");
+ const value=typeof m.days==="number"?`${m.label?m.label+" ":""}${formatDayValue(m.days)}d`:(m.label||"—");
+ return `<span class="single-days"${m.detail?` title="${escapeHtml(m.detail)}"`:""}>${value}</span>`;
 }
 
 function renderPagination(total, pageCount, startIndex, endIndex) {
@@ -9200,7 +9228,7 @@ function p0PausedOverview(f){const stat=(label,value,exact="")=>`<div><dt>${labe
 function p0HasFeeOrigin(){try{return new URL(history.state?.fromUrl||"",location.href).searchParams.get("view")==="fees";}catch{return false;}}
 
 const p0ElapsedCache=new Map();
-function p0Elapsed(start,mode){const end=state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf;if(!start||start>end)return null;if(end===P0_WAITING.asOf&&P0_WAITING.dates[start])return P0_WAITING.dates[start][mode];const key=start+':'+end+':'+mode;if(p0ElapsedCache.has(key))return p0ElapsedCache.get(key);const from=Date.parse(start+'T00:00:00Z'),to=Date.parse(end+'T00:00:00Z');if(!Number.isFinite(from)||!Number.isFinite(to))return null;let n=0;if(mode==='calendar')n=(to-from)/864e5;else{const c=P0_WAITING.calendar,holidays=new Set(c.holidays),workdays=new Set(c.workdays);for(let y=Number(start.slice(0,4));y<=Number(end.slice(0,4));y++)if(!c.years.includes(y))return null;for(let t=from+864e5;t<=to;t+=864e5){const d=new Date(t),iso=d.toISOString().slice(0,10);if(!holidays.has(iso)&&(workdays.has(iso)||![0,6].includes(d.getUTCDay())))n++;}}p0ElapsedCache.set(key,n);return n;}
+function p0Elapsed(start,mode,asOf){const end=asOf||state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf;if(!start||start>end)return null;if(end===P0_WAITING.asOf&&P0_WAITING.dates[start])return P0_WAITING.dates[start][mode];const key=start+':'+end+':'+mode;if(p0ElapsedCache.has(key))return p0ElapsedCache.get(key);const from=Date.parse(start+'T00:00:00Z'),to=Date.parse(end+'T00:00:00Z');if(!Number.isFinite(from)||!Number.isFinite(to))return null;let n=0;if(mode==='calendar')n=(to-from)/864e5;else{const c=P0_WAITING.calendar,holidays=new Set(c.holidays),workdays=new Set(c.workdays);for(let y=Number(start.slice(0,4));y<=Number(end.slice(0,4));y++)if(!c.years.includes(y))return null;for(let t=from+864e5;t<=to;t+=864e5){const d=new Date(t),iso=d.toISOString().slice(0,10);if(!holidays.has(iso)&&(workdays.has(iso)||![0,6].includes(d.getUTCDay())))n++;}}p0ElapsedCache.set(key,n);return n;}
 
 function p0RoundFeeTerms(r){const field=(label,value)=>`<div><dt>${label}</dt><dd>${value}</dd></div>`,sp=p0EffectiveSponsorFee(r),spRaw=sp?`${sp.approximate?'约 ':''}${sp.currency} ${feeRosterMillion(sp.value)}m`:'';return `<dl class="deal-facts">${field('固定承销佣金',p0FeeRate(r,'fixed'))}${field('额外酌情上限',p0FeeRate(r,'extra'))}${field('承销合计上限',p0FeeRate(r,'upper'))}${field(sp?.scope==='joint_aggregate'?'联席保荐费 · 合计':sp?.scopeLabel?`约定保荐费 · ${sp.scopeLabel}`:'约定保荐费',sp?`<span title="${escapeHtml(spRaw)}">${escapeHtml(formatChineseUnitAmount(sp.value,sp.currency,Boolean(sp.approximate)))}</span>`:p0Missing(r.feeStates?.sponsor))}</dl>`;}
 
