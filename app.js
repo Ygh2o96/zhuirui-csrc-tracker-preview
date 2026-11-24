@@ -39,6 +39,10 @@ const defaults = {
   dirPage: 1,
   csQuery: "",
   csArchetype: "all",
+  csScope: "all",
+  csSort: "total",
+  csPage: 1,
+  csChannel: "all",
   csId: "",
   offeringQuery: "",
   feeQuery: "",
@@ -201,6 +205,9 @@ const trackedStateKeys = [
   "dirPage",
   "csQuery",
   "csArchetype",
+  "csScope",
+  "csSort",
+  "csPage",
   "csId",
   "offeringQuery",
   "feeQuery",
@@ -255,7 +262,7 @@ const dayFieldPairs = {
   a1ToNotice: {
     calendar: "calendarDaysA1ToNotice",
     business: "businessDaysA1ToNotice",
-    label: "A1至通知"
+    label: "A1至备案完成"
   },
   a1ToListing: {
     calendar: "calendarDaysA1ToListing",
@@ -438,19 +445,6 @@ function isHkexListed(record) {
   return Boolean(record.hkexListingDate) || rawStatus.toLowerCase() === "listed" || rawStatus === "已上市" || (record.statusTags || []).includes("已上市");
 }
 
-// BEGIN shared tracker timing (sync_sponsor_timing.py)
-function postRegimeListingDate(date, regimeStart) {
-  return Boolean(date) && String(date) >= (regimeStart || "2023-03-31");
-}
-
-function timingNoticeGap(record, listingDate, regimeStart) {
-  return record.csrcFilingRequired === true && !record.noticeDate && postRegimeListingDate(listingDate, regimeStart);
-}
-
-function isSpecialTimingRoute(record) {
-  return ["de_spac", "hdr", "gem_to_main_transfer", "introduction", "rto"].includes(record.specialListingRoute);
-}
-
 const verifiedReceiptCycles20261124 = {"ganzhou hemay pharmaceutical co., ltd. - b":[{"a1Date":"2025-05-29","receivedDate":"2025-06-20","calendarDays":22,"businessDays":15,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 995 (Ganzhou Hemay)","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook as of 2025-09-19, Sheet1 row 133; 赣州和美药业股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-01","receivedDate":"2025-12-06","calendarDays":5,"businessDays":4,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 654 (Ganzhou Hemay)","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook as of 2026-01-09, Sheet1 row 259; 赣州和美药业股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"eve energy co., ltd.":[{"a1Date":"2025-06-30","receivedDate":"2025-07-25","calendarDays":25,"businessDays":19,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 912 (EVE Energy)","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook as of 2025-09-19, Sheet1 row 207; 惠州亿纬锂能股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2026-01-02","receivedDate":"2026-01-08","calendarDays":6,"businessDays":5,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 568 (EVE Energy)","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook as of 2026-01-09, Sheet1 row 285; 惠州亿纬锂能股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"listed:09980":[{"a1Date":"2025-04-03","receivedDate":"2025-04-11","calendarDays":8,"businessDays":5,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 1068","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 53; 东鹏饮料（集团）股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"}],"janbon materials co., ltd. (formerly known as janbon high tech co., ltd.)":[{"a1Date":"2025-05-02","receivedDate":"2025-05-23","calendarDays":21,"businessDays":14,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 1029","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 87; Janbon High Tech Co., Ltd.（建邦高科有限公司）","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-11-07","receivedDate":"2025-11-13","calendarDays":6,"businessDays":4,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 702","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 220; Janbon High Tech Co., Ltd.\n（建邦高科有限公司）","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"beijing deepzero technology co., ltd.":[{"a1Date":"2025-05-28","receivedDate":"2025-06-09","calendarDays":12,"businessDays":7,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 1000","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 110; 北京深演智能科技股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-01","receivedDate":"2025-12-06","calendarDays":5,"businessDays":4,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 653","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 258; 北京深演智能科技股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"listed:03355":[{"a1Date":"2025-05-27","receivedDate":"2025-06-20","calendarDays":24,"businessDays":17,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 1005","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 129; 深圳市飞速创新技术股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-10","receivedDate":"2025-12-11","calendarDays":1,"businessDays":1,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 634","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 264; 深圳市飞速创新技术股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"shanghai meditrust health technology group co., ltd.":[{"a1Date":"2025-06-30","receivedDate":"2025-07-09","calendarDays":9,"businessDays":7,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 918","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 171; 上海镁信健康集团股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"}],"bluefocus intelligent communications group co., ltd.":[{"a1Date":"2025-06-25","receivedDate":"2025-07-10","calendarDays":15,"businessDays":11,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 946","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 178; 北京蓝色光标数据科技集团股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"}],"suzhou ecmax technology co., ltd. (formerly known as suzhou ecmax information te":[{"a1Date":"2025-06-18","receivedDate":"2025-07-25","calendarDays":37,"businessDays":27,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 963","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 205; 苏州极易科技股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"}],"joulwatt technology co., ltd.":[{"a1Date":"2025-05-30","receivedDate":"2025-06-20","calendarDays":21,"businessDays":14,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 990","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 132; 杰华特微电子股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"}],"shenzhen ldrobot co., ltd":[{"a1Date":"2025-05-30","receivedDate":"2025-06-13","calendarDays":14,"businessDays":9,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 993","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 122; 深圳乐动机器人股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-01","receivedDate":"2025-12-11","calendarDays":10,"businessDays":8,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 658","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 263; 深圳乐动机器人股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"xiamen hithium energy storage technology co., ltd.":[{"a1Date":"2025-03-25","receivedDate":"2025-04-09","calendarDays":15,"businessDays":10,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 1079","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 52; 厦门海辰储能科技股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-10-27","receivedDate":"2025-11-06","calendarDays":10,"businessDays":8,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 742","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 207; 厦门海辰储能科技股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"listed:02726":[{"a1Date":"2025-04-08","receivedDate":"2025-05-13","calendarDays":35,"businessDays":23,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 1067","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 75; 瀚天天成电子科技（厦门）股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-10-14","receivedDate":"2025-10-24","calendarDays":10,"businessDays":8,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 761","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 194; 瀚天天成电子科技（厦门）股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"yusys technologies co., ltd.":[{"a1Date":"2025-06-18","receivedDate":"2025-06-26","calendarDays":8,"businessDays":6,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 964","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 139; 北京宇信科技集团股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-24","receivedDate":"2026-01-05","calendarDays":12,"businessDays":7,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 600","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 279; 北京宇信科技集团股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"gpixel changchun microelectronics inc.":[{"a1Date":"2025-06-19","receivedDate":"2025-07-02","calendarDays":13,"businessDays":9,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 958","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 152; 长春长光辰芯微电子股份有限公司","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-19","receivedDate":"2025-12-31","calendarDays":12,"businessDays":8,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 615","receivedSourceUrl":"https://hzfimage.mofcom.gov.cn/attach/202601/20260115142650315.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 272; 长春长光辰芯微电子股份有限公司","receivedWorkbookSha256":"a1afda173b7d720eb55f051f3c4f7d97d23b685a0df4de9aef83cbc598d63dca"}],"banu international holding ltd":[{"a1Date":"2025-06-16","receivedDate":"2025-07-09","calendarDays":23,"businessDays":17,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 968","receivedSourceUrl":"https://xzcs-video.oss-cn-beijing.aliyuncs.com/uploads/20250922/72dd62b21c8bb2558e489972c298c92e.xlsx","receivedLocator":"CSRC status workbook, Sheet1 row 164; Banu International Holding Ltd \n（巴奴国际控股有限公司）","receivedWorkbookSha256":"05893c2deb2e7e92f0b2293bd2e60ef7cba91534ad3f6f35b85caed64c29b474"},{"a1Date":"2025-12-17","receivedDate":"2026-01-22","calendarDays":36,"businessDays":25,"a1SourceUrl":"https://www.hkexnews.hk/app/sehk/2025/107968/documents/sehk25121700208.pdf","a1Locator":"SEHK Consolidated Index row 623; Application Proof","receivedSourceUrl":"https://www.csrc.gov.cn/csrc/c106251/c7637494/7637494/files/fe5db59b21a74c7ab2c252f7fef19d84.xlsx","receivedLocator":"2026-06-05 CSRC Status Workbook Sheet1 row 95 (serial 91); also 2026-06-12 Sheet1 row 91","receivedWorkbookSha256":"c49a888477ab776c76d1b6cb9b23ce1a5f98698b39f46e49adf647299905d117"},{"a1Date":"2026-06-17","receivedDate":"2026-06-26","calendarDays":9,"businessDays":6,"a1SourceUrl":"https://www1.hkexnews.hk/app/documents/sehkconsolidatedindex.xlsx","a1Locator":"SEHK Consolidated Index row 159","receivedSourceUrl":"https://www.csrc.gov.cn/csrc/c106251/c7672139/content.shtml","receivedLocator":"CSRC status workbook, Sheet1 row 133; BANU INTERNATIONAL HOLDING LTD（巴奴国际控股有限公司）","receivedWorkbookSha256":"46c74635ed47a61d41d3e96f6a7f7862c02ad38724b33d452cc3b331552fb160"}]};
 function applyVerifiedReceiptCycles(payload) {
  if (!Array.isArray(payload?.records)) return payload;
@@ -475,6 +469,19 @@ function applyVerifiedReceiptCycles(payload) {
   return next;
  });
  return changed?{...payload,records}:payload;
+}
+
+// BEGIN shared tracker timing (sync_sponsor_timing.py)
+function postRegimeListingDate(date, regimeStart) {
+  return Boolean(date) && String(date) >= (regimeStart || "2023-03-31");
+}
+
+function timingNoticeGap(record, listingDate, regimeStart) {
+  return record.csrcFilingRequired === true && !record.noticeDate && postRegimeListingDate(listingDate, regimeStart);
+}
+
+function isSpecialTimingRoute(record) {
+  return ["de_spac", "hdr", "gem_to_main_transfer", "introduction", "rto"].includes(record.specialListingRoute);
 }
 
 function timingSample(record, metric, field, currentReceiptField, stage, listingDate, regimeStart) {
@@ -570,11 +577,9 @@ function currentMetricDefinitions() {
 }
 
 function currentDayMetricEntries() {
-  const metrics = state.hkexStage === "listed"
-    ? ["a1ToNotice", "a1ToListing"]
-    : state.hkexStage === "all"
-      ? ["a1ToReceived", "currentA1ToReceived", "receivedToNotice", "a1ToNotice", "a1ToListing"]
-      : ["a1ToReceived", "currentA1ToReceived", "receivedToNotice", "a1ToNotice"];
+  const metrics = state.hkexStage === "applying" || state.hkexStage === "other"
+    ? ["a1ToReceived", "a1ToNotice"]
+    : ["a1ToReceived", "a1ToNotice", "a1ToListing"];
   return metrics.map((metric) => dayFieldPairs[metric]).filter(Boolean);
 }
 
@@ -3009,19 +3014,60 @@ function renderSponsorJumpChip(label, sponsorId, fullTitle = "") {
   return `<span title="${escapeHtml(title)}">${escapeHtml(label)}</span>`;
 }
 
+let txRecordIndexCache = null;
+
+function ensureTxRecordIndex() {
+  const cases = state.transactionData?.cases || [];
+  const key = `${cases.length}|${cases[0]?.id || ""}|${cases.at(-1)?.id || ""}`;
+  if (
+    txRecordIndexCache &&
+    txRecordIndexCache.txData === state.transactionData &&
+    txRecordIndexCache.trackerData === state.data &&
+    txRecordIndexCache.rosterData === state.feeRosterData &&
+    txRecordIndexCache.key === key
+  ) {
+    return txRecordIndexCache;
+  }
+  const byRecordId = new Map();
+  const byCaseId = new Map();
+  for (const c of cases) {
+    byCaseId.set(c.id, c);
+    const { records } = resolveTransactionIssuerLinks(c);
+    for (const r of records) {
+      if (!r?.id) continue;
+      if (!byRecordId.has(r.id)) byRecordId.set(r.id, []);
+      const arr = byRecordId.get(r.id);
+      if (!arr.includes(c)) arr.push(c);
+    }
+  }
+  txRecordIndexCache = {
+    txData: state.transactionData,
+    trackerData: state.data,
+    rosterData: state.feeRosterData,
+    key,
+    byRecordId,
+    byCaseId,
+  };
+  return txRecordIndexCache;
+}
+
 function txsForRecord(record) {
   if (!record?.id) return [];
-  const explicitCaseIds = new Set([
+  const idx = ensureTxRecordIndex();
+  const base = idx.byRecordId.get(record.id) || [];
+  const explicitIds = [
     ...(Array.isArray(record.transactionCaseIds) ? record.transactionCaseIds : []),
     ...(Array.isArray(record.transactionIds) ? record.transactionIds : []),
     ...(Array.isArray(record.relatedTransactionIds) ? record.relatedTransactionIds : []),
     ...(Array.isArray(record.relatedTransactions) ? record.relatedTransactions.map(x => typeof x === "string" ? x : x?.caseId || x?.id) : [])
-  ].filter(Boolean));
-  return (state.transactionData?.cases || []).filter(c => {
-    if (explicitCaseIds.has(c.id)) return true;
-    const { records } = resolveTransactionIssuerLinks(c);
-    return records.some(r => r.id === record.id);
-  });
+  ].filter(Boolean);
+  if (!explicitIds.length) return base;
+  const out = [...base];
+  for (const id of explicitIds) {
+    const c = idx.byCaseId.get(id);
+    if (c && !out.includes(c)) out.push(c);
+  }
+  return out;
 }
 function txForRecord(record) {
   return txsForRecord(record)[0] || null;
@@ -4878,11 +4924,12 @@ function p0CornerstoneOnlyDossier(offer){
  return `<article class="deal-sheet" data-dossier-round="${escapeHtml(offer.roundId)}"><header class="deal-header"><div><p><span class="deal-status-pill is-listed">已上市 ${offer.listingDate}</span> · ${offer.code}.HK · ${escapeHtml(offer.board)}</p><h2>${escapeHtml(offer.issuer)}</h2></div></header><dl class="deal-kpis"><div><dt>最终发售价（HKD／${offer.unit==='HDR'?'HDR':'股'}）</dt><dd>${offeringNumber(offer.priceHkd,2)}</dd></div></dl>${p0CornerstoneCoverageSection({id:offer.roundId})}<section class="deal-section deal-sources-index" id="sources"><header><h3>披露原件与页码索引</h3></header><div class="consolidated-page-links">${[...new Set([offer.listingSource,...offer.documents])].map(u=>feeRosterSource(u,'发行原件 ↗')).join('')}</div></section></article>`;
 }
 function p0CornerstoneCoverageSection(row){
- const offer=eligibleCornerstoneCoverage().find(o=>o.roundId===row.id);
+ const cache=ensureCornerstoneCache();
+ const offer=cache.coverageOfferByRound.get(row.id);
  if(!offer||offer.status==='unknown')return '';
  const sources=offer.sources.map(u=>feeRosterSource(u,'原件 ↗')).join(' ');
  if(offer.status==='confirmed_zero')return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石配售</h3></header><p>未披露基石配售</p><div class="consolidated-page-links">${sources}</div></section>`;
- const profiles=buildCornerstoneProfiles().filter(p=>p.allocationIds?.length&&p.deals.some(d=>d.roundId===row.id));
+ const profiles=cache.allocProfilesByRound.get(row.id)||[];
  return `<section class="deal-section" id="cornerstone-allocation"><header><h3>基石获配 · ${offeringNumber(offer.quantity)} ${cornerstoneUnit(offer.unit)}</h3></header><dl class="deal-facts"><div><dt>${offer.allocations.length?'按最终发售价':'仅发行总额'}</dt><dd>HKD ${feeRosterMillion(offer.amountHkd)} 百万</dd></div></dl>${offer.offerStructure?`<dl class="deal-facts"><div><dt>发售结构</dt><dd>股东出售 · ${offeringNumber(offer.offerStructure.offeredQuantity)} ${cornerstoneUnit(offer.unit)}</dd></div><div><dt>发行人所得</dt><dd>HKD ${offeringNumber(offer.offerStructure.issuerGrossHkd,2)} ${feeRosterSource(offer.offerStructure.source,'原件 ↗')}</dd></div></dl>`:''}${profiles.length?`<div class="deal-allocation-list">${profiles.map(p=>`<div><button type="button" class="cs-inline-jump" data-open-cornerstone="${escapeHtml(p.id)}">${escapeHtml(p.name)} <small>画像 →</small></button><strong class="col-num">${escapeHtml(p.deals.find(d=>d.roundId===row.id).commitmentText)}</strong></div>`).join('')}</div>`:''}<div class="consolidated-page-links">${sources}</div></section>`;
 }
 
@@ -5028,10 +5075,75 @@ function cornerstoneSortProfiles(rows){
  });
 }
 
+let csMemoState = null;
+
+function ensureCornerstoneCache() {
+  if (csMemoState && csMemoState.dossierData === state.dossierData && csMemoState.feeRosterData === state.feeRosterData) {
+    return csMemoState;
+  }
+  const coverage = eligibleCornerstoneCoverage();
+  const coverageOfferByRound = new Map(coverage.map((o) => [o.roundId, o]));
+  const profiles = computeCornerstoneProfilesRaw(coverage);
+  const allocProfilesByRound = new Map();
+  for (const p of profiles) {
+    if (!p.allocationIds?.length) continue;
+    for (const d of p.deals) {
+      if (!allocProfilesByRound.has(d.roundId)) allocProfilesByRound.set(d.roundId, []);
+      allocProfilesByRound.get(d.roundId).push(p);
+    }
+  }
+  const offerMetaByRound = new Map();
+  for (const o of coverage) {
+    const px = Number(o.priceHkd);
+    const lockupMonths = Number.isInteger(o.lockupMonths) && o.lockupMonths > 0 ? o.lockupMonths : 6;
+    const lockupEndDate = o.lockupEndDate || csAddMonthsIso(o.listingDate, lockupMonths);
+    offerMetaByRound.set(o.roundId, {
+      roundId: o.roundId,
+      code: String(o.code || "").replace(/\.HK$/i, "").padStart(5, "0"),
+      listingDate: o.listingDate || "",
+      offerPriceHkd: Number.isFinite(px) && px > 0 ? px : null,
+      lockupEndDate,
+      trackingCloseHkd: o.trackingCloseHkd != null && Number.isFinite(Number(o.trackingCloseHkd)) ? Number(o.trackingCloseHkd) : null,
+      trackingPriceDate: o.trackingPriceDate || "",
+      trackingBasis: o.trackingBasis || "",
+    });
+  }
+  for (const d of eligibleOfferingDossiers()) {
+    if (offerMetaByRound.has(d.roundId)) continue;
+    const px = Number(d.offer?.final);
+    offerMetaByRound.set(d.roundId, {
+      roundId: d.roundId,
+      code: String(d.code || "").replace(/\.HK$/i, "").padStart(5, "0"),
+      listingDate: d.listingDate || "",
+      offerPriceHkd: Number.isFinite(px) && px > 0 ? px : null,
+      lockupEndDate: csAddMonthsIso(d.listingDate, 6),
+      trackingCloseHkd: null,
+      trackingPriceDate: "",
+      trackingBasis: "",
+    });
+  }
+  const bankIndex = cornerstoneBankIndex();
+  csMemoState = {
+    dossierData: state.dossierData,
+    feeRosterData: state.feeRosterData,
+    coverage,
+    coverageOfferByRound,
+    profiles,
+    allocProfilesByRound,
+    offerMetaByRound,
+    bankIndex,
+  };
+  return csMemoState;
+}
+
 function buildCornerstoneProfiles() {
+  return ensureCornerstoneCache().profiles;
+}
+
+function computeCornerstoneProfilesRaw(coverage = eligibleCornerstoneCoverage()) {
   const profiles = [];
   const rosterByRound = new Map(eligibleFeeRoster().map(r => [r.id, r]));
-  const coverage=eligibleCornerstoneCoverage(), coveredRounds=new Set(coverage.map(o=>o.roundId));
+  const coveredRounds=new Set(coverage.map(o=>o.roundId));
 
   // 1. Paused offerings verified cornerstone groups (00054, 03275, 06700)
   for (const notice of offeringNoticeEvidence) {
@@ -5216,18 +5328,466 @@ function buildCornerstoneProfiles() {
 }
 
 
-function renderCornerstoneBrandBreakdown(p) {
- const verified=p.allocations?.map(a=>({a,v:cornerstoneBrandProof(a)})).filter(x=>x.v&&x.v.entity===p.entity?.id)||[];
- if (!verified.length) return "";
- const totals=new Map();
- for (const {a,v} of verified) totals.set(v.bucket,(totals.get(v.bucket)||0n)+cornerstoneMoneyCents(a.amountHkd));
- const order=["直接认购","自有资金","全资投资载体","基金控制载体","Global Opportunities Fund II","大中华成长基金","集团控制载体","管理基金","储备管理机构","独立专户","合计披露"];
- const items=verified.slice().sort((l,r)=>{const a=cornerstoneMoneyCents(l.a.amountHkd),b=cornerstoneMoneyCents(r.a.amountHkd);return a===b?l.a.id.localeCompare(r.a.id):a>b?-1:1;}).map(({a,v})=>{
-  const d=p.deals.find(d=>a.id.startsWith(d.roundId+":"));
-  const accounts=v.accounts?.length?`<details><summary>披露基金及账户</summary><ul>${v.accounts.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}${v.otherMandates?"<li>其他集合基金、独立账户及委托</li>":""}</ul></details>`:"";
-  return `<div><div><strong>${escapeHtml(d?d.issuer+" ("+d.code+")":a.label)}</strong><small>${escapeHtml(v.bucket)} · ${escapeHtml(v.detail)}</small>${accounts}</div><span class="col-num">${formatChineseUnitAmount(Number(a.amountHkd),"HKD")}</span>${feeRosterSource(a.source,"配发结果 ↗")}${feeRosterSource(v.source,"认购架构 ↗")}</div>`;
- });
- return `<section class="deal-section"><header><h3>按获配渠道</h3></header><dl class="deal-facts">${order.filter(k=>totals.has(k)).map(k=>`<div><dt>${k}</dt><dd>${formatChineseUnitAmount(cornerstoneNumberFromCents(totals.get(k)),"HKD")}</dd></div>`).join("")}</dl><div class="deal-allocation-list">${items.join("")}</div></section>`;
+const CS_HKD_PER_USD = 7.78;
+const CS_PAGE_SIZE = 40;
+const csQuoteStore = new Map();
+let csQuotesFetchPromise = null;
+let csQuotesSessionHydratedDay = "";
+
+function csAddMonthsIso(isoDate, months = 6) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(isoDate || ""))) return "";
+  const [y, m, d] = isoDate.split("-").map(Number);
+  const targetIdx = (m - 1) + months;
+  const ty = y + Math.floor(targetIdx / 12);
+  const tm = ((targetIdx % 12) + 12) % 12;
+  const lastDay = new Date(Date.UTC(ty, tm + 1, 0)).getUTCDate();
+  const td = Math.min(d, lastDay);
+  return `${ty}-${String(tm + 1).padStart(2, "0")}-${String(td).padStart(2, "0")}`;
+}
+
+function csAddDaysIso(isoDate, days) {
+  const ms = Date.parse(`${isoDate}T00:00:00Z`);
+  if (!Number.isFinite(ms)) return "";
+  return new Date(ms + days * 86400000).toISOString().slice(0, 10);
+}
+
+function csTodayHkt() {
+  try {
+    const iso = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Hong_Kong",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+    if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso;
+  } catch {}
+  return state.dossierData?.cornerstoneCoverage?.listingCutoff || "2026-11-24";
+}
+
+function formatCsUsd(usd, prefix = "US$") {
+  if (!Number.isFinite(usd) || usd <= 0) return "—";
+  if (usd >= 1e8) return `${prefix}${offeringNumber(usd / 1e8, 2)}亿`;
+  if (usd >= 1e6) return `${prefix}${offeringNumber(Math.round(usd / 1e4), 0)}万`;
+  if (usd >= 1e4) return `${prefix}${offeringNumber(usd / 1e4, 1)}万`;
+  return `${prefix}${offeringNumber(usd, 0)}`;
+}
+
+function formatCsUsdSigned(usd) {
+  if (!Number.isFinite(usd)) return "—";
+  if (Math.abs(usd) < 500) return "US$0";
+  const sign = usd > 0 ? "+" : "−";
+  return `${sign}${formatCsUsd(Math.abs(usd), "US$")}`;
+}
+
+function csDealAmounts(p, d) {
+  if (d?.cents != null && Number(d.cents) > 0) {
+    const hkd = Number(d.cents) / 100;
+    return { hkd, usd: hkd / CS_HKD_PER_USD };
+  }
+  if (p?.deals?.length === 1 && Number.isFinite(p.commitmentAmount) && p.commitmentAmount > 0) {
+    if (p.currency === "USD") {
+      return { usd: p.commitmentAmount, hkd: p.commitmentAmount * CS_HKD_PER_USD };
+    }
+    return { hkd: p.commitmentAmount, usd: p.commitmentAmount / CS_HKD_PER_USD };
+  }
+  return { hkd: null, usd: null };
+}
+
+function csProfileTicketMetrics(p) {
+  const usdVals = [];
+  const hkdVals = [];
+  for (const d of p.deals || []) {
+    const { hkd, usd } = csDealAmounts(p, d);
+    if (Number.isFinite(usd) && usd > 0) usdVals.push(usd);
+    if (Number.isFinite(hkd) && hkd > 0) hkdVals.push(hkd);
+  }
+  usdVals.sort((a, b) => a - b);
+  const n = usdVals.length;
+  if (!n) {
+    return { n: 0, minUsd: null, medianUsd: null, maxUsd: null, totalUsd: null, totalHkd: null };
+  }
+  const mid = Math.floor(n / 2);
+  const medianUsd = n % 2 ? usdVals[mid] : (usdVals[mid - 1] + usdVals[mid]) / 2;
+  const totalUsd = usdVals.reduce((s, v) => s + v, 0);
+  const totalHkd = hkdVals.reduce((s, v) => s + v, 0);
+  return {
+    n,
+    minUsd: usdVals[0],
+    medianUsd,
+    maxUsd: usdVals[n - 1],
+    totalUsd,
+    totalHkd,
+  };
+}
+
+function renderCsTicketWhisker(tm, wide = false) {
+  if (!tm || !tm.n || !Number.isFinite(tm.medianUsd)) return "";
+  const w = wide ? 176 : 138;
+  const pad = 6;
+  const span = w - pad * 2;
+  const minLog = Math.log10(1e6);
+  const maxLog = Math.log10(3.5e8);
+  const xOf = (usd) => {
+    const clamped = Math.min(3.5e8, Math.max(1e6, usd));
+    return Number((pad + ((Math.log10(clamped) - minLog) / (maxLog - minLog)) * span).toFixed(1));
+  };
+  const ticks = [5e6, 2e7, 5e7, 1e8].map((t) => `<line x1="${xOf(t)}" y1="6" x2="${xOf(t)}" y2="12" class="cs-whisker-grid"/>`).join("");
+  const cxMed = xOf(tm.medianUsd);
+  if (tm.n >= 2 && Number.isFinite(tm.minUsd) && Number.isFinite(tm.maxUsd)) {
+    const xMin = xOf(tm.minUsd);
+    const xMax = xOf(tm.maxUsd);
+    return `<svg class="cs-whisker-svg" viewBox="0 0 ${w} 18" width="${w}" height="18" aria-hidden="true">
+      <line x1="${pad}" y1="9" x2="${w - pad}" y2="9" class="cs-whisker-track"/>
+      ${ticks}
+      <line x1="${xMin}" y1="9" x2="${xMax}" y2="9" class="cs-whisker-range"/>
+      <line x1="${xMin}" y1="4.5" x2="${xMin}" y2="13.5" class="cs-whisker-cap"/>
+      <line x1="${xMax}" y1="4.5" x2="${xMax}" y2="13.5" class="cs-whisker-cap"/>
+      <circle cx="${cxMed}" cy="9" r="3.4" class="cs-whisker-dot"/>
+    </svg>`;
+  }
+  return `<svg class="cs-whisker-svg" viewBox="0 0 ${w} 18" width="${w}" height="18" aria-hidden="true">
+    <line x1="${pad}" y1="9" x2="${w - pad}" y2="9" class="cs-whisker-track"/>
+    ${ticks}
+    <circle cx="${cxMed}" cy="9" r="3.2" class="cs-whisker-dot is-single"/>
+  </svg>`;
+}
+
+// Historical 6-month lockup-expiry session closes (per original IPO share, adjusted for any post-IPO bonus/split shares)
+// for rounds whose lockup has already expired. Backend `trackingCloseHkd` / `lockupCloseHkd` overrides these when present.
+const CS_VERIFIED_LOCKUP_CLOSES = {"offering:00501:2025-12-31":[78.65,"2026-07-10","2026-07-12"],"offering:06872:2026-05-14":[73.3,"2026-11-20","2026-11-22"],"offering:07688:2026-05-12":[7.7,"2026-11-20","2026-11-20"],"offering:01511:2026-05-12":[46.44,"2026-11-20","2026-11-20"],"offering:06871:2026-05-08":[17.16,"2026-11-18","2026-11-18"],"offering:07666:2026-05-05":[8.36,"2026-11-13","2026-11-13"],"offering:07630:2026-05-05":[9.115,"2026-11-13","2026-11-13"],"offering:01236:2026-04-30":[20.98,"2026-11-11","2026-11-11"],"offering:01187:2026-04-27":[27.66,"2026-11-06","2026-11-06"],"offering:01609:2026-04-24":[54.85,"2026-11-05","2026-11-05"],"offering:06810:2026-04-21":[76.0,"2026-10-29","2026-10-29"],"offering:02493:2026-04-20":[18.62,"2026-10-28","2026-10-28"],"offering:01879:2026-04-20":[193.0,"2026-10-28","2026-10-28"],"offering:03296:2026-04-15":[74.9,"2026-10-23","2026-10-23"],"offering:02476:2026-04-13":[157.0,"2026-10-21","2026-10-21"],"offering:03277:2026-04-09":[55.85,"2026-10-16","2026-10-17"],"offering:00068:2026-04-09":[4.77,"2026-10-16","2026-10-17"],"offering:06656:2026-04-08":[207.4,"2026-10-16","2026-10-16"],"offering:03625:2026-03-23":[51.2,"2026-09-30","2026-09-30"],"offering:00664:2026-03-23":[11.43,"2026-09-30","2026-09-30"],"offering:06636:2026-03-20":[71.5,"2026-09-30","2026-09-30"],"offering:02726:2026-03-20":[89.8,"2026-09-30","2026-09-30"],"offering:02526:2026-03-20":[254.0,"2026-09-30","2026-09-30"],"offering:01021:2026-03-20":[8.25,"2026-09-30","2026-09-30"],"offering:02729:2026-03-16":[28.08,"2026-09-24","2026-09-24"],"offering:02632:2026-03-16":[62.0,"2026-09-24","2026-09-24"],"offering:03355:2026-03-13":[39.24,"2026-09-23","2026-09-23"],"offering:02701:2026-03-13":[8.745,"2026-09-23","2026-09-23"],"offering:01989:2026-03-12":[107.6,"2026-09-18","2026-09-20"],"offering:03268:2026-02-27":[19.75,"2026-09-10","2026-09-10"],"offering:02715:2026-02-27":[15.24,"2026-09-09","2026-09-09"],"offering:02692:2026-02-27":[38.66,"2026-09-09","2026-09-09"],"offering:02649:2026-02-27":[3.9,"2026-09-09","2026-09-09"],"offering:09981:2026-02-05":[10.65,"2026-08-13","2026-08-13"],"offering:02706:2026-02-05":[43.72,"2026-08-13","2026-08-13"],"offering:00470:2026-02-03":[31.38,"2026-08-11","2026-08-11"],"offering:02720:2026-01-30":[24.14,"2026-08-10","2026-08-10"],"offering:00600:2026-01-30":[13.65,"2026-08-10","2026-08-10"],"offering:06809:2026-01-30":[269.2,"2026-08-07","2026-08-09"],"offering:03200:2026-01-29":[102.5,"2026-08-06","2026-08-06"],"offering:02714:2026-01-29":[31.52,"2026-08-06","2026-08-06"],"offering:02677:2026-01-29":[21.6,"2026-08-06","2026-08-06"],"offering:02768:2026-01-27":[46.0872,"2026-08-04","2026-08-04"],"offering:09980:2026-01-26":[155.09,"2026-08-03","2026-08-03"],"offering:01768:2026-01-20":[382.4,"2026-07-28","2026-07-28"],"offering:09611:2026-01-14":[21.74,"2026-07-22","2026-07-22"],"offering:03986:2025-12-31":[629.0,"2026-07-13","2026-07-13"],"offering:01641:2025-12-31":[4.3,"2026-07-13","2026-07-13"],"offering:06938:2025-12-31":[48.54,"2026-07-09","2026-07-09"],"offering:03636:2025-12-31":[13.43,"2026-07-09","2026-07-09"],"offering:00100:2025-12-31":[297.4,"2026-07-09","2026-07-09"],"offering:09903:2025-12-30":[560.0,"2026-07-08","2026-07-08"],"offering:02675:2025-12-30":[39.98,"2026-07-08","2026-07-08"],"offering:02513:2025-12-30":[1825.0,"2026-07-08","2026-07-08"],"offering:06082:2025-12-22":[48.32,"2026-07-02","2026-07-02"]};
+const CS_POST_IPO_SPLITS = { "offering:02723:2026-05-18": 10 };
+
+function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
+  for (const [roundId, meta] of offerMetaByRound.entries()) {
+    if (meta.trackingCloseHkd != null && meta.trackingCloseHkd > 0) {
+      const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
+      csQuoteStore.set(roundId, {
+        closeHkd: meta.trackingCloseHkd,
+        priceDate: meta.trackingPriceDate || (unlocked ? meta.lockupEndDate : today),
+        lockupEndDate: meta.lockupEndDate,
+        unlocked,
+        status: "ready",
+      });
+      continue;
+    }
+    const ver = CS_VERIFIED_LOCKUP_CLOSES[roundId];
+    if (ver && today >= ver[2] && !csQuoteStore.has(roundId)) {
+      csQuoteStore.set(roundId, {
+        closeHkd: ver[0],
+        priceDate: ver[1],
+        lockupEndDate: ver[2],
+        unlocked: true,
+        status: "ready",
+      });
+    }
+  }
+  if (csQuotesSessionHydratedDay === today || typeof window === "undefined") return;
+  csQuotesSessionHydratedDay = today;
+  try {
+    const permRaw = window.localStorage?.getItem("yingsight_cs_unlocked_quotes_v3");
+    if (permRaw) {
+      const perm = JSON.parse(permRaw);
+      if (perm && typeof perm === "object") {
+        for (const [roundId, q] of Object.entries(perm)) {
+          if (q?.unlocked && Number.isFinite(Number(q.closeHkd)) && Number(q.closeHkd) > 0 && !csQuoteStore.has(roundId)) {
+            csQuoteStore.set(roundId, q);
+          }
+        }
+      }
+    }
+    const raw = window.sessionStorage?.getItem(`yingsight_cs_lockup_quotes_v3_${today}`);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") {
+        for (const [roundId, q] of Object.entries(parsed)) {
+          if (q && Number.isFinite(Number(q.closeHkd)) && Number(q.closeHkd) > 0 && !csQuoteStore.has(roundId)) {
+            csQuoteStore.set(roundId, q);
+          }
+        }
+      }
+    }
+  } catch {}
+}
+
+function persistCsQuotesToStorage(today) {
+  if (typeof window === "undefined") return;
+  try {
+    const sessionObj = {};
+    const permObj = {};
+    for (const [roundId, q] of csQuoteStore.entries()) {
+      if (q?.status === "ready" && Number.isFinite(q.closeHkd)) {
+        sessionObj[roundId] = q;
+        if (q.unlocked && !CS_VERIFIED_LOCKUP_CLOSES[roundId]) permObj[roundId] = q;
+      }
+    }
+    window.sessionStorage?.setItem(`yingsight_cs_lockup_quotes_v3_${today}`, JSON.stringify(sessionObj));
+    if (Object.keys(permObj).length) {
+      window.localStorage?.setItem("yingsight_cs_unlocked_quotes_v3", JSON.stringify(permObj));
+    }
+  } catch {}
+}
+
+function loadTencentQuoteScriptBatch(codes) {
+  return new Promise((resolve) => {
+    if (!codes.length || typeof document === "undefined" || !document.head?.appendChild) {
+      resolve();
+      return;
+    }
+    const script = document.createElement("script");
+    let settled = false;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      try { script.remove(); } catch {}
+      resolve();
+    };
+    const timer = typeof setTimeout === "function" ? setTimeout(done, 5000) : null;
+    script.async = true;
+    script.charset = "gbk";
+    script.src = `https://qt.gtimg.cn/q=${codes.map((c) => `hk${c}`).join(",")}`;
+    script.onload = () => { if (timer) clearTimeout(timer); done(); };
+    script.onerror = () => { if (timer) clearTimeout(timer); done(); };
+    document.head.appendChild(script);
+  });
+}
+
+function ensureCornerstoneQuotesLoaded() {
+  const cache = ensureCornerstoneCache();
+  const today = csTodayHkt();
+  hydrateCsQuotesFromBackendAndStorage(cache.offerMetaByRound, today);
+  if (csQuotesFetchPromise) return csQuotesFetchPromise;
+  if (
+    typeof window === "undefined" ||
+    !/^https?:$/i.test(window.location?.protocol || "") ||
+    String(window.location?.hostname || "").endsWith(".invalid")
+  ) {
+    return null;
+  }
+  const lockedPending = [];
+  const unlockedPending = [];
+  for (const [roundId, meta] of cache.offerMetaByRound.entries()) {
+    if (csQuoteStore.has(roundId)) continue;
+    if (!meta.code || !meta.listingDate || !meta.offerPriceHkd) continue;
+    const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
+    if (unlocked) {
+      unlockedPending.push({
+        roundId,
+        code: meta.code,
+        startDate: csAddDaysIso(meta.lockupEndDate, -25),
+        endDate: meta.lockupEndDate,
+        lockupEndDate: meta.lockupEndDate,
+      });
+    } else {
+      lockedPending.push({ roundId, code: meta.code, lockupEndDate: meta.lockupEndDate });
+    }
+  }
+  if (!lockedPending.length && !unlockedPending.length) return null;
+
+  const flushRender = () => {
+    persistCsQuotesToStorage(today);
+    if (state.view === "cornerstones") {
+      const prevY = window.scrollY;
+      renderCornerstones();
+      window.scrollTo(0, prevY);
+    }
+  };
+
+  const tasks = [];
+  if (lockedPending.length) {
+    const uniqueCodes = [...new Set(lockedPending.map((x) => x.code))];
+    const chunks = [];
+    for (let i = 0; i < uniqueCodes.length; i += 35) chunks.push(uniqueCodes.slice(i, i + 35));
+    tasks.push(
+      Promise.all(chunks.map((ch) => loadTencentQuoteScriptBatch(ch))).then(() => {
+        for (const item of lockedPending) {
+          const raw = window[`v_hk${item.code}`];
+          if (typeof raw === "string" && raw.includes("~")) {
+            const parts = raw.split("~");
+            const lastPx = Number(parts[3]);
+            const prevPx = Number(parts[4]);
+            const basePx = Number.isFinite(lastPx) && lastPx > 0 ? lastPx : prevPx;
+            const mult = CS_POST_IPO_SPLITS[item.roundId] || 1;
+            const rawDate = String(parts[30] || "").slice(0, 10).replace(/\//g, "-");
+            if (Number.isFinite(basePx) && basePx > 0) {
+              csQuoteStore.set(item.roundId, {
+                closeHkd: Number((basePx * mult).toFixed(4)),
+                priceDate: /^\d{4}-\d{2}-\d{2}$/.test(rawDate) ? rawDate : today,
+                lockupEndDate: item.lockupEndDate,
+                unlocked: false,
+                status: "ready",
+              });
+              continue;
+            }
+          }
+          csQuoteStore.set(item.roundId, { status: "error", lockupEndDate: item.lockupEndDate, unlocked: false });
+        }
+      }),
+    );
+  }
+
+  if (unlockedPending.length && typeof fetch === "function") {
+    tasks.push(
+      (async () => {
+        for (const item of unlockedPending) {
+          try {
+            const beg = item.startDate.replace(/-/g, "");
+            const end = item.endDate.replace(/-/g, "");
+            const url = `https://push2his.eastmoney.com/api/qt/stock/kline/get?ut=fa5fd1943c7b386f172d6893dbfba10b&secid=116.${item.code}&fields1=f1,f2&fields2=f51,f53&klt=101&fqt=0&beg=${beg}&end=${end}`;
+            const res = await fetch(url);
+            const payload = res.ok ? await res.json() : null;
+            const klines = payload?.data?.klines || [];
+            const eligible = klines.map((k) => String(k).split(",")).filter((p) => p[0] <= item.endDate);
+            const last = eligible.at(-1);
+            const px = last ? Number(last[1]) : NaN;
+            const mult = CS_POST_IPO_SPLITS[item.roundId] || 1;
+            if (Number.isFinite(px) && px > 0) {
+              csQuoteStore.set(item.roundId, {
+                closeHkd: Number((px * mult).toFixed(4)),
+                priceDate: last[0],
+                lockupEndDate: item.lockupEndDate,
+                unlocked: true,
+                status: "ready",
+              });
+              continue;
+            }
+          } catch {}
+          csQuoteStore.set(item.roundId, { status: "error", lockupEndDate: item.lockupEndDate, unlocked: true });
+        }
+      })(),
+    );
+  }
+
+  csQuotesFetchPromise = Promise.all(tasks)
+    .then(() => {
+      csQuotesFetchPromise = null;
+      flushRender();
+    })
+    .catch(() => {
+      csQuotesFetchPromise = null;
+    });
+  return csQuotesFetchPromise;
+}
+
+function csDealReturnInfo(p, d, offerMetaByRound, today = csTodayHkt()) {
+  if (!d || d.status !== "listed") {
+    return { state: "paused", lockupEndDate: "", unlocked: false, offerPriceHkd: null, closeHkd: null, priceDate: "", retPct: null, pnlHkd: null, pnlUsd: null };
+  }
+  const meta = offerMetaByRound.get(d.roundId);
+  const lockupEndDate = meta?.lockupEndDate || csAddMonthsIso(d.date, 6);
+  const unlocked = Boolean(lockupEndDate && today >= lockupEndDate);
+  const offerPriceHkd = meta?.offerPriceHkd || null;
+  const quote = csQuoteStore.get(d.roundId);
+  const { hkd } = csDealAmounts(p, d);
+  if (!offerPriceHkd || !quote || quote.status !== "ready" || !Number.isFinite(quote.closeHkd)) {
+    return {
+      state: quote?.status === "error" ? "unavailable" : "loading",
+      lockupEndDate,
+      unlocked,
+      offerPriceHkd,
+      closeHkd: null,
+      priceDate: "",
+      retPct: null,
+      pnlHkd: null,
+      pnlUsd: null,
+    };
+  }
+  const retPct = ((quote.closeHkd - offerPriceHkd) / offerPriceHkd) * 100;
+  const pnlHkd = Number.isFinite(hkd) && hkd > 0 ? hkd * ((quote.closeHkd - offerPriceHkd) / offerPriceHkd) : null;
+  const pnlUsd = pnlHkd != null ? pnlHkd / CS_HKD_PER_USD : null;
+  return {
+    state: "ready",
+    lockupEndDate,
+    unlocked: quote.unlocked ?? unlocked,
+    offerPriceHkd,
+    closeHkd: quote.closeHkd,
+    priceDate: quote.priceDate,
+    retPct,
+    pnlHkd,
+    pnlUsd,
+  };
+}
+
+function csProfileReturnMetrics(p, offerMetaByRound, today = csTodayHkt()) {
+  const listedDeals = (p.deals || []).filter((d) => d.status === "listed");
+  if (!listedDeals.length) {
+    return { state: "paused", pricedN: 0, listedN: 0, unlockedN: 0, lockedN: 0, winN: 0, cumRetPct: null, totalPnlUsd: null, totalPnlHkd: null };
+  }
+  let sumCostHkd = 0;
+  let sumPnlHkd = 0;
+  let pricedN = 0;
+  let unlockedN = 0;
+  let lockedN = 0;
+  let winN = 0;
+  let anyLoading = false;
+  for (const d of listedDeals) {
+    const info = csDealReturnInfo(p, d, offerMetaByRound, today);
+    if (info.unlocked) unlockedN += 1;
+    else lockedN += 1;
+    if (info.state === "loading") anyLoading = true;
+    const { hkd } = csDealAmounts(p, d);
+    if (info.state === "ready" && Number.isFinite(hkd) && hkd > 0 && info.pnlHkd != null) {
+      sumCostHkd += hkd;
+      sumPnlHkd += info.pnlHkd;
+      pricedN += 1;
+      if (info.retPct > 0) winN += 1;
+    }
+  }
+  if (!pricedN || sumCostHkd <= 0) {
+    return {
+      state: anyLoading ? "loading" : "unavailable",
+      pricedN: 0,
+      listedN: listedDeals.length,
+      unlockedN,
+      lockedN,
+      winN: 0,
+      cumRetPct: null,
+      totalPnlUsd: null,
+      totalPnlHkd: null,
+    };
+  }
+  const cumRetPct = (sumPnlHkd / sumCostHkd) * 100;
+  return {
+    state: "ready",
+    pricedN,
+    listedN: listedDeals.length,
+    unlockedN,
+    lockedN,
+    winN,
+    cumRetPct,
+    totalPnlHkd: sumPnlHkd,
+    totalPnlUsd: sumPnlHkd / CS_HKD_PER_USD,
+  };
+}
+
+function formatCsPct(pct) {
+  if (!Number.isFinite(pct)) return "—";
+  const sign = pct > 0 ? "+" : pct < 0 ? "−" : "";
+  return `${sign}${Math.abs(pct).toFixed(1)}%`;
+}
+
+function csReturnToneClass(pct) {
+  if (!Number.isFinite(pct)) return "is-flat";
+  if (pct > 0.05) return "is-up";
+  if (pct < -0.05) return "is-down";
+  return "is-flat";
+}
+
+function csDisplayArchetypeLabel(p) {
+  if (p.archetypeLabel && p.archetypeLabel.trim()) return p.archetypeLabel;
+  if (p.roleLabel && p.roleLabel.trim() && p.roleLabel !== "基石投资者") return p.roleLabel;
+  return "披露基石主体";
+}
+
+function csMatchesArchetypeFilter(p, filterKey) {
+  if (!filterKey || filterKey === "all") return true;
+  const a = p.archetype || "disclosed";
+  if (filterKey === "sovereign") return a === "sovereign" || a === "pension";
+  if (filterKey === "international") return a === "international";
+  if (filterKey === "public_fund") return a === "public_fund" || a === "bank_wm" || a === "insurance";
+  if (filterKey === "asset_mgmt") return ["asset_mgmt", "securities", "swap", "manager", "fund_vehicle", "ownership"].includes(a);
+  if (filterKey === "strategic") return a === "strategic";
+  if (filterKey === "hk_family") return a === "hk_family" || a === "individual";
+  return a === filterKey;
 }
 
 const cornerstoneVerifiedBankRosters = {"offering:09980:2026-01-26":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0126/2026012600003.pdf#page=1","banks":["华泰国际","摩根士丹利","瑞银"]},"offering:03308:2026-07-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0722/2026072200013.pdf#page=1","banks":["高盛","中金","摩根士丹利","广发","国泰海通","花旗","汇丰","中国银河"]},"offering:02475:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801342.pdf#page=3","banks":["中信证券","高盛","中金"]},"offering:03661:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0625/2026062502076.pdf#page=2","banks":["中金","华泰国际"]},"offering:07666:2026-05-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0512/2026051201482.pdf#page=2","banks":["杰富瑞","德意志银行","中信证券","招银国际"]},"offering:06880:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0707/2026070701963.pdf#page=2","banks":["中金","德意志银行"]},"offering:01879:2026-04-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042703526.pdf#page=2","banks":["中金","国泰海通","汇丰"]},"offering:01768:2026-01-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0127/2026012701713.pdf#page=2","banks":["高盛","华泰国际","德意志银行"]},"offering:06715:2026-06-22":{"source":"https://www.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062200025.pdf#page=2","banks":["中信证券","中信建投","兴证国际","华福国际"]},"offering:06656:2026-04-08":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041501574.pdf#page=2","banks":["中信证券","法巴","中金"]},"offering:01081:2026-05-28":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0604/2026060402919.pdf#page=2","banks":["华泰国际","招商证券国际","中金","平安证券"]},"offering:01021:2026-03-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032703804.pdf#page=2","banks":["中金","德意志银行"]},"offering:03277:2026-04-09":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0416/2026041602158.pdf#page=2","banks":["中信证券","国泰海通"]},"offering:02692:2026-02-27":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0306/2026030601575.pdf#page=2","banks":["招商证券国际","德意志银行","中信证券"]},"offering:03200:2026-01-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0205/2026020502290.pdf#page=2","banks":["中金","德意志银行"]},"offering:00668:2026-06-23":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063003481.pdf#page=2","banks":["中金","高盛","摩根大通"]},"offering:07688:2026-05-12":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0519/2026051901261.pdf#page=2","banks":["国泰海通","建银国际"]},"offering:06106:2026-06-15":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0623/2026062302143.pdf#page=2","banks":["中金","招银国际"]},"offering:02476:2026-04-13":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0420/2026042001650.pdf#page=2","banks":["摩根大通","中信建投","广发","农银国际","中金"]},"offering:01377:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801372.pdf#page=2","banks":["中信证券","汇丰","农银国际","广发","华泰国际"]},"offering:02249:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070901289.pdf#page=2","banks":["中金","中信证券","华泰国际"]},"offering:00537:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0708/2026070801336.pdf#page=2","banks":["中信证券","招银国际","工银国际"]},"offering:09630:2026-06-17":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/2026061700039.pdf#page=1","banks":["中金","招银国际","国元国际"]},"offering:09981:2026-02-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0212/2026021201492.pdf#page=2","banks":["中信建投","招商证券国际","山证国际"]},"offering:00470:2026-02-03":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0210/2026021001338.pdf#page=2","banks":["中信证券","摩根大通"]},"offering:06809:2026-01-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/2026020601350.pdf#page=2","banks":["中金","摩根士丹利","瑞银","高盛","中信证券"]},"offering:00100:2025-12-31":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0108/2026010801342.pdf#page=2","banks":["中金","瑞银","高盛","摩根士丹利"]},"offering:06082:2025-12-22":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123102783.pdf#page=2","banks":["中金","平安证券","中银国际","中信证券","东吴证券国际"]},"offering:02384:2026-10-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000017.pdf#page=1","banks":["瑞银","国泰海通","广发","中信证券","汇丰"]},"offering:03228:2026-09-21":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092100035.pdf#page=1","banks":["中信证券","美银","国联证券国际"]},"offering:06951:2026-06-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0630/2026063000323.pdf#page=1","banks":["中国银河"]},"offering:07687:2026-06-29":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900135.pdf#page=1","banks":["国泰海通","麦格理"]},"offering:03296:2026-04-15":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041500011.pdf#page=1","banks":["中金","美银","高盛","中信证券"]},"offering:02636:2026-10-07":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1014/2026101401159.pdf#page=2","banks":["中信证券","摩根大通","中金","国泰海通","德意志银行"]},"offering:09637:2026-06-18":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062603033.pdf#page=2","banks":["杰富瑞","美银","华泰国际","中信证券","中银国际"]},"offering:02675:2025-12-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0107/2026010701900.pdf#page=2","banks":["摩根士丹利","广发","中金","中信证券"]},"offering:01256:2026-09-28":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1008/2026100801417.pdf#page=2","banks":["中信证券","中信建投","华泰国际","广发"]},"offering:09856:2026-09-14":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0921/2026092101567.pdf#page=2","banks":["花旗","中信证券"]},"offering:03388:2026-05-20":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0528/2026052802543.pdf#page=2","banks":["中金","德意志银行"]},"offering:06935:2026-11-05":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111201542.pdf#page=2","banks":["国泰海通","建银国际"]},"offering:02681:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111101283.pdf#page=2","banks":["中信建投"]},"offering:07672:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901273.pdf#page=2","banks":["华泰国际","华福国际","第一上海"]},"offering:02065:2026-10-31":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111101359.pdf#page=2","banks":["中信建投","国泰海通"]},"offering:09917:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901211.pdf#page=2","banks":["中信证券","中信建投","中银国际","交银国际","农银国际","浦银国际","华福国际"]},"offering:09621:2026-10-30":{"source":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601520.pdf#page=2","banks":["招银国际","中银国际"]}};
@@ -5262,135 +5822,376 @@ function cornerstoneBankRanking(deals,index) {
  const ranked=[...ranks].map(([bank,deals])=>({bank,deals})).sort((a,b)=>b.deals.length-a.deals.length||a.bank.localeCompare(b.bank,"zh-Hant"));
  return {listed:listed.length,verified,complete,ranked};
 }
-function renderCornerstoneBankChart(p,index) {
- const r=cornerstoneBankRanking(p.deals,index);
- if(!r.listed)return "";
- const max=r.ranked[0]?.deals.length||1;
- const ceiling=r.ranked[Math.min(2,r.ranked.length-1)]?.deals.length||1;
- const preview=r.ranked.filter(x=>x.deals.length>=ceiling),more=r.ranked.slice(preview.length);
- const fill=(x)=>`<details style="margin:.65rem 0"><summary style="cursor:pointer;list-style-position:inside"><strong>${escapeHtml(x.bank)}</strong> <span class="col-num">${x.deals.length} 宗</span><span aria-hidden="true" style="display:block;height:.45rem;margin:.3rem 0 0 1rem;background:rgba(63,120,176,.18);border-radius:6px"><span style="display:block;height:100%;width:${x.deals.length/max*100}%;background:#497ca6;border-radius:6px"></span></span></summary><ul>${x.deals.map(d=>`<li><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(d.roundId)}">${escapeHtml(d.issuer)} (${escapeHtml(d.code)})</button> ${d.bankSource?feeRosterSource(d.bankSource,"发行原件 ↗"):""}</li>`).join("")}</ul></details>`;
- return `<section class="deal-section"><details open><summary style="cursor:pointer"><strong>联动投行</strong> · ${r.ranked.length} 家</summary><p class="cs-profile-sub">公开同单 IPO 宗数 · 保荐人 / OC · 同一投行每宗计一次</p><p class="cs-profile-sub">保荐人或 OC 已匹配 ${r.verified}/${r.listed} 宗 · 完整保荐人及 OC 名单 ${r.complete}/${r.listed} 宗</p>
- ${preview.map(fill).join("")}${more.length?`<details><summary style="cursor:pointer">展开其余 ${more.length} 家</summary>${more.map(fill).join("")}</details>`:""}</details></section>`;
+function renderCornerstoneBankChart(p, index) {
+  const r = cornerstoneBankRanking(p.deals, index);
+  const fallbackSponsors = !r.ranked.length && p.coSponsors?.length
+    ? p.coSponsors.map((s) => ({ bank: cornerstoneBankName(s.name), deals: p.deals }))
+    : [];
+  const list = r.ranked.length ? r.ranked : fallbackSponsors;
+  if (!list.length) return "";
+  const max = list[0]?.deals.length || 1;
+  const topList = list.slice(0, 6);
+  const restList = list.slice(6);
+  const renderBankItem = (x) => `<details class="cs-bank-row">
+    <summary>
+      <span class="cs-bank-name">${escapeHtml(x.bank)}</span>
+      <span class="cs-bank-bar-track" aria-hidden="true"><i style="width:${Math.max(10, Math.round((x.deals.length / max) * 100))}%"></i></span>
+      <strong class="cs-bank-count col-num">${x.deals.length} 宗</strong>
+    </summary>
+    <ul class="cs-bank-deals">${x.deals.map((d) => `<li><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(d.roundId)}">${escapeHtml(d.issuer)} (${escapeHtml(d.code)}) ↗</button>${d.bankSource ? ` ${feeRosterSource(d.bankSource, "原件 ↗")}` : ""}</li>`).join("")}</ul>
+  </details>`;
+  return `<section class="deal-section cs-card-box">
+    <header class="cs-box-head">
+      <div>
+        <h3>高频同单投行（保荐人 / OC）</h3>
+        <p class="cs-profile-sub">共 ${list.length} 家合作投行${r.listed ? ` · 已核验名单 ${r.verified}/${r.listed} 宗` : ""}</p>
+      </div>
+    </header>
+    <div class="cs-bank-list">
+      ${topList.map(renderBankItem).join("")}
+      ${restList.length ? `<details class="cs-more-banks"><summary>展开其余 ${restList.length} 家合作投行 ▾</summary>${restList.map(renderBankItem).join("")}</details>` : ""}
+    </div>
+  </section>`;
 }
 
 function renderCornerstones() {
   const listWrap = document.getElementById("cornerstoneListWrap");
   const profilePane = document.getElementById("cornerstoneProfilePane");
   if (!listWrap || !profilePane) return;
-  const all = buildCornerstoneProfiles();
-  const bankIndex = cornerstoneBankIndex();
-  const coverage=eligibleCornerstoneCoverage(),known=coverage.filter(o=>o.status==="known").length,none=coverage.filter(o=>o.status==="confirmed_zero").length;
-  const allocationRounds=coverage.filter(o=>o.status==="known"&&o.allocations.length).length;
+  const cache = ensureCornerstoneCache();
+  const all = cache.profiles;
+  const bankIndex = cache.bankIndex;
+  const coverage = cache.coverage;
+  const offerMetaByRound = cache.offerMetaByRound;
+  const today = csTodayHkt();
+  ensureCornerstoneQuotesLoaded();
+
+  const known = coverage.filter((o) => o.status === "known").length;
+  const none = coverage.filter((o) => o.status === "confirmed_zero").length;
   const q = normalizeSearchText(state.csQuery || "");
   const searchEl = document.getElementById("csSearch");
   if (searchEl && searchEl.value !== state.csQuery) searchEl.value = state.csQuery;
+  const sortEl = document.getElementById("csSortSelect");
+  if (sortEl && sortEl.value !== (state.csSort || "total")) sortEl.value = state.csSort || "total";
 
-  // Coverage meta & Insight Strip
   const metaEl = document.getElementById("csCoverageMeta");
-  if (metaEl) metaEl.textContent = `覆盖 ${coverage.length} 轮（主板 ${coverage.filter(o=>o.board==="Main").length} / GEM ${coverage.filter(o=>o.board==="GEM").length}）· 已披露基石 ${known} 宗 · 无基石 ${none} 宗 · 截至 ${state.dossierData?.cornerstoneCoverage?.listingCutoff}`;
-  const insightEl = document.getElementById("csInsightStrip");
-  const thermoEl = document.getElementById("csThermometer");
-  const archMeta = [
-    { key: "public_fund", label: "内地公募管理人", cls: "is-public-fund" },
-    { key: "hk_family", label: "港资家族与个人大户", cls: "is-hk-family" },
-    { key: "strategic", label: "产业投资", cls: "is-strategic" },
-    { key: "asset_mgmt", label: "跨境私募 / TRS", cls: "is-asset-mgmt" },
-    { key: "international", label: "国际资产管理", cls: "is-public-fund" },
-    { key: "sovereign", label: "主权投资机构", cls: "is-strategic" },
-    { key: "pension", label: "养老金专户", cls: "is-strategic" },
-    { key: "securities", label: "证券机构", cls: "is-public-fund" },
-    { key: "insurance", label: "保险机构", cls: "is-hk-family" },
-    { key: "bank_wm", label: "银行理财", cls: "is-public-fund" },
-    { key: "manager", label: "披露投资管理关系", cls: "is-asset-mgmt" },
-    { key: "swap", label: "掉期安排", cls: "is-asset-mgmt" },
-    { key: "fund_vehicle", label: "披露基金架构", cls: "is-asset-mgmt" },
-    { key: "ownership", label: "披露持股或控制关系", cls: "is-asset-mgmt" },
-    { key: "individual", label: "个人认购", cls: "is-hk-family" },
-    { key: "disclosed", label: "其他披露主体", cls: "is-asset-mgmt" }
-  ];
-  if (insightEl) {
-    const sigCount = all.reduce((s, p) => s + p.signatories.length, 0);
-    const byArch = { public_fund: 0, hk_family: 0, strategic: 0, asset_mgmt: 0, disclosed: 0 };
-    const usdTotal = all.filter(p => p.deals[0]?.status === "paused" && p.currency === "USD").reduce((s, p) => s + (p.commitmentAmount || 0), 0);
-    const hkdTotal = all.filter(p => p.deals[0]?.status === "paused" && p.currency === "HKD").reduce((s, p) => s + (p.commitmentAmount || 0), 0);
-    const spSet = new Map();
-    for (const p of all) {
-      byArch[p.archetype] = (byArch[p.archetype] || 0) + 1;
-      for (const sp of p.coSponsors) if (sp.sponsorId) spSet.set(sp.sponsorId, sp.name);
-    }
-    insightEl.innerHTML = `
-      <div class="stat-cell"><span class="stat-label">基石与机构主体</span><strong class="stat-val col-num">${all.length} 组</strong><small class="stat-sub">${sigCount} 个已披露法律名称 · 已上市配发明细 ${allocationRounds} 宗</small></div>
-      <div class="stat-cell"><span class="stat-label">原币认购承诺（搁置轮）</span><strong class="stat-val col-num">USD ${offeringNumber(usdTotal / 1e4, 0)}万 · HKD ${offeringNumber(hkdTotal / 1e8, 2)}亿</strong><small class="stat-sub">USD 与 HKD 原币认购承诺</small></div>
-      <div class="stat-cell"><span class="stat-label">联动保荐人网络</span><strong class="stat-val col-num">${spSet.size} 家保荐机构</strong><small class="stat-sub">${[...spSet.values()].slice(0, 5).join(" · ")}</small></div>
-    `;
+  if (metaEl) {
+    metaEl.textContent = `覆盖 ${coverage.length} 宗新股（有基石 ${known} 宗 · 无基石 ${none} 宗）· 回报按 6 个月禁售期满解禁日收盘价封顶 · 汇率 US$1=HK$${CS_HKD_PER_USD}`;
   }
 
-  // Profile View Mode
-  const activeProfile = state.csId ? all.find(p => cornerstoneProfileMatch(p,state.csId)) : null;
+  // Compute market-wide ticket distribution & lockup-capped return summary
+  const insightEl = document.getElementById("csInsightStrip");
+  const thermoEl = document.getElementById("csThermometer");
   if (thermoEl) {
     thermoEl.hidden = true;
     thermoEl.innerHTML = "";
   }
+  if (insightEl) {
+    const multiCount = all.filter((p) => (p.deals?.length || 0) >= 2).length;
+    const allDealUsd = [];
+    for (const o of coverage) {
+      if (o.status !== "known") continue;
+      for (const a of o.allocations || []) {
+        const hkd = Number(a.amountHkd);
+        if (Number.isFinite(hkd) && hkd > 0) allDealUsd.push(hkd / CS_HKD_PER_USD);
+      }
+    }
+    allDealUsd.sort((a, b) => a - b);
+    const mktMedUsd = p0Quantile(allDealUsd, 0.5);
+    const mktP25Usd = p0Quantile(allDealUsd, 0.25);
+    const mktP75Usd = p0Quantile(allDealUsd, 0.75);
 
-  // Sync archetype tabs
-  document.querySelectorAll("[data-cs-archetype]").forEach(btn => {
-    const active = btn.dataset.csArchetype === state.csArchetype;
+    let mktCostHkd = 0;
+    let mktPnlHkd = 0;
+    let unlockedOffers = 0;
+    let lockedOffers = 0;
+    let pricedOffers = 0;
+    for (const o of coverage) {
+      if (o.status !== "known" || !o.allocations?.length) continue;
+      const meta = offerMetaByRound.get(o.roundId);
+      const isUnlocked = Boolean(meta?.lockupEndDate && today >= meta.lockupEndDate);
+      if (isUnlocked) unlockedOffers += 1;
+      else lockedOffers += 1;
+      const quote = csQuoteStore.get(o.roundId);
+      if (meta?.offerPriceHkd > 0 && quote?.status === "ready" && Number.isFinite(quote.closeHkd)) {
+        const offerHkd = o.allocations.reduce((s, a) => s + Number(a.amountHkd || 0), 0);
+        if (offerHkd > 0) {
+          mktCostHkd += offerHkd;
+          mktPnlHkd += offerHkd * ((quote.closeHkd - meta.offerPriceHkd) / meta.offerPriceHkd);
+          pricedOffers += 1;
+        }
+      }
+    }
+    const mktRetPct = mktCostHkd > 0 ? (mktPnlHkd / mktCostHkd) * 100 : null;
+    const mktPnlUsd = mktCostHkd > 0 ? mktPnlHkd / CS_HKD_PER_USD : null;
+    const spSet = new Map();
+    for (const p of all) {
+      for (const sp of p.coSponsors || []) if (sp.sponsorId) spSet.set(sp.sponsorId, sp.name);
+    }
+    const retValHtml = mktRetPct != null
+      ? `<strong class="stat-val col-num cs-stat-ret ${csReturnToneClass(mktRetPct)}">${formatCsPct(mktRetPct)} <small class="cs-stat-pnl">(${formatCsUsdSigned(mktPnlUsd)})</small></strong>`
+      : `<strong class="stat-val col-num">行情同步中…</strong>`;
+    insightEl.innerHTML = `
+      <div class="stat-cell"><span class="stat-label">基石与机构主体</span><strong class="stat-val col-num">${all.length} 组</strong><small class="stat-sub">多单活跃机构 ${multiCount} 家 · 覆盖 ${known} 宗有基石新股</small></div>
+      <div class="stat-cell"><span class="stat-label">全市场单笔 Ticket 中位</span><strong class="stat-val col-num">${mktMedUsd ? formatCsUsd(mktMedUsd) : "—"}</strong><small class="stat-sub">${mktP25Usd && mktP75Usd ? `四分位 ${formatCsUsd(mktP25Usd)} – ${formatCsUsd(mktP75Usd)}（共 ${allDealUsd.length} 笔）` : "按各笔最终获配折算美金"}</small></div>
+      <div class="stat-cell"><span class="stat-label">基石累计总回报（解禁封顶）</span>${retValHtml}<small class="stat-sub">已解禁封顶 ${unlockedOffers} 宗 · 禁售跟踪中 ${lockedOffers} 宗${pricedOffers ? `（已计价 ${pricedOffers} 宗）` : ""}</small></div>
+      <div class="stat-cell"><span class="stat-label">联动承销投行网络</span><strong class="stat-val col-num">${spSet.size} 家保荐机构</strong><small class="stat-sub">${[...spSet.values()].slice(0, 5).join(" · ")}</small></div>
+    `;
+  }
+
+  // Sync toolbar controls
+  document.querySelectorAll("[data-cs-archetype]").forEach((btn) => {
+    const active = btn.dataset.csArchetype === (state.csArchetype || "all");
+    btn.classList.toggle("is-active", active);
+    btn.setAttribute("aria-pressed", String(active));
+  });
+  document.querySelectorAll("[data-cs-scope]").forEach((btn) => {
+    const active = btn.dataset.csScope === (state.csScope || "all");
     btn.classList.toggle("is-active", active);
     btn.setAttribute("aria-pressed", String(active));
   });
 
+  const activeProfile = state.csId ? all.find((p) => cornerstoneProfileMatch(p, state.csId)) : null;
   const toolbar = document.getElementById("csToolbar");
+
   if (activeProfile) {
     if (toolbar) toolbar.hidden = true;
     listWrap.hidden = true;
     profilePane.hidden = false;
-    const spvNames = activeProfile.signatories.map(s => s.name).filter(n => n && n !== activeProfile.name);
+    const tm = csProfileTicketMetrics(activeProfile);
+    const rm = csProfileReturnMetrics(activeProfile, offerMetaByRound, today);
+    const spvNames = activeProfile.signatories.map((s) => s.name).filter((n) => n && n !== activeProfile.name);
     const csFrom = p0FromUrlInfo();
     const csOriginLabel = csFrom && csFrom.view !== "cornerstones"
       ? ({ dossiers: "新股档案", pausedOfferings: "发售搁置", fees: "新股与费用", directory: "项目总录", tracker: "监管节奏", sponsorLeaderboard: "保荐人龙虎榜", sponsorPk: "保荐人擂台", precedents: "交易与重组" }[csFrom.view] || "")
       : "";
+    const archBadgeText = csDisplayArchetypeLabel(activeProfile);
+    const spvHeaderHtml = !spvNames.length
+      ? ""
+      : spvNames.length <= 2
+        ? `<p class="cs-spv-nest">披露签约载体：${escapeHtml(spvNames.join(" · "))}</p>`
+        : `<details class="cs-spv-fold"><summary>披露法律签约载体与基金（共 ${spvNames.length} 个）▾</summary><p class="cs-spv-nest">${escapeHtml(spvNames.join(" · "))}</p></details>`;
+
+    // Channel breakdown pills (preserving 100% of Sight's cornerstoneBrandProof buckets & sub-accounts)
+    const verifiedAllocs = (activeProfile.allocations || [])
+      .map((a) => ({ a, v: cornerstoneBrandProof(a) }))
+      .filter((x) => x.v && x.v.entity === activeProfile.entity?.id);
+    const verifiedByRound = new Map();
+    const channelTotalsHkd = new Map();
+    for (const item of verifiedAllocs) {
+      const b = item.v.bucket;
+      channelTotalsHkd.set(b, (channelTotalsHkd.get(b) || 0) + Number(item.a.amountHkd || 0));
+      const dMatch = activeProfile.deals.find((d) => item.a.id.startsWith(`${d.roundId}:`));
+      if (dMatch) {
+        if (!verifiedByRound.has(dMatch.roundId)) verifiedByRound.set(dMatch.roundId, []);
+        verifiedByRound.get(dMatch.roundId).push(item);
+      }
+    }
+    const channelOrder = ["直接认购", "自有资金", "全资投资载体", "基金控制载体", "Global Opportunities Fund II", "大中华成长基金", "集团控制载体", "管理基金", "储备管理机构", "独立专户", "合计披露"];
+    const activeChannels = channelOrder.filter((k) => channelTotalsHkd.has(k));
+    const selectedChannel = activeChannels.includes(state.csChannel) ? state.csChannel : "all";
+
+    const channelBarHtml = activeChannels.length > 0
+      ? `<div class="cs-channel-bar" role="tablist" aria-label="按获配渠道筛选">
+          <button type="button" class="cs-channel-pill${selectedChannel === "all" ? " is-active" : ""}" data-cs-channel="all">全部渠道 · ${activeProfile.deals.length} 宗</button>
+          ${activeChannels.map((ch) => {
+            const chUsd = (channelTotalsHkd.get(ch) || 0) / CS_HKD_PER_USD;
+            return `<button type="button" class="cs-channel-pill${selectedChannel === ch ? " is-active" : ""}" data-cs-channel="${escapeHtml(ch)}">${escapeHtml(ch)} · ${formatCsUsd(chUsd)}</button>`;
+          }).join("")}
+        </div>`
+      : "";
+
+    const visibleDeals = selectedChannel === "all"
+      ? activeProfile.deals
+      : activeProfile.deals.filter((d) => (verifiedByRound.get(d.roundId) || []).some((x) => x.v.bucket === selectedChannel));
+
+    const portfolioRowsHtml = visibleDeals.map((deal) => {
+      const { hkd, usd } = csDealAmounts(activeProfile, deal);
+      const ret = csDealReturnInfo(activeProfile, deal, offerMetaByRound, today);
+      const roundVer = verifiedByRound.get(deal.roundId) || [];
+      const matchingVer = selectedChannel === "all" ? roundVer : roundVer.filter((x) => x.v.bucket === selectedChannel);
+
+      let channelCellHtml = "";
+      let sourceCellHtml = "";
+      if (matchingVer.length) {
+        channelCellHtml = matchingVer.map(({ a, v }) => {
+          const accts = v.accounts?.length
+            ? `<details class="cs-acct-fold"><summary>披露基金及账户 (${v.accounts.length}) ▾</summary><ul>${v.accounts.map((acc) => `<li>${escapeHtml(acc)}</li>`).join("")}${v.otherMandates ? "<li>其他集合基金、独立账户及委托</li>" : ""}</ul></details>`
+            : "";
+          return `<div class="cs-chan-block"><span class="cs-chan-tag">${escapeHtml(v.bucket)}</span> <span class="cs-chan-detail">${escapeHtml(v.detail)}</span>${accts}</div>`;
+        }).join("");
+        const uniqSources = [];
+        const seenS = new Set();
+        for (const { a, v } of matchingVer) {
+          if (a.source && !seenS.has(a.source)) { seenS.add(a.source); uniqSources.push(feeRosterSource(a.source, "配发结果 ↗")); }
+          if (v.source && !seenS.has(v.source)) { seenS.add(v.source); uniqSources.push(feeRosterSource(v.source, "认购架构 ↗")); }
+        }
+        sourceCellHtml = uniqSources.join(" ");
+      } else {
+        const allocMatch = (activeProfile.allocations || []).filter((a) => a.id.startsWith(`${deal.roundId}:`));
+        const labelTxt = allocMatch.length ? allocMatch.map((a) => a.label).join(" / ") : deal.roleTag;
+        channelCellHtml = `<span class="cs-chan-detail">${escapeHtml(labelTxt || "基石获配")}</span>${deal.ratioText ? `<small>${escapeHtml(deal.ratioText)}</small>` : ""}`;
+        const firstSrc = allocMatch[0]?.source || activeProfile.sources?.[0]?.url || "";
+        sourceCellHtml = firstSrc ? feeRosterSource(firstSrc, "原件 ↗") : "—";
+      }
+
+      const ticketMain = usd ? formatCsUsd(usd) : deal.commitmentText;
+      const ticketSub = hkd ? `${formatChineseUnitAmount(hkd, "HKD")}${deal.ratioText ? ` · ${deal.ratioText}` : ""}` : (deal.rawCommitment || "");
+
+      let priceTrackHtml = "";
+      let retCellHtml = "";
+      if (deal.status !== "listed") {
+        priceTrackHtml = `<span class="deal-status-pill is-paused">${escapeHtml(deal.statusLabel)}</span><small>招股未交割 · 无二级市场交投</small>`;
+        retCellHtml = `<span class="cs-ret-muted">搁置未上市</span>`;
+      } else {
+        const lockBadge = ret.unlocked
+          ? `<span class="cs-lock-tag is-unlocked">已解禁封顶 · ${escapeHtml(ret.lockupEndDate)}</span>`
+          : `<span class="cs-lock-tag is-locked">禁售中 · ${escapeHtml(ret.lockupEndDate)} 解禁</span>`;
+        if (ret.state === "ready") {
+          priceTrackHtml = `<div class="cs-px-line col-num">HK$${offeringNumber(ret.offerPriceHkd, 2)} → <strong>HK$${offeringNumber(ret.closeHkd, 2)}</strong></div>${lockBadge}`;
+          retCellHtml = `<span class="cs-ret-badge col-num ${csReturnToneClass(ret.retPct)}">${formatCsPct(ret.retPct)}</span>${ret.pnlUsd != null ? `<small class="col-num cs-pnl-sub ${csReturnToneClass(ret.retPct)}">${formatCsUsdSigned(ret.pnlUsd)}</small>` : ""}`;
+        } else if (ret.state === "loading") {
+          priceTrackHtml = `${ret.offerPriceHkd ? `<div class="cs-px-line col-num">发售价 HK$${offeringNumber(ret.offerPriceHkd, 2)}</div>` : ""}${lockBadge}`;
+          retCellHtml = `<span class="cs-ret-muted">行情同步中…</span>`;
+        } else {
+          priceTrackHtml = `${ret.offerPriceHkd ? `<div class="cs-px-line col-num">发售价 HK$${offeringNumber(ret.offerPriceHkd, 2)}</div>` : ""}${lockBadge}`;
+          retCellHtml = `<span class="cs-ret-muted">待同步</span>`;
+        }
+      }
+
+      return `<tr class="cs-deal-row" data-cs-deal-round="${escapeHtml(deal.roundId)}" tabindex="0" role="button">
+        <th scope="row">
+          <div class="cs-deal-title-line"><strong>${escapeHtml(deal.issuer)}</strong> <span class="mono-code">${escapeHtml(deal.code)}.HK</span></div>
+          <small class="col-num">${deal.status === "listed" ? `挂牌 ${escapeHtml(deal.date)}` : `公告 ${escapeHtml(deal.date)}`}</small>
+        </th>
+        <td class="cs-chan-td">${channelCellHtml}</td>
+        <td class="col-num cs-ticket-td"><strong>${escapeHtml(ticketMain)}</strong><small>${escapeHtml(ticketSub)}</small></td>
+        <td class="cs-lockup-td">${priceTrackHtml}</td>
+        <td class="col-num cs-ret-td">${retCellHtml}</td>
+        <td class="cs-src-td">${sourceCellHtml}</td>
+      </tr>`;
+    }).join("");
+
+    const kpiTotalMain = tm.totalUsd ? formatCsUsd(tm.totalUsd) : activeProfile.commitmentText;
+    const kpiTotalSub = tm.totalHkd ? `${formatChineseUnitAmount(tm.totalHkd, "HKD")} · 共 ${activeProfile.deals.length} 宗项目` : `共 ${activeProfile.deals.length} 宗项目`;
+    const kpiTicketMain = tm.medianUsd ? (tm.n >= 2 ? `中位 ${formatCsUsd(tm.medianUsd)}` : formatCsUsd(tm.medianUsd)) : "—";
+    const kpiTicketSub = tm.n >= 2
+      ? `下限 ${formatCsUsd(tm.minUsd)} · 上限 ${formatCsUsd(tm.maxUsd)}`
+      : "单笔基石配置规模";
+    const kpiRetMain = rm.state === "ready"
+      ? `<strong class="stat-val col-num cs-stat-ret ${csReturnToneClass(rm.cumRetPct)}">${formatCsPct(rm.cumRetPct)}</strong>`
+      : rm.state === "paused"
+        ? `<strong class="stat-val col-num">招股搁置</strong>`
+        : `<strong class="stat-val col-num">同步中…</strong>`;
+    const kpiRetSub = rm.state === "ready"
+      ? `累计盈亏 ${formatCsUsdSigned(rm.totalPnlUsd)} · 正收益 ${rm.winN}/${rm.pricedN} 宗`
+      : rm.state === "paused"
+        ? "搁置项目未进入二级市场交易"
+        : "正在同步港股历史不复权收盘价";
+    const kpiLockMain = rm.listedN
+      ? `${rm.unlockedN} 已解禁 · ${rm.lockedN} 禁售中`
+      : "未挂牌";
+
+    const renderSigItem = (s) => {
+      const metaParts = [
+        s.type || "",
+        s.capacity || "",
+        s.manager ? `管理人：${s.manager}` : "",
+        s.feesIncluded ? "含经纪佣金及征费" : "",
+      ].filter(Boolean);
+      return `<li>
+        <div><strong>${escapeHtml(s.name)}</strong><span class="col-num">${s.amount ? `${escapeHtml(s.currency)} ${offeringNumber(s.amount, 0)}` : ""}</span></div>
+        ${metaParts.length ? `<p>${escapeHtml(metaParts.join(" · "))}</p>` : ""}
+      </li>`;
+    };
+    const sigTopHtml = activeProfile.signatories.slice(0, 6).map(renderSigItem).join("");
+    const sigRest = activeProfile.signatories.slice(6);
+    const sigRestFoldHtml = sigRest.length
+      ? `<details class="deal-light-detail cs-sig-fold"><summary>展开其余 ${sigRest.length} 个法律签约载体 ▾</summary><ul class="offering-cornerstone-members">${sigRest.map(renderSigItem).join("")}</ul></details>`
+      : "";
+
     profilePane.innerHTML = `
       <div class="cs-profile-topbar">
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="cs-topbar-left">
           <button type="button" class="back-pill" data-cs-return>← 返回基石画像列表</button>
           ${csOriginLabel ? `<button type="button" class="back-pill" data-cs-origin-back>↩ 返回${escapeHtml(csOriginLabel)}</button>` : ""}
         </div>
-        <span class="cs-arch-badge">${escapeHtml(activeProfile.archetypeLabel)}</span>
+        <span class="cs-arch-badge">${escapeHtml(archBadgeText)}</span>
       </div>
       <header class="deal-header cs-profile-header">
         <div>
-          <p>${escapeHtml(activeProfile.roleLabel)} · ${escapeHtml(activeProfile.channel)}</p>
+          <p>${escapeHtml(activeProfile.roleLabel || archBadgeText)} · ${escapeHtml(activeProfile.channel)}</p>
           <h2 id="csProfileTitle" tabindex="-1">${escapeHtml(activeProfile.name)}</h2>
           ${activeProfile.profile ? `<p class="cs-ubo-lead">${escapeHtml(activeProfile.profile)}</p>` : ""}
-          ${spvNames.length ? `<p class="cs-spv-nest">法律签约载体：${escapeHtml(spvNames.join(" · "))}</p>` : ""}
-        </div>
-        <div class="cs-profile-commitment">
-          <span>${activeProfile.allocations?.length?"累计实际获配（港元）":"披露规模"}</span>
-          <strong class="col-num">${escapeHtml(activeProfile.commitmentText)}</strong>
+          ${spvHeaderHtml}
         </div>
       </header>
-        ${renderCornerstoneBankChart(activeProfile,bankIndex)}
-      <div class="cs-profile-grid">
-        <section class="deal-section">
-          <header><h3>主体背景与认购架构</h3></header>
-          ${activeProfile.profile && !activeProfile.entity ? `<p class="cs-profile-lead">${escapeHtml(activeProfile.profile)}</p>` : ""}
+      <section class="terminal-stat-strip cs-profile-kpis" aria-label="基石投资组合核心指标">
+        <div class="stat-cell">
+          <span class="stat-label">累计基石投入总额</span>
+          <strong class="stat-val col-num">${escapeHtml(kpiTotalMain)}</strong>
+          <small class="stat-sub">${escapeHtml(kpiTotalSub)}</small>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-label">单笔 Ticket Size（下限 / 中位 / 上限）</span>
+          <strong class="stat-val col-num">${escapeHtml(kpiTicketMain)}</strong>
+          ${renderCsTicketWhisker(tm, true)}
+          <small class="stat-sub">${escapeHtml(kpiTicketSub)}</small>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-label">组合累计回报（解禁封顶）</span>
+          ${kpiRetMain}
+          <small class="stat-sub">${escapeHtml(kpiRetSub)}</small>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-label">禁售期与跟踪截止状态</span>
+          <strong class="stat-val col-num">${escapeHtml(kpiLockMain)}</strong>
+          <small class="stat-sub">按上市起 6 个月禁售期满当日收盘价锁定</small>
+        </div>
+      </section>
+      <section class="deal-section cs-master-portfolio">
+        <header class="cs-portfolio-head">
+          <div>
+            <h3>基石投资组合与解禁回报明细（${visibleDeals.length} 宗）</h3>
+            <p class="cs-profile-sub">已满 6 个月禁售期的项目永久锁定解禁日收盘价计算回报；仍在禁售期内的项目跟踪至最新交易日收盘价</p>
+          </div>
+          ${channelBarHtml}
+        </header>
+        <div class="table-wrap">
+          <table class="cs-deals-table">
+            <thead>
+              <tr>
+                <th>项目 / 挂牌日</th>
+                <th>认购载体与基金渠道</th>
+                <th class="col-num">单笔 Ticket (USD / HKD)</th>
+                <th>发售价 → 跟踪价（解禁截止）</th>
+                <th class="col-num">单笔回报 / 盈亏</th>
+                <th>核验原件</th>
+              </tr>
+            </thead>
+            <tbody>${portfolioRowsHtml}</tbody>
+          </table>
+        </div>
+      </section>
+      <div class="cs-profile-grid cs-profile-bottom-grid">
+        ${renderCornerstoneBankChart(activeProfile, bankIndex)}
+        <section class="deal-section cs-card-box">
+          <header class="cs-box-head">
+            <div>
+              <h3>主体背景与法律签约名录</h3>
+              <p class="cs-profile-sub">${activeProfile.signatories.length ? `共披露 ${activeProfile.signatories.length} 个法律签约或获配主体` : "招股书及配发结果主体核验"}</p>
+            </div>
+          </header>
           ${activeProfile.ownership ? `<p class="cs-profile-sub">持有 / 架构：${escapeHtml(activeProfile.ownership)}</p>` : ""}
           ${activeProfile.ranking ? `<div class="offering-cornerstone-rank">${escapeHtml(activeProfile.ranking.metric)} ${escapeHtml(activeProfile.ranking.currency)} ${offeringNumber(activeProfile.ranking.amountHundredMillion, 2)} 亿元 · 行业第 ${activeProfile.ranking.rank}<span>截至 ${escapeHtml(activeProfile.ranking.asOf)} · ${escapeHtml(activeProfile.ranking.dataProvider)}</span></div>` : ""}
-          ${activeProfile.signatories.length?`<h4>${activeProfile.allocations?'披露法律认购名':'法律签约实体'}（${activeProfile.signatories.length} 名）</h4>`:''}
-          <ul class="offering-cornerstone-members">${activeProfile.signatories.map(s => `<li><div><strong>${escapeHtml(s.name)}</strong><span class="col-num">${s.amount ? `${escapeHtml(s.currency)} ${offeringNumber(s.amount, 0)}` : ""}</span></div><p>${escapeHtml(s.type)} · ${escapeHtml(s.capacity)}${s.manager ? ` · 管理人：${escapeHtml(s.manager)}` : ""}${s.feesIncluded ? " · 含经纪佣金及征费" : ""}</p></li>`).join("")}</ul>
-        </section>
-        ${renderCornerstoneBrandBreakdown(activeProfile) || (activeProfile.allocations?`<section class="deal-section"><header><h3>获配明细</h3></header><div class="deal-allocation-list">${activeProfile.allocations.map(a=>`<div><strong>${escapeHtml(a.label)}</strong><span class="col-num">${offeringNumber(a.quantity)} ${cornerstoneUnit(activeProfile.deals[0].unit)} · HKD ${offeringNumber(a.amountHkd,2)}</span>${feeRosterSource(a.source,'原件 ↗')}</div>`).join('')}</div>${activeProfile.relationships.length?`<details class="deal-light-detail"><summary>认购关系</summary>${activeProfile.relationships.map(r=>`<p>${escapeHtml(r.role)}：${escapeHtml(r.name)} ${feeRosterSource(r.source,'原件 ↗')}</p>`).join('')}</details>`:''}</section>`:'')}
-        <section class="deal-section">
-          <header><h3>参与港股项目记录</h3></header>
-          <div class="table-wrap"><table class="cs-deals-table">
-            <thead><tr><th>项目 / 代码</th><th>状态 / 角色</th><th class="col-num">披露金额 / 获配</th><th>占发售比</th></tr></thead>
-            <tbody>${activeProfile.deals.map(deal => `<tr class="cs-deal-row" data-cs-deal-round="${escapeHtml(deal.roundId)}" tabindex="0" role="button"><th scope="row"><strong>${escapeHtml(deal.issuer)}</strong> <span class="mono-code">${deal.code}.HK</span></th><td><span class="deal-status-pill is-${deal.status === "listed" ? "listed" : "paused"}">${escapeHtml(deal.statusLabel)}</span> <small>${escapeHtml(deal.roleTag)} · ${deal.date}</small></td><td class="col-num" title="${escapeHtml(deal.rawCommitment)}"><strong>${escapeHtml(deal.commitmentText)}</strong></td><td>${escapeHtml(deal.ratioText || "—")}</td></tr>`).join("")}</tbody>
-          </table></div>
+          <ul class="offering-cornerstone-members">${sigTopHtml}</ul>
+          ${sigRestFoldHtml}
+          ${activeProfile.relationships?.length ? `<details class="deal-light-detail"><summary>展开招股书披露关联与专户关系（${activeProfile.relationships.length} 条）▾</summary>${activeProfile.relationships.map((r) => `<p>${escapeHtml(r.role)}：${escapeHtml(r.name)} ${feeRosterSource(r.source, "原件 ↗")}</p>`).join("")}</details>` : ""}
         </section>
       </div>
       <details class="deal-sources-fold" id="cs-sources">
-        <summary><span>公告与招股书原件</span><small>展开备查链接</small></summary>
-        <div class="deal-sources-fold-body"><div class="consolidated-page-links">${activeProfile.sources.map(s => feeRosterSource(s.url, `${s.label} ↗`)).join("")}</div></div>
+        <summary><span>公告与招股书原件备查（${activeProfile.sources.length} 份）</span><small>展开备查链接</small></summary>
+        <div class="deal-sources-fold-body"><div class="consolidated-page-links">${activeProfile.sources.map((s) => feeRosterSource(s.url, `${s.label} ↗`)).join("")}</div></div>
       </details>
     `;
     return;
@@ -5401,62 +6202,174 @@ function renderCornerstones() {
   profilePane.hidden = true;
   profilePane.innerHTML = "";
 
-  const filtered = all.filter(p => {
-    if (state.csArchetype !== "all" && p.archetype !== state.csArchetype) return false;
+  const filtered = all.filter((p) => {
+    if (!csMatchesArchetypeFilter(p, state.csArchetype)) return false;
+    if (state.csScope === "multi" && (p.deals?.length || 0) < 2) return false;
     if (!q) return true;
     const text = normalizeSearchText([
       p.name, p.roleLabel, p.archetypeLabel, p.channel, p.profile, p.ownership,
-      ...(p.searchNames||[]),
-      ...p.signatories.map(s => `${s.name} ${s.shortName} ${s.manager}`),
-      ...(p.allocations||[]).map(a=>a.label),
-      ...(p.relationships||[]).map(r=>`${r.role} ${r.name}`),
-      ...p.deals.map(d => `${d.code} ${d.issuer} ${d.roleTag}`),
-      ...p.coSponsors.map(sp => sp.name)
+      ...(p.searchNames || []),
+      ...p.signatories.map((s) => `${s.name} ${s.shortName} ${s.manager}`),
+      ...(p.allocations || []).map((a) => a.label),
+      ...(p.relationships || []).map((r) => `${r.role} ${r.name}`),
+      ...p.deals.map((d) => `${d.code} ${d.issuer} ${d.roleTag}`),
+      ...p.coSponsors.map((sp) => sp.name),
     ].join(" "));
     return text.includes(q);
   });
 
-  listWrap.innerHTML = filtered.length ? `<div class="table-wrap"><table class="cs-table">
+  const decorated = filtered.map((p) => ({
+    p,
+    tm: csProfileTicketMetrics(p),
+    rm: csProfileReturnMetrics(p, offerMetaByRound, today),
+  }));
+
+  const sortMode = state.csSort || "total";
+  decorated.sort((a, b) => {
+    const aPaused = a.p.deals[0]?.status === "paused" ? 1 : 0;
+    const bPaused = b.p.deals[0]?.status === "paused" ? 1 : 0;
+    if (aPaused !== bPaused) return aPaused - bPaused;
+    if (sortMode === "median") {
+      return (b.tm.medianUsd || 0) - (a.tm.medianUsd || 0) || (b.tm.totalUsd || 0) - (a.tm.totalUsd || 0);
+    }
+    if (sortMode === "return") {
+      const ar = Number.isFinite(a.rm.cumRetPct) ? a.rm.cumRetPct : -1e9;
+      const br = Number.isFinite(b.rm.cumRetPct) ? b.rm.cumRetPct : -1e9;
+      if (ar !== br) return br - ar;
+      return (b.tm.totalUsd || 0) - (a.tm.totalUsd || 0);
+    }
+    if (sortMode === "deals") {
+      return (b.p.deals.length - a.p.deals.length) || ((b.tm.totalUsd || 0) - (a.tm.totalUsd || 0));
+    }
+    return (b.tm.totalUsd || 0) - (a.tm.totalUsd || 0) || a.p.id.localeCompare(b.p.id);
+  });
+
+  if (!decorated.length) {
+    listWrap.innerHTML = `<div class="empty-state-row"><p>未找到匹配的基石投资者</p><button type="button" data-cs-reset>清除全部筛选</button></div>`;
+    return;
+  }
+
+  const totalRows = decorated.length;
+  const pageCount = Math.max(1, Math.ceil(totalRows / CS_PAGE_SIZE));
+  state.csPage = Math.min(Math.max(1, Number(state.csPage) || 1), pageCount);
+  const startIdx = (state.csPage - 1) * CS_PAGE_SIZE;
+  const pageItems = decorated.slice(startIdx, startIdx + CS_PAGE_SIZE);
+  const endIdx = startIdx + pageItems.length;
+
+  const rowsHtml = pageItems.map(({ p, tm, rm }) => {
+    const deal = p.deals[0];
+    const archLabel = csDisplayArchetypeLabel(p);
+    const uboBg = p.ranking
+      ? `${p.ranking.metric} ${p.ranking.currency} ${offeringNumber(p.ranking.amountHundredMillion, 0)}亿 · 行业第 ${p.ranking.rank}`
+      : p.profile || p.ownership || "";
+    const spvList = p.signatories.map((s) => (s.shortName && s.shortName !== p.name ? s.shortName : s.name)).filter((n) => n && n !== p.name);
+    const spvLine = spvList.length
+      ? `<span class="cs-spv-nest">签约载体：${escapeHtml(spvList.slice(0, 2).join(" / "))}${spvList.length > 2 ? ` 等 ${spvList.length} 家` : ""}</span>`
+      : (p.ownership ? `<span class="cs-spv-nest">${escapeHtml(p.ownership)}</span>` : "");
+
+    const dealCountBadge = p.deals.length >= 2
+      ? `<span class="cs-deal-count-pill is-multi">共 ${p.deals.length} 宗</span>`
+      : `<span class="cs-deal-count-pill">单项目</span>`;
+    const extraDealsHint = p.deals.length >= 2
+      ? `及 ${p.deals.slice(1, 3).map((d) => d.issuer).join("、")}${p.deals.length > 3 ? ` 等` : ""}`
+      : `${deal.statusLabel} · ${deal.date}`;
+
+    let ticketCellHtml = "";
+    if (tm.n >= 2) {
+      ticketCellHtml = `
+        <div class="cs-ticket-main"><strong>中位 ${formatCsUsd(tm.medianUsd)}</strong><span class="cs-ticket-tot">累计 ${formatCsUsd(tm.totalUsd)}</span></div>
+        ${renderCsTicketWhisker(tm, false)}
+        <small class="cs-ticket-range">下限 ${formatCsUsd(tm.minUsd, "$")} – 上限 ${formatCsUsd(tm.maxUsd, "$")}</small>
+      `;
+    } else if (tm.n === 1) {
+      ticketCellHtml = `
+        <div class="cs-ticket-main"><strong>${formatCsUsd(tm.medianUsd)}</strong></div>
+        ${renderCsTicketWhisker(tm, false)}
+        <small class="cs-ticket-range">${tm.totalHkd ? formatChineseUnitAmount(tm.totalHkd, "HKD") : ""}${deal.ratioText ? ` · ${deal.ratioText}` : ""}</small>
+      `;
+    } else {
+      ticketCellHtml = `<strong>${escapeHtml(deal.commitmentText)}</strong>`;
+    }
+
+    let retCellHtml = "";
+    if (rm.state === "ready") {
+      const lockSplit = rm.unlockedN && rm.lockedN
+        ? `${rm.unlockedN} 解禁 · ${rm.lockedN} 禁售`
+        : rm.unlockedN
+          ? `${rm.unlockedN === 1 ? "已解禁封顶" : `全部 ${rm.unlockedN} 宗已解禁`}`
+          : `${rm.lockedN === 1 ? "禁售期中" : `${rm.lockedN} 宗禁售中`}`;
+      retCellHtml = `
+        <span class="cs-ret-badge ${csReturnToneClass(rm.cumRetPct)}">${formatCsPct(rm.cumRetPct)}</span>
+        <small class="cs-pnl-sub ${csReturnToneClass(rm.cumRetPct)}">${formatCsUsdSigned(rm.totalPnlUsd)}</small>
+        <small class="cs-lock-sub">${escapeHtml(lockSplit)}${rm.pricedN >= 2 ? ` · ${rm.winN}/${rm.pricedN} 盈` : ""}</small>
+      `;
+    } else if (rm.state === "paused") {
+      retCellHtml = `<span class="cs-ret-muted">发售搁置</span><small class="cs-lock-sub">未挂牌交割</small>`;
+    } else if (rm.state === "loading") {
+      retCellHtml = `<span class="cs-ret-muted">同步中…</span><small class="cs-lock-sub">${rm.unlockedN ? "解禁收盘价核验" : "最新收盘价核验"}</small>`;
+    } else {
+      retCellHtml = `<span class="cs-ret-muted">待同步</span>`;
+    }
+
+    const bankRank = cornerstoneBankRanking(p.deals, bankIndex).ranked;
+    const multiBanks = bankRank.filter((x) => x.deals.length >= 2).slice(0, 3);
+    const bankCellHtml = multiBanks.length
+      ? multiBanks.map((x) => `<span class="cs-bank-chip">${escapeHtml(x.bank)} <b>${x.deals.length}</b></span>`).join("")
+      : (bankRank.slice(0, 3).length
+          ? bankRank.slice(0, 3).map((x) => `<span class="cs-bank-chip is-light">${escapeHtml(x.bank)}</span>`).join("")
+          : (p.coSponsors || []).slice(0, 2).map((sp) => `<span class="cs-bank-chip is-light">${escapeHtml(cornerstoneBankName(sp.name))}</span>`).join("")) || '<span class="muted">—</span>';
+
+    return `<tr class="cs-row" data-cs-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(p.name)} 基石画像">
+      <th scope="row" class="cs-ubo-cell">
+        <div class="cs-ubo-head"><strong>${escapeHtml(p.name)}</strong></div>
+        ${uboBg ? `<div class="cs-ubo-bg">${escapeHtml(uboBg)}</div>` : ""}
+        ${spvLine}
+      </th>
+      <td class="cs-cat-td"><span class="cs-arch-badge">${escapeHtml(archLabel)}</span><small>${escapeHtml(p.channel)}</small></td>
+      <td class="cs-deals-td">
+        <div class="cs-deal-cell">
+          <div class="cs-deal-top">${dealCountBadge}<button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(deal.roundId)}">${escapeHtml(deal.issuer)} (${escapeHtml(deal.code)}) ↗</button></div>
+          <small>${escapeHtml(extraDealsHint)}</small>
+        </div>
+      </td>
+      <td class="col-num cs-ticket-cell">${ticketCellHtml}</td>
+      <td class="col-num cs-return-cell">${retCellHtml}</td>
+      <td class="cs-sponsors-td"><div class="cs-sponsors-cell">${bankCellHtml}</div></td>
+    </tr>`;
+  }).join("");
+
+  const paginationHtml = pageCount > 1
+    ? `<div class="pagination-bar cs-pagination-bar">
+        <div class="pagination-copy">
+          <strong>第 ${startIdx + 1}–${endIdx} 组</strong>
+          <span>共 ${totalRows} 组基石主体 · 第 ${state.csPage} / ${pageCount} 页（点击任一行查看逐笔组合与解禁回报）</span>
+        </div>
+        <div class="pagination-actions">
+          <button type="button" data-cs-page="${state.csPage - 1}" ${state.csPage <= 1 ? "disabled" : ""}>上一页</button>
+          <button type="button" data-cs-page="${state.csPage + 1}" ${state.csPage >= pageCount ? "disabled" : ""}>下一页</button>
+        </div>
+      </div>`
+    : `<div class="pagination-bar cs-pagination-bar"><div class="pagination-copy"><strong>共 ${totalRows} 组基石主体</strong><span>点击任一行查看逐笔 Ticket 结构、基金渠道与解禁封顶回报</span></div></div>`;
+
+  listWrap.innerHTML = `<div class="table-wrap"><table class="cs-table">
     <thead><tr>
-      <th scope="col">实控主体 / 背景与签约载体</th>
-      <th scope="col">画像与认购通道</th>
-      <th scope="col">参与项目与角色</th>
-      <th scope="col" class="col-num">实际获配金额 ↓</th>
-      <th scope="col">联动保荐机构</th>
+      <th scope="col">基石机构 / 实控与签约载体</th>
+      <th scope="col">投资者类别</th>
+      <th scope="col">参投项目</th>
+      <th scope="col" class="col-num">单笔 Ticket Size（美金 · 下限/中位/上限）</th>
+      <th scope="col" class="col-num">累计回报（解禁封顶）</th>
+      <th scope="col">同单投行（保荐 / OC）</th>
     </tr></thead>
-    <tbody>${filtered.map((p,rank) => {
-      const pending=p.deals[0]?.status==="paused";
-      const currencyGroup=pending?p.currency:"listed";
-      const prior=filtered[rank-1];
-      const previousGroup=prior?.deals[0]?.status==="paused"?prior.currency:"listed";
-      const groupHead=(rank===0||previousGroup!==currencyGroup)?`<tr><th scope="colgroup" colspan="5">${pending?"搁置发售 · "+escapeHtml(currencyGroup||"原币")+" 认购承诺":"已上市 · 按港元获配金额降序"}</th></tr>`:"";
-      const deal = p.deals[0];
-      const uboBg = p.ranking
-        ? `${p.ranking.metric} ${p.ranking.currency} ${offeringNumber(p.ranking.amountHundredMillion, 0)}亿 · 行业第 ${p.ranking.rank}`
-        : p.profile || p.ownership || "";
-      const spvList = p.signatories.map(s => s.shortName && s.shortName !== p.name ? s.shortName : s.name).filter(n => n && n !== p.name);
-      const spvLine = spvList.length
-        ? `<span class="cs-spv-nest">签约载体：${escapeHtml(spvList.slice(0, 2).join(" / "))}${spvList.length > 2 ? ` 等 ${spvList.length} 家` : ""}</span>`
-        : (p.ownership ? `<span class="cs-spv-nest">${escapeHtml(p.ownership)}</span>` : "");
-      return `${groupHead}<tr class="cs-row" data-cs-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(p.name)} 基石画像">
-        <th scope="row" class="cs-ubo-cell">
-          <div class="cs-ubo-head"><strong>${escapeHtml(p.name)}</strong><span class="cs-ubo-role">${escapeHtml(p.roleLabel)}</span></div>
-          ${uboBg ? `<div class="cs-ubo-bg">${escapeHtml(uboBg)}</div>` : ""}
-          ${spvLine}
-        </th>
-        <td><span class="cs-arch-badge">${escapeHtml(p.archetypeLabel)}</span><small>${escapeHtml(p.channel)}</small></td>
-        <td><div class="cs-deal-cell"><button type="button" class="cross-link-chip" data-cs-deal-round="${escapeHtml(deal.roundId)}">${escapeHtml(deal.issuer)} (${deal.code}) ↗</button><small>${escapeHtml(deal.statusLabel)} · ${escapeHtml(deal.roleTag)}${p.deals.length>1?` · 共 ${p.deals.length} 宗`:""}</small></div></td>
-        <td class="col-num" title="${escapeHtml(deal.rawCommitment)}"><strong>${escapeHtml(p.allocations?.length?p.commitmentText:deal.commitmentText)}</strong><small>${escapeHtml(deal.ratioText ? deal.ratioText.replace(/（.*）/, "") : "")}</small></td>
-        <td><div class="cs-sponsors-cell">${cornerstoneBankRanking(p.deals,bankIndex).ranked.filter(x=>x.deals.length>=2).slice(0,3).map(x=>escapeHtml(x.bank)+" · "+x.deals.length+"宗").join(" / ")}</div></td>
-      </tr>`;
-    }).join("")}</tbody></table></div>` : `<div class="empty-state-row"><p>未找到匹配的基石投资者</p><button type="button" data-cs-reset>清除筛选</button></div>`;
+    <tbody>${rowsHtml}</tbody>
+  </table></div>${paginationHtml}`;
 }
 
 function openCornerstoneProfile(csId, trigger = document.activeElement) {
-  if (!buildCornerstoneProfiles().some(p => cornerstoneProfileMatch(p,csId))) return false;
+  if (!buildCornerstoneProfiles().some((p) => cornerstoneProfileMatch(p, csId))) return false;
   p0SaveLocation(trigger);
   const previous = location.pathname + location.search;
   state.csId = csId;
+  state.csChannel = "all";
   state.view = "cornerstones";
   syncUrl("push", previous);
   switchView("cornerstones", false);
@@ -5473,6 +6386,7 @@ function returnCornerstones() {
   }
   const prevId = state.csId;
   state.csId = "";
+  state.csChannel = "all";
   state.view = "cornerstones";
   renderCornerstones();
   syncUrl("push", "");
@@ -5484,11 +6398,11 @@ if (typeof window !== "undefined") {
   window.YingSightCornerstones = Object.freeze({
     schemaVersion: 1,
     getProfiles: () => structuredClone(buildCornerstoneProfiles()),
-    getProfile: id => structuredClone(buildCornerstoneProfiles().find(p => cornerstoneProfileMatch(p,id)) || null),
+    getProfile: (id) => structuredClone(buildCornerstoneProfiles().find((p) => cornerstoneProfileMatch(p, id)) || null),
     getOfferings: () => structuredClone(eligibleCornerstoneCoverage()),
-    selectOfferings: criteria => structuredClone(selectCornerstoneOfferings(criteria)),
-    summarizeOfferings: criteria => structuredClone(summarizeCornerstoneOfferings(criteria)),
-    getAllocations: () => structuredClone(eligibleCornerstoneCoverage().flatMap(o=>o.allocations.map(a=>({...a,roundId:o.roundId,unit:o.unit}))))
+    selectOfferings: (criteria) => structuredClone(selectCornerstoneOfferings(criteria)),
+    summarizeOfferings: (criteria) => structuredClone(summarizeCornerstoneOfferings(criteria)),
+    getAllocations: () => structuredClone(eligibleCornerstoneCoverage().flatMap((o) => o.allocations.map((a) => ({ ...a, roundId: o.roundId, unit: o.unit })))),
   });
 }
 
@@ -5834,7 +6748,7 @@ function sortKey(record, field) {
   if (field === "sponsors") return { value: firstTextValue(sponsorLabels(record)), type: "text" };
   if (field === "structureType") return { value: issuerTypeInfo(record).rank, type: "number" };
   const durationMetric = dayMetricForField(field);
-  if (durationMetric) return { value: trackerRowDays(record, durationMetric).days, type: "number" };
+  if (durationMetric) return { value: typeof trackerRowDays === "function" ? trackerRowDays(record, durationMetric).days : durationValueForStats(record, { metric: durationMetric }), type: "number" };
   if (field === "issuerName") {
     const names = nameParts(record);
     return { value: `${names.primary || ""} ${names.secondary || ""}`.trim(), type: "text" };
@@ -6039,8 +6953,8 @@ function p0NiceStep(rawMax) {
 
 function renderMetrics() {
  const records=getBaseFilteredRecords(),root=document.getElementById('metricsGrid'),groups=p0Cohorts(records);
- const labels=(state.hkexStage==='applying'||state.hkexStage==='other')?{a1ToReceived:'备案接收',receivedToNotice:'通知签发'}:{a1ToReceived:'备案接收',receivedToNotice:'通知签发',a1ToListing:'A1 至上市'};
- const allLabels={a1ToReceived:'备案接收',receivedToNotice:'通知签发',a1ToListing:'A1 至上市'};
+ const labels=(state.hkexStage==='applying'||state.hkexStage==='other')?{a1ToReceived:'A1 至接收',a1ToNotice:'A1 至备案完成'}:{a1ToReceived:'A1 至接收',a1ToNotice:'A1 至备案完成',a1ToListing:'A1 至上市'};
+ const allLabels={a1ToReceived:'A1 至接收',a1ToNotice:'A1 至备案完成',receivedToNotice:'接收至备案',a1ToListing:'A1 至上市'};
  const pairs=records.map(r=>({record:r,entry:p0CohortEntry(r)})).filter(x=>x.entry);
  const donePairs=pairs.filter(x=>!x.entry.pending).sort((a,b)=>a.entry.days-b.entry.days||String(a.record.issuerName).localeCompare(String(b.record.issuerName),'en',{sensitivity:'base'}));
  const done=donePairs.map(x=>x.entry.days);
@@ -6061,8 +6975,8 @@ function renderMetrics() {
   : `<div class="stat-cell"><span class="stat-label">${kicker}</span><strong class="stat-val col-num">—</strong><small class="stat-sub">暂无办结样本</small></div>`;
 
  const overallStrip=`<div class="terminal-stat-strip cohort-overall-strip">
-  <div class="stat-cell"><span class="stat-label">全样本总中位（${basisText}）</span><strong class="stat-val col-num">${doneN?formatDayValue(allMid)+'d':'—'}</strong>${doneN>=5?`<small class="stat-sub">P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d · 均值 ${formatDayValue(allAvg)}d</small>`:doneN?`<small class="stat-sub">小样本（${doneN} 宗 · 均值 ${formatDayValue(allAvg)}d）</small>`:'<small class="stat-sub">暂无已办结样本</small>'}</div>
-  <div class="stat-cell"><span class="stat-label">有效统计总数</span><strong class="stat-val col-num">${totalN} 宗</strong><small class="stat-sub">已办结 ${doneN} 宗${waitN?` · 在途 ${waitN} 宗（已等中位 ${formatDayValue(allWait)}d）`:' · 无在途'}</small></div>
+  <div class="stat-cell"><span class="stat-label">全样本总中位（${basisText} · 自 A1 起算）</span><strong class="stat-val col-num">${doneN?formatDayValue(allMid)+'d':'—'}</strong>${doneN>=5?`<small class="stat-sub">P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d · 均值 ${formatDayValue(allAvg)}d</small>`:doneN?`<small class="stat-sub">小样本（${doneN} 宗 · 均值 ${formatDayValue(allAvg)}d）</small>`:'<small class="stat-sub">暂无已办结样本</small>'}</div>
+  <div class="stat-cell"><span class="stat-label">有效统计总数</span><strong class="stat-val col-num">${totalN} 宗</strong><small class="stat-sub">已办结 ${doneN} 宗${waitN?` · 在途 ${waitN} 宗（自 A1 已等中位 ${formatDayValue(allWait)}d）`:' · 无在途'}</small></div>
   ${extremeCell('最快办结',fastest,'asc')}
   ${extremeCell('最长办结',slowest,'desc')}
  </div>`;
@@ -6092,7 +7006,7 @@ function renderMetrics() {
   const consultActive=state.hkexStage==='applying'&&publicStatusKey(state.status)==='regulator_opinion';
   paceIntelStrip=`<div class="pace-intel-strip">
    <div class="pace-intel-card pace-consult-card">
-    <div class="pace-intel-head"><span>部委征询分流对比（在审项目）</span><div class="pace-sub-pills">
+    <div class="pace-intel-head"><span>部委征询分流对比（在审项目 · 统一自 A1 起算）</span><div class="pace-sub-pills">
      <button type="button" class="pace-mini-chip${consultActive?' is-active':''}" data-pace-filter-status="regulator_opinion">征询意见 ${consultRecs.length}</button>
      <button type="button" class="pace-mini-chip${state.hkexStage==='applying'&&publicStatusKey(state.status)==='supplement_requested'?' is-active':''}" data-pace-filter-status="supplement_requested">补材料 ${suppN}</button>
      <button type="button" class="pace-mini-chip${state.hkexStage==='applying'&&publicStatusKey(state.status)==='csrc_received'?' is-active':''}" data-pace-filter-status="csrc_received">已接收 ${recvN}</button>
@@ -6101,13 +7015,13 @@ function renderMetrics() {
     <div class="pace-consult-split">
      <button type="button" class="pace-split-box is-consult${consultActive?' is-active':''}" data-pace-filter-status="regulator_opinion">
       <span class="pace-split-label">征询主管部门意见</span>
-      <strong class="col-num">${consultRecs.length} 宗 · 接收后中位 ${cRecvMed!=null?formatDayValue(cRecvMed)+'d':'—'}</strong>
-      <small class="col-num">递表后已等中位 ${cA1Med!=null?formatDayValue(cA1Med)+'d':'—'}</small>
+      <strong class="col-num">${consultRecs.length} 宗 · A1 后已等中位 ${cA1Med!=null?formatDayValue(cA1Med)+'d':'—'}</strong>
+      <small class="col-num">其中接收后已等中位 ${cRecvMed!=null?formatDayValue(cRecvMed)+'d':'—'}</small>
      </button>
      <button type="button" class="pace-split-box is-other" data-pace-filter-status="all">
       <span class="pace-split-label">其他公开在审（补材料 / 已接收 / 待接收）</span>
-      <strong class="col-num">${otherPendingRecs.length} 宗 · 接收后中位 ${oRecvMed!=null?formatDayValue(oRecvMed)+'d':'—'}</strong>
-      <small class="col-num">递表后已等中位 ${oA1Med!=null?formatDayValue(oA1Med)+'d':'—'}</small>
+      <strong class="col-num">${otherPendingRecs.length} 宗 · A1 后已等中位 ${oA1Med!=null?formatDayValue(oA1Med)+'d':'—'}</strong>
+      <small class="col-num">其中接收后已等中位 ${oRecvMed!=null?formatDayValue(oRecvMed)+'d':'—'}</small>
      </button>
     </div>
    </div>
@@ -6128,10 +7042,10 @@ function renderMetrics() {
  }
 
  let scopeContextNote='';
- if(state.hkexStage==='applying'&&state.cohortMetric==='receivedToNotice'&&state.data?.records?.length){
-  const fullNoticeDone=state.data.records.filter(r=>typeof durationValueForStats(r,{metric:'receivedToNotice'})==='number').length;
+ if(state.hkexStage==='applying'&&(state.cohortMetric==='a1ToNotice'||state.cohortMetric==='receivedToNotice')&&state.data?.records?.length){
+  const fullNoticeDone=state.data.records.filter(r=>typeof durationValueForStats(r,{metric:'a1ToNotice'})==='number').length;
   if(fullNoticeDone>doneN){
-   scopeContextNote=`<div class="cohort-scope-hint"><span>当前范围为「上市申请中」，多数早先获发备案通知书的企业已挂牌上市。</span><button type="button" class="action-link-btn" data-hkex-stage="all">切换全口径含已上市（${fullNoticeDone} 宗已办结）→</button></div>`;
+   scopeContextNote=`<div class="cohort-scope-hint"><span>当前范围为「上市申请中」，多数早先获发备案通知书的企业已挂牌上市。</span><button type="button" class="action-link-btn" data-hkex-stage="all">切换全口径含已上市（${fullNoticeDone} 宗 A1→备案完成样本）→</button></div>`;
   }
  }
 
@@ -6150,7 +7064,7 @@ function renderMetrics() {
 
  const totalTrack=totalN?`<div class="cohort-month cohort-total-row" title="全样本总计：办结 ${doneN}/${totalN}${doneN?`；总中位 ${formatDayValue(allMid)}d`:''}"><time>全样本总计</time><span class="cohort-track">${trackContent(doneN,allP25,allP75,allMid,done)}</span><span class="cohort-done-col col-num">办结 ${doneN}/${totalN}</span><span class="cohort-wait-col col-num">${waitN?`在途 ${waitN} · ≥${formatDayValue(allWait)}d`:'全部办结'}</span></div>`:'';
 
- root.innerHTML=`<section class="cohort-panel${state.cohortCollapsed?' is-collapsed':''}"><header><div class="cohort-header-left"><nav aria-label="监管阶段">${Object.entries(labels).map(([k,label])=>`<button type="button" data-cohort-metric="${k}" aria-pressed="${state.cohortMetric===k}">${label}</button>`).join('')}</nav></div><button type="button" class="cohort-toggle-btn" data-cohort-collapse aria-label="${state.cohortCollapsed?'展开月度图':'收起月度图'}" aria-expanded="${!state.cohortCollapsed}">${state.cohortCollapsed?(allLabels[state.cohortMetric]||'趋势图')+' · 展开趋势图 ↓':'收起趋势图 ↑'}</button></header>${overallStrip}${paceIntelStrip}${scopeContextNote}${state.cohortCollapsed?p0FoldedCohort(records):`<div class="cohort-labels"><span>起始月</span><span class="cohort-track cohort-axis-track" aria-hidden="true">${[0,step,step*2,step*3].map(t=>`<i class="axis-tick" style="left:${pos(t)}%">${t?t+'d':'0'}</i>`).join('')}</span><span class="col-num">已办结</span><span class="col-num">在途进度</span></div>${totalTrack}<div class="cohort-months">${groups.length?groups.map(g=>`<button type="button" class="cohort-month${state.cohort===g.month?' is-active':''}" data-cohort-month="${g.month}" title="${g.month}：办结 ${g.n}/${g.N}；${g.n?`中位 ${formatDayValue(g.mid)}d，P25–P75 ${formatDayValue(g.p25)}–${formatDayValue(g.p75)}d`:'尚无办结样本'}${g.wait!==null?`；在途 ${g.pending} 家，中位已等 ${formatDayValue(g.wait)} 天（最短 ${formatDayValue(g.waitMin)} 天）`:''}"><time>${g.month}</time><span class="cohort-track">${trackContent(g.n,g.p25,g.p75,g.mid,g.pts)}</span><span class="cohort-done-col col-num">办结 ${g.n}/${g.N}</span><span class="cohort-wait-col col-num">${g.pending?`在途 ${g.pending} · ≥${formatDayValue(g.wait)}d`:'全部办结'}</span></button>`).join(''):'<span class="cohort-empty-msg">当前筛选暂无有效月度样本</span>'}</div><p class="cohort-key"><span><i class="legend-swatch is-solid"></i>已办结四分位与中位 (n≥5)　<i class="legend-swatch is-dot"></i>小样本实证点 (1≤n&lt;5)　右列单独列示在途数量与已等下限</span><span>${state.cohort?`<button type="button" class="cohort-clear-btn" data-cohort-month="">显示全部月份 (${state.cohort} ×)</button>`:''}<time>截至 ${state.data.meta.generatedAt.slice(0,10)}</time></span></p>`}</section>`;
+ root.innerHTML=`<section class="cohort-panel${state.cohortCollapsed?' is-collapsed':''}"><header><div class="cohort-header-left"><nav aria-label="监管阶段">${Object.entries(labels).map(([k,label])=>`<button type="button" data-cohort-metric="${k}" aria-pressed="${state.cohortMetric===k}">${label}</button>`).join('')}</nav></div><button type="button" class="cohort-toggle-btn" data-cohort-collapse aria-label="${state.cohortCollapsed?'展开月度图':'收起月度图'}" aria-expanded="${!state.cohortCollapsed}">${state.cohortCollapsed?(allLabels[state.cohortMetric]||'趋势图')+' · 展开趋势图 ↓':'收起趋势图 ↑'}</button></header>${overallStrip}${paceIntelStrip}${scopeContextNote}${state.cohortCollapsed?p0FoldedCohort(records):`<div class="cohort-labels"><span>A1 递表月</span><span class="cohort-track cohort-axis-track" aria-hidden="true">${[0,step,step*2,step*3].map(t=>`<i class="axis-tick" style="left:${pos(t)}%">${t?t+'d':'0'}</i>`).join('')}</span><span class="col-num">已办结</span><span class="col-num">在途进度</span></div>${totalTrack}<div class="cohort-months">${groups.length?groups.map(g=>`<button type="button" class="cohort-month${state.cohort===g.month?' is-active':''}" data-cohort-month="${g.month}" title="${g.month}：办结 ${g.n}/${g.N}；${g.n?`中位 ${formatDayValue(g.mid)}d，P25–P75 ${formatDayValue(g.p25)}–${formatDayValue(g.p75)}d`:'尚无办结样本'}${g.wait!==null?`；在途 ${g.pending} 家，中位已等 ${formatDayValue(g.wait)} 天（最短 ${formatDayValue(g.waitMin)} 天）`:''}"><time>${g.month}</time><span class="cohort-track">${trackContent(g.n,g.p25,g.p75,g.mid,g.pts)}</span><span class="cohort-done-col col-num">办结 ${g.n}/${g.N}</span><span class="cohort-wait-col col-num">${g.pending?`在途 ${g.pending} · ≥${formatDayValue(g.wait)}d`:'全部办结'}</span></button>`).join(''):'<span class="cohort-empty-msg">当前筛选暂无有效月度样本</span>'}</div><p class="cohort-key"><span><i class="legend-swatch is-solid"></i>已办结四分位与中位 (n≥5)　<i class="legend-swatch is-dot"></i>小样本实证点 (1≤n&lt;5)　右列单独列示在途数量与已等下限</span><span>${state.cohort?`<button type="button" class="cohort-clear-btn" data-cohort-month="">显示全部月份 (${state.cohort} ×)</button>`:''}<time>截至 ${state.data.meta.generatedAt.slice(0,10)}</time></span></p>`}</section>`;
 }
 
 // Row-level reading stays separate from cohort eligibility: an HKEX application
@@ -6172,20 +7086,77 @@ function trackerNoticeWait(record) {
   if(typeof days!=="number")return null;
   return {days,label:isStale?"上次披露":"已等",detail:`${start} 接收 · 截至 ${reference} · ${isStale?"最后一次可核的备案状态":"当前备案轮次"}`};
 }
+function trackerA1Wait(record) {
+  if(hkexListingStage(record)!=="applying"||record.csrcFilingRequired!==true||
+     !["csrc_received","regulator_opinion","supplement_requested","waiting_received"].includes(record.status)||
+     (record.noticeDate&&!record.noticeSupersededByCurrentFiling)) return null;
+  const start=record.noticeSupersededByCurrentFiling?(record.currentA1Date||null):(record.a1Date||record.currentA1Date);
+  if(!start) return null;
+  const asOf=state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf;
+  const isStale=(record.timelineFlags||[]).includes("csrc_status_absent_from_latest_official_snapshot");
+  const reference=isStale?record.csrcCurrentStatusSourceSnapshotDate:asOf;
+  const days=reference&&reference<=asOf?p0Elapsed(start,state.dayCountMode,reference):null;
+  if(typeof days!=="number")return null;
+  return {days,label:isStale?"上次披露":"已等",detail:`${start} 递交 A1 · 截至 ${reference} · ${isStale?"最后一次可核的备案状态":"当前申报轮次"}`};
+}
 function trackerRowDays(record,metric) {
   const done=durationValueForStats(record,{metric});
   if(typeof done==="number") return {days:done,label:"",detail:""};
+  if(metric==="a1ToNotice"){
+    const a1w=trackerA1Wait(record);
+    if(a1w)return a1w;
+  }
   if(metric==="receivedToNotice"){
     const notice=trackerNoticeWait(record);
     if(notice)return notice;
   }
-  const entry=p0CohortEntry(record,metric);
+  const entry=typeof p0CohortEntry==="function"?p0CohortEntry(record,metric):null;
   return entry?.pending?{days:entry.days,label:"已等",detail:""}:{days:null,label:"",detail:""};
 }
 function renderDays(record) {
- const m=trackerRowDays(record,state.cohortMetric||"a1ToReceived");
- const value=typeof m.days==="number"?`${m.label?m.label+" ":""}${formatDayValue(m.days)}d`:(m.label||"—");
- return `<span class="single-days"${m.detail?` title="${escapeHtml(m.detail)}"`:""}>${value}</span>`;
+ const rawMetric=state.cohortMetric||'a1ToReceived';
+ const metric=rawMetric==='receivedToNotice'?'a1ToNotice':rawMetric;
+ const entry=typeof p0CohortEntry==='function'?p0CohortEntry(record,metric):null;
+ const disp=(m)=>{
+  const s=durationValueForStats(record,{metric:m});
+  if(typeof s==='number')return s;
+  if(typeof durationValueForDisplay==='function'&&!record.noticeSupersededByCurrentFiling){
+   const d=durationValueForDisplay(record,m);
+   if(typeof d==='number')return d;
+  }
+  return null;
+ };
+ const v=disp(metric);
+ const vRecv=metric==='a1ToReceived'?v:disp('a1ToReceived');
+ const vNotice=metric==='a1ToNotice'?v:disp('a1ToNotice');
+ const vRecvNotice=disp('receivedToNotice');
+ if(metric==='a1ToNotice'){
+  const rowWait=(typeof vNotice==='number'||typeof trackerRowDays!=='function')?null:trackerRowDays(record,'a1ToNotice');
+  const recWait=(typeof vNotice==='number'||typeof trackerNoticeWait!=='function')?null:trackerNoticeWait(record);
+  const mainTxt=typeof vNotice==='number'
+   ? 'A1→备案 '+formatDayValue(vNotice)+'d'
+   : (typeof rowWait?.days==='number'?`${rowWait.label?rowWait.label+' ':''}${formatDayValue(rowWait.days)}d`:(rowWait?.label||'—'));
+  const subTxt=typeof vNotice==='number'
+   ? (typeof vRecvNotice==='number'?'接收→备案 '+formatDayValue(vRecvNotice)+'d':'')
+   : (typeof recWait?.days==='number'?`接收→备案 ${recWait.label||'已等'} ${formatDayValue(recWait.days)}d`:(recWait?.label?`接收状态：${recWait.label}`:''));
+  const tipAttr=(rowWait?.detail||recWait?.detail)?` title="${escapeHtml([rowWait?.detail,recWait?.detail].filter(Boolean).join(' ｜ '))}"`:'';
+  if(!subTxt)return `<span class="single-days"${tipAttr}>${mainTxt}</span>`;
+  return `<div class="days-stack"${tipAttr}><span class="single-days">${mainTxt}</span><small class="days-sub">${escapeHtml(subTxt)}</small></div>`;
+ }
+ if(metric==='a1ToListing'){
+  const mainTxt=typeof v==='number'?formatDayValue(v)+'d':entry?.pending?'已等 '+formatDayValue(entry.days)+'d':'—';
+  const subTxt=typeof vNotice==='number'
+   ? 'A1→备案 '+formatDayValue(vNotice)+'d'+(typeof vRecvNotice==='number'?' · 接收→备案 '+formatDayValue(vRecvNotice)+'d':'')
+   : '';
+  if(!subTxt)return `<span class="single-days">${mainTxt}</span>`;
+  return `<div class="days-stack"><span class="single-days">${mainTxt}</span><small class="days-sub">${subTxt}</small></div>`;
+ }
+ const mainTxt=typeof vRecv==='number'?formatDayValue(vRecv)+'d':entry?.pending?'已等 '+formatDayValue(entry.days)+'d':'—';
+ if(typeof vNotice==='number'){
+  const subTxt='A1→备案 '+formatDayValue(vNotice)+'d'+(typeof vRecvNotice==='number'?'（接收→备案 '+formatDayValue(vRecvNotice)+'d）':'');
+  return `<div class="days-stack"><span class="single-days">${typeof vRecv==='number'?'A1→接收 '+mainTxt:mainTxt}</span><small class="days-sub">${subTxt}</small></div>`;
+ }
+ return `<span class="single-days">${mainTxt}</span>`;
 }
 
 function renderPagination(total, pageCount, startIndex, endIndex) {
@@ -7280,26 +8251,47 @@ function bindDirectoryControls() {
 function bindCornerstoneControls() {
   const root = document.getElementById("cornerstonesView");
   if (!root) return;
-  document.getElementById("csSearch")?.addEventListener("input", e => { state.csQuery = e.target.value; renderCornerstones(); syncUrl(); });
-  document.getElementById("csResetBtn")?.addEventListener("click", () => { state.csQuery = ""; state.csArchetype = "all"; state.csId = ""; renderCornerstones(); syncUrl(); document.getElementById("csSearch")?.focus(); });
+  const resetCsList = () => {
+    state.csQuery = "";
+    state.csArchetype = "all";
+    state.csScope = "all";
+    state.csSort = "total";
+    state.csPage = 1;
+    state.csChannel = "all";
+    state.csId = "";
+  };
+  document.getElementById("csSearch")?.addEventListener("input", e => { state.csQuery = e.target.value; state.csPage = 1; renderCornerstones(); syncUrl(); });
+  document.getElementById("csSortSelect")?.addEventListener("change", e => { state.csSort = e.target.value || "total"; state.csPage = 1; renderCornerstones(); syncUrl(); });
+  document.getElementById("csResetBtn")?.addEventListener("click", () => { resetCsList(); renderCornerstones(); syncUrl(); document.getElementById("csSearch")?.focus(); });
   root.addEventListener("click", e => {
     if (e.target.closest("[data-global-firm]")) return;
     const dealTrigger = e.target.closest("[data-cs-deal-round]");
-    if (dealTrigger) { e.stopPropagation(); openOfferingDossier(dealTrigger.dataset.csDealRound); return; }
+    if (dealTrigger) {
+      if (e.target.closest("a,details,summary")) return;
+      e.stopPropagation();
+      openOfferingDossier(dealTrigger.dataset.csDealRound);
+      return;
+    }
+    const chanBtn = e.target.closest("[data-cs-channel]");
+    if (chanBtn) { state.csChannel = chanBtn.dataset.csChannel || "all"; renderCornerstones(); return; }
+    const pageBtn = e.target.closest("[data-cs-page]");
+    if (pageBtn && !pageBtn.disabled) { state.csPage = Math.max(1, Number(pageBtn.dataset.csPage) || 1); renderCornerstones(); syncUrl(); window.scrollTo(0, 0); return; }
+    const scopeBtn = e.target.closest("[data-cs-scope]");
+    if (scopeBtn) { state.csScope = scopeBtn.dataset.csScope || "all"; state.csPage = 1; renderCornerstones(); syncUrl(); return; }
     const originBtn = e.target.closest("[data-cs-origin-back]");
     if (originBtn) { if (history.state?.fromUrl) history.back(); return; }
     const backBtn = e.target.closest("[data-cs-return]");
     if (backBtn) { returnCornerstones(); return; }
     const resetBtn = e.target.closest("[data-cs-reset]");
-    if (resetBtn) { state.csQuery = ""; state.csArchetype = "all"; state.csId = ""; renderCornerstones(); syncUrl(); return; }
+    if (resetBtn) { resetCsList(); renderCornerstones(); syncUrl(); return; }
     const archBtn = e.target.closest("[data-cs-archetype]");
-    if (archBtn) { state.csArchetype = archBtn.dataset.csArchetype; renderCornerstones(); syncUrl(); return; }
+    if (archBtn) { state.csArchetype = archBtn.dataset.csArchetype; state.csPage = 1; renderCornerstones(); syncUrl(); return; }
     const row = e.target.closest("tr[data-cs-id]");
     if (row) openCornerstoneProfile(row.dataset.csId, row);
   });
   root.addEventListener("keydown", e => {
     if (e.key !== "Enter" && e.key !== " ") return;
-    if (e.target.closest("button,a,input,select")) return;
+    if (e.target.closest("button,a,input,select,summary")) return;
     const dealRow = e.target.closest("tr[data-cs-deal-round]");
     if (dealRow) { e.preventDefault(); openOfferingDossier(dealRow.dataset.csDealRound); return; }
     const row = e.target.closest("tr[data-cs-id]");
@@ -7656,6 +8648,7 @@ function resolveTransactionIssuerLinks(row) {
       addRound(obj.roundId || obj.offeringRoundId || obj.dossierId);
     }
   }
+  if (!issuerIds.size && !roundIds.size) return { records: [], rounds: [] };
   const allRecords = state.data?.records || [];
   const allRounds = eligibleFeeRoster();
   const matchedRecords = [...issuerIds].map(id => allRecords.find(x => x.id === id)).filter(Boolean);
@@ -8256,6 +9249,7 @@ function bindTransactionControls(){
  });
 }
 if (typeof window !== "undefined") {
+  window.__yingsightDataKey=() => [state.feeRosterData?.rows?.length||0,state.feeRosterData?.paused?.length||0,state.transactionData?.cases?.length||0,state.transactionData?.cases?.[0]?.id||"",state.transactionData?.cases?.at?.(-1)?.id||""].join(":");
   window.YingSightTransactions=Object.freeze({schemaVersion:1,getCases:()=>structuredClone(state.transactionData?.cases||[]),getEffectiveMandates:rowOrId=>{const r=typeof rowOrId==="string"?transactionCase(rowOrId):rowOrId;return structuredClone(effectiveTransactionMandates(r));},getCaseEnrichment:id=>structuredClone(TX_CASE_ENRICHMENTS[id]||null),select:filters=>structuredClone(transactionRows({...defaults,...filters})),getCase:id=>structuredClone(transactionCase(id)||null),getDocuments:()=>structuredClone(state.transactionData?.documents||{})});
 }
 
@@ -8328,7 +9322,7 @@ function emptyPayload(message) {
 function applyStateFromUrl() {
   const p=new URLSearchParams(window.location.search);
   for(const k of trackedStateKeys) state[k]=defaults[k];
-  for(const k of trackedStateKeys) if(p.has(k)) state[k]=["page","feePage","dirPage"].includes(k)?Math.max(1,Math.floor(Number(p.get(k))||1)):k==="cohortCollapsed"?p.get(k)==="true":p.get(k);
+  for(const k of trackedStateKeys) if(p.has(k)) state[k]=["page","feePage","dirPage","csPage"].includes(k)?Math.max(1,Math.floor(Number(p.get(k))||1)):k==="cohortCollapsed"?p.get(k)==="true":p.get(k);
   const alias={ap:"directory",pace:"tracker",paused:"pausedOfferings",offerings:"pausedOfferings",sponsors:"sponsorLeaderboard",dossier:"dossiers",transactions:"precedents"};state.view=alias[state.view]||state.view;
   if(p.has("group"))state.feePhase={paused:"paused",priced:"listed",other:"other"}[p.get("group")]||state.feePhase;
   state.roundId=p.get("roundId")||p.get("dossierId")||"";state.dossierId=state.roundId;
@@ -8338,6 +9332,11 @@ function applyStateFromUrl() {
   if(state.view==="precedents"&&p.get("mode")==="compare")state.transactionMode="compare";
   if(p.has("from"))state[state.view==="fees"?"feeDateFrom":"dateFrom"]=p.get("from");
   if(p.has("to"))state[state.view==="fees"?"feeDateTo":"dateTo"]=p.get("to");
+  if(state.cohortMetric==="receivedToNotice")state.cohortMetric="a1ToNotice";
+  if(state.daySortField==="calendarDaysReceivedToNotice")state.daySortField="calendarDaysA1ToNotice";
+  if(state.daySortField==="businessDaysReceivedToNotice")state.daySortField="businessDaysA1ToNotice";
+  if(state.sortField==="calendarDaysReceivedToNotice")state.sortField="calendarDaysA1ToNotice";
+  if(state.sortField==="businessDaysReceivedToNotice")state.sortField="businessDaysA1ToNotice";
   if((state.hkexStage==="applying"||state.hkexStage==="other")&&state.cohortMetric==="a1ToListing")state.cohortMetric="a1ToReceived";
 }
 
@@ -8533,7 +9532,20 @@ document.querySelector(".brand-home")?.addEventListener("click", event => {
 });
 
 document.querySelectorAll(".segment").forEach((button) => {
-  button.addEventListener("click", () => updateTracker({ status: button.dataset.status }));
+  button.addEventListener("click", () => {
+    const nextStatus = button.dataset.status;
+    const patch = { status: nextStatus };
+    if (nextStatus === "notice_issued") {
+      patch.cohortMetric = "a1ToNotice";
+      patch.cohort = "";
+      patch.daySortField = dayMetricField("a1ToNotice");
+    } else if (["csrc_received", "waiting_received"].includes(nextStatus) && state.cohortMetric === "a1ToNotice") {
+      patch.cohortMetric = "a1ToReceived";
+      patch.cohort = "";
+      patch.daySortField = dayMetricField("a1ToReceived");
+    }
+    updateTracker(patch);
+  });
 });
 
 document.querySelectorAll("[data-hkex-stage]").forEach((button) => {
@@ -8586,10 +9598,13 @@ document.getElementById("sortField").addEventListener("change", (event) => {
 });
 
 document.getElementById("daySortField").addEventListener("change", (event) => {
+  const nextField = event.target.value;
+  const nextMetric = dayMetricForField(nextField);
   updateTracker({
-    daySortField: event.target.value,
-    sortField: event.target.value,
-    sortDir: defaultSortDir(event.target.value)
+    daySortField: nextField,
+    sortField: nextField,
+    sortDir: defaultSortDir(nextField),
+    ...(nextMetric && ["a1ToReceived", "a1ToNotice", "a1ToListing"].includes(nextMetric) ? { cohortMetric: nextMetric, cohort: "" } : {})
   });
 });
 
@@ -9171,10 +10186,12 @@ function p0CohortEntry(r,metric=state.cohortMetric){
  if(isSpecialTimingRoute(r))return null;
  const completed=durationValueForStats(r,{metric}),stage=hkexListingStage(r);let start,end;
  if(metric==='a1ToReceived'){start=r.a1ReceiptTiming?.a1Date||(stage!=='listed'&&r.calendarDaysA1ToReceived>180?r.currentA1Date:r.a1Date);end=r.a1ReceiptTiming?.receivedDate||r.csrcReceivedDate;}
+ else if(metric==='a1ToNotice'){start=r.a1Date;end=r.noticeDate;}
  else if(metric==='receivedToNotice'){start=r.csrcReceivedDate;end=r.noticeDate;}else{start=r.a1Date;end=r.hkexListingDate;}
  if(typeof completed==='number'&&start)return{month:start.slice(0,7),days:completed,pending:false};
  if(stage!=='applying'||r.hkexApplicationStatusGroup!=='active'||end||r.hkexConfidentialFilingDate||(r.timelineFlags||[]).includes('confidential_route_suspected')||metric!=='a1ToListing'&&(r.csrcFilingRequired!==true||r.noticeSupersededByCurrentFiling)||metric==='a1ToReceived'&&(r.status!=='waiting_received'||r.csrcCurrentReceivedDate||r.csrcFirstReceivedDate))return null;
  if(metric==='a1ToReceived')start=r.currentA1Date||r.a1Date;
+ else if(metric==='a1ToNotice')start=r.a1Date||r.currentA1Date;
  const days=P0_WAITING.asOf===state.data.meta.generatedAt?.slice(0,10)&&P0_WAITING.dates[start]?P0_WAITING.dates[start][state.dayCountMode]:p0Elapsed(start,state.dayCountMode);if(!start||start<(state.data.meta.csrcRegimeEffectiveDate||'2023-03-31')||typeof days!=='number')return null;
  return{month:start.slice(0,7),days,pending:true};
 }

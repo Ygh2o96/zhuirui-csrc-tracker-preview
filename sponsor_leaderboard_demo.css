@@ -1119,17 +1119,44 @@
 .sponsor-league .drawer-paused-btn {
   border: 1px solid var(--st-warn-bd, #ebd39e);
   border-radius: 4px;
-  padding: 4px 9px;
+  padding: 5px 10px;
   background: #ffffff;
   color: var(--st-warn-fg, #854d0e);
   font-size: 11.5px;
   font-weight: 600;
+  text-align: left;
+  line-height: 1.4;
   cursor: pointer;
 }
 
 .sponsor-league .drawer-paused-btn:hover {
   background: #fdf6e7;
   border-color: var(--amber);
+}
+
+.sponsor-league .drawer-fa-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: #fafbfc;
+}
+
+.sponsor-league .drawer-fa-bar-copy strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.sponsor-league .drawer-fa-bar-copy span {
+  display: block;
+  margin-top: 2px;
+  font-size: 10.5px;
+  color: var(--muted);
 }
 
 .sponsor-league .drawer-fee-actions {
@@ -1175,17 +1202,37 @@
 }
 
 .sponsor-league .deal-item[data-issuer-id],
-.sponsor-league .deal-item[data-global-round] {
+.sponsor-league .deal-item[data-global-round],
+.sponsor-league .deal-item[data-global-tx] {
   cursor: pointer;
+  text-align: left;
 }
 
 .sponsor-league .deal-item[data-issuer-id]:hover,
 .sponsor-league .deal-item[data-global-round]:hover,
+.sponsor-league .deal-item[data-global-tx]:hover,
 .sponsor-league .deal-item[data-issuer-id]:focus-visible,
-.sponsor-league .deal-item[data-global-round]:focus-visible {
+.sponsor-league .deal-item[data-global-round]:focus-visible,
+.sponsor-league .deal-item[data-global-tx]:focus-visible {
   border-color: var(--sl-accent-bd);
   background: #f4f7fa;
   box-shadow: inset 3px 0 0 var(--sl-accent);
+}
+
+.sponsor-league .deal-item.is-fa-deal .fa-deal-code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.sponsor-league .deal-item.is-fa-deal .fa-deal-mech {
+  display: block;
+  margin-top: 3px;
+  font-size: 11.5px;
+  line-height: 1.48;
+  color: var(--muted);
+  text-align: left;
 }
 
 .sponsor-league .deal-item-head {

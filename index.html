@@ -10,9 +10,9 @@
     />
     <meta name="theme-color" content="#f6f6f3" />
     <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=fc36e514bed60b31" />
+    <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=8fd4e49701677fad" />
     <link rel="stylesheet" href="deal_diagram_kit.css?v=1759464c1aca8a91" />
-    <link rel="stylesheet" href="styles.css?v=e2f385aae7e6b4fe" />
+    <link rel="stylesheet" href="styles.css?v=55715d22991d12e6" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -226,8 +226,8 @@
                   <label class="filter-control">
                     <span>日期口径</span>
                     <select id="dateField" name="dateField" autocomplete="off">
-                      <option value="a1Date">A1 锚点</option>
-                      <option value="currentA1Date">当前 A1</option>
+                      <option value="a1Date">A1 递表（备案锚点）</option>
+                      <option value="currentA1Date">当前轮 A1 递表</option>
                       <option value="csrcReceivedDate">首轮接收</option>
                       <option value="csrcCurrentReceivedDate">当前接收</option>
                       <option value="noticeDate">备案通知书</option>
@@ -255,13 +255,13 @@
                     <select id="sortField" name="sortField" autocomplete="off">
                       <option value="issuerName">发行人名称</option>
                       <option value="status">状态</option>
-                      <option value="a1Date">A1 锚点</option>
-                      <option value="currentA1Date">当前 A1</option>
+                      <option value="a1Date">A1 递表（备案锚点）</option>
+                      <option value="currentA1Date">当前轮 A1 递表</option>
                       <option value="csrcReceivedDate">首轮接收</option>
                       <option value="csrcCurrentReceivedDate">当前接收</option>
                       <option value="noticeDate">备案通知书</option>
                       <option value="hkexListingDate">上市日期</option>
-                      <option value="__days__">阶段天数</option>
+                      <option value="__days__">A1起算耗时</option>
                       <option value="aShareMarketCapAtA1RmbBn" id="aShareMarketCapSortOption">A1 日 A 股市值</option>
                       <option value="listingMarketCapHkdBn" id="listingMarketCapSortOption">上市日市值</option>
                       <option value="structureType">发行人类别</option>
@@ -294,12 +294,10 @@
                       <th class="col-date"><button class="th-sort" id="dateColumn5Sort" type="button" data-sort-field="noticeDate"><span class="th-zh" id="dateColumn5Zh">通知书</span><span class="th-en" id="dateColumn5En" hidden></span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="all-only-col col-listing-date"><button class="th-sort" type="button" data-sort-field="hkexListingDate"><span class="th-zh">上市日</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
                       <th class="days-header-cell col-num">
-                        <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">耗时</span><span class="sort-indicator" aria-hidden="true"></span></button>
-                        <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="天数口径" autocomplete="off" hidden>
+                        <button class="th-sort" type="button" data-sort-field="__days__"><span class="th-zh">A1起算耗时</span><span class="sort-indicator" aria-hidden="true"></span></button>
+                        <select id="daySortField" class="days-metric-select" name="daySortField" aria-label="A1起算耗时口径" autocomplete="off">
                           <option value="calendarDaysA1ToReceived">A1至接收</option>
-                          <option value="calendarDaysCurrentA1ToReceived">当前A1至接收</option>
-                          <option value="calendarDaysReceivedToNotice">接收至通知</option>
-                          <option value="calendarDaysA1ToNotice">A1至通知</option>
+                          <option value="calendarDaysA1ToNotice">A1至备案完成</option>
                         </select>
                       </th>
                       <th class="col-type"><button class="th-sort" type="button" data-sort-field="structureType"><span class="th-zh">类别</span><span class="sort-indicator" aria-hidden="true"></span></button></th>
@@ -362,18 +360,35 @@
           <section class="terminal-stat-strip cs-insight-strip" id="csInsightStrip" aria-label="基石投资者统计概览"></section>
           <section class="cs-thermometer-wrap" id="csThermometer" hidden></section>
           <div class="cs-toolbar" id="csToolbar">
-            <label class="search-box cs-search-box">
-              <span class="search-glyph" aria-hidden="true">⌕</span>
-              <input id="csSearch" type="search" autocomplete="off" aria-label="搜索基石投资者" placeholder="搜索基石机构、持有人、签约实体、参与新股或保荐机构…" />
-            </label>
-            <div class="cs-archetype-tabs" id="csArchetypeTabs" role="tablist" aria-label="投资者类别">
-              <button type="button" class="dir-stage-btn is-active" data-cs-archetype="all" aria-pressed="true">全部</button>
-              <button type="button" class="dir-stage-btn" data-cs-archetype="public_fund" aria-pressed="false">内地公募管理人</button>
-              <button type="button" class="dir-stage-btn" data-cs-archetype="hk_family" aria-pressed="false">港资家族 / 个人</button>
-              <button type="button" class="dir-stage-btn" data-cs-archetype="strategic" aria-pressed="false">产业投资</button>
-              <button type="button" class="dir-stage-btn" data-cs-archetype="asset_mgmt" aria-pressed="false">私募 / 资管</button>
+            <div class="cs-toolbar-row cs-toolbar-top">
+              <label class="search-box cs-search-box">
+                <span class="search-glyph" aria-hidden="true">⌕</span>
+                <input id="csSearch" type="search" autocomplete="off" aria-label="搜索基石投资者" placeholder="搜索基石品牌、管理人、基金载体、参与新股或保荐投行…" />
+              </label>
+              <div class="cs-scope-tabs" role="group" aria-label="机构活跃度范围">
+                <button type="button" class="dir-stage-btn is-active" data-cs-scope="all" aria-pressed="true">全部主体</button>
+                <button type="button" class="dir-stage-btn" data-cs-scope="multi" aria-pressed="false">多单机构 (≥2宗)</button>
+              </div>
+              <label class="inline-select-pill cs-sort-pill" aria-label="排序维度">
+                <span>排序</span>
+                <select id="csSortSelect" autocomplete="off">
+                  <option value="total">累计规模 ↓</option>
+                  <option value="median">单笔中位 Ticket ↓</option>
+                  <option value="return">累计回报（解禁封顶）↓</option>
+                  <option value="deals">参投宗数 ↓</option>
+                </select>
+              </label>
+              <button type="button" class="clear-button" id="csResetBtn">重置</button>
             </div>
-            <button type="button" class="clear-button" id="csResetBtn">重置</button>
+            <div class="cs-archetype-tabs" id="csArchetypeTabs" role="tablist" aria-label="投资者类别">
+              <button type="button" class="dir-stage-btn is-active" data-cs-archetype="all" aria-pressed="true">全部类别</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="sovereign" aria-pressed="false">主权 / 养老金</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="international" aria-pressed="false">国际长线</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="public_fund" aria-pressed="false">内地公募 / 理财</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="asset_mgmt" aria-pressed="false">私募 / 对冲</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="strategic" aria-pressed="false">产业战投</button>
+              <button type="button" class="dir-stage-btn" data-cs-archetype="hk_family" aria-pressed="false">家族 / 个人</button>
+            </div>
           </div>
           <div id="cornerstoneListWrap"></div>
           <article id="cornerstoneProfilePane" class="cs-profile-pane" aria-label="基石投资者详情档案" hidden></article>
@@ -792,8 +807,8 @@
     </dialog>
 
     <script src="deal_diagram_kit.js?v=6edda8c3e60150f0"></script>
-    <script src="app.js?v=1d794e97ab9b9b53"></script>
-    <script src="sponsor_leaderboard_demo.js?v=36303b3dc5a0b8ab"></script>
+    <script src="app.js?v=25705275b1b78ad9"></script>
+    <script src="sponsor_leaderboard_demo.js?v=c62e3b64e2b53505"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>
 </html>

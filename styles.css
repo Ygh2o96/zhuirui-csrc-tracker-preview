@@ -9980,3 +9980,689 @@ ul.offering-cornerstone-members li p {
     grid-column: 1 / -1;
   }
 }
+
+/* ==========================================================================
+   2026-11-24 Upgrade:
+   1) Unified A1-Anchored Regulatory Duration Display & Header Key (#trackerView)
+   2) Cornerstone Ticket-Size Whiskers, Lockup-Capped Cumulative Return & Tear Sheet (#cornerstonesView)
+   ========================================================================== */
+
+/* 1. Tracker A1 Duration Header & Stacked Sub-line */
+.days-header-cell {
+  min-width: 112px;
+}
+
+.days-header-cell .days-metric-select {
+  display: block;
+  margin: 3px 0 0 auto;
+  padding: 1px 5px;
+  max-width: 116px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.days-header-cell .days-metric-select:hover,
+.days-header-cell .days-metric-select:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.days-td {
+  min-width: 108px;
+}
+
+.days-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.days-stack .single-days {
+  font-weight: 680;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.days-stack .days-sub {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 2. Cornerstone Toolbar & 4-Column Stat Strip */
+.cs-insight-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cs-stat-ret.is-up {
+  color: var(--st-ok-fg);
+}
+
+.cs-stat-ret.is-down {
+  color: var(--st-danger-fg);
+}
+
+.cs-stat-pnl {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.88;
+}
+
+.cs-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.cs-toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cs-scope-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cs-sort-pill select {
+  font-weight: 600;
+}
+
+.cs-archetype-tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/* 3. Cornerstone List Table: Ticket Whisker, Lockup-Capped Return & Co-Banks */
+.cs-table {
+  min-width: 1020px;
+}
+
+.cs-ubo-cell {
+  max-width: 280px;
+}
+
+.cs-ubo-bg {
+  margin-top: 3px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cs-spv-nest {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--subtle);
+}
+
+.cs-cat-td {
+  min-width: 124px;
+  white-space: nowrap;
+}
+
+.cs-deals-td {
+  min-width: 185px;
+}
+
+.cs-deal-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cs-deal-count-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  background: var(--bg-subtle);
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cs-deal-count-pill.is-multi {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.cs-ticket-cell {
+  min-width: 176px;
+}
+
+.cs-ticket-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.cs-ticket-main strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cs-ticket-tot {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.cs-whisker-svg {
+  display: block;
+  margin: 3px 0 2px auto;
+  overflow: visible;
+}
+
+.cs-profile-kpis .cs-whisker-svg {
+  margin: 4px 0 2px 0;
+}
+
+.cs-whisker-track {
+  stroke: #dde2e8;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.cs-whisker-grid {
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
+
+.cs-whisker-range {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.78;
+}
+
+.cs-whisker-cap {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.cs-whisker-dot {
+  fill: var(--accent);
+  stroke: #ffffff;
+  stroke-width: 1.4;
+}
+
+.cs-whisker-dot.is-single {
+  fill: #24577f;
+}
+
+.cs-ticket-range {
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.cs-return-cell {
+  min-width: 132px;
+}
+
+.cs-ret-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--st-neutral-bd);
+  background: var(--st-neutral-bg);
+  color: var(--st-neutral-fg);
+}
+
+.cs-ret-badge.is-up {
+  border-color: var(--st-ok-bd);
+  background: var(--st-ok-bg);
+  color: var(--st-ok-fg);
+}
+
+.cs-ret-badge.is-down {
+  border-color: var(--st-danger-bd);
+  background: var(--st-danger-bg);
+  color: var(--st-danger-fg);
+}
+
+.cs-pnl-sub {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-pnl-sub.is-up {
+  color: var(--st-ok-fg) !important;
+}
+
+.cs-pnl-sub.is-down {
+  color: var(--st-danger-fg) !important;
+}
+
+.cs-lock-sub {
+  font-size: 10.5px !important;
+  color: var(--subtle) !important;
+}
+
+.cs-ret-muted {
+  display: inline-block;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.cs-sponsors-td {
+  min-width: 164px;
+}
+
+.cs-sponsors-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cs-bank-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cs-bank-chip b {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-bank-chip.is-light {
+  border-color: var(--line);
+  background: var(--bg-subtle);
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.cs-pagination-bar {
+  margin-top: 10px;
+}
+
+/* 4. Cornerstone Investor Profile Tear Sheet (#cornerstoneProfilePane) */
+.cs-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cs-spv-fold {
+  margin-top: 6px;
+}
+
+.cs-spv-fold summary {
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.cs-profile-kpis {
+  margin: 14px 0 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cs-master-portfolio {
+  margin-top: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.cs-portfolio-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.cs-portfolio-head h3 {
+  margin: 0 0 3px;
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.cs-portfolio-head .cs-profile-sub {
+  margin: 0;
+}
+
+.cs-channel-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.cs-channel-pill {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 8px;
+  background: var(--bg-subtle);
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cs-channel-pill:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.cs-channel-pill.is-active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.cs-deals-table {
+  min-width: 820px;
+}
+
+.cs-deals-table th[scope="row"],
+.cs-deals-table td {
+  padding: 10px;
+  vertical-align: top;
+  font-size: 12.5px;
+}
+
+.cs-deal-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cs-chan-td {
+  max-width: 320px;
+}
+
+.cs-chan-block + .cs-chan-block {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--soft-line);
+}
+
+.cs-chan-tag {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 10.5px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.cs-chan-detail {
+  font-size: 12px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.cs-acct-fold {
+  margin-top: 4px;
+}
+
+.cs-acct-fold summary {
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.cs-acct-fold ul {
+  margin: 4px 0 0;
+  padding-left: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.cs-ticket-td {
+  white-space: nowrap;
+}
+
+.cs-ticket-td strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cs-ticket-td small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.cs-lockup-td {
+  min-width: 170px;
+  white-space: nowrap;
+}
+
+.cs-px-line {
+  font-size: 12px;
+  color: var(--ink-2);
+  margin-bottom: 3px;
+}
+
+.cs-px-line strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.cs-lock-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-lock-tag.is-unlocked {
+  border: 1px solid var(--st-info-bd);
+  background: var(--st-info-bg);
+  color: var(--st-info-fg);
+}
+
+.cs-lock-tag.is-locked {
+  border: 1px solid var(--st-warn-bd);
+  background: var(--st-warn-bg);
+  color: var(--st-warn-fg);
+}
+
+.cs-ret-td {
+  white-space: nowrap;
+}
+
+.cs-ret-td small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+}
+
+.cs-src-td {
+  white-space: nowrap;
+}
+
+.cs-src-td a {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 4px 3px 0;
+}
+
+.cs-profile-bottom-grid {
+  margin-top: 18px;
+  align-items: start;
+}
+
+.cs-card-box {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-md);
+  padding: 14px 16px !important;
+  background: #fafaf8;
+}
+
+.cs-box-head h3 {
+  margin: 0 0 2px;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.cs-bank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cs-bank-row {
+  border: 1px solid var(--soft-line);
+  border-radius: 4px;
+  padding: 6px 10px;
+  background: var(--surface);
+}
+
+.cs-bank-row > summary {
+  display: grid;
+  grid-template-columns: 104px minmax(60px, 1fr) 44px;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.cs-bank-row > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cs-bank-name {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cs-bank-bar-track {
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: #e6ebf1;
+  overflow: hidden;
+}
+
+.cs-bank-bar-track i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.cs-bank-count {
+  text-align: right;
+  font-size: 11.5px;
+  color: var(--ink-2);
+}
+
+.cs-bank-deals {
+  margin: 8px 0 2px;
+  padding-left: 16px;
+  display: grid;
+  gap: 4px;
+  font-size: 11.5px;
+}
+
+.cs-more-banks {
+  margin-top: 4px;
+}
+
+.cs-more-banks > summary {
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 4px 2px;
+}
+
+.cs-more-banks .cs-bank-row {
+  margin-top: 6px;
+}
+
+@media (max-width: 960px) {
+  .cs-insight-strip,
+  .cs-profile-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-profile-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .cs-insight-strip,
+  .cs-profile-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .days-header-cell .days-metric-select {
+    margin-left: 0;
+  }
+}

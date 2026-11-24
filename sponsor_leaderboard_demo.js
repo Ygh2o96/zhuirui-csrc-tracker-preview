@@ -687,20 +687,151 @@ function normFirmKey(name) {
   return String(name || "").toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]/g, "");
 }
 
+const FA_TX_ROLE_LABELS = {
+  FA: "财务顾问 FA",
+  Sponsor: "新上市保荐人",
+  PlacingAgent: "配售代理",
+  Underwriter: "包销商",
+  RestructuringFA: "债务重组顾问",
+};
+
+let extDataEpoch = 0;
+let extDataCache = null;
+let feeStatsMemoKey = "";
+const feeStatsMemo = new Map();
+
+function ensureExtDataCache() {
+  if (typeof window === "undefined") {
+    return {
+      rosterRows: [],
+      roundByIssuer: new Map(),
+      roundByCode: new Map(),
+      listedBySponsor: new Map(),
+      pausedBySponsor: new Map(),
+      txCases: [],
+      mandatesByTxId: new Map(),
+      enrichByTxId: new Map(),
+      rtoFeeEntries: [],
+    };
+  }
+  const feesApi = window.YingSightOfferingFees || null;
+  const txApi = window.YingSightTransactions || null;
+  const dynKey = typeof window.__yingsightDataKey === "function" ? window.__yingsightDataKey() : "";
+  const cacheKey = `${extDataEpoch}|${dynKey}`;
+  if (extDataCache && extDataCache.feesApi === feesApi && extDataCache.txApi === txApi && extDataCache.cacheKey === cacheKey) {
+    return extDataCache;
+  }
+  const rawRows = feesApi?.getRows?.();
+  const rosterRows = Array.isArray(rawRows) ? rawRows : [];
+  const roundByIssuer = new Map();
+  const roundByCode = new Map();
+  const listedBySponsor = new Map();
+  const pausedBySponsor = new Map();
+  for (const row of rosterRows) {
+    if (row.issuerId && !roundByIssuer.has(row.issuerId)) roundByIssuer.set(row.issuerId, row);
+    if (row.code && !roundByCode.has(row.code)) roundByCode.set(row.code, row);
+    if (Array.isArray(row.institutions)) {
+      row.institutions.forEach((inst, idx) => {
+        const sid = inst?.sponsorId;
+        if (!sid) return;
+        if (row.route === "listed_offering") {
+          if (!listedBySponsor.has(sid)) listedBySponsor.set(sid, []);
+          listedBySponsor.get(sid).push({ row, idx });
+        } else if (row.route === "paused_offer") {
+          if (!pausedBySponsor.has(sid)) pausedBySponsor.set(sid, []);
+          pausedBySponsor.get(sid).push(row);
+        }
+      });
+    }
+  }
+  const rawCases = txApi?.getCases?.();
+  const txCases = Array.isArray(rawCases) ? rawCases : [];
+  const mandatesByTxId = new Map();
+  const enrichByTxId = new Map();
+  const rtoFeeEntries = [];
+  for (const tx of txCases) {
+    const mandates = typeof txApi?.getEffectiveMandates === "function"
+      ? txApi.getEffectiveMandates(tx)
+      : (Array.isArray(tx?.mandates) ? tx.mandates : []);
+    mandatesByTxId.set(tx.id, mandates);
+    const enrich = typeof txApi?.getCaseEnrichment === "function" ? txApi.getCaseEnrichment(tx.id) : null;
+    if (enrich) enrichByTxId.set(tx.id, enrich);
+    if (enrich?.sponsorFee) {
+      const spMandates = mandates.filter((m) => m?.role === "Sponsor");
+      if (spMandates.length) {
+        rtoFeeEntries.push({ tx, rtoSp: enrich.sponsorFee, spMandates });
+      }
+    }
+  }
+  feeStatsMemo.clear();
+  feeStatsMemoKey = "";
+  extDataCache = {
+    feesApi,
+    txApi,
+    cacheKey,
+    rosterRows,
+    roundByIssuer,
+    roundByCode,
+    listedBySponsor,
+    pausedBySponsor,
+    txCases,
+    mandatesByTxId,
+    enrichByTxId,
+    rtoFeeEntries,
+  };
+  return extDataCache;
+}
+
 function transactionCasesRows() {
-  if (typeof window === "undefined") return [];
-  const cases = window.YingSightTransactions?.getCases?.();
-  return Array.isArray(cases) ? cases : [];
+  return ensureExtDataCache().txCases;
 }
 
 function effectiveMandatesForTx(tx) {
+  if (!tx) return [];
+  const cache = ensureExtDataCache();
+  if (cache.mandatesByTxId.has(tx.id)) return cache.mandatesByTxId.get(tx.id);
   if (typeof window !== "undefined" && typeof window.YingSightTransactions?.getEffectiveMandates === "function") {
     return window.YingSightTransactions.getEffectiveMandates(tx);
   }
   return Array.isArray(tx?.mandates) ? tx.mandates : [];
 }
 
+function splitTxDisplayName(rawName) {
+  const full = String(rawName || "").trim();
+  if (!full) return { primaryName: "未命名交易", shadowName: "" };
+  const m = /^([A-Za-z0-9\s.,&'"/\-()]+?)\s*[（(]([^（）()]*[\u3400-\u9fff][^（）()]*)[）)]\s*$/.exec(full);
+  if (m) {
+    return { primaryName: m[2].trim(), shadowName: m[1].trim() };
+  }
+  const mZhFirst = /^([^（）()]*[\u3400-\u9fff][^（）()]*?)\s*[（(]([A-Za-z0-9\s.,&'"/\-]+)[）)]\s*$/.exec(full);
+  if (mZhFirst) {
+    return { primaryName: mZhFirst[1].trim(), shadowName: mZhFirst[2].trim() };
+  }
+  return { primaryName: full, shadowName: "" };
+}
+
+function formatTxHeadlineTerm(tx) {
+  if (!tx || !Array.isArray(tx.terms) || !tx.terms.length) return "";
+  const primary = (tx.headlineKey && tx.terms.find((t) => t.key === tx.headlineKey)) || tx.terms[0];
+  if (!primary || primary.value == null) return "";
+  const val = Number(primary.value);
+  if (primary.unit === "money" && Number.isFinite(val) && val > 0) {
+    const ccy = primary.currency || "HKD";
+    const approx = primary.approximate ? "约 " : "";
+    const txt = val >= 1e8 ? `${compactNumber(val / 1e8, 2)}亿` : val >= 1e4 ? `${compactNumber(val / 1e4, val >= 1e6 ? 0 : 1)}万` : compactNumber(val, 0);
+    return `${primary.label ? `${primary.label} ` : ""}${approx}${ccy} ${txt}`;
+  }
+  if (primary.unit === "shares" && Number.isFinite(val) && val > 0) {
+    return `${primary.label ? `${primary.label} ` : ""}${compactNumber(val, 0)} 股`;
+  }
+  return "";
+}
+
+let firmLookupCacheRef = null;
+let firmLookupCacheMap = null;
+
 function buildFirmLookupMap(firmsMap) {
+  if (firmsMap === firmLookupCacheRef && firmLookupCacheMap) return firmLookupCacheMap;
   const lookup = new Map(Object.entries(TX_FIRM_AFFILIATE_ALIASES));
   for (const [sponsorId, firm] of firmsMap.entries()) {
     if (firm.firmScope === "rollup" || firm.firmScope === "benchmark") continue;
@@ -709,13 +840,16 @@ function buildFirmLookupMap(firmsMap) {
       if (k) lookup.set(k, sponsorId);
     }
   }
+  firmLookupCacheRef = firmsMap;
+  firmLookupCacheMap = lookup;
   return lookup;
 }
 
 function faTransactionsBySponsor(firmsMap, stage = state.stage, creditMode = state.credit, ignoreSearchNature = false, ipoIssuersBySponsor = null) {
   const bySponsor = new Map();
   if (stage !== "all" || state.type !== "all" || state.sector !== "all") return bySponsor;
-  const cases = transactionCasesRows();
+  const cache = ensureExtDataCache();
+  const cases = cache.txCases;
   if (!cases.length) return bySponsor;
   const lookup = buildFirmLookupMap(firmsMap);
   const query = ignoreSearchNature ? "" : normalize(state.search);
@@ -730,7 +864,7 @@ function faTransactionsBySponsor(firmsMap, stage = state.stage, creditMode = sta
     }
     const rawMandates = effectiveMandatesForTx(tx).filter((m) => FA_ELIGIBLE_TX_ROLES.has(m?.role));
     if (!rawMandates.length) continue;
-    const enrich = typeof window !== "undefined" ? window.YingSightTransactions?.getCaseEnrichment?.(tx.id) : null;
+    const enrich = cache.enrichByTxId.get(tx.id) || null;
     const linkedIssuerId = tx.issuerId || enrich?.issuerId || "";
     const orderedSponsorIds = [];
     const rolesBySponsor = new Map();
@@ -743,7 +877,10 @@ function faTransactionsBySponsor(firmsMap, stage = state.stage, creditMode = sta
     }
     if (!orderedSponsorIds.length) continue;
     const faCount = orderedSponsorIds.length;
-    const txHaystack = normalize([tx.name, tx.code, tx.mechanism, ...(tx.aliases || [])].join(" "));
+    const txHaystack = query ? normalize([tx.name, tx.code, tx.mechanism, ...(tx.aliases || [])].join(" ")) : "";
+    const { primaryName, shadowName } = splitTxDisplayName(tx.name);
+    const headlineSummary = formatTxHeadlineTerm(tx);
+    const stageLabel = tx.stage?.label || "";
     orderedSponsorIds.forEach((sid, idx) => {
       const firm = firmsMap.get(sid);
       if (!ignoreSearchNature && state.nature !== "all" && firm?.sponsorNature !== state.nature) return;
@@ -755,16 +892,26 @@ function faTransactionsBySponsor(firmsMap, stage = state.stage, creditMode = sta
       if (!bySponsor.has(sid)) bySponsor.set(sid, { count: 0, items: [] });
       const bucket = bySponsor.get(sid);
       bucket.count += weight;
+      const roleCodes = [...new Set(rolesBySponsor.get(sid).map((m) => m.role).filter(Boolean))];
       bucket.items.push({
         id: tx.id,
         code: tx.code,
         name: tx.name,
+        primaryName,
+        shadowName,
         date: txDate,
+        stageLabel,
+        headlineSummary,
         mechanism: tx.mechanism,
-        roles: rolesBySponsor.get(sid).map((m) => m.role),
+        roles: roleCodes,
+        roleLabels: roleCodes.map((r) => FA_TX_ROLE_LABELS[r] || r),
+        alreadyInIpo,
         weight,
       });
     });
+  }
+  for (const bucket of bySponsor.values()) {
+    bucket.items.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")) || String(a.code || "").localeCompare(String(b.code || "")));
   }
   return bySponsor;
 }
@@ -792,15 +939,13 @@ function sponsorAttributedEconomics(firm, creditMode = state.credit, stage = sta
   if (!firm || !firm.sponsorId || firm.sponsorId.startsWith(BENCHMARK_PREFIX) || firm.firmScope === "rollup") {
     return null;
   }
-  const allRows = offeringRosterRows();
-  if (!allRows.length) return null;
+  const cache = ensureExtDataCache();
+  if (!cache.rosterRows.length && !cache.rtoFeeEntries.length) return null;
+  const entries = cache.listedBySponsor.get(firm.sponsorId) || [];
   const matched = [];
-  for (const row of allRows) {
-    if (row.route !== "listed_offering" || !Array.isArray(row.institutions)) continue;
-    if (!rosterDealMatchesScope(row, stage)) continue;
-    const idx = row.institutions.findIndex((inst) => inst.sponsorId === firm.sponsorId);
-    if (idx < 0) continue;
+  for (const { row, idx } of entries) {
     if (creditMode === "creditFirstNamed" && idx !== 0) continue;
+    if (!rosterDealMatchesScope(row, stage)) continue;
     matched.push(row);
   }
   let commHkd = 0;
@@ -828,16 +973,12 @@ function sponsorAttributedEconomics(firm, creditMode = state.credit, stage = sta
   }
   let dealCount = matched.length;
   if (stage !== "applying" && state.type === "all" && state.sector === "all") {
-    for (const tx of transactionCasesRows()) {
-      const enrich = typeof window !== "undefined" ? window.YingSightTransactions?.getCaseEnrichment?.(tx.id) : null;
-      const rtoSp = enrich?.sponsorFee;
-      if (!rtoSp) continue;
+    for (const { tx, rtoSp, spMandates } of cache.rtoFeeEntries) {
       const txDate = tx.progressDate || tx.stage?.date || "";
       if (!factsIgnoreDatesInPkOptionMode) {
         if (state.dateFrom && (!txDate || txDate < state.dateFrom)) continue;
         if (state.dateTo && (!txDate || txDate > state.dateTo)) continue;
       }
-      const spMandates = effectiveMandatesForTx(tx).filter((m) => m.role === "Sponsor");
       const sIdx = spMandates.findIndex((m) => m.sponsorId === firm.sponsorId);
       if (sIdx < 0) continue;
       if (creditMode === "creditFirstNamed" && sIdx !== 0) continue;
@@ -2264,9 +2405,7 @@ function formatOfferedHkdYi(hkdBn) {
 }
 
 function offeringRosterRows() {
-  if (typeof window === "undefined") return [];
-  const rows = window.YingSightOfferingFees?.getRows?.();
-  return Array.isArray(rows) ? rows : [];
+  return ensureExtDataCache().rosterRows;
 }
 
 function summarizeSponsorFeesByCurrency(deals,currency='HKD') {
@@ -2278,11 +2417,31 @@ function summarizeSponsorFeesByCurrency(deals,currency='HKD') {
 
 function sponsorFeeStats(sponsorId) {
   if (!sponsorId || sponsorId.startsWith(BENCHMARK_PREFIX)) return null;
-  const allRows = offeringRosterRows();
-  const matchesFirm = (row) => Array.isArray(row.institutions) && row.institutions.some((inst) => inst.sponsorId === sponsorId);
-  const deals = allRows.filter((row) => row.route === "listed_offering" && matchesFirm(row) && rosterDealMatchesScope(row));
-  const pausedDeals = allRows.filter((row) => row.route === "paused_offer" && matchesFirm(row));
-  if (!deals.length && !pausedDeals.length) return null;
+  const cache = ensureExtDataCache();
+  const scopeKey = `${cache.cacheKey}|${csrcRecordsById ? 1 : 0}|${state.stage}|${state.type}|${state.sector}|${factsIgnoreDatesInPkOptionMode ? "ignoreDates" : `${state.dateFrom}..${state.dateTo}`}`;
+  if (feeStatsMemoKey !== scopeKey) {
+    feeStatsMemo.clear();
+    feeStatsMemoKey = scopeKey;
+  }
+  if (feeStatsMemo.has(sponsorId)) return feeStatsMemo.get(sponsorId);
+  const listedEntries = cache.listedBySponsor.get(sponsorId) || [];
+  const deals = [];
+  const soleDeals = [];
+  const leadDeals = [];
+  const coDeals = [];
+  for (const { row, idx } of listedEntries) {
+    if (!rosterDealMatchesScope(row)) continue;
+    deals.push(row);
+    const totalInsts = Array.isArray(row.institutions) ? row.institutions.length : 0;
+    if (totalInsts === 1) soleDeals.push(row);
+    else if (idx === 0) leadDeals.push(row);
+    else coDeals.push(row);
+  }
+  const pausedDeals = cache.pausedBySponsor.get(sponsorId) || [];
+  if (!deals.length && !pausedDeals.length) {
+    feeStatsMemo.set(sponsorId, null);
+    return null;
+  }
   const fixedValues = deals.map((row) => row.fixedBps).filter(isNumber);
   const upperValues = deals.map((row) => row.upperBps).filter(isNumber);
   const feeBreakdown = summarizeSponsorFeesByCurrency(deals);
@@ -2313,21 +2472,11 @@ function sponsorFeeStats(sponsorId) {
       fixedCommHkdBn: fixedCommSum > 0 ? fixedCommSum / 1e9 : null,
     };
   };
-  const roleOf = (row) => {
-    const insts = Array.isArray(row.institutions) ? row.institutions : [];
-    const idx = insts.findIndex((inst) => inst.sponsorId === sponsorId);
-    if (idx < 0) return null;
-    if (insts.length === 1) return "sole";
-    return idx === 0 ? "joint_lead" : "joint_co";
-  };
-  const soleDeals = deals.filter((r) => roleOf(r) === "sole");
-  const leadDeals = deals.filter((r) => roleOf(r) === "joint_lead");
-  const coDeals = deals.filter((r) => roleOf(r) === "joint_co");
   const allEff = calcEff(deals);
   const soleEff = calcEff(soleDeals);
   const leadEff = calcEff(leadDeals);
   const coEff = calcEff(coDeals);
-  return {
+  const stats = {
     n: deals.length,
     deals,
     pausedDeals,
@@ -2349,6 +2498,8 @@ function sponsorFeeStats(sponsorId) {
     sponsorFeeSummary: feeBreakdown.summary,
     sponsorFeeCompact: feeBreakdown.compact,
   };
+  feeStatsMemo.set(sponsorId, stats);
+  return stats;
 }
 
 function formatPaceDelta(firmDays, marketDays) {
@@ -2475,14 +2626,12 @@ function renderDrawerInsights(row) {
   }
 
   const faHtml = Array.isArray(row.faTransactions) && row.faTransactions.length > 0
-    ? `<section class="drawer-insight-panel">
-        <div class="drawer-insight-head">
-          <h4>并购重组与再融资 FA 交易（${row.faTransactions.length} 宗）</h4>
-          <span>仅计入 FA / 配售 / 包销角色</span>
+    ? `<section class="drawer-insight-panel drawer-fa-bar">
+        <div class="drawer-fa-bar-copy">
+          <strong>并购重组与再融资主导投行实绩 · ${row.faTransactions.length} 宗</strong>
+          <span>仅计入财务顾问 FA / 新上市保荐 / 配售 / 包销角色（剔除独立财务顾问 IFA）</span>
         </div>
-        <div class="drawer-paused-links">
-          ${row.faTransactions.map((tx) => `<button type="button" class="drawer-paused-btn" data-global-tx="${escapeHtml(tx.id)}">${escapeHtml(tx.name)} (${escapeHtml(tx.code)}) · ${escapeHtml(tx.mechanism)} →</button>`).join("")}
-        </div>
+        <button type="button" class="deal-jump-btn" data-drawer-sponsor="${escapeHtml(row.sponsorId)}" data-drawer-cat="FA" data-drawer-scroll="1">查看交易明细 ↓</button>
       </section>`
     : "";
 
@@ -2496,16 +2645,14 @@ function formatFeeBps(bps) {
 
 function findOfferingRoundForFact(fact) {
   if (!fact) return null;
-  const rows = offeringRosterRows();
-  if (!rows.length) return null;
-  if (fact.issuerId) {
-    const byIssuer = rows.find((row) => row.issuerId === fact.issuerId);
-    if (byIssuer) return byIssuer;
+  const cache = ensureExtDataCache();
+  if (!cache.rosterRows.length) return null;
+  if (fact.issuerId && cache.roundByIssuer.has(fact.issuerId)) {
+    return cache.roundByIssuer.get(fact.issuerId);
   }
   if (fact.hkexListingStockCode) {
     const code = String(fact.hkexListingStockCode).replace(/\.HK$/i, "").padStart(5, "0");
-    const byCode = rows.find((row) => row.code === code);
-    if (byCode) return byCode;
+    if (cache.roundByCode.has(code)) return cache.roundByCode.get(code);
   }
   return null;
 }
@@ -2638,6 +2785,8 @@ function render() {
       if (!(event.target instanceof Element)) return;
       const catBtn = event.target.closest("button[data-open-sponsor-cat]");
       if (catBtn) {
+        event.preventDefault();
+        event.stopPropagation();
         openDrawer(catBtn.dataset.openSponsorId || row.dataset.sponsor, true, {
           category: catBtn.dataset.openSponsorCat,
           scrollToDeals: true,
@@ -2646,6 +2795,8 @@ function render() {
       }
       const indBtn = event.target.closest("button[data-open-sponsor-industry]");
       if (indBtn) {
+        event.preventDefault();
+        event.stopPropagation();
         openDrawer(indBtn.dataset.openSponsorId || row.dataset.sponsor, true, {
           industry: indBtn.dataset.openSponsorIndustry,
           scrollToDeals: true,
@@ -2654,6 +2805,8 @@ function render() {
       }
       const natBtn = event.target.closest("button[data-filter-nature]");
       if (natBtn && natBtn.dataset.filterNature) {
+        event.preventDefault();
+        event.stopPropagation();
         const targetNat = natBtn.dataset.filterNature;
         state.nature = state.nature === targetNat ? "all" : targetNat;
         state.preset = "custom";
@@ -3255,8 +3408,14 @@ function capacitySourcePills(row, field) {
 
 function openDealFromDrawer(deal) {
   if (!deal) return;
+  const txId = deal.dataset.globalTx;
   const roundId = deal.dataset.globalRound;
   const issuerId = deal.dataset.issuerId;
+  if (txId) {
+    closeDrawer(false);
+    if (typeof openTransaction === "function") openTransaction(txId, p0SponsorTrigger || document.getElementById("globalSearchOpen"));
+    return;
+  }
   if (roundId) {
     closeDrawer(false);
     if (typeof openOfferingDossier === "function") openOfferingDossier(roundId);
@@ -3267,6 +3426,29 @@ function openDealFromDrawer(deal) {
     if (typeof switchView === "function") switchView("tracker");
     if (typeof openDetail === "function") openDetail(issuerId);
   }
+}
+
+function renderFaDealCard(tx) {
+  const primary = tx.primaryName || tx.name || "未命名交易";
+  const shadow = tx.shadowName || "";
+  const codeText = tx.code ? `${String(tx.code).replace(/\.HK$/i, "").padStart(5, "0")}.HK` : "";
+  const roleText = (tx.roleLabels?.length ? tx.roleLabels : tx.roles || []).join(" / ") || "财务顾问 FA";
+  const metaParts = [
+    tx.date ? `公告/进展 ${tx.date}` : "",
+    roleText,
+    tx.stageLabel || "",
+    tx.alreadyInIpo ? "与同主体IPO不重计" : "",
+  ].filter(Boolean);
+  return `<article class="deal-item is-fa-deal" data-global-tx="${escapeHtml(tx.id)}" tabindex="0" role="button">
+    <div class="deal-item-head">
+      <strong>${escapeHtml(primary)}${codeText ? ` · <span class="fa-deal-code">${escapeHtml(codeText)}</span>` : ""}</strong>
+      <button type="button" class="deal-jump-btn" data-global-tx="${escapeHtml(tx.id)}">交易拆解 →</button>
+    </div>
+    ${shadow ? `<small class="shadow-name">${escapeHtml(shadow)}</small>` : ""}
+    <small class="deal-context-line">${escapeHtml(metaParts.join(" · "))}</small>
+    ${tx.headlineSummary ? `<small class="deal-fee-badge">${escapeHtml(tx.headlineSummary)}</small>` : ""}
+    ${tx.mechanism ? `<small class="fa-deal-mech">${escapeHtml(tx.mechanism)}</small>` : ""}
+  </article>`;
 }
 
 function openSponsorFromPk(sponsorId) {
@@ -3365,12 +3547,7 @@ function openDrawer(sponsorId, updateLocation = true, filterOpts = null) {
       : "";
   const dealsBodyHtml =
     activeCat === "FA"
-      ? `<div class="drawer-paused-links">${faItems
-          .map(
-            (tx) =>
-              `<button type="button" class="drawer-paused-btn" data-global-tx="${escapeHtml(tx.id)}">${escapeHtml(tx.name)} (${escapeHtml(tx.code)}) · ${escapeHtml(tx.mechanism)} · ${escapeHtml(tx.date || "")} →</button>`,
-          )
-          .join("") || '<span class="muted">暂无 FA 交易样本</span>'}</div>`
+      ? `<div class="deal-list">${faItems.map(renderFaDealCard).join("") || '<p class="muted">暂无 FA 交易样本</p>'}</div>`
       : `<div class="deal-list">${filteredFacts.slice(0, 40).map(projectLine).join("") || '<p class="muted">该分类下暂无匹配项目</p>'}</div>
          ${filteredFacts.length > 40 ? `<details class="remaining-projects"><summary>查看其余 ${filteredFacts.length - 40} 个项目</summary><div class="deal-list"></div></details>` : ""}`;
   const headingCount = activeCat === "FA" ? faItems.length : filteredFacts.length;
@@ -3419,7 +3596,21 @@ function openDrawer(sponsorId, updateLocation = true, filterOpts = null) {
   }
 }
 
-function closeDrawer(updateLocation=true) {if(!els.drawer?.classList.contains('is-open'))return;els.drawer.classList.remove('is-open');els.drawer.setAttribute('aria-hidden','true');p0SponsorTrigger?.focus({preventScroll:true});p0SponsorTrigger=null;if(updateLocation!==false){const p=new URLSearchParams(location.search);if(p.has('firm')){let canBack=false;if(history.state?.fromUrl){try{const u=new URL(history.state.fromUrl,location.href),v=u.searchParams.get('view');canBack=(v==='sponsors'||v==='sponsorLeaderboard'||v==='sponsorPk')&&!u.searchParams.get('firm');}catch{}}if(canBack)history.back();else{p.delete('firm');history.replaceState({...history.state,fromUrl:''},'',location.pathname+'?'+p);}}}}
+function closeDrawer(updateLocation=true) {
+  if (!els.drawer?.classList.contains("is-open")) return;
+  els.drawer.classList.remove("is-open");
+  els.drawer.setAttribute("aria-hidden", "true");
+  p0SponsorTrigger?.focus({ preventScroll: true });
+  p0SponsorTrigger = null;
+  if (updateLocation !== false && typeof location !== "undefined" && typeof history !== "undefined") {
+    const p = new URLSearchParams(location.search);
+    if (p.has("firm")) {
+      p.delete("firm");
+      const qs = p.toString();
+      history.replaceState({ ...history.state, fromUrl: "" }, "", location.pathname + (qs ? "?" + qs : ""));
+    }
+  }
+}
 
 function bindControls() {
   ["searchInput", "metricSelect", "creditSelect", "stageSelect", "typeSelect", "natureSelect", "sectorSelect", "dateFieldSelect", "dateFrom", "dateTo"].forEach((id) => {
@@ -3476,9 +3667,11 @@ function bindControls() {
     if (!(event.target instanceof Element)) return;
     const catBtn = event.target.closest("button[data-drawer-cat]");
     if (catBtn) {
+      const wantScroll = Boolean(catBtn.dataset.drawerScroll);
       openDrawer(catBtn.dataset.drawerSponsor, false, {
         category: catBtn.dataset.drawerCat || "all",
-        preserveScroll: true,
+        scrollToDeals: wantScroll,
+        preserveScroll: !wantScroll,
       });
       return;
     }
@@ -3499,14 +3692,14 @@ function bindControls() {
       return;
     }
     if (event.target.closest("a, button, summary, details[data-app-group]")) return;
-    const deal = event.target.closest(".deal-item[data-issuer-id], .deal-item[data-global-round]");
+    const deal = event.target.closest(".deal-item[data-issuer-id], .deal-item[data-global-round], .deal-item[data-global-tx]");
     if (deal) openDealFromDrawer(deal);
   });
   els.drawerContent?.addEventListener?.("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
     if (!(event.target instanceof Element)) return;
     if (event.target.closest("a, button, summary")) return;
-    const deal = event.target.closest(".deal-item[data-issuer-id], .deal-item[data-global-round]");
+    const deal = event.target.closest(".deal-item[data-issuer-id], .deal-item[data-global-round], .deal-item[data-global-tx]");
     if (deal) {
       event.preventDefault();
       openDealFromDrawer(deal);
@@ -3723,7 +3916,7 @@ function p0SponsorEmpty(){const labels={search:'搜索',type:'类型',sector:'�
 function p0SponsorReset(){Object.assign(state,p0SponsorDefaults);syncControls();render();renderPk();els.searchInput.focus();}
 async function p0SponsorRoute(){const p=new URLSearchParams(location.search),v=p.get('view');if(!['sponsors','sponsorLeaderboard','sponsorPk'].includes(v))return;await ensureInit();if(!state.data)return;p0SponsorRestoring=true;closeDrawer(false);p0SponsorRead();syncControls();render();renderPk();const firm=p.get('firm');if(firm)openDrawer(firm,false);p0SponsorRestoring=false;}
 if(viewRoot&&typeof window!=='undefined')window.addEventListener('yingsight:view',e=>{if(['sponsorLeaderboard','sponsorPk'].includes(e.detail.view))p0SponsorRoute();});
-if(viewRoot&&typeof window!=='undefined')window.addEventListener('yingsight:fees-ready',()=>{if(state.data){render();if(pkRoot)renderPk();}});
+if(viewRoot&&typeof window!=='undefined')window.addEventListener('yingsight:fees-ready',()=>{extDataEpoch+=1;if(state.data){render();if(pkRoot)renderPk();}});
 if(viewRoot&&typeof window!=='undefined')window.addEventListener('popstate',()=>{if(els.drawer)closeDrawer(false);p0SponsorRoute();});
 viewRoot?.addEventListener('click',e=>{const el=e.target.closest('button');if(!el)return;if(el.hasAttribute('data-sponsor-reset'))p0SponsorReset();if(el.dataset.sponsorClear){state[el.dataset.sponsorClear]=p0SponsorDefaults[el.dataset.sponsorClear];syncControls();render();renderPk();els.searchInput.focus();}});
 if(viewRoot)document.addEventListener('keydown',e=>{if(e.key!=='Tab'||!els.drawer?.classList.contains('is-open'))return;const items=[...els.drawer.querySelectorAll('button,a[href],summary,input,select,[tabindex="0"]')].filter(x=>!x.hidden),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}});
