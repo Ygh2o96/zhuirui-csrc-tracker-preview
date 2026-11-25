@@ -6164,7 +6164,7 @@ function renderCornerstones() {
     insightEl.innerHTML = `
       <div class="stat-cell"><span class="stat-label">基石与机构主体</span><strong class="stat-val col-num">${all.length} 组</strong><small class="stat-sub">多单活跃机构 ${multiCount} 家 · 覆盖 ${known} 宗有基石新股</small></div>
       <div class="stat-cell"><span class="stat-label">全市场单笔 Ticket 中位</span><strong class="stat-val col-num">${mktMedUsd ? formatCsUsd(mktMedUsd) : "—"}</strong><small class="stat-sub">${mktP25Usd && mktP75Usd ? `四分位 ${formatCsUsd(mktP25Usd)} – ${formatCsUsd(mktP75Usd)}（共 ${allDealUsd.length} 笔）` : "按各笔最终获配折算美金"}</small></div>
-      <div class="stat-cell"><span class="stat-label">基石累计总回报（解禁封顶）</span>${retValHtml}<small class="stat-sub">已解禁封顶 ${unlockedOffers} 宗 · 禁售跟踪中 ${lockedOffers} 宗${pricedOffers ? `（已计价 ${pricedOffers} 宗）` : ""}</small></div>
+      <div class="stat-cell"><span class="stat-label">已计价样本回报（解禁封顶）</span>${retValHtml}<small class="stat-sub">已计价 ${pricedOffers} / ${unlockedOffers + lockedOffers} 宗 · 已到解禁 ${unlockedOffers} 宗 · 禁售跟踪 ${lockedOffers} 宗</small></div>
       <div class="stat-cell"><span class="stat-label">联动承销投行网络</span><strong class="stat-val col-num">${spSet.size} 家保荐机构</strong><small class="stat-sub">${[...spSet.values()].slice(0, 5).join(" · ")}</small></div>
     `;
   }
