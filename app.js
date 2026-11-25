@@ -5676,7 +5676,7 @@ function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
       });
       continue;
     }
-    const ver = CS_VERIFIED_LOCKUP_CLOSES[roundId];
+    const ver = CS_VERIFIED_LOCKUP_CLOSES[roundId] ?? CS_VERIFIED_LOCKUP_CLOSES[meta.roundId];
     if (ver && ver[2] === meta.lockupEndDate && ver[1] <= cutoff && today >= meta.lockupEndDate && !csQuoteStore.has(roundId)) {
       csQuoteStore.set(roundId, {
         closeHkd: ver[0],
