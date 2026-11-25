@@ -5000,6 +5000,8 @@
     return spec;
   }
 
+  const CASE_SPECIFIC_TOPOLOGY_REQUIRED = new Set(["offer", "acquisition", "disclosable_major", "reverse_takeover", "debt_restructuring"]);
+
   function deriveDiagramFromCase(txCase) {
     if (!txCase || typeof txCase !== "object") {
       throw new Error("deriveDiagramFromCase requires a transaction case object");
@@ -5008,9 +5010,9 @@
       return deriveCommercialProcurementCase(txCase);
     }
     const archetype = detectArchetype(txCase);
-    // The two-leg offer atlas diagram contains sample percentages and roles.
+    // Atlas offer / acquisition / restructuring examples contain sample percentages, roles and approval mechanics.
     // Show the case's disclosure fields until there is a case-specific topology.
-    if (archetype === "offer") return null;
+    if (CASE_SPECIFIC_TOPOLOGY_REQUIRED.has(archetype)) return null;
     const archInfo = ARCHETYPES[archetype];
     const modality = detectModality(txCase, archetype);
     const rawStatus = txCase.stage?.status;
@@ -6193,7 +6195,7 @@
         stageDate: txCase.stage?.date,
         ...cloneDeep(txCase.diagramSpec),
       };
-      if (!merged.topology && merged.archetype === "offer") return null;
+      if (!merged.topology && CASE_SPECIFIC_TOPOLOGY_REQUIRED.has(merged.archetype)) return null;
       if (!merged.topology) merged.topology = synthesizeTopologyFromSpec(merged);
       return validateDiagramSpec(merged);
     }
@@ -6366,7 +6368,7 @@
       throw new Error("renderDealDiagram requires a transaction case or DiagramSpec object");
     }
     if (txCaseOrSpec.before && txCaseOrSpec.after && txCaseOrSpec.flows) {
-      if (!txCaseOrSpec.topology && txCaseOrSpec.archetype === "offer") return null;
+      if (!txCaseOrSpec.topology && CASE_SPECIFIC_TOPOLOGY_REQUIRED.has(txCaseOrSpec.archetype)) return null;
       const spec = txCaseOrSpec.topology
         ? txCaseOrSpec
         : { ...txCaseOrSpec, topology: synthesizeTopologyFromSpec(txCaseOrSpec) };
