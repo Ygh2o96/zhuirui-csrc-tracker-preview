@@ -8630,11 +8630,17 @@ ul.offering-cornerstone-members li p {
 .fel-card-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 5px;
+  min-width: 0;
+}
+
+.fel-card-top .mono-code {
+  flex: none;
 }
 
 .fel-rank {
+  flex: none;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -8643,6 +8649,7 @@ ul.offering-cornerstone-members li p {
 
 .fel-split-tag {
   flex: none;
+  margin-left: auto;
   white-space: nowrap;
   padding: 1px 6px;
   border-radius: 3px;

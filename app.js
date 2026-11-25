@@ -3734,19 +3734,19 @@ function p0DealSponsorFeeHkd(row) {
 function p0DealCommissionAmounts(row, basis = state.shoeBasis || "offered") {
  const sponsorCount = Math.max(1, Array.isArray(row?.institutions) ? row.institutions.length : 1);
  const spInfo = p0DealSponsorFeeHkd(row);
- if (!row) return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: null, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount: 1 };
+ if (!row) return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: null, spRaw: null, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount: 1 };
  if (row.route === "paused_offer" || row.route === "bookbuilding") {
   const g = row.gross?.highHkd != null ? Number(row.gross.highHkd) : null;
-  if (!Number.isFinite(g) || g <= 0) return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: spInfo.hkd, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount };
+  if (!Number.isFinite(g) || g <= 0) return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: spInfo.hkd, spRaw: spInfo.raw, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount };
   const fixedComm = typeof row.fixedBps === "number" && Number.isFinite(row.fixedBps) ? g * (row.fixedBps / 10000) : null;
   const extraComm = typeof row.maximumExtraBps === "number" && Number.isFinite(row.maximumExtraBps) ? g * (row.maximumExtraBps / 10000) : null;
   const upperComm = typeof row.upperBps === "number" && Number.isFinite(row.upperBps) ? g * (row.upperBps / 10000) : null;
   const totalEconHkd = fixedComm !== null ? fixedComm + (spInfo.hkd || 0) : null;
-  return { gross: g, fixedComm, extraComm, upperComm, spHkd: spInfo.hkd, totalEconHkd, perSponsorCommHkd: fixedComm !== null ? fixedComm / sponsorCount : null, perSponsorEconHkd: totalEconHkd !== null ? totalEconHkd / sponsorCount : null, sponsorCount };
+  return { gross: g, fixedComm, extraComm, upperComm, spHkd: spInfo.hkd, spRaw: spInfo.raw, totalEconHkd, perSponsorCommHkd: fixedComm !== null ? fixedComm / sponsorCount : null, perSponsorEconHkd: totalEconHkd !== null ? totalEconHkd / sponsorCount : null, sponsorCount };
  }
  const gross = p0FeeAmount(row, basis);
  if (gross === null || !Number.isFinite(gross) || gross <= 0) {
-  return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: spInfo.hkd, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount };
+  return { gross: null, fixedComm: null, extraComm: null, upperComm: null, spHkd: spInfo.hkd, spRaw: spInfo.raw, totalEconHkd: null, perSponsorCommHkd: null, perSponsorEconHkd: null, sponsorCount };
  }
  const phase = row[basis] || {};
  const estVal = phase.estimate?.value != null ? Number(phase.estimate.value) : NaN;
@@ -3771,6 +3771,7 @@ function p0DealCommissionAmounts(row, basis = state.shoeBasis || "offered") {
   extraComm,
   upperComm,
   spHkd: spInfo.hkd,
+  spRaw: spInfo.raw,
   totalEconHkd,
   perSponsorCommHkd: fixedComm !== null ? fixedComm / sponsorCount : null,
   perSponsorEconHkd: totalEconHkd !== null ? totalEconHkd / sponsorCount : null,
@@ -4382,14 +4383,21 @@ function renderFeeDealRankLane(all, rows) {
   const { r, dc, val } = item;
   const pct = Math.max(10, Math.min(100, (val / maxVal) * 100));
   const valStr = `${formatChineseUnitAmount(val, "HKD")}${split === "per_sponsor" ? "/家" : ""}`;
-  const spSub = dc.spHkd ? `保荐费 ${formatChineseUnitAmount(dc.spHkd, "HKD")}` : "未单列保荐费";
+  const spSub = dc.spHkd !== null
+   ? `保荐费 ${formatChineseUnitAmount(dc.spHkd, "HKD")}`
+   : (dc.spRaw && dc.spRaw.value != null
+      ? `保荐费 ${formatChineseUnitAmount(dc.spRaw.value, dc.spRaw.currency, Boolean(dc.spRaw.approximate))}（单/总待核）`
+      : (r.feeStates?.sponsor === "undisclosed" ? "未单列保荐费" : "保荐费待核"));
   const subStr = split === "per_sponsor"
    ? (dc.sponsorCount === 1 ? `独家独享 · 估佣 ${formatChineseUnitAmount(dc.fixedComm, "HKD")}` : `整单 ${formatChineseUnitAmount(metric === "estComm" ? dc.fixedComm : dc.totalEconHkd, "HKD")} ÷ ${dc.sponsorCount}家`)
    : (metric === "totalEcon" ? `估佣 ${formatChineseUnitAmount(dc.fixedComm, "HKD")} · ${spSub}` : `募资 ${formatChineseUnitAmount(dc.gross, "HKD")} × ${feePercent(r.fixedBps)}`);
+  const spTip = dc.spHkd === null && dc.spRaw && dc.spRaw.value != null
+   ? `（招股书已披露保荐费 ${formatChineseUnitAmount(dc.spRaw.value, dc.spRaw.currency, Boolean(dc.spRaw.approximate))}，因联席合计 vs 每家单列口径待核，暂未叠入上方总经济）`
+   : "";
   const roleBadge = dc.sponsorCount === 1
    ? `<span class="fel-split-tag is-sole">独家</span>`
    : `<span class="fel-split-tag">${dc.sponsorCount}家联席</span>`;
-  return `<button type="button" class="fel-card" data-round-id="${escapeHtml(r.id)}" title="点击查看 ${escapeHtml(r.name)} (${r.code}.HK) 发行档案">
+  return `<button type="button" class="fel-card" data-round-id="${escapeHtml(r.id)}" title="点击查看 ${escapeHtml(r.name)} (${r.code}.HK) 发行档案${escapeHtml(spTip)}">
    <div class="fel-card-top"><span class="fel-rank">#${idx + 1}</span><span class="fel-name">${escapeHtml(r.name)}</span><span class="mono-code">${r.code}</span>${roleBadge}</div>
    <div class="fel-card-val col-num"><strong>${escapeHtml(valStr)}</strong></div>
    <span class="fel-bar" aria-hidden="true"><i style="width:${pct.toFixed(1)}%"></i></span>
@@ -4401,7 +4409,7 @@ function renderFeeDealRankLane(all, rows) {
  lane.innerHTML = `<div class="fel-head">
    <div class="fel-title-group">
     <h4>${escapeHtml(laneTitle)}</h4>
-    <span>总经济 = 固定估佣 + 已核实整单保荐费（USD 按 7.80 折算）</span>
+    <span>总经济 = 固定估佣 + 已核实整单保荐费（USD 按 7.80 折算；单/总待核者列示原币）</span>
    </div>
    <div class="fel-controls">
     <div class="segmented-inline" role="group" aria-label="创收口径">
