@@ -33,7 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _site/assets/pipeline _site/data
-          cp index.html sponsor-leaderboard.html sponsor_leaderboard_demo.html app.js styles.css sponsor_leaderboard_demo.css sponsor_leaderboard_demo.js deal_diagram_kit.css deal_diagram_kit.js CNAME .nojekyll _site/
+          cp index.html sponsor-leaderboard.html sponsor_leaderboard_demo.html app.js styles.css sponsor_leaderboard_demo.css sponsor_leaderboard_demo.js deal_diagram_kit.css deal_diagram_kit.js LICENSE llms.txt robots.txt CNAME .nojekyll _site/
           cp assets/favicon.svg _site/assets/
           cp assets/pipeline/*.png _site/assets/pipeline/
           cp data/csrc_tracker_public.json _site/data/
