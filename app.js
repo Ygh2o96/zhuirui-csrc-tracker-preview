@@ -9329,26 +9329,27 @@ function transactionDecimalDigits(value) {
 function transactionExactAmount(term, minimum = 0) {
   const decimals = Math.max(transactionDecimalDigits(term.value), minimum);
   const prefix = `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}`;
-  return `${prefix}${term.value.toLocaleString("en-US", {minimumFractionDigits:minimum,maximumFractionDigits:decimals})}${term.unit === "per_share" ? "/股" : ""}`;
+  return `${prefix}${term.value.toLocaleString("en-US", {minimumFractionDigits:minimum,maximumFractionDigits:decimals})}${["per_share", "price_per_share"].includes(term.unit) ? "/股" : term.unit === "shares" ? " 股" : ""}`;
 }
 function transactionAmount(term) {
   if (!term || !Number.isFinite(term.value)) return "—";
   if (term.unit === "ratio") return term.value.toFixed(term.precision) + " : 1";
   if (term.unit === "percent") return term.value.toFixed(term.precision) + "%";
-  if (term.unit === "per_share") return transactionExactAmount(term, 2);
-  if (term.unit === "money") {
+  if (["per_share", "price_per_share"].includes(term.unit)) return transactionExactAmount(term, 2);
+  if (["money", "shares"].includes(term.unit)) {
     const n = Math.abs(term.value);
-    const [scale, suffix, digits] = n >= 1e8 ? [1e8,"亿",3] : n >= 1e4 ? [1e4,"万",1] : [1,"",2];
+    if (n < 1e4) return transactionExactAmount(term);
+    const [scale, suffix] = n >= 1e8 ? [1e8,"亿"] : [1e4,"万"];
     const prefix = `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}`;
-    return `${prefix}${(term.value / scale).toLocaleString("en-US",{maximumFractionDigits:digits})}${suffix}`;
+    return `${prefix}${(term.value / scale).toLocaleString("en-US",{maximumFractionDigits:1})}${suffix}${term.unit === "shares" ? "股" : ""}`;
   }
   return `${term.value.toLocaleString("en-US",{minimumFractionDigits:term.precision,maximumFractionDigits:term.precision})}${term.unit === "shares" ? " 股" : ""}`;
 }
 function transactionDisplayAmount(term) {
   if (!term || !Number.isFinite(term.value)) return "—";
   const text = transactionAmount(term);
-  if (!["money","per_share"].includes(term.unit)) return escapeHtml(text);
-  return `<span class="amt-cn" title="${escapeHtml(transactionExactAmount(term, term.unit === "per_share" || !Number.isInteger(term.value) ? 2 : 0))}">${escapeHtml(text)}</span>`;
+  if (!["money","shares","per_share","price_per_share"].includes(term.unit)) return escapeHtml(text);
+  return `<span class="amt-cn" title="${escapeHtml(transactionExactAmount(term, ["per_share","price_per_share"].includes(term.unit) || !Number.isInteger(term.value) ? 2 : 0))}">${escapeHtml(text)}</span>`;
 }
 function transactionTerm(row, key) { return (row.terms || []).find(t => t.key === key); }
 function transactionHeadlineTerm(row) {

@@ -309,7 +309,7 @@
     const num = Number(value);
     if (!Number.isFinite(num)) return "";
     const n = Math.abs(num);
-    const [scale, suffix, digits] = n >= 1e8 ? [1e8,"亿",3] : n >= 1e4 ? [1e4,"万",1] : [1,"",2];
+    const [scale, suffix, digits] = n >= 1e8 ? [1e8,"亿",1] : n >= 1e4 ? [1e4,"万",1] : [1,"",Math.max(2,(String(num).split(".")[1] || "").length)];
     const prefix = `${approximate ? "约 " : ""}${currency ? currency + " " : ""}`;
     return `${prefix}${(num / scale).toLocaleString("en-US", {maximumFractionDigits:digits})}${suffix}`;
   }
@@ -319,11 +319,7 @@
     if (!Number.isFinite(num)) return "";
     if (num >= 1e8) {
       const yi = num / 1e8;
-      const decimals = yi >= 100 ? 1 : 2;
-      return `${yi.toLocaleString("en-US", {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-      })}亿股`;
+      return `${yi.toLocaleString("en-US", { maximumFractionDigits: 1 })}亿股`;
     }
     if (num >= 1e4) {
       const wan = num / 1e4;
