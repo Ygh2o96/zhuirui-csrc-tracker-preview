@@ -8867,6 +8867,7 @@ const transactionOpened = new Set();
 const transactionRoles = {
   TrafficConsultant: "独立交通顾问",
   FA: "FA 财务顾问",
+  OfferAgent: "要约代理",
   IFA: "IFA 独立财务顾问",
   ifa: "IFA 独立财务顾问",
   PlacingAgent: "配售代理／账簿管理人",
@@ -8904,6 +8905,7 @@ const transactionServices = {
   scheme_opinion: "私有化独立意见",
   offer_opinion: "要约独立意见",
   offer_advice: "要约财务顾问",
+  offer_execution: "要约代理",
   transaction_financial_advice: "并购交易财务顾问",
   financial_advice: "交易财务顾问",
   offer_ifa_appointment: "部分要约独立财务顾问委任",
@@ -9527,6 +9529,7 @@ const TRANSACTION_MANDATE_LABELS = {
  "IFA:major_vsa_ifa_opinion": "IFA 独立财务顾问｜主要／非常重大交易意见",
  "IFA:whitewash_opinion": "IFA 独立财务顾问｜清洗豁免意见",
  "FA:offer_advice": "FA 财务顾问｜要约财务顾问",
+ "OfferAgent:offer_execution": "要约代理｜代表要约人发出要约",
  "FA:target_fa": "FA 财务顾问｜标的公司财务顾问",
  "FA:acquisition_due_diligence": "FA 财务顾问｜收购及尽职审查",
  "FA:spinoff_advisory": "FA 财务顾问｜PN15 分拆财务顾问",
@@ -9586,7 +9589,7 @@ function transactionMandates(row){
  const leadList=list.filter(m=>transactionIsLeadIB(m));
  const opinionList=list.filter(m=>!transactionIsLeadIB(m));
  if(leadList.length&&opinionList.length){
-  return `<div class="transaction-mandates is-tiered"><div class="tx-mandate-group"><div class="tx-mandate-group-head"><span>主导投行 · 保荐 / 财务顾问 / 承销</span><em>核心收费席位 (${leadList.length})</em></div>${leadList.map(m=>renderSingleTxMandateCard(row,m,true)).join("")}</div><div class="tx-mandate-group is-secondary"><div class="tx-mandate-group-head"><span>独立意见与鉴证签署 · IFA / 估值师 / 会计师 / 律所</span><em>专业意见及顾问机构 (${opinionList.length})</em></div>${opinionList.map(m=>renderSingleTxMandateCard(row,m,false)).join("")}</div></div>`;
+  return `<div class="transaction-mandates is-tiered"><div class="tx-mandate-group"><div class="tx-mandate-group-head"><span>主导投行 · 保荐 / 财务顾问 / 承销</span><em>已披露席位 (${leadList.length})</em></div>${leadList.map(m=>renderSingleTxMandateCard(row,m,true)).join("")}</div><div class="tx-mandate-group is-secondary"><div class="tx-mandate-group-head"><span>独立意见、鉴证与其他中介</span><em>专业意见及顾问机构 (${opinionList.length})</em></div>${opinionList.map(m=>renderSingleTxMandateCard(row,m,false)).join("")}</div></div>`;
  }
  return `<div class="transaction-mandates">${list.map(m=>renderSingleTxMandateCard(row,m,transactionIsLeadIB(m))).join("")}</div>`;
 }
@@ -9853,7 +9856,7 @@ function renderTransactionSummaryStrip(all, compare, row){
       }).join('')}</div>
      </div>`
   : "";
- const lanesHtml=`<div class="tx-advisor-lanes" role="region" aria-label="活跃签署中介分角色席位榜">
+ const lanesHtml=`<div class="tx-advisor-lanes" role="region" aria-label="披露中介分角色席位榜">
   <div class="tx-lanes-topbar">
    <span class="tx-lanes-kicker">活跃中介分席榜 <em>按专业角色独立排位（计去重交易宗数 · 点击机构联动筛选角色）</em></span>
    ${hasIntermediaryFilter
@@ -9910,7 +9913,7 @@ function renderTransactionSummaryStrip(all, compare, row){
  strip.innerHTML=`<div class="terminal-stat-strip tx-insight-strip">
   <div class="stat-cell"><span class="stat-label">安排计划私有化阶段分布</span><strong class="stat-val col-num">${premiums.length?`中位溢价 ${offeringNumber(p0Quantile(premiums,.5),1)}%`:`${schemes.length} 宗`}</strong><small class="stat-sub">${escapeHtml(schemeStageSub)}</small></div>
   <div class="stat-cell"><span class="stat-label">重组周期与原币披露</span><strong class="stat-val col-num">${reorgDays.length?`${reorgDays[0]}–${reorgDays.at(-1)} 天`:`${currencies.length||1} 种原币`}</strong><small class="stat-sub">覆盖 ${currencies.length?currencies.join(" / "):"HKD"} 原币条款 · 14/14A 章、收购守则、重组与再融资</small></div>
-  <div class="stat-cell"><span class="stat-label">签署中介专业席位覆盖</span><strong class="stat-val col-num">${distinctAllFirms.size} 家专业机构 · 5 类席位</strong><small class="stat-sub">投行FA、独立财顾、估值师、会计师与各国律所独立分列</small></div>
+  <div class="stat-cell"><span class="stat-label">已披露中介机构覆盖</span><strong class="stat-val col-num">${distinctAllFirms.size} 家专业机构 · 5 类席位</strong><small class="stat-sub">投行FA、独立财顾、估值师、会计师与各国律所独立分列</small></div>
  </div>
  ${lanesHtml}
  <div class="terminal-stat-strip tx-category-strip">${pillarCards.map(c=>{const active=c.key==="all"?state.transactionCategory==="all":(activePillar?.key===c.key);return `<button type="button" class="stat-cell is-clickable tx-summary-card${active?' is-active':''}" data-tx-cat="${c.key}" aria-pressed="${active}"><span class="stat-label">${c.label}</span><strong class="stat-val col-num">${c.badge}</strong><small class="stat-sub">${c.sub}</small></button>`;}).join('')}</div>${subtierHtml}`;
