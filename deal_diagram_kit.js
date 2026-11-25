@@ -308,26 +308,10 @@
   function formatChineseMoney(value, currency, approximate) {
     const num = Number(value);
     if (!Number.isFinite(num)) return "";
-    const abs = Math.abs(num);
+    const n = Math.abs(num);
+    const [scale, suffix, digits] = n >= 1e8 ? [1e8,"亿",3] : n >= 1e4 ? [1e4,"万",1] : [1,"",2];
     const prefix = `${approximate ? "约 " : ""}${currency ? currency + " " : ""}`;
-    if (abs >= 1e8) {
-      const yi = abs / 1e8;
-      const decimals = yi >= 100 ? 1 : yi >= 10 ? 2 : 3;
-      const formatted = Number(yi.toFixed(decimals)).toLocaleString("en-US", {
-        minimumFractionDigits: yi >= 100 ? 1 : yi >= 10 ? 1 : 2,
-        maximumFractionDigits: decimals,
-      });
-      return `${prefix}${formatted}亿`;
-    }
-    if (abs >= 1e4) {
-      const wan = abs / 1e4;
-      const exactWan = Math.abs(wan - Math.round(wan)) < 0.05;
-      return `${prefix}${wan.toLocaleString("en-US", {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: exactWan ? 0 : 1,
-      })}万`;
-    }
-    return `${prefix}${abs.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+    return `${prefix}${(num / scale).toLocaleString("en-US", {maximumFractionDigits:digits})}${suffix}`;
   }
 
   function formatChineseShares(value) {
@@ -366,8 +350,9 @@
       return formatChineseMoney(term.value, term.currency || "", Boolean(term.approximate));
     }
     if (term.unit === "per_share") {
-      const decimals = Number.isInteger(term.precision) ? term.precision : 2;
-      return `${term.currency ? term.currency + " " : ""}${Number(term.value).toFixed(decimals)}/股`;
+      const [coefficient, exponent] = String(term.value).toLowerCase().split("e");
+      const decimals = Math.max(2, (coefficient.split(".")[1]?.length || 0) - Number(exponent || 0));
+      return `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}${Number(term.value).toLocaleString("en-US", {minimumFractionDigits:2,maximumFractionDigits:decimals})}/股`;
     }
     if (term.unit === "shares") {
       return formatChineseShares(term.value);

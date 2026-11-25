@@ -9322,35 +9322,33 @@ function transactionSource(evidence, text = "原件") {
   const suffix = pages.length ? ` · PDF ${pages.join("、")}页` : "";
   return `<a class="transaction-source" href="${escapeHtml(doc.url + (pages.length ? `#page=${pages[0]}` : ""))}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(doc.title + ' · ' + doc.date)}">${escapeHtml(text + suffix)} ↗</a>`;
 }
+function transactionDecimalDigits(value) {
+  const [coefficient, exponent] = String(value).toLowerCase().split("e");
+  return Math.max(0, (coefficient.split(".")[1]?.length || 0) - Number(exponent || 0));
+}
+function transactionExactAmount(term, minimum = 0) {
+  const decimals = Math.max(transactionDecimalDigits(term.value), minimum);
+  const prefix = `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}`;
+  return `${prefix}${term.value.toLocaleString("en-US", {minimumFractionDigits:minimum,maximumFractionDigits:decimals})}${term.unit === "per_share" ? "/股" : ""}`;
+}
 function transactionAmount(term) {
   if (!term || !Number.isFinite(term.value)) return "—";
   if (term.unit === "ratio") return term.value.toFixed(term.precision) + " : 1";
   if (term.unit === "percent") return term.value.toFixed(term.precision) + "%";
-  const number = term.unit === "money" ? term.value / 1e6 : term.value;
-  const decimals = term.unit === "money" ? 2 : term.precision;
-  return `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}${number.toLocaleString("en-US",{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}${term.unit === "shares" ? " 股" : term.unit === "per_share" ? "／股" : "m"}`;
+  if (term.unit === "per_share") return transactionExactAmount(term, 2);
+  if (term.unit === "money") {
+    const n = Math.abs(term.value);
+    const [scale, suffix, digits] = n >= 1e8 ? [1e8,"亿",3] : n >= 1e4 ? [1e4,"万",1] : [1,"",2];
+    const prefix = `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}`;
+    return `${prefix}${(term.value / scale).toLocaleString("en-US",{maximumFractionDigits:digits})}${suffix}`;
+  }
+  return `${term.value.toLocaleString("en-US",{minimumFractionDigits:term.precision,maximumFractionDigits:term.precision})}${term.unit === "shares" ? " 股" : ""}`;
 }
-function transactionExactMoney(term) {
-  if (!term || !Number.isFinite(term.value) || term.unit !== "money") return "";
-  const num = Number(term.value);
-  const hasFrac = Math.abs(num - Math.round(num)) > 1e-6;
-  const dec = hasFrac ? Math.max(2, Number.isInteger(term.precision) ? term.precision : 2) : 0;
-  return `${term.approximate ? "约 " : ""}${term.currency ? term.currency + " " : ""}${num.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec })}`;
-}
-function transactionDisplayAmount(term, preferExact = false) {
+function transactionDisplayAmount(term) {
   if (!term || !Number.isFinite(term.value)) return "—";
-  const raw = transactionAmount(term);
-  if (term.unit !== "money") return escapeHtml(raw);
-  const cn = formatChineseUnitAmount(term.value, term.currency || "", Boolean(term.approximate));
-  const exact = transactionExactMoney(term);
-  const hasSubMillionPrecision = !term.approximate && (Math.abs(term.value - Math.round(term.value)) > 1e-6 || Math.abs(term.value % 1000000) > 0.5);
-  if (preferExact && !term.approximate) {
-    return `<span class="amt-cn" title="${escapeHtml(raw + " · " + cn)}">${escapeHtml(exact)}</span>`;
-  }
-  if (hasSubMillionPrecision && term.value < 1e9) {
-    return `<span class="amt-cn" title="${escapeHtml(raw + " · " + cn)}">${escapeHtml(exact)}</span>`;
-  }
-  return `<span class="amt-cn" title="${escapeHtml(raw + (exact ? " · " + exact : ""))}">${escapeHtml(cn)}</span>`;
+  const text = transactionAmount(term);
+  if (!["money","per_share"].includes(term.unit)) return escapeHtml(text);
+  return `<span class="amt-cn" title="${escapeHtml(transactionExactAmount(term, term.unit === "per_share" || !Number.isInteger(term.value) ? 2 : 0))}">${escapeHtml(text)}</span>`;
 }
 function transactionTerm(row, key) { return (row.terms || []).find(t => t.key === key); }
 function transactionHeadlineTerm(row) {
@@ -9445,7 +9443,7 @@ function transactionComparisonRows(rows) {
       const h = transactionHeadlineTerm(r);
       if (!h) return '<span class="data-missing">—</span>';
       const ccyTag = h.currency ? `<span class="tx-ccy-pill">${escapeHtml(h.currency)}</span> ` : "";
-      return `${ccyTag}<strong class="col-num">${transactionDisplayAmount(h, true)}</strong><small>${escapeHtml(h.label + (h.basis ? " · " + h.basis : ""))}</small>`;
+      return `${ccyTag}<strong class="col-num">${transactionDisplayAmount(h)}</strong><small>${escapeHtml(h.label + (h.basis ? " · " + h.basis : ""))}</small>`;
     }]
   ];
   const preferredKeys = ["scheme_cash","control_block","offer_value","offer_cash_cap","cash_settlement","contract_price","prepayment_offset","advance_payment_offset","proposed_purchase","translated_purchase","equity_value","asset_valuation","gross_proceeds","net_proceeds","annual_cap","per_scheme_share","offer_price","issue_price","placing_price","conversion_price","subscription_price","consideration_shares","exchange_ratio","enlarged_stake","highest_percentage_ratio_pct","placing_commission_bps","underwriting_commission_bps","coupon_pct"];
@@ -9455,7 +9453,7 @@ function transactionComparisonRows(rows) {
     const exemplar = rows.flatMap(r => r.terms || []).find(t => t.key === key);
     if (exemplar) result.push([key === "consideration_shares" ? "代价股份" : exemplar.label, r => {
       const t = transactionTerm(r, key);
-      return t ? `<strong class="col-num">${transactionDisplayAmount(t, true)}</strong><small>${escapeHtml(t.basis || "")}</small>` : '<span class="data-missing">—</span>';
+      return t ? `<strong class="col-num">${transactionDisplayAmount(t)}</strong><small>${escapeHtml(t.basis || "")}</small>` : '<span class="data-missing">—</span>';
     }]);
   }
   for (const [key, label] of Object.entries(transactionMetricLabels)) {
@@ -9585,7 +9583,7 @@ function transactionDetail(row){
  ].filter(x=>x.evidence?.documentId);
  const sourceIds=new Set(allRefs.map(x=>x.evidence.documentId));
  const docs=[...sourceIds].map(id=>state.transactionData?.documents?.[id]).filter(Boolean).sort((a,b)=>String(b.date||b.documentDate||"").localeCompare(String(a.date||a.documentDate||"")));
- const terms='<dl class="transaction-terms">'+(row.terms||[]).map(t=>'<div><dt>'+escapeHtml(t.label)+'</dt><dd><strong class="col-num">'+transactionDisplayAmount(t,true)+'</strong><span>'+escapeHtml(t.basis||"")+'</span></dd></div>').join("")+'</dl><dl class="transaction-parties">'+Object.entries(row.parties||{}).map(([k,v])=>'<div><dt>'+escapeHtml(k)+'</dt><dd>'+escapeHtml(v)+'</dd></div>').join("")+'</dl>';
+ const terms='<dl class="transaction-terms">'+(row.terms||[]).map(t=>'<div><dt>'+escapeHtml(t.label)+'</dt><dd><strong class="col-num">'+transactionDisplayAmount(t)+'</strong><span>'+escapeHtml(t.basis||"")+'</span></dd></div>').join("")+'</dl><dl class="transaction-parties">'+Object.entries(row.parties||{}).map(([k,v])=>'<div><dt>'+escapeHtml(k)+'</dt><dd>'+escapeHtml(v)+'</dd></div>').join("")+'</dl>';
  const timeline='<ol class="transaction-timeline">'+(row.events||[]).map(e=>{const tzNote=transactionTimezoneNote(e.timeZone||e.timezone);return '<li class="'+(e.state==="actual"?"is-actual":"is-scheduled")+'" data-tx-id="'+row.id+'" data-tx-event-kind="'+escapeHtml(e.kind||"")+'"><time>'+e.date+'</time><div><b>'+escapeHtml(transactionEventLabel(e))+(e.state!=="actual"?"（公告预计）":"")+'</b>'+(tzNote?'<small>'+escapeHtml(tzNote)+'</small>':"")+'</div></li>';}).join("")+'</ol>';
  const rules='<div class="transaction-rules">'+(row.rules||[]).map(r=>'<div><b>'+escapeHtml(r.label)+'</b><span>'+escapeHtml(r.application||"")+'</span></div>').join("")+'</div>';
  const documents='<div class="transaction-doc-list">'+docs.map(d=>{
@@ -9611,7 +9609,7 @@ function transactionDetail(row){
  const txBackBar=txFromCompare
   ? '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><button type="button" class="back-pill" data-tx-return>← 返回并列比较</button><button type="button" class="back-pill" data-tx-force-list>返回交易列表</button></div>'
   : '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><button type="button" class="back-pill" data-tx-return>← 返回交易列表</button>'+(txOtherOrigin?'<button type="button" class="back-pill" data-tx-origin-back>↩ 返回'+escapeHtml(txOtherOrigin)+'</button>':'')+'</div>';
- return '<header class="transaction-detail-heading"><div class="tx-detail-topbar">'+txBackBar+'<button type="button" class="tx-compare-btn" data-compare-transaction="'+row.id+'" aria-pressed="'+inCompare+'"'+(ids.length>=4&&!inCompare?" disabled":"")+'>'+(inCompare?"已入对比篮 ✓":"＋ 加入对比篮")+'</button></div><div class="tx-detail-hero"><div><p class="tx-detail-kicker"><span class="tx-stage-pill is-'+escapeHtml(row.stage.status)+'">'+escapeHtml(row.stage.label)+'</span> · 更新至 '+row.stage.date+'</p><h2 id="transactionDetailTitle" tabindex="-1">'+escapeHtml(row.name)+' <span class="mono-code">'+row.code+'.HK</span></h2><p class="tx-detail-mech">'+escapeHtml(row.mechanism)+'</p>'+(compBadges?'<div class="tx-hero-comps">'+compBadges+'</div>':"")+issuerLinkHtml+'</div>'+(headline?'<div class="transaction-detail-value"><span>'+escapeHtml(headline.label)+'</span><strong class="col-num">'+transactionDisplayAmount(headline,true)+'</strong></div>':"")+'</div></header>'+diagramHtml+'<div class="tx-detail-grid">'+
+ return '<header class="transaction-detail-heading"><div class="tx-detail-topbar">'+txBackBar+'<button type="button" class="tx-compare-btn" data-compare-transaction="'+row.id+'" aria-pressed="'+inCompare+'"'+(ids.length>=4&&!inCompare?" disabled":"")+'>'+(inCompare?"已入对比篮 ✓":"＋ 加入对比篮")+'</button></div><div class="tx-detail-hero"><div><p class="tx-detail-kicker"><span class="tx-stage-pill is-'+escapeHtml(row.stage.status)+'">'+escapeHtml(row.stage.label)+'</span> · 更新至 '+row.stage.date+'</p><h2 id="transactionDetailTitle" tabindex="-1">'+escapeHtml(row.name)+' <span class="mono-code">'+row.code+'.HK</span></h2><p class="tx-detail-mech">'+escapeHtml(row.mechanism)+'</p>'+(compBadges?'<div class="tx-hero-comps">'+compBadges+'</div>':"")+issuerLinkHtml+'</div>'+(headline?'<div class="transaction-detail-value"><span>'+escapeHtml(headline.label)+'</span><strong class="col-num">'+transactionDisplayAmount(headline)+'</strong></div>':"")+'</div></header>'+diagramHtml+'<div class="tx-detail-grid">'+
  transactionDisclosure(row,"structure","交易结构与核心条款",terms)+transactionDisclosure(row,"events","批准与交割时间线",timingStripHtml+(row.lifecycle?'<p class="transaction-lifecycle"><strong class="col-num">'+row.lifecycle.naturalDays+' 天</strong><span>首次公告 → '+escapeHtml(transactionEvents[row.lifecycle.endKind]||row.lifecycle.endKind)+'（'+row.lifecycle.start+' → '+row.lifecycle.end+'）</span></p>':"")+timeline)+
  ((row.processEvents||[]).length?transactionDisclosure(row,"process",row.category==="spin_off"?"分拆相关披露":"延寄与停复牌事件",transactionProcess(row)):"")+
  transactionDisclosure(row,"mandates","中介与签署机构",transactionMandates(row))+transactionDisclosure(row,"rules","规则与分类依据",rules)+transactionDisclosure(row,"documents","公告与通函原件 · "+docs.length,documents)+'</div>';
