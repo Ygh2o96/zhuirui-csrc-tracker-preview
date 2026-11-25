@@ -6103,6 +6103,10 @@
       const spec = builder(txCase);
       return spec ? validateDiagramSpec(spec) : null;
     }
+    // The shared connected/whitewash atlas template is not a fact about a deal.
+    // For ordinary Chapter 14A fallback cases, keep the source-backed text
+    // rather than inventing a waiver, issuance, or post-closing capital structure.
+    if (ordinaryConnectedFallback(txCase)) return null;
     return deriveDiagramFromCase(txCase);
   }
 
@@ -6513,9 +6517,23 @@
     </section>`;
   }
 
+  function ordinaryConnectedFallback(txCase) {
+    if (!txCase || detectArchetype(txCase) !== "connected_whitewash") return false;
+    const rules = txCase.rules || [];
+    return rules.some(r => /^HKEX:14A(?:[.]|$)/i.test(r.code || "")) &&
+      !rules.some(r => /^TC:(?:NOTE1[-:]?RULE26|26[-:]?NOTE1|SCHEDULEVI|WHITEWASH)$/i.test(r.code || "") ||
+        (/^TC:/i.test(r.code || "") && /清洗豁免|whitewash/i.test(r.application || "")));
+  }
+
   function renderCompactFlowBadge(txCase, documents) {
     const spec = resolveSpec(txCase, documents);
-    if (!spec) return "";
+    if (!spec) {
+      if (!ordinaryConnectedFallback(txCase)) return "";
+      const label = txCase.category === "continuing_connected" ? "持续关连交易" :
+        txCase.category === "vsa_vsd" ? "非常重大收购及出售 · 关连交易" : "关连交易";
+      const stage = txCase.stage?.label || "";
+      return `<div class="ddk-compact-flow" data-ddk-case="${escapeHtml(txCase.id || "")}"><span class="ddk-cf-archetype">${escapeHtml(label)}</span>${stage ? `<span class="ddk-cf-summary">${escapeHtml(stage)}</span>` : ""}</div>`;
+    }
     const archInfo = ARCHETYPES[spec.archetype];
     const modalityInfo = MODALITY_BADGES[spec.modality];
     const caseAttr = spec.caseId || spec.id || spec.archetype;
