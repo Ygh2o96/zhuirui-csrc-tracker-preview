@@ -392,7 +392,11 @@
   border: 1px solid var(--ddk-line);
   border-radius: 2px;
   color: var(--ddk-ink-2);
-  white-space: nowrap;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .ddk-callout-body {
