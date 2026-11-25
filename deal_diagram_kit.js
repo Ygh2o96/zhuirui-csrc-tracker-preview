@@ -1825,11 +1825,11 @@
       canvas,
       [
         { id: "L_sh", panel: "left", x: 34, y: 66, w: 220, h: 78, role: "public", title: p.shName || "现有控股及公众股东", subtitle: "转股前既有股东" },
-        { id: "L_listed", panel: "left", x: 34, y: 244, w: 220, h: 90, role: "listed", title: p.listedName, code: p.code, subtitle: "可转债发行人 / 担保主体" },
-        { id: "L_inv", panel: "left", x: 404, y: 204, w: 210, h: 88, role: "creditor", title: p.invName || "境外机构债券认购人", subtitle: "Reg S 专业投资者簿记" },
+        { id: "L_listed", panel: "left", x: 34, y: 244, w: 220, h: 90, role: "listed", title: p.listedName, code: p.code, subtitle: p.issuerSub || "可转债发行人 / 担保主体" },
+        { id: "L_inv", panel: "left", x: 404, y: 204, w: 210, h: 88, role: "creditor", title: p.invName || "境外机构债券认购人", subtitle: p.investorSub || "债券认购人" },
         { id: "R_sh", panel: "right", x: 700, y: 112, w: 162, h: 84, role: "public", title: "既有股东", subtitle: "未转股前零即时摊薄" },
-        { id: "R_cb", panel: "right", x: 886, y: 112, w: 162, h: 84, role: "creditor", title: "可转债持有人", subtitle: "票息保底 + 溢价转股权" },
-        { id: "R_listed", panel: "right", x: 734, y: 292, w: 280, h: 84, role: "listed", title: p.listedName, code: p.code, subtitle: "境外债券挂牌 · 潜在转股扩股" },
+        { id: "R_cb", panel: "right", x: 886, y: 112, w: 162, h: 84, role: "creditor", title: "可转债持有人", subtitle: p.holderSub || "按条款享有转股权" },
+        { id: "R_listed", panel: "right", x: 734, y: 292, w: 280, h: 84, role: "listed", title: p.listedName, code: p.code, subtitle: p.listingSub || "转股时按条款发行新股" },
       ],
       [
         { id: "E_L1", panel: "left", from: "L_sh", to: "L_listed", pctLabel: "100% 既有股本", pillWidth: 114, labelCenter: [144, 194], dashed: false },
@@ -4956,6 +4956,50 @@
     return validateDiagramSpec(spec);
   }
 
+  // The percentage terms in a CB record are rates, discount/premium or
+  // conditional dilution, never current ownership by position in the array.
+  const CB_ISSUE_CONTEXT = {
+    "HK-00264-20261027-cb-placing": ["一般授权 · 尽力配售", "债券不申请上市", "不少于六名独立承配人", "年票息 10%", "中联发展控股"],
+    "HK-00821-20260710-specific-mandate-cb": ["特别授权 · 尽力配售", "债券不申请上市", "不少于六名独立承配人", "三年期 · 零息", "滙盈控股"],
+    "HK-00992-20260617-lenovo-2033-cb": ["联席全球协调人及簿记管理人", "交割公告：预计于 Vienna MTF 挂牌", "不少于六名独立专业投资者", "2033年到期 · 零息", "联想集团"],
+  };
+
+  function applyConvertibleIssueTerms(spec, txCase, terms, moneyTerm, stageLabel) {
+    const ref = Object.hasOwn(CB_ISSUE_CONTEXT, txCase.id) ? CB_ISSUE_CONTEXT[txCase.id] : null;
+    const [channel, listing, group, holder, shortIssuer] = ref || ["", "", "可转债认购人", "", spec.name];
+    const term = (key, unit) => terms.find(t => t.key === key && t.unit === unit && Number.isFinite(t.value));
+    const price = term("conversion_price", "per_share");
+    const shares = term("conversion_shares", "shares");
+    const discount = term("conversion_discount_pct", "percent");
+    const premium = term("conversion_premium_pct", "percent");
+    const money = moneyTerm ? "债券本金 " + formatTermBrief(moneyTerm) : "认购可转债";
+    const conv = price ? "初始换股价 " + formatTermBrief(price) : "按条款行使转股权";
+    const compare = discount ? `换股价折让 ${discount.value}%` : premium ? `换股价溢价 ${premium.value}%` : "";
+    const potential = shares ? "悉数转股新增 " + formatTermBrief(shares) : "";
+    const outcome = stageLabel || "可转债发行";
+    const code = txCase.code ? String(txCase.code).replace(/\.HK$/i, "")+".HK" : "";
+    spec.caseModalityLabel = "债券认购及换股权";
+    spec.caseModalityShortLabel = "债券融资";
+    for (const phase of [spec.before, spec.after]) {
+      for (const node of phase.nodes) {
+        if (node.role === "creditor") Object.assign(node,{name:group,sublabel:holder});
+        if (node.role === "listed") Object.assign(node,{name:shortIssuer,sublabel:"可转债发行人"});
+      }
+    }
+    Object.assign(spec.flows[0],{fromLabel:group,toLabel:shortIssuer,headline:money,subline:channel});
+    Object.assign(spec.flows[1],{fromLabel:shortIssuer,toLabel:"可转债持有人",headline:conv,subline:[compare,potential].filter(Boolean).join(" · ")});
+    spec.after.outcomeBadge=outcome;
+    spec.compactSummary=[shortIssuer,money,conv,compare,potential,outcome].filter(Boolean).join(" · ");
+    spec.topology = buildCbTopology({
+      status:spec.status,leftTitle:"可转债认购及换股条款",
+      listedName:shortIssuer,code,invName:group,investorSub:"债券认购人",issuerSub:"可转债发行人",
+      holderSub:holder,listingSub:listing,cashLabel:money,cashSub:channel||"债券认购款",
+      convLabel:conv,convSub:[compare,potential].filter(Boolean).join(" · ")||"按条款办理换股",
+      outcomeBadge:outcome
+    });
+    return spec;
+  }
+
   function deriveDiagramFromCase(txCase) {
     if (!txCase || typeof txCase !== "object") {
       throw new Error("deriveDiagramFromCase requires a transaction case object");
@@ -5111,6 +5155,9 @@
       },
     ];
 
+    if (archetype === "convertible_bond") {
+      return validateDiagramSpec(applyConvertibleIssueTerms(spec, txCase, terms, moneyTerm, stageLabel));
+    }
     spec.compactSummary = `${name} · ${primaryAmountText} → ${spec.after.outcomeBadge}`;
     spec.topology = synthesizeTopologyFromSpec(spec);
 
