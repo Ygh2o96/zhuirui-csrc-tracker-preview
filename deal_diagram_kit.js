@@ -6106,7 +6106,7 @@
     // The shared connected/whitewash atlas template is not a fact about a deal.
     // For ordinary Chapter 14A fallback cases, keep the source-backed text
     // rather than inventing a waiver, issuance, or post-closing capital structure.
-    if (ordinaryConnectedFallback(txCase)) return null;
+    if (ordinaryConnectedFallback(txCase) || nonUnderwrittenRightsFallback(txCase)) return null;
     return deriveDiagramFromCase(txCase);
   }
 
@@ -6525,11 +6525,18 @@
         (/^TC:/i.test(r.code || "") && /清洗豁免|whitewash/i.test(r.application || "")));
   }
 
+  function nonUnderwrittenRightsFallback(txCase) {
+    return txCase?.category === "rights_issue" &&
+      (!txCase.mandates?.some(m => m.role === "Underwriter")) &&
+      /不[設设]包[銷销]|[無无]包[銷销]|不予包[銷销]|non[- ]underwritten/i.test(txCase.mechanism || "");
+  }
+
   function renderCompactFlowBadge(txCase, documents) {
     const spec = resolveSpec(txCase, documents);
     if (!spec) {
-      if (!ordinaryConnectedFallback(txCase)) return "";
-      const label = txCase.category === "continuing_connected" ? "持续关连交易" :
+      const nonUnderwritten = nonUnderwrittenRightsFallback(txCase);
+      if (!nonUnderwritten && !ordinaryConnectedFallback(txCase)) return "";
+      const label = nonUnderwritten ? "供股 · 不设包销" : txCase.category === "continuing_connected" ? "持续关连交易" :
         txCase.category === "vsa_vsd" ? "非常重大收购及出售 · 关连交易" : "关连交易";
       const stage = txCase.stage?.label || "";
       return `<div class="ddk-compact-flow" data-ddk-case="${escapeHtml(txCase.id || "")}"><span class="ddk-cf-archetype">${escapeHtml(label)}</span>${stage ? `<span class="ddk-cf-summary">${escapeHtml(stage)}</span>` : ""}</div>`;
