@@ -6538,7 +6538,7 @@ function renderCornerstones() {
     const multiBanks = bankRank.filter((x) => x.deals.length >= 2).slice(0, 3);
     const bankCellHtml = multiBanks.length
       ? multiBanks.map((x) => `<span class="cs-bank-chip">${escapeHtml(x.bank)} <b>${x.deals.length}</b></span>`).join("")
-      : bankRank.slice(0, 3).map((x) => `<span class="cs-bank-chip is-light">${escapeHtml(x.bank)}</span>`).join("") || '<span class="muted">—</span>';
+      : '<span class="muted">—</span>';
 
     return `<tr class="cs-row" data-cs-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(p.name)} 基石画像">
       <th scope="row" class="cs-ubo-cell">
@@ -6579,7 +6579,7 @@ function renderCornerstones() {
       <th scope="col">参投项目</th>
       <th scope="col" class="col-num">单笔 Ticket Size（美金 · 下限/中位/上限）</th>
       <th scope="col" class="col-num">累计回报（解禁封顶）</th>
-      <th scope="col">同单投行（保荐 / OC）</th>
+      <th scope="col">联动投行（保荐人 / OC）</th>
     </tr></thead>
     <tbody>${rowsHtml}</tbody>
   </table></div>${paginationHtml}`;
