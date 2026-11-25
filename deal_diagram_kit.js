@@ -1144,7 +1144,7 @@
           panel: "left",
           step: "①",
           kind: "cash",
-          terminated: p.status === "terminated",
+          terminated: p.status === "terminated" && !p.controlCompleted,
           pathPoints: [[111, 252], [111, 356], [274, 356], [274, 252]],
           label: p.step1CashLabel,
           sublabel: p.step1CashSub,
@@ -1157,7 +1157,7 @@
           id: "A_step1_shares",
           panel: "left",
           kind: "shares",
-          terminated: p.status === "terminated",
+          terminated: p.status === "terminated" && !p.controlCompleted,
           pathPoints: [[258, 209], [190, 209]],
           label: p.step1SharesLabel || "70%股",
           labelCenter: [224, 209],
@@ -6058,9 +6058,62 @@
     };
   }
 
+  // The agreement completed before the later conditional offer lapsed. Render each leg independently.
+  function buildWkTwoLegOffer(c, documents) {
+    const ann = "YS-20260804-1bd4df06877d", result = "YS-20261002-05e8bf78644d";
+    const buyer = c.parties?.["买方／要约人"], seller = c.parties?.["出售方"];
+    const term = (key, val) => c.terms?.some(t => t.key === key && t.value === val);
+    if (buyer !== "WellLuck Limited" || seller !== "WK (BVI) Limited" ||
+        c.stage?.eventKind !== "lapsed" || c.stage.date !== "2026-10-02" ||
+        !c.events?.some(e => e.kind === "control_completion" && e.state === "actual" && e.date === "2026-07-30" && e.evidence?.documentId === ann) ||
+        documents?.[ann]?.url !== "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0804/2026080402199.pdf" ||
+        documents?.[result]?.url !== "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1002/2026100203225.pdf" ||
+        !term("post_offer_buyer_holding",39) || !term("post_offer_public_holding",61) ||
+        !term("offer_voting_threshold",50) || !term("control_cash",70200000) || !term("control_shares",780000000) ||
+        !term("valid_tenders_at_failed_close",30000) || !term("offer_shares_acquired",0)) return null;
+    const name = "泓基集团（控股）";
+    const stageLabel = c.stage.label, outcomeBadge = "WellLuck 持股 39% · 公众持股 61%";
+    const leftTitle = "协议交割与余股要约", rightTitle = "要约失效后实际持股";
+    const listed = {id:"listed",role:"listed",name,code:"02535.HK",tier:1};
+    const buyerNode={id:"buyer",role:"buyer",name:buyer,sublabel:"Chan Wing Keung 全资拥有",tier:0};
+    const sellerNode={id:"seller",role:"seller",name:seller,sublabel:"协议出售方",tier:0};
+    const publicNode={id:"public",role:"public",name:"公众股东",tier:0};
+    const link=(from,to,pct,style)=>({from,to,pct,label:pct+"%",style});
+    const cash="现金 7,020 万港元", shares="39% 股权", offer="余股现金要约失效";
+    const flow=(id,kind,step,fromLabel,toLabel,headline,subline,proposedOrTerminated,direction="ltr")=>
+      ({id,kind,step,fromLabel,toLabel,headline,subline,proposedOrTerminated,direction});
+    return {
+      id:c.id,caseId:c.id,code:c.code,name,archetype:"offer",modality:"cash",status:"terminated",
+      stageLabel,stageDate:c.stage.date,mechanism:c.mechanism,caseArchetypeLabel:"协议收购及强制要约",
+      before:{title:leftTitle,nodes:[buyerNode,sellerNode,publicNode,listed],equityLinks:[link("seller","listed",39,"solid"),link("public","listed",61,"dashed")]},
+      after:{title:rightTitle,nodes:[buyerNode,publicNode,listed],equityLinks:[link("buyer","listed",39,"solid"),link("public","listed",61,"dashed")],outcomeBadge},
+      flows:[flow("wk-cash","cash","①",buyer,seller,cash,"每股 HK$0.09 · 7 月 30 日已付",false),
+        flow("wk-shares","shares","①",seller,buyer,shares,"7.8 亿股 · 7 月 30 日已过户",false,"rtl"),
+        flow("wk-offer","cash","②",buyer,"公众股东",offer,"有效接纳 3 万股 · 实际过户 0 股",true)],
+      annotations:[
+        {tag:"①",title:"协议收购",body:"WellLuck Limited 向 WK (BVI) Limited 买入 7.8 亿股（39%），现金 7,020 万港元，7 月 30 日交割。卖方交割后持股 0%。"},
+        {tag:"②",title:"余股要约",body:"10 月 2 日有效接纳 3 万股。已持股与有效接纳合计 39.0015%，未达超过 50% 表决权的生效条件，接纳股份未过户。",ruleCode:"TC:26.1"}],
+      evidenceLinks:[{documentId:ann,pages:[2,6,7,21],label:"协议交割公告"},{documentId:result,pages:[2,3],label:"要约结果公告"}],
+      compactSummary:"泓基集团 · 39% 股权已交割 · HKD 7,020万 · 余股要约失效",
+      topology:buildOfferTopology({
+        status:"terminated",controlCompleted:true,leftTitle,rightTitle,transitionLabel:"实际持股",
+        buyerName:buyer,buyerSub:"Chan Wing Keung 全资拥有",buyerBadge:"7 月 30 日完成收购",
+        sellerName:seller,sellerSub:"出售方 · 交割后持股 0%",
+        publicName:"公众股东",publicSub:"余股要约范围 12.2 亿股",listedName:name,code:"02535.HK",
+        beforeSellerPct:"39% · 7.8 亿股",beforePublicPct:"61% · 12.2 亿股",
+        step1CashLabel:cash,step1CashSub:"HK$0.09/股 · 7 月 30 日交割",step1SharesLabel:"39% 股权",
+        step2MgoLabel:"10 月 2 日 · 余股现金要约失效",step2MgoSub:"有效接纳 3 万股 · 实际过户 0 股",
+        afterBuyerSub:"7.8 亿股 · 已交割",afterPublicName:"公众股东",afterPublicSub:"12.2 亿股",afterBuyerPct:"39% 已交割",afterPublicPct:"61% 公众持股",outcomeBadge}),
+    };
+  }
+
   function getSpecForCase(txCase, documents) {
     if (!txCase || typeof txCase !== "object") {
       throw new Error("getSpecForCase requires a transaction case object");
+    }
+    if (txCase.id === "HK-02535-20260804-control-mgo") {
+      const spec = buildWkTwoLegOffer(txCase, documents);
+      return spec && validateDiagramSpec(spec);
     }
     if (Object.hasOwn(REVIEWED_PN15_DRAFT,txCase.id)) {
       const draft=buildPn15PlannedStructure(txCase,documents);
