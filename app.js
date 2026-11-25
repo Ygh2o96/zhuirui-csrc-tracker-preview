@@ -5622,7 +5622,7 @@ function csRegisterLockupTranches(offer, base, quoteMeta) {
       const end = t.lockupEndDate;
       const key = `${offer.roundId}|lockup:${end}:${last}`;
       const meta = {...base, roundId:offer.roundId, lockupEndDate:end, lockupPriceCutoff:last,
-        lockupDisclosed:true, trackingCloseHkd:null, trackingPriceDate:""};
+        lockupDisclosed:true, trackingCloseHkd:base.trackingBasis === "daily_unadjusted_hkd_close" ? base.trackingCloseHkd : null, trackingPriceDate:base.trackingBasis === "daily_unadjusted_hkd_close" ? base.trackingPriceDate : ""};
       quoteMeta.set(key, meta);
       return {key, meta, hkd:Number(t.amountHkd), quantity:t.quantity, split};
     });
@@ -5671,7 +5671,8 @@ function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
   for (const [roundId, meta] of offerMetaByRound.entries()) {
     const cutoff = meta.lockupPriceCutoff || meta.lockupEndDate;
     const hasDatedTrackingPrice = /^\d{4}-\d{2}-\d{2}$/.test(meta.trackingPriceDate || "");
-    if (meta.trackingCloseHkd != null && meta.trackingCloseHkd > 0
+    const dailyCloseUsable = meta.trackingBasis !== "daily_unadjusted_hkd_close" || (today < meta.lockupEndDate && meta.trackingPriceDate >= csAddDaysIso(today, -4));
+    if (dailyCloseUsable && meta.trackingCloseHkd != null && meta.trackingCloseHkd > 0
       && hasDatedTrackingPrice && meta.trackingPriceDate <= today
       && (today < meta.lockupEndDate || meta.trackingPriceDate <= cutoff)) {
       const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
