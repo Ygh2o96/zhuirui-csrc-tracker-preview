@@ -8844,37 +8844,71 @@ const transactionRoles = {
   TrafficConsultant: "独立交通顾问",
   FA: "FA 财务顾问",
   IFA: "IFA 独立财务顾问",
+  ifa: "IFA 独立财务顾问",
   PlacingAgent: "配售代理／账簿管理人",
   Underwriter: "包销商",
   Sponsor: "保荐人",
   ReitManager: "REIT 基金管理人",
   RestructuringFA: "债务重组财务顾问",
   Accountant: "申报会计师",
+  accountant: "鉴证／申报会计师",
+  reporting_accountant: "申报会计师",
+  auditor: "核数师／备考鉴证",
+  "税务顾问": "税务顾问",
   Valuer: "独立估值师",
-  IndependentExpertAU: "澳洲独立专家"
+  valuer: "独立估值师",
+  Valuer_All: "估值师及独立专家",
+  Valuer_Property: "物业及土地估值师",
+  Valuer_Equity: "企业及股权估值师",
+  Valuer_Special: "船舶设备估值及专项顾问",
+  IndependentExpertAU: "澳洲独立专家",
+  legal_adviser: "法律顾问",
+  "法律顾问": "法律顾问",
+  Legal: "法律顾问",
+  FA_IB: "投行 FA／保荐席位"
 };
 const transactionServices = {
   listing_rules_forecast_due_enquiry: "上市规则14.60A(3) · 盈利预测审阅",
   listing_rules_dcf_compilation: "上市规则14.60A(2) · 折现现金流计算核验",
   listing_rules_proforma_assurance: "备考财务资料鉴证",
   business_equity_valuation: "企业股权估值",
+  equity_valuation: "企业股权估值",
+  full_equity_valuation: "股东全部权益估值",
+  business_valuation: "企业价值评估",
+  creditor_rights_valuation: "债权资产估值",
   traffic_toll_forecast: "交通流量及通行费收入预测",
   scheme_opinion: "私有化独立意见",
   offer_opinion: "要约独立意见",
   offer_advice: "要约财务顾问",
+  transaction_financial_advice: "并购交易财务顾问",
+  financial_advice: "交易财务顾问",
   offer_ifa_appointment: "部分要约独立财务顾问委任",
+  whitewash_adviser_appointment: "清洗豁免独立财顾委任",
+  independent_financial_advice: "独立财务顾问意见",
+  restructuring_independent_financial_advice: "重组独立财务顾问意见",
   connected_ifa_opinion: "14A 关连交易独立意见",
   major_vsa_ifa_opinion: "主要／非常重大交易意见",
   whitewash_opinion: "清洗豁免独立意见",
   rto_opinion: "反向收购独立意见",
   spinoff_advisory: "PN15 分拆财务顾问／保荐",
   spinoff_listing_sponsor: "分拆申请文件列示保荐人",
+  listing_sponsor: "上市保荐人",
   reit_manager: "公募 REIT 基金管理",
   debt_restructuring_advisory: "境外债务重组顾问",
   placing_bookrunning: "股票配售代理／账簿管理",
   cb_bookrunning: "可转债／可交换债承销",
   rights_underwriting: "供股／公开招股包销",
   takeovers_profit_forecast: "收购守则盈利预测报告",
+  profit_forecast_confirmation: "盈利预测确认报告",
+  profit_forecast_calculation_assurance: "盈利预测算术核验",
+  profit_forecast_arithmetic: "盈利预测计算核验",
+  pro_forma_assurance: "备考财务资料鉴证",
+  pro_forma: "未经审核备考财务资料鉴证",
+  accountants_report: "申报会计师报告",
+  financial_information_review: "财务资料审阅",
+  historical_financial_information: "标的历史财务资料审阅",
+  sse_review_response: "上交所重组问询核查意见",
+  asset_transfer_legal_opinion: "资产交割法律意见书",
   property_valuation: "物业估值",
   vessel_valuation: "船舶估值",
   acquisition_due_diligence: "收购及尽职审查",
@@ -9000,7 +9034,191 @@ function transactionMatchesCategory(row, cat) {
 const FIRST_BATCH_PENDING_DIAGRAMS = new Set(["HK-01521-20261109-sanrex", "HK-00848-20260929-wf-scheme", "HK-01086-20260927-crystal-aurora", "HK-00751-20260120-scheme-buyback-photovoltaic", "HK-02688-20250326-xinneng-mixed-scheme-lapsed", "HK-09956-20251017-celestia-cayman-mixed-scheme"]);
 const TX_LEAD_IB_ROLES = new Set(["Sponsor", "FA", "RestructuringFA", "PlacingAgent", "Underwriter"]);
 const transactionIsLeadIB = m => TX_LEAD_IB_ROLES.has(m.role) && m.service !== "listing_rules_forecast_due_enquiry";
-const TX_ROLE_SORT_RANK = { Sponsor: 1, FA: 2, RestructuringFA: 3, PlacingAgent: 4, Underwriter: 5, IFA: 10, IndependentExpertAU: 11, Accountant: 12, Valuer: 13 };
+const TX_ROLE_SORT_RANK = {
+  Sponsor: 1,
+  FA: 2,
+  RestructuringFA: 3,
+  PlacingAgent: 4,
+  Underwriter: 5,
+  IFA: 10,
+  ifa: 10,
+  IndependentExpertAU: 11,
+  Accountant: 12,
+  reporting_accountant: 12,
+  auditor: 12,
+  accountant: 12,
+  "税务顾问": 12,
+  Valuer: 13,
+  valuer: 13,
+  legal_adviser: 14,
+  "法律顾问": 14,
+  TrafficConsultant: 15,
+  ReitManager: 16
+};
+const TX_FIRM_PRIMARY_ALIASES = {
+  "Jones Lang LaSalle Corporate Appraisal and Advisory Limited": ["Jones Lang LaSalle Limited"],
+  "Savills Valuation and Professional Services (China) Limited": ["Savills Valuation and Professional Services Limited"],
+  "Ernst & Young": ["EY S.p.A."],
+  "Shanghai Orient Appraisal Co., Ltd.": ["上海東洲資產評估有限公司"]
+};
+const TX_FIRM_ALIAS_TO_PRIMARY = new Map(
+  Object.entries(TX_FIRM_PRIMARY_ALIASES).flatMap(([pri, list]) => list.map(alias => [alias, pri]))
+);
+function txCanonicalPrimaryFirm(firm) {
+  const f = String(firm || "").trim();
+  return TX_FIRM_ALIAS_TO_PRIMARY.get(f) || f;
+}
+function transactionAdvisorMatches(mandateFirm, selectedAdvisor) {
+  if (!selectedAdvisor || selectedAdvisor === "all") return true;
+  if (mandateFirm === selectedAdvisor) return true;
+  const aliases = TX_FIRM_PRIMARY_ALIASES[selectedAdvisor];
+  return Boolean(aliases && aliases.includes(mandateFirm));
+}
+function transactionRoleMatches(mandate, roleFilter) {
+  if (!roleFilter || roleFilter === "all") return true;
+  const raw = String(mandate?.role || "").trim();
+  const rl = raw.toLowerCase();
+  if (roleFilter === "FA_IB") return ["fa", "sponsor", "placingagent", "underwriter", "restructuringfa"].includes(rl);
+  if (roleFilter === "FA") return rl === "fa";
+  if (roleFilter === "IFA") return rl === "ifa";
+  if (roleFilter === "Valuer") return rl === "valuer";
+  if (roleFilter === "Valuer_All") return ["valuer", "independentexpertau", "trafficconsultant"].includes(rl);
+  if (roleFilter === "Valuer_Property") return ["valuer", "independentexpertau", "trafficconsultant"].includes(rl) && txValuerMatchesSubscope(mandate, "property");
+  if (roleFilter === "Valuer_Equity") return ["valuer", "independentexpertau", "trafficconsultant"].includes(rl) && txValuerMatchesSubscope(mandate, "equity");
+  if (roleFilter === "Valuer_Special") return ["valuer", "independentexpertau", "trafficconsultant"].includes(rl) && txValuerMatchesSubscope(mandate, "special");
+  if (roleFilter === "Accountant") return ["accountant", "reporting_accountant", "auditor", "税务顾问"].includes(rl);
+  if (roleFilter === "Legal") return ["legal", "legal_adviser", "legal_advisor", "法律顾问", "律师", "律所"].includes(rl);
+  return raw === roleFilter;
+}
+const TX_INSTITUTIONAL_IB_RE = /China International Capital|\bCICC\b|中金|CITIC|CLSA|中信|Morgan Stanley|摩根士丹利|J\.?P\.?\s*Morgan|摩根大通|Goldman Sachs|高盛|\bUBS\b|瑞银|BofA|Merrill Lynch|美银|Citigroup|花旗|Hongkong and Shanghai Banking|\bHSBC\b|汇丰|Deutsche Bank|德意志|\bBNP\b|Barclays|Nomura|野村|Jefferies|Macquarie|麦格理|Shenwan Hongyuan|申万宏源|Haitong|Guotai Junan|国泰君安|海通|Huatai|华泰|GF Capital|GF Securities|广发|China Galaxy|银河|ICBC International|工银国际|CCB International|建银国际|BOCOM International|交银国际|\bBOCI\b|中银国际|CMB International|招银国际|\bABCI\b|农银国际|SPDB International|浦银国际|Cinda International|信达国际|CEB International|光银国际|Everbright|光大|\bCMS\b|China Merchants|招商|Guosen|国信|Orient Capital|东方|China Securities|中信建投|Industrial Securities|兴证|Zhongtai|中泰|Soochow|东吴|Sinolink|国金|Founder|方正|DBS Asia|星展|Standard Chartered|渣打|Daiwa|大和|Mizuho|瑞穗/i;
+function txIsInstitutionalIBFirm(firm, mandate) {
+  const role = String(mandate?.role || "");
+  if (["Sponsor", "RestructuringFA", "PlacingAgent", "Underwriter"].includes(role)) return true;
+  const spId = mandate?.sponsorId || sponsorIdForName(firm) || sponsorIdForName(mandate?.firmZh || "");
+  if (spId && Array.isArray(feeSponsorFirms)) {
+    const meta = feeSponsorFirms.find(f => f.sponsorId === spId);
+    if (meta && (meta.sponsorNature === "中资" || meta.sponsorNature === "外资")) return true;
+  }
+  return TX_INSTITUTIONAL_IB_RE.test(`${firm || ""} ${mandate?.firmZh || ""}`);
+}
+const TX_FIRM_SHORT_LABELS = {
+  "China International Capital Corporation Hong Kong Securities Limited": "中金公司",
+  "CITIC Securities (Hong Kong) Limited": "中信证券",
+  "Morgan Stanley Asia Limited": "摩根士丹利",
+  "J.P. Morgan Securities (Asia Pacific) Limited": "摩根大通",
+  "Shenwan Hongyuan Capital (H.K.) Limited": "申万宏源",
+  "Goldman Sachs (Asia) L.L.C.": "高盛",
+  "Haitong International Capital Limited": "海通国际",
+  "ICBC International Capital Limited": "工银国际",
+  "Cinda International Capital Limited": "信达国际",
+  "China Galaxy International Securities (Hong Kong) Co., Limited": "中国银河国际",
+  "SPDB International Capital Limited": "浦银国际",
+  "The Hongkong and Shanghai Banking Corporation Limited": "汇丰 HSBC",
+  "Quam Capital Limited": "华富建业",
+  "Lego Corporate Finance Limited": "力高企业融资",
+  "Lego Securities Limited": "力高证券",
+  "Somerley Capital Limited": "新百利融资",
+  "Rainbow Capital (HK) Limited": "浤博资本",
+  "Red Sun Capital Limited": "红日资本",
+  "Altus Capital Limited": "浩德融资",
+  "Gram Capital Limited": "嘉林资本",
+  "Merdeka Corporate Finance Limited": "领智融资",
+  "Alpha Financial Group Limited": "首盛资本",
+  "Kingston Corporate Finance Limited": "金利丰财顾",
+  "Kingston Securities Limited": "金利丰证券",
+  "DL Securities (HK) Limited": "德林证券",
+  "Ignite Capital (Asia Pacific) Limited": "Ignite Capital",
+  "Veda Capital Limited": "智略资本",
+  "Maxa Capital Limited": "迈时资本",
+  "Messis Capital Limited": "大有融资",
+  "Octal Capital Limited": "八方金融",
+  "Grand Moore Capital Limited": "中毅资本",
+  "VBG Capital Limited": "建泉融资",
+  "Yu Ming Investment Management Limited": "禹铭投资",
+  "Anglo Chinese Corporate Finance, Limited": "英高财顾",
+  "Cushman & Wakefield Limited": "戴德梁行",
+  "Jones Lang LaSalle Corporate Appraisal and Advisory Limited": "仲量联行",
+  "Jones Lang LaSalle Limited": "仲量联行",
+  "Vincorn Consulting and Appraisal Limited": "泓亮咨询",
+  "Peak Vision Appraisals Limited": "浤峰评估",
+  "Savills Valuation and Professional Services (China) Limited": "第一太平戴维斯",
+  "Savills Valuation and Professional Services Limited": "第一太平戴维斯",
+  "Arrow Valuations": "Arrow 船舶估值",
+  "BMI Appraisals Limited": "邦盟汇骏",
+  "FVA Advisory Limited": "FVA 企业估值",
+  "GB Global Pte Ltd": "GB Global",
+  "Colliers International (Hong Kong) Limited": "高力国际",
+  "Knight Frank Petty Limited": "莱坊测计师行",
+  "Kroll (HK) Limited": "德安华 Kroll",
+  "Shanghai Orient Appraisal Co., Ltd.": "上海东洲评估",
+  "上海東洲資產評估有限公司": "上海东洲评估",
+  "北京中企华资产评估有限责任公司": "中企华评估",
+  "Grant Thornton Corporate Finance Pty Ltd": "致同澳洲专家",
+  "WB Group International Limited": "WB 交通顾问",
+  "Ernst & Young": "安永 EY",
+  "EY S.p.A.": "安永 EY",
+  "PricewaterhouseCoopers": "罗兵咸永道 PwC",
+  "BDO Limited": "立信德豪 BDO",
+  "Crowe (HK) CPA Limited": "国富浩华 Crowe",
+  "畢馬威華振會計師事務所（特殊普通合夥）": "毕马威华振",
+  "Deloitte": "德勤 Deloitte",
+  "Baker Tilly Hong Kong Limited": "天职香港",
+  "Shinewing (HK) CPA Limited": "信永中和",
+  "ZHONGHUI ANDA CPA Limited": "中汇安达",
+  "HLB Hodgson Impey Cheng Limited": "国卫会计师",
+  "Linklaters": "年利达 Linklaters",
+  "國浩律師（上海）事務所": "国浩律师（上海）",
+  "Christopher & Lee Ong": "Christopher & Lee Ong"
+};
+function txAdvisorShortLabel(firm, firmZh) {
+  const raw = String(firm || "").trim();
+  if (TX_FIRM_SHORT_LABELS[raw]) return TX_FIRM_SHORT_LABELS[raw];
+  const spId = sponsorIdForName(raw) || sponsorIdForName(firmZh || "");
+  if (spId) {
+    const disp = sponsorDisplayById(spId);
+    if (disp && disp !== spId) return disp;
+  }
+  if (firmZh) return String(firmZh).replace(/(?:有限|股份有限|有限责任)?公司$/, "").trim();
+  return raw
+    .replace(/,?\s*(?:\(Hong Kong\)|\(H\.K\.\)|\(HK\)|\(Asia Pacific\)|\(Asia\)|\(China\))?\s*(?:Co\.,?\s*)?(?:Limited|Ltd\.?|L\.L\.C\.?|Pty Ltd|S\.p\.A\.?)$/i, "")
+    .replace(/\s+(?:Corporate Appraisal and Advisory|Valuation and Professional Services|Consulting and Appraisal|Appraisals|Appraisal)$/i, "")
+    .trim() || raw;
+}
+function txValuerMatchesSubscope(mandate, scope) {
+  if (!scope || scope === "all") return true;
+  const svc = String(mandate?.service || "").toLowerCase();
+  const rl = String(mandate?.role || "").toLowerCase();
+  if (scope === "property") return /property_valuation|物业|地产|土地|不动产/.test(svc);
+  if (scope === "equity") return /equity_valuation|business_valuation|business_equity_valuation|full_equity_valuation|creditor_rights_valuation|sse_review_response|股权|企业|减资|债权/.test(svc);
+  if (scope === "special") return /vessel_valuation|australian_scheme_expert|traffic_toll_forecast|船舶|设备|交通|独立专家/.test(svc) || ["independentexpertau", "trafficconsultant"].includes(rl);
+  return true;
+}
+function txValuerSpecialtyTag(mandates) {
+  const tags = [];
+  const add = t => { if (!tags.includes(t)) tags.push(t); };
+  for (const m of mandates) {
+    const s = String(m.service || "").toLowerCase();
+    const r = String(m.role || "").toLowerCase();
+    if (/property_valuation|物业|土地/.test(s)) add("物业");
+    else if (/vessel_valuation|船舶/.test(s)) add("船舶");
+    else if (/设备/.test(s)) add("设备");
+    else if (r === "independentexpertau" || /australian/.test(s)) add("独立专家");
+    else if (r === "trafficconsultant" || /traffic/.test(s)) add("交通预测");
+    else if (/valuation|评估|估值|sse_review/.test(s)) add("股权");
+  }
+  return tags.slice(0, 2).join("/");
+}
+function txLegalRoleTag(mandates) {
+  for (const m of mandates) {
+    const blob = `${m.service || ""} ${m.side || ""}`;
+    if (/境外.*重组|debt_restructuring/i.test(blob)) return "境外重组";
+    if (/境内|asset_transfer_legal|上海|中国法律/i.test(blob)) return "境内重组";
+    if (/马来西亚|跨境|overseas|foreign/i.test(blob)) return "跨境项目";
+    if (/买方|要约人|offeror|buyer/i.test(blob)) return "买方律所";
+    if (/公司|目标|issuer|company/i.test(blob)) return "公司律所";
+  }
+  return "专项法律";
+}
 const TX_CASE_ENRICHMENTS = {
   "HK-06998-20241007-edding": {
     issuerId: "genor biopharma holdings limited",
@@ -9072,8 +9290,8 @@ function transactionMatches(row, filters = state, asOf = state.transactionData?.
     (filters.transactionService && filters.transactionService !== "all");
   if (hasMandateFilter) {
     if (!mandates.some(m =>
-      (!filters.transactionAdvisor || filters.transactionAdvisor === "all" || m.firm === filters.transactionAdvisor) &&
-      (!filters.transactionRole || filters.transactionRole === "all" || m.role === filters.transactionRole) &&
+      transactionAdvisorMatches(m.firm, filters.transactionAdvisor) &&
+      transactionRoleMatches(m, filters.transactionRole) &&
       (!filters.transactionService || filters.transactionService === "all" || m.service === filters.transactionService)
     )) return false;
   }
@@ -9345,7 +9563,7 @@ function transactionMandates(row){
  const leadList=list.filter(m=>transactionIsLeadIB(m));
  const opinionList=list.filter(m=>!transactionIsLeadIB(m));
  if(leadList.length&&opinionList.length){
-  return `<div class="transaction-mandates is-tiered"><div class="tx-mandate-group"><div class="tx-mandate-group-head"><span>主导投行 · 保荐 / 财务顾问 / 承销</span><em>核心收费席位 (${leadList.length})</em></div>${leadList.map(m=>renderSingleTxMandateCard(row,m,true)).join("")}</div><div class="tx-mandate-group is-secondary"><div class="tx-mandate-group-head"><span>独立意见与鉴证签署 · IFA / 会计师 / 估值师</span><em>法定意见机构 (${opinionList.length})</em></div>${opinionList.map(m=>renderSingleTxMandateCard(row,m,false)).join("")}</div></div>`;
+  return `<div class="transaction-mandates is-tiered"><div class="tx-mandate-group"><div class="tx-mandate-group-head"><span>主导投行 · 保荐 / 财务顾问 / 承销</span><em>核心收费席位 (${leadList.length})</em></div>${leadList.map(m=>renderSingleTxMandateCard(row,m,true)).join("")}</div><div class="tx-mandate-group is-secondary"><div class="tx-mandate-group-head"><span>独立意见、估值、审计与法律顾问 · IFA / 估值师 / 会计师 / 律所</span><em>专业意见及顾问机构 (${opinionList.length})</em></div>${opinionList.map(m=>renderSingleTxMandateCard(row,m,false)).join("")}</div></div>`;
  }
  return `<div class="transaction-mandates">${list.map(m=>renderSingleTxMandateCard(row,m,transactionIsLeadIB(m))).join("")}</div>`;
 }
@@ -9512,6 +9730,9 @@ function txDefaultArchetypeForCategory(cat) {
  };
  return map[cat] || "";
 }
+const TX_PREMIER_FIRM_RE = /Pricewaterhouse|Ernst & Young|\bDeloitte\b|KPMG|畢馬威|毕马威|Linklaters|Clifford Chance|Freshfields|Davis Polk|Skadden|Kirkland|Sidley|Latham|Allen & Overy| Slaughter|King & Wood|金杜|方達|方达|君合|中倫|中伦|國浩|国浩|競天|竞天|通商|海問|海问|Cushman|Jones Lang|Savills|Colliers|Knight Frank|Kroll/i;
+let txFaLaneScope="ib";
+let txValuerLaneScope="all";
 function renderTransactionSummaryStrip(all, compare, row){
  const strip=document.getElementById("transactionSummaryStrip");if(!strip)return;
  strip.hidden=compare||Boolean(row)||!all.length;
@@ -9527,9 +9748,69 @@ function renderTransactionSummaryStrip(all, compare, row){
  const reorgs=all.filter(r=>["reverse_takeover","holding_substitution"].includes(r.category));
  const reorgDays=reorgs.map(r=>r.lifecycle?.naturalDays).filter(Number.isInteger).sort((a,b)=>a-b);
  const noMandateCount=all.filter(r=>!effectiveTransactionMandates(r).length).length;
- const advisorCounts=new Map();
- for(const r of all)for(const firm of new Set(effectiveTransactionMandates(r).map(m=>m.firm).filter(Boolean)))advisorCounts.set(firm,(advisorCounts.get(firm)||0)+1);
- const topAdvisors=[...advisorCounts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,3);
+ const distinctAllFirms=new Set();
+ for(const r of all)for(const m of effectiveTransactionMandates(r))if(m.firm)distinctAllFirms.add(txCanonicalPrimaryFirm(m.firm));
+ const scopedRows=all.filter(r=>transactionMatches(r,{...defaults,...state,transactionAdvisor:"all",transactionRole:"all",transactionService:"all"}));
+ const lanePool=scopedRows.length?scopedRows:all;
+ const collectLane=(roleKey,pred,limit=5)=>{
+  const map=new Map();
+  for(const r of lanePool){
+   for(const m of effectiveTransactionMandates(r)){
+    if(!m.firm||!transactionRoleMatches(m,roleKey))continue;
+    if(pred&&!pred(m))continue;
+    const pri=txCanonicalPrimaryFirm(m.firm);
+    let rec=map.get(pri);
+    if(!rec){
+     rec={firm:pri,firmZh:m.firmZh||"",caseIds:new Set(),mandates:[],isIB:false,roles:new Set()};
+     map.set(pri,rec);
+    }
+    rec.caseIds.add(r.id);
+    rec.mandates.push(m);
+    rec.roles.add(String(m.role||""));
+    if(!rec.firmZh&&m.firmZh)rec.firmZh=m.firmZh;
+    if(txIsInstitutionalIBFirm(pri,m)||TX_PREMIER_FIRM_RE.test(`${pri} ${m.firmZh||""}`))rec.isIB=true;
+   }
+  }
+  return [...map.values()]
+   .sort((a,b)=>(b.caseIds.size-a.caseIds.size)||(Number(b.isIB)-Number(a.isIB))||a.firm.localeCompare(b.firm))
+   .slice(0,limit);
+ };
+ const faList=collectLane(
+  "FA_IB",
+  txFaLaneScope==="ib"
+   ? m=>txIsInstitutionalIBFirm(txCanonicalPrimaryFirm(m.firm),m)
+   : txFaLaneScope==="cf"
+     ? m=>!txIsInstitutionalIBFirm(txCanonicalPrimaryFirm(m.firm),m)
+     : null,
+  5
+ );
+ const ifaList=collectLane("IFA",null,5);
+ const valuerList=collectLane("Valuer_All",m=>txValuerMatchesSubscope(m,txValuerLaneScope),5);
+ const acctList=collectLane("Accountant",null,5);
+ const legalList=collectLane("Legal",null,5);
+ const renderLaneChip=(entry,rolePick,tagText)=>{
+  const isAct=state.transactionAdvisor===entry.firm&&(state.transactionRole===rolePick||state.transactionRole==="all");
+  const shortName=txAdvisorShortLabel(entry.firm,entry.firmZh);
+  const tagHtml=tagText?`<em class="tx-chip-subtag">${escapeHtml(tagText)}</em>`:"";
+  const tip=`${entry.firm}${entry.firmZh?` (${entry.firmZh})`:""} · 当前口径 ${entry.caseIds.size} 宗（点击按机构＋角色筛选）`;
+  return `<button type="button" class="tx-advisor-chip${isAct?" is-active":""}" data-tx-advisor-pick="${escapeHtml(entry.firm)}" data-tx-role-pick="${escapeHtml(rolePick)}" aria-pressed="${isAct}" title="${escapeHtml(tip)}"><span class="tx-chip-firm">${escapeHtml(shortName)}</span>${tagHtml}<b class="tx-chip-cnt col-num">${entry.caseIds.size}</b></button>`;
+ };
+ const valuerRoleFor=entry=>{
+  if(txValuerLaneScope==="property")return "Valuer_Property";
+  if(txValuerLaneScope==="equity")return "Valuer_Equity";
+  if(txValuerLaneScope==="special")return "Valuer_Special";
+  const rls=[...entry.roles];
+  if(rls.length===1&&rls[0]==="IndependentExpertAU")return "IndependentExpertAU";
+  if(rls.length===1&&rls[0]==="TrafficConsultant")return "TrafficConsultant";
+  return "Valuer";
+ };
+ const hasIntermediaryFilter=(state.transactionAdvisor&&state.transactionAdvisor!=="all")||(state.transactionRole&&state.transactionRole!=="all");
+ const activeFilterLabel=hasIntermediaryFilter
+  ? [
+     state.transactionAdvisor!=="all"?txAdvisorShortLabel(state.transactionAdvisor):"",
+     state.transactionRole!=="all"?(transactionRoles[state.transactionRole]||(state.transactionRole==="FA_IB"?"投行 FA／保荐席位":state.transactionRole==="Valuer_All"?"估值师及专家":state.transactionRole)):""
+    ].filter(Boolean).join(" · ")
+  : "";
  const activePillar=txActivePillarForCategory(state.transactionCategory);
  const currencies=[...new Set(all.flatMap(r=>(r.terms||[]).map(t=>t.currency)).filter(Boolean))];
  const pillarCards=[
@@ -9549,11 +9830,66 @@ function renderTransactionSummaryStrip(all, compare, row){
       }).join('')}</div>
      </div>`
   : "";
+ const lanesHtml=`<div class="tx-advisor-lanes" role="region" aria-label="活跃签署中介分角色席位榜">
+  <div class="tx-lanes-topbar">
+   <span class="tx-lanes-kicker">活跃中介分席榜 <em>按专业角色独立排位（计去重交易宗数 · 点击机构联动筛选角色）</em></span>
+   ${hasIntermediaryFilter
+     ? `<div class="tx-lanes-active"><span class="tx-lanes-active-badge">已筛：${escapeHtml(activeFilterLabel)}</span><button type="button" class="tx-lanes-clear" data-tx-advisor-clear>清除中介筛选 ×</button></div>`
+     : `<span class="tx-lanes-note">默认展示全量案例（含 ${noMandateCount} 宗待披露中介）</span>`}
+  </div>
+  <div class="tx-lanes-grid">
+   <div class="tx-advisor-lane" data-tx-lane="fa">
+    <div class="tx-lane-head">
+     <span class="tx-lane-title">FA · 保荐承销</span>
+     <div class="tx-lane-scopes" role="group" aria-label="FA席位口径">
+      <button type="button" class="tx-lane-scope-btn${txFaLaneScope==="ib"?" is-active":""}" data-tx-fa-scope="ib" aria-pressed="${txFaLaneScope==="ib"}">投行</button>
+      <button type="button" class="tx-lane-scope-btn${txFaLaneScope==="cf"?" is-active":""}" data-tx-fa-scope="cf" aria-pressed="${txFaLaneScope==="cf"}">专牌</button>
+      <button type="button" class="tx-lane-scope-btn${txFaLaneScope==="all"?" is-active":""}" data-tx-fa-scope="all" aria-pressed="${txFaLaneScope==="all"}">全部</button>
+     </div>
+    </div>
+    <div class="tx-advisor-pills">${faList.length?faList.map(e=>renderLaneChip(e,"FA_IB","")).join(""):`<span class="tx-lane-empty">当前筛选暂无</span>`}</div>
+   </div>
+   <div class="tx-advisor-lane" data-tx-lane="ifa">
+    <div class="tx-lane-head">
+     <span class="tx-lane-title">独立财顾 IFA</span>
+     <small class="tx-lane-sub">14A / 私有化 / 要约</small>
+    </div>
+    <div class="tx-advisor-pills">${ifaList.length?ifaList.map(e=>renderLaneChip(e,"IFA","")).join(""):`<span class="tx-lane-empty">当前筛选暂无</span>`}</div>
+   </div>
+   <div class="tx-advisor-lane" data-tx-lane="valuer">
+    <div class="tx-lane-head">
+     <span class="tx-lane-title">各类估值师</span>
+     <div class="tx-lane-scopes" role="group" aria-label="估值细分类型">
+      <button type="button" class="tx-lane-scope-btn${txValuerLaneScope==="all"?" is-active":""}" data-tx-valuer-scope="all" aria-pressed="${txValuerLaneScope==="all"}">全部</button>
+      <button type="button" class="tx-lane-scope-btn${txValuerLaneScope==="property"?" is-active":""}" data-tx-valuer-scope="property" aria-pressed="${txValuerLaneScope==="property"}">物业</button>
+      <button type="button" class="tx-lane-scope-btn${txValuerLaneScope==="equity"?" is-active":""}" data-tx-valuer-scope="equity" aria-pressed="${txValuerLaneScope==="equity"}">股权</button>
+      <button type="button" class="tx-lane-scope-btn${txValuerLaneScope==="special"?" is-active":""}" data-tx-valuer-scope="special" aria-pressed="${txValuerLaneScope==="special"}">船舶专项</button>
+     </div>
+    </div>
+    <div class="tx-advisor-pills">${valuerList.length?valuerList.map(e=>renderLaneChip(e,valuerRoleFor(e),txValuerLaneScope==="all"?txValuerSpecialtyTag(e.mandates):"")).join(""):`<span class="tx-lane-empty">当前细分暂无</span>`}</div>
+   </div>
+   <div class="tx-advisor-lane" data-tx-lane="accountant">
+    <div class="tx-lane-head">
+     <span class="tx-lane-title">会计师 · 核数师</span>
+     <small class="tx-lane-sub">盈利预测 / 备考鉴证</small>
+    </div>
+    <div class="tx-advisor-pills">${acctList.length?acctList.map(e=>renderLaneChip(e,"Accountant","")).join(""):`<span class="tx-lane-empty">当前筛选暂无</span>`}</div>
+   </div>
+   <div class="tx-advisor-lane" data-tx-lane="legal">
+    <div class="tx-lane-head">
+     <span class="tx-lane-title">各方律所</span>
+     <small class="tx-lane-sub">重组 / 跨境 / 境内</small>
+    </div>
+    <div class="tx-advisor-pills">${legalList.length?legalList.map(e=>renderLaneChip(e,"Legal",txLegalRoleTag(e.mandates))).join(""):`<span class="tx-lane-empty">通函原件提取中</span>`}</div>
+   </div>
+  </div>
+ </div>`;
  strip.innerHTML=`<div class="terminal-stat-strip tx-insight-strip">
   <div class="stat-cell"><span class="stat-label">安排计划私有化阶段分布</span><strong class="stat-val col-num">${premiums.length?`中位溢价 ${offeringNumber(p0Quantile(premiums,.5),1)}%`:`${schemes.length} 宗`}</strong><small class="stat-sub">${escapeHtml(schemeStageSub)}</small></div>
   <div class="stat-cell"><span class="stat-label">重组周期与原币披露</span><strong class="stat-val col-num">${reorgDays.length?`${reorgDays[0]}–${reorgDays.at(-1)} 天`:`${currencies.length||1} 种原币`}</strong><small class="stat-sub">覆盖 ${currencies.length?currencies.join(" / "):"HKD"} 原币条款 · 14/14A 章、收购守则、重组与再融资</small></div>
-  <div class="stat-cell"><span class="stat-label">活跃签署中介（仅点选时过滤）</span><div class="tx-advisor-pills">${topAdvisors.map(([firm,cnt])=>`<button type="button" class="tx-advisor-chip${state.transactionAdvisor===firm?' is-active':''}" data-tx-advisor-pick="${escapeHtml(firm)}">${escapeHtml(firm.replace(/ Limited$/i,''))} (${cnt})</button>`).join('')}</div><small class="stat-sub">默认展示全量案例（含暂未披露中介案例）</small></div>
+  <div class="stat-cell"><span class="stat-label">签署中介专业席位覆盖</span><strong class="stat-val col-num">${distinctAllFirms.size} 家专业机构 · 5 类席位</strong><small class="stat-sub">投行FA、独立财顾、估值师、会计师与各国律所独立分列</small></div>
  </div>
+ ${lanesHtml}
  <div class="terminal-stat-strip tx-category-strip">${pillarCards.map(c=>{const active=c.key==="all"?state.transactionCategory==="all":(activePillar?.key===c.key);return `<button type="button" class="stat-cell is-clickable tx-summary-card${active?' is-active':''}" data-tx-cat="${c.key}" aria-pressed="${active}"><span class="stat-label">${c.label}</span><strong class="stat-val col-num">${c.badge}</strong><small class="stat-sub">${c.sub}</small></button>`;}).join('')}</div>${subtierHtml}`;
 }
 let activeTxAtlasArchetype="scheme";
@@ -9749,7 +10085,34 @@ function bindTransactionControls(){
     }
     state.transactionId="";renderTransactions();syncUrl();return;
    }
-   if(b.dataset.txAdvisorPick){state.transactionAdvisor=state.transactionAdvisor===b.dataset.txAdvisorPick?"all":b.dataset.txAdvisorPick;state.transactionId="";renderTransactions();syncUrl();return;}
+   if(b.dataset.txFaScope){
+    txFaLaneScope=b.dataset.txFaScope;
+    renderTransactionSummaryStrip(state.transactionData?.cases||[],state.transactionMode==="compare",transactionCase(state.transactionId));
+    return;
+   }
+   if(b.dataset.txValuerScope){
+    txValuerLaneScope=b.dataset.txValuerScope;
+    renderTransactionSummaryStrip(state.transactionData?.cases||[],state.transactionMode==="compare",transactionCase(state.transactionId));
+    return;
+   }
+   if(b.hasAttribute("data-tx-advisor-clear")){
+    state.transactionAdvisor="all";state.transactionRole="all";state.transactionService="all";state.transactionId="";
+    renderTransactions();syncUrl();return;
+   }
+   if(b.dataset.txAdvisorPick){
+    const pickFirm=b.dataset.txAdvisorPick;
+    const pickRole=b.dataset.txRolePick||"all";
+    const sameActive=state.transactionAdvisor===pickFirm&&(pickRole==="all"||state.transactionRole===pickRole||state.transactionRole==="all");
+    if(sameActive){
+     state.transactionAdvisor="all";
+     if(pickRole!=="all")state.transactionRole="all";
+    }else{
+     state.transactionAdvisor=pickFirm;
+     if(pickRole!=="all")state.transactionRole=pickRole;
+     state.transactionService="all";
+    }
+    state.transactionId="";renderTransactions();syncUrl();return;
+   }
    if(b.hasAttribute("data-tx-reorganisation")){openReorganisationExamples(b);return;}
    if(transactionCompareAction(b))return;
    if(b.hasAttribute("data-tx-origin-back")){if(history.state?.fromUrl)history.back();return;}

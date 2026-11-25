@@ -29,7 +29,7 @@
     </script>
     <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=8fd4e49701677fad" />
     <link rel="stylesheet" href="deal_diagram_kit.css?v=10031bd76b969c05" />
-    <link rel="stylesheet" href="styles.css?v=4eab235bccfc2ad7" />
+    <link rel="stylesheet" href="styles.css?v=0dda845518a370da" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -768,7 +768,7 @@
             <details class="transaction-filter-panel">
               <summary>顾问／配售角色、签署服务、币种与近况</summary>
               <div class="transaction-filters">
-                <label><span>中介角色</span><select id="transactionRole"><option value="all">全部角色</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="PlacingAgent">配售代理／账簿管理人</option><option value="Underwriter">包销商（供股／公开发售）</option><option value="Sponsor">保荐人（RTO／分拆）</option><option value="RestructuringFA">债务重组财务顾问</option><option value="Accountant">申报会计师</option><option value="Valuer">独立估值师</option><option value="IndependentExpertAU">澳洲独立专家</option></select></label>
+                <label><span>中介角色</span><select id="transactionRole"><option value="all">全部角色</option><option value="FA_IB">投行 FA／保荐／承销席位</option><option value="FA">FA 财务顾问</option><option value="IFA">IFA 独立财务顾问</option><option value="PlacingAgent">配售代理／账簿管理人</option><option value="Underwriter">包销商（供股／公开发售）</option><option value="Sponsor">保荐人（RTO／分拆）</option><option value="RestructuringFA">债务重组财务顾问</option><option value="Valuer_All">估值师及独立专家（全部）</option><option value="Valuer">独立估值师（全部）</option><option value="Valuer_Property">估值师 · 物业及土地</option><option value="Valuer_Equity">估值师 · 企业及股权</option><option value="Valuer_Special">估值师 · 船舶设备及专项</option><option value="IndependentExpertAU">澳洲独立专家</option><option value="TrafficConsultant">独立交通顾问</option><option value="Accountant">申报会计师／核数师／税务</option><option value="Legal">法律顾问（各方律所）</option></select></label>
                 <label><span>签署服务</span><select id="transactionService"><option value="all">全部服务</option><option value="scheme_opinion">私有化独立意见</option><option value="offer_opinion">要约独立意见</option><option value="offer_advice">要约财务顾问</option><option value="connected_ifa_opinion">14A 关连交易独立意见</option><option value="major_vsa_ifa_opinion">主要／非常重大交易意见</option><option value="whitewash_opinion">清洗豁免独立意见</option><option value="rto_opinion">反向收购独立意见</option><option value="spinoff_advisory">PN15 分拆财务顾问／保荐</option><option value="debt_restructuring_advisory">境外债务重组顾问</option><option value="placing_bookrunning">股票配售代理／账簿管理</option><option value="cb_bookrunning">可转债／可交换债承销</option><option value="rights_underwriting">供股／公开招股包销</option><option value="takeovers_profit_forecast">收购守则盈利预测报告</option><option value="property_valuation">物业估值</option><option value="vessel_valuation">船舶估值</option><option value="acquisition_due_diligence">收购及尽职审查</option><option value="australian_scheme_expert">澳洲安排计划独立专家报告</option></select></label>
                 <label><span>对价币种</span><select id="transactionCurrency"><option value="all">全部币种</option></select></label>
                 <label><span>更新窗口</span><select id="transactionRecent"><option value="all">全部日期</option><option value="30">近 30 日</option><option value="90">近 90 日</option></select></label>
@@ -857,8 +857,8 @@
       <div id="globalSearchResults"></div>
     </dialog>
 
-    <script src="deal_diagram_kit.js?v=47892b7d43ce4b9b"></script>
-    <script src="app.js?v=89fa9ddb972f585d"></script>
+    <script src="deal_diagram_kit.js?v=028d0921a884dceb"></script>
+    <script src="app.js?v=001ecc362cbc6b8d"></script>
     <script src="sponsor_leaderboard_demo.js?v=9fa55bb008ee8e7e"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>

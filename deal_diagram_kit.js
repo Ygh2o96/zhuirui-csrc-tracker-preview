@@ -246,9 +246,12 @@
     const code = ch.charCodeAt(0);
     if (code >= 0x2e80 && code <= 0x9fff) return 1.0;
     if (code >= 0xff00 && code <= 0xffef) return 1.0;
-    if (ch === " " || ch === "." || ch === ":" || ch === "·") return 0.34;
-    if (ch >= "A" && ch <= "Z") return 0.66;
-    return 0.56;
+    if (ch === " " || ch === "." || ch === ":" || ch === "·") return 0.35;
+    if (ch === "%") return 0.88;
+    if (ch === "≥" || ch === "≤" || ch === ">" || ch === "<" || ch === "+" || ch === "=" || ch === "≈") return 0.8;
+    if (ch === "–" || ch === "—") return 0.65;
+    if (ch >= "A" && ch <= "Z") return 0.7;
+    return 0.57;
   }
 
   function measureTextUnits(str) {
@@ -279,25 +282,25 @@
     let current = "";
     let units = 0;
     const tokens = clean.match(/[A-Za-z0-9.%:+/()-]+|\s+|./g) || [];
-    for (const tok of tokens) {
+    for (let i = 0; i < tokens.length; i++) {
+      const tok = tokens[i];
       const tw = measureTextUnits(tok);
       if (units + tw <= maxUnits || !current) {
         current += tok;
         units += tw;
       } else {
-        lines.push(current.trim());
+        lines.push(truncateVisual(current.trim(), maxUnits));
+        if (lines.length === maxLines - 1) {
+          const rest = tokens.slice(i).join("").trim();
+          if (rest) lines.push(truncateVisual(rest, maxUnits));
+          return lines.slice(0, maxLines);
+        }
         current = tok.trimStart();
         units = measureTextUnits(current);
-        if (lines.length === maxLines - 1) break;
       }
     }
     if (current.trim()) {
-      const restIndex = clean.indexOf(current.trim());
-      const remainder =
-        lines.length === maxLines - 1 && restIndex >= 0
-          ? clean.slice(clean.length - current.trim().length)
-          : current.trim();
-      lines.push(truncateVisual(remainder, maxUnits));
+      lines.push(truncateVisual(current.trim(), maxUnits));
     }
     return lines.slice(0, maxLines);
   }
@@ -380,6 +383,42 @@
     return String(term.value);
   }
 
+  function formatDdkRuleShort(code, label) {
+    const rawLabel = String(label || "").trim();
+    const rawCode = String(code || "").trim();
+    const rangeMatch = rawLabel.match(/([0-9]+[A-Za-z]?(?:\.[0-9A-Za-z()]+)*\s*[–-]\s*[0-9]+[A-Za-z]?(?:\.[0-9A-Za-z()]+)*)/);
+    if (rangeMatch && /^HKEX:/i.test(rawCode)) return `LR ${rangeMatch[1].replace(/\s+/g, "")}`;
+    if (/^HKEX:/i.test(rawCode)) {
+      const rest = rawCode.slice(5);
+      return /^PN/i.test(rest) ? rest : `LR ${rest}`;
+    }
+    if (/^TC:/i.test(rawCode)) return `TC ${rawCode.slice(3)}`;
+    if (/^AU:CorpsAct:/i.test(rawCode)) return `AU ${rawCode.split(":").pop()}`;
+    return rawCode || rawLabel;
+  }
+
+  function formatArrowRuleSubline(rules, fallbackCodes, prefix) {
+    const pfx = prefix || "适用规则：";
+    const items = [];
+    const seen = new Set();
+    const pushItem = (txt) => {
+      const clean = String(txt || "").trim();
+      if (clean && !seen.has(clean)) {
+        seen.add(clean);
+        items.push(clean);
+      }
+    };
+    if (Array.isArray(rules) && rules.length) {
+      for (const r of rules) pushItem(formatDdkRuleShort(r?.code, r?.label));
+    }
+    if (!items.length && Array.isArray(fallbackCodes)) {
+      for (const c of fallbackCodes) pushItem(formatDdkRuleShort(c, ""));
+    }
+    if (!items.length) return `${pfx}上市规则第14章`;
+    if (items.length <= 2) return `${pfx}${items.join(" · ")}`;
+    return `${pfx}${items.slice(0, 2).join(" · ")} 等 ${items.length} 项`;
+  }
+
   /* =========================================================================
      1. 2D SVG PITCHBOOK PRIMITIVE ENGINE (`primitives`)
      ========================================================================= */
@@ -452,9 +491,9 @@
     const rightChip = code || jurisdiction;
     const chipW = rightChip ? Math.max(38, Math.round(measureTextUnits(rightChip) * 9.5 + 12)) : 0;
 
-    const maxTitleUnits = Math.max(8, (w - 22) / 12.2);
+    const maxTitleUnits = Math.max(8, (w - 22) / 12.7);
     const titleLines = wrapSvgText(title, maxTitleUnits, 2);
-    const maxSubUnits = Math.max(10, (w - 22) / 10.2);
+    const maxSubUnits = Math.max(8, (w - 22) / 10.4);
     const subText = subtitle ? truncateVisual(subtitle, maxSubUnits) : "";
 
     const strokeDash = meta.dashed ? ' stroke-dasharray="5 3"' : "";
@@ -726,11 +765,13 @@
       const rawStep = cfg.step ? String(cfg.step) : "";
       const stepMap = { "①": "1", "②": "2", "③": "3", "④": "4", "⑤": "5" };
       const step = stepMap[rawStep] || rawStep;
-      const stepOffset = step ? 22 : 0;
-      const autoW = Math.max(
-        measureTextUnits(label) * 11.4 + 24 + stepOffset,
-        sublabel ? measureTextUnits(sublabel) * 9.8 + 22 : 0
-      );
+      const autoPadX = sublabel ? (step ? 40 : 20) : (step ? 35 : 16);
+      const autoW = sublabel
+        ? Math.max(
+            measureTextUnits(label) * 11.5 + autoPadX,
+            measureTextUnits(sublabel) * 10.1 + autoPadX
+          )
+        : measureTextUnits(label) * (step ? 11.1 : 10.5) + autoPadX;
       const pillW = Number.isFinite(cfg.labelWidth)
         ? cfg.labelWidth
         : Math.max(52, Math.round(autoW));
@@ -767,8 +808,9 @@
       pillSvg += `<rect x="${px}" y="${py}" width="${pillW}" height="${pillH}" rx="4" fill="${pillFill}" stroke="${color}" stroke-width="1.2"${pillDash} />`;
 
       if (sublabel) {
-        const line1Max = Math.max(8, (pillW - 16 - stepOffset) / 11.2);
-        const line2Max = Math.max(10, (pillW - 16) / 9.8);
+        const availW = pillW - (step ? 39 : 18);
+        const line1Max = Math.max(5, availW / 11.45);
+        const line2Max = Math.max(6, availW / 10.05);
         const line1 = truncateVisual(label, line1Max);
         const line2 = truncateVisual(sublabel, line2Max);
         if (step) {
@@ -782,7 +824,8 @@
         }
         pillSvg += `<text x="${px + (step ? 29 : pillW / 2)}" y="${py + 35}" ${step ? "" : 'text-anchor="middle" '}font-family="${escapeHtml(FONT_SANS)}" font-size="9.8" font-weight="500" fill="#475569">${escapeHtml(line2)}</text>`;
       } else {
-        const line1Max = Math.max(4, (pillW - 10 - stepOffset) / 10.6);
+        const availW = pillW - (step ? 34 : 12);
+        const line1Max = Math.max(3, availW / (step ? 11.05 : 10.45));
         const line1 = truncateVisual(label, line1Max);
         if (step) {
           const sx = px + 13;
@@ -1151,7 +1194,7 @@
           label: p.step2MgoLabel,
           sublabel: p.step2MgoSub,
           labelCenter: [324, 96],
-          labelWidth: 368,
+          labelWidth: 382,
           labelHeight: 46,
         },
       ]
@@ -1329,7 +1372,7 @@
           label: p.sharesLabel,
           sublabel: p.sharesSub,
           labelCenter: [324, 178],
-          labelWidth: 204,
+          labelWidth: 220,
           labelHeight: 50,
         },
         // Arrow 2: Target Group -> Listed Co (100% Absorption / Merger Injection)
@@ -4813,7 +4856,8 @@
     const pendingCap = txCase.id === "HK-00950-20261119-nova-assembly-line-order" && status === "active" && headlineTerm?.key === "equipment_purchase_cap";
     const buyerCode = pendingCap ? undefined : code;
     const deliveryHeadline = pendingCap ? `拟交付 ${assetName}` : `交付 ${assetName}`;
-    const deliveryContext = pendingCap ? "卖方接纳订单后约 50 周" : `商业资产入账 · 适用 ${rules.map(r=>r.code).filter(Boolean).join(" · ")||"HKEX:14.06"}`;
+    const deliveryRuleBrief = formatArrowRuleSubline(rules, ["HKEX:14.06"], "适用 ");
+    const deliveryContext = pendingCap ? "卖方接纳订单后约 50 周" : `商业资产入账 · ${deliveryRuleBrief}`;
     const secondaryTerms = terms.filter((t) => t !== headlineTerm);
     const primaryExact = headlineTerm
       ? `${headlineTerm.label} ${headlineTerm.approximate ? formatTermBrief(headlineTerm) : formatTermExact(headlineTerm)}`
@@ -4871,7 +4915,7 @@
           fromLabel: vendorName,
           toLabel: buyerParty,
           headline: deliveryHeadline,
-          subline: `纯商业资产采购 · 适用 ${ruleSummary}`,
+          subline: `纯商业资产采购 · ${deliveryRuleBrief}`,
           proposedOrTerminated: isTerminated || pendingCap,
         },
       ],
@@ -5048,7 +5092,7 @@
     }
     spec.flows[0].proposedOrTerminated = isTerminated;
     if (spec.flows[1]) {
-      spec.flows[1].subline = `适用规则：${ruleSummary}`;
+      spec.flows[1].subline = formatArrowRuleSubline(rules, archInfo.ruleTriggers, "适用规则：");
       spec.flows[1].proposedOrTerminated = isTerminated;
     }
 
@@ -6273,20 +6317,6 @@
       const active = btn.key === initialFilter;
       return `<button type="button" class="ddk-filter-btn${active ? " is-active" : ""}" data-ddk-filter-btn="${btn.key}" aria-pressed="${active ? "true" : "false"}">${escapeHtml(btn.labelZh)}</button>`;
     }).join("");
-
-  function formatDdkRuleShort(code, label) {
-    const rawLabel = String(label || "").trim();
-    const rawCode = String(code || "").trim();
-    const rangeMatch = rawLabel.match(/([0-9]+[A-Za-z]?(?:\.[0-9A-Za-z()]+)*\s*[–-]\s*[0-9]+[A-Za-z]?(?:\.[0-9A-Za-z()]+)*)/);
-    if (rangeMatch && /^HKEX:/i.test(rawCode)) return `LR ${rangeMatch[1].replace(/\s+/g, "")}`;
-    if (/^HKEX:/i.test(rawCode)) {
-      const rest = rawCode.slice(5);
-      return /^PN/i.test(rest) ? rest : `LR ${rest}`;
-    }
-    if (/^TC:/i.test(rawCode)) return `TC ${rawCode.slice(3)}`;
-    if (/^AU:CorpsAct:/i.test(rawCode)) return `AU ${rawCode.split(":").pop()}`;
-    return rawCode || rawLabel;
-  }
 
   function ddkRuleQueryKeyword(code, label) {
     const rawCode = String(code || "").trim();
