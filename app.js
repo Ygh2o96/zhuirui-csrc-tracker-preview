@@ -9561,7 +9561,7 @@ function transactionMandates(row){
  const leadList=list.filter(m=>transactionIsLeadIB(m));
  const opinionList=list.filter(m=>!transactionIsLeadIB(m));
  if(leadList.length&&opinionList.length){
-  return `<div class="transaction-mandates is-tiered"><div class="tx-mandate-group"><div class="tx-mandate-group-head"><span>主导投行 · 保荐 / 财务顾问 / 承销</span><em>核心收费席位 (${leadList.length})</em></div>${leadList.map(m=>renderSingleTxMandateCard(row,m,true)).join("")}</div><div class="tx-mandate-group is-secondary"><div class="tx-mandate-group-head"><span>独立意见、估值、审计与法律顾问 · IFA / 估值师 / 会计师 / 律所</span><em>专业意见及顾问机构 (${opinionList.length})</em></div>${opinionList.map(m=>renderSingleTxMandateCard(row,m,false)).join("")}</div></div>`;
+  return `<div class="transaction-mandates is-tiered"><div class="tx-mandate-group"><div class="tx-mandate-group-head"><span>主导投行 · 保荐 / 财务顾问 / 承销</span><em>核心收费席位 (${leadList.length})</em></div>${leadList.map(m=>renderSingleTxMandateCard(row,m,true)).join("")}</div><div class="tx-mandate-group is-secondary"><div class="tx-mandate-group-head"><span>独立意见与鉴证签署 · IFA / 估值师 / 会计师 / 律所</span><em>专业意见及顾问机构 (${opinionList.length})</em></div>${opinionList.map(m=>renderSingleTxMandateCard(row,m,false)).join("")}</div></div>`;
  }
  return `<div class="transaction-mandates">${list.map(m=>renderSingleTxMandateCard(row,m,transactionIsLeadIB(m))).join("")}</div>`;
 }

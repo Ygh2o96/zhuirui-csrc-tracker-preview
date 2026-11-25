@@ -158,7 +158,6 @@ const BENCHMARK_MEDIAN_FIELDS = [
   "activeProjectsPerType6Rep",
   "listingMarketCapPerType6TotalHkdBn",
   "listingMarketCapPerSponsorPrincipalHkdBn",
-  "faTxCount",
   "econTotalHkdM",
   "econSpFeeHkdM",
   "econCommHkdM",
@@ -1064,9 +1063,6 @@ function aggregateFacts(facts, stage = state.stage, ignoreSearchNature = false) 
     }
   }
   const faBySponsor = faTransactionsBySponsor(firms, stage, state.credit, ignoreSearchNature, ipoIssuersBySponsor);
-  for (const sid of faBySponsor.keys()) {
-    if (!grouped.has(sid)) grouped.set(sid, []);
-  }
 
   const rows = [];
   for (const [sponsorId, sponsorFacts] of grouped.entries()) {
@@ -1091,8 +1087,7 @@ function aggregateFacts(facts, stage = state.stage, ignoreSearchNature = false) 
     const applyingAhCaps = aggregateMarketCaps(sponsorFacts.filter((fact) => fact.hkexStage === "applying" && fact.isAH), "aShare");
     const faBucket = faBySponsor.get(sponsorId);
     const faTxCount = faBucket ? faBucket.count : 0;
-    const ipoProjectCount = weightedCount(sponsorFacts, () => true);
-    const projectCount = ipoProjectCount + faTxCount;
+    const projectCount = weightedCount(sponsorFacts, () => true);
     const activeCount = weightedCount(sponsorFacts, (fact) => fact.hkexStage === "applying");
   const type6RepCount = isNumber(firm.type6RepCount) ? firm.type6RepCount : null;
   const type6ROCount = isNumber(firm.type6ROCount) ? firm.type6ROCount : null;
@@ -2167,8 +2162,8 @@ function metricCards(rows) {
       label: "活跃保荐机构",
       value: comparableRows.length ? `${compactNumber(comparableRows.length, 0)} 家` : "",
       note: uniqueIssuers
-        ? `覆盖 ${compactNumber(uniqueIssuers, 0)} 宗IPO${totalFaMandates ? ` + ${compactNumber(totalFaMandates, 0)} 宗FA交易` : ""} · ${creditLabels[state.credit] || "具名全部计入"}`
-        : `${creditLabels[state.credit] || "具名全部计入"} · 港股保荐与FA全览`,
+        ? `覆盖 ${compactNumber(uniqueIssuers, 0)} 宗IPO保荐${totalFaMandates ? `（另附 ${compactNumber(totalFaMandates, 0)} 宗交易FA备查·不计排名）` : ""} · ${creditLabels[state.credit] || "具名全部计入"}`
+        : `${creditLabels[state.credit] || "具名全部计入"} · 港股保荐执业全览`,
       metricKey: "projectCount",
     },
     {
@@ -2628,8 +2623,8 @@ function renderDrawerInsights(row) {
   const faHtml = Array.isArray(row.faTransactions) && row.faTransactions.length > 0
     ? `<section class="drawer-insight-panel drawer-fa-bar">
         <div class="drawer-fa-bar-copy">
-          <strong>并购重组与再融资主导投行实绩 · ${row.faTransactions.length} 宗</strong>
-          <span>仅计入财务顾问 FA / 新上市保荐 / 配售 / 包销角色（剔除独立财务顾问 IFA）</span>
+          <strong>附注：并购重组与再融资 FA 实绩 · ${row.faTransactions.length} 宗</strong>
+          <span>仅作交易财务顾问备查展示，不计入保荐人龙虎榜项目数与排名（不含独立财务顾问 IFA）</span>
         </div>
         <button type="button" class="deal-jump-btn" data-drawer-sponsor="${escapeHtml(row.sponsorId)}" data-drawer-cat="FA" data-drawer-scroll="1">查看交易明细 ↓</button>
       </section>`
@@ -2691,37 +2686,47 @@ function rowHtml(row, rank, showMarketCap) {
       ? '<span class="pill amber">合并口径</span>'
       : "";
   const isInteractiveFirm = row.firmScope !== "benchmark";
-  const industries = row.topIndustries?.length
-    ? row.topIndustries
+  const indList = Array.isArray(row.topIndustries) ? row.topIndustries : [];
+  const visibleInds = indList.slice(0, 2);
+  const moreIndCount = Math.max(0, indList.length - visibleInds.length);
+  const industries = visibleInds.length
+    ? visibleInds
         .map((tag) =>
           isInteractiveFirm
-            ? `<button type="button" class="pill sl-pill-btn" data-open-sponsor-id="${escapeHtml(row.sponsorId)}" data-open-sponsor-industry="${escapeHtml(tag)}" title="点击查看 ${escapeHtml(row.displayNameZh)} · ${escapeHtml(tag)} 项目明细">${escapeHtml(tag)}</button>`
-            : `<span class="pill">${escapeHtml(tag)}</span>`,
+            ? `<button type="button" class="pill sl-pill-btn sl-ind-pill" data-open-sponsor-id="${escapeHtml(row.sponsorId)}" data-open-sponsor-industry="${escapeHtml(tag)}" title="点击查看 ${escapeHtml(row.displayNameZh)} · ${escapeHtml(tag)} 项目明细">${escapeHtml(tag)}</button>`
+            : `<span class="pill sl-ind-pill">${escapeHtml(tag)}</span>`,
         )
-        .join("")
+        .join("") +
+      (moreIndCount > 0 && isInteractiveFirm
+        ? `<button type="button" class="sl-ind-more" data-open-sponsor-id="${escapeHtml(row.sponsorId)}" title="其余赛道：${escapeHtml(indList.slice(2).join(" · "))}">+${moreIndCount}</button>`
+        : "")
     : '<span class="pill">待披露</span>';
   const typePillDefs = [
-    row.ahCount > 0 ? { cat: "A+H", label: `A+H ${compactCredit(row.ahCount)}`, tip: "点击查看该机构 A+H 申报与上市项目" } : null,
-    row.hShareCount > 0 ? { cat: "H股", label: `H股 ${compactCredit(row.hShareCount)}`, tip: "点击查看该机构境内注册 H 股项目" } : null,
-    row.redChipCount > 0 ? { cat: "红筹", label: `红筹 ${compactCredit(row.redChipCount)}`, tip: "点击查看该机构红筹架构项目" } : null,
+    row.ahCount > 0 ? { cat: "A+H", label: `A+H ${compactCredit(row.ahCount)}`, tip: "点击查看该机构 A+H 申报与上市保荐项目" } : null,
+    row.hShareCount > 0 ? { cat: "H股", label: `H股 ${compactCredit(row.hShareCount)}`, tip: "点击查看该机构境内注册 H 股保荐项目" } : null,
+    row.redChipCount > 0 ? { cat: "红筹", label: `红筹 ${compactCredit(row.redChipCount)}`, tip: "点击查看该机构红筹架构保荐项目" } : null,
     row.deSpacCount > 0 ? { cat: "De-SPAC", label: `De-SPAC ${compactCredit(row.deSpacCount)}`, tip: "点击查看该机构 De-SPAC 并购上市项目" } : null,
     row.hdrCount > 0 ? { cat: "HDR", label: `HDR ${compactCredit(row.hdrCount)}`, tip: "点击查看该机构香港预托证券 HDR 项目" } : null,
     row.otherIssuerTypeCount > 0
       ? {
           cat: "其他",
           label: `港资/海外 ${compactCredit(row.otherIssuerTypeCount)}`,
-          tip: "点击查看该机构香港本地企业、海外外国企业及香港 OFC 上市基金（非内地 H 股/红筹架构）项目明细",
+          tip: "点击查看该机构香港本地企业、海外外国企业及香港 OFC 上市基金（非内地 H 股/红筹架构）保荐项目明细",
         }
       : null,
-    row.faTxCount > 0 ? { cat: "FA", label: `交易FA ${compactCredit(row.faTxCount)}`, tip: "点击查看该机构并购重组与再融资 FA 交易" } : null,
   ].filter(Boolean);
-  const typePills = typePillDefs
-    .map((p) =>
-      isInteractiveFirm
-        ? `<button type="button" class="pill teal sl-pill-btn" data-open-sponsor-id="${escapeHtml(row.sponsorId)}" data-open-sponsor-cat="${escapeHtml(p.cat)}" title="${escapeHtml(p.tip)}">${escapeHtml(p.label)}</button>`
-        : `<span class="pill teal">${escapeHtml(p.label)}</span>`,
-    )
-    .join("");
+  const typeBreakdownHtml = typePillDefs.length
+    ? `<div class="sl-proj-breakdown">${typePillDefs
+        .map((p) =>
+          isInteractiveFirm
+            ? `<button type="button" class="sl-inline-cat" data-open-sponsor-id="${escapeHtml(row.sponsorId)}" data-open-sponsor-cat="${escapeHtml(p.cat)}" title="${escapeHtml(p.tip)}">${escapeHtml(p.label)}</button>`
+            : `<span class="sl-inline-cat is-static">${escapeHtml(p.label)}</span>`,
+        )
+        .join("")}</div>`
+    : "";
+  const faRefHtml = isInteractiveFirm && row.faTxCount > 0
+    ? `<div class="sl-fa-ref-line"><button type="button" class="sl-fa-ref-btn" data-open-sponsor-id="${escapeHtml(row.sponsorId)}" data-open-sponsor-cat="FA" title="点击查看该机构并购重组与再融资 FA 交易明细（仅作备查展示，不计入保荐项目总数与排名）">另：交易FA ${compactCredit(row.faTxCount)}</button></div>`
+    : "";
   const natureHtml = isInteractiveFirm && row.sponsorNature
     ? `<button type="button" class="pill teal sl-pill-btn${state.nature === row.sponsorNature ? " is-active" : ""}" data-filter-nature="${escapeHtml(row.sponsorNature)}" title="点击按「${escapeHtml(row.sponsorNature)}」筛选榜单（再次点击恢复全部）">${escapeHtml(row.sponsorNature)}</button>`
     : `<span class="pill teal">${escapeHtml(row.sponsorNature || "待核")}</span>`;
@@ -2744,7 +2749,7 @@ function rowHtml(row, rank, showMarketCap) {
     </td>
     <td data-label="性质">${natureHtml}</td>
     <td data-label="SP / 六号牌" class="col-num"><span class="number">${escapeHtml(type6.main)}</span><span class="sub-number">${escapeHtml(type6.sub)}</span></td>
-    <td data-label="项目" class="col-num"><span class="number">${compactCredit(row.projectCount)}</span><span class="sub-number">${typePills}</span></td>
+    <td data-label="保荐项目数" class="col-num sl-col-projects"><span class="number">${compactCredit(row.projectCount)}</span>${typeBreakdownHtml}${faRefHtml}</td>
     <td data-label="申请中" class="col-num"><span class="number">${compactCredit(row.activeCount)}</span></td>
     <td data-label="已上市" class="col-num"><span class="number">${compactCredit(row.listedCount)}</span>${listedFeeSub}</td>
     <td data-label="A+H" class="col-num"><span class="number">${compactCredit(row.ahCount)}</span></td>
@@ -2833,13 +2838,13 @@ function unifiedLicenseProvenanceNote() {
 function pkMetricRows(rowA, rowB) {
   const metrics = [
     {
-      label: "项目总数（含并购/配售FA） / Total mandates",
+      label: "保荐项目总数 / Total sponsor mandates",
       key: "projectCount",
       value: (row) => row.projectCount,
       format: compactCredit,
       higher: true,
-      note: "IPO保荐 + 并购重组/再融资FA",
-      coverage: (row) => row.faTxCount > 0 ? `含交易FA ${compactCredit(row.faTxCount)} 宗（不含IFA）` : "",
+      note: "仅计IPO保荐项目（交易FA单列备查，不计排名）",
+      coverage: (row) => row.faTxCount > 0 ? `另任交易FA ${compactCredit(row.faTxCount)} 宗（不计入保荐总数）` : "",
     },
     {
       label: "总经济（保荐+估佣） / Total economics",
@@ -3906,7 +3911,7 @@ async function init() {
     const sourceNote = meta.sourceGeneratedAt ? ` · 源快照 ${meta.sourceGeneratedAt}` : "";
     els.generatedAt.textContent = `更新 ${String(meta.sourceGeneratedAt||meta.generatedAt||"").slice(0,10)}`;
     const licNote = unifiedLicenseProvenanceNote();
-    els.demoNote.textContent = `具名全部计入时各计1宗；平分时按具名家数分摊；项目总数含并购/配售FA角色（不含IFA）；总经济按联席平分归属。${licNote ? `牌照口径：${licNote}。` : ""}`;
+    els.demoNote.textContent = `具名全部计入时各计1宗；平分时按具名家数分摊；保荐项目数及排名仅统计IPO保荐项目（并购/再融资FA仅作附注备查，不计入保荐排名）；总经济按联席平分归属。${licNote ? `牌照口径：${licNote}。` : ""}`;
     populateOptions();
     p0SponsorRead();
     syncControls();
