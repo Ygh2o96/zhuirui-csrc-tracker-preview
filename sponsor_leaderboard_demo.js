@@ -3847,7 +3847,11 @@ function applySharedConfirmedListing(payload) {
       hkexListingStockCode:listing.hkexListingStockCode, hkexListingCompanyName:listing.hkexListingCompanyName,
       listingDate:listing.hkexListingDate, applicationStatusGroup:null, applicationStatusLabelZh:null,
       calendarDaysA1ToListing:sameA1 ? listing.calendarDaysA1ToListing : null,
-      listingDurationSampleEligible:sameA1 && listing.listingDurationSampleEligible === true, sourceLinks
+      listingDurationSampleEligible:sameA1 && listing.listingDurationSampleEligible === true,
+      hkListingSessionClose:listing.hkListingSessionClose,
+      listingMarketCapHkdBn:listing.listingMarketCapHkdBn,
+      listingMarketCapSampleEligible:listing.listingMarketCapSampleEligible === true,
+      listingMarketCapProvenance:listing.listingMarketCapProvenance, sourceLinks
     };
   });
   return next.some((row,i) => row !== payload.projectFacts[i]) ? {...payload,projectFacts:next} : payload;
