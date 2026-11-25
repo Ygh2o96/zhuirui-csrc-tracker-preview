@@ -11,8 +11,8 @@
     <meta name="theme-color" content="#f6f6f3" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="sponsor_leaderboard_demo.css?v=8fd4e49701677fad" />
-    <link rel="stylesheet" href="deal_diagram_kit.css?v=5ac6b8141c4e293f" />
-    <link rel="stylesheet" href="styles.css?v=55715d22991d12e6" />
+    <link rel="stylesheet" href="deal_diagram_kit.css?v=10031bd76b969c05" />
+    <link rel="stylesheet" href="styles.css?v=d4037c0dce3efc1f" />
   </head>
   <body>
     <a class="skip-link" href="#workspaceMain">跳至主内容</a>
@@ -72,7 +72,7 @@
             <div class="dir-toolbar-primary">
               <label class="search-box dir-search-box">
                 <span class="search-glyph" aria-hidden="true">⌕</span>
-                <input id="dirSearch" name="dirSearch" type="search" autocomplete="off" placeholder="搜索发行人中英文名、股份/A股代码、保荐人、行业…" />
+                <input id="dirSearch" name="dirSearch" type="search" autocomplete="off" placeholder="搜索发行人、代码、18A、18C、-W 同股不同权、-S、密交、保荐人、行业…" />
               </label>
               <div class="dir-stage-tabs" id="dirStageTabs" role="tablist" aria-label="申请与上市阶段">
                 <button type="button" class="dir-stage-btn is-active" data-dir-stage="all" aria-pressed="true">全部 <strong data-dir-stage-count="all">0</strong></button>
@@ -88,11 +88,26 @@
                 <span>类别</span>
                 <select id="dirTypeFilter" name="dirTypeFilter" autocomplete="off">
                   <option value="all">全部类别</option>
-                  <option value="a_h">A+H</option>
-                  <option value="h_share">H股</option>
-                  <option value="red_chip">红筹</option>
-                  <option value="chapter18">18A·特专 (-B/-P)</option>
-                  <option value="other">港资/海外 · De-SPAC/HDR</option>
+                  <optgroup label="架构与上市地">
+                    <option value="a_h">A+H</option>
+                    <option value="h_share">H股</option>
+                    <option value="red_chip">红筹</option>
+                    <option value="offshore_other">港资 / 海外架构</option>
+                  </optgroup>
+                  <optgroup label="上市章节与股份后缀">
+                    <option value="18a">18A 生物科技 (-B)</option>
+                    <option value="18c">18C 特专科技 (-P)</option>
+                    <option value="wvr">同股不同权 (-W · 8A)</option>
+                    <option value="confidential">保密递交 (密交)</option>
+                    <option value="secondary">第二上市 (-S · 19C)</option>
+                    <option value="chapter18">18A + 18C 合计</option>
+                  </optgroup>
+                  <optgroup label="特殊上市路径">
+                    <option value="gem_to_main_transfer">GEM转主板</option>
+                    <option value="introduction">介绍上市</option>
+                    <option value="de_spac">De-SPAC (18B)</option>
+                    <option value="hdr_rto">HDR / RTO 反向收购</option>
+                  </optgroup>
                 </select>
               </label>
               <label class="inline-select-pill">
@@ -195,7 +210,7 @@
               <div class="toolbar tracker-primary-toolbar">
                 <label class="search-box">
                   <span class="search-glyph" aria-hidden="true">⌕</span>
-                  <input id="issuerSearch" name="issuerSearch" type="search" autocomplete="off" placeholder="搜索发行人、A股代码、保荐人、行业…" />
+                  <input id="issuerSearch" name="issuerSearch" type="search" autocomplete="off" placeholder="搜索发行人、代码、18A、18C、-W、密交、保荐人、行业…" />
                 </label>
                 <label class="inline-select-pill" aria-label="发行人类别">
                   <span>类别</span>
@@ -211,6 +226,8 @@
                 </div>
                 <button class="clear-button" id="clearFilters" type="button">重置</button>
               </div>
+
+              <div class="tracker-exclude-bar" id="trackerExcludeBar" role="group" aria-label="排除特定类型以观察耗时统计"></div>
 
               <details class="tracker-extra-filters">
                 <summary>行业、保荐人、日期区间与排序</summary>
@@ -806,8 +823,8 @@
       <div id="globalSearchResults"></div>
     </dialog>
 
-    <script src="deal_diagram_kit.js?v=6edda8c3e60150f0"></script>
-    <script src="app.js?v=ddffceb59ea8e97e"></script>
+    <script src="deal_diagram_kit.js?v=4c025c75bdee443d"></script>
+    <script src="app.js?v=445a3c75505ee413"></script>
     <script src="sponsor_leaderboard_demo.js?v=9fa55bb008ee8e7e"></script>
     <script defer src="https://events.vercount.one/js"></script>
   </body>

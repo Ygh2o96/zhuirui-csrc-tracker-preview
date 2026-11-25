@@ -82,6 +82,7 @@ const defaults = {
   dateFrom: "",
   dateTo: "",
   structure: "all",
+  excludeTypes: "",
   industry: "all",
   sponsor: "all",
   marketCapMin: "",
@@ -232,6 +233,7 @@ const trackedStateKeys = [
   "dateFrom",
   "dateTo",
   "structure",
+  "excludeTypes",
   "industry",
   "sponsor",
   "marketCapMin",
@@ -6607,12 +6609,143 @@ if (typeof window !== "undefined") {
   });
 }
 
+const recordRegimeCache = new WeakMap();
+const COMMERCIAL_18C_STOCK_CODES = new Set(["02533", "02432"]);
+
+function recordRegimeMeta(record) {
+  if (!record || typeof record !== "object") {
+    return {
+      is18A: false, hasSuffixB: false,
+      is18C: false, hasSuffixP: false,
+      isWvr: false, hasSuffixW: false,
+      isSecondary: false, hasSuffixS: false,
+      isConfidential: false, isSpecialRoute: false,
+      spRoute: "", searchAliases: [], badges: [],
+    };
+  }
+  const cached = recordRegimeCache.get(record);
+  if (cached) return cached;
+
+  const appNames = (record.hkexPublishedApplications || []).flatMap((a) =>
+    a && typeof a === "object" ? [a.issuer, a.applicant, a.applicantZh, a.name, a.companyName] : []
+  );
+  const namePool = [
+    record.issuerName || "",
+    record.csrcName || "",
+    record.hkexListingCompanyName || "",
+    record.hkexCoverChineseName || "",
+    record.hkexCoverEnglishName || "",
+    ...(record.issuerSearchAliases || []),
+    ...appNames,
+  ].filter(Boolean).join(" | ");
+  const tagPool = [
+    ...(record.industryTags || []),
+    ...(record.statusTags || []),
+    record.structureType || "",
+  ].join(" ");
+  const stockCode = String(record.hkexListingStockCode || "").trim();
+
+  // Match HKEX listing suffixes: -B, -P / -PC, -W / -SW, -S / -SW, -DR (including Ltd.-B / -B - H shares)
+  const suffixRe = (tok) => new RegExp(`[-－—]\\s*${tok}(?=\\s*[-－—]|\\s*\\||\\s*$|[)）])`, "i");
+  const hasSuffixB = suffixRe("B").test(namePool);
+  const hasSuffixP = suffixRe("P(?:C)?").test(namePool);
+  const hasSuffixW = suffixRe("(?:W|SW)").test(namePool);
+  const hasSuffixS = suffixRe("(?:S|SW)").test(namePool);
+  const hasSuffixDr = suffixRe("DR").test(namePool);
+
+  const is18A = hasSuffixB || /\b18A\b/i.test(tagPool);
+  const is18C = hasSuffixP || /\b18C\b/i.test(tagPool) || COMMERCIAL_18C_STOCK_CODES.has(stockCode);
+  const isWvr = hasSuffixW || /\b(?:WVR|8A)\b/i.test(tagPool) || /同股不同[权權]/.test(tagPool);
+  const isSecondary = hasSuffixS || /\b19C\b/i.test(tagPool) || /第二上市/.test(tagPool);
+  const isConfidential = Boolean(
+    record.hkexConfidentialFilingDate ||
+    record.confidentialRouteSuspected ||
+    (record.statusTags || []).includes("密交") ||
+    (record.timelineFlags || []).includes("confidential_route_suspected") ||
+    record.listedSubmissionEvidence?.kind === "confidential_submission"
+  );
+  const spRoute = record.specialListingRoute || "";
+  const isSpecialRoute = Boolean(spRoute);
+
+  const searchAliases = [];
+  const badges = [];
+  if (is18A) {
+    searchAliases.push("18A", "Chapter 18A", "第18A章", "生物科技", "未盈利生物科技", "hkexsuffixb");
+    badges.push({ key: "18a", label: hasSuffixB ? "18A · -B" : "18A", cls: "is-18a", title: "港交所第 18A 章生物科技公司（点击筛选全部 18A）" });
+  }
+  if (is18C) {
+    searchAliases.push("18C", "Chapter 18C", "第18C章", "特专科技", "特專科技", "Specialist Technology", "hkexsuffixp");
+    badges.push({ key: "18c", label: hasSuffixP ? "18C · -P" : "18C 特专", cls: "is-18c", title: hasSuffixP ? "港交所第 18C 章未商业化特专科技公司 -P（点击筛选全部 18C）" : "港交所第 18C 章已商业化特专科技公司（点击筛选全部 18C）" });
+  }
+  if (isWvr) {
+    searchAliases.push("8A", "Chapter 8A", "第8A章", "WVR", "同股不同权", "同股不同權", "不同投票权", "Weighted Voting Rights", "hkexsuffixw");
+    badges.push({ key: "wvr", label: "-W 同股不同权", cls: "is-wvr", title: "港交所第 8A 章不同投票权架构 -W（点击筛选全部 -W 公司）" });
+  }
+  if (isSecondary) {
+    searchAliases.push("19C", "Chapter 19C", "第19C章", "第二上市", "Secondary Listing", "hkexsuffixs");
+    badges.push({ key: "secondary", label: "-S 第二上市", cls: "is-secondary", title: "港交所第 19C 章第二上市 -S（点击筛选）" });
+  }
+  if (isConfidential) {
+    searchAliases.push("密交", "保密递交", "保密递表", "保密申请", "秘密递交", "秘密申请", "Confidential Filing");
+    badges.push({ key: "confidential", label: "密交", cls: "is-confidential", title: "保密递交上市申请样本（点击筛选全部密交项目）" });
+  }
+  if (spRoute === "hdr" || hasSuffixDr) {
+    searchAliases.push("HDR", "19B", "预托证券", "香港预托证券", "hkexsuffixdr");
+  }
+  if (spRoute === "de_spac") {
+    searchAliases.push("De-SPAC", "DeSPAC", "18B", "特殊目的收购公司");
+  }
+  if (spRoute === "rto") {
+    searchAliases.push("RTO", "14.06B", "反向收购", "借壳上市");
+  }
+  if (spRoute === "introduction") {
+    searchAliases.push("介绍上市", "介紹上市", "Listing by Introduction");
+  }
+  if (spRoute === "gem_to_main_transfer") {
+    searchAliases.push("GEM转主板", "创业板转主板", "9A", "9B");
+  }
+
+  const meta = {
+    is18A, hasSuffixB,
+    is18C, hasSuffixP,
+    isWvr, hasSuffixW,
+    isSecondary, hasSuffixS,
+    isConfidential, isSpecialRoute,
+    spRoute, searchAliases, badges,
+  };
+  recordRegimeCache.set(record, meta);
+  return meta;
+}
+
+function normalizeQueryWithRegimeSuffixes(rawValue) {
+  const pre = String(rawValue || "").replace(
+    /(?:^|\s)[-－—]\s*(pc|sw|dr|w|b|p|s)(?=\s|$)/gi,
+    (_, sfx) => {
+      const low = sfx.toLowerCase();
+      if (low === "pc" || low === "p") return " hkexsuffixp ";
+      if (low === "sw") return " hkexsuffixw hkexsuffixs ";
+      return ` hkexsuffix${low} `;
+    },
+  );
+  return normalizeSearchText(pre);
+}
+
+function recordMatchesSearchQuery(record, rawValue) {
+  const q = normalizeQueryWithRegimeSuffixes(rawValue);
+  if (!q) return true;
+  const text = getRecordText(record);
+  if (text.includes(q)) return true;
+  const parts = q.split(" ").filter(Boolean);
+  return parts.length > 1 && parts.every((tok) => text.includes(tok));
+}
+
 const recordTextCache = new WeakMap();
 
 function getRecordText(record) {
   const cached = recordTextCache.get(record);
   if (cached !== undefined) return cached;
   const sponsorAliases = (record.sponsors || []).flatMap((sponsor) => sponsorSearchAliases(sponsor));
+  const regime = recordRegimeMeta(record);
   const rawText = [
     record.issuerName,
     offeringSearchText(record),
@@ -6637,6 +6770,7 @@ function getRecordText(record) {
     record.csrcCurrentReceivedDate,
     ...(record.statusTags || []),
     ...(record.timelineFlags || []),
+    ...regime.searchAliases,
     record.feedbackStatus,
     ...effectiveIndustryMeta(record).bizTags,
     ...effectiveIndustryMeta(record).csrcCats,
@@ -6878,10 +7012,50 @@ function syncTrackerTableMode() {
   document.querySelector(".tracker-table")?.classList.toggle("show-listing-col", state.hkexStage === "all");
 }
 
-function getBaseFilteredRecords() {
-  const query = normalizeSearchText(state.query);
+const TRACKER_EXCLUDE_OPTIONS = [
+  { key: "confidential", label: "密交", fullLabel: "保密递交 (密交)" },
+  { key: "a_h", label: "A+H", fullLabel: "A+H 发行人" },
+  { key: "18a", label: "18A (-B)", fullLabel: "18A 生物科技 (-B)" },
+  { key: "18c", label: "18C (-P)", fullLabel: "18C 特专科技 (-P)" },
+  { key: "wvr", label: "同股不同权 (-W)", fullLabel: "同股不同权 (-W · 8A)" },
+  { key: "special", label: "特殊路径", fullLabel: "特殊路径 (RTO/介绍/De-SPAC/GEM转主板/HDR)" },
+];
+
+function parseTrackerExcludes(raw = state.excludeTypes) {
+  const valid = new Set(TRACKER_EXCLUDE_OPTIONS.map((o) => o.key));
+  return [...new Set(String(raw || "").split(",").map((s) => s.trim().toLowerCase()).filter((k) => valid.has(k)))];
+}
+
+function recordMatchesRegimeFilter(record, filterKey) {
+  if (!filterKey || filterKey === "all") return true;
+  const reg = recordRegimeMeta(record);
+  if (filterKey === "18a") return reg.is18A;
+  if (filterKey === "18c") return reg.is18C;
+  if (filterKey === "chapter18") return reg.is18A || reg.is18C;
+  if (filterKey === "wvr") return reg.isWvr;
+  if (filterKey === "confidential") return reg.isConfidential;
+  if (filterKey === "secondary") return reg.isSecondary;
+  if (filterKey === "special") return reg.isSpecialRoute;
+  if (filterKey === "offshore_other") return issuerTypeKey(record) === "other" && !reg.isSpecialRoute;
+  if (filterKey === "hdr_rto") return ["hdr", "rto"].includes(reg.spRoute) || issuerTypeKey(record) === "hdr";
+  if (["gem_to_main_transfer", "introduction", "de_spac"].includes(filterKey)) {
+    return reg.spRoute === filterKey || issuerTypeKey(record) === filterKey;
+  }
+  return issuerTypeKey(record) === filterKey;
+}
+
+function recordMatchesTrackerExclusion(record, exKey) {
+  return recordMatchesRegimeFilter(record, exKey);
+}
+
+function getBaseFilteredRecords(options) {
+  const rawQuery = state.query;
+  const hasQuery = Boolean(String(rawQuery || "").trim());
   const from = asDateValue(state.dateFrom);
   const to = asDateValue(state.dateTo);
+  const activeExcludes = options && options.ignoreExcludes
+    ? []
+    : (typeof parseTrackerExcludes === "function" ? parseTrackerExcludes() : []);
   const parseCap = (raw) => {
     if (raw === "" || raw === null || raw === undefined) return null;
     const value = Number(raw);
@@ -6893,7 +7067,8 @@ function getBaseFilteredRecords() {
   return state.data.records.filter((record) => {
     if (state.status !== "all" && publicStatusKey(record.status) !== publicStatusKey(state.status)) return false;
     if (state.hkexStage !== "all" && hkexListingStage(record) !== state.hkexStage) return false;
-    if (state.structure !== "all" && issuerTypeKey(record) !== state.structure) return false;
+    if (state.structure !== "all" && !(typeof recordMatchesRegimeFilter === "function" ? recordMatchesRegimeFilter(record, state.structure) : issuerTypeKey(record) === state.structure)) return false;
+    if (activeExcludes.length && activeExcludes.some((exKey) => recordMatchesTrackerExclusion(record, exKey))) return false;
     if (state.industry !== "all"
         && !effectiveIndustryMeta(record).csrcCats.includes(state.industry)
         && !effectiveIndustryMeta(record).bizTags.includes(state.industry)) return false;
@@ -6902,7 +7077,7 @@ function getBaseFilteredRecords() {
       !(record.sponsors || []).includes(state.sponsor) &&
       !sponsorLabels(record).includes(state.sponsor)
     ) return false;
-    if (query && !getRecordText(record).includes(query)) return false;
+    if (hasQuery && !(typeof recordMatchesSearchQuery === "function" ? recordMatchesSearchQuery(record, rawQuery) : getRecordText(record).includes(normalizeSearchText(rawQuery)))) return false;
 
     if (capMin !== null || capMax !== null) {
       const listedCapMode = state.hkexStage === "listed";
@@ -7031,16 +7206,33 @@ function populateSelect(id, options, currentValue, allLabel, stateKey) {
 function populateFilters() {
   const structureOptions = ["a_h", "h_share", "red_chip", "de_spac", "hdr", "other"]
     .filter((key) => state.data.records.some((record) => issuerTypeKey(record) === key));
+  const regimeOptions = [
+    ["18a", "18A 生物科技 (-B)"],
+    ["18c", "18C 特专科技 (-P)"],
+    ["wvr", "同股不同权 (-W · 8A)"],
+    ["confidential", "保密递交 (密交)"],
+    ["secondary", "第二上市 (-S · 19C)"],
+  ].filter(([key]) => state.data.records.some((record) => recordMatchesRegimeFilter(record, key)));
+  const validKeys = new Set(["all", ...structureOptions, ...regimeOptions.map(([k]) => k)]);
   const structureSelect = document.getElementById("structureFilter");
-  if (state.structure !== "all" && !structureOptions.includes(state.structure)) state.structure = "all";
+  if (state.structure !== "all" && !validKeys.has(state.structure)) state.structure = "all";
   structureSelect.innerHTML = [
     `<option value="all">全部类型</option>`,
+    `<optgroup label="架构与上市地">`,
     ...structureOptions.map((key) => {
       const info = issuerTypeInfo(key);
       return `<option value="${escapeHtml(key)}">${escapeHtml(info.primary)} · ${escapeHtml(info.secondary)}</option>`;
-    })
+    }),
+    `</optgroup>`,
+    ...(regimeOptions.length
+      ? [
+          `<optgroup label="上市章节与股份后缀">`,
+          ...regimeOptions.map(([key, label]) => `<option value="${escapeHtml(key)}">${escapeHtml(label)}</option>`),
+          `</optgroup>`,
+        ]
+      : []),
   ].join("");
-  structureSelect.value = structureOptions.includes(state.structure) ? state.structure : "all";
+  structureSelect.value = validKeys.has(state.structure) ? state.structure : "all";
   populateSelect("industryFilter", getUniqueOptions((record) => record.csrcIndustryTags || []), state.industry, "全部行业", "industry");
   const sponsorOptions = getUniqueOptions((record) => sponsorLabels(record));
   if (state.sponsor !== "all" && !sponsorOptions.includes(state.sponsor)) {
@@ -7048,6 +7240,22 @@ function populateFilters() {
     if (sponsorOptions.includes(shortName)) state.sponsor = shortName;
   }
   populateSelect("sponsorFilter", sponsorOptions, state.sponsor, "全部保荐人", "sponsor");
+}
+
+function renderTrackerExcludeBar() {
+  const bar = document.getElementById("trackerExcludeBar");
+  if (!bar || !state.data?.records) return;
+  const activeSet = new Set(parseTrackerExcludes());
+  const prePool = getBaseFilteredRecords({ ignoreExcludes: true });
+  const chipsHtml = TRACKER_EXCLUDE_OPTIONS.map((opt) => {
+    const count = prePool.filter((r) => recordMatchesTrackerExclusion(r, opt.key)).length;
+    const isExcluded = activeSet.has(opt.key);
+    return `<button type="button" class="tracker-exclude-chip${isExcluded ? " is-excluded" : ""}" data-exclude-toggle="${escapeHtml(opt.key)}" aria-pressed="${isExcluded}" title="${escapeHtml((isExcluded ? "点击恢复纳入：" : "点击在当前筛选基础上剔除：") + opt.fullLabel)}">${isExcluded ? "✕ 已排除 " : "排除 "}${escapeHtml(opt.label)} <span class="col-num">${count}</span></button>`;
+  }).join("");
+  const clearBtn = activeSet.size
+    ? `<button type="button" class="tracker-exclude-clear" data-exclude-clear>恢复全部类型</button>`
+    : "";
+  bar.innerHTML = `<span class="tracker-exclude-kicker">样本剔除（保留其余筛选并重算耗时）：</span><div class="tracker-exclude-chips">${chipsHtml}${clearBtn}</div>`;
 }
 
 function median(values) {
@@ -7157,6 +7365,7 @@ function p0NiceStep(rawMax) {
 
 function renderMetrics() {
  const records=getBaseFilteredRecords(),root=document.getElementById('metricsGrid'),groups=p0Cohorts(records);
+ const activeExcludes=parseTrackerExcludes();
  const labels=(state.hkexStage==='applying'||state.hkexStage==='other')?{a1ToReceived:'A1 至接收',a1ToNotice:'A1 至备案完成'}:{a1ToReceived:'A1 至接收',a1ToNotice:'A1 至备案完成',a1ToListing:'A1 至上市'};
  const allLabels={a1ToReceived:'A1 至接收',a1ToNotice:'A1 至备案完成',receivedToNotice:'接收至备案',a1ToListing:'A1 至上市'};
  const pairs=records.map(r=>({record:r,entry:p0CohortEntry(r)})).filter(x=>x.entry);
@@ -7178,8 +7387,32 @@ function renderMetrics() {
   ? `<button type="button" class="stat-cell is-clickable cohort-extreme-btn" data-record-id="${escapeHtml(item.record.id)}" data-sort-field="${escapeHtml(sortFieldForMetric)}" data-sort-dir="${dir}" title="定位并查看 ${escapeHtml(statRecordLabel(item.record))}"><span class="stat-label">${kicker} ↗</span><strong class="stat-val col-num">${formatDayValue(item.entry.days)}d</strong><small class="stat-sub">${escapeHtml(statRecordLabel(item.record))}</small></button>`
   : `<div class="stat-cell"><span class="stat-label">${kicker}</span><strong class="stat-val col-num">—</strong><small class="stat-sub">暂无办结样本</small></div>`;
 
+ let excludeCompareStrip='';
+ if(activeExcludes.length){
+  const preRecords=getBaseFilteredRecords({ignoreExcludes:true});
+  const prePairs=preRecords.map(r=>({record:r,entry:p0CohortEntry(r)})).filter(x=>x.entry);
+  const preDone=prePairs.filter(x=>!x.entry.pending).map(x=>x.entry.days).sort((a,b)=>a-b);
+  const preWait=prePairs.filter(x=>x.entry.pending).map(x=>x.entry.days).sort((a,b)=>a-b);
+  const preMid=p0Quantile(preDone,.5),preWaitMid=p0Quantile(preWait,.5);
+  const removedN=preRecords.length-records.length;
+  const excludedLabelTxt=activeExcludes.map(k=>TRACKER_EXCLUDE_OPTIONS.find(o=>o.key===k)?.fullLabel||k).join('、');
+  const midDelta=(doneN&&preDone.length&&allMid!=null&&preMid!=null)?Math.round((allMid-preMid)*10)/10:null;
+  const deltaBadge=midDelta===null?'':midDelta===0?'（与剔除前持平）':`（较剔除前 ${midDelta>0?'+':''}${formatDayValue(midDelta)}d）`;
+  const nonCohortOnly=doneN===preDone.length&&waitN===preWait.length&&activeExcludes.every(k=>k==='confidential'||k==='special');
+  excludeCompareStrip=`<div class="cohort-exclude-summary" role="status">
+   <div class="cohort-exclude-left">
+    <span class="cohort-exclude-tag">已启用剔除对照</span>
+    <span>已剔除 <strong>${escapeHtml(excludedLabelTxt)}</strong>（移出 <strong>${removedN}</strong> 家，当前保留 <strong>${records.length}</strong> / ${preRecords.length} 家）</span>
+   </div>
+   <div class="cohort-exclude-right col-num">
+    <span>${escapeHtml(allLabels[state.cohortMetric]||'当前阶段')}办结中位 <strong>${doneN?formatDayValue(allMid)+'d':'—'}</strong> vs 剔除前 ${preDone.length?formatDayValue(preMid)+'d':'—'}${deltaBadge} · 均值 ${doneN?formatDayValue(allAvg)+'d':'—'}${doneN>=5?` · P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d`:''}${waitN||preWait.length?` · 在途中位 ${waitN?formatDayValue(allWait)+'d':'—'}（前 ${preWait.length?formatDayValue(preWaitMid)+'d':'—'}）`:''}${nonCohortOnly?' · 注：密交/特殊路径默认不计入标准 A1 分位，列表与计数已剔除':''}</span>
+    <button type="button" class="action-link-btn" data-exclude-clear>恢复全部 ×</button>
+   </div>
+  </div>`;
+ }
+
  const overallStrip=`<div class="terminal-stat-strip cohort-overall-strip">
-  <div class="stat-cell"><span class="stat-label">全样本总中位（${basisText} · 自 A1 起算）</span><strong class="stat-val col-num">${doneN?formatDayValue(allMid)+'d':'—'}</strong>${doneN>=5?`<small class="stat-sub">P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d · 均值 ${formatDayValue(allAvg)}d</small>`:doneN?`<small class="stat-sub">小样本（${doneN} 宗 · 均值 ${formatDayValue(allAvg)}d）</small>`:'<small class="stat-sub">暂无已办结样本</small>'}</div>
+  <div class="stat-cell"><span class="stat-label">${activeExcludes.length?'剔除后总中位':'全样本总中位'}（${basisText} · 自 A1 起算）</span><strong class="stat-val col-num">${doneN?formatDayValue(allMid)+'d':'—'}</strong>${doneN>=5?`<small class="stat-sub">P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d · 均值 ${formatDayValue(allAvg)}d</small>`:doneN?`<small class="stat-sub">小样本（${doneN} 宗 · 均值 ${formatDayValue(allAvg)}d）</small>`:'<small class="stat-sub">暂无已办结样本</small>'}</div>
   <div class="stat-cell"><span class="stat-label">有效统计总数</span><strong class="stat-val col-num">${totalN} 宗</strong><small class="stat-sub">已办结 ${doneN} 宗${waitN?` · 在途 ${waitN} 宗（自 A1 已等中位 ${formatDayValue(allWait)}d）`:' · 无在途'}</small></div>
   ${extremeCell('最快办结',fastest,'asc')}
   ${extremeCell('最长办结',slowest,'desc')}
@@ -7187,7 +7420,7 @@ function renderMetrics() {
 
  let paceIntelStrip='';
  if(state.data?.records?.length){
-  const allRecs=state.data.records;
+  const allRecs=state.data.records.filter(r=>(!activeExcludes.length||!activeExcludes.some(k=>recordMatchesTrackerExclusion(r,k)))&&(state.structure==='all'||recordMatchesRegimeFilter(r,state.structure)));
   const applyingRecs=allRecs.filter(r=>hkexListingStage(r)==='applying');
   const consultRecs=applyingRecs.filter(r=>r.status==='regulator_opinion');
   const otherPendingRecs=applyingRecs.filter(r=>['waiting_received','csrc_received','supplement_requested'].includes(r.status));
@@ -7230,7 +7463,7 @@ function renderMetrics() {
     </div>
    </div>
    <div class="pace-intel-card pace-quarter-card">
-    <div class="pace-intel-head"><span>2026 季度节奏走向（Q1 → Q2 → Q3）</span><small class="col-num">自然日口径 · 全样本实证</small></div>
+    <div class="pace-intel-head"><span>2026 季度节奏走向（Q1 → Q2 → Q3）</span><small class="col-num">自然日口径 · ${activeExcludes.length||state.structure!=='all'?'当前样本口径':'全样本实证'}</small></div>
     <div class="pace-quarter-rows">
      <div class="pace-q-row">
       <span class="pace-q-label">A1 → 接收（90日接收率 / 中位）</span>
@@ -7247,7 +7480,7 @@ function renderMetrics() {
 
  let scopeContextNote='';
  if(state.hkexStage==='applying'&&(state.cohortMetric==='a1ToNotice'||state.cohortMetric==='receivedToNotice')&&state.data?.records?.length){
-  const fullNoticeDone=state.data.records.filter(r=>typeof durationValueForStats(r,{metric:'a1ToNotice'})==='number').length;
+  const fullNoticeDone=state.data.records.filter(r=>(!activeExcludes.length||!activeExcludes.some(k=>recordMatchesTrackerExclusion(r,k)))&&typeof durationValueForStats(r,{metric:'a1ToNotice'})==='number').length;
   if(fullNoticeDone>doneN){
    scopeContextNote=`<div class="cohort-scope-hint"><span>当前范围为「上市申请中」，多数早先获发备案通知书的企业已挂牌上市。</span><button type="button" class="action-link-btn" data-hkex-stage="all">切换全口径含已上市（${fullNoticeDone} 宗 A1→备案完成样本）→</button></div>`;
   }
@@ -7268,7 +7501,7 @@ function renderMetrics() {
 
  const totalTrack=totalN?`<div class="cohort-month cohort-total-row" title="全样本总计：办结 ${doneN}/${totalN}${doneN?`；总中位 ${formatDayValue(allMid)}d`:''}"><time>全样本总计</time><span class="cohort-track">${trackContent(doneN,allP25,allP75,allMid,done)}</span><span class="cohort-done-col col-num">办结 ${doneN}/${totalN}</span><span class="cohort-wait-col col-num">${waitN?`在途 ${waitN} · ≥${formatDayValue(allWait)}d`:'全部办结'}</span></div>`:'';
 
- root.innerHTML=`<section class="cohort-panel${state.cohortCollapsed?' is-collapsed':''}"><header><div class="cohort-header-left"><nav aria-label="监管阶段">${Object.entries(labels).map(([k,label])=>`<button type="button" data-cohort-metric="${k}" aria-pressed="${state.cohortMetric===k}">${label}</button>`).join('')}</nav></div><button type="button" class="cohort-toggle-btn" data-cohort-collapse aria-label="${state.cohortCollapsed?'展开月度图':'收起月度图'}" aria-expanded="${!state.cohortCollapsed}">${state.cohortCollapsed?(allLabels[state.cohortMetric]||'趋势图')+' · 展开趋势图 ↓':'收起趋势图 ↑'}</button></header>${overallStrip}${paceIntelStrip}${scopeContextNote}${state.cohortCollapsed?p0FoldedCohort(records):`<div class="cohort-labels"><span>A1 递表月</span><span class="cohort-track cohort-axis-track" aria-hidden="true">${[0,step,step*2,step*3].map(t=>`<i class="axis-tick" style="left:${pos(t)}%">${t?t+'d':'0'}</i>`).join('')}</span><span class="col-num">已办结</span><span class="col-num">在途进度</span></div>${totalTrack}<div class="cohort-months">${groups.length?groups.map(g=>`<button type="button" class="cohort-month${state.cohort===g.month?' is-active':''}" data-cohort-month="${g.month}" title="${g.month}：办结 ${g.n}/${g.N}；${g.n?`中位 ${formatDayValue(g.mid)}d，P25–P75 ${formatDayValue(g.p25)}–${formatDayValue(g.p75)}d`:'尚无办结样本'}${g.wait!==null?`；在途 ${g.pending} 家，中位已等 ${formatDayValue(g.wait)} 天（最短 ${formatDayValue(g.waitMin)} 天）`:''}"><time>${g.month}</time><span class="cohort-track">${trackContent(g.n,g.p25,g.p75,g.mid,g.pts)}</span><span class="cohort-done-col col-num">办结 ${g.n}/${g.N}</span><span class="cohort-wait-col col-num">${g.pending?`在途 ${g.pending} · ≥${formatDayValue(g.wait)}d`:'全部办结'}</span></button>`).join(''):'<span class="cohort-empty-msg">当前筛选暂无有效月度样本</span>'}</div><p class="cohort-key"><span><i class="legend-swatch is-solid"></i>已办结四分位与中位 (n≥5)　<i class="legend-swatch is-dot"></i>小样本实证点 (1≤n&lt;5)　右列单独列示在途数量与已等下限</span><span>${state.cohort?`<button type="button" class="cohort-clear-btn" data-cohort-month="">显示全部月份 (${state.cohort} ×)</button>`:''}<time>截至 ${state.data.meta.generatedAt.slice(0,10)}</time></span></p>`}</section>`;
+ root.innerHTML=`<section class="cohort-panel${state.cohortCollapsed?' is-collapsed':''}"><header><div class="cohort-header-left"><nav aria-label="监管阶段">${Object.entries(labels).map(([k,label])=>`<button type="button" data-cohort-metric="${k}" aria-pressed="${state.cohortMetric===k}">${label}</button>`).join('')}</nav></div><button type="button" class="cohort-toggle-btn" data-cohort-collapse aria-label="${state.cohortCollapsed?'展开月度图':'收起月度图'}" aria-expanded="${!state.cohortCollapsed}">${state.cohortCollapsed?(allLabels[state.cohortMetric]||'趋势图')+' · 展开趋势图 ↓':'收起趋势图 ↑'}</button></header>${overallStrip}${excludeCompareStrip}${paceIntelStrip}${scopeContextNote}${state.cohortCollapsed?p0FoldedCohort(records):`<div class="cohort-labels"><span>A1 递表月</span><span class="cohort-track cohort-axis-track" aria-hidden="true">${[0,step,step*2,step*3].map(t=>`<i class="axis-tick" style="left:${pos(t)}%">${t?t+'d':'0'}</i>`).join('')}</span><span class="col-num">已办结</span><span class="col-num">在途进度</span></div>${totalTrack}<div class="cohort-months">${groups.length?groups.map(g=>`<button type="button" class="cohort-month${state.cohort===g.month?' is-active':''}" data-cohort-month="${g.month}" title="${g.month}：办结 ${g.n}/${g.N}；${g.n?`中位 ${formatDayValue(g.mid)}d，P25–P75 ${formatDayValue(g.p25)}–${formatDayValue(g.p75)}d`:'尚无办结样本'}${g.wait!==null?`；在途 ${g.pending} 家，中位已等 ${formatDayValue(g.wait)} 天（最短 ${formatDayValue(g.waitMin)} 天）`:''}"><time>${g.month}</time><span class="cohort-track">${trackContent(g.n,g.p25,g.p75,g.mid,g.pts)}</span><span class="cohort-done-col col-num">办结 ${g.n}/${g.N}</span><span class="cohort-wait-col col-num">${g.pending?`在途 ${g.pending} · ≥${formatDayValue(g.wait)}d`:'全部办结'}</span></button>`).join(''):'<span class="cohort-empty-msg">当前筛选暂无有效月度样本</span>'}</div><p class="cohort-key"><span><i class="legend-swatch is-solid"></i>已办结四分位与中位 (n≥5)　<i class="legend-swatch is-dot"></i>小样本实证点 (1≤n&lt;5)　右列单独列示在途数量与已等下限</span><span>${state.cohort?`<button type="button" class="cohort-clear-btn" data-cohort-month="">显示全部月份 (${state.cohort} ×)</button>`:''}<time>截至 ${state.data.meta.generatedAt.slice(0,10)}</time></span></p>`}</section>`;
 }
 
 // Row-level reading stays separate from cohort eligibility: an HKEX application
@@ -7479,12 +7712,17 @@ function syncStatusCounts() {
 
 function renderRows() {
   syncStatusCounts();
+  renderTrackerExcludeBar();
   const rows = getFilteredRecords();
   renderMetrics(rows);
   const metaStrip = document.getElementById("trackerMetaStrip");
   if (metaStrip) {
     const stageName = { applying: "上市申请中", listed: "已上市", other: "搁置/撤回", all: "全部收录" }[state.hkexStage] || "全部";
-    metaStrip.innerHTML = `<span>当前范围：<strong>${escapeHtml(stageName)}</strong> · 共 <strong>${formatNumber(rows.length, "integer")}</strong> 家发行人${state.cohort ? `（已筛起始月 ${escapeHtml(state.cohort)}）` : ""}</span><span class="meta-strip-hint">港交所 A1 / PHIP 与证监会境外备案公开进度</span>`;
+    const activeExcludes = parseTrackerExcludes();
+    const excludeHint = activeExcludes.length
+      ? ` · 已剔除 ${escapeHtml(activeExcludes.map(k => TRACKER_EXCLUDE_OPTIONS.find(o => o.key === k)?.label || k).join("、"))}`
+      : "";
+    metaStrip.innerHTML = `<span>当前范围：<strong>${escapeHtml(stageName)}</strong> · 共 <strong>${formatNumber(rows.length, "integer")}</strong> 家发行人${state.cohort ? `（已筛起始月 ${escapeHtml(state.cohort)}）` : ""}${excludeHint}</span><span class="meta-strip-hint">港交所 A1 / PHIP 与证监会境外备案公开进度</span>`;
   }
 
   if (!rows.length) {
@@ -8162,18 +8400,20 @@ function directoryRecordMatchesDocStatus(record, docFilter) {
 
 function getDirectoryFilteredRecords() {
   const all = state.data?.records || [];
-  const q = normalizeSearchText(state.dirQuery || "");
+  const rawQ = String(state.dirQuery || "").trim();
   const rows = all.filter(r => {
     if (state.dirStage !== "all" && hkexListingStage(r) !== state.dirStage) return false;
     if (state.dirType !== "all") {
-      if (state.dirType === "chapter18") { if (!isChapter18Record(r)) return false; }
-      else if (state.dirType === "other") { if (!["other", "de_spac", "hdr"].includes(issuerTypeKey(r))) return false; }
-      else if (issuerTypeKey(r) !== state.dirType) return false;
+      if (state.dirType === "other") {
+        if (!["other", "de_spac", "hdr"].includes(issuerTypeKey(r))) return false;
+      } else if (!recordMatchesRegimeFilter(r, state.dirType)) {
+        return false;
+      }
     }
     if (!directoryRecordMatchesDocStatus(r, state.dirDocStatus)) return false;
     if (state.dirIndustry !== "all" && !effectiveIndustryMeta(r).csrcCats.includes(state.dirIndustry) && !effectiveIndustryMeta(r).bizTags.includes(state.dirIndustry)) return false;
     if (state.dirSponsor !== "all" && !(r.sponsors || []).includes(state.dirSponsor) && !sponsorLabels(r).includes(state.dirSponsor)) return false;
-    if (q && !getRecordText(r).includes(q)) return false;
+    if (rawQ && !recordMatchesSearchQuery(r, rawQ)) return false;
     return true;
   });
 
@@ -8304,14 +8544,17 @@ function renderDirectory() {
     const doc = latestHkexDoc(record);
     const matchedRound = roundByIssuer.get(record.id);
     const matchedTx = txForRecord(record);
-    const isCh18 = isChapter18Record(record);
+    const regimeMeta = recordRegimeMeta(record);
     const spRoute = record.specialListingRoute || "";
     const spRouteLabel = specialRouteBadgeLabels[spRoute] || "";
+    const regimeBadgesHtml = regimeMeta.badges
+      .map(b => `<button type="button" class="dir-regime-tag ${escapeHtml(b.cls)}${state.dirType === b.key ? " is-active" : ""}" data-dir-type-jump="${escapeHtml(b.key)}" title="${escapeHtml(b.title)}">${escapeHtml(b.label)}</button>`)
+      .join("");
     const codeTags = [
       record.hkexListingStockCode ? `<span class="mono-code">${escapeHtml(record.hkexListingStockCode)}.HK</span>` : "",
       spRoute === "rto" ? '<span class="dir-tag-route is-rto">RTO 反向收购</span>' : (spRouteLabel ? `<span class="dir-tag-route">${escapeHtml(spRouteLabel)}</span>` : ""),
       record.aShareCode ? `<span class="mono-code is-ashare">A股 ${escapeHtml(record.aShareCode)}</span>` : "",
-      isCh18 ? '<span class="dir-tag-18a">18A</span>' : ""
+      regimeBadgesHtml
     ].filter(Boolean).join("");
     const crossLinks = [
       matchedRound ? `<button type="button" class="cross-link-chip${matchedRound.route === "paused_offer" ? " is-paused" : matchedRound.route === "bookbuilding" ? " is-live" : ""}" data-dir-round="${escapeHtml(matchedRound.id)}">${matchedRound.route === "bookbuilding" ? "招股档案" : matchedRound.route === "paused_offer" ? "搁置档案" : "费用档案"} ↗</button>` : "",
@@ -8430,6 +8673,16 @@ function bindDirectoryControls() {
   root.addEventListener("click", e => {
     const firmBtn = e.target.closest("[data-global-firm]");
     if (firmBtn) return; // handled by global click handler
+    const regimeBtn = e.target.closest("[data-dir-type-jump]");
+    if (regimeBtn?.dataset?.dirTypeJump) {
+      e.stopPropagation();
+      const k = regimeBtn.dataset.dirTypeJump;
+      state.dirType = state.dirType === k ? "all" : k;
+      state.dirPage = 1;
+      renderDirectory();
+      syncUrl();
+      return;
+    }
     const roundBtn = e.target.closest("[data-dir-round]");
     if (roundBtn) { e.stopPropagation(); openOfferingDossier(roundBtn.dataset.dirRound); return; }
     const txBtn = e.target.closest("[data-dir-tx]");
@@ -9306,7 +9559,7 @@ function renderTransactionArchetypeAtlas(all,compare,row){
  const rulesHtml=(current.ruleTriggers||[]).map(r=>`<span class="tx-rule-chip">${escapeHtml(r)}</span>`).join("");
  const caseLinksHtml=currentCases.length
   ? currentCases.map(c=>`<button type="button" class="tx-advisor-chip" data-tx-atlas-case="${escapeHtml(c.id)}">查看实案：${escapeHtml(c.name)} (${c.code}) →</button>`).join("")
-  : '<span class="ddk-rule-pill">标准交易架构与收费范式</span>';
+  : '<span class="tx-rule-chip">标准交易架构与收费范式</span>';
  atlas.innerHTML=`<summary><span>港股投行并购重组与再融资十四大标准架构图谱 <small style="font-weight:500;color:var(--muted);margin-left:6px">14/14A 章 · 收购守则 · 重组分拆化债 · 配售 / CB / 供股 · 14 大范式</small></span></summary><div class="transaction-section-body">${pillarTabsHtml}<div class="dir-stage-tabs" role="tablist" aria-label="${escapeHtml(activePillarObj.labelZh)}标准架构" style="width:100%;margin-bottom:10px">${tabsHtml}</div><div style="display:flex;align-items:center;justify-content:space-between;gap:8px 14px;flex-wrap:wrap;padding:8px 12px;background:var(--bg-subtle);border:1px solid var(--line);border-radius:4px;font-size:12px"><div style="min-width:0;flex:1 1 360px"><strong>${escapeHtml(current.labelZh)}</strong> <span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-left:4px">${escapeHtml(current.labelEn)}</span><p style="margin:4px 0 0;color:var(--ink-2);line-height:1.45">${escapeHtml(current.summaryZh)}</p></div><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">${rulesHtml}${caseLinksHtml}</div></div>${kit.renderDealDiagram(current.codexTemplate)}</div>`;
 }
 function renderTransactions(){
@@ -9386,6 +9639,23 @@ function bindTransactionControls(){
   const b=e.target.closest("button");
   if(b){
    if(b.hasAttribute("data-ddk-filter-btn"))return;
+   if(b.dataset.ddkRuleSearch){
+    const ruleCode=b.dataset.ddkRuleSearch;
+    const hasOpt=Boolean((state.transactionData?.cases||[]).some(c=>(c.rules||[]).some(r=>r.code===ruleCode)));
+    state.transactionId="";
+    state.transactionMode="list";
+    if(hasOpt){
+     state.transactionRule=ruleCode;
+     state.transactionQuery="";
+    }else{
+     state.transactionRule="all";
+     state.transactionQuery=b.dataset.ddkRuleQuery||ruleCode;
+    }
+    renderTransactions();
+    syncUrl("push");
+    document.getElementById("transactionSearch")?.focus({preventScroll:true});
+    return;
+   }
    if(b.hasAttribute("data-tx-atlas-toggle")){
     const atlas=document.getElementById("transactionArchetypeAtlas");
     if(atlas){atlas.hidden=false;atlas.open=!atlas.open;if(atlas.open)atlas.scrollIntoView?.({behavior:"smooth",block:"nearest"});}
@@ -9546,6 +9816,7 @@ function applyStateFromUrl() {
   if(p.has("group"))state.feePhase={paused:"paused",priced:"listed",other:"other"}[p.get("group")]||state.feePhase;
   state.roundId=p.get("roundId")||p.get("dossierId")||"";state.dossierId=state.roundId;
   if(p.get("structure")==="AH")state.structure="a_h";
+  if(p.has("exclude")&&!p.has("excludeTypes"))state.excludeTypes=p.get("exclude");
   if(p.has("focus"))state.feeRoundId=p.get("focus");
   if(p.has("compare"))state[state.view==="precedents"?"transactionCompare":"feeCompare"]=p.get("compare");
   if(state.view==="precedents"&&p.get("mode")==="compare")state.transactionMode="compare";
@@ -9872,7 +10143,25 @@ trackerRowsBody.addEventListener("keydown", (event) => {
   selectRecord(row.dataset.recordId, row);
 });
 
+document.getElementById("trackerExcludeBar")?.addEventListener("click", (event) => {
+  const clearBtn = event.target.closest("[data-exclude-clear]");
+  if (clearBtn) {
+    updateTracker({ excludeTypes: "" });
+    return;
+  }
+  const chip = event.target.closest("[data-exclude-toggle]");
+  if (!chip?.dataset?.excludeToggle) return;
+  const key = chip.dataset.excludeToggle;
+  const current = parseTrackerExcludes();
+  const next = current.includes(key) ? current.filter((k) => k !== key) : [...current, key];
+  updateTracker({ excludeTypes: next.join(",") });
+});
+
 document.getElementById("metricsGrid").addEventListener("click", (event) => {
+  if (event.target.closest("[data-exclude-clear]")) {
+    updateTracker({ excludeTypes: "" });
+    return;
+  }
   const paceStatusBtn = event.target.closest("[data-pace-filter-status]");
   if (paceStatusBtn?.dataset?.paceFilterStatus) {
     const s = paceStatusBtn.dataset.paceFilterStatus;
@@ -10106,11 +10395,12 @@ function p0FeeSummary(rows){
 function p0EmptyFilterChipText(key, val) {
  if (key === 'feeSponsorRole') return feeSponsorRoleLabel(val);
  if (key === 'feeInstitution') return feeInstitutionLabel(val) || val;
+ if (key === 'excludeTypes') return '排除：' + parseTrackerExcludes(val).map(k => TRACKER_EXCLUDE_OPTIONS.find(o => o.key === k)?.label || k).join(' / ');
  return val;
 }
-function p0EmptyState(view,count){const fields=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeSponsorRole','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo']:['query','structure','industry','sponsor','status','dateFrom','dateTo','cohort'];const chips=fields.filter(k=>state[k]!==defaults[k]&&state[k]!==''&&state[k]!=null).map(k=>`<button type="button" data-clear-filter="${k}" data-filter-view="${view}">${escapeHtml(p0EmptyFilterChipText(k,state[k]))} ×</button>`).join('');return `<div class="empty-state-row"><p>未找到匹配当前筛选条件的项目</p><div>${chips}</div><button type="button" data-reset-view="${view}">清除全部筛选，恢复全量${count?` (${count})`:''}</button></div>`;}
+function p0EmptyState(view,count){const fields=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeSponsorRole','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo']:['query','structure','excludeTypes','industry','sponsor','status','dateFrom','dateTo','cohort'];const chips=fields.filter(k=>state[k]!==defaults[k]&&state[k]!==''&&state[k]!=null).map(k=>`<button type="button" data-clear-filter="${k}" data-filter-view="${view}">${escapeHtml(p0EmptyFilterChipText(k,state[k]))} ×</button>`).join('');return `<div class="empty-state-row"><p>未找到匹配当前筛选条件的项目</p><div>${chips}</div><button type="button" data-reset-view="${view}">清除全部筛选，恢复全量${count?` (${count})`:''}</button></div>`;}
 function p0Reset(view){
- const keys=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeSponsorRole','feeEconMetric','feeEconSplit','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo','feeSort','feeSortDir','feePage']:view==='directory'?['dirQuery','dirStage','dirType','dirIndustry','dirSponsor','dirDocStatus','dirSort','dirSortDir','dirPage']:['query','structure','industry','sponsor','status','dateFrom','dateTo','dateField','marketCapMin','marketCapMax','cohort','page','sortField','sortDir','daySortField'];
+ const keys=view==='fees'?['feeQuery','feeIndustry','feeInstitution','feeSponsorRole','feeEconMetric','feeEconSplit','feeCurrency','feeMin','feeMax','sizeBand','feeType','feeDateFrom','feeDateTo','feeSort','feeSortDir','feePage']:view==='directory'?['dirQuery','dirStage','dirType','dirIndustry','dirSponsor','dirDocStatus','dirSort','dirSortDir','dirPage']:['query','structure','excludeTypes','industry','sponsor','status','dateFrom','dateTo','dateField','marketCapMin','marketCapMax','cohort','page','sortField','sortDir','daySortField'];
  for(const key of keys)state[key]=defaults[key];
  if(view==='fees')renderFeeComparison();
  else if(view==='directory')renderDirectory();
@@ -10391,13 +10681,13 @@ function p0GlobalSearch(){
  const execHits=eligibleOfferingDossiers().flatMap(d=>d.execution.filter(x=>normalizeSearchText(`执行参考 ${x.title} ${x.fact} ${x.action} ${d.issuer} ${d.code}`).includes(q)).map(x=>({d,x})));
  const seen=new Set(rounds.map(r=>r.id));for(const d of docs)if(!seen.has(d.roundId)){const r=eligibleFeeRoster().find(r=>r.id===d.roundId);if(r)rounds.push(r);}
  const csMatches=buildCornerstoneProfiles().filter(p=>normalizeSearchText([p.name,p.roleLabel,p.profile,...(p.searchNames||[]),...p.signatories.map(s=>s.name),...(p.allocations||[]).map(a=>a.label),...(p.relationships||[]).map(r=>`${r.role} ${r.name}`)].join(' ')).includes(q)).slice(0,4);
- const issuers=(state.data?.records||[]).filter(r=>normalizeSearchText([r.issuerName,r.csrcName,r.hkexCoverChineseName,r.aShareCode].join(' ')).includes(q)&&!rounds.some(o=>o.issuerId===r.id)).slice(0,5);
+ const issuers=(state.data?.records||[]).filter(r=>recordMatchesSearchQuery(r,rawQ)&&!rounds.some(o=>o.issuerId===r.id)).slice(0,6);
  const firms=[...new Map(eligibleFeeRoster().flatMap(r=>r.institutions).filter(i=>i.sponsorId&&normalizeSearchText(i.displayName+' '+i.legalName).includes(q)).map(i=>[i.sponsorId,i])).values()].slice(0,4);
  root.innerHTML=execHits.map(({d,x})=>`<a href="${escapeHtml(p0DossierUrl(d.roundId))}#execution" data-global-round="${escapeHtml(d.roundId)}"><span class="exec-ref-tag">执行参考</span> ${escapeHtml(x.title)} · ${escapeHtml(d.issuer)} (${d.code}) <small>${escapeHtml(x.fact)}</small></a>`).join('')
   +txs.map(t=>`<a href="${escapeHtml(transactionUrl(t.id))}" data-global-tx="${escapeHtml(t.id)}">交易 · ${escapeHtml(t.name)} (${t.code}) <small>${escapeHtml(t.mechanism)}</small></a>`).join('')
   +rounds.map(r=>`<a href="${escapeHtml(p0DossierUrl(r.id))}" data-global-round="${escapeHtml(r.id)}">${r.code} · ${escapeHtml(r.name)} <small>${r.route==='bookbuilding'?r.statusLabel+' · '+r.date:r.route==='paused_offer'?r.statusLabel:'新股 · '+r.date}</small></a>`).join('')
   +csMatches.map(p=>`<button type="button" data-open-cornerstone="${escapeHtml(p.id)}">基石 · ${escapeHtml(p.name)} <small>${escapeHtml(p.archetypeLabel)} · ${escapeHtml(p.deals[0]?.issuer||'')}</small></button>`).join('')
-  +issuers.map(r=>`<button type="button" data-global-issuer="${escapeHtml(r.id)}">${escapeHtml(nameParts(r).primary)} <small>项目 · ${escapeHtml(statusLabel(r.status))}</small></button>`).join('')
+  +issuers.map(r=>{const regLbl=recordRegimeMeta(r).badges.map(b=>b.label).join(' · ');return `<button type="button" data-global-issuer="${escapeHtml(r.id)}">${escapeHtml(nameParts(r).primary)} <small>项目${regLbl?' · '+escapeHtml(regLbl):''} · ${escapeHtml(statusLabel(r.status))}</small></button>`;}).join('')
   +firms.map(i=>`<button type="button" data-global-firm="${escapeHtml(i.sponsorId)}">保荐人 · ${escapeHtml(i.displayName)}</button>`).join('')
   ||'<p class="search-empty-msg">未找到匹配的已收录资料</p>';
 }
