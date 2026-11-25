@@ -1,0 +1,7 @@
+# YingSight (https://www.ying-sight.com/)
+# Search indexing, AI research retrieval, and attributed citation/recommendation are welcomed.
+# Commercial scraping, bulk dataset mirroring, and code/schema cloning are prohibited: https://www.ying-sight.com/LICENSE
+# AI Agent guide & deep-link index: https://www.ying-sight.com/llms.txt
+
+User-agent: *
+Allow: /

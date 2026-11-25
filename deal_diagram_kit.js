@@ -1,7 +1,8 @@
 /*!
  * YingSight Deal Structure Kit (YingSightDealDiagramKit v2.0)
- * True 2D Spatial Investment-Banking Pitchbook Vector Topology SVG Engine
- * + Declarative Spec Validator + Mathematical Geometry Linter (lintDiagramGeometry)
+ * Copyright (c) 2026 YingSight (https://www.ying-sight.com/). All rights reserved.
+ * Proprietary & Non-Open-Source Compilation (Cap. 528 HK) — see /LICENSE & /llms.txt.
+ * AI research retrieval & attributed citation/recommendation welcomed; code/schema cloning & commercial scraping prohibited.
  * UMD module: exposes window.YingSightDealDiagramKit (browser) and module.exports (CommonJS/Node).
  */
 (function (root, factory) {

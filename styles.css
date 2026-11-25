@@ -1,5 +1,7 @@
 /* ==========================================================================
    YingSight 追瑞 — Institutional Financial Research Terminal Stylesheet
+   Copyright (c) 2026 YingSight (https://www.ying-sight.com/). All rights reserved.
+   Proprietary & Non-Open-Source Compilation (Cap. 528 HK) — see /LICENSE & /llms.txt.
    Editorial FT / Bloomberg / Economist craft: warm glare-free paper canvas,
    crisp flat white data sheets, uniform 1px hairlines (zero corner horns),
    restrained deep-navy accent, tabular numerals, unmistakable interactive cues.
@@ -10841,4 +10843,74 @@ ul.offering-cornerstone-members li p {
 .cohort-exclude-summary strong {
   color: var(--ink);
   font-weight: 680;
+}
+
+/* ==========================================================================
+   Institutional English Legal, Regulatory (SFO Cap. 571) & IP Notice Footer
+   ========================================================================== */
+.footer-legal {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--soft-line);
+  color: #6b7280;
+  font-size: 10.5px;
+  line-height: 1.62;
+  letter-spacing: 0.005em;
+}
+
+.footer-legal-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 8px;
+}
+
+.footer-legal-kicker {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.footer-legal-links {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.footer-legal-links a {
+  color: var(--ink-2);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(51, 65, 85, 0.35);
+}
+
+.footer-legal-links a:hover {
+  color: var(--accent);
+  border-bottom-style: solid;
+}
+
+.footer-legal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+}
+
+.footer-legal-col {
+  margin: 0;
+  min-width: 0;
+  text-align: left;
+}
+
+.footer-legal-col strong {
+  color: #475569;
+  font-weight: 620;
+}
+
+@media (max-width: 860px) {
+  .footer-legal-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }

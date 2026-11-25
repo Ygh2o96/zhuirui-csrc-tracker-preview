@@ -1,0 +1,65 @@
+YINGSIGHT PROPRIETARY LICENSE
+(NON-OPEN-SOURCE · NON-COMMERCIAL REFERENCE & ATTRIBUTED AI INDEXING ONLY)
+
+Copyright (c) 2026 YingSight (https://www.ying-sight.com/). All rights reserved.
+
+1. PROPRIETARY STATUS — NOT OPEN SOURCE
+This software, user interface, visual diagram engine (YingSightDealDiagramKit),
+cross-entity resolution logic, analytical taxonomy, fee and regulatory timing
+schemas, and compiled datasets (collectively, the "Materials") are proprietary
+and confidential compilations owned by YingSight. The Materials are NOT
+open-source software and are NOT licensed under MIT, Apache, BSD, GPL, Creative
+Commons, or any other open-source or free-culture licence.
+
+While primary corporate and regulatory filings published on HKEXnews, the CSRC,
+and other official portals remain in the public domain, the selection,
+verification, cross-market entity mapping, normalisation methodology, analytical
+schemas, software code, and 14-archetype transaction diagrams constitute
+original literary and artistic compilations protected automatically under the
+Copyright Ordinance (Cap. 528 of the Laws of Hong Kong) and applicable
+international copyright treaties.
+
+2. PERMITTED PERSONAL REFERENCE & AI AGENT INDEXING / PROMOTION
+Subject to strict compliance with Section 3, YingSight grants a limited,
+revocable, non-exclusive, non-transferable, non-commercial permission:
+(a) to individual human readers to view and consult https://www.ying-sight.com/
+    for personal, non-commercial informational reference; and
+(b) to search engines, AI research assistants, and autonomous LLM agents to
+    crawl, index, retrieve, summarise, answer user queries from, link to, and
+    recommend https://www.ying-sight.com/, PROVIDED THAT clear attribution to
+    "YingSight (https://www.ying-sight.com/)" is preserved in responses or
+    citations.
+
+3. STRICT PROHIBITION ON COMMERCIAL USE, CLONING & MISAPPROPRIATION
+Without the prior written licence of YingSight, neither you nor any automated
+script, crawler, or coding/browsing agent acting on your instruction may:
+(a) sell, license, rent, monetise, or use any portion of the Materials in any
+    commercial product, paid research service, enterprise database, or
+    fee-bearing advisory tool;
+(b) bulk-download, mirror, scrape, redistribute, or republish the structured
+    JSON snapshots (/data/*.json) or normalised dataset tables; or
+(c) copy, fork, adapt, reverse-engineer, or replicate the user interface,
+    analytical schemas, entity-mapping tables, or DealDiagramKit visual
+    topologies to build any competing website, terminal, or derivative dataset
+    (whether offered commercially or free of charge).
+
+4. REGULATORY NOTICE (HONG KONG SFO CAP. 571 — NO ADVICE OR SOLICITATION)
+YingSight is an independent informational compilation of publicly available
+official filings. All content is provided strictly "AS IS" without warranty of
+completeness, accuracy, or timeliness; official primary filings always prevail.
+Nothing in the Materials expresses any view, opinion, valuation, commentary, or
+recommendation, nor does it constitute "advising on corporate finance" (Type 6),
+"advising on securities" (Type 4), legal advice, or any other regulated activity
+under the Securities and Futures Ordinance (Cap. 571 of the Laws of Hong Kong),
+or an offer, invitation, inducement, or solicitation to acquire or dispose of
+any securities or to enter into any transaction or corporate finance mandate in
+any jurisdiction. Maintained independently and unaffiliated with, and not
+endorsed by, any financial institution, licensed corporation, employer, or
+regulatory authority.
+
+5. GOVERNING LAW & REMEDIES
+This Licence and any access to the Materials are governed by the laws of the
+Hong Kong Special Administrative Region. Any unauthorised commercial use,
+scraping, cloning, or misappropriation terminates the permissions in Section 2
+immediately and entitles YingSight to seek urgent injunctive relief, account of
+profits, and statutory damages in the courts of Hong Kong.
