@@ -7310,6 +7310,28 @@ function median(values) {
   return (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
+function paceQuarterReception(records, asOf, quarter) {
+ const utcDay=d=>{
+  if(typeof d!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(d))return null;
+  const t=Date.parse(d+'T00:00:00Z');
+  return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===d?t/864e5:null;
+ };
+ const end=utcDay(asOf);
+ const pool=[];
+ if(end===null)return {eligible:0,total:0,success:0,median:null};
+ for(const r of records){
+  if(r.csrcFilingApplicability==='not_required'||r.status==='not_required')continue;
+  const a1=r.currentA1Date||r.a1Date;
+  const start=utcDay(a1);
+  if(start===null||start>end||Math.ceil(Number(a1.slice(5,7))/3)!==quarter||a1.slice(0,4)!==asOf.slice(0,4))continue;
+  const received=r.csrcCurrentReceivedDateIsAsOf===true?null:utcDay(r.csrcCurrentReceivedDate);
+  pool.push({age:end-start,lag:received!==null&&received>=start&&received<=end?received-start:null});
+ }
+ const mature=pool.filter(x=>x.age>=90);
+ return {eligible:mature.length,total:pool.length,success:mature.filter(x=>x.lag!==null&&x.lag<=90).length,
+     median:median(pool.map(x=>x.lag).filter(Number.isFinite))};
+}
+
 function durationValueForStats(record, metric) {
   return timingSample(record, metric.metric, dayMetricField(metric.metric), dayMetricField("currentA1ToReceived"),
     record.practicalStage || (record.hkexListingDate ? "listed" : state.hkexStage), record.hkexListingDate, state.data?.meta?.csrcRegimeEffectiveDate);
@@ -7475,14 +7497,16 @@ function renderMetrics() {
   const suppN=applyingRecs.filter(r=>r.status==='supplement_requested').length;
   const recvN=applyingRecs.filter(r=>r.status==='csrc_received').length;
   const waitN0=applyingRecs.filter(r=>r.status==='waiting_received').length;
-  const qOf=d=>{if(!d||!d.startsWith('2026-'))return null;const m=Number(d.slice(5,7));return m<=3?'26Q1':m<=6?'26Q2':m<=9?'26Q3':null;};
-  const qStats=['26Q1','26Q2','26Q3'].map(q=>{
-   const a1Pool=allRecs.filter(r=>qOf(r.currentA1Date||r.a1Date)===q&&r.csrcFilingApplicability!=='not_required'&&r.status!=='not_required');
-   const recVals=a1Pool.map(r=>durationValueForStats(r,{metric:'a1ToReceived'})).filter(x=>typeof x==='number');
-   const within90=recVals.filter(d=>d<=90).length;
-   const listedQ=allRecs.filter(r=>hkexListingStage(r)==='listed'&&qOf(r.hkexListingDate)===q);
-   const listVals=listedQ.map(r=>durationValueForStats(r,{metric:'a1ToListing'})).filter(x=>typeof x==='number');
-   return {q,rec90:a1Pool.length?Math.round(within90/a1Pool.length*100):null,recMed:p0Quantile(recVals,0.5),listN:listVals.length,listMed:p0Quantile(listVals,0.5)};
+  const paceAsOf=state.data.meta.generatedAt.slice(0,10);
+  const paceYear=paceAsOf.slice(0,4), lastQ=Math.ceil(Number(paceAsOf.slice(5,7))/3);
+  const qStats=Array.from({length:lastQ},(_,i)=>{
+   const q=i+1;
+   const reception=paceQuarterReception(allRecs,paceAsOf,q);
+   const listedQ=allRecs.filter(r=>hkexListingStage(r)==='listed'&&r.hkexListingDate?.slice(0,4)===paceYear&&
+       Math.ceil(Number(r.hkexListingDate.slice(5,7))/3)===q&&r.hkexListingDate<=paceAsOf);
+   const listVals=listedQ.map(r=>timingSample(r,'a1ToListing','calendarDaysA1ToListing','calendarDaysCurrentA1ToReceived','listed',r.hkexListingDate,state.data?.meta?.csrcRegimeEffectiveDate)).filter(x=>typeof x==='number');
+   return {q:'Q'+q,rec90:reception.eligible?Math.round(reception.success/reception.eligible*100):null,
+       recMed:reception.median,eligible:reception.eligible,cohortN:reception.total,listN:listVals.length,listMed:p0Quantile(listVals,0.5)};
   });
   const consultActive=state.hkexStage==='applying'&&publicStatusKey(state.status)==='regulator_opinion';
   paceIntelStrip=`<div class="pace-intel-strip">
@@ -7507,14 +7531,14 @@ function renderMetrics() {
     </div>
    </div>
    <div class="pace-intel-card pace-quarter-card">
-    <div class="pace-intel-head"><span>2026 季度节奏走向（Q1 → Q2 → Q3）</span><small class="col-num">自然日口径 · ${activeExcludes.length||state.structure!=='all'?'当前样本口径':'全样本实证'}</small></div>
+    <div class="pace-intel-head"><span>${paceYear} 季度节奏</span><small class="col-num">自然日口径 · ${activeExcludes.length||state.structure!=='all'?'当前样本口径':'全样本实证'}</small></div>
     <div class="pace-quarter-rows">
      <div class="pace-q-row">
-      <span class="pace-q-label">A1 → 接收（90日接收率 / 中位）</span>
-      <strong class="col-num">${qStats.map(s=>`${s.q} <em>${s.rec90!=null?s.rec90+'%':'—'}</em> (${s.recMed!=null?formatDayValue(s.recMed)+'d':'—'})`).join(' → ')}</strong>
+      <span class="pace-q-label">A1 → 接收（90 日接收率 / 已接收中位）</span>
+      <strong class="col-num">${qStats.map(s=>`${s.q} <em>${s.rec90!=null?s.rec90+'%':s.cohortN?'未满90日':'—'}</em> (${s.recMed!=null?formatDayValue(s.recMed)+'d':'—'})<small> ${s.eligible}/${s.cohortN} 宗满90日</small>`).join(' → ')}</strong>
      </div>
      <div class="pace-q-row">
-      <span class="pace-q-label">已上市 A1 → 挂牌（办结中位）</span>
+      <span class="pace-q-label">A1 → 挂牌（按挂牌季度 · 办结中位）</span>
       <strong class="col-num">${qStats.map(s=>`${s.q} <em>${s.listMed!=null?formatDayValue(s.listMed)+'d':'—'}</em>`).join(' → ')}<small>（${qStats.map(s=>s.listN).join(' / ')} 宗）</small></strong>
      </div>
     </div>
