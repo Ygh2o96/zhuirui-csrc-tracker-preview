@@ -8464,7 +8464,25 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:rg?"先行股份買賣已完成":"全數股權轉讓已完成"}],annotations:[{tag:"①",title:rg?"要約失效":"鎖箱定價",body:rg?"超過50%投票權為不可豁免的條件。先前完成的買賣與失效的餘股要約分列。":"股權及商標合計現金對價於交割日支付，協議另設鎖箱漏損調整。"}],evidenceLinks:[{documentId:a,pages:rg?[2,3,22]:[9,10],label:rg?"先行股份買賣":"商標、總對價與資金來源"},{documentId:z,pages:rg?[2,3]:[1],label:rg?"要約失效及實際持股":"完成公告"}]});
   }
+  function buildCntOrCpm(c,docs){
+    const cp=c.code==="01932",a=cp?"YS-20260624-dc2f1d6a52a7":"YS-20260421-b95a30b1022a",z=cp?"YS-20260715-4896dc28ecc5":"YS-20260702-b9b7dbc07ff6",date=cp?"2026-07-15":"2026-07-02";
+    const ts=cp?[["offer_price",.0562,a],["accepted_shares",360520,z],["public_float_at_closing",25,z]]:[["control_shares",88723592,a],["control_cash",8872359.2,a],["accepted_shares",303301869,z],["post_pct",50.31,z],["public_float",49.66,z]];
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=cp?"因上游要約觸發":"先行股份買賣及要約",right=cp?"下游股份與購股權要約":"北海集團要約結果",badge=cp?"要約截止 · 公眾持股25.00%":"要約截止 · 一致行動集團持50.31%";
+    const s=cp?"北海集團（00701）":"Dragon Legacy",b=cp?"中漆集團（01932）":"Prime Surplus";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:cp?"連鎖要約":"現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,cp?"listed":"seller",s,cp?"上游要約6月17日成為無條件":"先行出售88,723,592股"),
+      box("b","left",444,106,161,124,cp?"target":"buyer",b,cp?"原由北海集團間接持股75%":"先行對價8,872,359.20港元"),
+      box("a","right",724,72,310,70,"target",cp?"有效接納360,520股":"有效接納303,301,869股",cp?"每股0.0562港元；由SHK取得":"每股0.10港元，合計約3,033萬港元"),
+      box("r2","right",724,164,310,75,"creditor",cp?"購股權要約零接納":"6月17日要約已成為無條件",cp?"未行使購股權按計劃條款失效":"7月2日截止；計入全部有效接納"),
+      box("r3","right",724,260,310,76,"creditor",cp?"公眾持股維持25.00%":"一致行動集團持股50.31%",cp?"SHK收購的股份依公告仍列公眾持股":"公眾持股49.66%；以轉讓完成為準")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:cp?"既有75%間接持股":"先行股份買賣"}]);
+    const nodes=[{id:"s",role:cp?"listed":"seller",name:s},{id:"b",role:cp?"target":"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:cp?"既有間接持股":"先行股份買賣"}],annotations:[{tag:"①",title:cp?"收購守則連鎖原則":"聯合要約",body:cp?"北海集團要約成為無條件後，按收購守則規則26.1註釋8觸發中漆的連鎖要約。":"Prime Surplus與SHK Hong Kong Industries提出聯合要約；同時觸發另一宗中漆連鎖要約。"}],evidenceLinks:[{documentId:a,pages:cp?[10]:[2,7],label:cp?"觸發連鎖要約":"先行股份買賣"},{documentId:z,pages:[2,3,4],label:"要約及公眾持股披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01932-20260421-prime-shk-cnt-chain","HK-00701-20260421-prime-shk-cnt-control"].includes(txCase?.id))return buildCntOrCpm(txCase,documents);
     if(["HK-01780-20260507-yang-conditional-lapsed","HK-01969-20260805-dublin-business-school"].includes(txCase?.id))return buildRongzunOrDublin(txCase,documents);
     if(["HK-01432-20251030-modern-dairy-conditional-cash","HK-08220-20260212-chiau-conversion-cash"].includes(txCase?.id))return buildShengmuOrBingo(txCase,documents);
     if(["HK-08137-20260629-bona-global","HK-08181-20261120-kam-fai-services"].includes(txCase?.id))return buildBonaOrKamfai(txCase,documents);
