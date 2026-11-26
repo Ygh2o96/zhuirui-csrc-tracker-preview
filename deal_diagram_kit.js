@@ -8447,7 +8447,25 @@
     const nodes=[{id:"s",role:s0?"seller":"listed",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:s0?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:s0?"現金":"轉股及現金",caseModalityShortLabel:s0?"現金":"轉股及現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:s0?"先行股份交割":"完成可換股債轉換"}],annotations:[{tag:"①",title:s0?"投票委託變動":"股份及購股權分列",body:s0?"Start Great原委託24.90%股份的投票權，9月有9.90個百分點失效；其自身持股仍分列。":"股份要約接納52,750股，購股權要約未獲接納。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:s0?"先行股份交割":"可換股債轉換"},{documentId:z,pages:s0?[2,3,4]:[3,4,7],label:"要約結果及公眾持股"},...(s0?[{documentId:p,pages:[2,3],label:"投票委託部分失效"},{documentId:n,pages:[1,2],label:"10月30日公眾持股更新"}]:[])]});
   }
+  function buildRongzunOrDublin(c,docs){
+    const rg=c.code==="01780",a=rg?"YS-20260507-9a80494ecd64":"YS-20261030-b132a2272be2",z=rg?"YS-20260709-f8abbb3f4cc4":"YS-20261027-5b4bc0721824",date=rg?"2026-07-09":"2026-10-27",status=rg?"terminated":"closed";
+    const ts=rg?[["block_shares",84000000,a],["block_cash",43680000,a],["offer_price",.52,a],["tendered_shares_before_lapse",215000,z]]:[["cash_usd",127500000,a],["stake",100,a]];
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!==status||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind===(rg?"terminated":"completion")&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const left=rg?"先行股份買賣":"收購都柏林商學院",right=rg?"餘股要約結果":"商標、資金與完成",badge=rg?"餘股要約失效 · 原有持股仍為33.39%":"全資收購及商標轉讓已完成";
+    const s=rg?"Xia Liping":"Kaplan International UK",b=rg?"Yang Jingyao":"中國春來";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:rg?"條件現金要約":"股權與商標",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,rg?"出售8,400萬股":"轉讓標的公司全部股權"),
+      box("b","left",444,106,161,124,"buyer",b,rg?"現金對價4,368萬港元":"支付現金1.275億美元"),
+      box("a","right",724,72,310,70,"target",rg?"要約有效接納215,000股":"Kaplan Inc. 另行轉讓相關商標",rg?"每股0.52港元；股份未按要約交割":"商標與股權合計對價1.275億美元"),
+      box("r2","right",724,164,310,75,"creditor",rg?"未達超過50%投票權的條件":"收購貸款本金人民幣4.494億元",rg?"假設接納轉讓，持股也僅33.43%":"其餘由內部資源撥付"),
+      box("r3","right",724,260,310,76,"creditor",rg?"要約失效後仍持2.07億股":"10月27日完成 · 愛爾蘭當地時間",rg?"要約人及一致行動人士合計33.39%":"標的成為中國春來全資附屬公司")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:rg?"4月8日完成先行買賣":"完成全部股權轉讓"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:rg?"先行股份買賣已完成":"全數股權轉讓已完成"}],annotations:[{tag:"①",title:rg?"要約失效":"鎖箱定價",body:rg?"超過50%投票權為不可豁免的條件。先前完成的買賣與失效的餘股要約分列。":"股權及商標合計現金對價於交割日支付，協議另設鎖箱漏損調整。"}],evidenceLinks:[{documentId:a,pages:rg?[2,3,22]:[9,10],label:rg?"先行股份買賣":"商標、總對價與資金來源"},{documentId:z,pages:rg?[2,3]:[1],label:rg?"要約失效及實際持股":"完成公告"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01780-20260507-yang-conditional-lapsed","HK-01969-20260805-dublin-business-school"].includes(txCase?.id))return buildRongzunOrDublin(txCase,documents);
     if(["HK-01432-20251030-modern-dairy-conditional-cash","HK-08220-20260212-chiau-conversion-cash"].includes(txCase?.id))return buildShengmuOrBingo(txCase,documents);
     if(["HK-08137-20260629-bona-global","HK-08181-20261120-kam-fai-services"].includes(txCase?.id))return buildBonaOrKamfai(txCase,documents);
     if(["HK-06083-20260717-consortium-control-mgo","HK-01417-20260518-yomisun-luckyyang-control"].includes(txCase?.id))return buildWorldlinkOrRiverine(txCase,documents);
