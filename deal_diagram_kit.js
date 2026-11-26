@@ -7205,7 +7205,41 @@
       annotations:[{tag:"①",title:"有效接納及結果",body:"首個截止日有效接納1,741,000股，佔要約股數約8.75%。要約失效，沒有按比例分配或應付對價。"}],
       evidenceLinks:[{documentId:i,pages:[1,2],label:"原要約及價格"},{documentId:t,pages:[2,3],label:"接納數量、失效及處理"}]});
   }
+  function buildReviewedJinmaoFinance(c,docs){
+    const src=(kind,date,leaf)=>{
+      const id=c.events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const i=src("dispatch","2026-11-06","2026110601470"),v=src("vote","2026-11-24","2026112401161");
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.currency==="CNY"&&x.evidence?.documentId===i);
+    if(!i||!v||c.stage?.status!=="approved"||c.stage.date!=="2026-11-24"||c.stage.eventKind!=="vote"||
+      c.events?.some(e=>e.kind==="termination"&&e.state==="actual")||
+      !c.parties?.["金融服務"]?.startsWith("中化集團財務有限責任公司")||
+      !c.parties?.["保理服務"]?.startsWith("中化商業保理有限公司")||
+      !t("deposit_cap",18000000000)||!t("secured_loan_cap",10000000000)||!t("factoring_daily_cap",10000000000)||!t("nonfinancing_factoring_fee_cap",30000000))return null;
+    const title="中國金茂 · 兩項服務框架",right="2027至2029年度上限（人民幣）",badge="11月24日 · 獨立股東通過兩項框架";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:388,status:"approved",leftTitle:title,rightTitle:right,transitionLabel:"各項服務分列",outcomeBadge:badge}),[
+      mk("jm","left",43,90,146,164,"listed","中國金茂","服務使用方 · 00817"),
+      mk("fn","left",455,79,148,77,"target","中化財務","金融服務提供方"),
+      mk("ft","left",455,200,148,77,"target","中化保理","保理服務提供方"),
+      mk("caps1","right",728,81,295,83,"target","存款 180 億 · 抵押貸款 100 億","各為每日最高餘額"),
+      mk("caps2","right",728,198,295,83,"target","融資保理 100 億","每日餘額；非融資保理費每年3,000萬")
+    ],[],[
+      {id:"fn",panel:"left",kind:"asset",step:"①",pathPoints:[[455,117],[189,117]],labelCenter:[322,117],labelWidth:180,labelHeight:34,label:"非獨家金融服務"},
+      {id:"ft",panel:"left",kind:"asset",step:"②",pathPoints:[[455,237],[189,237]],labelCenter:[322,237],labelWidth:180,labelHeight:34,label:"非獨家保理服務"}
+    ]);
+    const nodes=[{id:"s",role:"listed",name:c.parties["上市公司"]},{id:"fn",role:"target",name:c.parties["金融服務"]},{id:"ft",role:"target",name:c.parties["保理服務"]}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disclosable_major",modality:"in_kind",status:"approved",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"持續關連金融服務",caseModalityLabel:"服務上限",caseModalityShortLabel:"服務上限",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"fn",kind:"asset",direction:"rtl",fromLabel:nodes[1].name,toLabel:nodes[0].name,headline:"金融框架 · 存款及有抵押貸款按每日餘額各設上限"},
+        {id:"ft",kind:"asset",direction:"rtl",fromLabel:nodes[2].name,toLabel:nodes[0].name,headline:"保理框架 · 融資按每日餘額、非融資按年度服務費各設上限"}],
+      annotations:[{tag:"①",title:"獨立股東表決",body:"金融服務議案獲92.83%贊成；保理服務議案獲99.96%贊成。"}],
+      evidenceLinks:[{documentId:i,pages:[12,13,21,24],label:"服務及各項年度上限"},{documentId:v,pages:[1,2,3],label:"兩項表決結果"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00817-20261102-sinochem-finance-factoring")return buildReviewedJinmaoFinance(txCase,documents);
     if(txCase?.id==="HK-00195-20260907-berk-kivanc-partial")return buildReviewedGreentechBerk(txCase,documents);
     if(["HK-09860-20251113-crown-bioscience","HK-01340-20261123-shanghai-jingguan"].includes(txCase?.id))return buildReviewedAcquisition26(txCase,documents);
     if(txCase?.id==="HK-01196-20261111-realord-loan-capitalisation")return buildReviewedRealord(txCase,documents);
