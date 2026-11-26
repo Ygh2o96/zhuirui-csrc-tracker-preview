@@ -24924,6 +24924,20 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "dispatch_extension",
+          "date": "2026-11-25",
+          "label": "公告延遲寄發通函",
+          "state": "actual",
+          "detail": "公司需額外時間編製及落實通函資料，預期於12月9日或之前寄發。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261125-22a00c8f30ea",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "headlineKey": "total_consideration",
@@ -24961,10 +24975,11 @@
               2
             ]
           },
-          "kind": "dispatch",
-          "label": "原公告预计通函寄发上限",
+          "kind": "superseded_dispatch_target",
+          "label": "原定通函寄發期限",
           "state": "scheduled_at_filing",
-          "timeZone": "Asia/Hong_Kong"
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "其後於11月25日公告延期。"
         },
         {
           "date": "2026-12-31",
@@ -24978,9 +24993,23 @@
           "label": "协议原定先决条件最后期限",
           "state": "scheduled_at_filing",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "dispatch",
+          "date": "2026-12-09",
+          "label": "通函預計最遲寄發",
+          "state": "scheduled_at_filing",
+          "detail": "11月25日公告所列預期時間。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261125-22a00c8f30ea",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
-      "progressDate": "2026-11-04",
+      "progressDate": "2026-11-25",
       "rules": [
         {
           "application": "重大交易，适用比率有一项超过 25% 而均低于 75%，须发通函及获股东批准。",
@@ -25011,10 +25040,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-04",
-        "eventKind": "first_announcement",
-        "label": "已签署协议 · 待通函及股东批准",
-        "status": "active"
+        "status": "active",
+        "label": "通函延寄 · 待股東批准",
+        "date": "2026-11-25",
+        "eventKind": "dispatch_extension"
       },
       "terms": [
         {
@@ -95866,6 +95895,14 @@
       "date": "2026-02-09",
       "title": "財團確認安能物流完成私有化及退市",
       "url": "https://www.thebusinesstimes.com.au/companies/news-from-asia/47376-consortium-successfully-completes-privatization-of-ane-(cayman)-inc"
+    },
+    "YS-20261125-22a00c8f30ea": {
+      "id": "YS-20261125-22a00c8f30ea",
+      "caseId": "HK-06093-20261104-guiyang-xinglong",
+      "date": "2026-11-25",
+      "publishedAt": "2026-11-25T20:46:00+08:00",
+      "title": "和泓服務：延遲寄發出售事項通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112501423.pdf"
     }
   },
   "issuerLinks": [
