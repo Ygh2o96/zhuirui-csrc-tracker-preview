@@ -55571,7 +55571,9 @@
         "初始发起人": "Trustbridge Partners VII, L.P.",
         "收款/买方顶层SPV": "SpringX Holdings Limited（Parentco）",
         "标的": "Cloopen Group Holding Limited（交易前美国OTC: RAASY）",
-        "港股发行人": "Dmall Inc.（多点数智）"
+        "港股发行人": "Dmall Inc.（多点数智）",
+        "合併持股公司": "AutumnX Holdings Limited（HoldCo）",
+        "合併載體": "SummerX Holdings Limited（Merger Sub）"
       },
       "processEvents": [],
       "progressDate": "2026-10-29",
@@ -55688,6 +55690,22 @@
           "precision": 2,
           "unit": "percent",
           "value": 33.03
+        },
+        {
+          "approximate": true,
+          "basis": "多點10月29日公告披露ParentCo穿透對Cloopen的權益；HoldCo直接全資持有Cloopen。",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20261029-e6c1e2bcd433",
+            "pages": [
+              1
+            ]
+          },
+          "key": "parent_co_target_economic_stake",
+          "label": "ParentCo對Cloopen的穿透權益",
+          "precision": 2,
+          "unit": "percent",
+          "value": 66.36
         }
       ]
     },
@@ -99703,6 +99721,20 @@
       "id": "YS-20260514-innovax-float",
       "title": "授出豁免及恢復公眾持股量",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0514/2026051400183.pdf"
+    },
+    "YS-20261028-cloopen-merger-6k": {
+      "caseId": "HK-02586-20260512-cloopen",
+      "date": "2026-10-28",
+      "id": "YS-20261028-cloopen-merger-6k",
+      "title": "Cloopen合併生效公告（SEC Form 6-K附件）",
+      "url": "https://www.sec.gov/Archives/edgar/data/1804583/000149315226049093/ex99-1.htm"
+    },
+    "YS-20260821-cloopen-sec-proxy": {
+      "caseId": "HK-02586-20260512-cloopen",
+      "date": "2026-08-21",
+      "id": "YS-20260821-cloopen-sec-proxy",
+      "title": "Cloopen私有化通函：滾存股東與HoldCo分配",
+      "url": "https://www.sec.gov/Archives/edgar/data/1804583/000149315226039546/exa-1.htm"
     }
   },
   "issuerLinks": [

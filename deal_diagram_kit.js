@@ -8610,7 +8610,30 @@
     const nodes=[{id:"s",role:"seller",name:"鍾志文"},{id:"b",role:"buyer",name:"王庭發"},{id:"h",role:"target",name:"百陽國際投資"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"鍾志文",toLabel:"王庭發",headline:"3月31日百陽控制權交割"}],annotations:[{tag:"①",title:"規則25特別交易",body:"同日另行交割：MSL收購Innovax Credit及Innovax Management全部股權，參考對價5,820萬港元，可按協議調整。"}],evidenceLinks:[{documentId:a,pages:[2,4,15,34],label:"交易條款"},{documentId:m,pages:[2],label:"雙項交割"},{documentId:z,pages:[2,3],label:"要約結果"},{documentId:n,pages:[1,2],label:"公眾持股恢復"}]});
   }
+  function buildCloopenClosing(c,docs){
+    const a="YS-20260512-4f623dad3846",z="YS-20261029-e6c1e2bcd433",n="YS-20261028-cloopen-merger-6k",p="YS-20260821-cloopen-sec-proxy",date="2026-10-29",status="closed";
+    if(c.stage?.status!==status||c.stage.date!==date||![a,z,n,p].every(id=>docs?.[id]?.caseId===c.id))return null;
+    if(![["completion","2026-10-28"],["effective",date]].every(([kind,date])=>c.events?.some(e=>e.kind===kind&&e.date===date&&e.state==="actual"&&e.evidence?.documentId===z)))return null;
+    if(![["funded_usd",34247196],["stake_parentco",49.78],["parent_co_target_economic_stake",66.36],["stake_target",33.03]].every(([key,value])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===z)))return null;
+    const left="實際股權出資",right="私有化後持股",badge="境外合併生效 · 多點穿透權益33.03%";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:510,status,leftTitle:left,rightTitle:right,transitionLabel:"10月28日晚交割 · 29日生效（香港）",outcomeBadge:badge}),[
+      box("rta","left",42,101,167,109,"buyer","Retail Technology Asia","多點數智間接全資附屬"),
+      box("parent","left",436,101,168,109,"target","SpringX（ParentCo）","RTA持股約49.78%"),
+      box("fund","left",99,299,437,80,"creditor","多點實際出資約3,424.7萬美元","出資取得ParentCo股權"),
+      box("roll","right",724,67,310,77,"creditor","ParentCo與滾存股東","滾存股東取得HoldCo股權"),
+      box("hold","right",724,188,310,77,"target","AutumnX（HoldCo）","合併後直接全資持有Cloopen"),
+      box("t","right",724,309,310,77,"target","Cloopen（美國OTC私有化）","ParentCo穿透66.36% · 多點33.03%")
+    ],[],[
+      {id:"cash",panel:"left",kind:"cash",step:"①",pathPoints:[[209,157],[436,157]],labelCenter:[324,157],labelWidth:199,labelHeight:35,label:"股權出資"},
+      {id:"rollcash",panel:"right",kind:"shares",step:"②",pathPoints:[[878,144],[878,188]],labelCenter:[999,166],labelWidth:82,labelHeight:28,label:"持股"},
+      {id:"legal",panel:"right",kind:"shares",step:"③",pathPoints:[[878,265],[878,309]],labelCenter:[982,287],labelWidth:82,labelHeight:28,label:"100%"}
+    ]);
+    const nodes=[{id:"rta",role:"buyer",name:"Retail Technology Asia"},{id:"parent",role:"target",name:"SpringX（ParentCo）"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金股權出資",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"cash",kind:"cash",direction:"ltr",fromLabel:"Retail Technology Asia",toLabel:"SpringX（ParentCo）",headline:"實際出資約3,424.7萬美元"}],annotations:[{tag:"①",title:"多點的入賬口徑",body:"多點按聯營公司入賬。ParentCo約66.36%的Cloopen穿透權益，乘以多點出資子公司的ParentCo持股約49.78%，約為33.03%。"},{tag:"②",title:"合併與滾存",body:"SummerX併入Cloopen。AutumnX直接全資持有存續的Cloopen；滾存股東在AutumnX層面取得股權。"}],evidenceLinks:[{documentId:a,pages:[1,3,28],label:"出資條款"},{documentId:z,pages:[1],label:"港交所交割公告"},{documentId:n,pages:[1],label:"SEC合併生效公告"},{documentId:p,pages:[1],label:"SEC股東通函"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-02586-20260512-cloopen")return buildCloopenClosing(txCase,documents);
     if(txCase?.id==="HK-02680-20251010-wang-tingfa-control-special-deal")return buildInnovaxFloat(txCase,documents);
     if(["HK-01124-20251017-tao-qian-no-deal","HK-02427-20260127-funde-control-mgo","HK-01428-20250425-wealthiness-control-mgo"].includes(txCase?.id))return buildCoastalGuanzeBright(txCase,documents);
     if(["HK-00383-20260323-issuer-buyback-cancelled","HK-01940-20260313-tangde-lapsed-cash","HK-00784-20260414-hapbiotech-control-mgo"].includes(txCase?.id))return buildBuybackAndSeparatedOffers(txCase,documents);
