@@ -8650,7 +8650,37 @@
     const nodes=[{id:"s",role:"seller",name:"上海濱橋"},{id:"b",role:"buyer",name:"夢響強音"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"股權置換及現金差額",caseModalityShortLabel:"股權及現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"上海濱橋",toLabel:"夢響強音",headline:"上海星空水岸全部股權"}],annotations:[{tag:"①",title:"置換範圍",body:"上海濱橋原約17.59%股權價值約人民幣19,346萬元；星空水岸100%估值約19,369.7萬元。8月12日交割後，上海濱橋不再是星空華文聯營公司。"},{tag:"②",title:"債務差額",body:"股東貸款承接約26,659.2萬元，另筆貸款抵銷約26,612.6萬元，差額約46.6萬元。金額均為人民幣。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"首次公告"},{documentId:p,pages:[8,9,10,24,25],label:"通函：股權與債務"},{documentId:v,pages:[1],label:"股東表決"},{documentId:z,pages:[1],label:"完成公告"}]});
   }
+  function buildBraveAndPrintshop(c,docs){
+    const configs={
+      "01716":{
+        a:"YS-20260312-5dc87660122d",z:"YS-20260423-41edf6c62b07",p:"YS-20260402-58ca646b787b",date:"2026-04-23",event:"completion",status:"closed",
+        ts:[["control_shares",175500000,"a"],["control_cash",122200000,"a"],["accepted_shares",112005,"z"],["actual_cash",77989.0815,"z"],["public_float",33.05,"z"],["offeror_actual_post_offer",65.04,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股強制現金要約",badge:"要約截止 · 有效接納112,005股",seller:"Blackpaper Limited",buyer:"驍駿傳奇",sSub:"出售175,500,000股",bSub:"3月12日交割 · 1.2億港元",main:"已轉讓65.00%股份",
+        steps:[["4月2日寄發綜合文件","無條件強制要約 · 每股0.6963港元"],["4月23日要約截止","5份有效接納 · 毛額約7.8萬港元"],["計入接納後持股65.04%","待過戶口徑 · 公眾持股33.05%"]],
+        detail:"買方為驍駿傳奇有限公司。持股及公眾持股比例按公告股數除以2.7億股已發行股份重算；大宗股權對價1.222億港元。",pagesA:[2,4,5],pagesZ:[2,3,4],pagesP:[2]
+      },
+      "08448":{
+        a:"YS-20260209-d5d59e5c0c30",z:"YS-20260422-c85aa4839534",p:"YS-20260320-89c34973b9b9",o:"YS-20260731-e0f06c7e7859",date:"2026-04-22",event:"completion",status:"closed",
+        ts:[["control_shares",65410466,"a"],["nominal_control",22893663.1,"a"],["deposit_paid",5000000,"a"],["note_repaid_amount",17893663.1,"o"],["accepted_shares",36000,"z"],["actual_cash",12600,"z"],["post_pct",65.58,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股要約與支付後續",badge:"要約截止 · 有效接納36,000股",seller:"三名協議賣方",buyer:"Digital Intelligence",sSub:"出售65,410,466股",bSub:"500萬港元現金＋延期票據",main:"2月9日轉讓65.54%",
+        steps:[["4月22日無條件要約截止","5份有效接納 · 36,000股×0.35港元"],["要約對價12,600港元","計入接納後65.58% · 年報已確認"],["7月延期對價付清","票據清償及股份押記解除"]],
+        detail:"賣方為New Metro Inc.、Hsu Ching Loi及Chau Man Keung。買方為Digital Intelligence Holdings Limited。大宗對價總額22,893,663.10港元；延期對價屬大宗買賣。",pagesA:[2,3,7],pagesZ:[2,4,5],pagesP:[1],pagesO:[28]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code!=="01124"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(c.code!=="01124"&&!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="terminated"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"年報：票據已清償"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01716-20260312-brave-steed-control","HK-08448-20260209-digital-intelligence-control"].includes(txCase?.id))return buildBraveAndPrintshop(txCase,documents);
     if(["HK-06698-20260602-binqiao-restructuring"].includes(txCase?.id))return buildBinqiaoRestructuring(txCase,documents);
     if(txCase?.id==="HK-02586-20260512-cloopen")return buildCloopenClosing(txCase,documents);
     if(txCase?.id==="HK-02680-20251010-wang-tingfa-control-special-deal")return buildInnovaxFloat(txCase,documents);
