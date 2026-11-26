@@ -6643,7 +6643,30 @@
       {tag:"②",title:"配售角色",body:"興證國際擔任獨家整體協調人及配售代理；立鼎證券、天澤證券及新百利融資任配售代理。"}],
       evidenceLinks:[{documentId:x.ann,pages:[3,4],label:"配售協議、角色及定價"},{documentId:x.src,pages:[1,2],label:"已完成配售、實際募資及 H 股分母"}],compactSummary:"新 H 股 "+n+" 股 · 已完成 · 佔配售後 H 股 "+t.post_issue_pct+"%",topology};
   }
+
+  function buildVerifiedLianhuaRenewal(c,docs){
+    const src="YS-20261120-609daa891ee9", upd="YS-20261125-17efa92d6684", dt="2026-11-25";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="dispatch_extension"||docs?.[src]?.caseId!==c.id||docs?.[upd]?.caseId!==c.id)return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.currency==="CNY"&&t.value===v);
+    if(!term("entrusted_principal",675000000)||!term("max_daily_investment_balance",700000000)||!term("annual_management_fee_cap",2100000)||!term("annual_performance_fee_cap",2800000))return null;
+    const left="聯華華商",right="上海證券",badge="通函延寄 · 待獨立股東批准";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"單一資產管理合同擬續期",rightTitle:"日投資餘額上限及審批",transitionLabel:"擬續期至 2029 年末",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"listed",left,"聯華超市附屬公司"),box("L_r","left",448,100,157,146,"buyer",right,"全權投資管理"),
+      box("R_a","right",728,84,295,75,"target","每日最高投資餘額人民幣 7 億元","含累計投資收益"),
+      box("R_b","right",728,210,295,75,"public","待獨立股東批准","擬於 12 月 16 日或之前寄發通函"),
+    ],[],[{id:"entrust",panel:"left",kind:"asset",step:"①",pathPoints:[[192,160],[448,160]],labelCenter:[320,160],labelWidth:214,labelHeight:34,label:"委託本金人民幣 6.75 億元"}]);
+    const nodes=[{id:"l",role:"listed",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"disclosable_major",modality:"in_kind",status:"active",
+      caseArchetypeLabel:"非常重大收購 · 關連資產管理",caseModalityShortLabel:"單一資產管理合同",before:{title:"原合約於 2026 年底屆滿",nodes,equityLinks:[]},after:{title:"擬續期 2027–2029 年",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"entrust",kind:"asset",direction:"ltr",fromLabel:left,toLabel:right,headline:"續期委託本金人民幣 6.75 億元，由上海證券全權管理",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"委託及託管",body:"託管行為建設銀行上海市分行。原安排到期時，超出續期委託資產的部分按屆時淨資產贖回。"},
+      {tag:"②",title:"各年費用上限",body:"2027–2029 年每年擬設管理費上限人民幣 210 萬元、表現費上限人民幣 280 萬元。"},
+      {tag:"③",title:"獨立股東審批",body:"續期交易須獨立股東批准，VBG Capital 已獲委任為獨立財務顧問。"}],
+      evidenceLinks:[{documentId:src,pages:[2,3,4,6,46,60,70,71],label:"委託本金、投資上限、費用及審批條款"},{documentId:upd,pages:[1],label:"通函延寄公告"}],compactSummary:"委託本金人民幣 6.75 億元 · 日投資餘額上限 7 億元 · 待獨立股東批准",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00980-20261120-lianhua-asset-management-renewal"){const x=buildVerifiedLianhuaRenewal(txCase,documents);return x&&validateDiagramSpec(x);}
     if(["HK-02650-20260623-zhida-h-placement","HK-02650-20260923-zhida-h-placement"].includes(txCase?.id)){const s=buildVerifiedZhidaHPlacement(txCase,documents);return s&&validateDiagramSpec(s);}
     if(txCase?.id==="HK-01748-20261008-ocean-vivo"){const x=buildVerifiedOceanVivo(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03816-20260904-luxshare-control"){const x=buildVerifiedKfmBlock(txCase,documents);return x&&validateDiagramSpec(x);}
