@@ -8981,7 +8981,35 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:c.code==="08246"?"shares":"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:c.code==="08246"?"發行代價股":"現金",caseModalityShortLabel:c.code==="08246"?"代價股":"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"補充認購協議"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"股份變動翌日披露"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"完成公告"}])]});
   }
+  function buildPraiAble(c,docs){
+    const configs={
+      "00990":{
+        a:"YS-20261120-edd55890578e",p:"YS-20261007-ac4555df7dc3",z:"YS-20261120-edd55890578e",date:"2026-11-20",event:"first_announcement",status:"active",
+        ts:[["aggregate_contract_sum_hkd",1729000000,"a"],["construction_contract_myr",592110000,"a"],["usd_supply_price",76682926.83,"a"],["loi_advance_paid",11055000,"p"]],
+        left:"檳城 Prai 數據中心合約",right:"兩份合約分列",badge:"已簽施工及設備供應合約 · 待測試和驗收",seller:"Longmotive 兩家子公司",buyer:"Deep Source（PN）",sSub:"在岸施工及離岸設備",bSub:"業主及採購方 · 規劃67MW",main:"披露合計約17.3億港元",
+        steps:[["在岸施工：Longmotive（M）","固定價5.9億馬來西亞令吉 · 含稅"],["離岸供應：Longmotive DC Solutions","固定價7,668.3萬美元 · 不含馬來西亞SST"],["兩份合約由 Longmotive（S）擔保","已付1,105.5萬美元抵扣設備價款"]],
+        detail:"施工範圍涵蓋整合、測試、調試及移交。離岸供應另按里程碑付款，已付的意向書預付款抵扣供應合約價。",pagesA:[1,2,3,5,6],pagesP:[2],pagesZ:[1,2,3,5,6]
+      },
+      "01627":{
+        a:"YS-20260520-623bc3a6ac91",p:"YS-20260526-eb2cf6ea9f64",z:"YS-20260617-66341c155cd4",o:"YS-20260612-25beb04dc0f1",date:"2026-06-17",event:"completion",status:"closed",
+        ts:[["land_premium",1627000000,"p"]],
+        left:"東涌住宅用地招標",right:"批准、地價與交付",badge:"地價已付清 · 東涌第54號地段已交付",seller:"香港特區政府",buyer:"Able Best Limited",sSub:"地政總署 · 東涌第54號地段",bSub:"安保工程全資子公司",main:"中標地價16.3億港元",
+        steps:[["用地面積約14,152平方米","最高住宅總樓面49,532平方米"],["6月12日股東批准及付清地價","地價全數由集團內部資源支付"],["6月17日土地已交付","建築契約期限：2032年3月31日"]],
+        detail:"買方以政府招標取得私人住宅用地。按賣地條款，建築須不遲於2032年3月31日完成並適合佔用。",pagesA:[1,2],pagesP:[1],pagesZ:[1],pagesO:[1,2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:c.code==="00990"?"前期意向書":"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"股東表決結果"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"完成公告"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00990-20261120-penang-prai-offshore-equipment","HK-01627-20260520-able-best-tung-chung-lot54"].includes(txCase?.id))return buildPraiAble(txCase,documents);
     if(["HK-08246-20261007-vbit-subscription","HK-01187-20261119-kangjuren-60-percent"].includes(txCase?.id))return buildVbitCofoe(txCase,documents);
     if(["HK-01348-20251204-yael-share-and-option-mgo","HK-02020-20260126-puma"].includes(txCase?.id))return buildQualiAnta(txCase,documents);
     if(["HK-01009-20251117-digiplus-notes-whitewash","HK-00228-20251223-alpha-eagle-rights-two-offers"].includes(txCase?.id))return buildDigiplusAlpha(txCase,documents);
