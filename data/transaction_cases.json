@@ -49691,6 +49691,36 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-10",
+          "label": "投票委託部分失效",
+          "detail": "中國現代牧業可行使投票權約68.53%。",
+          "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260910-01432-vote-proxy",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "date": "2026-10-30",
+          "label": "公眾持股月度更新",
+          "detail": "公眾持股約12.87%，公司預計2027年6月底恢復合規。",
+          "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261030-01432-float",
+            "pages": [
+              1,
+              2
+            ]
+          }
         }
       ],
       "progressDate": "2026-08-03",
@@ -49742,6 +49772,42 @@
             ]
           },
           "label": "收购守则 30.2"
+        },
+        {
+          "code": "HKEX:13.32B",
+          "label": "上市規則 13.32B",
+          "application": "公眾持股低於規定最低水平。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261030-01432-float",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "code": "HKEX:13.32F",
+          "label": "上市規則 13.32F",
+          "application": "發行人披露存在嚴重公眾持股不足。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261030-01432-float",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "code": "HKEX:13.32G(3)",
+          "label": "上市規則 13.32G(3)",
+          "application": "公告列明恢復合規限期為2028年2月2日。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261030-01432-float",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "stage": {
@@ -49857,7 +49923,7 @@
               3
             ]
           },
-          "key": "separately_held_proxy_shares",
+          "key": "separate_start_great_legal_holdings_pct",
           "label": "Start Great 仍持股份",
           "precision": 2,
           "unit": "percent",
@@ -49878,6 +49944,71 @@
           "precision": 2,
           "unit": "percent",
           "value": 83.52
+        },
+        {
+          "key": "voting_proxy_original",
+          "label": "原投票委託比例",
+          "value": 24.9,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": true,
+          "basis": "Start Great原始委託",
+          "evidence": {
+            "documentId": "YS-20260910-01432-vote-proxy",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "voting_proxy_remaining",
+          "label": "部分失效後投票委託比例",
+          "value": 15,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": true,
+          "basis": "9月10日披露",
+          "evidence": {
+            "documentId": "YS-20260910-01432-vote-proxy",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "key": "voting_power_after_partial_lapse",
+          "label": "現代牧業可行使投票權",
+          "value": 68.53,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": true,
+          "basis": "53.53%直接持股及15.00%投票委託",
+          "evidence": {
+            "documentId": "YS-20260910-01432-vote-proxy",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "public_float_oct30",
+          "label": "10月30日公眾持股",
+          "value": 12.87,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": true,
+          "basis": "10月30日公司披露",
+          "evidence": {
+            "documentId": "YS-20261030-01432-float",
+            "pages": [
+              1
+            ]
+          }
         }
       ]
     },
@@ -99485,6 +99616,20 @@
       "publishedAt": "2026-11-23T17:18:00+08:00",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300718.pdf",
       "title": "飛機融資租賃及其他交易通函（日期：11月24日）"
+    },
+    "YS-20260910-01432-vote-proxy": {
+      "caseId": "HK-01432-20251030-modern-dairy-conditional-cash",
+      "id": "YS-20260910-01432-vote-proxy",
+      "date": "2026-09-10",
+      "title": "不可撤銷投票委託部分失效",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0910/2026091001601.pdf"
+    },
+    "YS-20261030-01432-float": {
+      "caseId": "HK-01432-20251030-modern-dairy-conditional-cash",
+      "id": "YS-20261030-01432-float",
+      "date": "2026-10-30",
+      "title": "公眾持股月度更新",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000624.pdf"
     }
   },
   "issuerLinks": [

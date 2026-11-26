@@ -8430,7 +8430,25 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:m?"分期對價":"現金及票據",caseModalityShortLabel:m?"分期對價":"現金及票據",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:m?"首輪73%股權已交割":"擬轉讓30%股權",proposedOrTerminated:!m}],annotations:[{tag:"①",title:m?"過渡安排":"票據到期",body:m?"9月2日補充協議記載回轉安排，回轉本身不產生另行對價，亦不改變原收購總對價。":"票據為買方於交割向賣方發行，自發行日起兩個月到期。"}],evidenceLinks:[{documentId:a,pages:m?[2,3]:[1,2,3,18,19],label:m?"原協議及股權結構":"收購條款及交易各方"},...(m?[{documentId:z,pages:[2,3,5,6],label:"首輪交割、回轉及後續審批"}]:[])]});
   }
+  function buildShengmuOrBingo(c,docs){
+    const s0=c.code==="01432",a=s0?"YS-20260522-ebd0f97a94c1":"YS-20260528-60e9507d7bf5",z=s0?"YS-20260803-ed5a217dc9c1":"YS-20260729-ed04e5eae1cf",p=s0?"YS-20260910-01432-vote-proxy":z,n=s0?"YS-20261030-01432-float":z,date=s0?"2026-08-03":"2026-07-29",control=s0?"2026-05-22":"2026-05-28";
+    const ts=s0?[["block_shares",107200000,a],["accepted_shares",4379519346,z],["offeror_actual_post_offer",53.53,z],["voting_proxy_remaining",15,p],["voting_power_after_partial_lapse",68.53,p],["public_float_oct30",12.87,n]]:[["converted_principal",19000000,"YS-20260212-af11514aeae9"],["conversion_shares",69090909,"YS-20260707-44107334d2b4"],["accepted_shares",52750,z],["accepted_cash",14506.25,z]];
+    if(![a,z,p,n].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===control&&e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===a)||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=s0?"股份交割與要約":"可換股債轉換",right=s0?"直接持股、投票權與公眾持股":"股份及購股權要約",badge=s0?"要約已截止 · 10月30日公眾持股12.87%":"要約已截止 · 公眾持股38.11%";
+    const s=s0?"中國聖牧股份賣方":"比高集團",b=s0?"中國現代牧業":"周星馳";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,s0?"seller":"listed",s,s0?"先行出售合計1.072億股":"轉換本金1,900萬港元"),
+      box("b","left",444,106,161,124,"buyer",b,s0?"要約有效接納約43.795億股":"獲發69,090,909股"),
+      box("a","right",724,72,310,70,"target",s0?"現代牧業直接持股53.53%":"有效接納52,750股",s0?"Start Great另持29.99%，合計83.52%":"每股0.275港元，應付14,506.25港元"),
+      box("r2","right",724,164,310,75,"creditor",s0?"9月10日投票委託剩餘15.00%":"購股權要約零接納",s0?"現代牧業可行使投票權合計68.53%":"與股份現金要約分開"),
+      box("r3","right",724,260,310,76,"creditor",s0?"10月30日公眾持股仍為12.87%":"截止時公眾持股38.11%",s0?"公司預計2027年6月底恢復合規":"以接納股份完成轉讓為準")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:s0?"先行股份交割":"5月28日完成轉換"}]);
+    const nodes=[{id:"s",role:s0?"seller":"listed",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:s0?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:s0?"現金":"轉股及現金",caseModalityShortLabel:s0?"現金":"轉股及現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:s0?"先行股份交割":"完成可換股債轉換"}],annotations:[{tag:"①",title:s0?"投票委託變動":"股份及購股權分列",body:s0?"Start Great原委託24.90%股份的投票權，9月有9.90個百分點失效；其自身持股仍分列。":"股份要約接納52,750股，購股權要約未獲接納。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:s0?"先行股份交割":"可換股債轉換"},{documentId:z,pages:s0?[2,3,4]:[3,4,7],label:"要約結果及公眾持股"},...(s0?[{documentId:p,pages:[2,3],label:"投票委託部分失效"},{documentId:n,pages:[1,2],label:"10月30日公眾持股更新"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01432-20251030-modern-dairy-conditional-cash","HK-08220-20260212-chiau-conversion-cash"].includes(txCase?.id))return buildShengmuOrBingo(txCase,documents);
     if(["HK-08137-20260629-bona-global","HK-08181-20261120-kam-fai-services"].includes(txCase?.id))return buildBonaOrKamfai(txCase,documents);
     if(["HK-06083-20260717-consortium-control-mgo","HK-01417-20260518-yomisun-luckyyang-control"].includes(txCase?.id))return buildWorldlinkOrRiverine(txCase,documents);
     if(["HK-08123-20260610-debt-cap-mgo","HK-01633-20260724-control-mgo"].includes(txCase?.id))return buildSinofortuneOrSheung(txCase,documents);
