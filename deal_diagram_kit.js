@@ -8588,7 +8588,30 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildInnovaxFloat(c,docs){
+    const a="YS-20251010-42c500338c87",m="YS-20260331-42175e79ac2b",z="YS-20260429-8c36c2d58111",n="YS-20260514-innovax-float",status="closed",date="2026-04-29";
+    if(c.stage?.status!==status||c.stage.date!==date||![a,m,z,n].every(k=>docs?.[k]?.caseId===c.id))return null;
+    if(![["control_completion","2026-03-31",m],["completion",date,z]].every(([kind,date,doc])=>c.events?.some(x=>x.kind===kind&&x.date===date&&x.state==="actual"&&x.evidence?.documentId===doc)))return null;
+    const ts=[["direct_holdco_shares_purchased",110,a],["underlying_block_shares",45000000,a],["block_consideration",270000000,a],["accepted_shares",39825,z],["accepted_gross",238950,z],["offer_close_public_float_pct",24.93,n],["float_restoration_disposed_shares",39825,n],["restored_public_float_pct",25,n]];
+    if(!ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===doc))||!c.processEvents?.some(e=>e.date==="2026-05-13"&&e.state==="actual"&&e.evidence?.documentId===n))return null;
+    const left="透過百陽收購控制權",right="餘股要約及公眾持股",badge="餘股要約已截止 · 公眾持股已恢復";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:485,status,leftTitle:left,rightTitle:right,transitionLabel:"交易執行結果",outcomeBadge:badge}),[
+      box("s","left",42,107,155,115,"seller","鍾志文","出售百陽全部110股"),
+      box("b","left",444,107,155,115,"buyer","王庭發","取得百陽100%股權"),
+      box("h","left",444,304,155,80,"target","百陽國際投資","持創陞4,500萬股（75%）"),
+      box("r1","right",724,72,310,75,"target","4月29日餘股要約截止","有效接納39,825股 · 238,950港元"),
+      box("r2","right",724,165,310,75,"creditor","要約後合計75.07%","公眾持股24.93% · 以過戶登記為準"),
+      box("r3","right",724,261,310,80,"creditor","5月13日公眾持股恢復至25%","王庭發在公開市場出售39,825股")
+    ],[],[
+      {id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[197,166],[444,166]],labelCenter:[321,166],labelWidth:205,labelHeight:35,label:"3月31日交割 · 2.7億港元"},
+      {id:"hold",panel:"left",kind:"shares",step:"②",pathPoints:[[520,222],[520,304]],labelCenter:[459,263],labelWidth:85,labelHeight:30,label:"100%"}
+    ]);
+    const nodes=[{id:"s",role:"seller",name:"鍾志文"},{id:"b",role:"buyer",name:"王庭發"},{id:"h",role:"target",name:"百陽國際投資"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"鍾志文",toLabel:"王庭發",headline:"3月31日百陽控制權交割"}],annotations:[{tag:"①",title:"規則25特別交易",body:"同日另行交割：MSL收購Innovax Credit及Innovax Management全部股權，參考對價5,820萬港元，可按協議調整。"}],evidenceLinks:[{documentId:a,pages:[2,4,15,34],label:"交易條款"},{documentId:m,pages:[2],label:"雙項交割"},{documentId:z,pages:[2,3],label:"要約結果"},{documentId:n,pages:[1,2],label:"公眾持股恢復"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-02680-20251010-wang-tingfa-control-special-deal")return buildInnovaxFloat(txCase,documents);
     if(["HK-01124-20251017-tao-qian-no-deal","HK-02427-20260127-funde-control-mgo","HK-01428-20250425-wealthiness-control-mgo"].includes(txCase?.id))return buildCoastalGuanzeBright(txCase,documents);
     if(["HK-00383-20260323-issuer-buyback-cancelled","HK-01940-20260313-tangde-lapsed-cash","HK-00784-20260414-hapbiotech-control-mgo"].includes(txCase?.id))return buildBuybackAndSeparatedOffers(txCase,documents);
     if(["HK-01796-20260427-chan-partial","HK-08413-20251210-lianfeng-partial-preconditions-lapsed"].includes(txCase?.id))return buildMetaOrAsiaGrocery(txCase,documents);

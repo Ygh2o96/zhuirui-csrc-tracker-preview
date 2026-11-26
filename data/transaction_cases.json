@@ -54855,7 +54855,9 @@
       "name": "Innovax Holdings Limited",
       "parties": {
         "标的": "Innovax Holdings Limited",
-        "要约方": "Wang Tingfa"
+        "要约方": "Wang Tingfa",
+        "百阳股权卖方": "Chung Chi Man",
+        "中间控股公司": "Billion Shine International Investment Limited"
       },
       "processEvents": [
         {
@@ -54868,6 +54870,21 @@
             ]
           },
           "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-05-13",
+          "detail": "王庭發在公開市場出售39,825股；公眾持股由14,960,175股（24.93%）恢復至15,000,000股（25.00%）。5月14日公告。",
+          "evidence": {
+            "documentId": "YS-20260514-innovax-float",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "kind": "supplement",
+          "label": "公眾持股恢復至25%",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
         }
@@ -55097,6 +55114,55 @@
           "precision": 2,
           "unit": "percent",
           "value": 75.07
+        },
+        {
+          "approximate": true,
+          "basis": "5月14日公告回溯核實；未計5月13日出售",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20260514-innovax-float",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "key": "offer_close_public_float_pct",
+          "label": "餘股要約截止後公眾持股比例",
+          "precision": 2,
+          "unit": "percent",
+          "value": 24.93
+        },
+        {
+          "approximate": false,
+          "basis": "王庭發5月13日出售；是後續公開市場交易",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20260514-innovax-float",
+            "pages": [
+              2
+            ]
+          },
+          "key": "float_restoration_disposed_shares",
+          "label": "恢復公眾持股的公開市場出售股數",
+          "precision": 0,
+          "unit": "shares",
+          "value": 39825
+        },
+        {
+          "approximate": false,
+          "basis": "公開市場出售後15,000,000股佔60,000,000股",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20260514-innovax-float",
+            "pages": [
+              2
+            ]
+          },
+          "key": "restored_public_float_pct",
+          "label": "5月13日恢復後公眾持股比例",
+          "precision": 2,
+          "unit": "percent",
+          "value": 25
         }
       ]
     },
@@ -99630,6 +99696,13 @@
       "date": "2026-10-30",
       "title": "公眾持股月度更新",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000624.pdf"
+    },
+    "YS-20260514-innovax-float": {
+      "caseId": "HK-02680-20251010-wang-tingfa-control-special-deal",
+      "date": "2026-05-14",
+      "id": "YS-20260514-innovax-float",
+      "title": "授出豁免及恢復公眾持股量",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0514/2026051400183.pdf"
     }
   },
   "issuerLinks": [
