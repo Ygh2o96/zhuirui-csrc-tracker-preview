@@ -27545,12 +27545,15 @@
         {
           "date": "2026-03-30",
           "evidence": {
-            "documentId": "YS-20260327-c627caecdf39",
-            "section": "p. 2"
+            "documentId": "YS-20260429-08b6f14c31c0",
+            "pages": [
+              16
+            ]
           },
           "kind": "delisting",
-          "state": "scheduled_at_filing",
-          "timeZone": "Asia/Hong_Kong"
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "2026年3月30日撤銷上市；協議安排生效日為3月26日。"
         }
       ],
       "headlineKey": "scheme_cash",
@@ -58694,14 +58697,13 @@
         {
           "date": "2026-02-09",
           "evidence": {
-            "documentId": "YS-20260206-19db726ab38f",
-            "pages": [
-              4
-            ]
+            "documentId": "YS-20260209-045a615cb1c4",
+            "pages": []
           },
           "kind": "delisting",
-          "state": "scheduled_at_filing",
-          "timeZone": "Asia/Hong_Kong"
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "2026年2月9日香港時間下午4時撤銷上市；協議安排於開曼時間2月5日生效。"
         }
       ],
       "headlineKey": "cash_alt",
@@ -95850,6 +95852,20 @@
       "date": "2026-11-26",
       "title": "續訂持續關連交易及財資／存款服務",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601559_c.pdf"
+    },
+    "YS-20260429-08b6f14c31c0": {
+      "id": "YS-20260429-08b6f14c31c0",
+      "caseId": "HK-00459-20251209-wealth-builder",
+      "date": "2026-04-29",
+      "title": "鋑聯控股退市日期的後續披露",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042902590.pdf"
+    },
+    "YS-20260209-045a615cb1c4": {
+      "id": "YS-20260209-045a615cb1c4",
+      "caseId": "HK-09956-20251017-celestia-cayman-mixed-scheme",
+      "date": "2026-02-09",
+      "title": "財團確認安能物流完成私有化及退市",
+      "url": "https://www.thebusinesstimes.com.au/companies/news-from-asia/47376-consortium-successfully-completes-privatization-of-ane-(cayman)-inc"
     }
   },
   "issuerLinks": [
