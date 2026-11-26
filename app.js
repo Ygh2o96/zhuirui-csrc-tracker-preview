@@ -3852,15 +3852,16 @@ function renderFeeInsightStrip(all, rows = null) {
  const mid=pool.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a>=500e6&&a<=2000e6;});
  const large=pool.filter(r=>{const a=p0FeeAmount(r,basis);return a!==null&&a>2000e6;});
  const ah=pool.filter(r=>r.isAH),nonAh=pool.filter(r=>!r.isAH);
- const shoeConfirmed=pool.filter(r=>r.shoe?.value&&['full_exercised','partially_exercised','not_exercised','no_option','full','partial','exercised'].includes(r.shoe.value));
+ const shoeConfirmed=pool.filter(r=>['full_exercised','partially_exercised','not_exercised','full','partial','exercised'].includes(r.shoe?.value));
  const shoeFull=shoeConfirmed.filter(r=>['full_exercised','full'].includes(r.shoe.value)).length;
- const shoePart=shoeConfirmed.filter(r=>['partially_exercised','partial','exercised'].includes(r.shoe.value)).length;
+ const shoePart=shoeConfirmed.filter(r=>['partially_exercised','partial'].includes(r.shoe.value)).length;
+ const shoeDegreePending=shoeConfirmed.filter(r=>r.shoe.value==='exercised').length;
  const shoeNone=shoeConfirmed.filter(r=>r.shoe.value==='not_exercised').length;
- const shoeExRate=shoeConfirmed.length?offeringNumber((shoeFull+shoePart)/shoeConfirmed.length*100,1)+'%':'—';
+ const shoeExRate=shoeConfirmed.length?offeringNumber((shoeFull+shoePart+shoeDegreePending)/shoeConfirmed.length*100,1)+'%':'—';
  el.hidden=false;
  el.innerHTML=`<div class="stat-cell" title="各规模档位内：所有项目固定佣金总和 ÷ 发行规模总和"><span class="stat-label">${narrowed?'当前筛选 · 规模阶梯有效佣金':'规模阶梯 · 有效固定佣金率'}</span><strong class="stat-val col-num">${effFixed(small)} <small>→</small> ${effFixed(mid)} <small>→</small> ${effFixed(large)}</strong><small class="stat-sub">&lt;5亿 (${small.length}) · 5–20亿 (${mid.length}) · &gt;20亿 (${large.length}) · Σ佣金/Σ规模</small></div>
   <div class="stat-cell" title="A+H 与非 A+H 板块各自：所有项目固定佣金总和 ÷ 发行规模总和"><span class="stat-label">${narrowed?'当前筛选 · A+H vs 非A+H 有效佣金':'A+H vs 非A+H 有效佣金率'}</span><strong class="stat-val col-num">A+H ${effFixed(ah)} · 非A+H ${effFixed(nonAh)}</strong><small class="stat-sub">总募资：A+H ${sumGross(ah)} (${ah.length}宗) · 非A+H ${sumGross(nonAh)} (${nonAh.length}宗)</small></div>
-  <div class="stat-cell"><span class="stat-label">${narrowed?'当前筛选 · 绿鞋行使率':'超额配股权（绿鞋）行使率'}</span><strong class="stat-val col-num">${shoeExRate}</strong><small class="stat-sub">已核实 ${shoeConfirmed.length} 宗：全额 ${shoeFull} · 部分 ${shoePart} · 未行使 ${shoeNone}</small></div>`;
+  <div class="stat-cell"><span class="stat-label">${narrowed?'当前筛选 · 绿鞋行使率':'超额配股权（绿鞋）行使率'}</span><strong class="stat-val col-num">${shoeExRate}</strong><small class="stat-sub">有绿鞋且状态已披露 ${shoeConfirmed.length} 宗：全额 ${shoeFull} · 部分 ${shoePart} · 已行使待细分 ${shoeDegreePending} · 未行使 ${shoeNone}</small></div>`;
 }
 
 // Exact comparisons use whole-engagement amounts in one explicitly selected currency.
