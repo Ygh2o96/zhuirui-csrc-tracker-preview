@@ -6331,8 +6331,40 @@
       {tag:"②",title:"批准与后续条件",body:"11 月 26 日股东批准，赞成率 99.82%。协议生效仍须金融监管部门等批准，付款另受债权人程序等条件约束。"}],
       evidenceLinks:[{documentId:circ,pages:[9,10,11],label:"通函：减资结构、对价与条件"},{documentId:vote,pages:[2],label:"股东大会表决结果"}],compactSummary:"北京汽车 · 减资退出 33%／14% · 股东已批准",topology};
   }
+
+  function buildEvidencedRightsIssue(c,docs) {
+    const x=c.rightsExecution;
+    if(!x||!["excess","placement","best_efforts"].includes(x.method)||!docs?.[x.evidence?.documentId]||
+       docs[x.evidence.documentId].caseId!==c.id||!x.evidence?.pages?.length) return null;
+    const price=c.terms?.find(t=>t.key==="subscription_price"&&t.currency==="HKD"&&t.value>0);
+    if(!price||!c.stage?.label||!c.stage.date) return null;
+    const s=c.stage.status, done=s==="closed"||s==="implemented", i=x.issuerLabel, sh="合資格股東";
+    const mode={excess:"非包銷 · 額外供股申請",placement:"非包銷 · 餘股盡力配售",best_efforts:"先補償配售 · 餘股盡力包銷"}[x.method];
+    const detail={excess:"剩餘股份可申請額外認購",placement:"未認購股份按盡力基準配售",best_efforts:"補償配售後的餘股按協議盡力包銷"}[x.method];
+    const badge=mode+" · "+c.stage.label;
+    const term="每股 "+price.value.toString()+" 港元";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:365,status:s,leftTitle:"供股股份與認購款",rightTitle:"發行安排",transitionLabel:"供股",outcomeBadge:badge}),[
+      box("L_i","left",42,99,159,139,"listed",i,term),
+      box("L_h","left",454,99,149,139,"public",sh,"按供股配額認購"),
+      box("R_m","right",725,91,300,75,"target",mode,detail),
+      box("R_s","right",725,201,300,69,"public","進度",c.stage.label)
+    ],[],[
+      {id:"shares",panel:"left",kind:"shares",step:"①",pathPoints:[[201,135],[454,135]],labelCenter:[327,135],labelWidth:176,labelHeight:35,label:"供股股份"},
+      {id:"cash",panel:"left",kind:"cash",step:"②",pathPoints:[[454,206],[201,206]],labelCenter:[327,206],labelWidth:176,labelHeight:35,label:"按認購繳款"}
+    ]);
+    const nodes=[{id:"i",role:"listed",name:i},{id:"h",role:"public",name:sh}];
+    return {id:c.id,caseId:c.id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,
+      archetype:"rights_open_offer",modality:"cash",status:s,caseArchetypeLabel:"供股",caseModalityShortLabel:mode,
+      before:{title:"供股結構",nodes,equityLinks:[]},after:{title:"發行安排",outcomeBadge:badge,nodes,equityLinks:[]},
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:i,toLabel:sh,headline:"按配額發行供股股份",proposedOrTerminated:!done},
+        {id:"cash",kind:"cash",direction:"rtl",fromLabel:sh,toLabel:i,headline:"實際認購額按"+term+"計",proposedOrTerminated:!done}],
+      annotations:[{tag:"①",title:mode,body:c.mechanism},{tag:"②",title:"進度",body:c.stage.label+"（"+c.stage.date+"）"}],
+      evidenceLinks:[{documentId:x.evidence.documentId,pages:x.evidence.pages,label:"原件：供股方式與認購安排"}],
+      compactSummary:i+" · "+term+" · "+mode,topology};
+  }
   function getSpecForCase(txCase, documents) {
-    if (txCase?.id === "HK-00271-20261012-asiasec-rights") return null;
+    if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.id === "HK-01521-20261109-sanrex") {const verified=buildSanRexScheme(txCase,documents);return verified&&validateDiagramSpec(verified);}
