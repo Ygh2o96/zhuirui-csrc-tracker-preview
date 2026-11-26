@@ -8362,7 +8362,25 @@
     const nodes=[{id:"s",role:sm?"seller":"listed",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:sm?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:sm?"現金":"股份及現金",caseModalityShortLabel:sm?"現金":"股份及現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:sm?"控股股份交割":"發行認購股份"}],annotations:[{tag:"①",title:sm?"公眾持股恢復":"計劃股份受益權",body:sm?"賣方在董事辭任後不再屬核心關連人士，其原已持有的股份自該日起納入公眾持股。":"廣澤香港及嘉益的約26.91億股信託受益權已計入計劃公司所持股份。"}],evidenceLinks:[{documentId:a,pages:[2],label:sm?"控股權交割":"重組完成及信託持股"},{documentId:z,pages:sm?[2,3,4]:[2,3,8],label:"要約結果及公眾持股"},...(sm?[{documentId:div,pages:[1],label:"特別股息"},{documentId:n,pages:[8],label:"恢復公眾持股"}]:[])]});
   }
+  function buildTontineOrMaxsight(c,docs){
+    const ms=c.code==="08483",a=ms?"YS-20260727-60a1957f8e9a":"YS-20260813-6b633838cf75",z=ms?"YS-20261002-59deedbb8f51":"YS-20261002-3e33ba8208b4",n=ms?"YS-20261023-a8d919a34b91":z,date="2026-10-02",status=ms?"closed":"terminated";
+    const ts=ms?[["control_shares",600000000,a],["control_cash",52500000,a],["accepted_shares",1144000,z],["accepted_gross",100100,z],["public_float_after_restoration",25,n]]:[["offer_price",.20,a],["minimum_acceptances",56320200,z],["valid_tenders_at_failed_close",812945,z],["preoffer_concert_pct",11.22,z]];
+    if(![a,z,n].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!==status||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind===(ms?"completion":"terminated")&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const left=ms?"控股股份交割":"擬議自願部分要約",right=ms?"餘股要約及公眾持股":"接納結果",badge=ms?"要約截止 · 公眾持股恢復至25%":"接納門檻未達 · 部分要約失效";
+    const s=ms?"三名原股東":"合資格股東",b=ms?"CWT Limited":"Wang He（要約人）";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:ms?"強制現金要約":"部分要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,ms?"合計出售6億股":"擬收購5,632.02萬股"),
+      box("b","left",444,106,161,124,"buyer",b,ms?"現金對價5,250萬港元":"要約價每股0.20港元"),
+      box("a","right",724,72,310,70,"target",ms?"有效接納114.4萬股":"有效接納812,945股",ms?"每股0.0875港元，共100,100港元":"最低接納門檻56,320,200股"),
+      box("r2","right",724,164,310,75,"creditor",ms?"截止時公眾持股約24.86%":"10月2日部分要約失效",ms?"公眾持有1.98856億股":"接納股份未根據要約交割"),
+      box("r3","right",724,260,310,76,"creditor",ms?"10月20日公眾持股恢復至25%":"要約前一致行動人士合計持11.22%",ms?"要約人其後於市場出售114.4萬股":"按10月2日要約人公告列示")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:ms?"7月27日完成75%交割":"部分要約失效",proposedOrTerminated:!ms}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:ms?"控股股權交割":"按部分要約擬收購股份",proposedOrTerminated:!ms}],annotations:[{tag:"①",title:ms?"控股股份賣方":"股份文件退回",body:ms?"Causeway Treasure Holding、ME Group International及張淦庭。":"部分要約失效後，接受要約的股東將獲退回股票或轉讓收據。"}],evidenceLinks:[{documentId:a,pages:ms?[2,5,20]:[2,3],label:ms?"控股交割及三名賣方":"條件及要約價格"},{documentId:z,pages:ms?[2,3,4]:[2,3],label:"截止公告"},...(ms?[{documentId:n,pages:[2],label:"恢復公眾持股"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00389-20260813-voluntary-partial","HK-08483-20260727-control-mgo"].includes(txCase?.id))return buildTontineOrMaxsight(txCase,documents);
     if(["HK-00989-20260715-restructuring-mgo","HK-02381-20260731-control-mgo"].includes(txCase?.id))return buildChangbaishanOrSmc(txCase,documents);
     if(["HK-02295-20260702-greenair-control-cash","HK-06939-20260123-geehy-control-subscription-cash"].includes(txCase?.id))return buildMaxicityAndMegain(txCase,documents);
     if(["HK-00167-20260629-horizon-heights-standalone","HK-01657-20260604-weiye-control-cash"].includes(txCase?.id))return buildIdtAndSg(txCase,documents);
