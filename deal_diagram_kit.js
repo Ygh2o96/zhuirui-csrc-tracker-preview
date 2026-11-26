@@ -6989,7 +6989,38 @@
       compactSummary:"人民幣約2,153萬 · 關連交易 · 尚待交割",topology};
   }
 
+  function buildVerifiedQinfaUnwind26(c,docs){
+    const dt="2026-11-26",by=(d,k)=>c.events?.find(e=>e.date===d&&e.kind===k&&e.state==="actual")?.evidence?.documentId;
+    const ini=by("2026-11-03","first_announcement"),eff=by("2026-11-03","effective"),sup=by(dt,"supplement");
+    if(c.code!=="00866"||c.stage?.status!=="closed"||c.stage.date!==dt||c.stage.eventKind!=="supplement"||eff!==sup||
+       by("2026-11-02","completion")!==sup||docs?.[ini]?.caseId!==c.id||docs?.[sup]?.caseId!==c.id||
+       !docs[ini].url.endsWith("/2026110301718.pdf")||!docs[sup].url.endsWith("/2026112601398.pdf"))return null;
+    const t=(key,value,src)=>c.terms?.some(q=>q.key===key&&q.value===value&&q.evidence?.documentId===src);
+    if(!t("agreed_disposal_total",122324000,ini)||!t("trading_10pct_included",9792000,ini)||!t("gyh_consideration",5000000,sup)||!t("lease_monthly",176000,ini))return null;
+    const badge="珠海兩公司合約控制已解除",l="珠海貿易",r="秦發物流";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow={id:"gyh",panel:"left",kind:"shares",step:"①",pathPoints:[[192,169],[448,169]],labelCenter:[320,169],labelWidth:194,labelHeight:34,label:"廣義海 100% 股權已轉讓"};
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"11月2日 · 廣義海股權轉讓",rightTitle:"11月3日 · 結束合約控制",transitionLabel:"先轉讓，後解除合約控制",outcomeBadge:badge}),[
+      box("L_sell","left",43,100,149,146,"seller",l,"廣義海原股東"),
+      box("L_buy","left",448,100,157,146,"buyer",r,"集團全資附屬公司"),
+      box("R_exit","right",728,84,295,75,"target","珠海航運及珠海貿易","不再由集團控制"),
+      box("R_cash","right",728,210,295,75,"seller","兩項協議對價約人民幣 1.2 億","已含珠海貿易10%股權對價")
+    ],[],[arrow]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"acquisition",modality:"mixed",status:"closed",
+      caseArchetypeLabel:"合約控制解除及內部資產重組",caseModalityShortLabel:"股權及合約控制",
+      before:{title:"廣義海股權已轉讓",nodes,equityLinks:[]},after:{title:"解除合約控制",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"gyh",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"11月2日取得廣義海100%，內部轉讓對價人民幣500萬"},
+      {id:"unwind",kind:"cancel",direction:"ltr",fromLabel:r,toLabel:"珠海航運、珠海貿易",headline:"11月3日終止合約控制，兩家公司不再並表"},
+      {id:"consideration",kind:"cash",direction:"rtl",fromLabel:"原合約當事人",toLabel:r,headline:"兩項協議對價人民幣122,324,000元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"廣義海",body:"秦發物流於解除合約前已直接取得廣義海。內部轉讓定價按未經審計淨資產。"},
+      {tag:"②",title:"兩項解除及辦公室租約",body:"兩項約定對價含珠海貿易10%股權轉讓；辦公室三年租約另列，月租人民幣17.6萬。"}],
+      evidenceLinks:[{documentId:ini,pages:[4,5,6,7,8],label:"解除協議對價、股權轉讓及租約條款"},{documentId:sup,pages:[2,3,4],label:"重組前後關係及實際完成日期"}],
+      compactSummary:"11月2日內部轉讓 · 11月3日解除合約控制",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00866-20261103-zhuhai-termination"){const d=buildVerifiedQinfaUnwind26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00604-20261126-zhi-di-property"){const d=buildVerifiedZhiDi26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01548-20261124-probio-capital-reorganisation"){const d=buildVerifiedProbio26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01995-20261126-shenyang-cifi-setoff"){const d=buildVerifiedCifiSetoff26(txCase,documents);return d&&validateDiagramSpec(d);}
