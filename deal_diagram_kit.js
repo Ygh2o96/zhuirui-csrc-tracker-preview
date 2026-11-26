@@ -7299,7 +7299,35 @@
       annotations:[{tag:"①",title:"表決安排",body:"第一項議案追認8月合同；第二項議案審議追加採購。兩批設備採購與收購上海有孚股權分列。"}],
       evidenceLinks:[{documentId:disp,pages:[5,8,9,10,11,12,41],label:"採購各方、兩批合同、付款及表決安排"}]});
   }
+  function buildReviewedYellowstone(c,docs){
+    const id=c.events?.find(e=>e.kind==="completion"&&e.date==="2026-08-26"&&e.state==="actual")?.evidence?.documentId;
+    const d=docs?.[id];
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id);
+    if(d?.caseId!==c.id||!d.url.startsWith("https://www.sfc.hk/")||!d.url.includes("/E_Greentech_Yellowstone-20260826.pdf")||
+      c.stage?.status!=="closed"||c.stage.date!=="2026-08-26"||c.stage.eventKind!=="completion"||
+      c.events?.some(e=>e.state==="actual"&&["termination","offer_lapse"].includes(e.kind))||
+      c.parties?.["要约方"]!=="Yellowstone International Limited"||
+      !t("offer_price",0.55)||!t("max_shares",230000000)||!t("accepted_shares",114070700)||!t("actual_cash",62738885)||!t("accepted_percent",8.35))return null;
+    const title="自願無條件部分要約",right="接納、對價及持股分列",badge="8月26日截止 · 1.140707億股有效接納並全數承購";
+    const buyer="Yellowstone International Limited", seller="綠科科技國際合資格股東";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:395,status:"closed",leftTitle:title,rightTitle:right,transitionLabel:"低於上限 · 全數承購",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"public","合資格股東","綠科科技國際"),
+      mk("b","left",448,100,157,146,"buyer","Yellowstone","要約方"),
+      mk("t","right",724,78,310,83,"target","1.140707 億股獲接納","佔已發行股份8.35%；毋須按比例分配"),
+      mk("p","right",724,203,310,85,"creditor","應付毛額 6,273.9 萬港元","每股0.55港元 · 按接納股數計")
+    ],[],[{id:"shares",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:"有效接納 114,070,700 股"}]);
+    const nodes=[{id:"s",role:"public",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"offer",modality:"cash",status:"closed",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"自願無條件部分要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"有效接納114,070,700股，低於2.30億股上限，全部承購"},
+        {id:"payable",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"應付毛額62,738,885港元，按最終每股0.55港元計，未扣印花稅",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"要約方及一致行動人士",body:"按截止公告，結算後將合計持有126,735,238股（約9.28%），包括要約前一致行動人士持有12,664,538股。"}],
+      evidenceLinks:[{documentId:id,pages:[2,3],label:"接納、結算條款及結算後持股"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00195-20260615-yellowstone-partial")return buildReviewedYellowstone(txCase,documents);
     if(txCase?.id==="HK-01783-20260806-intelligent-compute-servers")return buildReviewedEnvisionServers(txCase,documents);
     if(txCase?.id==="HK-01783-20260629-yovole-cloud")return buildReviewedYovole(txCase,documents);
     if(txCase?.id==="HK-00817-20261102-sinochem-finance-factoring")return buildReviewedJinmaoFinance(txCase,documents);
