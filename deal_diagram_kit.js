@@ -8822,7 +8822,26 @@
     const nodes=[{id:"l",role:"buyer",name:"青瓷遊戲"},{id:"r",role:"seller",name:"吉比特集團"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"服務費",caseModalityShortLabel:"服務費",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"cash",direction:"ltr",fromLabel:"青瓷遊戲",toLabel:"吉比特集團",headline:"遊戲及推廣年度付款上限"}],annotations:[{tag:"①",title:"獨立股東表決範圍",body:"圖列青瓷付款的年度上限，幣種為人民幣。吉比特付予青瓷的授權及推廣費另列於條款。Altus Capital Limited為獨立財務顧問。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"原框架公告"},{documentId:n,pages:[10,15,20,45,53],label:"年度上限、獨立意見及會議"}]});
   }
+  function buildGraceWineOffers(c,docs){
+    const a="YS-20251230-c63378ab4d8d",p="YS-20260203-dfe44fa87884",z="YS-20260224-e240220e16aa",date="2026-02-24",status="closed";
+    if(c.stage?.date!==date||c.stage.status!==status||![a,p,z].every(id=>docs?.[id]?.caseId===c.id))return null;
+    if(![["control_completion","2025-12-12",a],["completion",date,z]].every(([kind,date,doc])=>c.events?.some(e=>e.date===date&&e.kind===kind&&e.state==="actual"&&e.evidence?.documentId===doc)))return null;
+    if(![["block_shares",589480000,a],["block_price",73629777,a],["block_paid_at_closing",22090000,a],["block_deferred",51539777,a],["accepted_shares",1090010,z],["options_exercise",12400000,z],["offeror_actual_post_offer",72.64,z],["concert_post_offer",73.62,z]].every(([k,v,doc])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===doc)))return null;
+    const left="先行股份買賣與延期付款",right="股份要約與期權結果",badge="股份要約已截止 · 期權全數行使";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:510,status,leftTitle:left,rightTitle:right,transitionLabel:"2025年12月12日先行交割",outcomeBadge:badge}),[
+      box("s","left",42,107,168,109,"seller","三名協議賣方","交割5.8948億股（73.63%）"),
+      box("b","left",435,107,172,109,"buyer","Hill Valley Investment","大宗總額約7,363萬港元"),
+      box("pay","left",98,288,439,86,"creditor","交割首期付2,209萬港元","另5,154萬港元為延期對價"),
+      box("r1","right",724,68,310,80,"target","2月24日要約截止","股份有效接納1,090,010股"),
+      box("r2","right",724,169,310,80,"creditor","期權要約沒有有效接納","1,240萬份期權全部行使 · 股本8.13億"),
+      box("r3","right",724,270,310,82,"creditor","要約人72.64% · 一致行動合計73.62%","按已發行股份及接納股數計")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[210,161],[435,161]],labelCenter:[323,161],labelWidth:201,labelHeight:35,label:"73.63%股份交割"}]);
+    const nodes=[{id:"s",role:"seller",name:"三名協議賣方"},{id:"b",role:"buyer",name:"Hill Valley Investment"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金（含延期價款）",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"三名協議賣方",toLabel:"Hill Valley Investment",headline:"12月12日完成先行股份買賣"}],annotations:[{tag:"①",title:"買賣雙方及兩期款項",body:"賣方為Macmillan Equity Limited、Palgrave Enterprises Limited及Wong Shu Ying。買方為Hill Valley Investment Co Ltd。首期2,209萬與第二期51,539,777港元按賣方明細合計。"},{tag:"②",title:"要約後持股口徑",body:"要約人計入接納為590,570,010股；再加一致行動方Judy Chan行權所得800萬股，合計598,570,010股，分母為8.13億股。"}],evidenceLinks:[{documentId:a,pages:[2,3,8,9,22,23,27],label:"先行交割及付款"},{documentId:p,pages:[1],label:"綜合要約文件"},{documentId:z,pages:[2,3,4],label:"要約截止及期權行使"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-08146-20251230-hill-valley-control")return buildGraceWineOffers(txCase,documents);
     if(txCase?.id==="HK-06633-20261020-qingci-gbits-game-renewal")return buildQingciGameFramework(txCase,documents);
     if(["HK-01429-20260123-dacheng-mandatory-cash","HK-02362-20260305-alternative-liquidity-partial"].includes(txCase?.id))return buildSkyAndJinchuan(txCase,documents);
     if(txCase?.id==="HK-00489-20250822-dongfeng-absorption-voyah")return buildDongfengVoyah(txCase,documents);

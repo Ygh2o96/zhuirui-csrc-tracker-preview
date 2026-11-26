@@ -60597,12 +60597,13 @@
           "timeZone": "Asia/Hong_Kong"
         },
         {
-          "date": "2025-12-30",
+          "date": "2025-12-12",
           "evidence": {
             "documentId": "YS-20251230-c63378ab4d8d",
             "pages": [
-              2,
-              3
+              3,
+              9,
+              22
             ]
           },
           "kind": "control_completion",
@@ -60829,37 +60830,37 @@
         },
         {
           "approximate": false,
-          "basis": "协议总代价30%，无提前推定延期款已经完全偿还",
+          "basis": "按披露的三名賣方首期逐筆合計；公告確認12月12日已付。",
           "currency": "HKD",
           "evidence": {
             "documentId": "YS-20251230-c63378ab4d8d",
             "pages": [
-              2,
-              3
+              8,
+              9
             ]
           },
           "key": "block_paid_at_closing",
           "label": "交割日首期已付款",
           "precision": 2,
           "unit": "money",
-          "value": 22088933.1
+          "value": 22090000
         },
         {
           "approximate": false,
-          "basis": "70%名义本金，有九个月约定及最多三个月延长期；不作为交割日已付",
+          "basis": "按披露的三名賣方第二期逐筆合計；為合約延期價款。",
           "currency": "HKD",
           "evidence": {
             "documentId": "YS-20251230-c63378ab4d8d",
             "pages": [
-              2,
-              3
+              8,
+              9
             ]
           },
           "key": "block_deferred",
           "label": "延期付款约定额",
           "precision": 2,
           "unit": "money",
-          "value": 51540843.9
+          "value": 51539777
         },
         {
           "approximate": false,
