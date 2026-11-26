@@ -8926,7 +8926,36 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:q.mode==="convertible"?"convertible_bond":"acquisition",modality:q.mode==="convertible"?"mixed":"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.mode==="convertible"?"可換股票據":"供股及現金要約",caseModalityShortLabel:q.mode==="convertible"?"票據":"供股",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:q.mode==="convertible"?"asset":"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:c.code==="01009"?"股東表決及清洗豁免":"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"第一期發行"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildQualiAnta(c,docs){
+    const configs={
+      "01348":{
+        a:"YS-20251218-37239f5c89cb",p:"YS-20260107-2139ff7f39d0",z:"YS-20260129-024162f24464",o:"YS-20260330-e70055d3f7ec",date:"2026-01-29",event:"completion",status:"closed",
+        ts:[["control_shares",887418000,"a"],["control_cash",95841144,"a"],["control_pct",60.2,"a"],["share_price",.108,"p"],["accepted_shares",220110000,"z"],["option_consideration",2030,"z"],["aggregate_consideration",23773910,"z"],["public_float_restored_pct",25.21,"o"]],
+        left:"先行控股交割",right:"餘股要約與公眾持股",badge:"股份及期權要約截止 · 公眾持股其後恢復至25.21%",seller:"Smart Investor等九名賣方",buyer:"Yael Capital Management",sSub:"先行出售887,418,000股",bSub:"曾無持股 · 交割後60.20%",main:"控股交易9,584.1萬港元",
+        steps:[["2025年12月12日先行交割","協議股每股0.108港元"],["2026年1月29日兩項要約截止","接納220,110,000股、註銷20,300,000份期權"],["3月26日完成配售500萬股","公眾持股由要約後24.87%恢復至25.21%"]],
+        detail:"股份與期權要約合計2,377.4萬港元；按要約公告，計入有效接納後75.13%。可換股票據持有人給予不可撤回承諾，未另發票據要約。",pagesA:[2,8,9,10],pagesP:[1],pagesZ:[2,3,4,5],pagesO:[1,2]
+      },
+      "02020":{
+        a:"YS-20260127-5a3a8ce36e43",p:"YS-20260424-fe3c31bcbfe1",z:"YS-20261007-6a0288fed694",date:"2026-10-07",event:"completion",status:"closed",
+        ts:[["cash_eur",1505516600,"p"],["price_per_share",35,"p"],["shares",43014760,"z"],["stake",29.06,"z"]],
+        left:"協議收購 PUMA 股份",right:"審批、交割與股份過戶",badge:"股份已過戶 · 收購 PUMA 29.06%少數股權",seller:"Artémis",buyer:"安踏體育",sSub:"出售43,014,760股PUMA普通股",bSub:"每股35歐元 · 現金對價",main:"基礎對價15.1億歐元（未稅）",
+        steps:[["2026年1月26日簽協議","2月13日取得股東書面批准"],["4月24日刊發通函","10月5日完成協議交割"],["10月7日股份過戶完成","43,014,760股 · 佔PUMA股本29.06%"]],
+        detail:"通函列明過戶後15個月內若發生特定要約、退市要約或擠出，可觸發向賣方支付額外對價。",pagesA:[1,3,4],pagesP:[7,14,15,26,27],pagesZ:[1]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="01348"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.date==="2025-12-12"&&e.evidence?.documentId===q.a))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:false}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"恢復公眾持股公告"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01348-20251204-yael-share-and-option-mgo","HK-02020-20260126-puma"].includes(txCase?.id))return buildQualiAnta(txCase,documents);
     if(["HK-01009-20251117-digiplus-notes-whitewash","HK-00228-20251223-alpha-eagle-rights-two-offers"].includes(txCase?.id))return buildDigiplusAlpha(txCase,documents);
     if(["HK-01959-20251216-msint-cash-follow-on","HK-00357-20250430-hainan-two-share-class-cash"].includes(txCase?.id))return buildCentenaryMeilan(txCase,documents);
     if(["HK-01732-20251201-westwell-partial","HK-08403-20251126-sunwei-conditional-lapsed"].includes(txCase?.id))return buildWestwellDowway(txCase,documents);
