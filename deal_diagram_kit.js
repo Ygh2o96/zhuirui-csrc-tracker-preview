@@ -7662,7 +7662,36 @@
       annotations:[{tag:"①",title:"對價與持股",body:"兩步合計現金人民幣4.7815億元；7月14日公告確認已付清。武漢公司簽署舊股協議，珠海公司最終受讓及增資。中期財務資料列收購日為6月30日。"}],
       evidenceLinks:[{documentId:a,pages:[11,12,17],label:"兩步對價、簽約與最終受讓方"},{documentId:z,pages:[18,27],label:"兩步手續完成日及中期財務資料收購日"},{documentId:p,pages:[1],label:"公告確認對價已付清"}]});
   }
+  function buildOCTLand(c,docs){
+    const h=c.id==="HK-03366-20260326-hefei-land-resumption", dt=h?"2026-06-24":"2026-08-18", stage=c.stage;
+    const get=(ev,kind,date,file)=>{const id=ev?.find(x=>x.kind===kind&&x.date===date&&x.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+file+".pdf")?id:null;};
+    const vote=get(c.events,"vote","2026-05-13","2026051300969"),p=get(c.processEvents,"supplement",dt,h?"2026062400911":"2026081801889");
+    const sig=h?p:get(c.processEvents,"supplement","2026-08-07","2026081001150");
+    if(!vote||!p||!sig||stage?.status!=="approved"||stage.date!==dt||c.events.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind)))return null;
+    const term=(k,v,id)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency==="CNY"&&t.evidence?.documentId===id);
+    if(h?!(term("consideration",1725000000,p)&&term("first_installment",1330000000,p)&&term("remaining_consideration",395000000,p)):!(term("consideration",596000000,sig)&&term("cash_received",596000000,p)))return null;
+    const s=c.parties["转让方"],b=c.parties["收回方"],t=c.parties["标的"];
+    if(!s||!b||!t||!(h?b==="合肥市土地储备中心":b==="巢湖市土地储备中心"))return null;
+    const who=h?"合肥華僑城實業":"合肥華僑城環巢",org=h?"合肥市土地儲備中心":"巢湖市土地儲備中心";
+    const badge=h?"已收首期 · 餘款按交付條件支付":"已收全額 · 交付日期待披露", amount=h?"人民幣17.25億元":"人民幣5.96億元";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:434,status:"approved",leftTitle:"土地使用權收回協議",rightTitle:"現金補償與交付",transitionLabel:"股東已批准",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller",who,"轉讓方"),mk("b","left",448,100,157,146,"buyer",org,"收回方"),
+      mk("r1","right",724,75,310,85,"target","補償合計："+amount,h?"6月24日收到首期13.30億元":"8月18日公告確認5.96億元全數收到"),
+      mk("r2","right",724,198,310,100,"creditor",h?"餘款人民幣3.95億元":"地塊交付按協議辦理",h?"完成挂牌成交及交付程序後90天內支付":"交付日期待披露")
+    ],[],[{id:"transfer",panel:"left",kind:"asset",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:215,labelHeight:36,label:h?"合肥6、7、9號地塊使用權":"巢湖半湯地塊使用權",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b},{id:"t",role:"target",name:t}];
+    const flows=[{id:"transfer",kind:"asset",direction:"ltr",fromLabel:s,toLabel:b,headline:"按照協議辦理土地使用權收回",proposedOrTerminated:true},{id:"paid",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:h?"已收到首期人民幣13.30億元":"已收到全部現金補償人民幣5.96億元"}];
+    if(h)flows.push({id:"balance",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"人民幣3.95億元，按協議在挂牌成交及交付程序完成後90日內支付",proposedOrTerminated:true});
+    const sources=[{documentId:vote,pages:[1],label:"股東批准"},{documentId:p,pages:[h?1:26],label:h?"首期實收和餘款條件":"全數收到補償"}];
+    if(!h)sources.push({documentId:sig,pages:[1],label:"正式簽約、收回方和交付安排"});
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disposal",modality:"cash",status:"approved",stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:"土地使用權收回",caseModalityLabel:"現金補償",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"土地使用權收回協議",nodes,equityLinks:[]},after:{title:"現金補償與交付",nodes,equityLinks:[],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:"交付安排",body:h?"三宗地塊；餘款按合同約定的地塊挂牌及收回交付程序支付。":"巢湖經開區管理委員會為協議見證方；收回標的為一宗地塊。"}],evidenceLinks:sources});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-03366-20260326-hefei-land-resumption","HK-03366-20260326-chaohu-land-resumption"].includes(txCase?.id))return buildOCTLand(txCase,documents);
     if(txCase?.id==="HK-02533-20251231-eeasy-control")return buildEeasyControl(txCase,documents);
     if(["HK-01682-20251111-shun-tak-offices","HK-01952-20260408-hasten-singapore"].includes(txCase?.id))return buildReviewedAssetPair(txCase,documents);
     if(txCase?.id==="HK-00126-20260929-facility-financial-assistance")return buildReviewedCarriannaFacilities(txCase,documents);
