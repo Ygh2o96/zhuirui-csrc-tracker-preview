@@ -7740,7 +7740,30 @@
       annotations:[{tag:"①",title:"交割與入賬",body:"中期報告按月披露6月完成，標的列作聯營公司，採用權益法。"}],
       evidenceLinks:[{documentId:a,pages:[6,7],label:"買賣雙方、股權及付款期限"},{documentId:z,pages:[25,26],label:"6月完成及權益法"}]});
   }
+  function buildQiRestaurants(c,docs){
+    const x=c.id.endsWith("-168-catering"), dt="2026-11-16";
+    const a=c.events?.find(e=>e.kind==="first_announcement"&&e.state==="actual"&&e.date===dt)?.evidence?.documentId;
+    if(!a||docs?.[a]?.caseId!==c.id||!docs[a].url.endsWith(x?"/2026111600991.pdf":"/2026111600967_c.pdf")||
+      c.stage?.status!=="active"||c.stage.date!==dt||c.events.some(e=>e.state==="actual"&&["completion","termination"].includes(e.kind)))return null;
+    const has=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency==="HKD"&&t.evidence?.documentId===a);
+    if(!has("consideration",10000)||!has("lease_rou",x?3260000:1800000))return null;
+    const s=c.parties["卖方"],b=c.parties["买方"],t=c.parties["标的"];
+    if(!(x?b==="Party Alc Limited"&&s==="Leung Tsz Sang Jason"&&t==="168 Catering Group Limited":b==="酒派汇有限公司"&&s==="张琦"&&t==="九楼小炒大排档有限公司"))return null;
+    const badge="已簽買賣協議 · 待交割", title=x?"一路發餐飲":"九樓小炒大排檔", rou=x?"約326萬港元":"約180萬港元";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:418,status:"active",leftTitle:title+" · 擬收購",rightTitle:"現金對價與標的主要資產",transitionLabel:"有待條件達成",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller",x?"Leung Tsz Sang Jason":"張琦","出售方"),mk("b","left",448,100,157,146,"buyer","酒派匯有限公司","間接全資附屬公司"),
+      mk("r1","right",724,75,310,86,"target","現金對價：1萬港元","合同約定於簽署時支付"),
+      mk("r2","right",724,196,310,102,"creditor","租賃使用權資產："+rou,"標的主要資產，位於香港灣仔")
+    ],[],[{id:"transfer",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:208,labelHeight:34,label:"擬轉讓100%股權",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b},{id:"t",role:"target",name:t}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"active",stageDate:dt,stageLabel:badge,caseArchetypeLabel:"餐飲公司全資收購",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"股權轉讓",nodes,equityLinks:[]},after:{title:"完成後",nodes,equityLinks:[{from:"b",to:"t",label:"100%",pct:100,style:"dashed"}],outcomeBadge:badge},
+      flows:[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"擬轉讓100%股權",proposedOrTerminated:true},{id:"price",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"合同現金價款1萬港元，簽署時應付",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"交割條件",body:"董事會公告列多項先決條件；簽署後90日內未達成或未獲豁免，可按協議終止。"}],evidenceLinks:[{documentId:a,pages:[1,2,3],label:"交易主體、股權、對價及使用權資產"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08412-20261116-168-catering","HK-08412-20261116-kau-lau-restaurant"].includes(txCase?.id))return buildQiRestaurants(txCase,documents);
     if(["HK-01643-20260119-ai-health-stake"].includes(txCase?.id))return buildModernAI(txCase,documents);
     if(["HK-01354-20251205-kingfar-building","HK-01300-20260913-qinghai-zhongli"].includes(txCase?.id))return buildKingfarTrigiant(txCase,documents);
     if(["HK-03366-20260326-hefei-land-resumption","HK-03366-20260326-chaohu-land-resumption"].includes(txCase?.id))return buildOCTLand(txCase,documents);
