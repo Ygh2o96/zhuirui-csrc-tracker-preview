@@ -6392,7 +6392,36 @@
       flows:[{id:"one",kind:ap?"cash":"asset",direction:"ltr",fromLabel:l,toLabel:r,headline:top,proposedOrTerminated:true},{id:"two",kind:"shares",direction:"rtl",fromLabel:r,toLabel:l,headline:bot,proposedOrTerminated:true}],
       annotations:[{tag:"①",title:"对价及标的",body:note1},{tag:"②",title:"拟议完成后",body:note2}],evidenceLinks:[{documentId:src,pages:ap?[2,3,4]:[9,10,11,18],label:ap?"公告：出资、付款条件及股权":"通函：发行条款及持股结构"}],compactSummary:mode+" · "+s,topology};
   }
+
+  function buildVerifiedDaxOffer(c, docs) {
+    const id="HK-02663-20261020-dax", cl="YS-20261104-366816c5caba", delay="YS-20261125-d1b7ab1b9fc0";
+    if(c.id!==id||c.stage?.date!=="2026-11-25"||c.stage?.status!=="active"||!c.events?.some(x=>x.kind==="control_completion"&&x.state==="actual"&&x.date==="2026-10-30"&&x.evidence?.documentId===cl)||
+      !c.processEvents?.some(x=>x.kind==="dispatch_extension"&&x.date==="2026-11-25"&&x.evidence?.documentId===delay)||docs?.[cl]?.caseId!==id||docs?.[delay]?.caseId!==id)return null;
+    const t=(k,v)=>c.terms?.some(o=>o.key===k&&o.value===v&&o.evidence?.documentId===cl);
+    if(!t("completed_block_shares",406010000)||!t("completed_block_pct",72.9)||!t("control_block",218717587)||!t("offer_residual_shares",150920000)||!t("offer_cash_cap",81300604)||!t("offer_price",0.5387))return null;
+    const name="应力控股",buyer="Dax Energy",sellers="控股权卖方",holders="余股股东",badge="控股权已交割 · 综合文件尚未寄发";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:365,status:"active",leftTitle:"10 月 30 日 · 控股权已交割",rightTitle:"余股现金要约",transitionLabel:"触发要约",outcomeBadge:badge}),[
+      box("L_s","left",43,103,152,151,"seller",sellers,"两笔股权转让"),
+      box("L_b","left",449,103,156,151,"buyer",buyer,"取得约 72.90%"),
+      box("R_a","right",728,93,286,74,"target","每股 0.5387 港元","拟收购余下 1.5092 亿股"),
+      box("R_b","right",728,201,286,75,"public","最高 8,130.1 万港元","按余股全部接纳计算")
+    ],[],[
+      {id:"shares",panel:"left",kind:"shares",step:"①",pathPoints:[[195,144],[449,144]],labelCenter:[323,144],labelWidth:209,labelHeight:36,label:"4.0601 亿股"},
+      {id:"cash",panel:"left",kind:"cash",step:"②",pathPoints:[[449,218],[195,218]],labelCenter:[323,218],labelWidth:209,labelHeight:36,label:"现金 2.187 亿港元"}
+    ]);
+    const nodes=[{id:"s",role:"seller",name:sellers},{id:"b",role:"buyer",name:buyer},{id:"h",role:"public",name:holders}];
+    return {id,caseId:id,name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"offer",modality:"cash",status:"active",caseArchetypeLabel:"控股权转让及强制全面要约",caseModalityShortLabel:"现金",
+      before:{title:"控股权已交割",nodes,equityLinks:[]},after:{title:"余股要约",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:sellers,toLabel:buyer,headline:"4.0601 亿股",proposedOrTerminated:false},
+        {id:"cash",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:sellers,headline:"218,717,587 港元",proposedOrTerminated:false},
+        {id:"offer",kind:"cash",direction:"ltr",fromLabel:buyer,toLabel:holders,headline:"每股 0.5387 港元 · 以实际接纳为准",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"已完成的收购",body:"主协议 397,190,000 股与联名卖方另外 8,820,000 股于 10 月 30 日交割，合计约 72.90%。"},
+        {tag:"②",title:"余股及文件",body:"余下 150,920,000 股，如全部接纳最高支付 81,300,604 港元。11 月 25 日申请将综合文件寄发期限延至最迟 12 月 7 日；执行人员表示倾向同意。"}],
+      evidenceLinks:[{documentId:cl,pages:[2,3,10],label:"联合公告：交割及余股要约"},{documentId:delay,pages:[2],label:"公告：申请延寄"}],compactSummary:"应力控股 · 72.90% 已交割 · 余股按接纳",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-02663-20261020-dax"){const x=buildVerifiedDaxOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
