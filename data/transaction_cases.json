@@ -39130,6 +39130,35 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-12",
+          "kind": "circular_dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "label": "刊發公司通函",
+          "detail": "公司通函列載H股認購及特定授權配售，與H股要約綜合文件分開。",
+          "evidence": {
+            "documentId": "YS-20261112-63f23c2a84a8",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "label": "預定股東特別大會",
+          "detail": "上午11:30；待股東表決結果公告。",
+          "evidence": {
+            "documentId": "YS-20261112-2026111200660",
+            "pages": [
+              2,
+              3
+            ]
+          }
         }
       ],
       "headlineKey": "h_offer_max",
@@ -39170,33 +39199,6 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-11-12",
-          "detail": "H股认购及配售仍待审批，11月27日拟表决；要约文件另行寄发。",
-          "evidence": {
-            "documentId": "YS-20261112-63f23c2a84a8",
-            "pages": [
-              50
-            ]
-          },
-          "kind": "supplement",
-          "label": "公司通函已刊发",
-          "state": "actual",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-11-27",
-          "kind": "vote",
-          "label": "股東特別大會預計上午11時30分召開",
-          "state": "expected",
-          "timeZone": "Asia/Hong_Kong",
-          "evidence": {
-            "documentId": "YS-20261112-2026111200660",
-            "pages": [
-              1
-            ]
-          }
         }
       ],
       "progressDate": "2026-11-12",
@@ -39243,8 +39245,8 @@
       ],
       "stage": {
         "date": "2026-11-12",
-        "eventKind": "supplement",
-        "label": "公司通函已刊发 · 待表决及交割",
+        "eventKind": "circular_dispatch",
+        "label": "公司通函已刊發 · 要約文件待寄發",
         "status": "active"
       },
       "terms": [
@@ -54635,11 +54637,57 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-06",
+          "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "label": "簽訂補充協議",
+          "detail": "修訂過渡期收益歸屬、估值調整及付款條款。",
+          "evidence": {
+            "documentId": "YS-20261106-08d965f42a01",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "date": "2026-11-12",
+          "kind": "dispatch",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "label": "刊發兩項基金權益收購通函",
+          "detail": "同一通函亦載列H股認購及配售；本案只追蹤兩項基金份額收購。",
+          "evidence": {
+            "documentId": "YS-20261112-d500c68cde83",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "label": "預定股東特別大會",
+          "detail": "上午11:30；待股東表決結果公告。",
+          "evidence": {
+            "documentId": "YS-20261112-d500c68cde83",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "headlineKey": "maximum_combined_cash",
       "id": "HK-01835-20260615-ningbo-jiaxing-lp",
-      "intervals": {},
+      "intervals": {
+        "announcementToDispatch": 150
+      },
       "mandates": [],
       "mechanism": "两份有关连的有限合伙基金份额转让，经原件汇总作一宗；与6月30日H股要约及发行独立计量",
       "name": "瑞威资管收购基金份额",
@@ -54648,39 +54696,8 @@
         "卖方": "刘坤（宁波辰韬基金）；刘冬梅（嘉兴实诺基金）",
         "标的": "Ningbo Chentao Fund、Jiaxing Shinuo Fund 的有限合伙份额"
       },
-      "processEvents": [
-        {
-          "date": "2026-11-06",
-          "detail": "签订补充协议，上限不变；新估值可触发向下调整。",
-          "evidence": {
-            "documentId": "YS-20261106-08d965f42a01",
-            "pages": [
-              1,
-              2,
-              3
-            ]
-          },
-          "kind": "supplement",
-          "state": "actual",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-11-12",
-          "detail": "包括两项LP收购与另项认购的股东通函已发布，股东会议待核；不是上市公司H股要约文件。",
-          "evidence": {
-            "documentId": "YS-20261112-d500c68cde83",
-            "pages": [
-              13,
-              61,
-              129
-            ]
-          },
-          "kind": "supplement",
-          "state": "actual",
-          "timeZone": "Asia/Hong_Kong"
-        }
-      ],
-      "progressDate": "2026-06-15",
+      "processEvents": [],
+      "progressDate": "2026-11-12",
       "rules": [
         {
           "application": "照原件披露两位相对方的关连身份，独立股东批准非已经完成",
@@ -54697,9 +54714,9 @@
         }
       ],
       "stage": {
-        "date": "2026-06-15",
-        "eventKind": "first_announcement",
-        "label": "有限合伙份额协议已签 · 待股东表决及交割",
+        "date": "2026-11-12",
+        "eventKind": "dispatch",
+        "label": "基金權益收購通函已刊發 · 待股東表決",
         "status": "active"
       },
       "terms": [
