@@ -8552,7 +8552,44 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},{documentId:q.p,pages:q.pagesP,label:"要約文件及結果"},{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildCoastalGuanzeBright(c,docs){
+    const configs={
+      "01124":{
+        a:"YS-20251017-d53d2c52884f",z:"YS-20260521-7a4dceb9ec2d",date:"2026-05-21",event:"terminated",status:"terminated",
+        ts:[["proposed_block_shares",153126197,"a"],["proposed_block_pct",36.93,"a"]],
+        left:"2025年股權與股東貸款洽談",right:"洽談終止",badge:"洽談終止 · 未簽正式協議",seller:"Coastal International",buyer:"Tao Qian Limited",sSub:"擬出售股份及股東貸款",bSub:"擬買方 · 曾進行盡職調查",main:"擬轉讓36.93%股份",
+        steps:[["2025年10月17日首次披露","擬收購153,126,197股及股東貸款"],["2026年5月21日終止洽談","至公告日未簽具約束力協議"],["同日結束要約期","未進入正式要約程序"]],
+        detail:"擬賣方為Coastal International Holdings Limited。此圖僅涵蓋Tao Qian的2025年洽談。",pagesA:[1,3,7,8],pagesZ:[1,2]
+      },
+      "02427":{
+        a:"YS-20260211-9543cf9b22fd",z:"YS-20260508-7f09cfc361b9",p:"YS-20260417-48b47f92f661",o:"YS-20260417-a43331e42e94",date:"2026-05-08",event:"completion",status:"closed",
+        ts:[["block_shares",699164575,"a"],["block_paid",174791143.75,"a"],["offer_price",.25,"o"],["accepted_shares",10000,"z"],["accepted_gross",2500,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股強制現金要約",badge:"要約截止 · 有效接納10,000股",seller:"Meng A Capital",buyer:"富德（香港）投資控股",sSub:"出售699,164,575股",bSub:"2月6日交割 · 1.7億港元",main:"已轉讓73.60%股份",
+        steps:[["4月17日寄發綜合文件","無條件強制要約 · 每股0.25港元"],["5月8日要約截止","兩份有效接納；毛額2,500港元"],["計入接納後約持有73.60%","699,174,575股 · 以過戶登記為準"]],
+        detail:"賣方為Meng A Capital Limited。先行股份買賣對價為174,791,143.75港元；兩筆按金屬大宗對價。",pagesA:[2,7,8,24],pagesZ:[2,3,4],pagesP:[2],pagesO:[1]
+      },
+      "01428":{
+        a:"YS-20260330-49c5a34f52a3",z:"YS-20260429-d542a122705d",p:"YS-20260408-83685e32efcd",o:"YS-20250425-236c8004bebd",date:"2026-04-29",event:"completion",status:"closed",
+        ts:[["block_shares",857980000,"a"],["block_paid",2814174400,"a"],["accepted_shares",1310530,"z"],["accepted_gross",4298538.4,"z"],["post_offer_pct_subject_to_registration",50.63,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股強制現金要約",badge:"要約截止 · 有效接納1,310,530股",seller:"New Charming Holdings",buyer:"Wealthiness and Prosperity",sSub:"出售857,980,000股",bSub:"3月30日交割 · 28.1億港元",main:"已轉讓50.55%股份",
+        steps:[["4月8日寄發綜合文件","無條件強制要約 · 每股3.28港元"],["4月29日要約截止","有效接納1,310,530股；約429.9萬港元"],["計入接納後持股50.63%","以過戶登記為準 · 公眾持股49.29%"]],
+        detail:"賣方為New Charming Holdings Limited；買方為Wealthiness and Prosperity Holding Limited。大宗及餘股均依公告分列。",pagesA:[2,3],pagesZ:[2,3,4,5],pagesP:[2],pagesO:[34]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code!=="01124"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(c.code!=="01124"&&!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="terminated"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01124-20251017-tao-qian-no-deal","HK-02427-20260127-funde-control-mgo","HK-01428-20250425-wealthiness-control-mgo"].includes(txCase?.id))return buildCoastalGuanzeBright(txCase,documents);
     if(["HK-00383-20260323-issuer-buyback-cancelled","HK-01940-20260313-tangde-lapsed-cash","HK-00784-20260414-hapbiotech-control-mgo"].includes(txCase?.id))return buildBuybackAndSeparatedOffers(txCase,documents);
     if(["HK-01796-20260427-chan-partial","HK-08413-20251210-lianfeng-partial-preconditions-lapsed"].includes(txCase?.id))return buildMetaOrAsiaGrocery(txCase,documents);
     if(["HK-02362-20260521-gong-partial","HK-01953-20260424-aureole-halo-control"].includes(txCase?.id))return buildGongOrRimbaco(txCase,documents);
