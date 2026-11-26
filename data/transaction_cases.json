@@ -260,6 +260,198 @@
       "comparisonEvidence": {}
     },
     {
+      "id": "HK-02039-20261103-industry-city-guarantee",
+      "code": "02039",
+      "category": "financial_assistance",
+      "name": "中集集團：為中集產城履行銀團貸款擔保",
+      "aliases": [
+        "中集集团",
+        "中集产城",
+        "CIMC",
+        "CIMC Industry & City",
+        "銀團貸款",
+        "擔保代償"
+      ],
+      "headlineKey": "guarantee_cash_paid",
+      "parties": {
+        "擔保及付款方": "中國國際海運集裝箱（集團）股份有限公司",
+        "借款聯營公司": "深圳市中集產城發展集團有限公司",
+        "銀團牽頭行": "中國農業銀行股份有限公司",
+        "另一貸款行": "中國銀行股份有限公司"
+      },
+      "mechanism": "三筆銀團貸款到期後，中集集團於11月25日按51.07%的擔保比例支付人民幣2.22億元。公司對中集產城及提供反擔保的少數股東取得應收追償權，回收及減值尚待確認。",
+      "terms": [
+        {
+          "key": "guarantee_cash_paid",
+          "label": "已支付擔保代償款",
+          "value": 222210016.69,
+          "basis": "2026年11月25日實際支付，含對應本金及利息費用。",
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "guaranteed_principal_paid",
+          "label": "代償本金",
+          "value": 220480221.12,
+          "basis": "已支付額的本金部分。",
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "guaranteed_interest_paid",
+          "label": "代償利息及費用",
+          "value": 1729795.57,
+          "basis": "已支付額的利息及費用部分。",
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "underlying_balance_due",
+          "label": "三筆借款到期本息及費用",
+          "value": 435108707.05,
+          "basis": "全部借款到期額；由擔保比例決定中集集團代償部分。",
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "guaranteed_pct",
+          "label": "擔保比例",
+          "value": 51.07,
+          "basis": "按銀團貸款擔保合同。",
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-11-03",
+          "label": "披露兩筆貸款逾期及擔保責任",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "兩筆貸款當時逾期；第三筆當時原定2027年1月7日到期。",
+          "evidence": {
+            "documentId": "YS-20261103-0341307b4267",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-11-24",
+          "label": "收到履行擔保責任通知",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "第三筆貸款本金約1.72億元人民幣，提前至11月24日到期。",
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "kind": "payment",
+          "date": "2026-11-25",
+          "label": "全額支付應付擔保代償款",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "公司取得對借款人及提供反擔保少數股東的追償權。",
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-11-26",
+          "label": "公告代償及後續追償安排",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "公司將追償並進行減值測試。",
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:13.09(2)",
+          "label": "上市規則 13.09(2)",
+          "classificationStatus": "applied",
+          "application": "按內幕消息披露規定公告。",
+          "evidence": {
+            "documentId": "YS-20261126-231c0eca30e1",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "stage": {
+        "date": "2026-11-26",
+        "eventKind": "supplement",
+        "label": "已支付擔保款 · 追償及減值待確認",
+        "status": "active"
+      },
+      "progressDate": "2026-11-26",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "id": "HK-01606-20261125-purui-equipment-733",
       "name": "國銀金租：廣東普睿雲創計算機設備採購",
       "code": "01606",
@@ -97053,6 +97245,20 @@
       "date": "2026-08-20",
       "title": "晉景新能：配售、補足認購與可換股債發行完成",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082001571.pdf"
+    },
+    "YS-20261103-0341307b4267": {
+      "id": "YS-20261103-0341307b4267",
+      "caseId": "HK-02039-20261103-industry-city-guarantee",
+      "date": "2026-11-03",
+      "title": "中集集團：履行擔保責任",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1103/2026110302491.pdf"
+    },
+    "YS-20261126-231c0eca30e1": {
+      "id": "YS-20261126-231c0eca30e1",
+      "caseId": "HK-02039-20261103-industry-city-guarantee",
+      "date": "2026-11-26",
+      "title": "中集集團：履行擔保責任進展",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601322.pdf"
     }
   },
   "issuerLinks": [
