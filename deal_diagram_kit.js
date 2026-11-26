@@ -7442,7 +7442,42 @@
       annotations:[{tag:"①",title:"另行披露的採購",body:"向上海賦欣採購1,000件的協議獨立訂立，8,650萬元人民幣對價另列；公告自願披露該協議。"}],
       evidenceLinks:[{documentId:id,pages:[1,2,3,6,7],label:"兩項協議、交付付款及各方定義"}]});
   }
+  function buildReviewedSimberi(c,docs){
+    const src=(events,kind,date,suffix)=>{
+      const id=events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.endsWith("/"+suffix+".pdf")?id:null;
+    };
+    const i=src(c.events,"first_announcement","2026-09-10","2026091000003");
+    const p=src(c.processEvents,"status_update","2026-11-16","2026.11.16-update-on-simberi-transaction");
+    const t=(id,k,v)=>c.terms?.find(t=>t.key===k&&t.value===v&&(!id||t.evidence?.documentId===id));
+    const ret=t(null,"construction_reimbursement",43000000),gross=t(null,"seller_closing_gross_cash",453000000),q=ret?.evidence?.documentId;
+    if(!i||!p||!q||docs?.[q]?.caseId!==c.id||!docs[q].url.endsWith("/2026.09.10-st-barbara-to-sell-simberi-interest-to-lingbao.pdf")||
+      gross?.evidence?.documentId!==q||c.stage?.date!=="2026-11-16"||c.stage.status!=="active"||c.stage.eventKind!=="status_update"||
+      c.events?.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind))||
+      !t(i,"consideration",410000000)||!t(i,"simberi_nsr",2.75)||!t(i,"tabar_nsr",1.5)||
+      !c.parties?.["買方"]?.startsWith("Lingbao Gold International Company Limited")||!c.parties?.["賣方"]?.startsWith("St Barbara Limited"))return null;
+    const title="Tabar Islands Holdings 餘下股權",right="現金、償付與特許權費",badge="雙方股東批准條件已豁免 · 中國及巴新審批中";
+    const buyer="Lingbao Gold International Company Limited",seller="St Barbara Limited";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:411,status:"active",leftTitle:title,rightTitle:right,transitionLabel:"目標2027年第一季度",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller","St Barbara","ASX: SBM"),
+      mk("b","left",448,100,157,146,"buyer","靈寶黃金國際","靈寶黃金全資附屬"),
+      mk("cash","right",724,77,310,64,"target","股權現金價 4.10 億澳元","另償付約 4,300 萬澳元建設出資"),
+      mk("nsr","right",724,159,310,64,"target","Simberi 2.75% · Tabar 1.5%","兩項淨冶煉收益特許權費"),
+      mk("approval","right",724,241,310,64,"public","中國、巴新審批仍在進行","11月16日披露")
+    ],[],[{id:"stake",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:"擬轉讓 50% 減 1 股",dashed:true}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"礦業持股收購",caseModalityLabel:"現金及兩項特許權費",caseModalityShortLabel:"現金及權利金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"stake",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"擬轉讓Tabar Islands Holdings餘下50%減一股股權",proposedOrTerminated:true},
+        {id:"pay",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"股權現金價4.10億澳元；另償付約4,300萬澳元建設出資，賣方披露交割現金合計約4.53億澳元",proposedOrTerminated:true},
+        {id:"nsr",kind:"asset",direction:"rtl",fromLabel:"Tabar Islands Holdings",toLabel:seller,headline:"Simberi金銀產品2.75%及Tabar探礦許可相關礦產品1.5%淨冶煉收益特許權費",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"交割條件",body:"雙方已分別豁免其股東批准條件；中國和巴布亞新幾內亞審批仍在進行。"}],
+      evidenceLinks:[{documentId:i,pages:[3,4],label:"股權、現金價及特許權費"},{documentId:q,pages:[1,2],label:"建設出資償還及賣方合計現金"},{documentId:p,pages:[1],label:"豁免及剩餘審批"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-03330-20260910-simberi-buyout")return buildReviewedSimberi(txCase,documents);
     if(txCase?.id==="HK-02013-20261126-ingram-gpu-purchase")return buildReviewedWeimobGpu(txCase,documents);
     if(txCase?.id==="HK-03382-20260827-tianjin-port-framework-renewal")return buildReviewedTianjinPortFramework(txCase,documents);
     if(txCase?.id==="HK-00817-20260616-tianjin-timao-transfer")return buildReviewedJinmaoTimao(txCase,documents);
