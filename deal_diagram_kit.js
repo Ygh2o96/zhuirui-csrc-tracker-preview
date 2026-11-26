@@ -8161,7 +8161,23 @@
     const nodes=[{id:"s",role:o?"seller":"listed",name:sell},{id:"b",role:"buyer",name:buy}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:o?"已交割控股權及餘股要約":"新股認購及可能要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:sell,toLabel:buy,headline:o?"已交割4.2億股，合計持75%":"擬認購1,200萬股，仍待先決條件",proposedOrTerminated:!o}],annotations:[{tag:"①",title:o?"持股拆分":"文件延期",body:o?"OME 40.00%、CSI Floorings 12.11%、GanLan Investments 22.89%。截至綜合文件，合計75%是已交割份額。":"執行人員表示有意同意延期至協議I完成後七日或2027年1月22日（以較早為準）。"}],evidenceLinks:[{documentId:a,pages:o?[2,3]:[4,6,7,22,24],label:o?"控制權交割及買方拆分":"新股認購與要約情境"},{documentId:z,pages:o?[4,14,17]:[2,4],label:o?"綜合文件：期限及要約上限":"先決條件及延期進展"}]});
   }
+  function buildMinshangResumption(c,docs){
+    const d="YS-20261124-2026112400334", l="YS-20261113-587317b57e27", i="YS-20260922-ce92bbddec66";
+    if(![d,l,i].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.date!=="2026-11-24"||c.stage.status!=="active"||!c.terms?.some(t=>t.key==="retained_equity_pct"&&t.value===50)||!c.processEvents?.some(e=>e.date==="2026-11-23"&&e.state==="actual"&&e.evidence?.documentId===d)||c.processEvents?.some(e=>e.state==="actual"&&e.date>c.stage.date))return null;
+    const status="active",left="章程改組前後",right="反向收購及復牌要求",badge="已披露新增復牌條件 · 繼續停牌";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"上市覆核維持裁定",outcomeBadge:badge}),[
+      box("m","left",42,106,160,124,"listed","民商創科","上市公司 · 01632.HK"),
+      box("s","left",444,106,161,124,"target","民商智惠","2025年8月起納入合併報表"),
+      box("a","right",724,72,310,70,"target","原持50%股權，比例不變","改組後可委任5席中的3席"),
+      box("r2","right",724,164,310,75,"creditor","按新上市申請人處理","須符合第14.54至14.57條及新上市要求"),
+      box("r3","right",724,260,310,76,"creditor","繼續停牌","復牌指引期限：2028年1月1日")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"改組後取得董事會控制"}]);
+    const nodes=[{id:"m",role:"listed",name:"民商創科",code:"01632.HK"},{id:"s",role:"target",name:"民商智惠"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"反向收購監管裁定",caseModalityLabel:"章程改組",caseModalityShortLabel:"章程改組",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"民商創科",toLabel:"民商智惠",headline:"董事會控制變更，持股比例不變"}],annotations:[{tag:"①",title:"額外指引",body:"11月23日收悉復牌指引，11月24日公告。股票自2026年7月2日起持續停牌。"}],evidenceLinks:[{documentId:i,pages:[2],label:"章程改組與財務合併"},{documentId:l,pages:[1,2,3],label:"上市覆核決定"},{documentId:d,pages:[1,2],label:"額外復牌指引及時間"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01632-20250617-minshang-consolidation")return buildMinshangResumption(txCase,documents);
     if(["HK-08285-20261022-ome","HK-08093-20261026-invengo"].includes(txCase?.id))return buildOmeInvengoStage(txCase,documents);
     if(txCase?.id==="HK-09988-20261110-t-head-spin")return buildTHeadPending(txCase,documents);
     if(txCase?.id==="HK-01894-20260923-ngai-partial")return buildHangYickPartial(txCase,documents);

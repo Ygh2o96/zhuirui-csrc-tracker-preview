@@ -30682,9 +30682,48 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-23",
+          "kind": "supplement",
+          "label": "收悉聯交所額外復牌指引：須符合第14.54至14.57條及新上市要求",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261124-2026112400334",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "date": "2026-11-24",
+          "kind": "supplement",
+          "label": "刊發額外復牌指引 · 股票繼續停牌",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261124-2026112400334",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "date": "2028-01-01",
+          "kind": "supplement",
+          "label": "履行復牌指引期限",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261124-2026112400334",
+            "pages": [
+              2
+            ]
+          }
         }
       ],
-      "progressDate": "2026-11-16",
+      "progressDate": "2026-11-24",
       "rules": [
         {
           "application": "首报披露既有交易成为关联交易",
@@ -30711,16 +30750,16 @@
           "label": "上市规则 2.04"
         },
         {
-          "application": "上市覆核委员会维持反向收购额外规定适用的结论",
-          "classificationStatus": "upheld",
+          "application": "11月23日額外復牌指引要求按第14.54至14.57條履行反向收購及新上市要求。",
+          "classificationStatus": "required_for_resumption",
           "code": "HKEX:14.54",
           "evidence": {
-            "documentId": "YS-20261113-587317b57e27",
+            "documentId": "YS-20261124-2026112400334",
             "pages": [
-              3
+              2
             ]
           },
-          "label": "上市规则 14.54–14.57"
+          "label": "上市規則 14.54–14.57（額外復牌指引）"
         },
         {
           "application": "维持不再适合上市的结论，继续停牌",
@@ -30749,9 +30788,9 @@
         }
       ],
       "stage": {
-        "date": "2026-11-16",
+        "date": "2026-11-24",
         "eventKind": "supplement",
-        "label": "披露覆核维持反向收购裁定 · 继续停牌",
+        "label": "已披露新增復牌條件 · 繼續停牌",
         "status": "active"
       },
       "terms": [
@@ -98099,6 +98138,14 @@
       "publishedAt": "2026-11-10T20:36:00+08:00",
       "title": "阿里巴巴公告建議分拆平頭哥赴港交所主板上市",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001061.pdf"
+    },
+    "YS-20261124-2026112400334": {
+      "id": "YS-20261124-2026112400334",
+      "caseId": "HK-01632-20250617-minshang-consolidation",
+      "date": "2026-11-24",
+      "publishedAt": "2026-11-24T16:46:00+08:00",
+      "title": "額外復牌指引及持續停牌",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1124/2026112400334.pdf"
     }
   },
   "issuerLinks": [
