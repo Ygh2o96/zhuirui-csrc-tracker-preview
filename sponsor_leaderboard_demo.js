@@ -3881,6 +3881,19 @@ function applySharedConfirmedIntroduction(payload) {
   return projectFacts.some((row,i) => row !== payload.projectFacts[i]) ? {...payload,projectFacts} : payload;
 }
 
+function applySharedVerifiedKuxinHearing(payload) {
+  if (typeof verifiedKuxinHearing === "undefined" || !Array.isArray(payload?.projectFacts)) return payload;
+  const f=verifiedKuxinHearing, h=f.phip.documents[0];
+  const projectFacts=payload.projectFacts.map(r=>{
+    if (r.issuerId!==f.id || r.issuerName!==f.name || r.a1Date!==f.historicalA1Date || r.hkexStage!=="applying"
+      || r.applicationStatusGroup!=="lapsed" || r.sponsorId!==f.sponsorGroup || r.sponsorLegalName!==f.sponsorLegalName
+      || r.listingDate || r.hkexListingStockCode || (r.hkexLatestDocumentDate && r.hkexLatestDocumentDate>=h.date)) return r;
+    return {...r,hkexPublicStatus:"Active",applicationStatusGroup:"active",applicationStatusLabelZh:"PHIP 聆讯后",
+      hkexLatestDocumentDate:h.date,sourceLinks:[...(r.sourceLinks||[]),{label:"港交所聆讯后资料集",url:h.url}]};
+  });
+  return projectFacts.some((r,i)=>r!==payload.projectFacts[i]) ? {...payload,projectFacts} : payload;
+}
+
 function validatePayload(payload) {
   if (!Array.isArray(payload.firms) || !Array.isArray(payload.projectFacts)) {
     throw new Error("Sponsor demo payload missing firms/projectFacts arrays");
@@ -3913,7 +3926,7 @@ async function loadData() {
     }
   }
   validatePayload(payload);
-  state.data = applySharedConfirmedIntroduction(applySharedConfirmedListing(payload));
+  state.data = applySharedVerifiedKuxinHearing(applySharedConfirmedIntroduction(applySharedConfirmedListing(payload)));
   ensureCsrcRecordsLoaded();
 }
 
