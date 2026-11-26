@@ -8279,7 +8279,23 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:h?"控股轉讓、要約及恢復公眾持股":"股份及購股權要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:h?"控股交易合計6億股":"控股交易7,500萬股"}],annotations:[{tag:"①",title:h?"公眾持股":"結算",body:h?"配售前公眾持股為約18.93%，配售後25.00%；配售是已持有股份的轉讓。":"股份及購股權各按接納數量計算應付；購股權註銷並未發行新股。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:"控股股份交割"},{documentId:z,pages:h?[2,3,4]:[2,3,5],label:"實際接納、金額及結算"},...(h?[{documentId:n,pages:[1],label:"恢復公眾持股"}]:[])]});
   }
+  function buildHkeTwoDisposals(c,docs){
+    const f="YS-20260929-2026092902043",z="YS-20261105-2026110501200";
+    if(![f,z].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.date!=="2026-11-05"||c.stage?.status!=="active"||c.events?.some(e=>e.state==="actual"&&["completion","termination","dispatch"].includes(e.kind))||![["true_victor_price",250260000],["wonder_time_price",500000]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===f)))return null;
+    const status="active",left="兩項股權及股東貸款出售",right="原幣對價與交割條件",badge="兩項協議已簽 · 通函待寄發";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"兩項交易互為條件",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"listed","HKE Holdings","上市公司 · 擬出售方"),
+      box("b","left",444,106,161,124,"buyer","兩名關連買方","Finfra、Nexafin"),
+      box("a","right",724,72,310,70,"target","True Victor：2.5026億港元","買方 Finfra；按交割淨資產調整"),
+      box("r2","right",724,164,310,75,"creditor","Wonder Time：50萬港元","買方 Nexafin；含股權及股東貸款"),
+      box("r3","right",724,260,310,76,"creditor","待獨立股東批准","True Victor 另待香港證監會批准")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬轉讓股權及股東貸款",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"listed",name:"HKE Holdings",code:"01726.HK"},{id:"b",role:"buyer",name:"Finfra、Nexafin"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disposal",modality:"cash",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"主要及關連出售",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"HKE Holdings",toLabel:"兩名關連買方",headline:"擬出售兩組股權及股東貸款",proposedOrTerminated:true}],annotations:[{tag:"①",title:"通函時間",body:"11月5日公告預計於11月30日或之前寄發；股東表決及交割尚待。"}],evidenceLinks:[{documentId:f,pages:[1,2,3,4,18,19],label:"兩項協議及交易對手"},{documentId:z,pages:[1],label:"通函寄發時間更新"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01726-20260929-true-victor-wonder-time")return buildHkeTwoDisposals(txCase,documents);
     if(["HK-00368-20260804-control-mgo","HK-01451-20260505-lvep-cash-offer"].includes(txCase?.id))return buildSuperlandOrMs(txCase,documents);
     if(["HK-09978-20260728-control-mgo","HK-01448-20260901-voluntary-partial"].includes(txCase?.id))return buildFinelandOrFuShou(txCase,documents);
     if(["HK-00852-20260225-speed-success-liquidator","HK-03938-20260109-fortune-origin-control"].includes(txCase?.id))return buildStrongOrLfg(txCase,documents);

@@ -89069,6 +89069,220 @@
         "label": "已披露保密遞表 · 待上市審批及備案"
       },
       "progressDate": "2026-11-10"
+    },
+    {
+      "id": "HK-01726-20260929-true-victor-wonder-time",
+      "code": "01726",
+      "name": "HKE Holdings：擬出售 True Victor 及 Wonder Time",
+      "aliases": [
+        "HKE Holdings Limited",
+        "HKE Holdings",
+        "True Victor Ventures Limited",
+        "Wonder Time Enterprises Limited"
+      ],
+      "category": "major_disposal",
+      "mechanism": "HKE 簽署兩項互為條件的出售協議，擬轉讓兩組全部股權及其股東貸款。基礎對價合計2.5076億港元；True Victor 一項按交割淨資產調整。交割仍待獨立股東批准與相關先決條件，其中 True Victor 一項須獲香港證監會批准。",
+      "parties": {
+        "賣方": "HKE Holdings Limited",
+        "TrueVictor標的": "True Victor Ventures Limited",
+        "TrueVictor買方": "Finfra Holdings Limited",
+        "WonderTime標的": "Wonder Time Enterprises Limited",
+        "WonderTime買方": "Nexafin Investment Limited"
+      },
+      "events": [
+        {
+          "date": "2026-09-29",
+          "kind": "first_announcement",
+          "label": "簽署兩項出售協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-05",
+          "kind": "dispatch_extension",
+          "label": "公告通函寄發預計延至11月30日或之前",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261105-2026110501200",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "date": "2026-11-30",
+          "kind": "circular",
+          "label": "預計寄發通函的最新期限",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261105-2026110501200",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-05",
+        "eventKind": "dispatch_extension",
+        "label": "已簽兩項出售協議 · 通函待寄發",
+        "status": "active"
+      },
+      "progressDate": "2026-11-05",
+      "headlineKey": "consideration",
+      "intervals": {},
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "application": "兩項出售合計最高適用百分比率逾25%而低於75%，構成主要交易。",
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.81",
+          "label": "上市規則第14A.81條",
+          "application": "兩項出售互為條件，相關買方屬關連人士；須合併計算及取得獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Halcyon Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice_appointment",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              14,
+              16
+            ]
+          }
+        },
+        {
+          "firm": "Jones Lang LaSalle Corporate Appraisal Limited",
+          "role": "Valuer",
+          "service": "equity_valuation",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              4,
+              5
+            ]
+          }
+        }
+      ],
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "兩項出售基礎對價合計",
+          "value": 250760000,
+          "basis": "協議基礎對價；True Victor 可按交割淨資產調整，非貸款餘額。",
+          "currency": "HKD",
+          "unit": "money",
+          "approximate": false,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              1,
+              4,
+              8
+            ]
+          }
+        },
+        {
+          "key": "true_victor_price",
+          "label": "True Victor 股權及貸款對價",
+          "value": 250260000,
+          "basis": "基礎對價；淨資產高於保證值時上調最多200萬港元。",
+          "currency": "HKD",
+          "unit": "money",
+          "approximate": false,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "wonder_time_price",
+          "label": "Wonder Time 股權及貸款對價",
+          "value": 500000,
+          "basis": "出售股權連同貸款的總價。",
+          "currency": "HKD",
+          "unit": "money",
+          "approximate": false,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              8
+            ]
+          }
+        },
+        {
+          "key": "true_victor_loan",
+          "label": "True Victor 轉讓的股東貸款面值",
+          "value": 145411320.86,
+          "basis": "貸款餘額，不另加至交易對價。",
+          "currency": "HKD",
+          "unit": "money",
+          "approximate": false,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              18
+            ]
+          }
+        },
+        {
+          "key": "wonder_time_loan",
+          "label": "Wonder Time 轉讓的股東貸款面值",
+          "value": 189485710.64,
+          "basis": "貸款餘額，不另加至交易對價。",
+          "currency": "HKD",
+          "unit": "money",
+          "approximate": false,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260929-2026092902043",
+            "pages": [
+              19
+            ]
+          }
+        }
+      ],
+      "comparables": {},
+      "comparisonEvidence": {}
     }
   ],
   "coverage": "selected_verified_transactions",
@@ -98695,6 +98909,22 @@
       "title": "關連框架及租賃通函與股東特別大會通知",
       "publishedAt": "2026-11-26T16:30:00+08:00",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600289.pdf"
+    },
+    "YS-20260929-2026092902043": {
+      "id": "YS-20260929-2026092902043",
+      "caseId": "HK-01726-20260929-true-victor-wonder-time",
+      "date": "2026-09-29",
+      "title": "主要及關連交易：出售兩組股權並轉讓股東貸款",
+      "publishedAt": "2026-09-29T22:24:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/2026092902043.pdf"
+    },
+    "YS-20261105-2026110501200": {
+      "id": "YS-20261105-2026110501200",
+      "caseId": "HK-01726-20260929-true-victor-wonder-time",
+      "date": "2026-11-05",
+      "title": "延後寄發出售通函",
+      "publishedAt": "2026-11-05T17:05:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1105/2026110501200.pdf"
     }
   },
   "issuerLinks": [
