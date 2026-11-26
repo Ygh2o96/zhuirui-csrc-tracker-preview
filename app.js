@@ -468,6 +468,27 @@ function applyIssuerDisclosedRegulatoryFact(payload) {
    {label:"公司公告：港交所上市聆讯及审阅函",url:f.hearing.issuerAnnouncementUrl}]};
  return {...payload,records};
 }
+const confirmedIntroductionListing20261126 = {"id":"ctg hongkong and macao culture and tourism holding limited","issuerName":"CTG Hongkong and Macao Culture and Tourism Holding Limited","a1Date":"2026-05-20","route":"introduction","galaxySponsor":"China Galaxy International Securities (Hong Kong) Co., Limited","r":{"hkexPublicStatus":"Listed","hkexListingDate":"2026-11-26","hkexListingStockCode":"01821","hkexProspectusDate":"2026-10-30","hkexListingCompanyName":"CTG Hongkong and Macao Culture and Tourism Holding Limited","hkexListingSourceUrl":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e1821c_261124.htm","hkexListingDateBasis":"exchange_trading_arrangement_and_actual_first_session","sourceLinks":[{"label":"港交所新股买卖安排","url":"https://www.hkex.com.hk/eng/market/sec_tradinfo/tradarng/tradarng_news/currentmonth/e1821c_261124.htm"},{"label":"介绍上市文件","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000207.pdf"},{"label":"上市日收盘价","url":"https://www.itiger.com/hans/stock/01821"}],"listingMarketCapHkdBn":1.56409902251,"listingMarketCapTradeDate":"2026-11-26","listingMarketCapSampleEligible":true,"listingMarketCapProvenance":{"version":2,"status":"verified","policy":"hk_ordinary_ex_treasury","scope":"full_ordinary_equity_excluding_treasury","method":"hk_close_x_full_ordinary_shares_ex_treasury","anchorDate":"2026-11-26","valueCurrency":"HKD","priceDatePolicy":"same_day_only","valueHkdExact":"1564099022.51","components":[{"securityCode":"01821","className":"ordinary","sharesAsOf":"2026-11-26","issuedShares":1384158427,"treasuryShares":0,"sharesEvidence":{"sourceUrl":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000207.pdf#page=212","authority":"exchange_filing"},"priceEvidence":{"priceDate":"2026-11-26","price":1.13,"currency":"HKD","sourceUrl":"https://www.itiger.com/hans/stock/01821","crossChecks":["https://www.etnet.com.hk/www/tc/stocks/ipo-info.php?code=1821","https://web.ifzq.gtimg.cn/appstock/app/kline/kline?param=hk01821,day,,,7"],"basis":"unadjusted_same_day_close"}}],"fxStatus":"not_needed","coverageEvidence":"listing document + three dated close sources"},"practicalStage":"listed","hkexApplicationStatusGroup":null,"hkexApplicationStatusLabelZh":null,"hkListingSessionClose":1.13,"listingFeeTerms":{"noOffering":true,"url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000207.pdf","totalListingExpensesEstimateHkd":54300000,"professionalExpensesEstimateHkd":46800000,"otherExpensesEstimateHkd":7500000,"expenseSources":[{"page":17,"url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103000207.pdf#page=17"}]}}};
+function applyConfirmedIntroductionListing(payload) {
+  const fact = confirmedIntroductionListing20261126;
+  if (!Array.isArray(payload?.records) || payload.records.some(r => r.hkexListingStockCode === fact.r.hkexListingStockCode)) return payload;
+  const i = payload.records.findIndex(r => r.id === fact.id && r.issuerName === fact.issuerName && r.a1Date === fact.a1Date
+    && r.specialListingRoute === fact.route && r.practicalStage === "applying" && !r.hkexListingDate && !r.hkexListingStockCode);
+  if (i < 0) return payload;
+  const curr = payload.records[i], records = [...payload.records], s = payload.summary || {};
+  records[i] = {...curr, ...fact.r, sourceLinks: [...(curr.sourceLinks || []), ...fact.r.sourceLinks]};
+  const summary = {...s};
+  for (const key of ["hkexListedIssuers","hkexListedPostRegimeIssuers","hkexListedWithListingDate"]) {
+    if (Number.isFinite(s[key])) summary[key]++;
+  }
+  if (s.practicalStageCounts) {
+    summary.practicalStageCounts = {...s.practicalStageCounts, listed: s.practicalStageCounts.listed + 1, applying: s.practicalStageCounts.applying - 1};
+  }
+  if (s.listingMarketCapCoverage) {
+    summary.listingMarketCapCoverage = {...s.listingMarketCapCoverage, total:s.listingMarketCapCoverage.total + 1, verified:s.listingMarketCapCoverage.verified + 1};
+  }
+  return {...payload, records, summary};
+}
 function applyPublishedListingFact(payload) {
   const fact=pendingPublishedListingFact;
   if (!Array.isArray(payload?.records) || payload.records.some(r=>r.hkexListingStockCode===fact.r.hkexListingStockCode)) return payload;
@@ -10260,7 +10281,7 @@ async function loadData() {
     return response.json();
   };
   const [tracker, fees, dossiers, transactions, roster] = await Promise.allSettled([read(DATA_URL), read(OFFERING_FEES_URL), read(OFFERING_DOSSIERS_URL), read(TRANSACTION_CASES_URL), read(FEE_ROSTER_URL)]);
-  state.data = tracker.status === "fulfilled" ? applyIssuerDisclosedRegulatoryFact(applyPublishedListingFact(applyVerifiedReceiptCycles(tracker.value))) : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
+  state.data = tracker.status === "fulfilled" ? applyIssuerDisclosedRegulatoryFact(applyConfirmedIntroductionListing(applyPublishedListingFact(applyVerifiedReceiptCycles(tracker.value)))) : emptyPayload(`无法读取 ${DATA_URL}，请检查本地 server。`);
   if (typeof window !== "undefined") window.__yingsightCsrcRecords = state.data.records || [];
   state.feeData = fees.status === "fulfilled" ? fees.value : null;
   state.feeRosterData = roster.status === "fulfilled" ? roster.value : null;
