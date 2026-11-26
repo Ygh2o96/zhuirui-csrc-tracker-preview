@@ -8091,7 +8091,28 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"第3.7條可能控股權轉讓",caseModalityLabel:"對價待定",caseModalityShortLabel:"待定",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:i?"意向涉及752,100,000股":"意向涉及187,410,000股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"進展",body:i?"11月6日公告確認仍在盡職審查及磋商，未簽正式買賣協議。":"11月6日公告確認磋商續行，未簽正式買賣協議，也未延長排他安排。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"首次披露、擬轉讓股數及比例"},{documentId:z,pages:[1,2],label:"11月6日月度更新"}]});
   }
+  function buildNamedLoiPair(c,docs){
+    const i=c.code==="01793",status="active",date=i?"2026-11-20":"2026-11-16";
+    const hit=(leaf)=>Object.values(docs??{}).find(d=>d.caseId===c.id&&d.url?.endsWith("/"+leaf+".pdf"))?.id;
+    const a=hit(i?"2026082100183":"2026071000993"),z=hit(i?"2026112001000":"2026111600702");
+    if(!a||!z||c.stage?.status!==status||c.stage?.date!==date||c.events?.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind)))return null;
+    if(![["block_pct",75],["block_shares",i?600000000:750000000]].every(([k,v])=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===a)))return null;
+    const seller=c.parties["潜在卖方"],buyer=c.parties["潜在买方"];
+    if(i?seller!=="Triple Arch Limited"||buyer!=="Talent Pool Group Limited":seller!=="由实益拥有人拟促使 Prime Pinnacle Limited 签约"||buyer!=="Sichuan Wanlexin Technology Company Limited")return null;
+    const left="控股股權擬議轉讓",right=i?"11月20日公告進展":"11月16日公告進展",badge=i?"仍在磋商 · 排他期原定11月30日屆滿":"排他期與ODI期限延至11月30日";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"第3.7條月度更新",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",i?"Triple Arch":"Prime Pinnacle",i?"潛在賣方 · 維港建設股東":"實益擁有人擬促使其簽約"),
+      box("b","left",444,106,161,124,"buyer",i?"Talent Pool":"四川萬樂鑫","潛在買方"),
+      box("a","right",724,72,310,70,"target",i?"維港建設擬轉讓75%":"萬順集團擬轉讓75%",i?"合計6億股":"合計7.5億股"),
+      box("r2","right",724,164,310,75,"creditor",i?"仍在商討正式協議":"境外投資審批仍在進行",i?"如未簽約，雙方擬商討延長排他期":"補充協議列有按金及再延期條件"),
+      box("r3","right",724,260,310,76,"creditor","尚未簽署正式買賣協議","若交易落實，可能觸發全面要約")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬議轉讓75%股權",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"第3.7條可能控股權轉讓",caseModalityLabel:"對價待定",caseModalityShortLabel:"待定",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:i?"意向涉及600,000,000股":"意向涉及750,000,000股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"進展",body:i?"11月20日公告確認正式買賣協議尚未簽署，排他期原定11月30日屆滿。":"排他期與境外投資審批期限均先延至11月30日。補充按金條件達成才可再按合同延長。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"首次披露、擬轉讓股數及比例"},{documentId:z,pages:[1,2],label:i?"11月20日月度更新":"11月16日補充協議"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01793-20260820-talent-pool-mou","HK-01746-20260710-wanlexin-loi"].includes(txCase?.id))return buildNamedLoiPair(txCase,documents);
     if(["HK-01402-20260910-control-mou","HK-00465-20260506-chen-control-mou"].includes(txCase?.id))return buildPossibleOfferPair(txCase,documents);
     if(["HK-08137-20260821-geely-51pct"].includes(txCase?.id))return buildHonbridgeComplete(txCase,documents);
     if(["HK-08370-20260327-replacement-call","HK-00076-20261015-cityhill"].includes(txCase?.id))return buildZsCityhill(txCase,documents);
