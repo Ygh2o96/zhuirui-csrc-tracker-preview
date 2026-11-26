@@ -8294,7 +8294,25 @@
     const nodes=[{id:"s",role:"listed",name:"HKE Holdings",code:"01726.HK"},{id:"b",role:"buyer",name:"Finfra、Nexafin"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disposal",modality:"cash",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"主要及關連出售",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"HKE Holdings",toLabel:"兩名關連買方",headline:"擬出售兩組股權及股東貸款",proposedOrTerminated:true}],annotations:[{tag:"①",title:"通函時間",body:"11月5日公告預計於11月30日或之前寄發；股東表決及交割尚待。"}],evidenceLinks:[{documentId:f,pages:[1,2,3,4,18,19],label:"兩項協議及交易對手"},{documentId:z,pages:[1],label:"通函寄發時間更新"}]});
   }
+  function buildContelOrDida(c,docs){
+    const ct=c.code==="01912",a=ct?"YS-20260729-b16dccac8d12":"YS-20260731-ce564e940acb",z=ct?"YS-20260911-81524528ed9f":"YS-20260821-b40312a83887",n=ct?"YS-20261106-fcd20ae5f44e":"YS-20261120-2dab9030d213",date=ct?"2026-09-11":"2026-08-21";
+    const ts=ct?[["subscription_qty",271230595,a],["placing_qty",58205000,a],["accept_shares",80849500,z],["offer_actual_cash",29510067.5,z],["float_restored",25.01,n]]:[["special_dividend",1.1745,a],["accepted_shares",910755954,z],["accepted_pct",88.74,z],["float_as_of_20261120",11.26,n]];
+    if(![a,z,n].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=ct?"新股認購及配售已完成":"自願現金要約",right=ct?"其後要約及公眾持股":"收購結果、股息與公眾持股",badge=ct?"要約已截止 · 公眾持股恢復至25.01%":"要約已截止 · 11月20日公眾持股11.26%";
+    const s=ct?"康特隆科技":"接受要約的股東",b=ct?"莊嚴投資":"eLong（同程旅行附屬公司）";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:ct?"強制現金要約":"自願現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,ct?"listed":"seller",s,ct?"向認購人及承配人發行新股":"有效接納約9.108億股"),
+      box("b","left",444,106,161,124,"buyer",b,ct?"認購約2.712億股":"每股要約價1.3875港元"),
+      box("a","right",724,72,310,70,"target",ct?"另行完成新股配售5,820.5萬股":"有效接納佔已發行股本88.74%",ct?"與認購均為發行新股":"8月21日截止結果"),
+      box("r2","right",724,164,310,75,"creditor",ct?"餘股要約接納8,084.95萬股":"特別股息每股1.1745港元",ct?"應付約2,951.0萬港元":"由嘀嗒出行派付；按7月20日名冊"),
+      box("r3","right",724,260,310,76,"creditor",ct?"公眾持股由23.66%恢復至25.01%":"11月20日披露公眾持股11.26%",ct?"11月5至6日於市場出售620萬股":"公司預計2027年5月底恢復")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:ct?"已發行認購新股":"披露有效接納"}]);
+    const nodes=[{id:"s",role:ct?"listed":"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:ct?"新股發行、要約及公眾持股":"自願全面現金要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:ct?"已發行認購新股":"披露有效接納股份"}],annotations:[{tag:"①",title:ct?"後續公眾持股":"特別股息",body:ct?"11月5日及6日分別在市場出售300萬股及320萬股。":"7月20日已登記股東按公司安排獲派特別股息，資格不取決於是否接受要約。"}],evidenceLinks:[{documentId:a,pages:ct?[1,2]:[16],label:ct?"認購與配售完成":"每股要約款及股息資格"},{documentId:z,pages:[2,3],label:"要約結果及結算條件"},{documentId:n,pages:ct?[1]:[1,2],label:"最新公眾持股披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01912-20260608-zhuangyan-control","HK-02559-20260629-elong-voluntary-cash"].includes(txCase?.id))return buildContelOrDida(txCase,documents);
     if(txCase?.id==="HK-01726-20260929-true-victor-wonder-time")return buildHkeTwoDisposals(txCase,documents);
     if(["HK-00368-20260804-control-mgo","HK-01451-20260505-lvep-cash-offer"].includes(txCase?.id))return buildSuperlandOrMs(txCase,documents);
     if(["HK-09978-20260728-control-mgo","HK-01448-20260901-voluntary-partial"].includes(txCase?.id))return buildFinelandOrFuShou(txCase,documents);

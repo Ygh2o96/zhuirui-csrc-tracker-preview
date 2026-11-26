@@ -43839,6 +43839,18 @@
             ]
           },
           "label": "收购守则 15.3"
+        },
+        {
+          "code": "HKEX:13.32F",
+          "label": "上市規則 13.32F",
+          "application": "11月20日公司披露存在嚴重公眾持股不足，公眾持股約11.26%，公眾持股市值低於5億港元。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261120-2dab9030d213",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "stage": {
