@@ -6721,7 +6721,32 @@
       {tag:"②",title:"同一認購的兩個金額口徑",body:"連同佣金、徵費及交易費，認購人已於 9 月 22 日支付合計 31,627,781.52 港元。"}],
       evidenceLinks:[{documentId:src,pages:[1,2,3],label:"認購主體、訂單上限及規則"},{documentId:close,pages:[1],label:"實際配發及含費付款"}],compactSummary:"國際配售 95 萬股 · 每股 32.96 港元 · 已完成",topology};
   }
+
+  function buildVerifiedEverestOffer(c,docs){
+    const src="YS-20261030-b179f43845db", upd="YS-20261120-7d65ff09997b", dt="2026-11-20";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="dispatch_extension"||docs?.[src]?.caseId!==c.id||docs?.[upd]?.caseId!==c.id)return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v);
+    if(!term("control_block",4026133469.90)||!term("block_shares",5515229000)||!term("block_pct",51.016)||!term("letter_other_liabilities",500000000)||!term("offer_price",0.8359)||!term("offer_cash_cap",4426569888.65))return null;
+    const left="中國恒大及 CEG Holdings",right="Everest Holdings I",badge="控股股權尚待交割 · 要約待觸發";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:214,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"擬收購恒大物業 51.016%",rightTitle:"附函及交割後余股要約",transitionLabel:"交割後觸發要約",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"seller",left,"兩名賣方均由清盤人代表"),
+      box("L_r","left",448,100,157,146,"buyer",right,"PAG Fund IV 收購載體"),
+      box("R_a","right",728,84,295,75,"target","另有附函款人民幣 5 億元","於交割時支付，用於稅費等"),
+      box("R_b","right",728,210,295,75,"public","交割後每股 0.8359 港元要約","按全部接納，現金上限約 44.3 億港元"),
+    ],[],[arrow("block","shares","①",192,138,448,"擬轉讓現有 55.15 億股"),arrow("cash","cash","②",448,209,192,"協議對價 40.3 億港元")]);
+    const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"offer",modality:"cash",status:"active",
+      caseArchetypeLabel:"控股權收購及可能強制現金要約",caseModalityShortLabel:"現金",before:{title:"已簽購股協議及附函",nodes,equityLinks:[]},after:{title:"待交割及觸發要約",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"擬收購 5,515,229,000 股恒大物業現有股份",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:"購股協議對價 4,026,133,469.90 港元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"兩名賣方的股份對價",body:"中國恒大一腿約 1.23 億港元、CEG Holdings 一腿約 39.03 億港元；購股協議合計 4,026,133,469.90 港元。"},
+      {tag:"②",title:"附函及餘股要約",body:"附函另列交割時以人民幣支付 5 億元。交割後，按公告股本及全數接納情景，餘股現金要約上限 4,426,569,888.65 港元。"},
+      {tag:"③",title:"交割及寄發進度",body:"11 月 20 日公告時，購股協議先決條件仍未達成或獲豁免；綜合文件獲准延至交割後七天或 2027 年 2 月 19 日（以較早者為準）。"}],
+      evidenceLinks:[{documentId:src,pages:[2,7,8,11,12,15],label:"購股協議、附函及可能要約"},{documentId:upd,pages:[2],label:"購股先決條件與延期批准"}],compactSummary:"擬收購 51.016% · 購股協議 40.3 億港元 · 交割後觸發餘股要約",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-06666-20250911-everest-control-go"){const x=buildVerifiedEverestOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03680-20260914-ligent-international-allocation"){const x=buildVerifiedRuiheAllocation(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01156-20261109-cne-placing","HK-09988-20260823-alibaba-new-share-placing","HK-06082-20260705-biren-h-share-placing","HK-06082-20261008-hshare-placing","HK-01196-20261101-realord-top-up","HK-01156-20260625-cne-june-placement"].includes(txCase?.id)) { const x=txCase?.placementProof&&buildProvenCashPlacement(txCase,documents);return x&&validateDiagramSpec(x)||null; }
     if(txCase?.id==="HK-00980-20261120-lianhua-asset-management-renewal"){const x=buildVerifiedLianhuaRenewal(txCase,documents);return x&&validateDiagramSpec(x);}
