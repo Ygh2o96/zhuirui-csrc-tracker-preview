@@ -7530,7 +7530,43 @@
       flows:[{id:"transfer",kind:f.kind,direction:f.direction,fromLabel:f.nodes[dir?1:0].name,toLabel:f.nodes[dir?0:1].name,headline:f.label},
         {id:"pay",direction:dir?"ltr":"rtl",...f.flow2}],annotations:[{tag:"①",title:"交割口徑",body:f.note}],evidenceLinks:f.sources});
   }
+  function buildReviewedLeaseQuartet(c,docs){
+    const f={
+      "HK-08232-20261113-mandarin-plaza-lease": ["2026111300789","2026-11-13","2026-11-13","first_announcement","Realty Holdings Limited","THAC Investment (18) Limited","新文華中心商場","地下 01A–01C、01F–01H","4年 · 2026年11月15日起","2030年11月14日屆滿",9600000,10600000,800000,"960","1,060","80"],
+      "HK-08232-20261020-hoi-lai-lease":["2026102000955","2026-10-20","2026-11-10","dispatch_extension","香港房屋委员会","Small Medium Large Limited","海麗商場","一樓 105 號鋪","6年 · 2026年12月31日起","2032年12月30日屆滿",9800000,11300000,300000,"980","1,130","30"],
+      "HK-08232-20261020-cheung-tung-lease":["2026102000941","2026-10-20","2026-11-10","dispatch_extension","香港房屋委员会","Small Medium Large Limited","翔東@潮薈","07 號鋪及 B1 廣告燈箱","6年 · 2026年10月20日起","2032年10月19日屆滿",12700000,14700000,400000,"1,270","1,470","40"],
+      "HK-00374-20261122-tko-innopark-lease":["2026112200011","2026-11-22","2026-11-22","first_announcement","香港科技园公司","Four Seas Mercantile Limited","將軍澳創新園物業","駿昌街8號地塊及整幢樓宇","10年 · 預計2027年2月15日起","另有5年續租選擇權，須出租方同意",377000000,3140800,9920343,"3.77億","314.08萬","992.03萬"]
+    }[c.id];
+    const i=c.events?.find(e=>e.kind==="first_announcement"&&e.date===f?.[1]&&e.state==="actual")?.evidence?.documentId;
+    const d=docs?.[i],t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.currency==="HKD"&&x.evidence?.documentId===i);
+    const modern=c.code==="00374";
+    if(!f||d?.caseId!==c.id||!d.url.endsWith("/"+f[0]+".pdf")||c.stage?.status!=="approved"||
+      c.stage.date!==f[2]||c.stage.eventKind!==f[3]||c.parties?.["出租方"]!==f[4]||c.parties?.["承租方"]!==f[5]||
+      c.events?.some(e=>e.state==="actual"&&["completion","termination"].includes(e.kind))||
+      !t("rou_asset",f[10])||!t(modern?"monthly_base_rent":"rent_floor",f[11])||!t(modern?"security_deposit":"deposit",f[12])||
+      (c.id.includes("cheung-tung")&&!c.mechanism.includes(" B1 ")))return null;
+    const badge=modern?"已接受租賃要約 · 已獲書面批准":"租約已簽 · 已獲書面批准";
+    const left=modern?"香港科技園公司":f[4]==="香港房屋委员会"?"香港房屋委員會":"Realty Holdings";
+    const right=modern?"四洲貿易":f[5].startsWith("THAC")?"THAC Investment (18)":"Small Medium Large";
+    const title=f[6]+"租賃",detail="租期及會計估值",mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:423,status:"approved",leftTitle:title,rightTitle:detail,transitionLabel:"租賃條款",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"target",left,"出租方"),mk("b","left",448,100,157,146,"buyer",right,"承租方"),
+      mk("term","right",724,76,310,63,"target",f[8],f[9]),
+      mk("scope","right",724,162,310,63,"target",f[6],f[7]),
+      mk("cost","right",724,248,310,69,"creditor",modern?"估計使用權資產 3.77 億港元":"估計使用權資產 "+f[13]+" 萬港元",
+        modern?"首三年月租 314.08 萬港元":"全租期基本租金不少於 "+f[14]+" 萬港元")
+    ],[],[{id:"lease",panel:"left",kind:"asset",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:modern?"租賃要約已接受":"已簽物業租約",dashed:modern}]);
+    const nodes=[{id:"s",role:"target",name:f[4]},{id:"b",role:"buyer",name:f[5]}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disclosable_major",modality:"cash",status:"approved",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"物業租賃 · 使用權資產",caseModalityLabel:"租賃付款",caseModalityShortLabel:"租金",
+      before:{title,nodes,equityLinks:[]},after:{title:detail,nodes,equityLinks:[],outcomeBadge:badge},topology,compactSummary:badge,
+      flows:[{id:"lease",kind:"asset",direction:"ltr",fromLabel:f[4],toLabel:f[5],headline:f[6]+" · "+f[7],proposedOrTerminated:modern},
+        {id:"rent",kind:"cash",direction:"rtl",fromLabel:f[5],toLabel:f[4],headline:modern?"首三年月租314.08萬港元；第4、7、10年首日檢討租金。":"全租期基本租金不少於"+f[14]+"萬港元；約"+f[15]+"萬港元合約按金另列。",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"書面批准及租賃範圍",body:modern?"已接納獲批租賃要約；正式租約按披露安排簽訂。租賃用作中央食品加工及配送。":"控股股東書面批准代替召開股東大會；承租用途為經營亞洲風味餐廳。"}],
+      evidenceLinks:[{documentId:i,pages:modern?[1,2,3,4]:[1,2,3],label:"租期、租賃付款及書面批准"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08232-20261113-mandarin-plaza-lease","HK-08232-20261020-hoi-lai-lease","HK-08232-20261020-cheung-tung-lease","HK-00374-20261122-tko-innopark-lease"].includes(txCase?.id))return buildReviewedLeaseQuartet(txCase,documents);
     if(["HK-03330-20251210-simberi-subscription","HK-09668-20251010-debt-asset-portfolio-transfer","HK-00381-20251107-jiuai-food"].includes(txCase?.id))return buildReviewedClosedTrio(txCase,documents);
     if(txCase?.id==="HK-03330-20260910-simberi-buyout")return buildReviewedSimberi(txCase,documents);
     if(txCase?.id==="HK-02013-20261126-ingram-gpu-purchase")return buildReviewedWeimobGpu(txCase,documents);
