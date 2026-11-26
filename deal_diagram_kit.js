@@ -8328,7 +8328,25 @@
     const nodes=[{id:"s",role:it?"target":"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:it?"控股公司認購與股東貸款承接":"控股股權轉讓",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:it?"發行中間控股公司新股":"控股股份交割"}],annotations:[{tag:"①",title:it?"萬威國際持股":"控股交易對價",body:it?"要約前，Horizon Heights直接持有108,825,857股，並透過控制弘立（Hunglap）持有203,777,563股。":"控股交易對價包含6,100萬港元延期付款；餘股要約為另一筆對價。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:it?"認購及貸款承接":"控股交易對價"},...(!it?[{documentId:m,pages:[1,2],label:"控股股份交割"}]:[]),{documentId:z,pages:it?[2,3,4]:[2,3,4,5],label:"接納結果及公眾持股"}]});
   }
+  function buildMaxicityAndMegain(c,docs){
+    const g=c.code==="02295",a=g?"YS-20260702-1c7efccaa83b":"YS-20260123-cde1a7442ed3",z=g?"YS-20260813-42f5c00e6fbf":"YS-20260812-2516956fef5b",n=g?"YS-20260914-5ffb247dcb59":z,date=g?"2026-08-13":"2026-08-12",control=g?"2026-06-22":"2026-07-16";
+    const ts=g?[["block_cash",196350000,a],["block_shares",300000000,a],["accepted_shares",33980000,z],["accepted_cash",22239910,z],["public_float_pct",16.5,z],["post_restoration_public_float_pct",25,n]]:[["block_cash",105500000,a],["subscription_cash",63287500,a],["accepted_shares",28050,z],["accepted_cash",17110.5,z]];
+    if(![a,z,n].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!c.events?.some(e=>e.date===control&&e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===(g?a:z))||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=g?"控股股份交割":"舊股收購及新股認購",right=g?"要約結果及公眾持股":"要約結果及持股",badge=g?"要約已截止 · 公眾持股恢復至25%":"要約已截止 · 公眾持股29.42%";
+    const s=g?"峻峰投資":"美佳音三名原股東",b=g?"綠盛環球能源":"GEEHY International";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,g?"出售豐城控股3億股":"出售2.11億股舊股"),
+      box("b","left",444,106,161,124,"buyer",b,g?"現金對價1.9635億港元":"舊股對價1.055億港元"),
+      box("a","right",724,72,310,70,"target",g?"有效接納3,398萬股":"另認購1.0375億股新股",g?"要約應付2,223.991萬港元":"認購額6,328.75萬港元"),
+      box("r2","right",724,164,310,75,"creditor",g?"要約截止時公眾持股約16.50%":"有效接納28,050股",g?"8月13日結果：公眾持6,602萬股":"每股0.61港元，共17,110.50港元"),
+      box("r3","right",724,260,310,76,"creditor",g?"9月14日披露公眾持股恢復至25%":"計入接納後持股約50.57%",g?"其後另向獨立人士配售3,398萬股":"公眾持股29.42%；以妥為登記為準")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:g?"交割已發行股本75%":"7月16日完成舊股及認購"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:g?"控股股份交割":"現金收購原股東股份"}],annotations:[{tag:"①",title:g?"公眾持股恢復":"兩道控股交易",body:g?"公眾持股在8月13日要約結果中為6,602萬股；其後的3,398萬股配售令公眾持股增至1億股。":"舊股賣方為Global Megain Technology、Good Loyal及Lam Tsz Leung；買賣與新股認購均於7月16日完成。"}],evidenceLinks:[{documentId:a,pages:g?[2,5]:[2,3],label:"控股交易條款"},{documentId:z,pages:[2,3,4],label:"要約結果及公眾持股"},...(g?[{documentId:n,pages:[1],label:"恢復公眾持股"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02295-20260702-greenair-control-cash","HK-06939-20260123-geehy-control-subscription-cash"].includes(txCase?.id))return buildMaxicityAndMegain(txCase,documents);
     if(["HK-00167-20260629-horizon-heights-standalone","HK-01657-20260604-weiye-control-cash"].includes(txCase?.id))return buildIdtAndSg(txCase,documents);
     if(["HK-01912-20260608-zhuangyan-control","HK-02559-20260629-elong-voluntary-cash"].includes(txCase?.id))return buildContelOrDida(txCase,documents);
     if(txCase?.id==="HK-01726-20260929-true-victor-wonder-time")return buildHkeTwoDisposals(txCase,documents);
