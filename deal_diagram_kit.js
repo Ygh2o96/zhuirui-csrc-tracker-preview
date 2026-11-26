@@ -8498,7 +8498,26 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:g?"有效接納股份全部獲承購":"交割控股股份"}],annotations:[{tag:"①",title:g?"要約範圍":"配售恢復公眾持股",body:g?"無條件部分要約在7月7日收市，全部69,803,408股有效接納股份獲承購。":"售予獨立第三方的20萬股是要約截止後另行配售。"}],evidenceLinks:[{documentId:a,pages:g?[1,9]:[2,5,6],label:g?"部分要約上限與價格":"控股交易及要約價格"},{documentId:z,pages:[2,3,4],label:"實際接納結果"},...(g?[]:[{documentId:n,pages:[2],label:"恢復公眾持股"}])]});
   }
+  function buildMetaOrAsiaGrocery(c,docs){
+    const m=c.code==="01796",a=m?"YS-20260427-9b8ef9f279d7":"YS-20251210-11892cde62eb",z=m?"YS-20260703-102d68297a66":"YS-20260611-a9272ebd628d",date=m?"2026-07-03":"2026-06-11";
+    const ts=m?[["offer_price",.33,a],["min_accept",15800000,a],["submitted_shares",152000,z]]:[["offer_price",.258,a],["min_shares",590000000,a],["cap_shares",755300000,a]];
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="terminated"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="terminated"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    if(Boolean(c.events?.some(e=>e.kind==="dispatch"&&e.state==="actual"))!==m)return null;
+    const status="terminated",left=m?"有條件現金部分要約":"擬議有前提部分要約",right=m?"接納結果":"前提條件與失效",badge=m?"已開放接納 · 未達門檻而失效":"前提未達 · 未寄發要約文件";
+    const s=m?"Metaspacex合資格股東":"亞洲雜貨分銷合資格股東",b=m?"Chan Yuen Tung":"Lianfeng Property";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"擬議部分要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,m?"擬收購1,580萬股":"擬收購5.9億至7.553億股"),
+      box("b","left",444,106,161,124,"buyer",b,m?"擬付每股0.33港元":"擬付每股0.258港元"),
+      box("a","right",724,72,310,70,"target",m?"5月18日寄發要約文件":"要約寄發設前提條件",m?"首個截止日有效接納152,000股":"包括湖北省國資委批准"),
+      box("r2","right",724,164,310,75,"creditor",m?"最低接納門檻為1,580萬股":"6月11日前提期限屆滿",m?"實際接納少於最低門檻":"公告所列前提(b)及(c)未達成"),
+      box("r3","right",724,260,310,76,"creditor",m?"7月3日部分要約失效":"擬議部分要約失效",m?"接納股份未按要約轉讓":"綜合文件未寄發，未開放接納")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬議股份轉讓",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"擬議股份轉讓",proposedOrTerminated:true}],annotations:[{tag:"①",title:m?"已寄發後失效":"寄發前失效",body:m?"要約已開放供合資格股東接納；到首個截止日未達接納條件。":"6月11日公告確認前提期限未延長，綜合文件不會寄發。"}],evidenceLinks:[{documentId:a,pages:m?[1,2]:[2,8],label:"要約條款"},{documentId:z,pages:[2,3],label:"失效披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01796-20260427-chan-partial","HK-08413-20251210-lianfeng-partial-preconditions-lapsed"].includes(txCase?.id))return buildMetaOrAsiaGrocery(txCase,documents);
     if(["HK-02362-20260521-gong-partial","HK-01953-20260424-aureole-halo-control"].includes(txCase?.id))return buildGongOrRimbaco(txCase,documents);
     if(["HK-01932-20260421-prime-shk-cnt-chain","HK-00701-20260421-prime-shk-cnt-control"].includes(txCase?.id))return buildCntOrCpm(txCase,documents);
     if(["HK-01780-20260507-yang-conditional-lapsed","HK-01969-20260805-dublin-business-school"].includes(txCase?.id))return buildRongzunOrDublin(txCase,documents);
