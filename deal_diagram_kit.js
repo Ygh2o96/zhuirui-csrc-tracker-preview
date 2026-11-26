@@ -6811,7 +6811,45 @@
       {tag:"②",title:"股東表決",body:"發行強制可轉債及股權架構安排獲 99.95% 贊成；可能轉讓 ALC 資產及發行贖回股份各獲 100% 贊成，均按各決議所投票數計。"}],
       evidenceLinks:[{documentId:cir,pages:[72,73,76,77],label:"轉讓範圍、先決條件及債務解除額"},{documentId:vote,pages:[1,2],label:"三項決議表決結果"}],compactSummary:"ALC 資產轉讓獲股東批准 · 擬解除約 10.2 億美元債務 · 轉讓仍附條件",topology};
   }
+  function buildVerifiedBs26(c,docs) {
+    const dt="2026-11-26";
+    const complete=c.events?.find(e=>e.kind==="control_completion"&&e.state==="actual"&&e.date===dt);
+    const src=complete?.evidence?.documentId;
+    const doc=docs?.[src];
+    if(c.id!=="HK-01705-20261029-time-innovation" || c.stage?.status!=="active" ||
+       c.stage?.date!==dt || c.stage?.eventKind!=="control_completion" || doc?.caseId!==c.id ||
+       doc.url!=="https://iis.aastocks.com/20261126/12427571-0.PDF" ||
+       !c.processEvents?.some(e=>e.date==="2026-12-03"&&e.kind==="dispatch"&&e.state==="expected"&&e.evidence?.documentId===src))return null;
+    const term=(key,value)=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===src);
+    if(!term("buyer1_proposed_shares",288000000)||!term("buyer2_proposed_shares",12000000)||
+       !term("proposed_group_pct",75)||!term("proposed_at_close_cap",167200000)||
+       !term("offer_price",0.9634)||!term("offer_shares",100000000)||
+       !term("offer_cash_cap",96340000)||c.parties?.["要约方"]!=="Time Innovation Global Limited"||
+       c.parties?.["第二买方及一致行动人士"]!=="EJO Investment Pte. Ltd.")return null;
+    const left="ACAC、CCST、SCSC",right="Time Innovation 及 EJO",badge="控股股份已交割 · 餘股要約待寄文件";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:196,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"11月26日 · 75%股份交割",rightTitle:"餘股現金要約",transitionLabel:"兩筆金額獨立列示",outcomeBadge:badge}),[
+       box("L_sell","left",43,100,149,146,"seller",left,"三名原股東"),
+       box("L_buy","left",448,100,157,146,"buyer",right,"交割後 72% + 3%"),
+       box("R_rest","right",728,84,295,75,"target","1億股 · 每股 0.9634 港元","Time Innovation 單獨提出"),
+       box("R_doc","right",728,210,295,75,"public","最高 9,634 萬港元","綜合文件最遲 12 月 3 日寄發")
+    ],[],[arrow("sale","shares","①",192,138,448,"已交割 3 億股"),arrow("cash","cash","②",448,209,192,"首期實付 1.672 億港元")]);
+    const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,
+      stageLabel:badge,stageDate:dt,archetype:"offer",modality:"cash",status:"active",caseArchetypeLabel:"控股股份買賣及強制現金要約",caseModalityShortLabel:"現金",
+      before:{title:"75%股份交割",nodes,equityLinks:[]},after:{title:"餘股要約",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"sale",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"Time Innovation 2.88億股（72%）；EJO 1,200萬股（3%）"},
+        {id:"cash",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:"交割實付1.672億港元"},
+        {id:"offer",kind:"cash",direction:"ltr",fromLabel:"Time Innovation",toLabel:"餘股股東",headline:"現金要約每股 0.9634 港元；待綜合文件",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"交割對價",body:"現金首期已付1.672億港元；協議上限2.89億港元，包括扣留款及或有對價。"},
+        {tag:"②",title:"餘股現金要約",body:"餘下1億股，每股0.9634港元；全數接納時最高9,634萬港元。綜合文件最遲12月3日寄發。"}],
+      evidenceLinks:[{documentId:src,pages:[2,3],label:"已交割股數及實付首期款"},{documentId:src,pages:[4],label:"要約條款及寄發期限"}],
+      compactSummary:"72% + 3% 已交割 · 餘下 25% 待綜合文件",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01705-20261029-time-innovation"){const d=buildVerifiedBs26(txCase,documents);return d&&validateDiagramSpec(d);}
 
     if (txCase?.id === "HK-08455-20261007-reorganisation-partial-rights") {
       const t=txCase.terms?.find(v=>v.key==="rights_shares_base_max"&&v.value===96000000);
