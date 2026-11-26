@@ -5530,7 +5530,7 @@ function renderCsTicketWhisker(tm, wide = false) {
 
 // Historical 6-month lockup-expiry session closes (per original IPO share, adjusted for any post-IPO bonus/split shares)
 // for rounds whose lockup has already expired. Backend `trackingCloseHkd` / `lockupCloseHkd` overrides these when present.
-const CS_VERIFIED_LOCKUP_CLOSES = {"offering:08610:2025-12-31":[0.59,"2026-07-10","2026-07-13"],"offering:03310:2026-05-18":[13.42,"2026-11-26","2026-11-27"],"offering:00501:2025-12-31":[78.65,"2026-07-10","2026-07-12"],"offering:06872:2026-05-14":[73.3,"2026-11-20","2026-11-22"],"offering:07688:2026-05-12":[12.01,"2026-11-19","2026-11-20"],"offering:01511:2026-05-12":[42.64,"2026-11-19","2026-11-20"],"offering:06871:2026-05-08":[17.16,"2026-11-18","2026-11-18"],"offering:07666:2026-05-05":[10.41,"2026-11-12","2026-11-13"],"offering:07630:2026-05-05":[8.39,"2026-11-12","2026-11-13"],"offering:01236:2026-04-30":[20.86,"2026-11-10","2026-11-11"],"offering:01187:2026-04-27":[27.50,"2026-11-05","2026-11-06"],"offering:01609:2026-04-24":[51,"2026-11-04","2026-11-05"],"offering:06810:2026-04-21":[76.0,"2026-10-29","2026-10-29"],"offering:02493:2026-04-20":[18.48,"2026-10-27","2026-10-28"],"offering:01879:2026-04-20":[185.5,"2026-10-27","2026-10-28"],"offering:03296:2026-04-15":[49.98,"2026-10-22","2026-10-23"],"offering:02476:2026-04-13":[156.5,"2026-10-20","2026-10-21"],"offering:03277:2026-04-09":[55.85,"2026-10-16","2026-10-17"],"offering:00068:2026-04-09":[4.77,"2026-10-16","2026-10-17"],"offering:06656:2026-04-08":[206.2,"2026-10-15","2026-10-16"],"offering:03625:2026-03-23":[51.2,"2026-09-30","2026-09-30"],"offering:00664:2026-03-23":[11.43,"2026-09-30","2026-10-01"],"offering:06636:2026-03-20":[71.5,"2026-09-30","2026-09-30"],"offering:02726:2026-03-20":[89.8,"2026-09-30","2026-09-30"],"offering:02526:2026-03-20":[254.0,"2026-09-30","2026-09-30"],"offering:01021:2026-03-20":[8.26,"2026-09-29","2026-09-30"],"offering:02729:2026-03-16":[28.08,"2026-09-24","2026-09-24"],"offering:02632:2026-03-16":[61.80,"2026-09-23","2026-09-24"],"offering:03355:2026-03-13":[40.80,"2026-09-22","2026-09-23"],"offering:02701:2026-03-13":[8.81,"2026-09-22","2026-09-23"],"offering:01989:2026-03-12":[107.6,"2026-09-18","2026-09-20"],"offering:03268:2026-02-27":[20.5,"2026-09-09","2026-09-10"],"offering:02715:2026-02-27":[15.91,"2026-09-08","2026-09-09"],"offering:02692:2026-02-27":[38.74,"2026-09-08","2026-09-09"],"offering:02649:2026-02-27":[3.9,"2026-09-09","2026-09-09"],"offering:09981:2026-02-05":[11.2,"2026-08-12","2026-08-13"],"offering:02706:2026-02-05|lockup:2026-08-13:2026-08-12":[44.92,"2026-08-12","2026-08-13"],"offering:00470:2026-02-03":[31.46,"2026-08-10","2026-08-11"],"offering:02720:2026-01-30":[24.14,"2026-08-10","2026-08-10"],"offering:00600:2026-01-30":[14.22,"2026-08-07","2026-08-10"],"offering:06809:2026-01-30":[269.2,"2026-08-07","2026-08-09"],"offering:03200:2026-01-29":[108.6,"2026-08-05","2026-08-06"],"offering:02714:2026-01-29":[31.4,"2026-08-05","2026-08-06"],"offering:02677:2026-01-29":[22.86,"2026-08-05","2026-08-06"],"offering:02768:2026-01-27":[32.08,"2026-08-03","2026-08-04"],"offering:09980:2026-01-26":[125,"2026-07-31","2026-08-03",{"oldShares":10,"newShares":13,"effectiveDate":"2026-06-29","actionSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900826.pdf#page=1","priceSource":"https://www.hkex.com.hk/eng/stat/smstat/mthbull/p_rpt_data_trade_summary_equity_2607.htm"}],"offering:01768:2026-01-20":[343.4,"2026-07-27","2026-07-28"],"offering:09611:2026-01-14":[21.92,"2026-07-21","2026-07-22"],"offering:03986:2025-12-31":[742.5,"2026-07-10","2026-07-13"],"offering:01641:2025-12-31":[4.45,"2026-07-10","2026-07-13"],"offering:06938:2025-12-31":[55.6,"2026-07-08","2026-07-09"],"offering:03636:2025-12-31":[13.43,"2026-07-09","2026-07-09"],"offering:00100:2025-12-31":[362.6,"2026-07-08","2026-07-09"],"offering:09903:2025-12-30":[539.5,"2026-07-07","2026-07-08"],"offering:02675:2025-12-30":[39.98,"2026-07-08","2026-07-09"],"offering:02513:2025-12-30":[1610,"2026-07-07","2026-07-08"],"offering:06082:2025-12-22":[61.2,"2026-06-30","2026-07-02"]};
+const CS_VERIFIED_LOCKUP_CLOSES = {"offering:03636:2025-12-31|lockup:2026-07-10:2026-07-09":[13.43,"2026-07-09","2026-07-10"],"offering:08610:2025-12-31":[0.59,"2026-07-10","2026-07-13"],"offering:03310:2026-05-18":[13.42,"2026-11-26","2026-11-27"],"offering:00501:2025-12-31":[78.65,"2026-07-10","2026-07-12"],"offering:06872:2026-05-14":[73.3,"2026-11-20","2026-11-22"],"offering:07688:2026-05-12":[12.01,"2026-11-19","2026-11-20"],"offering:01511:2026-05-12":[42.64,"2026-11-19","2026-11-20"],"offering:06871:2026-05-08":[17.16,"2026-11-18","2026-11-18"],"offering:07666:2026-05-05":[10.41,"2026-11-12","2026-11-13"],"offering:07630:2026-05-05":[8.39,"2026-11-12","2026-11-13"],"offering:01236:2026-04-30":[20.86,"2026-11-10","2026-11-11"],"offering:01187:2026-04-27":[27.50,"2026-11-05","2026-11-06"],"offering:01609:2026-04-24":[51,"2026-11-04","2026-11-05"],"offering:06810:2026-04-21":[76.0,"2026-10-29","2026-10-29"],"offering:02493:2026-04-20":[18.48,"2026-10-27","2026-10-28"],"offering:01879:2026-04-20":[185.5,"2026-10-27","2026-10-28"],"offering:03296:2026-04-15":[49.98,"2026-10-22","2026-10-23"],"offering:02476:2026-04-13":[156.5,"2026-10-20","2026-10-21"],"offering:03277:2026-04-09":[55.85,"2026-10-16","2026-10-17"],"offering:00068:2026-04-09":[4.77,"2026-10-16","2026-10-17"],"offering:06656:2026-04-08":[206.2,"2026-10-15","2026-10-16"],"offering:03625:2026-03-23":[51.2,"2026-09-30","2026-09-30"],"offering:00664:2026-03-23":[11.43,"2026-09-30","2026-10-01"],"offering:06636:2026-03-20":[71.5,"2026-09-30","2026-09-30"],"offering:02726:2026-03-20":[89.8,"2026-09-30","2026-09-30"],"offering:02526:2026-03-20":[254.0,"2026-09-30","2026-09-30"],"offering:01021:2026-03-20":[8.26,"2026-09-29","2026-09-30"],"offering:02729:2026-03-16":[28.08,"2026-09-24","2026-09-24"],"offering:02632:2026-03-16":[61.80,"2026-09-23","2026-09-24"],"offering:03355:2026-03-13":[40.80,"2026-09-22","2026-09-23"],"offering:02701:2026-03-13":[8.81,"2026-09-22","2026-09-23"],"offering:01989:2026-03-12":[107.6,"2026-09-18","2026-09-20"],"offering:03268:2026-02-27":[20.5,"2026-09-09","2026-09-10"],"offering:02715:2026-02-27":[15.91,"2026-09-08","2026-09-09"],"offering:02692:2026-02-27":[38.74,"2026-09-08","2026-09-09"],"offering:02649:2026-02-27":[3.9,"2026-09-09","2026-09-09"],"offering:09981:2026-02-05":[11.2,"2026-08-12","2026-08-13"],"offering:02706:2026-02-05|lockup:2026-08-13:2026-08-12":[44.92,"2026-08-12","2026-08-13"],"offering:00470:2026-02-03":[31.46,"2026-08-10","2026-08-11"],"offering:02720:2026-01-30":[24.14,"2026-08-10","2026-08-10"],"offering:00600:2026-01-30":[14.22,"2026-08-07","2026-08-10"],"offering:06809:2026-01-30":[269.2,"2026-08-07","2026-08-09"],"offering:03200:2026-01-29":[108.6,"2026-08-05","2026-08-06"],"offering:02714:2026-01-29":[31.4,"2026-08-05","2026-08-06"],"offering:02677:2026-01-29":[22.86,"2026-08-05","2026-08-06"],"offering:02768:2026-01-27":[32.08,"2026-08-03","2026-08-04"],"offering:09980:2026-01-26":[125,"2026-07-31","2026-08-03",{"oldShares":10,"newShares":13,"effectiveDate":"2026-06-29","actionSource":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0629/2026062900826.pdf#page=1","priceSource":"https://www.hkex.com.hk/eng/stat/smstat/mthbull/p_rpt_data_trade_summary_equity_2607.htm"}],"offering:01768:2026-01-20":[343.4,"2026-07-27","2026-07-28"],"offering:09611:2026-01-14":[21.92,"2026-07-21","2026-07-22"],"offering:03986:2025-12-31":[742.5,"2026-07-10","2026-07-13"],"offering:01641:2025-12-31":[4.45,"2026-07-10","2026-07-13"],"offering:06938:2025-12-31":[55.6,"2026-07-08","2026-07-09"],"offering:03636:2025-12-31":[13.43,"2026-07-09","2026-07-09"],"offering:00100:2025-12-31":[362.6,"2026-07-08","2026-07-09"],"offering:09903:2025-12-30":[539.5,"2026-07-07","2026-07-08"],"offering:02675:2025-12-30":[39.98,"2026-07-08","2026-07-09"],"offering:02513:2025-12-30":[1610,"2026-07-07","2026-07-08"],"offering:06082:2025-12-22":[61.2,"2026-06-30","2026-07-02"]};
 const CS_POST_IPO_SPLITS = { "offering:02723:2026-05-18": 10 };
 
 function csRegisterLockupTranches(offer, base, quoteMeta) {
@@ -5587,7 +5587,22 @@ function csTrancheReturn(meta, allocationIds, today) {
     retPct:ret*100,pnlHkd:totalCost*ret,pnlUsd:totalCost*ret/CS_HKD_PER_USD,costHkd:totalCost};
 }
 
+function csJinxunUsesCapitalAction(roundId, priceDate) {
+  return roundId === "offering:03636:2025-12-31" && /^\d{4}-\d{2}-\d{2}$/.test(priceDate || "") && priceDate >= "2026-10-15";
+}
+
+function csJinxunQuoteBasis(roundId, priceDate, rawCloseHkd) {
+  if (!csJinxunUsesCapitalAction(roundId,priceDate)) return {closeHkd:rawCloseHkd};
+  return {closeHkd:rawCloseHkd*2.5,rawCloseHkd,capitalAction:{
+    oldShares:10,newShares:25,effectiveDate:"2026-10-15",kind:"capitalization_issue",
+    actionSource:"https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SMD2026167_c.pdf",
+    priceSource:"https://www.laohu8.com/m/hq/s/03636"
+  }};
+}
+
 function csQuoteMatchesTerm(q, meta, today) {
+  if (q?.status === "ready" && csJinxunUsesCapitalAction(meta?.roundId,q.priceDate) &&
+      (!Number.isFinite(q.rawCloseHkd) || q.capitalAction?.newShares !== 25 || Math.abs(q.closeHkd-q.rawCloseHkd*2.5)>0.00005)) return false;
   if (!meta?.lockupEndDate || q?.lockupEndDate !== meta.lockupEndDate) return false;
   const unlocked = today >= meta.lockupEndDate;
   if (q.unlocked !== unlocked) return false;
@@ -5607,7 +5622,7 @@ function hydrateCsQuotesFromBackendAndStorage(offerMetaByRound, today) {
       && (today < meta.lockupEndDate || meta.trackingPriceDate <= cutoff)) {
       const unlocked = Boolean(meta.lockupEndDate && today >= meta.lockupEndDate);
       csQuoteStore.set(roundId, {
-        closeHkd: meta.trackingCloseHkd,
+        ...csJinxunQuoteBasis(meta.roundId,meta.trackingPriceDate,meta.trackingCloseHkd),
         priceDate: meta.trackingPriceDate,
         lockupEndDate: meta.lockupEndDate,
         unlocked,
@@ -5759,9 +5774,10 @@ function ensureCornerstoneQuotesLoaded() {
             const basePx = Number.isFinite(lastPx) && lastPx > 0 ? lastPx : prevPx;
             const mult = CS_POST_IPO_SPLITS[item.sourceRoundId || item.roundId] || 1;
             const rawDate = String(parts[30] || "").slice(0, 10).replace(/\//g, "-");
-            if (Number.isFinite(basePx) && basePx > 0) {
+            if (Number.isFinite(basePx) && basePx > 0 &&
+                (item.sourceRoundId !== "offering:03636:2025-12-31" || /^\d{4}-\d{2}-\d{2}$/.test(rawDate))) {
               csQuoteStore.set(item.roundId, {
-                closeHkd: Number((basePx * mult).toFixed(4)),
+                ...csJinxunQuoteBasis(item.sourceRoundId,rawDate,Number((basePx * mult).toFixed(4))),
                 priceDate: /^\d{4}-\d{2}-\d{2}$/.test(rawDate) ? rawDate : today,
                 lockupEndDate: item.lockupEndDate,
                 unlocked: false,
@@ -5793,7 +5809,7 @@ function ensureCornerstoneQuotesLoaded() {
             const mult = CS_POST_IPO_SPLITS[item.sourceRoundId || item.roundId] || 1;
             if (Number.isFinite(px) && px > 0) {
               csQuoteStore.set(item.roundId, {
-                closeHkd: Number((px * mult).toFixed(4)),
+                ...csJinxunQuoteBasis(item.sourceRoundId,last[0],Number((px * mult).toFixed(4))),
                 priceDate: last[0],
                 lockupEndDate: item.lockupEndDate,
                 unlocked: true,
@@ -6233,7 +6249,7 @@ function renderCornerstones() {
         if (ret.state === "ready") {
           const ca = ret.capitalAction;
           const closeLabel = ca
-            ? `<small>${ca.oldShares} 股变 ${ca.newShares} 股 · 每原股市值 HK$${offeringNumber(ret.closeHkd, 2)}</small>`
+            ? `<small>${ca.oldShares} 股变 ${ca.newShares} 股 · ${ret.distinctLockups?.length > 1 ? '每原股加权市值' : '每原股市值'} HK$${offeringNumber(ret.closeHkd, 2)}</small>`
             : ret.distinctLockups?.length > 1 ? ' <small>加权</small>' : '';
           if (ca) sourceCellHtml += feeRosterSource(ca.actionSource, "股本变动 ↗") + feeRosterSource(ca.priceSource, "收盘原件 ↗");
           priceTrackHtml = `<div class="cs-px-line col-num">HK$${offeringNumber(ret.offerPriceHkd, 2)} → <strong>HK$${offeringNumber(ca ? ca.rawCloseHkd : ret.closeHkd, 2)}</strong>${closeLabel}</div>${lockBadge}`;
