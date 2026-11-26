@@ -2,6 +2,197 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-00217-20261106-hka-aircraft-finance-lease",
+      "code": "00217",
+      "category": "major_acquisition",
+      "name": "中國誠通發展：向香港航空集團購買及出租飛機",
+      "aliases": [
+        "China Chengtong Development Group Limited",
+        "中國誠通發展",
+        "香港航空",
+        "HK Aircraft Sub6",
+        "A320-214"
+      ],
+      "mechanism": "誠通發展旗下貿易子公司擬向香港航空的全資附屬公司購買一架 Airbus A320-214，代價人民幣1.55億元，並於交付後租予香港航空五年。控股股東已書面批准，租金按浮動利率計算。",
+      "parties": {
+        "上市公司": "中國誠通發展集團有限公司（00217）",
+        "賣方": "HK Aircraft Sub6 Company Limited",
+        "買方及出租人": "Chengtong Trading (International) Limited",
+        "承租人": "Hong Kong Airlines Limited",
+        "書面批准股東": "China Chengtong Hong Kong Company Limited"
+      },
+      "events": [
+        {
+          "date": "2026-11-06",
+          "kind": "first_announcement",
+          "label": "簽訂飛機購買及融資租賃協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261106-00217-aircraft",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "date": "2026-11-06",
+          "kind": "written_approval_disclosed",
+          "label": "披露控股股東書面批准",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261106-00217-aircraft",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        },
+        {
+          "date": "2026-11-23",
+          "kind": "dispatch",
+          "label": "刊發通函",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              1,
+              15,
+              21
+            ]
+          }
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-23",
+        "label": "已取得書面股東批准 · 待交付",
+        "eventKind": "dispatch",
+        "status": "approved"
+      },
+      "progressDate": "2026-11-23",
+      "intervals": {
+        "announcementToDispatch": 17
+      },
+      "headlineKey": "consideration",
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "飛機收購價",
+          "value": 155000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "basis": "買方須於交付先決條件達成後履行付款義務",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              15,
+              16
+            ]
+          }
+        },
+        {
+          "key": "estimated_total_lease_rent",
+          "label": "預計租金總額",
+          "value": 177780000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "basis": "本金及利息合計，按季支付共20期",
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              18
+            ]
+          }
+        },
+        {
+          "key": "estimated_lease_interest",
+          "label": "預計租賃利息",
+          "value": 22780000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "basis": "浮動利率，按貸款市場報價利率（LPR）調整",
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              18
+            ]
+          }
+        },
+        {
+          "key": "lease_deposit",
+          "label": "租賃保證金",
+          "value": 12000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "basis": "買方支付購機款後一個營業日內繳交",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              18
+            ]
+          }
+        },
+        {
+          "key": "purchase_option",
+          "label": "租期屆滿買入選擇權行權價",
+          "value": 1,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "basis": "租金與其他應付款悉數支付後可行使",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              19
+            ]
+          }
+        }
+      ],
+      "comparables": {},
+      "comparisonEvidence": {},
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "最高適用百分比率高於25%且低於100%，為主要交易。",
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              21
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14.44",
+          "label": "上市規則 14.44",
+          "classificationStatus": "applied",
+          "application": "持股約53.14%的控股股東已書面批准，毋須召開股東大會審批。",
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              21
+            ]
+          }
+        }
+      ],
+      "mandates": []
+    },
+    {
       "id": "HK-01870-20260929-green-power-rights",
       "code": "01870",
       "category": "rights_issue",
@@ -99278,6 +99469,22 @@
       "publishedAt": "2026-11-03T16:43:00+08:00",
       "title": "綠色電能集團供股章程（日期：11月4日）",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1103/2026110301014.pdf"
+    },
+    "YS-20261106-00217-aircraft": {
+      "id": "YS-20261106-00217-aircraft",
+      "caseId": "HK-00217-20261106-hka-aircraft-finance-lease",
+      "date": "2026-11-06",
+      "publishedAt": "2026-11-06T20:38:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601546.pdf",
+      "title": "公告：飛機購買及融資租賃"
+    },
+    "YS-20261123-00217-aircraft-circular": {
+      "id": "YS-20261123-00217-aircraft-circular",
+      "caseId": "HK-00217-20261106-hka-aircraft-finance-lease",
+      "date": "2026-11-23",
+      "publishedAt": "2026-11-23T17:18:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300718.pdf",
+      "title": "飛機融資租賃及其他交易通函（日期：11月24日）"
     }
   },
   "issuerLinks": [
