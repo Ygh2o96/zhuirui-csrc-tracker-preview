@@ -7019,7 +7019,57 @@
       compactSummary:"11月2日內部轉讓 · 11月3日解除合約控制",topology};
   }
 
+  // Two reviewed cases. State and amounts come from case-specific announcements, never from the visual frame.
+  function buildReviewedOffer26(c,docs){
+    const actual=(d,k)=>c.events?.find(e=>e.date===d&&e.kind===k&&e.state==="actual");
+    const proc=(d)=>c.processEvents?.find(e=>e.date===d&&e.state==="actual");
+    const source=(e,n)=>{const id=e?.evidence?.documentId,x=docs?.[id];return x?.caseId===c.id&&x.url.endsWith("/"+n+".pdf")?id:null;};
+    let f;
+    if(c.id==="HK-01710-20261002-luxshare-mou"){
+      const i=source(actual("2026-10-02","first_announcement"),"2026100203427"), p=source(proc("2026-11-26"),"2026112601378");
+      if(!i||!p||c.stage?.date!=="2026-11-26"||c.stage.eventKind!=="supplement"||
+        c.events?.some(e=>e.kind==="control_completion"||e.kind==="dispatch")||
+        c.parties?.["拟买方"]!=="Luxshare Precision Limited"||
+        c.parties?.["拟卖方"]!=="Trio Industrial Electronics Holding Limited"||
+        !c.terms?.some(q=>q.key==="mou_shares"&&q.value===750000000&&q.evidence?.documentId===i)||
+        !c.terms?.some(q=>q.key==="mou_stake_pct"&&q.value===75&&q.evidence?.documentId===i))return null;
+      f={left:"Trio Industrial Holding",right:"Luxshare Precision",leftSub:"潛在賣方",rightSub:"潛在買方",a:"意向涉及 7.5 億股（75%）",
+        lTitle:"潛在交易 · 尚在盡調",rTitle:"排他安排及股權狀態",gate:"尚待正式買賣協議",badge:"排他期延至 12 月 28 日 · 仍在盡調",
+        one:["12月28日 · 排他期屆滿","包括當日；盡職調查尚在進行"],two:["尚未簽正式協議","第26.1條強制要約仍取決於交割"],
+        flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:"Trio Industrial Electronics Holding Limited",toLabel:"Luxshare Precision Limited",headline:"諒解備忘錄涉及750,000,000股，佔75%；仍在盡調",proposedOrTerminated:true}],
+        annotations:[{tag:"①",title:"排他期",body:"補充契約將排他期延至12月28日（包括當日）。其他諒解備忘錄條款維持。"}],
+        evidenceLinks:[{documentId:i,pages:[1,2],label:"潛在交易雙方及股數"},{documentId:p,pages:[1,2],label:"排他期及尚未簽約"}],firstPending:true};
+    }else if(c.id==="HK-01389-20261012-max-premier"){
+      const i=source(actual("2026-10-05","control_completion"),"2026101201299"),p=source(proc("2026-11-13"),"2026111300007");
+      const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===i);
+      if(!i||!p||c.stage?.date!=="2026-10-05"||c.stage.eventKind!=="control_completion"||
+        c.events?.some(e=>e.kind==="dispatch"||e.kind==="completion")||
+        c.parties?.["要约方"]!=="Max Premier Limited"||c.parties?.["卖方"]!=="Silver Tycoon Limited"||
+        !term("block_shares",298092515)||!term("block_pct",53.77)||!term("control_block",102163000)||
+        !term("offer_shares",256240817)||!term("offer_price",0.3428))return null;
+      f={left:"Silver Tycoon",right:"Max Premier",leftSub:"出售方",rightSub:"買方及要約人",a:"2.981億股已交割（53.77%）",
+        lTitle:"10月5日 · 控股股份已交割",rTitle:"餘股要約文件",gate:"與控股權交割分開",badge:"控股股份已交割 · 綜合文件延寄",
+        one:["每股 0.3428 港元","對約 2.562 億股餘股的要約"],two:["申請延至 11 月 27 日","執行人員表示有意同意"],
+        flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:"Silver Tycoon Limited",toLabel:"Max Premier Limited",headline:"10月5日已交割298,092,515股，佔53.77%"},
+        {id:"offer",kind:"cash",direction:"ltr",fromLabel:"Max Premier Limited",toLabel:"餘股股東",headline:"餘股要約價每股0.3428港元；綜合文件待寄",proposedOrTerminated:true}],
+        annotations:[{tag:"①",title:"控股股份與餘股要約",body:"控股股權協議對價1.02163億港元；餘股按每股0.3428港元另計，兩段金額分列。"}],
+        evidenceLinks:[{documentId:i,pages:[2,3,4],label:"已完成的股份買賣及要約價"},{documentId:p,pages:[1,2],label:"文件寄發延期申請"}],firstPending:false};
+    }else return null;
+    if(c.stage.status!=="active")return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topo=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:f.lTitle,rightTitle:f.rTitle,transitionLabel:f.gate,outcomeBadge:f.badge}),[
+      box("L_sell","left",43,100,149,146,"seller",f.left,f.leftSub),box("L_buy","left",448,100,157,146,"buyer",f.right,f.rightSub),
+      box("R_1","right",728,84,295,75,"target",...f.one),box("R_2","right",728,210,295,75,"public",...f.two)
+    ],[],[{id:"block",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:200,labelHeight:34,label:f.a,dashed:f.firstPending}]);
+    const nodes=[{id:"l",role:"seller",name:f.left},{id:"r",role:"buyer",name:f.right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"offer",modality:"cash",status:"active",stageDate:c.stage.date,stageLabel:f.badge,
+      caseArchetypeLabel:f.firstPending?"潛在控股權交易":"控股股份與強制要約",caseModalityLabel:f.firstPending?"意向階段":"現金",caseModalityShortLabel:f.firstPending?"意向階段":"現金",
+      before:{title:f.lTitle,nodes,equityLinks:[]},after:{title:f.rTitle,nodes,equityLinks:[],outcomeBadge:f.badge},
+      flows:f.flows,annotations:f.annotations,evidenceLinks:f.evidenceLinks,compactSummary:f.badge,topology:topo};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00866-20261103-zhuhai-termination"){const d=buildVerifiedQinfaUnwind26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00604-20261126-zhi-di-property"){const d=buildVerifiedZhiDi26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01548-20261124-probio-capital-reorganisation"){const d=buildVerifiedProbio26(txCase,documents);return d&&validateDiagramSpec(d);}
