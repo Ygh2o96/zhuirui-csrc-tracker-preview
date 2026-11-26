@@ -8262,7 +8262,25 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:f?"控股交割、要約及其後發行":"自願部分要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:f?"已交割控股股份":"已披露有效接納股數"}],annotations:[{tag:"①",title:f?"認購與認股權證":"接納與結算",body:f?"11月13日另行完成3.7億股認購及7,700萬份認股權證發行。發行權證無現金對價，0.50港元為行權價。":"全數承購有效接納；應付價款按每股0.10港元計算。結果公告列明於截止後七個營業日內結算。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:f?"原控股股份交割":"要約文件"},{documentId:z,pages:[2,3],label:"要約截止結果及結算安排"},...(f?[{documentId:later,pages:[2,3,4],label:"認購及認股權證發行結果"}]:[])]});
   }
+  function buildSuperlandOrMs(c,docs){
+    const h=c.code==="00368",a=h?"YS-20260804-9085eceeba96":"YS-20260505-259a5379b74e",z=h?"YS-20261015-d6e31a515172":"YS-20260921-fd5fa3f0d4a5",n="YS-20261112-b376817d8b65",date=h?"2026-10-15":"2026-09-21";
+    const terms=h?[["control_shares",600000000,a],["control_cash",225000000,a],["accepted_shares",48580000,z],["accepted_gross",18217500,z],["public_float_restored",25,n]]:[["block_shares",75000000,a],["control_cash",60000000,a],["accept_shares",26000,z],["options_count",600000,z],["offer_actual_cash",92800,z],["public_float",27.11,z]];
+    if(![a,z,...(h?[n]:[])].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!terms.every(([k,v,d])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===d)))return null;
+    const status="closed",left="已交割控股股份",right=h?"要約接納及公眾持股恢復":"股份與購股權要約結算",badge=h?"10月15日要約截止 · 11月12日披露恢復公眾持股":"9月21日要約截止 · 維持上市";
+    const seller=h?"原股東":"Ching Wai Holdings",buyer=h?"Grand Junction及一致行動方":"L.V.E.P. Holdings";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",seller,h?"交割股份合計6億股":"轉讓7,500萬股"),
+      box("b","left",444,106,161,124,"buyer",buyer,h?"合計取得75%":"取得約36.69%"),
+      box("a","right",724,72,310,70,"target",h?"餘股接納4,858萬股":"接納26,000股 · 每股0.80港元",h?"每股0.375港元；應付1,821.75萬港元":"股份要約應付20,800港元"),
+      box("r2","right",724,164,310,75,"creditor",h?"要約後一致行動集團81.07%":"接納60萬份購股權",h?"截至11月12日配售4,858萬股":"每份註銷價0.12港元；應付72,000港元"),
+      box("r3","right",724,260,310,76,"creditor",h?"公眾持股恢復至25.00%":"兩項要約合計應付92,800港元",h?"公司11月12日公告":"披露當日公眾持股約27.11%")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:h?"已交割 · 2.25億港元":"已交割 · 6,000萬港元"}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:h?"控股轉讓、要約及恢復公眾持股":"股份及購股權要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:h?"控股交易合計6億股":"控股交易7,500萬股"}],annotations:[{tag:"①",title:h?"公眾持股":"結算",body:h?"配售前公眾持股為約18.93%，配售後25.00%；配售是已持有股份的轉讓。":"股份及購股權各按接納數量計算應付；購股權註銷並未發行新股。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:"控股股份交割"},{documentId:z,pages:h?[2,3,4]:[2,3,5],label:"實際接納、金額及結算"},...(h?[{documentId:n,pages:[1],label:"恢復公眾持股"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00368-20260804-control-mgo","HK-01451-20260505-lvep-cash-offer"].includes(txCase?.id))return buildSuperlandOrMs(txCase,documents);
     if(["HK-09978-20260728-control-mgo","HK-01448-20260901-voluntary-partial"].includes(txCase?.id))return buildFinelandOrFuShou(txCase,documents);
     if(["HK-00852-20260225-speed-success-liquidator","HK-03938-20260109-fortune-origin-control"].includes(txCase?.id))return buildStrongOrLfg(txCase,documents);
     if(["HK-01037-20260727-foxconn-control","HK-03336-20260518-lens-voluntary"].includes(txCase?.id))return buildFoxconnOrLens(txCase,documents);

@@ -41704,21 +41704,8 @@
           },
           "kind": "supplement",
           "state": "actual",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-11-12",
-          "detail": "公司披露已向独立投资者配售4,858万股；一致行动集团合计75%，公众持股恢复至25%。",
-          "evidence": {
-            "documentId": "YS-20261112-b376817d8b65",
-            "pages": [
-              1
-            ]
-          },
-          "kind": "supplement",
-          "label": "公告恢复公众持股",
-          "state": "actual",
-          "timeZone": "Asia/Hong_Kong"
+          "timeZone": "Asia/Hong_Kong",
+          "label": "公告恢復公眾持股"
         }
       ],
       "progressDate": "2026-11-12",
