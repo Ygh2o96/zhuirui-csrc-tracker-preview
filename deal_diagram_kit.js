@@ -6112,7 +6112,23 @@
     };
   }
 
+
+  function buildCtghkmIntroduction(row,docs){
+    const id="HK-00308-20260520-ctg-hkm-spin", announce="YS-20261030-9ecf2791baa8", ev="YS-20261126-fd5585c465f7";
+    if(row.id!==id||row.stage?.status!=="closed"||row.stage.eventKind!=="listing"||row.stage.date!=="2026-11-26"||docs?.[ev]?.url!=="https://www.hkex.com.hk/services/trading/securities/trading-news/newly-listed-securities?sc_lang=en"||!row.events?.some(e=>e.kind==="listing"&&e.state==="actual"&&e.evidence?.documentId===ev)||!row.terms?.some(t=>t.key==="distributed_shares"&&t.value===1384158427&&t.evidence?.documentId===announce))return null;
+    const parent="香港中旅", holder="合资格母公司股东", child="中旅港澳", done="2026 年 11 月 26 日 · 已介绍上市";
+    const box=(id,panel,x,y,w,role,title,subtitle,code)=>({id,panel,x,y,w,h:78,role,title,subtitle,code});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:360,status:"closed",leftTitle:"分拆方式 · 实物分派现有股份",rightTitle:"港交所主板 · 介绍上市",transitionLabel:"11 月 26 日",outcomeBadge:done}),[
+      box("L_parent","left",38,125,175,"listed",parent,"分拆上市母公司","00308.HK"),box("L_holder","left",432,125,176,"public",holder,"每持 4 股母公司股份"),
+      box("R_child","right",748,125,270,"listed",child,"介绍上市 · 无发售募资","01821.HK")
+    ],[],[{id:"distribution",panel:"left",kind:"shares",step:"①",pathPoints:[[213,166],[432,166]],labelCenter:[323,166],labelWidth:160,labelHeight:40,label:"实物分派 1 股中旅港澳",sublabel:"按所持母公司股份 4 比 1"}]);
+    return {id,caseId:id,code:row.code,name:parent,mechanism:row.mechanism,stageLabel:done,stageDate:row.stage.date,archetype:"spin_off",modality:"in_kind",status:"closed",caseArchetypeLabel:"PN15 分拆 · 介绍上市",caseModalityLabel:"实物分派 · 无募资",caseModalityShortLabel:"介绍上市",
+      before:{title:"分拆安排",nodes:[{id:"p",role:"listed",name:parent},{id:"h",role:"public",name:holder}],equityLinks:[]},after:{title:"主板挂牌",nodes:[{id:"c",role:"listed",name:child}],equityLinks:[],outcomeBadge:done},
+      flows:[{id:"distribution",kind:"shares",direction:"ltr",fromLabel:parent,toLabel:holder,headline:"4 股母公司股份获分派 1 股中旅港澳"}],
+      annotations:[{tag:"①",title:"股份来源",body:"分派范围为中旅港澳 1,384,158,427 股现有股份，不设公开或国际新股发售。"}],evidenceLinks:[{documentId:announce,pages:[13,106,212],label:"介绍上市文件 · 分派比例与股份数"},{documentId:ev,pages:[],label:"港交所 · 新上市证券"}],compactSummary:"香港中旅按 4 比 1 实物分派 · 中旅港澳已介绍上市 · 无发售募资",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if (txCase?.id==="HK-00308-20260520-ctg-hkm-spin" && txCase.stage?.eventKind==="listing") {const d=buildCtghkmIntroduction(txCase,documents);return d&&validateDiagramSpec(d);}
     if (!txCase || typeof txCase !== "object") {
       throw new Error("getSpecForCase requires a transaction case object");
     }
