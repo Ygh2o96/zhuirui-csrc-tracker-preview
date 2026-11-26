@@ -6599,7 +6599,29 @@
       {tag:"③",title:"交割后触发的现金要约",body:"按公告股本不变情景，余股最多 150,000,988 股，按每股 2 港元计的现金上限为 300,001,976 港元。KIG 承诺保留的股份不计入此上限。"}],
       evidenceLinks:[{documentId:src,pages:[4,30,38,44],label:"联合公告：现有股份、对价及要约范围"},{documentId:upd,pages:[2,3],label:"先决条件及可换股债进度"}],compactSummary:"拟转让 3.42 亿股现有股份 · 占 57% · 控股股份待交割",topology};
   }
+
+  function buildVerifiedOceanVivo(c,docs){
+    const cl="YS-20261102-32f4f29d41c2", upd="YS-20261120-d55b54403fab", delay="YS-20261029-d6852276fdec",dt="2026-11-20";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="supplement"||[cl,upd,delay].some(x=>docs?.[x]?.caseId!==c.id))return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v);
+    if(!term("side_purchase_shares",32354686)||!term("post_side_purchase_pct",28.07)||!term("offer_shares",316501343)||!term("offer_price",2.21)||!term("offer_cash_cap",699467968))return null;
+    const left="陈延标",right="Ocean Vivo",badge="另购股份已交割 · 自愿要约待先决条件";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"另行买卖的现有股份已交割",rightTitle:"拟提出自愿全面现金要约",transitionLabel:"两项进度分别列示",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"seller",left,"另行购股协议卖方"),box("L_r","left",448,100,157,146,"buyer",right,"与一致行动人合持 28.07%"),
+      box("R_a","right",728,84,295,75,"target","拟按每股 2.21 港元收购余股","余股 316,501,343 股"),
+      box("R_b","right",728,210,295,75,"public","最高现金约 7.0 亿港元","按公告股本不变且全部接纳情景"),
+    ],[],[{id:"block",panel:"left",kind:"shares",step:"①",pathPoints:[[192,160],[448,160]],labelCenter:[320,160],labelWidth:224,labelHeight:34,label:"转让 32,354,686 股现有股份"}]);
+    const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"offer",modality:"cash",status:"active",
+      caseArchetypeLabel:"另行购股及拟自愿全面现金要约",caseModalityShortLabel:"现金",before:{title:"另行购股协议",nodes,equityLinks:[]},after:{title:"另购交割、余股待要约",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"另行买卖 32,354,686 股已于 11 月 2 日交割"},{id:"offer",kind:"cash",direction:"ltr",fromLabel:right,toLabel:"适用余股股东",headline:"拟每股 2.21 港元现金收购余股",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"单独股份协议",body:"Ocean Vivo 于 11 月 2 日完成向陈延标另行购股，与一致行动人合计持有 123,498,657 股，约占当时已发行股份 28.07%。"},
+      {tag:"②",title:"自愿全面现金要约",body:"余股拟覆盖 316,501,343 股。按每股 2.21 港元、全数接纳及股本不变，现金上限约 7.0 亿港元。11 月 20 日公告委任独立财务顾问。"}],
+      evidenceLinks:[{documentId:cl,pages:[1,2],label:"联合公告：另行购股交割及余股规模"},{documentId:delay,pages:[2],label:"余股要约先决条件"},{documentId:upd,pages:[1],label:"独立财务顾问委任"}],compactSummary:"另购股份已交割 · 合持 28.07% · 余股要约待先决条件",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01748-20261008-ocean-vivo"){const x=buildVerifiedOceanVivo(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03816-20260904-luxshare-control"){const x=buildVerifiedKfmBlock(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01848-20261022-ari-eb-extension"){const x=buildVerifiedCalcExtension(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-00442-20251112-vax-acquisition"){const x=buildVerifiedVax(txCase,documents);return x&&validateDiagramSpec(x);}
