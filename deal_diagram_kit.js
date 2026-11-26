@@ -6288,7 +6288,21 @@
     const node=(id,role,name)=>({id,role,name});
     return {id,caseId:id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,archetype:'scheme',modality:'mixed',status:'closed',caseArchetypeLabel:'协议安排私有化',caseModalityShortLabel:'现金／股份选项',before:{title:'计划股份注销',nodes:[node('b','buyer',b),node('p','public',p),node('g','public',g)],equityLinks:[]},after:{title:'协议安排完成',outcomeBadge:out,nodes:[node('b','buyer',b),node('i','target',i)],equityLinks:[{from:'b',to:'i',label:'持有 100%',pct:100,style:'solid'}]},flows:[{id:'cash',kind:'cash',direction:'ltr',fromLabel:b,toLabel:p,headline:'926,622,591 股按每股 12.18 港元注销'},{id:'stock',kind:'shares',direction:'ltr',fromLabel:t,toLabel:'选择股份的股东',headline:'配发 58,806,550 股 TopCo A 类股'},{id:'paidup',kind:'shares',direction:'ltr',fromLabel:t,toLabel:g,headline:'原持 TopCo 股份列作缴足'}],annotations:[{tag:'①',title:'现金注销',body:'926,622,591 股按每股 12.18 港元注销，含有效选择股份后超比例转现金的部分。'},{tag:'②',title:'股份选择及实际配发',body:'103,082,280 股有效选择股份，上限为 58,806,553 股；比例调整并处理零碎股后，实际配发 58,806,550 股 TopCo A 类股。'},{tag:'③',title:'Topaz Gem 单列',body:'185,954,093 股注销，非现金对价为原持未缴足 TopCo A 类股按每股 12.18 港元列作缴足。三类合计注销 1,171,383,234 股。'}],evidenceLinks:[{documentId:d,pages:[2,3,4],label:'生效公告 · 注销分项与完成后股权'},{documentId:sd,pages:[130],label:'计划文件 · 每股计划股份对价'}],compactSummary:'现金注销 9.3 亿股 · 配发 5,880.7 万股 TopCo 股份 · Topaz Gem 缴足安排单列',topology};
   }
+
+  function buildBaicSwapTender(c,docs){
+    const id="HK-01958-20261117-battery-swap-assets", k="YS-20261117-ecf2d7e81bf5";
+    if(c.id!==id || c.stage?.status!=="active" || c.stage.date!=="2026-11-17" || c.stage.eventKind!=="first_announcement" || docs?.[k]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1117/2026111700544.pdf" || !c.terms?.some(t=>t.key==="appraisal" && t.value===277900000 && t.evidence?.documentId===k)) return null;
+    const seller="北京汽车动力总成", exchange="北京产权交易所", target="112 座换电站相关资产", outcome="已公告拟出售 · 待竞价";
+    const box=(id,panel,x,y,w,role,title,subtitle)=>({id,panel,x,y,w,h:78,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:380,status:"active",leftTitle:"拟公开挂牌程序",rightTitle:"标的及定价口径",transitionLabel:"拟竞价",outcomeBadge:outcome}),[
+      box("L_s","left",40,128,185,"seller",seller,"出让方"),box("L_p","left",430,128,180,"target",exchange,"拟公开挂牌"),
+      box("R_a","right",754,88,256,"target",target,"设备及附属资产"),box("R_v","right",754,235,256,"public","成本法评估约人民币 2.8 亿","不含税 · 最终成交价待竞价")
+    ],[],[{id:"f1",panel:"left",kind:"asset",step:"①",pathPoints:[[225,167],[430,167]],labelCenter:[327,167],labelWidth:150,labelHeight:38,label:"拟提交挂牌"}]);
+    return {id,caseId:id,code:c.code,name:"北京汽车",mechanism:c.mechanism,stageLabel:outcome,stageDate:c.stage.date,archetype:"disposal",modality:"cash",status:"active",caseArchetypeLabel:"拟公开出售资产",caseModalityLabel:"成交价及支付方式待定",caseModalityShortLabel:"竞价待定",before:{title:"已披露",nodes:[{id:"s",role:"seller",name:seller},{id:"p",role:"target",name:exchange}],equityLinks:[]},after:{title:"待竞价",nodes:[{id:"a",role:"target",name:target}],equityLinks:[],outcomeBadge:outcome},
+      flows:[{id:"f1",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:exchange,headline:"拟提交挂牌",proposedOrTerminated:true}],annotations:[{tag:"①",title:"公开挂牌",body:"初始公告披露拟经北京产权交易所公开竞价，受让方及交易协议待定。"},{tag:"②",title:"定价",body:"估值日 2026 年 9 月 30 日，成本法评估约人民币 2.8 亿元（不含税）；成交价以最终出价为准。"}],evidenceLinks:[{documentId:k,pages:[1,2,3,4,7],label:"公告 · 公开挂牌与估值口径"}],compactSummary:"北京汽车 · 112 座换电站相关资产 · 拟公开挂牌",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.id === "HK-01521-20261109-sanrex") {const verified=buildSanRexScheme(txCase,documents);return verified&&validateDiagramSpec(verified);}
     if (txCase?.id === "HK-00848-20260929-wf-scheme") {const verified=buildMaoyeVerified(txCase,documents);return verified&&validateDiagramSpec(verified);}
     if (txCase?.id === "HK-01086-20260927-crystal-aurora") {const verified=buildCrystalVerified(txCase,documents);return verified&&validateDiagramSpec(verified);}
