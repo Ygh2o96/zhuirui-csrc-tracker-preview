@@ -7954,7 +7954,34 @@
       annotations:[{tag:"①",title:h?"本金與租金":"分期與交付",body:h?"提款日未償本金決定實際新增融資額；船舶仍按原安排續租。":"付款按每艘建造進度；預計交付期為2029年9月30日至2030年12月31日。"}],
       evidenceLinks:h?[{documentId:a,pages:[1,3,4],label:"修訂上限、增量及租期"}]:[{documentId:a,pages:[1,3,4],label:"十艘、合同價格及預計交付"},{documentId:z,pages:[1,2,3],label:"獨立股東批准"}]});
   }
+  function buildNtsNanyang(c,docs){
+    const n=c.code==="02473",dt="2026-11-11",status=n?"active":"approved";
+    const get=(k,date,leaf)=>{const id=c.events?.find(e=>e.kind===k&&e.date===date&&e.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;};
+    const a=get(n?"dispatch":"first_announcement",n?dt:"2026-09-21",n?"2026111101431":"2026092100682"),z=n?a:get("vote",dt,"2026111100181");
+    if(!a||!z||c.stage?.status!==status||c.stage.date!==dt||c.events.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind)))return null;
+    const m=n?{share_consideration:149986000,interest:100,operating_stake:94.94,issue_price:0.3947,consideration_shares:380000000,initial_shares:190000000,earnout_2026:105526000,earnout_2027:84474000}:{shipbuilding_total:71400000,price_per_vessel:35700000};
+    if(!Object.entries(m).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a)))return null;
+    const s=c.parties["卖方"],b=c.parties["买方"];
+    if(!(n?s==="Jiary Development (Hong Kong) Limited"&&c.parties["标的"]==="PAGAC NTS Limited":s==="江门市南洋船舶工程有限公司"&&b==="Jinmao Marine Inc. 与 Jinquan Marine Inc."))return null;
+    const badge=n?"通函已寄發 · 股東會擬11月30日舉行":"股東已批准兩項合同 · 待建造交付";
+    const left=n?"收購PAGAC NTS":"兩艘散貨船新造訂單",right=n?"對價股與業績掛鈎分期":"船價及付款節點",kind=n?"shares":"asset";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:n?"按協議擬發股":"按合同分期",outcomeBadge:badge}),[
+      mk("s","left",42,104,161,144,"seller",n?"Jiary Development":"江門南洋船舶",n?"出售方":"承造及出售方"),mk("b","left",452,104,153,144,"buyer",n?"喜相逢集團":"金輝旗下兩家公司",n?"買方及股份發行人":"各自簽約購一艘"),
+      mk("r1","right",724,71,310,70,"target",n?"對價上限約1.50億港元":"兩艘合約價合計7,140萬美元",n?"最多3.80億股，每股0.3947港元":"各3,570萬美元，兩份合同不互為條件"),
+      mk("r2","right",724,159,310,76,"creditor",n?"交割時擬發1.90億股":"每艘按四個節點付款",n?"餘下最多1.90億股按審計業績發行":"最後一期2,142萬美元，交付時應付"),
+      mk("r3","right",724,255,310,84,"creditor",n?"兩期業績對價股":"兩艘預計交付日期",n?"2026最多1.05526億；2027最多8,447.4萬":"2029年8月31日及9月30日或之前")
+    ],[],[{id:"main",panel:"left",kind,step:"①",pathPoints:[[203,175],[452,175]],labelCenter:[321,175],labelWidth:213,labelHeight:36,label:n?"擬取得PAGAC NTS 100%":"按兩份合同建造及交付",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:n?"shares":"cash",status,stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:n?"新股及業績對價收購":"散貨船建造合同",caseModalityLabel:n?"對價股":"現金",caseModalityShortLabel:n?"對價股":"現金",topology,compactSummary:badge,
+      before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"main",kind,direction:"ltr",fromLabel:s,toLabel:b,headline:n?"擬轉讓控股公司100%股權":"按合同交付兩艘散貨船",proposedOrTerminated:true},{id:"payment",kind:n?"shares":"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:n?"固定部分1.90億股；另有兩期業績股份，上限合計1.90億":"每艘合同價3,570萬美元，分四期支付",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:n?"持股與交割條件":"交付安排",body:n?"擬取得PAGAC NTS全部股權，並間接持有經營主體新奇特約94.94%；業績股取決於經審計淨利潤。":"兩份合同分別由Jinmao Marine與Jinquan Marine簽訂。"}],
+      evidenceLinks:n?[{documentId:a,pages:[1,12,14,44,47],label:"股東會、兩級股權及對價股上限"}]:[{documentId:a,pages:[1,2,3,4],label:"兩份合約、價格及交付"},{documentId:z,pages:[1,2],label:"兩項決議通過"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02473-20260804-pagac-nts","HK-00137-20260921-two-nanyang-newbuilds"].includes(txCase?.id))return buildNtsNanyang(txCase,documents);
     if(["HK-03877-20261118-hilli-sale-leaseback","HK-03877-20260901-ten-grain-carriers"].includes(txCase?.id))return buildCsscPair(txCase,documents);
     if(["HK-00147-20261030-quantumcompute","HK-09982-20261116-distressed-lp-frameworks"].includes(txCase?.id))return buildQuantumOrLP(txCase,documents);
     if(["HK-01201-20260927-tesson-huazhi","HK-09982-20260923-link-win"].includes(txCase?.id))return buildTessonLink(txCase,documents);
