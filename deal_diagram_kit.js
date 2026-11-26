@@ -7476,7 +7476,62 @@
       annotations:[{tag:"①",title:"交割條件",body:"雙方已分別豁免其股東批准條件；中國和巴布亞新幾內亞審批仍在進行。"}],
       evidenceLinks:[{documentId:i,pages:[3,4],label:"股權、現金價及特許權費"},{documentId:q,pages:[1,2],label:"建設出資償還及賣方合計現金"},{documentId:p,pages:[1],label:"豁免及剩餘審批"}]});
   }
+  function buildReviewedClosedTrio(c,docs){
+    const t=(k,v)=>c.terms?.find(x=>x.key===k&&x.value===v);
+    const fromDoc=(id,leaf)=>docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;
+    const ev=(k,d,leaf)=>fromDoc(c.events?.find(e=>e.kind===k&&e.date===d&&e.state==="actual")?.evidence?.documentId,leaf);
+    if(c.stage?.status!=="closed"||c.events?.some(e=>e.state==="actual"&&["termination","offer_lapse"].includes(e.kind)))return null;
+    let f;
+    if(c.id==="HK-03330-20251210-simberi-subscription"){
+      const i=ev("first_announcement","2025-12-10","2025121000331"),q=ev("completion","2026-04-02","2026040200045");
+      const q2=fromDoc(t("actual_cash_receipt",389000000)?.evidence?.documentId,"2026.04.02-lingbao-strategic-transaction-completed-and-fid-approved");
+      if(!i||!q||!q2||c.stage.date!=="2026-04-02"||c.stage.eventKind!=="completion"||t("consideration",370000000)?.evidence?.documentId!==i||
+        t("working_capital_cash_adjustment",19000000)?.evidence?.documentId!==q2||!c.parties?.["買方"]?.startsWith("Lingbao Gold International Company Limited"))return null;
+      f={title:"Simberi控股權認購",right:"交割持股及確認收款",badge:"2026年4月2日完成 · 取得50%加1股",
+        a:"靈寶黃金國際",as:"認購人",b:"Tabar Islands Holdings",bs:"股權認購標的",label:"已認購 50% 加 1 股",direction:"rtl",kind:"shares",
+        nodes:[{id:"a",role:"buyer",name:"Lingbao Gold International Company Limited"},{id:"b",role:"target",name:"Tabar Islands Holdings Pty Ltd"}],
+        rows:[["50% 加 1 股","取得控股權；標的成為非全資附屬"],["實收 3.89 億澳元","3.70億基礎價＋1,900萬調整"]],
+        flow2:{kind:"cash",fromLabel:"Lingbao Gold International Company Limited",toLabel:"St Barbara Limited",headline:"St Barbara確認收取3.89億澳元，含1,900萬澳元營運資金及現金調整"},
+        note:"本圖是2026年4月已完成的控股權認購。2026年9月另簽的餘下股份收購獨立列示。",
+        sources:[{documentId:i,pages:[1,2],label:"認購協議及基礎價"},{documentId:q,pages:[1],label:"交割日期及控股權"},{documentId:q2,pages:[1],label:"收款及交割調整"}],archetype:"acquisition",modality:"cash",kindLabel:"增資認購控股"};
+    }else if(c.id==="HK-09668-20251010-debt-asset-portfolio-transfer"){
+      const q=ev("completion_confirmed","2026-11-13","2026111301030");
+      if(!q||c.stage.date!=="2026-11-13"||c.stage.eventKind!=="completion_confirmed"||
+        ![["consideration",35400000000],["debt_face",50543000000],["debt_principal",34836000000]].every(([k,v])=>t(k,v)?.evidence?.documentId===q)||
+        !c.parties?.["受让方"]?.startsWith("天津津融资产管理有限公司"))return null;
+      f={title:"債權資產公開掛牌轉讓",right:"實際轉讓規模及收款",badge:"2026年11月13日確認 · 轉讓全數完成並收款",
+        a:"渤海銀行",as:"債權轉讓方",b:"天津津融",bs:"最終受讓人",label:"已轉讓部分債權資產",direction:"ltr",kind:"asset",
+        nodes:[{id:"a",role:"seller",name:c.parties["转让方"]},{id:"b",role:"buyer",name:c.parties["受让方"]}],
+        rows:[["總債權 505.43 億元","本金348.36億，另含利息等"],["實收 354 億元","較實際轉讓債權總額折讓約30%"]],
+        flow2:{kind:"cash",fromLabel:c.parties["受让方"],toLabel:c.parties["转让方"],headline:"人民幣354億元轉讓價款已全數支付"},
+        note:"總債權包括本金、利息、罰息及代墊司法費；銀行確認不延長原有轉讓授權。",
+        sources:[{documentId:q,pages:[1,2],label:"實際轉讓債權、成交價及收款"}],archetype:"disposal",modality:"cash",kindLabel:"債權資產處置"};
+    }else{
+      const q=ev("completion","2026-03-17","2026031701576"),i=ev("dispatch","2026-02-12","2026021201356");
+      if(!q||!i||c.stage.date!=="2026-03-17"||c.stage.eventKind!=="completion"||t("bond_principal",59000000)?.evidence?.documentId!==q||
+         t("issue_price",0.25)?.evidence?.documentId!==i||c.parties?.["卖方"]!=="卓文杰"||c.parties?.["买方"]!=="侨雄（福建）投资有限公司")return null;
+      f={title:"江西九愛食品股權收購",right:"股權結果及對價債券",badge:"2026年3月17日完成 · 對價債券已發行",
+        a:"卓文杰",as:"股權出售方",b:"僑雄（福建）投資",bs:"權識國際附屬買方",label:"已轉讓標的 72.5% 股權",direction:"ltr",kind:"shares",
+        nodes:[{id:"a",role:"seller",name:c.parties["卖方"]},{id:"b",role:"buyer",name:c.parties["买方"]}],
+        rows:[["已發行 5,900 萬港元可換股債","由權識國際向出售方發行 · 3年零息"],["初始換股價每股 0.25 港元","按初始價全數轉換可發行2.36億股"]],
+        flow2:{kind:"asset",fromLabel:c.parties["可换股债券发行人"],toLabel:c.parties["卖方"],headline:"交割對價為已發行的5,900萬港元可換股債券"},
+        note:"交割後江西九愛食品成為權識國際間接持股72.5%的附屬公司。圖列換股條款，實際發行的交割工具為債券。",
+        sources:[{documentId:q,pages:[1,2],label:"交割及債券發行"},{documentId:i,pages:[16,17],label:"可換股債券條款"}],archetype:"acquisition",modality:"in_kind",kindLabel:"股權收購 · 可換股債對價"};
+    }
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const dir=f.direction==="rtl";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:398,status:"closed",leftTitle:f.title,rightTitle:f.right,transitionLabel:"交易已完成",outcomeBadge:f.badge}),[
+      mk("a","left",43,100,149,146,f.nodes[0].role,f.a,f.as),mk("b","left",448,100,157,146,f.nodes[1].role,f.b,f.bs),
+      mk("r1","right",724,77,310,83,"target",...f.rows[0]),mk("r2","right",724,204,310,85,"creditor",...f.rows[1])
+    ],[],[{id:"transfer",panel:"left",kind:f.kind,step:"①",pathPoints:dir?[[448,172],[192,172]]:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:208,labelHeight:34,label:f.label}]);
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:f.archetype,modality:f.modality,status:"closed",stageDate:c.stage.date,stageLabel:f.badge,
+      caseArchetypeLabel:f.kindLabel,caseModalityLabel:f.modality==="cash"?"現金":"可換股債券",caseModalityShortLabel:f.modality==="cash"?"現金":"可換股債券",topology,compactSummary:f.badge,
+      before:{title:f.title,nodes:f.nodes,equityLinks:[]},after:{title:f.right,nodes:f.nodes,equityLinks:[],outcomeBadge:f.badge},
+      flows:[{id:"transfer",kind:f.kind,direction:f.direction,fromLabel:f.nodes[dir?1:0].name,toLabel:f.nodes[dir?0:1].name,headline:f.label},
+        {id:"pay",direction:dir?"ltr":"rtl",...f.flow2}],annotations:[{tag:"①",title:"交割口徑",body:f.note}],evidenceLinks:f.sources});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-03330-20251210-simberi-subscription","HK-09668-20251010-debt-asset-portfolio-transfer","HK-00381-20251107-jiuai-food"].includes(txCase?.id))return buildReviewedClosedTrio(txCase,documents);
     if(txCase?.id==="HK-03330-20260910-simberi-buyout")return buildReviewedSimberi(txCase,documents);
     if(txCase?.id==="HK-02013-20261126-ingram-gpu-purchase")return buildReviewedWeimobGpu(txCase,documents);
     if(txCase?.id==="HK-03382-20260827-tianjin-port-framework-renewal")return buildReviewedTianjinPortFramework(txCase,documents);
