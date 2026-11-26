@@ -6508,7 +6508,30 @@
       {tag:"②",title:g?"先决条件":"债权人表决及后续条件",body:g?"提出要约前须获规则 28.1 同意及规则 28.7 豁免；若获准并提出，要约不以接纳水平为条件。":"两组债权人于 11 月 23 日通过各自计划，按投票债权金额分别为 96.93% 及 99.61%；涉及股权转让仍待所需股东批准及法院认许等条件。"}],
       evidenceLinks:[{documentId:src,pages:g?[1,2,3]:[2,5],label:g?"证监会原件：要约参数及条件":"债务重组公告：股权转让"},...(g?[]:[{documentId:vote,pages:[2,3],label:"两组债权人表决结果"}])],compactSummary:badge,topology};
    }
+
+  function buildVerifiedSmitSwap(c,docs){
+    const src="YS-20261013-bfb92807e1bf", close="YS-20261106-bc11bd8d0cdd", dt="2026-11-06";
+    if(c.stage?.status!=="closed"||c.stage?.date!==dt||c.stage?.eventKind!=="completion"||docs?.[src]?.caseId!==c.id||docs?.[close]?.caseId!==c.id)return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.currency==="CNY"&&t.value===v);
+    if(!term("issuer_swap_consideration",194800000)||!term("third_party_injection",518150000))return null;
+    const left="S2C Holding",right="无锡亚科鸿禹",badge="换股及增资已完成 · 2026-11-06";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:214,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"国微控股以股权支付认购对价",rightTitle:"增资完成后持股及对价",transitionLabel:"换股及增资",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"buyer",left,"国微控股投资载体"),box("L_r","left",448,100,157,146,"target",right,"接受股权出资及增资"),
+      box("R_a","right",728,84,295,75,"target","换股后 10.12%","其他认购人增资后降至 7.98%"),
+      box("R_b","right",728,210,295,75,"buyer","其他认购方增资 5.18 亿元人民币","现金与应收款抵销"),
+    ],[],[arrow("in","shares","①",192,138,448,"注入 S2C 上海 13.75%"),arrow("out","shares","②",448,209,192,"取得无锡亚科鸿禹 10.12%")]);
+    const nodes=[{id:"l",role:"buyer",name:left},{id:"r",role:"target",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"acquisition",modality:"in_kind",status:"closed",
+      caseArchetypeLabel:"以股权出资及增资",caseModalityShortLabel:"股权对价",before:{title:"换股",nodes,equityLinks:[]},after:{title:"增资完成",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"in",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"以 S2C 上海 13.75% 股权支付约 1.95 亿元人民币的认购对价"},{id:"out",kind:"shares",direction:"rtl",fromLabel:right,toLabel:left,headline:"换股后 10.12%；增资完成后间接持股约 7.98%"}],
+      annotations:[{tag:"①",title:"国微控股一腿",body:"S2C Holding 以 S2C 上海约 13.75% 股权出资，对价约人民币 1.95 亿元。全体换股方对价约人民币 12.23 亿元，已包含此项。"},
+      {tag:"②",title:"增资与最终持股",body:"其他认购方增资对价约人民币 5.18 亿元，包括现金及应收款抵销。2026 年 11 月 6 日换股及增资完成，国微控股间接持股约 7.98%。"}],
+      evidenceLinks:[{documentId:src,pages:[4],label:"换股及增资条款"},{documentId:close,pages:[1],label:"交易完成及最终持股"}],compactSummary:badge,topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-02239-20261013-s2c-yake-share-swap"){const x=buildVerifiedSmitSwap(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-00195-20261124-zhang-yunhe-partial","HK-01098-20261120-rke-stake-creditor-spv"].includes(txCase?.id)) {const x=buildVerifiedGreentechOrRke(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-02179-20261118-huyou-h-share-whitewash","HK-08535-20261102-zeng-kai"].includes(txCase?.id)) {const x=buildVerifiedHuyouOrVistar(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-08526-20261103-lumina","HK-06063-20260908-control-mgo"].includes(txCase?.id)) {const x=buildVerifiedWingFungOrLotus(txCase,documents);return x&&validateDiagramSpec(x);}
