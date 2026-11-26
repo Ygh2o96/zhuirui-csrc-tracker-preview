@@ -30365,7 +30365,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-10-23",
+      "progressDate": "2026-11-13",
       "rules": [
         {
           "application": "附先决条件部分要约公告",
@@ -30429,9 +30429,9 @@
         }
       ],
       "stage": {
-        "date": "2026-10-23",
-        "eventKind": "first_announcement",
-        "label": "附先决条件部分要约已公告",
+        "date": "2026-11-13",
+        "eventKind": "dispatch_extension",
+        "label": "先決條件待滿足 · 綜合文件未寄發",
         "status": "active"
       },
       "terms": [
@@ -38453,6 +38453,18 @@
           "role": "OfferAgent",
           "service": "offer_execution",
           "side": "代表 Deep Water Strategy Limited 发出余股要约"
+        },
+        {
+          "firm": "Ample Capital Limited",
+          "role": "IFA",
+          "service": "offer_ifa_appointment",
+          "side": "獨立董事委員會",
+          "evidence": {
+            "documentId": "YS-20261125-2026112501689",
+            "pages": [
+              2
+            ]
+          }
         }
       ],
       "mechanism": "Deep Water Strategy Limited 于 8 月 24 日经接管人买入 36.93% 股权，实付 1,188 万港元。11 月 12 日公布余股有条件现金要约，每股 0.0776 港元。",
@@ -38476,9 +38488,22 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-25",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "獨立董事委員會批准委任 Ample Capital；意見擬隨綜合文件刊發",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261125-2026112501689",
+            "pages": [
+              2
+            ]
+          }
         }
       ],
-      "progressDate": "2026-11-12",
+      "progressDate": "2026-11-25",
       "rules": [
         {
           "application": "主动寻售加指示报价使要约期追溯至7月10日，而非9月补公告日",
@@ -38519,12 +38544,24 @@
             ]
           },
           "label": "收购守则 26.1"
+        },
+        {
+          "code": "TC:2.1",
+          "label": "收購守則 2.1",
+          "classificationStatus": "appointed",
+          "application": "獨立董事委員會批准委任 Ample Capital；意見擬隨綜合文件刊發。",
+          "evidence": {
+            "documentId": "YS-20261125-2026112501689",
+            "pages": [
+              2
+            ]
+          }
         }
       ],
       "stage": {
-        "date": "2026-11-12",
+        "date": "2026-11-25",
         "eventKind": "supplement",
-        "label": "36.93% 股权已交割 · 余股要约条款已公告",
+        "label": "已委任獨立財顧 · 待綜合文件",
         "status": "active"
       },
       "terms": [
@@ -98146,6 +98183,14 @@
       "publishedAt": "2026-11-24T16:46:00+08:00",
       "title": "額外復牌指引及持續停牌",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1124/2026112400334.pdf"
+    },
+    "YS-20261125-2026112501689": {
+      "id": "YS-20261125-2026112501689",
+      "caseId": "HK-01124-20260923-deep-water-receiver",
+      "date": "2026-11-25",
+      "publishedAt": "2026-11-25T22:48:00+08:00",
+      "title": "沿海綠色家園委任獨立財務顧問",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112501689.pdf"
     }
   },
   "issuerLinks": [

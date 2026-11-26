@@ -8176,7 +8176,26 @@
     const nodes=[{id:"m",role:"listed",name:"民商創科",code:"01632.HK"},{id:"s",role:"target",name:"民商智惠"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"反向收購監管裁定",caseModalityLabel:"章程改組",caseModalityShortLabel:"章程改組",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"民商創科",toLabel:"民商智惠",headline:"董事會控制變更，持股比例不變"}],annotations:[{tag:"①",title:"額外指引",body:"11月23日收悉復牌指引，11月24日公告。股票自2026年7月2日起持續停牌。"}],evidenceLinks:[{documentId:i,pages:[2],label:"章程改組與財務合併"},{documentId:l,pages:[1,2,3],label:"上市覆核決定"},{documentId:d,pages:[1,2],label:"額外復牌指引及時間"}]});
   }
+  function buildSigOrCoastal(c,docs){
+    const t=c.code==="01905",a=t?"YS-20261023-7273926483f3":"YS-20261112-9c7186b680b6",z=t?"YS-20261113-5f45e1e4e3b7":"YS-20261125-2026112501689",date=t?"2026-11-13":"2026-11-25";
+    const terms=t?[["domestic_offer_shares",1244831880],["h_offer_shares",2955171120],["domestic_offer_price",1.85],["h_offer_price",2.16]]:[["block_pct",36.93],["control_cash",11880000],["offer_price",.0776],["offer_cash_cap",20290524.49]];
+    if(![a,z].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.status!=="active"||c.stage.date!==date||!terms.every(([k,v])=>c.terms?.some(q=>q.key===k&&q.value===v&&q.evidence?.documentId===a))||[...(c.events??[]),...(c.processEvents??[])].some(e=>e.state==="actual"&&(e.date>date||["completion","termination","offer_close"].includes(e.kind))))return null;
+    if(!t&&!c.events?.some(e=>e.date==="2026-08-24"&&e.kind==="control_completion"&&e.state==="actual"))return null;
+    const status="active",left=t?"兩項擬議部分要約":"控制權股份已交割",right=t?"股份範圍與寄發條件":"餘股要約與獨立意見",badge=t?"先決條件待滿足 · 綜合文件未寄發":"已委任獨立財顧 · 待綜合文件";
+    const seller=t?"境內股東及H股股東":"接管人代原股東出售",buyer=t?"上海國際集團兩家附屬公司":"Deep Water Strategy";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:t?"有先決條件":"強制有條件現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",seller,t?"兩個股份類別":"原持股方 Coastal International"),
+      box("b","left",444,106,161,124,"buyer",buyer,t?"境內股與H股由不同實體提出":"買方及餘股要約人"),
+      box("a","right",724,72,310,70,"target",t?"12.448億境內股 · 每股1.85元人民幣":"已買入36.93% · 1,188萬港元",t?"要約方：上海國有資產經營有限公司":"約1.531億股，8月24日交割"),
+      box("r2","right",724,164,310,75,"creditor",t?"29.552億H股 · 每股2.16港元":"餘股每股0.0776港元",t?"要約方：上海國際集團（香港）":"約2.615億股；現金上限2,029.1萬港元"),
+      box("r3","right",724,260,310,76,"creditor",t?"綜合文件寄發時間待定":"11月25日委任 Ample Capital",t?"先決條件最後期限目前為2027年6月23日":"為獨立董事委員會提供意見")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:t?"擬收購部分股份":"已完成轉讓股份",proposedOrTerminated:t}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:t?"境內股及H股部分要約":"股權交割及餘股要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:t?"境內股及H股擬議部分要約":"已完成36.93%股份轉讓",proposedOrTerminated:t}],annotations:[{tag:"①",title:t?"寄發安排":"現時進展",body:t?"執行人員表示有意同意延期：在先決條件全部達成日或最後期限（以較早者為準）後不遲於七日寄發。":"餘股要約以持有超過半數投票權為接納條件。法定意見擬隨綜合文件刊發。"}],evidenceLinks:[{documentId:a,pages:t?[2,3,6]:[6,7,12,13,14],label:t?"股份類別、數量及價格":"控股股份交割與餘股要約條件"},{documentId:z,pages:[1,2],label:t?"寄發時限更新":"獨立財務顧問委任"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01905-20261023-sig-partial","HK-01124-20260923-deep-water-receiver"].includes(txCase?.id))return buildSigOrCoastal(txCase,documents);
     if(txCase?.id==="HK-01632-20250617-minshang-consolidation")return buildMinshangResumption(txCase,documents);
     if(["HK-08285-20261022-ome","HK-08093-20261026-invengo"].includes(txCase?.id))return buildOmeInvengoStage(txCase,documents);
     if(txCase?.id==="HK-09988-20261110-t-head-spin")return buildTHeadPending(txCase,documents);
