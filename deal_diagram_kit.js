@@ -7130,7 +7130,54 @@
       annotations:[{tag:"①",title:"抵銷金額",body:"資本化部分截至交割日繼續計息，該段利息由發行人向貸款人支付。"}],
       evidenceLinks:[{documentId:id,pages:[1,2,5,6,7],label:"發行數量、貸款抵銷及交割條件"}]});
   }
+  function buildReviewedAcquisition26(c,docs){
+    const src=(kind,date,leaf)=>{
+      const id=c.events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const term=(id,k,v,u)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency===u&&t.evidence?.documentId===id);
+    if(c.events?.some(e=>e.state==="actual"&&(e.kind==="completion"||e.kind==="control_completion")))return null;
+    let f;
+    if(c.id==="HK-09860-20251113-crown-bioscience"){
+      const i=src("first_announcement","2025-11-13","2025111300342"),t=src("termination","2026-11-13","2026111600079");
+      if(!i||!t||c.stage?.status!=="terminated"||c.stage.date!=="2026-11-13"||c.stage.eventKind!=="termination"||
+        c.parties?.["直接買方"]!=="Miramar Lifesciences Limited"||c.parties?.["直接賣方"]!=="JSR Life Sciences, LLC"||
+        !term(i,"consideration",204000000,"USD")||!term(i,"upfront_cash",120000000,"USD"))return null;
+      f={i,t,from:"JSR Life Sciences, LLC",to:"Miramar Lifesciences Limited",fromShort:"JSR Life Sciences",toShort:"Miramar Lifesciences",
+        target:"Crown Bioscience International",status:"terminated",title:"原協議 · 收購標的全部股權",right:"終止及原定款項安排",badge:"2026年11月13日協議終止 · 未交割",
+        gate:"原協議未交割",share:"原擬轉讓 100% 股權",cash:"原定交割款 1.20 億美元",
+        r1:["11月13日 · 雙方協議終止","未能在最後截止日前取得監管批准"],r2:["原定兩筆業績付款","上限分別為 4,000 萬及 4,400 萬美元"],
+        note:"原估總對價2.04億美元，交割款及總額可按協議調整；交易終止後不會進行收購。"};
+    }else{
+      const i=src("first_announcement","2026-11-23","2026112301703");
+      if(!i||c.stage?.status!=="active"||c.stage.date!=="2026-11-23"||c.stage.eventKind!=="first_announcement"||
+        c.events?.some(e=>e.kind==="termination"&&e.state==="actual")||
+        c.parties?.["買方"]!=="天工智匯（深圳）科技有限公司"||c.parties?.["賣方"]!=="天下無霾低碳科技（上海）股份有限公司"||
+        !term(i,"consideration",30100000,"CNY")||!term(i,"profit_guarantee_fy26",7000000,"CNY")||!term(i,"profit_guarantee_fy27",9100000,"CNY"))return null;
+      f={i,from:c.parties["賣方"],to:c.parties["買方"],fromShort:"天下無霾低碳科技",toShort:"天工智匯（深圳）",
+        target:"上海境觀智能科技有限公司",status:"active",title:"有條件股權轉讓協議",right:"付款節點及業績保證",badge:"2026年11月23日簽約 · 尚待股東批准及交割",
+        gate:"交割後納入合併報表",share:"擬轉讓 100% 股權",cash:"現金對價 3,010 萬元人民幣",
+        r1:["現金分兩期支付","簽約後10% · 交割後90%"],r2:["2026／2027年稅後盈利保證","人民幣700萬／910萬元"],
+        note:"兩期款項各於相應日期後一個月內支付，雙方可另議；年度盈利不達標由賣方按差額以現金補足。"};
+    }
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topo=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:380,status:f.status,leftTitle:f.title,rightTitle:f.right,transitionLabel:f.gate,outcomeBadge:f.badge}),[
+      mk("s","left",43,100,149,146,"seller",f.fromShort,"出售方"),mk("b","left",448,100,157,146,"buyer",f.toShort,"收購方"),
+      mk("r1","right",728,84,295,75,"target",...f.r1),mk("r2","right",728,210,295,75,"public",...f.r2)
+    ],[],[
+      {id:"shares",panel:"left",kind:"shares",step:"①",pathPoints:[[192,143],[448,143]],labelCenter:[320,143],labelWidth:206,labelHeight:34,label:f.share,dashed:true},
+      {id:"cash",panel:"left",kind:"cash",step:"②",pathPoints:[[448,207],[192,207]],labelCenter:[320,207],labelWidth:210,labelHeight:34,label:f.cash,dashed:true}
+    ]);
+    const nodes=[{id:"s",role:"seller",name:f.from},{id:"b",role:"buyer",name:f.to}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:f.status,stageDate:c.stage.date,stageLabel:f.badge,
+      before:{title:f.title,nodes,equityLinks:[]},after:{title:f.right,nodes,equityLinks:[],outcomeBadge:f.badge},topology:topo,compactSummary:f.badge,
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:f.from,toLabel:f.to,headline:f.target+" · "+f.share,proposedOrTerminated:true},
+        {id:"cash",kind:"cash",direction:"rtl",fromLabel:f.to,toLabel:f.from,headline:f.cash,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"款項安排",body:f.note}],
+      evidenceLinks:f.t?[{documentId:f.i,pages:[2,3,4,5],label:"原股權及付款安排"},{documentId:f.t,pages:[1,2],label:"監管批准及終止日期"}]:[{documentId:f.i,pages:[1,2,3,4],label:"收購股權、對價及先決條件"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-09860-20251113-crown-bioscience","HK-01340-20261123-shanghai-jingguan"].includes(txCase?.id))return buildReviewedAcquisition26(txCase,documents);
     if(txCase?.id==="HK-01196-20261111-realord-loan-capitalisation")return buildReviewedRealord(txCase,documents);
     if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier","HK-00348-20261118-hwa-sheng","HK-03774-20261030-sheng-zhan"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00866-20261103-zhuhai-termination"){const d=buildVerifiedQinfaUnwind26(txCase,documents);return d&&validateDiagramSpec(d);}
