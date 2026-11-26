@@ -38259,6 +38259,32 @@
       },
       "processEvents": [
         {
+          "date": "2026-01-08",
+          "kind": "supplement",
+          "label": "委任聯合接管人；涉及8,648.6萬股抵押股份",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260116-2026011601867",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "date": "2026-01-16",
+          "kind": "supplement",
+          "label": "公告接管人委任；抵押股份佔當時股本約46.35%",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260116-2026011601867",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
           "date": "2026-10-14",
           "detail": "接管人仍与有意者接洽，未订具有约束力协议。",
           "evidence": {
@@ -38868,6 +38894,19 @@
           "label": "公司通函已刊发",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "label": "股東特別大會預計上午11時30分召開",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261112-2026111200660",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "progressDate": "2026-11-12",
@@ -98191,6 +98230,21 @@
       "publishedAt": "2026-11-25T22:48:00+08:00",
       "title": "沿海綠色家園委任獨立財務顧問",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112501689.pdf"
+    },
+    "YS-20261112-2026111200660": {
+      "id": "YS-20261112-2026111200660",
+      "caseId": "HK-01835-20260630-3g-h-share-control",
+      "date": "2026-11-12",
+      "publishedAt": "2026-11-12T17:35:00+08:00",
+      "title": "瑞威資管股東特別大會通知",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1112/2026111200660.pdf"
+    },
+    "YS-20260116-2026011601867": {
+      "id": "YS-20260116-2026011601867",
+      "caseId": "HK-00456-20260715-receivers-charged-shares",
+      "date": "2026-01-16",
+      "title": "新城市建設發展抵押股份委任聯合接管人",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011601867.pdf"
     }
   },
   "issuerLinks": [

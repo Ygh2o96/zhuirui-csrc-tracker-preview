@@ -8194,7 +8194,25 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:t?"境內股及H股部分要約":"股權交割及餘股要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:t?"境內股及H股擬議部分要約":"已完成36.93%股份轉讓",proposedOrTerminated:t}],annotations:[{tag:"①",title:t?"寄發安排":"現時進展",body:t?"執行人員表示有意同意延期：在先決條件全部達成日或最後期限（以較早者為準）後不遲於七日寄發。":"餘股要約以持有超過半數投票權為接納條件。法定意見擬隨綜合文件刊發。"}],evidenceLinks:[{documentId:a,pages:t?[2,3,6]:[6,7,12,13,14],label:t?"股份類別、數量及價格":"控股股份交割與餘股要約條件"},{documentId:z,pages:[1,2],label:t?"寄發時限更新":"獨立財務顧問委任"}]});
   }
+  function buildRealwayOrReceivers(c,docs) {
+    const q=c.code==="01835", a=q?"YS-20260630-d8b64e338b3b":"YS-20260715-9f05f989cd99",z=q?"YS-20261112-2026111200660":"YS-20261116-45425044ba9c",date=q?"2026-11-12":"2026-11-16";
+    const terms=q?[["domestic_cash",31293000],["domestic_shares",45000000],["new_h_subscription",120000000],["h_offer_price",.8],["h_offer_max",70672000]]:[["block_shares",86485742],["block_pct",40.37]];
+    if(![a,z,...(!q?["YS-20260116-2026011601867"]:[])].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.status!=="active"||c.stage.date!==date||!terms.every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a))||[...(c.events??[]),...(c.processEvents??[])].some(e=>e.state==="actual"&&(e.date>date||["completion","termination","vote","offer_close"].includes(e.kind))))return null;
+    const status="active",left=q?"擬收購境內股份及認購H股":"接管已抵押股份",right=q?"現金要約在交割後才觸發":"可能的控股股份轉讓",badge=q?"通函已刊發 · 11月27日擬表決":"接管人正物色買家 · 未簽約";
+    const seller=q?"原境內股東及瑞威資管":"聯合接管人",buyer=q?"3G及相關收購方":"潛在買家";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:q?"擬議股份交易":"第3.7條月度更新",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,q?"seller":"creditor",seller,q?"境內舊股及新H股":"Lai Wing Lun、Osman Arab"),
+      box("b","left",444,106,161,124,"buyer",buyer,q?"境內股份由相關買方收購":"買家尚未披露"),
+      box("a","right",724,72,310,70,"target",q?"4,500萬股境內舊股":"接管8,648.6萬股抵押股份",q?"擬支付人民幣3,129.3萬元":"佔7月公告所列股本約40.37%"),
+      box("r2","right",724,164,310,75,"creditor",q?"擬認購1.5億股新H股":"接管人正與意向方磋商",q?"合計1.2億港元；另有特別授權配售":"截至11月16日未簽具約束力協議"),
+      box("r3","right",724,260,310,76,"creditor",q?"餘下8,834萬股H股：每股0.80港元":"是否轉讓及作出要約仍待確定",q?"擬議現金上限7,067.2萬港元":"7月15日刊發第3.7條公告")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q?"境內轉讓及H股認購":"商議轉讓抵押股份",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:q?"seller":"creditor",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:q?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:q?"認購、收購及可能強制現金要約":"抵押股份接管",caseModalityLabel:q?"現金":"對價待定",caseModalityShortLabel:q?"現金":"待定",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:q?"擬轉讓境內股及認購新H股":"接管人仍尋找買家",proposedOrTerminated:true}],annotations:[{tag:"①",title:q?"股東表決":"1月接管披露",body:q?"公司通函已刊發，股東會定於11月27日。要約從屬於協議交割，綜合要約文件另行寄發。":"1月8日委任接管人，1月16日披露；股數相同，佔公告當時股本約46.35%。"}],evidenceLinks:[{documentId:a,pages:q?[2,3,5,25]:[1,2],label:q?"境內轉讓、新H股與要約條款":"7月股份基準及第3.7條公告"},{documentId:z,pages:[1,2],label:q?"股東特別大會通知":"11月16日磋商進展"},...(!q?[{documentId:"YS-20260116-2026011601867",pages:[1],label:"1月接管任命及持股基準"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01835-20260630-3g-h-share-control","HK-00456-20260715-receivers-charged-shares"].includes(txCase?.id))return buildRealwayOrReceivers(txCase,documents);
     if(["HK-01905-20261023-sig-partial","HK-01124-20260923-deep-water-receiver"].includes(txCase?.id))return buildSigOrCoastal(txCase,documents);
     if(txCase?.id==="HK-01632-20250617-minshang-consolidation")return buildMinshangResumption(txCase,documents);
     if(["HK-08285-20261022-ome","HK-08093-20261026-invengo"].includes(txCase?.id))return buildOmeInvengoStage(txCase,documents);
