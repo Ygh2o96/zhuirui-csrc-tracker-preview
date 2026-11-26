@@ -7865,7 +7865,36 @@
       annotations:[{tag:"①",title:"最新披露",body:"行雲科技11月19日公告在介紹新絲路時稱兩項戰略投資已完成；該公告未列分項交割日期。"}],
       evidenceLinks:[{documentId:a,pages:[1,2,3],label:"三份協議、對價與預計持股"},{documentId:d,pages:[2],label:"行雲科技公告：交易對手方介紹"}]});
   }
+  function buildTessonLink(c,docs){
+    const t=c.code==="01201",dt=t?"2026-11-17":"2026-09-23";
+    const get=(events,k,date,file)=>{const id=events?.find(x=>x.kind===k&&x.date===date&&x.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+file+".pdf")?id:null;};
+    const a=get(c.events,"first_announcement",t?"2026-09-27":dt,t?"2026092700115":"2026092301915"),z=t?get(c.processEvents,"supplement",dt,"2026111700318"):a;
+    if(!a||!z||c.stage?.status!=="active"||c.stage.date!==dt||c.events.some(x=>x.state==="actual"&&["termination","completion"].includes(x.kind)))return null;
+    const m=t?{acquisition_consideration:98400000,cash:38400000,stock:60000000,capital_injection:21600000,facility:10000000}:{deal_cash_shares:100000000,cash:13725490.2,share_value_filed:86274509.8,consideration_shares:1078431373};
+    if(!Object.entries(m).every(([k,v])=>c.terms?.some(q=>q.key===k&&q.value===v&&q.evidence?.documentId===a)))return null;
+    const s=c.parties["卖方"],b=c.parties["买方"],p=c.parties["标的"];
+    if(!(t?s==="CCPOM Limited"&&b==="Contemporary International Battery Technology Limited"&&p==="时代华智（香港）新能源科技有限公司":b==="中原（亚洲）科技发展有限公司"&&s?.includes("CBN Holding Ltd.")&&p==="连横科技发展有限公司"))return null;
+    const badge=t?"已簽協議 · 通函預計12月17日或之前寄發":"有條件收購25% · 待股東批准";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const pct=t?100:25;
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:468,status:"active",leftTitle:t?"時代華智香港股權":"連橫科技股權",rightTitle:t?"對價及兩筆獨立資金":"對價與已知付款",transitionLabel:"按協議交割",outcomeBadge:badge}),[
+      mk("s","left",43,104,149,145,"seller",t?"CCPOM Limited":"中財和銳及CBN","出售方"),mk("b","left",448,104,157,145,"buyer",t?"天臣控股附屬公司":"中原（亞洲）科技","買方"),
+      mk("r1","right",724,72,310,67,"target",t?"股權作價人民幣9,840萬元":"股權作價1億港元",t?"現金等值3,840萬＋對價股等值6,000萬":"現金約1,372.55萬＋對價股約8,627.45萬"),
+      mk("r2","right",724,158,310,74,"creditor",t?"另向香港標的增資等值2,160萬元":"700萬港元現金已付",t?"港幣支付；部分用於清償境內貸款":"已付予中財和銳；抵扣現金總價"),
+      mk("r3","right",724,258,310,92,"creditor",t?"境內另簽無息貸款人民幣1,000萬元":"擬發約10.78億股對價股",t?"由中能科技按先決條件提供":"每股0.08港元，占擴大股本約18.86%")
+    ],[],[{id:"transfer",panel:"left",kind:"shares",step:"①",pathPoints:[[192,175],[448,175]],labelCenter:[320,175],labelWidth:213,labelHeight:36,label:"擬受讓標的"+pct+"%股權",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b},{id:"p",role:"target",name:p}];
+    const flows=[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"按協議受讓"+pct+"%股權",proposedOrTerminated:true},{id:"stock",kind:"shares",direction:"rtl",fromLabel:t?"天臣控股":"中原建業",toLabel:s,headline:t?"對價股人民幣等值6,000萬元；以港幣2元每股換算":"擬發1,078,431,373股，發行價每股0.08港元",proposedOrTerminated:true}];
+    if(t)flows.push({id:"capital",kind:"cash",direction:"ltr",fromLabel:b,toLabel:p,headline:"另向香港標的注入人民幣等值2,160萬元",proposedOrTerminated:true},{id:"loan",kind:"cash",direction:"ltr",fromLabel:"中能科技",toLabel:"境內標的或約定境內借款人",headline:"另簽人民幣1,000萬元無息貸款",proposedOrTerminated:true});
+    else flows.push({id:"initial",kind:"cash",direction:"rtl",fromLabel:b,toLabel:"中財和銳",headline:"已付700萬港元，計入收購現金款"});
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status:"active",stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:t?"控股權收購及增資":"少數股權收購",caseModalityLabel:"現金及對價股",caseModalityShortLabel:"現金＋對價股",topology,compactSummary:badge,
+      before:{title:"股權轉讓",nodes,equityLinks:[]},after:{title:"交割後",nodes,equityLinks:[{from:"b",to:"p",label:pct+"%",pct,style:"dashed"}],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:"股權與對價",body:t?"股權作價、增資及境內貸款分列。完成前須完成標的重組，並獲對價股特別授權。":"兩賣方分別出售標的12.75%及12.25%；公告列明標的業績不併表。"}],
+      evidenceLinks:t?[{documentId:a,pages:[1,2,3,6,8,13,14],label:"收購、增資、貸款及先決條件"},{documentId:z,pages:[1],label:"延期寄發通函"}]:[{documentId:a,pages:[1,3,4,9,10],label:"股權、對價分配及已付現金"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01201-20260927-tesson-huazhi","HK-09982-20260923-link-win"].includes(txCase?.id))return buildTessonLink(txCase,documents);
     if(txCase?.id==="HK-00472-20261008-i-aurora-soul")return buildSilkKpop(txCase,documents);
     if(["HK-00132-20261026-fangyuan-leaseback","HK-00132-20261109-fangyuan-leaseback"].includes(txCase?.id))return buildFangyuanPair(txCase,documents);
     if(["HK-08481-20260506-linan-land-use","HK-01416-20260819-kaki-bukit-jtc"].includes(txCase?.id))return buildLinanJtc(txCase,documents);
