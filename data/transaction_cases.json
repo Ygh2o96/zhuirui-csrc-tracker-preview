@@ -3123,11 +3123,12 @@
           "currency": "HKD",
           "precision": 2,
           "approximate": false,
-          "basis": "最高股數乘以修訂後配售價；未扣除開支",
+          "basis": "通函所列最高募資總額，扣除發行開支前。",
           "evidence": {
-            "documentId": "YS-20261030-caa92c0ff322",
+            "documentId": "YS-20261126-06de5b7c9348",
             "pages": [
-              1
+              13,
+              15
             ]
           }
         },
@@ -3161,6 +3162,54 @@
             "pages": [
               1,
               2
+            ]
+          }
+        },
+        {
+          "key": "net_proceeds_cap",
+          "label": "預計最高募資淨額",
+          "value": 40317984,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "全額配售並扣除預計開支。",
+          "evidence": {
+            "documentId": "YS-20261126-06de5b7c9348",
+            "pages": [
+              15
+            ]
+          }
+        },
+        {
+          "key": "placing_commission_pct",
+          "label": "配售佣金率",
+          "value": 2,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": false,
+          "basis": "按實際配售股數乘配售價。",
+          "evidence": {
+            "documentId": "YS-20261126-06de5b7c9348",
+            "pages": [
+              12
+            ]
+          }
+        },
+        {
+          "key": "new_shares_enlarged_pct",
+          "label": "配售股佔擴大後股本",
+          "value": 19.42,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": true,
+          "basis": "按全額配售並假設股本無其他變動。",
+          "evidence": {
+            "documentId": "YS-20261126-06de5b7c9348",
+            "pages": [
+              13
             ]
           }
         }
@@ -3206,6 +3255,25 @@
           },
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "dispatch",
+          "date": "2026-11-26",
+          "label": "刊發配售通函",
+          "state": "actual",
+          "detail": "配售協議待12月17日特別股東大會審議。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-06de5b7c9348",
+            "pages": [
+              1,
+              4,
+              6,
+              12,
+              13,
+              15
+            ]
+          }
         }
       ],
       "processEvents": [
@@ -3242,8 +3310,8 @@
       "stage": {
         "date": "2026-11-26",
         "status": "active",
-        "eventKind": "supplement",
-        "label": "已發股東大會通告 · 配售待批准"
+        "eventKind": "dispatch",
+        "label": "已刊發配售通函 · 待股東批准"
       },
       "progressDate": "2026-11-26",
       "comparables": {},
@@ -95903,6 +95971,14 @@
       "publishedAt": "2026-11-25T20:46:00+08:00",
       "title": "和泓服務：延遲寄發出售事項通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112501423.pdf"
+    },
+    "YS-20261126-06de5b7c9348": {
+      "id": "YS-20261126-06de5b7c9348",
+      "caseId": "HK-02012-20251221-specific-mandate-placing",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T20:50:00+08:00",
+      "title": "陽光油砂：特別授權配售及股份獎勵計劃通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601424.pdf"
     }
   },
   "issuerLinks": [
