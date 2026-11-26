@@ -6818,7 +6818,7 @@
     const doc=docs?.[src];
     if(c.id!=="HK-01705-20261029-time-innovation" || c.stage?.status!=="active" ||
        c.stage?.date!==dt || c.stage?.eventKind!=="control_completion" || doc?.caseId!==c.id ||
-       doc.url!=="https://iis.aastocks.com/20261126/12427571-0.PDF" ||
+       doc.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601414.pdf" ||
        !c.processEvents?.some(e=>e.date==="2026-12-03"&&e.kind==="dispatch"&&e.state==="expected"&&e.evidence?.documentId===src))return null;
     const term=(key,value)=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===src);
     if(!term("buyer1_proposed_shares",288000000)||!term("buyer2_proposed_shares",12000000)||
@@ -6962,7 +6962,35 @@
       compactSummary:"兩筆各約1.013億美元的境外交割 · 境內部分仍待 ODI",topology};
   }
 
+  function buildVerifiedZhiDi26(c,docs){
+    const dt="2026-11-26",src=c.events?.find(e=>e.kind==="first_announcement"&&e.state==="actual"&&e.date===dt)?.evidence?.documentId;
+    if(c.code!=="00604"||c.stage?.status!=="active"||c.stage.date!==dt||c.stage.eventKind!=="first_announcement"||
+       docs?.[src]?.caseId!==c.id||!docs[src].url.endsWith("/2026112601318.pdf"))return null;
+    const t=(key,value)=>c.terms?.some(q=>q.key===key&&q.value===value&&q.evidence?.documentId===src);
+    if(!t("consideration",21530300)||!t("stake",100)||!c.rules?.some(r=>r.code==="HKEX:14A"&&r.evidence?.documentId===src))return null;
+    const left="沙河實業",right="深業物業運營",badge="附條件協議已簽 · 待生效及變更登記";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:194,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"置地投資 · 100% 股權轉讓",rightTitle:"上市規則與交割條件",transitionLabel:"待協議生效及登記",outcomeBadge:badge}),[
+      box("L_sell","left",43,100,149,146,"seller",left,"沙河股份 000014.SZ"),
+      box("L_buy","left",448,100,157,146,"buyer",right,"深圳控股非全資附屬公司"),
+      box("R_rule","right",728,84,295,75,"buyer","第14A章關連交易","最高適用比率高於0.1%且低於5%"),
+      box("R_step","right",728,210,295,75,"target","待國資程序及變更登記","免通函及獨立股東批准")
+    ],[],[arrow("equity","shares","①",192,138,448,"擬轉讓置地投資 100%股權"),arrow("payment","cash","②",448,209,192,"現金人民幣 2,153.03 萬")]);
+    const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"acquisition",modality:"cash",status:"active",
+      caseArchetypeLabel:"關連股權收購",caseModalityShortLabel:"現金",
+      before:{title:"附條件股權轉讓",nodes,equityLinks:[]},after:{title:"待生效與股權登記",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"equity",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"擬轉讓深圳市深業置地物業投資有限公司100%股權",proposedOrTerminated:true},
+      {id:"payment",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:"現金人民幣 21,530,300 元，生效後五個內地營業日內支付",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"交易雙方",body:"沙河實業與買方均在深業集團控制鏈內。買方是深圳控股非全資附屬公司。"},
+      {tag:"②",title:"生效及交割",body:"相關批准及國資程序完成後生效；全額付款後啟動登記，股權登記完成才交割。"}],
+      evidenceLinks:[{documentId:src,pages:[1,2,3],label:"對價、上市規則與交割條件"},{documentId:src,pages:[4,6,8,9,11],label:"估值、控制鏈與法定當事方"}],
+      compactSummary:"人民幣約2,153萬 · 關連交易 · 尚待交割",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00604-20261126-zhi-di-property"){const d=buildVerifiedZhiDi26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01548-20261124-probio-capital-reorganisation"){const d=buildVerifiedProbio26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01995-20261126-shenyang-cifi-setoff"){const d=buildVerifiedCifiSetoff26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00076-20261126-convertible-debenture"){const d=buildVerifiedElate26(txCase,documents);return d&&validateDiagramSpec(d);}
