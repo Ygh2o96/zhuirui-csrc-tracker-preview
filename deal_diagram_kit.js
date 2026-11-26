@@ -6332,6 +6332,7 @@
       evidenceLinks:[{documentId:circ,pages:[9,10,11],label:"通函：减资结构、对价与条件"},{documentId:vote,pages:[2],label:"股东大会表决结果"}],compactSummary:"北京汽车 · 减资退出 33%／14% · 股东已批准",topology};
   }
   function getSpecForCase(txCase, documents) {
+    if (txCase?.id === "HK-00271-20261012-asiasec-rights") return null;
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.id === "HK-01521-20261109-sanrex") {const verified=buildSanRexScheme(txCase,documents);return verified&&validateDiagramSpec(verified);}
