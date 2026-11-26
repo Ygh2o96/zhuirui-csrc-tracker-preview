@@ -7353,7 +7353,40 @@
       annotations:[{tag:"①",title:"要約方及一致行動人士",body:"是次要約仍在上市期間截止；全數承購佔已發行股份約5.02%。"}],
       evidenceLinks:[{documentId:id,pages:[2,3],label:"接納及結算條款"}]});
   }
+  function buildReviewedJinmaoTimao(c,docs){
+    const src=(kind,date,leaf)=>{
+      const id=c.events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const i=src("first_announcement","2026-06-16","2026061601440"),v=src("completion","2026-06-18","2026110601470");
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.currency==="CNY"&&x.evidence?.documentId===i);
+    if(!i||!v||c.stage?.status!=="closed"||c.stage.date!=="2026-06-18"||c.stage.eventKind!=="completion"||
+      c.events?.some(e=>e.kind==="termination"&&e.state==="actual")||
+      c.parties?.["買方"]!=="北京方興亦城置業有限公司"||c.parties?.["賣方"]!=="嘉興琮茂股權投資合夥企業（有限合夥）"||
+      !t("consideration",884200000)||!t("debt_interests",521636000)||!t("equity_valuation",710910000))return null;
+    const title="天津泰茂股權及債權轉讓",right="交割結果與對價 · 人民幣",badge="2026年6月18日完成 · 中國金茂間接全資持有";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:398,status:"closed",leftTitle:title,rightTitle:right,transitionLabel:"股權與債權一併轉讓",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller","嘉興琮茂","出售方"),
+      mk("b","left",448,100,157,146,"buyer","北京方興亦城","中國金茂間接全資附屬"),
+      mk("holding","right",724,77,310,83,"target","中國金茂間接持股 49% → 100%","標的：天津泰茂置業"),
+      mk("pay","right",724,204,310,85,"creditor","股權及債權總對價 8.842 億元","內含約 5.21636 億元債權本息")
+    ],[],[
+      {id:"stake",panel:"left",kind:"shares",step:"①",pathPoints:[[192,143],[448,143]],labelCenter:[320,143],labelWidth:206,labelHeight:34,label:"天津泰茂餘下 51% 股權"},
+      {id:"debt",panel:"left",kind:"asset",step:"②",pathPoints:[[192,207],[448,207]],labelCenter:[320,207],labelWidth:206,labelHeight:34,label:"轉讓既有股東債權本息"}
+    ]);
+    const nodes=[{id:"s",role:"seller",name:c.parties["賣方"]},{id:"b",role:"buyer",name:c.parties["買方"]}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"收購剩餘股權及債權",caseModalityLabel:"一次性現金對價",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"stake",kind:"shares",direction:"ltr",fromLabel:nodes[0].name,toLabel:nodes[1].name,headline:"轉讓天津泰茂51%股權；中國金茂的間接持股由49%增至100%"},
+        {id:"debt",kind:"asset",direction:"ltr",fromLabel:nodes[0].name,toLabel:nodes[1].name,headline:"一併轉讓約5.21636億元人民幣既有債權本息"},
+        {id:"cash",kind:"cash",direction:"rtl",fromLabel:nodes[1].name,toLabel:nodes[0].name,headline:"一次性現金總對價約8.842億元人民幣，已包含所轉讓債權"}],
+      annotations:[{tag:"①",title:"股權及債權分項",body:"總價包括51%股權對價及債權本息；7.1091億元是標的淨資產評估值。"}],
+      evidenceLinks:[{documentId:i,pages:[1,2],label:"交易各方、對價及轉讓範圍"},{documentId:v,pages:[81],label:"完成日期"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00817-20260616-tianjin-timao-transfer")return buildReviewedJinmaoTimao(txCase,documents);
     if(txCase?.id==="HK-00195-20260529-geo-environ-partial")return buildReviewedGeo(txCase,documents);
     if(txCase?.id==="HK-00195-20260615-yellowstone-partial")return buildReviewedYellowstone(txCase,documents);
     if(txCase?.id==="HK-01783-20260806-intelligent-compute-servers")return buildReviewedEnvisionServers(txCase,documents);
