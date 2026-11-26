@@ -7568,13 +7568,14 @@
   function buildReviewedCarriannaFacilities(c,docs){
     const a=c.events?.find(e=>e.kind==="first_announcement"&&e.date==="2026-09-29"&&e.state==="actual")?.evidence?.documentId;
     const b=c.processEvents?.find(e=>e.kind==="dispatch_extension"&&e.date==="2026-11-26"&&e.state==="actual")?.evidence?.documentId;
+    const cr=c.events?.find(x=>x.kind==="circular"&&x.date==="2026-11-26"&&x.state==="actual")?.evidence?.documentId;
     const match=(id,s)=>docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+s+".pdf");
     const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.currency==="HKD"&&x.evidence?.documentId===a);
     if(!match(a,"2026092902207")||!match(b,"2026112601436")||c.stage?.status!=="approved"||
-       c.stage.date!=="2026-11-26"||c.stage.eventKind!=="dispatch_extension"||
+       c.stage.date!=="2026-11-26"||(cr?!match(cr,"2026112601585_c")||c.stage.eventKind!=="circular":c.stage.eventKind!=="dispatch_extension")||
        c.events?.some(e=>e.state==="actual"&&["dispatch","completion","termination"].includes(e.kind))||
        !t("facility_principal",258260000)||!t("guaranteed_principal_limit",129130000)||!t("capital_shortfall_undertaking",34710000))return null;
-    const title="合營項目定期貸款",right="佳寧娜擔保與資金承諾",badge="已獲股東書面批准 · 通函寄發期限獲延至11月26日";
+    const title="合營項目定期貸款",right="佳寧娜擔保與資金承諾",badge=cr?"已獲股東書面批准 · 11月26日刊發通函":"已獲股東書面批准 · 通函寄發期限獲延至11月26日";
     const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
     const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:415,status:"approved",leftTitle:title,rightTitle:right,transitionLabel:"貸款與擔保分列",outcomeBadge:badge}),[
       mk("l","left",43,100,149,146,"creditor","O-bank","貸款人"),
@@ -7590,7 +7591,7 @@
         {id:"guarantee",kind:"asset",direction:"rtl",fromLabel:"佳寧娜及宏達投資控股",toLabel:nodes[0].name,headline:"按合同提供共同及各別擔保；佳寧娜的本金部分最高1.2913億港元，費用及利息另計"},
         {id:"cost",kind:"asset",direction:"rtl",fromLabel:"佳寧娜及宏達投資控股",toLabel:nodes[0].name,headline:"另承諾補足未獲融資的開發成本及超支並促成完工；佳寧娜就成本承諾的金額上限3,471萬港元"}],
       annotations:[{tag:"①",title:"股東書面批准",body:"合計持有約52.50%的緊密聯繫股東就財務資助給予書面批准。"}],
-      evidenceLinks:[{documentId:a,pages:[2,3,5,6,10,11,13],label:"貸款、擔保、開發承諾及股東書面批准"},{documentId:b,pages:[1],label:"通函寄發期限豁免"}]});
+      evidenceLinks:[{documentId:a,pages:[2,3,5,6,10,11,13],label:"貸款、擔保、開發承諾及股東書面批准"},{documentId:b,pages:[1],label:"通函寄發期限豁免"},...(cr?[{documentId:cr,pages:[1,5,7,9,10,18],label:"11月26日刊發通函"}]:[])]});
   }
   function buildReviewedAssetPair(c,docs){
     const ev=(k,d,leaf)=>{
