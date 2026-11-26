@@ -8869,7 +8869,36 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildCentenaryMeilan(c,docs){
+    const configs={
+      "01959":{
+        a:"YS-20251216-44142795f351",p:"YS-20260120-a26cf74b38be",z:"YS-20260210-a61d2e007ceb",date:"2026-02-10",event:"completion",status:"closed",
+        ts:[["block_price",.405,"a"],["block_shares",376916000,"a"],["block_cash",152650980,"a"],["offer_price",.94,"a"],["accepted_shares",16000,"z"],["accepted_cash",15040,"z"],["concert_post_offer",71.21,"z"]],
+        left:"先行控股交割",right:"餘股強制現金要約",badge:"餘股要約截止 · 計入有效接納後一致行動方71.21%",seller:"Chong Kit及Law Hau Kit",buyer:"MSINT LTD",sSub:"先行出售376,916,000股",bSub:"每股0.405港元",main:"控股交易1.5億港元",
+        steps:[["2025年12月11日先行交割","一致行動方原另持502,000股"],["2026年2月10日要約截止","每股0.94港元 · 有效接納16,000股"],["有效接納總額15,040港元","計入有效接納後公眾持股28.22%"]],
+        detail:"Chong Kit Limited出售373,916,000股，Law Hau Kit出售3,000,000股並另保留3,000,000股。餘股要約價採前六個月最高已付價。",pagesA:[2,3,8],pagesP:[1],pagesZ:[2,3,4,5]
+      },
+      "00357":{
+        a:"YS-20250430-5429e03df920",p:"YS-20251231-d078ff720f31",z:"YS-20260130-5aba2b85224b",date:"2026-01-30",event:"completion",status:"closed",
+        ts:[["block_shares",237500000,"a"],["block_cash",2339375000,"a"],["h_offer_price",10.62,"p"],["domestic_offer_price",9.85,"p"],["accepted_h_shares",54170087,"z"],["accepted_domestic_shares",3512500,"z"],["offeror_concert_total_post_offer",63.5,"z"]],
+        left:"內資股控股交易",right:"兩項強制現金要約",badge:"兩項要約截止 · 計入有效接納後一致行動方63.50%",seller:"海口美蘭國際機場",buyer:"海南機場設施",sSub:"協議內資股237,500,000股",bSub:"2025年12月24日已交割",main:"先行對價人民幣23.4億",
+        steps:[["內資股要約：海南機場設施","每股人民幣9.85元 · 接納3,512,500股"],["H股要約：海南機場設施（香港）","每股10.62港元 · 接納54,170,087股"],["2026年1月30日要約截止","計入有效接納後公眾持股36.50%"]],
+        detail:"內資股的有效接納來自原一致行動方，轉讓不增加一致行動方的內資股合計。兩項要約各以原幣結算。",pagesA:[1,2],pagesP:[16,17,36],pagesZ:[2,3,4,5]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.date===(c.code==="00357"?"2025-12-24":"2025-12-11")&&e.evidence?.documentId===(c.code==="00357"?q.p:q.a)))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:false}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01959-20251216-msint-cash-follow-on","HK-00357-20250430-hainan-two-share-class-cash"].includes(txCase?.id))return buildCentenaryMeilan(txCase,documents);
     if(["HK-01732-20251201-westwell-partial","HK-08403-20251126-sunwei-conditional-lapsed"].includes(txCase?.id))return buildWestwellDowway(txCase,documents);
     if(txCase?.id==="HK-08146-20251230-hill-valley-control")return buildGraceWineOffers(txCase,documents);
     if(txCase?.id==="HK-06633-20261020-qingci-gbits-game-renewal")return buildQingciGameFramework(txCase,documents);
