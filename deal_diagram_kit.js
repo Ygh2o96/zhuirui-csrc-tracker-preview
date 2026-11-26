@@ -7786,7 +7786,35 @@
       annotations:[{tag:"①",title:"交割後",body:e?"標的成為亦辰直接非全資附屬公司，業績併表。":"標的成為亦辰直接全資附屬公司；本票可按協議提早贖回。"}],
       evidenceLinks:[{documentId:a,pages:e?[1,2]:[2,3,4],label:"交易條款與對價形式"},{documentId:z,pages:e?[1,2]:[1],label:"交割及實際發行"}]});
   }
+  function buildLinanJtc(c,docs){
+    const l=c.code==="08481",dt=l?"2026-09-30":"2026-11-12";
+    const get=(k,date,file)=>{const id=c.events?.find(x=>x.kind===k&&x.date===date&&x.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+file+".pdf")?id:null;};
+    const a=get("dispatch",l?dt:"2026-10-23",l?"2026093002091":"2026102300484"),z=l?a:get("vote",dt,"2026111200843");
+    if(!a||!z||c.stage?.status!=="approved"||c.stage.date!==dt||c.events.some(x=>x.state==="actual"&&["termination","completion"].includes(x.kind)))return null;
+    const m=l?{purchase_price:55920000,initial_payment:27960000,balance:27960000}:{lease_premium:52788000,deposit:2639400,first_instalment:10557600,balance:39591000};
+    if(!Object.entries(m).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency===(l?"CNY":"SGD")&&t.evidence?.documentId===a)))return null;
+    const s=c.parties[l?"出让方":"出租方"],b=c.parties[l?"买方":"拟登记承租方"];
+    if(!(l?s==="杭州市规划和自然资源局临安分局"&&b==="杭州盛龙旅游发展有限公司":s==="Jurong Town Corporation（JTC）"&&b==="CTR Horizon Pte. Ltd."&&c.parties["中标方"]==="Chian Teck Realty Pte Ltd"))return null;
+    const badge=l?"已付首期 · 餘款及登記按合同":"股東已批准 · 交地與登記待確認";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:471,status:"approved",leftTitle:l?"臨安濱湖土地出讓":"Kaki Bukit工業用地租賃",rightTitle:l?"成交價及付款":"地價及付款 · 未含消費稅",transitionLabel:l?"已簽出讓合同":"已中標並獲批准",outcomeBadge:badge}),[
+      mk("s","left",43,104,149,145,"seller",l?"臨安規劃資源分局":"裕廊集團 JTC",l?"土地出讓方":"出租方"),mk("b","left",448,104,157,145,"buyer",l?"杭州盛龍旅遊":"CTR Horizon",l?"受讓方":"擬登記承租方"),
+      mk("r1","right",724,72,310,67,"target",l?"合同價人民幣5,592萬元":"地價5,278.8萬新加坡元",l?"含稅；商業及娛樂用地":"中標方：Chian Teck Realty"),
+      mk("r2","right",724,158,310,74,"creditor",l?"首期人民幣2,796萬元已付":"投標按金263.94萬新加坡元已付",l?"截至通函最後實際可行日期":"計入地價"),
+      mk("r3","right",724,258,310,92,"creditor",l?"餘款人民幣2,796萬元":"按合同：首期1,055.76萬、餘款3,959.1萬",l?"合同約定於2027年5月6日或之前支付":"分別於接納函日期起28日及90日內應付")
+    ],[],[{id:"transfer",panel:"left",kind:"asset",step:"①",pathPoints:[[192,175],[448,175]],labelCenter:[320,175],labelWidth:213,labelHeight:36,label:l?"40年國有土地使用權":"33年工業用地租賃",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    const flows=[{id:"transfer",kind:"asset",direction:"ltr",fromLabel:s,toLabel:b,headline:l?"按出讓合同辦理40年用地權利":"按中標文件辦理33年租賃",proposedOrTerminated:true},
+      {id:"paid",kind:"cash",direction:"rtl",fromLabel:l?b:c.parties["中标方"],toLabel:s,headline:l?"截至通函最後實際可行日期首期已付2,796萬元":"已付投標按金263.94萬新加坡元，抵扣地價"},
+      {id:"due",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:l?"合同餘款2,796萬元，2027年5月6日或之前應付":"除按金外，首期與尾款按協議分期支付",proposedOrTerminated:true}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"approved",stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:l?"土地使用權出讓":"工業用地競標租賃",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"土地及交易方",nodes,equityLinks:[]},after:{title:"付款及交付",nodes,equityLinks:[],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:"交付及登記",body:l?"通函所載法律意見：全額付款、交地及土地使用權登記尚未完成。":"租期從建築協議指定的交地日起計，投標與股東批准已完成。"}],
+      evidenceLinks:l?[{documentId:a,pages:[7,8,25],label:"合同期限、已付款及登記狀態"}]:[{documentId:a,pages:[6,7,8],label:"中標方、承租方及地價支付"},{documentId:z,pages:[2,3],label:"股東表決結果"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08481-20260506-linan-land-use","HK-01416-20260819-kaki-bukit-jtc"].includes(txCase?.id))return buildLinanJtc(txCase,documents);
     if(["HK-08365-20260717-eversharp","HK-08365-20260925-noah-ark"].includes(txCase?.id))return buildHatcherClosures(txCase,documents);
     if(["HK-08412-20261116-168-catering","HK-08412-20261116-kau-lau-restaurant"].includes(txCase?.id))return buildQiRestaurants(txCase,documents);
     if(["HK-01643-20260119-ai-health-stake"].includes(txCase?.id))return buildModernAI(txCase,documents);
