@@ -37831,6 +37831,19 @@
           "timeZone": "Asia/Hong_Kong"
         },
         {
+          "date": "2026-10-28",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "越南競爭委員會確認受理反壟斷申報（11月20日披露）",
+          "evidence": {
+            "documentId": "YS-20261120-2d08cb34496e",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
           "date": "2026-11-20",
           "detail": "越南竞争委员会于10月28日确认受理并进行初审；没有先决条件满足或获豁免。",
           "evidence": {
@@ -37844,7 +37857,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-07-27",
+      "progressDate": "2026-11-20",
       "rules": [
         {
           "application": "SPA交割方触发；如发起股份要约仍须一致行动集团超过50%表决权",
@@ -37885,9 +37898,9 @@
         }
       ],
       "stage": {
-        "date": "2026-07-27",
-        "eventKind": "first_announcement",
-        "label": "控股协议条款已披露 · 强制要约尚未触发",
+        "date": "2026-11-20",
+        "eventKind": "supplement",
+        "label": "越南反壟斷已受理 · 交割條件尚未達成",
         "status": "active"
       },
       "terms": [
@@ -39149,7 +39162,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-05-18",
+      "progressDate": "2026-11-06",
       "rules": [
         {
           "application": "公告为附先决条件的自愿建议；接纳及一致行动方股份需要超过50%",
@@ -39178,9 +39191,9 @@
         }
       ],
       "stage": {
-        "date": "2026-05-18",
-        "eventKind": "first_announcement",
-        "label": "自愿有条件要约 · 待先决交割",
+        "date": "2026-11-06",
+        "eventKind": "supplement",
+        "label": "商務審批已取得 · 交割仍待其他條件",
         "status": "active"
       },
       "terms": [

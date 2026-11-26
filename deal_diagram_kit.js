@@ -8211,7 +8211,25 @@
     const nodes=[{id:"s",role:q?"seller":"creditor",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:q?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:q?"認購、收購及可能強制現金要約":"抵押股份接管",caseModalityLabel:q?"現金":"對價待定",caseModalityShortLabel:q?"現金":"待定",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:q?"擬轉讓境內股及認購新H股":"接管人仍尋找買家",proposedOrTerminated:true}],annotations:[{tag:"①",title:q?"股東表決":"1月接管披露",body:q?"公司通函已刊發，股東會定於11月27日。要約從屬於協議交割，綜合要約文件另行寄發。":"1月8日委任接管人，1月16日披露；股數相同，佔公告當時股本約46.35%。"}],evidenceLinks:[{documentId:a,pages:q?[2,3,5,25]:[1,2],label:q?"境內轉讓、新H股與要約條款":"7月股份基準及第3.7條公告"},{documentId:z,pages:[1,2],label:q?"股東特別大會通知":"11月16日磋商進展"},...(!q?[{documentId:"YS-20260116-2026011601867",pages:[1],label:"1月接管任命及持股基準"}]:[])]});
   }
+  function buildFoxconnOrLens(c,docs) {
+    const f=c.code==="01037", a=f?"YS-20260727-98e48e98a0dc":"YS-20260518-02256a4ed351",z=f?"YS-20261120-2d08cb34496e":"YS-20261106-23bcdca85637",date=f?"2026-11-20":"2026-11-06";
+    const ts=f?[["block_pct",33.85],["block_shares",239050141],["control_cash",152370559],["offer_price",.6374],["offer_cash_max",272337631.88]]:[["block_pct",27.81],["block_shares",333713032],["block_cash",734168670.4],["offer_price",2.2],["offer_cash_max",1905849908.6]];
+    if(![a,z].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.status!=="active"||c.stage.date!==date||!ts.every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a))||[...(c.events??[]),...(c.processEvents??[])].some(e=>e.state==="actual"&&(e.date>date||["completion","control_completion","termination","dispatch","offer_close"].includes(e.kind))))return null;
+    const status="active",left="擬收購現有股份",right="餘股要約須待交割",badge=f?"越南反壟斷已受理 · 交割條件尚未達成":"商務審批已取得 · 交割仍待其他條件";
+    const seller=f?"FSK及FDG Fund":"協議賣方",buyer=f?"Foxconn (Far East)":"藍思科技";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:f?"可能強制現金要約":"擬自願有條件要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",seller,f?"協議持有的舊股":"協議持有的舊股"),
+      box("b","left",444,106,161,124,"buyer",buyer,"擬買方及餘股要約方"),
+      box("a","right",724,72,310,70,"target",f?"擬收購雲智匯科技33.85%":"擬收購巨騰國際27.81%",f?"約2.391億股 · 協議對價1.524億港元":"約3.337億股 · 協議對價7.342億港元"),
+      box("r2","right",724,164,310,75,"creditor",f?"擬餘股每股0.6374港元":"擬餘股每股2.20港元",f?"購股權全行權情境：上限2.723億港元":"全數接納情境：上限19.058億港元"),
+      box("r3","right",724,260,310,76,"creditor",f?"越南競爭委員會正在初審":"發改審核仍在進行",f?"10月28日受理；11月20日披露":"取得發改批准後再辦外匯申報")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬轉讓舊股",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:f?"協議收購及可能強制要約":"協議收購及擬自願要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:f?"擬轉讓約2.391億股":"擬轉讓約3.337億股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"最新先決條件進展",body:f?"越南競爭委員會已受理。11月20日公告時項下交割條件尚未達成或獲豁免。":"11月6日公告確認協議條件1、7及12已達成；其餘未達成。"}],evidenceLinks:[{documentId:a,pages:f?[2,3,4,11]:[2,3,5,10,12],label:"初始公告：協議及可能要約條款"},{documentId:z,pages:[1,2],label:"最新公布的審批及先決條件"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01037-20260727-foxconn-control","HK-03336-20260518-lens-voluntary"].includes(txCase?.id))return buildFoxconnOrLens(txCase,documents);
     if(["HK-01835-20260630-3g-h-share-control","HK-00456-20260715-receivers-charged-shares"].includes(txCase?.id))return buildRealwayOrReceivers(txCase,documents);
     if(["HK-01905-20261023-sig-partial","HK-01124-20260923-deep-water-receiver"].includes(txCase?.id))return buildSigOrCoastal(txCase,documents);
     if(txCase?.id==="HK-01632-20250617-minshang-consolidation")return buildMinshangResumption(txCase,documents);
