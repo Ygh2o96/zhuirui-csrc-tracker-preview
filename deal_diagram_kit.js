@@ -7270,7 +7270,37 @@
       annotations:[{tag:"①",title:"基礎對價及調整",body:"簽約賣方為Yovole Data Group。基礎對價22億港元，按交割帳目調整，上限25億港元。餘款仍視乎牌照公司及業務合作方資格審核等條件。"}],
       evidenceLinks:[{documentId:i,pages:[1,3,4],label:"賣方、基礎對價及四期安排"},{documentId:p,pages:[12,19,20,38],label:"截至通函最後實際可行日期的持股、托管及待付對價"}]});
   }
+  function buildReviewedEnvisionServers(c,docs){
+    const disp=c.events?.find(e=>e.kind==="dispatch"&&e.date==="2026-11-18"&&e.state==="actual")?.evidence?.documentId;
+    const d=docs?.[disp];
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.currency==="CNY"&&x.evidence?.documentId===disp);
+    if(d?.caseId!==c.id||!d.url.endsWith("/2026111801563.pdf")||c.stage?.status!=="active"||
+      c.stage.date!=="2026-11-18"||c.stage.eventKind!=="dispatch"||
+      c.events?.some(e=>e.state==="actual"&&["vote","completion","termination"].includes(e.kind))||
+      !c.events?.some(e=>e.kind==="vote"&&e.date==="2026-12-07"&&e.state==="scheduled"&&e.evidence?.documentId===disp)||
+      !t("signed_august_purchase",1288400000)||!t("proposed_purchase",380000000))return null;
+    const title="高性能伺服器採購雙方",right="兩批採購及進度 · 人民幣含稅",badge="通函已刊發 · 12月7日擬審議兩批採購";
+    const seller="上海順詮科技有限公司", buyer="上海有孚雲計算有限公司";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:398,status:"active",leftTitle:title,rightTitle:right,transitionLabel:"兩批分開表決",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller","上海順詮科技","英業達全資附屬公司"),
+      mk("b","left",448,100,157,146,"buyer","上海有孚雲計算","晉景新能集團"),
+      mk("signed","right",724,77,310,83,"target","8月已簽 · 12.884 億元","逾400台；已付2.5768億，未交付"),
+      mk("pending","right",724,204,310,85,"creditor","追加擬購 · 3.80 億元","逾100台；待股東批准方可簽約")
+    ],[],[{id:"servers",panel:"left",kind:"asset",step:"①",pathPoints:[[192,143],[448,143]],labelCenter:[320,143],labelWidth:206,labelHeight:34,label:"8月批次 · 尚未交付",dashed:true},
+           {id:"addon",panel:"left",kind:"asset",step:"②",pathPoints:[[192,207],[448,207]],labelCenter:[320,207],labelWidth:206,labelHeight:34,label:"追加批次 · 尚未簽約",dashed:true}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"設備採購",caseModalityLabel:"現金分期",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"servers",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"8月批次已簽約；截至通函日尚未交付",proposedOrTerminated:true},
+        {id:"paid",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"截至最後實際可行日期，8月批次已付人民幣2.5768億元，待付10.3072億元"},
+        {id:"addon",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"追加批次未簽約，擬議對價人民幣3.80億元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"表決安排",body:"第一項議案追認8月合同；第二項議案審議追加採購。兩批設備採購與收購上海有孚股權分列。"}],
+      evidenceLinks:[{documentId:disp,pages:[5,8,9,10,11,12,41],label:"採購各方、兩批合同、付款及表決安排"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01783-20260806-intelligent-compute-servers")return buildReviewedEnvisionServers(txCase,documents);
     if(txCase?.id==="HK-01783-20260629-yovole-cloud")return buildReviewedYovole(txCase,documents);
     if(txCase?.id==="HK-00817-20261102-sinochem-finance-factoring")return buildReviewedJinmaoFinance(txCase,documents);
     if(txCase?.id==="HK-00195-20260907-berk-kivanc-partial")return buildReviewedGreentechBerk(txCase,documents);
