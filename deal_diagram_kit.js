@@ -7385,7 +7385,38 @@
       annotations:[{tag:"①",title:"股權及債權分項",body:"總價包括51%股權對價及債權本息；7.1091億元是標的淨資產評估值。"}],
       evidenceLinks:[{documentId:i,pages:[1,2],label:"交易各方、對價及轉讓範圍"},{documentId:v,pages:[81],label:"完成日期"}]});
   }
+  function buildReviewedTianjinPortFramework(c,docs){
+    const all=[...(c.events||[]),...(c.processEvents||[])];
+    const src=(kind,date,state,leaf)=>{
+      const id=all.find(e=>e.kind===kind&&e.date===date&&e.state===state)?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const i=src("dispatch","2026-11-24","actual","2026112400284"),v=src("shareholder_meeting","2026-12-16","expected","2026112400290");
+    const caps={procurement:[451,564,705],lease:[33,209,792],services:[3273,3601,3962]};
+    if(!i||!v||c.stage?.status!=="active"||c.stage.date!=="2026-11-24"||c.stage.eventKind!=="dispatch"||
+      all.some(e=>e.state==="actual"&&["vote","shareholder_meeting","completion","termination"].includes(e.kind))||
+      c.parties?.["關連對手方"]!=="天津港（集團）有限公司及其聯繫人"||
+      !Object.entries(caps).every(([k,vs])=>vs.every((n,j)=>c.terms?.some(x=>x.key===k+"_"+(2027+j)&&x.value===n*1000000&&x.currency==="CNY"&&x.evidence?.documentId===i))))return null;
+    const title="三項持續關連交易框架",right="2027／2028／2029 年度上限",badge="通函已刊發 · 12月16日擬由獨立股東逐項表決";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const a=c.parties["上市公司"],b=c.parties["關連對手方"];
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:411,status:"active",leftTitle:title,rightTitle:right,transitionLabel:"按年及按服務分列",outcomeBadge:badge}),[
+      mk("a","left",43,106,157,146,"listed","天津港發展","上市公司 · 03382"),
+      mk("b","left",448,106,157,146,"target","天津港集團","關連方及其聯繫人"),
+      mk("p","right",724,75,310,64,"target","商品採購","人民幣百萬元 451／564／705"),
+      mk("l","right",724,157,310,64,"target","物業租賃 · 使用權資產","人民幣百萬元 33／209／792"),
+      mk("s","right",724,239,310,64,"target","綜合服務","人民幣百萬元 3,273／3,601／3,962")
+    ],[],[{id:"framework",panel:"left",kind:"asset",step:"①",pathPoints:[[448,179],[200,179]],labelCenter:[324,179],labelWidth:196,labelHeight:34,label:"三項框架待獨立股東批准",dashed:true}]);
+    const nodes=[{id:"a",role:"listed",name:a},{id:"b",role:"target",name:b}];
+    const flows=[["p","商品採購：燃油、設備及其他商品"],["l","使用權資產租賃：貨場、倉庫及設施"],["s","綜合服務：公用設施及營運支援"]].map(([id,headline])=>({id,kind:"asset",direction:"rtl",fromLabel:b,toLabel:a,headline,proposedOrTerminated:true}));
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disclosable_major",modality:"in_kind",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"持續關連交易續期",caseModalityLabel:"三項框架年度上限",caseModalityShortLabel:"年度上限",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:"續期及表決",body:"三項框架涵蓋2027年1月1日至2029年12月31日；各年度上限和各項議案分開列示。"}],
+      evidenceLinks:[{documentId:i,pages:[10,16,24],label:"九項建議年度上限"},{documentId:v,pages:[1,2],label:"股東特別大會及三項議案"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-03382-20260827-tianjin-port-framework-renewal")return buildReviewedTianjinPortFramework(txCase,documents);
     if(txCase?.id==="HK-00817-20260616-tianjin-timao-transfer")return buildReviewedJinmaoTimao(txCase,documents);
     if(txCase?.id==="HK-00195-20260529-geo-environ-partial")return buildReviewedGeo(txCase,documents);
     if(txCase?.id==="HK-00195-20260615-yellowstone-partial")return buildReviewedYellowstone(txCase,documents);
