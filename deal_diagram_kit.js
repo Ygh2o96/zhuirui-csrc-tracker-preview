@@ -8396,7 +8396,25 @@
     const nodes=[{id:"s",role:s0?"listed":"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:s0?"mixed":"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:s0?"債轉股及現金":"現金",caseModalityShortLabel:s0?"債轉股及現金":"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:s0?"發行貸款資本化股份":"控股股份交割"}],annotations:[{tag:"①",title:s0?"貸款資本化":"交易雙方",body:s0?"發股代價按認購協議自應償還的股東貸款本金及應計利息中抵銷。":"Creative Elite Global Limited出售4.95億股，Chan Chin Ying Amanda出售714萬股；買方均為Wise Triumph。"}],evidenceLinks:[{documentId:a,pages:s0?[1,2]:[2,3,6],label:s0?"資本化股份發行":"控股交割及融資額度"},{documentId:z,pages:s0?[2,3,4]:[2,4,5],label:"要約結果及公眾持股"}]});
   }
+  function buildWorldlinkOrRiverine(c,docs){
+    const w=c.code==="06083",a=w?"YS-20260717-ba3bcb56a81e":"YS-20260615-8239cfe4dca5",z=w?"YS-20260828-e13ea650ca0b":"YS-20260811-54015536cfca",date=w?"2026-08-28":"2026-08-11",control=w?"2026-07-17":"2026-06-15";
+    const ts=w?[["offeror_block_shares",244964000,a],["consortium_fund_block_shares",81912000,a],["combined_spa_cash",244241747.2,a],["accepted_shares",46991001,z],["accepted_gross_exact",35111675.9472,z]]:[["block_shares",300170000,a],["block_cash",155643703,a],["accepted_shares",8000,z],["accepted_cash",4152,z]];
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===control&&e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===a)||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left="兩名買方完成股份交割",right="餘股要約結果",badge=w?"要約截止 · 公眾持股25.50%":"要約截止 · 公眾持股約25.88%";
+    const s=w?"六名原股東":"合高控股",b=w?"Lia Investment":"Yomi.sun Holding";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,w?"合計出售3.26876億股":"合計出售3.0017億股"),
+      box("b","left",444,106,161,124,"buyer",b,w?"購入2.44964億股":"購入2.2289億股"),
+      box("a","right",724,72,310,70,"target",w?"Qianshan Asia Buyout Fund":"Lucky Yang Limited",w?"另購入8,191.2萬股":"另購入7,728萬股"),
+      box("r2","right",724,164,310,75,"creditor",w?"餘股要約有效接納46,991,001股":"餘股要約有效接納8,000股",w?"每股0.7472港元，對價約3,511.2萬港元":"每股0.519港元，對價4,152港元"),
+      box("r3","right",724,260,310,76,"creditor",w?"一致行動集團持股約74.50%":"一致行動集團持股約74.12%",w?"公眾持股25.50%；以妥為登記為準":"公眾持股25.88%；以妥為登記為準")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:w?"7月17日完成股份轉讓":"6月15日完成股份轉讓"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"完成股份轉讓"}],annotations:[{tag:"①",title:"協議對價",body:w?"Lia 支付183,037,100.80港元，Qianshan基金支付61,204,646.40港元。兩者合計約2.442億港元，由Lia另作餘股要約。":"Yomi.sun 支付115,572,592港元，Lucky Yang支付40,071,111港元。兩者合計約1.556億港元，Yomi.sun是唯一要約人。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:"兩名買方及交割條款"},{documentId:z,pages:w?[2,3,4]:[2,3,5],label:"要約接納及公眾持股"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-06083-20260717-consortium-control-mgo","HK-01417-20260518-yomisun-luckyyang-control"].includes(txCase?.id))return buildWorldlinkOrRiverine(txCase,documents);
     if(["HK-08123-20260610-debt-cap-mgo","HK-01633-20260724-control-mgo"].includes(txCase?.id))return buildSinofortuneOrSheung(txCase,documents);
     if(["HK-00389-20260813-voluntary-partial","HK-08483-20260727-control-mgo"].includes(txCase?.id))return buildTontineOrMaxsight(txCase,documents);
     if(["HK-00989-20260715-restructuring-mgo","HK-02381-20260731-control-mgo"].includes(txCase?.id))return buildChangbaishanOrSmc(txCase,documents);
