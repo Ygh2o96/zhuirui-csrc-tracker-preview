@@ -8516,7 +8516,44 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"擬議股份轉讓",proposedOrTerminated:true}],annotations:[{tag:"①",title:m?"已寄發後失效":"寄發前失效",body:m?"要約已開放供合資格股東接納；到首個截止日未達接納條件。":"6月11日公告確認前提期限未延長，綜合文件不會寄發。"}],evidenceLinks:[{documentId:a,pages:m?[1,2]:[2,8],label:"要約條款"},{documentId:z,pages:[2,3],label:"失效披露"}]});
   }
+  function buildBuybackAndSeparatedOffers(c,docs){
+    const configs={
+      "00383":{
+        a:"YS-20260323-19a51c884d1b",z:"YS-20260610-3f877dde4e3e",p:"YS-20260601-2c2b5294fdc8",date:"2026-06-10",event:"completion",status:"closed",
+        ts:[["offer_price",1.1,"a"],["tendered_shares",95451498,"p"],["cancelled_shares",70000000,"z"],["gross_buyback_cash",77000000,"p"]],
+        left:"發行人現金回購",right:"回購及註銷結果",badge:"回購完成 · 7,000萬股已註銷",seller:"接納回購的股東",buyer:"天安卓健",sSub:"有效提交95,451,498股",bSub:"每股1.10港元 · 按比例回購",main:"實際回購7,000萬股",
+        steps:[["6月1日回購要約截止","提交股份超過上限，按比例分配"],["6月10日回購及註銷","總應付對價7,700萬港元"],["已發行股份降至10.11億股","按上市規則披露公眾持股25.18%"]],
+        detail:"註銷後已發行股份由1,080,530,457股降至1,010,530,457股。25.18%為公司按上市規則披露的公眾持股比例。",pagesA:[1,2],pagesZ:[2,3,4],pagesP:[2,3]
+      },
+      "01940":{
+        a:"YS-20260313-f29c62d0409d",z:"YS-20260526-3593bc0c0d2c",p:"YS-20260504-22a8d09641b9",date:"2026-05-26",event:"terminated",status:"terminated",
+        ts:[["block_shares",468096000,"a"],["block_cash",30100000,"a"],["offer_price",.626,"a"],["tenders_before_lapse",74000,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股強制現金要約",badge:"餘股要約失效 · 先行39.01%已交割",seller:"China Gas Investors",buyer:"Tangde Gas",sSub:"出售468,096,000股",bSub:"2月10日交割 · 3,010萬美元",main:"已轉讓39.01%股份",
+        steps:[["5月4日寄發綜合文件","每股0.626港元 · 門檻逾50%投票權"],["5月26日有效接納74,000股","計入接納僅約39.0142%"],["餘股要約失效","接納股份未轉讓；先行持股39.01%"]],
+        detail:"賣方為China Gas Investors Ltd.，買方為Tangde Gas Co., Limited。引發強制要約的是先行股權交割；另有人民幣股息債權收購。",pagesA:[2,3,31],pagesZ:[2,3],pagesP:[1]
+      },
+      "00784":{
+        a:"YS-20260414-c7dde7617765",z:"YS-20260526-af8f7d1b0416",p:"YS-20260505-59ef714194fa",date:"2026-05-26",event:"completion",status:"closed",
+        ts:[["block_shares",560140000,"a"],["block_paid",133033250,"a"],["accepted_shares",90000,"z"],["accepted_gross",21375,"z"],["offeror_pct_after_accepted_subject_to_registration",70.03,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股強制現金要約",badge:"要約截止 · 有效接納90,000股",seller:"四名協議賣方",buyer:"Hapbiotech Investment",sSub:"出售560,140,000股",bSub:"4月9日交割 · 1.3億港元",main:"已轉讓70.02%股份",
+        steps:[["5月5日寄發綜合文件","無條件強制要約 · 每股0.2375港元"],["5月26日要約截止","5份有效接納；毛額21,375港元"],["計入接納後持股70.03%","以過戶登記為準 · 公眾持股29.97%"]],
+        detail:"四名賣方為Reach Goal Development Limited、Simple Joy Investments Limited、Ling Yuk Tong及Keung Yun Yuen。買方為Hapbiotech Investment Holding Limited。",pagesA:[2,6,21,29,32,33],pagesZ:[2,3,4],pagesP:[2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p].every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code!=="00383"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(c.code!=="00383"&&!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},{documentId:q.p,pages:q.pagesP,label:"要約文件及結果"},{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00383-20260323-issuer-buyback-cancelled","HK-01940-20260313-tangde-lapsed-cash","HK-00784-20260414-hapbiotech-control-mgo"].includes(txCase?.id))return buildBuybackAndSeparatedOffers(txCase,documents);
     if(["HK-01796-20260427-chan-partial","HK-08413-20251210-lianfeng-partial-preconditions-lapsed"].includes(txCase?.id))return buildMetaOrAsiaGrocery(txCase,documents);
     if(["HK-02362-20260521-gong-partial","HK-01953-20260424-aureole-halo-control"].includes(txCase?.id))return buildGongOrRimbaco(txCase,documents);
     if(["HK-01932-20260421-prime-shk-cnt-chain","HK-00701-20260421-prime-shk-cnt-control"].includes(txCase?.id))return buildCntOrCpm(txCase,documents);
