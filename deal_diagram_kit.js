@@ -5061,7 +5061,10 @@
       if (moneyTerm) amountHeadlineParts.push(formatTermBrief(moneyTerm));
     }
     if (ratioTerm) amountHeadlineParts.push(`换股 ${formatTermBrief(ratioTerm)}`);
-    if (sharesTerm && !cashScheme) amountHeadlineParts.push(`发行 ${formatTermBrief(sharesTerm)}`);
+    if (sharesTerm && !cashScheme) {
+      const action = String(sharesTerm.label || "股份数").trim();
+      amountHeadlineParts.push(`${action} ${formatTermBrief(sharesTerm)}`);
+    }
     const primaryAmountText =
       amountHeadlineParts.filter(Boolean).join(" · ") ||
       (headlineTerm ? `${headlineTerm.label} ${formatTermBrief(headlineTerm)}` : txCase.mechanism || archInfo.labelZh);
