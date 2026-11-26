@@ -7813,7 +7813,32 @@
       annotations:[{tag:"①",title:"交付及登記",body:l?"通函所載法律意見：全額付款、交地及土地使用權登記尚未完成。":"租期從建築協議指定的交地日起計，投標與股東批准已完成。"}],
       evidenceLinks:l?[{documentId:a,pages:[7,8,25],label:"合同期限、已付款及登記狀態"}]:[{documentId:a,pages:[6,7,8],label:"中標方、承租方及地價支付"},{documentId:z,pages:[2,3],label:"股東表決結果"}]});
   }
+  function buildFangyuanPair(c,docs){
+    const n=c.id.includes("20261109"),dt=n?"2026-11-09":"2026-11-13",start=n?dt:"2026-10-26", e=c.events?.find(x=>x.kind==="first_announcement"&&x.state==="actual"&&x.date===start)?.evidence?.documentId;
+    const p=n?e:c.events?.find(x=>x.kind==="dispatch"&&x.state==="actual"&&x.date===dt)?.evidence?.documentId;
+    if(!e||!p||docs?.[e]?.caseId!==c.id||!docs[e].url.endsWith(n?"/2026110900610.pdf":"/2026102600654.pdf")||docs?.[p]?.caseId!==c.id||!docs[p].url.endsWith(n?"/2026110900610.pdf":"/2026111300321.pdf")||c.stage?.status!=="approved"||c.stage.date!==dt||c.events.some(x=>x.state==="actual"&&["termination","completion"].includes(x.kind)))return null;
+    const terms={lease_principal:100000000,projected_lease_receipts:n?128697000:128700000,interest_and_fees:n?28697000:28700000};
+    if(!Object.entries(terms).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency==="CNY"&&t.evidence?.documentId===p)))return null;
+    const s=c.parties["承租方"],b=c.parties["出租方"];
+    if(s!=="芳源环保（惠安）有限公司"||b!=="广东绿金融资租赁有限公司")return null;
+    const title=n?"11月9日 · 三份售後回租":"10月26日 · 兩份售後回租",badge="已獲書面批准 · 放款待確認",split=n?"2,000萬＋3,000萬＋5,000萬元":"7,500萬＋2,500萬元",total=n?"1.28697億元":"1.287億元";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:435,status:"approved",leftTitle:title,rightTitle:"本金及租賃收款 · 人民幣",transitionLabel:"按協議支付",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller","芳源環保（惠安）","資產轉讓方及承租人"),
+      mk("b","left",448,100,157,146,"buyer","廣東綠金融資租賃","資產受讓方及出租人"),
+      mk("r1","right",724,76,310,86,"target","本金合計1億元",split),
+      mk("r2","right",724,202,310,105,"creditor","全期約收"+total,n?"含利息及費用約2,869.7萬元":"含利息及費用約2,870萬元")
+    ],[],[{id:"asset",panel:"left",kind:"asset",step:"①",pathPoints:[[192,174],[448,174]],labelCenter:[320,174],labelWidth:206,labelHeight:36,label:"污水處理設備及設施",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"approved",stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:"污水設備售後回租",caseModalityLabel:"現金本金與季度租金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"資產出售",nodes,equityLinks:[]},after:{title:"租賃與收付",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"asset",direction:"ltr",fromLabel:s,toLabel:b,headline:"協議轉讓設備所有權，再租回予芳源",proposedOrTerminated:true},{id:"funding",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"合同本金合計人民幣1億元",proposedOrTerminated:true},{id:"income",kind:"cash",direction:"ltr",fromLabel:s,toLabel:b,headline:"租期8年，本金及利息按季支付",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"融資與租期",body:"租期自相應資產轉讓對價付清日起計；資產由承租方使用。"}],
+      evidenceLinks:n?[{documentId:e,pages:[1,2,3,4],label:"三份協議、書面批准及租金"}]:[{documentId:e,pages:[1,2,3],label:"兩份協議本金及書面批准"},{documentId:p,pages:[6,7],label:"還款結構及費用"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00132-20261026-fangyuan-leaseback","HK-00132-20261109-fangyuan-leaseback"].includes(txCase?.id))return buildFangyuanPair(txCase,documents);
     if(["HK-08481-20260506-linan-land-use","HK-01416-20260819-kaki-bukit-jtc"].includes(txCase?.id))return buildLinanJtc(txCase,documents);
     if(["HK-08365-20260717-eversharp","HK-08365-20260925-noah-ark"].includes(txCase?.id))return buildHatcherClosures(txCase,documents);
     if(["HK-08412-20261116-168-catering","HK-08412-20261116-kau-lau-restaurant"].includes(txCase?.id))return buildQiRestaurants(txCase,documents);
