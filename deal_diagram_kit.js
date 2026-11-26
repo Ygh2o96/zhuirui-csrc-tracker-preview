@@ -7176,7 +7176,37 @@
       annotations:[{tag:"①",title:"款項安排",body:f.note}],
       evidenceLinks:f.t?[{documentId:f.i,pages:[2,3,4,5],label:"原股權及付款安排"},{documentId:f.t,pages:[1,2],label:"監管批准及終止日期"}]:[{documentId:f.i,pages:[1,2,3,4],label:"收購股權、對價及先決條件"}]});
   }
+  function buildReviewedGreentechBerk(c,docs){
+    const src=(kind,date,fragment)=>{
+      const id=c.events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.startsWith("https://www.sfc.hk/")&&d.url.includes(fragment)?id:null;
+    };
+    const i=src("first_announcement","2026-09-07","Greentech_EN_Announcement_20260907.pdf");
+    const t=src("offer_lapse","2026-11-10","greentech-level-of-acceptance-and-lapse-announcement-english-clean-20261110-1900v11.pdf");
+    const term=(id,k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id);
+    if(!i||!t||c.stage?.status!=="terminated"||c.stage.date!=="2026-11-10"||c.stage.eventKind!=="offer_lapse"||
+       c.events?.some(e=>e.state==="actual"&&["completion","control_completion"].includes(e.kind))||
+       c.parties?.["要约方"]!=="Berk Kivanc"||c.parties?.["受要约方"]!=="Greentech Technology International Limited"||
+       !term(i,"offer_price",0.20)||!term(t,"threshold_shares",19900000)||!term(t,"valid_tenders",1741000)||
+       !term(t,"actual_acquired_shares",0)||!term(t,"actual_cash",0))return null;
+    const title="原自願有條件部分要約",right="首個截止日 · 接納及結果",badge="2026年11月10日失效 · 未取得股份、毋須支付對價";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:378,status:"terminated",leftTitle:title,rightTitle:right,transitionLabel:"未達不可豁免門檻",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"public","合資格股東","綠科科技國際"),
+      mk("b","left",448,100,157,146,"buyer","Berk Kivanc","要約人"),
+      mk("accept","right",728,84,295,75,"target","有效接納 174.1 萬股","最低接納門檻 1,990 萬股"),
+      mk("result","right",728,210,295,75,"public","11月10日 16:00 · 要約失效","接納不再生效；並無股份取得")
+    ],[],[{id:"offer",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:"原要約每股 0.20 港元",dashed:true}]);
+    const nodes=[{id:"s",role:"public",name:"綠科科技國際合資格股東"},{id:"b",role:"buyer",name:"Berk Kivanc"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"offer",modality:"cash",status:"terminated",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"自願有條件部分要約",caseModalityLabel:"原現金要約",caseModalityShortLabel:"現金",
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},topology,compactSummary:badge,
+      flows:[{id:"offer",kind:"shares",direction:"ltr",fromLabel:nodes[0].name,toLabel:nodes[1].name,headline:"原擬收購1,990萬股；接納門檻未達，實際取得0股",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"有效接納及結果",body:"首個截止日有效接納1,741,000股，佔要約股數約8.75%。要約失效，沒有按比例分配或應付對價。"}],
+      evidenceLinks:[{documentId:i,pages:[1,2],label:"原要約及價格"},{documentId:t,pages:[2,3],label:"接納數量、失效及處理"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00195-20260907-berk-kivanc-partial")return buildReviewedGreentechBerk(txCase,documents);
     if(["HK-09860-20251113-crown-bioscience","HK-01340-20261123-shanghai-jingguan"].includes(txCase?.id))return buildReviewedAcquisition26(txCase,documents);
     if(txCase?.id==="HK-01196-20261111-realord-loan-capitalisation")return buildReviewedRealord(txCase,documents);
     if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier","HK-00348-20261118-hwa-sheng","HK-03774-20261030-sheng-zhan"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
