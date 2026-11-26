@@ -6767,7 +6767,31 @@
       {tag:"③",title:"股東批准",body:"通函列明股東特別大會擬於 2026 年 12 月 11 日舉行。"}],
       evidenceLinks:[{documentId:src,pages:[1,5,7,8,15],label:"通函：工程範圍、合同價、資金安排及表決"}],compactSummary:"儲能項目 EPC · 200 MW / 800 MWh · 融資及股東批准待落實",topology};
   }
+
+  function buildVerifiedRitamixOffer(c,docs){
+    const src="YS-20261119-c03d928682af",cl="YS-20261106-e4f9ca146adb",dt="2026-11-19";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="dispatch"||docs?.[src]?.caseId!==c.id||docs?.[cl]?.caseId!==c.id)return null;
+    const t=(k,v)=>c.terms.some(x=>x.key===k&&x.value===v);if(!t("first_purchaser_shares",266054340)||!t("second_purchaser_shares",97761660)||!t("block_voting_pct",77.94)||!t("block_total_pct",77.08)||!t("offer_price",0.617)||!t("offer_cash_cap",63517682))return null;
+    const left="Garry-Worth 及 Warrants",right="Stellar Gate 及 Innovation Forge",badge="現有股份已交割 · 餘股要約進行中";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:200,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"11 月 6 日兩買方取得現有股份",rightTitle:"11 月 19 日開始餘股要約",transitionLabel:"兩項金額獨立列示",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"seller",left,"原股東"),box("L_r","left",448,100,157,146,"buyer",right,"兩名一致行動買方"),
+      box("R_a","right",728,84,295,75,"target","每股 0.617 港元","適用餘下有投票權股份"),
+      box("R_b","right",728,210,295,75,"public","約 6,351.8 萬港元上限","預定 12 月 10 日下午 4 時截止"),
+    ],[],[arrow("block","shares","①",192,138,448,"已交割 363,816,000 股"),arrow("cash","cash","②",448,209,192,"約定對價 2.24 億港元")]);
+    const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"offer",modality:"cash",status:"active",
+      caseArchetypeLabel:"控股股份買賣及強制現金要約",caseModalityShortLabel:"現金",before:{title:"已交割現有股份",nodes,equityLinks:[]},after:{title:"餘股要約",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"兩買方取得 363,816,000 股，佔投票股份 77.94%"},
+      {id:"cash",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:"約定 224,474,472 港元，按協定匯率以美元支付"},
+      {id:"offer",kind:"cash",direction:"ltr",fromLabel:"Innovation Forge Holdings",toLabel:"餘股股東",headline:"每股 0.617 港元，現金要約進行中",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"股數及分母",body:"Stellar Gate 取得 266,054,340 股，Innovation Forge 取得 97,761,660 股；合計佔全部股本 77.08%，佔已發行有投票權股份 77.94%。"},
+      {tag:"②",title:"餘股要約",body:"要約涵蓋 102,946,000 股有投票權餘股，庫存股 5,238,000 股未列入。以每股 0.617 港元計，最高現金額 63,517,682 港元。"}],
+      evidenceLinks:[{documentId:cl,pages:[2],label:"控股股份已交割"},{documentId:src,pages:[3,8,9,14,18,21,22,45],label:"兩買方、兩套股份分母及要約時間"}],compactSummary:"兩買方已取得現有股份 · 77.94% 投票權 · 餘股現金要約進行中",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01936-20260925-innovation-forge"){const x=buildVerifiedRitamixOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01085-20260924-shandong-zibo-epc"){const x=buildVerifiedHengxinEpc(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-06666-20250911-everest-control-go"){const x=buildVerifiedEverestOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03680-20260914-ligent-international-allocation"){const x=buildVerifiedRuiheAllocation(txCase,documents);return x&&validateDiagramSpec(x);}
