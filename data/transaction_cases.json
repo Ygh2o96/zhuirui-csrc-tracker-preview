@@ -9423,6 +9423,158 @@
       "intervals": {}
     },
     {
+      "id": "HK-01956-20260814-guoke-qizhi-fund",
+      "code": "01956",
+      "category": "disclosable",
+      "name": "中科聞歌：認繳國科啟智創投基金",
+      "aliases": [
+        "中科闻歌",
+        "Wenge AI",
+        "國科啟智",
+        "Guoke Qizhi",
+        "國科西子"
+      ],
+      "headlineKey": "issuer_commitment",
+      "parties": {
+        "有限合夥人": "北京中科聞歌科技股份有限公司",
+        "普通合夥人及基金管理人": "國科西子（上海）私募基金管理有限公司",
+        "另一有限合夥人": "紹興柯橋金開新材料科技有限公司",
+        "基金（暫名）": "紹興柯橋國科啟智創業投資基金合夥企業（有限合夥）"
+      },
+      "mechanism": "中科聞歌簽約認繳人民幣1.77億元，佔基金總認繳額59%。現金分兩期各50%；第二期須待基金備案及首期符合約定投資進度後發出繳款通知。",
+      "terms": [
+        {
+          "key": "issuer_commitment",
+          "label": "中科聞歌認繳額",
+          "value": 177000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "尚未確認實繳。",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        },
+        {
+          "key": "fund_size",
+          "label": "基金總認繳額",
+          "value": 300000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "公告所列擬定初始規模。",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        },
+        {
+          "key": "issuer_commitment_pct",
+          "label": "中科聞歌佔總認繳額",
+          "value": 59,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各方認繳計；普通合夥人負責管理。",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        },
+        {
+          "key": "other_lp_commitment",
+          "label": "柯橋金開認繳額",
+          "value": 120000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "佔總認繳額40%。",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        },
+        {
+          "key": "gp_commitment",
+          "label": "國科西子認繳額",
+          "value": 3000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "佔總認繳額1%。",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-08-14",
+          "label": "簽署合夥協議",
+          "state": "actual",
+          "detail": "第二期通知條件包括完成中基協備案及上一期至少70%已投資（按合同可包括已決策未付款）。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1,
+              2,
+              5
+            ]
+          }
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "最高適用百分比率超過5%但低於25%，屬須予披露交易。",
+          "evidence": {
+            "documentId": "YS-20260814-4df2ce58e828",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "stage": {
+        "date": "2026-08-14",
+        "eventKind": "first_announcement",
+        "label": "已簽署合夥協議 · 實繳待披露",
+        "status": "active"
+      },
+      "progressDate": "2026-08-14",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "aliases": [
         "愛德新能源",
         "香港黃金產業集團",
@@ -97259,6 +97411,13 @@
       "date": "2026-11-26",
       "title": "中集集團：履行擔保責任進展",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601322.pdf"
+    },
+    "YS-20260814-4df2ce58e828": {
+      "id": "YS-20260814-4df2ce58e828",
+      "caseId": "HK-01956-20260814-guoke-qizhi-fund",
+      "date": "2026-08-14",
+      "title": "中科聞歌：建議設立創業投資基金",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401655.pdf"
     }
   },
   "issuerLinks": [
