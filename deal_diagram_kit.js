@@ -8413,7 +8413,25 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"完成股份轉讓"}],annotations:[{tag:"①",title:"協議對價",body:w?"Lia 支付183,037,100.80港元，Qianshan基金支付61,204,646.40港元。兩者合計約2.442億港元，由Lia另作餘股要約。":"Yomi.sun 支付115,572,592港元，Lucky Yang支付40,071,111港元。兩者合計約1.556億港元，Yomi.sun是唯一要約人。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:"兩名買方及交割條款"},{documentId:z,pages:w?[2,3,4]:[2,3,5],label:"要約接納及公眾持股"}]});
   }
+  function buildBonaOrKamfai(c,docs){
+    const m=c.code==="08137",a=m?"YS-20260629-1a302ac9d114":"YS-20261120-8c5e87d235cb",z=m?"YS-20260902-fa16802fb6f1":a,date=m?"2026-09-02":"2026-11-20";
+    const ts=m?[["deal_consideration",91800000,z],["stake",73,a],["indirect",51.1,a],["interim",49,z]]:[["deal_consideration",14000000,a],["cash",7000000,a],["note",7000000,a],["stake",30,a]];
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="active"||c.stage.date!==date||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="active",left=m?"已完成首輪交割":"擬議收購",right=m?"過渡持股及後續審批":"對價與權益",badge=m?"首輪73%已交割 · 待礦權審批":"協議已簽 · 待交割";
+    const s=m?"Able Alliance":"梁永輝",b=m?"洪橋集團":"Yorkshire (BVI)";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:m?"補充協議":"30%權益",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,m?"出售Bona Global 73%股權":"擬出售金輝服務30%股權"),
+      box("b","left",444,106,161,124,"buyer",b,m?"總對價9,180萬美元":"港深智能管理全資附屬"),
+      box("a","right",724,72,310,70,"target",m?"擬回轉24個百分點":"現金700萬港元",m?"回轉完成後，洪橋暫持49%":"於交割支付"),
+      box("r2","right",724,164,310,75,"creditor",m?"南非礦權控制權變更待審批":"不可轉換承兌票據700萬港元",m?"按MPRDA第11條申請書面同意":"交割發行，兩個月到期；免息、無抵押"),
+      box("r3","right",724,260,310,76,"creditor",m?"取得同意後擬恢復持股73%":"交割後以權益法入賬",m?"Bona Global持Smarty Minerals 70%":"金輝服務成為聯營公司")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:m?"首輪73%股權已交割":"擬轉讓30%股權",proposedOrTerminated:!m}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:m?"分期對價":"現金及票據",caseModalityShortLabel:m?"分期對價":"現金及票據",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:m?"首輪73%股權已交割":"擬轉讓30%股權",proposedOrTerminated:!m}],annotations:[{tag:"①",title:m?"過渡安排":"票據到期",body:m?"9月2日補充協議記載回轉安排，回轉本身不產生另行對價，亦不改變原收購總對價。":"票據為買方於交割向賣方發行，自發行日起兩個月到期。"}],evidenceLinks:[{documentId:a,pages:m?[2,3]:[1,2,3,18,19],label:m?"原協議及股權結構":"收購條款及交易各方"},...(m?[{documentId:z,pages:[2,3,5,6],label:"首輪交割、回轉及後續審批"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08137-20260629-bona-global","HK-08181-20261120-kam-fai-services"].includes(txCase?.id))return buildBonaOrKamfai(txCase,documents);
     if(["HK-06083-20260717-consortium-control-mgo","HK-01417-20260518-yomisun-luckyyang-control"].includes(txCase?.id))return buildWorldlinkOrRiverine(txCase,documents);
     if(["HK-08123-20260610-debt-cap-mgo","HK-01633-20260724-control-mgo"].includes(txCase?.id))return buildSinofortuneOrSheung(txCase,documents);
     if(["HK-00389-20260813-voluntary-partial","HK-08483-20260727-control-mgo"].includes(txCase?.id))return buildTontineOrMaxsight(txCase,documents);
