@@ -6127,7 +6127,49 @@
       flows:[{id:"distribution",kind:"shares",direction:"ltr",fromLabel:parent,toLabel:holder,headline:"4 股母公司股份获分派 1 股中旅港澳"}],
       annotations:[{tag:"①",title:"股份来源",body:"分派范围为中旅港澳 1,384,158,427 股现有股份，不设公开或国际新股发售。"}],evidenceLinks:[{documentId:announce,pages:[13,106,212],label:"介绍上市文件 · 分派比例与股份数"},{documentId:ev,pages:[],label:"港交所 · 新上市证券"}],compactSummary:"香港中旅按 4 比 1 实物分派 · 中旅港澳已介绍上市 · 无发售募资",topology};
   }
+  function buildOrientalAcquisition(c,docs) {
+    const id="HK-03958-20260506-shanghai-securities",a="YS-20261125-9ff064851fca",d="YS-20261030-819ccc6f36b2",r="YS-20261118-0b6542517441",w="YS-20260824-4368788fe9ca";
+    if(c.code!=="03958"||c.category!=="major_acquisition"||c.stage?.status!=="approved"||c.stage?.eventKind!=="asset_transfer"||c.stage?.date!=="2026-11-24"||!c.processEvents?.some(e=>e.state==="actual"&&e.kind==="asset_transfer"&&e.date===c.stage.date&&e.evidence?.documentId===a)||[...(c.events||[]),...(c.processEvents||[])].some(e=>e.state==="actual"&&(e.date>"2026-11-24"||["completion","closed","settlement"].includes(e.kind))))return null;
+    for(const [doc,url] of [[a,"https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-11-25/600958_20261125_VYBI.pdf"],[d,"https://www.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103002175_c.pdf"],[r,"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1118/2026111801509.pdf"],[w,"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082402029.pdf"]])if(docs?.[doc]?.caseId!==id||docs[doc].url!==url)return null;
+    for(const [key,val,unit,ccy,doc] of [["consideration",25120000000,"money","CNY",d],["cash_consideration",1570000000,"money","CNY",d],["share_consideration",23550000000,"money","CNY",d],["consideration_shares",2288629735,"shares",undefined,r]])if(!c.terms?.some(t=>t.key===key&&t.value===val&&t.unit===unit&&t.currency===ccy&&t.evidence?.documentId===doc))return null;
+    const name="东方证券",target="上海证券",outcome="标的已过户 · 现金与代价股份待交收";
+    const box=(id,x,y,title,subtitle,role,panel="left")=>({id,panel,x,y,w:180,h:75,title,subtitle,role});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:500,status:"approved",leftTitle:"对价待交收 · 人民币 251.2 亿元",rightTitle:"标的股权 · 已过户",transitionLabel:"11 月 24 日",outcomeBadge:outcome}),
+     [box("L_b",34,179,name,"买方 · A＋H","buyer"),box("L_cash",433,77,"国泰海通","唯一现金收款方","seller"),box("L_share",433,312,"五家交易对方","含国泰海通","seller"),box("R_b",767,80,name,"买方","listed","right"),box("R_t",767,304,target,"已成为直接全资子公司","target","right")],
+     [{id:"E_after",panel:"right",from:"R_b",to:"R_t",pctLabel:"直接持股 100%",labelCenter:[857,225],pillWidth:130}],
+     [{id:"A_cash",step:"①",panel:"left",kind:"cash",label:"待付现金 15.7 亿元",labelCenter:[343,113],labelWidth:158,labelHeight:35,pathPoints:[[214,197],[252,197],[252,113],[433,113]]},
+      {id:"A_share",step:"②",panel:"left",kind:"shares",label:"待发行代价 A 股",labelCenter:[343,351],labelWidth:158,labelHeight:35,pathPoints:[[214,234],[252,234],[252,351],[433,351]]}]);
+    return {id,caseId:id,code:c.code,name,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status:"approved",stageLabel:outcome,stageDate:c.stage.date,caseModalityShortLabel:"发行 A 股＋现金",
+      before:{title:"对价待交收",nodes:[{id:"b",role:"buyer",name},{id:"t",role:"target",name:target}],equityLinks:[]},
+      after:{title:"股权过户",nodes:[{id:"b2",role:"buyer",name},{id:"t2",role:"target",name:target}],equityLinks:[{from:"b2",to:"t2",label:"直接持股 100%",pct:100,style:"solid"}],outcomeBadge:outcome},
+      flows:[{id:"cash",kind:"cash",direction:"ltr",fromLabel:name,toLabel:"国泰海通",step:"1",headline:"待付现金 15.7 亿元"},{id:"shares",kind:"shares",direction:"ltr",fromLabel:name,toLabel:"五家交易对方",step:"2",headline:"待发行 2,288,629,735 股 A 股"}],
+      annotations:[{tag:"①",title:"股份对价",body:"百联集团、国泰海通、上海国际集团投资、上海国际集团、上海城投集团合计拟获发 2,288,629,735 股 A 股，对价人民币 235.5 亿元；除息后发行价 10.29 元／股。"},
+      {tag:"②",title:"现金及新增股份",body:"现金人民币 15.7 亿元待向国泰海通支付；代价股份仍待发行、登记及上市。"},
+      {tag:"③",title:"重大收购及清洗豁免",body:"香港证监会执行人员于 8 月 21 日有条件授出清洗豁免；8 月 24 日相关股东决议通过。"}],
+      evidenceLinks:[{documentId:a,pages:[1,2],label:"上交所 · 标的股权过户及待办"},{documentId:d,pages:[14,15,37,39],label:"重组报告书 · 五家交易对方及对价"},{documentId:r,pages:[1],label:"同意注册 · 代价 A 股"},{documentId:w,pages:[17,18],label:"股东投票及清洗豁免"}],topology,compactSummary:"上海证券 100% 已过户 · 代价 A 股与现金待交收"};
+  }
+
+
+  function buildIsuzuVerified(c,docs){
+    const d='YS-20261124-5df5dde9d854', q='YS-20261111-1dce71300d70', o='YS-20261009-0cf6d1cb9a80', id='HK-01122-20261009-isuzu-engine';
+    const a=(key,value,doc)=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===doc);
+    if(c.id!==id||c.category!=='major_acquisition'||c.stage?.status!=='active'||c.stage.date!=='2026-11-24'||c.stage.eventKind!=='dispatch'||c.parties?.['买方']!=='庆铃汽车股份有限公司'||c.parties?.['卖方']!=='庆铃汽车（集团）有限公司'||docs?.[d]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1124/2026112400615.pdf'||!a('price',661362919.5,q)||!a('original',659870026.65,o)||!a('acquired',30.43,d)||!a('pre_stake',19.57,d)||!a('post_stake',50,d))return null;
+    const b='庆铃汽车股份',s='庆铃汽车集团',z='五十铃汽车',i='五十铃（中国）发动机',out='通函已发布 · 待独立股东表决';
+    const box=(id,panel,x,y,w,role,title,subtitle)=>({id,panel,x,y,w,h:90,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:490,status:'active',leftTitle:'签约安排',rightTitle:'如完成 · 各持 50%',transitionLabel:'如完成',outcomeBadge:out}),[
+      box('L_b','left',35,129,180,'buyer',b,'现持约 19.57%'),box('L_s','left',425,129,180,'seller',s,'出售约 30.43%'),
+      box('R_b','right',690,112,172,'buyer',b,'拟持 50%'),box('R_z','right',886,112,164,'buyer',z,'继续持有 50%'),box('R_i','right',768,322,222,'target',i,'合营 · 共同控制')],[],[
+      {id:'p',panel:'left',kind:'cash',step:'①',pathPoints:[[215,155],[425,155]],labelCenter:[320,155],labelWidth:165,labelHeight:33,label:'拟付人民币约 6.6 亿元'},
+      {id:'s',panel:'left',kind:'shares',step:'②',pathPoints:[[425,195],[215,195]],labelCenter:[320,195],labelWidth:158,labelHeight:33,label:'约 30.43% 股权'},
+      {id:'b',panel:'right',kind:'shares',step:'③',pathPoints:[[776,202],[776,268],[815,268],[815,322]],labelCenter:[776,238],labelWidth:128,labelHeight:34,label:'19.57% → 50%'},
+      {id:'z',panel:'right',kind:'shares',step:'④',pathPoints:[[968,202],[968,268],[944,268],[944,322]],labelCenter:[968,238],labelWidth:105,labelHeight:34,label:'维持 50%'}
+    ]);
+    const node=(id,role,name)=>({id,role,name});
+    return {id,caseId:id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,archetype:'acquisition',modality:'cash',status:'active',caseArchetypeLabel:'主要及关连交易',caseModalityShortLabel:'现金收购股权',before:{title:'签约安排',nodes:[node('b','buyer',b),node('s','seller',s)],equityLinks:[]},after:{title:'如完成',outcomeBadge:out,nodes:[node('b','buyer',b),node('z','buyer',z),node('i','target',i)],equityLinks:[{from:'b',to:'i',label:'拟持 50%',pct:50,style:'dashed'},{from:'z',to:'i',label:'维持 50%',pct:50,style:'dashed'}]},flows:[{id:'p',kind:'cash',direction:'ltr',fromLabel:b,toLabel:s,headline:'拟付约人民币 6.6 亿元',proposedOrTerminated:true},{id:'s',kind:'shares',direction:'rtl',fromLabel:s,toLabel:b,headline:'拟转让约 30.43% 股权',proposedOrTerminated:true}],annotations:[{tag:'①',title:'更正后的对价',body:'对价约人民币 6.6 亿元，依约扣除相应税项后支付。'},{tag:'②',title:'完成后共同控制',body:'庆铃汽车股份由约 19.57% 增至 50%，与五十铃汽车共同控制合营公司，采用权益法核算。'},{tag:'③',title:'独立股东表决',body:'通函列明临时股东大会定于 12 月 24 日；庆铃集团及其联系人须放弃表决。'}],evidenceLinks:[{documentId:d,pages:[9,10,20,21,23],label:'通函 · 股权、对价及表决'},{documentId:q,pages:[2],label:'11 月 11 日更正公告'}],compactSummary:'条件收购约 30.43% · 人民币约 6.6 亿元 · 完成后各持 50%、共同控制',topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if (txCase?.id === "HK-03958-20260506-shanghai-securities") {const vetted=buildOrientalAcquisition(txCase,documents);return vetted&&validateDiagramSpec(vetted);}
+    if (txCase?.id === "HK-01122-20261009-isuzu-engine") {const vetted=buildIsuzuVerified(txCase,documents);return vetted&&validateDiagramSpec(vetted);}
     if (txCase?.id==="HK-00308-20260520-ctg-hkm-spin" && txCase.stage?.eventKind==="listing") {const d=buildCtghkmIntroduction(txCase,documents);return d&&validateDiagramSpec(d);}
     if (!txCase || typeof txCase !== "object") {
       throw new Error("getSpecForCase requires a transaction case object");
