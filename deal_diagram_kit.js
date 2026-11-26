@@ -7980,7 +7980,33 @@
       annotations:[{tag:"①",title:n?"持股與交割條件":"交付安排",body:n?"擬取得PAGAC NTS全部股權，並間接持有經營主體新奇特約94.94%；業績股取決於經審計淨利潤。":"兩份合同分別由Jinmao Marine與Jinquan Marine簽訂。"}],
       evidenceLinks:n?[{documentId:a,pages:[1,12,14,44,47],label:"股東會、兩級股權及對價股上限"}]:[{documentId:a,pages:[1,2,3,4],label:"兩份合約、價格及交付"},{documentId:z,pages:[1,2],label:"兩項決議通過"}]});
   }
+  function buildQinglingPair(c,docs){
+    const buyback=c.id==="HK-01122-20260922-xinxiang-anda-repurchase";
+    const proof=(leaf)=>Object.values(docs??{}).find(d=>d.caseId===c.id&&d.url?.endsWith("/"+leaf+".pdf"))?.id;
+    const source=proof(buyback?"2026111900334":"2026101601506"), update=buyback?source:proof("2026112401063");
+    const status=buyback?"approved":"active", date=buyback?"2026-11-19":"2026-11-24";
+    if(!source||!update||c.stage?.status!==status||c.stage?.date!==date||c.events?.some(x=>x.state==="actual"&&["completion","termination"].includes(x.kind))) return null;
+    const terms=buyback?{current_repurchase_cap:15133560}:{exit_cash:202203596.77,capital_reduction:152580287,exit_stake:49.4,post_stake:100};
+    if(!Object.entries(terms).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===source)))return null;
+    const l=c.parties[buyback?"出租人":"减资主体及付款方"], r=c.parties[buyback?"回购承诺方":"退出股东"];
+    if(l!==(buyback?"重庆市交通设备融资租赁有限公司":"庆铃模具（Qingling Moulds）")||r!==(buyback?"庆铃汽车股份有限公司":"庆铃汽车（集团）有限公司"))return null;
+    if(buyback&&c.parties["承租人"]!=="武汉鑫祥安达物流有限责任公司")return null;
+    if(!buyback&&c.parties["保留股东"]!=="庆铃汽车股份有限公司")return null;
+    const badge=buyback?"三份協議已簽 · 回購須符合觸發條件":"通函延至12月4日或之前 · 待獨立股東批准";
+    const lt=buyback?"融資租賃配套回購":"慶鈴模具減資", rt=buyback?"租賃標的與觸發條件":"現金退出與股權變化";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const diagram=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:lt,rightTitle:rt,transitionLabel:buyback?"依約觸發":"待批准及登記",outcomeBadge:badge}),[
+      box("l","left",42,106,160,124,"seller",buyback?"重慶交通設備租賃":"慶鈴模具",buyback?"出租人及回購通知方":"減資主體及付款方"),
+      box("r","left",444,106,161,124,"buyer",buyback?"慶鈴汽車股份":"慶鈴汽車集團",buyback?"回購承諾方":"持股約49.4% · 擬退出"),
+      box("a","right",724,72,310,70,"target",buyback?"65輛新能源車及租賃債權":"現金退出款約2.02億元人民幣",buyback?"承租人：武漢鑫祥安達 · 租期60個月":"由慶鈴模具支付予慶鈴集團"),
+      box("b","right",724,164,310,75,"creditor",buyback?"本批估計回購上限1,513.4萬元人民幣":"註冊資本減少約1.53億元人民幣",buyback?"回購款包括約定租金及其他適用款項":"待協議生效及完成減資變更登記"),
+      box("c","right",724,260,310,76,"creditor",buyback?"符合條件時出租人可發通知":"慶鈴汽車股份持股約50.6% → 100%",buyback?"包括租金逾期或車輛擔保手續未完成":"慶鈴模具繼續納入合併報表")
+    ],[],[{id:"main",panel:"left",kind:buyback?"asset":"cash",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:buyback?"符合條件可要求回購":"條件達成後支付退出款",proposedOrTerminated:true}]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:buyback?"租賃配套回購":"附屬公司減資",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology:diagram,compactSummary:badge,before:{title:lt,nodes,equityLinks:[]},after:{title:rt,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:buyback?"asset":"cash",direction:"ltr",fromLabel:l,toLabel:r,headline:buyback?"符合條件可要求回購指定車輛及租賃債權":"慶鈴模具向退出股東支付約2.02億元人民幣",proposedOrTerminated:true}],annotations:[{tag:"①",title:buyback?"回購通知":"付款時點",body:buyback?"須符合既定先決及觸發條件；三份協議本批估計最高回購款為人民幣15,133,560元。":"待協議生效、先決條件達成並完成變更登記後30個曆日內付款。"}],evidenceLinks:buyback?[{documentId:source,pages:[82,84,88],label:"本批車輛、回購條件及預計上限"}]:[{documentId:source,pages:[1,3,4,5],label:"減資、退出款與股權"},{documentId:update,pages:[1,2],label:"通函延期"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01122-20260922-xinxiang-anda-repurchase","HK-01122-20261016-qingling-moulds"].includes(txCase?.id))return buildQinglingPair(txCase,documents);
     if(["HK-02473-20260804-pagac-nts","HK-00137-20260921-two-nanyang-newbuilds"].includes(txCase?.id))return buildNtsNanyang(txCase,documents);
     if(["HK-03877-20261118-hilli-sale-leaseback","HK-03877-20260901-ten-grain-carriers"].includes(txCase?.id))return buildCsscPair(txCase,documents);
     if(["HK-00147-20261030-quantumcompute","HK-09982-20261116-distressed-lp-frameworks"].includes(txCase?.id))return buildQuantumOrLP(txCase,documents);
