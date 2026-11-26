@@ -8911,6 +8911,326 @@
       }
     },
     {
+      "id": "HK-01783-20260811-top-up-and-concurrent-cb",
+      "code": "01783",
+      "name": "晉景新能：先舊後新配售及同步可換股債",
+      "aliases": [
+        "晋景新能",
+        "Envision Greenwise Holdings Limited",
+        "先旧后新",
+        "可转债",
+        "CB",
+        "Note 6",
+        "Chun Yip International Investment Limited",
+        "Chun Yang International (HK) Company Limited"
+      ],
+      "category": "convertible_bond",
+      "headlineKey": "cb_face",
+      "parties": {
+        "上市公司及債券擔保人": "晉景新能控股有限公司",
+        "舊股賣方及補足認購人": "Chun Yip International Investment Limited",
+        "債券發行人": "Chun Yang International (HK) Company Limited"
+      },
+      "mechanism": "控股股東先配售1.17924億股舊股，再以相同價格認購等量新股。債券由附屬公司另行發行、上市公司擔保，人民幣計值、美元結算。",
+      "terms": [
+        {
+          "key": "cb_face",
+          "label": "可換股債面值",
+          "value": 472000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "人民幣計值，美元結算。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "cb_coupon",
+          "label": "可換股債票息",
+          "value": 5,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": false,
+          "basis": "年票息，2027年到期。",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cb_initial_conversion_price",
+          "label": "可換股債初始換股價",
+          "value": 5.22,
+          "unit": "per_share",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": false,
+          "basis": "初始價格，可按條款調整。",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              3,
+              16
+            ]
+          }
+        },
+        {
+          "key": "cb_net",
+          "label": "可換股債發行淨額",
+          "value": 68770000,
+          "unit": "money",
+          "currency": "USD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "扣除相關費用，按公告美元口徑。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cb_gross",
+          "label": "可換股債發行總額",
+          "value": 69960000,
+          "unit": "money",
+          "currency": "USD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "按公告美元口徑。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "topup_shares",
+          "label": "已發補足認購新股",
+          "value": 117924000,
+          "unit": "shares",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "basis": "等於已配售的舊股數。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "topup_price",
+          "label": "配售及補足認購價",
+          "value": 4.66,
+          "unit": "per_share",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": false,
+          "basis": "兩個股權步驟同價。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "topup_net",
+          "label": "股權配售募資淨額",
+          "value": 538170000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "配售及補足認購股權部分，扣除開支。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "topup_gross",
+          "label": "股權配售募資總額",
+          "value": 549530000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "按公告四捨五入金額列示；舊股及補足認購不重複計入。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Deutsche Bank AG, Hong Kong Branch",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "股權配售",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              36
+            ]
+          }
+        },
+        {
+          "firm": "Deutsche Bank AG, Hong Kong Branch",
+          "role": "PlacingAgent",
+          "service": "cb_bookrunning",
+          "side": "債券發行",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              12,
+              35
+            ]
+          }
+        },
+        {
+          "firm": "Macquarie Capital Limited",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "股權配售",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              36
+            ]
+          }
+        },
+        {
+          "firm": "Macquarie Capital Limited",
+          "role": "PlacingAgent",
+          "service": "cb_bookrunning",
+          "side": "債券發行",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              12,
+              35
+            ]
+          }
+        },
+        {
+          "firm": "BOCI Asia Limited",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "股權配售",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              36
+            ]
+          }
+        },
+        {
+          "firm": "BOCI Asia Limited",
+          "role": "PlacingAgent",
+          "service": "cb_bookrunning",
+          "side": "債券發行",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              12,
+              35
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "TC:26-Note6",
+          "label": "收購守則第26條豁免註釋6",
+          "classificationStatus": "waived",
+          "application": "控股股東已獲證監會就補足認購授予註釋6豁免。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-08-11",
+          "label": "公告配售、補足認購及同步債券發行",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "兩份協議於8月10日簽訂。",
+          "evidence": {
+            "documentId": "YS-20260811-8b964ff899cb",
+            "pages": [
+              1,
+              2,
+              12
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-08-13",
+          "label": "完成舊股配售",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "1.17924億股舊股。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "kind": "completion",
+          "date": "2026-08-20",
+          "label": "完成補足認購並發行可換股債",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "補足認購1.17924億股；人民幣4.72億元面值債券已發行。",
+          "evidence": {
+            "documentId": "YS-20260820-27d00ed9800f",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-08-20",
+        "label": "舊股配售、補足認購及債券發行均完成",
+        "status": "closed",
+        "eventKind": "completion"
+      },
+      "progressDate": "2026-08-20",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "aliases": [
         "愛德新能源",
         "香港黃金產業集團",
@@ -96719,6 +97039,20 @@
       "date": "2026-11-17",
       "title": "榮利營造：延長配售最後截止日期",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1117/2026111701325.pdf"
+    },
+    "YS-20260811-8b964ff899cb": {
+      "id": "YS-20260811-8b964ff899cb",
+      "caseId": "HK-01783-20260811-top-up-and-concurrent-cb",
+      "date": "2026-08-11",
+      "title": "晉景新能：先舊後新配售及同步可換股債",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0811/2026081100058.pdf"
+    },
+    "YS-20260820-27d00ed9800f": {
+      "id": "YS-20260820-27d00ed9800f",
+      "caseId": "HK-01783-20260811-top-up-and-concurrent-cb",
+      "date": "2026-08-20",
+      "title": "晉景新能：配售、補足認購與可換股債發行完成",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082001571.pdf"
     }
   },
   "issuerLinks": [
