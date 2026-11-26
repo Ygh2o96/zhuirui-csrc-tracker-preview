@@ -8379,7 +8379,25 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:ms?"控股股權交割":"按部分要約擬收購股份",proposedOrTerminated:!ms}],annotations:[{tag:"①",title:ms?"控股股份賣方":"股份文件退回",body:ms?"Causeway Treasure Holding、ME Group International及張淦庭。":"部分要約失效後，接受要約的股東將獲退回股票或轉讓收據。"}],evidenceLinks:[{documentId:a,pages:ms?[2,5,20]:[2,3],label:ms?"控股交割及三名賣方":"條件及要約價格"},{documentId:z,pages:ms?[2,3,4]:[2,3],label:"截止公告"},...(ms?[{documentId:n,pages:[2],label:"恢復公眾持股"}]:[])]});
   }
+  function buildSinofortuneOrSheung(c,docs){
+    const s0=c.code==="08123",a=s0?"YS-20260813-c1eff3142a5f":"YS-20260724-f0efe2e9a72b",z=s0?"YS-20260910-ab04c7fb0f6e":"YS-20260904-d59b21463ed1",date=s0?"2026-09-10":"2026-09-04",control=s0?"2026-08-13":"2026-07-15";
+    const ts=s0?[["capitalisation_shares",215499000,a],["completed_debt_setoff",21549900,a],["accepted_shares",933169,z],["post_offer_concert_pct_subject_to_registration",73.78,z]]:[["control_cash",143009472,a],["control_shares",502140000,a],["offer_full_cash_cap",52007328,a],["offer_facility_max",52500000,a],["accepted_shares",639000,z],["accepted_gross",181987.2,z]];
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===control&&e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===a)||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=s0?"股東貸款資本化":"控股股份交割",right="餘股要約與公眾持股",badge=s0?"要約截止 · 公眾持股26.22%":"要約截止 · 公眾持股26.57%";
+    const s=s0?"華億金控":"兩名原股東",b=s0?"Wang Jiawei":"Wise Triumph";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,s0?"listed":"seller",s,s0?"發行2.15499億股":"發售合計5.0214億股"),
+      box("b","left",444,106,161,124,"buyer",b,s0?"抵銷貸款2,154.99萬港元":"現金對價約1.43億港元"),
+      box("a","right",724,72,310,70,"target",s0?"一致行動持股由29.31%升至73.51%":"要約最高應付5,200.7萬港元",s0?"8月13日完成貸款資本化":"承諾融資額度上限為5,250萬港元"),
+      box("r2","right",724,164,310,75,"creditor",s0?"有效接納933,169股":"有效接納639,000股",s0?"現金要約價每股0.10港元":"每股0.2848港元，應付181,987.20港元"),
+      box("r3","right",724,260,310,76,"creditor",s0?"一致行動集團持股約73.78%":"一致行動集團持股約73.43%",s0?"公眾持股26.22%；以妥為登記為準":"公眾持股26.57%；以妥為登記為準")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:s0?"發行股份抵銷股東貸款":"7月15日交割73.33%"}]);
+    const nodes=[{id:"s",role:s0?"listed":"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:s0?"mixed":"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:s0?"債轉股及現金":"現金",caseModalityShortLabel:s0?"債轉股及現金":"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:s0?"發行貸款資本化股份":"控股股份交割"}],annotations:[{tag:"①",title:s0?"貸款資本化":"交易雙方",body:s0?"發股代價按認購協議自應償還的股東貸款本金及應計利息中抵銷。":"Creative Elite Global Limited出售4.95億股，Chan Chin Ying Amanda出售714萬股；買方均為Wise Triumph。"}],evidenceLinks:[{documentId:a,pages:s0?[1,2]:[2,3,6],label:s0?"資本化股份發行":"控股交割及融資額度"},{documentId:z,pages:s0?[2,3,4]:[2,4,5],label:"要約結果及公眾持股"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08123-20260610-debt-cap-mgo","HK-01633-20260724-control-mgo"].includes(txCase?.id))return buildSinofortuneOrSheung(txCase,documents);
     if(["HK-00389-20260813-voluntary-partial","HK-08483-20260727-control-mgo"].includes(txCase?.id))return buildTontineOrMaxsight(txCase,documents);
     if(["HK-00989-20260715-restructuring-mgo","HK-02381-20260731-control-mgo"].includes(txCase?.id))return buildChangbaishanOrSmc(txCase,documents);
     if(["HK-02295-20260702-greenair-control-cash","HK-06939-20260123-geehy-control-subscription-cash"].includes(txCase?.id))return buildMaxicityAndMegain(txCase,documents);

@@ -48412,7 +48412,7 @@
         },
         {
           "approximate": false,
-          "basis": "与理论股权对价数值相同仍是不同概念",
+          "basis": "要約代理提供的融資協議額度；要約全數接納時的應付上限為52,007,328港元。",
           "currency": "HKD",
           "evidence": {
             "documentId": "YS-20260724-f0efe2e9a72b",
@@ -48422,10 +48422,10 @@
             ]
           },
           "key": "offer_facility_max",
-          "label": "要约融资额度上限",
+          "label": "要約融資額度上限",
           "precision": 2,
           "unit": "money",
-          "value": 52007328
+          "value": 52500000
         },
         {
           "approximate": false,
