@@ -6449,7 +6449,38 @@
     {tag:"②",title:w?"余股及延寄申请":"要约接纳与公众持股",body:w?"文件原定 11 月 24 日或之前寄发，现申请延至最迟 12 月 8 日，收购执行人员表示倾向同意。":"10 月 20 日要约截止，三份有效接纳合计 64,000 股。11 月 24 日要约人另在公开市场出售 64,000 股，公众持股量恢复至 25%。"}],
     evidenceLinks:[{documentId:docA,pages:w?[2,6,7,8]:[2,3],label:"控股权交割公告"},{documentId:docB,pages:w?[2]:[2,3],label:w?"延期申请":"要约结果"},...(w?[]:[{documentId:docC,pages:[1],label:"公众持股量恢复"}])],compactSummary:badge,topology};
   }
+
+  function buildVerifiedHuyouOrVistar(c,docs){
+    const w=c.id==="HK-02179-20261118-huyou-h-share-whitewash",l=c.id==="HK-08535-20261102-zeng-kai";
+    if(!w&&!l)return null;
+    const docA=w?"YS-20261118-72180dd80772":"YS-20261102-e5d2053658cf",docB=w?"YS-20261124-035393fe6d0e":"YS-20261123-eab2499c4892";
+    const dt=w?"2026-11-24":"2026-11-23";
+    if(docs?.[docA]?.caseId!==c.id||docs?.[docB]?.caseId!==c.id||c.stage.date!==dt||c.stage.status!=="active"||c.stage.eventKind!==(w?"ifa_appointment":"dispatch_extension"))return null;
+    const term=(k,v)=>c.terms.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===docA);
+    if(w?!(term("subscription_cash",350696715)&&term("subscription_price",5)):!(term("control_block",28500000)&&term("block_pct",75)&&term("offer_cash_cap",9510000)&&term("offer_price",0.0317)))return null;
+    const left=w?"香港护佑健康":"三名控股权卖方",right=w?"瑞科生物":"曾凯",caption=w?"拟认购新 H 股":"10 月 15 日 · 已交割",badge=w?"待清洗豁免及独立股东批准":"控股权已交割 · 申请延寄综合文件";
+    const box=(id,panel,x,y,wi,h,role,title,subtitle)=>({id,panel,x,y,w:wi,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:365,status:"active",leftTitle:caption,rightTitle:w?"股权影响及条件":"未完成的余股要约",transitionLabel:w?"如完成":"触发要约",outcomeBadge:badge}),[
+       box("L_l","left",46,101,153,141,w?"buyer":"seller",left,w?"扬子江药业全资附属公司":"合计出售 9 亿股"),
+       box("L_r","left",447,101,156,141,w?"listed":"buyer",right,w?"发行人":"取得 75%"),
+       box("R_a","right",720,84,305,78,"target",w?"一致行动组持股":"每股 0.0317 港元",w?"25.68% → 33.16%":"要约涉及余下 3 亿股"),
+       box("R_b","right",720,208,305,78,"public",w?"清洗豁免及独立股东批准":"最高 951 万港元",w?"11 月 24 日委任新百利为独立财顾":"全数接纳上限 · 综合文件尚未寄发"),
+    ],[],[
+      {id:"leg1",panel:"left",kind:w?"cash":"shares",step:"①",pathPoints:[[199,137],[447,137]],labelCenter:[323,137],labelWidth:206,labelHeight:35,label:w?"拟认购款 3.507 亿港元":"9 亿股"},
+      {id:"leg2",panel:"left",kind:w?"shares":"cash",step:"②",pathPoints:[[447,206],[199,206]],labelCenter:[323,206],labelWidth:206,labelHeight:35,label:w?"拟发 7,013.9343 万股 H 股":"现金 2,850 万港元"},
+    ]);
+    const nodes=[{id:"l",role:w?"buyer":"seller",name:left},{id:"r",role:w?"listed":"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:w?"connected_whitewash":"offer",modality:"cash",status:"active",
+      caseArchetypeLabel:w?"H 股认购及清洗豁免":"控股权转让及强制要约",caseModalityShortLabel:w?"现金认购新 H 股":"现金",
+      before:{title:caption,nodes,equityLinks:[]},after:{title:w?"如完成":"余股要约",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"leg1",kind:w?"cash":"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:w?"拟认购款 350,696,715 港元":"9 亿股已转让",proposedOrTerminated:w},
+      {id:"leg2",kind:w?"shares":"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:w?"拟发行 70,139,343 股新 H 股":"控股权对价 2,850 万港元",proposedOrTerminated:w},...(w?[]:[{id:"offer",kind:"cash",direction:"ltr",fromLabel:right,toLabel:"余股股东",headline:"每股 0.0317 港元，以实际接纳为准",proposedOrTerminated:true}])],
+      annotations:[{tag:"①",title:w?"现金认购":"已完成的控股收购",body:w?"香港护佑健康拟以每股 5 港元认购 70,139,343 股新 H 股，认购总额 350,696,715 港元。":"曾凯合计向 Success Step、Noble Capital Concept 及 Legend Advanced 购买 9 亿股；总现金对价由 Success Step 代表三方收取。"},
+      {tag:"②",title:w?"清洗豁免条件":"余股要约与寄发申请",body:w?"认购人与一致行动人士合计持股拟从 25.68% 增至 33.16%。完成仍须取得清洗豁免及独立股东批准。":"每股 0.0317 港元，若全数接纳上限 951 万港元。已申请将综合文件延至最迟 12 月 14 日寄发，执行人员表示倾向同意。"}],
+      evidenceLinks:[{documentId:docA,pages:w?[1,3,5,17]:[2,3,6,7],label:w?"认购及清洗豁免公告":"控股权交割及余股要约公告"},{documentId:docB,pages:w?[1]:[2],label:w?"独立财务顾问委任":"申请延寄"}],compactSummary:badge,topology};
+   }
   function getSpecForCase(txCase, documents) {
+    if (["HK-02179-20261118-huyou-h-share-whitewash","HK-08535-20261102-zeng-kai"].includes(txCase?.id)) {const x=buildVerifiedHuyouOrVistar(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-08526-20261103-lumina","HK-06063-20260908-control-mgo"].includes(txCase?.id)) {const x=buildVerifiedWingFungOrLotus(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-02663-20261020-dax"){const x=buildVerifiedDaxOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
