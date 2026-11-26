@@ -6931,7 +6931,39 @@
       compactSummary:"人民幣約3.0億 · 全數抵銷 · 尚待交割",topology};
   }
 
+  function buildVerifiedProbio26(c,docs){
+    const dt="2026-11-26",by=(date,kind)=>c.events?.find(e=>e.date===date&&e.kind===kind&&e.state==="actual")?.evidence?.documentId;
+    const ini=by("2026-11-24","first_announcement"),tr=by("2026-11-25","supplement"),rp=by(dt,"supplement");
+    if(c.code!=="01548"||c.stage?.status!=="active"||c.stage.date!==dt||c.stage.eventKind!=="supplement")return null;
+    if(![[ini,"2026112401141"],[tr,"2026112501349"],[rp,"2026112601104"]].every(([id,p])=>docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+p+".pdf")))return null;
+    const t=(key,value,src)=>c.terms?.some(q=>q.key===key&&q.value===value&&q.evidence?.documentId===src);
+    if(!t("offshore_transfer_cash",101300000,tr)||!t("offshore_repurchase_cash",101300000,rp)||
+       !t("offshore_transfer_shares",102857135,tr)||!t("offshore_repurchase_shares",102857135,rp)||
+       !t("post_cancel_interest_proforma",93.99,rp)||!t("full_reorganisation_interest_proforma",96.40,ini))return null;
+    const l="兩組境外股東",badge="兩組境外交割完成 · 境內部分待 ODI";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,end,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:196,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"11月25日至26日 · 兩筆境外交割",rightTitle:"後續條件及持股情景",transitionLabel:"境內部分待 ODI",outcomeBadge:badge}),[
+      box("L_sell","left",43,100,149,146,"seller",l,"各協議分列"),
+      box("L_buy","left",448,100,157,146,"buyer","金斯瑞／ProBio Cayman","母公司受讓／子公司回購"),
+      box("R_cancel","right",728,84,295,75,"target","93.99% · 境外回購註銷後","假設未發行員工激勵股"),
+      box("R_all","right",728,210,295,75,"public","96.40% · 整項交易完成後","同一員工激勵股假設")
+    ],[],[arrow("tr","shares","①",192,138,448,"母公司受讓 · 1.013億美元"),arrow("rp","shares","②",192,209,448,"子公司回購 · 1.013億美元")]);
+    const lnodes=[{id:"l",role:"seller",name:l},{id:"p",role:"buyer",name:"金斯瑞"},{id:"s",role:"buyer",name:"ProBio Cayman"}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"acquisition",modality:"cash",status:"active",
+      caseArchetypeLabel:"股權受讓及優先股回購",caseModalityShortLabel:"現金",
+      before:{title:"已交割的境外部分",nodes:lnodes,equityLinks:[]},after:{title:"後續條件及持股情景",nodes:lnodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"tr",kind:"shares",direction:"ltr",fromLabel:"境外轉讓方",toLabel:"金斯瑞",headline:"11月25日受讓102,857,135股，對價約1.013億美元"},
+       {id:"rp",kind:"shares",direction:"ltr",fromLabel:"境外賣方",toLabel:"ProBio Cayman",headline:"11月26日回購另一批102,857,135股，對價約1.013億美元"},
+       {id:"pending",kind:"shares",direction:"ltr",fromLabel:"境內轉讓方及賣方",toLabel:"金斯瑞及ProBio各自承接",headline:"兩組境內交易待 ODI",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"母公司受讓",body:"金斯瑞已完成境外轉讓。受讓後比例約89.68%，以未配發員工激勵股份計。"},
+       {tag:"②",title:"子公司回購",body:"ProBio Cayman 已完成另組境外回購，股份待註銷。93.99%是註銷且未發行員工股的備考比例。"}],
+      evidenceLinks:[{documentId:ini,pages:[1,2,7,8],label:"雙協議及整項重組情景"},{documentId:tr,pages:[1],label:"母公司境外受讓已交割"},{documentId:rp,pages:[1,2],label:"子公司境外回購已交割"}],
+      compactSummary:"兩筆各約1.013億美元的境外交割 · 境內部分仍待 ODI",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01548-20261124-probio-capital-reorganisation"){const d=buildVerifiedProbio26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01995-20261126-shenyang-cifi-setoff"){const d=buildVerifiedCifiSetoff26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00076-20261126-convertible-debenture"){const d=buildVerifiedElate26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.category==="secondary_placing"){const d=buildVerifiedWalnutExit(txCase,documents);return d&&validateDiagramSpec(d);}
