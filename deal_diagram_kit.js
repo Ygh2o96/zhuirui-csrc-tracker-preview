@@ -7837,7 +7837,36 @@
       annotations:[{tag:"①",title:"融資與租期",body:"租期自相應資產轉讓對價付清日起計；資產由承租方使用。"}],
       evidenceLinks:n?[{documentId:e,pages:[1,2,3,4],label:"三份協議、書面批准及租金"}]:[{documentId:e,pages:[1,2,3],label:"兩份協議本金及書面批准"},{documentId:p,pages:[6,7],label:"還款結構及費用"}]});
   }
+  function buildSilkKpop(c,docs){
+    const a=c.events?.find(e=>e.kind==="first_announcement"&&e.state==="actual"&&e.date==="2026-10-08")?.evidence?.documentId, d="YS-20261119-00472-cninfo153";
+    if(!a||docs?.[a]?.caseId!==c.id||!docs[a].url.endsWith("/2026100801157.pdf")||docs?.[d]?.caseId!==c.id||c.stage?.status!=="active"||c.stage.date!=="2026-11-19"||c.events.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind)))return null;
+    const m={investment_krw:5000000000,aurora_secondary:1999990000,soul_secondary:1390700000,soul_primary:1609270000,soul_post_share:30.98};
+    if(!Object.entries(m).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a)))return null;
+    const s=c.parties["i-Aurora 卖方"],g=c.parties["&SOUL 旧股卖方"],b=c.parties["买方及认购方"],t=c.parties["新股发行人"];
+    if(s!=="Culture Monster Co., Ltd."||g!=="Better Ground Investment Fund No. 2"||t!=="&SOUL Co., Ltd."||!b?.startsWith("KSR Co., Ltd."))return null;
+    const badge="交易條款已披露 · 交割日期待確認";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:468,status:"active",leftTitle:"兩家公司、三份協議",rightTitle:"合約現金對價 · 約50億韓元",transitionLabel:"十月公告條款",outcomeBadge:badge}),[
+      mk("a","left",41,92,175,89,"target","i-Aurora","224,164股舊股 · 約2.67%"),
+      mk("s","left",41,218,175,89,"target","&SOUL","舊股＋新股 · 擴大後約30.98%"),
+      mk("b","left",454,143,152,102,"buyer","KSR","買方及認購方"),
+      mk("r1","right",724,72,310,70,"creditor","i-Aurora舊股：約20億韓元","付予Culture Monster"),
+      mk("r2","right",724,166,310,70,"creditor","&SOUL舊股：約13.91億韓元","付予Better Ground Investment Fund No. 2"),
+      mk("r3","right",724,260,310,70,"target","&SOUL新股：約16.09億韓元","認購40,500股，資金流入標的")
+    ],[],[
+      {id:"old-a",panel:"left",kind:"shares",step:"①",pathPoints:[[216,138],[410,138],[410,167],[454,167]],labelCenter:[307,138],labelWidth:158,labelHeight:34,label:"i-Aurora舊股",proposedOrTerminated:true},
+      {id:"both-s",panel:"left",kind:"shares",step:"②",pathPoints:[[216,259],[410,259],[410,225],[454,225]],labelCenter:[307,259],labelWidth:158,labelHeight:34,label:"&SOUL舊股及新股",proposedOrTerminated:true}
+    ]);
+    const nodes=[{id:"a",role:"target",name:"i-Aurora Co., Ltd."},{id:"s",role:"target",name:t},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"兩項舊股轉讓及一項增資",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"簽約結構",nodes,equityLinks:[]},after:{title:"協議預計持股",nodes,equityLinks:[{from:"b",to:"a",label:"約2.67%",pct:2.67,style:"dashed"},{from:"b",to:"s",label:"約30.98%",pct:30.98,style:"dashed"}],outcomeBadge:badge},
+      flows:[{id:"one",kind:"cash",direction:"ltr",fromLabel:b,toLabel:s,headline:"i-Aurora舊股對價"},{id:"two",kind:"cash",direction:"ltr",fromLabel:b,toLabel:g,headline:"&SOUL舊股對價"},{id:"three",kind:"cash",direction:"ltr",fromLabel:b,toLabel:t,headline:"&SOUL新股認購款"}],
+      annotations:[{tag:"①",title:"最新披露",body:"行雲科技11月19日公告在介紹新絲路時稱兩項戰略投資已完成；該公告未列分項交割日期。"}],
+      evidenceLinks:[{documentId:a,pages:[1,2,3],label:"三份協議、對價與預計持股"},{documentId:d,pages:[2],label:"行雲科技公告：交易對手方介紹"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00472-20261008-i-aurora-soul")return buildSilkKpop(txCase,documents);
     if(["HK-00132-20261026-fangyuan-leaseback","HK-00132-20261109-fangyuan-leaseback"].includes(txCase?.id))return buildFangyuanPair(txCase,documents);
     if(["HK-08481-20260506-linan-land-use","HK-01416-20260819-kaki-bukit-jtc"].includes(txCase?.id))return buildLinanJtc(txCase,documents);
     if(["HK-08365-20260717-eversharp","HK-08365-20260925-noah-ark"].includes(txCase?.id))return buildHatcherClosures(txCase,documents);
