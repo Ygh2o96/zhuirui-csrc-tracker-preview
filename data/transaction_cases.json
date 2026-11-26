@@ -2,6 +2,138 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-00108-20261126-chunyu-dalian-guarantee",
+      "code": "00108",
+      "name": "春雨醫療：關連借款擔保及物業抵押",
+      "aliases": [
+        "春雨医疗",
+        "北京萬港通",
+        "北京中和鴻潤",
+        "大連銀行",
+        "Chunyu Medical"
+      ],
+      "category": "connected",
+      "headlineKey": "principal",
+      "parties": {
+        "上市公司": "春雨醫療科技有限公司",
+        "擔保方及抵押人": "北京萬港通科技發展有限公司",
+        "貸款人及抵押權人": "大連銀行",
+        "借款人": "北京中和鴻潤科技有限公司"
+      },
+      "mechanism": "北京萬港通為大連銀行向北京中和鴻潤提供的一年期借款承擔連帶保證，並以自有物業作抵押；借款人按實際提款額每年支付1%擔保費。",
+      "terms": [
+        {
+          "key": "principal",
+          "label": "獲授借款本金",
+          "value": 130000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "大連銀行提供的貸款本金。",
+          "evidence": {
+            "documentId": "YS-20261126-5d269d244d15",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "loan_interest_pct",
+          "label": "借款年利率",
+          "value": 3.8,
+          "unit": "percent",
+          "currency": null,
+          "precision": 1,
+          "approximate": false,
+          "basis": "借款合同列示年利率。",
+          "evidence": {
+            "documentId": "YS-20261126-5d269d244d15",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "guarantee_fee_pct",
+          "label": "擔保費率（年）",
+          "value": 1,
+          "unit": "percent",
+          "currency": null,
+          "precision": 1,
+          "approximate": false,
+          "basis": "按實際提款額。",
+          "evidence": {
+            "documentId": "YS-20261126-5d269d244d15",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "key": "guarantee_fee_cap",
+          "label": "全年擔保費上限",
+          "value": 1300000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按最高貸款本金計算。",
+          "evidence": {
+            "documentId": "YS-20261126-5d269d244d15",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-11-26",
+          "label": "簽訂保證及抵押合同",
+          "state": "actual",
+          "detail": "2025年借款合同已於11月13日屆滿。新貸款期由11月26日起計一年。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-5d269d244d15",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "北京國銳間接持有上市公司約11.49%及借款人約99.68%；借款人屬關連人士。合計適用百分比率超過0.1%且均低於5%，須申報及公告。",
+          "evidence": {
+            "documentId": "YS-20261126-5d269d244d15",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "stage": {
+        "date": "2026-11-26",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "保證及抵押合同已簽訂"
+      },
+      "progressDate": "2026-11-26",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "id": "HK-01606-20261126-purui-equipment-1178",
       "name": "國銀金租：廣東普睿雲創計算機設備採購",
       "code": "01606",
@@ -95979,6 +96111,14 @@
       "publishedAt": "2026-11-26T20:50:00+08:00",
       "title": "陽光油砂：特別授權配售及股份獎勵計劃通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601424.pdf"
+    },
+    "YS-20261126-5d269d244d15": {
+      "id": "YS-20261126-5d269d244d15",
+      "caseId": "HK-00108-20261126-chunyu-dalian-guarantee",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T21:14:00+08:00",
+      "title": "春雨醫療：向關連人士提供財務資助",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601473_c.pdf"
     }
   },
   "issuerLinks": [
