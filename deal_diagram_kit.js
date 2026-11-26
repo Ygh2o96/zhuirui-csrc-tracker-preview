@@ -7072,6 +7072,21 @@
           {id:"offer",kind:"cash",direction:"ltr",fromLabel:c.parties["要约方"],toLabel:"餘股股東",headline:"股份交割後始作餘股現金要約，舊股口徑全數接納上限49,549,150.08港元",proposedOrTerminated:true}],
         annotations:[{tag:"①",title:"賣方對價",body:"協議總對價24,416,516.80港元，按補充協議由六張免息承兌票據延期支付。票據交付與股份交割分列。"}],
         evidenceLinks:[{documentId:i,pages:[2,3],label:"兩組買賣協議及前置條件"},{documentId:i,pages:[13,14],label:"六名賣方及票據條款"},{documentId:i,pages:[15,16,17],label:"要約價、接納條件及最高對價"}],firstPending:true,notes:true};
+    }else if(c.id==="HK-03774-20261030-sheng-zhan"){
+      const i=source(actual("2026-10-23","control_completion"),"2026103002773"),p=source(proc("2026-11-20"),"2026112001408");
+      const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===i);
+      if(!i||!p||c.stage?.date!=="2026-10-23"||c.stage.eventKind!=="control_completion"||
+        c.events?.some(e=>e.kind==="dispatch"||e.kind==="completion")||
+        c.parties?.["要约方"]!=="Sheng Zhan International Limited"||c.parties?.["卖方"]!=="Equal Joy Holdings Limited"||
+        !term("control_block",349650000)||!term("block_shares",466200000)||!term("block_pct",56.93)||
+        !term("offer_price",0.75)||!term("offer_shares",352720000)||!term("offer_cash_cap",264540000))return null;
+      f={left:"Equal Joy Holdings",right:"Sheng Zhan",leftSub:"出售方",rightSub:"買方及要約人",a:"4.662億股已交割（56.93%）",
+        lTitle:"10月23日 · 控股股份已交割",rTitle:"餘股無條件強制要約",gate:"控股權與餘股分列",badge:"控股股份已交割 · 綜合文件延寄",
+        one:["每股 0.75 港元","涉及 3.5272 億股餘股"],two:["12月9日 · 最遲寄發","執行人員已同意延期"],
+        flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:c.parties["卖方"],toLabel:c.parties["要约方"],headline:"10月23日已轉讓466,200,000股（56.93%），交割時已付現金3.4965億港元"},
+          {id:"offer",kind:"cash",direction:"ltr",fromLabel:c.parties["要约方"],toLabel:"餘股股東",headline:"餘股要約每股0.75港元，全數接納上限2.6454億港元；綜合文件待寄",proposedOrTerminated:true}],
+        annotations:[{tag:"①",title:"兩段現金對價",body:"控股部分交割時付現金3.4965億港元。餘股全數接納時最高2.6454億港元。"}],
+        evidenceLinks:[{documentId:i,pages:[2,4],label:"買賣雙方、交割及現金付款"},{documentId:i,pages:[6,7],label:"餘股範圍、要約對價及條件"},{documentId:p,pages:[2],label:"綜合文件延寄至12月9日"}],firstPending:false};
     }else return null;
     if(c.stage.status!=="active")return null;
     const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
@@ -7087,7 +7102,7 @@
   }
 
   function getSpecForCase(txCase, documents) {
-    if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier","HK-00348-20261118-hwa-sheng"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
+    if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier","HK-00348-20261118-hwa-sheng","HK-03774-20261030-sheng-zhan"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00866-20261103-zhuhai-termination"){const d=buildVerifiedQinfaUnwind26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00604-20261126-zhi-di-property"){const d=buildVerifiedZhiDi26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01548-20261124-probio-capital-reorganisation"){const d=buildVerifiedProbio26(txCase,documents);return d&&validateDiagramSpec(d);}
