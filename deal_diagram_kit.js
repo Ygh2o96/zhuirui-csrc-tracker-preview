@@ -7565,7 +7565,35 @@
       annotations:[{tag:"①",title:"書面批准及租賃範圍",body:modern?"已接納獲批租賃要約；正式租約按披露安排簽訂。租賃用作中央食品加工及配送。":"控股股東書面批准代替召開股東大會；承租用途為經營亞洲風味餐廳。"}],
       evidenceLinks:[{documentId:i,pages:modern?[1,2,3,4]:[1,2,3],label:"租期、租賃付款及書面批准"}]});
   }
+  function buildReviewedCarriannaFacilities(c,docs){
+    const a=c.events?.find(e=>e.kind==="first_announcement"&&e.date==="2026-09-29"&&e.state==="actual")?.evidence?.documentId;
+    const b=c.processEvents?.find(e=>e.kind==="dispatch_extension"&&e.date==="2026-11-26"&&e.state==="actual")?.evidence?.documentId;
+    const match=(id,s)=>docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+s+".pdf");
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.currency==="HKD"&&x.evidence?.documentId===a);
+    if(!match(a,"2026092902207")||!match(b,"2026112601436")||c.stage?.status!=="approved"||
+       c.stage.date!=="2026-11-26"||c.stage.eventKind!=="dispatch_extension"||
+       c.events?.some(e=>e.state==="actual"&&["dispatch","completion","termination"].includes(e.kind))||
+       !t("facility_principal",258260000)||!t("guaranteed_principal_limit",129130000)||!t("capital_shortfall_undertaking",34710000))return null;
+    const title="合營項目定期貸款",right="佳寧娜擔保與資金承諾",badge="已獲股東書面批准 · 通函寄發期限獲延至11月26日";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:415,status:"approved",leftTitle:title,rightTitle:right,transitionLabel:"貸款與擔保分列",outcomeBadge:badge}),[
+      mk("l","left",43,100,149,146,"creditor","O-bank","貸款人"),
+      mk("b","left",448,100,157,146,"buyer","興達發展（香港）","借款人 · 合營公司附屬"),
+      mk("g","right",724,78,310,83,"target","本金擔保部分最高 1.2913 億港元","另涵蓋融資文件約定的利息、費用等"),
+      mk("f","right",724,206,310,85,"creditor","未獲融資開發成本承諾 3,471 萬港元","為佳寧娜就該項成本承擔的上限")
+    ],[],[{id:"credit",panel:"left",kind:"cash",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:218,labelHeight:34,label:"貸款承諾本金 2.5826 億港元",dashed:true}]);
+    const nodes=[{id:"l",role:"creditor",name:"O-bank Co., Ltd."},{id:"b",role:"buyer",name:"Max Win Development (HK) Limited"},{id:"g",role:"listed",name:"佳寧娜集團控股有限公司"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"disclosable_major",modality:"mixed",status:"approved",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"主要交易 · 財務資助",caseModalityLabel:"銀行貸款、擔保及資金承諾",caseModalityShortLabel:"貸款擔保",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"facility",kind:"cash",direction:"ltr",fromLabel:nodes[0].name,toLabel:nodes[1].name,headline:"定期貸款承諾本金合計2.5826億港元，分A及B兩項額度",proposedOrTerminated:true},
+        {id:"guarantee",kind:"asset",direction:"rtl",fromLabel:"佳寧娜及宏達投資控股",toLabel:nodes[0].name,headline:"按合同提供共同及各別擔保；佳寧娜的本金部分最高1.2913億港元，費用及利息另計"},
+        {id:"cost",kind:"asset",direction:"rtl",fromLabel:"佳寧娜及宏達投資控股",toLabel:nodes[0].name,headline:"另承諾補足未獲融資的開發成本及超支並促成完工；佳寧娜就成本承諾的金額上限3,471萬港元"}],
+      annotations:[{tag:"①",title:"股東書面批准",body:"合計持有約52.50%的緊密聯繫股東就財務資助給予書面批准。"}],
+      evidenceLinks:[{documentId:a,pages:[2,3,5,6,10,11,13],label:"貸款、擔保、開發承諾及股東書面批准"},{documentId:b,pages:[1],label:"通函寄發期限豁免"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00126-20260929-facility-financial-assistance")return buildReviewedCarriannaFacilities(txCase,documents);
     if(["HK-08232-20261113-mandarin-plaza-lease","HK-08232-20261020-hoi-lai-lease","HK-08232-20261020-cheung-tung-lease","HK-00374-20261122-tko-innopark-lease"].includes(txCase?.id))return buildReviewedLeaseQuartet(txCase,documents);
     if(["HK-03330-20251210-simberi-subscription","HK-09668-20251010-debt-asset-portfolio-transfer","HK-00381-20251107-jiuai-food"].includes(txCase?.id))return buildReviewedClosedTrio(txCase,documents);
     if(txCase?.id==="HK-03330-20260910-simberi-buyout")return buildReviewedSimberi(txCase,documents);
