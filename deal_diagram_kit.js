@@ -6812,6 +6812,16 @@
       evidenceLinks:[{documentId:cir,pages:[72,73,76,77],label:"轉讓範圍、先決條件及債務解除額"},{documentId:vote,pages:[1,2],label:"三項決議表決結果"}],compactSummary:"ALC 資產轉讓獲股東批准 · 擬解除約 10.2 億美元債務 · 轉讓仍附條件",topology};
   }
   function getSpecForCase(txCase, documents) {
+
+    if (txCase?.id === "HK-00017-20261115-recapitalisation-rights-whitewash") {
+      const t=txCase.terms?.find(v=>v.key==="rights_shares_base_max"&&v.value===27682964881);
+      const p=txCase.terms?.find(v=>v.key==="subscription_price"&&v.value===0.9&&v.currency==="HKD");
+      const f=documents?.[t?.evidence?.documentId], i=documents?.[txCase.stage?.status==="active"&&txCase.events?.find(e=>e.kind==="ifa_appointment")?.evidence?.documentId];
+      if(!p||f?.caseId!==txCase.id||i?.caseId!==txCase.id||
+         !f?.url?.endsWith("/2026111500051.pdf")||!i?.url?.endsWith("/2026112301390.pdf")||
+         txCase.stage.date!=="2026-11-23"||txCase.stage.eventKind!=="ifa_appointment"||!txCase.diagramSpec?.topology)return null;
+      return validateDiagramSpec({id:txCase.id,caseId:txCase.id,code:txCase.code,name:txCase.name,mechanism:txCase.mechanism,...cloneDeep(txCase.diagramSpec)});
+    }
     if(txCase?.id==="HK-03380-20261030-logan-restructuring-implementation"){const x=buildVerifiedLoganALC(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01936-20260925-innovation-forge"){const x=buildVerifiedRitamixOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01085-20260924-shandong-zibo-epc"){const x=buildVerifiedHengxinEpc(txCase,documents);return x&&validateDiagramSpec(x);}
