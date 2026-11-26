@@ -8071,7 +8071,28 @@
     const nodes=[{id:"left",role:"seller",name:seller},{id:"buyer",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"主要及關連收購",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"已取得聚能（江蘇）動力科技51%股權",proposedOrTerminated:false}],annotations:[{tag:"①",title:"交割公告",body:"11月25日刊發公告，確認前一日依協議完成收購、工商變更及章程修訂。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"標的股權及交易方"},{documentId:r,pages:[1],label:"修訂對價"},{documentId:z,pages:[1],label:"實際交割"}]});
   }
+  function buildPossibleOfferPair(c,docs){
+    const i=c.code==="01402",status="active",date="2026-11-06";
+    const hit=(leaf)=>Object.values(docs??{}).find(d=>d.caseId===c.id&&d.url?.endsWith("/"+leaf+".pdf"))?.id;
+    const a=hit(i?"2026091001533":"2026050600487"),z=hit(i?"2026110600951":"2026110600458");
+    if(!a||!z||c.stage?.status!==status||c.stage?.date!==date||c.events?.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind)))return null;
+    if(![["block_pct",i?71.59:60.21],["block_shares",i?752100000:187410000]].every(([k,v])=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===a)))return null;
+    const seller=c.parties["潜在卖方"],buyer=c.parties["潜在买方"];
+    if(i?seller!=="Luxurious Bay Capital Limited、Wong King Keung、Knight Sky Holdings Limited"||buyer!=="未公布姓名的独立第三方":seller!=="董事长 Chen Jian"||buyer!=="独立第三方（未披露姓名）")return null;
+    const left="控股股權擬議轉讓",right="11月6日公告進展",badge=i?"盡調及磋商進行中 · 未簽正式協議":"磋商續行 · 未簽正式協議 · 無排他安排";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"第3.7條月度更新",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",i?"三名潛在賣方":"陳健",i?"Luxurious Bay等披露股東":"潛在賣方 · 董事會主席"),
+      box("b","left",444,106,161,124,"buyer","獨立第三方","潛在買方 · 未披露名稱"),
+      box("a","right",724,72,310,70,"target",i?"i-Control擬轉讓約71.59%":"富通科技擬轉讓約60.21%",i?"合計7.521億股":"合計1.8741億股"),
+      box("r2","right",724,164,310,75,"creditor",i?"盡職審查及磋商進行中":"已恢復磋商，無重大進展",i?"未接獲終止磋商通知":"未簽延期協議，現無排他安排"),
+      box("r3","right",724,260,310,76,"creditor","尚未簽署正式買賣協議","若交易落實，可能觸發全面要約")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:i?"擬議轉讓約71.59%":"擬議轉讓約60.21%",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"第3.7條可能控股權轉讓",caseModalityLabel:"對價待定",caseModalityShortLabel:"待定",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:i?"意向涉及752,100,000股":"意向涉及187,410,000股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"進展",body:i?"11月6日公告確認仍在盡職審查及磋商，未簽正式買賣協議。":"11月6日公告確認磋商續行，未簽正式買賣協議，也未延長排他安排。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"首次披露、擬轉讓股數及比例"},{documentId:z,pages:[1,2],label:"11月6日月度更新"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01402-20260910-control-mou","HK-00465-20260506-chen-control-mou"].includes(txCase?.id))return buildPossibleOfferPair(txCase,documents);
     if(["HK-08137-20260821-geely-51pct"].includes(txCase?.id))return buildHonbridgeComplete(txCase,documents);
     if(["HK-08370-20260327-replacement-call","HK-00076-20261015-cityhill"].includes(txCase?.id))return buildZsCityhill(txCase,documents);
     if(["HK-01070-20260715-tcl-aircon","HK-01765-20261119-dingli-solar"].includes(txCase?.id))return buildTclDingli(txCase,documents);
