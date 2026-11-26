@@ -7326,7 +7326,35 @@
       annotations:[{tag:"①",title:"要約方及一致行動人士",body:"按截止公告，結算後將合計持有126,735,238股（約9.28%），包括要約前一致行動人士持有12,664,538股。"}],
       evidenceLinks:[{documentId:id,pages:[2,3],label:"接納、結算條款及結算後持股"}]});
   }
+  function buildReviewedGeo(c,docs){
+    const id=c.events?.find(e=>e.kind==="completion"&&e.date==="2026-08-12"&&e.state==="actual")?.evidence?.documentId;
+    const d=docs?.[id];
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id);
+    if(d?.caseId!==c.id||d.url!=="https://green-technology.com.hk/upfile/2023/05/20260817052534_553.pdf"||
+      c.stage?.status!=="closed"||c.stage.date!=="2026-08-12"||c.stage.eventKind!=="completion"||
+      c.events?.some(e=>e.state==="actual"&&["termination","offer_lapse"].includes(e.kind))||
+      c.parties?.["要约方"]!=="Geo Environ (HK) Investment Limited"||
+      !t("offer_price",0.45)||!t("max_shares",220000000)||!t("accepted_shares",68606600)||!t("actual_cash",30872970)||!t("accepted_percent",5.02))return null;
+    const title="自願無條件部分要約",right="接納、對價及持股分列",badge="8月12日截止 · 6,860.66萬股有效接納並全數承購";
+    const buyer="Geo Environ (HK) Investment Limited", seller="綠科科技國際合資格股東";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:395,status:"closed",leftTitle:title,rightTitle:right,transitionLabel:"低於上限 · 全數承購",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"public","合資格股東","綠科科技國際"),
+      mk("b","left",448,100,157,146,"buyer","高能環境（香港）","要約方"),
+      mk("t","right",724,78,310,83,"target","6,860.66 萬股獲接納","佔已發行股份5.02%；毋須按比例分配"),
+      mk("p","right",724,203,310,85,"creditor","應付毛額 3,087.3 萬港元","每股0.45港元 · 按接納股數計")
+    ],[],[{id:"shares",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:"有效接納 68,606,600 股"}]);
+    const nodes=[{id:"s",role:"public",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"offer",modality:"cash",status:"closed",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"自願無條件部分要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"有效接納68,606,600股，低於2.20億股上限，全部承購"},
+        {id:"payable",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"應付毛額30,872,970港元，按最終每股0.45港元計，未扣印花稅",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"要約方及一致行動人士",body:"是次要約仍在上市期間截止；全數承購佔已發行股份約5.02%。"}],
+      evidenceLinks:[{documentId:id,pages:[2,3],label:"接納及結算條款"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00195-20260529-geo-environ-partial")return buildReviewedGeo(txCase,documents);
     if(txCase?.id==="HK-00195-20260615-yellowstone-partial")return buildReviewedYellowstone(txCase,documents);
     if(txCase?.id==="HK-01783-20260806-intelligent-compute-servers")return buildReviewedEnvisionServers(txCase,documents);
     if(txCase?.id==="HK-01783-20260629-yovole-cloud")return buildReviewedYovole(txCase,documents);
