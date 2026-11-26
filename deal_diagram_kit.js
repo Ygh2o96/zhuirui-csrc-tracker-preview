@@ -6530,7 +6530,30 @@
       {tag:"②",title:"增资与最终持股",body:"其他认购方增资对价约人民币 5.18 亿元，包括现金及应收款抵销。2026 年 11 月 6 日换股及增资完成，国微控股间接持股约 7.98%。"}],
       evidenceLinks:[{documentId:src,pages:[4],label:"换股及增资条款"},{documentId:close,pages:[1],label:"交易完成及最终持股"}],compactSummary:badge,topology};
   }
+
+  function buildVerifiedVax(c,docs){
+    const src="YS-20261022-5d0d050ce57e", close="YS-20261123-e5fe6fe73e9f", dt="2026-11-23";
+    if(c.stage?.status!=="closed"||c.stage?.date!==dt||c.stage?.eventKind!=="completion"||docs?.[src]?.caseId!==c.id||docs?.[close]?.caseId!==c.id)return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.currency==="HKD"&&t.value===v);
+    if(!term("purchase_price",25000000)||!term("cash_consideration",20000000)||!term("convertible_principal",5000000))return null;
+    const left="域能控股",right="苏树辉博士",badge="已交割 · 代价可换股债券已发行";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:210,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"收购 VAX 股权",rightTitle:"交割及可换股债券",transitionLabel:"已交割",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,171,"buyer",left,"买方及发债人"),box("L_r","left",448,100,157,171,"seller",right,"卖方及债券认购人"),
+      box("R_a","right",728,84,295,75,"target","取得 VAX 1.46% 股权","2026 年 11 月 23 日交割"),
+      box("R_b","right",728,210,295,75,"buyer","可换股债券：本金 500 万港元","初始换股价每股 2.50 港元"),
+    ],[],[arrow("pay","cash","①",192,138,448,"现金 2,000 万港元"),arrow("bond","asset","②",192,200,448,"代价债券 500 万港元"),arrow("stake","shares","③",448,252,192,"VAX 1.46% 股权")]);
+    const nodes=[{id:"l",role:"buyer",name:left},{id:"r",role:"seller",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"acquisition",modality:"mixed",status:"closed",
+      caseArchetypeLabel:"关连股权收购",caseModalityShortLabel:"现金及代价可换股债券",before:{title:"收购",nodes,equityLinks:[]},after:{title:"交割完成",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"pay",kind:"cash",direction:"ltr",fromLabel:left,toLabel:right,headline:"现金 2,000 万港元"},{id:"bond",kind:"asset",direction:"ltr",fromLabel:left,toLabel:right,headline:"500 万港元可换股债券已发行"},{id:"stake",kind:"shares",direction:"rtl",fromLabel:right,toLabel:left,headline:"VAX 1.46% 股权已交割"}],
+      annotations:[{tag:"①",title:"收购对价",body:"总对价 2,500 万港元，分为 2,000 万港元现金及 500 万港元代价可换股债券。"},
+      {tag:"②",title:"债券发行与换股条款",body:"债券随交割发行；三年期、零息。按初始换股价全数转换对应 200 万股域能控股股份。"}],
+      evidenceLinks:[{documentId:src,pages:[9,11,16,17],label:"收购对价及债券条款"},{documentId:close,pages:[1],label:"交割及代价债券发行"}],compactSummary:badge,topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00442-20251112-vax-acquisition"){const x=buildVerifiedVax(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-02239-20261013-s2c-yake-share-swap"){const x=buildVerifiedSmitSwap(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-00195-20261124-zhang-yunhe-partial","HK-01098-20261120-rke-stake-creditor-spv"].includes(txCase?.id)) {const x=buildVerifiedGreentechOrRke(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-02179-20261118-huyou-h-share-whitewash","HK-08535-20261102-zeng-kai"].includes(txCase?.id)) {const x=buildVerifiedHuyouOrVistar(txCase,documents);return x&&validateDiagramSpec(x);}
