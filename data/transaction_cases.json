@@ -59270,9 +59270,25 @@
       "name": "天任集团",
       "parties": {
         "目标公司": "Skymission Group Holdings Limited",
-        "要约人": "Dacheng International Holdings Limited"
+        "要约人": "Dacheng International Holdings Limited",
+        "股份买卖卖方": "Sky Mission Group Limited"
       },
-      "processEvents": [],
+      "processEvents": [
+        {
+          "date": "2026-03-27",
+          "kind": "supplement",
+          "label": "公眾持股恢復至25%",
+          "detail": "大成國際在市場出售808,000股；公眾股數由399,196,000增至400,004,000股。",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260327-skymission-float",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
       "progressDate": "2026-03-06",
       "rules": [
         {
@@ -59374,6 +59390,22 @@
           "precision": 2,
           "unit": "money",
           "value": 76380
+        },
+        {
+          "approximate": false,
+          "basis": "3月27日另行場內出售，非要約接納股數",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20260327-skymission-float",
+            "pages": [
+              1
+            ]
+          },
+          "key": "float_restoration_disposed_shares",
+          "label": "恢復公眾持股的市場出售股數",
+          "precision": 0,
+          "unit": "shares",
+          "value": 808000
         }
       ]
     },
@@ -99757,6 +99789,13 @@
       "id": "YS-20260429-voyah-listing-confirmed",
       "title": "嵐圖ESG報告：確認3月19日主板掛牌",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042905690.pdf"
+    },
+    "YS-20260327-skymission-float": {
+      "caseId": "HK-01429-20260123-dacheng-mandatory-cash",
+      "date": "2026-03-27",
+      "id": "YS-20260327-skymission-float",
+      "title": "天任集團：恢復公眾持股量",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702158.pdf"
     }
   },
   "issuerLinks": [

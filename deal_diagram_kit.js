@@ -8775,7 +8775,38 @@
     const nodes=[{id:"s",role:"seller",name:"東風集團股份"},{id:"b",role:"buyer",name:"東風集團（武漢）投資"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金註銷及股份分派",caseModalityShortLabel:"現金及股份",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"東風集團股份",toLabel:"東風集團（武漢）投資",headline:"吸收合併與撤牌"}],annotations:[{tag:"①",title:"兩項對價",body:"現金註銷與嵐圖股份分派獨立列示。內資股股東按相同比例獲嵐圖內資股；10.85港元為初期估值口徑下每股H股理論合計。"},{tag:"②",title:"現金結算安排",body:"3月18日公告所列現金匯款或寄發支票期限為3月27日。"}],evidenceLinks:[{documentId:a,pages:[2,3,35],label:"註銷及分派條款"},{documentId:p,pages:[2],label:"股東表決"},{documentId:z,pages:[2],label:"東風H股撤牌"},{documentId:m,pages:[2,3],label:"分派及合併條件"},{documentId:n,pages:[5],label:"嵐圖實際掛牌"}]});
   }
+  function buildSkyAndJinchuan(c,docs){
+    const configs={
+      "01429":{
+        a:"YS-20260123-f0612f0a1238",z:"YS-20260306-e6c21b3372aa",o:"YS-20260327-skymission-float",date:"2026-03-06",event:"completion",status:"closed",
+        ts:[["block_shares",1200000000,"a"],["block_cash",114000000,"a"],["tendered_shares",804000,"z"],["tendered_cash",76380,"z"],["float_restoration_disposed_shares",808000,"o"]],
+        left:"先行股份買賣（已交割）",right:"餘股要約及公眾持股",badge:"餘股要約已截止 · 公眾持股其後恢復",seller:"Sky Mission Group",buyer:"大成國際控股",sSub:"出售12億股",bSub:"1月16日交割 · 約1.1億港元",main:"已轉讓75.00%股份",
+        steps:[["3月6日餘股要約截止","6份有效接納 · 804,000股"],["毛額76,380港元","計入接納後公眾持股24.95%"],["3月27日另行在市場售股","808,000股 · 公眾持股恢復至25.00%"]],
+        detail:"賣方Sky Mission Group Limited與上市公司名稱不同。先行買賣對價1.14億港元；餘股每股0.095港元。3月27日公告確認售股後公眾持有400,004,000股。",pagesA:[2,5,6],pagesZ:[2,3,4],pagesO:[1]
+      },
+      "02362":{
+        a:"YS-20260305-5d08c87d57fb",z:"YS-20260423-09acf95d951a",p:"YS-20260326-c601fc0c2e6e",date:"2026-04-23",event:"completion",status:"closed",
+        ts:[["max_shares",700000000,"a"],["offer_price",.01,"p"],["accepted_shares",21212517,"z"],["actual_cash",212125.17,"z"],["post_pct",.16,"z"]],
+        left:"無條件自願現金部分要約",right:"接納及結算",badge:"有效接納21,212,517股 · 全數承接",seller:"金川國際合資格股東",buyer:"Alternative Liquidity Index",sSub:"部分要約上限7億股",bSub:"每股0.01港元",main:"6份有效接納",
+        steps:[["3月26日寄發要約文件","無條件部分要約"],["4月23日要約截止","接納21,212,517股，低於上限"],["按條款承接全數有效提交","約21.2萬港元 · 結算後持股約0.16%"]],
+        detail:"要約人為Alternative Liquidity Index, LP；本圖為3月5日公布的每股0.01港元一輪。對價按接納股數及要約價計。",pagesA:[1,2],pagesZ:[2,3],pagesP:[1,2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="01429"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(c.code==="02362"&&!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    if(c.code==="01429"&&!c.processEvents?.some(e=>e.date==="2026-03-27"&&e.state==="actual"&&e.evidence?.documentId===q.o))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="terminated"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"要約文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01429-20260123-dacheng-mandatory-cash","HK-02362-20260305-alternative-liquidity-partial"].includes(txCase?.id))return buildSkyAndJinchuan(txCase,documents);
     if(txCase?.id==="HK-00489-20250822-dongfeng-absorption-voyah")return buildDongfengVoyah(txCase,documents);
     if(["HK-08031-20260119-jumbo-growth-control-mgo","HK-01053-20251219-hwabao-a-share-whitewash"].includes(txCase?.id))return buildEtsAndChongqing(txCase,documents);
     if(["HK-01875-20260114-wuxi-xdc-voluntary-share-and-option"].includes(txCase?.id))return buildBioDlinkTransfer(txCase,documents);
