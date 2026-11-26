@@ -6420,7 +6420,37 @@
         {tag:"②",title:"余股及文件",body:"余下 150,920,000 股，如全部接纳最高支付 81,300,604 港元。11 月 25 日申请将综合文件寄发期限延至最迟 12 月 7 日；执行人员表示倾向同意。"}],
       evidenceLinks:[{documentId:cl,pages:[2,3,10],label:"联合公告：交割及余股要约"},{documentId:delay,pages:[2],label:"公告：申请延寄"}],compactSummary:"应力控股 · 72.90% 已交割 · 余股按接纳",topology};
   }
+
+  function buildVerifiedWingFungOrLotus(c,docs){
+    const w=c.id==="HK-08526-20261103-lumina",l=c.id==="HK-06063-20260908-control-mgo";if(!w&&!l)return null;
+    const docA=w?"YS-20261103-65f91333a74a":"YS-20260908-d05d8436a3bd",docB=w?"YS-20261124-73801e3ed526":"YS-20261020-da8043d5ad2c",docC="YS-20261124-694c9bc9c554";
+    if(docs?.[docA]?.caseId!==c.id||docs?.[docB]?.caseId!==c.id||c.stage.date!==(w?"2026-11-24":"2026-10-20")||c.stage.eventKind!==(w?"dispatch_extension":"completion"))return null;
+    const term=(k,v,src)=>c.terms.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===src);
+    if(w?!(term("control_block",41505401,docA)&&term("block_pct",51.19,docA)&&term("offer_cash_cap",39569993.75,docA)) :
+         !(term("control_pct",74.75,docA)&&term("control_cash",101660000,docA)&&term("accepted_shares",64000,docB)&&term("accepted_gross",4352,docB)&&c.processEvents?.some(e=>e.kind==="public_float_restored"&&e.date==="2026-11-24"&&e.state==="actual"&&e.evidence?.documentId===docC)&&docs?.[docC]?.caseId===c.id))return null;
+    const buyer=w?"Lumina Holdings":"Victor Xu Limited",seller=w?"Wing Fung Capital":"Platinum Lotus",status=w?"active":"closed",badge=w?"控股权已交割 · 申请延寄综合文件":"要约已截止 · 公众持股量恢复至 25%";
+    const box=(id,panel,x,y,wi,h,role,title,subtitle)=>({id,panel,x,y,w:wi,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:365,status,leftTitle:"已完成的控股权转让",rightTitle:w?"余股强制现金要约":"要约结果及后续",transitionLabel:w?"触发要约":"要约已截止",outcomeBadge:badge}),[
+      box("L_s","left",41,96,162,149,"seller",seller,w?"转让 8,306.25 万股":"转让 14.95 亿股"),
+      box("L_b","left",445,96,160,149,"buyer",buyer,w?"取得约 51.19%":"取得 74.75%"),
+      box("R_a","right",724,82,300,80,"target",w?"每股 0.4997 港元":"有效接纳 6.4 万股",w?"全数接纳上限 3,957.0 万港元":"3 份接纳 · 应付 4,352 港元"),
+      box("R_b","right",724,208,300,77,"public",w?"综合文件尚未寄发":"公众持股量恢复至 25%",w?"已申请延至最迟 12 月 8 日":"11 月 24 日公开市场出售 6.4 万股")
+    ],[],[
+     {id:"acq",panel:"left",kind:"shares",step:"①",pathPoints:[[203,135],[445,135]],labelCenter:[324,135],labelWidth:190,labelHeight:36,label:w?"约 51.19% 股权":"74.75% 股权"},
+     {id:"value",panel:"left",kind:w?"asset":"cash",step:"②",pathPoints:[[445,207],[203,207]],labelCenter:[324,207],labelWidth:194,labelHeight:36,label:w?"承接债务 · 4,150.5 万港元":"现金 1.0166 亿港元"}
+    ]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer},{id:"p",role:"public",name:"余股股东"}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"offer",modality:w?"mixed":"cash",status,caseArchetypeLabel:"控股权转让及强制要约",caseModalityShortLabel:w?"承接债务／余股现金":"现金",
+    before:{title:"控股权已交割",nodes,equityLinks:[]},after:{title:w?"余股要约":"要约已截止",nodes,equityLinks:[],outcomeBadge:badge},
+    flows:[{id:"acq",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:w?"8,306.25 万股已转让":"14.95 亿股已转让",proposedOrTerminated:false},
+    ...(w?[{id:"value",kind:"asset",direction:"ltr",fromLabel:buyer,toLabel:"Fast Upgrade（债权人）",headline:"承接卖方拖欠贷款本金及利息",proposedOrTerminated:false}]:[{id:"value",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"控股权对价 1.0166 亿港元",proposedOrTerminated:false}]),
+    {id:"offer",kind:"cash",direction:"ltr",fromLabel:buyer,toLabel:"余股股东",headline:w?"全数接纳时最高 39,569,993.75 港元":"有效接纳 64,000 股 · 应付 4,352 港元",proposedOrTerminated:w}],
+    annotations:[{tag:"①",title:"控股权交易及对价",body:w?"Lumina 承接卖方对 Fast Upgrade 未偿还的本金及利息合计 41,505,401 港元，由此履行购股对价；相应股份质押解除。":"Victor Xu 以 101,660,000 港元取得 1,495,000,000 股，占 74.75%。"},
+    {tag:"②",title:w?"余股及延寄申请":"要约接纳与公众持股",body:w?"文件原定 11 月 24 日或之前寄发，现申请延至最迟 12 月 8 日，收购执行人员表示倾向同意。":"10 月 20 日要约截止，三份有效接纳合计 64,000 股。11 月 24 日要约人另在公开市场出售 64,000 股，公众持股量恢复至 25%。"}],
+    evidenceLinks:[{documentId:docA,pages:w?[2,6,7,8]:[2,3],label:"控股权交割公告"},{documentId:docB,pages:w?[2]:[2,3],label:w?"延期申请":"要约结果"},...(w?[]:[{documentId:docC,pages:[1],label:"公众持股量恢复"}])],compactSummary:badge,topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if (["HK-08526-20261103-lumina","HK-06063-20260908-control-mgo"].includes(txCase?.id)) {const x=buildVerifiedWingFungOrLotus(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-02663-20261020-dax"){const x=buildVerifiedDaxOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
