@@ -33803,7 +33803,22 @@
         "标的": "森浩集团股份",
         "要约方": "OME Holding Limited"
       },
-      "processEvents": [],
+      "processEvents": [
+        {
+          "date": "2026-12-03",
+          "kind": "supplement",
+          "label": "餘股要約預計下午4時截止",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261112-2b64aca0f620",
+            "pages": [
+              4,
+              7
+            ]
+          }
+        }
+      ],
       "progressDate": "2026-11-12",
       "rules": [
         {

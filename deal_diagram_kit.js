@@ -8142,7 +8142,27 @@
     const nodes=[{id:"p",role:"listed",name:"阿里巴巴",code:"09988.HK"},{id:"s",role:"target",name:"平頭哥（上海）技術股份有限公司"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"spin_off",modality:"cash",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"PN15 建議分拆",caseModalityLabel:"擬全球發售",caseModalityShortLabel:"擬全球發售",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[{from:"p",to:"s",label:"100%",style:"solid"}]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"平頭哥",toLabel:"全球發售投資者",headline:"擬發售平頭哥H股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"待辦審批",body:"待港交所上市委員會批准、證監會完成備案，以及阿里巴巴和平頭哥作最終決定。"}],evidenceLinks:[{documentId:id,pages:[1,2,3],label:"首公告：申請日期、豁免與條件"}]});
   }
+  function buildOmeInvengoStage(c,docs) {
+    const o=c.code==="08285", a=o?"YS-20261026-ee42072b4dfa":"YS-20261026-8352e31b75c6",z=o?"YS-20261112-2b64aca0f620":"YS-20261116-6fb2d560c58c",date=o?"2026-11-12":"2026-11-16";
+    if(![a,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="active"||c.stage.date!==date||[...(c.events??[]),...(c.processEvents??[])].some(e=>e.state==="actual"&&(e.date>date||["completion","termination","offer_close"].includes(e.kind))))return null;
+    const terms=o?[["block_pct",75,a],["ome_post_stake",40,a],["control_block",60060000,a],["offer_cash_cap",20020000,z],["offer_price",.143,z]]:[["subscription_i",20160000,a],["subscription_i_shares",12000000,a],["offer_price",1.68,a],["offer_cash_cap",56792820,a],["offer_shares_net",33805250,a]];
+    if(!terms.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    if(o&&!c.events?.some(e=>e.kind==="control_completion"&&e.date==="2026-10-26"&&e.state==="actual"&&e.evidence?.documentId===a))return null;
+    const status="active",left=o?"已交割的舊股轉讓":"擬議新股認購",right=o?"已提出的餘股要約":"交割後才會觸發要約",badge=o?"75%控制權已交割 · 餘股要約進行中":"認購協議I待交割 · 要約尚未提出";
+    const sell=o?"兩名原股東":"Web3 Meta",buy=o?"OME及一致行動方":"Invengo";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:o?"強制現金要約":"有條件強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,o?"seller":"listed",sell,o?"Yen Sheng、Summit Time":"發行人 · 08093.HK"),
+      box("b","left",444,106,161,124,"buyer",buy,o?"OME單獨40%；一致行動合計75%":"認購人I · 1,200萬股"),
+      box("a","right",724,72,310,70,"target",o?"餘下1.4億股 · 每股0.143港元":"擬要約價每股1.68港元",o?"全部接納的最高現金額2,002萬港元":"四份協議均完成情境"),
+      box("r2","right",724,164,310,75,"creditor",o?"11月12日已寄發綜合文件":"扣除不接納承諾後",o?"預計12月3日下午4時截止":"3,380.5萬股；現金上限5,679.3萬港元"),
+      box("r3","right",724,260,310,76,"creditor",o?"10月26日交割4.2億股":"截至11月16日，協議I仍待交割",o?"三筆股權轉讓合計6,006萬港元":"認購價款2,016萬港元單獨列示")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:o?"已轉讓4.2億股":"擬發行1,200萬股",proposedOrTerminated:!o}]);
+    const nodes=[{id:"s",role:o?"seller":"listed",name:sell},{id:"b",role:"buyer",name:buy}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:o?"已交割控股權及餘股要約":"新股認購及可能要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:sell,toLabel:buy,headline:o?"已交割4.2億股，合計持75%":"擬認購1,200萬股，仍待先決條件",proposedOrTerminated:!o}],annotations:[{tag:"①",title:o?"持股拆分":"文件延期",body:o?"OME 40.00%、CSI Floorings 12.11%、GanLan Investments 22.89%。截至綜合文件，合計75%是已交割份額。":"執行人員表示有意同意延期至協議I完成後七日或2027年1月22日（以較早為準）。"}],evidenceLinks:[{documentId:a,pages:o?[2,3]:[4,6,7,22,24],label:o?"控制權交割及買方拆分":"新股認購與要約情境"},{documentId:z,pages:o?[4,14,17]:[2,4],label:o?"綜合文件：期限及要約上限":"先決條件及延期進展"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08285-20261022-ome","HK-08093-20261026-invengo"].includes(txCase?.id))return buildOmeInvengoStage(txCase,documents);
     if(txCase?.id==="HK-09988-20261110-t-head-spin")return buildTHeadPending(txCase,documents);
     if(txCase?.id==="HK-01894-20260923-ngai-partial")return buildHangYickPartial(txCase,documents);
     if(["HK-01793-20260820-talent-pool-mou","HK-01746-20260710-wanlexin-loi"].includes(txCase?.id))return buildNamedLoiPair(txCase,documents);
