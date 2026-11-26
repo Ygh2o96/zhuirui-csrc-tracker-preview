@@ -7101,7 +7101,37 @@
       flows:f.flows,annotations:f.annotations,evidenceLinks:f.evidenceLinks,compactSummary:f.badge,topology:topo};
   }
 
+  function buildReviewedRealord(c,docs){
+    const id=c.events?.find(e=>e.kind==="first_announcement"&&e.date==="2026-11-11"&&e.state==="actual")?.evidence?.documentId;
+    const d=docs?.[id];
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id);
+    if(d?.caseId!==c.id||!d.url.endsWith("/2026111101449.pdf")||c.stage?.status!=="active"||
+      c.stage.date!=="2026-11-11"||c.stage.eventKind!=="first_announcement"||
+      c.events?.some(e=>e.state==="actual"&&e.kind!=="first_announcement")||
+      c.parties?.["貸款人／認購人"]!=="Manureen Holdings Limited"||
+      !t("consideration",2546800000)||!t("new_shares",11576184000)||!t("price_per_share",0.22))return null;
+    const title="有條件貸款資本化", right="交割及轉換條件", badge="已簽有條件協議 · 尚待股東及上市批准";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:382,status:"active",leftTitle:title,rightTitle:right,transitionLabel:"資本化於交割辦理",outcomeBadge:badge}),[
+      mk("issuer","left",43,100,149,146,"listed","偉祿科技","發行人 · 01196"),
+      mk("lender","left",448,100,157,146,"creditor","Manureen","控股股東及貸款人"),
+      mk("approval","right",728,84,295,75,"target","獨立股東批准及特別授權","另須取得轉換股份上市批准"),
+      mk("convert","right",728,210,295,75,"public","1 股優先股兌 1 股普通股","按條款轉換，比例可調整")
+    ],[],[
+      {id:"cps",panel:"left",kind:"shares",step:"①",pathPoints:[[192,143],[448,143]],labelCenter:[320,143],labelWidth:210,labelHeight:34,label:"115.762 億股可轉換優先股",dashed:true},
+      {id:"setoff",panel:"left",kind:"cancel",step:"②",pathPoints:[[448,207],[192,207]],labelCenter:[320,207],labelWidth:210,labelHeight:34,label:"以約 25.468 億港元貸款抵銷",dashed:true}
+    ]);
+    const nodes=[{id:"i",role:"listed",name:"偉祿科技"},{id:"m",role:"creditor",name:"Manureen Holdings Limited"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"debt_restructuring",modality:"mixed",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"關連貸款資本化",caseModalityLabel:"可轉換優先股抵銷貸款",caseModalityShortLabel:"貸款抵銷",
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},topology,compactSummary:badge,
+      flows:[{id:"cps",kind:"shares",direction:"ltr",fromLabel:"偉祿科技",toLabel:"Manureen Holdings Limited",headline:"按每股0.22港元擬發行11,576,184,000股可轉換優先股",proposedOrTerminated:true},
+        {id:"setoff",kind:"cancel",direction:"rtl",fromLabel:"Manureen Holdings Limited",toLabel:"偉祿科技",headline:"認購價以約25.468億港元的部分股東貸款抵銷",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"抵銷金額",body:"資本化部分截至交割日繼續計息，該段利息由發行人向貸款人支付。"}],
+      evidenceLinks:[{documentId:id,pages:[1,2,5,6,7],label:"發行數量、貸款抵銷及交割條件"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01196-20261111-realord-loan-capitalisation")return buildReviewedRealord(txCase,documents);
     if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier","HK-00348-20261118-hwa-sheng","HK-03774-20261030-sheng-zhan"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00866-20261103-zhuhai-termination"){const d=buildVerifiedQinfaUnwind26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00604-20261126-zhi-di-property"){const d=buildVerifiedZhiDi26(txCase,documents);return d&&validateDiagramSpec(d);}
