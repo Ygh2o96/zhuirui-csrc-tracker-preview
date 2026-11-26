@@ -31078,6 +31078,45 @@
           "kind": "trading_resume",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-11-26",
+          "label": "刊發五合一合股的新時間表",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-2026112600907",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-12-14",
+          "label": "五合一合股記錄日",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-2026112600907",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-12-15",
+          "label": "預計合股生效；上午9時起買賣合併股份",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-2026112600907",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "progressDate": "2026-11-18",
@@ -87949,6 +87988,180 @@
       "intervals": {},
       "comparables": {},
       "comparisonEvidence": {}
+    },
+    {
+      "id": "HK-00931-20260814-wellfire-subscription",
+      "code": "00931",
+      "name": "中國港能：Wellfire 新股認購",
+      "aliases": [
+        "中國港能智慧能源集團有限公司",
+        "China HK Power Smart Energy Group Limited",
+        "Wellfire Industrial Group (HK) Limited"
+      ],
+      "category": "placing",
+      "mechanism": "Wellfire 擬按每股0.267港元認購14.87134億股新股。11月25日公告第五次延期，付款期限延至12月9日或雙方書面約定的更後日期；仍待收妥款項與完成手續。",
+      "parties": {
+        "發行人": "中國港能智慧能源集團有限公司",
+        "認購人": "Wellfire Industrial Group (HK) Limited"
+      },
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-08-14",
+          "label": "簽訂一般授權新股認購協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-11-25",
+          "label": "第五次延後認購款付款期限",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261125-2026112500762",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "kind": "supplement",
+          "date": "2026-12-09",
+          "label": "認購款付款期限；可書面協議延後",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261125-2026112500762",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-25",
+        "eventKind": "supplement",
+        "status": "active",
+        "label": "付款期限延至12月9日 · 待收款及完成"
+      },
+      "progressDate": "2026-11-25",
+      "headlineKey": "consideration",
+      "intervals": {},
+      "mandates": [],
+      "rules": [
+        {
+          "code": "HKEX:13.36",
+          "label": "上市規則 13.36 · 一般授權",
+          "application": "發行人披露擬按2025年一般授權發行新股。",
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        }
+      ],
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "協議預計募資總額",
+          "value": 397100000,
+          "unit": "money",
+          "basis": "8月14日披露約數，收妥認購款後方可完成。",
+          "approximate": true,
+          "currency": "HKD",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              6
+            ]
+          }
+        },
+        {
+          "key": "net_proceeds",
+          "label": "協議預計募資淨額",
+          "value": 396700000,
+          "unit": "money",
+          "basis": "8月14日按當時費用估算。",
+          "approximate": true,
+          "currency": "HKD",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              6
+            ]
+          }
+        },
+        {
+          "key": "price_per_share",
+          "label": "每股認購價",
+          "value": 0.267,
+          "unit": "per_share",
+          "basis": "認購協議定價。",
+          "approximate": false,
+          "currency": "HKD",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "new_shares",
+          "label": "協議擬發行新股",
+          "value": 1487134000,
+          "unit": "shares",
+          "basis": "待完成後發行。",
+          "approximate": false,
+          "currency": null,
+          "precision": 0,
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "placing_share_post_issue_pct",
+          "label": "新股佔擴大後股本（8月14日基準）",
+          "value": 15.42,
+          "unit": "percent",
+          "basis": "以8月14日已發行股份為基礎，假設僅本宗發股。",
+          "approximate": true,
+          "currency": null,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260814-2026081401627",
+            "pages": [
+              1,
+              6
+            ]
+          }
+        }
+      ],
+      "comparables": {},
+      "comparisonEvidence": {}
     }
   ],
   "coverage": "selected_verified_transactions",
@@ -97467,6 +97680,29 @@
       "publishedAt": "2026-11-25T21:56:00+08:00",
       "title": "洪橋集團：完成收購聚能動力51%股權",
       "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1125/2026112501525.pdf"
+    },
+    "YS-20261126-2026112600907": {
+      "caseId": "HK-00348-20261118-hwa-sheng",
+      "date": "2026-11-26",
+      "id": "YS-20261126-2026112600907",
+      "title": "股份合併經修訂時間表",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600907.pdf"
+    },
+    "YS-20260814-2026081401627": {
+      "caseId": "HK-00931-20260814-wellfire-subscription",
+      "date": "2026-08-14",
+      "id": "YS-20260814-2026081401627",
+      "publishedAt": "2026-08-14T19:59:00+08:00",
+      "title": "與 Wellfire 訂立一般授權新股認購協議",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401627.pdf"
+    },
+    "YS-20261125-2026112500762": {
+      "caseId": "HK-00931-20260814-wellfire-subscription",
+      "date": "2026-11-25",
+      "id": "YS-20261125-2026112500762",
+      "publishedAt": "2026-11-25T18:05:00+08:00",
+      "title": "第五次延後支付認購款",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112500762.pdf"
     }
   },
   "issuerLinks": [
