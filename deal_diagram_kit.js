@@ -6552,7 +6552,29 @@
       {tag:"②",title:"债券发行与换股条款",body:"债券随交割发行；三年期、零息。按初始换股价全数转换对应 200 万股域能控股股份。"}],
       evidenceLinks:[{documentId:src,pages:[9,11,16,17],label:"收购对价及债券条款"},{documentId:close,pages:[1],label:"交割及代价债券发行"}],compactSummary:badge,topology};
   }
+
+  function buildVerifiedCalcExtension(c,docs){
+    const src="YS-20261124-a7305a865955", dt="2026-11-24";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="dispatch"||docs?.[src]?.caseId!==c.id||!docs[src].url?.endsWith("/1125/2026112400422.pdf"))return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.currency==="HKD"&&t.value===v);
+    if(!term("outstanding_principal",850000000)||!term("annual_financial_assistance_cap",650000000)||!c.processEvents?.some(e=>e.date==="2026-12-16"&&e.kind==="vote"&&e.state==="expected"))return null;
+    const left="ARI",right="ZF Investment",badge="拟展期 · 待独立股东表决";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"现有可交换债券拟展期三年",rightTitle:"贷款及担保上限与审批",transitionLabel:"两项议案互为条件",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"target",left,"可交换债券发行人"),box("L_r","left",448,100,157,146,"buyer",right,"中国飞机租赁全资子公司"),
+      box("R_a","right",728,84,295,75,"target","每年上限 6.5 亿港元","2027–2029 年股东贷款及担保"),
+      box("R_b","right",728,210,295,75,"public","独立股东分别表决","股东大会拟于 2026-12-16 举行"),
+    ],[],[{id:"extend",panel:"left",kind:"asset",step:"①",pathPoints:[[192,160],[448,160]],labelCenter:[320,160],labelWidth:210,labelHeight:34,label:"未偿本金 8.5 亿港元"}]);
+    const nodes=[{id:"l",role:"target",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"debt_restructuring",modality:"in_kind",status:"active",
+      caseArchetypeLabel:"可交换债券展期及股东贷款续期",caseModalityShortLabel:"现有债券展期",before:{title:"现有债券条款",nodes,equityLinks:[]},after:{title:"拟展期安排",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"extend",kind:"asset",direction:"ltr",fromLabel:left,toLabel:right,headline:"现有债券未偿本金 8.5 亿港元；到期日拟由 2026-12-31 延至 2029-12-31",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"现有可交换债券",body:"债券可交换为 CAAM 股份。到期日拟由 2026 年 12 月 31 日延至 2029 年 12 月 31 日，未偿本金 8.5 亿港元。"},
+      {tag:"②",title:"股东贷款及担保",body:"2027 至 2029 年每日最高日终余额上限每年 6.5 亿港元。两项议案分别表决、互为条件；按通函拟于 2026 年 12 月 16 日表决。"}],
+      evidenceLinks:[{documentId:src,pages:[15,18,19,20,105,106],label:"通函：贷款上限、债券展期及股东大会议程"}],compactSummary:badge,topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01848-20261022-ari-eb-extension"){const x=buildVerifiedCalcExtension(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-00442-20251112-vax-acquisition"){const x=buildVerifiedVax(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-02239-20261013-s2c-yake-share-swap"){const x=buildVerifiedSmitSwap(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-00195-20261124-zhang-yunhe-partial","HK-01098-20261120-rke-stake-creditor-spv"].includes(txCase?.id)) {const x=buildVerifiedGreentechOrRke(txCase,documents);return x&&validateDiagramSpec(x);}
