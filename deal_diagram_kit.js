@@ -8245,7 +8245,25 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"擬議控股權轉讓",caseModalityLabel:s?"待正式要約文件":"現金及票據",caseModalityShortLabel:s?"待定":"現金及票據",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:s?"擬轉讓約10.417億股":"擬轉讓約2.995億股",proposedOrTerminated:true}],annotations:[{tag:"①",title:s?"要約狀態":"綜合文件",body:s?"11月3日公告仍未交割，可能提出強制性全面要約。":"最新獲准寄發時限為交割後七日或12月8日，以較早者為準。"}],evidenceLinks:[{documentId:a,pages:s?[1,2]:[2,3,5],label:"首公告：股份範圍及交易條款"},{documentId:z,pages:[2,3],label:"法院／監管及寄發進展"}]});
   }
+  function buildFinelandOrFuShou(c,docs){
+    const f=c.code==="09978",z=f?"YS-20261105-ed17342fa850":"YS-20261016-fdd16c4f8d4a",a=f?"YS-20261008-59c69a3f1d40":"YS-20260918-dfbc0d43d4c5",later="YS-20261113-0552d922a0f2",date=f?"2026-11-05":"2026-10-16";
+    const ts=f?[["accepted_shares",1304000,z],["accepted_gross",182560,z],["control_pct",50.01,a],["post_subscription_offeror_pct",58.30,later],["post_subscription_public_float",41.11,later]]:[["accepted_shares",4592696,z],["accepted_gross",459269.6,z],["post_offer_concert_pct",.2,z],["offer_max_cash",11500000,a]];
+    if(![a,z,...(f?[later]:[])].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.state==="actual"&&e.kind==="completion"&&e.evidence?.documentId===z)||!ts.every(([k,v,d])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===d)))return null;
+    const status="closed",left=f?"已交割的控股股份":"自願現金部分要約",right=f?"餘股接納及其後發行":"實際接納股份",badge=f?"11月5日餘股要約截止 · 11月13日另發新股":"10月16日截止 · 有效接納4,592,696股";
+    const seller=f?"三名控股股份賣方":"接受要約的股東",buyer=f?"Yoncan":"龔海林";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:f?"強制現金要約":"自願部分要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",seller,f?"已轉讓合計2.00044億股":"10份有效接納"),
+      box("b","left",444,106,161,124,"buyer",buyer,f?"10月8日取得50.01%":"每股0.10港元"),
+      box("a","right",724,72,310,70,"target",f?"餘股要約有效接納130.4萬股":"有效接納4,592,696股",f?"每股0.14港元；應付18.256萬港元":"應付約45.927萬港元"),
+      box("r2","right",724,164,310,75,"creditor",f?"11月5日結果：Yoncan 50.34%":"要約上限1.15億股",f?"公告的要約截止口徑":"有效接納全數承購，佔總股本約0.20%"),
+      box("r3","right",724,260,310,76,"creditor",f?"11月13日：Yoncan 58.30%":"要約已截止",f?"另行發行後公眾持股41.11%":"結果公告列明其後結算安排")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:f?"已交割2.00044億股":"有效接納4,592,696股"}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:f?"控股交割、要約及其後發行":"自願部分要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:f?"已交割控股股份":"已披露有效接納股數"}],annotations:[{tag:"①",title:f?"認購與認股權證":"接納與結算",body:f?"11月13日另行完成3.7億股認購及7,700萬份認股權證發行。發行權證無現金對價，0.50港元為行權價。":"全數承購有效接納；應付價款按每股0.10港元計算。結果公告列明於截止後七個營業日內結算。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:f?"原控股股份交割":"要約文件"},{documentId:z,pages:[2,3],label:"要約截止結果及結算安排"},...(f?[{documentId:later,pages:[2,3,4],label:"認購及認股權證發行結果"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-09978-20260728-control-mgo","HK-01448-20260901-voluntary-partial"].includes(txCase?.id))return buildFinelandOrFuShou(txCase,documents);
     if(["HK-00852-20260225-speed-success-liquidator","HK-03938-20260109-fortune-origin-control"].includes(txCase?.id))return buildStrongOrLfg(txCase,documents);
     if(["HK-01037-20260727-foxconn-control","HK-03336-20260518-lens-voluntary"].includes(txCase?.id))return buildFoxconnOrLens(txCase,documents);
     if(["HK-01835-20260630-3g-h-share-control","HK-00456-20260715-receivers-charged-shares"].includes(txCase?.id))return buildRealwayOrReceivers(txCase,documents);

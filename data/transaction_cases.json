@@ -40803,6 +40803,86 @@
           "precision": 2,
           "unit": "percent",
           "value": 53.74
+        },
+        {
+          "key": "subscription_actual",
+          "label": "11月13日發行新股",
+          "value": 370000000,
+          "unit": "shares",
+          "basis": "三名認購人合計；另於原要約結束後發行。",
+          "approximate": false,
+          "currency": null,
+          "precision": 0,
+          "evidence": {
+            "documentId": "YS-20261113-0552d922a0f2",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "subscription_net",
+          "label": "11月13日認購實收淨額（約）",
+          "value": 49500000,
+          "unit": "money",
+          "basis": "認購扣除相關費用，與原要約價款分開。",
+          "approximate": true,
+          "currency": "HKD",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261113-0552d922a0f2",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "warrants_actual",
+          "label": "11月13日發行認股權證",
+          "value": 77000000,
+          "unit": "count",
+          "basis": "發行無現金代價；尚非行權發股。",
+          "approximate": false,
+          "currency": null,
+          "precision": 0,
+          "evidence": {
+            "documentId": "YS-20261113-0552d922a0f2",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "post_subscription_offeror_pct",
+          "label": "11月13日認購完成後要約方持股",
+          "value": 58.3,
+          "unit": "percent",
+          "basis": "448,948,000／770,000,000，未計權證行使。",
+          "approximate": true,
+          "currency": null,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261113-0552d922a0f2",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "post_subscription_public_float",
+          "label": "11月13日認購完成後公眾持股",
+          "value": 41.11,
+          "unit": "percent",
+          "basis": "316,552,000／770,000,000，按公告公眾持股口徑。",
+          "approximate": true,
+          "currency": null,
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261113-0552d922a0f2",
+            "pages": [
+              4
+            ]
+          }
         }
       ]
     },
