@@ -7926,7 +7926,36 @@
       annotations:[{tag:"①",title:q?"交割與付款":"兩項擬議治理",body:q?"公司11月18日公告確認交割及併表；現金支付安排見10月30日公告。":"兩個合夥各有普通合夥人；出資須按通知分期，分派次序列明有限合夥人6%年單利優先權。"}],
       evidenceLinks:q?[{documentId:a,pages:[2,3,6,7],label:"作價、支付期限與重組後持股"},{documentId:z,pages:[1],label:"正式交割生效"}]:[{documentId:a,pages:[1,2,3,4],label:"兩處結構、擬認繳及分派"}]});
   }
+  function buildCsscPair(c,docs){
+    const h=c.id.includes("hilli-sale"),dt=h?"2026-11-18":"2026-11-17";
+    const get=(k,date,leaf)=>{const id=c.events?.find(e=>e.kind===k&&e.date===date&&e.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;};
+    const a=get("first_announcement",h?dt:"2026-09-01",h?"2026111801365":"2026090103681"),z=h?a:get("vote",dt,"2026111701267");
+    if(!a||!z||c.stage?.status!==(h?"active":"approved")||c.stage.date!==dt||c.events.some(e=>e.state==="actual"&&["termination","completion"].includes(e.kind)))return null;
+    const amounts=h?{total_financing_limit:960000000,incremental_charterhire:449472000,incremental_interest:235997000}:{total_cost:3235000000,per_vessel:323500000};
+    if(!Object.entries(amounts).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency===(h?"USD":"CNH")&&t.evidence?.documentId===a)))return null;
+    const s=c.parties[h?"出租人及融资方":"卖方"],b=c.parties[h?"承租人":"买方"];
+    if(!s||!b||!(h?s==="Fortune Lianjiang Shipping S.A."&&b==="Golar Hilli Corporation":s.includes("Chengxi")&&s.includes("Trading")))return null;
+    const status=h?"active":"approved",badge=h?"修訂協議已簽 · 提款待條件達成":"獨立股東已批准 · 待建造及交付";
+    const left=h?"HILLI EPISEYO融資修訂":"十艘散貨船建造合同",right=h?"本金上限及增量租金":"建造價及交付安排";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const direction=h?[[203,175],[452,175]]:[[203,175],[452,175]];
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:481,status,leftTitle:left,rightTitle:right,transitionLabel:h?"售後回租續期":"分期建造及交付",outcomeBadge:badge}),[
+      mk("s","left",42,104,161,144,"seller",h?"Fortune Lianjiang":"澄西船舶及中船貿易",h?"出租及融資方":"合同賣方"),
+      mk("b","left",452,104,153,144,"buyer",h?"Golar Hilli":"中國船舶租賃",h?"承租人":"訂船方"),
+      mk("r1","right",724,71,310,70,"target",h?"融資本金上限9.60億美元":"十艘合計離岸人民幣32.35億元",h?"已存續本金與增量本金合計":"每艘3.235億元"),
+      mk("r2","right",724,161,310,75,"creditor",h?"增量租金約4.495億美元":"每艘分五期付款",h?"含估計利息約2.360億美元":"主要款項約定在交付時支付"),
+      mk("r3","right",724,260,310,79,"creditor",h?"租期延至2038年6月20日":"預計2029年9月至2030年底交付",h?"增量租金分46期支付":"澄西及中船廣西負責建造")
+    ],[],[{id:"main",panel:"left",kind:h?"cash":"asset",step:"①",pathPoints:direction,labelCenter:[321,175],labelWidth:212,labelHeight:36,label:h?"新增融資取決於提款時未償本金":"按訂單建造及交付散貨船",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    const flows=h?[{id:"finance",kind:"cash",direction:"ltr",fromLabel:s,toLabel:b,headline:"新增額＝9.60億美元上限（或另議較低額）減提款日現有未償本金",proposedOrTerminated:true},{id:"rent",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"增量預計租金約4.49472億美元，含估計利息2.35997億美元",proposedOrTerminated:true}]:[{id:"ship",kind:"asset",direction:"ltr",fromLabel:s,toLabel:b,headline:"按合同建造並交付十艘散貨船",proposedOrTerminated:true},{id:"price",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"每艘3.235億元離岸人民幣；分五期按建造進度支付",proposedOrTerminated:true}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:h?"浮式液化天然氣裝置再融資":"關連船舶建造",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:h?"本金與租金":"分期與交付",body:h?"提款日未償本金決定實際新增融資額；船舶仍按原安排續租。":"付款按每艘建造進度；預計交付期為2029年9月30日至2030年12月31日。"}],
+      evidenceLinks:h?[{documentId:a,pages:[1,3,4],label:"修訂上限、增量及租期"}]:[{documentId:a,pages:[1,3,4],label:"十艘、合同價格及預計交付"},{documentId:z,pages:[1,2,3],label:"獨立股東批准"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-03877-20261118-hilli-sale-leaseback","HK-03877-20260901-ten-grain-carriers"].includes(txCase?.id))return buildCsscPair(txCase,documents);
     if(["HK-00147-20261030-quantumcompute","HK-09982-20261116-distressed-lp-frameworks"].includes(txCase?.id))return buildQuantumOrLP(txCase,documents);
     if(["HK-01201-20260927-tesson-huazhi","HK-09982-20260923-link-win"].includes(txCase?.id))return buildTessonLink(txCase,documents);
     if(txCase?.id==="HK-00472-20261008-i-aurora-soul")return buildSilkKpop(txCase,documents);
