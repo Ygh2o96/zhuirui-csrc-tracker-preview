@@ -8481,7 +8481,25 @@
     const nodes=[{id:"s",role:cp?"listed":"seller",name:s},{id:"b",role:cp?"target":"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:cp?"既有間接持股":"先行股份買賣"}],annotations:[{tag:"①",title:cp?"收購守則連鎖原則":"聯合要約",body:cp?"北海集團要約成為無條件後，按收購守則規則26.1註釋8觸發中漆的連鎖要約。":"Prime Surplus與SHK Hong Kong Industries提出聯合要約；同時觸發另一宗中漆連鎖要約。"}],evidenceLinks:[{documentId:a,pages:cp?[10]:[2,7],label:cp?"觸發連鎖要約":"先行股份買賣"},{documentId:z,pages:[2,3,4],label:"要約及公眾持股披露"}]});
   }
+  function buildGongOrRimbaco(c,docs){
+    const g=c.code==="02362",a=g?"YS-20260609-e63a2e2f6463":"YS-20260424-ff9e8448ca20",z=g?"YS-20260707-1a0b84516387":"YS-20260707-99b0d4174b33",n=g?z:"YS-20260723-f05a8e2d049e",date="2026-07-07";
+    const ts=g?[["offer_price",.3,a],["offer_cap_shares",130000000,a],["accepted_shares",69803408,z],["actual_cash",20941022.4,z],["post_pct",.608,z]]:[["control_shares",945000000,a],["control_cash",157500000,a],["accepted_shares",200000,z],["actual_offer_cash",33400,z],["float_restored",25,n]];
+    if(![a,z,n].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=g?"自願現金部分要約":"控股股份交割",right=g?"部分要約配發結果":"餘股要約及公眾持股",badge=g?"部分要約截止 · 未取得控制":"要約截止 · 公眾持股恢復至25%";
+    const s=g?"金川國際合資格股東":"RBC Venture",b=g?"Gong Hailin":"Aureole Halo";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:g?"部分要約":"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",s,g?"合計交付有效接納約6,980.3萬股":"出售Rimbaco 9.45億股"),
+      box("b","left",444,106,161,124,"buyer",b,g?"每股0.30港元":"控股對價1.575億港元"),
+      box("a","right",724,72,310,70,"target",g?"要約最多認購1.30億股":"餘股要約有效接納200,000股",g?"低於上限，全部有效接納獲承購":"每股0.167港元，應付33,400港元"),
+      box("r2","right",724,164,310,75,"creditor",g?"接納對價約2,094.1萬港元":"要約截止時公眾持股約24.98%",g?"按實際接納股數及要約價計算":"其後於7月23日向獨立第三方配售20萬股"),
+      box("r3","right",724,260,310,76,"creditor",g?"計及接納後，持股約0.608%":"公眾持股恢復至25%",g?"要約人及一致行動人士合計":"公眾持有3.15億股")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:g?"有效接納股份全部獲承購":"4月24日交割75%"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:g?"有效接納股份全部獲承購":"交割控股股份"}],annotations:[{tag:"①",title:g?"要約範圍":"配售恢復公眾持股",body:g?"無條件部分要約在7月7日收市，全部69,803,408股有效接納股份獲承購。":"售予獨立第三方的20萬股是要約截止後另行配售。"}],evidenceLinks:[{documentId:a,pages:g?[1,9]:[2,5,6],label:g?"部分要約上限與價格":"控股交易及要約價格"},{documentId:z,pages:[2,3,4],label:"實際接納結果"},...(g?[]:[{documentId:n,pages:[2],label:"恢復公眾持股"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02362-20260521-gong-partial","HK-01953-20260424-aureole-halo-control"].includes(txCase?.id))return buildGongOrRimbaco(txCase,documents);
     if(["HK-01932-20260421-prime-shk-cnt-chain","HK-00701-20260421-prime-shk-cnt-control"].includes(txCase?.id))return buildCntOrCpm(txCase,documents);
     if(["HK-01780-20260507-yang-conditional-lapsed","HK-01969-20260805-dublin-business-school"].includes(txCase?.id))return buildRongzunOrDublin(txCase,documents);
     if(["HK-01432-20251030-modern-dairy-conditional-cash","HK-08220-20260212-chiau-conversion-cash"].includes(txCase?.id))return buildShengmuOrBingo(txCase,documents);
