@@ -45786,6 +45786,20 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-10-07",
+          "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "label": "恢復公眾持股",
+          "detail": "賣方不再屬核心關連人士，保留股份1億股計入公眾持股，公眾持股回升至29.945%。",
+          "evidence": {
+            "documentId": "YS-20261007-smc-public-float",
+            "pages": [
+              8
+            ]
+          }
         }
       ],
       "progressDate": "2026-10-06",
@@ -46046,6 +46060,39 @@
           "precision": 3,
           "unit": "percent",
           "value": 75.055
+        },
+        {
+          "key": "restored_public_float_pct",
+          "label": "恢復後公眾持股",
+          "value": 29.945,
+          "unit": "percent",
+          "precision": 3,
+          "currency": null,
+          "approximate": false,
+          "basis": "10月7日披露；賣方持股重新歸類",
+          "evidence": {
+            "documentId": "YS-20261007-smc-public-float",
+            "pages": [
+              8
+            ]
+          }
+        },
+        {
+          "key": "offer_close_public_float_pct",
+          "label": "要約截止時公眾持股",
+          "value": 24.945,
+          "unit": "percent",
+          "precision": 3,
+          "currency": null,
+          "approximate": false,
+          "basis": "10月6日要約截止；計及有效接納",
+          "evidence": {
+            "documentId": "YS-20261006-d54a8fbc4419",
+            "pages": [
+              3,
+              4
+            ]
+          }
         }
       ]
     },
@@ -98954,6 +99001,13 @@
       "title": "延後寄發出售通函",
       "publishedAt": "2026-11-05T17:05:00+08:00",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1105/2026110501200.pdf"
+    },
+    "YS-20261007-smc-public-float": {
+      "caseId": "HK-02381-20260731-control-mgo",
+      "date": "2026-10-07",
+      "id": "YS-20261007-smc-public-float",
+      "title": "董事變更及恢復公眾持股",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1007/2026100701837.pdf"
     }
   },
   "issuerLinks": [

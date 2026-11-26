@@ -8345,7 +8345,25 @@
     const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:g?"控股股份交割":"現金收購原股東股份"}],annotations:[{tag:"①",title:g?"公眾持股恢復":"兩道控股交易",body:g?"公眾持股在8月13日要約結果中為6,602萬股；其後的3,398萬股配售令公眾持股增至1億股。":"舊股賣方為Global Megain Technology、Good Loyal及Lam Tsz Leung；買賣與新股認購均於7月16日完成。"}],evidenceLinks:[{documentId:a,pages:g?[2,5]:[2,3],label:"控股交易條款"},{documentId:z,pages:[2,3,4],label:"要約結果及公眾持股"},...(g?[{documentId:n,pages:[1],label:"恢復公眾持股"}]:[])]});
   }
+  function buildChangbaishanOrSmc(c,docs){
+    const sm=c.code==="02381",a=sm?"YS-20260908-c879a6b00171":"YS-20260911-8b411f937c83",z=sm?"YS-20261006-d54a8fbc4419":"YS-20261008-4db25c48a3d8",n=sm?"YS-20261007-smc-public-float":z,div="YS-20260813-da15fbbc4b7e",date=sm?"2026-10-06":"2026-10-08",control=sm?"2026-09-08":"2026-09-11";
+    const ts=sm?[["control_cash",154000000,"YS-20260731-48f12b579701"],["accepted_shares",1100000,z],["accepted_gross",121000,z],["issuer_dividend_per_share",.04575,div],["restored_public_float_pct",29.945,n]]:[["subscription_setoff",39000000,a],["creditor_scheme_shares_issued",4742453691,a],["accepted_shares",139713,z],["accepted_gross",20956.95,z]];
+    if(![a,z,n,...(sm?[div]:[])].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!c.events?.some(e=>e.date===control&&e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===a)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=sm?"控股股份交割":"債務重組與股份認購",right=sm?"餘股要約與公眾持股":"債權人安排及餘股要約",badge=sm?"要約截止 · 公眾持股恢復至29.945%":"重組已完成 · 餘股要約已截止";
+    const s=sm?"蜆壳電器控股":"中國長白山國際",b=sm?"星兆控股":"廣澤集團（香港）";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,sm?"seller":"listed",s,sm?"出售SMC Electric 14億股":"發行2.6億股認購股份"),
+      box("b","left",444,106,161,124,"buyer",b,sm?"對價1.54億港元":"3,900萬港元融資款抵銷認購價"),
+      box("a","right",724,72,310,70,"target",sm?"有效接納110萬股":"計劃公司獲發約47.42億股",sm?"每股0.11港元，共12.1萬港元":"代表計劃債權人持有"),
+      box("r2","right",724,164,310,75,"creditor",sm?"公司宣派特別股息每股0.04575港元":"有效接納139,713股",sm?"以8月31日名冊及股份交割為準":"每股0.15港元，共20,956.95港元"),
+      box("r3","right",724,260,310,76,"creditor",sm?"公眾持股由24.945%回升至29.945%":"一致行動集團披露權益約57.07%",sm?"賣方保留1億股於10月7日計入公眾持股":"計及信託持股權益；公眾持股42.93%")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:sm?"9月8日交割70%股權":"9月11日發股及抵銷"}]);
+    const nodes=[{id:"s",role:sm?"seller":"listed",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:sm?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:sm?"現金":"股份及現金",caseModalityShortLabel:sm?"現金":"股份及現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:sm?"控股股份交割":"發行認購股份"}],annotations:[{tag:"①",title:sm?"公眾持股恢復":"計劃股份受益權",body:sm?"賣方在董事辭任後不再屬核心關連人士，其原已持有的股份自該日起納入公眾持股。":"廣澤香港及嘉益的約26.91億股信託受益權已計入計劃公司所持股份。"}],evidenceLinks:[{documentId:a,pages:[2],label:sm?"控股權交割":"重組完成及信託持股"},{documentId:z,pages:sm?[2,3,4]:[2,3,8],label:"要約結果及公眾持股"},...(sm?[{documentId:div,pages:[1],label:"特別股息"},{documentId:n,pages:[8],label:"恢復公眾持股"}]:[])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00989-20260715-restructuring-mgo","HK-02381-20260731-control-mgo"].includes(txCase?.id))return buildChangbaishanOrSmc(txCase,documents);
     if(["HK-02295-20260702-greenair-control-cash","HK-06939-20260123-geehy-control-subscription-cash"].includes(txCase?.id))return buildMaxicityAndMegain(txCase,documents);
     if(["HK-00167-20260629-horizon-heights-standalone","HK-01657-20260604-weiye-control-cash"].includes(txCase?.id))return buildIdtAndSg(txCase,documents);
     if(["HK-01912-20260608-zhuangyan-control","HK-02559-20260629-elong-voluntary-cash"].includes(txCase?.id))return buildContelOrDida(txCase,documents);
