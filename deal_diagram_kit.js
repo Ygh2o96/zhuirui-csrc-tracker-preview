@@ -8228,7 +8228,25 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:f?"協議收購及可能強制要約":"協議收購及擬自願要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:f?"擬轉讓約2.391億股":"擬轉讓約3.337億股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"最新先決條件進展",body:f?"越南競爭委員會已受理。11月20日公告時項下交割條件尚未達成或獲豁免。":"11月6日公告確認協議條件1、7及12已達成；其餘未達成。"}],evidenceLinks:[{documentId:a,pages:f?[2,3,4,11]:[2,3,5,10,12],label:"初始公告：協議及可能要約條款"},{documentId:z,pages:[1,2],label:"最新公布的審批及先決條件"}]});
   }
+  function buildStrongOrLfg(c,docs) {
+    const s=c.code==="00852",a=s?"YS-20260225-d4cf56a4292e":"YS-20260109-6e0a7fb6ec51",z=s?"YS-20261103-a35c4dfe466d":"YS-20261030-79d63f5ef2ae",date=s?"2026-11-03":"2026-10-30";
+    const ts=s?[["block_pct",49.06],["block_shares",1041746000]]:[["control_total",179695312.8],["control_cash_component",120000000],["control_note_face",59695312.8],["block_shares",299492188],["offer_price",.6],["offer_total_cash_no_exercise",118788430.05]];
+    if(![a,z].every(x=>docs?.[x]?.caseId===c.id)||c.stage?.status!=="active"||c.stage.date!==date||!ts.every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a))||[...(c.events??[]),...(c.processEvents??[])].some(e=>e.state==="actual"&&(e.date>date||["completion","control_completion","termination","dispatch","offer_close"].includes(e.kind))))return null;
+    const status="active",left="股權買賣協議已簽",right=s?"法院及融資安排":"監管批准及寄發時限",badge=s?"未交割 · 待BVI法院聆訊":"持牌機構控制權變更待證監會批准";
+    const seller=s?"Forever Winner":"原控股股東",buyer=s?"Speed Success":"Fortune Origin";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"擬議控股權轉讓",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",seller,s?"由聯合清盤人處理":"協議轉讓全部所持股份"),
+      box("b","left",444,106,161,124,"buyer",buyer,"協議買方"),
+      box("a","right",724,72,310,70,"target",s?"擬買入強石化49.06%":"擬買入LFG約61.43%",s?"約10.417億股":"約2.995億股 · 合計1.797億港元"),
+      box("r2","right",724,164,310,75,"creditor",s?"BVI法院聆訊定於1月25至27日":"現金1.2億＋票據5,969.5萬港元",s?"2027年 · BVI當地日期":"交割後才須作出股份及購股權要約"),
+      box("r3","right",724,260,310,76,"creditor",s?"最後截止延至2027年2月28日":"買賣協議最後期限延至11月30日",s?"要約融資仍在安排":"綜合文件延期已獲同意")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬轉讓現有股份",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"擬議控股權轉讓",caseModalityLabel:s?"待正式要約文件":"現金及票據",caseModalityShortLabel:s?"待定":"現金及票據",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:s?"擬轉讓約10.417億股":"擬轉讓約2.995億股",proposedOrTerminated:true}],annotations:[{tag:"①",title:s?"要約狀態":"綜合文件",body:s?"11月3日公告仍未交割，可能提出強制性全面要約。":"最新獲准寄發時限為交割後七日或12月8日，以較早者為準。"}],evidenceLinks:[{documentId:a,pages:s?[1,2]:[2,3,5],label:"首公告：股份範圍及交易條款"},{documentId:z,pages:[2,3],label:"法院／監管及寄發進展"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00852-20260225-speed-success-liquidator","HK-03938-20260109-fortune-origin-control"].includes(txCase?.id))return buildStrongOrLfg(txCase,documents);
     if(["HK-01037-20260727-foxconn-control","HK-03336-20260518-lens-voluntary"].includes(txCase?.id))return buildFoxconnOrLens(txCase,documents);
     if(["HK-01835-20260630-3g-h-share-control","HK-00456-20260715-receivers-charged-shares"].includes(txCase?.id))return buildRealwayOrReceivers(txCase,documents);
     if(["HK-01905-20261023-sig-partial","HK-01124-20260923-deep-water-receiver"].includes(txCase?.id))return buildSigOrCoastal(txCase,documents);

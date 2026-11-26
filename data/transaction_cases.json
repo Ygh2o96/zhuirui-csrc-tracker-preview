@@ -39458,6 +39458,19 @@
       },
       "processEvents": [
         {
+          "date": "2026-05-29",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "清盤人與 Speed Success 簽訂股權買賣協議（6月2日披露）",
+          "evidence": {
+            "documentId": "YS-20260602-f8e6040b4e13",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
           "date": "2026-06-02",
           "detail": "已公开确认5月29日签订的正式股权协议；有待先决条件。",
           "evidence": {
@@ -39482,6 +39495,32 @@
           },
           "kind": "supplement",
           "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2027-01-25",
+          "kind": "supplement",
+          "state": "expected",
+          "label": "BVI法院聆訊排期1月25至27日（當地時間）",
+          "evidence": {
+            "documentId": "YS-20261103-a35c4dfe466d",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "America/Tortola"
+        },
+        {
+          "date": "2027-02-28",
+          "kind": "supplement",
+          "state": "expected",
+          "label": "股份買賣協議延長後的最後期限",
+          "evidence": {
+            "documentId": "YS-20261103-a35c4dfe466d",
+            "pages": [
+              2
+            ]
+          },
           "timeZone": "Asia/Hong_Kong"
         }
       ],
@@ -39817,6 +39856,18 @@
           "role": "FA",
           "service": "offer_advice",
           "side": "要约方财务顾问及资金确认；同时任联合要约代理"
+        },
+        {
+          "firm": "Grand Fire Securities Limited",
+          "role": "OfferAgent",
+          "service": "offer_execution",
+          "side": "擬與 Octal Capital 共同代表要約方提出股份及購股權要約",
+          "evidence": {
+            "documentId": "YS-20261030-79d63f5ef2ae",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "mechanism": "约61.43%控股交易约定现金及本票，交割方触发股份和期权强制要约",
@@ -39826,6 +39877,19 @@
         "要约方": "Fortune Origin International Capital (Holdings) Limited"
       },
       "processEvents": [
+        {
+          "date": "2025-12-19",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "買賣雙方簽訂股份協議（2026年1月9日披露）",
+          "evidence": {
+            "documentId": "YS-20260109-6e0a7fb6ec51",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
         {
           "date": "2026-06-17",
           "detail": "Vinco Financial 已独立顾问委任，未证实正式公平意见。",
@@ -39865,9 +39929,23 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-30",
+          "kind": "supplement",
+          "state": "expected",
+          "label": "買賣協議延長後的最後期限，可書面再延",
+          "evidence": {
+            "documentId": "YS-20261030-79d63f5ef2ae",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-01-09",
+      "progressDate": "2026-10-30",
       "rules": [
         {
           "application": "须待控股协议交割，未实际触发股份要约",
@@ -39908,9 +39986,9 @@
         }
       ],
       "stage": {
-        "date": "2026-01-09",
-        "eventKind": "first_announcement",
-        "label": "控股协议已披露 · 现金及票据，未交割",
+        "date": "2026-10-30",
+        "eventKind": "supplement",
+        "label": "持牌機構控制權變更待證監會批准",
         "status": "active"
       },
       "terms": [
