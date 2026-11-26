@@ -3304,139 +3304,6 @@ function renderIssuerFees(record) {
 }
 
 // Live HKEX Global Offerings (招股中 / 待挂牌) & Post-Pause Relaunch Comparative Analytics
-const LIVE_BOOKBUILDING_OFFERS = [
-  {
-    code: "03275",
-    id: "offering:03275:2026-11-23",
-    roundId: "offering:03275:2026-11-23",
-    priorRoundId: "offering:03275:2026-10-20",
-    isRelaunch: true,
-    issuerId: "changzhou microintelligence co., ltd",
-    name: "常州微亿智造",
-    nameEn: "Changzhou Microintelligence Co., Ltd",
-    aliases: ["Changzhou Microintelligence Co., Ltd", "常州微億智造科技股份有限公司", "常州微亿智造科技股份有限公司", "微亿智造", "微億智造"],
-    route: "bookbuilding",
-    stage: "bookbuilding",
-    prospectusDate: "2026-11-23",
-    bookWindow: "11-23 至 12-01",
-    pricingDate: "2026-12-02",
-    expectedListingDate: "2026-12-04",
-    date: "2026-11-23",
-    statusLabel: "搁置后重启招股中",
-    subStatusLabel: "11-23~12-01 招股 · 预计 12-04 挂牌",
-    priceRangeText: "12.07–15.69",
-    downwardFloorPrice: 10.87,
-    lotShares: 100,
-    entryFeeHkd: 1584.82,
-    offerShares: 37275800,
-    postShares: 372757356,
-    plannedMcapLowBn: 4.4992,
-    plannedMcapHighBn: 5.8486,
-    plannedMcapFloorBn: 4.0519,
-    mechanism: "机制 B · 无强制回拨（可重分配至15%）",
-    fixedBps: 250,
-    maximumExtraBps: 150,
-    upperBps: 400,
-    industryTags: ["高端装备/机器人/智能制造", "制造业"],
-    issuerType: "h_share",
-    isAH: false,
-    institutions: [
-      {
-        legalEntityId: "sponsor-legal:96cba9c10be8f62a",
-        legalName: "Orient Capital (Hong Kong) Limited",
-        role: "sponsor",
-        sponsorId: "orient",
-        displayName: "东方融资"
-      }
-    ],
-    currencies: ["CNY", "HKD"],
-    gross: {
-      basis: "planned",
-      currency: "HKD",
-      lowHkd: "449918906.00",
-      highHkd: "584857302.00",
-      floorHkd: "405187946.00",
-      source: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300008_c.pdf#page=23"
-    },
-    commissionSource: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300008_c.pdf#page=286",
-    discretionarySource: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300008_c.pdf#page=286",
-    sponsorFee: {
-      value: "5000000",
-      currency: "CNY",
-      scope: "sole_sponsor",
-      approximate: false,
-      source: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300008_c.pdf#page=434"
-    },
-    sources: [
-      "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300008_c.pdf#page=2",
-      "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300004_c.pdf#page=2"
-    ],
-    feeStates: { fixed: "confirmed", extra: "confirmed", upper: "confirmed", sponsor: "confirmed" }
-  },
-  {
-    code: "09941",
-    id: "offering:09941:2026-11-16",
-    roundId: "offering:09941:2026-11-16",
-    isRelaunch: false,
-    issuerId: "csrc_notice:7598251",
-    name: "先通医药-B",
-    nameEn: "Beijing Sinotau International Pharmaceutical Technology Co., Ltd.",
-    aliases: ["北京先通國際醫藥科技股份有限公司", "北京先通国际医药科技股份有限公司", "先通醫藥-B", "先通医药", "Sinotau"],
-    route: "bookbuilding",
-    stage: "bookbuilding",
-    prospectusDate: "2026-11-16",
-    bookWindow: "11-16 至 11-19",
-    pricingDate: "2026-11-20",
-    expectedListingDate: "2026-11-24",
-    date: "2026-11-16",
-    statusLabel: "待配发挂牌（18A）",
-    subStatusLabel: "11-19 截飞 · 预计 11-24 挂牌",
-    priceRangeText: "52.00–68.00",
-    downwardFloorPrice: null,
-    lotShares: 50,
-    entryFeeHkd: 3434.29,
-    offerShares: 6561000,
-    postShares: 65609614,
-    plannedMcapLowBn: 3.4117,
-    plannedMcapHighBn: 4.4615,
-    plannedMcapFloorBn: null,
-    mechanism: "机制 B · 无强制回拨（可重分配至15%）",
-    fixedBps: 250,
-    maximumExtraBps: 150,
-    upperBps: 400,
-    industryTags: ["医药/生物科技/医疗器械制造"],
-    issuerType: "h_share",
-    isAH: false,
-    institutions: [
-      { legalEntityId: "sponsor-legal:gf", legalName: "GF Capital (Hong Kong) Limited", role: "sponsor", sponsorId: "gf", displayName: "广发融资" },
-      { legalEntityId: "sponsor-legal:cicc", legalName: "China International Capital Corporation Hong Kong Securities Limited", role: "sponsor", sponsorId: "cicc", displayName: "中金公司" },
-      { legalEntityId: "sponsor-legal:citic", legalName: "CITIC Securities (Hong Kong) Limited", role: "sponsor", sponsorId: "citic", displayName: "中信证券" }
-    ],
-    currencies: ["USD", "HKD"],
-    gross: {
-      basis: "planned",
-      currency: "HKD",
-      lowHkd: "341172000.00",
-      highHkd: "446148000.00",
-      source: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600012_c.pdf#page=25"
-    },
-    commissionSource: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600012_c.pdf#page=318",
-    discretionarySource: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600012_c.pdf#page=318",
-    sponsorFee: {
-      value: "1000000",
-      currency: "USD",
-      scope: "joint_aggregate",
-      approximate: false,
-      source: "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600012_c.pdf#page=318"
-    },
-    sources: [
-      "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600012_c.pdf#page=2",
-      "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600010_c.pdf#page=6"
-    ],
-    feeStates: { fixed: "confirmed", extra: "confirmed", upper: "confirmed", sponsor: "confirmed" }
-  }
-];
-
 const RELAUNCH_COMPARISONS = {
   "03275": {
     code: "03275",
@@ -3512,7 +3379,13 @@ const RELAUNCH_COMPARISONS = {
 
 function liveBookbuildingOffers() {
   const listedCodes = new Set(eligibleFeeRoster().filter(r => r.route === "listed_offering").map(r => r.code));
-  return LIVE_BOOKBUILDING_OFFERS.filter(item => !listedCodes.has(item.code));
+  const roster=state.feeRosterData;
+  if (roster?.schemaVersion !== 3 || !Array.isArray(roster.bookbuilding)) return [];
+  const issuers=new Set((state.data?.records || []).map(r=>r.id));
+  // An accepted final round retires all same-stock bookbuilding rows, never the separately archived paused round.
+  return roster.bookbuilding.filter(r=>r.route==="bookbuilding" && r.stage==="bookbuilding"
+    && r.id===r.roundId && r.id===`offering:${r.code}:${r.prospectusDate}`
+    && issuers.has(r.issuerId) && !listedCodes.has(r.code));
 }
 
 function findAnyOfferingRound(roundId) {
