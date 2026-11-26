@@ -8111,7 +8111,24 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"第3.7條可能控股權轉讓",caseModalityLabel:"對價待定",caseModalityShortLabel:"待定",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:i?"意向涉及600,000,000股":"意向涉及750,000,000股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"進展",body:i?"11月20日公告確認正式買賣協議尚未簽署，排他期原定11月30日屆滿。":"排他期與境外投資審批期限均先延至11月30日。補充按金條件達成才可再按合同延長。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"首次披露、擬轉讓股數及比例"},{documentId:z,pages:[1,2],label:i?"11月20日月度更新":"11月16日補充協議"}]});
   }
+  function buildHangYickPartial(c,docs){
+    const response="YS-20261111-5234d91d7bb9",offer="YS-20261014-995b7068c611",consent="YS-20261009-2628a17da89b";
+    if(![response,offer,consent].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="active"||c.stage?.date!=="2026-11-11"||c.parties?.["要约方"]!=="Ngai Wa Ping"||[...(c.events??[]),...(c.processEvents??[])].some(e=>e.state==="actual"&&(e.date>c.stage.date||["completion","termination"].includes(e.kind))))return null;
+    if(![["partial_max",18000000],["offer_price",0.6],["partial_shares",30000000],["partial_pct",12.86]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===response))||!c.processEvents?.some(e=>e.date==="2026-11-30"&&e.state==="expected"&&e.evidence?.documentId===response))return null;
+    const status="active",left="自願現金部分要約",right="接納門檻與時間表",badge="已寄發回應文件 · 待首次截止結果";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"有條件部分要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller","合資格股東","現有股東 · 擬交付股份"),
+      box("b","left",444,106,161,124,"buyer","Ngai Wa Ping","要約方 · 每股0.60港元"),
+      box("a","right",724,72,310,70,"target","擬購恒益控股3,000萬股","約佔已發行股本12.86%"),
+      box("r2","right",724,164,310,75,"creditor","最低有效接納3,000萬股","達標時擬支付1,800萬港元"),
+      box("r3","right",724,260,310,76,"creditor","11月30日首次截止","香港時間下午4時")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬接納股份",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:"合資格股東"},{id:"b",role:"buyer",name:"Ngai Wa Ping"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"自願部分要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"合資格股東",toLabel:"Ngai Wa Ping",headline:"擬收購3,000萬股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"首次截止",body:"11月30日下午4時；如達最低有效接納股數，按公告所列流程宣布就接納而言成為無條件。"}],evidenceLinks:[{documentId:response,pages:[3,11,12,32,33],label:"回應文件：時間表、條款及接納門檻"},{documentId:offer,pages:[1,2],label:"要約文件寄發公告"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01894-20260923-ngai-partial")return buildHangYickPartial(txCase,documents);
     if(["HK-01793-20260820-talent-pool-mou","HK-01746-20260710-wanlexin-loi"].includes(txCase?.id))return buildNamedLoiPair(txCase,documents);
     if(["HK-01402-20260910-control-mou","HK-00465-20260506-chen-control-mou"].includes(txCase?.id))return buildPossibleOfferPair(txCase,documents);
     if(["HK-08137-20260821-geely-51pct"].includes(txCase?.id))return buildHonbridgeComplete(txCase,documents);

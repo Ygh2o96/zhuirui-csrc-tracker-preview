@@ -36247,7 +36247,7 @@
           }
         }
       ],
-      "mechanism": "Rule 28.1 自愿现金部分要约，不是全面要约",
+      "mechanism": "Rule 28.1 自願現金部分要約",
       "name": "恒益控股",
       "parties": {
         "标的": "恒益控股部分股份",
@@ -36280,9 +36280,36 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-30",
+          "label": "首次截止：下午4時",
+          "evidence": {
+            "documentId": "YS-20261111-5234d91d7bb9",
+            "pages": [
+              3,
+              12
+            ]
+          },
+          "kind": "supplement",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-14",
+          "label": "若首次截止當日已成為無條件，預定最終截止：下午4時",
+          "evidence": {
+            "documentId": "YS-20261111-5234d91d7bb9",
+            "pages": [
+              3
+            ]
+          },
+          "kind": "supplement",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-10-14",
+      "progressDate": "2026-11-11",
       "rules": [
         {
           "application": "执行人员已同意部分要约；另有最低接纳股数",
@@ -36325,9 +36352,9 @@
         }
       ],
       "stage": {
-        "date": "2026-10-14",
-        "eventKind": "dispatch",
-        "label": "部分要约已寄发 · 最低接纳条件待核",
+        "date": "2026-11-11",
+        "eventKind": "supplement",
+        "label": "已寄發回應文件 · 待首次截止結果",
         "status": "active"
       },
       "terms": [
