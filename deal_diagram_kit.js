@@ -8840,7 +8840,37 @@
     const nodes=[{id:"s",role:"seller",name:"三名協議賣方"},{id:"b",role:"buyer",name:"Hill Valley Investment"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金（含延期價款）",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"三名協議賣方",toLabel:"Hill Valley Investment",headline:"12月12日完成先行股份買賣"}],annotations:[{tag:"①",title:"買賣雙方及兩期款項",body:"賣方為Macmillan Equity Limited、Palgrave Enterprises Limited及Wong Shu Ying。買方為Hill Valley Investment Co Ltd。首期2,209萬與第二期51,539,777港元按賣方明細合計。"},{tag:"②",title:"要約後持股口徑",body:"要約人計入接納為590,570,010股；再加一致行動方Judy Chan行權所得800萬股，合計598,570,010股，分母為8.13億股。"}],evidenceLinks:[{documentId:a,pages:[2,3,8,9,22,23,27],label:"先行交割及付款"},{documentId:p,pages:[1],label:"綜合要約文件"},{documentId:z,pages:[2,3,4],label:"要約截止及期權行使"}]});
   }
+  function buildWestwellDowway(c,docs){
+    const configs={
+      "01732":{
+        a:"YS-20251201-c3932aeb288d",z:"YS-20260220-9f5f383f00fe",p:"YS-20260116-fc3fae62c599",date:"2026-02-20",event:"completion",status:"closed",
+        ts:[["offer_price",.21,"a"],["tendered_shares",378280000,"z"],["bought_shares",371200000,"z"],["actual_cash",77952000,"z"],["direct_pct",29,"z"],["public_float",40.7,"z"]],
+        left:"自願現金部分要約",right:"超額接納及按比例分配",badge:"部分要約截止 · 按條款承接29%股權",seller:"象興國際合資格股東",buyer:"西井控股（香港）",sSub:"有效接納378,280,000股",bSub:"每股0.21港元 · 原無持股",main:"按比例承接371,200,000股",
+        steps:[["1月16日寄發綜合文件","2月6日要約成為無條件"],["2月20日要約截止","每名接納股東約98.13%獲承接"],["部分要約總毛額7,795.2萬港元","結算後直接持股29% · 公眾40.70%"]],
+        detail:"買方為西井控股（香港）有限公司。毛額按承接股份乘每股要約價計算。",pagesA:[2,7,8],pagesZ:[2,3,4],pagesP:[1,2]
+      },
+      "08403":{
+        a:"YS-20251126-70ff438fb20e",z:"YS-20260205-4ff82a62cbf6",p:"YS-20260115-3641571ac8f8",date:"2026-02-05",event:"terminated",status:"terminated",
+        ts:[["block_shares",54632500,"a"],["block_cash",27316250,"a"],["offer_price",.5,"p"],["tendered_before_lapse",1996000,"z"]],
+        left:"三份股份買賣（已交割）",right:"餘股強制現金要約",badge:"餘股要約失效 · 先行合計35.48%保留",seller:"A&B、LHG及WKY",buyer:"Sun Wei及CN BASE",sSub:"先行出售54,632,500股",bSub:"總對價約2,731.6萬港元",main:"先行完成 · 合計35.48%",
+        steps:[["1月15日寄發綜合文件","餘股每股0.50港元 · 門檻逾50%"],["2月5日有效接納1,996,000股","計入接納僅36.77%，低於門檻"],["餘股要約失效","先行股權保留；接納股份未轉讓"]],
+        detail:"Sun Wei在11月25日自A&B買入28,645,000股；一致行動方CN BASE在11月20日分別自LHG及WKY買入14,000,000及11,987,500股。Sun Wei是餘股要約人。",pagesA:[2,3,4],pagesZ:[2,3,4],pagesP:[1]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="08403"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(c.code==="01732"&&!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:false}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01732-20251201-westwell-partial","HK-08403-20251126-sunwei-conditional-lapsed"].includes(txCase?.id))return buildWestwellDowway(txCase,documents);
     if(txCase?.id==="HK-08146-20251230-hill-valley-control")return buildGraceWineOffers(txCase,documents);
     if(txCase?.id==="HK-06633-20261020-qingci-gbits-game-renewal")return buildQingciGameFramework(txCase,documents);
     if(["HK-01429-20260123-dacheng-mandatory-cash","HK-02362-20260305-alternative-liquidity-partial"].includes(txCase?.id))return buildSkyAndJinchuan(txCase,documents);
