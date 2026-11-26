@@ -8954,7 +8954,35 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"恢復公眾持股公告"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildVbitCofoe(c,docs){
+    const configs={
+      "08246":{
+        a:"YS-20261007-650333996c8f",p:"YS-20261028-31213ece4e92",z:"YS-20261102-6a5069c64fb9",o:"YS-20261102-e907006f98d1",date:"2026-11-02",event:"completion",status:"closed",
+        ts:[["contract_consideration",1180000,"a"],["target_new_shares",17,"a"],["target_post_pct",27.35,"a"],["issued_shares",10459091,"z"],["issue_price",.88,"o"]],
+        left:"認購 Vbit 新股",right:"上市公司發股支付對價",badge:"認購已完成 · Toff Global 持有 Vbit 27.35%",seller:"Vbit Limited",buyer:"Toff Global",sSub:"向認購方發行17股",bSub:"持股由15%增至27.35%",main:"認購對價118萬美元",
+        steps:[["10月28日簽補充協議","延長期限並細化可分配利潤口徑"],["11月2日完成認購","中華燃氣向Vbit發行10,459,091股"],["代價股發行價每股0.88港元","佔中華燃氣擴大後股本約1.74%"]],
+        detail:"Toff Global 為認購方；中華燃氣為代價股發行人；Vbit 為代價股承配方。代價股附分期鎖定及利潤保證安排。",pagesA:[1,2,3,4],pagesP:[1,2],pagesZ:[1,2],pagesO:[1]
+      },
+      "01187":{
+        a:"YS-20261119-b8a90e0b1b0c",z:"YS-20261119-b8a90e0b1b0c",date:"2026-11-19",event:"first_announcement",status:"active",
+        ts:[["conditional_equity_price",99480000,"a"],["first_tranche_due",89532000,"a"],["retained_tranche_due",9948000,"a"]],
+        left:"收購康居人60%股權",right:"付款條件與交割",badge:"股權轉讓協議已簽 · 待登記、交接及付款",seller:"郭本勝、郭本麗及安徽氧精靈",buyer:"可孚醫療",sSub:"三名股東合計轉讓60%",bSub:"以自有資金支付現金",main:"協議對價人民幣9,948萬",
+        steps:[["簽署股權轉讓協議","工商變更及交接完成後支付首款"],["首款：人民幣8,953.2萬","支付首款當日為交割日"],["尾款：人民幣994.8萬","首款支付後3個月內 · 須符合約定"]],
+        detail:"交割後可孚有權提名五席董事中的三席並委任董事長；交割後亦有應收款等差額賠償安排。",pagesA:[1,2,3],pagesZ:[1,2,3]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:c.code==="08246"?"shares":"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:c.code==="08246"?"發行代價股":"現金",caseModalityShortLabel:c.code==="08246"?"代價股":"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"補充認購協議"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"股份變動翌日披露"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"完成公告"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08246-20261007-vbit-subscription","HK-01187-20261119-kangjuren-60-percent"].includes(txCase?.id))return buildVbitCofoe(txCase,documents);
     if(["HK-01348-20251204-yael-share-and-option-mgo","HK-02020-20260126-puma"].includes(txCase?.id))return buildQualiAnta(txCase,documents);
     if(["HK-01009-20251117-digiplus-notes-whitewash","HK-00228-20251223-alpha-eagle-rights-two-offers"].includes(txCase?.id))return buildDigiplusAlpha(txCase,documents);
     if(["HK-01959-20251216-msint-cash-follow-on","HK-00357-20250430-hainan-two-share-class-cash"].includes(txCase?.id))return buildCentenaryMeilan(txCase,documents);
