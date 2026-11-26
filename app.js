@@ -4381,7 +4381,7 @@ function renderFeeRosterRow(r) {
  const url=p0DossierUrl(r.id);
  const typeLabel=r.isAH?`A+H${rec?.aShareCode?` (${rec.aShareCode})`:''}`:r.issuerType==='h_share'?'H股':r.route==='transfer'?'GEM转主板':r.route==='introduction'?'介绍上市':'红筹/其他';
  const rateCell=k=>isNonOffer?'<span class="data-missing">不适用</span>':p0FeeRate(r,k);
- const spCell=isNonOffer?'<span class="data-missing">不适用</span>':sponsor;
+ const spCell=r.route==='transfer'?'<span class="data-missing">不适用</span>':sponsor;
  const mcapBn=Number.isFinite(Number(r.marketCapHkdBn))?Number(r.marketCapHkdBn):(rec?.listingMarketCapSampleEligible&&Number.isFinite(Number(rec.listingMarketCapHkdBn))?Number(rec.listingMarketCapHkdBn):null);
  const closeQ=listingDebutClose(rec,r),offerPrice=Number(r.offered?.price?.value);
  let closeHint='';
@@ -7822,6 +7822,17 @@ function economicsRoute(record) {
 }
 
 function renderListingFeeTerms(record) {
+  if (record.hkexListingDate && economicsRoute(record) === "introduction") {
+    const row = eligibleFeeRoster().find(r => r.route === "introduction" && r.issuerId === record.id);
+    const fee = row?.sponsorFee;
+    let source;
+    try { source = new URL(fee?.source); } catch {}
+    if (row?.feeStates?.sponsor === "confirmed" && fee?.scope === "sole_sponsor" && Number(fee.value) > 0 &&
+        source?.protocol === "https:" && ["www1.hkexnews.hk","www.hkexnews.hk"].includes(source.hostname) &&
+        source.pathname.startsWith("/listedco/listconews/sehk/") && source.pathname.endsWith(".pdf") && /^#page=[1-9][0-9]*$/.test(source.hash)) {
+      return `<div class="detail-item"><span>上市费用条款</span><div class="timeline"><div class="timeline-row"><span>独家保荐费</span><strong>${escapeHtml(formatChineseUnitAmount(fee.value, fee.currency))}</strong></div><div class="timeline-row"><span>承销佣金率</span><strong>不适用（介绍上市）</strong></div></div><div class="econ-quiet-sources">${feeRosterSource(fee.source, "披露原件")}</div></div>`;
+    }
+  }
   const f = record.listingFeeTerms;
   if (!record.hkexListingDate || !f || !listingPdfUrl(f.url)) return "";
   const pct = n => new Intl.NumberFormat("zh-HK", { style: "percent", maximumFractionDigits: 4 }).format(n);
