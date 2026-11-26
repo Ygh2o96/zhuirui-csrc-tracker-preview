@@ -8029,7 +8029,31 @@
     const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:t?"mixed":"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:t?"收購空調業務控股公司":"收購光伏項目公司",caseModalityLabel:t?"現金及對價股":"現金",caseModalityShortLabel:t?"現金＋股份":"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:t?"交割後全資持有TCL AeroWell (Cayman) Holdings Limited":"擬轉讓Dingli & SF Solar Energy 51%股權",proposedOrTerminated:!t}],annotations:[{tag:"①",title:t?"標的與經營公司":"交割後安排",body:t?"收購標的公司100%股權；標的透過廣東控股公司持有中山空調經營公司51%。":"交割後標的將納入希教國際合併報表。"}],evidenceLinks:t?[{documentId:a,pages:[4,17],label:"協議對價及持股架構"},{documentId:z,pages:[1,2],label:"交割及實際發行股份"}]:[{documentId:a,pages:[1,2,3,8],label:"關連交易、股權、現金對價與交割"}]});
   }
+  function buildZsCityhill(c,docs){
+    const z=c.code==="08370",status=z?"closed":"approved",date=z?"2026-11-16":"2026-11-19";
+    const match=(leaf)=>Object.values(docs??{}).find(d=>d.caseId===c.id&&d.url?.endsWith("/"+leaf+".pdf"))?.id;
+    const termsDoc=match(z?"2026091801142":"2026101501344"),detail=match(z?"2026102801221":"2026101501344"),actual=match(z?"2026111601491":"2026111900318");
+    if(!termsDoc||!detail||!actual||c.stage?.status!==status||c.stage?.date!==date||c.events?.some(e=>e.state==="actual"&&(e.kind==="termination"||(!z&&e.kind==="completion"))))return null;
+    if(!c.events?.some(e=>e.state==="actual"&&e.kind===(z?"completion":"vote")&&e.date===date&&e.evidence?.documentId===actual))return null;
+    const checks=z?{proposed_purchase:16953376,equity_purchase:13400000,sale_loan:3553376,deposit_original_currency:19100000}:{proposed_purchase:754060000,closing_component:534060000,contingent_cap:220000000,mup_closing_value:514196356,gold_closing_value:19863644,target_pct:69};
+    if(!Object.entries(checks).every(([k,v])=>c.terms?.some(a=>a.key===k&&a.value===v&&a.evidence?.documentId===termsDoc)))return null;
+    if(z?c.parties?.["买方"]!=="智昇集团":c.parties?.["买方"]!=="Cityhill Limited"||c.parties?.["卖方"]!=="Han Carvestone International Limited"||c.parties?.["标的"]!=="AOMI Corporation")return null;
+    const l=z?"Ma Gary Ming Fai":"Han Carvestone",r=z?"智昇集團":"Cityhill";
+    const left=z?"泰國數據中心控股收購":"AOMI 69%股權收購",right=z?"原幣對價及付款安排":"金條、MUP及或有對價";
+    const badge=z?"11月16日已交割 · 尾款支付待披露":"11月19日股東批准 · 待交割";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:z?"已完成股權交割":"按協議擬交割",outcomeBadge:badge}),[
+      box("l","left",42,106,160,124,"seller",l,z?"賣方及股東貸款轉讓人":"賣方 · 擬保留31%"),
+      box("r","left",444,106,161,124,"buyer",r,z?"買方 · 取得項目控制權":"買方 · 擬持有69%"),
+      box("a","right",724,72,310,70,"target",z?"合同對價1,695.3萬美元":"對價上限約7.54億港元",z?"股權1,340萬；股東貸款355.3萬美元":"包含交割對價及有條件業績款"),
+      box("b","right",724,164,310,75,"creditor",z?"已付1,910萬港元押金抵扣":"交割對價約5.34億港元",z?"按通函折合243.525萬美元":"14,982,411 MUP及約19,370克金條"),
+      box("c","right",724,260,310,76,"creditor",z?"尾款1,451.8萬美元":"或有對價上限2.20億港元",z?"合同約定交割後7天內支付":"取決於業績及條件，以MUP結算")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:z?"轉讓約51.94%股權及貸款":"擬轉讓AOMI 69%股權",proposedOrTerminated:!z}]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:z?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:z?"行使認購期權收購":"金條及MUP支付的股權收購",caseModalityLabel:z?"現金":"金條及MUP",caseModalityShortLabel:z?"現金":"金條＋MUP",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:l,toLabel:r,headline:z?"約51.94% Intelligence Advantage股權及待售股東貸款":"股東已批准，待轉讓AOMI 69%股權",proposedOrTerminated:!z}],annotations:[{tag:"①",title:z?"尾款與交割":"或有部分",body:z?"11月16日公告確認收購交割；通函約定交割後付尾款。":"交割對價包括金條及MUP；或有對價依業績與其他條件另以MUP支付。"}],evidenceLinks:z?[{documentId:detail,pages:[8,9,12,13],label:"股權比例、美元對價與抵扣"},{documentId:actual,pages:[1],label:"交割及項目控制權"}]:[{documentId:detail,pages:[1,2,3,4],label:"AOMI股權、金條、MUP與業績對價"},{documentId:actual,pages:[1,2],label:"股東表決結果"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08370-20260327-replacement-call","HK-00076-20261015-cityhill"].includes(txCase?.id))return buildZsCityhill(txCase,documents);
     if(["HK-01070-20260715-tcl-aircon","HK-01765-20261119-dingli-solar"].includes(txCase?.id))return buildTclDingli(txCase,documents);
     if(["HK-01122-20260922-xinxiang-anda-repurchase","HK-01122-20261016-qingling-moulds"].includes(txCase?.id))return buildQinglingPair(txCase,documents);
     if(["HK-02473-20260804-pagac-nts","HK-00137-20260921-two-nanyang-newbuilds"].includes(txCase?.id))return buildNtsNanyang(txCase,documents);
