@@ -7280,6 +7280,73 @@
       }
     },
     {
+      "id": "HK-07688-20261020-cnc-target-loi",
+      "code": "07688",
+      "name": "拓璞數控：擬收購數控機床企業",
+      "aliases": [
+        "上海拓璞数控科技股份有限公司",
+        "TOPNC",
+        "多軸多通道機床",
+        "直驅式高速五軸機床"
+      ],
+      "category": "acquisition",
+      "headlineKey": "stake_min",
+      "parties": {
+        "擬買方": "上海拓璞數控科技股份有限公司",
+        "標的": "多軸多通道及直驅高速五軸機床企業（未具名）",
+        "潛在賣方": "獨立第三方（未具名）"
+      },
+      "mechanism": "已簽署非約束性收購意向書，擬收購標的至少70%股權。對價及支付方式待盡職審查及估值後於正式協議釐定。",
+      "terms": [
+        {
+          "key": "stake_min",
+          "label": "擬收購股權下限",
+          "value": 70,
+          "unit": "percent",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "basis": "潛在賣方擬出售並促使其他股東一併出售。",
+          "evidence": {
+            "documentId": "YS-20261020-cae45d63b647",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-10-20",
+          "label": "簽署非約束性收購意向書",
+          "state": "actual",
+          "detail": "意向書有效期90日；待盡職審查、估值及商議正式協議。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261020-cae45d63b647",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "processEvents": [],
+      "rules": [],
+      "mandates": [],
+      "stage": {
+        "date": "2026-10-20",
+        "eventKind": "first_announcement",
+        "label": "意向書已簽 · 待盡調及正式協議",
+        "status": "active"
+      },
+      "progressDate": "2026-10-20",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "aliases": [
         "阿里巴巴",
         "Alibaba",
@@ -96437,6 +96504,14 @@
       "date": "2026-11-13",
       "title": "力天影業：供股、增設法定股份及更改每手買賣單位通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1113/2026111300363.pdf"
+    },
+    "YS-20261020-cae45d63b647": {
+      "id": "YS-20261020-cae45d63b647",
+      "caseId": "HK-07688-20261020-cnc-target-loi",
+      "date": "2026-10-20",
+      "publishedAt": "2026-10-20T21:12:00+08:00",
+      "title": "拓璞數控：可能收購至少70%股權的意向書",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102001305.pdf"
     }
   },
   "issuerLinks": [
