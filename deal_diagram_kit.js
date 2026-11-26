@@ -7592,7 +7592,51 @@
       annotations:[{tag:"①",title:"股東書面批准",body:"合計持有約52.50%的緊密聯繫股東就財務資助給予書面批准。"}],
       evidenceLinks:[{documentId:a,pages:[2,3,5,6,10,11,13],label:"貸款、擔保、開發承諾及股東書面批准"},{documentId:b,pages:[1],label:"通函寄發期限豁免"}]});
   }
+  function buildReviewedAssetPair(c,docs){
+    const ev=(k,d,leaf)=>{
+      const id=c.events?.find(e=>e.kind===k&&e.date===d&&e.state==="actual")?.evidence?.documentId;
+      return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const term=(id,k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id);
+    if(c.stage?.status!=="closed"||c.stage.eventKind!=="completion"||c.events.some(e=>e.kind==="termination"&&e.state==="actual"))return null;
+    const h=c.id==="HK-01952-20260408-hasten-singapore";
+    const s=c.parties["卖方"],b=c.parties["买方"];
+    let f;
+    if(h){
+      const a=ev("dispatch","2026-06-02","2026060202670"),z=ev("completion","2026-06-30","2026082700354");
+      if(!a||!z||c.stage.date!=="2026-06-30"||s!=="Hasten Biopharmaceuticals (Asia) Limited"||b!=="EverSea Medicines (Singapore) Pte. Ltd."||
+         !term(a,"cash_including_loan",250000000)||!term(z,"initial_paid",150000000)||!term(a,"shareholder_loan",148804000)||
+         !term(a,"second_conditional",50000000)||!term(a,"third_conditional",50000000))return null;
+      f={title:"Hasten Singapore 股權及債權",right:"交割及分期現金對價",label:"已轉讓100%股權及股東貸款",left:"Hasten Asia",buyer:"EverSea Medicines",kind:"shares",
+        badge:"6月30日交割 · 首期1.50億美元已付",p1:["總對價 2.50 億美元","包括受讓的股東貸款"],p2:["餘下兩期各 5,000 萬美元","按協議於2028／2029年第一季付"],
+        flows:[{id:"principal",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"首期1.50億美元於交割日已付"},
+          {id:"next",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"餘下兩期各5,000萬美元，按協議付款條件達成或獲豁免後支付",proposedOrTerminated:true}],
+        note:"受讓股東貸款本金1.48804億美元，已包括在總對價；標的持有亞太區品牌慢病產品商業權益。",
+        source:[{documentId:a,pages:[13,14,15],label:"股權、股東貸款和分期條款"},{documentId:z,pages:[75],label:"交割日和首期付款"}]};
+    }else{
+      const a=ev("dispatch","2025-12-01","2025120104233"),z=ev("completion","2026-01-30","2026013001142");
+      if(!a||!z||c.stage.date!=="2026-01-30"||s!=="Bonkie Limited（邦鸿有限公司）"||b!=="Jingaofeng Garment International Ltd."||
+        !term(a,"purchase_price",47532000)||!term(a,"balance",42778800)||!term(a,"initial_deposit",2067000)||!term(a,"further_deposit",2686200))return null;
+      f={title:"信德中心西翼物業收購",right:"交割付款及物業範圍",label:"收購兩個辦公室單位",left:"邦鴻有限公司",buyer:"Jingaofeng Garment",kind:"asset",
+        badge:"1月30日完成 · 已付交割尾款",p1:["總現金對價 4,753.2 萬港元","交割支付尾款 4,277.88 萬港元"],p2:["信德中心西翼 22 樓","2204及2205號辦公室"],
+        flows:[{id:"pay",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"總對價4,753.2萬港元；交割日已付尾款4,277.88萬港元"}],
+        note:"通函列示兩筆訂金與尾款；物業作集團自用。",
+        source:[{documentId:a,pages:[5,6],label:"交易對價、辦公室及付款安排"},{documentId:z,pages:[1],label:"交割與實際尾款"}]};
+    }
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:398,status:"closed",leftTitle:f.title,rightTitle:f.right,transitionLabel:"交割已確認",outcomeBadge:f.badge}),[
+      mk("s","left",43,100,149,146,"seller",f.left,"出售方"),mk("b","left",448,100,157,146,"buyer",f.buyer,"收購方"),
+      mk("r1","right",724,77,310,83,"target",...f.p1),mk("r2","right",724,204,310,85,"creditor",...f.p2)
+    ],[],[{id:"transfer",panel:"left",kind:f.kind,step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:f.label}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:c.stage.date,stageLabel:f.badge,
+      caseArchetypeLabel:h?"全資收購及受讓股東貸款":"辦公物業收購",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:f.badge,
+      before:{title:f.title,nodes,equityLinks:[]},after:{title:f.right,nodes,equityLinks:[],outcomeBadge:f.badge},
+      flows:[{id:"transfer",kind:f.kind,direction:"ltr",fromLabel:s,toLabel:b,headline:f.label},...f.flows],
+      annotations:[{tag:"①",title:"對價口徑",body:f.note}],evidenceLinks:f.source});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01682-20251111-shun-tak-offices","HK-01952-20260408-hasten-singapore"].includes(txCase?.id))return buildReviewedAssetPair(txCase,documents);
     if(txCase?.id==="HK-00126-20260929-facility-financial-assistance")return buildReviewedCarriannaFacilities(txCase,documents);
     if(["HK-08232-20261113-mandarin-plaza-lease","HK-08232-20261020-hoi-lai-lease","HK-08232-20261020-cheung-tung-lease","HK-00374-20261122-tko-innopark-lease"].includes(txCase?.id))return buildReviewedLeaseQuartet(txCase,documents);
     if(["HK-03330-20251210-simberi-subscription","HK-09668-20251010-debt-asset-portfolio-transfer","HK-00381-20251107-jiuai-food"].includes(txCase?.id))return buildReviewedClosedTrio(txCase,documents);
