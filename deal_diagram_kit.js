@@ -8897,7 +8897,37 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildDigiplusAlpha(c,docs){
+    const configs={
+      "01009":{
+        a:"YS-20251117-160975e2ee5d",p:"YS-20260226-1b927309bbfc",z:"YS-20260602-363271c78145",o:"YS-20260303-6ff0e5de492b",date:"2026-06-02",event:"completion",status:"closed",mode:"convertible",
+        ts:[["first_notes",800000000,"o"],["second_notes",800000000,"z"],["funded_principal",1600000000,"z"],["coupon",3,"a"],["conversion_price",1,"a"],["full_conversion_pct",53.89,"z"]],
+        left:"分兩期認購可換股票據",right:"發行進度與轉股情景",badge:"兩期均已發行 · 票據本金合計16億港元",seller:"國際娛樂",buyer:"DigiPlus Interactive",sSub:"五年期 · 年息3%",bSub:"初始轉股價每股1港元",main:"可換股票據共16億港元",
+        steps:[["2月26日獨立股東批准","證監會執行人員已授予有條件清洗豁免"],["3月3日、6月2日分別發行","每期本金8億港元"],["6月2日認購方持股為零","按初始價全數轉股情景為53.89%"]],
+        detail:"第一期票據所得用於償還承兌票據和有抵押銀行借款。53.89%為以6月2日股本計算的全數轉股情景。",pagesA:[1,2,3,4],pagesP:[2,4],pagesO:[1,2],pagesZ:[1,2]
+      },
+      "00228":{
+        a:"YS-20251223-1bbb4747eb69",p:"YS-20260113-b4f4b6d294f9",z:"YS-20260203-a872b1ea587b",date:"2026-02-03",event:"completion",status:"closed",mode:"shares",
+        ts:[["offer_price",1.57,"a"],["bond_cash_per_1m_face",233630.95,"a"],["rights_issued_to_offeror",150884939,"p"],["accepted_shares",28226590,"z"]],
+        left:"供股完成 · 持股增至52.97%",right:"股份及可換股債券要約",badge:"兩項要約均已截止 · 一致行動方持股59.15%",seller:"中國能源開發",buyer:"佳鷹及一致行動方",sSub:"供股發行152,066,800股",bSub:"原持股29.84%",main:"供股最終獲配150,884,939股",
+        steps:[["2025年12月24日發行供股股份","一致行動方增持至52.97%"],["股份要約每股1.57港元","有效接納28,226,590股"],["可換股債券要約零接納","2月3日截止 · 持股59.15%含待登記接納"]],
+        detail:"供股最終獲配包括45,375,000股暫定配額和105,509,939股額外申請；債券要約每100萬港元面值支付233,630.95港元。",pagesA:[3,4,9],pagesP:[11,12],pagesZ:[2,3,4]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="00228"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.date==="2025-12-24"&&e.evidence?.documentId===q.p))return null;
+    if(c.code==="01009"&&!c.events.some(e=>e.kind==="implementation"&&e.state==="actual"&&e.date==="2026-03-03"&&e.evidence?.documentId===q.o))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"listed",q.seller,q.sSub),
+      box("b","left",438,106,178,124,q.mode==="convertible"?"creditor":"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:q.mode==="convertible"?"asset":"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:false}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:q.mode==="convertible"?"convertible_bond":"acquisition",modality:q.mode==="convertible"?"mixed":"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.mode==="convertible"?"可換股票據":"供股及現金要約",caseModalityShortLabel:q.mode==="convertible"?"票據":"供股",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:q.mode==="convertible"?"asset":"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:false}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:c.code==="01009"?"股東表決及清洗豁免":"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"第一期發行"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01009-20251117-digiplus-notes-whitewash","HK-00228-20251223-alpha-eagle-rights-two-offers"].includes(txCase?.id))return buildDigiplusAlpha(txCase,documents);
     if(["HK-01959-20251216-msint-cash-follow-on","HK-00357-20250430-hainan-two-share-class-cash"].includes(txCase?.id))return buildCentenaryMeilan(txCase,documents);
     if(["HK-01732-20251201-westwell-partial","HK-08403-20251126-sunwei-conditional-lapsed"].includes(txCase?.id))return buildWestwellDowway(txCase,documents);
     if(txCase?.id==="HK-08146-20251230-hill-valley-control")return buildGraceWineOffers(txCase,documents);
