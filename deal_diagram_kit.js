@@ -7238,7 +7238,40 @@
       annotations:[{tag:"①",title:"獨立股東表決",body:"金融服務議案獲92.83%贊成；保理服務議案獲99.96%贊成。"}],
       evidenceLinks:[{documentId:i,pages:[12,13,21,24],label:"服務及各項年度上限"},{documentId:v,pages:[1,2,3],label:"兩項表決結果"}]});
   }
+  function buildReviewedYovole(c,docs){
+    const src=(kind,date,leaf)=>{
+      const id=c.events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId,d=docs?.[id];
+      return d?.caseId===c.id&&d.url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const i=src("first_announcement","2026-06-29","2026062902639"),p=src("supplement","2026-11-18","2026111801563");
+    const t=(id,k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id);
+    if(!i||!p||c.stage?.status!=="active"||c.stage.date!=="2026-11-18"||c.stage.eventKind!=="supplement"||
+      c.events?.some(e=>e.state==="actual"&&["completion","termination"].includes(e.kind))||
+      c.parties?.["賣方"]!=="Yovole Cayman"||c.parties?.["境內營運標的"]!=="上海有孚雲計算有限公司"||
+      !t(i,"consideration",2200000000)||!t(i,"consideration_ceiling",2500000000)||
+      !t(p,"cash_settled_lpd",660000000)||!t(p,"cash_pending_base_lpd",1340000000)||!t(p,"consideration_shares_pending_lpd",33057851))return null;
+    const title="上海有孚營運公司股權",right="按 11 月 18 日通函 · 對價進度",badge="營運公司已過戶 · 第三、四期對價尚未支付";
+    const seller="Yovole Data Group", buyer="晉景新能控股有限公司";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:398,status:"active",leftTitle:title,rightTitle:right,transitionLabel:"股權與付款分列",outcomeBadge:badge}),[
+      mk("b","left",43,100,149,146,"buyer","晉景新能","上市買方 · 01783"),
+      mk("s","left",448,100,157,146,"target","上海有孚雲計算","境內營運公司"),
+      mk("paid","right",724,77,310,83,"target","首兩期 6.60 億港元","1 億訂金及 5.60 億存入托管戶"),
+      mk("pending","right",724,204,310,85,"creditor","按基礎價待付 13.40 億港元","另待發行 33,057,851 股代價股")
+    ],[],[{id:"shares",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:212,labelHeight:34,label:"買方已直接持有 100%"}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer},{id:"target",role:"target",name:c.parties["境內營運標的"]}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"業務股權收購",caseModalityLabel:"分期現金及代價股",caseModalityShortLabel:"現金及股份",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:buyer,toLabel:c.parties["境內營運標的"],headline:"上海有孚營運公司股權已過戶；晉景新能直接持有100%"},
+        {id:"paid",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:"首兩期款項（第二期存入托管戶）",headline:"首兩期合計6.60億港元，包含5.60億港元托管付款"},
+        {id:"pending",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"按基礎對價，餘下現金13.40億港元；第三期6.60億與已付首兩期是不同款項",proposedOrTerminated:true},
+        {id:"stock",kind:"shares",direction:"rtl",fromLabel:buyer,toLabel:seller,headline:"第四期另待發行33,057,851股代價股",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"基礎對價及調整",body:"簽約賣方為Yovole Data Group。基礎對價22億港元，按交割帳目調整，上限25億港元。餘款仍視乎牌照公司及業務合作方資格審核等條件。"}],
+      evidenceLinks:[{documentId:i,pages:[1,3,4],label:"賣方、基礎對價及四期安排"},{documentId:p,pages:[12,19,20,38],label:"截至通函最後實際可行日期的持股、托管及待付對價"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01783-20260629-yovole-cloud")return buildReviewedYovole(txCase,documents);
     if(txCase?.id==="HK-00817-20261102-sinochem-finance-factoring")return buildReviewedJinmaoFinance(txCase,documents);
     if(txCase?.id==="HK-00195-20260907-berk-kivanc-partial")return buildReviewedGreentechBerk(txCase,documents);
     if(["HK-09860-20251113-crown-bioscience","HK-01340-20261123-shanghai-jingguan"].includes(txCase?.id))return buildReviewedAcquisition26(txCase,documents);
