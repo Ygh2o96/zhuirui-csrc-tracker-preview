@@ -6790,7 +6790,29 @@
       {tag:"②",title:"餘股要約",body:"要約涵蓋 102,946,000 股有投票權餘股，庫存股 5,238,000 股未列入。以每股 0.617 港元計，最高現金額 63,517,682 港元。"}],
       evidenceLinks:[{documentId:cl,pages:[2],label:"控股股份已交割"},{documentId:src,pages:[3,8,9,14,18,21,22,45],label:"兩買方、兩套股份分母及要約時間"}],compactSummary:"兩買方已取得現有股份 · 77.94% 投票權 · 餘股現金要約進行中",topology};
   }
+
+  function buildVerifiedLoganALC(c,docs){
+    const cir="YS-20261105-343f8da94f95",vote="YS-20261120-60c1f3b2f895",dt="2026-11-20";
+    if(c.stage?.status!=="approved"||c.stage?.date!==dt||c.stage?.eventKind!=="vote"||docs?.[cir]?.caseId!==c.id||docs?.[vote]?.caseId!==c.id||!c.terms?.some(t=>t.key==="conditional_debt_release"&&t.value===1020000000))return null;
+    const l="龍光集團",r="ALC 債權人專項載體",badge="股東已批准 · 資產轉讓仍附條件";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,xx,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:200,labelHeight:34,label,proposed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"approved",leftTitle:"附條件的 ALC 資產安排",rightTitle:"11 月 20 日股東表決",transitionLabel:"按重組文件實施",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"seller",l,"擬轉讓方"),box("L_r","left",448,100,157,146,"buyer",r,"擬受讓方"),
+      box("R_a","right",728,82,295,75,"target","ALC 資產轉讓 · 100%","佔該決議所投票數"),
+      box("R_b","right",728,204,295,75,"public","可轉債 99.95% · 贖回股份 100%","各項決議的贊成票比例"),
+    ],[],[arrow("asset","shares","①",192,138,448,"項目持股及股東貸款權益"),arrow("debt","cancel","②",448,209,192,"擬解除約 10.2 億美元債務")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"debt_restructuring",modality:"mixed",status:"approved",
+      caseArchetypeLabel:"境外債務重組及 ALC 資產安排",caseModalityShortLabel:"資產及債務解除",before:{title:"擬轉讓資產",nodes,equityLinks:[]},after:{title:"附條件資產轉讓",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"龍光所持項目公司股份的 50%，以及未償股東貸款的相關權利、利益和所得款",proposedOrTerminated:true},
+      {id:"debt",kind:"cancel",direction:"rtl",fromLabel:"相關境外債權人",toLabel:l,headline:"通函估計對應解除約 10.2 億美元債務",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"擬轉讓範圍",body:"龍光所持 ALC 項目公司股份的 50%，以及龍光未償股東貸款的相關權利、利益和所得款。轉讓涉及另一股東和優先融資債權人的同意。"},
+      {tag:"②",title:"股東表決",body:"發行強制可轉債及股權架構安排獲 99.95% 贊成；可能轉讓 ALC 資產及發行贖回股份各獲 100% 贊成，均按各決議所投票數計。"}],
+      evidenceLinks:[{documentId:cir,pages:[72,73,76,77],label:"轉讓範圍、先決條件及債務解除額"},{documentId:vote,pages:[1,2],label:"三項決議表決結果"}],compactSummary:"ALC 資產轉讓獲股東批准 · 擬解除約 10.2 億美元債務 · 轉讓仍附條件",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-03380-20261030-logan-restructuring-implementation"){const x=buildVerifiedLoganALC(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01936-20260925-innovation-forge"){const x=buildVerifiedRitamixOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01085-20260924-shandong-zibo-epc"){const x=buildVerifiedHengxinEpc(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-06666-20250911-everest-control-go"){const x=buildVerifiedEverestOffer(txCase,documents);return x&&validateDiagramSpec(x);}
