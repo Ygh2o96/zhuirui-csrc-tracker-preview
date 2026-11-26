@@ -58758,12 +58758,27 @@
       "mechanism": "吸收合并注销合资格H股，另实物分派岚图H股；东风H股撤牌与岚图介绍上市是同案不同动作",
       "name": "东风集团股份",
       "parties": {
-        "分派标的": "VOYAH Automobile Technology Company Limited",
+        "分派标的": "VOYAH Automotive Technology Co., Ltd.（07489.HK）",
         "目标公司": "Dongfeng Motor Group Company Limited",
         "要约人": "Dongfeng Motor Group (Wuhan) Investment Company Limited",
         "要约人母公司": "Dongfeng Motor Corporation"
       },
-      "processEvents": [],
+      "processEvents": [
+        {
+          "date": "2026-03-19",
+          "kind": "supplement",
+          "label": "嵐圖H股以介紹方式掛牌",
+          "detail": "嵐圖汽車股份（07489）開始於港交所主板掛牌。",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260429-voyah-listing-confirmed",
+            "pages": [
+              5
+            ]
+          }
+        }
+      ],
       "progressDate": "2026-03-18",
       "rules": [
         {
@@ -99735,6 +99750,13 @@
       "id": "YS-20260821-cloopen-sec-proxy",
       "title": "Cloopen私有化通函：滾存股東與HoldCo分配",
       "url": "https://www.sec.gov/Archives/edgar/data/1804583/000149315226039546/exa-1.htm"
+    },
+    "YS-20260429-voyah-listing-confirmed": {
+      "caseId": "HK-00489-20250822-dongfeng-absorption-voyah",
+      "date": "2026-04-29",
+      "id": "YS-20260429-voyah-listing-confirmed",
+      "title": "嵐圖ESG報告：確認3月19日主板掛牌",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042905690.pdf"
     }
   },
   "issuerLinks": [

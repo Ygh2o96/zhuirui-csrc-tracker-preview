@@ -8757,7 +8757,26 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:q.modality||"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modeLabel||"現金",caseModalityShortLabel:q.modeLabel||"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:q.docP}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:q.docO}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildDongfengVoyah(c,docs){
+    const a="YS-20250822-c189fd00c0c4",p="YS-20260309-2a5555444286",z="YS-20260318-c5e1b6d8198f",m="YS-20260318-21aa0cf6d7a4",n="YS-20260429-voyah-listing-confirmed",date="2026-03-18",status="closed";
+    if(c.stage?.date!==date||c.stage.status!==status||![a,p,z,m,n].every(id=>docs?.[id]?.caseId===c.id))return null;
+    if(![["delisting",z],["implementation",m]].every(([kind,doc])=>c.events?.some(x=>x.date===date&&x.kind===kind&&x.state==="actual"&&x.evidence?.documentId===doc)))return null;
+    if(!c.processEvents?.some(e=>e.date==="2026-03-19"&&e.state==="actual"&&e.evidence?.documentId===n)||![["cash_cancellation_price",6.68],["voyah_distribution_ratio",.3552608]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a)))return null;
+    const left="東風集團股份吸收合併",right="實物分派及介紹上市",badge="東風H股3月18日撤牌 · 嵐圖翌日掛牌";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:515,status,leftTitle:left,rightTitle:right,transitionLabel:"撤牌與掛牌為不同事件",outcomeBadge:badge}),[
+      box("s","left",42,107,165,110,"seller","東風集團股份","港股代碼00489"),
+      box("b","left",438,107,173,110,"buyer","東風集團（武漢）投資","吸收合併要約方"),
+      box("cash","left",99,298,437,82,"target","合資格H股現金註銷價","每股6.68港元；東風母公司直接持有的H股除外"),
+      box("r1","right",724,69,310,79,"target","每股東風H股分派","0.3552608股嵐圖H股"),
+      box("r2","right",724,170,310,79,"creditor","3月18日分派及合併條件達成","嵐圖H股股票寄出；東風H股撤牌"),
+      box("r3","right",724,271,310,80,"creditor","3月19日嵐圖以介紹方式掛牌","香港主板 · 07489")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[207,161],[438,161]],labelCenter:[323,161],labelWidth:200,labelHeight:35,label:"吸收合併"}]);
+    const nodes=[{id:"s",role:"seller",name:"東風集團股份"},{id:"b",role:"buyer",name:"東風集團（武漢）投資"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金註銷及股份分派",caseModalityShortLabel:"現金及股份",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"東風集團股份",toLabel:"東風集團（武漢）投資",headline:"吸收合併與撤牌"}],annotations:[{tag:"①",title:"兩項對價",body:"現金註銷與嵐圖股份分派獨立列示。內資股股東按相同比例獲嵐圖內資股；10.85港元為初期估值口徑下每股H股理論合計。"},{tag:"②",title:"現金結算安排",body:"3月18日公告所列現金匯款或寄發支票期限為3月27日。"}],evidenceLinks:[{documentId:a,pages:[2,3,35],label:"註銷及分派條款"},{documentId:p,pages:[2],label:"股東表決"},{documentId:z,pages:[2],label:"東風H股撤牌"},{documentId:m,pages:[2,3],label:"分派及合併條件"},{documentId:n,pages:[5],label:"嵐圖實際掛牌"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00489-20250822-dongfeng-absorption-voyah")return buildDongfengVoyah(txCase,documents);
     if(["HK-08031-20260119-jumbo-growth-control-mgo","HK-01053-20251219-hwabao-a-share-whitewash"].includes(txCase?.id))return buildEtsAndChongqing(txCase,documents);
     if(["HK-01875-20260114-wuxi-xdc-voluntary-share-and-option"].includes(txCase?.id))return buildBioDlinkTransfer(txCase,documents);
     if(["HK-01980-20260121-sina-partial-lapsed","HK-01546-20260116-world-nexus-control-mgo"].includes(txCase?.id))return buildSinaAndThelloy(txCase,documents);
