@@ -8679,7 +8679,37 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"年報：票據已清償"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildSinaAndThelloy(c,docs){
+    const configs={
+      "01980":{
+        a:"YS-20260121-1e73f77f5e9c",z:"YS-20260413-201c7eb66b37",p:"YS-20260211-c85cccd1814d",o:"YS-20260330-3de924d7c5cd",date:"2026-04-13",event:"terminated",status:"terminated",
+        ts:[["offer_price",.7,"a"],["max_cash",22750000,"a"],["min_shares",32500000,"z"],["first_tendered",10774501,"o"],["extended_tendered",10790502,"z"],["prehold_shares",300000000,"z"]],
+        left:"有條件現金部分要約",right:"兩次截止與結果",badge:"延長後接納不足 · 部分要約失效",seller:"天鴿互動合資格股東",buyer:"新浪香港",sSub:"擬出售3,250萬股",bSub:"每股0.70港元 · 原持3億股",main:"擬轉讓3,250萬股",
+        steps:[["2月11日寄發要約文件","最低接納門檻：3,250萬股"],["3月30日首個截止","累計有效接納10,774,501股"],["4月13日延長截止 · 要約失效","累計10,790,502股，未達門檻"]],
+        detail:"新浪香港原持約27.04%；部分要約失效，提交的股份未按要約轉讓。2,275萬港元為擬議要約對價。",pagesA:[1,2,3],pagesZ:[2,3],pagesP:[1,2],pagesO:[2]
+      },
+      "01546":{
+        a:"YS-20260212-444746321a8a",z:"YS-20260410-23fb9cf05a44",p:"YS-20260320-594fff099382",o:"YS-20260128-2057cb27dbc0",date:"2026-04-10",event:"completion",status:"closed",
+        ts:[["block_shares",500800000,"a"],["block_paid",95152000,"a"],["accepted_shares",457000,"z"],["accepted_gross",86830,"z"],["post_offer_pct_subject_to_registration",62.7,"z"]],
+        left:"先行股份買賣（已交割）",right:"餘股強制現金要約",badge:"要約截止 · 有效接納457,000股",seller:"Cheers Mate Holding",buyer:"World Nexus Holdings",sSub:"出售500,800,000股",bSub:"2月12日交割 · 約9,515.2萬港元",main:"已轉讓62.6%股份",
+        steps:[["3月20日寄發綜合文件","每股0.19港元 · 賣方保留9.9%未提交"],["4月10日要約截止","有效接納457,000股 · 毛額86,830港元"],["計入接納後持股約62.7%","501,257,000股 · 以過戶登記為準"]],
+        detail:"World Nexus Holdings Limited向Cheers Mate Holding Limited購股。先行對價9,515.2萬港元，其中5,000萬按賣方指示付予集團並構成賣方股東貸款，其餘4,515.2萬付賣方或指定人士。",pagesA:[2],pagesZ:[2,3,4],pagesP:[1,2],pagesO:[6,7,9,31]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="01546"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="terminated"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01980-20260121-sina-partial-lapsed","HK-01546-20260116-world-nexus-control-mgo"].includes(txCase?.id))return buildSinaAndThelloy(txCase,documents);
     if(["HK-01716-20260312-brave-steed-control","HK-08448-20260209-digital-intelligence-control"].includes(txCase?.id))return buildBraveAndPrintshop(txCase,documents);
     if(["HK-06698-20260602-binqiao-restructuring"].includes(txCase?.id))return buildBinqiaoRestructuring(txCase,documents);
     if(txCase?.id==="HK-02586-20260512-cloopen")return buildCloopenClosing(txCase,documents);
