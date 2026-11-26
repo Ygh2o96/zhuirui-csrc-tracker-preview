@@ -6848,7 +6848,37 @@
       compactSummary:"72% + 3% 已交割 · 餘下 25% 待綜合文件",topology};
   }
 
+  function buildVerifiedWalnutExit(c,docs){
+    const dt="2026-11-26", end=c.events?.find(e=>e.kind==="completion"&&e.state==="actual"&&e.date===dt),first=c.events?.find(e=>e.kind==="first_announcement"),f=first?.evidence?.documentId,src=end?.evidence?.documentId;
+    if(c.id!=="HK-00905-20261102-china-lead-secondary-exit"||c.category!=="secondary_placing"||c.stage?.status!=="closed"||c.stage?.date!==dt||
+       docs?.[src]?.caseId!==c.id||docs[src].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600214.pdf"||
+       docs?.[f]?.caseId!==c.id||!docs[f].url.endsWith("/2026110203775.pdf"))return null;
+    const term=(key,value)=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===src);
+    if(!term("placed_existing_shares",584503925)||!term("placing_price",0.242)||!term("placing_percent",55.64)||
+       !term("seller_gross_cash",141449949.85)||!term("seller_after",0))return null;
+    const l="China Lead",r="各承配人",badge="舊股配售已完成 · 原控股股東退出";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:196,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"11月26日 · 舊股配售完成",rightTitle:"交割後持股",transitionLabel:"出售已發行股份",outcomeBadge:badge}),[
+     box("L_sell","left",43,100,149,146,"seller",l,"原控股股東"),
+     box("L_buy","left",448,100,157,146,"buyer",r,"公告未列名"),
+     box("R_zero","right",728,84,295,75,"seller","China Lead 持股歸零","不再為控股股東"),
+     box("R_other","right",728,210,295,75,"public","承配人均未達30%","按個別及一致行動合計計算")
+    ],[],[arrow("shares","shares","①",192,138,448,"5.845億股舊股（55.64%）"),arrow("cash","cash","②",448,209,192,"出售總額約1.4145億港元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"disposal",modality:"cash",status:"closed",
+     caseArchetypeLabel:"控股股東舊股配售",caseModalityShortLabel:"舊股出售",
+     before:{title:"原控股股東配售",nodes,equityLinks:[]},after:{title:"交割後持股",nodes,equityLinks:[],outcomeBadge:badge},
+     flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"584,503,925股舊股，佔55.64%"},
+     {id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"每股0.242港元，估算扣費前總額141,449,949.85港元"}],
+     annotations:[{tag:"①",title:"配售股份",body:"China Lead 配售其全部現有股份；發行人沒有發行新股。"},
+      {tag:"②",title:"交割後持股",body:"China Lead 持股歸零。公告稱承配人個別及連同一致行動人士均未達30%。"}],
+     evidenceLinks:[{documentId:f,pages:[1,2],label:"配售協議、賣方及承配人條件"},{documentId:src,pages:[1],label:"配售完成、股數及每股成交價"}],
+     compactSummary:"舊股配售完成 · 55.64% · 原控股股東退出",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.category==="secondary_placing"){const d=buildVerifiedWalnutExit(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01705-20261029-time-innovation"){const d=buildVerifiedBs26(txCase,documents);return d&&validateDiagramSpec(d);}
 
     if (txCase?.id === "HK-08455-20261007-reorganisation-partial-rights") {
