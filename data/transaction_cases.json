@@ -2,6 +2,260 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-01870-20260929-green-power-rights",
+      "code": "01870",
+      "category": "rights_issue",
+      "name": "綠色電能集團：一供四全額包銷",
+      "aliases": [
+        "Green Power Group Limited",
+        "綠色電能集團",
+        "绿色电能集团",
+        "Acme International Holdings Limited",
+        "益美國際"
+      ],
+      "mechanism": "按每持4股獲發1股，以每股0.138港元發行254,292,500股；RaffAello Securities 全額包銷。供股章程列11月27日公布配發結果。",
+      "parties": {
+        "發行人": "綠色電能集團有限公司（01870）",
+        "包銷商": "RaffAello Securities (HK) Limited",
+        "公司財務顧問": "RaffAello Capital Limited"
+      },
+      "events": [
+        {
+          "date": "2026-09-29",
+          "kind": "first_announcement",
+          "label": "公布一供四及包銷協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260929-01870-2026092901917",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "date": "2026-11-03",
+          "kind": "dispatch",
+          "label": "刊發供股章程",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              1,
+              9
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "allotment",
+          "label": "預計公告供股配發結果",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              9
+            ]
+          }
+        },
+        {
+          "date": "2026-12-01",
+          "kind": "listing",
+          "label": "繳足股款股份預計開始買賣 · 09:00",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              9
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-03",
+        "eventKind": "dispatch",
+        "label": "供股章程已刊發 · 待配發結果",
+        "status": "active"
+      },
+      "progressDate": "2026-11-03",
+      "headlineKey": "consideration",
+      "intervals": {
+        "announcementToDispatch": 35
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "最高募資總額",
+          "value": 35092365,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 0,
+          "basis": "擬發行254,292,500股，每股0.138港元",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              16,
+              37
+            ]
+          }
+        },
+        {
+          "key": "subscription_price",
+          "label": "供股認購價",
+          "value": 0.138,
+          "currency": "HKD",
+          "unit": "per_share",
+          "precision": 3,
+          "basis": "每持4股獲配1股",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              16
+            ]
+          }
+        },
+        {
+          "key": "new_shares",
+          "label": "擬發行供股股份",
+          "value": 254292500,
+          "currency": null,
+          "unit": "shares",
+          "precision": 0,
+          "basis": "相當於供股前總股本25%",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              16
+            ]
+          }
+        },
+        {
+          "key": "net_proceeds",
+          "label": "預計淨募資額",
+          "value": 31400000,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 0,
+          "basis": "按全數發行扣除估計開支",
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              37
+            ]
+          }
+        },
+        {
+          "key": "underwriting_commission_pct",
+          "label": "包銷佣金",
+          "value": 7.07,
+          "currency": null,
+          "unit": "percent",
+          "precision": 2,
+          "basis": "按包銷股份總認購金額計",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              30
+            ]
+          }
+        },
+        {
+          "key": "theoretical_dilution_pct",
+          "label": "理論攤薄效應",
+          "value": 8.19,
+          "currency": null,
+          "unit": "percent",
+          "precision": 2,
+          "basis": "章程按上市規則7.27B計算",
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              17
+            ]
+          }
+        }
+      ],
+      "comparables": {},
+      "comparisonEvidence": {},
+      "rules": [
+        {
+          "code": "HKEX:7.19(1)(a)",
+          "label": "上市規則 7.19(1)(a)",
+          "classificationStatus": "applied",
+          "application": "申報由持牌獨立包銷商承擔全額包銷。",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              30
+            ]
+          }
+        },
+        {
+          "code": "HKEX:7.27B",
+          "label": "上市規則 7.27B",
+          "classificationStatus": "applied",
+          "application": "按章程口徑計算理論攤薄效應約8.19%。",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              17
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "RaffAello Securities (HK) Limited",
+          "role": "Underwriter",
+          "service": "rights_issue_underwriting",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              30,
+              71
+            ]
+          }
+        },
+        {
+          "firm": "RaffAello Capital Limited",
+          "role": "FA",
+          "service": "issuer_financial_advice",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              71
+            ]
+          }
+        },
+        {
+          "firm": "CLKW Lawyers LLP",
+          "role": "Legal",
+          "service": "hong_kong_legal_advice",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261103-01870-2026110301014",
+            "pages": [
+              71
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "HK-00834-20261013-kd-renewal",
       "code": "00834",
       "category": "continuing_connected",
@@ -99008,6 +99262,22 @@
       "id": "YS-20261007-smc-public-float",
       "title": "董事變更及恢復公眾持股",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1007/2026100701837.pdf"
+    },
+    "YS-20260929-01870-2026092901917": {
+      "id": "YS-20260929-01870-2026092901917",
+      "caseId": "HK-01870-20260929-green-power-rights",
+      "date": "2026-09-29",
+      "publishedAt": "2026-09-29T21:25:00+08:00",
+      "title": "建議一供四、變更每手股數及暫停過戶",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/2026092901917.pdf"
+    },
+    "YS-20261103-01870-2026110301014": {
+      "id": "YS-20261103-01870-2026110301014",
+      "caseId": "HK-01870-20260929-green-power-rights",
+      "date": "2026-11-03",
+      "publishedAt": "2026-11-03T16:43:00+08:00",
+      "title": "綠色電能集團供股章程（日期：11月4日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1103/2026110301014.pdf"
     }
   },
   "issuerLinks": [
