@@ -6665,7 +6665,42 @@
       {tag:"③",title:"獨立股東審批",body:"續期交易須獨立股東批准，VBG Capital 已獲委任為獨立財務顧問。"}],
       evidenceLinks:[{documentId:src,pages:[2,3,4,6,46,60,70,71],label:"委託本金、投資上限、費用及審批條款"},{documentId:upd,pages:[1],label:"通函延寄公告"}],compactSummary:"委託本金人民幣 6.75 億元 · 日投資餘額上限 7 億元 · 待獨立股東批准",topology};
   }
+
+  function buildProvenCashPlacement(c,docs) {
+    const p=c.placementProof, term=k=>c.terms?.find(t=>t.key===k), v=k=>term(k)?.value;
+    if(c.category!=="placing"||!(["ordinary","H","topup"].includes(p.format))||docs?.[p.sourceId]?.caseId!==c.id||(p.extraSourceId&&docs?.[p.extraSourceId]?.caseId!==c.id)||c.stage?.date!==p.period||c.stage?.status!==p.phase)return null;
+    const pending=p.phase==="active", real=p.format==="topup", h=p.format==="H";
+    if((pending?c.stage.eventKind!=="supplement":c.stage.eventKind!=="completion")||(!pending&&p.phase!=="closed"))return null;
+    const q=v("new_shares"), price=v("price_per_share")??v("placing_price"), gross=v("consideration"), net=v("expected_net_proceeds")??v("net_proceeds"), pct=v("placing_share_post_issue_pct");
+    if(!Number.isSafeInteger(q)||q<=0||!(price>0&&gross>0&&net>0&&pct>0&&pct<100)||term("placing_share_post_issue_pct")?.evidence?.documentId!==p.sourceId||Math.abs(Math.round(q*price*100)/100-gross)>(pending?1000:0.001)||(real&&v("old_shares_placed")!==q))return null;
+    const fmt=v=>v.toLocaleString("en-US"), amt=x=>x>=1e8?(x/1e8).toFixed(1)+" 億港元":(x/1e4).toFixed(1)+" 萬港元";
+    const px=price.toFixed(p.priceDigits), share=h?"新 H 股":"新股", left=real?"Manureen Holdings":p.name,right=real?"Ms. Kan Chi San":"承配人";
+    const title=real?"先舊股配售、後補足認購":"一般授權"+share+"配售";
+    const badge=pending?"擬配售 · 待條件達成":real?"舊股配售及補足認購均完成":share+"配售已完成";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:214,labelHeight:34,label});
+    const act=pending?"擬配售最多 ":"發行 ", grossLabel=(pending?"擬募總額約 ":"募集總額約 ")+amt(gross);
+    const leg1=real?"舊股 "+fmt(q)+" 股":act+fmt(q)+" 股";
+    const leg2="每股 "+px+" 港元";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:p.phase,leftTitle:real?"第一步：11 月 4 日舊股配售":title,rightTitle:real?"第二步：11 月 13 日補足認購":"配售規模與分母",transitionLabel:real?"同價、同股數":"現金認購",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,real?"seller":"listed",left,real?"賣方及補足認購人":"發行人"),
+      box("L_r","left",448,100,157,146,"buyer",right,real?"舊股承配人":pending?"擬配售予不少於六名":"不少於六名"),
+      box("R_a","right",728,84,295,75,"target",real?"發行同數新股予原賣方":grossLabel,real?grossLabel:"每股 "+px+" 港元"),
+      box("R_b","right",728,210,295,75,"public",real?"公司募集淨額約 "+amt(net):(pending?"全數配發後佔比約 ":"新股佔比約 ")+pct+"%",real?"僅計補足認購":"分母："+p.pctBasis),
+    ],[],[arrow("shares","shares","①",192,138,448,leg1),arrow("cash","cash","②",448,209,192,leg2)]);
+    const nodes=[{id:"l",role:real?"seller":"listed",name:left},{id:"r",role:"buyer",name:right}];
+    const flows=[{id:"shares",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:leg1+" · "+(real?"舊股":share),proposedOrTerminated:pending},
+      {id:"cash",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:leg2,proposedOrTerminated:pending}];
+    if(real)flows.push({id:"topup",kind:"shares",direction:"rtl",fromLabel:p.name,toLabel:left,headline:"公司配發 "+fmt(q)+" 股新股予原賣方"});
+    const a=[{tag:"①",title:real?"兩次交割":"股數及募資",body:real?"11 月 4 日原賣方向承配人配售現有股份；11 月 13 日發行人向原賣方配發同數新股。兩步每股均為 "+px+" 港元，只有第二步計入公司募資。":(pending?"按全數配發情景，":"完成公告列示，")+grossLabel+"、淨額約 "+amt(net)+"。"},
+      {tag:"②",title:"股份比例",body:real?"原賣方於補足認購完成後持股 41.87%，舊股承配人持股 14.17%。":"新股約佔"+p.pctBasis+"的 "+pct+"%。"+(h?"按全部已發行股本計約 "+v("placing_share_total_equity_pct")+"%。":"")}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:p.period,archetype:"topup_placing",modality:"cash",status:p.phase,
+      caseArchetypeLabel:title,caseModalityShortLabel:"現金認購",before:{title:real?"舊股配售":"配售條款",nodes,equityLinks:[]},after:{title:real?"補足認購":"配售結果",nodes,equityLinks:[],outcomeBadge:badge},
+      flows,annotations:a,evidenceLinks:[{documentId:p.sourceId,pages:real?[1,2,3]:[1,2],label:"股份、定價及募資原件"},...(p.extraSourceId?[{documentId:p.extraSourceId,pages:[1],label:"配售補充披露"}]:[])],
+      compactSummary:real?"11 月 4 日配售舊股 · 11 月 13 日補足認購 · 公司募集淨額約 "+amt(net):leg1+" "+share+" · "+grossLabel+" · "+badge,topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if (["HK-01156-20261109-cne-placing","HK-09988-20260823-alibaba-new-share-placing","HK-06082-20260705-biren-h-share-placing","HK-06082-20261008-hshare-placing","HK-01196-20261101-realord-top-up","HK-01156-20260625-cne-june-placement"].includes(txCase?.id)) { const x=txCase?.placementProof&&buildProvenCashPlacement(txCase,documents);return x&&validateDiagramSpec(x)||null; }
     if(txCase?.id==="HK-00980-20261120-lianhua-asset-management-renewal"){const x=buildVerifiedLianhuaRenewal(txCase,documents);return x&&validateDiagramSpec(x);}
     if(["HK-02650-20260623-zhida-h-placement","HK-02650-20260923-zhida-h-placement"].includes(txCase?.id)){const s=buildVerifiedZhidaHPlacement(txCase,documents);return s&&validateDiagramSpec(s);}
     if(txCase?.id==="HK-01748-20261008-ocean-vivo"){const x=buildVerifiedOceanVivo(txCase,documents);return x&&validateDiagramSpec(x);}
