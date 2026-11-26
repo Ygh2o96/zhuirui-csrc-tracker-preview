@@ -8127,7 +8127,23 @@
     const nodes=[{id:"s",role:"seller",name:"合資格股東"},{id:"b",role:"buyer",name:"Ngai Wa Ping"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"自願部分要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"合資格股東",toLabel:"Ngai Wa Ping",headline:"擬收購3,000萬股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"首次截止",body:"11月30日下午4時；如達最低有效接納股數，按公告所列流程宣布就接納而言成為無條件。"}],evidenceLinks:[{documentId:response,pages:[3,11,12,32,33],label:"回應文件：時間表、條款及接納門檻"},{documentId:offer,pages:[1,2],label:"要約文件寄發公告"}]});
   }
+  function buildTHeadPending(c,docs) {
+    const id="YS-20261110-2026111001061";
+    if(docs?.[id]?.caseId!==c.id||c.stage?.status!=="active"||c.stage.date!=="2026-11-10"||!c.processEvents?.some(e=>e.date==="2026-09-11"&&e.state==="actual"&&e.evidence?.documentId===id)||!c.rules?.some(r=>r.code==="HKEX:PN15:3(f)"&&r.classificationStatus==="granted"&&r.evidence?.documentId===id))return null;
+    const status="active",left="現有股權",right="擬議分拆與全球發售",badge="保密遞表已披露 · 待上市審批及備案";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"PN15 建議分拆",outcomeBadge:badge}),[
+      box("p","left",42,106,160,124,"listed","阿里巴巴","上市母公司 · 09988.HK"),
+      box("s","left",444,106,161,124,"target","平頭哥","擬在主板發行H股"),
+      box("a","right",724,72,310,70,"target","香港公開發售及國際配售","發售規模未定，預計仍為阿里附屬公司"),
+      box("r2","right",724,164,310,75,"creditor","股東保證配額：獲豁免","港交所已授出 PN15 第3(f)段豁免"),
+      box("r3","right",724,260,310,76,"creditor","9月11日保密遞交A1","11月10日由阿里巴巴對外披露")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"持有100%股權"}]);
+    const nodes=[{id:"p",role:"listed",name:"阿里巴巴",code:"09988.HK"},{id:"s",role:"target",name:"平頭哥（上海）技術股份有限公司"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"spin_off",modality:"cash",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"PN15 建議分拆",caseModalityLabel:"擬全球發售",caseModalityShortLabel:"擬全球發售",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[{from:"p",to:"s",label:"100%",style:"solid"}]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"平頭哥",toLabel:"全球發售投資者",headline:"擬發售平頭哥H股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"待辦審批",body:"待港交所上市委員會批准、證監會完成備案，以及阿里巴巴和平頭哥作最終決定。"}],evidenceLinks:[{documentId:id,pages:[1,2,3],label:"首公告：申請日期、豁免與條件"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-09988-20261110-t-head-spin")return buildTHeadPending(txCase,documents);
     if(txCase?.id==="HK-01894-20260923-ngai-partial")return buildHangYickPartial(txCase,documents);
     if(["HK-01793-20260820-talent-pool-mou","HK-01746-20260710-wanlexin-loi"].includes(txCase?.id))return buildNamedLoiPair(txCase,documents);
     if(["HK-01402-20260910-control-mou","HK-00465-20260506-chen-control-mou"].includes(txCase?.id))return buildPossibleOfferPair(txCase,documents);

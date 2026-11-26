@@ -88162,6 +88162,348 @@
       ],
       "comparables": {},
       "comparisonEvidence": {}
+    },
+    {
+      "id": "HK-01894-20251211-four-for-one-rights",
+      "code": "01894",
+      "category": "rights_issue",
+      "name": "恒益控股：合股後一供四",
+      "aliases": [
+        "恒益控股有限公司",
+        "Hang Yick Holdings Company Limited"
+      ],
+      "mechanism": "每持1股合併股份可認購4股，每股0.46港元，無包銷。有效認購73,475,116股，其餘110,748,884股按補償安排全數獲獨立承配人承購；3月30日合計發行184,224,000股。",
+      "parties": {
+        "發行人": "恒益控股有限公司",
+        "配售代理": "DaoKou Securities Limited"
+      },
+      "events": [
+        {
+          "date": "2025-12-11",
+          "kind": "first_announcement",
+          "label": "公布資本重組及一供四方案",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20251211-2025121101118",
+            "pages": [
+              1,
+              18,
+              19
+            ]
+          }
+        },
+        {
+          "date": "2026-02-02",
+          "kind": "vote",
+          "label": "獨立股東通過供股等決議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260216-2026021600427",
+            "pages": [
+              11
+            ]
+          }
+        },
+        {
+          "date": "2026-02-16",
+          "kind": "circular",
+          "label": "刊發供股章程",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260216-2026021600427",
+            "pages": [
+              1,
+              11
+            ]
+          }
+        },
+        {
+          "date": "2026-03-27",
+          "kind": "supplement",
+          "label": "公布供股及補償配售結果",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260327-2026032700877",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "date": "2026-03-30",
+          "kind": "completion",
+          "label": "供股股份實際發行",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260331-2026033104029",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-03-20",
+          "kind": "supplement",
+          "label": "供股成為無條件",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260327-2026032700877",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-03-30",
+        "eventKind": "completion",
+        "status": "closed",
+        "label": "供股全數發行 · 完成"
+      },
+      "progressDate": "2026-03-30",
+      "headlineKey": "consideration",
+      "intervals": {
+        "announcementToCompletion": 109
+      },
+      "rules": [
+        {
+          "code": "HKEX:7.26A(1)(b)",
+          "label": "上市規則 7.26A(1)(b)",
+          "application": "未認購供股股份按補償安排盡力配售。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20251211-2025121101118",
+            "pages": [
+              22
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "DaoKou Securities Limited",
+          "role": "PlacingAgent",
+          "service": "rights_issue_compensatory_placing",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20251211-2025121101118",
+            "pages": [
+              18,
+              19
+            ]
+          }
+        }
+      ],
+      "rightsExecution": {
+        "issuerLabel": "恒益控股",
+        "method": "placement",
+        "evidence": {
+          "documentId": "YS-20251211-2025121101118",
+          "pages": [
+            18,
+            22
+          ]
+        }
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "已募集總額（約）",
+          "value": 84700000,
+          "unit": "money",
+          "basis": "含補償配售；按結果公告披露約數。",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20260327-2026032700877",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "net_proceeds",
+          "label": "已募集淨額（約）",
+          "value": 82000000,
+          "unit": "money",
+          "basis": "按結果公告扣除相關開支。",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20260327-2026032700877",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "subscription_price",
+          "label": "每股供股價",
+          "value": 0.46,
+          "unit": "per_share",
+          "basis": "配售價格與供股價相同。",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20260331-2026033104029",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "new_shares",
+          "label": "實際發行供股股份",
+          "value": 184224000,
+          "unit": "shares",
+          "basis": "以翌日報表發行數及期末股本回算。",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20260331-2026033104029",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "accepted_shares",
+          "label": "有效認購股數",
+          "value": 73475116,
+          "unit": "shares",
+          "basis": "合資格股東有效接納。",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20260327-2026032700877",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "placed_shares",
+          "label": "補償安排獲配股數",
+          "value": 110748884,
+          "unit": "shares",
+          "basis": "未認購供股股份由配售代理全數配售。",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20260327-2026032700877",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "comparables": {},
+      "comparisonEvidence": {}
+    },
+    {
+      "id": "HK-09988-20261110-t-head-spin",
+      "code": "09988",
+      "name": "阿里巴巴：擬分拆平頭哥赴港上市",
+      "aliases": [
+        "阿里巴巴",
+        "平頭哥（上海）技術股份有限公司",
+        "T-Head (Shanghai) Technology Co., Ltd."
+      ],
+      "category": "spin_off",
+      "mechanism": "阿里巴巴11月10日披露，當時全資附屬公司平頭哥已於9月11日保密遞交主板H股A1；擬以全球發售上市。港交所允許進行建議分拆並豁免向阿里巴巴股東提供保證配額；待上市委員會批准、證監會備案完成及雙方最終決定。",
+      "parties": {
+        "母公司": "阿里巴巴集團控股有限公司（09988）",
+        "擬上市發行人": "平頭哥（上海）技術股份有限公司"
+      },
+      "events": [
+        {
+          "date": "2026-11-10",
+          "kind": "first_announcement",
+          "label": "公開披露擬分拆及已保密遞表",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-2026111001061",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-09-11",
+          "kind": "supplement",
+          "label": "平頭哥保密遞交主板H股A1（11月10日公開披露）",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-2026111001061",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:PN15",
+          "label": "上市規則第15項應用指引",
+          "classificationStatus": "applied",
+          "application": "港交所確認阿里巴巴可進行建議分拆。",
+          "evidence": {
+            "documentId": "YS-20261110-2026111001061",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "code": "HKEX:PN15:3(f)",
+          "label": "第15項應用指引第3(f)段",
+          "classificationStatus": "granted",
+          "application": "港交所豁免向阿里巴巴股東提供保證配額。",
+          "evidence": {
+            "documentId": "YS-20261110-2026111001061",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "terms": [],
+      "mandates": [],
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {},
+      "headlineKey": null,
+      "stage": {
+        "date": "2026-11-10",
+        "eventKind": "first_announcement",
+        "status": "active",
+        "label": "已披露保密遞表 · 待上市審批及備案"
+      },
+      "progressDate": "2026-11-10"
     }
   ],
   "coverage": "selected_verified_transactions",
@@ -97703,6 +98045,45 @@
       "publishedAt": "2026-11-25T18:05:00+08:00",
       "title": "第五次延後支付認購款",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112500762.pdf"
+    },
+    "YS-20251211-2025121101118": {
+      "id": "YS-20251211-2025121101118",
+      "caseId": "HK-01894-20251211-four-for-one-rights",
+      "date": "2025-12-11",
+      "title": "一供四及資本重組首公告",
+      "publishedAt": "2025-12-11T19:05:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1211/2025121101118.pdf"
+    },
+    "YS-20260216-2026021600427": {
+      "id": "YS-20260216-2026021600427",
+      "caseId": "HK-01894-20251211-four-for-one-rights",
+      "date": "2026-02-16",
+      "title": "一供四供股章程",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0216/2026021600427.pdf"
+    },
+    "YS-20260327-2026032700877": {
+      "id": "YS-20260327-2026032700877",
+      "caseId": "HK-01894-20251211-four-for-one-rights",
+      "date": "2026-03-27",
+      "title": "供股認購及補償配售結果",
+      "publishedAt": "2026-03-27T16:45:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032700877.pdf"
+    },
+    "YS-20260331-2026033104029": {
+      "id": "YS-20260331-2026033104029",
+      "caseId": "HK-01894-20251211-four-for-one-rights",
+      "date": "2026-03-31",
+      "title": "翌日披露報表：3月30日發行供股股份",
+      "publishedAt": "2026-03-31T22:30:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0331/2026033104029.pdf"
+    },
+    "YS-20261110-2026111001061": {
+      "id": "YS-20261110-2026111001061",
+      "caseId": "HK-09988-20261110-t-head-spin",
+      "date": "2026-11-10",
+      "publishedAt": "2026-11-10T20:36:00+08:00",
+      "title": "阿里巴巴公告建議分拆平頭哥赴港交所主板上市",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001061.pdf"
     }
   },
   "issuerLinks": [
