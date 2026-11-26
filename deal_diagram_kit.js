@@ -7762,7 +7762,32 @@
       flows:[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"擬轉讓100%股權",proposedOrTerminated:true},{id:"price",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"合同現金價款1萬港元，簽署時應付",proposedOrTerminated:true}],
       annotations:[{tag:"①",title:"交割條件",body:"董事會公告列多項先決條件；簽署後90日內未達成或未獲豁免，可按協議終止。"}],evidenceLinks:[{documentId:a,pages:[1,2,3],label:"交易主體、股權、對價及使用權資產"}]});
   }
+  function buildHatcherClosures(c,docs){
+    const e=c.id.endsWith("eversharp"),dt=e?"2026-10-02":"2026-10-30";
+    const get=(events,k,date,file)=>{const id=events?.find(x=>x.kind===k&&x.date===date&&x.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+file+".pdf")?id:null;};
+    const z=get(c.events,"completion",dt,e?"2026100203267":"2026103000618"),a=get(c.events,"first_announcement",e?"2026-07-17":"2026-09-25",e?"2026071700013":"2026092500313");
+    if(!z||!a||c.stage?.status!=="closed"||c.stage.date!==dt||c.events.some(x=>x.state==="actual"&&x.kind==="termination"))return null;
+    const has=(id,key,v)=>c.terms?.some(t=>t.evidence?.documentId===id&&t.key===key&&t.value===v);
+    if(e?!(has(a,"consideration",10000000)&&has(z,"shares",10000000)&&has(z,"dilution",4.79)&&has(z,"acquired",51)):!(has(a,"consideration_hkd",30000000)&&has(a,"target_equity_pct",100)&&has(a,"note_interest_pct",5)))return null;
+    const b=c.parties["买方"],s=c.parties["卖方"],t=c.parties["标的"];
+    if(b!=="亦辰集团有限公司"||!(e?s==="Dr. Tang Wan Hoi"&&t==="Eversharp Group Limited":s==="Ark Invest Holdings Limited"&&t==="Noah Ark International Group Limited"))return null;
+    const badge=e?"10月2日完成 · 已發行對價股":"10月30日完成 · 已發行對價本票",instrument=e?"對價股":"無抵押本票",kind=e?"shares":"asset",pct=e?51:100;
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:434,status:"closed",leftTitle:e?"Eversharp股權":"Noah Ark股權",rightTitle:"交割對價",transitionLabel:"已完成交割",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller",e?"Dr. Tang Wan Hoi":"Ark Invest Holdings","出售方"),mk("b","left",448,100,157,146,"buyer","亦辰集團","收購方兼發行人"),
+      mk("r1","right",724,74,310,89,"target",e?"1,000萬股 × 每股1港元":"本票本金3,000萬港元",e?"合計股權對價1,000萬港元":"交割時向賣方發行"),
+      mk("r2","right",724,205,310,90,"creditor",e?"新股占擴大後股本約4.79%":"兩年期 · 年息5%",e?"賣方合計持有亦辰約6%":"本金及應計未付利息到期支付")
+    ],[],[{id:"transfer",panel:"left",kind:"shares",step:"①",pathPoints:[[192,173],[448,173]],labelCenter:[320,173],labelWidth:203,labelHeight:36,label:"交割取得標的"+pct+"%股權"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b},{id:"t",role:"target",name:t}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:e?"shares":"in_kind",status:"closed",stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:e?"發股收購控股權":"本票支付全資收購",caseModalityLabel:instrument,caseModalityShortLabel:instrument,topology,compactSummary:badge,
+      before:{title:"股權轉讓",nodes,equityLinks:[]},after:{title:"交割後持股",nodes,equityLinks:[{from:"b",to:"t",label:pct+"%",pct,style:"solid"}],outcomeBadge:badge},
+      flows:[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"已取得標的"+pct+"%股權"},{id:"payment",kind,direction:"rtl",fromLabel:b,toLabel:s,headline:e?"已配發1,000萬股對價股，每股1港元":"已發行本金3,000萬港元的本票"}],
+      annotations:[{tag:"①",title:"交割後",body:e?"標的成為亦辰直接非全資附屬公司，業績併表。":"標的成為亦辰直接全資附屬公司；本票可按協議提早贖回。"}],
+      evidenceLinks:[{documentId:a,pages:e?[1,2]:[2,3,4],label:"交易條款與對價形式"},{documentId:z,pages:e?[1,2]:[1],label:"交割及實際發行"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08365-20260717-eversharp","HK-08365-20260925-noah-ark"].includes(txCase?.id))return buildHatcherClosures(txCase,documents);
     if(["HK-08412-20261116-168-catering","HK-08412-20261116-kau-lau-restaurant"].includes(txCase?.id))return buildQiRestaurants(txCase,documents);
     if(["HK-01643-20260119-ai-health-stake"].includes(txCase?.id))return buildModernAI(txCase,documents);
     if(["HK-01354-20251205-kingfar-building","HK-01300-20260913-qinghai-zhongli"].includes(txCase?.id))return buildKingfarTrigiant(txCase,documents);
