@@ -6877,7 +6877,32 @@
      compactSummary:"舊股配售完成 · 55.64% · 原控股股東退出",topology};
   }
 
+  function buildVerifiedElate26(c,docs){
+    const dt="2026-11-26",src=c.events?.find(e=>e.kind==="first_announcement"&&e.state==="actual"&&e.date===dt)?.evidence?.documentId;
+    if(c.code!=="00076"||c.stage?.status!=="active"||c.stage?.eventKind!=="first_announcement"||
+      c.stage.date!==dt||docs?.[src]?.caseId!==c.id||!docs[src].url.endsWith("/2026112600659.pdf"))return null;
+    const t=(key,value)=>c.terms?.some(q=>q.key===key&&q.value===value&&q.evidence?.documentId===src);
+    if(!t("consideration",19553600)||!t("conversion_price",.22)||!t("coupon_pct",0)||!t("conversion_shares",88880000)||!t("holder_limit",5))return null;
+    const l="Li Hongyi",r="誼礫控股",badge="已簽認購協議 · 待上市批准";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:196,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"擬認購六年期零息可換股債",rightTitle:"換股條款",transitionLabel:"待換股股份上市批准",outcomeBadge:badge}),[
+      box("L_sub","left",43,100,149,146,"creditor",l,"独立認購方"),box("L_issue","left",448,100,157,146,"listed",r,"發行人 00076"),
+      box("R_px","right",728,84,295,75,"target","初始每股 0.22 港元","全數換股上限 8,888 萬股"),
+      box("R_cap","right",728,210,295,75,"public","每名持有人須低於 5%","全數換股合計情景 16.67%")
+    ],[],[arrow("sub","cash","①",192,138,448,"本金 1,955.36 萬港元"),arrow("bond","asset","②",448,209,192,"零息 · 到期 2032-11-25")]);
+    const nodes=[{id:"sub",role:"creditor",name:l},{id:"issuer",role:"listed",name:r}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"convertible_bond",modality:"cash",status:"active",
+     caseArchetypeLabel:"一般授權零息可換股債",caseModalityShortLabel:"擬現金認購",before:{title:"有條件認購",nodes,equityLinks:[]},after:{title:"潛在換股",nodes,equityLinks:[],outcomeBadge:badge},
+     flows:[{id:"sub",kind:"cash",direction:"ltr",fromLabel:l,toLabel:r,headline:"應付認購本金港幣 19,553,600",proposedOrTerminated:true},
+     {id:"bond",kind:"asset",direction:"rtl",fromLabel:r,toLabel:l,headline:"零息六年可換股債，2032 年 11 月 25 日到期",proposedOrTerminated:true}],
+     annotations:[{tag:"①",title:"交割先決條件",body:"換股股份獲上市批准後一個營業日交割；債券本身不申請上市。"},
+     {tag:"②",title:"個人限制與合計情景",body:"任何持有人每次換股後持股均須低於5%；悉數換股時的擴大股本比例16.67%為合計情景。"}],
+     evidenceLinks:[{documentId:src,pages:[1,2,3],label:"認購、本金、換股價、利率及到期日"},{documentId:src,pages:[7,8],label:"攤薄情景及持股限制"}],compactSummary:"港幣 1,955.36 萬元 · 待換股股份上市批准",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00076-20261126-convertible-debenture"){const d=buildVerifiedElate26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.category==="secondary_placing"){const d=buildVerifiedWalnutExit(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01705-20261029-time-innovation"){const d=buildVerifiedBs26(txCase,documents);return d&&validateDiagramSpec(d);}
 
