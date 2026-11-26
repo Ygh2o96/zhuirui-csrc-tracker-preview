@@ -7415,7 +7415,35 @@
       annotations:[{tag:"①",title:"續期及表決",body:"三項框架涵蓋2027年1月1日至2029年12月31日；各年度上限和各項議案分開列示。"}],
       evidenceLinks:[{documentId:i,pages:[10,16,24],label:"九項建議年度上限"},{documentId:v,pages:[1,2],label:"股東特別大會及三項議案"}]});
   }
+  function buildReviewedWeimobGpu(c,docs){
+    const id=c.events?.find(e=>e.kind==="first_announcement"&&e.date==="2026-11-26"&&e.state==="actual")?.evidence?.documentId;
+    const d=docs?.[id];
+    const t=(k,v)=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id);
+    if(d?.caseId!==c.id||!d.url.endsWith("/2026112600535.pdf")||c.stage?.status!=="active"||
+      c.stage.date!=="2026-11-26"||c.stage.eventKind!=="first_announcement"||
+      c.events?.some(e=>e.state==="actual"&&["completion","termination","delivery"].includes(e.kind))||
+      c.parties?.["供應商"]!=="英邁電子商貿（上海）有限公司"||c.parties?.["買方"]!=="上海微盟智算信息科技有限公司"||
+      !t("consideration",344000000)||!t("gpu_units",4000)||!t("advance_pct",10))return null;
+    const title="GPU 採購協議一",right="對價及分批履約",badge="11月26日簽約 · 按實際到貨分批付款及交付";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const a=c.parties["買方"],b=c.parties["供應商"];
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:395,status:"active",leftTitle:title,rightTitle:right,transitionLabel:"已簽約 · 待交付",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller","英邁上海","供應商"),
+      mk("b","left",448,100,157,146,"buyer","上海微盟智算","微盟集團全資附屬"),
+      mk("price","right",724,78,310,83,"target","約 3.44 億元人民幣","按報關匯率及製造商報價調整"),
+      mk("pay","right",724,203,310,85,"creditor","協議約定預付 10%","簽約後兩個營業日內 · 抵扣末批款")
+    ],[],[{id:"gpu",panel:"left",kind:"asset",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:205,labelHeight:34,label:"4,000 件 GPU 產品",dashed:true}]);
+    const nodes=[{id:"s",role:"seller",name:b},{id:"b",role:"buyer",name:a}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"active",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"設備採購",caseModalityLabel:"分批付款",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"gpu",kind:"asset",direction:"ltr",fromLabel:b,toLabel:a,headline:"約定分批交付4,000件GPU產品",proposedOrTerminated:true},
+        {id:"cash",kind:"cash",direction:"rtl",fromLabel:a,toLabel:b,headline:"約定10%預付款，其餘按批支付；約3.44億元人民幣對價可調整",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"另行披露的採購",body:"向上海賦欣採購1,000件的協議獨立訂立，8,650萬元人民幣對價另列；公告自願披露該協議。"}],
+      evidenceLinks:[{documentId:id,pages:[1,2,3,6,7],label:"兩項協議、交付付款及各方定義"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-02013-20261126-ingram-gpu-purchase")return buildReviewedWeimobGpu(txCase,documents);
     if(txCase?.id==="HK-03382-20260827-tianjin-port-framework-renewal")return buildReviewedTianjinPortFramework(txCase,documents);
     if(txCase?.id==="HK-00817-20260616-tianjin-timao-transfer")return buildReviewedJinmaoTimao(txCase,documents);
     if(txCase?.id==="HK-00195-20260529-geo-environ-partial")return buildReviewedGeo(txCase,documents);
