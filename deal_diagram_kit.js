@@ -6620,7 +6620,31 @@
       {tag:"②",title:"自愿全面现金要约",body:"余股拟覆盖 316,501,343 股。按每股 2.21 港元、全数接纳及股本不变，现金上限约 7.0 亿港元。11 月 20 日公告委任独立财务顾问。"}],
       evidenceLinks:[{documentId:cl,pages:[1,2],label:"联合公告：另行购股交割及余股规模"},{documentId:delay,pages:[2],label:"余股要约先决条件"},{documentId:upd,pages:[1],label:"独立财务顾问委任"}],compactSummary:"另购股份已交割 · 合持 28.07% · 余股要约待先决条件",topology};
   }
+
+  function buildVerifiedZhidaHPlacement(c,docs) {
+    const x={"HK-02650-20260623-zhida-h-placement":{"date":"2026-06-30","src":"YS-20260630-a79a958d75c7","ann":"YS-20260623-8c464e9ebb8f","terms":{"consideration":209999637,"net_proceeds":205780000,"price_per_share":10.98,"new_shares":19125650,"post_issue_pct":6.01,"discount_prev_close":11.88,"pre_issue_h_shares":298944035,"post_issue_h_shares":318069685}},"HK-02650-20260923-zhida-h-placement":{"date":"2026-09-25","src":"YS-20260925-a63d060b2285","ann":"YS-20260923-7c8cf0104f5e","terms":{"consideration":207590723.5,"net_proceeds":203440000,"price_per_share":8.77,"new_shares":23670550,"post_issue_pct":6.93,"discount_prev_close":17.11,"pre_issue_h_shares":318069685,"post_issue_h_shares":341740235}}}[c.id];
+    if(!x||c.stage?.status!=="closed"||c.stage?.date!==x.date||c.stage?.eventKind!=="completion"||docs?.[x.src]?.caseId!==c.id||docs?.[x.ann]?.caseId!==c.id)return null;
+    if(!Object.entries(x.terms).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v)))return null;
+    const t=x.terms,n=t.new_shares.toLocaleString('en-US'),px=t.price_per_share.toFixed(2);
+    const gross=(t.consideration/1e8).toFixed(2),net=(t.net_proceeds/1e8).toFixed(2),fmt=v=>v.toLocaleString('en-US');
+    const left="摯達科技",right="獨立承配人",badge="新 H 股配售已完成";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:214,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"一般授權發行新 H 股",rightTitle:"配售完成及股本變動",transitionLabel:"現金認購新股",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"listed",left,"發行人"),box("L_r","left",448,100,157,146,"buyer",right,"不少於六名"),
+      box("R_a","right",728,84,295,75,"target","募集淨額約 "+net+" 億港元","已扣除相關配售開支"),
+      box("R_b","right",728,210,295,75,"public","新股佔配售後 H 股 "+t.post_issue_pct+"%","配售後 H 股 "+fmt(t.post_issue_h_shares)+" 股"),
+    ],[],[arrow("shares","shares","①",192,138,448,"發行 "+n+" 股新 H 股"),arrow("cash","cash","②",448,209,192,"每股 "+px+" 港元")]);
+    const nodes=[{id:"l",role:"listed",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:x.date,archetype:"topup_placing",modality:"cash",status:"closed",
+      caseArchetypeLabel:"一般授權新 H 股配售",caseModalityShortLabel:"現金認購新股",before:{title:"配售前 H 股 "+fmt(t.pre_issue_h_shares),nodes,equityLinks:[]},after:{title:"配售後 H 股 "+fmt(t.post_issue_h_shares),nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:n+" 股新 H 股"},{id:"cash",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:"募集總額約 "+gross+" 億港元"}],
+      annotations:[{tag:"①",title:"配售及募資",body:"每股 "+px+" 港元，較上一交易日收市價折讓 "+t.discount_prev_close+"%。募集總額約 "+gross+" 億港元，淨額約 "+net+" 億港元。"},
+      {tag:"②",title:"配售角色",body:"興證國際擔任獨家整體協調人及配售代理；立鼎證券、天澤證券及新百利融資任配售代理。"}],
+      evidenceLinks:[{documentId:x.ann,pages:[3,4],label:"配售協議、角色及定價"},{documentId:x.src,pages:[1,2],label:"已完成配售、實際募資及 H 股分母"}],compactSummary:"新 H 股 "+n+" 股 · 已完成 · 佔配售後 H 股 "+t.post_issue_pct+"%",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02650-20260623-zhida-h-placement","HK-02650-20260923-zhida-h-placement"].includes(txCase?.id)){const s=buildVerifiedZhidaHPlacement(txCase,documents);return s&&validateDiagramSpec(s);}
     if(txCase?.id==="HK-01748-20261008-ocean-vivo"){const x=buildVerifiedOceanVivo(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03816-20260904-luxshare-control"){const x=buildVerifiedKfmBlock(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01848-20261022-ari-eb-extension"){const x=buildVerifiedCalcExtension(txCase,documents);return x&&validateDiagramSpec(x);}
