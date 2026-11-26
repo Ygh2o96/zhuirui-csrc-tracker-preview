@@ -7054,6 +7054,24 @@
         {id:"offer",kind:"cash",direction:"ltr",fromLabel:"Max Premier Limited",toLabel:"餘股股東",headline:"餘股要約價每股0.3428港元；綜合文件待寄",proposedOrTerminated:true}],
         annotations:[{tag:"①",title:"控股股份與餘股要約",body:"控股股權協議對價1.02163億港元；餘股按每股0.3428港元另計，兩段金額分列。"}],
         evidenceLinks:[{documentId:i,pages:[2,3,4],label:"已完成的股份買賣及要約價"},{documentId:p,pages:[1,2],label:"文件寄發延期申請"}],firstPending:false};
+    }else if(c.id==="HK-00348-20261118-hwa-sheng"){
+      const i=source(actual("2026-11-18","first_announcement"),"2026111801287");
+      const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===i);
+      if(!i||c.stage?.date!=="2026-11-18"||c.stage.eventKind!=="first_announcement"||
+        c.events?.some(e=>e.kind==="control_completion"||e.kind==="dispatch"||e.kind==="completion")||
+        c.parties?.["要约方"]!=="Hwa Sheng International Investment Limited"||
+        !c.parties?.["卖方"]?.includes("Success Profile Inc.")||
+        !c.mechanism?.includes("延期付款")||
+        !term("proposed_sale_shares",305206460)||!term("proposed_block_pct",33.01)||!term("control_block",24416516.8)||
+        !term("offer_price",0.08)||!term("consolidated_offer_price",0.40)||!term("offered_residual_shares",619364376)||
+        !term("offer_cash_cap",49549150.08))return null;
+      f={left:"原有六名股東",right:"Hwa Sheng",leftSub:"兩組股份買賣協議",rightSub:"擬買方及要約人",a:"擬轉讓舊股 3.052 億股（33.01%）",
+        lTitle:"股份買賣已簽約 · 尚待交割",rTitle:"交割後 · 餘股現金要約",gate:"股份買賣先交割",badge:"六張承兌票據延期付款 · 收購尚待交割",
+        one:["每股 0.08 港元","五合一後每股 0.40 港元"],two:["有條件現金要約","有效接納須令一致行動集團合計過半"],
+        flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:c.parties["卖方"],toLabel:c.parties["要约方"],headline:"兩組協議擬轉讓305,206,460股現有股份（33.01%）",proposedOrTerminated:true},
+          {id:"offer",kind:"cash",direction:"ltr",fromLabel:c.parties["要约方"],toLabel:"餘股股東",headline:"股份交割後始作餘股現金要約，舊股口徑全數接納上限49,549,150.08港元",proposedOrTerminated:true}],
+        annotations:[{tag:"①",title:"賣方對價",body:"協議總對價24,416,516.80港元，按補充協議由六張免息承兌票據延期支付。票據交付與股份交割分列。"}],
+        evidenceLinks:[{documentId:i,pages:[2,3],label:"兩組買賣協議及前置條件"},{documentId:i,pages:[13,14],label:"六名賣方及票據條款"},{documentId:i,pages:[15,16,17],label:"要約價、接納條件及最高對價"}],firstPending:true,notes:true};
     }else return null;
     if(c.stage.status!=="active")return null;
     const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
@@ -7063,13 +7081,13 @@
     ],[],[{id:"block",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:200,labelHeight:34,label:f.a,dashed:f.firstPending}]);
     const nodes=[{id:"l",role:"seller",name:f.left},{id:"r",role:"buyer",name:f.right}];
     return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"offer",modality:"cash",status:"active",stageDate:c.stage.date,stageLabel:f.badge,
-      caseArchetypeLabel:f.firstPending?"潛在控股權交易":"控股股份與強制要約",caseModalityLabel:f.firstPending?"意向階段":"現金",caseModalityShortLabel:f.firstPending?"意向階段":"現金",
+      caseArchetypeLabel:f.notes?"協議收購與有條件要約":f.firstPending?"潛在控股權交易":"控股股份與強制要約",caseModalityLabel:f.notes?"票據延期付款／餘股現金要約":f.firstPending?"意向階段":"現金",caseModalityShortLabel:f.notes?"票據／現金":f.firstPending?"意向階段":"現金",
       before:{title:f.lTitle,nodes,equityLinks:[]},after:{title:f.rTitle,nodes,equityLinks:[],outcomeBadge:f.badge},
       flows:f.flows,annotations:f.annotations,evidenceLinks:f.evidenceLinks,compactSummary:f.badge,topology:topo};
   }
 
   function getSpecForCase(txCase, documents) {
-    if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
+    if(["HK-01710-20261002-luxshare-mou","HK-01389-20261012-max-premier","HK-00348-20261118-hwa-sheng"].includes(txCase?.id)){const d=buildReviewedOffer26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00866-20261103-zhuhai-termination"){const d=buildVerifiedQinfaUnwind26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00604-20261126-zhi-di-property"){const d=buildVerifiedZhiDi26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01548-20261124-probio-capital-reorganisation"){const d=buildVerifiedProbio26(txCase,documents);return d&&validateDiagramSpec(d);}
