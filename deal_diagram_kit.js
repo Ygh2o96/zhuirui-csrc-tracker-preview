@@ -8726,7 +8726,39 @@
     const nodes=[{id:"s",role:"seller",name:"東曜藥業接納股東"},{id:"b",role:"buyer",name:"藥明合聯"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"東曜藥業接納股東",toLabel:"藥明合聯",headline:"有效接納475,069,724股"}],annotations:[{tag:"①",title:"股權回轉",body:"3月31日公告的回售安排：按每股4港元回售共11,396,990股：Center Laboratories及Vivo Suzhou各5,180,450股，Advantech Capital Investment 1,036,090股。"}],evidenceLinks:[{documentId:a,pages:[22],label:"要約條款"},{documentId:u,pages:[2],label:"達接納門檻"},{documentId:z,pages:[2,3,4],label:"要約結果及回轉安排"},{documentId:v,pages:[29],label:"6月底持股"},{documentId:p,pages:[4],label:"回轉完成"}]});
   }
+  function buildEtsAndChongqing(c,docs){
+    const configs={
+      "08031":{
+        a:"YS-20260119-e31fa7be495a",z:"YS-20260320-61c616725c0f",p:"YS-20260227-211decaeb9ed",o:"YS-20260409-ed9107498a0d",date:"2026-03-20",event:"completion",status:"closed",
+        ts:[["block_shares",210000000,"a"],["block_paid",57960000,"a"],["accepted_shares",15867000,"z"],["accepted_gross",4379292,"z"],["post_offer_float_pct",23.59,"z"],["separate_placing_down_shares",15866000,"o"],["restored_float_pct",28.95,"o"]],
+        left:"先行股份買賣（已交割）",right:"餘股要約及公眾持股",badge:"要約截止 · 公眾持股其後恢復",seller:"Million Top Enterprises",buyer:"Jumbo Growth Trading",sSub:"出售2.1億股",bSub:"1月14日交割 · 5,796萬港元",main:"已轉讓約71.04%股份",
+        steps:[["3月20日餘股要約截止","6份有效接納 · 15,867,000股"],["按接納計算毛額437.9萬港元","要約後公眾持股23.59%"],["4月9日另行配售舊股","15,866,000股 · 公眾持股恢復至28.95%"]],
+        detail:"賣方Million Top Enterprises Limited；買方Jumbo Growth Trading Limited。要約組合計持股還含原有34,000股一致行動方持股。4月配售為要約人向獨立第三方出售現有股份。",pagesA:[2,21],pagesZ:[2,3,4],pagesP:[1,2],pagesO:[1,2],docP:"綜合文件寄發",docO:"公眾持股恢復"
+      },
+      "01053":{
+        a:"YS-20251219-cf0ea8d5dd28",z:"YS-20260623-a84d159c3e51",p:"YS-20260623-47f9e52f6e94",o:"YS-20260313-95d1da4becf3",date:"2026-06-22",event:"completion",status:"closed",
+        ts:[["subscription_price",1.32,"a"],["actual_a_shares_issued",757575757,"p"],["actual_subscription_gross",1000000000,"p"],["actual_subscription_net",993722532.86,"p"]],
+        left:"定向發行A股",right:"豁免與發行結果",badge:"新A股已登記 · 清洗豁免已獲批",seller:"重慶鋼鐵",buyer:"華寶投資",sSub:"發行757,575,757股A股",bSub:"以每股1.32元人民幣認購",main:"新股佔發行後股本7.88%",
+        steps:[["3月13日股東批准","已披露清洗豁免及要約期結束"],["6月22日完成新股登記","募資總額10億元，淨額約9.9億元人民幣"],["中國寶武及一致行動人","合計29.51%增至35.07%"]],
+        detail:"本次為A股定向發行；華寶投資直接持股由1.55%升至9.31%。長壽鋼鐵仍為控股股東，中國寶武仍為實際控制人。",pagesA:[1,2],pagesZ:[1],pagesP:[3,4,5,9,10],pagesO:[1,3],docP:"A股發行情況報告",docO:"清洗豁免與表決",modeLabel:"現金認購新A股"
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="08031"&&!c.events.some(e=>e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===q.a))return null;
+    if(c.code==="08031"&&!c.events.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===q.p))return null;
+    if(c.code==="08031"&&!c.processEvents?.some(e=>e.date==="2026-04-09"&&e.state==="actual"&&e.evidence?.documentId===q.o))return null;
+    if(c.code==="01053"&&!c.events?.some(e=>e.kind==="vote"&&e.date==="2026-03-13"&&e.state==="actual"&&e.evidence?.documentId===q.o))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="terminated"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:q.modality||"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modeLabel||"現金",caseModalityShortLabel:q.modeLabel||"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:q.docP}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:q.docO}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08031-20260119-jumbo-growth-control-mgo","HK-01053-20251219-hwabao-a-share-whitewash"].includes(txCase?.id))return buildEtsAndChongqing(txCase,documents);
     if(["HK-01875-20260114-wuxi-xdc-voluntary-share-and-option"].includes(txCase?.id))return buildBioDlinkTransfer(txCase,documents);
     if(["HK-01980-20260121-sina-partial-lapsed","HK-01546-20260116-world-nexus-control-mgo"].includes(txCase?.id))return buildSinaAndThelloy(txCase,documents);
     if(["HK-01716-20260312-brave-steed-control","HK-08448-20260209-digital-intelligence-control"].includes(txCase?.id))return buildBraveAndPrintshop(txCase,documents);
