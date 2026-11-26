@@ -7718,7 +7718,30 @@
       annotations:[{tag:"①",title:k?"三種權利":"另行付款與承諾",body:k?"購買物業、租賃人防車位及受讓機械車位使用權分列；完成日期見年報。":"履約保證金與交易所服務費已支付。標的償債支持按合同履行，未列入股權價款。"}],
       evidenceLinks:[{documentId:a,pages:k?[9,10,11,12,14]:[2,3,4],label:k?"三份協議及對價":"競標合同、償債支持及保證金"},{documentId:z,pages:k?[185]:[1,2,3],label:k?"年報確認完成日":"過戶、價款與其他付款"}]});
   }
+  function buildModernAI(c,docs){
+    const ev=(rows,k,dt,leaf)=>{const id=rows?.find(e=>e.kind===k&&e.date===dt&&e.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;};
+    const a=ev(c.events,"dispatch","2026-06-26","2026062603031"),z=ev(c.processEvents,"supplement","2026-09-28","2026092800953");
+    if(!a||!z||c.stage?.status!=="closed"||c.stage.eventKind!=="completion_confirmed"||c.events.some(e=>e.kind==="termination"&&e.state==="actual"))return null;
+    const terms={purchase_price:41820000,deposit:10000000,balance:31820000};
+    if(!Object.entries(terms).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency==="HKD"&&t.evidence?.documentId===a)))return null;
+    const b=c.parties["买方"],s=c.parties["卖方"],t=c.parties["标的"];
+    if(b!=="Modern Chinese Medicine Group Co., Ltd."||!s?.startsWith("Huang Yu Holdings")||!t?.startsWith("AI Health Global Holdings"))return null;
+    const badge="6月完成 · 30%聯營股權";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:426,status:"closed",leftTitle:"收購數智健康全球",rightTitle:"現金價款與持股",transitionLabel:"交割已確認",outcomeBadge:badge}),[
+      mk("s","left",43,100,149,146,"seller","皇御控股","出售方"),mk("b","left",448,100,157,146,"buyer","現代中藥集團","買方"),
+      mk("r1","right",724,75,310,87,"target","現金對價4,182萬港元","合同約定：簽約訂金1,000萬元"),
+      mk("r2","right",724,201,310,95,"creditor","合同尾款3,182萬港元","交割後3個營業日內支付")
+    ],[],[{id:"transfer",panel:"left",kind:"shares",step:"①",pathPoints:[[192,172],[448,172]],labelCenter:[320,172],labelWidth:215,labelHeight:36,label:"300萬股，占標的30%"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b},{id:"t",role:"target",name:t}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"收購聯營股權",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"股權轉讓",nodes,equityLinks:[]},after:{title:"交易對價",nodes,equityLinks:[{from:"b",to:"t",label:"30%",pct:30,style:"solid"}],outcomeBadge:badge},
+      flows:[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"6月完成收購：300萬股，占30%"},{id:"price",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:"合同現金價款4,182萬港元；尾款於交割後3個營業日內支付"}],
+      annotations:[{tag:"①",title:"交割與入賬",body:"中期報告按月披露6月完成，標的列作聯營公司，採用權益法。"}],
+      evidenceLinks:[{documentId:a,pages:[6,7],label:"買賣雙方、股權及付款期限"},{documentId:z,pages:[25,26],label:"6月完成及權益法"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01643-20260119-ai-health-stake"].includes(txCase?.id))return buildModernAI(txCase,documents);
     if(["HK-01354-20251205-kingfar-building","HK-01300-20260913-qinghai-zhongli"].includes(txCase?.id))return buildKingfarTrigiant(txCase,documents);
     if(["HK-03366-20260326-hefei-land-resumption","HK-03366-20260326-chaohu-land-resumption"].includes(txCase?.id))return buildOCTLand(txCase,documents);
     if(txCase?.id==="HK-02533-20251231-eeasy-control")return buildEeasyControl(txCase,documents);
