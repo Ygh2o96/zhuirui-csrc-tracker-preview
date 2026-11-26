@@ -8708,7 +8708,26 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"補充條款與定義"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildBioDlinkTransfer(c,docs){
+    const a="YS-20260212-a26f3829b682",u="YS-20260317-0d7ba77de1a0",z="YS-20260331-a0cb9d34d9ba",v="YS-20260824-ecf5c1929eb4",p="YS-20260929-78b32c10b306",date="2026-03-31",status="closed";
+    if(c.stage?.status!==status||c.stage.date!==date||![a,u,z,v,p].every(id=>docs?.[id]?.caseId===c.id))return null;
+    if(!c.events?.some(e=>e.kind==="completion"&&e.date===date&&e.state==="actual"&&e.evidence?.documentId===z)||!c.processEvents?.some(e=>e.date==="2026-09-29"&&e.state==="actual"&&e.evidence?.documentId===p))return null;
+    if(![["share_price",4,a],["accepted_shares",475069724,z],["option_cancellation_gross",13447657.9,z],["total_to_return_under_post_completion_undertakings",11396990,z],["observed_holdings_pct_2026_06_30",60.67,v],["confirmed_post_retransfer_pct",60,p]].every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===doc)))return null;
+    const left="股份要約與期權註銷",right="持股變動及回轉",badge="兩項要約已完成 · 回轉後持股60.00%";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:510,status,leftTitle:left,rightTitle:right,transitionLabel:"3月17日達門檻 · 31日截止",outcomeBadge:badge}),[
+      box("s","left",42,100,169,122,"seller","東曜藥業接納股東","有效接納475,069,724股"),
+      box("b","left",436,100,164,122,"buyer","藥明合聯","每股4.00港元"),
+      box("op","left",99,281,437,80,"target","另註銷7,612,600份期權","每份1.7665港元 · 約1,344.8萬港元"),
+      box("r1","right",724,72,310,78,"target","3月31日股份要約截止","計入接納後61.47%（待過戶口徑）"),
+      box("r2","right",724,173,310,78,"creditor","6月30日持股約60.67%","根據買方中報實際期末持股"),
+      box("r3","right",724,274,310,79,"creditor","期後回轉完成 · 持股60.00%","9月29日東曜藥業中報確認")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[211,162],[436,162]],labelCenter:[324,162],labelWidth:200,labelHeight:35,label:"股份要約 · 約19.0億港元"}]);
+    const nodes=[{id:"s",role:"seller",name:"東曜藥業接納股東"},{id:"b",role:"buyer",name:"藥明合聯"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"東曜藥業接納股東",toLabel:"藥明合聯",headline:"有效接納475,069,724股"}],annotations:[{tag:"①",title:"股權回轉",body:"3月31日公告的回售安排：按每股4港元回售共11,396,990股：Center Laboratories及Vivo Suzhou各5,180,450股，Advantech Capital Investment 1,036,090股。"}],evidenceLinks:[{documentId:a,pages:[22],label:"要約條款"},{documentId:u,pages:[2],label:"達接納門檻"},{documentId:z,pages:[2,3,4],label:"要約結果及回轉安排"},{documentId:v,pages:[29],label:"6月底持股"},{documentId:p,pages:[4],label:"回轉完成"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01875-20260114-wuxi-xdc-voluntary-share-and-option"].includes(txCase?.id))return buildBioDlinkTransfer(txCase,documents);
     if(["HK-01980-20260121-sina-partial-lapsed","HK-01546-20260116-world-nexus-control-mgo"].includes(txCase?.id))return buildSinaAndThelloy(txCase,documents);
     if(["HK-01716-20260312-brave-steed-control","HK-08448-20260209-digital-intelligence-control"].includes(txCase?.id))return buildBraveAndPrintshop(txCase,documents);
     if(["HK-06698-20260602-binqiao-restructuring"].includes(txCase?.id))return buildBinqiaoRestructuring(txCase,documents);
