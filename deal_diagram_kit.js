@@ -6479,7 +6479,37 @@
       {tag:"②",title:w?"清洗豁免条件":"余股要约与寄发申请",body:w?"认购人与一致行动人士合计持股拟从 25.68% 增至 33.16%。完成仍须取得清洗豁免及独立股东批准。":"每股 0.0317 港元，若全数接纳上限 951 万港元。已申请将综合文件延至最迟 12 月 14 日寄发，执行人员表示倾向同意。"}],
       evidenceLinks:[{documentId:docA,pages:w?[1,3,5,17]:[2,3,6,7],label:w?"认购及清洗豁免公告":"控股权交割及余股要约公告"},{documentId:docB,pages:w?[1]:[2],label:w?"独立财务顾问委任":"申请延寄"}],compactSummary:badge,topology};
    }
+
+  function buildVerifiedGreentechOrRke(c,docs){
+    const g=c.id==="HK-00195-20261124-zhang-yunhe-partial",r=c.id==="HK-01098-20261120-rke-stake-creditor-spv";
+    if(!g&&!r)return null;
+    const src=g?"YS-20261124-981e7caeaa57":"YS-20260527-bd443d3b6245",vote="YS-20261124-7751c4cf6b66",dt=g?"2026-11-24":"2026-11-23";
+    if(docs?.[src]?.caseId!==c.id||c.stage?.status!=="active"||c.stage?.date!==dt||c.stage.eventKind!==(g?"first_announcement":"creditor_vote")||(!g&&docs?.[vote]?.caseId!==c.id))return null;
+    const term=(k,v)=>c.terms.some(t=>t.key===k&&t.value===v);
+    if(g?!(term("max_shares",6250000)&&term("offer_price",0.6)&&term("max_cash",3750000)&&c.rules.some(x=>x.code==="TC:28.7")):!(term("rke_transferred_stake",70)&&term("rke_retained_stake",5)&&term("rki_creditors_approved_value_pct",96.93)&&term("new_select_creditors_approved_value_pct",99.61)))return null;
+    const left=g?"张云鹤":"New Select",right=g?"合资格股东":"债权人 SPV";
+    const badge=g?"拟提出部分要约 · 待同意及豁免":"债权人已批准 · 待股东大会及法院认许";
+    const box=(id,panel,x,y,wi,h,role,title,subtitle)=>({id,panel,x,y,w:wi,h,role,title,subtitle});
+    const arrows=[{id:"first",panel:"left",kind:g?"cash":"shares",step:"①",pathPoints:[[192,138],[448,138]],labelCenter:[320,138],labelWidth:200,labelHeight:34,label:g?"现金 · 每股 0.60 港元":"拟转让路劲高速 70%"}];
+    if(g)arrows.push({id:"second",panel:"left",kind:"shares",step:"②",pathPoints:[[448,209],[192,209]],labelCenter:[320,209],labelWidth:200,labelHeight:34,label:"最多 625 万股"});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:g?"退市后的自愿现金部分要约":"路劲高速股权拟用于非现金抵债",rightTitle:g?"要约上限及先决条件":"债权人表决及实施条件",transitionLabel:g?"待提出要约":"待实施",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,g?"buyer":"seller",left,g?"要约人":"路劲基建全资附属公司"),
+      box("L_r","left",448,100,157,146,g?"public":"buyer",right,g?"绿科科技国际 · 已退市":"拟持路劲高速 70%"),
+      box("R_a","right",728,84,295,75,"target",g?"最高 375 万港元":"两项债权人计划获通过",g?"最多约占已发行股本 0.46%":"按债权金额：96.93%／99.61%"),
+      box("R_b","right",728,210,295,75,"public",g?"待两项监管决定":"拟保留路劲高速 5%",g?"收购守则 28.1 同意及 28.7 豁免":"仍待股东批准及法院认许"),
+    ],[],arrows);
+    const nodes=[{id:"l",role:g?"buyer":"seller",name:left},{id:"r",role:g?"public":"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:g?"offer":"debt_restructuring",modality:g?"cash":"in_kind",status:"active",
+      caseArchetypeLabel:g?"自愿现金部分要约":"股权抵偿及债务重组",caseModalityShortLabel:g?"现金":"非现金",
+      before:{title:g?"要约提出前":"实施前",nodes,equityLinks:[]},after:{title:g?"要约条款":"拟实施后的转让",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"first",kind:g?"cash":"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:g?"每股 0.60 港元、上限 375 万港元":"路劲高速 70% 股权用于债务重组",proposedOrTerminated:true},
+      ...(g?[{id:"second",kind:"shares",direction:"rtl",fromLabel:right,toLabel:left,headline:"最多 625 万股",proposedOrTerminated:true}]:[])],
+      annotations:[{tag:"①",title:g?"退市后拟议要约":"非现金股权转让",body:g?"绿科科技国际于 2026 年 8 月 24 日退市。11 月 24 日公告为拟议部分要约：每股 0.60 港元，最多 625 万股，最高 375 万港元。":"New Select 拟转让路劲高速 70% 股权至债权人持有的 SPV，并保留 5%。此部分为非现金安排。"},
+      {tag:"②",title:g?"先决条件":"债权人表决及后续条件",body:g?"提出要约前须获规则 28.1 同意及规则 28.7 豁免；若获准并提出，要约不以接纳水平为条件。":"两组债权人于 11 月 23 日通过各自计划，按投票债权金额分别为 96.93% 及 99.61%；涉及股权转让仍待所需股东批准及法院认许等条件。"}],
+      evidenceLinks:[{documentId:src,pages:g?[1,2,3]:[2,5],label:g?"证监会原件：要约参数及条件":"债务重组公告：股权转让"},...(g?[]:[{documentId:vote,pages:[2,3],label:"两组债权人表决结果"}])],compactSummary:badge,topology};
+   }
   function getSpecForCase(txCase, documents) {
+    if (["HK-00195-20261124-zhang-yunhe-partial","HK-01098-20261120-rke-stake-creditor-spv"].includes(txCase?.id)) {const x=buildVerifiedGreentechOrRke(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-02179-20261118-huyou-h-share-whitewash","HK-08535-20261102-zeng-kai"].includes(txCase?.id)) {const x=buildVerifiedHuyouOrVistar(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-08526-20261103-lumina","HK-06063-20260908-control-mgo"].includes(txCase?.id)) {const x=buildVerifiedWingFungOrLotus(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-02663-20261020-dax"){const x=buildVerifiedDaxOffer(txCase,documents);return x&&validateDiagramSpec(x);}
