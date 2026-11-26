@@ -8052,7 +8052,27 @@
     const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:z?"cash":"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:z?"行使認購期權收購":"金條及MUP支付的股權收購",caseModalityLabel:z?"現金":"金條及MUP",caseModalityShortLabel:z?"現金":"金條＋MUP",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:l,toLabel:r,headline:z?"約51.94% Intelligence Advantage股權及待售股東貸款":"股東已批准，待轉讓AOMI 69%股權",proposedOrTerminated:!z}],annotations:[{tag:"①",title:z?"尾款與交割":"或有部分",body:z?"11月16日公告確認收購交割；通函約定交割後付尾款。":"交割對價包括金條及MUP；或有對價依業績與其他條件另以MUP支付。"}],evidenceLinks:z?[{documentId:detail,pages:[8,9,12,13],label:"股權比例、美元對價與抵扣"},{documentId:actual,pages:[1],label:"交割及項目控制權"}]:[{documentId:detail,pages:[1,2,3,4],label:"AOMI股權、金條、MUP與業績對價"},{documentId:actual,pages:[1,2],label:"股東表決結果"}]});
   }
+  function buildHonbridgeComplete(c,docs){
+    const hit=(leaf)=>Object.values(docs??{}).find(d=>d.caseId===c.id&&d.url?.endsWith("/"+leaf+".pdf"))?.id;
+    const a=hit("2026082102527"), r=hit("2026103002617"), z=hit("2026112501525"), date="2026-11-24",status="closed";
+    if(!a||!r||!z||c.stage?.date!==date||c.stage?.status!==status||c.events?.some(e=>e.state==="actual"&&e.kind==="termination"))return null;
+    if(!c.events?.some(e=>e.state==="actual"&&e.kind==="completion"&&e.date===date&&e.evidence?.documentId===z))return null;
+    if(![["asset_pct",51,a],["original_price",424800000,a],["revised_price",382500000,r]].every(([k,v,id])=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id)))return null;
+    const seller=c.parties["卖方"],buyer=c.parties["买方"];if(seller!=="Geely Technology Group Co., Ltd."||!buyer?.includes("联丰泰科技")||c.parties["标的"]!=="聚能（江苏）动力科技有限公司")return null;
+    const left="聚能動力股權收購",right="對價及交割狀態",badge="11月24日已交割並完成變更登記";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"已交割",outcomeBadge:badge}),[
+      box("left","left",42,106,160,124,"seller","吉利科技集團","出售方"),
+      box("buyer","left",444,106,161,124,"buyer","洪橋集團","透過聯豐泰科技設立境內買方"),
+      box("a","right",724,72,310,70,"target","聚能（江蘇）動力科技","已轉讓51%股權"),
+      box("b","right",724,164,310,75,"creditor","修訂對價3.825億元人民幣","原對價4.248億元人民幣"),
+      box("c","right",724,260,310,76,"creditor","11月24日完成交割","股權變更登記及章程修訂已完成")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"交割聚能動力51%股權",proposedOrTerminated:false}]);
+    const nodes=[{id:"left",role:"seller",name:seller},{id:"buyer",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:"主要及關連收購",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:"已取得聚能（江蘇）動力科技51%股權",proposedOrTerminated:false}],annotations:[{tag:"①",title:"交割公告",body:"11月25日刊發公告，確認前一日依協議完成收購、工商變更及章程修訂。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"標的股權及交易方"},{documentId:r,pages:[1],label:"修訂對價"},{documentId:z,pages:[1],label:"實際交割"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-08137-20260821-geely-51pct"].includes(txCase?.id))return buildHonbridgeComplete(txCase,documents);
     if(["HK-08370-20260327-replacement-call","HK-00076-20261015-cityhill"].includes(txCase?.id))return buildZsCityhill(txCase,documents);
     if(["HK-01070-20260715-tcl-aircon","HK-01765-20261119-dingli-solar"].includes(txCase?.id))return buildTclDingli(txCase,documents);
     if(["HK-01122-20260922-xinxiang-anda-repurchase","HK-01122-20261016-qingling-moulds"].includes(txCase?.id))return buildQinglingPair(txCase,documents);

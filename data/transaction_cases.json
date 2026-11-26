@@ -34530,6 +34530,20 @@
           "kind": "vote",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "completion",
+          "date": "2026-11-24",
+          "label": "完成51%股權收購及變更登記",
+          "state": "actual",
+          "detail": "11月25日公告確認，交割條件已達成或獲豁免，股權工商變更及章程修訂已完成。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261125-cedfbd7e87df",
+            "pages": [
+              1
+            ]
+          }
         }
       ],
       "headlineKey": "revised_price",
@@ -34607,7 +34621,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-19",
+      "progressDate": "2026-11-25",
       "rules": [
         {
           "application": "交易比率超过25%但低于100%，须股东审批",
@@ -34633,10 +34647,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-19",
-        "eventKind": "vote",
-        "label": "独立股东已批准 · 交割待证",
-        "status": "approved"
+        "date": "2026-11-24",
+        "eventKind": "completion",
+        "label": "已完成收購51%股權及變更登記",
+        "status": "closed"
       },
       "terms": [
         {
@@ -97418,6 +97432,14 @@
       "date": "2026-08-14",
       "title": "中科聞歌：建議設立創業投資基金",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401655.pdf"
+    },
+    "YS-20261125-cedfbd7e87df": {
+      "id": "YS-20261125-cedfbd7e87df",
+      "caseId": "HK-08137-20260821-geely-51pct",
+      "date": "2026-11-25",
+      "publishedAt": "2026-11-25T21:56:00+08:00",
+      "title": "洪橋集團：完成收購聚能動力51%股權",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1125/2026112501525.pdf"
     }
   },
   "issuerLinks": [
