@@ -7690,7 +7690,36 @@
       before:{title:"土地使用權收回協議",nodes,equityLinks:[]},after:{title:"現金補償與交付",nodes,equityLinks:[],outcomeBadge:badge},flows,
       annotations:[{tag:"①",title:"交付安排",body:h?"三宗地塊；餘款按合同約定的地塊挂牌及收回交付程序支付。":"巢湖經開區管理委員會為協議見證方；收回標的為一宗地塊。"}],evidenceLinks:sources});
   }
+  function buildKingfarTrigiant(c,docs){
+    const k=c.code==="01354",dt=k?"2026-01-30":"2026-09-24";
+    const get=(events,kind,date,leaf)=>{const id=events?.find(e=>e.kind===kind&&e.date===date&&e.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;};
+    const z=get(c.events,"completion",dt,k?"2026042403640":"2026092500714");
+    const a=k?get(c.events,"dispatch","2026-01-14","2026011401304"):get(c.processEvents,"supplement","2026-09-20","2026092000079");
+    if(!a||!z||c.stage?.status!=="closed"||c.stage.eventKind!=="completion"||c.stage.date!==dt||c.events.some(e=>e.kind==="termination"&&e.state==="actual"))return null;
+    const m=k?{aggregate_cash:[63007500,a],purchase:[55247500,a],lease:[2960000,a],usage:[4800000,a]}:{equity_cash:[455000000,z],performance_bond:[15000000,z],exchange_fee:[1590000,z],repayment_support:[259400000,a]};
+    if(!Object.entries(m).every(([x,[v,id]])=>c.terms?.some(t=>t.key===x&&t.value===v&&t.evidence?.documentId===id&&t.currency==="CNY")))return null;
+    const s=c.parties[k?"卖方／出租人":"卖方"],b=c.parties[k?"买方／承租人":"买方"];
+    if(!s||!b||!(k?s.startsWith("西安经发地产"):s==="青海青银项目管理有限公司"))return null;
+    const bn=k?"經發物業":"江蘇俊知技術",sn=k?"經發地產":"青海青銀項目管理",headline=k?"1月30日完成 · 年報確認":"9月24日完成過戶 · 股權價款已付";
+    const badge=k?"1月30日完成 · 年報確認":headline;
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:468,status:"closed",leftTitle:k?"經發大廈資產與使用權":"競標取得國有股權",rightTitle:k?"三份協議 · 人民幣6,300.75萬元":"股權對價與其他付款",transitionLabel:"交割已確認",outcomeBadge:badge}),[
+      mk("s","left",43,103,149,144,"seller",sn,k?"出售、出租及出讓方":"出售方"),mk("b","left",448,103,157,144,"buyer",bn,k?"買方及承租人":"買方"),
+      mk("r1","right",724,72,310,65,"target",k?"購買：人民幣5,524.75萬元":"股權價款：人民幣4.55億元",k?"14個商業單位及224個普通車位":"含4,350萬元競買按金及4.115億元尾款"),
+      mk("r2","right",724,155,310,65,"creditor",k?"租賃：人民幣296萬元":"履約保證金：人民幣1,500萬元",k?"37個人防車位，首段租期20年":"保障三期投產承諾，已支付"),
+      mk("r3","right",724,238,310,65,"creditor",k?"使用權：人民幣480萬元":"交易所服務費：約人民幣159萬元",k?"60個機械車位使用權":"另行列示，已支付")
+    ],[],[{id:"transfer",panel:"left",kind:k?"asset":"shares",step:"①",pathPoints:[[192,175],[448,175]],labelCenter:[320,175],labelWidth:217,labelHeight:34,label:k?"物業、租賃及車位使用權":"青海中利光纖100%股權"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    const flows=[{id:"transfer",kind:k?"asset":"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:k?"物業、租賃及機械車位使用權":"青海中利光纖100%股權完成過戶"},{id:"price",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:k?"三份協議對價合計人民幣6,300.75萬元":"股權價款人民幣4.55億元，9月25日公告確認付清"}];
+    if(!k)flows.push({id:"support",kind:"cash",direction:"ltr",fromLabel:b,toLabel:"青海中利光纖",headline:"另承諾支持標的於12月31日或之前償債，6月30日欠款約人民幣2.594億元",proposedOrTerminated:true});
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:k?"物業收購及車位使用安排":"產權競標全資收購",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"交易架構",nodes,equityLinks:[]},after:{title:"對價及交割",nodes,equityLinks:[],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:k?"三種權利":"另行付款與承諾",body:k?"購買物業、租賃人防車位及受讓機械車位使用權分列；完成日期見年報。":"履約保證金與交易所服務費已支付。標的償債支持按合同履行，未列入股權價款。"}],
+      evidenceLinks:[{documentId:a,pages:k?[9,10,11,12,14]:[2,3,4],label:k?"三份協議及對價":"競標合同、償債支持及保證金"},{documentId:z,pages:k?[185]:[1,2,3],label:k?"年報確認完成日":"過戶、價款與其他付款"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01354-20251205-kingfar-building","HK-01300-20260913-qinghai-zhongli"].includes(txCase?.id))return buildKingfarTrigiant(txCase,documents);
     if(["HK-03366-20260326-hefei-land-resumption","HK-03366-20260326-chaohu-land-resumption"].includes(txCase?.id))return buildOCTLand(txCase,documents);
     if(txCase?.id==="HK-02533-20251231-eeasy-control")return buildEeasyControl(txCase,documents);
     if(["HK-01682-20251111-shun-tak-offices","HK-01952-20260408-hasten-singapore"].includes(txCase?.id))return buildReviewedAssetPair(txCase,documents);
