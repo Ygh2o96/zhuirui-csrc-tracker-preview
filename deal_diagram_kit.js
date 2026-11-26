@@ -6301,7 +6301,38 @@
     return {id,caseId:id,code:c.code,name:"北京汽车",mechanism:c.mechanism,stageLabel:outcome,stageDate:c.stage.date,archetype:"disposal",modality:"cash",status:"active",caseArchetypeLabel:"拟公开出售资产",caseModalityLabel:"成交价及支付方式待定",caseModalityShortLabel:"竞价待定",before:{title:"已披露",nodes:[{id:"s",role:"seller",name:seller},{id:"p",role:"target",name:exchange}],equityLinks:[]},after:{title:"待竞价",nodes:[{id:"a",role:"target",name:target}],equityLinks:[],outcomeBadge:outcome},
       flows:[{id:"f1",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:exchange,headline:"拟提交挂牌",proposedOrTerminated:true}],annotations:[{tag:"①",title:"公开挂牌",body:"初始公告披露拟经北京产权交易所公开竞价，受让方及交易协议待定。"},{tag:"②",title:"定价",body:"估值日 2026 年 9 月 30 日，成本法评估约人民币 2.8 亿元（不含税）；成交价以最终出价为准。"}],evidenceLinks:[{documentId:k,pages:[1,2,3,4,7],label:"公告 · 公开挂牌与估值口径"}],compactSummary:"北京汽车 · 112 座换电站相关资产 · 拟公开挂牌",topology};
   }
+
+  function buildBhafCapitalReduction(c,docs) {
+    const id="HK-01958-20261021-bhaf-capital-reduction", circ="YS-20261106-859535be915b", vote="YS-20261126-da2149999496";
+    if(c.id!==id || c.stage.status!=="approved" || c.stage.date!=="2026-11-26" || c.stage.eventKind!=="vote" ||
+       !c.events.some(e=>e.kind==="vote"&&e.state==="actual"&&e.evidence?.documentId===vote) ||
+       !c.terms.some(t=>t.key==="issuer_exit"&&t.value===2207700000&&t.currency==="CNY") ||
+       !c.terms.some(t=>t.key==="other_exit"&&t.value===936600000&&t.currency==="CNY") ||
+       !c.terms.some(t=>t.key==="issuer_stake"&&t.value===33) || !c.terms.some(t=>t.key==="other_stake"&&t.value===14) ||
+       docs?.[circ]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601592.pdf" ||
+       docs?.[vote]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601216.pdf") return null;
+    const s="北汽投资", j="北京现代", f="北京现代汽车金融", hc="现代资本", hm="现代汽车";
+    const badge="股东已批准 · 待金融监管部门批准";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:390,status:"approved",leftTitle:"减资付款及退出股东",rightTitle:"如完成 · 减资后的结构",transitionLabel:"减资完成后",outcomeBadge:badge}),[
+      box("L_s","left",44,88,174,74,"seller",s,"退出全部 33%"),
+      box("L_j","left",44,211,174,74,"seller",j,"退出全部 14%"),
+      box("L_f","left",434,88,174,197,"target",f,"减资主体及付款方"),
+      box("R_f","right",755,84,240,76,"target",f,"注册资本 40 亿 → 21.2 亿元"),
+      box("R_o","right",755,206,240,76,"public","继续持股",hc+"、"+hm)
+    ],[],[
+      {id:"c1",panel:"left",kind:"cash",step:"①",pathPoints:[[434,125],[218,125]],labelCenter:[325,125],labelWidth:172,labelHeight:37,label:"人民币 22.1 亿元"},
+      {id:"c2",panel:"left",kind:"cash",step:"②",pathPoints:[[434,248],[218,248]],labelCenter:[325,248],labelWidth:172,labelHeight:37,label:"人民币 9.4 亿元"}
+    ]);
+    const node=(id,role,name)=>({id,role,name});
+    return {id,caseId:id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,archetype:"disposal",modality:"cash",status:"approved",caseArchetypeLabel:"减资退出",caseModalityShortLabel:"现金减资",before:{title:"减资前",nodes:[node("s","seller",s),node("j","seller",j),node("f","target",f)],equityLinks:[{from:"s",to:"f",label:"33%",pct:33,style:"solid"},{from:"j",to:"f",label:"14%",pct:14,style:"solid"}]},after:{title:"减资完成后",outcomeBadge:badge,nodes:[node("f","target",f),node("hc","public",hc),node("hm","public",hm)],equityLinks:[]},
+      flows:[{id:"c1",kind:"cash",direction:"rtl",fromLabel:f,toLabel:s,headline:"人民币 22.077 亿元（33%）",proposedOrTerminated:true},{id:"c2",kind:"cash",direction:"rtl",fromLabel:f,toLabel:j,headline:"人民币 9.366 亿元（14%）",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"两笔现金对价",body:"北京现代汽车金融拟向北汽投资支付人民币 22.077 亿元，另向北京现代支付人民币 9.366 亿元；两方分别退出所持全部权益。"},
+      {tag:"②",title:"批准与后续条件",body:"11 月 26 日股东批准，赞成率 99.82%。协议生效仍须金融监管部门等批准，付款另受债权人程序等条件约束。"}],
+      evidenceLinks:[{documentId:circ,pages:[9,10,11],label:"通函：减资结构、对价与条件"},{documentId:vote,pages:[2],label:"股东大会表决结果"}],compactSummary:"北京汽车 · 减资退出 33%／14% · 股东已批准",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.id === "HK-01521-20261109-sanrex") {const verified=buildSanRexScheme(txCase,documents);return verified&&validateDiagramSpec(verified);}
     if (txCase?.id === "HK-00848-20260929-wf-scheme") {const verified=buildMaoyeVerified(txCase,documents);return verified&&validateDiagramSpec(verified);}
