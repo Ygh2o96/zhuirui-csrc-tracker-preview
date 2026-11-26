@@ -8632,7 +8632,26 @@
     const nodes=[{id:"rta",role:"buyer",name:"Retail Technology Asia"},{id:"parent",role:"target",name:"SpringX（ParentCo）"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金股權出資",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"cash",kind:"cash",direction:"ltr",fromLabel:"Retail Technology Asia",toLabel:"SpringX（ParentCo）",headline:"實際出資約3,424.7萬美元"}],annotations:[{tag:"①",title:"多點的入賬口徑",body:"多點按聯營公司入賬。ParentCo約66.36%的Cloopen穿透權益，乘以多點出資子公司的ParentCo持股約49.78%，約為33.03%。"},{tag:"②",title:"合併與滾存",body:"SummerX併入Cloopen。AutumnX直接全資持有存續的Cloopen；滾存股東在AutumnX層面取得股權。"}],evidenceLinks:[{documentId:a,pages:[1,3,28],label:"出資條款"},{documentId:z,pages:[1],label:"港交所交割公告"},{documentId:n,pages:[1],label:"SEC合併生效公告"},{documentId:p,pages:[1],label:"SEC股東通函"}]});
   }
+  function buildBinqiaoRestructuring(c,docs){
+    const a="YS-20260602-49b40e2921b4",p="YS-20260715-2d77cf1d7385",v="YS-20260729-6fc0d31c0dc2",z="YS-20260813-d89260429f2d",date="2026-08-12",status="closed";
+    if(c.stage?.status!==status||c.stage.date!==date||![a,p,v,z].every(id=>docs?.[id]?.caseId===c.id))return null;
+    if(![["vote","2026-07-29",v],["completion",date,z]].every(([kind,date,doc])=>c.events?.some(t=>t.kind===kind&&t.date===date&&t.state==="actual"&&t.evidence?.documentId===doc)))return null;
+    if(![["exit_value",193460000,p],["received_equity_value",193697000,p],["share_swap_cash",237000,p],["assumed_debt",266592000,a],["debt_offset",266126000,a],["debt_cash_balance",466000,a]].every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===doc)))return null;
+    const left="股權置換及選擇性減資",right="債務承接及抵銷",badge="8月12日完成 · 星空水岸成全資附屬";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:510,status,leftTitle:left,rightTitle:right,transitionLabel:"股權及債務分列",outcomeBadge:badge}),[
+      box("s","left",42,100,168,122,"seller","上海濱橋","轉出星空水岸100%股權"),
+      box("b","left",436,100,168,122,"buyer","夢響強音","星空華文間接全資附屬"),
+      box("cap","left",99,280,437,80,"target","夢響強音退出上海濱橋約17.59%","股權估值約1.9億元，差額約23.7萬元"),
+      box("r1","right",724,73,310,78,"target","星空水岸承接約26,659.2萬元","原為上海濱橋欠夢響強音的股東貸款"),
+      box("r2","right",724,171,310,78,"creditor","抵銷對應貸款約26,612.6萬元","上海濱橋原向星空水岸提供"),
+      box("r3","right",724,269,310,78,"creditor","債務差額約46.6萬元","按通函約定以現金結算（人民幣）")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[210,162],[436,162]],labelCenter:[324,162],labelWidth:198,labelHeight:35,label:"受讓星空水岸100%"}]);
+    const nodes=[{id:"s",role:"seller",name:"上海濱橋"},{id:"b",role:"buyer",name:"夢響強音"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"股權置換及現金差額",caseModalityShortLabel:"股權及現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"上海濱橋",toLabel:"夢響強音",headline:"上海星空水岸全部股權"}],annotations:[{tag:"①",title:"置換範圍",body:"上海濱橋原約17.59%股權價值約人民幣19,346萬元；星空水岸100%估值約19,369.7萬元。8月12日交割後，上海濱橋不再是星空華文聯營公司。"},{tag:"②",title:"債務差額",body:"股東貸款承接約26,659.2萬元，另筆貸款抵銷約26,612.6萬元，差額約46.6萬元。金額均為人民幣。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"首次公告"},{documentId:p,pages:[8,9,10,24,25],label:"通函：股權與債務"},{documentId:v,pages:[1],label:"股東表決"},{documentId:z,pages:[1],label:"完成公告"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-06698-20260602-binqiao-restructuring"].includes(txCase?.id))return buildBinqiaoRestructuring(txCase,documents);
     if(txCase?.id==="HK-02586-20260512-cloopen")return buildCloopenClosing(txCase,documents);
     if(txCase?.id==="HK-02680-20251010-wang-tingfa-control-special-deal")return buildInnovaxFloat(txCase,documents);
     if(["HK-01124-20251017-tao-qian-no-deal","HK-02427-20260127-funde-control-mgo","HK-01428-20250425-wealthiness-control-mgo"].includes(txCase?.id))return buildCoastalGuanzeBright(txCase,documents);
