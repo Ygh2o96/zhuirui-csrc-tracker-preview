@@ -4277,6 +4277,199 @@
       }
     },
     {
+      "id": "HK-09639-20261028-general-mandate-placing",
+      "code": "09639",
+      "name": "榮利營造：一般授權配售新股",
+      "aliases": [
+        "荣利营造",
+        "Wing Lee Development Construction Holdings Limited",
+        "Kingston Securities Limited"
+      ],
+      "category": "placing",
+      "headlineKey": "consideration",
+      "parties": {
+        "發行人": "榮利營造控股有限公司",
+        "配售代理": "Kingston Securities Limited"
+      },
+      "mechanism": "一般授權下按每股0.97港元盡力配售最多1億股新股，擬向不少於六名獨立承配人配售；最後截止日延至12月7日，可書面再延。",
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "全額配售預計募集總額",
+          "value": 97000000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "全額配售、未扣除開支。",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "net_proceeds_cap",
+          "label": "全額配售預計募資淨額",
+          "value": 94600000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": true,
+          "basis": "全額配售、扣除佣金及其他開支。",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              2,
+              8
+            ]
+          }
+        },
+        {
+          "key": "new_shares",
+          "label": "配售新股上限",
+          "value": 100000000,
+          "unit": "shares",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "basis": "最多一億股。",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "price",
+          "label": "每股配售價",
+          "value": 0.97,
+          "unit": "per_share",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": false,
+          "basis": "配售價不變。",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "new_shares_enlarged_pct",
+          "label": "配售股佔擴大後股本",
+          "value": 9.09,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": true,
+          "basis": "全額配售，假設股本無其他變動。",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "placing_commission_pct",
+          "label": "配售佣金率",
+          "value": 2,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": false,
+          "basis": "按實際配售價值。",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              4
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Kingston Securities Limited",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              3,
+              4
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-10-28",
+          "label": "簽署有條件配售協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261028-8deb433cce3a",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-11-17",
+          "label": "補充協議延長配售最後截止日",
+          "state": "actual",
+          "detail": "配售代理需更多時間物色承配人；價格及其他安排維持。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261117-5ec94a1413c6",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "kind": "long_stop",
+          "date": "2026-12-07",
+          "label": "配售條件最後截止日",
+          "state": "expected",
+          "detail": "雙方可書面同意再延。",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261117-5ec94a1413c6",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "rules": [],
+      "stage": {
+        "date": "2026-11-17",
+        "status": "active",
+        "eventKind": "supplement",
+        "label": "已延長截止日 · 待配售條件達成"
+      },
+      "progressDate": "2026-11-17",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "id": "HK-09958-20260827-four-for-one-rights",
       "code": "09958",
       "category": "rights_issue",
@@ -96512,6 +96705,20 @@
       "publishedAt": "2026-10-20T21:12:00+08:00",
       "title": "拓璞數控：可能收購至少70%股權的意向書",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102001305.pdf"
+    },
+    "YS-20261028-8deb433cce3a": {
+      "id": "YS-20261028-8deb433cce3a",
+      "caseId": "HK-09639-20261028-general-mandate-placing",
+      "date": "2026-10-28",
+      "title": "榮利營造：一般授權配售新股份",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1028/2026102801151.pdf"
+    },
+    "YS-20261117-5ec94a1413c6": {
+      "id": "YS-20261117-5ec94a1413c6",
+      "caseId": "HK-09639-20261028-general-mandate-placing",
+      "date": "2026-11-17",
+      "title": "榮利營造：延長配售最後截止日期",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1117/2026111701325.pdf"
     }
   },
   "issuerLinks": [
