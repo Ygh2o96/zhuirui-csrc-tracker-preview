@@ -8005,7 +8005,32 @@
     const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
     return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:buyback?"租賃配套回購":"附屬公司減資",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology:diagram,compactSummary:badge,before:{title:lt,nodes,equityLinks:[]},after:{title:rt,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:buyback?"asset":"cash",direction:"ltr",fromLabel:l,toLabel:r,headline:buyback?"符合條件可要求回購指定車輛及租賃債權":"慶鈴模具向退出股東支付約2.02億元人民幣",proposedOrTerminated:true}],annotations:[{tag:"①",title:buyback?"回購通知":"付款時點",body:buyback?"須符合既定先決及觸發條件；三份協議本批估計最高回購款為人民幣15,133,560元。":"待協議生效、先決條件達成並完成變更登記後30個曆日內付款。"}],evidenceLinks:buyback?[{documentId:source,pages:[82,84,88],label:"本批車輛、回購條件及預計上限"}]:[{documentId:source,pages:[1,3,4,5],label:"減資、退出款與股權"},{documentId:update,pages:[1,2],label:"通函延期"}]});
   }
+  function buildTclDingli(c,docs){
+    const t=c.code==="01070",status=t?"closed":"active",date=t?"2026-11-02":"2026-11-19";
+    const hit=(leaf)=>Object.values(docs??{}).find(d=>d.caseId===c.id&&d.url?.endsWith("/"+leaf+".pdf"))?.id;
+    const a=hit(t?"2026071500738":"2026111901538_c"),z=t?hit("2026110203263"):a;
+    if(!a||!z||c.stage?.status!==status||c.stage?.date!==date||c.events?.some(e=>e.state==="actual"&&(e.kind==="termination"||(!t&&e.kind==="completion"))))return null;
+    if(t&&!c.events?.some(e=>e.kind==="completion"&&e.state==="actual"&&e.date===date&&e.evidence?.documentId===z))return null;
+    const terms=t?[["proposed_purchase",5610000000,a],["cash_component",167043375,a],["share_component",5442956625,a],["consideration_shares",362863775,z],["issue_price",15,z],["enlarged_stake",12.58,z]]:[["agreed_price",46140000,a],["asset_pct",51,a],["asset_shares",1173000,a]];
+    if(!terms.every(([k,v,id])=>c.terms?.some(x=>x.key===k&&x.value===v&&x.evidence?.documentId===id)))return null;
+    const seller=t?"五名賣方":c.parties["卖方"],buyer=t?"TCL電子":c.parties["买方"];
+    if(t&&c.parties["买方"]!=="TCL电子")return null;
+    if(!t&&(seller!=="Novus Homo Company Limited"||buyer!=="Intelligent Group Limited"||c.parties["标的"]!=="DINGLI & SF SOLAR ENERGY COMPANY LIMITED"))return null;
+    const badge=t?"11月2日完成收購及發行對價股":"股權轉讓協議已簽 · 待交割";
+    const left=t?"TCL空調業務收購":"泰國光伏資產收購",right=t?"對價與交割後持股":"對價及交割條件";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:t?"已交割":"按協議擬交割",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,"seller",t?"五名原股東":"Novus Homo",t?"出售Cayman控股公司":"出售方 · 關連人士"),
+      box("b","left",444,106,161,124,"buyer",t?"TCL電子":"Intelligent Group",t?"買方及對價股發行人":"希教國際非全資附屬公司"),
+      box("a","right",724,72,310,70,"target",t?"標的為Cayman控股公司":"Dingli & SF Solar Energy",t?"全資持有廣東控股公司，間接持有經營公司51%":"擬收購51% · 1,173,000股"),
+      box("r2","right",724,164,310,75,"creditor",t?"協議對價56.1億港元":"現金對價4,614萬元人民幣",t?"現金約1.67億；股份對價約54.43億":"完成時由買方一次性支付予賣方"),
+      box("r3","right",724,260,310,76,"creditor",t?"實發3.62863775億股":"條件達成或豁免後擬交割",t?"每股15港元，佔擴大後股本約12.58%":"原則上於五個營業日內")
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:t?"已轉讓標的100%股權":"擬轉讓標的51%股權",proposedOrTerminated:!t}]);
+    const nodes=[{id:"s",role:"seller",name:seller},{id:"b",role:"buyer",name:buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:t?"mixed":"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:t?"收購空調業務控股公司":"收購光伏項目公司",caseModalityLabel:t?"現金及對價股":"現金",caseModalityShortLabel:t?"現金＋股份":"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:seller,toLabel:buyer,headline:t?"交割後全資持有TCL AeroWell (Cayman) Holdings Limited":"擬轉讓Dingli & SF Solar Energy 51%股權",proposedOrTerminated:!t}],annotations:[{tag:"①",title:t?"標的與經營公司":"交割後安排",body:t?"收購標的公司100%股權；標的透過廣東控股公司持有中山空調經營公司51%。":"交割後標的將納入希教國際合併報表。"}],evidenceLinks:t?[{documentId:a,pages:[4,17],label:"協議對價及持股架構"},{documentId:z,pages:[1,2],label:"交割及實際發行股份"}]:[{documentId:a,pages:[1,2,3,8],label:"關連交易、股權、現金對價與交割"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01070-20260715-tcl-aircon","HK-01765-20261119-dingli-solar"].includes(txCase?.id))return buildTclDingli(txCase,documents);
     if(["HK-01122-20260922-xinxiang-anda-repurchase","HK-01122-20261016-qingling-moulds"].includes(txCase?.id))return buildQinglingPair(txCase,documents);
     if(["HK-02473-20260804-pagac-nts","HK-00137-20260921-two-nanyang-newbuilds"].includes(txCase?.id))return buildNtsNanyang(txCase,documents);
     if(["HK-03877-20261118-hilli-sale-leaseback","HK-03877-20260901-ten-grain-carriers"].includes(txCase?.id))return buildCsscPair(txCase,documents);
