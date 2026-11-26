@@ -7893,7 +7893,41 @@
       annotations:[{tag:"①",title:"股權與對價",body:t?"股權作價、增資及境內貸款分列。完成前須完成標的重組，並獲對價股特別授權。":"兩賣方分別出售標的12.75%及12.25%；公告列明標的業績不併表。"}],
       evidenceLinks:t?[{documentId:a,pages:[1,2,3,6,8,13,14],label:"收購、增資、貸款及先決條件"},{documentId:z,pages:[1],label:"延期寄發通函"}]:[{documentId:a,pages:[1,3,4,9,10],label:"股權、對價分配及已付現金"}]});
   }
+  function buildQuantumOrLP(c,docs){
+    const q=c.code==="00147",dt=q?"2026-11-18":"2026-11-16";
+    const get=(k,date,file)=>{const id=c.events?.find(x=>x.kind===k&&x.date===date&&x.state==="actual")?.evidence?.documentId;return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+file+".pdf")?id:null;};
+    const a=get("first_announcement",q?"2026-10-30":dt,q?"2026103002663":"2026111601419"),z=q?get("completion",dt,"2026111800862"):a;
+    if(!a||!z||c.stage?.status!==(q?"closed":"active")||c.stage.date!==dt||c.events.some(e=>e.kind==="termination"&&e.state==="actual"))return null;
+    const m=q?{cash_consideration:563000000,target_stake:100,operating_stake:85.94}:{proposed_commitment:65000000,prc_commitment:20000000,bvi_commitment:45000000};
+    if(!Object.entries(m).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===a)))return null;
+    const badge=q?"11月18日完成 · 收購標的100%股權":"擬出資6,500萬港元 · 待正式協議",title=q?"控股公司與營運股權":"兩項擬設有限合夥";
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const nodes=q?[{id:"s",role:"seller",name:c.parties["卖方"]},{id:"b",role:"buyer",name:c.parties["买方"]},{id:"t",role:"target",name:c.parties["标的"]}]:[{id:"prc",role:"target",name:"境內不良資產投資合夥"},{id:"bvi",role:"target",name:"擬設WF — CCMT INVESTMENT L.P."},{id:"b",role:"buyer",name:"中原建業透過兩家附屬公司"}];
+    if(q?!(nodes[0].name==="Brainwave Innovations Limited"&&nodes[2].name==="QuantumCompute Solutions Limited"):!(c.parties["BVI普通合伙人"]==="WIND FLOWER GROUP CO., LIMITED"&&c.parties["境内普通合伙人"]==="上海众合利汇信息咨询服务有限公司"))return null;
+    const geometry=q?[
+      mk("s","left",43,100,160,143,"seller","Brainwave Innovations","出售方"),mk("b","left",456,100,150,143,"buyer","國際商業結算","收購方"),
+      mk("r1","right",724,75,310,80,"target","股權總價5.63億港元","現金，交割後第7個營業日或之前應付"),
+      mk("r2","right",724,185,310,104,"creditor","間接持上海天璟富聯約85.94%","按已披露的完成重組後結構")
+    ]:[
+      mk("prc","left",43,82,176,76,"target","境內有限合夥","擬設 · 不良資產投資"),mk("bvi","left",43,212,176,76,"target","BVI有限合夥","擬設 · 以境外架構為主"),
+      mk("b","left",456,145,150,82,"buyer","中原建業","透過不同附屬公司"),
+      mk("r1","right",724,72,310,79,"target","境內擬認繳2,000萬港元","佔目標認繳額5,000萬港元之40%"),
+      mk("r2","right",724,180,310,86,"creditor","BVI擬認繳4,500萬港元","佔目標認繳額7,500萬港元之60%")
+    ];
+    const gates=q?[{id:"transfer",panel:"left",kind:"shares",step:"①",pathPoints:[[203,170],[456,170]],labelCenter:[321,170],labelWidth:205,labelHeight:34,label:"已取得QuantumCompute 100%"}]:[
+      {id:"prc",panel:"left",kind:"cash",step:"①",pathPoints:[[456,167],[415,167],[415,120],[219,120]],labelCenter:[317,120],labelWidth:150,labelHeight:32,label:"2,000萬港元",proposedOrTerminated:true},
+      {id:"bvi",panel:"left",kind:"cash",step:"②",pathPoints:[[456,205],[415,205],[415,250],[219,250]],labelCenter:[317,250],labelWidth:150,labelHeight:32,label:"4,500萬港元",proposedOrTerminated:true}
+    ];
+    const status=q?"closed":"active",topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:438,status,leftTitle:title,rightTitle:q?"作價及穿透股權":"認繳及目標規模",transitionLabel:q?"交割已確認":"按擬議框架",outcomeBadge:badge}),geometry,[],gates);
+    const flows=q?[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:nodes[0].name,toLabel:nodes[1].name,headline:"已取得控股公司100%股權"},{id:"pay",kind:"cash",direction:"rtl",fromLabel:nodes[1].name,toLabel:nodes[0].name,headline:"合約5.63億港元，交割後第7個營業日或之前應付",proposedOrTerminated:true}]:[{id:"prc",kind:"cash",direction:"ltr",fromLabel:c.parties["境内认购方"],toLabel:nodes[0].name,headline:"計劃承擔2,000萬港元，分期按通知出資",proposedOrTerminated:true},{id:"bvi",kind:"cash",direction:"ltr",fromLabel:c.parties["BVI认购方"],toLabel:nodes[1].name,headline:"計劃承擔4,500萬港元，分期按通知出資",proposedOrTerminated:true}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:dt,stageLabel:badge,
+      caseArchetypeLabel:q?"控股公司全資收購":"不良資產基金擬認繳",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title,nodes,equityLinks:[]},after:{title:q?"交割後":"擬議合夥",nodes,equityLinks:q?[{from:"b",to:"t",pct:100,label:"100%",style:"solid"}]:[],outcomeBadge:badge},flows,
+      annotations:[{tag:"①",title:q?"交割與付款":"兩項擬議治理",body:q?"公司11月18日公告確認交割及併表；現金支付安排見10月30日公告。":"兩個合夥各有普通合夥人；出資須按通知分期，分派次序列明有限合夥人6%年單利優先權。"}],
+      evidenceLinks:q?[{documentId:a,pages:[2,3,6,7],label:"作價、支付期限與重組後持股"},{documentId:z,pages:[1],label:"正式交割生效"}]:[{documentId:a,pages:[1,2,3,4],label:"兩處結構、擬認繳及分派"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00147-20261030-quantumcompute","HK-09982-20261116-distressed-lp-frameworks"].includes(txCase?.id))return buildQuantumOrLP(txCase,documents);
     if(["HK-01201-20260927-tesson-huazhi","HK-09982-20260923-link-win"].includes(txCase?.id))return buildTessonLink(txCase,documents);
     if(txCase?.id==="HK-00472-20261008-i-aurora-soul")return buildSilkKpop(txCase,documents);
     if(["HK-00132-20261026-fangyuan-leaseback","HK-00132-20261109-fangyuan-leaseback"].includes(txCase?.id))return buildFangyuanPair(txCase,documents);
