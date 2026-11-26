@@ -6745,7 +6745,30 @@
       {tag:"③",title:"交割及寄發進度",body:"11 月 20 日公告時，購股協議先決條件仍未達成或獲豁免；綜合文件獲准延至交割後七天或 2027 年 2 月 19 日（以較早者為準）。"}],
       evidenceLinks:[{documentId:src,pages:[2,7,8,11,12,15],label:"購股協議、附函及可能要約"},{documentId:upd,pages:[2],label:"購股先決條件與延期批准"}],compactSummary:"擬收購 51.016% · 購股協議 40.3 億港元 · 交割後觸發餘股要約",topology};
   }
+
+  function buildVerifiedHengxinEpc(c,docs){
+    const src="YS-20261123-608e42f23f5c",dt="2026-11-23";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="dispatch"||docs?.[src]?.caseId!==c.id)return null;
+    const t=(k,v)=>c.terms.some(x=>x.key===k&&x.currency==="CNY"&&x.value===v);if(!t("epc_contract_price",696800000)||!t("proposed_internal_capital",139360000)||!t("proposed_external_bank_loan",557440000))return null;
+    const left="淄博龍恩能源",right="山東恩光能源",badge="通函已發 · 待融資協議及股東批准";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:200,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"200 MW / 800 MWh 儲能項目 EPC",rightTitle:"擬議資金來源及待辦",transitionLabel:"待融資及股東批准",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"buyer",left,"項目發包方"),box("L_r","left",448,100,157,146,"seller",right,"工程總承包方"),
+      box("R_a","right",728,84,295,75,"target","擬以 20% 項目資本金出資","人民幣 1.39 億元"),
+      box("R_b","right",728,210,295,75,"public","擬以 80% 外部貸款融資","約人民幣 5.57 億元 · 尚未簽約"),
+    ],[],[arrow("cash","cash","①",192,138,448,"含稅合同價人民幣 6.97 億元"),arrow("works","asset","②",448,209,192,"設計、採購及施工")]);
+    const nodes=[{id:"l",role:"buyer",name:left},{id:"r",role:"seller",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"disclosable_major",modality:"cash",status:"active",
+      caseArchetypeLabel:"儲能項目 EPC · 非常重大收購",caseModalityShortLabel:"工程總承包",before:{title:"已簽 EPC 合同",nodes,equityLinks:[]},after:{title:"有待落實",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"cash",kind:"cash",direction:"ltr",fromLabel:left,toLabel:right,headline:"工程合同含稅對價人民幣 696,800,000 元",proposedOrTerminated:true},{id:"works",kind:"asset",direction:"rtl",fromLabel:right,toLabel:left,headline:"設計、採購、施工及配套升壓站",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"工程範圍",body:"淄博龍恩能源委託山東恩光能源承建 200 MW / 800 MWh 儲能項目及配套 220 kV 升壓站，合同含稅對價人民幣 6.968 億元。"},
+      {tag:"②",title:"資金安排",body:"通函擬以項目資本金人民幣 1.3936 億元及外部貸款人民幣 5.5744 億元支付。通函披露貸款條款仍在與興業銀行商議，尚無具約束力的融資協議。"},
+      {tag:"③",title:"股東批准",body:"通函列明股東特別大會擬於 2026 年 12 月 11 日舉行。"}],
+      evidenceLinks:[{documentId:src,pages:[1,5,7,8,15],label:"通函：工程範圍、合同價、資金安排及表決"}],compactSummary:"儲能項目 EPC · 200 MW / 800 MWh · 融資及股東批准待落實",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01085-20260924-shandong-zibo-epc"){const x=buildVerifiedHengxinEpc(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-06666-20250911-everest-control-go"){const x=buildVerifiedEverestOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03680-20260914-ligent-international-allocation"){const x=buildVerifiedRuiheAllocation(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01156-20261109-cne-placing","HK-09988-20260823-alibaba-new-share-placing","HK-06082-20260705-biren-h-share-placing","HK-06082-20261008-hshare-placing","HK-01196-20261101-realord-top-up","HK-01156-20260625-cne-june-placement"].includes(txCase?.id)) { const x=txCase?.placementProof&&buildProvenCashPlacement(txCase,documents);return x&&validateDiagramSpec(x)||null; }
