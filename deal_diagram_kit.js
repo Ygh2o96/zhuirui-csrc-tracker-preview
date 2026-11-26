@@ -6167,7 +6167,134 @@
     const node=(id,role,name)=>({id,role,name});
     return {id,caseId:id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,archetype:'acquisition',modality:'cash',status:'active',caseArchetypeLabel:'主要及关连交易',caseModalityShortLabel:'现金收购股权',before:{title:'签约安排',nodes:[node('b','buyer',b),node('s','seller',s)],equityLinks:[]},after:{title:'如完成',outcomeBadge:out,nodes:[node('b','buyer',b),node('z','buyer',z),node('i','target',i)],equityLinks:[{from:'b',to:'i',label:'拟持 50%',pct:50,style:'dashed'},{from:'z',to:'i',label:'维持 50%',pct:50,style:'dashed'}]},flows:[{id:'p',kind:'cash',direction:'ltr',fromLabel:b,toLabel:s,headline:'拟付约人民币 6.6 亿元',proposedOrTerminated:true},{id:'s',kind:'shares',direction:'rtl',fromLabel:s,toLabel:b,headline:'拟转让约 30.43% 股权',proposedOrTerminated:true}],annotations:[{tag:'①',title:'更正后的对价',body:'对价约人民币 6.6 亿元，依约扣除相应税项后支付。'},{tag:'②',title:'完成后共同控制',body:'庆铃汽车股份由约 19.57% 增至 50%，与五十铃汽车共同控制合营公司，采用权益法核算。'},{tag:'③',title:'独立股东表决',body:'通函列明临时股东大会定于 12 月 24 日；庆铃集团及其联系人须放弃表决。'}],evidenceLinks:[{documentId:d,pages:[9,10,20,21,23],label:'通函 · 股权、对价及表决'},{documentId:q,pages:[2],label:'11 月 11 日更正公告'}],compactSummary:'条件收购约 30.43% · 人民币约 6.6 亿元 · 完成后各持 50%、共同控制',topology};
   }
+  function buildSanRexScheme(c, docs) {
+    const id="HK-01521-20261109-sanrex",d="YS-20261109-4f78ce1ae2cd",s="YS-20261125-5d25a1cd2a0f";
+    if(c.id!==id||c.code!=="01521"||c.category!=="scheme"||c.stage?.date!=="2026-11-25"||c.stage?.status!=="active"||c.stage?.eventKind!=="supplement"||c.parties?.["要约方"]!=="SanRex Limited")return null;
+    for(const [doc,path] of [[d,"1109/2026110900893"],[s,"1125/2026112501641"]])if(docs?.[doc]?.caseId!==id||docs[doc].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/"+path+".pdf")return null;
+    for(const [key,val,unit,ccy,doc] of [["per_scheme_share",2.37,"per_share","HKD",d],["scheme_cash",2026069185,"money","HKD",d],["earnout_cap_usd",75000000,"money","USD",d],["concert_pct_before_scheme",72.84,"percent",null,s],["disinterested_pct_before_scheme",27.16,"percent",null,s],["disinterested_shares_before_scheme",553733061,"shares",null,s]])if(!c.terms?.some(t=>t.key===key&&t.value===val&&t.unit===unit&&t.currency===ccy&&t.evidence?.documentId===doc))return null;
+    const o="SanRex Limited",n="方达控股",outcome="拟私有化 · 尚待先决条件及计划生效";
+    const box=(id,x,y,title,subtitle,role,panel="left")=>({id,panel,x,y,w:191,h:80,title,subtitle,role});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:515,status:"active",leftTitle:"计划股份的两种注销对价",rightTitle:"计划生效后（拟）",transitionLabel:"若生效",outcomeBadge:outcome}),
+    [box("L_offer",36,182,o,"要约人","buyer"),box("L_cash",430,82,"杭州泰格及其他现金股东","每股收取现金注销价","public"),box("L_roll",430,318,"香港泰格、李博士及其信托","以注销价缴足所持要约人股份","public"),box("R_offer",768,98,o,"拟直接持有全部股份","buyer","right"),box("R_issuer",768,312,n,"拟撤销上市 · 01521.HK","target","right")],
+    [{id:"E_after",panel:"right",from:"R_offer",to:"R_issuer",pctLabel:"拟持股 100%",labelCenter:[864,245],pillWidth:112}],
+    [{id:"A_cash",panel:"left",step:"①",kind:"cash",pathPoints:[[227,201],[261,201],[261,122],[430,122]],label:"现金 2.37 港元/股",labelCenter:[345,122],labelWidth:148,labelHeight:36},
+     {id:"A_equity",panel:"left",step:"②",kind:"shares",pathPoints:[[227,243],[261,243],[261,358],[430,358]],label:"滚存计价 2.37 港元/股",labelCenter:[345,358],labelWidth:158,labelHeight:36}]);
+    return {id,caseId:id,code:c.code,name:n,mechanism:c.mechanism,status:"active",stageLabel:c.stage.label,stageDate:c.stage.date,archetype:"scheme",modality:"mixed",caseModalityShortLabel:"现金注销＋股权滚存",before:{title:"提案公布时",nodes:[{id:"o",role:"buyer",name:o},{id:"i",role:"listed",name:n}],equityLinks:[]},after:{title:"若计划生效",outcomeBadge:outcome,nodes:[{id:"o2",role:"buyer",name:o},{id:"i2",role:"target",name:n}],equityLinks:[{from:"o2",to:"i2",label:"拟持股 100%",pct:100,style:"dashed"}]},
+      flows:[{id:"cash",kind:"cash",direction:"ltr",step:"1",fromLabel:o,toLabel:"杭州泰格及其他现金股东",headline:"现金 2.37 港元/股"},{id:"roll",kind:"shares",direction:"ltr",step:"2",fromLabel:o,toLabel:"香港泰格、李博士及其信托",headline:"同价缴足要约人股份"}],
+      annotations:[{tag:"①",title:"提案公布日持股（11 月 25 日澄清）",body:"要约人、财团成员及一致行动人士合计 72.84%；无利害关系股东 5.54 亿股，占 27.16%。"},{tag:"②",title:"港元现金需求",body:"按公告期权行使等假设，上限 20.3 亿港元。"},{tag:"③",title:"附条件业绩付款",body:"计划生效且标的业务收入、经调整 EBITDA 利润率达标时，全体记录日计划股东及接受期权要约者另按股数获付。2026 年上限 5,000 万美元；2027 年上限 2,500 万美元。"}],
+      evidenceLinks:[{documentId:d,pages:[2,16,17],label:"联合公告 · 注销、滚存及业绩付款"},{documentId:s,pages:[2,3],label:"联合澄清 · 提案公布日股权结构"}],topology,compactSummary:"现金注销或股权滚存 · 2.37 港元/股 · 另设附条件业绩付款"};
+  }
+
+
+  function buildMaoyeVerified(c,docs){
+    const d='YS-20260929-94d290c5bc2f', id='HK-00848-20260929-wf-scheme', u='YS-20261120-f2d5d8e98a97', e='YS-20261020-591eda3ab265';
+    if(c.id!==id || c.code!=='00848' || c.category!=='scheme' || c.stage?.status!=='active' || c.stage.eventKind!=='dispatch_extension' || c.stage.date!=='2026-10-29' || docs?.[u]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1120/2026112001717.pdf' || docs?.[e]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102001543.pdf' || !c.processEvents?.some(x=>x.kind==='dispatch_extension' && x.date==='2026-10-29' && x.state==='actual' && x.evidence?.documentId===u) || c.parties?.['要约方']!=='W.F Group Limited' || docs?.[d]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0929/2026092902197.pdf' || Object.entries({scheme_cash_max:185187808,scheme_cash_price:0.208,scheme_shares:890326000,rollover_shares:4250000000}).some(([key,value])=>!c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===d))) return null;
+    const b='W.F Group Limited', h='计划股东', r='继续持股股东', i='茂业国际', out='建议阶段 · 须待计划生效';
+    const box=(id,panel,x,y,w,role,title,subtitle)=>({id,panel,x,y,w,h:80,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:490,status:'active',leftTitle:'注销安排',rightTitle:'如计划生效 · 股权分布',transitionLabel:'如生效',outcomeBadge:out}),[
+      box('L_a','left',35,120,180,'buyer',b,'要约人'),box('L_h','left',425,120,180,'public',h,'拟注销 8.9 亿股'),box('L_r','left',35,315,180,'public',r,'42.5 亿股继续持有'),
+      box('R_a','right',690,112,176,'buyer',b,'拟持 17.32%'),box('R_r','right',888,112,164,'public',r,'拟持 82.68%'),box('R_i','right',795,322,184,'listed',i,'拟撤销上市')],[],[
+      {id:'cash',panel:'left',kind:'cash',step:'①',pathPoints:[[215,160],[425,160]],labelCenter:[320,160],labelWidth:155,labelHeight:42,label:'拟付 HK$0.208 / 股',sublabel:'最高 1.9 亿港元'},
+      {id:'a',panel:'right',kind:'shares',step:'②',pathPoints:[[782,192],[782,268],[842,268],[842,322]],labelCenter:[782,235],labelWidth:105,labelHeight:34,label:'拟获等数新股'},
+      {id:'r',panel:'right',kind:'shares',step:'③',pathPoints:[[970,192],[970,268],[934,268],[934,322]],labelCenter:[970,235],labelWidth:95,labelHeight:34,label:'股份保留'}
+    ]);
+    const node=(id,role,name)=>({id,role,name});
+    return {id,caseId:id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,archetype:'scheme',modality:'cash',status:'active',caseArchetypeLabel:'协议安排私有化',caseModalityShortLabel:'现金注销／继续持股',before:{title:'已公告安排',nodes:[node('a','buyer',b),node('h','public',h),node('r','public',r)],equityLinks:[]},after:{title:'如计划生效',outcomeBadge:out,nodes:[node('a','buyer',b),node('r','public',r),node('i','listed',i)],equityLinks:[{from:'a',to:'i',label:'拟持 17.32%',pct:17.32,style:'dashed'},{from:'r',to:'i',label:'拟持 82.68%',pct:82.68,style:'dashed'}]},flows:[{id:'cash',kind:'cash',direction:'ltr',fromLabel:b,toLabel:h,headline:'拟付每股 0.208 港元',proposedOrTerminated:true}],annotations:[{tag:'①',title:'注销及发行新股',body:'如计划生效，890,326,000 股计划股份注销，茂业国际向要约人发行同等数量的新股。'},{tag:'②',title:'继续持股',body:'42.5 亿股不予注销；黄先生及茂业百货届时分别持有约 0.97% 及 81.71%。'},{tag:'③',title:'计划文件寄发',body:'执行人员于 10 月 29 日批准延至 2027 年 1 月 15 日或之前寄发，11 月 20 日公告。'}],evidenceLinks:[{documentId:d,pages:[2,3,18],label:'联合公告 · 注销价及生效后股权'},{documentId:u,pages:[2],label:'批准延后寄发 · 11 月 20 日公告'}],compactSummary:'拟付每股 0.208 港元 · 如生效要约人持 17.32%，继续持股股东持 82.68%',topology};
+  }
+
+  function buildCrystalVerified(c,docs){
+    const d='YS-20260927-fa12de75eac3', id='HK-01086-20260927-crystal-aurora', u='YS-20261123-b5269daab4a1';
+    if(c.id!==id || c.code!=='01086' || c.category!=='scheme' || c.stage?.status!=='active' || c.stage.eventKind!=='dispatch_extension' || c.stage.date!=='2026-11-23' || c.parties?.['要约方']!=='Crystal Aurora International Ltd.' || docs?.[d]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0927/2026092700021.pdf' || docs?.[u]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112301232.pdf' || Object.entries({scheme_cash_max:1322255626.5,scheme_price:1.5,existing_scheme_shares:790136251,all_exercised_scheme_shares:881503751,no_exercise_options_cash:63850343}).some(([key,value])=>!c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===d))) return null;
+    const b='Crystal Aurora International Ltd.', h='计划股东', o='获要约购股权持有人', i='好孩子国际', out='11 月 23 日进展 · 计划待生效';
+    const box=(id,panel,x,y,w,role,title,subtitle)=>({id,panel,x,y,w,h:80,role,title,subtitle});
+    const arr=(id,panel,kind,step,x1,x2,y,label,sublabel)=>({id,panel,kind,step,pathPoints:[[x1,y],[x2,y]],labelCenter:[(x1+x2)/2,y],labelWidth:Math.abs(x1-x2)-24,labelHeight:44,label,sublabel});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:566,status:'active',leftTitle:'现金对价 · 视购股权行使而定',rightTitle:'继续持股及回购',transitionLabel:'如生效',outcomeBadge:out}),[
+      box('L_a','left',35,212,230,'buyer',b,'要约人'),box('L_h','left',438,102,172,'public',h,'股份注销'),box('L_o','left',438,322,172,'public',o,'购股权要约'),
+      box('R_i','right',715,100,312,'listed',i,'其后回购要约人获发股份'),box('R_o','right',715,270,312,'buyer',b,'以贷款义务获承接为对价'),box('R_r','right',715,410,312,'public','要约人集团其他成员及继续持股股东','回购后合计持有 100%')],[],[
+      {...arr('cash','left','cash','①',265,438,230,'拟付 HK$1.50 / 股','最高约 13.2 亿港元'),pathPoints:[[265,230],[390,230],[390,142],[438,142]]},
+      {...arr('options','left','cash','②',265,438,280,'拟付购股权对价','约 6,385 万港元'),pathPoints:[[265,280],[390,280],[390,362],[438,362]]},
+      {id:'repurchase',panel:'right',kind:'shares',step:'③',pathPoints:[[868,270],[868,180]],labelCenter:[868,225],labelWidth:156,labelHeight:42,label:'回购并注销新股',sublabel:'发行人承接融资贷款义务'}
+    ]);
+    const node=(id,role,name)=>({id,role,name});
+    return {id,caseId:id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:'再次申请延后寄发 · 12 月 4 日期限待正式批准',stageDate:c.stage.date,archetype:'scheme',modality:'cash',status:'active',caseArchetypeLabel:'协议安排私有化',caseModalityShortLabel:'现金注销／继续持股',before:{title:'已公告安排',nodes:[node('b','buyer',b),node('h','public',h),node('o','public',o)],equityLinks:[]},after:{title:'如计划生效及回购完成',outcomeBadge:out,nodes:[node('r','public','要约人集团其他成员及继续持股股东'),node('i','listed',i)],equityLinks:[{from:'r',to:'i',label:'合计持有 100%',pct:100,style:'dashed'}]},flows:[{id:'cash',kind:'cash',direction:'ltr',fromLabel:b,toLabel:h,headline:'拟付每股 1.50 港元',proposedOrTerminated:true},{id:'options',kind:'cash',direction:'ltr',fromLabel:b,toLabel:o,headline:'按购股权行使情景',proposedOrTerminated:true}],annotations:[{tag:'①',title:'全部行使',body:'按 881,503,751 股计划股份每股 1.50 港元，最高现金 1,322,255,626.50 港元；该情景无购股权现金款。'},{tag:'②',title:'全部不行使',body:'注销 790,136,251 股约需 11.9 亿港元；购股权要约另需约 6,385.0 万港元。'},{tag:'③',title:'继续持股与关联购股权',body:'继续持股不兑现金；关联购股权持有人承诺不行使，计划生效后以发行股份补偿期权失效。发行人其后拟回购并注销要约人获发的全部新股，并承接融资贷款义务。'},{tag:'④',title:'计划文件寄发',body:'11 月 23 日公告：开曼法院指示聆讯安排于 11 月 26 日。执行人员表示倾向同意将寄发期限延至 12 月 4 日，当时尚未正式批准。'}],evidenceLinks:[{documentId:d,pages:[2,3,12,13,17,18],label:'联合公告 · 注销、购股权、继续持股及回购'},{documentId:u,pages:[2],label:'11 月 23 日进展公告'}],compactSummary:'拟付每股 1.50 港元 · 购股权按行使情景分列 · 生效后拟回购新股',topology};
+  }
+
+  function buildSkyworthScheme(c, docs) {
+    const id="HK-00751-20260120-scheme-buyback-photovoltaic",d="YS-20260120-299a029fa494",s="YS-20261116-cc4eec1f8b25";
+    if(c.code!=="00751"||c.category!=="scheme"||c.stage?.status!=="active"||c.stage?.date!=="2026-01-20"||c.parties?.["回购主体"]!=="Skyworth Group Limited"||!c.processEvents?.some(e=>e.date==="2026-11-16"&&e.state==="actual"&&e.evidence?.documentId===s)||[...(c.events||[]),...(c.processEvents||[])].some(e=>e.state==="actual"&&e.date>"2026-11-16"))return null;
+    for(const [doc,path] of [[d,"0120/2026012000750"],[s,"1116/2026111600658"]])if(docs?.[doc]?.caseId!==id||docs[doc].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/"+path+".pdf")return null;
+    for(const [key,val,unit,ccy] of [["cash_alternative",4.03,"per_share","HKD"],["scheme_shares",634536832,"shares",null],["scheme_cash_max",2557183433,"money","HKD"],["pv_distribution_ratio",0.3699779,"ratio",null]])if(!c.terms?.some(t=>t.key===key&&t.value===val&&t.unit===unit&&t.currency===ccy&&t.evidence?.documentId===d))return null;
+    const name="创维集团",outcome="待监管前置条件 · 计划未生效";
+    const box=(id,x,y,title,subtitle,role,panel="left")=>({id,panel,x,y,w:178,h:74,title,subtitle,role});
+    const arrow=(id,step,panel,kind,y,label,points)=>({id,step,panel,kind,label,labelCenter:[panel==="left"?327:860,y],labelWidth:141,labelHeight:36,pathPoints:points});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:479,status:"active",leftTitle:"发行人回购 · 每股计划股份",rightTitle:"另行实物分派 · 每股原持股",transitionLabel:"互为条件",outcomeBadge:outcome}),
+    [box("L_iss",35,180,name,"拟注销计划股份","listed"),box("L_cash",432,76,"现金选项","计划股东","public"),box("L_share",432,313,"股份选项","拟获未上市创维集团新股","public"),box("R_iss",755,74,name,"分派创维光伏股份","listed","right"),box("R_all",755,312,"登记日股东","包括黄氏一致行动集团","public","right")],
+    [],
+    [arrow("A_cash","①","left","cash",114,"4.03 港元现金",[[213,200],[254,200],[254,114],[432,114]]),arrow("A_share","②","left","shares",350,"1 股创维集团新股",[[213,234],[254,234],[254,350],[432,350]]),{...arrow("A_pv","③","right","shares",227,"0.3699779 股创维光伏",[[847,148],[847,312]]),labelCenter:[847,227],labelWidth:174}]);
+    return {id,caseId:id,code:c.code,name,mechanism:c.mechanism,status:"active",stageLabel:outcome,stageDate:"2026-11-16",archetype:"scheme",modality:"mixed",caseModalityShortLabel:"回购选择＋实物分派",before:{title:"现有上市结构",nodes:[{id:"i",role:"listed",name}],equityLinks:[]},after:{title:"如计划生效",nodes:[{id:"i2",role:"target",name},{id:"pv",role:"listed",name:"创维光伏（拟介绍上市）"}],equityLinks:[],outcomeBadge:outcome},
+      flows:[{id:"cash",kind:"cash",direction:"ltr",fromLabel:name,toLabel:"计划股东",step:"1",headline:"4.03 港元／计划股"},{id:"share",kind:"shares",direction:"ltr",fromLabel:name,toLabel:"计划股东",step:"2",headline:"1 股创维集团新股／计划股"},{id:"pv",kind:"shares",direction:"ltr",fromLabel:name,toLabel:"登记日股东",step:"3",headline:"0.3699779 股创维光伏／原股"}],
+      annotations:[{tag:"①",title:"回购范围与对价",body:"黄氏一致行动集团持股不纳入回购。计划股东可按比例选现金或股份；未有效选择者收取现金。全选现金情景约 25.6 亿港元。"},
+      {tag:"②",title:"分派及上市安排",body:"实物分派覆盖登记日全体股东；创维光伏拟介绍上市，创维集团拟在计划生效后撤销上市。"},
+      {tag:"③",title:"11 月 16 日进展",body:"创维光伏股东已批准分派及介绍上市。公告称拟于 11 月底保密递交；证监会备案通知、联交所原则批准及适用监管要求尚待满足。滚存安排仍须按收购守则第 25 条获批。"}],
+      evidenceLinks:[{documentId:d,pages:[2,3,6,7,11,12],label:"回购、实物分派与特别交易公告"},{documentId:s,pages:[2],label:"11 月 16 日进展公告"}],topology,compactSummary:"4.03 港元现金或 1 股创维集团新股 · 另拟实物分派创维光伏股份"};
+  }
+
+
+  function buildEnnLapse(c,docs) {
+    const id="HK-02688-20250326-xinneng-mixed-scheme-lapsed",d="YS-20250326-e9838a9556e1",s="YS-20260612-7ad33c3a58ab",x="YS-20260128-4616d9eef791";
+    if(c.code!=="02688"||c.category!=="scheme"||c.stage?.status!=="terminated"||c.stage?.date!=="2026-06-12"||c.stage.eventKind!=="terminated"||!c.events?.some(e=>e.kind==="terminated"&&e.date===c.stage.date&&e.state==="actual"&&e.evidence?.documentId===s)||c.parties?.["要约人"]!=="Xinneng (Hong Kong) Energy Investment Limited"||[...(c.events||[]),...(c.processEvents||[])].some(e=>e.state==="actual"&&(e.date>"2026-06-12"||["effective","delisting","completion"].includes(e.kind))))return null;
+    for(const [doc,path] of [[d,"2025/0326/2025032600769"],[s,"2026/0612/2026061201210"],[x,"2026/0128/2026012800489"]])if(docs?.[doc]?.caseId!==id||docs[doc].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/"+path+".pdf")return null;
+    for(const [key,val,unit,ccy] of [["cash_leg",24.5,"per_share","HKD"],["stock_ratio",2.9427,"ratio",null]])if(!c.terms?.some(t=>t.key===key&&t.value===val&&t.unit===unit&&t.currency===ccy&&t.evidence?.documentId===d))return null;
+    const name="新奥能源",bidder="新能（香港）能源投资",parent="新奥天然气",outcome="2026.06.12 · 方案及期权要约失效";
+    const box=(id,x,y,title,subtitle,role,panel="left")=>({id,panel,x,y,w:175,h:74,title,subtitle,role});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:475,status:"terminated",leftTitle:"原拟对价 · 每股计划股份",rightTitle:"最后期限届满 · 实际结果",transitionLabel:"未实施",outcomeBadge:outcome}),
+    [box("L_cash",34,76,bidder,"要约人","buyer"),box("L_share",34,302,parent,"要约人母公司 · 拟发行 H 股","buyer"),box("L_holder",430,173,"新奥能源计划股东","两部分均为原拟对价","public"),box("R_issuer",767,104,name,"保留上市 · 02688.HK","listed","right"),box("R_parent",767,290,parent,"终止推进本次 H 股上市申请","target","right")],[],
+    [{id:"A_cash",step:"①",panel:"left",kind:"cash",label:"拟付 24.50 港元现金",labelCenter:[315,113],labelWidth:168,labelHeight:34,pathPoints:[[209,113],[405,113],[405,196],[430,196]]},
+     {id:"A_share",step:"②",panel:"left",kind:"shares",label:"拟发 2.9427 股 H 股",labelCenter:[315,339],labelWidth:168,labelHeight:34,pathPoints:[[209,339],[405,339],[405,222],[430,222]]}]);
+    return {id,caseId:id,code:c.code,name,mechanism:c.mechanism,status:"terminated",stageLabel:c.stage.label,stageDate:c.stage.date,archetype:"scheme",modality:"mixed",caseModalityShortLabel:"原拟现金＋H股 · 已失效",
+      before:{title:"原拟方案",nodes:[{id:"o",role:"buyer",name:bidder},{id:"i",role:"listed",name}],equityLinks:[]},
+      after:{title:"实际结果",nodes:[{id:"i2",role:"listed",name}],equityLinks:[],outcomeBadge:outcome},
+      flows:[{id:"cash",kind:"cash",direction:"ltr",fromLabel:bidder,toLabel:"计划股东",step:"1",headline:"拟付 24.50 港元现金"},{id:"shares",kind:"shares",direction:"ltr",fromLabel:parent,toLabel:"计划股东",step:"2",headline:"拟发 2.9427 股新奥天然气 H 股"}],
+      annotations:[{tag:"①",title:"未满足的上市先决条件",body:"联交所上市委员会尚未原则批准；证监会及其他主管部门所需批准或备案尚未办妥。两项均为不可豁免先决条件。"},
+      {tag:"②",title:"未再延长最后期限",body:"新奥天然气及要约人战略审视后决定不再延期。6 月 12 日方案及期权要约失效，未寄发计划文件。"},
+      {tag:"③",title:"收购守则第 31.1 条",body:"失效后 12 个月内，除执行人员同意外，适用对新要约及规则所列相关交易的限制。"}],
+      evidenceLinks:[{documentId:d,pages:[2],label:"初报 · 拟议现金及换股条款"},{documentId:x,pages:[2,3],label:"延期公告 · 将最后期限延至 6 月 12 日"},{documentId:s,pages:[2,3],label:"失效公告 · 两项条件及守则限制"}],topology,compactSummary:"原拟每股 24.50 港元＋2.9427 股 H 股 · 2026.06.12 失效"};
+  }
+
+
+  function buildAneVerified(c,docs){
+    const d='YS-20260206-19db726ab38f', sd='YS-20251218-abc91a874377', id='HK-09956-20251017-celestia-cayman-mixed-scheme';
+    const nums={cash_cancelled_shares:926622591,share_alt_actual:58806550,centurium_deemed_paid_scheme_shares:185954093,total_cancelled_scheme_shares:1171383234,eligible_share_elections:103082280,share_alt_cap:58806553};
+    if(c.id!==id||c.code!=='09956'||c.category!=='scheme'||c.stage?.status!=='closed'||c.stage.eventKind!=='effective'||c.stage.date!=='2026-02-05'||docs?.[d]?.url!=='https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0206/2026020600011.pdf'||!c.terms?.some(t=>t.key==='cash_alt'&&t.currency==='HKD'&&t.value===12.18&&t.evidence?.documentId===sd)||Object.entries(nums).some(([key,value])=>!c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===d)))return null;
+    const b='Celestia BidCo Limited', t='Celestia TopCo Limited', p='计划股东', g='Topaz Gem', i='安能物流', out='开曼时间 2026.02.05 · 计划生效';
+    const box=(id,panel,x,y,w,role,title,subtitle)=>({id,panel,x,y,w,h:76,role,title,subtitle});
+    const arr=(id,kind,step,y,label,sublabel)=>({id,panel:'left',kind,step,pathPoints:[[220,y],[441,y]],labelCenter:[331,y],labelWidth:184,labelHeight:42,label,sublabel});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:570,status:'closed',leftTitle:'生效日 · 三类注销对价',rightTitle:'完成及滚存转让后的架构',transitionLabel:'计划生效',outcomeBadge:out}),[
+      box('L_b','left',35,90,185,'buyer',b,'要约人'),box('L_p','left',441,90,175,'public',p,'现金选项'),
+      box('L_t','left',35,215,185,'buyer',t,'股份选项发行人'),box('L_s','left',441,215,175,'public','选择股份的股东','获发 TopCo A 类股'),
+      box('L_u','left',35,340,185,'buyer',t,'已持股份获列缴足'),box('L_g','left',441,340,175,'public',g,'单独非现金安排'),
+      box('R_t','right',724,78,300,'buyer',t,'间接持股'),
+      box('R_h','right',724,192,300,'buyer','HoldCo','直接持有要约人'),
+      box('R_b','right',724,306,300,'buyer',b,'直接持有安能物流'),
+      box('R_i','right',724,420,300,'target',i,'ANE (Cayman) Inc.')],[
+        {id:'E_th',panel:'right',from:'R_t',to:'R_h',pctLabel:'100%',labelCenter:[874,173],pillWidth:66},
+        {id:'E_hb',panel:'right',from:'R_h',to:'R_b',pctLabel:'100%',labelCenter:[874,287],pillWidth:66},
+        {id:'E_bi',panel:'right',from:'R_b',to:'R_i',pctLabel:'100%',labelCenter:[874,401],pillWidth:66}
+      ],[
+        arr('cash','cash','①',128,'现金 HK$12.18 / 股','926,622,591 股'),
+        arr('stock','shares','②',253,'配发 TopCo A 类股','58,806,550 股'),
+        arr('paidup','shares','③',378,'原持 TopCo 股份缴足','对应 185,954,093 股')
+      ]);
+    const node=(id,role,name)=>({id,role,name});
+    return {id,caseId:id,code:c.code,name:i,mechanism:c.mechanism,stageLabel:c.stage.label,stageDate:c.stage.date,archetype:'scheme',modality:'mixed',status:'closed',caseArchetypeLabel:'协议安排私有化',caseModalityShortLabel:'现金／股份选项',before:{title:'计划股份注销',nodes:[node('b','buyer',b),node('p','public',p),node('g','public',g)],equityLinks:[]},after:{title:'协议安排完成',outcomeBadge:out,nodes:[node('b','buyer',b),node('i','target',i)],equityLinks:[{from:'b',to:'i',label:'持有 100%',pct:100,style:'solid'}]},flows:[{id:'cash',kind:'cash',direction:'ltr',fromLabel:b,toLabel:p,headline:'926,622,591 股按每股 12.18 港元注销'},{id:'stock',kind:'shares',direction:'ltr',fromLabel:t,toLabel:'选择股份的股东',headline:'配发 58,806,550 股 TopCo A 类股'},{id:'paidup',kind:'shares',direction:'ltr',fromLabel:t,toLabel:g,headline:'原持 TopCo 股份列作缴足'}],annotations:[{tag:'①',title:'现金注销',body:'926,622,591 股按每股 12.18 港元注销，含有效选择股份后超比例转现金的部分。'},{tag:'②',title:'股份选择及实际配发',body:'103,082,280 股有效选择股份，上限为 58,806,553 股；比例调整并处理零碎股后，实际配发 58,806,550 股 TopCo A 类股。'},{tag:'③',title:'Topaz Gem 单列',body:'185,954,093 股注销，非现金对价为原持未缴足 TopCo A 类股按每股 12.18 港元列作缴足。三类合计注销 1,171,383,234 股。'}],evidenceLinks:[{documentId:d,pages:[2,3,4],label:'生效公告 · 注销分项与完成后股权'},{documentId:sd,pages:[130],label:'计划文件 · 每股计划股份对价'}],compactSummary:'现金注销 9.3 亿股 · 配发 5,880.7 万股 TopCo 股份 · Topaz Gem 缴足安排单列',topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if (txCase?.id === "HK-01521-20261109-sanrex") {const verified=buildSanRexScheme(txCase,documents);return verified&&validateDiagramSpec(verified);}
+    if (txCase?.id === "HK-00848-20260929-wf-scheme") {const verified=buildMaoyeVerified(txCase,documents);return verified&&validateDiagramSpec(verified);}
+    if (txCase?.id === "HK-01086-20260927-crystal-aurora") {const verified=buildCrystalVerified(txCase,documents);return verified&&validateDiagramSpec(verified);}
+    if (txCase?.id === "HK-00751-20260120-scheme-buyback-photovoltaic") {const verified=buildSkyworthScheme(txCase,documents);return verified&&validateDiagramSpec(verified);}
+    if (txCase?.id === "HK-02688-20250326-xinneng-mixed-scheme-lapsed") {const verified=buildEnnLapse(txCase,documents);return verified&&validateDiagramSpec(verified);}
+    if (txCase?.id === "HK-09956-20251017-celestia-cayman-mixed-scheme") {const verified=buildAneVerified(txCase,documents);return verified&&validateDiagramSpec(verified);}
     if (txCase?.id === "HK-03958-20260506-shanghai-securities") {const vetted=buildOrientalAcquisition(txCase,documents);return vetted&&validateDiagramSpec(vetted);}
     if (txCase?.id === "HK-01122-20261009-isuzu-engine") {const vetted=buildIsuzuVerified(txCase,documents);return vetted&&validateDiagramSpec(vetted);}
     if (txCase?.id==="HK-00308-20260520-ctg-hkm-spin" && txCase.stage?.eventKind==="listing") {const d=buildCtghkmIntroduction(txCase,documents);return d&&validateDiagramSpec(d);}

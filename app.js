@@ -8947,7 +8947,7 @@ function transactionMatchesCategory(row, cat) {
       return c === cat;
   }
 }
-const FIRST_BATCH_PENDING_DIAGRAMS = new Set(["HK-01521-20261109-sanrex", "HK-00848-20260929-wf-scheme", "HK-01086-20260927-crystal-aurora", "HK-00751-20260120-scheme-buyback-photovoltaic", "HK-02688-20250326-xinneng-mixed-scheme-lapsed", "HK-09956-20251017-celestia-cayman-mixed-scheme"]);
+const FIRST_BATCH_PENDING_DIAGRAMS = new Set([]);
 const TX_LEAD_IB_ROLES = new Set(["Sponsor", "FA", "RestructuringFA", "PlacingAgent", "Underwriter"]);
 const transactionIsLeadIB = m => TX_LEAD_IB_ROLES.has(m.role) && m.service !== "listing_rules_forecast_due_enquiry";
 const TX_ROLE_SORT_RANK = {
