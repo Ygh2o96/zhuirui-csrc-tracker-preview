@@ -6901,7 +6901,38 @@
      evidenceLinks:[{documentId:src,pages:[1,2,3],label:"認購、本金、換股價、利率及到期日"},{documentId:src,pages:[7,8],label:"攤薄情景及持股限制"}],compactSummary:"港幣 1,955.36 萬元 · 待換股股份上市批准",topology};
   }
 
+  function buildVerifiedCifiSetoff26(c,docs){
+    const dt="2026-11-26", buy=c.events?.find(e=>e.kind==="first_announcement"&&e.state==="actual"&&e.date===dt)?.evidence?.documentId,
+      sell=c.processEvents?.find(e=>e.label==="賣方自願公告"&&e.state==="actual"&&e.date===dt)?.evidence?.documentId;
+    if(c.code!=="01995"||c.stage?.status!=="active"||c.stage.date!==dt||c.stage.eventKind!=="first_announcement"||
+       docs?.[buy]?.caseId!==c.id||docs?.[sell]?.caseId!==c.id||!docs[buy].url.endsWith("/2026112600495.pdf")||!docs[sell].url.endsWith("/2026112600635.pdf"))return null;
+    const t=(key,value)=>c.terms?.some(q=>q.key===key&&q.value===value&&q.evidence?.documentId===buy);
+    if(!t("consideration",299472000)||!t("cash_component",0)||!t("stake",100)||
+       !c.rules?.some(r=>r.classificationStatus==="confirmed"&&r.evidence?.documentId===buy)||
+       !c.rules?.some(r=>r.classificationStatus==="below_threshold"&&r.evidence?.documentId===sell))return null;
+    const left="瀋陽豐創",right="上海永升物業",badge="已簽附條件協議 · 待股權變更登記";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:194,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"瀋陽卓裕股權轉讓及對價",rightTitle:"兩家上市公司披露",transitionLabel:"交割時抵銷應收款",outcomeBadge:badge}),[
+      box("L_sell","left",43,100,149,146,"seller",left,"旭輝控股 00884"),
+      box("L_buy","left",448,100,157,146,"buyer",right,"永升服務 01995"),
+      box("R_buy","right",728,84,295,75,"buyer","買方 · 須予披露交易","適用比率超過 5% 但低於 25%"),
+      box("R_sell","right",728,210,295,75,"seller","賣方 · 自願披露","適用比率均低於 5%")
+    ],[],[arrow("equity","shares","①",192,138,448,"擬轉讓瀋陽卓裕 100%股權"),arrow("setoff","cancel","②",448,209,192,"抵銷應收款約人民幣 3.0 億")]);
+    const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"acquisition",modality:"mixed",status:"active",
+      caseArchetypeLabel:"股權收購及應收款抵銷",caseModalityShortLabel:"非現金抵銷",
+      before:{title:"附條件股權轉讓",nodes,equityLinks:[]},after:{title:"交易分別披露",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"equity",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"擬轉讓瀋陽卓裕100%股權，標的持有瀋陽旭輝中心",proposedOrTerminated:true},
+      {id:"setoff",kind:"cancel",direction:"rtl",fromLabel:"永升集團應收款",toLabel:"旭輝集團應付款",headline:"人民幣約299,472,000元一一抵銷，無現金對價",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"同一標的、雙方公告",body:"永升物業擬取得瀋陽卓裕100%股權；兩家上市公司的比率基準各自計算。"},
+      {tag:"②",title:"交割條件及付款",body:"交割須待債權轉讓及抵銷文件、所需批准和變更登記；交割時由雙方往來款全額抵銷對價。"}],
+      evidenceLinks:[{documentId:buy,pages:[1,2,4,5],label:"買方、對價、交割及第14章分類"},{documentId:sell,pages:[1,2,5],label:"賣方同一協議及低於5%分類"}],
+      compactSummary:"人民幣約3.0億 · 全數抵銷 · 尚待交割",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01995-20261126-shenyang-cifi-setoff"){const d=buildVerifiedCifiSetoff26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-00076-20261126-convertible-debenture"){const d=buildVerifiedElate26(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.category==="secondary_placing"){const d=buildVerifiedWalnutExit(txCase,documents);return d&&validateDiagramSpec(d);}
     if(txCase?.id==="HK-01705-20261029-time-innovation"){const d=buildVerifiedBs26(txCase,documents);return d&&validateDiagramSpec(d);}
