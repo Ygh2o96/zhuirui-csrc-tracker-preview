@@ -6813,6 +6813,15 @@
   }
   function getSpecForCase(txCase, documents) {
 
+    if (txCase?.id === "HK-08455-20261007-reorganisation-partial-rights") {
+      const t=txCase.terms?.find(v=>v.key==="rights_shares_base_max"&&v.value===96000000);
+      const p=txCase.terms?.find(v=>v.key==="subscription_price"&&v.value===0.34&&v.currency==="HKD");
+      const f=documents?.[t?.evidence?.documentId];
+      if(!p||f?.caseId!==txCase.id||!f?.url?.endsWith("/2026112000282.pdf")||
+         txCase.stage?.status!=="active"||txCase.stage?.date!=="2026-11-20"||txCase.stage?.eventKind!=="dispatch"||!txCase.diagramSpec?.topology)return null;
+      return validateDiagramSpec({id:txCase.id,caseId:txCase.id,code:txCase.code,name:txCase.name,mechanism:txCase.mechanism,...cloneDeep(txCase.diagramSpec)});
+    }
+
     if (txCase?.id === "HK-00017-20261115-recapitalisation-rights-whitewash") {
       const t=txCase.terms?.find(v=>v.key==="rights_shares_base_max"&&v.value===27682964881);
       const p=txCase.terms?.find(v=>v.key==="subscription_price"&&v.value===0.9&&v.currency==="HKD");
