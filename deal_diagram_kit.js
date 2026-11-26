@@ -7636,7 +7636,34 @@
       flows:[{id:"transfer",kind:f.kind,direction:"ltr",fromLabel:s,toLabel:b,headline:f.label},...f.flows],
       annotations:[{tag:"①",title:"對價口徑",body:f.note}],evidenceLinks:f.source});
   }
+  function buildEeasyControl(c,docs){
+    const ev=(events,k,date,leaf)=>{
+      const id=events?.find(e=>e.kind===k&&e.date===date&&e.state==="actual")?.evidence?.documentId;
+      return docs?.[id]?.caseId===c.id&&docs[id].url.endsWith("/"+leaf+".pdf")?id:null;
+    };
+    const a=ev(c.events,"dispatch","2026-06-02","2026060202942"),z=ev(c.events,"completion","2026-06-26","2026083100441"),p=ev(c.processEvents,"supplement","2026-07-14","2026071400468");
+    if(!a||!z||!p||!ev(c.processEvents,"supplement","2026-06-24","2026083100441")||c.stage?.status!=="closed"||c.stage.date!=="2026-06-26"||c.events.some(e=>e.kind==="termination"&&e.state==="actual"))return null;
+    const values={aggregate_cash:478151926,secondary:457800000,unpaid_capital:133088,primary:20218838};
+    if(!Object.entries(values).every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.currency==="CNY")))return null;
+    const s=c.parties["旧股卖方"],b=c.parties["收购载体"],t=c.parties["标的"];
+    if(s!=="21 名原有股东"||b!=="黑芝麻智能科技（珠海）有限公司"||t!=="珠海亿智电子科技有限公司")return null;
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const badge="6月26日增資完成 · 間接持股60%";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:415,status:"closed",leftTitle:"舊股轉讓",rightTitle:"增資後股權與資金",transitionLabel:"兩步完成",outcomeBadge:badge}),[
+      mk("s","left",43,98,149,146,"seller","21名原股東","舊股賣方"),mk("b","left",448,98,157,146,"buyer","黑芝麻珠海","最終舊股受讓方"),
+      mk("r1","right",724,76,310,83,"target","19.5623% 舊股 + 40.4377% 增資","均按增資後股本計算"),
+      mk("r2","right",724,198,310,94,"creditor","流入億智電子：人民幣2,035.2萬元","增資2,021.9萬元；補繳13.3萬元")
+    ],[],[{id:"transfer",panel:"left",kind:"shares",step:"①",pathPoints:[[192,170],[448,170]],labelCenter:[320,170],labelWidth:210,labelHeight:34,label:"6月24日：轉讓增資前32.8435%"}]);
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b},{id:"t",role:"target",name:t}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:c.stage.date,stageLabel:badge,
+      caseArchetypeLabel:"舊股轉讓及增資收購",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,
+      before:{title:"舊股轉讓",nodes,equityLinks:[]},after:{title:"增資後股權與資金",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"transfer",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:"6月24日完成舊股轉讓，增資前32.8435%"},{id:"sellerpay",kind:"cash",direction:"rtl",fromLabel:"黑芝麻智能集團",toLabel:s,headline:"付舊股賣方人民幣4.578億元"},{id:"capital",kind:"cash",direction:"ltr",fromLabel:"黑芝麻智能集團",toLabel:t,headline:"增資人民幣20,218,838元；另補繳未繳註冊資本133,088元"}],
+      annotations:[{tag:"①",title:"對價與持股",body:"兩步合計現金人民幣4.7815億元；7月14日公告確認已付清。武漢公司簽署舊股協議，珠海公司最終受讓及增資。中期財務資料列收購日為6月30日。"}],
+      evidenceLinks:[{documentId:a,pages:[11,12,17],label:"兩步對價、簽約與最終受讓方"},{documentId:z,pages:[18,27],label:"兩步手續完成日及中期財務資料收購日"},{documentId:p,pages:[1],label:"公告確認對價已付清"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-02533-20251231-eeasy-control")return buildEeasyControl(txCase,documents);
     if(["HK-01682-20251111-shun-tak-offices","HK-01952-20260408-hasten-singapore"].includes(txCase?.id))return buildReviewedAssetPair(txCase,documents);
     if(txCase?.id==="HK-00126-20260929-facility-financial-assistance")return buildReviewedCarriannaFacilities(txCase,documents);
     if(["HK-08232-20261113-mandarin-plaza-lease","HK-08232-20261020-hoi-lai-lease","HK-08232-20261020-cheung-tung-lease","HK-00374-20261122-tko-innopark-lease"].includes(txCase?.id))return buildReviewedLeaseQuartet(txCase,documents);
