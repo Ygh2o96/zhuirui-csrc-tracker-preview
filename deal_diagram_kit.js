@@ -6363,7 +6363,37 @@
       evidenceLinks:[{documentId:x.evidence.documentId,pages:x.evidence.pages,label:"原件：供股方式與認購安排"}],
       compactSummary:i+" · "+term+" · "+mode,topology};
   }
+
+  function buildVerifiedAnpengOrTianjin(c, docs) {
+    const ap=c.id==="HK-01958-20261125-anpeng-capital-injection", tj=c.id==="HK-03382-20260608-tianjin-port-two-terminals";
+    if((!ap&&!tj)||c.stage?.status!=="active")return null;
+    const kind=ap?"first_announcement":"dispatch",dt=ap?"2026-11-25":"2026-11-24",src=ap?"YS-20261125-4f9bc5f0496c":"YS-20261124-e54f1447bca6";
+    const url=ap?"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1125/2026112501353.pdf":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1124/2026112401029.pdf";
+    if(c.stage.eventKind!==kind||c.stage.date!==dt||docs?.[src]?.url!==url||docs[src].caseId!==c.id)return null;
+    const t=(k,v)=>c.terms.some(o=>o.key===k&&o.value===v&&o.evidence?.documentId===src);
+    if(ap?!(t("issuer_cash",4460600)&&t("all_subscribers_cash",17842400)&&t("issuer_post_stake",15)):!(t("consideration",6223719600)&&t("new_a_shares",1344215896)&&t("issue_price",4.63)))return null;
+    const l=ap?"四名认购方":"天津港集团",r=ap?"安鹏服务":"天津港股份",s=c.stage.label;
+    const mode=ap?"现金增资":"发行 A 股购买资产",top=ap?"增资款 · 各 446.06 万元":"两座码头 · 各 100% 股权",bot=ap?"各获标的 15% 股权":"13.44 亿股 A 股 · 每股 4.63 元";
+    const note1=ap?"北京汽车、北汽新能源、北汽福田、北汽鹏龙各出资人民币 446.06 万元，合计 1,784.24 万元；其中 1,230 万元计入注册资本。":"天津港股份拟向天津港集团发行 1,344,215,896 股 A 股，每股人民币 4.63 元，收购二集司及汇盛公司各 100% 股权；总对价人民币 62.237196 亿元。";
+    const note2=ap?"如完成，北汽产投持股由 100% 降至 40%，四名认购方各持 15%。协议列明 12 月 30 日前一次付清，各方付款义务仍有先决条件。":"如完成，天津港发展间接持股由 56.81% 降至 38.79%，拟按一致行动协议持续控制并合并报表。天津港集团拟直接持有天津港股份 31.99%。";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:365,status:"active",leftTitle:mode,rightTitle:"如完成 · 股权结构",transitionLabel:"待完成",outcomeBadge:s}),[
+     box("L_l","left",42,96,150,146,ap?"buyer":"seller",l,ap?"北汽、北汽新能源／福田、鹏龙":"卖方及 A 股承配方"),
+     box("L_r","left",461,96,143,146,ap?"target":"buyer",r,ap?"收取增资款":"收购方及发行人"),
+     box("R_o","right",724,85,300,79,"target",ap?"安鹏服务股权":"天津港股份",""+(ap?"北汽产投 40% · 四名认购方各 15%":"天津港发展间接 38.79% · 仍合并报表")),
+     box("R_c","right",724,210,300,79,"public",ap?"注册资本":"两座码头",ap?"820 万元 → 2,050 万元":"天津港股份各持 100%")
+    ],[],[
+      {id:"one",panel:"left",kind:ap?"cash":"asset",step:"①",pathPoints:[[192,139],[461,139]],labelCenter:[326,139],labelWidth:212,labelHeight:34,label:top},
+      {id:"two",panel:"left",kind:"shares",step:"②",pathPoints:[[461,207],[192,207]],labelCenter:[326,207],labelWidth:227,labelHeight:34,label:bot}
+    ]);
+    const nodes=[{id:"l",role:ap?"buyer":"seller",name:l},{id:"r",role:ap?"target":"buyer",name:r}];
+    return {id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:s,stageDate:dt,archetype:"disposal",modality:ap?"cash":"shares",status:"active",caseArchetypeLabel:ap?"关连增资":"发行 A 股购买资产",caseModalityShortLabel:mode,
+      before:{title:"拟议交易",nodes,equityLinks:[]},after:{title:"如完成",nodes,equityLinks:[],outcomeBadge:s},
+      flows:[{id:"one",kind:ap?"cash":"asset",direction:"ltr",fromLabel:l,toLabel:r,headline:top,proposedOrTerminated:true},{id:"two",kind:"shares",direction:"rtl",fromLabel:r,toLabel:l,headline:bot,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"对价及标的",body:note1},{tag:"②",title:"拟议完成后",body:note2}],evidenceLinks:[{documentId:src,pages:ap?[2,3,4]:[9,10,11,18],label:ap?"公告：出资、付款条件及股权":"通函：发行条款及持股结构"}],compactSummary:mode+" · "+s,topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
