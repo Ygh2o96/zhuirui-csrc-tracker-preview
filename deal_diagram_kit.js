@@ -6699,7 +6699,30 @@
       flows,annotations:a,evidenceLinks:[{documentId:p.sourceId,pages:real?[1,2,3]:[1,2],label:"股份、定價及募資原件"},...(p.extraSourceId?[{documentId:p.extraSourceId,pages:[1],label:"配售補充披露"}]:[])],
       compactSummary:real?"11 月 4 日配售舊股 · 11 月 13 日補足認購 · 公司募集淨額約 "+amt(net):leg1+" "+share+" · "+grossLabel+" · "+badge,topology};
   }
+
+  function buildVerifiedRuiheAllocation(c,docs){
+    const src="YS-20260914-75f81f1751c8", close="YS-20260923-ebc0fd537045", dt="2026-09-22";
+    if(c.stage?.status!=="closed"||c.stage?.date!==dt||c.stage?.eventKind!=="completion"||docs?.[src]?.caseId!==c.id||docs?.[close]?.caseId!==c.id||c.offeringRoundId!=="offering:09856:2026-09-14")return null;
+    const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v);
+    if(!term("allocated_shares",950000)||!term("offer_price",32.96)||!term("allocation_cost",31312000)||!term("cash_paid_with_charges",31627781.52))return null;
+    const left="瑞和數智香港",right="納真科技",badge="國際配售已完成 · 2026-09-22";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:210,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"納真科技國際發售股份",rightTitle:"最終配發及付款",transitionLabel:"掛牌當日完成",outcomeBadge:badge}),[
+      box("L_l","left",43,100,149,146,"buyer",left,"瑞和數智全資附屬公司"),box("L_r","left",448,100,157,146,"listed",right,"國際發售發行人"),
+      box("R_a","right",728,84,295,75,"target","含費實付 3,162.8 萬港元","含佣金、徵費及交易費"),
+      box("R_b","right",728,210,295,75,"public","配發價款 3,131.2 萬港元","原訂單上限 6,000 萬港元"),
+    ],[],[arrow("allocation","shares","①",448,138,192,"實際獲配 95 萬股"),arrow("price","cash","②",192,209,448,"最終每股 32.96 港元")]);
+    const nodes=[{id:"l",role:"buyer",name:left},{id:"r",role:"listed",name:right}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:dt,archetype:"disclosable_major",modality:"cash",status:"closed",
+      caseArchetypeLabel:"國際發售股份認購",caseModalityShortLabel:"現金配發",before:{title:"國際發售",nodes,equityLinks:[]},after:{title:"配發及付款完成",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"allocation",kind:"shares",direction:"rtl",fromLabel:right,toLabel:left,headline:"實際配發 95 萬股國際發售股份"},{id:"price",kind:"cash",direction:"ltr",fromLabel:left,toLabel:right,headline:"每股 32.96 港元；配發價款 3,131.2 萬港元"}],
+      annotations:[{tag:"①",title:"正式配發與價款",body:"Ruihe Data Technology (HK) Co., Limited 獲配 950,000 股，每股 32.96 港元，按發售價合計 31,312,000 港元。"},
+      {tag:"②",title:"同一認購的兩個金額口徑",body:"連同佣金、徵費及交易費，認購人已於 9 月 22 日支付合計 31,627,781.52 港元。"}],
+      evidenceLinks:[{documentId:src,pages:[1,2,3],label:"認購主體、訂單上限及規則"},{documentId:close,pages:[1],label:"實際配發及含費付款"}],compactSummary:"國際配售 95 萬股 · 每股 32.96 港元 · 已完成",topology};
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-03680-20260914-ligent-international-allocation"){const x=buildVerifiedRuiheAllocation(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01156-20261109-cne-placing","HK-09988-20260823-alibaba-new-share-placing","HK-06082-20260705-biren-h-share-placing","HK-06082-20261008-hshare-placing","HK-01196-20261101-realord-top-up","HK-01156-20260625-cne-june-placement"].includes(txCase?.id)) { const x=txCase?.placementProof&&buildProvenCashPlacement(txCase,documents);return x&&validateDiagramSpec(x)||null; }
     if(txCase?.id==="HK-00980-20261120-lianhua-asset-management-renewal"){const x=buildVerifiedLianhuaRenewal(txCase,documents);return x&&validateDiagramSpec(x);}
     if(["HK-02650-20260623-zhida-h-placement","HK-02650-20260923-zhida-h-placement"].includes(txCase?.id)){const s=buildVerifiedZhidaHPlacement(txCase,documents);return s&&validateDiagramSpec(s);}
