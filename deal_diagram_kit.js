@@ -8311,7 +8311,25 @@
     const nodes=[{id:"s",role:ct?"listed":"seller",name:s},{id:"b",role:"buyer",name:b}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:ct?"新股發行、要約及公眾持股":"自願全面現金要約",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:ct?"已發行認購新股":"披露有效接納股份"}],annotations:[{tag:"①",title:ct?"後續公眾持股":"特別股息",body:ct?"11月5日及6日分別在市場出售300萬股及320萬股。":"7月20日已登記股東按公司安排獲派特別股息，資格不取決於是否接受要約。"}],evidenceLinks:[{documentId:a,pages:ct?[1,2]:[16],label:ct?"認購與配售完成":"每股要約款及股息資格"},{documentId:z,pages:[2,3],label:"要約結果及結算條件"},{documentId:n,pages:ct?[1]:[1,2],label:"最新公眾持股披露"}]});
   }
+  function buildIdtAndSg(c,docs){
+    const it=c.code==="00167",a=it?"YS-20260629-2b747120c152":"YS-20260604-245ca5450b09",m=it?a:"YS-20260623-5a3666fbebc0",z=it?"YS-20260918-c4d47ba98f2b":"YS-20260814-950ba8108b42",date=it?"2026-09-18":"2026-08-14",close=it?"2026-06-13":"2026-06-23";
+    const ts=it?[["subscription_cash",43895935,a],["assignment_cash",109502831.3,a],["accept_shares",77416,z],["offer_price",.5941,z],["public_float",39.87,z]]:[["block_cash",198519540,a],["block_shares",23970000,m],["offer_price",8.323,a],["accepted_shares",2000,z],["accepted_cash",16646,z]];
+    if(![a,m,z].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.status!=="closed"||c.stage.date!==date||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!c.events?.some(e=>e.date===close&&e.kind==="control_completion"&&e.state==="actual"&&e.evidence?.documentId===m)||!ts.every(([k,v,id])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===id)))return null;
+    const status="closed",left=it?"中間控股公司認購":"控股股份交割",right="餘股要約結果",badge=it?"要約截止 · 公眾持股39.87%":"要約截止 · 公眾持股25.06%";
+    const s=it?"弘立（Hunglap）":"蔡敬庭及JC International",b=it?"Horizon Heights":"香港偉業軟件";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,160,124,it?"target":"seller",s,it?"持有萬威國際39.19%股份":"合計出售2,397萬股"),
+      box("b","left",444,106,161,124,"buyer",b,it?"認購價4,389.6萬港元":"對價約1.985億港元"),
+      box("a","right",724,72,310,70,"target",it?"另承接股東貸款約1.095億港元":"有效接納2,000股；對價16,646港元",it?"6月13日與新股認購同時交割":"8月14日要約截止，每股8.323港元"),
+      box("r2","right",724,164,310,75,"creditor",it?"有效接納77,416股":"要約方計及接納持2,397.2萬股",it?"9月18日要約截止，每股0.5941港元":"佔已發行股本約74.91%"),
+      box("r3","right",724,260,310,76,"creditor",it?"要約方及一致行動人士持60.13%":"公眾持有約25.06%",it?"公眾持股39.87%，以妥為登記為準":"以接納股份妥為登記為準")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[202,169],[444,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:it?"認購後持弘立89.39%":"交割上市公司約74.91%"}]);
+    const nodes=[{id:"s",role:it?"target":"seller",name:s},{id:"b",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:it?"控股公司認購與股東貸款承接":"控股股權轉讓",caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:s,toLabel:b,headline:it?"發行中間控股公司新股":"控股股份交割"}],annotations:[{tag:"①",title:it?"萬威國際持股":"控股交易對價",body:it?"要約前，Horizon Heights直接持有108,825,857股，並透過控制弘立（Hunglap）持有203,777,563股。":"控股交易對價包含6,100萬港元延期付款；餘股要約為另一筆對價。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:it?"認購及貸款承接":"控股交易對價"},...(!it?[{documentId:m,pages:[1,2],label:"控股股份交割"}]:[]),{documentId:z,pages:it?[2,3,4]:[2,3,4,5],label:"接納結果及公眾持股"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00167-20260629-horizon-heights-standalone","HK-01657-20260604-weiye-control-cash"].includes(txCase?.id))return buildIdtAndSg(txCase,documents);
     if(["HK-01912-20260608-zhuangyan-control","HK-02559-20260629-elong-voluntary-cash"].includes(txCase?.id))return buildContelOrDida(txCase,documents);
     if(txCase?.id==="HK-01726-20260929-true-victor-wonder-time")return buildHkeTwoDisposals(txCase,documents);
     if(["HK-00368-20260804-control-mgo","HK-01451-20260505-lvep-cash-offer"].includes(txCase?.id))return buildSuperlandOrMs(txCase,documents);
