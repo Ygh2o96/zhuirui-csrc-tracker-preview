@@ -2,6 +2,374 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-06633-20261020-qingci-gbits-game-renewal",
+      "code": "06633",
+      "category": "connected",
+      "name": "青瓷遊戲：與吉比特續訂遊戲合作",
+      "aliases": [
+        "Qingci Games",
+        "青瓷游戏",
+        "吉比特",
+        "G-bits",
+        "HK Kunpan",
+        "遊戲授權",
+        "推廣服務"
+      ],
+      "mechanism": "2027至2029年遊戲授權及推廣續期。青瓷向吉比特付款的年度上限為人民幣7,800萬、9,400萬及1.13億元，待獨立股東批准；反向收入上限另列。",
+      "parties": {
+        "上市公司": "青瓷遊戲有限公司（06633）",
+        "框架交易對方": "廈門吉比特網絡技術股份有限公司（603444.SH）",
+        "持股載體": "HK Kunpan（吉比特透過其持有青瓷18.55%）"
+      },
+      "headlineKey": "outbound_cap_2029",
+      "comparisonEvidence": {},
+      "comparables": {},
+      "progressDate": "2026-11-26",
+      "stage": {
+        "date": "2026-11-26",
+        "eventKind": "dispatch",
+        "label": "遊戲合作通函已刊發 · 待獨立股東表決",
+        "status": "active"
+      },
+      "events": [
+        {
+          "date": "2026-10-20",
+          "kind": "first_announcement",
+          "label": "簽訂遊戲合作框架",
+          "detail": "框架計劃涵蓋2027至2029年。",
+          "evidence": {
+            "documentId": "YS-20261020-qingci-gbits-renewal",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-26",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "detail": "港交所17:20刊發；通函署期11月27日。",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-18",
+          "kind": "vote",
+          "label": "預定獨立股東表決",
+          "detail": "09:30（香港／上海）；吉比特及相關人士須迴避。",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              20,
+              21,
+              53
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "application": "青瓷向吉比特付款的適用比率超過5%，須經獨立股東批准；吉比特反向付款的適用比率高於0.1%但低於5%，按通函列作獲豁免獨立股東批准。",
+          "classificationStatus": "applied",
+          "code": "HKEX:14A",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              19,
+              20
+            ]
+          },
+          "label": "上市规则 14A"
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Altus Capital Limited",
+          "role": "IFA",
+          "service": "connected_ifa_opinion",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              24,
+              45
+            ]
+          },
+          "signatories": [
+            "Jeanny Leung",
+            "Leo Tam"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              45
+            ]
+          }
+        }
+      ],
+      "intervals": {
+        "announcementToDispatch": 37
+      },
+      "terms": [
+        {
+          "approximate": false,
+          "basis": "同向年度上限合計，計算值。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10,
+              15
+            ]
+          },
+          "key": "outbound_cap_2027",
+          "label": "2027年青瓷對吉比特付款合計上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 78000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：青瓷→吉比特。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10
+            ]
+          },
+          "key": "license_expense_2027",
+          "label": "2027年青瓷遊戲授權及運營費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 3000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：青瓷→吉比特。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              15
+            ]
+          },
+          "key": "marketing_expense_2027",
+          "label": "2027年青瓷推廣服務費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 75000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：吉比特→青瓷。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10
+            ]
+          },
+          "key": "license_revenue_2027",
+          "label": "2027年吉比特對青瓷遊戲授權及運營費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 5000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：吉比特→青瓷。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              15
+            ]
+          },
+          "key": "marketing_revenue_2027",
+          "label": "2027年吉比特對青瓷推廣服務費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 4500000
+        },
+        {
+          "approximate": false,
+          "basis": "同向年度上限合計，計算值。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10,
+              15
+            ]
+          },
+          "key": "outbound_cap_2028",
+          "label": "2028年青瓷對吉比特付款合計上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 94000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：青瓷→吉比特。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10
+            ]
+          },
+          "key": "license_expense_2028",
+          "label": "2028年青瓷遊戲授權及運營費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 4000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：青瓷→吉比特。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              15
+            ]
+          },
+          "key": "marketing_expense_2028",
+          "label": "2028年青瓷推廣服務費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 90000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：吉比特→青瓷。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10
+            ]
+          },
+          "key": "license_revenue_2028",
+          "label": "2028年吉比特對青瓷遊戲授權及運營費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 4500000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：吉比特→青瓷。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              15
+            ]
+          },
+          "key": "marketing_revenue_2028",
+          "label": "2028年吉比特對青瓷推廣服務費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 6000000
+        },
+        {
+          "approximate": false,
+          "basis": "同向年度上限合計，計算值。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10,
+              15
+            ]
+          },
+          "key": "outbound_cap_2029",
+          "label": "2029年青瓷對吉比特付款合計上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 113000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：青瓷→吉比特。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10
+            ]
+          },
+          "key": "license_expense_2029",
+          "label": "2029年青瓷遊戲授權及運營費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 5000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：青瓷→吉比特。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              15
+            ]
+          },
+          "key": "marketing_expense_2029",
+          "label": "2029年青瓷推廣服務費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 108000000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：吉比特→青瓷。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              10
+            ]
+          },
+          "key": "license_revenue_2029",
+          "label": "2029年吉比特對青瓷遊戲授權及運營費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 4050000
+        },
+        {
+          "approximate": false,
+          "basis": "付款方向：吉比特→青瓷。",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261126-qingci-gbits-circular",
+            "pages": [
+              15
+            ]
+          },
+          "key": "marketing_revenue_2029",
+          "label": "2029年吉比特對青瓷推廣服務費上限",
+          "precision": 2,
+          "unit": "money",
+          "value": 7000000
+        }
+      ]
+    },
+    {
       "id": "HK-00217-20261106-hka-aircraft-finance-lease",
       "code": "00217",
       "category": "major_acquisition",
@@ -99796,6 +100164,22 @@
       "id": "YS-20260327-skymission-float",
       "title": "天任集團：恢復公眾持股量",
       "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702158.pdf"
+    },
+    "YS-20261020-qingci-gbits-renewal": {
+      "caseId": "HK-06633-20261020-qingci-gbits-game-renewal",
+      "date": "2026-10-20",
+      "id": "YS-20261020-qingci-gbits-renewal",
+      "publishedAt": "2026-10-20T18:45:00+08:00",
+      "title": "青瓷遊戲：續訂與吉比特的框架協議",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102000969.pdf"
+    },
+    "YS-20261126-qingci-gbits-circular": {
+      "caseId": "HK-06633-20261020-qingci-gbits-game-renewal",
+      "date": "2026-11-26",
+      "id": "YS-20261126-qingci-gbits-circular",
+      "publishedAt": "2026-11-26T17:20:00+08:00",
+      "title": "青瓷遊戲：遊戲合作續期通函（署期11月27日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600621.pdf"
     }
   },
   "issuerLinks": [

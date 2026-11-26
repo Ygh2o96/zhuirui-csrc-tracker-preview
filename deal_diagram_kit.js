@@ -8805,7 +8805,25 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"要約文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復"}]:[]),{documentId:q.z,pages:q.pagesZ,label:"最終披露"}]});
   }
+  function buildQingciGameFramework(c,docs){
+    const a="YS-20261020-qingci-gbits-renewal",n="YS-20261126-qingci-gbits-circular",date="2026-11-26",status="active";
+    if(c.stage?.date!==date||c.stage.status!==status||![a,n].every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===date&&e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===n))return null;
+    if(![78000000,94000000,113000000].every((v,i)=>c.terms?.some(t=>t.key==="outbound_cap_"+(2027+i)&&t.value===v&&t.evidence?.documentId===n)))return null;
+    const left="遊戲授權、運營及推廣",right="2027至2029年付款上限",badge="通函已刊發 · 待獨立股東表決";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:485,status,leftTitle:left,rightTitle:right,transitionLabel:"雙向服務框架",outcomeBadge:badge}),[
+      box("l","left",42,106,166,119,"buyer","青瓷遊戲","香港上市 06633"),
+      box("r","left",441,106,166,119,"seller","吉比特集團","經HK Kunpan持青瓷18.55%"),
+      box("q","left",93,283,455,70,"target","獨立股東大會：12月18日09:30","表決範圍：青瓷向吉比特付款及上限"),
+      box("y27","right",724,68,310,75,"target","2027年 · 7,800萬元","授權運營300萬＋推廣7,500萬"),
+      box("y28","right",724,165,310,75,"creditor","2028年 · 9,400萬元","授權運營400萬＋推廣9,000萬"),
+      box("y29","right",724,262,310,75,"creditor","2029年 · 1.13億元","授權運營500萬＋推廣1.08億")
+    ],[],[{id:"main",panel:"left",kind:"cash",step:"①",pathPoints:[[208,169],[441,169]],labelCenter:[324,169],labelWidth:207,labelHeight:35,label:"青瓷向吉比特付款"}]);
+    const nodes=[{id:"l",role:"buyer",name:"青瓷遊戲"},{id:"r",role:"seller",name:"吉比特集團"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"服務費",caseModalityShortLabel:"服務費",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"cash",direction:"ltr",fromLabel:"青瓷遊戲",toLabel:"吉比特集團",headline:"遊戲及推廣年度付款上限"}],annotations:[{tag:"①",title:"獨立股東表決範圍",body:"圖列青瓷付款的年度上限，幣種為人民幣。吉比特付予青瓷的授權及推廣費另列於條款。Altus Capital Limited為獨立財務顧問。"}],evidenceLinks:[{documentId:a,pages:[1,2],label:"原框架公告"},{documentId:n,pages:[10,15,20,45,53],label:"年度上限、獨立意見及會議"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-06633-20261020-qingci-gbits-game-renewal")return buildQingciGameFramework(txCase,documents);
     if(["HK-01429-20260123-dacheng-mandatory-cash","HK-02362-20260305-alternative-liquidity-partial"].includes(txCase?.id))return buildSkyAndJinchuan(txCase,documents);
     if(txCase?.id==="HK-00489-20250822-dongfeng-absorption-voyah")return buildDongfengVoyah(txCase,documents);
     if(["HK-08031-20260119-jumbo-growth-control-mgo","HK-01053-20251219-hwabao-a-share-whitewash"].includes(txCase?.id))return buildEtsAndChongqing(txCase,documents);
