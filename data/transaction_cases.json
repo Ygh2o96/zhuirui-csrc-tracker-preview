@@ -1404,6 +1404,38 @@
               19
             ]
           }
+        },
+        {
+          "key": "lease_quarterly_instalments",
+          "label": "按季支付期數",
+          "value": 20,
+          "unit": "units",
+          "currency": null,
+          "basis": "五年融資租賃",
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              18
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "lease_term_years",
+          "label": "租期年數",
+          "value": 5,
+          "unit": "years",
+          "currency": null,
+          "basis": "自向承租人交付之日計",
+          "evidence": {
+            "documentId": "YS-20261123-00217-aircraft-circular",
+            "pages": [
+              17
+            ]
+          },
+          "precision": 0,
+          "approximate": false
         }
       ],
       "comparables": {},

@@ -9581,7 +9581,29 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildChengtongA320Lease(c,docs){
+    const doc="YS-20261123-00217-aircraft-circular", orig="YS-20261106-00217-aircraft";
+    if(c.stage?.status!=="approved"||c.stage?.date!=="2026-11-23"||docs?.[doc]?.caseId!==c.id||docs?.[orig]?.caseId!==c.id||!c.events?.some(e=>e.kind==="dispatch"&&e.state==="actual"&&e.evidence?.documentId===doc)||!c.events?.some(e=>e.kind==="written_approval_disclosed"&&e.state==="actual"&&e.evidence?.documentId===orig))return null;
+    const values={consideration:155000000,estimated_total_lease_rent:177780000,estimated_lease_interest:22780000,lease_deposit:12000000,purchase_option:1,lease_quarterly_instalments:20,lease_term_years:5};
+    if(!Object.entries(values).every(([key,value])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===doc)))return null;
+    const status="approved",left="一架A320-214購買及租出",right="租金、保證金及期末權利",stageLabel="已獲書面股東批准 · 交付進度待核";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:480,status,leftTitle:left,rightTitle:right,transitionLabel:"五年融資租賃",outcomeBadge:stageLabel}),[
+      box("vendor","left",42,84,169,86,"seller","HK Aircraft Sub6","香港航空全資附屬公司；出售飛機"),
+      box("lessor","left",438,84,178,245,"buyer","誠通貿易","購機價15,500萬元；租期內保留所有權"),
+      box("lessee","left",42,237,169,92,"target","香港航空","交付後承租五年"),
+      box("rent","right",724,72,310,73,"target","預計租金合計17,778萬人民幣","含15,500萬元本金及約2,278萬元利息"),
+      box("deposit","right",724,168,310,73,"creditor","租賃保證金1,200萬元","購機款付後一個營業日內繳交"),
+      box("buy","right",724,264,310,73,"creditor","付清後可按人民幣1元買入","行權前須付清租金及其他應付款")
+    ],[],[
+      {id:"purchase",panel:"left",kind:"asset",step:"①",pathPoints:[[211,127],[438,127]],labelCenter:[324,127],labelWidth:200,labelHeight:35,label:"A320-214所有權",proposedOrTerminated:true},
+      {id:"lease",panel:"left",kind:"asset",step:"②",pathPoints:[[438,283],[211,283]],labelCenter:[324,283],labelWidth:195,labelHeight:35,label:"交付後租予香港航空",proposedOrTerminated:true}
+    ]);
+    const nodes=[{id:"vendor",role:"seller",name:"HK Aircraft Sub6 Company Limited"},{id:"lessor",role:"buyer",name:"Chengtong Trading (International) Limited"},{id:"lessee",role:"target",name:"Hong Kong Airlines Limited"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:c.stage.date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"購機及融資租賃",caseModalityShortLabel:"融資租賃",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"purchase",kind:"asset",direction:"ltr",fromLabel:"HK Aircraft Sub6",toLabel:"誠通貿易",headline:"移轉飛機所有權；買方付15,500萬元",proposedOrTerminated:true},{id:"lease",kind:"asset",direction:"rtl",fromLabel:"誠通貿易",toLabel:"香港航空",headline:"交付後租予香港航空",proposedOrTerminated:true}],annotations:[{tag:"①",title:"股東批准",body:"持股約53.14%的控股股東已按上市規則14.44書面批准；本案毋須召開股東大會。交付仍按購機及租賃協議的條件核對。 "},{tag:"②",title:"租賃付款",body:"香港航空按季後付本金及利息，共20期；利率於每年1月1日按LPR調整，保證金符合條件可抵末期付款。"}],evidenceLinks:[{documentId:doc,pages:[15,16,17,18,19,21],label:"通函：購機、融資租賃及審批"},{documentId:orig,pages:[1,2,3,4,5],label:"買賣及租賃首公告"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00217-20261106-hka-aircraft-finance-lease"].includes(txCase?.id))return buildChengtongA320Lease(txCase,documents);
     if(["HK-08112-20261126-rights-consolidation"].includes(txCase?.id))return buildCSFinancialRightsProposal(txCase,documents);
     if(["HK-01870-20260929-green-power-rights"].includes(txCase?.id))return buildGreenPowerRightsActual(txCase,documents);
     if(["HK-01835-20260615-ningbo-jiaxing-lp","HK-08245-20260824-multi-link"].includes(txCase?.id))return buildLastTwoNov(txCase,documents);
