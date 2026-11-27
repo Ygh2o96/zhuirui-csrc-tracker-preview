@@ -9008,7 +9008,25 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:c.code==="00990"?"前期意向書":"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"股東表決結果"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"完成公告"}])]});
   }
+  function buildCscRenewals(c,docs){
+    const type=c.id.endsWith('-works')?'works':'services', n='YS-20261126-csc-'+type+'-circular', a='YS-20261022-csc-'+type+'-announcement', work=type==='works';
+    if(c.stage?.date!=='2026-11-26'||c.stage?.status!=='active'||![n,a].every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.kind==='dispatch'&&e.evidence?.documentId===n&&e.state==='actual'))return null;
+    const expect=work?[4200000000,5400000000,2400000000]:[200000000,16000000,26000000,100000000];
+    if(c.terms?.length!==expect.length||!expect.every((v,i)=>c.terms[i].value===v&&c.terms[i].evidence.documentId===n))return null;
+    const left=work?'分判工程框架':'營運服務框架',right='2027至2029年上限',badge='通函已刊發 · 待獨立股東表決';
+    const from=work?'中國建築股份':'中國建築興業',to=work?'中國建築興業':'中國建築國際';
+    const rows=work?[['2027年 · 42億港元','年度可批出分判工程上限'],['2028年 · 54億港元','年度可批出分判工程上限'],['2029年 · 24億港元','年度可批出分判工程上限']]:[['工程服務','每年2億港元'],['機械租賃','每年1,600萬港元'],['保險及履約保證','每年2,600萬港元'],['材料供應','每年1億港元']];
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:485,status:'active',leftTitle:left,rightTitle:right,transitionLabel:'合約框架',outcomeBadge:badge}),[
+      box('l','left',42,106,166,119,'buyer',from,'付款方'),box('r','left',441,106,166,119,'seller',to,'服務供應方'),
+      box('m','left',93,283,455,70,'target','獨立股東表決：12月17日10:00',work?'第一項決議：分判工程框架':'第二項決議：營運服務框架'),
+      ...rows.map(([t,s],i)=>box('r'+i,'right',724,64+i*84,310,62,'target',t,s))
+    ],[],[{id:'main',panel:'left',kind:'cash',step:'①',pathPoints:[[208,169],[441,169]],labelCenter:[324,169],labelWidth:207,labelHeight:35,label:work?'分判工程款':'營運服務款'}]);
+    const nodes=[{id:'l',role:'buyer',name:from},{id:'r',role:'seller',name:to}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:'acquisition',modality:'cash',status:'active',stageDate:'2026-11-26',stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:'服務費',caseModalityShortLabel:'服務費',topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:'main',kind:'cash',direction:'ltr',fromLabel:from,toLabel:to,headline:left+'付款方向'}],annotations:[{tag:'①',title:'獨立股東表決',body:'Add Treasure Holdings Limited須迴避；Altus Capital Limited為獨立財務顧問。'}],evidenceLinks:[{documentId:a,pages:[1,2],label:'協議公告'},{documentId:n,pages:work?[11,28,29,55,61]:[16,19,21,23,28,29,55,61,62],label:'上限、獨立意見及表決'}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00830-20261022-csc-services","HK-00830-20261022-csc-works"].includes(txCase?.id))return buildCscRenewals(txCase,documents);
     if(["HK-00990-20261120-penang-prai-offshore-equipment","HK-01627-20260520-able-best-tung-chung-lot54"].includes(txCase?.id))return buildPraiAble(txCase,documents);
     if(["HK-08246-20261007-vbit-subscription","HK-01187-20261119-kangjuren-60-percent"].includes(txCase?.id))return buildVbitCofoe(txCase,documents);
     if(["HK-01348-20251204-yael-share-and-option-mgo","HK-02020-20260126-puma"].includes(txCase?.id))return buildQualiAnta(txCase,documents);

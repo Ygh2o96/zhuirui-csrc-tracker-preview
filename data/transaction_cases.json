@@ -2,6 +2,365 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-00830-20261022-csc-services",
+      "code": "00830",
+      "category": "connected",
+      "name": "中國建築興業：營運服務續期",
+      "aliases": [
+        "CSC Development",
+        "中国建筑兴业",
+        "中国建筑股份",
+        "中国建筑国际",
+        "2027–2029"
+      ],
+      "mechanism": "由中國建築國際集團及聯繫公司提供服務，中國建築興業集團付款。各項上限每年分別適用。2027至2029年，工程服務、機械租賃、保險及履約保證、材料供應每年上限各為2億、1,600萬、2,600萬及1億港元。待獨立股東批准。",
+      "parties": {
+        "服務及材料採購方": "中國建築興業集團有限公司（00830）",
+        "框架交易對方": "中國建築國際集團有限公司（03311）及聯繫公司",
+        "須迴避的股東": "Add Treasure Holdings Limited（中國建築國際透過其持有約70.81%）"
+      },
+      "headlineKey": "engineering_cap",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "progressDate": "2026-11-26",
+      "stage": {
+        "date": "2026-11-26",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "通函已刊發 · 待獨立股東表決"
+      },
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "label": "簽署續期協議",
+          "detail": "期間為2027年1月1日至2029年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261022-csc-services-announcement",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-26",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "detail": "16:42（香港時間）；通函署期11月27日。",
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-17",
+          "kind": "vote",
+          "label": "預定獨立股東表決",
+          "detail": "10:00（香港時間）。第二項決議：營運服務協議及四項上限。Add Treasure須迴避。",
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              61,
+              62
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "application": "按第14A章進行申報、公告、年度審閱及獨立股東批准。",
+          "classificationStatus": "applied",
+          "code": "HKEX:14A",
+          "label": "上市规则 14A",
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              27,
+              28,
+              29
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Altus Capital Limited",
+          "role": "IFA",
+          "service": "connected_ifa_opinion",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              31,
+              33,
+              55
+            ]
+          },
+          "signatories": [
+            "Jeanny Leung",
+            "Leo Tam"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              55
+            ]
+          }
+        }
+      ],
+      "intervals": {
+        "announcementToDispatch": 35
+      },
+      "terms": [
+        {
+          "key": "engineering_cap",
+          "label": "每年工程服務上限",
+          "value": 200000000,
+          "basis": "由中國建築國際集團及聯繫公司提供服務，中國建築興業集團付款。各項上限每年分別適用。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              16
+            ]
+          }
+        },
+        {
+          "key": "leasing_cap",
+          "label": "每年機械租賃上限",
+          "value": 16000000,
+          "basis": "由中國建築國際集團及聯繫公司提供服務，中國建築興業集團付款。各項上限每年分別適用。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              19
+            ]
+          }
+        },
+        {
+          "key": "insurance_cap",
+          "label": "每年保險及履約保證上限",
+          "value": 26000000,
+          "basis": "由中國建築國際集團及聯繫公司提供服務，中國建築興業集團付款。各項上限每年分別適用。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              21
+            ]
+          }
+        },
+        {
+          "key": "materials_cap",
+          "label": "每年材料供應上限",
+          "value": 100000000,
+          "basis": "由中國建築國際集團及聯繫公司提供服務，中國建築興業集團付款。各項上限每年分別適用。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-services-circular",
+            "pages": [
+              23
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "HK-00830-20261022-csc-works",
+      "code": "00830",
+      "category": "connected",
+      "name": "中國建築興業：分判工程續期",
+      "aliases": [
+        "CSC Development",
+        "中国建筑兴业",
+        "中国建筑股份",
+        "中国建筑国际",
+        "2027–2029"
+      ],
+      "mechanism": "中國建築集團向中國建築興業集團批出分判工程；對價由中國建築集團支付。2027至2029年度可批出分判工程上限依次為42億、54億及24億港元。待獨立股東批准。",
+      "parties": {
+        "分判方及服務供應商": "中國建築興業集團有限公司（00830）",
+        "框架交易對方": "中國建築股份有限公司（601668.SH）",
+        "須迴避的股東": "Add Treasure Holdings Limited（中國建築國際透過其持有約70.81%）"
+      },
+      "headlineKey": "works_cap_2028",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "progressDate": "2026-11-26",
+      "stage": {
+        "date": "2026-11-26",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "通函已刊發 · 待獨立股東表決"
+      },
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "label": "簽署續期協議",
+          "detail": "期間為2027年1月1日至2029年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261022-csc-works-announcement",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-26",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "detail": "16:42（香港時間）；通函署期11月27日。",
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-17",
+          "kind": "vote",
+          "label": "預定獨立股東表決",
+          "detail": "10:00（香港時間）。第一項決議：分判工程協議及上限。Add Treasure須迴避。",
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              61
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "application": "按第14A章進行申報、公告、年度審閱及獨立股東批准。",
+          "classificationStatus": "applied",
+          "code": "HKEX:14A",
+          "label": "上市规则 14A",
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              27,
+              28,
+              29
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Altus Capital Limited",
+          "role": "IFA",
+          "service": "connected_ifa_opinion",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              31,
+              33,
+              55
+            ]
+          },
+          "signatories": [
+            "Jeanny Leung",
+            "Leo Tam"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              55
+            ]
+          }
+        }
+      ],
+      "intervals": {
+        "announcementToDispatch": 35
+      },
+      "terms": [
+        {
+          "key": "works_cap_2027",
+          "label": "2027年分判工程上限",
+          "value": 4200000000,
+          "basis": "中國建築集團向中國建築興業集團批出分判工程；對價由中國建築集團支付。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              11
+            ]
+          }
+        },
+        {
+          "key": "works_cap_2028",
+          "label": "2028年分判工程上限",
+          "value": 5400000000,
+          "basis": "中國建築集團向中國建築興業集團批出分判工程；對價由中國建築集團支付。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              11
+            ]
+          }
+        },
+        {
+          "key": "works_cap_2029",
+          "label": "2029年分判工程上限",
+          "value": 2400000000,
+          "basis": "中國建築集團向中國建築興業集團批出分判工程；對價由中國建築集團支付。",
+          "currency": "HKD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-csc-works-circular",
+            "pages": [
+              11
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "HK-06633-20261020-qingci-gbits-game-renewal",
       "code": "06633",
       "category": "connected",
@@ -90437,7 +90796,38 @@
       "comparisonEvidence": {}
     }
   ],
-  "coverage": "selected_verified_transactions",
+  "coverage": {
+    "0": "s",
+    "1": "e",
+    "2": "l",
+    "3": "e",
+    "4": "c",
+    "5": "t",
+    "6": "e",
+    "7": "d",
+    "8": "_",
+    "9": "v",
+    "10": "e",
+    "11": "r",
+    "12": "i",
+    "13": "f",
+    "14": "i",
+    "15": "e",
+    "16": "d",
+    "17": "_",
+    "18": "t",
+    "19": "r",
+    "20": "a",
+    "21": "n",
+    "22": "s",
+    "23": "a",
+    "24": "c",
+    "25": "t",
+    "26": "i",
+    "27": "o",
+    "28": "n",
+    "29": "s"
+  },
   "documents": {
     "YS-20261126-01606-purui-equipment-1178": {
       "id": "YS-20261126-01606-purui-equipment-1178",
@@ -100181,6 +100571,38 @@
       "publishedAt": "2026-11-26T17:20:00+08:00",
       "title": "青瓷遊戲：遊戲合作續期通函（署期11月27日）",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600621.pdf"
+    },
+    "YS-20261022-csc-works-announcement": {
+      "id": "YS-20261022-csc-works-announcement",
+      "caseId": "HK-00830-20261022-csc-works",
+      "date": "2026-10-22",
+      "publishedAt": "2026-10-22T17:26:00+08:00",
+      "title": "中國建築興業：分判工程續期公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102200793.pdf"
+    },
+    "YS-20261126-csc-works-circular": {
+      "id": "YS-20261126-csc-works-circular",
+      "caseId": "HK-00830-20261022-csc-works",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T16:42:00+08:00",
+      "title": "中國建築興業：兩項持續關連交易通函（署期11月27日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600407.pdf"
+    },
+    "YS-20261022-csc-services-announcement": {
+      "id": "YS-20261022-csc-services-announcement",
+      "caseId": "HK-00830-20261022-csc-services",
+      "date": "2026-10-22",
+      "publishedAt": "2026-10-22T17:23:00+08:00",
+      "title": "中國建築興業：營運服務續期公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102200779.pdf"
+    },
+    "YS-20261126-csc-services-circular": {
+      "id": "YS-20261126-csc-services-circular",
+      "caseId": "HK-00830-20261022-csc-services",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T16:42:00+08:00",
+      "title": "中國建築興業：兩項持續關連交易通函（署期11月27日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600407.pdf"
     }
   },
   "issuerLinks": [
