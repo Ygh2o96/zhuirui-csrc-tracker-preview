@@ -5997,7 +5997,7 @@ function renderCornerstoneAdditionalPlacing(allocations, roundId, profileId, rou
   const entries = (allocations || []).filter(a => a.id.startsWith(roundId + ":"))
     .flatMap(a => Array.isArray(a.additionalInternationalAllocations)
       ? a.additionalInternationalAllocations : [a.additionalInternationalAllocation])
-    .concat((Array.isArray(roundManagerPlacements) ? roundManagerPlacements : []).filter(x => x?.profileId === profileId && x.basis === "separate_international_placing_manager_total"))
+    .concat((Array.isArray(roundManagerPlacements) ? roundManagerPlacements : []).filter(x => x?.profileId === profileId && [ "separate_international_placing_manager_total", "separate_international_placing_brand_affiliate" ].includes(x.basis)))
     .filter(x => x && Number.isSafeInteger(x.shares) && x.shares > 0 && Number.isFinite(Number(x.amountHkd)) && Number(x.amountHkd) > 0 && x.source);
   if (!entries.length) return "";
   return `<details class="cs-acct-fold"><summary>另获国际配售</summary><ul>${entries.map(x =>
