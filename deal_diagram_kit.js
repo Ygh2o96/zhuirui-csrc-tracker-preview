@@ -9647,7 +9647,26 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"股東大會表決結果"}])]});
   }
+  function buildPuruiSeparateBatches(c,docs){
+    const a={
+      "HK-01606-20261125-purui-equipment-733":{src:"YS-20261125-01606-purui-equipment-733",date:"2026-11-25",purchase:733000000,prior:3727000000,amount:"本批約7.3億人民幣",old:"普睿此前批次約37.3億元",sub:"9至10月批次；與本批採購分列"},
+      "HK-01606-20261126-purui-equipment-1178":{src:"YS-20261126-01606-purui-equipment-1178",date:"2026-11-26",purchase:1178000000,prior:4460000000,amount:"本批約11.8億人民幣",old:"普睿此前批次約44.6億元",sub:"9至11月此前的採購含11月25日批次"}
+    }[c.id];
+    if(!a||c.stage?.status!=="active"||c.stage.date!==a.date||docs?.[a.src]?.caseId!==c.id||!c.events?.some(e=>e.date===a.date&&e.kind==="first_announcement"&&e.state==="actual"&&e.evidence?.documentId===a.src)||!Object.entries({purchase_price:a.purchase,same_vendor_prior_batch:a.prior,prior_related_vendor_limit:4000000000}).every(([key,value])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===a.src)))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const status="active",left="本批電腦設備採購",right="租賃用途及跨批次合計測試",stageLabel="設備採購協議已簽 · 擬作經營租賃";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"本批採購及後續用途",outcomeBadge:stageLabel}),[
+      box("s","left",42,106,164,124,"seller","廣東普睿雲創","出售本次設備；最終擁有人為華勤技術"),
+      box("b","left",438,106,178,124,"buyer","國銀金融租賃","自有資金及／或商業銀行貸款"),
+      box("r1","right",724,72,310,73,"target","購買完成後擬用於經營租賃","設備擬出租予第三方承租人"),
+      box("r2","right",724,168,310,73,"creditor",a.old,a.sub),
+      box("r3","right",724,264,310,73,"creditor","同一最終擁有人旗下上海域允","7月另一交易上限40億元，另列合計測試")
+    ],[],[{id:"purchase",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:a.amount,proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"seller",name:"廣東普睿雲創科技有限公司"},{id:"b",role:"buyer",name:"國銀金融租賃股份有限公司"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:a.date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"purchase",kind:"asset",direction:"ltr",fromLabel:"廣東普睿",toLabel:"國銀金租",headline:a.amount,proposedOrTerminated:true}],annotations:[{tag:"①",title:"規模測試",body:"公告按第14.22條合計本次及先前交易。聯交所按第14.20條同意替代規模測試；合計對價比率高於5%但低於25%。"}],evidenceLinks:[{documentId:a.src,pages:[1,2,3,4],label:"採購公告及上市規則分類"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01606-20261125-purui-equipment-733","HK-01606-20261126-purui-equipment-1178"].includes(txCase?.id))return buildPuruiSeparateBatches(txCase,documents);
     if(["HK-00413-20260827-wah-shing-sparkling"].includes(txCase?.id))return buildSouthChinaVote(txCase,documents);
     if(["HK-01643-20261126-modern-biotech-secondary-sale","HK-00108-20261126-chunyu-dalian-guarantee"].includes(txCase?.id))return buildSecondaryAndGuaranteeNov(txCase,documents);
     if(["HK-00217-20261106-hka-aircraft-finance-lease"].includes(txCase?.id))return buildChengtongA320Lease(txCase,documents);
