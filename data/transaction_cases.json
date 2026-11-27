@@ -74235,6 +74235,55 @@
           "precision": 2,
           "unit": "money",
           "value": 10928000000
+        },
+        {
+          "key": "vessel_total_count",
+          "label": "擬建造船舶合計",
+          "value": 59,
+          "currency": null,
+          "unit": "units",
+          "precision": 0,
+          "approximate": false,
+          "basis": "六種船型",
+          "evidence": {
+            "documentId": "YS-20261116-5ae60ce29d12",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "lng_supply_ship_count",
+          "label": "LNG動力平台供應船",
+          "value": 46,
+          "currency": null,
+          "unit": "units",
+          "precision": 0,
+          "approximate": false,
+          "basis": "59艘中的一組",
+          "evidence": {
+            "documentId": "YS-20261116-5ae60ce29d12",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "ahts_ship_count",
+          "label": "常規動力AHTS船",
+          "value": 13,
+          "currency": null,
+          "unit": "units",
+          "precision": 0,
+          "approximate": false,
+          "basis": "59艘中的一組",
+          "evidence": {
+            "documentId": "YS-20261116-5ae60ce29d12",
+            "pages": [
+              2
+            ]
+          }
         }
       ]
     },
@@ -74837,6 +74886,22 @@
           "precision": 2,
           "unit": "money",
           "value": 9676000000
+        },
+        {
+          "key": "prior_batch_regulatory_cap",
+          "label": "同一賣方7月批次上限",
+          "value": 1500000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "approximate": false,
+          "basis": "只作上市規則監管合計；本次交易對價另列",
+          "evidence": {
+            "documentId": "YS-20261116-10b014e1d637",
+            "pages": [
+              3
+            ]
+          }
         }
       ]
     },

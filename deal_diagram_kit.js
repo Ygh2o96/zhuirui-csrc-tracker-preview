@@ -9446,7 +9446,35 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildNovemberIndustrialCases(c,docs){
+    const configs={
+      "HK-02883-20261116-59-oilfield-support-vessels":{
+        a:"YS-20261116-5ae60ce29d12",z:"YS-20261116-5ae60ce29d12",date:"2026-11-16",event:"first_announcement",status:"active",
+        ts:[["vessel_program_price",10928000000,"a"],["vessel_total_count",59,"a"],["lng_supply_ship_count",46,"a"],["ahts_ship_count",13,"a"]],
+        left:"59艘油田支持船建造計劃",right:"船隊構成、付款及交付",badge:"建造合同已簽 · 擬分批交付",seller:"福建東南造船牽頭聯合體",buyer:"中海油服旗下五個船東",sSub:"成員包括福建馬尾及福建福寧",bSub:"四家分公司及海南技術服務子公司",main:"合同總價109.3億人民幣（含稅）",
+        steps:[["46艘LNG動力平台供應船","另有13艘常規動力AHTS船"],["按各艘付款進度分五期","生效、開工、鋪龍骨、下水、交付各20%"],["預計2028至2030年分批交付","單船合同將列明分工及建造船廠"]],
+        detail:"2026年11月14日簽署，11月16日公布。合同須經各船東及建造方完成相應審批及確認程序後生效，交付款依工程變更、違約等條款調整。",pagesA:[1,2,3,4]
+      },
+      "HK-01606-20261116-henan-kunlun-it-equipment":{
+        a:"YS-20261116-10b014e1d637",z:"YS-20261116-10b014e1d637",date:"2026-11-16",event:"first_announcement",status:"active",
+        ts:[["henan_current_price",9676000000,"a"],["prior_batch_regulatory_cap",1500000000,"a"]],
+        left:"購入資訊科技電腦設備",right:"租賃安排與規模測試",badge:"購入協議已簽 · 付款及交付待核",seller:"河南昆侖技術",buyer:"國銀金融租賃",sSub:"出售11月設備批次",bSub:"擬以自有資金及／或商業銀行貸款支付",main:"本次約96.8億人民幣",
+        steps:[["完成購入後擬用於經營租賃","向第三方承租人出租該批設備"],["同賣方7月交易監管合計","7月批次上限15億人民幣獨立列示"],["聯交所核准替代規模測試","合計對價比率逾5%但低於25%"]],
+        detail:"原合計對價比率逾25%且低於100%，其他比率均低於5%；按14.20獲准採用替代測試後，屬第14章須予披露交易。",pagesA:[1,2,3,4]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02883-20261116-59-oilfield-support-vessels","HK-01606-20261116-henan-kunlun-it-equipment"].includes(txCase?.id))return buildNovemberIndustrialCases(txCase,documents);
     if(["HK-01109-20261030-hubei-lexing-shenzhen-court-auction","HK-00978-20261119-jiajingwan-550-parking"].includes(txCase?.id))return buildNovemberPropertyCases(txCase,documents);
     if(["HK-02198-20261116-zayton-ethane-h2763-h2765","HK-03877-20261117-two-80000dwt-grain-newbuilds","HK-03877-20261117-container-novation-h2782-h2783"].includes(txCase?.id))return buildNovemberShipCases(txCase,documents);
     if(txCase?.id==="HK-08439-20260413-sky-links")return buildSomerleySky(txCase,documents);
