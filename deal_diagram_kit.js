@@ -10333,10 +10333,31 @@
     return getSpecForCase(txCaseOrSpec, documents);
   }
 
+  // These are case timeline sources, not chart-specific evidence. Keep them
+  // separate so existing chart legends and accessibility text stay unchanged.
+  function getCaseTimelineSourceLinks(txCase, documents) {
+    if (!txCase?.id || !documents) return [];
+    const events = [...(txCase.events || []), ...(txCase.processEvents || [])];
+    const first = events.find(e => e.state === "actual" && e.kind === "first_announcement");
+    const stage = events.find(e => e.state === "actual" && e.kind === txCase.stage?.eventKind && e.date === txCase.stage?.date);
+    const links = new Map();
+    for (const [e, label] of [[first, "首份公告"], [stage, "阶段原件"]]) {
+      const doc = documents[e?.evidence?.documentId];
+      if (!doc || doc.caseId !== txCase.id || !/^https:\/\/(?:www[1-9]?\.hkexnews\.hk|www\.hsbc\.com|static\.midlandici\.com\.hk)\//i.test(doc.url)) continue;
+      const pages = (e.evidence.pages || []).filter(p => Number.isSafeInteger(p) && p > 0);
+      const entry = links.get(doc.id);
+      if (entry) entry.pages = [...new Set([...entry.pages, ...pages])].sort((a, b) => a - b);
+      else links.set(doc.id, {documentId: doc.id, pages: [...new Set(pages)], label});
+    }
+    return [...links.values()];
+  }
+
   function renderDealDiagram(txCaseOrSpec, opts) {
     const options = opts && typeof opts === "object" ? opts : {};
     const spec = resolveSpec(txCaseOrSpec, options.documents);
     if (!spec) return "";
+    const timelineSourceLinks = !spec.evidenceLinks?.length && typeof options.sourceLink === "function"
+      ? getCaseTimelineSourceLinks(txCaseOrSpec, options.documents) : [];
     const initialFilter = VALID_FILTERS.has(options.initialFilter) ? options.initialFilter : "all";
     const showAnnotations = options.showAnnotations !== false;
     const archInfo = ARCHETYPES[spec.archetype];
@@ -10576,7 +10597,7 @@
       </div>
       ${annotationsHtml}${(spec.evidenceLinks?.length && typeof options.sourceLink === "function") ?
         `
-      <div class="ddk-legend-bar" aria-label="交易结构披露原件">${spec.evidenceLinks.map(e => options.sourceLink(e, e.label)).join("")}</div>` : ""}
+      <div class="ddk-legend-bar" aria-label="交易结构披露原件">${spec.evidenceLinks.map(e => options.sourceLink(e, e.label)).join("")}</div>` : ""}${timelineSourceLinks.length ? `<div class="ddk-legend-bar" aria-label="交易公告原件">${timelineSourceLinks.map(e => options.sourceLink(e, e.label)).join("")}</div>` : ""}
     </section>`;
   }
 
