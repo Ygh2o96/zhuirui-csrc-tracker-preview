@@ -9039,7 +9039,35 @@
     const nodes=[{id:'l',role:'buyer',name:from},{id:'r',role:'seller',name:to}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:'acquisition',modality:'cash',status:'active',stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:'現金',caseModalityShortLabel:'現金',topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:'main',kind:'cash',direction:'ltr',fromLabel:from,toLabel:to,headline:left+'付款方向'}],annotations:[{tag:'①',title:'關連交易',body:power?'新疆天富為首創環境的間接全資附屬公司。委託方屬北京首創熱力的全資附屬公司。':'本期銅銷售按第14A.81條與公告指明的前兩份合約已交易金額合併計算。'}],evidenceLinks:[{documentId:n,pages:[1,2,3],label:'合約及交易公告'}]});
   }
+  function buildYukIndigo(c,docs){
+    const configs={
+      "01536":{
+        a:"YS-20260612-9f2d587f8369",p:"YS-20260714-f38452651b19",z:"YS-20260922-1f3caa72a03e",o:"YS-20260924-793db59df7ad",date:"2026-09-22",event:"completion",status:"closed",
+        ts:[["contract_cash_cny",37500000,"p"],["closing_cash_paid_cny",17500000,"o"],["deferred_cash_cny",20000000,"p"],["remaining_option_strike_cny",20100000,"p"],["acquired_stake",65,"z"]],
+        left:"收購安徽潤升65%股權",right:"現金對價與其餘35%的期權",badge:"65%已交割 · 其餘35%屬未確認行權的期權",seller:"方海波",buyer:"Top Standard Limited",sSub:"轉讓安徽潤升65%股權",bSub:"煜榮集團間接附屬公司",main:"收購對價人民幣3,750萬",
+        steps:[["2026年9月22日完成收購","安徽潤升成為間接非全資附屬公司"],["交割支付人民幣1,750萬","餘款2,000萬於交割後12個月內支付"],["其餘35%另有購買期權","全數行權價人民幣2,010萬"]],
+        detail:"65%收購和其餘35%的選擇權是兩個股權步驟；尾款與行權款分列。",pagesA:[1,2,7],pagesP:[6,7,11],pagesZ:[1],pagesO:[32]
+      },
+      "08373":{
+        a:"YS-20260722-5e58ece9df51",p:"YS-20260826-183dd5fb98c5",z:"YS-20261005-74019e09e86d",o:"YS-20260914-760ac7b8a4e9",date:"2026-10-05",event:"completion",status:"closed",
+        ts:[["price_sgd",16588000,"p"],["gst_sgd",1492920,"p"]],
+        left:"收購新加坡倉儲物業",right:"行權、股東批准及交割",badge:"樟宜南倉儲物業已完成收購",seller:"HSBC Institutional Trust",buyer:"CS Ceramiche Pte. Ltd.",sSub:"Mapletree Logistics Trust受託人",bSub:"靛藍星全資附屬公司",main:"對價1,658.8萬新加坡元",
+        steps:[["7月22日簽物業購買期權協議","行權後構成有約束力的買賣"],["9月14日股東批准","另列消費稅149.3萬新加坡元"],["10月5日完成收購","39 Changi South Avenue 2"]],
+        detail:"收購對價不含9%消費稅。期權費1%、行權款9%、交割餘款90%均為對價的一部分。",pagesA:[2,3,4,5],pagesP:[7,8,10],pagesZ:[1],pagesO:[1,2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:c.code==="01536"?"shares":"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:c.code==="01536"?"shares":"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:c.code==="01536"?"交割款及延期款披露":"股東表決結果"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"完成公告"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01536-20260612-anhui-runsheng","HK-08373-20260722-changi-south"].includes(txCase?.id))return buildYukIndigo(txCase,documents);
     if(["HK-03989-20261126-fangcaohu-operations","HK-00521-20261126-november-mri-tmsc-copper"].includes(txCase?.id))return buildMinorConnectedContracts(txCase,documents);
     if(["HK-00830-20261022-csc-services","HK-00830-20261022-csc-works"].includes(txCase?.id))return buildCscRenewals(txCase,documents);
     if(["HK-00990-20261120-penang-prai-offshore-equipment","HK-01627-20260520-able-best-tung-chung-lot54"].includes(txCase?.id))return buildPraiAble(txCase,documents);
