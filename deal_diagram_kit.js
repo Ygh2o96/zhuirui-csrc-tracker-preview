@@ -6657,6 +6657,25 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3,4,5],label:"公告：對價、付款條件及監管批覆"}],compactSummary:"受讓3.6364% · 人民幣530萬元 · 已披露監管批覆",topology});
   }
 
+  function buildCanopyPlacing(c,docs){
+    const s="YS-20260828-08245-placing",cs="YS-20260922-08245-placing",l="烽翼集團",r="不少於六名承配人",badge=c.stage?.label;
+    if(c.stage?.status!=="closed"||docs?.[s]?.caseId!==c.id||docs?.[cs]?.caseId!==c.id||!c.terms?.some(t=>t.key==="gross_total"&&t.value===6948000)||!c.terms?.some(t=>t.key==="placing_shares"&&t.value===57900000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:206,labelHeight:34,label,dashed:false});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:362,status:"closed",leftTitle:"一般授權配售",rightTitle:"配售代理與完成日",transitionLabel:"2026年9月22日完成",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"發行人（08245）"),
+      box("r","left",448,100,157,146,"public",r,"配售對象"),
+      box("agent","right",726,84,300,76,"target","未來金融","配售代理佣金：配售總收益1%"),
+      box("date","right",726,210,300,77,"public","已發行5,790萬股","每股0.12港元")
+    ],[],[flow("asset","shares","①",192,137,448,"5,790萬股新股份"),flow("cash","cash","②",448,208,192,"總額694.8萬港元")]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"public",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"topup_placing",modality:"cash",status:"closed",caseArchetypeLabel:"新股配售",caseModalityShortLabel:"現金",
+      before:{title:"配售安排",nodes,equityLinks:[]},after:{title:"實際發行",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"發行5,790萬股新股",proposedOrTerminated:false},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"按每股0.12港元計配售總額694.8萬港元",proposedOrTerminated:false}],
+      annotations:[{tag:"①",title:"配售安排",body:"8月28日與未來金融訂立協議，每股0.12港元。"}, {tag:"②",title:"實際發行",body:"9月22日所有條件達成，向不少於六名承配人發行全部5,790萬股。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3],label:"原件：配售協議、價格及佣金"},{documentId:cs,pages:[1],label:"原件：完成配售公告"}],compactSummary:"一般授權配售 · 694.8萬港元 · 9月22日完成",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10606,6 +10625,7 @@
     if(txCase?.id==="HK-00770-20260922-canopy-share-buys")return buildEminenceCanopyPurchases(txCase,documents);
     if(["HK-00921-20261106-business-coop","HK-00921-20261106-financial-services"].includes(txCase?.id))return buildHisenseDelayedFramework(txCase,documents);
     if(txCase?.id==="HK-01988-20261127-pengzhou-village-bank")return buildMinshengPengzhou(txCase,documents);
+    if(txCase?.id==="HK-08245-20260828-canopy-placing")return buildCanopyPlacing(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

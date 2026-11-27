@@ -2,6 +2,182 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-08245-20260828-canopy-placing",
+      "code": "08245",
+      "name": "烽翼集團：一般授權配售新股",
+      "aliases": [
+        "烽翼集团",
+        "Canopy SkyFire",
+        "善裕集團",
+        "未來金融",
+        "Future Finance"
+      ],
+      "category": "placing",
+      "mechanism": "烽翼集團委託未來金融按每股0.12港元向不少於六名承配人配售新股，9月22日發行5,790萬股，按完成股數及配售價計算總額694.8萬港元。",
+      "headlineKey": "gross_total",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "烽翼集團有限公司（08245）",
+        "配售代理": "未來金融有限公司",
+        "承配人": "不少於六名承配人"
+      },
+      "terms": [
+        {
+          "key": "gross_total",
+          "label": "配售總額",
+          "value": 6948000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "實際完成股數乘以每股配售價；未扣費用。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260922-08245-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "placing_shares",
+          "label": "已發行股數",
+          "value": 57900000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "完成公告列出的實際發行股數。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260922-08245-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "placing_price",
+          "label": "每股配售價",
+          "value": 0.12,
+          "unit": "price",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "港元。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260828-08245-placing",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "net_est",
+          "label": "原估計淨籌",
+          "value": 6880000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "原公告悉數配售情境的估算。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260828-08245-placing",
+            "pages": [
+              2,
+              6
+            ]
+          }
+        },
+        {
+          "key": "commission_rate",
+          "label": "配售佣金率",
+          "value": 1,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "按配售總收益計。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260828-08245-placing",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:GEM-GENERAL-MANDATE",
+          "label": "GEM上市規則 · 一般授權",
+          "classificationStatus": "applied",
+          "application": "根據一般授權配售新股份。",
+          "evidence": {
+            "documentId": "YS-20260828-08245-placing",
+            "pages": [
+              4,
+              5
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "未來金融有限公司",
+          "role": "PlacingAgent",
+          "side": "發行人",
+          "service": "配售代理",
+          "evidence": {
+            "documentId": "YS-20260828-08245-placing",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-08-28",
+          "kind": "first_announcement",
+          "label": "簽訂一般授權配售協議",
+          "state": "actual",
+          "detail": "按盡力基準配售最多5,790萬股。",
+          "evidence": {
+            "documentId": "YS-20260828-08245-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-22",
+          "kind": "completion",
+          "label": "配售完成 · 5,790萬股已發行",
+          "state": "actual",
+          "detail": "所有條件達成，5,790萬股按配售價向不少於六名承配人發行。",
+          "evidence": {
+            "documentId": "YS-20260922-08245-placing",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-09-22",
+        "status": "closed",
+        "eventKind": "completion",
+        "label": "配售完成 · 5,790萬股已發行"
+      },
+      "progressDate": "2026-09-22",
+      "intervals": {}
+    },
+    {
       "id": "HK-01988-20261127-pengzhou-village-bank",
       "code": "01988",
       "name": "民生銀行：受讓彭州民生村鎮銀行股份",
@@ -112537,6 +112713,20 @@
       "date": "2026-11-27",
       "title": "民生銀行關聯交易公告：受讓彭州民生村鎮銀行部分股份",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701887_c.pdf"
+    },
+    "YS-20260828-08245-placing": {
+      "id": "YS-20260828-08245-placing",
+      "caseId": "HK-08245-20260828-canopy-placing",
+      "date": "2026-08-28",
+      "title": "烽翼集團：根據一般授權配售新股份",
+      "url": "https://canopyskyfire.com/wp-content/uploads/2026/09/%E6%A0%B9%E6%93%9A%E4%B8%80%E8%88%AC%E6%8E%88%E6%AC%8A%E9%85%8D%E5%94%AE%E6%96%B0%E8%82%A1%E4%BB%BD.pdf"
+    },
+    "YS-20260922-08245-placing": {
+      "id": "YS-20260922-08245-placing",
+      "caseId": "HK-08245-20260828-canopy-placing",
+      "date": "2026-09-22",
+      "title": "烽翼集團：完成根據一般授權配售新股份",
+      "url": "https://canopyskyfire.com/wp-content/uploads/2026/09/%E5%AE%8C%E6%88%90%E6%A0%B9%E6%93%9A%E4%B8%80%E8%88%AC%E6%8E%88%E6%AC%8A%E9%85%8D%E5%94%AE%E6%96%B0%E8%82%A1%E4%BB%BD.pdf"
     }
   },
   "issuerLinks": [
