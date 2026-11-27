@@ -2,6 +2,156 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01988-20261127-pengzhou-village-bank",
+      "code": "01988",
+      "name": "民生銀行：受讓彭州民生村鎮銀行股份",
+      "aliases": [
+        "民生银行",
+        "China Minsheng Bank",
+        "彭州民生村镇银行",
+        "新希望集团"
+      ],
+      "category": "acquisition",
+      "mechanism": "民生銀行擬以人民幣530萬元向新希望集團受讓彭州民生村鎮銀行200萬股，佔3.6364%；四川金融監管局已批准收購及改制。",
+      "headlineKey": "cash_total",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "中國民生銀行股份有限公司（01988／600016）",
+        "賣方": "新希望集團有限公司",
+        "標的": "彭州民生村鎮銀行股份有限公司"
+      },
+      "terms": [
+        {
+          "key": "cash_total",
+          "label": "股份轉讓對價",
+          "value": 5300000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "股份變更登記完成後一次現金付清。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        {
+          "key": "shares",
+          "label": "擬受讓股數",
+          "value": 2000000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "公告列出原股東轉讓股數。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "key": "share_price",
+          "label": "每股轉讓價格",
+          "value": 2.65,
+          "unit": "per_share",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "人民幣每股。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "stake_pct",
+          "label": "擬受讓股份比例",
+          "value": 3.6364,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "佔彭州民生村鎮銀行股份。",
+          "precision": 4,
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:13.10B",
+          "label": "上市規則 13.10B",
+          "classificationStatus": "applied",
+          "application": "香港刊發海外監管公告。上交所版披露為關聯交易，無需民生銀行股東會表決，未構成境內重大資產重組。",
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "監管已批 · 股份過戶及付款待核",
+          "state": "actual",
+          "detail": "首次公開披露交易及近日收到的川金監復〔2026〕402號、425號批覆。",
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              1,
+              2,
+              5
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-04-29",
+          "kind": "board_approval",
+          "label": "董事會審議通過受讓議案",
+          "state": "actual",
+          "detail": "4月董事會通過，按公告所述暫緩披露。",
+          "evidence": {
+            "documentId": "YS-20261127-01988-pengzhou",
+            "pages": [
+              2,
+              5
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "監管已批 · 股份過戶及付款待核"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-00921-20261106-financial-services",
       "code": "00921",
       "category": "continuing_connected",
@@ -112380,6 +112530,13 @@
       "date": "2026-11-06",
       "title": "國泰海通：不可撤回承諾及擬出售海通恒信股份",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601684.pdf"
+    },
+    "YS-20261127-01988-pengzhou": {
+      "id": "YS-20261127-01988-pengzhou",
+      "caseId": "HK-01988-20261127-pengzhou-village-bank",
+      "date": "2026-11-27",
+      "title": "民生銀行關聯交易公告：受讓彭州民生村鎮銀行部分股份",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701887_c.pdf"
     }
   },
   "issuerLinks": [

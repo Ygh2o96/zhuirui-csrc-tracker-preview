@@ -6638,6 +6638,25 @@
       evidenceLinks:[{documentId:x.s,pages:x.evidence,label:"首公告：雙方、各項上限及批准"},{documentId:x.z,pages:[1],label:"11月27日通函延後"}],compactSummary:x.caption+" · 通函延後",topology});
   }
 
+  function buildMinshengPengzhou(c,docs){
+    const s="YS-20261127-01988-pengzhou",l="新希望集團",r="民生銀行",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="cash_total"&&t.value===5300000)||!c.terms?.some(t=>t.key==="shares"&&t.value===2000000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:206,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:362,status:"active",leftTitle:"彭州民生村鎮銀行股份受讓",rightTitle:"監管批覆與後續步驟",transitionLabel:"監管同意 · 過戶待核",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"關聯賣方"),
+      box("r","left",448,100,157,146,"buyer",r,"受讓方"),
+      box("cap","right",726,84,300,76,"target","取得四川金融監管局批覆","收購及設立5家分支機構、村鎮銀行解散"),
+      box("vote","right",726,210,300,77,"public","過戶後支付","變更登記後一次性支付現金")
+    ],[],[flow("asset","shares","①",192,137,448,"200萬股 · 佔3.6364%"),flow("cash","cash","②",448,208,192,"人民幣530萬元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"acquisition",modality:"cash",status:"active",caseArchetypeLabel:"村鎮銀行股權及改制",caseModalityShortLabel:"現金",
+      before:{title:"股份轉讓",nodes,equityLinks:[]},after:{title:"批准與登記",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬受讓彭州民生村鎮銀行200萬股，佔3.6364%",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"股份登記後一次支付人民幣530萬元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"股權受讓",body:"每股人民幣2.65元；監管批准與股份變更登記是付款步驟。"}, {tag:"②",title:"改制批覆",body:"四川金融監管局同意收購後設立彭州支行等5家分支機構，另批准村鎮銀行解散。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3,4,5],label:"公告：對價、付款條件及監管批覆"}],compactSummary:"受讓3.6364% · 人民幣530萬元 · 已披露監管批覆",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10586,6 +10605,7 @@
     if(txCase?.id==="HK-01429-20261127-skymission-placing")return buildSkymissionPlacing(txCase,documents);
     if(txCase?.id==="HK-00770-20260922-canopy-share-buys")return buildEminenceCanopyPurchases(txCase,documents);
     if(["HK-00921-20261106-business-coop","HK-00921-20261106-financial-services"].includes(txCase?.id))return buildHisenseDelayedFramework(txCase,documents);
+    if(txCase?.id==="HK-01988-20261127-pengzhou-village-bank")return buildMinshengPengzhou(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
