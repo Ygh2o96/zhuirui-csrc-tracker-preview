@@ -2,6 +2,340 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-01561-20261005-panasia-pcdynamic-whitewash",
+      "code": "01561",
+      "name": "聯洋智能控股：PC Dynamic擬認購及債務重組",
+      "aliases": [
+        "联洋智能控股",
+        "Pan Asia Data Holdings Inc.",
+        "PC Dynamic",
+        "Power Circles"
+      ],
+      "category": "debt_restructuring",
+      "mechanism": "十合一後擬發行新股 · 債權人計劃 · 擬申請清洗豁免",
+      "parties": {
+        "上市公司": "聯洋智能控股有限公司",
+        "擬認購方": "PC Dynamic Holdings Ltd",
+        "原備忘錄投資方": "Power Circles",
+        "債務重組": "債權人計劃"
+      },
+      "stage": {
+        "date": "2026-11-26",
+        "eventKind": "dispatch_extension",
+        "status": "active",
+        "label": "正式協議待簽 · 已獲同意延發通函"
+      },
+      "progressDate": "2026-11-26",
+      "headlineKey": "subscription_cash",
+      "intervals": {},
+      "comparables": {},
+      "comparisonEvidence": {},
+      "mandates": [],
+      "events": [
+        {
+          "kind": "first_announcement",
+          "date": "2026-10-05",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              1,
+              2,
+              4
+            ]
+          }
+        }
+      ],
+      "processEvents": [
+        {
+          "kind": "supplement",
+          "date": "2026-09-09",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              1,
+              3
+            ]
+          },
+          "detail": "與Power Circles簽署重組備忘錄。"
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-09-10",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20260910-2026091000145",
+            "pages": [
+              1
+            ]
+          },
+          "detail": "停牌候發公告。"
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-10-12",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261012-2026101201033",
+            "pages": [
+              1
+            ]
+          },
+          "detail": "高院將清盤呈請聆訊延至2027年2月1日。"
+        },
+        {
+          "kind": "dispatch_extension",
+          "date": "2026-10-26",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261026-2026102601069",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "執行人員表示傾向同意延發至2027年5月5日。"
+        },
+        {
+          "kind": "dispatch_extension",
+          "date": "2026-11-26",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-2026112600329",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "執行人員已同意延發至2027年5月5日；正式協議尚未簽署。"
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-12-31",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261126-2026112600329",
+            "pages": [
+              1
+            ]
+          },
+          "detail": "備忘錄所列正式協議簽署期限。"
+        }
+      ],
+      "rules": [
+        {
+          "code": "TC:26.1",
+          "label": "收購守則 26.1",
+          "application": "發行新股將觸發強制要約義務，除非清洗豁免獲授及獲獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              2
+            ]
+          },
+          "classificationStatus": "condition"
+        },
+        {
+          "code": "TC:26-Note1",
+          "label": "收購守則 26 注釋 1",
+          "application": "擬申請清洗豁免；重組及豁免分別須獲獨立股東超過50%及至少75%投票贊成。",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              2,
+              6
+            ]
+          },
+          "classificationStatus": "planned"
+        },
+        {
+          "code": "TC:8.2",
+          "label": "收購守則 8.2",
+          "application": "執行人員已同意將通函期限延至2027年5月5日。",
+          "evidence": {
+            "documentId": "YS-20261126-2026112600329",
+            "pages": [
+              1
+            ]
+          },
+          "classificationStatus": "granted"
+        }
+      ],
+      "terms": [
+        {
+          "key": "subscription_cash",
+          "label": "擬認購款",
+          "value": 80000000,
+          "unit": "money",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              4,
+              5
+            ]
+          },
+          "basis": "經修訂重組備忘錄",
+          "approximate": false,
+          "precision": 0,
+          "currency": "HKD"
+        },
+        {
+          "key": "subscription_new_shares",
+          "label": "擬發行合併股份",
+          "value": 212000000,
+          "unit": "shares",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              4,
+              11
+            ]
+          },
+          "basis": "十合一後發行，仍待正式協議",
+          "approximate": false,
+          "precision": 0,
+          "currency": null
+        },
+        {
+          "key": "subscription_price",
+          "label": "每股合併股份認購價",
+          "value": 0.37736,
+          "unit": "per_share",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              2,
+              4
+            ]
+          },
+          "basis": "披露每股價格",
+          "approximate": false,
+          "precision": 5,
+          "currency": "HKD"
+        },
+        {
+          "key": "post_base_investor_pct",
+          "label": "交割後擬持股（未計可換股債轉換）",
+          "value": 66.55,
+          "unit": "percent",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              11
+            ]
+          },
+          "basis": "無其他已發行股本變動",
+          "approximate": true,
+          "precision": 2,
+          "currency": null
+        },
+        {
+          "key": "post_cb_investor_pct",
+          "label": "交割後擬持股（假設可換股債轉換）",
+          "value": 65.76,
+          "unit": "percent",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              12
+            ]
+          },
+          "basis": "除可換股債轉換外無其他股本變動",
+          "approximate": true,
+          "precision": 2,
+          "currency": null
+        },
+        {
+          "key": "scheme_allocation",
+          "label": "認購款擬撥債權人計劃",
+          "value": 30000000,
+          "unit": "money",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              5
+            ]
+          },
+          "basis": "認購總款用途之一",
+          "approximate": true,
+          "precision": 0,
+          "currency": "HKD"
+        },
+        {
+          "key": "fee_cost_allocation",
+          "label": "認購款擬撥重組費用",
+          "value": 10000000,
+          "unit": "money",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              5
+            ]
+          },
+          "basis": "認購總款用途之一",
+          "approximate": true,
+          "precision": 0,
+          "currency": "HKD"
+        },
+        {
+          "key": "working_capital_allocation",
+          "label": "認購款擬撥營運資金",
+          "value": 40000000,
+          "unit": "money",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              5
+            ]
+          },
+          "basis": "認購總款用途之一",
+          "approximate": true,
+          "precision": 0,
+          "currency": "HKD"
+        },
+        {
+          "key": "fee_loan_total",
+          "label": "無抵押免息費用借款額度",
+          "value": 8000000,
+          "unit": "money",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              5
+            ]
+          },
+          "basis": "完成時納入認購代價，除非另有約定",
+          "approximate": false,
+          "precision": 0,
+          "currency": "HKD"
+        },
+        {
+          "key": "fee_loan_first_paid",
+          "label": "截至10月5日已收到首筆費用借款",
+          "value": 4000000,
+          "unit": "money",
+          "evidence": {
+            "documentId": "YS-20261005-2026100502235",
+            "pages": [
+              5
+            ]
+          },
+          "basis": "已收到，與擬議認購交割分列",
+          "approximate": false,
+          "precision": 0,
+          "currency": "HKD"
+        }
+      ]
+    },
+    {
       "id": "HK-00521-20261126-november-mri-tmsc-copper",
       "code": "00521",
       "name": "CWT International：MRI 銅陰極銷售",
@@ -100959,6 +101293,45 @@
       "publishedAt": "2026-08-24T16:28:00+08:00",
       "title": "天保能源中期报告：增持会计处理及过户手续",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400444.pdf"
+    },
+    "YS-20261005-2026100502235": {
+      "id": "YS-20261005-2026100502235",
+      "caseId": "HK-01561-20261005-panasia-pcdynamic-whitewash",
+      "date": "2026-10-05",
+      "title": "拟议重组、经修订备忘录及清洗豁免",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1005/2026100502235.pdf",
+      "publishedAt": "2026-10-05T22:09:00+08:00"
+    },
+    "YS-20261126-2026112600329": {
+      "id": "YS-20261126-2026112600329",
+      "caseId": "HK-01561-20261005-panasia-pcdynamic-whitewash",
+      "date": "2026-11-26",
+      "title": "每月更新：已获同意延期寄发通函，正式协议待签",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600329.pdf"
+    },
+    "YS-20261026-2026102601069": {
+      "id": "YS-20261026-2026102601069",
+      "caseId": "HK-01561-20261005-panasia-pcdynamic-whitewash",
+      "date": "2026-10-26",
+      "title": "申请延期寄发通函，执行人员倾向同意",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1026/2026102601069.pdf",
+      "publishedAt": "2026-10-26T20:07:00+08:00"
+    },
+    "YS-20261012-2026101201033": {
+      "id": "YS-20261012-2026101201033",
+      "caseId": "HK-01561-20261005-panasia-pcdynamic-whitewash",
+      "date": "2026-10-12",
+      "title": "高院将清盘呈请聆讯延期至2027年2月1日",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1012/2026101201033.pdf",
+      "publishedAt": "2026-10-12T19:54:00+08:00"
+    },
+    "YS-20260910-2026091000145": {
+      "id": "YS-20260910-2026091000145",
+      "caseId": "HK-01561-20261005-panasia-pcdynamic-whitewash",
+      "date": "2026-09-10",
+      "title": "停牌：待刊发内幕消息及收购守则公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0910/2026091000145.pdf",
+      "publishedAt": "2026-09-10T08:58:00+08:00"
     }
   },
   "issuerLinks": [

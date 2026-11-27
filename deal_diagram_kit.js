@@ -9177,7 +9177,24 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="approved"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：財務確認與股權登記"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"股東表決結果"}])]});
   }
+  function buildPanAsiaWhitewash(c,docs){
+    const a="YS-20261005-2026100502235",z="YS-20261126-2026112600329",e="YS-20261012-2026101201033",date="2026-11-26";
+    const values=[["subscription_cash",80000000],["subscription_new_shares",212000000],["scheme_allocation",30000000],["post_base_investor_pct",66.55],["post_cb_investor_pct",65.76],["fee_loan_first_paid",4000000]];
+    if(c.stage?.status!=="active"||c.stage.date!==date||![a,z,e].every(id=>docs?.[id]?.caseId===c.id)||!c.processEvents?.some(x=>x.date===date&&x.kind==="dispatch_extension"&&x.evidence?.documentId===z)||!values.every(([key,value])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===a)))return null;
+    const left="擬議注資與債務重組",right="條款與最新進度",badge="正式協議待簽 · 通函期限延至2027年5月5日";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:"active",leftTitle:left,rightTitle:right,transitionLabel:"擬議安排",outcomeBadge:badge}),[
+      box("s","left",42,106,164,124,"buyer","PC Dynamic","擬認購2.12億股合併股份"),
+      box("b","left",438,106,178,124,"target","聯洋智能控股","擬十合一後發行認購股份"),
+      box("out1","right",724,72,310,73,"target","擬持股66.55%","如可換股債一併轉換，為65.76%"),
+      box("out2","right",724,168,310,73,"creditor","擬撥3,000萬港元予債權人計劃","已收首筆費用借款400萬港元"),
+      box("out3","right",724,264,310,73,"creditor","2026年12月31日簽約期限","2027年2月1日清盤呈請續審")
+    ],[],[{id:"main",panel:"left",kind:"cash",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"擬現金認購8,000萬港元",proposedOrTerminated:true}]);
+    const nodes=[{id:"s",role:"buyer",name:"PC Dynamic Holdings Ltd"},{id:"b",role:"target",name:"聯洋智能控股"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"active",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金認購",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"cash",direction:"ltr",fromLabel:"PC Dynamic Holdings Ltd",toLabel:"聯洋智能控股",headline:"擬現金認購8,000萬港元",proposedOrTerminated:true}],annotations:[{tag:"①",title:"認購款及費用借款",body:"認購款擬分配予債權人計劃3,000萬、重組費用1,000萬及營運資金4,000萬港元。費用借款額度800萬港元，完成時納入認購代價，除非雙方另有約定。"}],evidenceLinks:[{documentId:a,pages:[2,4,5,11,12],label:"經修訂重組條款"},{documentId:z,pages:[1,2],label:"11月26日通函期限更新"},{documentId:e,pages:[1],label:"清盤呈請聆訊日期"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01561-20261005-panasia-pcdynamic-whitewash")return buildPanAsiaWhitewash(txCase,documents);
     if(["HK-01671-20260526-lingang-thermal"].includes(txCase?.id))return buildLingangThermal(txCase,documents);
     if(["HK-00167-20251117-hunglap-horizon-receiver-mgo"].includes(txCase?.id))return buildIDTReceiver(txCase,documents);
     if(txCase?.id==="HK-03389-20251128-empire-charm-voluntary-go")return buildHengdeliOffer(txCase,documents);
