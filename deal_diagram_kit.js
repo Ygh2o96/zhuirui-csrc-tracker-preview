@@ -6335,6 +6335,32 @@
       evidenceLinks:[{documentId:circ,pages:[9,10,11],label:"通函：减资结构、对价与条件"},{documentId:vote,pages:[2],label:"股东大会表决结果"}],compactSummary:"北京汽车 · 减资退出 33%／14% · 股东已批准",topology};
   }
 
+  function buildHuaxinHolcim(c,docs){
+    const z="YS-20261127-06655-holcim",p="YS-20261012-06655-holcim",v="YS-20261030-06655-holcim";
+    if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="supplement"||
+       docs?.[z]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701028.pdf"||
+       ![z,p,v].every(id=>docs[id]?.caseId===c.id)||
+       ![["consideration",259680000],["first_a_stake",34.9],["first_b_price",243450000],["first_b_stake",32.723]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===z)))return null;
+    const l="Holderfin",r="Caricement",badge=c.stage.label;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,y,label,dashed)=>({id,panel:"left",kind,step,pathPoints:[[192,y],[448,y]],labelCenter:[320,y],labelWidth:210,labelHeight:34,label,dashed});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:385,status:"active",leftTitle:"第一階段 · 兩批交割",rightTitle:"控制權與後續安排",transitionLabel:"分批收購",outcomeBadge:badge}),[
+      box("L_sell","left",43,100,149,146,"seller",l,"Holderfin B.V."),
+      box("L_buy","left",448,100,157,146,"buyer",r,"華新建材全資附屬"),
+      box("R_control","right",726,76,300,68,"target","HPI 已取得控制權","11 月 27 日 · 34.90% 間接權益"),
+      box("R_pending","right",726,166,300,66,"buyer","第一階段合計 67.623%","尚待第二批 32.723% 交割"),
+      box("R_option","right",726,254,300,66,"public","第二階段 31.377%","另按認購／沽售期權安排")
+    ],[],[arrow("first_a","shares","①",138,"已交割 34.90%",false),arrow("first_b","shares","②",209,"待交割 32.723%",true)]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"acquisition",modality:"cash",status:"active",
+      caseArchetypeLabel:"分批收購並取得控制權",caseModalityShortLabel:"現金 · 分批交割",
+      before:{title:"交易雙方",nodes,equityLinks:[]},after:{title:"首批已交割",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"first_a",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"首批 34.90% 已交割；已支付 2.5968 億美元",proposedOrTerminated:false},{id:"first_b",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"次批 32.723% 待交割；估計 2.4345 億美元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"已交割及取得控制權",body:"11 月 27 日，Caricement 承接買方權利與義務，已付 2.5968 億美元取得 34.90% 間接權益及控制權。"},{tag:"②",title:"其餘交易安排",body:"次批須於首批交割後三個月內進行，無額外先決條件；第二階段 31.377% 的認購及沽售期權條款不變。"}],
+      evidenceLinks:[{documentId:z,pages:[1,2,3],label:"補充協議：買方替換、分批及已交割"},{documentId:p,pages:[17,18],label:"通函：第二階段期權"}],
+      compactSummary:"首批 34.90% 已交割取得控制 · 次批 32.723% 待交割",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10257,6 +10283,7 @@
     if(txCase?.id==="HK-02663-20261020-dax"){const x=buildVerifiedDaxOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01440-20261023-circle-time-disposal")return buildStarShineCircleTime(txCase,documents);
+    if(txCase?.id==="HK-06655-20260802-holcim-philippines")return buildHuaxinHolcim(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

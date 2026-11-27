@@ -2,6 +2,309 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-06655-20260802-holcim-philippines",
+      "code": "06655",
+      "name": "華新建材：分步收購 Holcim Philippines",
+      "aliases": [
+        "華新建材",
+        "华新建材",
+        "Huaxin Building Materials",
+        "Holcim Philippines",
+        "Holderfin",
+        "Caricement",
+        "600801"
+      ],
+      "category": "disclosable_acquisition",
+      "mechanism": "華新建材改由荷蘭全資附屬 Caricement B.V. 收購。首批已付 2.5968 億美元、間接取得 34.90% 並獲控制權；第二批擬再收 32.723%，估計 2.4345 億美元。另有 31.377% 涉及另一階段的認購／沽售期權。",
+      "headlineKey": "consideration",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "華新建材集團股份有限公司（06655／600801）",
+        "買方": "Caricement B.V.（華新建材間接全資附屬）",
+        "原買方": "Huaxin Central Asia Investment (Wuhan) Co., Ltd.",
+        "賣方": "Holderfin B.V.",
+        "標的": "Holcim Philippines, Inc.",
+        "第一階段持股公司": "Clinco、Cemco、Union Cement"
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "首批已付對價",
+          "value": 259680000,
+          "basis": "11 月 27 日已支付；為首批對價。",
+          "currency": "USD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "first_a_stake",
+          "label": "首批已取得 HPI 間接權益",
+          "value": 34.9,
+          "basis": "取得 Clinco 99.9997% 及 Cemco 5.3076%，取得 HPI 控制權。",
+          "precision": 3,
+          "unit": "percent",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "first_b_price",
+          "label": "第二批估計對價",
+          "value": 243450000,
+          "basis": "依原協議公式估算；未交割。",
+          "currency": "USD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "first_b_stake",
+          "label": "第二批擬取得間接權益",
+          "value": 32.723,
+          "basis": "擬再買入 Cemco 31.4962% 及 Union Cement 27.51%。",
+          "precision": 3,
+          "unit": "percent",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "phase1_stake",
+          "label": "第一階段合計間接權益",
+          "value": 67.623,
+          "basis": "兩批合計；不等同目前持股。",
+          "precision": 3,
+          "unit": "percent",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "phase2_option_stake",
+          "label": "第二階段期權涉及 HPI 股權",
+          "value": 31.377,
+          "basis": "第一階段以外的股權；期權條款維持。",
+          "precision": 3,
+          "unit": "percent",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              17,
+              18
+            ]
+          }
+        },
+        {
+          "key": "phase2_price_floor",
+          "label": "第二階段期權對價下限",
+          "value": 280000000,
+          "basis": "按通函公式或下限取較高者；僅於期權行使時適用。",
+          "currency": "USD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              17,
+              18
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第 14 章",
+          "application": "須予披露交易。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              1,
+              36
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "application": "關連交易，獨立股東已批准；相關股東已放棄表決。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              1,
+              36
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Maxa Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              42,
+              74
+            ]
+          },
+          "signatories": [
+            "Dian Deng"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              74
+            ]
+          }
+        },
+        {
+          "firm": "Cushman & Wakefield Limited",
+          "role": "valuer",
+          "service": "business_valuation",
+          "side": "HPI 全部股權估值",
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              18,
+              77
+            ]
+          },
+          "signatories": [
+            "Bruce Oong"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              77
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-08-02",
+          "kind": "first_announcement",
+          "label": "公布附條件收購",
+          "state": "actual",
+          "detail": "8 月 1 日簽訂協議；8 月 2 日首次公告。",
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-10-12",
+          "kind": "dispatch",
+          "label": "刊發股東通函",
+          "state": "actual",
+          "detail": "披露兩階段收購及期權條款。",
+          "evidence": {
+            "documentId": "YS-20261012-06655-holcim",
+            "pages": [
+              1,
+              12,
+              17
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-10-30",
+          "kind": "vote",
+          "label": "獨立股東批准",
+          "state": "actual",
+          "detail": "600,481,119 票贊成、349,900 反對、190,285 棄權。",
+          "evidence": {
+            "documentId": "YS-20261030-06655-holcim",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "首批交割並取得控制權 · 待第二批交割",
+          "state": "actual",
+          "detail": "Caricement 當日承接買方權利與義務，首批交割、取得控制。第二批須於首批交割後三個月內進行，無新增先決條件。",
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "partial_completion",
+          "label": "首批 1a 完成交割",
+          "state": "actual",
+          "detail": "已付 259,680,000 美元，合計間接取得 HPI 34.90%。其餘股份另行交割。",
+          "evidence": {
+            "documentId": "YS-20261127-06655-holcim",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "intervals": {
+        "announcementToDispatch": 71,
+        "dispatchToVote": 18
+      },
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "supplement",
+        "label": "首批交割並取得控制權 · 待第二批交割"
+      },
+      "progressDate": "2026-11-27"
+    },
+    {
       "id": "HK-01440-20261023-circle-time-disposal",
       "code": "01440",
       "name": "應星控股：出售 Circle Time 及轉讓貸款",
@@ -106541,6 +106844,34 @@
       "date": "2026-11-27",
       "title": "股東特別大會通告",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701060.pdf"
+    },
+    "YS-20260802-06655-holcim": {
+      "id": "YS-20260802-06655-holcim",
+      "caseId": "HK-06655-20260802-holcim-philippines",
+      "date": "2026-08-02",
+      "title": "收購豪瑞菲律賓資產：A 股公告（8 月 2 日披露，8 月 3 日公告文件）",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-03/1225452767.PDF"
+    },
+    "YS-20261012-06655-holcim": {
+      "id": "YS-20261012-06655-holcim",
+      "caseId": "HK-06655-20260802-holcim-philippines",
+      "date": "2026-10-12",
+      "title": "收購 Holcim Philippines 股權及股東大會通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1012/2026101201139.pdf"
+    },
+    "YS-20261030-06655-holcim": {
+      "id": "YS-20261030-06655-holcim",
+      "caseId": "HK-06655-20260802-holcim-philippines",
+      "date": "2026-10-30",
+      "title": "獨立股東表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1030/2026103002091.pdf"
+    },
+    "YS-20261127-06655-holcim": {
+      "id": "YS-20261127-06655-holcim",
+      "caseId": "HK-06655-20260802-holcim-philippines",
+      "date": "2026-11-27",
+      "title": "補充協議：買方替換及首批交割",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701028.pdf"
     }
   },
   "issuerLinks": [
