@@ -72104,6 +72104,19 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-10",
+          "detail": "实际签正式协议及支付第二笔定金；发行人11月13日公布。",
+          "evidence": {
+            "documentId": "YS-20261113-27b98732d974",
+            "pages": [
+              1
+            ]
+          },
+          "kind": "definitive_agreement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
       "headlineKey": "purchase_property",
@@ -72115,24 +72128,11 @@
       "parties": {
         "买方": "Leader New Limited（新凌有限公司）",
         "卖方": "Zone One (CS) Limited",
-        "标的": "礼顿道33至35号第一商业大厦20楼A及B室"
+        "标的": "礼顿道33至35号第一商业大厦20楼A及B室",
+        "物業代理": "Centaline Property Agency Limited"
       },
-      "processEvents": [
-        {
-          "date": "2026-11-10",
-          "detail": "实际签正式协议及支付第二笔定金；发行人11月13日公布。",
-          "evidence": {
-            "documentId": "YS-20261113-27b98732d974",
-            "pages": [
-              1
-            ]
-          },
-          "kind": "supplement",
-          "state": "actual",
-          "timeZone": "Asia/Hong_Kong"
-        }
-      ],
-      "progressDate": "2026-10-14",
+      "processEvents": [],
+      "progressDate": "2026-11-13",
       "rules": [
         {
           "application": "适用比率大于25%而低于100%，为主要收购",
@@ -72161,8 +72161,8 @@
         }
       ],
       "stage": {
-        "date": "2026-10-14",
-        "eventKind": "first_announcement",
+        "date": "2026-11-10",
+        "eventKind": "definitive_agreement",
         "label": "已签正式协议并付定金 · 交割待证",
         "status": "active"
       },
@@ -72231,6 +72231,22 @@
           "precision": 2,
           "unit": "money",
           "value": 23400000
+        },
+        {
+          "key": "monthly_rent_after_closing",
+          "label": "交割後沿用租約每月租金",
+          "unit": "money",
+          "value": 61000,
+          "currency": "HKD",
+          "approximate": false,
+          "precision": 0,
+          "basis": "租約至2027年11月30日，租金不含差餉、地租和管理費",
+          "evidence": {
+            "documentId": "YS-20261014-f3c8cb20fa41",
+            "pages": [
+              3
+            ]
+          }
         }
       ]
     },

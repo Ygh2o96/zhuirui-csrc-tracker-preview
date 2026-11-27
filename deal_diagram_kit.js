@@ -9285,7 +9285,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"交割對價及再投資股權"}])]});
   }
+  function buildEBonOffice(c,docs){
+    const configs={
+      "00599":{
+        a:"YS-20261014-f3c8cb20fa41",z:"YS-20261113-27b98732d974",date:"2026-11-10",event:"definitive_agreement",status:"active",
+        ts:[["purchase_property",26000000,"a"],["deposit_first_paid",1000000,"a"],["deposit_second_paid",1600000,"z"],["closing_balance_payable",23400000,"z"]],
+        left:"收購第一商業大廈兩間辦公室",right:"定金與交割安排",badge:"正式協議已簽 · 已付定金260萬港元",seller:"Zone One (CS) Limited",buyer:"新凌有限公司",sSub:"禮頓道33–35號 · 20樓A及B室",bSub:"怡邦行全資附屬公司",main:"約定現金對價2,600萬港元",
+        steps:[["10月14日簽臨時協議","首筆定金100萬港元已付"],["11月10日簽正式協議","再付160萬港元 · 取代臨時協議"],["交割預計最遲2027年1月22日","餘款2,340萬港元於交割時支付"]],
+        detail:"物業按現狀連租約購入，交割起按租約每月收取租金6.1萬港元，現有租約至2027年11月30日。公司按上市規則14.44取得合共52.8%的股東書面批准。",pagesA:[1,2,3,7],pagesZ:[1,2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"正式協議及已付款項"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00599-20261014-leighton-first-commercial-offices-ab")return buildEBonOffice(txCase,documents);
     if(txCase?.id==="HK-01846-20260220-fyeo")return buildEuroEyesFYEO(txCase,documents);
     if(txCase?.id==="HK-01757-20251023-china-vc-control-mgo")return buildAffluentChinaVC(txCase,documents);
     if(txCase?.id==="HK-00223-20250514-china-innovation-partial-lapsed")return buildElifeLapsed(txCase,documents);
