@@ -2,6 +2,204 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01057-20260807-shibao-a-placing",
+      "code": "01057",
+      "name": "浙江世寶：向特定對象發行A股",
+      "aliases": [
+        "浙江世宝",
+        "Zhejiang Shibao",
+        "002703",
+        "A股定增",
+        "中信證券",
+        "金杜",
+        "天健"
+      ],
+      "category": "placing",
+      "mechanism": "浙江世寶擬向不超過35名特定對象發行A股，募資上限人民幣13.94億元；深交所已受理，待其審核通過及中國證監會同意註冊。",
+      "headlineKey": "gross_max",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "發行人": "浙江世寶股份有限公司（01057／002703）",
+        "認購對象": "不超過35名特定對象，待詢價確定",
+        "保薦人及主承銷商": "中信證券股份有限公司"
+      },
+      "terms": [
+        {
+          "key": "gross_max",
+          "label": "募資總額上限",
+          "value": 1394000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "募集說明書申報稿披露的扣費前上限。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01057-prospectus",
+            "pages": [
+              5,
+              6
+            ]
+          }
+        },
+        {
+          "key": "pct_preissued",
+          "label": "發行前總股本比例上限",
+          "value": 30,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "股數取決於最終詢價；同時受發行前總股本30%上限約束。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01057-prospectus",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "investor_count_max",
+          "label": "發行對象人數上限",
+          "value": 35,
+          "unit": "count",
+          "currency": null,
+          "approximate": false,
+          "basis": "最終發行對象待定。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01057-prospectus",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "working_capital",
+          "label": "擬補充流動資金",
+          "value": 200000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "四項轉向及汽車電子等建設合計11.94億元，另2億元補流。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01057-prospectus",
+            "pages": [
+              5,
+              6
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:SPECIFIC-MANDATE",
+          "label": "上市規則 · 特定授權",
+          "classificationStatus": "applied",
+          "application": "香港按特定授權發行股份類別披露；境內待深交所審核及證監會同意註冊。",
+          "evidence": {
+            "documentId": "YS-20261127-01057-accept",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "中信證券股份有限公司",
+          "role": "Sponsor",
+          "side": "發行人",
+          "service": "A股再融資上市保薦人及主承銷商",
+          "evidence": {
+            "documentId": "YS-20261127-01057-prospectus",
+            "pages": [
+              13
+            ]
+          }
+        },
+        {
+          "firm": "北京市金杜律師事務所",
+          "role": "Legal",
+          "side": "發行人",
+          "service": "發行人律師",
+          "evidence": {
+            "documentId": "YS-20261127-01057-legal",
+            "pages": [
+              2,
+              4
+            ]
+          }
+        },
+        {
+          "firm": "天健會計師事務所（特殊普通合夥）",
+          "role": "Accountant",
+          "side": "發行人",
+          "service": "發行人會計師",
+          "evidence": {
+            "documentId": "YS-20261127-01057-prospectus",
+            "pages": [
+              13
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-08-07",
+          "kind": "first_announcement",
+          "label": "董事會通過並披露A股發行預案",
+          "state": "actual",
+          "detail": "首輪提出向特定對象發行A股。",
+          "evidence": {
+            "documentId": "YS-20260807-01057-plan",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-15",
+          "kind": "shareholder_vote",
+          "label": "臨時股東會及A/H類別會議批准",
+          "state": "actual",
+          "detail": "股東會及兩場類別股東會通過發行。",
+          "evidence": {
+            "documentId": "YS-20260915-01057-vote",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "regulatory_acceptance",
+          "label": "深交所已受理 · 待審核與註冊",
+          "state": "actual",
+          "detail": "公司於11月26日收到深證上審〔2026〕327號受理通知，11月27日公告。",
+          "evidence": {
+            "documentId": "YS-20261127-01057-accept",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "regulatory_acceptance",
+        "label": "深交所已受理 · 待審核與註冊"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-08245-20260828-canopy-placing",
       "code": "08245",
       "name": "烽翼集團：一般授權配售新股",
@@ -112727,6 +112925,48 @@
       "date": "2026-09-22",
       "title": "烽翼集團：完成根據一般授權配售新股份",
       "url": "https://canopyskyfire.com/wp-content/uploads/2026/09/%E5%AE%8C%E6%88%90%E6%A0%B9%E6%93%9A%E4%B8%80%E8%88%AC%E6%8E%88%E6%AC%8A%E9%85%8D%E5%94%AE%E6%96%B0%E8%82%A1%E4%BB%BD.pdf"
+    },
+    "YS-20260807-01057-plan": {
+      "id": "YS-20260807-01057-plan",
+      "caseId": "HK-01057-20260807-shibao-a-placing",
+      "date": "2026-08-07",
+      "title": "2026年度向特定對象發行A股股票預案",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0807/2026080701431_c.pdf"
+    },
+    "YS-20260915-01057-vote": {
+      "id": "YS-20260915-01057-vote",
+      "caseId": "HK-01057-20260807-shibao-a-placing",
+      "date": "2026-09-15",
+      "title": "臨時股東會與A/H類別股東會決議",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0915/2026091501337_c.pdf"
+    },
+    "YS-20261127-01057-accept": {
+      "id": "YS-20261127-01057-accept",
+      "caseId": "HK-01057-20260807-shibao-a-placing",
+      "date": "2026-11-27",
+      "title": "深交所受理發行申請",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701225_c.pdf"
+    },
+    "YS-20261127-01057-prospectus": {
+      "id": "YS-20261127-01057-prospectus",
+      "caseId": "HK-01057-20260807-shibao-a-placing",
+      "date": "2026-11-27",
+      "title": "向特定對象發行A股募集說明書（申報稿）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701249_c.pdf"
+    },
+    "YS-20261127-01057-sponsor": {
+      "id": "YS-20261127-01057-sponsor",
+      "caseId": "HK-01057-20260807-shibao-a-placing",
+      "date": "2026-11-27",
+      "title": "中信證券上市保薦書",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701281_c.pdf"
+    },
+    "YS-20261127-01057-legal": {
+      "id": "YS-20261127-01057-legal",
+      "caseId": "HK-01057-20260807-shibao-a-placing",
+      "date": "2026-11-27",
+      "title": "金杜法律意見書",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701313_c.pdf"
     }
   },
   "issuerLinks": [

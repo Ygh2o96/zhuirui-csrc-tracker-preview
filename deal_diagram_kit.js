@@ -6676,6 +6676,23 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3],label:"原件：配售協議、價格及佣金"},{documentId:cs,pages:[1],label:"原件：完成配售公告"}],compactSummary:"一般授權配售 · 694.8萬港元 · 9月22日完成",topology});
   }
 
+  function buildShibaoPlacing(c,docs){
+    const s="YS-20261127-01057-accept",p="YS-20261127-01057-prospectus",l="浙江世寶",r="不超過35名認購對象",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||docs?.[p]?.caseId!==c.id||!c.terms?.some(t=>t.key==="gross_max"&&t.value===1394000000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:206,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:362,status:"active",leftTitle:"向特定對象發行A股",rightTitle:"審核與註冊",transitionLabel:"深交所已受理",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"發行人（01057／002703）"),box("r","left",448,100,157,146,"public",r,"最終名單待詢價確定"),
+      box("agent","right",726,84,300,76,"target","中信證券","A股保薦人及主承銷商"),box("date","right",726,210,300,77,"public","待審核與註冊","深交所審核及中國證監會同意註冊")
+    ],[],[flow("asset","shares","①",192,137,448,"新A股 · 發行前股本30%上限"),flow("cash","cash","②",448,208,192,"募資上限人民幣13.94億元")]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"public",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"topup_placing",modality:"cash",status:"active",caseArchetypeLabel:"A股定向發行",caseModalityShortLabel:"人民幣",
+      before:{title:"發行安排",nodes,equityLinks:[]},after:{title:"審核與註冊",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬發行A股，數量不超過發行前總股本30%",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"募資總額不超過人民幣13.94億元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"發行對象",body:"不超過35名，最終價格及數量待詢價確定。"}, {tag:"②",title:"進度",body:"9月15日股東會及類別會議批准，11月26日收到深交所受理通知。"}],
+      evidenceLinks:[{documentId:s,pages:[1],label:"公告：申請獲受理"},{documentId:p,pages:[4,5,6,13],label:"申報稿：發行條款及中介"}],compactSummary:"A股定向發行 · 人民幣13.94億元上限 · 深交所受理",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10626,6 +10643,7 @@
     if(["HK-00921-20261106-business-coop","HK-00921-20261106-financial-services"].includes(txCase?.id))return buildHisenseDelayedFramework(txCase,documents);
     if(txCase?.id==="HK-01988-20261127-pengzhou-village-bank")return buildMinshengPengzhou(txCase,documents);
     if(txCase?.id==="HK-08245-20260828-canopy-placing")return buildCanopyPlacing(txCase,documents);
+    if(txCase?.id==="HK-01057-20260807-shibao-a-placing")return buildShibaoPlacing(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
