@@ -2,6 +2,298 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-00019-20261123-swire-cathay-secondary",
+      "code": "00019",
+      "name": "太古股份：配售國泰航空 4.15% 舊股",
+      "aliases": [
+        "太古股份",
+        "Swire Pacific",
+        "00087",
+        "国泰航空",
+        "國泰航空",
+        "00293",
+        "Cathay Pacific",
+        "舊股配售"
+      ],
+      "category": "major_disposal",
+      "headlineKey": "seller_gross_cash",
+      "parties": {
+        "出售方": "太古股份有限公司（00019 / 00087）",
+        "標的": "國泰航空有限公司（00293）已發行普通股",
+        "買方": "獨立承配人（公告未列名）"
+      },
+      "mechanism": "太古以每股 14.23 港元出售 252,655,000 股國泰舊股，約佔國泰普通股 4.15%，11 月 26 日完成。太古直接持股由約 39.15% 降至 35.00%；所得歸太古股份。",
+      "terms": [
+        {
+          "key": "seller_gross_cash",
+          "label": "出售總額（扣費前）",
+          "value": 3595280650,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "basis": "完成出售股數 × 每股 14.23 港元",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "approximate": false
+        },
+        {
+          "key": "placed_existing_shares",
+          "label": "已出售國泰舊股",
+          "value": 252655000,
+          "unit": "shares",
+          "currency": null,
+          "precision": 0,
+          "basis": "權益申報表欄17：現金出售",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "approximate": false
+        },
+        {
+          "key": "placing_price",
+          "label": "每股成交價",
+          "value": 14.23,
+          "unit": "per_share",
+          "currency": "HKD",
+          "precision": 2,
+          "basis": "現金出售",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "approximate": false
+        },
+        {
+          "key": "placed_stake",
+          "label": "出售股數佔國泰普通股",
+          "value": 4.15,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "普通股分母 6,081,128,038",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "approximate": true
+        },
+        {
+          "key": "expected_seller_net",
+          "label": "公告預計淨收款",
+          "value": 3575000000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "basis": "太古股份估算，已扣相關費用",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              5
+            ]
+          },
+          "approximate": true
+        },
+        {
+          "key": "seller_before",
+          "label": "太古原直接持股",
+          "value": 39.15,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "太古持有，公告估算",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              7
+            ]
+          },
+          "approximate": true
+        },
+        {
+          "key": "seller_after",
+          "label": "太古交割後直接持股",
+          "value": 35,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "直接實益持有 2,128,394,078 股 ÷ 6,081,128,038 股",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "approximate": true
+        },
+        {
+          "key": "seller_deemed_long",
+          "label": "太古權益申報好倉",
+          "value": 64.97,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "含第317條歸屬國航所持 1,822,436,334 股",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "approximate": true
+        },
+        {
+          "key": "discount_prev_close",
+          "label": "較協議日國泰收市價折讓",
+          "value": 8.5,
+          "unit": "percent",
+          "currency": null,
+          "precision": 1,
+          "basis": "11 月 23 日收市 15.55 港元",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              4
+            ]
+          },
+          "approximate": true
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-23",
+          "kind": "first_announcement",
+          "label": "公告舊股配售",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-23",
+          "kind": "shareholder_approval",
+          "label": "控股股東按第 14.44 條書面批准",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              7,
+              8
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-26",
+          "kind": "completion",
+          "label": "完成出售及交割",
+          "evidence": {
+            "documentId": "YS-20261126-00293-swire-form2",
+            "pages": []
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-14",
+          "kind": "dispatch",
+          "label": "預計於此日或之前寄發通函",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              2
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第 14 章主要交易",
+          "application": "與 3 月舊股配售、6 月可交換債、9 月加速換股合併計算",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              7
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14.44",
+          "label": "上市規則第 14.44 條",
+          "application": "約 69.20% 表決權之控股股東書面批准，毋須另開股東會",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              7,
+              8
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "J.P. Morgan Securities (Asia Pacific) Limited",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "出售方",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              2,
+              9,
+              10
+            ]
+          }
+        },
+        {
+          "firm": "Morgan Stanley & Co. International plc",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "出售方",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              2,
+              9,
+              10
+            ]
+          }
+        },
+        {
+          "firm": "The Hongkong and Shanghai Banking Corporation Limited",
+          "role": "PlacingAgent",
+          "service": "placing_bookrunning",
+          "side": "出售方",
+          "evidence": {
+            "documentId": "YS-20261123-00019-cathay-placing",
+            "pages": [
+              2,
+              9,
+              10
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-26",
+        "eventKind": "completion",
+        "label": "國泰舊股配售已完成 · 直接持有約 35.00%",
+        "status": "closed"
+      },
+      "progressDate": "2026-11-26",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
       "id": "HK-01088-20261127-shenhua-h-share-placing",
       "code": "01088",
       "name": "中國神華：一般授權配售新 H 股",
@@ -105598,6 +105890,20 @@
       "date": "2026-11-27",
       "title": "一般授權配售新 H 股",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700003.pdf"
+    },
+    "YS-20261123-00019-cathay-placing": {
+      "id": "YS-20261123-00019-cathay-placing",
+      "caseId": "HK-00019-20261123-swire-cathay-secondary",
+      "date": "2026-11-23",
+      "title": "主要交易：配售太古持有的國泰股份",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112301557.pdf"
+    },
+    "YS-20261126-00293-swire-form2": {
+      "id": "YS-20261126-00293-swire-form2",
+      "caseId": "HK-00019-20261123-swire-cathay-secondary",
+      "date": "2026-11-26",
+      "title": "太古股份權益披露 Form 2：完成出售（欄17–20）",
+      "url": "https://di.hkex.com.hk/di/NSForm2.aspx?ed=26%2F11%2F2026&fn=CS20261126E00233&lang=EN&sa1=cl&sa2=ns&sc=00293&sced=26%2F11%2F2026&scsd=26%2F11%2F2025&sd=26%2F11%2F2025&sid=501&src=Main&tk=ds"
     }
   },
   "issuerLinks": [

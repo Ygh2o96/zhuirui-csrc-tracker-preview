@@ -10008,7 +10008,34 @@
     const nodes=[{id:"b",role:"target",name:"鎮洋發展"},{id:"s",role:"listed",name:"浙江滬杭甬"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"shares",status:"active",stageDate:c.stage.date,stageLabel:j.badge,caseArchetypeLabel:"換股吸收合併",caseModalityLabel:"發行 A 股作換股對價",caseModalityShortLabel:"股份",before:{title:"吸收合併雙方",nodes,equityLinks:[]},after:{title:"方案待實施",nodes,equityLinks:[],outcomeBadge:j.badge},topology:topo,compactSummary:j.badge,flows:[{id:"swap",kind:"shares",direction:"rtl",fromLabel:"浙江滬杭甬",toLabel:"鎮洋發展換股股東",headline:"每 1 股鎮洋發展可換取 1.0931 股浙江滬杭甬 A 股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"換股與行權時間",body:"異議 H 股擬於 12 月 4–10 日申報，預定 12 月 21 日行權。換股及 A 股掛牌尚待實施。"}],evidenceLinks:[{documentId:j.orig,pages:[1],label:"首次交易公告"},{documentId:j.csrc,pages:[1],label:"註冊及同意發行股數"},{documentId:j.put,pages:[1,2,6],label:"異議 H 股股東安排"}]});
   }
+  function buildVerifiedSwireSale(c,docs) {
+    const x={"id":"HK-00019-20261123-swire-cathay-secondary","day":"2026-11-26","ann":"YS-20261123-00019-cathay-placing","di":"YS-20261126-00293-swire-form2","diUrl":"https://di.hkex.com.hk/di/NSForm2.aspx?ed=26%2F11%2F2026&fn=CS20261126E00233&lang=EN&sa1=cl&sa2=ns&sc=00293&sced=26%2F11%2F2026&scsd=26%2F11%2F2025&sd=26%2F11%2F2025&sid=501&src=Main&tk=ds"}, t=(key,value)=>c.terms?.some(v=>v.key===key&&v.value===value&&v.evidence?.documentId===x.di);
+    if(c.id!==x.id||c.stage?.date!==x.day||c.stage?.status!=="closed"||c.category!=="major_disposal"
+      || !c.events?.some(e=>e.kind==="completion"&&e.state==="actual"&&e.date===x.day&&e.evidence?.documentId===x.di)
+      ||docs?.[x.di]?.caseId!==c.id||docs[x.di].url!==x.diUrl||!docs?.[x.ann]?.url?.endsWith('/2026112301557.pdf')) return null;
+    if(!t("placed_existing_shares",252655000)||!t("placing_price",14.23)||!t("seller_gross_cash",3595280650)||!t("seller_after",35))return null;
+    const l="太古股份",r="獨立承配人",badge="11 月 26 日 · 舊股出售完成";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:204,labelHeight:34,label});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"closed",leftTitle:"太古配售已持有國泰舊股",rightTitle:"國泰直接持股變動",transitionLabel:"現金出售舊股",outcomeBadge:badge}),[
+     box("L_sell","left",43,100,149,146,"seller",l,"出售方 · 00019 / 00087"),
+     box("L_buy","left",448,100,157,146,"buyer",r,"公開文件未列名"),
+     box("R_before","right",728,84,295,75,"seller","39.15% → 35.00%","太古股份直接持有國泰普通股"),
+     box("R_em","right",728,210,295,75,"public","國泰普通股數不變","出售所得歸太古股份")
+    ],[],[arrow("shares","shares","①",192,138,448,"2.53 億股國泰舊股"),arrow("cash","cash","②",448,209,192,"總額約 36.0 億港元")]);
+    const nodes=[{id:"seller",role:"seller",name:l},{id:"placees",role:"buyer",name:r}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:x.day,archetype:"disposal",modality:"cash",status:"closed",
+     caseArchetypeLabel:"主要交易 · 舊股配售",caseModalityShortLabel:"出售國泰已發行股份",
+     before:{title:"太古直接持有約 39.15%",nodes,equityLinks:[]},after:{title:"太古直接持有約 35.00%",nodes,equityLinks:[],outcomeBadge:badge},
+     flows:[{id:"shares",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"252,655,000 股國泰普通股舊股（4.15%）"},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"每股 14.23 港元，總額 3,595,280,650 港元（扣費前）"}],
+     annotations:[{tag:"①",title:"直接持有與申報權益",body:"太古直接持有 35.00%；權益申報好倉 64.97%，另包括依《證券及期貨條例》第 317 條歸屬的國航持股。"},
+      {tag:"②",title:"股東批准",body:"太古集團持有上市公司約 69.20% 表決權，於 11 月 23 日書面批准。台賬所列淨額為公告估計。"}],
+     evidenceLinks:[{documentId:x.ann,pages:[2,3,5,7,8],label:"配售協議、淨額估計及書面批准"},{documentId:x.di,pages:[],label:"完成出售與權益申報：表格 2 欄 17–20"}],
+     compactSummary:"出售國泰 4.15% 舊股 · 完成後直接持股約 35.00%",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if (txCase?.id==="HK-00019-20261123-swire-cathay-secondary") { const x=buildVerifiedSwireSale(txCase,documents); return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-00576-20250819-oceanking-absorption")return buildOceankingMerger(txCase,documents);
     if(["HK-00217-20261026-yangquan-lng-leaseback","HK-00217-20261113-jinta-photovoltaic-leaseback"].includes(txCase?.id))return buildWrittenApprovedLeases(txCase,documents);
     if(["HK-01833-20260928-ping-an-framework-renewals","HK-06616-20260917-hkd-settled-cb"].includes(txCase?.id))return buildPAorGlobalRefi(txCase,documents);
