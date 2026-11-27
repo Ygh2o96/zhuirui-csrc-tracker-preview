@@ -2,6 +2,270 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-01088-20261127-shenhua-h-share-placing",
+      "code": "01088",
+      "name": "中國神華：一般授權配售新 H 股",
+      "aliases": [
+        "中国神华",
+        "中國神華",
+        "China Shenhua",
+        "601088",
+        "一般授權",
+        "新 H 股配售",
+        "煤炭"
+      ],
+      "category": "placing",
+      "headlineKey": "consideration",
+      "parties": {
+        "發行人": "中國神華能源股份有限公司（A+H）",
+        "承配人": "不少於六名獨立承配人"
+      },
+      "mechanism": "一般授權下按盡力基準擬配售最多 1.77 億股新 H 股，每股 38.10 港元，較 11 月 26 日 H 股收市價折讓 7.70%。全數配發後約佔擴大 H 股 4.98%、擴大全部已發行股本 0.81%。",
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "全數配發募資總額",
+          "value": 6743700000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "basis": "最多配發股數 × 配售價",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "approximate": false
+        },
+        {
+          "key": "new_shares",
+          "label": "擬配售新 H 股上限",
+          "value": 177000000,
+          "unit": "shares",
+          "currency": null,
+          "precision": 0,
+          "basis": "一般授權、盡力基準",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              3
+            ]
+          },
+          "approximate": false
+        },
+        {
+          "key": "price_per_share",
+          "label": "每股配售價",
+          "value": 38.1,
+          "unit": "per_share",
+          "currency": "HKD",
+          "precision": 2,
+          "basis": "現金認購",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "approximate": false
+        },
+        {
+          "key": "expected_net_proceeds",
+          "label": "預計募資淨額",
+          "value": 6726370000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "basis": "按全數配發扣估計佣金及費用",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              2
+            ]
+          },
+          "approximate": true
+        },
+        {
+          "key": "discount_prev_close",
+          "label": "較協議日 H 股收市價折讓",
+          "value": 7.7,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "2026-11-26 H 股收市價 HKD 41.28",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              2
+            ]
+          },
+          "approximate": true
+        },
+        {
+          "key": "placing_share_post_issue_pct",
+          "label": "佔擴大 H 股",
+          "value": 4.98,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "全數配發，未發生其他股本變動",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1
+            ]
+          },
+          "approximate": true
+        },
+        {
+          "key": "placing_share_total_equity_pct",
+          "label": "佔擴大全部已發行股份",
+          "value": 0.81,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "basis": "全數配發，未發生其他股本變動",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1
+            ]
+          },
+          "approximate": true
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-26",
+          "kind": "agreement",
+          "label": "盤後簽署配售協議",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              3
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "首次披露一般授權 H 股配售",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-01",
+          "kind": "completion",
+          "label": "預期交割 · 以條件達成為前提",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              4,
+              5,
+              10
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:general_mandate",
+          "label": "H 股一般授權",
+          "application": "使用 6 月 26 日股東週年大會授權；毋須另行取得股東批准",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              2,
+              6
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "China International Capital Corporation Hong Kong Securities Limited",
+          "role": "PlacingAgent",
+          "service": "配售代理兼整體協調人及 CMI",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              10,
+              11,
+              12
+            ]
+          }
+        },
+        {
+          "firm": "CLSA Limited",
+          "role": "PlacingAgent",
+          "service": "配售代理兼整體協調人及 CMI",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              1,
+              10,
+              11,
+              12
+            ]
+          }
+        },
+        {
+          "firm": "Somerley Capital Limited",
+          "role": "CMI",
+          "service": "資本市場中介人",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20261127-01088-h-placing",
+            "pages": [
+              10
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽配售協議 · 待條件達成"
+      },
+      "progressDate": "2026-11-27",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {},
+      "placementProof": {
+        "sourceId": "YS-20261127-01088-h-placing",
+        "extraSourceId": null,
+        "format": "H",
+        "name": "中國神華",
+        "priceDigits": 2,
+        "period": "2026-11-27",
+        "phase": "active",
+        "pctBasis": "全數配發後 H 股"
+      }
+    },
+    {
       "id": "HK-01561-20261005-panasia-pcdynamic-whitewash",
       "code": "01561",
       "name": "聯洋智能控股：PC Dynamic擬認購及債務重組",
@@ -105327,6 +105591,13 @@
       "date": "2026-11-27",
       "title": "浙江滬杭甬異議 H 股股東收購請求權安排",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700069.pdf"
+    },
+    "YS-20261127-01088-h-placing": {
+      "id": "YS-20261127-01088-h-placing",
+      "caseId": "HK-01088-20261127-shenhua-h-share-placing",
+      "date": "2026-11-27",
+      "title": "一般授權配售新 H 股",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700003.pdf"
     }
   },
   "issuerLinks": [

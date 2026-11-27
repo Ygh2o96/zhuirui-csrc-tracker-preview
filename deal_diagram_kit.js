@@ -6670,7 +6670,7 @@
     const p=c.placementProof, term=k=>c.terms?.find(t=>t.key===k), v=k=>term(k)?.value;
     if(c.category!=="placing"||!(["ordinary","H","topup"].includes(p.format))||docs?.[p.sourceId]?.caseId!==c.id||(p.extraSourceId&&docs?.[p.extraSourceId]?.caseId!==c.id)||c.stage?.date!==p.period||c.stage?.status!==p.phase)return null;
     const pending=p.phase==="active", real=p.format==="topup", h=p.format==="H";
-    if((pending?c.stage.eventKind!=="supplement":c.stage.eventKind!=="completion")||(!pending&&p.phase!=="closed"))return null;
+    if((pending?(c.stage.eventKind!=="supplement"&&!(c.id==="HK-01088-20261127-shenhua-h-share-placing"&&c.stage.eventKind==="first_announcement"&&docs?.[p.sourceId]?.url?.endsWith("/2026112700003.pdf"))):c.stage.eventKind!=="completion")||(!pending&&p.phase!=="closed"))return null;
     const q=v("new_shares"), price=v("price_per_share")??v("placing_price"), gross=v("consideration"), net=v("expected_net_proceeds")??v("net_proceeds"), pct=v("placing_share_post_issue_pct");
     if(!Number.isSafeInteger(q)||q<=0||!(price>0&&gross>0&&net>0&&pct>0&&pct<100)||term("placing_share_post_issue_pct")?.evidence?.documentId!==p.sourceId||Math.abs(Math.round(q*price*100)/100-gross)>(pending?1000:0.001)||(real&&v("old_shares_placed")!==q))return null;
     const fmt=v=>v.toLocaleString("en-US"), amt=x=>x>=1e8?(x/1e8).toFixed(1)+" 億港元":(x/1e4).toFixed(1)+" 萬港元";
@@ -10163,7 +10163,7 @@
     if(txCase?.id==="HK-01085-20260924-shandong-zibo-epc"){const x=buildVerifiedHengxinEpc(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-06666-20250911-everest-control-go"){const x=buildVerifiedEverestOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-03680-20260914-ligent-international-allocation"){const x=buildVerifiedRuiheAllocation(txCase,documents);return x&&validateDiagramSpec(x);}
-    if (["HK-01156-20261109-cne-placing","HK-09988-20260823-alibaba-new-share-placing","HK-06082-20260705-biren-h-share-placing","HK-06082-20261008-hshare-placing","HK-01196-20261101-realord-top-up","HK-01156-20260625-cne-june-placement"].includes(txCase?.id)) { const x=txCase?.placementProof&&buildProvenCashPlacement(txCase,documents);return x&&validateDiagramSpec(x)||null; }
+    if (["HK-01088-20261127-shenhua-h-share-placing","HK-01156-20261109-cne-placing","HK-09988-20260823-alibaba-new-share-placing","HK-06082-20260705-biren-h-share-placing","HK-06082-20261008-hshare-placing","HK-01196-20261101-realord-top-up","HK-01156-20260625-cne-june-placement"].includes(txCase?.id)) { const x=txCase?.placementProof&&buildProvenCashPlacement(txCase,documents);return x&&validateDiagramSpec(x)||null; }
     if(txCase?.id==="HK-00980-20261120-lianhua-asset-management-renewal"){const x=buildVerifiedLianhuaRenewal(txCase,documents);return x&&validateDiagramSpec(x);}
     if(["HK-02650-20260623-zhida-h-placement","HK-02650-20260923-zhida-h-placement"].includes(txCase?.id)){const s=buildVerifiedZhidaHPlacement(txCase,documents);return s&&validateDiagramSpec(s);}
     if(txCase?.id==="HK-01748-20261008-ocean-vivo"){const x=buildVerifiedOceanVivo(txCase,documents);return x&&validateDiagramSpec(x);}
