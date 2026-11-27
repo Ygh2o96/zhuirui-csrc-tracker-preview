@@ -2,6 +2,168 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-08623-20261127-saftower-subscription",
+      "code": "08623",
+      "name": "中國蜀塔：別具一格科技認購新股",
+      "aliases": [
+        "中国蜀塔",
+        "China Saftower",
+        "别具一格科技",
+        "Bie Ju Yi Ge Technology"
+      ],
+      "category": "placing",
+      "mechanism": "別具一格科技擬以每股0.12港元認購中國蜀塔3,700萬股新股，總額444萬港元；待聯交所批准新股上市及買賣。",
+      "headlineKey": "gross_total",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "發行人": "中國蜀塔國際控股集團有限公司",
+        "認購人": "別具一格科技有限公司"
+      },
+      "terms": [
+        {
+          "key": "gross_total",
+          "label": "認購總額",
+          "value": 4440000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "簽訂協議金額，交割待條件達成。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "placing_shares",
+          "label": "擬發行股數",
+          "value": 37000000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "新發股份。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "placing_price",
+          "label": "每股認購價",
+          "value": 0.12,
+          "unit": "price",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "港元。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "pct_enlarged",
+          "label": "擴大股本占比",
+          "value": 16.5,
+          "unit": "percent",
+          "currency": null,
+          "approximate": true,
+          "basis": "按協議完成且無其他股本變動。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "net_est",
+          "label": "估計淨籌",
+          "value": 4320000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "扣除估計專業費用及其他開支。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              6
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:GEM-GENERAL-MANDATE",
+          "label": "GEM上市規則 · 一般授權",
+          "classificationStatus": "applied",
+          "application": "股份按一般授權發行，仍須獲聯交所上市及買賣批准。",
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽有條件認購協議 · 待上市批准",
+          "state": "actual",
+          "detail": "按一般授權與單一認購人簽訂有條件協議。",
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-03-01",
+          "kind": "conditions_deadline",
+          "label": "約定最後截止日",
+          "state": "expected",
+          "detail": "如雙方另行協議可順延；待條件達成後第三個營業日完成。",
+          "evidence": {
+            "documentId": "YS-20261127-08623-subscription",
+            "pages": [
+              4,
+              9
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽有條件認購協議 · 待上市批准"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01057-20260807-shibao-a-placing",
       "code": "01057",
       "name": "浙江世寶：向特定對象發行A股",
@@ -12263,49 +12425,22 @@
           "timeZone": "Asia/Hong_Kong"
         },
         {
-          "date": "2026-11-30",
-          "detail": "預計至12月7日止。",
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "供股時間表將修訂 · 待撤回清盤呈請",
+          "state": "actual",
+          "detail": "和解款已付；尚未收到已簽署、可提交法院的同意傳票。原供股時間表將修訂，最新日期待公告。",
           "evidence": {
-            "documentId": "YS-20261126-ba9bcae1da54",
+            "documentId": "YS-20261127-01991-rights-delay",
             "pages": [
-              9
+              1,
+              2
             ]
           },
-          "kind": "supplement",
-          "label": "預計未繳股款供股權開始買賣",
-          "state": "expected",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-12-10",
-          "detail": "香港時間下午4時。",
-          "evidence": {
-            "documentId": "YS-20261126-ba9bcae1da54",
-            "pages": [
-              9
-            ]
-          },
-          "kind": "supplement",
-          "label": "供股認購及繳款截止",
-          "state": "expected",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-12-17",
-          "detail": "香港時間下午4時，須待條件達成。",
-          "evidence": {
-            "documentId": "YS-20261126-ba9bcae1da54",
-            "pages": [
-              9
-            ]
-          },
-          "kind": "supplement",
-          "label": "預計供股成為無條件的最後期限",
-          "state": "expected",
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-26",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "發行股份增加超過50%，須獨立股東批准。",
@@ -12335,9 +12470,9 @@
         }
       ],
       "stage": {
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "eventKind": "supplement",
-        "label": "已刊供股章程 · 待認購",
+        "label": "供股時間表將修訂 · 待撤回清盤呈請",
         "status": "active"
       },
       "terms": [
@@ -112967,6 +113102,20 @@
       "date": "2026-11-27",
       "title": "金杜法律意見書",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701313_c.pdf"
+    },
+    "YS-20261127-01991-rights-delay": {
+      "id": "YS-20261127-01991-rights-delay",
+      "caseId": "HK-01991-20260205-ta-yang-rights",
+      "date": "2026-11-27",
+      "title": "大洋集團：清盤呈請及和解進展、供股時間表將修訂",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701943.pdf"
+    },
+    "YS-20261127-08623-subscription": {
+      "id": "YS-20261127-08623-subscription",
+      "caseId": "HK-08623-20261127-saftower-subscription",
+      "date": "2026-11-27",
+      "title": "中國蜀塔：根據一般授權認購新股份",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701955.pdf"
     }
   },
   "issuerLinks": [

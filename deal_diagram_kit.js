@@ -6693,6 +6693,23 @@
       evidenceLinks:[{documentId:s,pages:[1],label:"公告：申請獲受理"},{documentId:p,pages:[4,5,6,13],label:"申報稿：發行條款及中介"}],compactSummary:"A股定向發行 · 人民幣13.94億元上限 · 深交所受理",topology});
   }
 
+  function buildSaftower(c,docs){
+    const s="YS-20261127-08623-subscription",l="中國蜀塔",r="別具一格科技",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="gross_total"&&t.value===4440000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:206,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:362,status:"active",leftTitle:"一般授權發行股份",rightTitle:"上市批准與交割",transitionLabel:"已簽認購協議",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"發行人（08623）"),box("r","left",448,100,157,146,"public",r,"認購人"),
+      box("agent","right",726,84,300,76,"target","認購對價","每股0.12港元"),box("date","right",726,210,300,77,"public","待上市批准","聯交所批准新股上市及買賣")
+    ],[],[flow("asset","shares","①",192,137,448,"3,700萬股新股份"),flow("cash","cash","②",448,208,192,"總額444萬港元")]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"public",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"topup_placing",modality:"cash",status:"active",caseArchetypeLabel:"新股認購",caseModalityShortLabel:"港元",
+      before:{title:"發行安排",nodes,equityLinks:[]},after:{title:"上市批准與交割",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬發行3,700萬股新股份",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"擬收取認購款444萬港元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"發行對象",body:"別具一格科技擬認購3,700萬股。"}, {tag:"②",title:"進度",body:"11月27日簽訂有條件認購協議，待上市批准。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3],label:"公告：認購條款及上市條件"}],compactSummary:"新股認購 · 444萬港元 · 待上市批准",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10644,6 +10661,7 @@
     if(txCase?.id==="HK-01988-20261127-pengzhou-village-bank")return buildMinshengPengzhou(txCase,documents);
     if(txCase?.id==="HK-08245-20260828-canopy-placing")return buildCanopyPlacing(txCase,documents);
     if(txCase?.id==="HK-01057-20260807-shibao-a-placing")return buildShibaoPlacing(txCase,documents);
+    if(txCase?.id==="HK-08623-20261127-saftower-subscription")return buildSaftower(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
