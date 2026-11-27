@@ -94383,6 +94383,352 @@
       "intervals": {
         "announcementToCompletion": 7
       }
+    },
+    {
+      "id": "HK-00217-20261026-yangquan-lng-leaseback",
+      "code": "00217",
+      "name": "中國誠通發展：陽泉華鑫設備售後回租",
+      "category": "major_acquisition",
+      "aliases": [
+        "中國誠通發展",
+        "中国诚通发展",
+        "陽泉華鑫",
+        "Yangquan Huaxin Liquefied Natural Gas Co., Ltd.",
+        "融資租賃",
+        "售後回租"
+      ],
+      "mechanism": "誠通融資租賃擬以人民幣2億元購買兩組 LNG 加注、淨化、壓縮和儲存等設備再租回予原業主，付款日起租期3年，每季支付，合計12期。已獲書面股東批准。",
+      "parties": {
+        "出租人": "Chengtong Financial Leasing Company Limited",
+        "承租人及設備賣方": "Yangquan Huaxin Liquefied Natural Gas Co., Ltd.",
+        "擔保方": "山西壓縮天然氣集團（Shanxi Compressed Natural Gas Group Co., Ltd.）",
+        "租賃資產": "兩組 LNG 加注、淨化、壓縮和儲存等設備"
+      },
+      "headlineKey": "consideration",
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "設備購買價／融資本金",
+          "value": 200000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "售後回租購買價",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              14
+            ]
+          }
+        },
+        {
+          "key": "total_rent",
+          "label": "估計總租金",
+          "value": 209970000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": true,
+          "basis": "含融資本金及估計利息，共12期",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              15
+            ]
+          }
+        },
+        {
+          "key": "estimated_interest",
+          "label": "估計租賃利息",
+          "value": 9970000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": true,
+          "basis": "總租金與購入價之差",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              15
+            ]
+          }
+        },
+        {
+          "key": "repurchase",
+          "label": "期末名義回購價",
+          "value": 2,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "已履行租約付款條件後的名義回購價",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              15
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-26",
+          "kind": "first_announcement",
+          "label": "簽署及公告售後回租協議",
+          "evidence": {
+            "documentId": "YS-2026102600975-00217-yangquan-lng",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-10-26",
+          "kind": "written_approval_disclosed",
+          "label": "公告已取得書面股東批准",
+          "evidence": {
+            "documentId": "YS-2026102600975-00217-yangquan-lng",
+            "pages": [
+              5
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-23",
+          "kind": "dispatch",
+          "label": "刊發通函（文件日期11月24日）",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              1,
+              14,
+              15,
+              21
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "公告列為主要交易。",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              21
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14.44",
+          "label": "上市規則 14.44",
+          "classificationStatus": "applied",
+          "application": "持股約53.14%的控股股東 CCHK 已書面批准，無需召開股東大會。",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-yangquan-lng",
+            "pages": [
+              21
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "stage": {
+        "date": "2026-11-23",
+        "eventKind": "dispatch",
+        "label": "已取得書面股東批准 · 待確認付款及起租",
+        "status": "approved"
+      },
+      "progressDate": "2026-11-23",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {
+        "announcementToCircular": 28
+      }
+    },
+    {
+      "id": "HK-00217-20261113-jinta-photovoltaic-leaseback",
+      "code": "00217",
+      "name": "中國誠通發展：金塔中光設備售後回租",
+      "category": "major_acquisition",
+      "aliases": [
+        "中國誠通發展",
+        "中国诚通发展",
+        "金塔中光",
+        "Jinta Zhongguang Solar Power Generation Co., Ltd.",
+        "融資租賃",
+        "售後回租"
+      ],
+      "mechanism": "誠通融資租賃擬以人民幣4億元購買三組光伏發電設備再租回予原業主，付款日起租期5年，每半年支付，合計10期。已獲書面股東批准。",
+      "parties": {
+        "出租人": "Chengtong Financial Leasing Company Limited",
+        "承租人及設備賣方": "Jinta Zhongguang Solar Power Generation Co., Ltd.",
+        "擔保方": "天津綠發電力集團（Green Development Electricity Group of Tianjin Co., Ltd.）",
+        "租賃資產": "三組光伏發電設備"
+      },
+      "headlineKey": "consideration",
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "設備購買價／融資本金",
+          "value": 400000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "售後回租購買價",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              14
+            ]
+          }
+        },
+        {
+          "key": "total_rent",
+          "label": "估計總租金",
+          "value": 444190000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": true,
+          "basis": "含融資本金及估計利息，共10期",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              15
+            ]
+          }
+        },
+        {
+          "key": "estimated_interest",
+          "label": "估計租賃利息",
+          "value": 44190000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": true,
+          "basis": "總租金與購入價之差",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              15
+            ]
+          }
+        },
+        {
+          "key": "repurchase",
+          "label": "期末名義回購價",
+          "value": 3,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "已履行租約付款條件後的名義回購價",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              15
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-13",
+          "kind": "first_announcement",
+          "label": "簽署及公告售後回租協議",
+          "evidence": {
+            "documentId": "YS-2026111300681-00217-jinta-photovoltaic",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-13",
+          "kind": "written_approval_disclosed",
+          "label": "公告已取得書面股東批准",
+          "evidence": {
+            "documentId": "YS-2026111300681-00217-jinta-photovoltaic",
+            "pages": [
+              6
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-23",
+          "kind": "dispatch",
+          "label": "刊發通函（文件日期11月24日）",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              1,
+              14,
+              15,
+              21
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "公告列為主要交易。",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              21
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14.44",
+          "label": "上市規則 14.44",
+          "classificationStatus": "applied",
+          "application": "持股約53.14%的控股股東 CCHK 已書面批准，無需召開股東大會。",
+          "evidence": {
+            "documentId": "YS-2026112300718-00217-jinta-photovoltaic",
+            "pages": [
+              21
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "stage": {
+        "date": "2026-11-23",
+        "eventKind": "dispatch",
+        "label": "已取得書面股東批准 · 待確認付款及起租",
+        "status": "approved"
+      },
+      "progressDate": "2026-11-23",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {
+        "announcementToCircular": 10
+      }
     }
   ],
   "coverage": {
@@ -104497,6 +104843,34 @@
       "date": "2026-09-24",
       "title": "環球新材國際：發行及同步回購完成",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0924/2026092402099.pdf"
+    },
+    "YS-2026102600975-00217-yangquan-lng": {
+      "id": "YS-2026102600975-00217-yangquan-lng",
+      "caseId": "HK-00217-20261026-yangquan-lng-leaseback",
+      "date": "2026-10-26",
+      "title": "陽泉華鑫售後回租首公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1026/2026102600975.pdf"
+    },
+    "YS-2026112300718-00217-yangquan-lng": {
+      "id": "YS-2026112300718-00217-yangquan-lng",
+      "caseId": "HK-00217-20261026-yangquan-lng-leaseback",
+      "date": "2026-11-23",
+      "title": "陽泉華鑫售後回租通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300718.pdf"
+    },
+    "YS-2026111300681-00217-jinta-photovoltaic": {
+      "id": "YS-2026111300681-00217-jinta-photovoltaic",
+      "caseId": "HK-00217-20261113-jinta-photovoltaic-leaseback",
+      "date": "2026-11-13",
+      "title": "金塔中光售後回租首公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1113/2026111300681.pdf"
+    },
+    "YS-2026112300718-00217-jinta-photovoltaic": {
+      "id": "YS-2026112300718-00217-jinta-photovoltaic",
+      "caseId": "HK-00217-20261113-jinta-photovoltaic-leaseback",
+      "date": "2026-11-23",
+      "title": "金塔中光售後回租通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300718.pdf"
     }
   },
   "issuerLinks": [
