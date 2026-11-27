@@ -9325,7 +9325,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"2025年報附註23：預付對價"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：實際對價及淨流出"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"法定安排完成"}])]});
   }
+  function buildGTGoldNingshan(c,docs){
+    const configs={
+      "08299":{
+        a:"YS-20260330-bf4de963728b",p:"YS-20260605-4f704ce3377b",z:"YS-20260629-1d96003045ad",o:"YS-20261112-9c72d1813d26",date:"2026-06-29",event:"completion",status:"closed",
+        ts:[["cash_and_shares_hkd",585000000,"o"],["cash_consideration_hkd",247000000,"o"],["consideration_shares",676000000,"z"],["share_issue_hkd",.5,"a"]],
+        left:"收購長盛聯合100%股權",right:"底層資產及交割後股權",badge:"2026年6月29日已交割 · 現金加代價股份",seller:"國泰黃金投資控股",buyer:"大唐黃金控股",sSub:"出售長盛聯合全部股權",bSub:"收購對價約5.9億港元",main:"現金約2.5億＋股份約3.4億港元",
+        steps:[["步步高礦業 · 間接80%","持有寧陝金礦相關許可"],["金誠礦業 · 間接80%","持有兩座選礦廠"],["向賣方發行6.76億股","每股0.50港元 · 佔大唐黃金擴大股本7.09%"]],
+        detail:"長盛聯合持有上善國際80%，上善國際間接持有步步高和金誠各100%。股東於6月25日批准收購及特別授權，6月29日完成交割及發行。",pagesA:[10,12,13,17,20,21],pagesP:[1],pagesZ:[1,2],pagesO:[22,23,28]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金及代價股份",caseModalityShortLabel:"現金及股份",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：對價及間接權益"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"交割及代價股份"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-08299-20260330-ningshan-mines")return buildGTGoldNingshan(txCase,documents);
     if(txCase?.id==="HK-00863-20250627-banxa")return buildOSLBanxa(txCase,documents);
     if(txCase?.id==="HK-00599-20261014-leighton-first-commercial-offices-ab")return buildEBonOffice(txCase,documents);
     if(txCase?.id==="HK-01846-20260220-fyeo")return buildEuroEyesFYEO(txCase,documents);

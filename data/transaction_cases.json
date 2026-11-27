@@ -69482,11 +69482,11 @@
       },
       "mandates": [],
       "mechanism": "GEM第19章重大收购 · 收购BVI控股公司100%，间接获两家矿业公司各80%",
-      "name": "大唐黄金收购陕西宁陕两座金矿权益",
+      "name": "大唐黃金收購寧陝金礦及選礦項目權益",
       "parties": {
         "买方": "大唐黄金控股有限公司",
         "卖方": "Cathay Gold Investment Holdings Limited（国泰黄金投资控股）",
-        "底层矿业资产": "宁陕县步步高矿业、宁陕县金诚矿业各80%间接权益",
+        "底层矿业资产": "寧陝縣步步高礦業（礦權）、寧陝縣金誠礦業（兩座選礦廠），各有80%間接權益",
         "直接标的": "ChangSheng United Investment Limited（长盛联合投资有限公司）100%"
       },
       "processEvents": [
@@ -69546,7 +69546,7 @@
       "stage": {
         "date": "2026-06-29",
         "eventKind": "completion",
-        "label": "两矿权益已交割 · 代价股份已发行",
+        "label": "寧陝兩家項目公司權益已交割 · 代價股份已發行",
         "status": "closed"
       },
       "terms": [
@@ -69624,6 +69624,22 @@
           "precision": 0,
           "unit": "money",
           "value": 69640000
+        },
+        {
+          "key": "vendor_post_issue_pct",
+          "label": "賣方獲發股份佔發行後股本",
+          "unit": "percent",
+          "value": 7.09,
+          "currency": null,
+          "approximate": true,
+          "precision": 2,
+          "basis": "發行6.76億股後的上市公司股本分母",
+          "evidence": {
+            "documentId": "YS-20260629-1d96003045ad",
+            "pages": [
+              2
+            ]
+          }
         }
       ]
     },
