@@ -2,6 +2,182 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-00379-20261127-tei-framework",
+      "code": "00379",
+      "name": "恒嘉融資租賃：冠邦國際醫療保健產品採購",
+      "aliases": [
+        "恒嘉融資租賃",
+        "恒嘉健康管理",
+        "冠邦國際",
+        "EG Leasing",
+        "Top Empire International"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "恒嘉健康管理向冠邦國際採購醫療及保健產品，2027至2029年年度上限分別為1.04億、1.19億及1.36億港元；有條件框架待獨立股東批准。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "中國恒嘉融資租賃集團有限公司（00379）",
+        "買方": "恒嘉健康管理有限公司（Ever Grand Healthcare Company Limited）",
+        "供應商": "冠邦國際（Top Empire International Limited）"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年採購上限",
+          "value": 104000000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "新框架每年採購金額上限。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年採購上限",
+          "value": 119000000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "新框架每年採購金額上限。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年採購上限",
+          "value": 136000000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "新框架每年採購金額上限。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "history_2025",
+          "label": "2025年實際採購",
+          "value": 60630000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "原框架歷史採購金額。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "history_2026_oct",
+          "label": "2026年1至10月實際採購",
+          "value": 53500000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "原框架歷史採購金額。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A.07",
+          "label": "上市規則 14A.07",
+          "classificationStatus": "applied",
+          "application": "冠邦國際由吳天墅及其配偶亓琴各持50%，二人合計被視為持上市公司13.07%；持續關連交易須獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              1,
+              4,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Aurelius Corporate Finance Limited",
+          "role": "IFA",
+          "side": "獨立董事委員會及獨立股東",
+          "service": "獨立財務顧問",
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽有條件框架 · 待獨立股東批准",
+          "state": "actual",
+          "detail": "有條件簽訂新框架，旭倫企業融資已獲委任為獨立財務顧問。",
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              1,
+              2,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-23",
+          "kind": "circular",
+          "label": "預計最遲寄發通函",
+          "state": "expected",
+          "detail": "披露預計於當日或之前寄發；股東會日期待正式通知。",
+          "evidence": {
+            "documentId": "YS-20261127-00379-tei",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽有條件框架 · 待獨立股東批准"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01385-20260817-rongsheng-fund",
       "code": "01385",
       "name": "復旦微電子：參與設立融盛曜元產業基金",
@@ -111043,6 +111219,13 @@
       "date": "2026-11-27",
       "title": "設立產業基金與簽署正式合夥協議",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701823.pdf"
+    },
+    "YS-20261127-00379-tei": {
+      "id": "YS-20261127-00379-tei",
+      "caseId": "HK-00379-20261127-tei-framework",
+      "date": "2026-11-27",
+      "title": "持續關連交易：冠邦國際框架採購協議",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701377.pdf"
     }
   },
   "issuerLinks": [

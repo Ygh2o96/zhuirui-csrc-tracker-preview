@@ -6544,6 +6544,24 @@
       evidenceLinks:[{documentId:o,pages:[10,12],label:"8月意向：原目標規模"},{documentId:s,pages:[1,3,4,6],label:"正式協議：認繳、治理、登記狀態"}],compactSummary:"認繳13.45億元 · 復旦認繳3億元 · 雙GP",topology});
   }
 
+  function buildTeiHealthFramework(c,docs){
+    const s="YS-20261127-00379-tei",l="恒嘉健康管理",r="冠邦國際",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||![[2027,104000000],[2028,119000000],[2029,136000000]].every(([y,v])=>c.terms?.some(t=>t.key==="cap_"+y&&t.value===v&&t.evidence?.documentId===s)))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:369,status:"active",leftTitle:"醫療及保健產品採購",rightTitle:"年度上限與批准條件",transitionLabel:"待獨立股東批准",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"恒嘉融資租賃全資附屬"),
+      box("r","left",448,100,157,146,"target",r,"關連供應商"),
+      box("cap","right",726,84,300,76,"target","2027–2029年上限","1.04億／1.19億／1.36億港元"),
+      box("vote","right",726,210,300,78,"public","批准先決條件","通函擬於12月23日或之前寄發")
+    ],[],[{id:"asset",panel:"left",kind:"asset",step:"①",pathPoints:[[448,168],[192,168]],labelCenter:[320,168],labelWidth:210,labelHeight:35,label:"醫療及保健產品",dashed:true}]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"持續關連採購",caseModalityShortLabel:"港元年度上限",
+      before:{title:"有條件採購框架",nodes,equityLinks:[]},after:{title:"年度交易上限",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"asset",direction:"rtl",fromLabel:r,toLabel:l,headline:"冠邦國際向恒嘉健康管理供應醫療及保健產品",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"年度採購上限",body:"2027年1.04億、2028年1.19億、2029年1.36億港元。"}, {tag:"②",title:"生效條件",body:"由2027年1月1日與獨立股東批准日兩者較遲起至2029年底；旭倫企業融資獲委任為獨立財務顧問。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3,4,6,7],label:"原件：框架上限、關連關係及批准條件"}],compactSummary:"醫療採購框架 · 首年上限1.04億港元 · 待獨立股東批准",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10476,6 +10494,7 @@
     if(txCase?.id==="HK-08487-20261028-isp-placing")return buildIspPlacing(txCase,documents);
     if(["HK-01202-20261127-8th-sales","HK-01202-20261127-51st-sales","HK-01202-20261127-23rd-sales","HK-01202-20261127-seekon-sales","HK-01202-20261127-rongwei-sales","HK-01202-20261127-sumitomo-purchase","HK-01202-20261127-23rd-purchase","HK-01202-20261127-29th-purchase","HK-01202-20261127-siwi-purchase"].includes(txCase?.id))return buildSiwiFramework27(txCase,documents);
     if(txCase?.id==="HK-01385-20260817-rongsheng-fund")return buildFudanIndustrialFund(txCase,documents);
+    if(txCase?.id==="HK-00379-20261127-tei-framework")return buildTeiHealthFramework(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
