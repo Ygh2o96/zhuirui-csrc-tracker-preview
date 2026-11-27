@@ -71876,6 +71876,36 @@
           "precision": 0,
           "unit": "money",
           "value": 447298000
+        },
+        {
+          "key": "cash_paid_in_advance_hkd",
+          "label": "2025年已預付收購對價（港元報表值）",
+          "unit": "money",
+          "value": 484474000,
+          "currency": "HKD",
+          "approximate": false,
+          "precision": 0,
+          "basis": "2025年末列入預付款項；法定安排於2026年1月2日完成",
+          "evidence": {
+            "documentId": "YS-20260429-2026042904748",
+            "section": "2025年度財務報表附註23(b)，印刷頁157"
+          }
+        },
+        {
+          "key": "acquired_cash_hkd",
+          "label": "交割取得的標的現金及現金等價物",
+          "unit": "money",
+          "value": 37176000,
+          "currency": "HKD",
+          "approximate": false,
+          "precision": 0,
+          "basis": "中期附註14實際收購、淨現金流出勾稽",
+          "evidence": {
+            "documentId": "YS-20260924-faac14e33bab",
+            "pages": [
+              43
+            ]
+          }
         }
       ]
     },
@@ -101448,6 +101478,13 @@
       "title": "退市條件達成及要約結算安排",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011601061.pdf",
       "caseId": "HK-09666-20250428-broad-gongga-auction-and-cash-offer"
+    },
+    "YS-20260429-2026042904748": {
+      "id": "YS-20260429-2026042904748",
+      "caseId": "HK-00863-20250627-banxa",
+      "date": "2026-04-29",
+      "title": "OSL 2025年報：Banxa收購代價已預付",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042904748.pdf"
     }
   },
   "issuerLinks": [

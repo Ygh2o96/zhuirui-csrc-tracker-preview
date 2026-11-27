@@ -9305,7 +9305,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"正式協議及已付款項"}])]});
   }
+  function buildOSLBanxa(c,docs){
+    const configs={
+      "00863":{
+        a:"YS-20250627-3bef4bf091b4",p:"YS-20260429-2026042904748",z:"YS-20260102-0edeae4a32d7",o:"YS-20260924-faac14e33bab",date:"2026-01-02",event:"completion",status:"closed",
+        ts:[["contract_cap_cad",85200000,"a"],["per_target_share_cad",1.55,"a"],["cash_paid_hkd",484474000,"o"],["net_banxa_cash_outflow_hkd",447298000,"o"],["cash_paid_in_advance_hkd",484474000,"p"]],
+        left:"加拿大法定安排收購Banxa",right:"預付、完成與現金口徑",badge:"2026年1月2日完成 · Banxa成為間接全資附屬公司",seller:"Banxa證券持有人",buyer:"OSL BNXA Acquisition",sSub:"普通股每股1.55加元",bSub:"OSL間接全資收購主體",main:"合約現金對價上限8,520萬加元",
+        steps:[["2025年末已預付現金對價","年報列報約4.8億港元"],["2026年1月2日法定安排完成","收購主體取得Banxa全部普通股"],["收購淨現金流出約4.5億港元","扣除交割取得現金3,717.6萬港元"]],
+        detail:"合約加元上限包括普通股、相關期權及認股權證。2025年已預付的現金對價與2026年完成時取得的現金分列。",pagesA:[2,3,17],pagesP:[],pagesZ:[1],pagesO:[43]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"2025年報附註23：預付對價"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：實際對價及淨流出"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"法定安排完成"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00863-20250627-banxa")return buildOSLBanxa(txCase,documents);
     if(txCase?.id==="HK-00599-20261014-leighton-first-commercial-offices-ab")return buildEBonOffice(txCase,documents);
     if(txCase?.id==="HK-01846-20260220-fyeo")return buildEuroEyesFYEO(txCase,documents);
     if(txCase?.id==="HK-01757-20251023-china-vc-control-mgo")return buildAffluentChinaVC(txCase,documents);
