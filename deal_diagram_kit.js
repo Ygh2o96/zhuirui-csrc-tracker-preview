@@ -6618,6 +6618,26 @@
       evidenceLinks:[{documentId:o,pages:[1],label:"9月披露"},{documentId:s,pages:[1,6,7,10,11,12,16],label:"11月通函：成交清單、規則及會議"}],compactSummary:"購入2,620萬股 · 482.24萬港元 · 已出通函",topology});
   }
 
+  function buildHisenseDelayedFramework(c,docs){
+    const x=({"HK-00921-20261106-business-coop":{"key":"business-coop","title":"2027業務合作框架","party":"海信集團控股股份有限公司","short":"海信控股","description":"雙向產品及服務","caption":"採購56.78億元／供應435.29億元","terms":[["purchase","採購產品和服務上限",5678410000,"CNY","年度上限，未計增值稅。",6],["supply","供應產品和服務上限",43528920000,"CNY","年度上限，未計增值稅。",9]],"evidence":[3,6,9,25],"headline":"supply","id":"HK-00921-20261106-business-coop","s":"YS-20261106-00921-business-coop","z":"YS-20261127-00921-business-coop"},"HK-00921-20261106-financial-services":{"key":"financial-services","title":"2027金融服務協議","party":"海信集團財務有限公司","short":"海信財務","description":"存貸款及其他金融服務","caption":"存款每日最高結餘190億元","terms":[["deposit","存款最大每日結餘",19000000000,"CNY","每日最高期末結餘，含利息。",14],["loans_bills","貸款及電子財務公司承兌匯票",4000000000,"CNY","最大每日結餘，含利息和服務費。",16],["discount","票據貼現利息上限",20000000,"CNY","年度上限。",17],["factoring","無追索權應收款保理上限",1000000000,"CNY","每日最高期末結餘。",17],["fx","結售匯年度上限",300000000,"USD","年度發生額。",19],["agency","代理服務費上限",3000000,"CNY","年度服務費。",20]],"evidence":[11,13,14,16,25,26],"headline":"deposit","id":"HK-00921-20261106-financial-services","s":"YS-20261106-00921-financial-services","z":"YS-20261127-00921-financial-services"}})[c.id];
+    if(!x||c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||docs?.[x.s]?.caseId!==c.id||docs?.[x.z]?.caseId!==c.id||!x.terms.every(([k,,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===x.s)))return null;
+    const l="海信家電",r=x.short,badge=c.stage.label,dual=x.key==="business-coop";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arr=(id,step,y,forward,label)=>({id,panel:"left",kind:"asset",step,pathPoints:forward?[[192,y],[448,y]]:[[448,y],[192,y]],labelCenter:[320,y],labelWidth:205,labelHeight:35,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:370,status:"active",leftTitle:x.title,rightTitle:"2027年上限及通函",transitionLabel:"通函延後 · 待獨立股東批准",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"上市公司 · 00921"),box("r","left",448,100,157,146,"target",r,"關連協議對手方"),
+      box("cap","right",726,84,300,76,"target","2027年主要上限",x.caption),
+      box("next","right",726,210,300,75,"public","預計最遲寄發通函","2026年12月15日")
+    ],[],dual?[arr("supply","①",136,true,"供應產品及服務"),arr("purchase","②",208,false,"採購產品及服務")]:[arr("services","①",168,false,"金融服務")]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}];
+    const g=(id,fromLabel,toLabel,direction,headline)=>({id,kind:"asset",direction,fromLabel,toLabel,headline,proposedOrTerminated:true});
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"持續關連框架",caseModalityShortLabel:"分項交易上限",
+      before:{title:"協議雙方",nodes,equityLinks:[]},after:{title:"上限與流程",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:dual?[g("supply",l,r,"ltr","集團向海信控股集團供應產品及服務"),g("purchase",r,l,"rtl","集團向海信控股集團採購產品及服務")]:[g("services",r,l,"rtl","海信財務提供存貸款、承兌匯票、結售匯、貼現、保理及代理服務")],
+      annotations:[{tag:"①",title:"2027年上限",body:x.caption+"；各項按公告口徑分開。"}, {tag:"②",title:"通函",body:"公告指通函預計延至12月15日或之前寄發，股東會日期待通知。"}],
+      evidenceLinks:[{documentId:x.s,pages:x.evidence,label:"首公告：雙方、各項上限及批准"},{documentId:x.z,pages:[1],label:"11月27日通函延後"}],compactSummary:x.caption+" · 通函延後",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10554,6 +10574,7 @@
     if(txCase?.id==="HK-03750-20261127-lochpine-lush")return buildCatlLochpineFund(txCase,documents);
     if(txCase?.id==="HK-01429-20261127-skymission-placing")return buildSkymissionPlacing(txCase,documents);
     if(txCase?.id==="HK-00770-20260922-canopy-share-buys")return buildEminenceCanopyPurchases(txCase,documents);
+    if(["HK-00921-20261106-business-coop","HK-00921-20261106-financial-services"].includes(txCase?.id))return buildHisenseDelayedFramework(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
