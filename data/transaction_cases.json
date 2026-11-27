@@ -2,6 +2,196 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01429-20261127-skymission-placing",
+      "code": "01429",
+      "name": "天任集團：一般授權配售新股",
+      "aliases": [
+        "天任集团",
+        "Skymission",
+        "SolarStone Capital"
+      ],
+      "category": "placing",
+      "mechanism": "天任集團透過SolarStone Capital按盡力基準，擬以每股0.10港元向不少於六名獨立承配人配售最多3.20億股新股。",
+      "headlineKey": "gross_max",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "天任集團控股有限公司",
+        "配售代理": "SolarStone Capital Limited",
+        "承配人": "原擬不少於六名獨立承配人"
+      },
+      "terms": [
+        {
+          "key": "gross_max",
+          "label": "配售總額上限",
+          "value": 32000000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "假設悉數配售。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "placing_shares",
+          "label": "配售股數上限",
+          "value": 320000000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "新發股份。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "placing_price",
+          "label": "每股配售價",
+          "value": 0.1,
+          "unit": "price",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "港元。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "net_max",
+          "label": "估計淨籌上限",
+          "value": 31700000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "悉數配售後扣除佣金。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "commission",
+          "label": "配售代理佣金",
+          "value": 300000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "公告列出的約定佣金。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "pct_enlarged",
+          "label": "擴大股本占比",
+          "value": 14.29,
+          "unit": "percent",
+          "currency": null,
+          "approximate": true,
+          "basis": "假設悉數配售且沒有其他變動。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:GENERAL-MANDATE",
+          "label": "上市規則 · 一般授權",
+          "classificationStatus": "applied",
+          "application": "採用一般授權，待聯交所批准配售股上市及買賣。",
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              2,
+              4
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "SolarStone Capital Limited",
+          "role": "PlacingAgent",
+          "side": "發行人",
+          "service": "配售代理",
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽有條件配售協議 · 待上市批准",
+          "state": "actual",
+          "detail": "淨款擬各以50%用於償付貿易及其他應付款及員工成本。",
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-31",
+          "kind": "conditions_deadline",
+          "label": "約定最遲日期",
+          "state": "expected",
+          "detail": "公告定義為不遲於12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01429-placing",
+            "pages": [
+              8
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽有條件配售協議 · 待上市批准"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-03750-20261127-lochpine-lush",
       "code": "03750",
       "name": "寧德時代：香港時代參與 Lochpine Lush 基金",
@@ -111385,6 +111575,13 @@
       "date": "2026-11-27",
       "title": "寧德時代全資子公司參與投資產業投資基金",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701361_c.pdf"
+    },
+    "YS-20261127-01429-placing": {
+      "id": "YS-20261127-01429-placing",
+      "caseId": "HK-01429-20261127-skymission-placing",
+      "date": "2026-11-27",
+      "title": "天任集團根據一般授權配售新股",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701835.pdf"
     }
   },
   "issuerLinks": [

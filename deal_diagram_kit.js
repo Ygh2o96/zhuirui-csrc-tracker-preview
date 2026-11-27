@@ -6580,6 +6580,25 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3,4],label:"原件：認繳、管理及監管披露"}],compactSummary:"基金2.99億美元 · 香港時代認繳99.90% · 待按通知繳款",topology});
   }
 
+  function buildSkymissionPlacing(c,docs){
+    const s="YS-20261127-01429-placing",l="天任集團",r="獨立承配人",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||![s].every(x=>docs?.[x]?.caseId===c.id)||!c.terms?.some(t=>t.key==="placing_shares"&&t.value===320000000)||!c.terms?.some(t=>t.key==="net_max"&&t.value===31700000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:211,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:351,status:"active",leftTitle:"一般授權新股配售",rightTitle:"配售門檻與所得款用途",transitionLabel:"仍待達成配售條件",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"股份發行人"),
+      box("r","left",448,100,157,146,"buyer",r,"不少於 6 名"),
+      box("agent","right",726,84,300,76,"target","SolarStone Capital","配售代理 · 佣金 30 萬港元"),
+      box("use","right",726,210,300,75,"public","上限淨額約 3,170 萬港元","50% 償付賬款 · 50% 員工成本")
+    ],[],[arrow("asset","shares","①",192,138,448,"最多 3.20 億股新股"),arrow("cash","cash","②",448,209,192,"每股 0.10 港元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"topup_placing",modality:"cash",status:"active",caseArchetypeLabel:"一般授權新股配售",caseModalityShortLabel:"現金",
+      before:{title:"有條件配售",nodes,equityLinks:[]},after:{title:"配售安排",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"最多3.20億股新股",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"配售價每股0.10港元；最高淨額約3,170萬港元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"配售代理",body:"由 SolarStone Capital Limited 按盡力基準配售。"}, {tag:"②",title:"最新披露",body:"待聯交所批准配售新股上市及買賣，最遲日期為12月31日。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3,4,8],label:"原件：股數、價格、代理、上市批准及期限"}],compactSummary:"最多3.20億新股 · 每股0.10港元 · 待上市批准",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10514,6 +10533,7 @@
     if(txCase?.id==="HK-01385-20260817-rongsheng-fund")return buildFudanIndustrialFund(txCase,documents);
     if(txCase?.id==="HK-00379-20261127-tei-framework")return buildTeiHealthFramework(txCase,documents);
     if(txCase?.id==="HK-03750-20261127-lochpine-lush")return buildCatlLochpineFund(txCase,documents);
+    if(txCase?.id==="HK-01429-20261127-skymission-placing")return buildSkymissionPlacing(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
