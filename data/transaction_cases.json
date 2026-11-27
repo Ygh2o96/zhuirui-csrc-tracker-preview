@@ -2,6 +2,208 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-00854-20260623-willas-yct-supply-caps",
+      "code": "00854",
+      "name": "威雅利：向上海雅創供貨框架修訂",
+      "category": "continuing_connected",
+      "aliases": [
+        "威雅利電子",
+        "威雅利电子",
+        "Willas-Array",
+        "BDR.SI",
+        "上海雅創",
+        "上海雅创",
+        "Shanghai YCT",
+        "供貨框架"
+      ],
+      "parties": {
+        "供貨方": "威雅利電子（集團）有限公司（港股 00854／新交所 BDR）",
+        "買方": "上海雅創電子集團及其附屬公司"
+      },
+      "mechanism": "威雅利向控股股東上海雅創集團供應半導體電子元件。原 2026 年供貨上限 299.9 萬港元，修訂為 2026–2028 年每年 7,000 萬港元。獨立股東於 11 月 27 日通過。",
+      "headlineKey": "annual_supply_cap_2026",
+      "terms": [
+        {
+          "key": "original_supply_cap_2026",
+          "label": "2026 年原供貨上限",
+          "value": 2999000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "approximate": false,
+          "basis": "2026 年原合約年度上限",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              13
+            ]
+          }
+        },
+        {
+          "key": "annual_supply_cap_2026",
+          "label": "2026 年修訂供貨上限",
+          "value": 70000000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "approximate": false,
+          "basis": "各年度半導體電子元件供貨金額上限",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              14
+            ]
+          }
+        },
+        {
+          "key": "annual_supply_cap_2027",
+          "label": "2027 年修訂供貨上限",
+          "value": 70000000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "approximate": false,
+          "basis": "各年度半導體電子元件供貨金額上限",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              14
+            ]
+          }
+        },
+        {
+          "key": "annual_supply_cap_2028",
+          "label": "2028 年修訂供貨上限",
+          "value": 70000000,
+          "unit": "money",
+          "currency": "HKD",
+          "precision": 0,
+          "approximate": false,
+          "basis": "各年度半導體電子元件供貨金額上限",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              14
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-06-23",
+          "kind": "first_announcement",
+          "label": "公告簽署供貨補充契據",
+          "evidence": {
+            "documentId": "YS-20260623-00854-supply",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-10",
+          "kind": "dispatch",
+          "label": "刊發日期為 11 月 11 日的股東通函",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "label": "獨立股東通過修訂供貨上限",
+          "evidence": {
+            "documentId": "YS-20261127-00854-supply-vote",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "供貨議案 11,142,409 股投票全部贊成，零反對；76,955,745 股關連股份迴避。新加坡利益人士交易總授權另案以相同票數通過。",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:14A.54(1)",
+          "label": "香港上市規則第 14A.54(1) 條",
+          "application": "提高年度上限後重新遵守第 14A 章；本案須獨立股東批准",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              20,
+              41
+            ]
+          }
+        },
+        {
+          "code": "SGX:920",
+          "label": "新交所上市手冊第 920 條",
+          "application": "獨立股東另行批准利益人士交易總授權；須每年續期",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              16,
+              34
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Frontpage Capital Limited",
+          "firmZh": "富比資本",
+          "role": "IFA",
+          "side": "香港獨立董事委員會及獨立股東",
+          "service": "connected_ifa_opinion",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              1,
+              40,
+              58
+            ]
+          }
+        },
+        {
+          "firm": "Stirling Coleman Capital Limited",
+          "role": "IFA",
+          "side": "新加坡獨立董事",
+          "service": "SGX 利益人士交易總授權",
+          "evidence": {
+            "documentId": "YS-20261110-00854-supply-circular",
+            "pages": [
+              1,
+              34,
+              61,
+              75
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "vote",
+        "label": "獨立股東通過修訂供貨上限"
+      },
+      "progressDate": "2026-11-27",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {
+        "dispatchToVote": 17
+      }
+    },
+    {
       "id": "HK-00019-20261123-swire-cathay-secondary",
       "code": "00019",
       "name": "太古股份：配售國泰航空 4.15% 舊股",
@@ -105942,6 +106144,27 @@
       "date": "2026-11-27",
       "title": "11月27日股東大會投票表決結果",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271118.pdf"
+    },
+    "YS-20260623-00854-supply": {
+      "id": "YS-20260623-00854-supply",
+      "caseId": "HK-00854-20260623-willas-yct-supply-caps",
+      "date": "2026-06-23",
+      "title": "供貨框架補充契據及修訂年度上限",
+      "url": "https://links.sgx.com/FileOpen/eWAE_20260623_CCT_IPT.ashx?App=Announcement&FileID=893975"
+    },
+    "YS-20261110-00854-supply-circular": {
+      "id": "YS-20261110-00854-supply-circular",
+      "caseId": "HK-00854-20260623-willas-yct-supply-caps",
+      "date": "2026-11-10",
+      "title": "修訂年度上限及新加坡利益人士交易總授權通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111000752.pdf"
+    },
+    "YS-20261127-00854-supply-vote": {
+      "id": "YS-20261127-00854-supply-vote",
+      "caseId": "HK-00854-20260623-willas-yct-supply-caps",
+      "date": "2026-11-27",
+      "title": "11月27日特別股東大會投票結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700848.pdf"
     }
   },
   "issuerLinks": [

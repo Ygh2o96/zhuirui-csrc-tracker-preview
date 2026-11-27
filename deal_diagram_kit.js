@@ -10039,7 +10039,30 @@
      compactSummary:"出售國泰 4.15% 舊股 · 完成後直接持股約 35.00%",topology};
   }
 
+  function buildWillasSupply(c,docs){
+    const x={"id":"HK-00854-20260623-willas-yct-supply-caps","day":"2026-11-27","circ":"YS-20261110-00854-supply-circular","vote":"YS-20261127-00854-supply-vote","circUrl":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111000752.pdf","voteUrl":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700848.pdf","label":"獨立股東通過修訂供貨上限"};
+    if(c.stage?.status!=="active"||c.stage?.date!==x.day||c.stage?.eventKind!=="vote"||
+      docs?.[x.circ]?.caseId!==x.id||docs[x.circ].url!==x.circUrl||docs?.[x.vote]?.caseId!==x.id||docs[x.vote].url!==x.voteUrl||
+      !c.events?.some(e=>e.date===x.day&&e.kind==="vote"&&e.state==="actual"&&e.evidence?.documentId===x.vote)||
+      ![2026,2027,2028].every(y=>c.terms?.some(t=>t.key==="annual_supply_cap_"+y&&t.value===70000000&&t.currency==="HKD"&&t.evidence?.documentId===x.circ)))return null;
+    const l="威雅利電子",r="上海雅創集團",badge=x.label;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"半導體電子元件供貨",rightTitle:"修訂後年度上限及期限",transitionLabel:"持續關連交易",outcomeBadge:badge}),[
+     box("L_supply","left",43,100,149,146,"listed",l,"上市公司 · 00854"),
+     box("L_buyer","left",448,100,157,146,"buyer",r,"控股股東集團"),
+     box("R_caps","right",728,84,295,75,"target","每年上限 7,000 萬港元","2026、2027、2028 年各自適用"),
+     box("R_approval","right",728,210,295,75,"public","11 月 27 日獨立股東批准","新加坡總授權另案通過")
+    ],[],[{id:"supply",panel:"left",kind:"asset",step:"①",pathPoints:[[192,160],[448,160]],labelCenter:[320,160],labelWidth:204,labelHeight:34,label:"半導體電子元件"}]);
+    const nodes=[{id:"supplier",role:"listed",name:l},{id:"buyer",role:"buyer",name:r}];
+    return {id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:x.day,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"持續關連供貨",caseModalityShortLabel:"年度供貨上限",
+     before:{title:"原 2026 年上限 299.9 萬港元",nodes,equityLinks:[]},after:{title:"2026–2028 年每年上限 7,000 萬港元",nodes,equityLinks:[],outcomeBadge:badge},
+     flows:[{id:"supply",kind:"asset",direction:"ltr",fromLabel:l,toLabel:r,headline:"按個別訂單供應半導體電子元件"}],
+     annotations:[{tag:"①",title:"香港：修訂供貨條款",body:"補充契據把每年供貨上限調至 7,000 萬港元，期限至 2028 年末。富比資本就供貨及上限出具獨立意見。"},{tag:"②",title:"新加坡：利益人士交易總授權",body:"總授權按年續期，由 Stirling Coleman 就利益人士交易審查程序出具獨立意見。"}],
+     evidenceLinks:[{documentId:x.circ,pages:[13,14,16,20,40,61],label:"年度上限、監管規則及獨立意見"},{documentId:x.vote,pages:[1,2],label:"獨立股東表決結果"}],compactSummary:"2026–2028 年各年上限 7,000 萬港元 · 供貨議案獲批",topology};
+  }
+
   function getSpecForCase(txCase, documents) {
+    if (txCase?.id==="HK-00854-20260623-willas-yct-supply-caps") {const x=buildWillasSupply(txCase,documents); return x&&validateDiagramSpec(x);}
     if (txCase?.id==="HK-00019-20261123-swire-cathay-secondary") { const x=buildVerifiedSwireSale(txCase,documents); return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-00576-20250819-oceanking-absorption")return buildOceankingMerger(txCase,documents);
     if(["HK-00217-20261026-yangquan-lng-leaseback","HK-00217-20261113-jinta-photovoltaic-leaseback"].includes(txCase?.id))return buildWrittenApprovedLeases(txCase,documents);
