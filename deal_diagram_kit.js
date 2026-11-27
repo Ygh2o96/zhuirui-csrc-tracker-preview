@@ -9345,7 +9345,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金及代價股份",caseModalityShortLabel:"現金及股份",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：對價及間接權益"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"交割及代價股份"}])]});
   }
+  function buildFerrettiAzur(c,docs){
+    const configs={
+      "09638":{
+        a:"YS-20260119-2026011900247",p:"YS-20260327-121e958e6d63",z:"YS-20260415-43d2d3de1727",o:"YS-20260424-c754b51f7859",date:"2026-04-13",event:"completion",status:"closed",
+        ts:[["original_price_eur",3.5,"a"],["final_price_eur",3.9,"p"],["accepted_shares",29611598,"z"],["actual_cash_eur",115485232.2,"z"],["post_shares",78641625,"o"],["post_pct_confirmation",23.2336,"o"]],
+        left:"自願部分現金要約",right:"接納與已確認持股",badge:"部分要約已完成 · Azúr直接持股23.23%",seller:"有效接納股東",buyer:"Azúr（KKCG Maritime）",sSub:"要約最多收購約5,213萬股",bSub:"要約前持有49,030,027股",main:"每股3.50歐元提高至3.90歐元",
+        steps:[["4月13日截止 · 要約成為無條件","有效接納29,611,598股 · 全數承接"],["按最終條款約1.2億歐元","接納約為要約股份上限的56.8%"],["4月22日確認直接持有78,641,625股","按338,482,654股已發行股本計為23.23%"]],
+        detail:"法拉帝在香港及米蘭上市。結算安排於4月20日，4月22日的披露確認直接持股。持股比例按同一已發行股本由股數計算。",pagesA:[1,2],pagesP:[1,2],pagesZ:[1,2],pagesO:[2,3]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"要約價修訂"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"發行人4月22日確認持股"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-09638-20260119-azur-ferretti-eur")return buildFerrettiAzur(txCase,documents);
     if(txCase?.id==="HK-08299-20260330-ningshan-mines")return buildGTGoldNingshan(txCase,documents);
     if(txCase?.id==="HK-00863-20250627-banxa")return buildOSLBanxa(txCase,documents);
     if(txCase?.id==="HK-00599-20261014-leighton-first-commercial-offices-ab")return buildEBonOffice(txCase,documents);

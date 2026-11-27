@@ -70998,12 +70998,10 @@
         {
           "date": "2026-01-19",
           "evidence": {
-            "documentId": "YS-20260303-aa2766a87909",
+            "documentId": "YS-20260119-2026011900247",
             "pages": [
-              8,
-              14,
-              112,
-              127
+              1,
+              2
             ]
           },
           "kind": "first_announcement",
@@ -71175,7 +71173,7 @@
         },
         {
           "date": "2026-04-22",
-          "detail": "后续发行人原件确认持有78,641,625股、当日口径23.2336%，不等同于停收日分母下23.248335%。",
+          "detail": "發行人確認Azúr直接持有78,641,625股，佔已發行股本23.2336%。",
           "evidence": {
             "documentId": "YS-20260424-c754b51f7859",
             "pages": [
@@ -71231,10 +71229,9 @@
           "basis": "初始含股息价格，已被上调取代",
           "currency": "EUR",
           "evidence": {
-            "documentId": "YS-20260303-aa2766a87909",
+            "documentId": "YS-20260119-2026011900247",
             "pages": [
-              2,
-              112
+              1
             ]
           },
           "key": "original_price_eur",
@@ -71266,10 +71263,9 @@
           "basis": "部分要约上限，约占15.4%，不是实际接纳",
           "currency": null,
           "evidence": {
-            "documentId": "YS-20260303-aa2766a87909",
+            "documentId": "YS-20260119-2026011900247",
             "pages": [
-              2,
-              112
+              1
             ]
           },
           "key": "max_offer_shares",
@@ -71344,23 +71340,7 @@
         },
         {
           "approximate": true,
-          "basis": "份额用最终结果公告所载分母；并非后续登记日比例",
-          "currency": null,
-          "evidence": {
-            "documentId": "YS-20260415-43d2d3de1727",
-            "pages": [
-              2
-            ]
-          },
-          "key": "post_pct_final_snapshot",
-          "label": "最终结果书口径持股",
-          "precision": 6,
-          "unit": "percent",
-          "value": 23.248335
-        },
-        {
-          "approximate": true,
-          "basis": "4月22日文书计算比例；股份数与最终结果书相同",
+          "basis": "78,641,625股除以發行人338,482,654股已發行股本；4月22日發行人公告確認。",
           "currency": null,
           "evidence": {
             "documentId": "YS-20260424-c754b51f7859",
@@ -71373,6 +71353,20 @@
           "precision": 4,
           "unit": "percent",
           "value": 23.2336
+        },
+        {
+          "key": "issuer_capital_shares",
+          "label": "發行人已發行股本",
+          "unit": "shares",
+          "value": 338482654,
+          "currency": null,
+          "approximate": false,
+          "precision": 0,
+          "basis": "2026年股東會通知所列股份數",
+          "evidence": {
+            "documentId": "YS-20260402-ferretti-agm-capital",
+            "section": "Capitale sociale; 338.482.654 azioni"
+          }
         }
       ]
     },
@@ -101501,6 +101495,20 @@
       "date": "2026-04-29",
       "title": "OSL 2025年報：Banxa收購代價已預付",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042904748.pdf"
+    },
+    "YS-20260119-2026011900247": {
+      "id": "YS-20260119-2026011900247",
+      "caseId": "HK-09638-20260119-azur-ferretti-eur",
+      "date": "2026-01-19",
+      "title": "初始部分要約：最多52,132,861股",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0119/2026011900247.pdf"
+    },
+    "YS-20260402-ferretti-agm-capital": {
+      "id": "YS-20260402-ferretti-agm-capital",
+      "caseId": "HK-09638-20260119-azur-ferretti-eur",
+      "date": "2026-04-02",
+      "title": "發行人股東會通知：已發行股本338,482,654股",
+      "url": "https://www.ferrettigroup.com/Upload/EI_IPO_IT/20260402101325_AVVISO%20DI%20CONVOCAZIONE%20INTEGRALE%20%28ITA%29%281936575.2%29.pdf"
     }
   },
   "issuerLinks": [
