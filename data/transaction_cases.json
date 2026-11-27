@@ -92053,6 +92053,630 @@
       ],
       "comparables": {},
       "comparisonEvidence": {}
+    },
+    {
+      "id": "HK-00217-20261020-dunde-mining-leaseback",
+      "code": "00217",
+      "name": "中國誠通發展：敦德礦業設備售後回租",
+      "category": "vsa",
+      "aliases": [
+        "中國誠通發展",
+        "China Chengtong Development Group",
+        "敦德礦業"
+      ],
+      "mechanism": "誠通融資租賃擬以2.5億元人民幣購入敦德礦業27項礦山設備，自付款日起租回六年，估計租金2.7685億元，含估計租賃利息2,685萬元。",
+      "headlineKey": "consideration",
+      "parties": {
+        "上市公司": "中國誠通發展集團有限公司（00217）",
+        "承租人及設備賣方": "Bazhou Dunde Mining Co., Ltd.",
+        "買方及出租人": "Chengtong Financial Leasing Company Limited"
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "設備購入對價",
+          "value": 250000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-dunde-mining-leaseback",
+            "pages": [
+              50,
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "合約設備買入價，不包括租賃利息"
+        },
+        {
+          "key": "total_rent",
+          "label": "估計租金合計",
+          "value": 276850000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-dunde-mining-leaseback",
+            "pages": [
+              16
+            ]
+          },
+          "precision": 0,
+          "approximate": true,
+          "basis": "通函估計"
+        },
+        {
+          "key": "estimated_interest",
+          "label": "估計租賃利息",
+          "value": 26850000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-dunde-mining-leaseback",
+            "pages": [
+              16
+            ]
+          },
+          "precision": 0,
+          "approximate": true,
+          "basis": "通函估計"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "按披露與寶鋼及伊犁相關先前交易合計，最高適用比率超過100%。",
+          "evidence": {
+            "documentId": "YS-2026102001301-00217",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-20",
+          "kind": "first_announcement",
+          "label": "公告簽訂交易協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-2026102001301-00217",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "按原件與仍存續的同集團先前交易合計分類；本案資產價及租金各列。"
+        },
+        {
+          "date": "2026-11-10",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-dunde-mining-leaseback",
+            "pages": [
+              1,
+              13
+            ]
+          },
+          "detail": "通函署期11月11日。"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "label": "股東大會定於11月27日10:00",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-dunde-mining-leaseback",
+            "pages": [
+              1,
+              74
+            ]
+          },
+          "detail": "表決結果待公告。"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-10",
+        "eventKind": "dispatch",
+        "label": "通函已刊發 · 待股東表決結果",
+        "status": "active"
+      },
+      "progressDate": "2026-11-10",
+      "intervals": {
+        "announcementToDispatch": 21
+      },
+      "comparables": {},
+      "comparisonEvidence": {},
+      "mandates": []
+    },
+    {
+      "id": "HK-00217-20261021-xinte-wengniuteqi-leasebacks",
+      "code": "00217",
+      "name": "中國誠通發展：新疆華電新特及翁牛特旗售後回租",
+      "category": "vsa",
+      "aliases": [
+        "中國誠通發展",
+        "China Chengtong Development Group",
+        "新疆華電新特",
+        "華電翁牛特旗"
+      ],
+      "mechanism": "誠通融資租賃擬以1,300萬元及3,000萬元人民幣分別購入兩家華電企業的光伏及風電設備，每項自付款日起租回兩年。",
+      "headlineKey": "consideration",
+      "parties": {
+        "上市公司": "中國誠通發展集團有限公司（00217）",
+        "承租人及設備賣方 A": "Xinjiang Huadian Xinte Energy Co., Ltd.",
+        "承租人及設備賣方 B": "Huadian Wengniuteqi Wind Power Co., Ltd.",
+        "買方及出租人": "Chengtong Financial Leasing Company Limited"
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "設備購入對價",
+          "value": 43000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+            "pages": [
+              50,
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "合約設備買入價，不包括租賃利息"
+        },
+        {
+          "key": "xinte",
+          "label": "新疆華電新特設備購入價",
+          "value": 13000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        },
+        {
+          "key": "wengniuteqi",
+          "label": "華電翁牛特旗設備購入價",
+          "value": 30000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "按披露與先前同系華電交易合計，最高適用比率超過100%。",
+          "evidence": {
+            "documentId": "YS-2026102101075-00217",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-21",
+          "kind": "first_announcement",
+          "label": "公告簽訂交易協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-2026102101075-00217",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "兩筆租賃各有協議和表決議案；本頁按同次公告展示兩筆。"
+        },
+        {
+          "date": "2026-11-10",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+            "pages": [
+              1,
+              13
+            ]
+          },
+          "detail": "通函署期11月11日。"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "label": "股東大會定於11月27日10:00",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+            "pages": [
+              1,
+              75,
+              76
+            ]
+          },
+          "detail": "表決結果待公告。"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-10",
+        "eventKind": "dispatch",
+        "label": "通函已刊發 · 待股東表決結果",
+        "status": "active"
+      },
+      "progressDate": "2026-11-10",
+      "intervals": {
+        "announcementToDispatch": 20
+      },
+      "comparables": {},
+      "comparisonEvidence": {},
+      "mandates": []
+    },
+    {
+      "id": "HK-00217-20261022-jinmei-lease-assignment",
+      "code": "00217",
+      "name": "中國誠通發展：晉煤租賃資產及收款權轉讓",
+      "category": "major_acquisition",
+      "aliases": [
+        "中國誠通發展",
+        "China Chengtong Development Group",
+        "晉煤租賃項目"
+      ],
+      "mechanism": "誠通融資租賃擬承接焦煤融資租賃持有的晉煤租賃資產及收款權，對價上限3億元人民幣，實際金額按轉讓日未還本金確定。晉煤繼續承租。",
+      "headlineKey": "consideration",
+      "parties": {
+        "上市公司": "中國誠通發展集團有限公司（00217）",
+        "現出租人及轉讓方": "Coking Coal Financial Leasing Co., Ltd.",
+        "受讓方": "Chengtong Financial Leasing Company Limited",
+        "原承租人": "Shanxi Jinmei Taigang Energy Co., Ltd."
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "轉讓對價上限",
+          "value": 300000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-jinmei-lease-assignment",
+            "pages": [
+              20,
+              21,
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": true,
+          "basis": "實際按轉讓日的未還租賃本金確定"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "轉讓屬主要交易；原晉煤回租按同集團先前交易合計屬非常重大收購。公告亦按第13.13條披露。",
+          "evidence": {
+            "documentId": "YS-2026102201484-00217",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "code": "HKEX:13.13",
+          "label": "上市規則13.13",
+          "classificationStatus": "applied",
+          "application": "同一公告載列向實體提供墊款的披露。",
+          "evidence": {
+            "documentId": "YS-2026102201484-00217",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "label": "公告簽訂交易協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-2026102201484-00217",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "文件將資產及收款權轉讓與原售後回租分開，付款和債權轉移以實際轉讓日為準。"
+        },
+        {
+          "date": "2026-11-10",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-jinmei-lease-assignment",
+            "pages": [
+              1,
+              13
+            ]
+          },
+          "detail": "通函署期11月11日。"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "label": "股東大會定於11月27日10:00",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-jinmei-lease-assignment",
+            "pages": [
+              1,
+              75
+            ]
+          },
+          "detail": "表決結果待公告。"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-10",
+        "eventKind": "dispatch",
+        "label": "通函已刊發 · 待股東表決結果",
+        "status": "active"
+      },
+      "progressDate": "2026-11-10",
+      "intervals": {
+        "announcementToDispatch": 19
+      },
+      "comparables": {},
+      "comparisonEvidence": {},
+      "mandates": []
+    },
+    {
+      "id": "HK-00217-20261022-huadian-five-leasebacks",
+      "code": "00217",
+      "name": "中國誠通發展：華電山西五項設備售後回租",
+      "category": "vsa",
+      "aliases": [
+        "中國誠通發展",
+        "China Chengtong Development Group",
+        "陽高",
+        "爍晶",
+        "文水",
+        "大同",
+        "雲岡"
+      ],
+      "mechanism": "誠通融資租賃擬向華電山西五家企業購入風電、光伏及變電設備，合計2.45億元人民幣，再分別租予原持有人；陽高三年，其餘四項均兩年。",
+      "headlineKey": "consideration",
+      "parties": {
+        "上市公司": "中國誠通發展集團有限公司（00217）",
+        "承租人及設備賣方": "陽高、爍晶、文水、大同及雲岡五家華電系企業",
+        "買方及出租人": "Chengtong Financial Leasing Company Limited"
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "設備購入對價",
+          "value": 245000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              50,
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "合約設備買入價，不包括租賃利息"
+        },
+        {
+          "key": "yanggao",
+          "label": "陽高設備購入價",
+          "value": 45000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        },
+        {
+          "key": "shuojing",
+          "label": "爍晶設備購入價",
+          "value": 60000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        },
+        {
+          "key": "wenshui",
+          "label": "文水設備購入價",
+          "value": 50000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        },
+        {
+          "key": "datong",
+          "label": "大同設備購入價",
+          "value": 80000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        },
+        {
+          "key": "yungang",
+          "label": "雲岡設備購入價",
+          "value": 10000000,
+          "unit": "money",
+          "currency": "CNY",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              51
+            ]
+          },
+          "precision": 0,
+          "approximate": false,
+          "basis": "同公告分項協議"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "按披露與先前華電同集團交易合計，最高適用比率超過100%。",
+          "evidence": {
+            "documentId": "YS-2026102201490-00217",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "label": "公告簽訂交易協議",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-2026102201490-00217",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "detail": "五項協議對應五個表決議案，各自設備及金額獨立。"
+        },
+        {
+          "date": "2026-11-10",
+          "kind": "dispatch",
+          "label": "聯交所刊發通函",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              1,
+              13
+            ]
+          },
+          "detail": "通函署期11月11日。"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "vote",
+          "label": "股東大會定於11月27日10:00",
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "pages": [
+              1,
+              76,
+              77,
+              78
+            ]
+          },
+          "detail": "表決結果待公告。"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-10",
+        "eventKind": "dispatch",
+        "label": "通函已刊發 · 待股東表決結果",
+        "status": "active"
+      },
+      "progressDate": "2026-11-10",
+      "intervals": {
+        "announcementToDispatch": 19
+      },
+      "comparables": {},
+      "comparisonEvidence": {},
+      "mandates": []
     }
   ],
   "coverage": {
@@ -102005,6 +102629,70 @@
       "publishedAt": "2026-11-26T17:27:00+08:00",
       "title": "11月26日股東特別大會表決結果",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600685.pdf"
+    },
+    "YS-2026102001301-00217": {
+      "id": "YS-2026102001301-00217",
+      "caseId": "HK-00217-20261020-dunde-mining-leaseback",
+      "date": "2026-10-20",
+      "publishedAt": "2026-10-20T21:07:00+08:00",
+      "title": "中國誠通發展：敦德礦業設備售後回租",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102001301.pdf"
+    },
+    "YS-20261110-00217-dunde-mining-leaseback": {
+      "id": "YS-20261110-00217-dunde-mining-leaseback",
+      "caseId": "HK-00217-20261020-dunde-mining-leaseback",
+      "date": "2026-11-10",
+      "publishedAt": "2026-11-10T22:02:00+08:00",
+      "title": "售後回租及轉讓通函（署期11月11日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001199.pdf"
+    },
+    "YS-2026102101075-00217": {
+      "id": "YS-2026102101075-00217",
+      "caseId": "HK-00217-20261021-xinte-wengniuteqi-leasebacks",
+      "date": "2026-10-21",
+      "publishedAt": "2026-10-21T21:24:00+08:00",
+      "title": "中國誠通發展：新疆華電新特及翁牛特旗售後回租",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1021/2026102101075.pdf"
+    },
+    "YS-20261110-00217-xinte-wengniuteqi-leasebacks": {
+      "id": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+      "caseId": "HK-00217-20261021-xinte-wengniuteqi-leasebacks",
+      "date": "2026-11-10",
+      "publishedAt": "2026-11-10T22:02:00+08:00",
+      "title": "售後回租及轉讓通函（署期11月11日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001199.pdf"
+    },
+    "YS-2026102201484-00217": {
+      "id": "YS-2026102201484-00217",
+      "caseId": "HK-00217-20261022-jinmei-lease-assignment",
+      "date": "2026-10-22",
+      "publishedAt": "2026-10-22T22:02:00+08:00",
+      "title": "中國誠通發展：晉煤租賃資產及收款權轉讓",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201484.pdf"
+    },
+    "YS-20261110-00217-jinmei-lease-assignment": {
+      "id": "YS-20261110-00217-jinmei-lease-assignment",
+      "caseId": "HK-00217-20261022-jinmei-lease-assignment",
+      "date": "2026-11-10",
+      "publishedAt": "2026-11-10T22:02:00+08:00",
+      "title": "售後回租及轉讓通函（署期11月11日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001199.pdf"
+    },
+    "YS-2026102201490-00217": {
+      "id": "YS-2026102201490-00217",
+      "caseId": "HK-00217-20261022-huadian-five-leasebacks",
+      "date": "2026-10-22",
+      "publishedAt": "2026-10-22T22:06:00+08:00",
+      "title": "中國誠通發展：華電山西五項設備售後回租",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201490.pdf"
+    },
+    "YS-20261110-00217-huadian-five-leasebacks": {
+      "id": "YS-20261110-00217-huadian-five-leasebacks",
+      "caseId": "HK-00217-20261022-huadian-five-leasebacks",
+      "date": "2026-11-10",
+      "publishedAt": "2026-11-10T22:02:00+08:00",
+      "title": "售後回租及轉讓通函（署期11月11日）",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001199.pdf"
     }
   },
   "issuerLinks": [
