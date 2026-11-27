@@ -92942,6 +92942,138 @@
       "intervals": {
         "announcementToCircular": 20
       }
+    },
+    {
+      "id": "HK-00081-20261029-coli-lease-renewal",
+      "code": "00081",
+      "name": "中國海外宏洋／中國海外發展：內地物業租賃框架續期",
+      "aliases": [
+        "00081",
+        "00688",
+        "中国海外宏洋",
+        "中国海外发展",
+        "China Overseas Grand Oceans",
+        "China Overseas Land & Investment",
+        "COLI"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "宏洋集團成員向中國海外發展集團成員出租內地物業，按個別租約收取租金。框架期為2026年11月至2029年10月；兩個完整年度各人民幣1,300萬元上限。",
+      "parties": {
+        "出租方（00081）": "中國海外宏洋集團有限公司及集團成員",
+        "承租方（00688）": "中國海外發展有限公司及集團成員",
+        "承租方所持宏洋股權": "約39.63%（公告日）"
+      },
+      "headlineKey": "cap_2027",
+      "terms": [
+        {
+          "key": "cap_2026",
+          "label": "2026年11至12月租賃上限",
+          "value": 3000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "2026年11至12月最高總租金",
+          "evidence": {
+            "documentId": "YS-20261029-2026102901072",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2027",
+          "label": "2027年租賃上限",
+          "value": 13000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "2027年最高總租金",
+          "evidence": {
+            "documentId": "YS-20261029-2026102901072",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年租賃上限",
+          "value": 13000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "2028年最高總租金",
+          "evidence": {
+            "documentId": "YS-20261029-2026102901072",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年1至10月租賃上限",
+          "value": 11000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "2029年1至10月最高總租金",
+          "evidence": {
+            "documentId": "YS-20261029-2026102901072",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-29",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "續訂物業租賃框架並公告",
+          "evidence": {
+            "documentId": "YS-20261029-2026102901072",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "最高上限有比率逾0.1%，所有比率均低於5%；須申報、公告及年度審閱，豁免通函及獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261029-2026102901072",
+            "pages": [
+              1,
+              4
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "stage": {
+        "date": "2026-10-29",
+        "eventKind": "first_announcement",
+        "status": "active",
+        "label": "框架已簽 · 豁免通函及表決"
+      },
+      "progressDate": "2026-10-29",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
     }
   ],
   "coverage": {
@@ -102979,6 +103111,13 @@
       "date": "2026-11-11",
       "title": "中國海外宏洋通函及股東大會通知",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111100478.pdf"
+    },
+    "YS-20261029-2026102901072": {
+      "id": "YS-20261029-2026102901072",
+      "caseId": "HK-00081-20261029-coli-lease-renewal",
+      "date": "2026-10-29",
+      "title": "中國海外宏洋：續訂物業租賃框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1029/2026102901072.pdf"
     }
   },
   "issuerLinks": [

@@ -9922,7 +9922,32 @@
     evidenceLinks:[{documentId:a,pages:[1,2,3],label:"中國海外宏洋首份公告"},{documentId:b,pages:[1,2,3,8],label:"中國建築國際首份公告"},{documentId:q,pages:[9,16,17,37,42],label:"中國海外宏洋通函"}]});
   }
 
+  function buildCogoLease2026(c,docs) {
+    const a="YS-20261029-2026102901072",date="2026-10-29",status="active",badge="框架已簽 · 豁免通函及表決";
+    if(docs?.[a]?.caseId!==c.id||c.stage?.date!==date||c.stage?.status!==status||
+       !c.events?.some(x=>x.kind==="first_announcement"&&x.date===date&&x.state==="actual"&&x.evidence?.documentId===a)||
+       ![3000000,13000000,13000000,11000000].every((v,i)=>c.terms?.some(t=>t.key==="cap_"+(2026+i)&&t.currency==="CNY"&&t.value===v&&t.evidence?.documentId===a))) return null;
+    const left="宏洋物業租賃框架續期",right="各期租賃年度上限";
+    const s="中國海外宏洋",b="中國海外發展",prop="內地物業使用權",cash="按個別租約支付租金";
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:b}];
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const steps=[["2026年11至12月 · 300萬","人民幣 · 兩個月"],["2027年 · 1,300萬","人民幣 · 完整年度"],["2028年 · 1,300萬","人民幣 · 完整年度"],["2029年1至10月 · 1,100萬","人民幣 · 十個月"]];
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"租賃期間及上限",outcomeBadge:badge}),[
+      box("s","left",42,102,164,144,"seller",s,"00081 集團成員 · 出租方"),
+      box("b","left",438,102,178,144,"buyer",b,"00688 集團成員 · 承租方"),
+      ...steps.map(([t,u],i)=>box("z"+i,"right",724,66+i*86,310,65,"target",t,u))
+    ],[],[
+      {id:"asset",panel:"left",kind:"asset",step:"①",pathPoints:[[206,142],[438,142]],labelCenter:[322,142],labelWidth:194,labelHeight:34,label:prop,proposedOrTerminated:true},
+      {id:"cash",panel:"left",kind:"cash",step:"②",pathPoints:[[438,204],[206,204]],labelCenter:[322,204],labelWidth:194,labelHeight:34,label:cash,proposedOrTerminated:true}
+    ]);
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"關連租賃框架",caseModalityShortLabel:"關連租賃",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[
+      {id:"asset",kind:"asset",direction:"ltr",fromLabel:s,toLabel:b,headline:prop,proposedOrTerminated:true},
+      {id:"cash",kind:"cash",direction:"rtl",fromLabel:b,toLabel:s,headline:cash,proposedOrTerminated:true}
+    ],annotations:[{tag:"①",title:"框架與個別租約",body:"框架自2026年11月1日至2029年10月31日。租約及付款條款逐項訂立，租金參照周邊同類物業。中國海外發展持宏洋約39.63%；香港第14A章下須申報、公告及年度審閱。"}],evidenceLinks:[{documentId:a,pages:[1,2,3,4,7],label:"租賃框架公告"}]});
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00081-20261029-coli-lease-renewal")return buildCogoLease2026(txCase,documents);
     if(txCase?.id==="HK-00081-20261022-csci-construction-tender")return buildCogoConstructionTender(txCase,documents);
     if(["HK-01258-20261126-treasury-finance-frameworks","HK-00455-20261126-sph-framework-renewal","HK-02880-20261126-connected-frameworks"].includes(txCase?.id))return buildFinalThreeFrameworks(txCase,documents);
     if(["HK-00834-20261013-kd-renewal","HK-02199-20261126-zhaoqing-four-leases","HK-02517-20261126-cold-chain-renewal"].includes(txCase?.id))return buildKDZhaoqingColdChain(txCase,documents);
