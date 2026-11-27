@@ -9225,7 +9225,28 @@
     const nodes=[{id:"s",role:"seller",name:"場內交易對手"},{id:"b",role:"buyer",name:"Truesense Trading Limited"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"場內交易對手",toLabel:"Truesense Trading Limited",headline:"首輪場內買入約1,359.8萬港元"}],annotations:[{tag:"①",title:"要約及公眾持股",body:"有效接納佔股本10.92%，現金對價為8,238.3萬港元。6月25日授予9名員工的6,130萬股來自受託人既有股票，授出後按規則計入公眾持股。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:"場內買入及要約觸發"},{documentId:z,pages:[2,3,4,5],label:"要約截止及持股"},{documentId:r,pages:[1,2,3],label:"1月29日公眾持股口徑修正"},{documentId:g,pages:[1,2,3],label:"6月25日公眾持股恢復"}]});
   }
+  function buildElifeLapsed(c,docs){
+    const configs={
+      "00223":{
+        a:"YS-20250514-709bd565bc27",p:"YS-20251104-ff9e1247ea21",z:"YS-20260105-d621090f4260",date:"2026-01-05",event:"terminated",status:"terminated",
+        ts:[["targeted_and_required_shares",180000000,"z"],["offer_price",.056,"p"],["preheld_shares",226000000,"z"],["first_deadline_tendered_not_closed",5945686,"z"],["final_tendered_not_transferred",7007245,"z"]],
+        left:"擬收購1.8億股的部分要約",right:"接納進度與要約失效",badge:"未達1.8億股接納門檻 · 未發生轉讓",seller:"合資格股東",buyer:"中國創新投資",sSub:"擬收購股份佔當時股本13.27%",bSub:"原持2.26億股（16.66%）",main:"每股0.056港元現金",
+        steps:[["2025年10月28日先決條件達成","執行人員同意提出要約 · 要約人股東批准"],["12月22日首次截止後延期","5,945,686股有效接納"],["2026年1月5日部分要約失效","7,007,245股接納 · 達門檻的3.89%"]],
+        detail:"全數接納對價為1,008萬港元。延長後仍未達門檻，接納股份並未過戶，要約人須退回股份文件。",pagesA:[1,2],pagesP:[9,10,11],pagesZ:[2,3]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o,q.r].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="terminated"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"部分要約文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：財務確認與股權登記"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"接納結果及失效公告"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00223-20250514-china-innovation-partial-lapsed")return buildElifeLapsed(txCase,documents);
     if(txCase?.id==="HK-01980-20251119-truesense-on-market-mgo")return buildTianGeOffer(txCase,documents);
     if(txCase?.id==="HK-09666-20250428-broad-gongga-auction-and-cash-offer")return buildJinkeAuction(txCase,documents);
     if(txCase?.id==="HK-01561-20261005-panasia-pcdynamic-whitewash")return buildPanAsiaWhitewash(txCase,documents);
