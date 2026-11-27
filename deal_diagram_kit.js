@@ -9385,7 +9385,42 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"股份及購股權要約結果"}])]});
   }
+  function buildNovemberShipCases(c,docs){
+    const configs={
+      "HK-02198-20261116-zayton-ethane-h2763-h2765":{
+        a:"YS-20261116-ac2152c9d274",z:"YS-20261116-ac2152c9d274",date:"2026-11-16",event:"first_announcement",status:"active",
+        ts:[["completion_carriers_contract",320128000,"a"],["per_hull_contract_price",160064000,"a"],["deposit_per_hull_due",24009600,"a"]],
+        left:"承接兩份乙烷運輸船造船合同",right:"交付、付款及生效條件",badge:"換約已簽 · 待股東批准及退款保函",seller:"Zayton Shipping",buyer:"三江航運及三江運輸",sSub:"原買方移轉造船合同權利義務",bSub:"兩家附屬公司各承接一艘",main:"合同價合計約3.2億美元",
+        steps:[["H2763／H2765各約1.6億美元","預計分別於2030年3月及9月底前交付"],["每艘首期為合同價15%","應付約2,401.0萬美元 · 交付時付60%"],["須股東批准及取得退款保函","上市公司擬另保證第2至第4期付款"]],
+        detail:"承造及共同賣方為江南造船及中國船舶工業貿易。首期按原造船價抵扣，換約無另付溢價。每艘最終交付付款約9,603.8萬美元，視合同調整。退款保函條件僅可由相應新買方豁免。",pagesA:[1,2,4,5,6,7,8]
+      },
+      "HK-03877-20261117-two-80000dwt-grain-newbuilds":{
+        a:"YS-20261117-e168af42600e",z:"YS-20261117-e168af42600e",date:"2026-11-17",event:"first_announcement",status:"active",
+        ts:[["total_cost",652000000,"a"],["price_per_grain_carrier",326000000,"a"]],
+        left:"訂造兩艘8萬載重噸糧船",right:"付款、交付及生效條件",badge:"造船合同已簽 · 待獨立股東批准及相應租約生效",seller:"中船澄西及中船貿易",buyer:"中國船舶租賃或指定方",sSub:"分由中船澄西及中船廣西承造",bSub:"直接訂造 · 每艘約3.3億離岸人民幣",main:"兩艘合計6.5億離岸人民幣",
+        steps:[["每艘分五期付款","依生效、切鋼、鋪龍骨、下水、交付進度"],["預計2029年及2030年底前交付","合約允許延期，延誤賠償按約扣減"],["待獨立股東批准","並以相應光船租約生效等為先決條件"]],
+        detail:"糧船組金額只計這兩艘。上市規則按交易系列另計同日集裝箱船換約及9月十艘交易。",pagesA:[1,2,3,4,6,15,16]
+      },
+      "HK-03877-20261117-container-novation-h2782-h2783":{
+        a:"YS-20261117-f845eb803994",z:"YS-20261117-f845eb803994",date:"2026-11-17",event:"first_announcement",status:"active",
+        ts:[["container_total",122800000,"a"],["container_per_vessel",61400000,"a"]],
+        left:"承接兩艘集裝箱船造船合同",right:"換約、付款及交付",badge:"換約已簽 · 待獨立股東批准及相應租約生效",seller:"ASL Shipping",buyer:"CA Shipping",sSub:"原買方轉移造船合同權利義務",bSub:"集團間接非全資附屬公司",main:"兩份合同合計約1.2億美元",
+        steps:[["H2782及H2783，各5,300 TEU","每艘合同價6,140萬美元"],["預計2028年9月及11月底前交付","每艘分五期，最大一筆於交付時支付"],["換約最遲生效日為2027年1月31日","若未生效，原造船合同仍由原買方履行"]],
+        detail:"廣州文沖及中船貿易為共同賣方。換約待獨立股東批准及相應光船租約生效等條件。金額只計此組兩艘集裝箱船。",pagesA:[1,2,3,6,7,8,9,11,15]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"造船／換約條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02198-20261116-zayton-ethane-h2763-h2765","HK-03877-20261117-two-80000dwt-grain-newbuilds","HK-03877-20261117-container-novation-h2782-h2783"].includes(txCase?.id))return buildNovemberShipCases(txCase,documents);
     if(txCase?.id==="HK-08439-20260413-sky-links")return buildSomerleySky(txCase,documents);
     if(txCase?.id==="HK-09638-20260119-azur-ferretti-eur")return buildFerrettiAzur(txCase,documents);
     if(txCase?.id==="HK-08299-20260330-ningshan-mines")return buildGTGoldNingshan(txCase,documents);

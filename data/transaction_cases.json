@@ -72818,6 +72818,38 @@
           "precision": 2,
           "unit": "money",
           "value": 24009600
+        },
+        {
+          "key": "final_delivery_payment_per_hull",
+          "label": "每艘交付應付（合約價60%）",
+          "value": 96038400,
+          "currency": "USD",
+          "unit": "money",
+          "precision": 0,
+          "approximate": false,
+          "basis": "合約第五期，視交付調整",
+          "evidence": {
+            "documentId": "YS-20261116-ac2152c9d274",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "issuer_payment_guarantee_per_hull",
+          "label": "上市公司擬提供的每艘付款保證上限",
+          "value": 40016000,
+          "currency": "USD",
+          "unit": "money",
+          "precision": 0,
+          "approximate": false,
+          "basis": "於股東批准及生效後擬提供；涵蓋第2至4期",
+          "evidence": {
+            "documentId": "YS-20261116-ac2152c9d274",
+            "pages": [
+              7
+            ]
+          }
         }
       ]
     },
@@ -73130,7 +73162,7 @@
       "stage": {
         "date": "2026-11-17",
         "eventKind": "first_announcement",
-        "label": "两份集装箱船换约已签 · 待生效",
+        "label": "兩份集裝箱船換約已簽 · 待獨立股東批准及相應租約生效",
         "status": "active"
       },
       "terms": [
