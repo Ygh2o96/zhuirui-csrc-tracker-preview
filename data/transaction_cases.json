@@ -40811,6 +40811,34 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-26",
+          "kind": "antitrust_clearance",
+          "label": "越南競爭委員會批准",
+          "state": "actual",
+          "detail": "11月27日披露已於11月26日獲批，僅此一項反壟斷交割條件達成。",
+          "evidence": {
+            "documentId": "YS-20261127-01037-vietnam-clearance",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "越南反壟斷已獲批准 · 待其餘交割條件",
+          "state": "actual",
+          "detail": "其餘(b)–(d)條件仍待達成或適用時獲豁免；預期交割日期為12月3日。",
+          "evidence": {
+            "documentId": "YS-20261127-01037-vietnam-clearance",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
       "headlineKey": "control_cash",
@@ -40890,9 +40918,23 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-03",
+          "kind": "completion",
+          "label": "預期交割（餘下條件達成後）",
+          "state": "expected",
+          "detail": "交割後才觸發余股及購股權要約。",
+          "evidence": {
+            "documentId": "YS-20261127-01037-vietnam-clearance",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-20",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "SPA交割方触发；如发起股份要约仍须一致行动集团超过50%表决权",
@@ -40933,10 +40975,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-20",
+        "date": "2026-11-27",
+        "status": "active",
         "eventKind": "supplement",
-        "label": "越南反壟斷已受理 · 交割條件尚未達成",
-        "status": "active"
+        "label": "越南反壟斷已獲批准 · 待其餘交割條件"
       },
       "terms": [
         {
@@ -106165,6 +106207,13 @@
       "date": "2026-11-27",
       "title": "11月27日特別股東大會投票結果",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700848.pdf"
+    },
+    "YS-20261127-01037-vietnam-clearance": {
+      "id": "YS-20261127-01037-vietnam-clearance",
+      "caseId": "HK-01037-20260727-foxconn-control",
+      "date": "2026-11-27",
+      "title": "越南競爭委員會批准與預期交割日",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700217.pdf"
     }
   },
   "issuerLinks": [
