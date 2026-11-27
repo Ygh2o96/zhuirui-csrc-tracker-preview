@@ -9025,7 +9025,22 @@
     const nodes=[{id:'l',role:'buyer',name:from},{id:'r',role:'seller',name:to}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:'acquisition',modality:'cash',status:'active',stageDate:'2026-11-26',stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:'服務費',caseModalityShortLabel:'服務費',topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:'main',kind:'cash',direction:'ltr',fromLabel:from,toLabel:to,headline:left+'付款方向'}],annotations:[{tag:'①',title:'獨立股東表決',body:'Add Treasure Holdings Limited須迴避；Altus Capital Limited為獨立財務顧問。'}],evidenceLinks:[{documentId:a,pages:[1,2],label:'協議公告'},{documentId:n,pages:work?[11,28,29,55,61]:[16,19,21,23,28,29,55,61,62],label:'上限、獨立意見及表決'}]});
   }
+  function buildMinorConnectedContracts(c,docs){
+    const power=c.code==='03989', n=power?'YS-20261126-fangcaohu-operations':'YS-20261126-november-mri-tmsc-copper', date='2026-11-26';
+    if(c.stage?.date!==date||c.stage.status!=='active'||docs?.[n]?.caseId!==c.id||!c.events?.some(e=>e.kind==='first_announcement'&&e.evidence?.documentId===n&&e.state==='actual')||!c.terms?.some(t=>t.key==='contract_amount'&&t.value===(power?29900000:682631.68)&&t.evidence.documentId===n))return null;
+    const left=power?'芳草湖熱電委託運營':'陰極銅銷售合約',right='履約及結算條款',badge=power?'合約已簽 · 按月考核結算':'合約已簽 · 待交付及最終結算';
+    const from=power?'五家渠首熱':'TMSC Trading',to=power?'新疆天富':'MRI Trading';
+    const rows=power?[['公開招標中標','芳草湖熱電運營管理'],['服務期六個月','人民幣2,990萬元'],['按月結算及支付','以履約考核結果為準']]:[['陰極銅53公噸','賣方可調整±5% · CIF上海'],['公告列明約68.3萬美元','LME浮動銅價 · 先付105%暫付款'],['預計12月6日運抵上海','最終按貨值及其他費用結算']];
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:485,status:'active',leftTitle:left,rightTitle:right,transitionLabel:'合約條款',outcomeBadge:badge}),[
+      box('l','left',42,106,166,119,'buyer',from,power?'委託方':'採購方'),box('r','left',441,106,166,119,'seller',to,power?'運營服務方':'供應方'),
+      ...rows.map(([t,s],i)=>box('r'+i,'right',724,64+i*94,310,70,'target',t,s))
+    ],[],[{id:'main',panel:'left',kind:'cash',step:'①',pathPoints:[[208,169],[441,169]],labelCenter:[324,169],labelWidth:207,labelHeight:35,label:power?'委託運營費':'暫付及差額結算'}]);
+    const nodes=[{id:'l',role:'buyer',name:from},{id:'r',role:'seller',name:to}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:'acquisition',modality:'cash',status:'active',stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:'現金',caseModalityShortLabel:'現金',topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:'main',kind:'cash',direction:'ltr',fromLabel:from,toLabel:to,headline:left+'付款方向'}],annotations:[{tag:'①',title:'關連交易',body:power?'新疆天富為首創環境的間接全資附屬公司。委託方屬北京首創熱力的全資附屬公司。':'本期銅銷售按第14A.81條與公告指明的前兩份合約已交易金額合併計算。'}],evidenceLinks:[{documentId:n,pages:[1,2,3],label:'合約及交易公告'}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-03989-20261126-fangcaohu-operations","HK-00521-20261126-november-mri-tmsc-copper"].includes(txCase?.id))return buildMinorConnectedContracts(txCase,documents);
     if(["HK-00830-20261022-csc-services","HK-00830-20261022-csc-works"].includes(txCase?.id))return buildCscRenewals(txCase,documents);
     if(["HK-00990-20261120-penang-prai-offshore-equipment","HK-01627-20260520-able-best-tung-chung-lot54"].includes(txCase?.id))return buildPraiAble(txCase,documents);
     if(["HK-08246-20261007-vbit-subscription","HK-01187-20261119-kangjuren-60-percent"].includes(txCase?.id))return buildVbitCofoe(txCase,documents);

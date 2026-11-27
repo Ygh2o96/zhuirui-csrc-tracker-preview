@@ -2,6 +2,189 @@
   "asOf": "2026-11-26",
   "cases": [
     {
+      "id": "HK-00521-20261126-november-mri-tmsc-copper",
+      "code": "00521",
+      "name": "CWT International：MRI 銅陰極銷售",
+      "aliases": [
+        "CWT",
+        "MRI Trading",
+        "TMSC Trading",
+        "陰極銅",
+        "海航",
+        "LME"
+      ],
+      "category": "connected",
+      "mechanism": "MRI Trading 向 TMSC Trading 出售53公噸陰極銅（賣方可調整±5%），公告披露合約金額約68.3萬美元，最終按浮動銅價和交付結算。",
+      "parties": {
+        "上市公司": "CWT International Limited（00521）",
+        "供應方": "MRI Trading AG",
+        "採購方": "TMSC Trading Co., Limited",
+        "關連關係": "TMSC 為持有 CWT 約51.26%股權的 HNA Trust Management 的間接附屬公司。"
+      },
+      "headlineKey": "contract_amount",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "progressDate": "2026-11-26",
+      "stage": {
+        "date": "2026-11-26",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "陰極銅銷售合同已簽 · 待交付及最終結算"
+      },
+      "events": [
+        {
+          "date": "2026-11-26",
+          "kind": "first_announcement",
+          "label": "簽署合約",
+          "detail": "MRI Trading 向 TMSC Trading 出售53公噸陰極銅（賣方可調整±5%），公告披露合約金額約68.3萬美元，最終按浮動銅價和交付結算。",
+          "evidence": {
+            "documentId": "YS-20261126-november-mri-tmsc-copper",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-06",
+          "kind": "delivery",
+          "label": "預計運抵上海",
+          "detail": "預計到港時間，實際交付待披露。",
+          "evidence": {
+            "documentId": "YS-20261126-november-mri-tmsc-copper",
+            "pages": [
+              2
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "application": "與同屬 HNA Trust Management 的交易對手在12個月內兩份相關合約的已交易金額合併計算；公告列明適用比率高於0.1%但低於5%。",
+          "classificationStatus": "applied",
+          "code": "HKEX:14A.81",
+          "label": "上市规则 14A.81",
+          "evidence": {
+            "documentId": "YS-20261126-november-mri-tmsc-copper",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "intervals": {},
+      "terms": [
+        {
+          "key": "contract_amount",
+          "label": "公告所列合約金額",
+          "value": 682631.68,
+          "basis": "按LME浮動基準；先付105%暫付款，尾差按最終發票或借項通知結算。",
+          "currency": "USD",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-november-mri-tmsc-copper",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "HK-03989-20261126-fangcaohu-operations",
+      "code": "03989",
+      "name": "首創環境：芳草湖熱電委託運營",
+      "aliases": [
+        "Capital Environment",
+        "首创环境",
+        "芳草湖熱電",
+        "Xinjiang Tianfu"
+      ],
+      "category": "connected",
+      "mechanism": "新疆天富中標後簽訂芳草湖熱電委託運營協議，服務期六個月，人民幣2,990萬元服務費按月度考核結果結算。",
+      "parties": {
+        "上市公司": "首創環境控股有限公司（03989）",
+        "中標及服務方": "新疆天富垃圾焚燒發電有限責任公司",
+        "委託方": "Wujiaqu Shoure Hongtai Biomass Thermal Power Co., Ltd.",
+        "關連關係": "首創環境的控股股東北京首創生態環保集團持有委託方母企北京首創熱力35%股權。"
+      },
+      "headlineKey": "contract_amount",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "progressDate": "2026-11-26",
+      "stage": {
+        "date": "2026-11-26",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "委託運營合約已簽 · 按月考核結算"
+      },
+      "events": [
+        {
+          "date": "2026-11-26",
+          "kind": "first_announcement",
+          "label": "簽署合約",
+          "detail": "新疆天富中標後簽訂芳草湖熱電委託運營協議，服務期六個月，人民幣2,990萬元服務費按月度考核結果結算。",
+          "evidence": {
+            "documentId": "YS-20261126-fangcaohu-operations",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "rules": [
+        {
+          "application": "公告列明適用比率高於0.1%但低於5%，須申報及公告，獲豁免通函及獨立股東批准。",
+          "classificationStatus": "applied",
+          "code": "HKEX:14A.76(2)(a)",
+          "label": "上市规则 14A.76(2)(a)",
+          "evidence": {
+            "documentId": "YS-20261126-fangcaohu-operations",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "intervals": {},
+      "terms": [
+        {
+          "key": "contract_amount",
+          "label": "服務費總額",
+          "value": 29900000,
+          "basis": "中標服務費，六個月按月度考核結算。",
+          "currency": "CNY",
+          "approximate": false,
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261126-fangcaohu-operations",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "HK-00830-20261022-csc-services",
       "code": "00830",
       "category": "connected",
@@ -100603,6 +100786,22 @@
       "publishedAt": "2026-11-26T16:42:00+08:00",
       "title": "中國建築興業：兩項持續關連交易通函（署期11月27日）",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600407.pdf"
+    },
+    "YS-20261126-fangcaohu-operations": {
+      "id": "YS-20261126-fangcaohu-operations",
+      "caseId": "HK-03989-20261126-fangcaohu-operations",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T19:02:00+08:00",
+      "title": "首創環境：芳草湖熱電委託運營公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112601202.pdf"
+    },
+    "YS-20261126-november-mri-tmsc-copper": {
+      "id": "YS-20261126-november-mri-tmsc-copper",
+      "caseId": "HK-00521-20261126-november-mri-tmsc-copper",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T17:27:00+08:00",
+      "title": "CWT International：MRI 銅陰極銷售公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600695.pdf"
     }
   },
   "issuerLinks": [
