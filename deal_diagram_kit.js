@@ -9193,7 +9193,24 @@
     const nodes=[{id:"s",role:"buyer",name:"PC Dynamic Holdings Ltd"},{id:"b",role:"target",name:"聯洋智能控股"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"active",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金認購",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"cash",direction:"ltr",fromLabel:"PC Dynamic Holdings Ltd",toLabel:"聯洋智能控股",headline:"擬現金認購8,000萬港元",proposedOrTerminated:true}],annotations:[{tag:"①",title:"認購款及費用借款",body:"認購款擬分配予債權人計劃3,000萬、重組費用1,000萬及營運資金4,000萬港元。費用借款額度800萬港元，完成時納入認購代價，除非雙方另有約定。"}],evidenceLinks:[{documentId:a,pages:[2,4,5,11,12],label:"經修訂重組條款"},{documentId:z,pages:[1,2],label:"11月26日通函期限更新"},{documentId:e,pages:[1],label:"清盤呈請聆訊日期"}]});
   }
+  function buildJinkeAuction(c,docs){
+    const a="YS-20250919-29c62c36a966",p="YS-20251209-43a3fefd6965",u="YS-20260116-2026011601061",z="YS-20260213-a4703c93d0df",r="YS-20260220-IS20260220E00015",date="2026-02-20";
+    const values=[["auction_qty",107797875,a],["auction_original_bid",666835067.6,a],["enhanced_offer_price",8.69,p],["accept_shares",261394453,z],["boyu_submitted",4480200,z],["post_concert_shares",590761099,z],["offeror_direct_shares",512818828,r],["thematic_bridge_direct_shares",77942271,r]];
+    if(c.stage?.status!=="closed"||c.stage.date!==date||![a,p,u,z,r].every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date==="2026-02-13"&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!values.every(([key,value,id])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===id)))return null;
+    const left="司法拍賣股份過戶",right="修訂強制要約與退市",badge="要約截止 · 一致行動方99.49% · 撤銷上市";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:"closed",leftTitle:left,rightTitle:right,transitionLabel:"拍賣觸發強制要約",outcomeBadge:badge}),[
+      box("s","left",42,106,164,124,"seller","金科地產","拍賣股份原股東"),
+      box("b","left",438,106,178,124,"buyer","Broad Gongga（博裕）","9月18日過戶 · 取得約1.08億股"),
+      box("out1","right",724,72,310,73,"target","退市條件於1月16日達成","基礎6.67＋補差2.02＝每股8.69港元"),
+      box("out2","right",724,168,310,73,"creditor","2月13日要約截止","2.61億股有效接納 · 含博裕基金原持股份"),
+      box("out3","right",724,264,310,73,"creditor","Broad Gongga直接持股86.36%","Thematic Bridge另持13.13% · 合計99.49%")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"拍賣成交價約6.7億人民幣"}]);
+    const nodes=[{id:"s",role:"seller",name:"金科地產"},{id:"b",role:"buyer",name:"Broad Gongga Investment Pte. Ltd."}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"司法拍賣／現金要約",caseModalityShortLabel:"現金要約",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"金科地產",toLabel:"Broad Gongga Investment Pte. Ltd.",headline:"拍賣成交價約6.7億人民幣"}],annotations:[{tag:"①",title:"要約接納的持股歸屬",body:"博裕兩隻基金提交的448.02萬股已計入要約前一致行動持股，按集團口徑屬內部轉移。要約結算條款另設再投資選項；公告所列撤銷上市生效時間為2月20日下午4時。"}],evidenceLinks:[{documentId:a,pages:[2],label:"拍賣過戶及觸發要約"},{documentId:p,pages:[2,56],label:"修訂價及初始持股"},{documentId:u,pages:[2,4],label:"退市條件達成及補差"},{documentId:z,pages:[2,3],label:"要約結果及撤銷上市"},{documentId:r,label:"大股東權益披露 · 第20欄"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-09666-20250428-broad-gongga-auction-and-cash-offer")return buildJinkeAuction(txCase,documents);
     if(txCase?.id==="HK-01561-20261005-panasia-pcdynamic-whitewash")return buildPanAsiaWhitewash(txCase,documents);
     if(["HK-01671-20260526-lingang-thermal"].includes(txCase?.id))return buildLingangThermal(txCase,documents);
     if(["HK-00167-20251117-hunglap-horizon-receiver-mgo"].includes(txCase?.id))return buildIDTReceiver(txCase,documents);

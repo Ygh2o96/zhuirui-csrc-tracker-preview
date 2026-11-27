@@ -62123,7 +62123,7 @@
         {
           "date": "2025-04-28",
           "evidence": {
-            "documentId": "YS-20250718-e357d5c3c7f4",
+            "documentId": "YS-20250428-2025042803881",
             "pages": [
               1,
               2
@@ -62241,7 +62241,9 @@
       "parties": {
         "受要约公司": "Jinke Smart Services Group Co., Ltd.",
         "拍卖股份原股东": "Jinke Property",
-        "要约方": "Broad Gongga Investment Pte. Ltd."
+        "要约方": "Broad Gongga Investment Pte. Ltd.",
+        "拍賣股份原股東": "金科地產集團股份有限公司",
+        "拍賣執行": "金科地產管理人（重慶市第五中級人民法院監督）"
       },
       "processEvents": [
         {
@@ -62258,6 +62260,21 @@
           "kind": "supplement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "supplement",
+          "date": "2026-01-16",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "撤銷上市的獨立表決與接納條件均已達成，較基礎要約價每股補差2.02港元。",
+          "evidence": {
+            "documentId": "YS-20260116-2026011601061",
+            "pages": [
+              2,
+              3,
+              4
+            ]
+          }
         }
       ],
       "progressDate": "2026-02-20",
@@ -62346,7 +62363,7 @@
         },
         {
           "approximate": false,
-          "basis": "独享基本价的选项无额外补差价",
+          "basis": "初始現金價格；條件達成後按要約條款補差。",
           "currency": "HKD",
           "evidence": {
             "documentId": "YS-20251209-43a3fefd6965",
@@ -62364,7 +62381,7 @@
         },
         {
           "approximate": false,
-          "basis": "基础价及HK$2.02补差或直接增强条款，不适用于所有接纳",
+          "basis": "1月16日退市條件達成：基礎價6.67港元加2.02港元補差，或直接按8.69港元結算；具資格股東可另選再投資。",
           "currency": "HKD",
           "evidence": {
             "documentId": "YS-20251209-43a3fefd6965",
@@ -62382,7 +62399,7 @@
         },
         {
           "approximate": false,
-          "basis": "不是集团外净新增；不能以接纳股数×增强价估作实际现金",
+          "basis": "2月13日要約公告所列有效接納；集團權益勾稽另扣期前已計入的博裕基金股份。",
           "currency": null,
           "evidence": {
             "documentId": "YS-20260213-a4703c93d0df",
@@ -62414,23 +62431,21 @@
         },
         {
           "approximate": false,
-          "basis": "最终披露总接纳261,394,453扣期前集团内的Boyu基金4,480,200；系跨文书勾稽，不是公告直接披露的新指标",
+          "basis": "以權益披露的期後一致行動方持股，扣除拍賣前一致行動方持股和拍賣過戶股份。",
           "currency": null,
           "evidence": {
-            "documentId": "YS-20260213-a4703c93d0df",
-            "pages": [
-              2
-            ]
+            "documentId": "YS-20260220-IS20260220E00015",
+            "section": "第20欄：兩名實際持有人；修訂綜合文件第56頁為期前基準"
           },
           "key": "net_outside_tender",
-          "label": "反推集团外净新增接纳股份",
+          "label": "一致行動方以外淨新增股份",
           "precision": 0,
           "unit": "shares",
           "value": 256914253
         },
         {
           "approximate": false,
-          "basis": "公告披露数；期前集团226,048,971＋司法拍卖107,797,875＋净新增接纳256,914,253才可勾稽，不叠加期前集团内Boyu股份。接纳股仍以过户为假设",
+          "basis": "港交所權益披露第20欄：Broad Gongga直接512,818,828股，Thematic Bridge直接77,942,271股。",
           "currency": null,
           "evidence": {
             "documentId": "YS-20260213-a4703c93d0df",
@@ -62439,7 +62454,7 @@
             ]
           },
           "key": "post_concert_shares",
-          "label": "收盘后要约方及一致行动持股",
+          "label": "要約結果後一致行動方合計持股",
           "precision": 0,
           "unit": "shares",
           "value": 590761099
@@ -62475,6 +62490,62 @@
           "precision": 2,
           "unit": "percent",
           "value": 99.49
+        },
+        {
+          "key": "offeror_direct_shares",
+          "label": "Broad Gongga直接持股",
+          "value": 512818828,
+          "unit": "shares",
+          "basis": "按2月13日事件日所作權益披露",
+          "evidence": {
+            "documentId": "YS-20260220-IS20260220E00015",
+            "section": "第20欄"
+          },
+          "approximate": false,
+          "precision": 0,
+          "currency": null
+        },
+        {
+          "key": "offeror_direct_pct",
+          "label": "Broad Gongga直接持股比例",
+          "value": 86.36,
+          "unit": "percent",
+          "basis": "按2月13日事件日所作權益披露",
+          "evidence": {
+            "documentId": "YS-20260220-IS20260220E00015",
+            "section": "第20欄"
+          },
+          "approximate": true,
+          "precision": 2,
+          "currency": null
+        },
+        {
+          "key": "thematic_bridge_direct_shares",
+          "label": "Thematic Bridge直接持股",
+          "value": 77942271,
+          "unit": "shares",
+          "basis": "按2月13日事件日所作權益披露",
+          "evidence": {
+            "documentId": "YS-20260220-IS20260220E00015",
+            "section": "第20欄"
+          },
+          "approximate": false,
+          "precision": 0,
+          "currency": null
+        },
+        {
+          "key": "thematic_bridge_direct_pct",
+          "label": "Thematic Bridge直接持股比例",
+          "value": 13.13,
+          "unit": "percent",
+          "basis": "按2月13日事件日所作權益披露",
+          "evidence": {
+            "documentId": "YS-20260220-IS20260220E00015",
+            "section": "第20欄"
+          },
+          "approximate": true,
+          "precision": 2,
+          "currency": null
         }
       ]
     },
@@ -101332,6 +101403,27 @@
       "title": "停牌：待刊发内幕消息及收购守则公告",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0910/2026091000145.pdf",
       "publishedAt": "2026-09-10T08:58:00+08:00"
+    },
+    "YS-20260220-IS20260220E00015": {
+      "id": "YS-20260220-IS20260220E00015",
+      "date": "2026-02-20",
+      "title": "港交所權益披露：要約人及另一一致行動方持股",
+      "url": "https://di.hkex.com.hk/di/NSForm1.aspx?fn=IS20260220E00015&g_lang=zh-HK&lang=ZH",
+      "caseId": "HK-09666-20250428-broad-gongga-auction-and-cash-offer"
+    },
+    "YS-20250428-2025042803881": {
+      "id": "YS-20250428-2025042803881",
+      "date": "2025-04-28",
+      "title": "收購守則3.5：司法拍賣及可能強制性全面要約",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0428/2025042803881.pdf",
+      "caseId": "HK-09666-20250428-broad-gongga-auction-and-cash-offer"
+    },
+    "YS-20260116-2026011601061": {
+      "id": "YS-20260116-2026011601061",
+      "date": "2026-01-16",
+      "title": "退市條件達成及要約結算安排",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011601061.pdf",
+      "caseId": "HK-09666-20250428-broad-gongga-auction-and-cash-offer"
     }
   },
   "issuerLinks": [
