@@ -4051,7 +4051,7 @@
       "intervals": {},
       "id": "HK-08112-20261126-rights-consolidation",
       "code": "08112",
-      "name": "基石金融：二十合一後擬按一供四供股",
+      "name": "基石金融：二十合一後每股可供四股",
       "aliases": [
         "基石金融",
         "Cornerstone Financial Holdings Limited",
@@ -4114,6 +4114,55 @@
           },
           "approximate": false,
           "precision": 0
+        },
+        {
+          "key": "existing_shares",
+          "label": "合股前已發行股份",
+          "value": 229418448,
+          "unit": "shares",
+          "currency": null,
+          "basis": "首公告狀態",
+          "evidence": {
+            "documentId": "YS-20261126-a8c56560d6f4",
+            "pages": [
+              2
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "consolidated_shares",
+          "label": "擬合股後已發行股份",
+          "value": 11470922,
+          "unit": "shares",
+          "currency": null,
+          "basis": "假設合股前股數不變，按20合1",
+          "evidence": {
+            "documentId": "YS-20261126-a8c56560d6f4",
+            "pages": [
+              2,
+              12
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "estimated_net_proceeds",
+          "label": "足額認購估計淨額",
+          "value": 43800000,
+          "unit": "money",
+          "currency": "HKD",
+          "basis": "扣除相關開支及最高配售佣金",
+          "evidence": {
+            "documentId": "YS-20261126-a8c56560d6f4",
+            "pages": [
+              3
+            ]
+          },
+          "precision": 0,
+          "approximate": true
         }
       ],
       "events": [
