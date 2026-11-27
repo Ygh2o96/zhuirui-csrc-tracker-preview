@@ -9726,7 +9726,28 @@
     const nodes=[{id:"cimc",role:"buyer",name:"中集集團"},{id:"banks",role:"creditor",name:"農業銀行及中國銀行"},{id:"borrower",role:"target",name:"中集產城及反擔保方"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"debt_restructuring",modality:"cash",status,stageDate:date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"擔保代償及追償",caseModalityShortLabel:"擔保代償",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"p",kind:"cash",direction:"ltr",fromLabel:"中集集團",toLabel:"銀團",headline:"11月25日已付222,210,016.69元人民幣",proposedOrTerminated:false},{id:"r",kind:"asset",direction:"ltr",fromLabel:"中集集團",toLabel:"借款人及反擔保方",headline:"代償後取得追償權",proposedOrTerminated:false}],annotations:[{tag:"①",title:"到期和付款",body:"第三筆貸款本金172,460,112元，從原訂2027年1月7日提前至2026年11月24日到期。11月25日支付全部應付擔保額。"}],evidenceLinks:[{documentId:orig,pages:[1,2],label:"首次擔保披露"},{documentId:src,pages:[1,2,3],label:"代償及後續追償"}]});
   }
+  function buildLifeTechInvestmentNov(c,docs){
+    const q={a:"YS-20261106-49a6b79957ff",b:"YS-20261124-eede5dfdd7c3",z:"YS-20261126-cd715a184efb"},date="2026-11-26",status="active";
+    const required=[["zylox_spv_commitment",889300000,"a"],["spv_lifetech_commitment",1482100000,"a"],["first_tranche_shares",370536992,"a"],["second_tranche_shares",555805488,"a"],["spv_stake",16.7,"a"],["zylox_economic_stake",10,"a"],["zylox_h_net",863600000,"z"],["zylox_spv_pct",60,"a"]];
+    if(c.stage?.status!==status||c.stage?.date!==date||!Object.values(q).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===date&&e.kind==="supplement"&&e.state==="actual"&&e.evidence.documentId===q.z)||!c.processEvents?.some(e=>e.date==="2026-12-07"&&e.kind==="completion"&&e.state==="expected"&&e.evidence.documentId===q.b)||!required.every(([key,value,which])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[which])))return null;
+    const left="歸創通橋經共同投資載體認購",right="先健科技兩批新股及獨立融資",stageLabel="先健新股獲上市批准 · 首批預計12月7日交割";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:480,status,leftTitle:left,rightTitle:right,transitionLabel:"擬投資與H股發行",outcomeBadge:stageLabel}),[
+      box("z","left",42,96,164,110,"buyer","歸創通橋","擬出資約8.9億港元"),
+      box("spv","left",438,96,178,245,"target","GL Lighthouse Two","歸創通橋擬持60%；Lighthouse One持餘下40%"),
+      box("life","left",42,236,164,105,"seller","先健科技","兩批新股合計約9.3億股，每股1.60港元"),
+      box("p1","right",724,72,310,73,"target","首批約3.7億股 · 次批約5.6億股","各批交割條件獨立；首批待交割"),
+      box("p2","right",724,168,310,73,"creditor","載體持16.7% · 歸創通橋約10.0%","全部兩批完成後；載體及標的均不併表"),
+      box("p3","right",724,264,310,73,"creditor","Lighthouse Three另認購歸創H股","每股22港元；預計淨募資約8.6億港元")
+    ],[],[
+      {id:"spv",panel:"left",kind:"cash",step:"①",pathPoints:[[206,151],[438,151]],labelCenter:[322,151],labelWidth:205,labelHeight:35,label:"認購載體60%股權",proposedOrTerminated:true},
+      {id:"life",panel:"left",kind:"cash",step:"②",pathPoints:[[438,284],[206,284]],labelCenter:[322,284],labelWidth:205,labelHeight:35,label:"擬投入約14.8億港元",proposedOrTerminated:true}
+    ]);
+    const nodes=[{id:"z",role:"buyer",name:"歸創通橋"},{id:"spv",role:"target",name:"GL Lighthouse Two Investment Limited"},{id:"life",role:"seller",name:"先健科技"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"認購新股及共同投資",caseModalityShortLabel:"新股認購",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"spv",kind:"cash",direction:"ltr",fromLabel:"歸創通橋",toLabel:"Lighthouse Two",headline:"歸創通橋擬出資約8.9億港元",proposedOrTerminated:true},{id:"life",kind:"cash",direction:"rtl",fromLabel:"Lighthouse Two",toLabel:"先健科技",headline:"兩批認購總額約14.8億港元",proposedOrTerminated:true}],annotations:[{tag:"①",title:"載體及持股口徑",body:"Lighthouse Two持有先健股權，兩家出資方按各自比例分證券帳戶。歸創通橋實際經濟權益是全部交割後約10.0%。"},{tag:"②",title:"另行發行H股",body:"Lighthouse Three認購的是歸創通橋的H股。補充公告確認擬將淨額用於相關潛在投資，當時未指定項目。"}],evidenceLinks:[{documentId:q.a,pages:[1,2,5,6],label:"兩筆認購公告"},{documentId:q.b,pages:[1],label:"先健新股上市批准及預期交割"},{documentId:q.z,pages:[1,2,3],label:"持股、會計及募資用途補充"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02190-20261106-lifetech-lighthouse"].includes(txCase?.id))return buildLifeTechInvestmentNov(txCase,documents);
     if(["HK-02039-20261103-industry-city-guarantee"].includes(txCase?.id))return buildCIMCGuaranteePay(txCase,documents);
     if(["HK-01606-20261123-zte-equipment","HK-01606-20261124-litao-equipment"].includes(txCase?.id))return buildLitaoZteStandalone(txCase,documents);
     if(["HK-00217-20261020-dunde-mining-leaseback","HK-00217-20261021-xinte-wengniuteqi-leasebacks","HK-00217-20261022-jinmei-lease-assignment","HK-00217-20261022-huadian-five-leasebacks"].includes(txCase?.id))return buildChengtongGM2026(txCase,documents);

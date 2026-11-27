@@ -5074,6 +5074,24 @@
               3
             ]
           }
+        },
+        {
+          "key": "zylox_spv_pct",
+          "label": "歸創通橋擬持投資載體權益",
+          "value": 60,
+          "unit": "percent",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "basis": "本次擬認購投資載體；與先健科技持股分開。",
+          "evidence": {
+            "documentId": "YS-20261106-49a6b79957ff",
+            "pages": [
+              1,
+              5,
+              6
+            ]
+          }
         }
       ],
       "events": [
