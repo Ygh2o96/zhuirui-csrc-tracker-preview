@@ -72490,14 +72490,30 @@
       "headlineKey": "auction_equity_price",
       "id": "HK-01109-20261030-hubei-lexing-shenzhen-court-auction",
       "intervals": {},
-      "mandates": [],
-      "mechanism": "深圳法院司法拍卖购入湖贝乐兴100%股权；中标不等于过户",
+      "mandates": [
+        {
+          "firm": "Shenzhen Guotonglian Land and Real Estate Asset Appraisal Consulting Company Limited",
+          "role": "Valuer",
+          "service": "equity_valuation",
+          "side": "深圳中院委託評估",
+          "evidence": {
+            "documentId": "YS-20261030-8113ff91c243",
+            "pages": [
+              3,
+              7,
+              8
+            ]
+          }
+        }
+      ],
+      "mechanism": "深圳中院司法拍賣湖貝樂興全部股權 · 已中標，待核付款及登記",
       "name": "华润置地",
       "parties": {
         "买方": "Run Accelerator Entrepreneurship Services (Shenzhen) Company Limited（润加速创业服务(深圳)有限公司）",
         "执行法院": "深圳市中级人民法院",
         "标的": "Shenzhen Hubei Lexing Real Estate Development Company Limited（深圳市湖贝乐兴房地产开发有限公司）100%股权",
-        "标的股权出让主体": "Shenzhen Hubei Shunrun Investment Company Limited（深圳市湖贝顺润投资有限公司）"
+        "标的股权出让主体": "Shenzhen Hubei Shunrun Investment Company Limited（深圳市湖贝顺润投资有限公司）",
+        "申請執行人": "潤置控股有限公司"
       },
       "processEvents": [],
       "progressDate": "2026-10-30",
@@ -72570,6 +72586,22 @@
           "precision": 2,
           "unit": "money",
           "value": 887489048
+        },
+        {
+          "key": "court_valuation",
+          "label": "法院委託評估的股權價值",
+          "value": 1980998300,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "approximate": false,
+          "basis": "評估基準日2026年5月31日；列示評估與實際競拍價",
+          "evidence": {
+            "documentId": "YS-20261030-8113ff91c243",
+            "pages": [
+              3
+            ]
+          }
         }
       ]
     },
@@ -74039,6 +74071,19 @@
             ]
           },
           "label": "上市规则 14A.76"
+        },
+        {
+          "code": "HKEX:14A.76(2)",
+          "label": "上市規則 14A.76(2)",
+          "application": "規模比率介乎0.1%與5%，豁免通函、獨立財務意見及獨立股東批准",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261119-baf95f08abd2",
+            "pages": [
+              1,
+              4
+            ]
+          }
         }
       ],
       "stage": {
@@ -74065,6 +74110,39 @@
           "precision": 2,
           "unit": "money",
           "value": 33443000
+        },
+        {
+          "key": "parking_spaces",
+          "label": "交易車位數",
+          "value": 550,
+          "currency": null,
+          "unit": "units",
+          "precision": 0,
+          "approximate": false,
+          "basis": "已竣工未售地下車位",
+          "evidence": {
+            "documentId": "YS-20261119-baf95f08abd2",
+            "pages": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "key": "vendor_unaudited_book_value",
+          "label": "賣方未經審計帳面值",
+          "value": 48610100,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 0,
+          "approximate": true,
+          "basis": "2026年8月31日；依公告為約數",
+          "evidence": {
+            "documentId": "YS-20261119-baf95f08abd2",
+            "pages": [
+              3
+            ]
+          }
         }
       ]
     },

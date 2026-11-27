@@ -9419,7 +9419,35 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"造船／換約條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildNovemberPropertyCases(c,docs){
+    const configs={
+      "HK-01109-20261030-hubei-lexing-shenzhen-court-auction":{
+        a:"YS-20261030-8113ff91c243",z:"YS-20261030-8113ff91c243",date:"2026-10-30",event:"first_announcement",status:"active",
+        ts:[["auction_equity_price",1109359048,"a"],["preauction_deposit_paid",221870000,"a"],["auction_balance_due",887489048,"a"]],
+        left:"法院拍賣湖貝樂興全部股權",right:"競拍、付款及股權過戶",badge:"司法拍賣已中標 · 餘款及過戶待核",seller:"湖貝順潤投資",buyer:"潤加速創業服務（深圳）",sSub:"被執行人 · 原持標的全部股權",bSub:"華潤置地間接全資附屬公司",main:"中標價約11.1億人民幣",
+        steps:[["競拍前已付約2.2億人民幣保證金","計入總對價 · 深圳中院為處置機關"],["餘款約8.9億人民幣","按公告須於11月13日前支付"],["付清後辦理法院裁定及變更登記","預期標的由原間接60%增至間接100%"]],
+        detail:"原持有結構為華潤置地60%及華潤信託40%持有湖貝順潤。潤置控股為申請執行人；深圳中院委託估值，起拍價及中標價相同。",pagesA:[1,2,3,6,7,8]
+      },
+      "HK-00978-20261119-jiajingwan-550-parking":{
+        a:"YS-20261119-baf95f08abd2",z:"YS-20261119-baf95f08abd2",date:"2026-11-19",event:"first_announcement",status:"active",
+        ts:[["parking_agreed_price",33443000,"a"],["parking_spaces",550,"a"],["vendor_unaudited_book_value",48610100,"a"]],
+        left:"嘉景灣地下車位買賣",right:"對價、交割與關連關係",badge:"買賣合同已簽 · 待付款及產權登記",seller:"重慶瀚置招商",buyer:"重慶招商置地開發",sSub:"出售550個未售地下車位",bSub:"招商局置地間接非全資附屬公司",main:"一次付現3,344.3萬人民幣",
+        steps:[["對價等於8月31日評估值","車位已有產權證，賣方帳面約人民幣4,861萬"],["付清後辦理網簽及產權變更","全額付款為唯一交割先決條件"],["賣方為香港置地的30%受控公司","按14A.76(2)豁免通函及獨立股東批准"]],
+        detail:"香港置地為買方上市集團另一非全資附屬公司的主要股東，屬附屬公司層面關連人士。估值、賣方帳面值及買方待付對價分列。",pagesA:[1,2,3,4,5]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01109-20261030-hubei-lexing-shenzhen-court-auction","HK-00978-20261119-jiajingwan-550-parking"].includes(txCase?.id))return buildNovemberPropertyCases(txCase,documents);
     if(["HK-02198-20261116-zayton-ethane-h2763-h2765","HK-03877-20261117-two-80000dwt-grain-newbuilds","HK-03877-20261117-container-novation-h2782-h2783"].includes(txCase?.id))return buildNovemberShipCases(txCase,documents);
     if(txCase?.id==="HK-08439-20260413-sky-links")return buildSomerleySky(txCase,documents);
     if(txCase?.id==="HK-09638-20260119-azur-ferretti-eur")return buildFerrettiAzur(txCase,documents);
