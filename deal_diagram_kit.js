@@ -6447,6 +6447,25 @@
       evidenceLinks:[{documentId:x.doc,pages:[...new Set([1,x.rp,x.pg])],label:"原件：雙方、上限及批准要求"}],compactSummary:term+"上限 "+amount,topology});
   }
 
+  function buildKantoneDisposal(c,docs){
+    const s="YS-20261127-01059-china-star",r="YS-20261028-01059-annual",l="看通集團",b="公開市場買方",badge=c.stage?.label;
+    if(c.stage?.status!=="closed"||c.stage.date!=="2026-11-27"||![s,r].every(x=>docs?.[x]?.caseId===c.id)||!c.terms?.some(t=>t.key==="cash_total"&&t.value===13010000&&t.evidence?.documentId===s)||!c.terms?.some(t=>t.key==="shares"&&t.value===1750000&&t.evidence?.documentId===s))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:205,labelHeight:34,label,dashed:false});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:351,status:"closed",leftTitle:"場內出售上市股份",rightTitle:"成交及集團持倉",transitionLabel:"11月26日成交",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"公告及持倉披露方"),
+      box("r","left",448,100,157,146,"buyer",b,"對手方身份未能確定"),
+      box("stake","right",726,84,300,76,"target","中國星集團（00326）","出售 175 萬股"),
+      box("cash","right",726,210,300,75,"public","約 1,301 萬港元","出售後集團持股為零")
+    ],[],[arrow("asset","shares","①",192,138,448,"中國星 175 萬股"),arrow("cash","cash","②",448,209,192,"約 1,301 萬港元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:b}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disposal",modality:"cash",status:"closed",caseArchetypeLabel:"場內出售上市股份",caseModalityShortLabel:"現金",
+      before:{title:"交易與持倉",nodes,equityLinks:[]},after:{title:"場內成交",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:b,headline:"集團披露出售 175 萬股中國星股份",proposedOrTerminated:false},{id:"cash",kind:"cash",direction:"rtl",fromLabel:b,toLabel:l,headline:"現金對價約 1,301 萬港元，未扣交易成本",proposedOrTerminated:false}],
+      annotations:[{tag:"①",title:"成交",body:"11月26日場內成交，披露平均成交價每股7.43港元。"}, {tag:"②",title:"集團持倉",body:"看通年報披露集團持有175萬股；出售公告披露交易後集團持股為零。"}],
+      evidenceLinks:[{documentId:s,pages:[1,3],label:"出售金額、股份及上市規則"},{documentId:r,pages:[8,10],label:"看通年報：集團持倉"}],compactSummary:"場內出售 175 萬股 · 約 1,301 萬港元",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10374,6 +10393,7 @@
     if(txCase?.id==="HK-01635-20261127-tianli-gas-framework")return buildTianliGasFramework(txCase,documents);
     if(txCase?.id==="HK-08143-20260630-chengkan-xiamen-hospital")return buildChengkanHospital(txCase,documents);
     if(["HK-03931-20261127-calb-sale","HK-03931-20261127-calb-processing","HK-03931-20261127-calb-engineering","HK-02128-20261127-lesso-machinery","HK-00694-20261127-airport-services"].includes(txCase?.id))return buildCapitalFramework27(txCase,documents);
+    if(txCase?.id==="HK-01059-20261127-china-star-portfolio")return buildKantoneDisposal(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
