@@ -2,6 +2,306 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01385-20260817-rongsheng-fund",
+      "code": "01385",
+      "name": "復旦微電子：參與設立融盛曜元產業基金",
+      "aliases": [
+        "復旦微電",
+        "復旦微電子",
+        "上海復旦",
+        "Shanghai Fudan",
+        "融盛曜元",
+        "國盛資本",
+        "君盛協創"
+      ],
+      "category": "connected",
+      "mechanism": "復旦微電子作為有限合夥人認繳3億元人民幣，佔七方合計認繳13.45億元的22.3048%。國盛資本與君盛協創擔任普通合夥人，國盛資本具實際控制權。",
+      "headlineKey": "fund_commitments",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "上海復旦微電子集團股份有限公司（01385／688385）",
+        "基金": "上海融盛曜元私募投資基金合夥企業（有限合夥，暫定名）",
+        "普通合夥人一": "上海國盛資本管理有限公司",
+        "普通合夥人二": "上海君盛協創私募基金管理有限公司",
+        "有限合夥人": "復旦微電子、浦東海通基金、國企改革發展三期基金、大零號灣啟航基金、上海莘莊"
+      },
+      "terms": [
+        {
+          "key": "fund_commitments",
+          "label": "七方合計認繳",
+          "value": 1345000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "正式協議所列認繳規模。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "issuer_commitment",
+          "label": "復旦微電子認繳",
+          "value": 300000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例22.3048%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "guosheng_capital",
+          "label": "國盛資本（GP1）認繳",
+          "value": 9000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例0.6691%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "junsheng",
+          "label": "君盛協創（GP2）認繳",
+          "value": 1000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例0.0743%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "haitong",
+          "label": "浦東海通基金認繳",
+          "value": 535000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例39.777%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "soreform",
+          "label": "國企改革發展三期基金認繳",
+          "value": 250000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例18.5874%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "qihang",
+          "label": "大零號灣啟航基金認繳",
+          "value": 200000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例14.8699%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "xinzhuang",
+          "label": "上海莘莊認繳",
+          "value": 50000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "協議所列認繳比例3.7175%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "issuer_fund_pct",
+          "label": "復旦微電子認繳比例",
+          "value": 22.3048,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "佔七方合計認繳。",
+          "precision": 4,
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "initial_target",
+          "label": "8月意向階段目標規模",
+          "value": 1430000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "8月初步規劃，正式協議現為13.45億元。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260817-01385-fund",
+            "pages": [
+              12
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "正式簽約時國盛投資已持股超過10%，國盛資本及國企改革發展三期基金為關連人士；公告及申報，豁免獨立股東批准。8月意向階段的判斷另見首公告。",
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              6
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-08-17",
+          "kind": "first_announcement",
+          "label": "簽訂非約束性合作意向",
+          "state": "actual",
+          "detail": "8月目標14.30億元；當時國盛投資未成為主要股東，香港14A章未適用。",
+          "evidence": {
+            "documentId": "YS-20260817-01385-fund",
+            "pages": [
+              10,
+              11,
+              12
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-08-27",
+          "kind": "circular",
+          "label": "刊發股東會通函",
+          "state": "actual",
+          "detail": "提呈產業基金投資和關聯交易。",
+          "evidence": {
+            "documentId": "YS-20260827-01385-fund",
+            "pages": [
+              1,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-16",
+          "kind": "vote",
+          "label": "股東會通過",
+          "state": "actual",
+          "detail": "普通決議贊成票佔99.7263%。",
+          "evidence": {
+            "documentId": "YS-20260916-01385-fund",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-26",
+          "kind": "signing",
+          "label": "簽訂正式合夥協議",
+          "state": "actual",
+          "detail": "七方合計認繳13.45億元，按繳款通知分期實繳。",
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "合夥協議已簽 · 待工商登記及基金備案",
+          "state": "actual",
+          "detail": "公告日工商登記尚未完成，投資前須完成基金業協會備案。",
+          "evidence": {
+            "documentId": "YS-20261127-01385-fund",
+            "pages": [
+              1,
+              6
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "supplement",
+        "label": "合夥協議已簽 · 待工商登記及基金備案"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01202-20261127-siwi-purchase",
       "code": "01202",
       "category": "continuing_connected",
@@ -110715,6 +111015,34 @@
       "date": "2026-11-27",
       "title": "成都四威科技持續關連交易公告：四威高科技採購框架",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20260817-01385-fund": {
+      "id": "YS-20260817-01385-fund",
+      "caseId": "HK-01385-20260817-rongsheng-fund",
+      "date": "2026-08-17",
+      "title": "簽訂產業基金合作意向",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081701785.pdf"
+    },
+    "YS-20260827-01385-fund": {
+      "id": "YS-20260827-01385-fund",
+      "caseId": "HK-01385-20260817-rongsheng-fund",
+      "date": "2026-08-27",
+      "title": "產業基金及關聯交易股東會通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0827/2026082700794.pdf"
+    },
+    "YS-20260916-01385-fund": {
+      "id": "YS-20260916-01385-fund",
+      "caseId": "HK-01385-20260817-rongsheng-fund",
+      "date": "2026-09-16",
+      "title": "第三次臨時股東會投票結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0916/2026091600943.pdf"
+    },
+    "YS-20261127-01385-fund": {
+      "id": "YS-20261127-01385-fund",
+      "caseId": "HK-01385-20260817-rongsheng-fund",
+      "date": "2026-11-27",
+      "title": "設立產業基金與簽署正式合夥協議",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701823.pdf"
     }
   },
   "issuerLinks": [

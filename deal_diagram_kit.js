@@ -6526,6 +6526,24 @@
       evidenceLinks:[{documentId:x.doc,pages:[...new Set([1,x.rp,x.pg])],label:"原件：雙方、上限及批准要求"}],compactSummary:term+"上限 "+amount,topology});
   }
 
+  function buildFudanIndustrialFund(c,docs){
+    const s="YS-20261127-01385-fund",o="YS-20260817-01385-fund",l="復旦微電子",r="融盛曜元產業基金",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||![s,o].every(x=>docs?.[x]?.caseId===c.id)||!c.terms?.some(t=>t.key==="fund_commitments"&&t.value===1345000000)||!c.terms?.some(t=>t.key==="issuer_commitment"&&t.value===300000000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:360,status:"active",leftTitle:"上市公司參與設立產業基金",rightTitle:"合夥人與治理",transitionLabel:"協議已簽 · 待登記及備案",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"有限合夥人 · 22.3048%"),
+      box("r","left",448,100,157,146,"target",r,"七方合計認繳 13.45 億元"),
+      box("gp","right",726,84,300,76,"target","雙 GP：國盛資本／君盛協創","國盛資本具實際控制權"),
+      box("manage","right",726,210,300,80,"public","五人投委會","國盛資本提名3人，復旦及浦東海通各1人")
+    ],[],[{id:"commitment",panel:"left",kind:"cash",step:"①",pathPoints:[[192,168],[448,168]],labelCenter:[320,168],labelWidth:210,labelHeight:35,label:"認繳人民幣3億元",dashed:true}]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"產業基金設立",caseModalityShortLabel:"現金認繳",
+      before:{title:"原意向",nodes,equityLinks:[]},after:{title:"正式合夥協議",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"commitment",kind:"cash",direction:"ltr",fromLabel:l,toLabel:r,headline:"復旦承諾出資3億元，佔認繳22.3048%，實繳按通知分期",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"認繳規模",body:"七方合計13.45億元；8月意向階段目標14.30億元。"}, {tag:"②",title:"管理及生效",body:"雙普通合夥人；國盛資本具實控權。公告日尚未完成工商登記，投資前須完成基金業協會備案。"}],
+      evidenceLinks:[{documentId:o,pages:[10,12],label:"8月意向：原目標規模"},{documentId:s,pages:[1,3,4,6],label:"正式協議：認繳、治理、登記狀態"}],compactSummary:"認繳13.45億元 · 復旦認繳3億元 · 雙GP",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10457,6 +10475,7 @@
     if(txCase?.id==="HK-00034-20261127-rideon-forty")return buildRideonDisposal(txCase,documents);
     if(txCase?.id==="HK-08487-20261028-isp-placing")return buildIspPlacing(txCase,documents);
     if(["HK-01202-20261127-8th-sales","HK-01202-20261127-51st-sales","HK-01202-20261127-23rd-sales","HK-01202-20261127-seekon-sales","HK-01202-20261127-rongwei-sales","HK-01202-20261127-sumitomo-purchase","HK-01202-20261127-23rd-purchase","HK-01202-20261127-29th-purchase","HK-01202-20261127-siwi-purchase"].includes(txCase?.id))return buildSiwiFramework27(txCase,documents);
+    if(txCase?.id==="HK-01385-20260817-rongsheng-fund")return buildFudanIndustrialFund(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
