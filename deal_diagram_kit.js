@@ -9964,7 +9964,24 @@
       evidenceLinks:[{documentId:q.a,pages:q.evidencePages,label:q.primary+" 首份公告"},...(q.counter?[{documentId:q.counter,pages:q.otherPages,label:"03311 首份公告"}]:[])]});
   }
 
+  function buildPAorGlobalRefi(c,docs){
+    const q=({"HK-01833-20260928-ping-an-framework-renewals":{"evidence":["YS-20260928-2026092801739","YS-20261109-2026110901269","YS-20261109-2026110901271"],"left":"四項關連交易框架","right":"年度上限及審批","labels":["平安好醫生","平安集團成員"],"leg1":"服務採購付款","leg2":"產品服務收入","cards":[["一般產品與服務","2027年收入上限19.7億／採購上限9.3億 RMB"],["平安人壽產品服務","2027年上限 RMB 13.1億"],["金融服務合作","存款 80億 · 理財 95億 · 衍生品 70億 RMB 項目各自計量"],["獨立股東表決","2026-12-03 14:00 · Gram Capital 建議贊成"]],"badge":"通函已刊發 · 12月3日待股東表決","status":"active","date":"2026-11-09","terms":[["wealth_2027",9500000000,"CNY"],["deposit_2027",8000000000,"CNY"],["derivative_2027",7000000000,"CNY"]],"pages":[[1],[24,55,62,75,78],[1]]},"HK-06616-20260917-hkd-settled-cb":{"evidence":["YS-20260917-2026091701667","YS-20260918-2026091800027","YS-20260924-2026092402099"],"left":"新債發行與舊債回購","right":"完成日及換股條款","labels":["環球新材國際","新舊債持有人"],"leg1":"回購舊債本金 · HKD 9.9億","leg2":"認購新債本金 · RMB 13億","cards":[["新債發行已完成","年息 3.25% · 2027年到期 · 港元結算"],["舊債回購已完成","原本金的99% · 完成日所列餘額 HKD 1,000萬"],["全數轉換情景","HKD 10.93／股 · 139,093,323股 · 擴大股本10.02%"]],"badge":"新債發行及舊債回購已完成","status":"closed","date":"2026-09-24","terms":[["consideration",1300000000,"CNY"],["old_bond_principal_bought_back",990000000,"HKD"],["conversion_shares",139093323,null]],"pages":[[1],[2,3],[2,3,4]]}})[c.id];
+    if(!q||c.stage?.status!==q.status||c.stage?.date!==q.date||!q.evidence.every(x=>docs?.[x]?.caseId===c.id)||!q.terms.every(([key,v,cur])=>c.terms.some(t=>t.key===key&&t.value===v&&t.currency===cur)))return null;
+    const proposed=q.status==='active', [l,r]=q.labels, flows=[
+      {id:'f1',kind:'cash',direction:'ltr',fromLabel:l,toLabel:r,headline:q.leg1,proposedOrTerminated:proposed},
+      {id:'f2',kind:'cash',direction:'rtl',fromLabel:r,toLabel:l,headline:q.leg2,proposedOrTerminated:proposed}
+    ], status=q.status;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:500,status,leftTitle:q.left,rightTitle:q.right,transitionLabel:'交易條款',outcomeBadge:q.badge}),[
+      box('s','left',42,102,155,152,'seller',l,''),box('b','left',445,102,173,152,'buyer',r,''),
+      ...q.cards.map(([title,subtitle],i)=>box('r'+i,'right',715,65+i*98,328,76,i===0?'target':'creditor',title,subtitle))
+    ],[],flows.map((f,i)=>{const y=145+64*i;return {id:f.id,panel:'left',kind:f.kind,step:i?'②':'①',pathPoints:i?[[445,y],[197,y]]:[[197,y],[445,y]],labelCenter:[321,y],labelWidth:230,labelHeight:36,label:f.headline,proposedOrTerminated:proposed};}));
+    const nodes=[{id:'s',role:'seller',name:l},{id:'b',role:'buyer',name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:'acquisition',modality:'cash',status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.right,caseModalityShortLabel:proposed?'關連交易':'可轉債再融資',topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows,annotations:[{tag:'①',title:q.left,body:q.cards[0][1]}],evidenceLinks:q.evidence.map((documentId,i)=>({documentId,pages:q.pages[i],label:docs[documentId].title}))});
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(["HK-01833-20260928-ping-an-framework-renewals","HK-06616-20260917-hkd-settled-cb"].includes(txCase?.id))return buildPAorGlobalRefi(txCase,documents);
     if(["HK-03311-20261022-cscecl-mutual-tender","HK-03311-20261022-cscecl-contractual-joint-tender","HK-00830-20261022-cscecl-facade-subcontract"].includes(txCase?.id))return buildCsciRelatedConstruction(txCase,documents);
     if(txCase?.id==="HK-00081-20261029-coli-lease-renewal")return buildCogoLease2026(txCase,documents);
     if(txCase?.id==="HK-00081-20261022-csci-construction-tender")return buildCogoConstructionTender(txCase,documents);

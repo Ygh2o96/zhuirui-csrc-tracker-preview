@@ -93621,6 +93621,768 @@
       "comparables": {},
       "comparisonEvidence": {},
       "intervals": {}
+    },
+    {
+      "id": "HK-01833-20260928-ping-an-framework-renewals",
+      "code": "01833",
+      "name": "平安好醫生：續訂四項關連交易框架",
+      "aliases": [
+        "平安健康",
+        "平安好医生",
+        "Ping An Healthcare",
+        "Gram Capital"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "續訂一般產品與服務供應、服務採購、金融服務合作及平安人壽產品服務框架。存款本金、理財餘額和衍生品名義本金各有獨立上限。",
+      "parties": {
+        "上市公司": "平安健康醫療科技有限公司",
+        "關連方": "平安集團成員，包括平安銀行及平安人壽"
+      },
+      "headlineKey": "wealth_2027",
+      "terms": [
+        {
+          "key": "products_2027",
+          "label": "2027年一般產品與服務收入上限",
+          "value": 1966572000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              55
+            ]
+          },
+          "basis": "一般產品與服務收入",
+          "approximate": false
+        },
+        {
+          "key": "products_2028",
+          "label": "2028年一般產品與服務收入上限",
+          "value": 2100202000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              55
+            ]
+          },
+          "basis": "一般產品與服務收入",
+          "approximate": false
+        },
+        {
+          "key": "products_2029",
+          "label": "2029年一般產品與服務收入上限",
+          "value": 2268326000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              55
+            ]
+          },
+          "basis": "一般產品與服務收入",
+          "approximate": false
+        },
+        {
+          "key": "purchases_2027",
+          "label": "2027年服務採購額上限",
+          "value": 934947000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              62
+            ]
+          },
+          "basis": "服務採購額",
+          "approximate": false
+        },
+        {
+          "key": "purchases_2028",
+          "label": "2028年服務採購額上限",
+          "value": 1051224000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              62
+            ]
+          },
+          "basis": "服務採購額",
+          "approximate": false
+        },
+        {
+          "key": "purchases_2029",
+          "label": "2029年服務採購額上限",
+          "value": 1170815000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              62
+            ]
+          },
+          "basis": "服務採購額",
+          "approximate": false
+        },
+        {
+          "key": "life_2027",
+          "label": "2027年平安人壽產品與服務收入上限",
+          "value": 1305362000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              75
+            ]
+          },
+          "basis": "平安人壽產品與服務收入",
+          "approximate": false
+        },
+        {
+          "key": "life_2028",
+          "label": "2028年平安人壽產品與服務收入上限",
+          "value": 1504231000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              75
+            ]
+          },
+          "basis": "平安人壽產品與服務收入",
+          "approximate": false
+        },
+        {
+          "key": "deposit_2027",
+          "label": "2027年存款每日最高本金上限",
+          "value": 8000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "存款每日最高本金",
+          "approximate": false
+        },
+        {
+          "key": "deposit_2028",
+          "label": "2028年存款每日最高本金上限",
+          "value": 8000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "存款每日最高本金",
+          "approximate": false
+        },
+        {
+          "key": "deposit_2029",
+          "label": "2029年存款每日最高本金上限",
+          "value": 8000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "存款每日最高本金",
+          "approximate": false
+        },
+        {
+          "key": "deposit_interest_2027",
+          "label": "2027年存款年度利息上限",
+          "value": 160000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "存款年度利息",
+          "approximate": false
+        },
+        {
+          "key": "deposit_interest_2028",
+          "label": "2028年存款年度利息上限",
+          "value": 160000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "存款年度利息",
+          "approximate": false
+        },
+        {
+          "key": "deposit_interest_2029",
+          "label": "2029年存款年度利息上限",
+          "value": 160000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "存款年度利息",
+          "approximate": false
+        },
+        {
+          "key": "wealth_2027",
+          "label": "2027年理財產品每日最高餘額上限",
+          "value": 9500000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "理財產品每日最高餘額",
+          "approximate": false
+        },
+        {
+          "key": "wealth_2028",
+          "label": "2028年理財產品每日最高餘額上限",
+          "value": 9500000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "理財產品每日最高餘額",
+          "approximate": false
+        },
+        {
+          "key": "wealth_2029",
+          "label": "2029年理財產品每日最高餘額上限",
+          "value": 9500000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "理財產品每日最高餘額",
+          "approximate": false
+        },
+        {
+          "key": "wealth_income_2027",
+          "label": "2027年理財投資年度收益上限",
+          "value": 332500000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "理財投資年度收益",
+          "approximate": false
+        },
+        {
+          "key": "wealth_income_2028",
+          "label": "2028年理財投資年度收益上限",
+          "value": 332500000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "理財投資年度收益",
+          "approximate": false
+        },
+        {
+          "key": "wealth_income_2029",
+          "label": "2029年理財投資年度收益上限",
+          "value": 332500000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "理財投資年度收益",
+          "approximate": false
+        },
+        {
+          "key": "derivative_2027",
+          "label": "2027年衍生品未平倉名義本金上限",
+          "value": 7000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "衍生品未平倉名義本金",
+          "approximate": false
+        },
+        {
+          "key": "derivative_2028",
+          "label": "2028年衍生品未平倉名義本金上限",
+          "value": 7000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "衍生品未平倉名義本金",
+          "approximate": false
+        },
+        {
+          "key": "derivative_2029",
+          "label": "2029年衍生品未平倉名義本金上限",
+          "value": 7000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              24
+            ]
+          },
+          "basis": "衍生品未平倉名義本金",
+          "approximate": false
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-09-28",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "公告擬續訂框架",
+          "evidence": {
+            "documentId": "YS-20260928-2026092801739",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-09",
+          "kind": "circular",
+          "state": "actual",
+          "label": "刊發四項框架通函及獨立財顧意見",
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              1,
+              78
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-09",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "三項框架於11月9日簽訂；平安人壽框架於10月簽訂",
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              10
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-03",
+          "kind": "shareholder_vote",
+          "state": "expected",
+          "label": "14:00 股東特別大會表決四項框架",
+          "evidence": {
+            "documentId": "YS-20261109-2026110901271",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Gram Capital Limited",
+          "role": "IFA",
+          "service": "signed_independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              43,
+              78
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第14A章",
+          "classificationStatus": "applied",
+          "application": "四項框架須經獨立股東批准；持股約53.71%的 Glorious Peace 須就相關決議放棄表決。",
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              40
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "理財及衍生品服務按通函列為主要交易。",
+          "evidence": {
+            "documentId": "YS-20261109-2026110901269",
+            "pages": [
+              1,
+              34
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-09",
+        "eventKind": "circular",
+        "status": "active",
+        "label": "通函已刊發 · 12月3日待股東表決"
+      },
+      "progressDate": "2026-11-09",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
+      "id": "HK-06616-20260917-hkd-settled-cb",
+      "code": "06616",
+      "name": "環球新材國際：發行人民幣可轉債及回購港元舊債",
+      "aliases": [
+        "环球新材",
+        "Global New Material",
+        "可換股債券",
+        "再融資",
+        "CB"
+      ],
+      "category": "convertible_bond",
+      "mechanism": "發行人民幣13億元、以港元結算、年息3.25%的2027年到期可轉債，同步回購9.9億港元2026年舊債本金。初始轉股價10.93港元，約1.391億股為全數轉換情景。",
+      "parties": {
+        "發行人": "環球新材國際控股有限公司",
+        "交易對手": "新債投資者及參與回購的舊債持有人"
+      },
+      "headlineKey": "consideration",
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "新債本金",
+          "value": 1300000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              2
+            ]
+          },
+          "basis": "2027年到期；人民幣計值、港元結算。",
+          "approximate": false
+        },
+        {
+          "key": "net_proceeds",
+          "label": "新債淨額",
+          "value": 1280700000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              2
+            ]
+          },
+          "basis": "發行人披露；約相當於14.977億港元。",
+          "approximate": true
+        },
+        {
+          "key": "coupon_pct",
+          "label": "新債年利率",
+          "value": 3.25,
+          "currency": null,
+          "unit": "percent",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              2
+            ]
+          },
+          "basis": "年息",
+          "approximate": false
+        },
+        {
+          "key": "conversion_price",
+          "label": "初始轉股價",
+          "value": 10.93,
+          "currency": "HKD",
+          "unit": "per_share",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              2
+            ]
+          },
+          "basis": "每股；可按條款調整。",
+          "approximate": false
+        },
+        {
+          "key": "conversion_shares",
+          "label": "全數轉換情景股數",
+          "value": 139093323,
+          "currency": null,
+          "unit": "shares",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "basis": "按初始轉股價，並假設沒有其他股份變動。",
+          "approximate": false
+        },
+        {
+          "key": "conversion_pct",
+          "label": "全數轉換情景股本佔比",
+          "value": 10.02,
+          "currency": null,
+          "unit": "percent",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              3
+            ]
+          },
+          "basis": "全數轉換後擴大股本口徑。",
+          "approximate": true
+        },
+        {
+          "key": "old_bond_principal_bought_back",
+          "label": "已回購舊債本金",
+          "value": 990000000,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              4
+            ]
+          },
+          "basis": "2026年舊債原本金99%；回購對價另按條款。",
+          "approximate": false
+        },
+        {
+          "key": "old_bond_asof_completion",
+          "label": "完成公告所列剩餘舊債本金",
+          "value": 10000000,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              4
+            ]
+          },
+          "basis": "2026年9月24日公告口徑。",
+          "approximate": false
+        },
+        {
+          "key": "repurchase_price_pct",
+          "label": "舊債回購價／本金",
+          "value": 103,
+          "currency": null,
+          "unit": "percent",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20260918-2026091800027",
+            "pages": [
+              3
+            ]
+          },
+          "basis": "另加應計未付利息。",
+          "approximate": false
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-09-17",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "公告擬發新債及同步回購",
+          "evidence": {
+            "documentId": "YS-20260917-2026091701667",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-18",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "公告簽訂認購與回購安排",
+          "evidence": {
+            "documentId": "YS-20260918-2026091800027",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-09-24",
+          "kind": "completion",
+          "state": "actual",
+          "label": "新債發行及舊債回購已完成",
+          "evidence": {
+            "documentId": "YS-20260924-2026092402099",
+            "pages": [
+              2,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "mandates": [
+        {
+          "firm": "The Hongkong and Shanghai Banking Corporation Limited",
+          "role": "PlacingAgent",
+          "service": "cb_bookrunning_and_dealer_manager",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20260918-2026091800027",
+            "pages": [
+              1,
+              30,
+              32
+            ]
+          }
+        },
+        {
+          "firm": "Guotai Junan Securities (Hong Kong) Limited",
+          "role": "PlacingAgent",
+          "service": "cb_bookrunning",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20260918-2026091800027",
+            "pages": [
+              1,
+              32
+            ]
+          }
+        },
+        {
+          "firm": "BNP Paribas Securities (Asia) Limited",
+          "role": "PlacingAgent",
+          "service": "cb_bookrunning",
+          "side": "發行人",
+          "evidence": {
+            "documentId": "YS-20260918-2026091800027",
+            "pages": [
+              1,
+              32
+            ]
+          }
+        }
+      ],
+      "rules": [],
+      "stage": {
+        "date": "2026-09-24",
+        "eventKind": "completion",
+        "status": "closed",
+        "label": "新債發行及舊債回購已完成"
+      },
+      "progressDate": "2026-09-24",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {
+        "announcementToCompletion": 7
+      }
     }
   ],
   "coverage": {
@@ -103693,6 +104455,48 @@
       "date": "2026-10-22",
       "title": "03311：外牆工程分包框架",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201095.pdf"
+    },
+    "YS-20260928-2026092801739": {
+      "id": "YS-20260928-2026092801739",
+      "caseId": "HK-01833-20260928-ping-an-framework-renewals",
+      "date": "2026-09-28",
+      "title": "平安好醫生：框架續期首公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0928/2026092801739.pdf"
+    },
+    "YS-20261109-2026110901269": {
+      "id": "YS-20261109-2026110901269",
+      "caseId": "HK-01833-20260928-ping-an-framework-renewals",
+      "date": "2026-11-09",
+      "title": "平安好醫生：四項框架通函及獨立財顧意見",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901269.pdf"
+    },
+    "YS-20261109-2026110901271": {
+      "id": "YS-20261109-2026110901271",
+      "caseId": "HK-01833-20260928-ping-an-framework-renewals",
+      "date": "2026-11-09",
+      "title": "平安好醫生：股東特別大會通告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901271.pdf"
+    },
+    "YS-20260917-2026091701667": {
+      "id": "YS-20260917-2026091701667",
+      "caseId": "HK-06616-20260917-hkd-settled-cb",
+      "date": "2026-09-17",
+      "title": "環球新材國際：擬發可換股債及同步回購",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0917/2026091701667.pdf"
+    },
+    "YS-20260918-2026091800027": {
+      "id": "YS-20260918-2026091800027",
+      "caseId": "HK-06616-20260917-hkd-settled-cb",
+      "date": "2026-09-18",
+      "title": "環球新材國際：簽訂認購及回購安排",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0918/2026091800027.pdf"
+    },
+    "YS-20260924-2026092402099": {
+      "id": "YS-20260924-2026092402099",
+      "caseId": "HK-06616-20260917-hkd-settled-cb",
+      "date": "2026-09-24",
+      "title": "環球新材國際：發行及同步回購完成",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0924/2026092402099.pdf"
     }
   },
   "issuerLinks": [
