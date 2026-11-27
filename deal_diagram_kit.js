@@ -9473,7 +9473,45 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildFinalThreeNov(c,docs){
+    const configs={
+      "HK-00247-20261119-kil11296-sky-regal-ura":{
+        a:"YS-20261119-56d34275827b",z:"YS-20261119-56d34275827b",p:"YS-20261119-97c10fceab2c",date:"2026-11-19",event:"first_announcement",status:"active",modality:"合營出資",
+        ts:[["ura_upfront_total",2688000000,"a"],["tender_deposit_paid",50000000,"a"],["award_upfront_due",2638000000,"a"],["project_capital_expected",5870000000,"a"],["great_eagle_commitment_expected",1467500000,"p"]],
+        left:"市建局土瓜灣發展權",right:"合營持股、地價與出資",badge:"已獲中標通知 · 發展協議及餘款待核",
+        seller:"市區重建局",buyer:"天璽有限公司",sSub:"批出土瓜灣道／榮光街發展權",bSub:"Modern Wise全資項目公司",main:"前期付款26.9億港元",
+        steps:[["信和置業75% · 鷹君25%","通過Modern Wise間接持有項目公司"],["已付5,000萬港元投標按金","餘款26.4億港元於簽發展協議時支付"],["預計總資本投入58.7億港元","包括前期付款、建造與其他成本"]],
+        detail:"餘款最遲於11月19日接納函起21個營業日支付。信和披露預計出資約44.03億港元；鷹君約14.675億港元。除非另有協定，接納起180天內簽正式合營協議。",pagesA:[1,2,3],pagesP:[1,2,3]
+      },
+      "HK-00521-20261120-tuas-link4-epson-options":{
+        a:"YS-20261120-bd84d55f87ee",z:"YS-20261120-bd84d55f87ee",date:"2026-11-20",event:"first_announcement",status:"active",modality:"雙向期權",
+        ts:[["option_exercise_price",43080000,"a"],["option_fee_escrow",430800,"a"]],
+        left:"新加坡Tuas Link 4物業及動產",right:"期權次序及結算條件",badge:"雙向期權已簽 · 期權費已付託管",
+        seller:"Singapore Epson Industrial",buyer:"CWT Project Logistics",sSub:"賣方；持有認沽期權",bSub:"買方；先有認購期權",main:"行使價4,308萬新加坡元",
+        steps:[["取得JTC等適用原則性批准","批准日起兩週內買方可行使認購權"],["其後七個營業日賣方可行使認沽權","已付託管43.08萬，行使後轉作訂金"],["交割時支付餘下99%及適用稅項","行使通知後八週或2027年1月15日孰晚"]],
+        detail:"標的包括租賃土地、地上樓宇和合約所定動產。截至該公告，期權費已付，交易仍待批准與行使。若2027年3月31日仍未取得批准，各方可商議延期；未延期或延期期限仍未取得批准，可依約撤銷。",pagesA:[1,2,3,4,5]
+      },
+      "HK-01846-20261116-china-clinics-minority-buyback":{
+        a:"YS-20261116-160a8e088cba",z:"YS-20261116-160a8e088cba",date:"2026-11-16",event:"first_announcement",status:"active",modality:"現金收購及減資",
+        ts:[["clinics_group_price",33230000,"a"],["shanghai_30_price",19800000,"a"],["guangzhou_30_price",4500000,"a"],["beijing_30_price",8930000,"a"]],
+        left:"三家眼科公司收購自身少數股權",right:"三筆現金對價及減資",badge:"三份附條件協議已簽 · 減資及交割待核",
+        seller:"上海靈瑞",buyer:"上海、廣州、北京三家標的",sSub:"各持30%註冊股權",bSub:"各自買回並擬註銷相應股權",main:"合計3,323萬人民幣",
+        steps:[["上海 · 1,980萬元","分兩期，第二期最遲2027年11月16日"],["廣州 · 450萬元","最遲2028年11月16日支付"],["北京 · 893萬元","分別最遲於2027及2028年11月16日支付"]],
+        detail:"三份協議共用交割條件，須完成股權轉讓和法定減資程序；完成後德視佳在三家公司的間接權益由約70%升至100%。上海首期為合同所列付款安排。",pagesA:[1,2,3,4,5,6,7,9,10]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00247-20261119-kil11296-sky-regal-ura","HK-00521-20261120-tuas-link4-epson-options","HK-01846-20261116-china-clinics-minority-buyback"].includes(txCase?.id))return buildFinalThreeNov(txCase,documents);
     if(["HK-02883-20261116-59-oilfield-support-vessels","HK-01606-20261116-henan-kunlun-it-equipment"].includes(txCase?.id))return buildNovemberIndustrialCases(txCase,documents);
     if(["HK-01109-20261030-hubei-lexing-shenzhen-court-auction","HK-00978-20261119-jiajingwan-550-parking"].includes(txCase?.id))return buildNovemberPropertyCases(txCase,documents);
     if(["HK-02198-20261116-zayton-ethane-h2763-h2765","HK-03877-20261117-two-80000dwt-grain-newbuilds","HK-03877-20261117-container-novation-h2782-h2783"].includes(txCase?.id))return buildNovemberShipCases(txCase,documents);
