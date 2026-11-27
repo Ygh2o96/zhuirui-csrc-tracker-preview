@@ -5993,10 +5993,11 @@ function cornerstoneBankRanking(deals,index) {
  const ranked=[...ranks].map(([bank,deals])=>({bank,deals})).sort((a,b)=>b.deals.length-a.deals.length||a.bank.localeCompare(b.bank,"zh-Hant"));
  return {listed:listed.length,verified,complete,ranked};
 }
-function renderCornerstoneAdditionalPlacing(allocations, roundId) {
+function renderCornerstoneAdditionalPlacing(allocations, roundId, profileId, roundManagerPlacements) {
   const entries = (allocations || []).filter(a => a.id.startsWith(roundId + ":"))
     .flatMap(a => Array.isArray(a.additionalInternationalAllocations)
       ? a.additionalInternationalAllocations : [a.additionalInternationalAllocation])
+    .concat((Array.isArray(roundManagerPlacements) ? roundManagerPlacements : []).filter(x => x?.profileId === profileId && x.basis === "separate_international_placing_manager_total"))
     .filter(x => x && Number.isSafeInteger(x.shares) && x.shares > 0 && Number.isFinite(Number(x.amountHkd)) && Number(x.amountHkd) > 0 && x.source);
   if (!entries.length) return "";
   return `<details class="cs-acct-fold"><summary>另获国际配售</summary><ul>${entries.map(x =>
@@ -6225,7 +6226,7 @@ function renderCornerstones() {
         sourceCellHtml = firstSrc ? feeRosterSource(firstSrc, "原件 ↗") : "—";
       }
 
-      channelCellHtml += renderCornerstoneAdditionalPlacing(activeProfile.allocations, deal.roundId);
+      channelCellHtml += renderCornerstoneAdditionalPlacing(activeProfile.allocations, deal.roundId, activeProfile.id, cache.coverageOfferByRound.get(deal.roundId)?.managerAdditionalInternationalAllocations);
 
       const lockupSrc = cache.offerMetaByRound.get(deal.roundId)?.tranchesByAllocation && activeProfile.allocations
         ?.find(a => a.id.startsWith(`${deal.roundId}:cornerstone:`) && a.lockupDateSourceUrl)?.lockupDateSourceUrl;
