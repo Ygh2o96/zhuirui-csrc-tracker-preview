@@ -7428,7 +7428,7 @@ function renderMetrics() {
     <span>已剔除 <strong>${escapeHtml(excludedLabelTxt)}</strong>（移出 <strong>${removedN}</strong> 家，当前保留 <strong>${records.length}</strong> / ${preRecords.length} 家）</span>
    </div>
    <div class="cohort-exclude-right col-num">
-    <span>${escapeHtml(allLabels[state.cohortMetric]||'当前阶段')}办结中位 <strong>${doneN?formatDayValue(allMid)+'d':'—'}</strong> vs 剔除前 ${preDone.length?formatDayValue(preMid)+'d':'—'}${deltaBadge} · 均值 ${doneN?formatDayValue(allAvg)+'d':'—'}${doneN>=5?` · P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d`:''}${waitN||preWait.length?` · 在途中位 ${waitN?formatDayValue(allWait)+'d':'—'}（前 ${preWait.length?formatDayValue(preWaitMid)+'d':'—'}）`:''}${nonCohortOnly?' · 注：密交/特殊路径默认不计入标准 A1 分位，列表与计数已剔除':''}</span>
+    <span>${escapeHtml(allLabels[state.cohortMetric]||'当前阶段')}中位 <strong>${doneN?formatDayValue(allMid)+'d':'—'}</strong> vs 剔除前 ${preDone.length?formatDayValue(preMid)+'d':'—'}${deltaBadge} · 均值 ${doneN?formatDayValue(allAvg)+'d':'—'}${doneN>=5?` · P25–P75 ${formatDayValue(allP25)}–${formatDayValue(allP75)}d`:''}${waitN||preWait.length?` · 在途中位 ${waitN?formatDayValue(allWait)+'d':'—'}（前 ${preWait.length?formatDayValue(preWaitMid)+'d':'—'}）`:''}${nonCohortOnly?' · 注：密交/特殊路径默认不计入标准 A1 分位，列表与计数已剔除':''}</span>
     <button type="button" class="action-link-btn" data-exclude-clear>恢复全部 ×</button>
    </div>
   </div>`;
@@ -7495,7 +7495,7 @@ function renderMetrics() {
       <strong class="col-num">${qStats.map(s=>`${s.q} <em>${s.rec90!=null?s.rec90+'%':s.cohortN?'未满90日':'—'}</em> (${s.recMed!=null?formatDayValue(s.recMed)+'d':'—'})<small> ${s.eligible}/${s.cohortN} 宗满90日</small>`).join(' → ')}</strong>
      </div>
      <div class="pace-q-row">
-      <span class="pace-q-label">A1 → 挂牌（按挂牌季度 · 办结中位）</span>
+      <span class="pace-q-label">A1 → 挂牌（按挂牌季度 · 中位用时）</span>
       <strong class="col-num">${qStats.map(s=>`${s.q} <em>${s.listMed!=null?formatDayValue(s.listMed)+'d':'—'}</em>`).join(' → ')}<small>（${qStats.map(s=>s.listN).join(' / ')} 宗）</small></strong>
      </div>
     </div>
@@ -11138,7 +11138,7 @@ function p0FoldedCohort(records) {
  const v=p0RecentCohortSummary(records,state.data?.meta?.generatedAt?.slice(0,10)||P0_WAITING.asOf);
  if(!v)return '';
  const t=(n,count,min=1)=>min>1&&count<min?'样本未熟（'+count+' 宗）':count?formatDayValue(n)+' 天（'+count+' 宗）':'—';
- return `<p class="cohort-key cohort-summary" title="${v.start} 至 ${v.end} · ${state.dayCountMode==='business'?'工作日':'自然日'}"><span>近三个月 · 办结中位 ${t(v.completeMedian,v.completeN,5)}</span><span>在途中位已等待 ${t(v.waitingMedian,v.waitingN)}</span></p>`;
+ return `<p class="cohort-key cohort-summary" title="${v.start} 至 ${v.end} · ${state.dayCountMode==='business'?'工作日':'自然日'}"><span>近三个月 · ${escapeHtml(({a1ToReceived:'接收中位',a1ToNotice:'签发中位',receivedToNotice:'签发中位',a1ToListing:'挂牌中位'})[state.cohortMetric]||'中位用时')} ${t(v.completeMedian,v.completeN,5)}</span><span>在途中位已等待 ${t(v.waitingMedian,v.waitingN)}</span></p>`;
 }
 function p0BindInteractions(){
  const dialog=document.getElementById('globalSearchDialog'),input=document.getElementById('globalSearchInput');let searchTrigger=null;
