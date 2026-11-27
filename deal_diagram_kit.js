@@ -9137,7 +9137,28 @@
     const nodes=[{id:"s",role:"seller",name:"有效接納股東"},{id:"b",role:"buyer",name:"君雅有限公司"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"有效接納股東",toLabel:"君雅有限公司",headline:"現金要約每股0.14港元"}],annotations:[{tag:"①",title:"要約對價及持股口徑",body:"有效接納按要約價計約1.394億港元（扣除印花稅前）。兩項披露持股口徑均計入 Swatch Group（香港）持有的4.378億股（9.94%）。"}],evidenceLinks:[{documentId:p,pages:[15,16],label:"綜合文件：要約前持股"},{documentId:z,pages:[2,3],label:"要約結果及公眾持股"},{documentId:r,pages:[26,27,28],label:"中期報告：實際持股"}]});
   }
+  function buildIDTReceiver(c,docs){
+    const configs={
+      "00167":{
+        a:"YS-20251117-e07bb9efba0c",p:"YS-20251231-0dde627bcd45",z:"YS-20260121-d37b9f3c8860",date:"2026-01-21",event:"completion",status:"closed",
+        ts:[["combined_block_shares",312432503,"a"],["block_consideration",185616150,"p"],["offer_price",.5941,"p"],["accepted_shares",170917,"z"],["joint_offerors_after_pct",72.14,"z"],["public_float_pct",27.86,"z"],["hunglap_accepted_allocated_shares",111438,"z"],["horizon_accepted_allocated_shares",59479,"z"]],
+        left:"接管人出售72.10%股份",right:"強制現金要約結果",badge:"要約截止 · 聯合要約人合計72.14%",seller:"股份接管人",buyer:"弘立科技及Horizon Heights",sSub:"Lam Kwun Leung（CCTH CPA）",bSub:"2025年10月30日已交割",main:"現金對價1.856億港元",
+        steps:[["控股股份交割","弘立科技47.00% · Horizon Heights 25.10%"],["2026年1月21日要約截止","每股0.5941港元 · 170,917股有效接納"],["有效接納完成過戶後","分別持股47.03%及25.11% · 公眾持股27.86%"]],
+        detail:"Tiger Energy 為出質人，Lead Winner 為承押人。股份由接管人行使權力出售。餘股要約有111,438股分配予弘立科技、59,479股予Horizon Heights，合計應付約10.15萬港元（扣印花稅前）。",pagesA:[2,5,6],pagesP:[11,21],pagesZ:[2,3,4]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00167-20251117-hunglap-horizon-receiver-mgo"].includes(txCase?.id))return buildIDTReceiver(txCase,documents);
     if(txCase?.id==="HK-03389-20251128-empire-charm-voluntary-go")return buildHengdeliOffer(txCase,documents);
     if(["HK-02442-20251202-ever-genius-75-cash","HK-02623-20251104-prominence-mandatory-cash"].includes(txCase?.id))return buildEasyProminence(txCase,documents);
     if(["HK-00643-20251024-zephyrus-tsang-conditional-lapsed","HK-09929-20251203-yao-control-mgo-cb"].includes(txCase?.id))return buildCarrySem(txCase,documents);
