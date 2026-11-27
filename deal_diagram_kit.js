@@ -9510,7 +9510,37 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildLastTwoNov(c,docs){
+    const configs={
+      "HK-01835-20260615-ningbo-jiaxing-lp":{
+        a:"YS-20261112-d500c68cde83",z:"YS-20261112-d500c68cde83",date:"2026-11-12",event:"dispatch",status:"active",modality:"現金收購基金份額",
+        ts:[["maximum_combined_cash",40000000,"a"],["ningbo_cap",25000000,"a"],["jiaxing_cap",15000000,"a"],["ningbo_pct",16.99,"a"],["jiaxing_pct",44.12,"a"]],
+        left:"兩項有限合夥份額收購",right:"份額比例、對價與交割",badge:"已刊發通函 · 待獨立股東表決",
+        seller:"劉坤、劉冬梅",buyer:"瑞威資管",sSub:"分別轉讓寧波辰韜、嘉興實諾權益",bSub:"上市公司或其指定全資子公司",main:"合計上限4,000萬人民幣",
+        steps:[["劉坤：寧波辰韜約16.99%","上限2,500萬元；初始分三期"],["劉冬梅：嘉興實諾約44.12%","上限1,500萬元；初始分三期"],["各自符合條件並付首期後交割","兩筆對價可按交割估值下調"]],
+        detail:"兩個百分比按各基金認繳額計。兩項收購各自提交獨立股東表決，股東大會排定於11月27日11:30。投資組合收益分配按各基金協議。",pagesA:[7,14,15,16,17,18,19,20,21,22,368,369]
+      },
+      "HK-08245-20260824-multi-link":{
+        a:"YS-20260824-13660f0848eb",z:"YS-20261113-08245-2026111301132",date:"2026-11-13",event:"circular_delay",status:"active",modality:"現金收購",
+        ts:[["deal_consideration",5070000,"a"],["cash_at_signing_due",507000,"a"],["cash_by_20260915_due",3042000,"a"],["cash_at_completion_due",1521000,"a"],["tradelux_acquired_stake",70,"a"],["asian_link_acquired_stake",100,"a"],["post_close_working_capital",500000,"a"]],
+        left:"廣匯通訊相關公司股權",right:"兩個標的與分期付款",badge:"附條件協議已簽 · 通函再延後",
+        seller:"Lui Hon Fai",buyer:"Joy Ultima Holdings",sSub:"原持有兩家標的各100%",bSub:"烽翼集團全資子公司",main:"現金總對價507萬港元",
+        steps:[["Asian Link 100% · Tradelux 70%","交割後兩家均納入合併報表"],["約定50.7萬＋304.2萬＋152.1萬","簽約、9月15日前及交割分三期"],["交割後向Tradelux提供50萬港元","營運資金單列；交割須股東批准"]],
+        detail:"11月13日公告預計通函於11月27日或以前寄發。首公告合同列明分期應付金額；公告所列安排尚待後續披露確認付款與交割。",pagesA:[1,2,3,4,9,10,11],pagesZ:[1,2]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"通函寄發進度公告"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01835-20260615-ningbo-jiaxing-lp","HK-08245-20260824-multi-link"].includes(txCase?.id))return buildLastTwoNov(txCase,documents);
     if(["HK-00247-20261119-kil11296-sky-regal-ura","HK-00521-20261120-tuas-link4-epson-options","HK-01846-20261116-china-clinics-minority-buyback"].includes(txCase?.id))return buildFinalThreeNov(txCase,documents);
     if(["HK-02883-20261116-59-oilfield-support-vessels","HK-01606-20261116-henan-kunlun-it-equipment"].includes(txCase?.id))return buildNovemberIndustrialCases(txCase,documents);
     if(["HK-01109-20261030-hubei-lexing-shenzhen-court-auction","HK-00978-20261119-jiajingwan-550-parking"].includes(txCase?.id))return buildNovemberPropertyCases(txCase,documents);

@@ -76133,6 +76133,21 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "circular_delay",
+          "date": "2026-11-13",
+          "label": "公告進一步延後寄發通函",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "公司當時預期於11月27日或以前寄發。",
+          "evidence": {
+            "documentId": "YS-20261113-08245-2026111301132",
+            "pages": [
+              1,
+              2
+            ]
+          }
         }
       ],
       "headlineKey": "deal_consideration",
@@ -76227,10 +76242,10 @@
         }
       ],
       "stage": {
-        "date": "2026-08-24",
-        "eventKind": "first_announcement",
-        "label": "已签附条件协议；通函延期，交割未核实",
-        "status": "active"
+        "date": "2026-11-13",
+        "status": "active",
+        "eventKind": "circular_delay",
+        "label": "通函再延後 · 待股東批准及交割"
       },
       "terms": [
         {
@@ -101733,6 +101748,14 @@
       "date": "2026-04-02",
       "title": "發行人股東會通知：已發行股本338,482,654股",
       "url": "https://www.ferrettigroup.com/Upload/EI_IPO_IT/20260402101325_AVVISO%20DI%20CONVOCAZIONE%20INTEGRALE%20%28ITA%29%281936575.2%29.pdf"
+    },
+    "YS-20261113-08245-2026111301132": {
+      "id": "YS-20261113-08245-2026111301132",
+      "caseId": "HK-08245-20260824-multi-link",
+      "date": "2026-11-13",
+      "publishedAt": "2026-11-13T19:25:00+08:00",
+      "title": "進一步延遲寄發通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1113/2026111301132.pdf"
     }
   },
   "issuerLinks": [
