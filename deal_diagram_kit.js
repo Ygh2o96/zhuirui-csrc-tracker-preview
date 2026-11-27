@@ -7040,20 +7040,20 @@
         annotations:[{tag:"①",title:"排他期",body:"補充契約將排他期延至12月28日（包括當日）。其他諒解備忘錄條款維持。"}],
         evidenceLinks:[{documentId:i,pages:[1,2],label:"潛在交易雙方及股數"},{documentId:p,pages:[1,2],label:"排他期及尚未簽約"}],firstPending:true};
     }else if(c.id==="HK-01389-20261012-max-premier"){
-      const i=source(actual("2026-10-05","control_completion"),"2026101201299"),p=source(proc("2026-11-13"),"2026111300007");
+      const i=source(actual("2026-10-05","control_completion"),"2026101201299"),p=source(actual("2026-11-27","dispatch"),"2026112700061");
       const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===i);
-      if(!i||!p||c.stage?.date!=="2026-10-05"||c.stage.eventKind!=="control_completion"||
-        c.events?.some(e=>e.kind==="dispatch"||e.kind==="completion")||
+      if(!i||!p||c.stage?.date!=="2026-11-27"||c.stage.eventKind!=="dispatch"||
+        c.events?.some(e=>e.kind==="completion")||
         c.parties?.["要约方"]!=="Max Premier Limited"||c.parties?.["卖方"]!=="Silver Tycoon Limited"||
         !term("block_shares",298092515)||!term("block_pct",53.77)||!term("control_block",102163000)||
         !term("offer_shares",256240817)||!term("offer_price",0.3428))return null;
       f={left:"Silver Tycoon",right:"Max Premier",leftSub:"出售方",rightSub:"買方及要約人",a:"2.981億股已交割（53.77%）",
-        lTitle:"10月5日 · 控股股份已交割",rTitle:"餘股要約文件",gate:"與控股權交割分開",badge:"控股股份已交割 · 綜合文件延寄",
-        one:["每股 0.3428 港元","對約 2.562 億股餘股的要約"],two:["申請延至 11 月 27 日","執行人員表示有意同意"],
+        lTitle:"10月5日 · 控股股份已交割",rTitle:"餘股要約文件",gate:"與控股權交割分開",badge:"綜合文件已寄發 · 餘股要約進行中",
+        one:["每股 0.3428 港元","對約 2.562 億股餘股的要約"],two:["11 月 27 日開始接納","預定 12 月 18 日下午 4 時截止"],
         flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:"Silver Tycoon Limited",toLabel:"Max Premier Limited",headline:"10月5日已交割298,092,515股，佔53.77%"},
-        {id:"offer",kind:"cash",direction:"ltr",fromLabel:"Max Premier Limited",toLabel:"餘股股東",headline:"餘股要約價每股0.3428港元；綜合文件待寄",proposedOrTerminated:true}],
+        {id:"offer",kind:"cash",direction:"ltr",fromLabel:"Max Premier Limited",toLabel:"餘股股東",headline:"餘股要約價每股0.3428港元；11月27日開始接納",proposedOrTerminated:true}],
         annotations:[{tag:"①",title:"控股股份與餘股要約",body:"控股股權協議對價1.02163億港元；餘股按每股0.3428港元另計，兩段金額分列。"}],
-        evidenceLinks:[{documentId:i,pages:[2,3,4],label:"已完成的股份買賣及要約價"},{documentId:p,pages:[1,2],label:"文件寄發延期申請"}],firstPending:false};
+        evidenceLinks:[{documentId:i,pages:[2,3,4],label:"已完成的股份買賣及要約價"},{documentId:p,pages:[1,2],label:"綜合文件寄發及要約時間表"}],firstPending:false};
     }else if(c.id==="HK-00348-20261118-hwa-sheng"){
       const i=source(actual("2026-11-18","first_announcement"),"2026111801287");
       const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===i);

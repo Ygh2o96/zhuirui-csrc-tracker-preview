@@ -36373,11 +36373,26 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "dispatch",
+          "state": "actual",
+          "label": "寄發綜合要約文件",
+          "evidence": {
+            "documentId": "YS-20261127-01389-despatch",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
       "headlineKey": "control_block",
       "id": "HK-01389-20261012-max-premier",
-      "intervals": {},
+      "intervals": {
+        "announcementToCircular": 46
+      },
       "mandates": [
         {
           "evidence": {
@@ -36407,14 +36422,15 @@
         },
         {
           "evidence": {
-            "documentId": "YS-20261012-8778cc511aaf",
+            "documentId": "YS-20261127-01389-composite",
             "pages": [
-              4
+              32,
+              57
             ]
           },
           "firm": "Austrax Capital Limited",
           "role": "IFA",
-          "service": "offer_ifa_appointment",
+          "service": "offer_ifa_opinion",
           "side": "受要约方独立董事委员会"
         }
       ],
@@ -36452,9 +36468,38 @@
           "kind": "dispatch_extension",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "offer_open",
+          "state": "actual",
+          "label": "餘股要約開始接受接納",
+          "evidence": {
+            "documentId": "YS-20261127-01389-despatch",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-18",
+          "kind": "offer_close_expected",
+          "state": "expected",
+          "label": "預定餘股要約接納截止",
+          "evidence": {
+            "documentId": "YS-20261127-01389-despatch",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "香港時間下午 4 時截止接納；實際結果依後續公告。"
         }
       ],
-      "progressDate": "2026-10-12",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "控股股份已交割，触发强制无条件现金要约",
@@ -36483,9 +36528,9 @@
         }
       ],
       "stage": {
-        "date": "2026-10-05",
-        "eventKind": "control_completion",
-        "label": "控股权已交割 · 强制要约已触发",
+        "date": "2026-11-27",
+        "eventKind": "dispatch",
+        "label": "已寄發綜合文件 · 餘股要約進行中",
         "status": "active"
       },
       "terms": [
@@ -104871,6 +104916,22 @@
       "date": "2026-11-23",
       "title": "金塔中光售後回租通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1123/2026112300718.pdf"
+    },
+    "YS-20261127-01389-despatch": {
+      "id": "YS-20261127-01389-despatch",
+      "caseId": "HK-01389-20261012-max-premier",
+      "date": "2026-11-27",
+      "publishedAt": "2026-11-27T06:50:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700061.pdf",
+      "title": "聯合公告：寄發綜合文件"
+    },
+    "YS-20261127-01389-composite": {
+      "id": "YS-20261127-01389-composite",
+      "caseId": "HK-01389-20261012-max-premier",
+      "date": "2026-11-27",
+      "publishedAt": "2026-11-27T06:49:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700057.pdf",
+      "title": "強制無條件現金要約綜合文件"
     }
   },
   "issuerLinks": [
