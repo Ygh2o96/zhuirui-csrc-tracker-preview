@@ -6629,16 +6629,16 @@
   }
 
   function buildVerifiedKfmBlock(c,docs){
-    const src="YS-20260930-b13b8bdc0162", upd="YS-20261120-c9aa7b51233d", dt="2026-11-20";
-    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="supplement"||docs?.[src]?.caseId!==c.id||docs?.[upd]?.caseId!==c.id)return null;
+    const src="YS-20260930-b13b8bdc0162", upd="YS-20261127-03816-cb-issued", dt="2026-11-27";
+    if(c.stage?.status!=="active"||c.stage?.date!==dt||c.stage?.eventKind!=="supplement"||docs?.[src]?.caseId!==c.id||docs?.[upd]?.caseId!==c.id||docs[upd].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701389.pdf")return null;
     const term=(k,v)=>c.terms?.some(t=>t.key===k&&t.value===v);
-    if(!term("control_cash",684000000)||!term("block_shares",342000000)||!term("block_pct",57)||!term("offer_shares",150000988)||!term("offer_price",2))return null;
-    const left="KIG Real Estate",right="香港立讯",badge="控股股份待交割 · 余股要约待触发";
+    if(!term("control_cash",684000000)||!term("block_shares",342000000)||!term("block_pct",57)||!term("offer_shares",150000988)||!term("offer_price",2)||!term("cb_issued_principal",342000000)||!term("cb_max_conversion_shares",171000000))return null;
+    const left="KIG Real Estate",right="香港立讯",badge="可换股债已发行 · 控股股份待交割";
     const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
     const arrow=(id,k,step,x,y,xx,label)=>({id,panel:"left",kind:k,step,pathPoints:[[x,y],[xx,y]],labelCenter:[320,y],labelWidth:214,labelHeight:34,label});
     const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"双方拟买卖 KFM 金德现有股份",rightTitle:"可换股债认购与余股要约",transitionLabel:"控股股份交割后触发要约",outcomeBadge:badge}),[
       box("L_l","left",43,100,149,146,"seller",left,"现有控股股东"),box("L_r","left",448,100,157,146,"buyer",right,"拟收购 KFM 金德 57%"),
-      box("R_a","right",728,84,295,75,"buyer","立讯拟认购 2.52 亿港元可换股债","已获独立股东批准；认购交割待确认"),
+      box("R_a","right",728,84,295,75,"buyer","已发行 3.42 亿港元可换股债","合计最多可换 1.71 亿股"),
       box("R_b","right",728,210,295,75,"public","拟按每股 2 港元提出余股要约","按公告情景，现金上限约 3 亿港元"),
     ],[],[arrow("block","shares","①",192,138,448,"拟转让 3.42 亿股现有股份"),arrow("cash","cash","②",448,209,192,"拟付 6.84 亿港元")]);
     const nodes=[{id:"l",role:"seller",name:left},{id:"r",role:"buyer",name:right}];
@@ -6646,9 +6646,9 @@
       caseArchetypeLabel:"控股股份买卖及可能强制要约",caseModalityShortLabel:"现金收购及条件挂钩可换股债",before:{title:"已签控股股份买卖协议",nodes,equityLinks:[]},after:{title:"待交割及触发要约",nodes,equityLinks:[],outcomeBadge:badge},
       flows:[{id:"block",kind:"shares",direction:"ltr",fromLabel:left,toLabel:right,headline:"拟转让现有 3.42 亿股，占公告时股本 57%",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:right,toLabel:left,headline:"协议现金对价 6.84 亿港元",proposedOrTerminated:true}],
       annotations:[{tag:"①",title:"控股股份买卖",body:"KIG 拟出售 3.42 亿股现有股份，每股 2 港元。立讯的可换股债认购完成是股份交割的先决条件之一。"},
-      {tag:"②",title:"可换股债进度",body:"立讯拟认购 2.52 亿港元可换股债。独立股东已批准；11 月 20 日公告预计约 11 月 27 日完成认购，仍须其余条件满足或获豁免。"},
+      {tag:"②",title:"可换股债进度",body:"11 月 27 日，立讯及其他四项认购完成，合计发行 3.42 亿港元可换股债。每股换股价 2 港元；当日已发行普通股仍为 6 亿股。"},
       {tag:"③",title:"交割后触发的现金要约",body:"按公告股本不变情景，余股最多 150,000,988 股，按每股 2 港元计的现金上限为 300,001,976 港元。KIG 承诺保留的股份不计入此上限。"}],
-      evidenceLinks:[{documentId:src,pages:[4,30,38,44],label:"联合公告：现有股份、对价及要约范围"},{documentId:upd,pages:[2,3],label:"先决条件及可换股债进度"}],compactSummary:"拟转让 3.42 亿股现有股份 · 占 57% · 控股股份待交割",topology};
+      evidenceLinks:[{documentId:src,pages:[4,30,38,44],label:"联合公告：现有股份、对价及要约范围"},{documentId:upd,pages:[1,2],label:"第 3.8 条公告：认购完成、债券与现有股份"}],compactSummary:"拟转让 3.42 亿股现有股份 · 占 57% · 控股股份待交割",topology};
   }
 
   function buildVerifiedOceanVivo(c,docs){

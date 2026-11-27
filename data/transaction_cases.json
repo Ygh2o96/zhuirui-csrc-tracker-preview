@@ -40601,6 +40601,21 @@
           "kind": "first_announcement",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "可换股债已发行 · 控股股份待交割",
+          "state": "actual",
+          "detail": "公司确认立讯认购协议及 A、B、D、E 四项认购协议均于当日完成，合计发行本金 3.42 亿港元可换股债。每股换股价 2 港元，按悉数转换计对应 1.71 亿股；当时已发行普通股 6 亿股。",
+          "evidence": {
+            "documentId": "YS-20261127-03816-cb-issued",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
       "headlineKey": "control_cash",
@@ -40658,7 +40673,7 @@
           }
         }
       ],
-      "mechanism": "香港立讯拟以 6.84 亿港元收购 57% 股权；控股股份交割后触发余股强制现金要约。立讯认购可换股债是控股股份交割的先决条件之一。",
+      "mechanism": "香港立讯拟以 6.84 亿港元收购 57% 股权。立讯及另外四项认购协议下合计 3.42 亿港元可换股债已发行；控股股份买卖仍待交割，余股现金要约须待股权交割触发。",
       "name": "KFM金德",
       "parties": {
         "卖方": "KIG Real Estate Holdings Limited",
@@ -40765,7 +40780,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-20",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "9月4日仅为要约期起点",
@@ -40827,13 +40842,26 @@
             ]
           },
           "label": "上市规则第 14A 章"
+        },
+        {
+          "code": "TC:3.8",
+          "label": "收购守则 3.8",
+          "classificationStatus": "applied",
+          "application": "公司于可换股债发行后更新已发行相关证券。",
+          "evidence": {
+            "documentId": "YS-20261127-03816-cb-issued",
+            "pages": [
+              1,
+              2
+            ]
+          }
         }
       ],
       "stage": {
-        "date": "2026-11-20",
+        "date": "2026-11-27",
+        "status": "active",
         "eventKind": "supplement",
-        "label": "可换股债获独立股东批准 · 待控股股份交割",
-        "status": "active"
+        "label": "可换股债已发行 · 控股股份待交割"
       },
       "terms": [
         {
@@ -40937,6 +40965,57 @@
           "precision": 2,
           "unit": "money",
           "value": 300001976
+        },
+        {
+          "key": "cb_issued_principal",
+          "label": "已发行可换股债本金",
+          "value": 342000000,
+          "basis": "立讯及其他四项认购协议合计。",
+          "unit": "money",
+          "currency": "HKD",
+          "evidence": {
+            "documentId": "YS-20261127-03816-cb-issued",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "approximate": false,
+          "precision": 2
+        },
+        {
+          "key": "cb_max_conversion_shares",
+          "label": "可换股债悉数转换对应股份",
+          "value": 171000000,
+          "basis": "每股换股价 2 港元；为可能发行股份。",
+          "unit": "shares",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20261127-03816-cb-issued",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "approximate": false,
+          "precision": 0
+        },
+        {
+          "key": "ordinary_shares_as_of",
+          "label": "公告日已发行普通股",
+          "value": 600000000,
+          "basis": "11 月 27 日公告披露；不含未转换债券的潜在股份。",
+          "unit": "shares",
+          "currency": null,
+          "evidence": {
+            "documentId": "YS-20261127-03816-cb-issued",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "approximate": false,
+          "precision": 0
         }
       ]
     },
@@ -106872,6 +106951,13 @@
       "date": "2026-11-27",
       "title": "補充協議：買方替換及首批交割",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701028.pdf"
+    },
+    "YS-20261127-03816-cb-issued": {
+      "id": "YS-20261127-03816-cb-issued",
+      "caseId": "HK-03816-20260904-luxshare-control",
+      "date": "2026-11-27",
+      "title": "收购守则第 3.8 条：可换股债发行及相关证券数目",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701389.pdf"
     }
   },
   "issuerLinks": [
