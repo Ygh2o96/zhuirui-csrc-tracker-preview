@@ -93074,6 +93074,553 @@
       "comparables": {},
       "comparisonEvidence": {},
       "intervals": {}
+    },
+    {
+      "id": "HK-03311-20261022-cscecl-mutual-tender",
+      "code": "03311",
+      "name": "中國建築國際／中國建築股份：雙向工程委聘",
+      "aliases": [
+        "03311",
+        "601668",
+        "中国建筑国际",
+        "中国建筑股份",
+        "CSCI",
+        "CSCECL"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "中國建築國際與其中間控股公司按各自招標程序雙向承接工程。2027至2029年各年由中國建築國際發包的上限人民幣100億元，反向由中國建築股份發包的上限30億元。",
+      "parties": {
+        "合約一方（03311）": "中國建築國際集團有限公司",
+        "合約另一方（601668）": "中國建築股份有限公司"
+      },
+      "headlineKey": "parent_work_2027",
+      "terms": [
+        {
+          "key": "parent_work_2027",
+          "label": "2027年中國建築國際發包予中國建築股份上限",
+          "value": 10000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "中國建築國際發包予中國建築股份",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "parent_work_2028",
+          "label": "2028年中國建築國際發包予中國建築股份上限",
+          "value": 10000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "中國建築國際發包予中國建築股份",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "parent_work_2029",
+          "label": "2029年中國建築國際發包予中國建築股份上限",
+          "value": 10000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "中國建築國際發包予中國建築股份",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "issuer_work_2027",
+          "label": "2027年中國建築股份發包予中國建築國際上限",
+          "value": 3000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "中國建築股份發包予中國建築國際",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              7
+            ]
+          }
+        },
+        {
+          "key": "issuer_work_2028",
+          "label": "2028年中國建築股份發包予中國建築國際上限",
+          "value": 3000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "中國建築股份發包予中國建築國際",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              7
+            ]
+          }
+        },
+        {
+          "key": "issuer_work_2029",
+          "label": "2029年中國建築股份發包予中國建築國際上限",
+          "value": 3000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "中國建築股份發包予中國建築國際",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              7
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "框架已簽署並公告",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "circular",
+          "state": "expected",
+          "label": "03311首份公告所列最遲寄發日期",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "兩個方向單獨計算各自比率均逾5%，均須獨立股東批准；同類框架另按第14A.81條合併計算。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.81",
+          "label": "上市規則 14A.81",
+          "classificationStatus": "applied",
+          "application": "03311與同類框架按規則合併計算，應各自履行規則下的批准要求。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice_appointment",
+          "side": "03311獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201039",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-10-22",
+        "eventKind": "first_announcement",
+        "status": "active",
+        "label": "框架已簽 · 待獨立股東批准"
+      },
+      "progressDate": "2026-10-22",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
+      "id": "HK-03311-20261022-cscecl-contractual-joint-tender",
+      "code": "03311",
+      "name": "中國建築國際／中國建築股份：聯合投標總承包",
+      "aliases": [
+        "03311",
+        "601668",
+        "中国建筑国际",
+        "中国建筑股份",
+        "CSCI",
+        "CSCECL",
+        "合约联营"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "雙方可作為合約聯營總承包商共同競投第三方工程；2027至2029年各年聯合獲授合約總額最高人民幣150億元。新協議生效後，會取代舊協議的2027年適用安排。",
+      "parties": {
+        "合作方（03311）": "中國建築國際集團有限公司",
+        "合作方（601668）": "中國建築股份有限公司",
+        "發包方": "第三方開發商或業主"
+      },
+      "headlineKey": "joint_cap_2027",
+      "terms": [
+        {
+          "key": "joint_cap_2027",
+          "label": "2027年第三方授予聯營總承包合約總額上限",
+          "value": 15000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "第三方授予聯營總承包合約總額",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "joint_cap_2028",
+          "label": "2028年第三方授予聯營總承包合約總額上限",
+          "value": 15000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "第三方授予聯營總承包合約總額",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "joint_cap_2029",
+          "label": "2029年第三方授予聯營總承包合約總額上限",
+          "value": 15000000000,
+          "currency": "CNY",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "第三方授予聯營總承包合約總額",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              5
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "框架已簽署並公告",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-11-27",
+          "kind": "circular",
+          "state": "expected",
+          "label": "03311首份公告所列最遲寄發日期",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "此協議單獨計算的適用比率已逾5%，須獨立股東批准；同類框架另按第14A.81條合併計算。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.81",
+          "label": "上市規則 14A.81",
+          "classificationStatus": "applied",
+          "application": "03311與同類框架按規則合併計算，應各自履行規則下的批准要求。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice_appointment",
+          "side": "03311獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201064",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-10-22",
+        "eventKind": "first_announcement",
+        "status": "active",
+        "label": "框架已簽 · 待獨立股東批准"
+      },
+      "progressDate": "2026-10-22",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
+    },
+    {
+      "id": "HK-00830-20261022-cscecl-facade-subcontract",
+      "code": "00830",
+      "name": "中國建築興業／中國建築股份：外牆分包框架",
+      "aliases": [
+        "00830",
+        "03311",
+        "601668",
+        "中国建筑兴业",
+        "中国建筑国际",
+        "中国建筑股份",
+        "CSCD",
+        "CSCECL"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "中國建築興業競投中國建築股份集團的外牆工程等分包；2027至2029年上限為42億、54億及24億港元。00830與03311分別履行獨立股東審批。",
+      "parties": {
+        "分包服務方（00830）": "中國建築興業集團有限公司",
+        "發包方（601668）": "中國建築股份有限公司",
+        "另須審批的上市母公司（03311）": "中國建築國際集團有限公司"
+      },
+      "headlineKey": "facade_2027",
+      "terms": [
+        {
+          "key": "facade_2027",
+          "label": "2027年外牆分包及相關服務上限",
+          "value": 4200000000,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "外牆分包及相關服務",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "facade_2028",
+          "label": "2028年外牆分包及相關服務上限",
+          "value": 5400000000,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "外牆分包及相關服務",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "facade_2029",
+          "label": "2029年外牆分包及相關服務上限",
+          "value": 2400000000,
+          "currency": "HKD",
+          "unit": "money",
+          "precision": 1,
+          "approximate": false,
+          "basis": "外牆分包及相關服務",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              4
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "框架已簽署並公告",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              1,
+              2,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-10-22",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "03311 同日公告另列上市母公司審批",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201095",
+            "pages": [
+              1,
+              2,
+              6
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-30",
+          "kind": "circular",
+          "state": "expected",
+          "label": "00830首份公告所列最遲寄發日期",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "circular",
+          "state": "expected",
+          "label": "03311首份公告所列最遲寄發日期",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201095",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "00830最高上限的各適用比率皆逾5%，須獨立股東批准；03311披露單項比率逾5%，同類框架另按第14A.81條合併計算。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.81",
+          "label": "上市規則 14A.81",
+          "classificationStatus": "applied",
+          "application": "03311與同類框架按規則合併計算，應各自履行規則下的批准要求。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201095",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Altus Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice_appointment",
+          "side": "00830獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261022-2026102200793",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice_appointment",
+          "side": "03311獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201095",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-10-22",
+        "eventKind": "first_announcement",
+        "status": "active",
+        "label": "框架已簽 · 兩家待獨立股東批准"
+      },
+      "progressDate": "2026-10-22",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {}
     }
   ],
   "coverage": {
@@ -103118,6 +103665,34 @@
       "date": "2026-10-29",
       "title": "中國海外宏洋：續訂物業租賃框架",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1029/2026102901072.pdf"
+    },
+    "YS-20261022-2026102201039": {
+      "id": "YS-20261022-2026102201039",
+      "caseId": "HK-03311-20261022-cscecl-mutual-tender",
+      "date": "2026-10-22",
+      "title": "03311：雙向關連工程委聘",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201039.pdf"
+    },
+    "YS-20261022-2026102201064": {
+      "id": "YS-20261022-2026102201064",
+      "caseId": "HK-03311-20261022-cscecl-contractual-joint-tender",
+      "date": "2026-10-22",
+      "title": "03311：合約聯營總承包框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201064.pdf"
+    },
+    "YS-20261022-2026102200793": {
+      "id": "YS-20261022-2026102200793",
+      "caseId": "HK-00830-20261022-cscecl-facade-subcontract",
+      "date": "2026-10-22",
+      "title": "00830：外牆工程分包框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102200793.pdf"
+    },
+    "YS-20261022-2026102201095": {
+      "id": "YS-20261022-2026102201095",
+      "caseId": "HK-00830-20261022-cscecl-facade-subcontract",
+      "date": "2026-10-22",
+      "title": "03311：外牆工程分包框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201095.pdf"
     }
   },
   "issuerLinks": [
