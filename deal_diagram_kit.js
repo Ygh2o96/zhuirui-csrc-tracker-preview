@@ -6764,6 +6764,24 @@
       evidenceLinks:[{documentId:s,pages:[1,2,6,7,8,9],label:"原件：交易條款及法律主體"}],compactSummary:"100%股權出售 · 約2,071萬港元 · 待登記",topology});
   }
 
+  function buildRizhaoBlock(c,docs){
+    const s="YS-20261127-06117-block",l="四名原股東",r="山東水發",badge=c.stage?.label;
+    if(c.stage?.status!=="closed"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="shares"&&t.value===157730000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:207,labelHeight:34,label,dashed:false});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:461,status:"closed",leftTitle:"日照港裕廊H股大宗交易",rightTitle:"四名賣方出售股數",transitionLabel:"山東水發佔已發行總股本約9.50%",outcomeBadge:badge}),[
+      box("l","left",43,125,149,146,"seller",l,"交易後各自不再持有股份"),box("r","left",448,125,157,146,"buyer",r,"山東省國資委最終控制"),
+      box("a","right",721,65,311,58,"seller","巴澳資源","5,852萬股"),box("b","right",721,143,311,58,"seller","青島世紀瑞豐","4,400萬股"),
+      box("c","right",721,221,311,58,"seller","日照興業進出口","3,996萬股"),box("d","right",721,299,311,58,"seller","新加坡陽光石油","1,525萬股")
+    ],[],[flow("asset","shares","①",192,172,448,"1.5773億股已發行H股"),flow("cash","cash","②",448,229,192,"平均每股0.545港元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"acquisition",modality:"cash",status:"closed",caseArchetypeLabel:"二級市場大宗交易",caseModalityShortLabel:"港元",
+      before:{title:"四名股東轉讓既有H股",nodes,equityLinks:[]},after:{title:"山東水發持股約9.50%",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"市場成交1.5773億股既有H股",proposedOrTerminated:false},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"披露平均價每股0.545港元；推算總額約8,596.3萬港元",proposedOrTerminated:false}],
+      annotations:[{tag:"①",title:"已完成的H股轉讓",body:"四名賣方均不再持有股份。"}, {tag:"②",title:"成交後持股",body:"山東水發持股約佔全部已發行股本9.50%。"}],
+      evidenceLinks:[{documentId:s,pages:[1],label:"原件：各賣方股數、平均價格及成交後持股"}],compactSummary:"成交1.5773億股H股 · 買方持股約9.50%",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10720,6 +10738,7 @@
     if(txCase?.id==="HK-02068-20261127-guinea-epc")return buildLateTwo(txCase,documents,0);
     if(txCase?.id==="HK-08052-20241106-harbour-city-lease")return buildLateTwo(txCase,documents,1);
     if(txCase?.id==="HK-01765-20261127-intelligent-joy-disposal")return buildIntelligentJoy(txCase,documents);
+    if(txCase?.id==="HK-06117-20261127-shandong-shuifa-block")return buildRizhaoBlock(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

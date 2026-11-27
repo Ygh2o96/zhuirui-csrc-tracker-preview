@@ -2,6 +2,188 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-06117-20261127-shandong-shuifa-block",
+      "code": "06117",
+      "name": "日照港裕廊：山東水發購入約9.50%股權",
+      "aliases": [
+        "日照港裕廊",
+        "Rizhao Port Jurong",
+        "山东水发",
+        "Shandong Shuifa",
+        "巴澳資源有限公司",
+        "青島世紀瑞豐集團有限公司",
+        "日照興業進出口有限公司",
+        "新加坡陽光石油有限公司"
+      ],
+      "category": "acquisition",
+      "mechanism": "山東水發透過公開市場大宗交易，從四名股東購入日照港裕廊1.5773億股已發行H股，平均每股0.545港元，交割後佔公司已發行總股本約9.50%。",
+      "headlineKey": "consideration_calc",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "買方": "山東水發控股集團有限公司（最終由山東省國資委控制）",
+        "標的": "日照港裕廊股份有限公司（06117）的既有H股",
+        "賣方": "巴澳資源有限公司、青島世紀瑞豐集團有限公司、日照興業進出口有限公司、新加坡陽光石油有限公司"
+      },
+      "terms": [
+        {
+          "key": "consideration_calc",
+          "label": "估算總對價",
+          "value": 85962850,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "總成交股數乘以披露平均價格；分筆價格未列。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "shares",
+          "label": "已成交H股",
+          "value": 157730000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "四名賣方已持有股份，發行人未發新股。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "avg_price",
+          "label": "平均每股成交價",
+          "value": 0.545,
+          "unit": "price",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "發行人披露的總交易平均價。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "stake_pct",
+          "label": "買方成交後持有總股本",
+          "value": 9.5,
+          "unit": "percent",
+          "currency": null,
+          "approximate": true,
+          "basis": "分母為發行人全部已發行股本。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "seller_0",
+          "label": "巴澳資源有限公司出售股數",
+          "value": 58520000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "交易後已不再持有日照港裕廊股份。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "seller_1",
+          "label": "青島世紀瑞豐集團有限公司出售股數",
+          "value": 44000000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "交易後已不再持有日照港裕廊股份。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "seller_2",
+          "label": "日照興業進出口有限公司出售股數",
+          "value": 39960000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "交易後已不再持有日照港裕廊股份。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "seller_3",
+          "label": "新加坡陽光石油有限公司出售股數",
+          "value": 15250000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "交易後已不再持有日照港裕廊股份。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "rules": [],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已完成大宗交易 · 山東水發持股約9.50%",
+          "state": "actual",
+          "detail": "自願公告披露同日完成的公開市場大宗交易。四名賣方各自不再為公司股東。",
+          "evidence": {
+            "documentId": "YS-20261127-06117-block",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "closed",
+        "eventKind": "first_announcement",
+        "label": "已完成大宗交易 · 山東水發持股約9.50%"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01765-20261127-intelligent-joy-disposal",
       "code": "01765",
       "name": "希教國際：出售 Intelligent Joy Limited",
@@ -113764,6 +113946,13 @@
       "date": "2026-11-27",
       "title": "希教國際：關連交易 – 出售附屬公司",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112702023.pdf"
+    },
+    "YS-20261127-06117-block": {
+      "id": "YS-20261127-06117-block",
+      "caseId": "HK-06117-20261127-shandong-shuifa-block",
+      "date": "2026-11-27",
+      "title": "日照港裕廊：股東完成H股市場大宗交易",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700244_c.pdf"
     }
   },
   "issuerLinks": [
