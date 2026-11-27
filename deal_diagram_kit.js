@@ -6361,6 +6361,29 @@
       compactSummary:"首批 34.90% 已交割取得控制 · 次批 32.723% 待交割",topology});
   }
 
+  function buildLufaxCCT(c,docs) {
+    const x=({"HK-06623-20261106-pingan-purchasing":{"k":"purchasing","title":"服務及產品採購續期","counter":"中國平安附屬及聯營公司","pages":[11,12],"resolution":1,"flow":"陸金所向中國平安關連方採購服務及產品並支付費用。","signal":"採購費用上限","unitNote":"按年列示的應付服務費","capRows":[["採購費用",1878400000,1808200000]],"headline":["18.8 億元","18.1 億元"],"firstCap":1878400000},"HK-06623-20261106-pingan-financial":{"k":"financial","title":"金融服務框架續期","counter":"平安銀行及中國平安相關附屬公司","pages":[14,17],"resolution":2,"flow":"陸金所與平安銀行及中國平安相關附屬公司辦理存款、理財、衍生品及同業往來。","signal":"銀行存款每日本金餘額上限","unitNote":"與其他金融服務分項列示","capRows":[["存款每日最高本金",19000000000,19000000000],["存款利息收入",263000000,263000000],["理財產品每日最高餘額",1400000000,1400000000],["理財投資收入",73600000,73600000],["衍生品最高名義本金餘額",1400000000,1400000000],["同業存款每日最高餘額",15610000000,15600000000],["同業存款利息收入",150000000,175000000],["同業拆入每日最高餘額",1650000000,1700000000],["同業拆入應付利息",45000000,47500000]],"headline":["190 億元","190 億元"],"firstCap":19000000000},"HK-06623-20261106-pingan-consumer-finance":{"k":"consumer-finance","title":"平安消費金融合作續期","counter":"平安消費金融","pages":[19,22],"resolution":3,"flow":"陸金所向平安消費金融存放股東存款，其集團提供一般服務及融資擔保。","signal":"擔保本金最高每日餘額","unitNote":"按年列示的最高擔保本金","capRows":[["擔保本金每日最高餘額",31021100000,36373500000],["股東存款每日最高本金",10000000000,10000000000],["股東存款利息收入",250000000,250000000],["一般服務費收入",5510700000,6997400000],["擔保服務費收入",2875600000,3230800000]],"headline":["310.2 億元","363.7 億元"],"firstCap":31021100000},"HK-06623-20261106-pingan-account":{"k":"account","title":"平安產險賬戶管理框架","counter":"中國平安財產保險股份有限公司","pages":[24,25],"resolution":4,"flow":"陸金所管理平安產險信保業務客戶賬戶，平安產險支付固定費及按回收額計費。","signal":"賬戶管理應付服務費上限","unitNote":"僅本次一個年度","capRows":[["賬戶管理服務費收入",464100000]],"headline":["4.6 億元"],"firstCap":464100000}})[c.id],src="YS-20261127-06623-"+x?.k,ann="YS-20261106-06623-"+x?.k,meet="YS-20261127-06623-egm-"+x?.k;
+    if(!x||c.stage?.status!=="active"||c.stage?.eventKind!=="dispatch"||c.stage?.date!=="2026-11-27"||![src,ann,meet].every(z=>docs?.[z]?.caseId===c.id)||
+       docs[src].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701295.pdf"||
+       !c.terms?.some(t=>t.key==="cap_0_2027"&&t.value===x.firstCap&&t.evidence?.documentId===src))return null;
+    const l="陸金所",r={purchasing:"中國平安關連方",financial:"平安銀行及附屬", "consumer-finance":"平安消費金融", account:"平安產險"}[x.k], rt=x.k!=="purchasing", two=x.headline.length>1;
+    const short={purchasing:"服務及產品採購",financial:"存款及金融服務","consumer-finance":"股東存款及擔保服務",account:"信保客戶賬戶管理"}[x.k];
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const badge=c.stage.label;
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:365,status:"active",leftTitle:x.title,rightTitle:"建議年度上限",transitionLabel:"待獨立股東批准",outcomeBadge:badge}),[
+      box("l","left",43,100,149,140,"listed",l,"上市公司 06623"),box("r","left",448,100,157,140,"target",r,"框架對方"),
+      box("cap","right",727,88,300,76,"target","2027 年："+x.headline[0],x.signal),
+      box("next","right",727,207,300,76,"public",two?"2028 年："+x.headline[1]:"僅 2027 年",two?x.signal:"待獨立股東表決")],
+      [],[{id:"arr",panel:"left",kind:"asset",step:"①",pathPoints:rt?[[192,169],[448,169]]:[[448,169],[192,169]],labelCenter:[320,169],labelWidth:206,labelHeight:35,label:short,dashed:true}]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"mixed",status:"active",
+      caseArchetypeLabel:"持續關連交易",caseModalityShortLabel:"建議年度上限",
+      before:{title:"雙方安排",nodes,equityLinks:[]},after:{title:"建議上限",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"arr",kind:"asset",direction:rt?"ltr":"rtl",fromLabel:rt?l:r,toLabel:rt?r:l,headline:x.flow,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:x.signal,body:x.unitNote+"；原幣人民幣，各年度分列。"},{tag:"②",title:"獨立股東表決",body:"12 月 22 日上午 9 時，第 "+x.resolution+" 項決議。"}],
+      evidenceLinks:[{documentId:src,pages:[...x.pages,27,x.resolution===1?88:89],label:"通函：期限、上限與股東大會"}],compactSummary:x.signal+" · "+x.headline.join("／"),topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10284,6 +10307,7 @@
     if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01440-20261023-circle-time-disposal")return buildStarShineCircleTime(txCase,documents);
     if(txCase?.id==="HK-06655-20260802-holcim-philippines")return buildHuaxinHolcim(txCase,documents);
+    if(["HK-06623-20261106-pingan-purchasing","HK-06623-20261106-pingan-financial","HK-06623-20261106-pingan-consumer-finance","HK-06623-20261106-pingan-account"].includes(txCase?.id))return buildLufaxCCT(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

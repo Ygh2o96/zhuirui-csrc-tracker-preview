@@ -96590,6 +96590,1014 @@
       "intervals": {
         "announcementToCircular": 170
       }
+    },
+    {
+      "id": "HK-06623-20261106-pingan-purchasing",
+      "code": "06623",
+      "name": "陸金所：服務及產品採購續期",
+      "aliases": [
+        "陸金所",
+        "陆金所",
+        "Lufax",
+        "中國平安",
+        "中國平安附屬及聯營公司"
+      ],
+      "category": "continuing_connected",
+      "headlineKey": "cap_0_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "陸金所控股有限公司（06623）",
+        "對手方": "中國平安附屬及聯營公司"
+      },
+      "mechanism": "陸金所向中國平安關連方採購服務及產品並支付費用。",
+      "terms": [
+        {
+          "key": "cap_0_2027",
+          "label": "2027 年採購費用上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1878400000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-purchasing",
+            "pages": [
+              12
+            ]
+          }
+        },
+        {
+          "key": "cap_0_2028",
+          "label": "2028 年採購費用上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1808200000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-purchasing",
+            "pages": [
+              12
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "application": "持續關連交易；建議年度上限須經獨立股東批准。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-06623-purchasing",
+            "pages": [
+              27
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261127-06623-purchasing",
+            "pages": [
+              5,
+              82
+            ]
+          },
+          "signatories": [
+            "Robert Siu",
+            "Ben Leung"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261127-06623-purchasing",
+            "pages": [
+              82
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-06",
+          "kind": "first_announcement",
+          "label": "公布續訂或新訂安排",
+          "state": "actual",
+          "detail": "披露建議年度上限及獨立股東批准要求。",
+          "evidence": {
+            "documentId": "YS-20261106-06623-purchasing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "dispatch",
+          "label": "刊發通函",
+          "state": "actual",
+          "detail": "載於特別股東大會第 1 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-purchasing",
+            "pages": [
+              1,
+              11,
+              12,
+              88
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-22",
+          "kind": "vote",
+          "label": "預計獨立股東表決",
+          "state": "expected",
+          "detail": "香港時間上午 9 時，第 1 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-egm-purchasing",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "已刊通函 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {
+        "announcementToDispatch": 21
+      }
+    },
+    {
+      "id": "HK-06623-20261106-pingan-financial",
+      "code": "06623",
+      "name": "陸金所：金融服務框架續期",
+      "aliases": [
+        "陸金所",
+        "陆金所",
+        "Lufax",
+        "中國平安",
+        "平安銀行及中國平安相關附屬公司"
+      ],
+      "category": "continuing_connected",
+      "headlineKey": "cap_0_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "陸金所控股有限公司（06623）",
+        "對手方": "平安銀行及中國平安相關附屬公司"
+      },
+      "mechanism": "陸金所與平安銀行及中國平安相關附屬公司辦理存款、理財、衍生品及同業往來。",
+      "terms": [
+        {
+          "key": "cap_0_2027",
+          "label": "2027 年存款每日最高本金上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 19000000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_0_2028",
+          "label": "2028 年存款每日最高本金上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 19000000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_1_2027",
+          "label": "2027 年存款利息收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 263000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_1_2028",
+          "label": "2028 年存款利息收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 263000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_2_2027",
+          "label": "2027 年理財產品每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1400000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_2_2028",
+          "label": "2028 年理財產品每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1400000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_3_2027",
+          "label": "2027 年理財投資收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 73600000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_3_2028",
+          "label": "2028 年理財投資收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 73600000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_4_2027",
+          "label": "2027 年衍生品最高名義本金餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1400000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_4_2028",
+          "label": "2028 年衍生品最高名義本金餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1400000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_5_2027",
+          "label": "2027 年同業存款每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 15610000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_5_2028",
+          "label": "2028 年同業存款每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 15600000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_6_2027",
+          "label": "2027 年同業存款利息收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 150000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_6_2028",
+          "label": "2028 年同業存款利息收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 175000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_7_2027",
+          "label": "2027 年同業拆入每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1650000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_7_2028",
+          "label": "2028 年同業拆入每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 1700000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_8_2027",
+          "label": "2027 年同業拆入應付利息上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 45000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        },
+        {
+          "key": "cap_8_2028",
+          "label": "2028 年同業拆入應付利息上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 47500000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              17
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "application": "持續關連交易；建議年度上限須經獨立股東批准。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              27
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第 14 章",
+          "application": "金融服務框架的存款、財富管理及衍生產品交易同時為須予披露交易。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              28
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              5,
+              82
+            ]
+          },
+          "signatories": [
+            "Robert Siu",
+            "Ben Leung"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              82
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-06",
+          "kind": "first_announcement",
+          "label": "公布續訂或新訂安排",
+          "state": "actual",
+          "detail": "披露建議年度上限及獨立股東批准要求。",
+          "evidence": {
+            "documentId": "YS-20261106-06623-financial",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "dispatch",
+          "label": "刊發通函",
+          "state": "actual",
+          "detail": "載於特別股東大會第 2 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-financial",
+            "pages": [
+              1,
+              14,
+              17,
+              89
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-22",
+          "kind": "vote",
+          "label": "預計獨立股東表決",
+          "state": "expected",
+          "detail": "香港時間上午 9 時，第 2 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-egm-financial",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "已刊通函 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {
+        "announcementToDispatch": 21
+      }
+    },
+    {
+      "id": "HK-06623-20261106-pingan-consumer-finance",
+      "code": "06623",
+      "name": "陸金所：平安消費金融合作續期",
+      "aliases": [
+        "陸金所",
+        "陆金所",
+        "Lufax",
+        "中國平安",
+        "平安消費金融"
+      ],
+      "category": "continuing_connected",
+      "headlineKey": "cap_0_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "陸金所控股有限公司（06623）",
+        "對手方": "平安消費金融"
+      },
+      "mechanism": "陸金所向平安消費金融存放股東存款，其集團提供一般服務及融資擔保。",
+      "terms": [
+        {
+          "key": "cap_0_2027",
+          "label": "2027 年擔保本金每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 31021100000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_0_2028",
+          "label": "2028 年擔保本金每日最高餘額上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 36373500000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_1_2027",
+          "label": "2027 年股東存款每日最高本金上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 10000000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_1_2028",
+          "label": "2028 年股東存款每日最高本金上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 10000000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_2_2027",
+          "label": "2027 年股東存款利息收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 250000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_2_2028",
+          "label": "2028 年股東存款利息收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 250000000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_3_2027",
+          "label": "2027 年一般服務費收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 5510700000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_3_2028",
+          "label": "2028 年一般服務費收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 6997400000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_4_2027",
+          "label": "2027 年擔保服務費收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 2875600000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        },
+        {
+          "key": "cap_4_2028",
+          "label": "2028 年擔保服務費收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 3230800000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              22
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "application": "持續關連交易；建議年度上限須經獨立股東批准。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              27
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.16",
+          "label": "上市規則 14A.16",
+          "application": "陸金所及中國平安持有平安消費金融 70% 及 30%，屬關連附屬公司。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              27
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              5,
+              82
+            ]
+          },
+          "signatories": [
+            "Robert Siu",
+            "Ben Leung"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              82
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-06",
+          "kind": "first_announcement",
+          "label": "公布續訂或新訂安排",
+          "state": "actual",
+          "detail": "披露建議年度上限及獨立股東批准要求。",
+          "evidence": {
+            "documentId": "YS-20261106-06623-consumer-finance",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "dispatch",
+          "label": "刊發通函",
+          "state": "actual",
+          "detail": "載於特別股東大會第 3 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-consumer-finance",
+            "pages": [
+              1,
+              19,
+              22,
+              89
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-22",
+          "kind": "vote",
+          "label": "預計獨立股東表決",
+          "state": "expected",
+          "detail": "香港時間上午 9 時，第 3 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-egm-consumer-finance",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "已刊通函 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {
+        "announcementToDispatch": 21
+      }
+    },
+    {
+      "id": "HK-06623-20261106-pingan-account",
+      "code": "06623",
+      "name": "陸金所：平安產險賬戶管理框架",
+      "aliases": [
+        "陸金所",
+        "陆金所",
+        "Lufax",
+        "中國平安",
+        "中國平安財產保險股份有限公司"
+      ],
+      "category": "continuing_connected",
+      "headlineKey": "cap_0_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "陸金所控股有限公司（06623）",
+        "對手方": "中國平安財產保險股份有限公司"
+      },
+      "mechanism": "陸金所管理平安產險信保業務客戶賬戶，平安產險支付固定費及按回收額計費。",
+      "terms": [
+        {
+          "key": "cap_0_2027",
+          "label": "2027 年賬戶管理服務費收入上限",
+          "unit": "money",
+          "currency": "CNY",
+          "value": 464100000,
+          "precision": 2,
+          "approximate": false,
+          "basis": "獨立股東待批；同一指標跨年度分列。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-account",
+            "pages": [
+              25
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "application": "持續關連交易；建議年度上限須經獨立股東批准。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-06623-account",
+            "pages": [
+              27
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261127-06623-account",
+            "pages": [
+              5,
+              82
+            ]
+          },
+          "signatories": [
+            "Robert Siu",
+            "Ben Leung"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20261127-06623-account",
+            "pages": [
+              82
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-06",
+          "kind": "first_announcement",
+          "label": "公布續訂或新訂安排",
+          "state": "actual",
+          "detail": "披露建議年度上限及獨立股東批准要求。",
+          "evidence": {
+            "documentId": "YS-20261106-06623-account",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "dispatch",
+          "label": "刊發通函",
+          "state": "actual",
+          "detail": "載於特別股東大會第 4 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-account",
+            "pages": [
+              1,
+              24,
+              25,
+              89
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-22",
+          "kind": "vote",
+          "label": "預計獨立股東表決",
+          "state": "expected",
+          "detail": "香港時間上午 9 時，第 4 項決議。",
+          "evidence": {
+            "documentId": "YS-20261127-06623-egm-account",
+            "pages": [
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "已刊通函 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {
+        "announcementToDispatch": 21
+      }
     }
   ],
   "coverage": {
@@ -106958,6 +107966,90 @@
       "date": "2026-11-27",
       "title": "收购守则第 3.8 条：可换股债发行及相关证券数目",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701389.pdf"
+    },
+    "YS-20261106-06623-purchasing": {
+      "id": "YS-20261106-06623-purchasing",
+      "caseId": "HK-06623-20261106-pingan-purchasing",
+      "date": "2026-11-06",
+      "title": "續訂持續關連交易及須予披露交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601448.pdf"
+    },
+    "YS-20261127-06623-purchasing": {
+      "id": "YS-20261127-06623-purchasing",
+      "caseId": "HK-06623-20261106-pingan-purchasing",
+      "date": "2026-11-27",
+      "title": "續訂持續關連交易及須予披露交易通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701295.pdf"
+    },
+    "YS-20261127-06623-egm-purchasing": {
+      "id": "YS-20261127-06623-egm-purchasing",
+      "caseId": "HK-06623-20261106-pingan-purchasing",
+      "date": "2026-11-27",
+      "title": "獨立股東大會通知",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701343.pdf"
+    },
+    "YS-20261106-06623-financial": {
+      "id": "YS-20261106-06623-financial",
+      "caseId": "HK-06623-20261106-pingan-financial",
+      "date": "2026-11-06",
+      "title": "續訂持續關連交易及須予披露交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601448.pdf"
+    },
+    "YS-20261127-06623-financial": {
+      "id": "YS-20261127-06623-financial",
+      "caseId": "HK-06623-20261106-pingan-financial",
+      "date": "2026-11-27",
+      "title": "續訂持續關連交易及須予披露交易通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701295.pdf"
+    },
+    "YS-20261127-06623-egm-financial": {
+      "id": "YS-20261127-06623-egm-financial",
+      "caseId": "HK-06623-20261106-pingan-financial",
+      "date": "2026-11-27",
+      "title": "獨立股東大會通知",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701343.pdf"
+    },
+    "YS-20261106-06623-consumer-finance": {
+      "id": "YS-20261106-06623-consumer-finance",
+      "caseId": "HK-06623-20261106-pingan-consumer-finance",
+      "date": "2026-11-06",
+      "title": "續訂持續關連交易及須予披露交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601448.pdf"
+    },
+    "YS-20261127-06623-consumer-finance": {
+      "id": "YS-20261127-06623-consumer-finance",
+      "caseId": "HK-06623-20261106-pingan-consumer-finance",
+      "date": "2026-11-27",
+      "title": "續訂持續關連交易及須予披露交易通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701295.pdf"
+    },
+    "YS-20261127-06623-egm-consumer-finance": {
+      "id": "YS-20261127-06623-egm-consumer-finance",
+      "caseId": "HK-06623-20261106-pingan-consumer-finance",
+      "date": "2026-11-27",
+      "title": "獨立股東大會通知",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701343.pdf"
+    },
+    "YS-20261106-06623-account": {
+      "id": "YS-20261106-06623-account",
+      "caseId": "HK-06623-20261106-pingan-account",
+      "date": "2026-11-06",
+      "title": "續訂持續關連交易及須予披露交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601448.pdf"
+    },
+    "YS-20261127-06623-account": {
+      "id": "YS-20261127-06623-account",
+      "caseId": "HK-06623-20261106-pingan-account",
+      "date": "2026-11-27",
+      "title": "續訂持續關連交易及須予披露交易通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701295.pdf"
+    },
+    "YS-20261127-06623-egm-account": {
+      "id": "YS-20261127-06623-egm-account",
+      "caseId": "HK-06623-20261106-pingan-account",
+      "date": "2026-11-27",
+      "title": "獨立股東大會通知",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701343.pdf"
     }
   },
   "issuerLinks": [
