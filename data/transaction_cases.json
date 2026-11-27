@@ -73891,21 +73891,70 @@
         },
         {
           "approximate": true,
-          "basis": "公告列49,499,658股，按所获接纳对应股份登记安排计算；仍维持挂牌",
+          "basis": "按公告列出的公眾股數49,499,658除以已發行股本151,623,894計算",
           "currency": null,
           "evidence": {
             "documentId": "YS-20261112-ca2650c02491",
             "pages": [
-              3,
               4,
               5
             ]
           },
           "key": "post_close_public_float",
           "label": "截止后披露公众持股",
-          "precision": 1,
+          "precision": 2,
           "unit": "percent",
-          "value": 32.7
+          "value": 32.65
+        },
+        {
+          "key": "accepted_option_count",
+          "label": "購股權要約有效接納數",
+          "value": 2497000,
+          "unit": "options",
+          "currency": null,
+          "approximate": false,
+          "precision": 0,
+          "basis": "占全部尚未行使購股權，屬註銷并不增加已發行股份",
+          "evidence": {
+            "documentId": "YS-20261112-ca2650c02491",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "bidder_post_offer_shares",
+          "label": "計入接納股份過戶後要約人一致行動方股數",
+          "value": 76644651,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "precision": 0,
+          "basis": "75,959,948併入已有效接納684,703股",
+          "evidence": {
+            "documentId": "YS-20261112-ca2650c02491",
+            "pages": [
+              3,
+              4
+            ]
+          }
+        },
+        {
+          "key": "bidder_post_offer_pct",
+          "label": "計入接納股份過戶後要約人一致行動方持股",
+          "value": 50.5,
+          "unit": "percent",
+          "currency": null,
+          "approximate": true,
+          "precision": 1,
+          "basis": "按151,623,894股已發行股本",
+          "evidence": {
+            "documentId": "YS-20261112-ca2650c02491",
+            "pages": [
+              3,
+              4
+            ]
+          }
         }
       ]
     },

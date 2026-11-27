@@ -9365,7 +9365,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"要約價修訂"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"發行人4月22日確認持股"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildSomerleySky(c,docs){
+    const configs={
+      "08439":{
+        a:"YS-20261015-b303ebda8423",p:"YS-20261022-dd795aefed66",z:"YS-20261112-ca2650c02491",date:"2026-11-12",event:"completion",status:"closed",
+        ts:[["control_shares",75959948,"a"],["control_block_paid",62132430,"p"],["offer_price",.818,"p"],["option_price",.098,"p"],["accepted_offer_shares",684703,"z"],["accepted_option_count",2497000,"z"],["gross_share_consideration",560087.05,"z"],["gross_option_consideration",244706,"z"],["post_close_public_float",32.65,"z"]],
+        left:"新百利控股股份交割",right:"股份及購股權要約",badge:"要約已截止 · 維持上市",seller:"Somerley Group",buyer:"Sky Links Group",sSub:"出售75,959,948股",bSub:"10月15日完成 · 佔當日股本50.1%",main:"控股股份對價約6,213.2萬港元",
+        steps:[["股份要約：684,703股有效接納","每股0.818港元 · 對價約56.0萬港元"],["購股權要約：249.7萬份全部接納","每份0.098港元 · 註銷對價約24.5萬港元"],["計入要約接納後過戶","一致行動方約50.5% · 公眾持股32.65%"]],
+        detail:"股份接納和購股權註銷分列。購股權註銷不發行股份，股份要約只增加有效接納所涉股份。",pagesA:[1,2],pagesP:[18,19],pagesZ:[2,3,4,5]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"股份及購股權要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-08439-20260413-sky-links")return buildSomerleySky(txCase,documents);
     if(txCase?.id==="HK-09638-20260119-azur-ferretti-eur")return buildFerrettiAzur(txCase,documents);
     if(txCase?.id==="HK-08299-20260330-ningshan-mines")return buildGTGoldNingshan(txCase,documents);
     if(txCase?.id==="HK-00863-20250627-banxa")return buildOSLBanxa(txCase,documents);
