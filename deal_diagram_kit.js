@@ -9821,7 +9821,45 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:q.cash?"cash":"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildKDZhaoqingColdChain(c,docs){
+    const configs={
+      "HK-00834-20261013-kd-renewal":{
+        a:"YS-20261126-2026112600289",z:"YS-20261126-2026112600289",p:"YS-20261013-2026101301117",date:"2026-11-26",event:"circular",status:"active",modality:"持續關連交易",
+        ts:[["sales_2027",107560000,"a"],["sales_2028",110600000,"a"],["sales_2029",112260000,"a"],["purchases_2027",190000000,"a"],["purchases_2028",201000000,"a"],["purchases_2029",212000000,"a"],["lease_2029",8700000,"a"]],
+        left:"盛榮與康大控股續簽框架",right:"2027、2028及2029年上限",badge:"通函已刊發 · 待獨立股東批准",
+        seller:"盛榮集團",buyer:"康大控股集團",sSub:"出售產品、供應服務及採購",bSub:"買入產品及服務、同時供應原料",main:"雙向供應及另行資產出租",
+        steps:[["盛榮售予康大（人民幣萬元）","10,756／11,060／11,226"],["盛榮從康大採購（人民幣萬元）","19,000／20,100／21,200"],["出租廠房和設備 · 每年上限870萬元","康大食品收取；康大昌榮、康大寵物支付"]],
+        detail:"兩份資產租賃與產品／服務框架分列。華安證券（香港）企業融資出具獨立財務顧問函；股東會定於12月16日10:00。",pagesA:[1,9,12,19,40,64,69],pagesP:[1,2]
+      },
+      "HK-02199-20261126-zhaoqing-four-leases":{
+        a:"YS-20261126-0c4912eebfe0",z:"YS-20261126-0c4912eebfe0",date:"2026-11-26",event:"first_announcement",status:"active",modality:"關連物業租賃",
+        ts:[["new_monthly_run_rate",4954483.8,"a"],["rm_factory",1299219.6,"a"],["rm_dormitory",1263502.6,"a"],["lj_factory",2090009.6,"a"],["lj_living",301752,"a"]],
+        left:"維珍妮肇慶四項廠房及住宿租賃",right:"四約月租及起租日",badge:"四約已簽 · 分兩日約定起租",
+        seller:"RM Technology及RM Investment",buyer:"RM Inno-profit及Lijing RM",sSub:"關連出租方",bSub:"上市公司旗下兩家承租方",main:"全數生效後月租約495.4萬元",
+        steps:[["2026年12月1日：首兩約起租","廠房129.9萬；廠房及宿舍126.4萬元／月"],["2027年1月1日：另兩約起租","廠房209.0萬；住宿30.2萬元／月"],["四約均至2027年12月31日","住宿一約出租方為RM Investment"]],
+        detail:"其餘三約由RM Technology出租，月租按各合同分列。公告按第14A章對同一出租方相關約項合計；按公告類別毋須獨立股東批准。",pagesA:[1,2,3,7,8,10]
+      },
+      "HK-02517-20261126-cold-chain-renewal":{
+        a:"YS-20261126-23ab53dc8364",z:"YS-20261126-23ab53dc8364",date:"2026-11-26",event:"first_announcement",status:"active",modality:"冷鏈服務採購",
+        ts:[["2027_cap",247500000,"a"],["2028_cap",272300000,"a"],["2029_cap",300000000,"a"]],
+        left:"鍋圈向華鼎冷鏈採購倉配服務",right:"三年上限及審批",badge:"已簽續約 · 待獨立股東批准",
+        seller:"華鼎冷鏈及其聯繫人",buyer:"鍋圈食品",sSub:"冷鏈倉儲及物流供應方",bSub:"按訂單或另行服務協議支付",main:"2027至2029年冷鏈服務",
+        steps:[["2027年上限24,750萬人民幣","2028年上限27,230萬人民幣"],["2029年上限3億人民幣","各年為服務採購上限"],["待獨立股東批准","Lego Corporate Finance任獨立財務顧問"]],
+        detail:"上市規則第14A章持續關連交易。個別服務及付款安排由訂單或具體協議確定。",pagesA:[1,2,3,4,7,10]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"首份公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00834-20261013-kd-renewal","HK-02199-20261126-zhaoqing-four-leases","HK-02517-20261126-cold-chain-renewal"].includes(txCase?.id))return buildKDZhaoqingColdChain(txCase,documents);
     if(["HK-07688-20261020-cnc-target-loi","HK-01956-20260814-guoke-qizhi-fund","HK-00486-20261126-novokuznetsk-heat","HK-08400-20261126-macau-office-renewal"].includes(txCase?.id))return buildFourStructureBatches(txCase,documents);
     if(["HK-03329-20261126-barclays-notes","HK-01635-20261126-zhiqichen-followon","HK-09886-20261126-macao-mou"].includes(txCase?.id))return buildNotesFundMOU(txCase,documents);
     if(["HK-02190-20261106-lifetech-lighthouse"].includes(txCase?.id))return buildLifeTechInvestmentNov(txCase,documents);
