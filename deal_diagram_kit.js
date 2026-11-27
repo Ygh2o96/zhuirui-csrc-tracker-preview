@@ -9746,7 +9746,42 @@
     const nodes=[{id:"z",role:"buyer",name:"歸創通橋"},{id:"spv",role:"target",name:"GL Lighthouse Two Investment Limited"},{id:"life",role:"seller",name:"先健科技"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"認購新股及共同投資",caseModalityShortLabel:"新股認購",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"spv",kind:"cash",direction:"ltr",fromLabel:"歸創通橋",toLabel:"Lighthouse Two",headline:"歸創通橋擬出資約8.9億港元",proposedOrTerminated:true},{id:"life",kind:"cash",direction:"rtl",fromLabel:"Lighthouse Two",toLabel:"先健科技",headline:"兩批認購總額約14.8億港元",proposedOrTerminated:true}],annotations:[{tag:"①",title:"載體及持股口徑",body:"Lighthouse Two持有先健股權，兩家出資方按各自比例分證券帳戶。歸創通橋實際經濟權益是全部交割後約10.0%。"},{tag:"②",title:"另行發行H股",body:"Lighthouse Three認購的是歸創通橋的H股。補充公告確認擬將淨額用於相關潛在投資，當時未指定項目。"}],evidenceLinks:[{documentId:q.a,pages:[1,2,5,6],label:"兩筆認購公告"},{documentId:q.b,pages:[1],label:"先健新股上市批准及預期交割"},{documentId:q.z,pages:[1,2,3],label:"持股、會計及募資用途補充"}]});
   }
+  function buildNotesFundMOU(c,docs){
+    const configs={
+      "HK-03329-20261126-barclays-notes":{
+        a:"YS-20261126-608599f8773f",z:"YS-20261126-608599f8773f",date:"2026-11-24",event:"completion",status:"closed",modality:"場外票據買入",
+        ts:[["cash_total",18902605.88,"a"],["principal_total",19200000,"a"],["cash_4",10040522.22,"a"]],left:"取得四筆Barclays PLC票據",right:"成交對價、本金及對手",badge:"11月24日完成最後一筆 · 11月26日披露",
+        seller:"三家場外交易對手",buyer:"Preferred Investment",sSub:"Barclays Bank、摩根大通及摩根士丹利",bSub:"交銀國際全資附屬公司",main:"四筆合計1,890.3萬美元",
+        steps:[["Barclays Bank：前兩筆本金500萬美元","9月30日及10月14日；對價合計466.5萬"],["摩根大通：第三筆本金420萬美元","10月29日；對價419.7萬"],["摩根士丹利：第四筆本金1,000萬美元","11月24日；對價1,004.1萬"]],
+        detail:"四筆本金合計1,920萬美元。公告按第14.22條合計，最高適用比例逾5%且低於25%。票據發行人為Barclays PLC。",pagesA:[1,2,3,5]
+      },
+      "HK-01635-20261126-zhiqichen-followon":{
+        a:"YS-20261126-8c93a47c943c",z:"YS-20261126-8c93a47c943c",date:"2026-11-26",event:"first_announcement",status:"active",modality:"基金追加認繳",
+        ts:[["new_lp_commitment",570000000,"a"],["initial_lp_commitment",190000000,"a"],["lp_commitment_total",760000000,"a"],["fund_commitments_total",800000000,"a"]],left:"大眾公用追加認繳基金",right:"兩方認繳及實繳安排",badge:"已簽新合夥協議 · 按投資進度繳款",
+        seller:"大眾公用",buyer:"中保投智啟宸基金",sSub:"有限合夥人",bSub:"中保投資任普通合夥人及管理人",main:"本次追加5.7億人民幣",
+        steps:[["大眾公用認繳由1.9億增至7.6億元","佔總認繳95%，比例維持"],["中保投資認繳由1,000萬增至4,000萬元","基金總認繳由2億增至8億元"],["現金實繳按管理人繳款通知","金額及時間取決於投資進度及資金需要"]],
+        detail:"本次追加和與先前認繳合併計算，最高適用比例均逾5%且低於25%。",pagesA:[1,2,3]
+      },
+      "HK-09886-20261126-macao-mou":{
+        a:"YS-20261126-a35bb6b709ed",z:"YS-20261126-a35bb6b709ed",date:"2026-11-26",event:"first_announcement",status:"active",modality:"擬收購股權及貸款",
+        ts:[["proposal_price_floor",91000000,"a"],["earnest_amount",5000000,"a"],["target_equity_pct",100,"a"]],left:"擬購入澳門標的股權及股東貸款",right:"擬對價、意向金與磋商",badge:"已簽意向備忘錄 · 待正式協議",
+        seller:"兩名獨立賣方",buyer:"叮噹健康香港附屬公司",sSub:"身份未披露",bSub:"諒解備忘錄簽約方",main:"擬購入全部股權及股東貸款",
+        steps:[["總對價下限9,100萬港元","最終對價與支付安排待正式買賣協議"],["約定五個工作日內付500萬意向金","正式簽約後才轉為部分按金"],["標的持有工業地段租賃批給權及廠房","澳門公司權益為擬收購標的"]],
+        detail:"符合退款條件並終止時，賣方須在十個工作日內退還已收意向金。收款後有三個月獨家磋商期，受正式協議的擬簽署期限所限。",pagesA:[1,2,3]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left", kind:c.code==="01635"?"cash":"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main", kind:c.code==="01635"?"cash":"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-03329-20261126-barclays-notes","HK-01635-20261126-zhiqichen-followon","HK-09886-20261126-macao-mou"].includes(txCase?.id))return buildNotesFundMOU(txCase,documents);
     if(["HK-02190-20261106-lifetech-lighthouse"].includes(txCase?.id))return buildLifeTechInvestmentNov(txCase,documents);
     if(["HK-02039-20261103-industry-city-guarantee"].includes(txCase?.id))return buildCIMCGuaranteePay(txCase,documents);
     if(["HK-01606-20261123-zte-equipment","HK-01606-20261124-litao-equipment"].includes(txCase?.id))return buildLitaoZteStandalone(txCase,documents);

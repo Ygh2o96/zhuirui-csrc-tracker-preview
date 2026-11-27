@@ -3660,6 +3660,21 @@
           },
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "completion",
+          "date": "2026-11-24",
+          "label": "最後一筆票據購入成交",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "四筆依次於9月30日、10月14日、10月29日及11月24日成交；11月26日公告。",
+          "evidence": {
+            "documentId": "YS-20261126-608599f8773f",
+            "pages": [
+              1,
+              2
+            ]
+          }
         }
       ],
       "processEvents": [
@@ -3732,9 +3747,9 @@
         }
       ],
       "stage": {
-        "date": "2026-11-26",
+        "date": "2026-11-24",
         "status": "closed",
-        "eventKind": "first_announcement",
+        "eventKind": "completion",
         "label": "四筆買入已成交 · 公告合併披露"
       },
       "progressDate": "2026-11-26"
