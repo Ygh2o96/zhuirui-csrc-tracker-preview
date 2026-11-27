@@ -9539,7 +9539,29 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"通函寄發進度公告"}])]});
   }
+  function buildGreenPowerRightsActual(c,docs){
+    const configs={
+      "HK-01870-20260929-green-power-rights":{
+        a:"YS-20261127-01870-2026112700009",z:"YS-20261127-01870-2026112700009",p:"YS-20261103-01870-2026110301014",date:"2026-11-27",event:"allotment",status:"active",modality:"現金供股",
+        ts:[["consideration",35092365,"a"],["new_shares",254292500,"a"],["pal_shares",150455345,"a"],["excess_allotted",103837155,"a"],["underwriter_actual_shares",0,"a"]],
+        left:"每持四股供一股",right:"有效申請與最終配發",badge:"254,292,500股全數配發 · 預計12月1日買賣",
+        seller:"綠色電能集團",buyer:"合資格股東",sSub:"每股認購價0.138港元",bSub:"暫定配額及額外申請",main:"總募資約3,509.2萬港元",
+        steps:[["暫定配額獲接納1.505億股","佔全部可供股數59.17%"],["額外獲配1.038億股","申請15.770億股；額外配發比率約6.58%"],["超額認購579.3%","RaffAello Securities包銷承接0股"]],
+        detail:"11月19日供股成為無條件，11月27日公布配發；扣除包銷佣金及其他開支後淨募資估計3,140萬港元。",pagesA:[1,2,3,4],pagesP:[1,9,16,30,37]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"供股章程"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01870-20260929-green-power-rights"].includes(txCase?.id))return buildGreenPowerRightsActual(txCase,documents);
     if(["HK-01835-20260615-ningbo-jiaxing-lp","HK-08245-20260824-multi-link"].includes(txCase?.id))return buildLastTwoNov(txCase,documents);
     if(["HK-00247-20261119-kil11296-sky-regal-ura","HK-00521-20261120-tuas-link4-epson-options","HK-01846-20261116-china-clinics-minority-buyback"].includes(txCase?.id))return buildFinalThreeNov(txCase,documents);
     if(["HK-02883-20261116-59-oilfield-support-vessels","HK-01606-20261116-henan-kunlun-it-equipment"].includes(txCase?.id))return buildNovemberIndustrialCases(txCase,documents);

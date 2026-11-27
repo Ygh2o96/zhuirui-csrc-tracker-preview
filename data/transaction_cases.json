@@ -1440,7 +1440,7 @@
       "id": "HK-01870-20260929-green-power-rights",
       "code": "01870",
       "category": "rights_issue",
-      "name": "綠色電能集團：一供四全額包銷",
+      "name": "綠色電能集團：每持四股供一股",
       "aliases": [
         "Green Power Group Limited",
         "綠色電能集團",
@@ -1448,7 +1448,7 @@
         "Acme International Holdings Limited",
         "益美國際"
       ],
-      "mechanism": "按每持4股獲發1股，以每股0.138港元發行254,292,500股；RaffAello Securities 全額包銷。供股章程列11月27日公布配發結果。",
+      "mechanism": "每持4股可認購1股，每股0.138港元；供股全數配發254,292,500股，超額認購579.3%，包銷商毋須承接。",
       "parties": {
         "發行人": "綠色電能集團有限公司（01870）",
         "包銷商": "RaffAello Securities (HK) Limited",
@@ -1458,7 +1458,7 @@
         {
           "date": "2026-09-29",
           "kind": "first_announcement",
-          "label": "公布一供四及包銷協議",
+          "label": "公布每持四股供一股及全額包銷協議",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
@@ -1482,22 +1482,39 @@
               9
             ]
           }
-        }
-      ],
-      "processEvents": [
+        },
+        {
+          "date": "2026-11-19",
+          "kind": "effective",
+          "label": "供股成為無條件",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "evidence": {
+            "documentId": "YS-20261127-01870-2026112700009",
+            "pages": [
+              2
+            ]
+          },
+          "detail": "下午4時，供股及包銷協議條件全部達成"
+        },
         {
           "date": "2026-11-27",
           "kind": "allotment",
-          "label": "預計公告供股配發結果",
-          "state": "expected",
+          "label": "公布供股配發結果",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
-            "documentId": "YS-20261103-01870-2026110301014",
+            "documentId": "YS-20261127-01870-2026112700009",
             "pages": [
-              9
+              1,
+              2,
+              3
             ]
-          }
-        },
+          },
+          "detail": "254,292,500股全部配發，包銷商毋須承接"
+        }
+      ],
+      "processEvents": [
         {
           "date": "2026-12-01",
           "kind": "listing",
@@ -1505,20 +1522,21 @@
           "state": "expected",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
-            "documentId": "YS-20261103-01870-2026110301014",
+            "documentId": "YS-20261127-01870-2026112700009",
             "pages": [
-              9
+              4
             ]
-          }
+          },
+          "detail": ""
         }
       ],
       "stage": {
-        "date": "2026-11-03",
-        "eventKind": "dispatch",
-        "label": "供股章程已刊發 · 待配發結果",
-        "status": "active"
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "allotment",
+        "label": "已公布供股配發結果 · 股份預計12月1日買賣"
       },
-      "progressDate": "2026-11-03",
+      "progressDate": "2026-11-27",
       "headlineKey": "consideration",
       "intervals": {
         "announcementToDispatch": 35
@@ -1526,18 +1544,19 @@
       "terms": [
         {
           "key": "consideration",
-          "label": "最高募資總額",
+          "label": "總募資額",
           "value": 35092365,
           "currency": "HKD",
           "unit": "money",
           "precision": 0,
-          "basis": "擬發行254,292,500股，每股0.138港元",
+          "basis": "全數配發254,292,500股 × 每股0.138港元",
           "approximate": false,
           "evidence": {
-            "documentId": "YS-20261103-01870-2026110301014",
+            "documentId": "YS-20261127-01870-2026112700009",
             "pages": [
-              16,
-              37
+              1,
+              2,
+              3
             ]
           }
         },
@@ -1559,17 +1578,19 @@
         },
         {
           "key": "new_shares",
-          "label": "擬發行供股股份",
+          "label": "實際配發供股股份",
           "value": 254292500,
           "currency": null,
           "unit": "shares",
           "precision": 0,
-          "basis": "相當於供股前總股本25%",
+          "basis": "等於供股前總股數的25%",
           "approximate": false,
           "evidence": {
-            "documentId": "YS-20261103-01870-2026110301014",
+            "documentId": "YS-20261127-01870-2026112700009",
             "pages": [
-              16
+              1,
+              2,
+              3
             ]
           }
         },
@@ -1580,12 +1601,12 @@
           "currency": "HKD",
           "unit": "money",
           "precision": 0,
-          "basis": "按全數發行扣除估計開支",
+          "basis": "結果公告估計扣除包銷佣金及其他開支後淨額",
           "approximate": true,
           "evidence": {
-            "documentId": "YS-20261103-01870-2026110301014",
+            "documentId": "YS-20261127-01870-2026112700009",
             "pages": [
-              37
+              3
             ]
           }
         },
@@ -1620,6 +1641,73 @@
               17
             ]
           }
+        },
+        {
+          "key": "pal_shares",
+          "label": "暫定配額有效接納",
+          "value": 150455345,
+          "unit": "shares",
+          "currency": null,
+          "basis": "4份有效接納",
+          "evidence": {
+            "documentId": "YS-20261127-01870-2026112700009",
+            "pages": [
+              1
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "excess_allotted",
+          "label": "額外申請獲配發股份",
+          "value": 103837155,
+          "unit": "shares",
+          "currency": null,
+          "basis": "有效額外申請合共1,576,965,025股",
+          "evidence": {
+            "documentId": "YS-20261127-01870-2026112700009",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "excess_demand_pct",
+          "label": "超額認購",
+          "value": 579.3,
+          "unit": "percent",
+          "currency": null,
+          "basis": "總有效申請較可認購股數多579.30%；總申請為可供數的679.30%",
+          "evidence": {
+            "documentId": "YS-20261127-01870-2026112700009",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "precision": 2,
+          "approximate": true
+        },
+        {
+          "key": "underwriter_actual_shares",
+          "label": "包銷商承接股數",
+          "value": 0,
+          "unit": "shares",
+          "currency": null,
+          "basis": "包銷責任解除",
+          "evidence": {
+            "documentId": "YS-20261127-01870-2026112700009",
+            "pages": [
+              2,
+              3
+            ]
+          },
+          "precision": 0,
+          "approximate": false
         }
       ],
       "comparables": {},
@@ -101756,6 +101844,14 @@
       "publishedAt": "2026-11-13T19:25:00+08:00",
       "title": "進一步延遲寄發通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1113/2026111301132.pdf"
+    },
+    "YS-20261127-01870-2026112700009": {
+      "id": "YS-20261127-01870-2026112700009",
+      "caseId": "HK-01870-20260929-green-power-rights",
+      "date": "2026-11-27",
+      "publishedAt": "2026-11-27T06:08:00+08:00",
+      "title": "每持四股獲發一股供股股份的結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700009.pdf"
     }
   },
   "issuerLinks": [
