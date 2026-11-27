@@ -65399,12 +65399,101 @@
         "announcementToDispatch": 13,
         "dispatchToVote": 21
       },
-      "mandates": [],
+      "mandates": [
+        {
+          "firm": "Cushman & Wakefield Limited",
+          "role": "Valuer",
+          "service": "equity_valuation",
+          "side": "标的40%股权",
+          "evidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              167,
+              169
+            ]
+          },
+          "signatories": [
+            "Bruce Oong"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              169
+            ]
+          }
+        },
+        {
+          "firm": "Cushman & Wakefield Limited",
+          "role": "Valuer",
+          "service": "property_valuation",
+          "side": "标的物业",
+          "evidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              183,
+              186
+            ]
+          },
+          "signatories": [
+            "Grace Lam"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              186
+            ]
+          }
+        },
+        {
+          "firm": "SHINEWING (HK) CPA Limited",
+          "role": "Accountant",
+          "service": "listing_rules_proforma_assurance",
+          "side": "上市公司备考鉴证",
+          "evidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              76,
+              79
+            ]
+          },
+          "signatories": [
+            "Leung Pui Sze"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              79
+            ]
+          }
+        },
+        {
+          "firm": "SHINEWING (HK) CPA Limited",
+          "role": "Accountant",
+          "service": "target_financial_statements",
+          "side": "标的历史财务资料",
+          "evidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              22,
+              24
+            ]
+          },
+          "signatories": [
+            "Leung Pui Sze"
+          ],
+          "signatureEvidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              24
+            ]
+          }
+        }
+      ],
       "mechanism": "非常重大及关连收购 · 增持原已并表附属公司",
       "name": "天保能源增持天津临港热电",
       "parties": {
         "买方": "天津天保能源股份有限公司",
-        "余下少数股东": "中石油昆仑（15%）",
+        "余下少数股东": "中石油昆仑燃气有限公司（15%）",
         "卖方": "天津自贸试验区新兴科技产业集团有限公司",
         "标的": "天津天保临港热电有限公司"
       },
@@ -65450,6 +65539,17 @@
             ]
           },
           "label": "上市规则第14A章"
+        },
+        {
+          "code": "HKEX:14A.101",
+          "label": "上市规则14A.101",
+          "application": "附属公司层面关连交易豁免独立财务意见及第14A章股东批准；第14章非常重大收购仍须股东批准",
+          "evidence": {
+            "documentId": "YS-20260608-496213e294a7",
+            "pages": [
+              15
+            ]
+          }
         }
       ],
       "stage": {
@@ -100851,6 +100951,14 @@
       "caseId": "HK-09929-20251203-yao-control-mgo-cb",
       "title": "Yao Capital出售2.815億股",
       "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041500095.pdf"
+    },
+    "YS-20260824-2026082400444": {
+      "caseId": "HK-01671-20260526-lingang-thermal",
+      "id": "YS-20260824-2026082400444",
+      "date": "2026-08-24",
+      "publishedAt": "2026-08-24T16:28:00+08:00",
+      "title": "天保能源中期报告：增持会计处理及过户手续",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400444.pdf"
     }
   },
   "issuerLinks": [

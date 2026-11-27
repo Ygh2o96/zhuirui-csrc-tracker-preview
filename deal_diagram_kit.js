@@ -9157,7 +9157,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildLingangThermal(c,docs){
+    const configs={
+      "01671":{
+        a:"YS-20260526-4f1bb9bb7f3c",p:"YS-20260608-496213e294a7",z:"YS-20260629-87e303564da3",o:"YS-20260824-2026082400444",r:"YS-20260817-eecda9358423",date:"2026-06-29",event:"vote",status:"approved",
+        ts:[["stake_increase",40,"r"],["cash_price",106522000,"r"],["effective_reported_stake",85,"r"],["acquisition_loan",74565000,"r"]],
+        left:"收購原有附屬公司40%股權",right:"財務確認與法律過戶",badge:"股東已批准 · 財務按85%確認 · 過戶待核",seller:"天津自貿區新興科技集團",buyer:"天津天保能源",sSub:"出售臨港熱電40%股權",bSub:"原持45%，已納入合併報表",main:"約1.1億人民幣現金對價",
+        steps:[["2026年6月29日股東批准","增持40個百分點 · 昆侖燃氣持15%"],["中期財務確認持股85%","附註18列報增持及現金支出"],["中報披露股權轉讓手續待完成","人民幣7,456.5萬元收購借款的股權質押待登記"]],
+        detail:"賣方法定名稱為天津自貿試驗區新興科技產業集團有限公司。臨港熱電原已併表；中期財務附註與股權登記進度分列。",pagesA:[3,4,7,16,17],pagesP:[1,169],pagesZ:[1,2,3],pagesO:[15,41]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o,q.r].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="approved"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="approved"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：財務確認與股權登記"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"股東表決結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01671-20260526-lingang-thermal"].includes(txCase?.id))return buildLingangThermal(txCase,documents);
     if(["HK-00167-20251117-hunglap-horizon-receiver-mgo"].includes(txCase?.id))return buildIDTReceiver(txCase,documents);
     if(txCase?.id==="HK-03389-20251128-empire-charm-voluntary-go")return buildHengdeliOffer(txCase,documents);
     if(["HK-02442-20251202-ever-genius-75-cash","HK-02623-20251104-prominence-mandatory-cash"].includes(txCase?.id))return buildEasyProminence(txCase,documents);
