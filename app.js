@@ -4880,7 +4880,9 @@ function p0IssuerInternationalPlacing(roundId) {
  const offer=ensureCornerstoneCache().coverageOfferByRound.get(roundId);
  const rows=(offer?.issuerInternationalPlacements||[]).filter(x=>x.basis==='separate_international_placing_issuer_only'&&Number.isSafeInteger(x.shares)&&x.shares>0&&Number(x.amountHkd)>0&&x.source);
  if(!rows.length)return '';
- return `<section class="deal-section" id="issuer-international-placing"><details class="deal-light-detail"><summary>国际配售 · 另列承配 ${rows.length} 笔</summary><ul>${rows.map(x=>`<li>${escapeHtml(x.displayName)} · ${escapeHtml(offeringNumber(x.shares))} 股 · <strong>${escapeHtml(formatChineseUnitAmount(Number(x.amountHkd),"HKD"))}</strong> ${feeRosterSource(x.source,"配发原件 ↗")}</li>`).join('')}</ul></details></section>`;
+ const extra=(offer.issuerPlacementSourceNotes||[]).filter(n=>rows.some(x=>x.id===n.relatedPlacementId&&x.shares===n.disclosedShares)&&n.manager&&n.source&&n.fundSource&&Array.isArray(n.funds)&&n.funds.length);
+ const foot=extra.map(n=>`<details class="deal-light-detail"><summary>受托披露 · ${escapeHtml(n.manager)}</summary><p>${escapeHtml(n.role)} · ${escapeHtml(offeringNumber(n.disclosedShares))} 股。${escapeHtml(n.channel)} ${feeRosterSource(n.source,"承配原件 ↗")}</p><p>${n.fundGroup ? escapeHtml(n.fundGroup)+" 子基金："+escapeHtml(n.funds.slice(0,-1).join("、"))+"；另有 "+escapeHtml(n.funds.at(-1)) : "披露基金："+escapeHtml(n.funds.join("、"))}。${feeRosterSource(n.fundSource,"基金名录 ↗")}</p></details>`).join('');
+ return `<section class="deal-section" id="issuer-international-placing"><details class="deal-light-detail"><summary>国际配售 · 另列承配 ${rows.length} 笔</summary><ul>${rows.map(x=>`<li>${escapeHtml(x.displayName)} · ${escapeHtml(offeringNumber(x.shares))} 股 · <strong>${escapeHtml(formatChineseUnitAmount(Number(x.amountHkd),"HKD"))}</strong> ${feeRosterSource(x.source,"配发原件 ↗")}</li>`).join('')}</ul>${foot}</details></section>`;
 }
 
 function p0CornerstoneOnlyDossier(offer){
