@@ -9094,7 +9094,35 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:c.code==="00643"?"綜合文件":"公眾持股恢復公告"}]:[]),...(c.code==="09929"?[{documentId:"YS-20260410-sem-yao-disposal",pages:[1],label:"4月10日減持"},{documentId:"YS-20260415-sem-yao-disposals",pages:[1,2],label:"4月14日減持"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"可換股債券發行公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildEasyProminence(c,docs){
+    const configs={
+      "02442":{
+        a:"YS-20251202-c90c28daf932",p:"YS-20251223-50e9987ee591",z:"YS-20260113-741285e2199d",o:"YS-20260121-35503241cef6",date:"2026-01-13",event:"completion",status:"closed",
+        ts:[["block_shares",306000000,"a"],["block_cash",230000000,"a"],["offer_price",.7517,"z"],["accepted_shares",1,"z"],["public_float_after_acceptance",101999999,"z"],["float_restoration_disposed_shares",2000,"o"],["restored_public_shares",102001999,"o"]],
+        left:"怡俊集團控股股份交割",right:"一股接納及公眾持股恢復",badge:"要約截止 · 一股接納 · 公眾持股其後恢復",seller:"Lofty Profit Investments",buyer:"天賦國際",sSub:"出售3.06億股（75%）",bSub:"2025年11月21日已交割",main:"現金對價2.3億港元",
+        steps:[["2026年1月13日要約截止","一股有效接納 · 每股0.7517港元"],["公眾持股少於門檻一股","101,999,999股 · 25%門檻為1.02億股"],["1月21日出售一手2,000股","公眾持股恢復至102,001,999股"]],
+        detail:"聯交所授予1月13日至21日的臨時豁免。控股股份先行交割、餘股接納和其後公開市場出售分列。",pagesA:[2,5,6],pagesP:[1],pagesZ:[2,3],pagesO:[6]
+      },
+      "02623":{
+        a:"YS-20251104-3bac74abb7a3",p:"YS-20251218-d66001e70356",z:"YS-20260108-8cc56af28a3d",date:"2026-01-08",event:"completion",status:"closed",
+        ts:[["block_shares",194959831,"a"],["block_cash",80000000,"a"],["offer_price",.4104,"a"],["accepted_shares",237768,"z"],["accepted_gross",97579.9872,"z"]],
+        left:"先行收購55.66%股權",right:"強制現金要約結果",badge:"要約截止 · 計入有效接納後持股55.73%",seller:"鴻發控股及李運德",buyer:"Prominence及吳海淦",sSub:"出售194,959,831股",bSub:"2025年10月15日已交割",main:"現金對價8,000萬港元",
+        steps:[["要約人Prominence取得50.10%","吳海淦另取得5.56%"],["2026年1月8日要約截止","每股0.4104港元 · 接納237,768股"],["有效接納總對價約9.8萬港元","計入有效接納後公眾持股43.56%"]],
+        detail:"初始買賣涉及兩名買方，僅Prominence作出餘股要約。吳海淦以Prominence提供的無抵押免息貸款支付其買入款和印花稅。",pagesA:[2,5,6,19,20],pagesP:[1],pagesZ:[2,3]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02442-20251202-ever-genius-75-cash","HK-02623-20251104-prominence-mandatory-cash"].includes(txCase?.id))return buildEasyProminence(txCase,documents);
     if(["HK-00643-20251024-zephyrus-tsang-conditional-lapsed","HK-09929-20251203-yao-control-mgo-cb"].includes(txCase?.id))return buildCarrySem(txCase,documents);
     if(["HK-01536-20260612-anhui-runsheng","HK-08373-20260722-changi-south"].includes(txCase?.id))return buildYukIndigo(txCase,documents);
     if(["HK-03989-20261126-fangcaohu-operations","HK-00521-20261126-november-mri-tmsc-copper"].includes(txCase?.id))return buildMinorConnectedContracts(txCase,documents);
