@@ -10271,6 +10271,21 @@
           "label": "股份恢復買賣",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "供股通函延至12月4日或之前 · 新時間表待公布",
+          "state": "actual",
+          "detail": "公司需更多時間備妥通函，原定11月27日寄發安排已延後。原定表決、接納及結果日期待公司公布新時間表。",
+          "evidence": {
+            "documentId": "YS-20261127-02110-rights-delay",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
       "headlineKey": "consideration",
@@ -10312,63 +10327,22 @@
       },
       "processEvents": [
         {
-          "date": "2026-11-27",
-          "detail": "按11月11日公告時間表。",
-          "evidence": {
-            "documentId": "YS-20261111-00e4fdf82a19",
-            "pages": [
-              34
-            ]
-          },
-          "kind": "circular",
-          "label": "原定寄發供股通函",
-          "state": "expected",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2026-12-17",
-          "detail": "按11月11日公告時間表；與股東另行要求召開的特別大會分開。",
-          "evidence": {
-            "documentId": "YS-20261111-00e4fdf82a19",
-            "pages": [
-              35
-            ]
-          },
-          "kind": "shareholder_vote",
-          "label": "原定表決供股建議",
-          "state": "expected",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2027-01-18",
-          "detail": "香港時間下午4時。",
-          "evidence": {
-            "documentId": "YS-20261111-00e4fdf82a19",
-            "pages": [
-              36
-            ]
-          },
+          "date": "2026-12-04",
           "kind": "supplement",
-          "label": "原定接納及付款截止",
+          "label": "預計最遲寄發供股通函",
           "state": "expected",
-          "timeZone": "Asia/Hong_Kong"
-        },
-        {
-          "date": "2027-01-29",
-          "detail": "按11月11日公告時間表。",
+          "detail": "通函尚待刊發；其餘日程待公布。",
           "evidence": {
-            "documentId": "YS-20261111-00e4fdf82a19",
+            "documentId": "YS-20261127-02110-rights-delay",
             "pages": [
-              36
+              1,
+              2
             ]
           },
-          "kind": "supplement",
-          "label": "原定公布供股結果",
-          "state": "expected",
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-25",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "股本增幅超過50%，供股須獲獨立股東批准。",
@@ -10397,10 +10371,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-24",
+        "date": "2026-11-27",
+        "status": "active",
         "eventKind": "supplement",
-        "label": "股東要求表決撤回 · 董事會審視程序",
-        "status": "active"
+        "label": "供股通函延至12月4日或之前 · 新時間表待公布"
       },
       "terms": [
         {
@@ -10520,11 +10494,10 @@
         "issuerLabel": "天成控股",
         "method": "best_efforts",
         "evidence": {
-          "documentId": "YS-20261111-00e4fdf82a19",
+          "documentId": "YS-20261127-02110-rights-delay",
           "pages": [
-            2,
-            19,
-            20
+            1,
+            2
           ]
         }
       }
@@ -108050,6 +108023,13 @@
       "date": "2026-11-27",
       "title": "獨立股東大會通知",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701343.pdf"
+    },
+    "YS-20261127-02110-rights-delay": {
+      "id": "YS-20261127-02110-rights-delay",
+      "caseId": "HK-02110-20261111-three-for-one-rights",
+      "date": "2026-11-27",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701721.pdf",
+      "title": "延遲寄發供股通函及修訂預期時間表"
     }
   },
   "issuerLinks": [
