@@ -67945,7 +67945,10 @@
     },
     {
       "aliases": [
-        "Global Chinese Business Club"
+        "Global Chinese Business Club",
+        "俊裕地基",
+        "環球華商俱樂部",
+        "环球华商俱乐部"
       ],
       "category": "offer",
       "code": "01757",
@@ -68049,7 +68052,10 @@
       "name": "Affluent Foundation Holdings Limited",
       "parties": {
         "标的": "Affluent Foundation Holdings Limited",
-        "要约方": "China VC Holdings Limited"
+        "要约方": "China VC Holdings Limited",
+        "控股股份賣方": "Oriental Castle Group Limited",
+        "賣方履約擔保人": "Chan Siu Cheong",
+        "發行人現名": "環球華商俱樂部（Global Chinese Business Club）"
       },
       "processEvents": [
         {

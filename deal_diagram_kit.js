@@ -9245,7 +9245,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="terminated"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"部分要約文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"中期報告：財務確認與股權登記"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"接納結果及失效公告"}])]});
   }
+  function buildAffluentChinaVC(c,docs){
+    const configs={
+      "01757":{
+        a:"YS-20251023-d6d49d4eb125",p:"YS-20251210-5d6e927e3d72",z:"YS-20260102-70fe576a015d",o:"YS-20260119-00783d98a397",date:"2026-01-02",event:"completion",status:"closed",
+        ts:[["block_shares",900000000,"p"],["block_cash",80000000,"p"],["offer_price",.089,"a"],["public_tender_accepted_shares",4390000,"z"],["public_tender_accepted_gross",390710,"z"],["secondary_placing_shares",4390000,"o"],["public_float_restored_pct",25,"o"]],
+        left:"控股股份出售",right:"要約及公眾持股恢復",badge:"要約截止 · 公眾持股其後恢復至25%",seller:"Oriental Castle Group",buyer:"中國創投控股",sSub:"出售9億股（75%）",bSub:"2025年10月15日簽約即交割",main:"現金對價8,000萬港元",
+        steps:[["2026年1月2日要約截止","每股0.089港元 · 439萬股有效接納"],["完成接納股份過戶後","一致行動方75.37% · 公眾持股24.63%"],["1月16日向獨立第三方配售","出售439萬股 · 公眾持股恢復至25%"]],
+        detail:"兩筆439萬股方向相反：餘股接納對價39.1萬港元，其後由要約人經配售代理出售439萬股。發行人其後更名為環球華商俱樂部，股票代號維持01757。",pagesA:[2,5,7],pagesP:[1],pagesZ:[2,3],pagesO:[1,2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01757-20251023-china-vc-control-mgo")return buildAffluentChinaVC(txCase,documents);
     if(txCase?.id==="HK-00223-20250514-china-innovation-partial-lapsed")return buildElifeLapsed(txCase,documents);
     if(txCase?.id==="HK-01980-20251119-truesense-on-market-mgo")return buildTianGeOffer(txCase,documents);
     if(txCase?.id==="HK-09666-20250428-broad-gongga-auction-and-cash-offer")return buildJinkeAuction(txCase,documents);
