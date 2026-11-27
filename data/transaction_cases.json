@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-26",
+  "asOf": "2026-11-27",
   "cases": [
     {
       "id": "HK-00019-20261123-swire-cathay-secondary",
@@ -41704,22 +41704,24 @@
         {
           "date": "2026-11-27",
           "kind": "vote",
-          "state": "expected",
+          "label": "認購及配售獲批准 · 未觸發要約",
+          "detail": "第2、3號決議均全票通過。認購議案：20,121,600票贊成，賣方及其相關方須避席；配售議案：135,121,600票贊成。要約仍以境內股份收購、H股認購及配售交割為前提。",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
-          "label": "預定股東特別大會",
-          "detail": "上午11:30；待股東表決結果公告。",
           "evidence": {
-            "documentId": "YS-20261112-2026111200660",
+            "documentId": "YS-20261127-01835-3g-h-share-control-poll",
             "pages": [
-              2,
-              3
+              3,
+              4
             ]
           }
         }
       ],
       "headlineKey": "h_offer_max",
       "id": "HK-01835-20260630-3g-h-share-control",
-      "intervals": {},
+      "intervals": {
+        "dispatchToVote": 15
+      },
       "mandates": [
         {
           "evidence": {
@@ -41757,7 +41759,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-12",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "三腿同步交割后才触发；要约仅覆H股",
@@ -41800,10 +41802,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-12",
-        "eventKind": "circular_dispatch",
-        "label": "公司通函已刊發 · 要約文件待寄發",
-        "status": "active"
+        "date": "2026-11-27",
+        "eventKind": "vote",
+        "status": "active",
+        "label": "認購及配售獲批准 · 未觸發要約"
       },
       "terms": [
         {
@@ -57471,14 +57473,14 @@
         {
           "date": "2026-11-27",
           "kind": "vote",
-          "state": "expected",
+          "label": "基金份額收購獲批准 · 待交割",
+          "detail": "第1號決議通過；每項 135,121,600 票贊成，零反對（佔該項已投票100%）。",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
-          "label": "預定股東特別大會",
-          "detail": "上午11:30；待股東表決結果公告。",
           "evidence": {
-            "documentId": "YS-20261112-d500c68cde83",
+            "documentId": "YS-20261127-01835-ningbo-jiaxing-lp-poll",
             "pages": [
-              1
+              2
             ]
           }
         }
@@ -57486,7 +57488,8 @@
       "headlineKey": "maximum_combined_cash",
       "id": "HK-01835-20260615-ningbo-jiaxing-lp",
       "intervals": {
-        "announcementToDispatch": 150
+        "announcementToDispatch": 150,
+        "dispatchToVote": 15
       },
       "mandates": [],
       "mechanism": "两份有关连的有限合伙基金份额转让，经原件汇总作一宗；与6月30日H股要约及发行独立计量",
@@ -57497,7 +57500,7 @@
         "标的": "Ningbo Chentao Fund、Jiaxing Shinuo Fund 的有限合伙份额"
       },
       "processEvents": [],
-      "progressDate": "2026-11-12",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "照原件披露两位相对方的关连身份，独立股东批准非已经完成",
@@ -57514,10 +57517,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-12",
-        "eventKind": "dispatch",
-        "label": "基金權益收購通函已刊發 · 待股東表決",
-        "status": "active"
+        "date": "2026-11-27",
+        "eventKind": "vote",
+        "status": "active",
+        "label": "基金份額收購獲批准 · 待交割"
       },
       "terms": [
         {
@@ -92801,34 +92804,33 @@
             ]
           },
           "detail": "通函署期11月11日。"
-        }
-      ],
-      "processEvents": [
+        },
         {
           "date": "2026-11-27",
           "kind": "vote",
-          "label": "股東大會定於11月27日10:00",
-          "state": "expected",
+          "label": "股東批准 · 待付款起租",
+          "detail": "第1號決議通過；每項 3,170,794,269 票贊成，零反對（佔該項已投票100%）。",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
-            "documentId": "YS-20261110-00217-dunde-mining-leaseback",
+            "documentId": "YS-20261127-00217-dunde-mining-leaseback-poll",
             "pages": [
-              1,
-              74
+              2
             ]
-          },
-          "detail": "表決結果待公告。"
+          }
         }
       ],
+      "processEvents": [],
       "stage": {
-        "date": "2026-11-10",
-        "eventKind": "dispatch",
-        "label": "通函已刊發 · 待股東表決結果",
-        "status": "active"
+        "date": "2026-11-27",
+        "eventKind": "vote",
+        "status": "active",
+        "label": "股東批准 · 待付款起租"
       },
-      "progressDate": "2026-11-10",
+      "progressDate": "2026-11-27",
       "intervals": {
-        "announcementToDispatch": 21
+        "announcementToDispatch": 21,
+        "dispatchToVote": 17
       },
       "comparables": {},
       "comparisonEvidence": {},
@@ -92949,35 +92951,33 @@
             ]
           },
           "detail": "通函署期11月11日。"
-        }
-      ],
-      "processEvents": [
+        },
         {
           "date": "2026-11-27",
           "kind": "vote",
-          "label": "股東大會定於11月27日10:00",
-          "state": "expected",
+          "label": "兩項回租均獲批准 · 待付款起租",
+          "detail": "第3、4號決議均通過；每項 3,170,794,269 票贊成，零反對（佔該項已投票100%）。",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
-            "documentId": "YS-20261110-00217-xinte-wengniuteqi-leasebacks",
+            "documentId": "YS-20261127-00217-xinte-wengniuteqi-leasebacks-poll",
             "pages": [
-              1,
-              75,
-              76
+              2
             ]
-          },
-          "detail": "表決結果待公告。"
+          }
         }
       ],
+      "processEvents": [],
       "stage": {
-        "date": "2026-11-10",
-        "eventKind": "dispatch",
-        "label": "通函已刊發 · 待股東表決結果",
-        "status": "active"
+        "date": "2026-11-27",
+        "eventKind": "vote",
+        "status": "active",
+        "label": "兩項回租均獲批准 · 待付款起租"
       },
-      "progressDate": "2026-11-10",
+      "progressDate": "2026-11-27",
       "intervals": {
-        "announcementToDispatch": 20
+        "announcementToDispatch": 20,
+        "dispatchToVote": 17
       },
       "comparables": {},
       "comparisonEvidence": {},
@@ -93079,34 +93079,33 @@
             ]
           },
           "detail": "通函署期11月11日。"
-        }
-      ],
-      "processEvents": [
+        },
         {
           "date": "2026-11-27",
           "kind": "vote",
-          "label": "股東大會定於11月27日10:00",
-          "state": "expected",
+          "label": "股東批准 · 待租賃資產轉讓",
+          "detail": "第2號決議通過；每項 3,170,794,269 票贊成，零反對（佔該項已投票100%）。",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
-            "documentId": "YS-20261110-00217-jinmei-lease-assignment",
+            "documentId": "YS-20261127-00217-jinmei-lease-assignment-poll",
             "pages": [
-              1,
-              75
+              2
             ]
-          },
-          "detail": "表決結果待公告。"
+          }
         }
       ],
+      "processEvents": [],
       "stage": {
-        "date": "2026-11-10",
-        "eventKind": "dispatch",
-        "label": "通函已刊發 · 待股東表決結果",
-        "status": "active"
+        "date": "2026-11-27",
+        "eventKind": "vote",
+        "status": "active",
+        "label": "股東批准 · 待租賃資產轉讓"
       },
-      "progressDate": "2026-11-10",
+      "progressDate": "2026-11-27",
       "intervals": {
-        "announcementToDispatch": 19
+        "announcementToDispatch": 19,
+        "dispatchToVote": 17
       },
       "comparables": {},
       "comparisonEvidence": {},
@@ -93277,36 +93276,33 @@
             ]
           },
           "detail": "通函署期11月11日。"
-        }
-      ],
-      "processEvents": [
+        },
         {
           "date": "2026-11-27",
           "kind": "vote",
-          "label": "股東大會定於11月27日10:00",
-          "state": "expected",
+          "label": "五項回租均獲批准 · 待付款起租",
+          "detail": "第5–9號決議均通過；每項 3,170,794,269 票贊成，零反對（佔該項已投票100%）。",
+          "state": "actual",
           "timeZone": "Asia/Hong_Kong",
           "evidence": {
-            "documentId": "YS-20261110-00217-huadian-five-leasebacks",
+            "documentId": "YS-20261127-00217-huadian-five-leasebacks-poll",
             "pages": [
-              1,
-              76,
-              77,
-              78
+              3
             ]
-          },
-          "detail": "表決結果待公告。"
+          }
         }
       ],
+      "processEvents": [],
       "stage": {
-        "date": "2026-11-10",
-        "eventKind": "dispatch",
-        "label": "通函已刊發 · 待股東表決結果",
-        "status": "active"
+        "date": "2026-11-27",
+        "eventKind": "vote",
+        "status": "active",
+        "label": "五項回租均獲批准 · 待付款起租"
       },
-      "progressDate": "2026-11-10",
+      "progressDate": "2026-11-27",
       "intervals": {
-        "announcementToDispatch": 19
+        "announcementToDispatch": 19,
+        "dispatchToVote": 17
       },
       "comparables": {},
       "comparisonEvidence": {},
@@ -105904,6 +105900,48 @@
       "date": "2026-11-26",
       "title": "太古股份權益披露 Form 2：完成出售（欄17–20）",
       "url": "https://di.hkex.com.hk/di/NSForm2.aspx?ed=26%2F11%2F2026&fn=CS20261126E00233&lang=EN&sa1=cl&sa2=ns&sc=00293&sced=26%2F11%2F2026&scsd=26%2F11%2F2025&sd=26%2F11%2F2025&sid=501&src=Main&tk=ds"
+    },
+    "YS-20261127-00217-dunde-mining-leaseback-poll": {
+      "id": "YS-20261127-00217-dunde-mining-leaseback-poll",
+      "caseId": "HK-00217-20261020-dunde-mining-leaseback",
+      "date": "2026-11-27",
+      "title": "11月27日股東大會投票表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271305.pdf"
+    },
+    "YS-20261127-00217-xinte-wengniuteqi-leasebacks-poll": {
+      "id": "YS-20261127-00217-xinte-wengniuteqi-leasebacks-poll",
+      "caseId": "HK-00217-20261021-xinte-wengniuteqi-leasebacks",
+      "date": "2026-11-27",
+      "title": "11月27日股東大會投票表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271305.pdf"
+    },
+    "YS-20261127-00217-jinmei-lease-assignment-poll": {
+      "id": "YS-20261127-00217-jinmei-lease-assignment-poll",
+      "caseId": "HK-00217-20261022-jinmei-lease-assignment",
+      "date": "2026-11-27",
+      "title": "11月27日股東大會投票表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271305.pdf"
+    },
+    "YS-20261127-00217-huadian-five-leasebacks-poll": {
+      "id": "YS-20261127-00217-huadian-five-leasebacks-poll",
+      "caseId": "HK-00217-20261022-huadian-five-leasebacks",
+      "date": "2026-11-27",
+      "title": "11月27日股東大會投票表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271305.pdf"
+    },
+    "YS-20261127-01835-ningbo-jiaxing-lp-poll": {
+      "id": "YS-20261127-01835-ningbo-jiaxing-lp-poll",
+      "caseId": "HK-01835-20260615-ningbo-jiaxing-lp",
+      "date": "2026-11-27",
+      "title": "11月27日股東大會投票表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271118.pdf"
+    },
+    "YS-20261127-01835-3g-h-share-control-poll": {
+      "id": "YS-20261127-01835-3g-h-share-control-poll",
+      "caseId": "HK-01835-20260630-3g-h-share-control",
+      "date": "2026-11-27",
+      "title": "11月27日股東大會投票表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/202611271118.pdf"
     }
   },
   "issuerLinks": [
