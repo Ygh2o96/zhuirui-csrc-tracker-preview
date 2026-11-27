@@ -2685,10 +2685,10 @@
       "terms": [
         {
           "key": "purchase_price",
-          "label": "本批設備採購對價",
+          "label": "本次採購估計對價",
           "value": 1090000000,
           "unit": "money",
-          "basis": "單份合約公告約數。",
+          "basis": "原公告列約10.9億元人民幣。",
           "evidence": {
             "documentId": "YS-20261124-01606-litao-equipment",
             "pages": [
@@ -2765,10 +2765,10 @@
       "terms": [
         {
           "key": "purchase_price",
-          "label": "本批設備採購對價上限",
+          "label": "本次採購對價上限",
           "value": 3500000000,
           "unit": "money",
-          "basis": "單份合約所列上限。",
+          "basis": "公告列不超過35億元人民幣。",
           "evidence": {
             "documentId": "YS-20261123-01606-zte-equipment",
             "pages": [

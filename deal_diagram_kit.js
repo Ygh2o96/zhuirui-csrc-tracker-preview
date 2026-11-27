@@ -9678,7 +9678,37 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:assignment?"租賃轉讓":"售後回租",caseModalityShortLabel:assignment?"租賃轉讓":"售後回租",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:buyer,headline,proposedOrTerminated:true}],annotations:[{tag:"①",title:"交易與上市規則",body:q.note+" "+q.context}],evidenceLinks:[{documentId:q.src,pages:[1,2,3],label:"原交易公告"},{documentId:q.circ,pages:q.pages,label:"通函及股東大會通知"}]});
   }
+  function buildLitaoZteStandalone(c,docs){
+    const configs={
+      "HK-01606-20261123-zte-equipment":{
+        a:"YS-20261123-01606-zte-equipment",z:"YS-20261123-01606-zte-equipment",date:"2026-11-23",event:"first_announcement",status:"active",modality:"現金",
+        ts:[["purchase_price",3500000000,"a"]],
+        left:"向中興通訊購買電腦設備",right:"資金、用途及監管分類",badge:"設備採購協議已簽 · 擬作經營租賃",
+        seller:"中興通訊",buyer:"國銀金融租賃",sSub:"設備賣方",bSub:"設備買方及擬任出租人",main:"本批對價上限35億人民幣",
+        steps:[["使用自有資金及／或銀行貸款","35億元是採購上限"],["購買完成後擬用作經營租賃","將與第三方承租人訂立租約"],["適用百分比率高於5%但低於25%","公告分類為第14章須予披露交易"]],
+        detail:"本圖以本次設備採購合同列示。公告未列承租人名單或租賃已生效。",pagesA:[1,2,3]
+      },
+      "HK-01606-20261124-litao-equipment":{
+        a:"YS-20261124-01606-litao-equipment",z:"YS-20261124-01606-litao-equipment",date:"2026-11-24",event:"first_announcement",status:"active",modality:"現金",
+        ts:[["purchase_price",1090000000,"a"]],
+        left:"向立滔精密購買電腦設備",right:"資金、用途及監管分類",badge:"設備採購協議已簽 · 擬作經營租賃",
+        seller:"立滔精密智造（昆山）",buyer:"國銀金融租賃",sSub:"賣方；最終擁有人為立訊精密",bSub:"設備買方及擬任出租人",main:"本批約10.9億人民幣",
+        steps:[["使用自有資金及／或銀行貸款","10.9億元為披露的約數"],["購買完成後擬用作經營租賃","將與第三方承租人訂立租約"],["適用百分比率高於5%但低於25%","公告分類為第14章須予披露交易"]],
+        detail:"本圖以本次設備採購合同列示。公告未列承租人名單或租賃已生效。",pagesA:[1,2,3,4]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01606-20261123-zte-equipment","HK-01606-20261124-litao-equipment"].includes(txCase?.id))return buildLitaoZteStandalone(txCase,documents);
     if(["HK-00217-20261020-dunde-mining-leaseback","HK-00217-20261021-xinte-wengniuteqi-leasebacks","HK-00217-20261022-jinmei-lease-assignment","HK-00217-20261022-huadian-five-leasebacks"].includes(txCase?.id))return buildChengtongGM2026(txCase,documents);
     if(["HK-01606-20261125-purui-equipment-733","HK-01606-20261126-purui-equipment-1178"].includes(txCase?.id))return buildPuruiSeparateBatches(txCase,documents);
     if(["HK-00413-20260827-wah-shing-sparkling"].includes(txCase?.id))return buildSouthChinaVote(txCase,documents);
