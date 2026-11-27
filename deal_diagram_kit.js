@@ -9707,7 +9707,27 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildCIMCGuaranteePay(c,docs){
+    const src="YS-20261126-231c0eca30e1", orig="YS-20261103-0341307b4267", date="2026-11-26",status="active";
+    if(c.stage?.date!==date||c.stage.status!==status||docs?.[src]?.caseId!==c.id||docs?.[orig]?.caseId!==c.id||!c.events?.some(e=>e.kind==="payment"&&e.date==="2026-11-25"&&e.state==="actual"&&e.evidence?.documentId===src)||!Object.entries({guarantee_cash_paid:222210016.69,guaranteed_principal_paid:220480221.12,guaranteed_interest_paid:1729795.57,underlying_balance_due:435108707.05,guaranteed_pct:51.07}).every(([key,value])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===src)))return null;
+    const left="中集集團向銀團履行擔保",right="三筆貸款、代償及追償權",stageLabel="已支付擔保款 · 追償及減值待確認";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:480,status,leftTitle:left,rightTitle:right,transitionLabel:"代償及追償",outcomeBadge:stageLabel}),[
+      box("cimc","left",42,96,164,105,"buyer","中集集團","擔保方及實際付款方"),
+      box("banks","left",438,96,178,105,"creditor","農業銀行及中國銀行","銀團貸款方；農業銀行牽頭"),
+      box("borrower","left",42,240,164,103,"target","中集產城及反擔保方","借款人及提供反擔保的少數股東"),
+      box("debt","right",724,72,310,73,"target","銀團三筆貸款到期約4.4億元","按11月25日，含本金、利息及費用"),
+      box("guarantee","right",724,168,310,73,"creditor","擔保比例51.07% · 已付約2.2億元","本金22,048.0萬元；利息及費用173.0萬元"),
+      box("credit","right",724,264,310,73,"creditor","代償後形成應收追償款","後續收回金額與減值結果待公告")
+    ],[],[
+      {id:"p",panel:"left",kind:"cash",step:"①",pathPoints:[[206,149],[438,149]],labelCenter:[322,149],labelWidth:205,labelHeight:35,label:"11月25日全額代償",proposedOrTerminated:false},
+      {id:"r",panel:"left",kind:"asset",step:"②",pathPoints:[[124,201],[124,240]],labelCenter:[220,220],labelWidth:172,labelHeight:30,label:"形成追償權",proposedOrTerminated:false}
+    ]);
+    const nodes=[{id:"cimc",role:"buyer",name:"中集集團"},{id:"banks",role:"creditor",name:"農業銀行及中國銀行"},{id:"borrower",role:"target",name:"中集產城及反擔保方"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"debt_restructuring",modality:"cash",status,stageDate:date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"擔保代償及追償",caseModalityShortLabel:"擔保代償",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"p",kind:"cash",direction:"ltr",fromLabel:"中集集團",toLabel:"銀團",headline:"11月25日已付222,210,016.69元人民幣",proposedOrTerminated:false},{id:"r",kind:"asset",direction:"ltr",fromLabel:"中集集團",toLabel:"借款人及反擔保方",headline:"代償後取得追償權",proposedOrTerminated:false}],annotations:[{tag:"①",title:"到期和付款",body:"第三筆貸款本金172,460,112元，從原訂2027年1月7日提前至2026年11月24日到期。11月25日支付全部應付擔保額。"}],evidenceLinks:[{documentId:orig,pages:[1,2],label:"首次擔保披露"},{documentId:src,pages:[1,2,3],label:"代償及後續追償"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-02039-20261103-industry-city-guarantee"].includes(txCase?.id))return buildCIMCGuaranteePay(txCase,documents);
     if(["HK-01606-20261123-zte-equipment","HK-01606-20261124-litao-equipment"].includes(txCase?.id))return buildLitaoZteStandalone(txCase,documents);
     if(["HK-00217-20261020-dunde-mining-leaseback","HK-00217-20261021-xinte-wengniuteqi-leasebacks","HK-00217-20261022-jinmei-lease-assignment","HK-00217-20261022-huadian-five-leasebacks"].includes(txCase?.id))return buildChengtongGM2026(txCase,documents);
     if(["HK-01606-20261125-purui-equipment-733","HK-01606-20261126-purui-equipment-1178"].includes(txCase?.id))return buildPuruiSeparateBatches(txCase,documents);
