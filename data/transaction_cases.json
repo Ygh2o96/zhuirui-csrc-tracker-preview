@@ -2,6 +2,142 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01635-20261127-tianli-gas-framework",
+      "code": "01635",
+      "name": "大眾公用：出售江陰天力間接權益框架",
+      "aliases": [
+        "大众公用",
+        "大眾公用",
+        "江阴天力",
+        "江陰天力",
+        "Dazhong Public Utilities",
+        "Jiangyin Tianli",
+        "600635",
+        "002445"
+      ],
+      "category": "disposal",
+      "mechanism": "大眾公用及大眾燃投擬以現金方式出售上海儒馭全部股權及上海慧冉49%股權，合計穿透對應江陰天力37.2255%。受讓方結合其他出讓方擬取得50.05%經濟權益，並控制江陰天力52.5%股權。",
+      "headlineKey": "target_equity_value",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市賣方": "上海大眾公用事業（集團）股份有限公司（01635／600635）及上海大眾燃氣投資發展有限公司",
+        "其他賣方": "Lin Kewen、Lin Leiyuan、Zhao Wenbi",
+        "買方": "Jiangyin Zhongnan Heavy Industries Co., Ltd.（002445）及 Jiangyin Zhongnanhong Equity Investment Management Co., Ltd.",
+        "標的": "江陰天力燃氣有限公司（透過上海儒馭、上海慧冉及江陰升宏達）"
+      },
+      "terms": [
+        {
+          "key": "target_equity_value",
+          "label": "江陰天力全部股權預估值",
+          "value": 4312000000,
+          "unit": "money",
+          "precision": 2,
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "僅用作標的資產測算；正式交易對價及基準日待定。",
+          "evidence": {
+            "documentId": "YS-20261127-01635-tianli",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "issuer_lookthrough_sale",
+          "label": "大眾公用及大眾燃投穿透持股",
+          "value": 37.2255,
+          "unit": "percent",
+          "precision": 4,
+          "currency": null,
+          "approximate": false,
+          "basis": "兩方現有擬售間接權益；非全部出讓方份額。",
+          "evidence": {
+            "documentId": "YS-20261127-01635-tianli",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "buyers_indirect_interest",
+          "label": "買方擬取得間接權益",
+          "value": 50.05,
+          "unit": "percent",
+          "precision": 4,
+          "currency": null,
+          "approximate": false,
+          "basis": "涵蓋其他出讓方；透過三個持股主體。",
+          "evidence": {
+            "documentId": "YS-20261127-01635-tianli",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "buyers_controlled_stake",
+          "label": "買方擬控制江陰天力股權",
+          "value": 52.5,
+          "unit": "percent",
+          "precision": 4,
+          "currency": null,
+          "approximate": false,
+          "basis": "透過控制持股實體。",
+          "evidence": {
+            "documentId": "YS-20261127-01635-tianli",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:13.09",
+          "label": "上市規則 13.09",
+          "application": "上市賣方按內幕消息規定披露潛在出售；正式條款待定。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-01635-tianli",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽收購框架 · 正式協議及價格待定",
+          "state": "actual",
+          "detail": "簽署框架協議；審計及評估尚未開展，仍待正式協議及相關批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01635-tianli",
+            "pages": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "intervals": {},
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽收購框架 · 正式協議及價格待定"
+      },
+      "progressDate": "2026-11-27"
+    },
+    {
       "id": "HK-06655-20260802-holcim-philippines",
       "code": "06655",
       "name": "華新建材：分步收購 Holcim Philippines",
@@ -108030,6 +108166,20 @@
       "date": "2026-11-27",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701721.pdf",
       "title": "延遲寄發供股通函及修訂預期時間表"
+    },
+    "YS-20261127-01635-tianli": {
+      "id": "YS-20261127-01635-tianli",
+      "caseId": "HK-01635-20261127-tianli-gas-framework",
+      "date": "2026-11-27",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701601.pdf",
+      "title": "江陰天力燃氣潛在出售：收購框架協議"
+    },
+    "YS-20261127-002445-tianli-reprint": {
+      "id": "YS-20261127-002445-tianli-reprint",
+      "caseId": "HK-01635-20261127-tianli-gas-framework",
+      "date": "2026-11-27",
+      "title": "買方籌劃重大資產重組提示性公告（重刊）",
+      "url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12729724&stockid=002445"
     }
   },
   "issuerLinks": [

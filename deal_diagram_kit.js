@@ -6384,6 +6384,26 @@
       evidenceLinks:[{documentId:src,pages:[...x.pages,27,x.resolution===1?88:89],label:"通函：期限、上限與股東大會"}],compactSummary:x.signal+" · "+x.headline.join("／"),topology});
   }
 
+  function buildTianliGasFramework(c,docs){
+    const z="YS-20261127-01635-tianli",l="大眾公用等",r="中南重工及附屬",badge=c.stage?.label;
+    if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||docs?.[z]?.caseId!==c.id||docs[z].url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701601.pdf"||
+       ![["target_equity_value",4312000000],["issuer_lookthrough_sale",37.2255],["buyers_indirect_interest",50.05],["buyers_controlled_stake",52.5]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===z)))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"擬轉讓持股主體權益",rightTitle:"江陰天力燃氣",transitionLabel:"框架協議 · 待正式條款",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"上市賣方與其他出讓方"),
+      box("r","left",448,100,157,146,"buyer",r,"擬受讓方"),
+      box("equity","right",726,84,300,76,"target","買方擬取得 50.05% 間接權益","透過持股主體擬控制 52.5% 股權"),
+      box("valuation","right",726,210,300,75,"public","全部股權預估值 43.1 億元","人民幣 · 正式交易價待定")
+    ],[],[{id:"assets",panel:"left",kind:"shares",step:"①",pathPoints:[[192,169],[448,169]],labelCenter:[320,169],labelWidth:206,labelHeight:35,label:"兩家持股公司及合夥份額",dashed:true}]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"潛在股權出售",caseModalityShortLabel:"擬現金 · 價格待定",
+      before:{title:"交易雙方",nodes,equityLinks:[]},after:{title:"擬取得股權及控制權",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"assets",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬收購上海儒馭100%、上海慧冉100%及江陰升宏達2%合夥份額",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"上市賣方對應權益",body:"大眾公用及大眾燃投擬售權益合計穿透對應江陰天力37.2255%；買方另收購其他出讓方的權益。"},
+      {tag:"②",title:"估值與進度",body:"江陰天力全部股權預估值約人民幣43.12億元，正式價格及協議待審計、評估和磋商。"}],
+      evidenceLinks:[{documentId:z,pages:[1,2,3,4],label:"框架：股權、控制權、估值及條件"},{documentId:"YS-20261127-002445-tianli-reprint",pages:[],label:"買方公告（重刊）：擬付現金"}],compactSummary:"框架已簽 · 正式對價待定",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10308,6 +10328,7 @@
     if(txCase?.id==="HK-01440-20261023-circle-time-disposal")return buildStarShineCircleTime(txCase,documents);
     if(txCase?.id==="HK-06655-20260802-holcim-philippines")return buildHuaxinHolcim(txCase,documents);
     if(["HK-06623-20261106-pingan-purchasing","HK-06623-20261106-pingan-financial","HK-06623-20261106-pingan-consumer-finance","HK-06623-20261106-pingan-account"].includes(txCase?.id))return buildLufaxCCT(txCase,documents);
+    if(txCase?.id==="HK-01635-20261127-tianli-gas-framework")return buildTianliGasFramework(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
