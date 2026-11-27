@@ -9209,7 +9209,24 @@
     const nodes=[{id:"s",role:"seller",name:"金科地產"},{id:"b",role:"buyer",name:"Broad Gongga Investment Pte. Ltd."}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"司法拍賣／現金要約",caseModalityShortLabel:"現金要約",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"金科地產",toLabel:"Broad Gongga Investment Pte. Ltd.",headline:"拍賣成交價約6.7億人民幣"}],annotations:[{tag:"①",title:"要約接納的持股歸屬",body:"博裕兩隻基金提交的448.02萬股已計入要約前一致行動持股，按集團口徑屬內部轉移。要約結算條款另設再投資選項；公告所列撤銷上市生效時間為2月20日下午4時。"}],evidenceLinks:[{documentId:a,pages:[2],label:"拍賣過戶及觸發要約"},{documentId:p,pages:[2,56],label:"修訂價及初始持股"},{documentId:u,pages:[2,4],label:"退市條件達成及補差"},{documentId:z,pages:[2,3],label:"要約結果及撤銷上市"},{documentId:r,label:"大股東權益披露 · 第20欄"}]});
   }
+  function buildTianGeOffer(c,docs){
+    const a="YS-20251119-dbd6c5f157cf",z="YS-20260108-7d3bb0742c2b",b="YS-20260108-97b5de492a0b",r="YS-20260129-bcdacd5f2d58",g="YS-20260625-2865fa2f457c",date="2026-01-08";
+    const values=[["initial_trigger_shares",20000000,a],["later_market_purchases_shares",39050000,z],["accepted_offer_shares",121151339,z],["accepted_offer_pct",10.92,r],["core_concert_shares_after_tender_registration_assumed",511096339,z],["public_float_jan29_corrected_pct",20.85,r],["public_reclassified_award_shares",61300000,g],["public_float_restored_pct",26.37,g]];
+    if(c.stage?.status!=="closed"||c.stage.date!==date||![a,b,z,r,g].every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!values.every(([key,value,id])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===id)))return null;
+    const left="場內增持觸發強制要約",right="要約結果及公眾持股",badge="要約已截止 · 其後公眾持股恢復至26.37%";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:"closed",leftTitle:left,rightTitle:right,transitionLabel:"強制現金要約",outcomeBadge:badge}),[
+      box("s","left",42,106,164,124,"seller","場內交易對手","先購2,000萬股，後購3,905萬股"),
+      box("b","left",438,106,178,124,"buyer","Truesense Trading","首輪增持後核心集團持31.63%"),
+      box("out1","right",724,72,310,73,"target","1月8日要約截止","每股0.68港元 · 有效接納121,151,339股"),
+      box("out2","right",724,168,310,73,"creditor","核心集團持股46.07%","計入接納後過戶 · 新浪另持27.04%"),
+      box("out3","right",724,264,310,73,"creditor","6月25日公眾持股恢復為26.37%","1月29日修正為20.85% · 其後授予6,130萬股")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"首輪場內買入約1,359.8萬港元"}]);
+    const nodes=[{id:"s",role:"seller",name:"場內交易對手"},{id:"b",role:"buyer",name:"Truesense Trading Limited"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"場內交易對手",toLabel:"Truesense Trading Limited",headline:"首輪場內買入約1,359.8萬港元"}],annotations:[{tag:"①",title:"要約及公眾持股",body:"有效接納佔股本10.92%，現金對價為8,238.3萬港元。6月25日授予9名員工的6,130萬股來自受託人既有股票，授出後按規則計入公眾持股。"}],evidenceLinks:[{documentId:a,pages:[2,3],label:"場內買入及要約觸發"},{documentId:z,pages:[2,3,4,5],label:"要約截止及持股"},{documentId:r,pages:[1,2,3],label:"1月29日公眾持股口徑修正"},{documentId:g,pages:[1,2,3],label:"6月25日公眾持股恢復"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01980-20251119-truesense-on-market-mgo")return buildTianGeOffer(txCase,documents);
     if(txCase?.id==="HK-09666-20250428-broad-gongga-auction-and-cash-offer")return buildJinkeAuction(txCase,documents);
     if(txCase?.id==="HK-01561-20261005-panasia-pcdynamic-whitewash")return buildPanAsiaWhitewash(txCase,documents);
     if(["HK-01671-20260526-lingang-thermal"].includes(txCase?.id))return buildLingangThermal(txCase,documents);
