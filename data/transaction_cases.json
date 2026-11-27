@@ -2,6 +2,216 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-08143-20260630-chengkan-xiamen-hospital",
+      "code": "08143",
+      "name": "Good Fellow Healthcare：收購橙慷醫療合夥權益",
+      "aliases": [
+        "Good Fellow Healthcare",
+        "GF Healthcare",
+        "廈門湖里健民醫院",
+        "橙慷醫療"
+      ],
+      "category": "major_acquisition",
+      "mechanism": "益慷民擬以人民幣573.82萬元向廈門橙照護購入橙慷醫療80%合夥權益，該合夥企業持有廈門湖里健民醫院51%。補充協議將對價分兩期支付，每期人民幣286.91萬元。",
+      "headlineKey": "consideration",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "Good Fellow Healthcare Holdings Limited（08143）",
+        "買方": "益慷民（廈門）醫療管理有限公司（上市公司間接全資附屬）",
+        "賣方": "廈門橙照護養老科技有限公司",
+        "標的": "橙慷（廈門）醫療投資合夥企業（有限合夥）",
+        "底層公司": "廈門湖里健民醫院有限公司"
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "合夥權益交易對價",
+          "value": 5738200,
+          "unit": "money",
+          "precision": 2,
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "補充協議未改總價。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "lp_stake",
+          "label": "擬買入合夥權益",
+          "value": 80,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": false,
+          "basis": "合夥層。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "lp_hospital_stake",
+          "label": "合夥企業現持醫院股權",
+          "value": 51,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": false,
+          "basis": "底層公司。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "indirect_hospital_equity",
+          "label": "擬取得醫院穿透權益",
+          "value": 40.8,
+          "unit": "percent",
+          "precision": 2,
+          "currency": null,
+          "approximate": false,
+          "basis": "80% × 51%。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "instalment_one",
+          "label": "首期對價",
+          "value": 2869100,
+          "unit": "money",
+          "precision": 2,
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "包括押記文件簽署等條件達成後五個營業日內。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "instalment_two",
+          "label": "餘款",
+          "value": 2869100,
+          "unit": "money",
+          "precision": 2,
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "約定條件、文件簽訂或工商變更後，以較晚者為準起算一年內。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:GEM-19",
+          "label": "GEM 上市規則第 19 章",
+          "classificationStatus": "applied",
+          "application": "主要交易，須遵守公告、通函及股東批准要求。",
+          "evidence": {
+            "documentId": "YS-20260630-08143",
+            "pages": [
+              1,
+              9
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-06-30",
+          "kind": "first_announcement",
+          "label": "公布附條件收購",
+          "state": "actual",
+          "detail": "簽約收購80%合夥權益。",
+          "evidence": {
+            "documentId": "YS-20260630-08143",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-23",
+          "kind": "supplement",
+          "label": "修訂付款及押記安排",
+          "state": "actual",
+          "detail": "對價分兩期。第一期受文件及其他條件約束；補充協議還訂押記登記及終止後退款安排。",
+          "evidence": {
+            "documentId": "YS-20261123-08143",
+            "pages": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "已修訂付款及擔保 · 通函延至12月31日或之前",
+          "state": "actual",
+          "detail": "公司需更多時間完成通函資料；原擬11月27日寄發的日期改期。",
+          "evidence": {
+            "documentId": "YS-20261127-08143",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-31",
+          "kind": "circular",
+          "label": "預計最遲寄發通函",
+          "state": "expected",
+          "detail": "公司公告預計於當日或之前寄發。",
+          "evidence": {
+            "documentId": "YS-20261127-08143",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "supplement",
+        "label": "已修訂付款及擔保 · 通函延至12月31日或之前"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01635-20261127-tianli-gas-framework",
       "code": "01635",
       "name": "大眾公用：出售江陰天力間接權益框架",
@@ -108180,6 +108390,27 @@
       "date": "2026-11-27",
       "title": "買方籌劃重大資產重組提示性公告（重刊）",
       "url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12729724&stockid=002445"
+    },
+    "YS-20260630-08143": {
+      "id": "YS-20260630-08143",
+      "caseId": "HK-08143-20260630-chengkan-xiamen-hospital",
+      "date": "2026-06-30",
+      "title": "收購合夥權益的主要交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/0630/2026063002889.pdf"
+    },
+    "YS-20261123-08143": {
+      "id": "YS-20261123-08143",
+      "caseId": "HK-08143-20260630-chengkan-xiamen-hospital",
+      "date": "2026-11-23",
+      "title": "補充協議：分期付款及股權押記",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1123/2026112301502.pdf"
+    },
+    "YS-20261127-08143": {
+      "id": "YS-20261127-08143",
+      "caseId": "HK-08143-20260630-chengkan-xiamen-hospital",
+      "date": "2026-11-27",
+      "title": "進一步延遲寄發通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701591.pdf"
     }
   },
   "issuerLinks": [

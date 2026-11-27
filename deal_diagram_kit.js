@@ -6404,6 +6404,27 @@
       evidenceLinks:[{documentId:z,pages:[1,2,3,4],label:"框架：股權、控制權、估值及條件"},{documentId:"YS-20261127-002445-tianli-reprint",pages:[],label:"買方公告（重刊）：擬付現金"}],compactSummary:"框架已簽 · 正式對價待定",topology});
   }
 
+  function buildChengkanHospital(c,docs){
+    const s="YS-20261123-08143",z="YS-20261127-08143",o="YS-20260630-08143",l="廈門橙照護",r="益慷民",badge=c.stage?.label;
+    if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="supplement"||![s,z,o].every(x=>docs?.[x]?.caseId===c.id)||docs[z].url!=="https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701591.pdf"||
+       ![["consideration",5738200],["lp_stake",80],["lp_hospital_stake",51],["instalment_one",2869100],["instalment_two",2869100]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===s)))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:207,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"收購醫療合夥權益",rightTitle:"穿透股權及付款條件",transitionLabel:"待股東批准及交割",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"合夥權益出讓方"),
+      box("r","left",448,100,157,146,"buyer",r,"上市公司全資附屬"),
+      box("stake","right",726,84,300,76,"target","廈門湖里健民醫院","合夥企業持有 51% 股權"),
+      box("pay","right",726,210,300,75,"public","兩期各 286.91 萬元人民幣","首期須先完成押記文件等條件")
+    ],[],[arrow("assets","shares","①",192,138,448,"橙慷醫療 80% 合夥權益"),arrow("pay","cash","②",448,209,192,"共 573.82 萬元人民幣")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"acquisition",modality:"cash",status:"active",caseArchetypeLabel:"收購醫療合夥企業",caseModalityShortLabel:"現金分兩期",
+      before:{title:"交易雙方",nodes,equityLinks:[]},after:{title:"擬取得間接權益",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"assets",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬轉讓 80% 合夥權益；對應醫院 40.8% 穿透權益",proposedOrTerminated:true},{id:"pay",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"兩期各人民幣 286.91 萬元，首期及餘款觸發條件分別列示",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"分期付款與押記",body:"首期付款須有押記文件並符合相關條件；補充協議另訂押記登記及特定終止時的退款安排。"},
+      {tag:"②",title:"通函",body:"最新公告預計於12月31日或之前寄發。"}],
+      evidenceLinks:[{documentId:o,pages:[1,2,3],label:"首公告：交易雙方及分類"},{documentId:s,pages:[1,2,3,4],label:"補充協議：分期與押記"},{documentId:z,pages:[1],label:"通函延後"}],compactSummary:"擬取得合夥企業80% · 對價兩期 · 待通函",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10329,6 +10350,7 @@
     if(txCase?.id==="HK-06655-20260802-holcim-philippines")return buildHuaxinHolcim(txCase,documents);
     if(["HK-06623-20261106-pingan-purchasing","HK-06623-20261106-pingan-financial","HK-06623-20261106-pingan-consumer-finance","HK-06623-20261106-pingan-account"].includes(txCase?.id))return buildLufaxCCT(txCase,documents);
     if(txCase?.id==="HK-01635-20261127-tianli-gas-framework")return buildTianliGasFramework(txCase,documents);
+    if(txCase?.id==="HK-08143-20260630-chengkan-xiamen-hospital")return buildChengkanHospital(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
