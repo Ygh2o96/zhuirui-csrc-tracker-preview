@@ -2,6 +2,276 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-00770-20260922-canopy-share-buys",
+      "code": "00770",
+      "name": "楠爵資本：三次購入烽翼股份",
+      "aliases": [
+        "楠爵資本",
+        "Eminence Capital",
+        "烽翼",
+        "Canopy Skyfire",
+        "08245",
+        "道勤資本"
+      ],
+      "category": "major_acquisition",
+      "mechanism": "楠爵資本於2025年三次在市場購入烽翼合計2,620萬股，總對價482.24萬港元。2026年11月27日刊發通函，提呈股東審議已完成買入。",
+      "headlineKey": "cash_total",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "楠爵資本集團有限公司（00770）",
+        "標的股份": "烽翼集團有限公司（08245）",
+        "賣方": "公開市場賣方（身份未能確定）"
+      },
+      "terms": [
+        {
+          "key": "cash_total",
+          "label": "三次買入總對價",
+          "value": 4822400,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "未計交易成本。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        },
+        {
+          "key": "shares",
+          "label": "三次買入股份",
+          "value": 26200000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "烽翼股份。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        },
+        {
+          "key": "stake",
+          "label": "通函最後實際可行日期持股比例",
+          "value": 9.05,
+          "unit": "percent",
+          "currency": null,
+          "approximate": true,
+          "basis": "上市公司披露持股。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        },
+        {
+          "key": "leg_1",
+          "label": "2025-07-10成交款",
+          "value": 2438000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "購入10,600,000股。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        },
+        {
+          "key": "leg_2",
+          "label": "2025-08-06成交款",
+          "value": 1734400,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "購入10,600,000股。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        },
+        {
+          "key": "leg_3",
+          "label": "2025-12-02成交款",
+          "value": 650000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "購入5,000,000股。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第 14 章",
+          "classificationStatus": "applied",
+          "application": "第一筆單獨構成主要交易，後兩筆各單獨構成須予披露交易，三筆合併構成主要交易。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              10,
+              11,
+              12
+            ]
+          }
+        },
+        {
+          "code": "HKEX:21.04(3)(b)",
+          "label": "上市規則 21.04(3)(b)",
+          "classificationStatus": "applied",
+          "application": "通函披露交易的投資集中度超過規則所列20%上限。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              10,
+              11,
+              12
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Diligent Capital Limited",
+          "role": "FA",
+          "side": "楠爵資本",
+          "service": "上市公司財務顧問",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-09-22",
+          "kind": "first_announcement",
+          "label": "刊發交易公告",
+          "state": "actual",
+          "detail": "披露過往三次場內買入。",
+          "evidence": {
+            "documentId": "YS-20260922-00770-canopy",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "circular",
+          "label": "刊發主要交易通函",
+          "state": "actual",
+          "detail": "附2026年12月14日股東會通知。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              1,
+              16
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2025-07-10",
+          "kind": "completion",
+          "label": "已在公開市場成交",
+          "state": "actual",
+          "detail": "購入10,600,000股，對價2,438,000港元。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              7
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-08-06",
+          "kind": "completion",
+          "label": "已在公開市場成交",
+          "state": "actual",
+          "detail": "購入10,600,000股，對價1,734,400港元。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              7
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-12-02",
+          "kind": "completion",
+          "label": "已在公開市場成交",
+          "state": "actual",
+          "detail": "購入5,000,000股，對價650,000港元。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              7
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-14",
+          "kind": "vote",
+          "label": "預計舉行股東會",
+          "state": "expected",
+          "detail": "2026年12月14日上午10時（香港時間）。",
+          "evidence": {
+            "documentId": "YS-20261127-00770-canopy",
+            "pages": [
+              1,
+              16,
+              25
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "circular",
+        "label": "通函已刊發 · 待股東審議已完成交易"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01429-20261127-skymission-placing",
       "code": "01429",
       "name": "天任集團：一般授權配售新股",
@@ -111582,6 +111852,20 @@
       "date": "2026-11-27",
       "title": "天任集團根據一般授權配售新股",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701835.pdf"
+    },
+    "YS-20261127-00770-canopy": {
+      "id": "YS-20261127-00770-canopy",
+      "caseId": "HK-00770-20260922-canopy-share-buys",
+      "date": "2026-11-27",
+      "title": "主要交易通函：三次買入烽翼股份",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701855.pdf"
+    },
+    "YS-20260922-00770-canopy": {
+      "id": "YS-20260922-00770-canopy",
+      "caseId": "HK-00770-20260922-canopy-share-buys",
+      "date": "2026-09-22",
+      "title": "最初披露：收購上市證券的主要交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0922/2026092200002_c.pdf"
     }
   },
   "issuerLinks": [

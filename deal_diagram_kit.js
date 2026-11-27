@@ -6599,6 +6599,25 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3,4,8],label:"原件：股數、價格、代理、上市批准及期限"}],compactSummary:"最多3.20億新股 · 每股0.10港元 · 待上市批准",topology});
   }
 
+  function buildEminenceCanopyPurchases(c,docs){
+    const s="YS-20261127-00770-canopy",o="YS-20260922-00770-canopy",l="楠爵資本",r="公開市場賣方",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||![s,o].every(x=>docs?.[x]?.caseId===c.id)||!c.terms?.some(t=>t.key==="cash_total"&&t.value===4822400)||!c.terms?.some(t=>t.key==="shares"&&t.value===26200000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:209,labelHeight:34,label,dashed:false});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:369,status:"active",leftTitle:"三次場內購入烽翼股份",rightTitle:"已成交 · 合規審議",transitionLabel:"已刊發通函 · 待股東審議",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"buyer",l,"股份買方"),
+      box("r","left",448,100,157,146,"seller",r,"交易對手身份未能確定"),
+      box("cap","right",726,84,300,76,"target","股份合計 2,620 萬股","通函最後實際可行日期佔烽翼約 9.05%"),
+      box("vote","right",726,210,300,78,"public","預計12月14日股東會","合併屬主要交易，三次買入已成交")
+    ],[],[flow("asset","shares","①",448,137,192,"2,620 萬股烽翼股份"),flow("cash","cash","②",192,208,448,"共 482.24 萬港元")]);
+    const nodes=[{id:"l",role:"buyer",name:l},{id:"r",role:"seller",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"acquisition",modality:"cash",status:"active",caseArchetypeLabel:"購入上市證券",caseModalityShortLabel:"現金",
+      before:{title:"場內交易雙方",nodes,equityLinks:[]},after:{title:"三筆已成交",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"rtl",fromLabel:r,toLabel:l,headline:"三次分別購入1,060萬、1,060萬及500萬股",proposedOrTerminated:false},{id:"cash",kind:"cash",direction:"ltr",fromLabel:l,toLabel:r,headline:"總對價482.24萬港元，不含交易成本",proposedOrTerminated:false}],
+      annotations:[{tag:"①",title:"成交與審議",body:"三筆在2025年已成交。通函就已發生買入提呈股東審議。"}, {tag:"②",title:"上市規則",body:"合併構成主要交易；公司通函披露當時未符合第21.04(3)(b)條集中度上限。"}],
+      evidenceLinks:[{documentId:o,pages:[1],label:"9月披露"},{documentId:s,pages:[1,6,7,10,11,12,16],label:"11月通函：成交清單、規則及會議"}],compactSummary:"購入2,620萬股 · 482.24萬港元 · 已出通函",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10534,6 +10553,7 @@
     if(txCase?.id==="HK-00379-20261127-tei-framework")return buildTeiHealthFramework(txCase,documents);
     if(txCase?.id==="HK-03750-20261127-lochpine-lush")return buildCatlLochpineFund(txCase,documents);
     if(txCase?.id==="HK-01429-20261127-skymission-placing")return buildSkymissionPlacing(txCase,documents);
+    if(txCase?.id==="HK-00770-20260922-canopy-share-buys")return buildEminenceCanopyPurchases(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
