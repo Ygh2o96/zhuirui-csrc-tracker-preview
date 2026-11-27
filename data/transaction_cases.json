@@ -2,6 +2,1018 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01202-20261127-siwi-purchase",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：四威高科技採購框架",
+      "aliases": [
+        "成都四威科技",
+        "四威高科技",
+        "四威高科技採購框架"
+      ],
+      "mechanism": "成都四威科技向四威高科技採購高低頻零件及電纜。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "成都四威高科技產業園有限公司"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-siwi-purchase",
+            "pages": [
+              29
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-siwi-purchase",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2027年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-siwi-purchase",
+            "pages": [
+              1,
+              28,
+              29
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2027年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-siwi-purchase",
+            "pages": [
+              28
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-29th-purchase",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：第二十九研究所採購框架",
+      "aliases": [
+        "成都四威科技",
+        "第二十九研究所",
+        "第二十九研究所採購框架"
+      ],
+      "mechanism": "成都四威科技向第二十九研究所採購高低頻零件及電纜。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "中國電子科技集團公司第二十九研究所"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-29th-purchase",
+            "pages": [
+              27
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-29th-purchase",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2027年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-29th-purchase",
+            "pages": [
+              1,
+              26,
+              27
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2027年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-29th-purchase",
+            "pages": [
+              26
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-23rd-purchase",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：第二十三研究所採購框架",
+      "aliases": [
+        "成都四威科技",
+        "第二十三研究所",
+        "第二十三研究所採購框架"
+      ],
+      "mechanism": "成都四威科技向第二十三研究所採購高低頻零件及電纜。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "中國電子科技集團公司第二十三研究所"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-purchase",
+            "pages": [
+              25
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-purchase",
+            "pages": [
+              25
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-purchase",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2028年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-purchase",
+            "pages": [
+              1,
+              23,
+              25
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2028年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-purchase",
+            "pages": [
+              23
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-sumitomo-purchase",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：住友電工採購框架",
+      "aliases": [
+        "成都四威科技",
+        "住友電工",
+        "住友電工採購框架"
+      ],
+      "mechanism": "成都中住光纖有限公司向住友電工採購光纖預製棒及設備服務。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都中住光纖有限公司",
+        "對手方": "Sumitomo Electric Industries, Ltd."
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-sumitomo-purchase",
+            "pages": [
+              22
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A.101",
+          "label": "上市規則 14A.101",
+          "classificationStatus": "applied",
+          "application": "附屬公司層面的持續關連交易，董事已批准，豁免通函、獨立財務意見及獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-sumitomo-purchase",
+            "pages": [
+              7,
+              6
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2027年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-sumitomo-purchase",
+            "pages": [
+              1,
+              21,
+              22
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2027年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-sumitomo-purchase",
+            "pages": [
+              21
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-rongwei-sales",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：蓉威電子銷售框架",
+      "aliases": [
+        "成都四威科技",
+        "蓉威電子",
+        "蓉威電子銷售框架"
+      ],
+      "mechanism": "成都四威科技向蓉威電子銷售高低頻電纜組件。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "中電科蓉威電子技術有限公司"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 5000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-rongwei-sales",
+            "pages": [
+              20
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年度交易上限",
+          "value": 5000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-rongwei-sales",
+            "pages": [
+              20
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年度交易上限",
+          "value": 5000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-rongwei-sales",
+            "pages": [
+              20
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-rongwei-sales",
+            "pages": [
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2029年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-rongwei-sales",
+            "pages": [
+              1,
+              18,
+              20
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2029年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-rongwei-sales",
+            "pages": [
+              18
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-seekon-sales",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：西科微波銷售框架",
+      "aliases": [
+        "成都四威科技",
+        "西科微波",
+        "西科微波銷售框架"
+      ],
+      "mechanism": "成都四威科技向西科微波銷售光組件、器件及服務。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "成都西科微波通訊有限公司"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 2800000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-seekon-sales",
+            "pages": [
+              17
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-seekon-sales",
+            "pages": [
+              5,
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2027年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-seekon-sales",
+            "pages": [
+              1,
+              16,
+              17
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2027年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-seekon-sales",
+            "pages": [
+              16
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-23rd-sales",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：第二十三研究所銷售框架",
+      "aliases": [
+        "成都四威科技",
+        "第二十三研究所",
+        "第二十三研究所銷售框架"
+      ],
+      "mechanism": "成都四威科技向第二十三研究所銷售光電纜、光器件及服務。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "中國電子科技集團公司第二十三研究所"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-sales",
+            "pages": [
+              15
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-sales",
+            "pages": [
+              15
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-sales",
+            "pages": [
+              5,
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2028年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-sales",
+            "pages": [
+              1,
+              13,
+              15
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2028年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-23rd-sales",
+            "pages": [
+              13
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-51st-sales",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：第五十一研究所銷售框架",
+      "aliases": [
+        "成都四威科技",
+        "第五十一研究所",
+        "第五十一研究所銷售框架"
+      ],
+      "mechanism": "成都四威科技向第五十一研究所銷售光纜組件及光學子模組。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都四威科技",
+        "對手方": "中國電子科技集團公司第五十一研究所"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-51st-sales",
+            "pages": [
+              12
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-51st-sales",
+            "pages": [
+              12
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年度交易上限",
+          "value": 15000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-51st-sales",
+            "pages": [
+              12
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-51st-sales",
+            "pages": [
+              5,
+              6,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2029年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-51st-sales",
+            "pages": [
+              1,
+              11,
+              12
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2029年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-51st-sales",
+            "pages": [
+              11
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-01202-20261127-8th-sales",
+      "code": "01202",
+      "category": "continuing_connected",
+      "name": "成都四威科技：第八研究所銷售框架",
+      "aliases": [
+        "成都四威科技",
+        "第八研究所",
+        "第八研究所銷售框架"
+      ],
+      "mechanism": "成都中住光纖有限公司向第八研究所銷售單模光纖產品。本次另公布擬調高原2026年協議上限至人民幣1,200萬元。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "成都四威科技股份有限公司（01202）",
+        "簽約方": "成都中住光纖有限公司",
+        "對手方": "中國電子科技集團公司第八研究所"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 5000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按各年度上限列示。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              10
+            ]
+          }
+        },
+        {
+          "key": "cap_2026",
+          "label": "2026年度交易上限",
+          "value": 12000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "現有框架年度上限擬由500萬元調高至1,200萬元。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              2,
+              8,
+              10
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "持續關連交易，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              5,
+              6,
+              7
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.54",
+          "label": "上市規則 14A.54",
+          "classificationStatus": "applied",
+          "application": "原有2026年框架年度上限修訂。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              2,
+              5,
+              8
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽續期框架 · 約定2027年1月生效",
+          "state": "actual",
+          "detail": "訂立續期框架，期限自2027年1月1日起至2027年12月31日。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              1,
+              9,
+              10
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "另公布2026年度上限修訂",
+          "state": "actual",
+          "detail": "現有框架年度上限擬由500萬元調高至1,200萬元；2027年續期上限為500萬元。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              2,
+              8,
+              10
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "label": "框架約定生效日",
+          "state": "expected",
+          "detail": "至2027年12月31日止。",
+          "evidence": {
+            "documentId": "YS-20261127-01202-8th-sales",
+            "pages": [
+              9
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽續期框架 · 約定2027年1月生效"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-08487-20261028-isp-placing",
       "code": "08487",
       "name": "ISP Global：一般授權配售新股",
@@ -109640,6 +110652,69 @@
       "date": "2026-11-27",
       "title": "配售所得款用途補充公告",
       "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701764_c.pdf"
+    },
+    "YS-20261127-01202-8th-sales": {
+      "id": "YS-20261127-01202-8th-sales",
+      "caseId": "HK-01202-20261127-8th-sales",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：第八研究所銷售框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-51st-sales": {
+      "id": "YS-20261127-01202-51st-sales",
+      "caseId": "HK-01202-20261127-51st-sales",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：第五十一研究所銷售框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-23rd-sales": {
+      "id": "YS-20261127-01202-23rd-sales",
+      "caseId": "HK-01202-20261127-23rd-sales",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：第二十三研究所銷售框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-seekon-sales": {
+      "id": "YS-20261127-01202-seekon-sales",
+      "caseId": "HK-01202-20261127-seekon-sales",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：西科微波銷售框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-rongwei-sales": {
+      "id": "YS-20261127-01202-rongwei-sales",
+      "caseId": "HK-01202-20261127-rongwei-sales",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：蓉威電子銷售框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-sumitomo-purchase": {
+      "id": "YS-20261127-01202-sumitomo-purchase",
+      "caseId": "HK-01202-20261127-sumitomo-purchase",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：住友電工採購框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-23rd-purchase": {
+      "id": "YS-20261127-01202-23rd-purchase",
+      "caseId": "HK-01202-20261127-23rd-purchase",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：第二十三研究所採購框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-29th-purchase": {
+      "id": "YS-20261127-01202-29th-purchase",
+      "caseId": "HK-01202-20261127-29th-purchase",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：第二十九研究所採購框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
+    },
+    "YS-20261127-01202-siwi-purchase": {
+      "id": "YS-20261127-01202-siwi-purchase",
+      "caseId": "HK-01202-20261127-siwi-purchase",
+      "date": "2026-11-27",
+      "title": "成都四威科技持續關連交易公告：四威高科技採購框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701797.pdf"
     }
   },
   "issuerLinks": [
