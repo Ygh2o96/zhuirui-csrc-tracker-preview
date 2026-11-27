@@ -9780,7 +9780,49 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main", kind:c.code==="01635"?"cash":"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildFourStructureBatches(c,docs){
+    const configs={
+      "HK-07688-20261020-cnc-target-loi":{
+        a:"YS-20261020-cae45d63b647",z:"YS-20261020-cae45d63b647",date:"2026-10-20",event:"first_announcement",status:"active",modality:"擬收購股權",
+        ts:[["stake_min",70,"a"]],left:"擬收購數控機床企業",right:"協議狀態及下一階段",badge:"意向書已簽 · 待盡調及正式協議",
+        seller:"潛在賣方及其他股東",buyer:"上海拓璞數控",sSub:"潛在賣方為獨立第三方；未具名",bSub:"擬買方",main:"擬收購不少於70%股權",
+        steps:[["標的是五軸及多軸數控機床企業","涉及研發、製造、銷售及服務"],["對價及付款方式待正式協議","後續盡調、估值評估及商議"],["意向書有效期90天","在有效期內可按約書面通知終止"]],
+        detail:"10月20日簽署；保密、法律效力及爭議解決條款另有約束。若落實，上市規則第14章類別取決於最終條款。",pagesA:[1,2,3]
+      },
+      "HK-01956-20260814-guoke-qizhi-fund":{
+        a:"YS-20260814-4df2ce58e828",z:"YS-20260814-4df2ce58e828",date:"2026-08-14",event:"first_announcement",status:"active",modality:"三方認繳基金",cash:true,
+        ts:[["issuer_commitment",177000000,"a"],["fund_size",300000000,"a"],["issuer_commitment_pct",59,"a"],["other_lp_commitment",120000000,"a"],["gp_commitment",3000000,"a"]],left:"三方擬成立決策智能創投基金",right:"出資比例、管治及劃款",badge:"合夥協議已簽 · 實繳待核",
+        seller:"中科聞歌",buyer:"國科啟智創投基金",sSub:"有限合夥人；以內部現金出資",bSub:"基金名稱待工商登記確定",main:"認繳1.77億人民幣（59%）",
+        steps:[["柯橋金開40% · 國科西子1%","兩者分別認繳1.2億元及300萬元"],["總認繳3億元 · 兩期各50%","第二期須完成基金備案及達前期投資條件"],["投委會5席 · 需至少4票","管理人委派3席，中科聞歌委派2席"]],
+        detail:"基金管理人及普通合夥人為國科西子，中科聞歌預期不把基金併作附屬公司。第二期須前期至少70%已投資，按協議口徑包含已決策待付款。",pagesA:[2,3,4,5]
+      },
+      "HK-00486-20261126-novokuznetsk-heat":{
+        a:"YS-20261126-b9e67df9d813",z:"YS-20261126-b9e67df9d813",date:"2026-11-26",event:"first_announcement",status:"active",modality:"關連供熱服務",
+        ts:[["new_contract_estimate",157502,"a"],["annual_combined_cap",11746000,"a"]],left:"機場航站樓購買熱能及熱水",right:"本合同及年度合計上限",badge:"供熱合同已簽 · 12月31日預定到期",
+        seller:"Aerokuzbass LLC",buyer:"Terminal Novokuznetsk LLC",sSub:"熱能供應商；En+聯繫人",bSub:"俄鋁旗下航站樓營運方",main:"本合同約15.8萬美元（未稅）",
+        steps:[["預計供應約3,938 Gcal","涵蓋航站樓的熱能及熱水"],["11月25日簽署，11月26日公告","按發票及合同條款付款"],["年度上限約1,174.6萬美元","2026年多份En+系供熱合同合計"]],
+        detail:"年度上限依上市規則14A.81合計較早供熱合同；合同定價參照庫茲巴斯區域能源委員會費率。",pagesA:[1,2,3]
+      },
+      "HK-08400-20261126-macau-office-renewal":{
+        a:"YS-20261126-3db74bc5ad59",z:"YS-20261126-3db74bc5ad59",date:"2026-11-26",event:"first_announcement",status:"active",modality:"獨立第三方租賃",
+        ts:[["rou",3300000,"a"],["rent",100000,"a"],["deposit",200000,"a"]],left:"澳門總部三年續租",right:"租期、月租及使用權資產",badge:"續租已簽 · 2027年1月起租",
+        seller:"澳門獨立業主",buyer:"Asia Pioneer Entertainment",sSub:"出租方；獨立第三方個人",bSub:"上市公司旗下澳門承租方",main:"2027年1月起租三年",
+        steps:[["月租10萬港元","政府地租、差餉及管理等開支另付"],["租賃按金20萬港元","相當於兩個月租金"],["使用權資產約330萬港元","按IFRS 16以5.25%折現率計算"]],
+        detail:"租期至2029年12月31日。公告按GEM第19章分類為須予披露交易；租金及按金由集團內部資金支付。",pagesA:[1,2,3,4]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:q.cash?"cash":"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:q.cash?"cash":"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-07688-20261020-cnc-target-loi","HK-01956-20260814-guoke-qizhi-fund","HK-00486-20261126-novokuznetsk-heat","HK-08400-20261126-macau-office-renewal"].includes(txCase?.id))return buildFourStructureBatches(txCase,documents);
     if(["HK-03329-20261126-barclays-notes","HK-01635-20261126-zhiqichen-followon","HK-09886-20261126-macao-mou"].includes(txCase?.id))return buildNotesFundMOU(txCase,documents);
     if(["HK-02190-20261106-lifetech-lighthouse"].includes(txCase?.id))return buildLifeTechInvestmentNov(txCase,documents);
     if(["HK-02039-20261103-industry-city-guarantee"].includes(txCase?.id))return buildCIMCGuaranteePay(txCase,documents);
