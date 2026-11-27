@@ -9996,7 +9996,20 @@
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:'acquisition',modality:'cash',status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.right,caseModalityShortLabel:'售後回租',topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows,annotations:[{tag:'①',title:q.left,body:q.cards[0][1]}],evidenceLinks:q.evidence.map((documentId,i)=>({documentId,pages:q.pages[i],label:docs[documentId].title}))});
   }
 
+  function buildOceankingMerger(c,d){
+    const j={"id":"HK-00576-20250819-oceanking-absorption","put":"YS-20261127-00576-put","csrc":"YS-20260701-00576-csrc","china":"YS-20260701-00576-updated","orig":"YS-20250819-00576-first","badge":"已公布異議股東安排 · 待實施換股"};
+    if(c.id!==j.id || ![j.put,j.csrc,j.china,j.orig].every(id=>d?.[id]?.caseId===c.id) || !c.terms?.some(x=>x.key==="swap_ratio"&&x.value===1.0931) || !c.terms?.some(x=>x.key==="dissent_h_put"&&x.value===6.14) || c.stage?.eventKind!=="put_terms_announced" || c.stage.date!=="2026-11-27")return null;
+    const mk=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topo=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"A 股換股吸收合併",rightTitle:"異議股東安排",transitionLabel:"現金選擇權獨立列示",outcomeBadge:j.badge}),[
+     mk("L_t","left",43,100,149,146,"target","鎮洋發展","被吸收方 · 603213.SH"),mk("L_a","left",448,100,157,146,"listed","浙江滬杭甬","存續方 · 00576.HK"),
+     mk("R_h","right",728,84,295,75,"public","浙江滬杭甬異議 H 股","每股 HKD 6.14 · 香港浙經提供"),
+     mk("R_a","right",728,210,295,75,"public","鎮洋發展異議 A 股","每股 CNY 12.96 · 浙江交通集團提供")
+    ],[],[{id:"swap",panel:"left",kind:"shares",step:"①",pathPoints:[[448,172],[192,172]],labelCenter:[320,172],labelWidth:200,labelHeight:34,label:"每股換 1.0931 股新 A 股",dashed:true}]);
+    const nodes=[{id:"b",role:"target",name:"鎮洋發展"},{id:"s",role:"listed",name:"浙江滬杭甬"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"shares",status:"active",stageDate:c.stage.date,stageLabel:j.badge,caseArchetypeLabel:"換股吸收合併",caseModalityLabel:"發行 A 股作換股對價",caseModalityShortLabel:"股份",before:{title:"吸收合併雙方",nodes,equityLinks:[]},after:{title:"方案待實施",nodes,equityLinks:[],outcomeBadge:j.badge},topology:topo,compactSummary:j.badge,flows:[{id:"swap",kind:"shares",direction:"rtl",fromLabel:"浙江滬杭甬",toLabel:"鎮洋發展換股股東",headline:"每 1 股鎮洋發展可換取 1.0931 股浙江滬杭甬 A 股",proposedOrTerminated:true}],annotations:[{tag:"①",title:"換股與行權時間",body:"異議 H 股擬於 12 月 4–10 日申報，預定 12 月 21 日行權。換股及 A 股掛牌尚待實施。"}],evidenceLinks:[{documentId:j.orig,pages:[1],label:"首次交易公告"},{documentId:j.csrc,pages:[1],label:"註冊及同意發行股數"},{documentId:j.put,pages:[1,2,6],label:"異議 H 股股東安排"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00576-20250819-oceanking-absorption")return buildOceankingMerger(txCase,documents);
     if(["HK-00217-20261026-yangquan-lng-leaseback","HK-00217-20261113-jinta-photovoltaic-leaseback"].includes(txCase?.id))return buildWrittenApprovedLeases(txCase,documents);
     if(["HK-01833-20260928-ping-an-framework-renewals","HK-06616-20260917-hkd-settled-cb"].includes(txCase?.id))return buildPAorGlobalRefi(txCase,documents);
     if(["HK-03311-20261022-cscecl-mutual-tender","HK-03311-20261022-cscecl-contractual-joint-tender","HK-00830-20261022-cscecl-facade-subcontract"].includes(txCase?.id))return buildCsciRelatedConstruction(txCase,documents);

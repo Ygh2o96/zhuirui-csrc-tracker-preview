@@ -94774,6 +94774,345 @@
       "intervals": {
         "announcementToCircular": 10
       }
+    },
+    {
+      "id": "HK-00576-20250819-oceanking-absorption",
+      "code": "00576",
+      "name": "浙江滬杭甬：換股吸收合併鎮洋發展",
+      "category": "connected",
+      "aliases": [
+        "浙江沪杭甬",
+        "浙江滬杭甬",
+        "00576",
+        "鎮洋發展",
+        "镇洋发展",
+        "603213",
+        "Oceanking Development",
+        "Zhejiang Expressway",
+        "換股吸收合併",
+        "異議股東"
+      ],
+      "mechanism": "浙江滬杭甬擬向鎮洋發展股東發行 A 股換股吸收合併。除息後每股鎮洋發展換 1.0931 股；合併完成後浙江滬杭甬擬形成 A+H 架構。",
+      "parties": {
+        "吸收合併方": "浙江滬杭甬高速公路股份有限公司（00576.HK）",
+        "被合併方": "浙江鎮洋發展股份有限公司（603213.SH）",
+        "H股收購請求權提供方": "Universal Cosmos（浙江交通集團全資附屬公司）"
+      },
+      "headlineKey": "new_shares",
+      "terms": [
+        {
+          "key": "new_shares",
+          "label": "註冊同意發行股數",
+          "value": 540986199,
+          "unit": "shares",
+          "currency": null,
+          "precision": 0,
+          "approximate": false,
+          "basis": "中國證監會同意註冊 540,986,199 股；實際換股數待確認",
+          "evidence": {
+            "documentId": "YS-20260701-00576-csrc",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "swap_ratio",
+          "label": "每股鎮洋發展換浙江滬杭甬 A 股",
+          "value": 1.0931,
+          "unit": "ratio",
+          "currency": null,
+          "precision": 4,
+          "approximate": false,
+          "basis": "雙方除息後換股比例",
+          "evidence": {
+            "documentId": "YS-20260701-00576-updated",
+            "pages": []
+          }
+        },
+        {
+          "key": "issue_price",
+          "label": "浙江滬杭甬 A 股發行價",
+          "value": 13.11,
+          "unit": "per_share",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "除息後發行價",
+          "evidence": {
+            "documentId": "YS-20260701-00576-updated",
+            "pages": []
+          }
+        },
+        {
+          "key": "swap_price",
+          "label": "鎮洋發展 A 股換股價",
+          "value": 14.33,
+          "unit": "per_share",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "除息後換股價",
+          "evidence": {
+            "documentId": "YS-20260701-00576-updated",
+            "pages": []
+          }
+        },
+        {
+          "key": "dissent_h_put",
+          "label": "浙江滬杭甬異議 H 股收購請求權價",
+          "value": 6.14,
+          "unit": "per_share",
+          "currency": "HKD",
+          "precision": 2,
+          "approximate": false,
+          "basis": "Universal Cosmos 按 11 月 26 日 H 股收市價承接合資格股份",
+          "evidence": {
+            "documentId": "YS-20261127-00576-put",
+            "pages": [
+              6
+            ]
+          }
+        },
+        {
+          "key": "dissent_a_cash",
+          "label": "鎮洋發展異議 A 股現金選擇權價",
+          "value": 12.96,
+          "unit": "per_share",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "除息後被合併方異議股東現金選擇權價格，獨立於 H 股安排",
+          "evidence": {
+            "documentId": "YS-20260701-00576-updated",
+            "pages": []
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2025-08-19",
+          "kind": "first_announcement",
+          "label": "首次披露籌劃換股吸收合併",
+          "evidence": {
+            "documentId": "YS-20250819-00576-first",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2025-09-02",
+          "kind": "agreement",
+          "label": "簽署吸收合併協議",
+          "evidence": {
+            "documentId": "YS-20250902-00576-agreement",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-02-05",
+          "kind": "dispatch",
+          "label": "刊發通函",
+          "evidence": {
+            "documentId": "YS-20260205-00576-circular",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-03-20",
+          "kind": "shareholder_approval",
+          "label": "股東大會及類別股東會表決",
+          "evidence": {
+            "documentId": "YS-20260320-00576-poll",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-05-29",
+          "kind": "exchange_review",
+          "label": "上交所併購重組審核委審議通過",
+          "evidence": {
+            "documentId": "YS-20260529-00576-sse",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-06-30",
+          "kind": "regulatory_approval",
+          "label": "收到中國證監會同意註冊批覆",
+          "evidence": {
+            "documentId": "YS-20260701-00576-csrc",
+            "pages": [
+              1
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "put_terms_announced",
+          "label": "公告異議 H 股股東收購請求權安排",
+          "evidence": {
+            "documentId": "YS-20261127-00576-put",
+            "pages": [
+              1,
+              2,
+              6
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-04",
+          "kind": "put_window_start",
+          "label": "異議 H 股申報開始（工作日）",
+          "evidence": {
+            "documentId": "YS-20261127-00576-put",
+            "pages": [
+              2
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-10",
+          "kind": "put_window_end",
+          "label": "異議 H 股申報截止（16:30）",
+          "evidence": {
+            "documentId": "YS-20261127-00576-put",
+            "pages": [
+              2
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-21",
+          "kind": "put_exercise_expected",
+          "label": "異議 H 股預定行權日",
+          "evidence": {
+            "documentId": "YS-20261127-00576-put",
+            "pages": [
+              2
+            ]
+          },
+          "state": "expected",
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第14章",
+          "classificationStatus": "applied",
+          "application": "須予披露交易",
+          "evidence": {
+            "documentId": "YS-20250902-00576-agreement",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第14A章",
+          "classificationStatus": "applied",
+          "application": "關連交易，須獨立股東批准",
+          "evidence": {
+            "documentId": "YS-20260205-00576-circular",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "DBS",
+          "role": "FA",
+          "service": "share_swap_advice",
+          "side": "浙江滬杭甬",
+          "evidence": {
+            "documentId": "YS-20260205-00576-circular",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "firm": "CICC",
+          "role": "FA",
+          "service": "share_swap_advice",
+          "side": "浙江滬杭甬",
+          "evidence": {
+            "documentId": "YS-20260205-00576-circular",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "firm": "Zheshang International",
+          "role": "FA",
+          "service": "share_swap_advice",
+          "side": "浙江滬杭甬",
+          "evidence": {
+            "documentId": "YS-20260205-00576-circular",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "firm": "Gram Capital Limited",
+          "role": "IFA",
+          "service": "connected_ifa_opinion",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20260205-00576-circular",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "eventKind": "put_terms_announced",
+        "label": "已公布異議股東安排 · 待實施換股",
+        "status": "active"
+      },
+      "progressDate": "2026-11-27",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {
+        "announcementToCircular": 170
+      }
     }
   ],
   "coverage": {
@@ -104932,6 +105271,62 @@
       "publishedAt": "2026-11-27T06:49:00+08:00",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700057.pdf",
       "title": "強制無條件現金要約綜合文件"
+    },
+    "YS-20250819-00576-first": {
+      "id": "YS-20250819-00576-first",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2025-08-19",
+      "title": "首次披露籌劃換股吸收合併",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0819/2025081901738.pdf"
+    },
+    "YS-20250902-00576-agreement": {
+      "id": "YS-20250902-00576-agreement",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2025-09-02",
+      "title": "簽署換股吸收合併協議",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0902/2025090202416.pdf"
+    },
+    "YS-20260205-00576-circular": {
+      "id": "YS-20260205-00576-circular",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2026-02-05",
+      "title": "股東通函及獨立財務顧問意見",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0205/2026020501194.pdf"
+    },
+    "YS-20260320-00576-poll": {
+      "id": "YS-20260320-00576-poll",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2026-03-20",
+      "title": "股東大會與類別股東會表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0320/2026032001636.pdf"
+    },
+    "YS-20260529-00576-sse": {
+      "id": "YS-20260529-00576-sse",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2026-05-29",
+      "title": "上交所併購重組審核委員會審議結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0529/2026052903408.pdf"
+    },
+    "YS-20260701-00576-csrc": {
+      "id": "YS-20260701-00576-csrc",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2026-07-01",
+      "title": "公告中國證監會同意註冊",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0701/2026070100059.pdf"
+    },
+    "YS-20260701-00576-updated": {
+      "id": "YS-20260701-00576-updated",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2026-07-01",
+      "title": "A 股重組報告書：除息後換股方案",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-07-01/1225402301.PDF"
+    },
+    "YS-20261127-00576-put": {
+      "id": "YS-20261127-00576-put",
+      "caseId": "HK-00576-20250819-oceanking-absorption",
+      "date": "2026-11-27",
+      "title": "浙江滬杭甬異議 H 股股東收購請求權安排",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700069.pdf"
     }
   },
   "issuerLinks": [
