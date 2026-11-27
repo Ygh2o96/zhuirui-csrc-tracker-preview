@@ -6727,6 +6727,26 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3,4,5],label:"原件：資產、付款與租賃條款"}],compactSummary:"設備8,531萬元 · 60個月融租 · 已簽協議",topology});
   }
 
+  function buildLateTwo(c,docs,type){
+    const o=[
+      {s:"YS-20261127-02068-epc",p:[1,2,3,4],l:"中鋁國際",ls:"EPC總承包商",r:"中鋁幾內亞",rs:"項目業主",left:"幾內亞博法氧化鋁項目",right:"合同金額與批准",flow:"提供設計、採購與施工服務",fund:"合同價約人民幣65.56億元",kind:"asset",dash:true,arch:"disclosable_major",shape:"14A關連工程總承包",short:"人民幣",a:"年產120萬噸氧化鋁",b:"生產線及電力、水路和港口配套",x:"待獨立股東批准",y:"獨立財務顧問待委任"},
+      {s:"YS-20241106-08052-lease",p:[1,2,3,5],l:"Wharf Realty",ls:"業主 · 海港城置業代理",r:"Betula Profit Holdings",rs:"陸慶娛樂附屬公司",left:"海港城六公館原租約",right:"租約屆滿與通函",flow:"原租約續期兩年",fund:"租期應付約1,560萬港元",kind:"asset",dash:false,arch:"disclosable_major",shape:"租賃使用權資產",short:"港元",a:"原租約2026年6月屆滿",b:"使用權資產初始確認約1,480萬港元",x:"待寄發股東追認通函",y:"預計於2026年12月11日或之前"}
+    ][type],l=o.l,r=o.r,badge=c.stage?.label;
+    if(docs?.[o.s]?.caseId!==c.id||(type===1&&docs?.["YS-20261127-08052-delay"]?.caseId!==c.id))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:208,labelHeight:34,label,dashed:o.dash||id==="fund"});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:372,status:"active",leftTitle:o.left,rightTitle:o.right,transitionLabel:o.x,outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,o.ls),box("r","left",448,100,157,146,"target",r,o.rs),
+      box("a","right",726,84,300,76,"target",o.a,o.b),box("b","right",726,210,300,77,"public",o.x,o.y)
+    ],[],[flow("asset",o.kind,"①",192,137,448,o.flow),flow("fund","cash","②",448,208,192,o.fund)]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}],evidenceLinks=[{documentId:o.s,pages:o.p,label:"原件：主要條款及規則"}];
+    if(type===1)evidenceLinks.push({documentId:"YS-20261127-08052-delay",pages:[1],label:"原件：通函日期延後"});
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:o.arch,modality:"cash",status:"active",caseArchetypeLabel:o.shape,caseModalityShortLabel:o.short,
+      before:{title:o.left,nodes,equityLinks:[]},after:{title:o.right,nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:o.kind,direction:"ltr",fromLabel:l,toLabel:r,headline:o.flow,proposedOrTerminated:o.dash},{id:"fund",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:o.fund,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:o.a,body:o.b},{tag:"②",title:o.x,body:o.y}],evidenceLinks,compactSummary:o.fund+" · "+o.x,topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10680,6 +10700,8 @@
     if(txCase?.id==="HK-01057-20260807-shibao-a-placing")return buildShibaoPlacing(txCase,documents);
     if(txCase?.id==="HK-08623-20261127-saftower-subscription")return buildSaftower(txCase,documents);
     if(txCase?.id==="HK-01601-20261127-truck-charging-lease")return buildZgcChargingLease(txCase,documents);
+    if(txCase?.id==="HK-02068-20261127-guinea-epc")return buildLateTwo(txCase,documents,0);
+    if(txCase?.id==="HK-08052-20241106-harbour-city-lease")return buildLateTwo(txCase,documents,1);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
