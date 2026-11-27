@@ -2,6 +2,495 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-00694-20261127-airport-services",
+      "code": "00694",
+      "category": "continuing_connected",
+      "name": "北京首都機場股份：航站樓服務採購續期",
+      "aliases": [
+        "北京首都機場股份",
+        "首都機場航空服務",
+        "航站樓服務採購續期"
+      ],
+      "mechanism": "北京首都機場股份向首都機場航空服務採購航站樓服務。涵蓋聯檢、安保中心及其他航站樓服務；具體以個別協議為準。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "北京首都機場股份（00694）",
+        "對手方": "北京首都機場航空服務有限公司"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 61200000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "涵蓋聯檢、安保中心及其他航站樓服務；具體以個別協議為準。",
+          "evidence": {
+            "documentId": "YS-20261127-00694-airport-services",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年度交易上限",
+          "value": 61200000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "涵蓋聯檢、安保中心及其他航站樓服務；具體以個別協議為準。",
+          "evidence": {
+            "documentId": "YS-20261127-00694-airport-services",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年度交易上限",
+          "value": 61200000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "涵蓋聯檢、安保中心及其他航站樓服務；具體以個別協議為準。",
+          "evidence": {
+            "documentId": "YS-20261127-00694-airport-services",
+            "pages": [
+              5
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "屬持續關連交易，公告及年度審閱；豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-00694-airport-services",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽框架 · 2027年1月起適用",
+          "state": "actual",
+          "detail": "已簽框架協議，個別交易仍按實際訂單或服務需求。",
+          "evidence": {
+            "documentId": "YS-20261127-00694-airport-services",
+            "pages": [
+              1,
+              2,
+              5
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽框架 · 2027年1月起適用"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-02128-20261127-lesso-machinery",
+      "code": "02128",
+      "category": "continuing_connected",
+      "name": "中國聯塑：機械設備採購續期",
+      "aliases": [
+        "中國聯塑",
+        "廣東聯塑機械",
+        "機械設備採購續期"
+      ],
+      "mechanism": "中國聯塑向廣東聯塑機械採購機械設備採購。非獨家採購，分訂單約定；報價不高於獨立第三方報價。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "中國聯塑（02128）",
+        "對手方": "Guangdong Liansu Machinery"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 300000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "非獨家採購，分訂單約定；報價不高於獨立第三方報價。",
+          "evidence": {
+            "documentId": "YS-20261127-02128-lesso-machinery",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年度交易上限",
+          "value": 300000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "非獨家採購，分訂單約定；報價不高於獨立第三方報價。",
+          "evidence": {
+            "documentId": "YS-20261127-02128-lesso-machinery",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年度交易上限",
+          "value": 300000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "非獨家採購，分訂單約定；報價不高於獨立第三方報價。",
+          "evidence": {
+            "documentId": "YS-20261127-02128-lesso-machinery",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "屬持續關連交易，公告及年度審閱；豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-02128-lesso-machinery",
+            "pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽框架 · 2027年1月起適用",
+          "state": "actual",
+          "detail": "已簽框架協議，個別交易仍按實際訂單或服務需求。",
+          "evidence": {
+            "documentId": "YS-20261127-02128-lesso-machinery",
+            "pages": [
+              1,
+              1,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽框架 · 2027年1月起適用"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-03931-20261127-calb-engineering",
+      "code": "03931",
+      "category": "continuing_connected",
+      "name": "中創新航：工程及建設框架",
+      "aliases": [
+        "中創新航",
+        "江蘇城東施工方",
+        "工程及建設框架"
+      ],
+      "mechanism": "中創新航向江蘇城東施工方採購工業建築設計採購施工。按年計產業園區或廠房工程總承包服務費，不含稅。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "中創新航（03931）",
+        "對手方": "Jiangsu Chengdong Construction 及其附屬"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 850000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按年計產業園區或廠房工程總承包服務費，不含稅。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-engineering",
+            "pages": [
+              10
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "屬持續關連交易，公告及年度審閱；豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-engineering",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "董事會已批准框架 · 豁免獨立股東批准",
+          "state": "actual",
+          "detail": "董事會批准框架安排，按實際招標落實個別工程。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-engineering",
+            "pages": [
+              1,
+              3,
+              10
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "董事會已批准框架 · 豁免獨立股東批准"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-03931-20261127-calb-processing",
+      "code": "03931",
+      "category": "continuing_connected",
+      "name": "中創新航：委託加工框架",
+      "aliases": [
+        "中創新航",
+        "中航鋰電（洛陽）",
+        "委託加工框架"
+      ],
+      "mechanism": "中創新航向中航鋰電（洛陽）採購鋰電池委託加工。按年計車用、儲能鋰電池加工費，不含稅。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "中創新航（03931）",
+        "對手方": "中航鋰電（洛陽）有限公司及其集團"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 6000000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按年計車用、儲能鋰電池加工費，不含稅。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-processing",
+            "pages": [
+              8
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "屬持續關連交易，須由獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-processing",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "董事會已批准 · 待獨立股東表決",
+          "state": "actual",
+          "detail": "截至公告日協議尚未簽署，並須獨立股東批准。公司擬委任新百利為獨立財務顧問，意見待通函。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-processing",
+            "pages": [
+              1,
+              3,
+              8
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-18",
+          "kind": "circular",
+          "label": "預計最遲刊發通函",
+          "state": "expected",
+          "detail": "公司指不遲於當日刊發通函，實際表決時間待通知。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-processing",
+            "pages": [
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "董事會已批准 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
+      "id": "HK-03931-20261127-calb-sale",
+      "code": "03931",
+      "category": "continuing_connected",
+      "name": "中創新航：鋰電池銷售框架",
+      "aliases": [
+        "中創新航",
+        "中航鋰電（洛陽）",
+        "鋰電池銷售框架"
+      ],
+      "mechanism": "中創新航向中航鋰電（洛陽）銷售鋰電池及相關產品。按年計鋰電池及相關產品銷售額，不含稅。",
+      "headlineKey": "cap_2027",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "中創新航（03931）",
+        "對手方": "中航鋰電（洛陽）有限公司及聯營方"
+      },
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年度交易上限",
+          "value": 3000000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": false,
+          "basis": "按年計鋰電池及相關產品銷售額，不含稅。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-sale",
+            "pages": [
+              5
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "屬持續關連交易，須由獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-sale",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "董事會已批准 · 待獨立股東表決",
+          "state": "actual",
+          "detail": "截至公告日協議尚未簽署，並須獨立股東批准。公司擬委任新百利為獨立財務顧問，意見待通函。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-sale",
+            "pages": [
+              1,
+              3,
+              5
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-18",
+          "kind": "circular",
+          "label": "預計最遲刊發通函",
+          "state": "expected",
+          "detail": "公司指不遲於當日刊發通函，實際表決時間待通知。",
+          "evidence": {
+            "documentId": "YS-20261127-03931-calb-sale",
+            "pages": [
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "董事會已批准 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-08143-20260630-chengkan-xiamen-hospital",
       "code": "08143",
       "name": "Good Fellow Healthcare：收購橙慷醫療合夥權益",
@@ -108411,6 +108900,41 @@
       "date": "2026-11-27",
       "title": "進一步延遲寄發通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701591.pdf"
+    },
+    "YS-20261127-03931-calb-sale": {
+      "id": "YS-20261127-03931-calb-sale",
+      "caseId": "HK-03931-20261127-calb-sale",
+      "date": "2026-11-27",
+      "title": "持續關連交易公告：鋰電池銷售框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701559.pdf"
+    },
+    "YS-20261127-03931-calb-processing": {
+      "id": "YS-20261127-03931-calb-processing",
+      "caseId": "HK-03931-20261127-calb-processing",
+      "date": "2026-11-27",
+      "title": "持續關連交易公告：委託加工框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701559.pdf"
+    },
+    "YS-20261127-03931-calb-engineering": {
+      "id": "YS-20261127-03931-calb-engineering",
+      "caseId": "HK-03931-20261127-calb-engineering",
+      "date": "2026-11-27",
+      "title": "持續關連交易公告：工程及建設框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701559.pdf"
+    },
+    "YS-20261127-02128-lesso-machinery": {
+      "id": "YS-20261127-02128-lesso-machinery",
+      "caseId": "HK-02128-20261127-lesso-machinery",
+      "date": "2026-11-27",
+      "title": "持續關連交易公告：機械設備採購續期",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701541.pdf"
+    },
+    "YS-20261127-00694-airport-services": {
+      "id": "YS-20261127-00694-airport-services",
+      "caseId": "HK-00694-20261127-airport-services",
+      "date": "2026-11-27",
+      "title": "持續關連交易公告：航站樓服務採購續期",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701535.pdf"
     }
   },
   "issuerLinks": [

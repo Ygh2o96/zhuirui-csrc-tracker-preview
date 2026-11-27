@@ -6425,6 +6425,28 @@
       evidenceLinks:[{documentId:o,pages:[1,2,3],label:"首公告：交易雙方及分類"},{documentId:s,pages:[1,2,3,4],label:"補充協議：分期與押記"},{documentId:z,pages:[1],label:"通函延後"}],compactSummary:"擬取得合夥企業80% · 對價兩期 · 待通函",topology});
   }
 
+  function buildCapitalFramework27(c,docs){
+    const x=({"HK-03931-20261127-calb-sale":{"code":"03931","key":"calb-sale","issuer":"中創新航","title":"鋰電池銷售框架","counter":"中航鋰電（洛陽）有限公司及聯營方","short":"中航鋰電（洛陽）","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701559.pdf","pg":5,"caps":[3000000000],"kind":"sales","condition":"proposed","due":"2026-12-18","rp":3,"basis":"按年計鋰電池及相關產品銷售額，不含稅。","id":"HK-03931-20261127-calb-sale","doc":"YS-20261127-03931-calb-sale","flow":"鋰電池及相關產品","own":true},"HK-03931-20261127-calb-processing":{"code":"03931","key":"calb-processing","issuer":"中創新航","title":"委託加工框架","counter":"中航鋰電（洛陽）有限公司及其集團","short":"中航鋰電（洛陽）","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701559.pdf","pg":8,"caps":[6000000000],"kind":"processing","condition":"proposed","due":"2026-12-18","rp":3,"basis":"按年計車用、儲能鋰電池加工費，不含稅。","id":"HK-03931-20261127-calb-processing","doc":"YS-20261127-03931-calb-processing","flow":"鋰電池委託加工","own":false},"HK-03931-20261127-calb-engineering":{"code":"03931","key":"calb-engineering","issuer":"中創新航","title":"工程及建設框架","counter":"Jiangsu Chengdong Construction 及其附屬","short":"江蘇城東施工方","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701559.pdf","pg":10,"caps":[850000000],"kind":"construction","condition":"board_reviewed","due":null,"rp":3,"basis":"按年計產業園區或廠房工程總承包服務費，不含稅。","id":"HK-03931-20261127-calb-engineering","doc":"YS-20261127-03931-calb-engineering","flow":"工業建築設計採購施工","own":false},"HK-02128-20261127-lesso-machinery":{"code":"02128","key":"lesso-machinery","issuer":"中國聯塑","title":"機械設備採購續期","counter":"Guangdong Liansu Machinery","short":"廣東聯塑機械","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701541.pdf","pg":3,"caps":[300000000,300000000,300000000],"kind":"machinery","condition":"signed","due":null,"rp":1,"basis":"非獨家採購，分訂單約定；報價不高於獨立第三方報價。","id":"HK-02128-20261127-lesso-machinery","doc":"YS-20261127-02128-lesso-machinery","flow":"機械設備採購","own":false},"HK-00694-20261127-airport-services":{"code":"00694","key":"airport-services","issuer":"北京首都機場股份","title":"航站樓服務採購續期","counter":"北京首都機場航空服務有限公司","short":"首都機場航空服務","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701535.pdf","pg":5,"caps":[61200000,61200000,61200000],"kind":"terminal","condition":"signed","due":null,"rp":2,"basis":"涵蓋聯檢、安保中心及其他航站樓服務；具體以個別協議為準。","id":"HK-00694-20261127-airport-services","doc":"YS-20261127-00694-airport-services","flow":"航站樓服務","own":false}})[c.id];
+    if(!x||c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||docs?.[x.doc]?.url!==x.url||docs[x.doc].caseId!==c.id||
+       !x.caps.every((v,i)=>c.terms?.some(t=>t.key==="cap_"+(2027+i)&&t.value===v&&t.evidence?.documentId===x.doc)))return null;
+    const l=x.issuer,r=x.short,badge=c.stage.label,from=x.own?l:r,to=x.own?r:l;
+    const amount=x.caps[0]>=1e8?Number((x.caps[0]/1e8).toFixed(1))+" 億元":(x.caps[0]/1e4).toLocaleString("en-US")+" 萬元";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const term=x.caps.length===3?"2027–2029 各年度":"2027 年度",next=x.due?"通函擬於12月18日或之前刊發":x.condition==="signed"?"1 月 1 日起適用":"獨立股東批准獲豁免";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:x.title,rightTitle:"年度上限與階段",transitionLabel:"持續關連交易",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"上市公司 · "+c.code),box("r","left",448,100,157,146,"target",r,"框架對手方"),
+      box("cap","right",726,84,300,76,"target",term+"上限 "+amount,"原幣人民幣"),
+      box("s","right",726,210,300,75,"public","交易進度",next)
+    ],[],[{id:"service",panel:"left",kind:"asset",step:"①",pathPoints:x.own?[[192,169],[448,169]]:[[448,169],[192,169]],labelCenter:[320,169],labelWidth:206,labelHeight:35,label:x.flow,dashed:true}]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",
+      caseArchetypeLabel:"持續關連交易",caseModalityShortLabel:"人民幣年度上限",
+      before:{title:"雙方框架",nodes,equityLinks:[]},after:{title:"年度交易上限",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"service",kind:"asset",direction:x.own?"ltr":"rtl",fromLabel:from,toLabel:to,headline:x.flow,proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:term+"上限",body:amount+"人民幣。"+x.basis},{tag:"②",title:"交易進度",body:badge+"。"+next+"。"}],
+      evidenceLinks:[{documentId:x.doc,pages:[...new Set([1,x.rp,x.pg])],label:"原件：雙方、上限及批准要求"}],compactSummary:term+"上限 "+amount,topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10351,6 +10373,7 @@
     if(["HK-06623-20261106-pingan-purchasing","HK-06623-20261106-pingan-financial","HK-06623-20261106-pingan-consumer-finance","HK-06623-20261106-pingan-account"].includes(txCase?.id))return buildLufaxCCT(txCase,documents);
     if(txCase?.id==="HK-01635-20261127-tianli-gas-framework")return buildTianliGasFramework(txCase,documents);
     if(txCase?.id==="HK-08143-20260630-chengkan-xiamen-hospital")return buildChengkanHospital(txCase,documents);
+    if(["HK-03931-20261127-calb-sale","HK-03931-20261127-calb-processing","HK-03931-20261127-calb-engineering","HK-02128-20261127-lesso-machinery","HK-00694-20261127-airport-services"].includes(txCase?.id))return buildCapitalFramework27(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
