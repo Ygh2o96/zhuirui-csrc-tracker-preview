@@ -6466,6 +6466,25 @@
       evidenceLinks:[{documentId:s,pages:[1,3],label:"出售金額、股份及上市規則"},{documentId:r,pages:[8,10],label:"看通年報：集團持倉"}],compactSummary:"場內出售 175 萬股 · 約 1,301 萬港元",topology});
   }
 
+  function buildRideonDisposal(c,docs){
+    const s="YS-20261127-00034-rideon",l="Future Star",r="Power City",o="Polytec Holdings",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||c.stage.date!=="2026-11-27"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="cash_total"&&t.value===585000000)||!c.terms?.some(t=>t.key==="polytec_remedy"&&t.value===521207000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:215,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:370,status:"active",leftTitle:"出售股權與股東貸款",rightTitle:"交割後持股及原協議補足",transitionLabel:"定於2027年2月26日交割",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"九龍建業全資附屬"),
+      box("r","left",448,100,157,146,"buyer",r,"Wang Heling全資持有"),
+      box("hold","right",726,84,300,76,"target","Rideon交割後持股","Power City 40% · Polytec 60%"),
+      box("remedy","right",726,210,300,80,"public","Polytec Holdings","按2018年協議承擔約5.212億港元差額")
+    ],[],[flow("asset","shares","①",192,138,448,"Rideon 40%股權及對應貸款"),flow("cash","cash","②",448,209,192,"5.85億港元現金對價")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disposal",modality:"cash",status:"active",caseArchetypeLabel:"出售聯營公司股權及貸款",caseModalityShortLabel:"現金",
+      before:{title:"交易雙方",nodes,equityLinks:[]},after:{title:"交割後持股",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬轉讓40%股權及對應股東貸款；Future Star交割後退出",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"現金對價5.85億港元，其中股權1港元，餘額歸入貸款轉讓",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"對價與交割",body:"協議約定簽署時支付5,850萬港元，其餘5.265億港元於交割支付。"}, {tag:"②",title:"原協議補足",body:o+"按2018年原收購協議承擔約5.212億港元差額，預計交割後一個月內支付。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3,5,7,8],label:"正式公告：對價、各方、交割與補足"}],compactSummary:"40%股權＋股東貸款 · 5.85億港元 · 已簽待交割",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10394,6 +10413,7 @@
     if(txCase?.id==="HK-08143-20260630-chengkan-xiamen-hospital")return buildChengkanHospital(txCase,documents);
     if(["HK-03931-20261127-calb-sale","HK-03931-20261127-calb-processing","HK-03931-20261127-calb-engineering","HK-02128-20261127-lesso-machinery","HK-00694-20261127-airport-services"].includes(txCase?.id))return buildCapitalFramework27(txCase,documents);
     if(txCase?.id==="HK-01059-20261127-china-star-portfolio")return buildKantoneDisposal(txCase,documents);
+    if(txCase?.id==="HK-00034-20261127-rideon-forty")return buildRideonDisposal(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

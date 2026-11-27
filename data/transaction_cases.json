@@ -2,6 +2,240 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-00034-20261127-rideon-forty",
+      "code": "00034",
+      "name": "九龍建業：出售威隆40%股權及股東貸款",
+      "aliases": [
+        "九龍建業",
+        "九龙建业",
+        "Kowloon Development",
+        "Rideon",
+        "威隆",
+        "上海楊浦"
+      ],
+      "category": "disclosable_disposal",
+      "mechanism": "九龍建業全資附屬Future Star與Power City簽約，以5.85億港元出售威隆40%股權及所持股東貸款。現持60%的Polytec按原收購協議承擔約5.212億港元差額。",
+      "headlineKey": "cash_total",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "九龍建業有限公司（00034）",
+        "賣方": "Future Star International Limited",
+        "買方": "Power City Ventures Limited（Wang Heling全資持有，公告列作獨立第三方）",
+        "標的": "Rideon Limited（威隆有限公司）",
+        "既有股東及補足義務方": "Polytec Holdings International Limited（現持60%）",
+        "底層資產": "上海楊浦四平社區地塊（由上海揚業房地產開發有限公司持有）"
+      },
+      "terms": [
+        {
+          "key": "cash_total",
+          "label": "股權及貸款合計對價",
+          "value": 585000000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "買方向賣方支付的協議對價。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "equity_pct",
+          "label": "擬出售股權",
+          "value": 40,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "4股普通股，賣方交割後不再持有。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              1,
+              8
+            ]
+          }
+        },
+        {
+          "key": "equity_consideration",
+          "label": "分配至股權的對價",
+          "value": 1,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "按協議對價分配。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "loan_consideration",
+          "label": "分配至股東貸款的對價",
+          "value": 584999999,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "按協議對價分配。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "sale_loan_face",
+          "label": "待轉讓貸款及相關欠款",
+          "value": 800632953,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "截至2026年9月30日的本金、利息（如有）及其他欠款。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              2,
+              8
+            ]
+          }
+        },
+        {
+          "key": "deposit",
+          "label": "簽約時約定支付訂金",
+          "value": 58500000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "協議約定，未將約定列為已收款。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "closing_cash",
+          "label": "交割時應付餘款",
+          "value": 526500000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "協議約定的剩餘現金對價。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "polytec_remedy",
+          "label": "Polytec承擔差額",
+          "value": 521207000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "按2018年原收購協議補足，預計交割後一個月內支付；另列於買方對價之外。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              5
+            ]
+          }
+        },
+        {
+          "key": "land_appraisal",
+          "label": "底層地塊估值",
+          "value": 2409000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "2026年11月23日100%地塊評估值。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              2,
+              4
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14.07",
+          "label": "上市規則 14.07",
+          "classificationStatus": "applied",
+          "application": "最高適用比率超過5%但低於25%，為須予披露交易，免通函及股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              1,
+              6
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "簽訂出售協議",
+          "state": "actual",
+          "detail": "出售40%股權及股東貸款，價款全現金。",
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2027-02-26",
+          "kind": "completion",
+          "label": "協議訂明交割日",
+          "state": "expected",
+          "detail": "可按雙方書面協議改期。Polytec差額另預計於交割後一個月內支付。",
+          "evidence": {
+            "documentId": "YS-20261127-00034-rideon",
+            "pages": [
+              3,
+              5
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "出售協議已簽 · 待交割"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-01059-20261127-china-star-portfolio",
       "code": "01059",
       "name": "看通集團：場內出售中國星股份",
@@ -109110,6 +109344,13 @@
       "date": "2026-10-28",
       "title": "看通2026年年報：上市股權投資持倉",
       "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1028/2026102801010_c.pdf"
+    },
+    "YS-20261127-00034-rideon": {
+      "id": "YS-20261127-00034-rideon",
+      "caseId": "HK-00034-20261127-rideon-forty",
+      "date": "2026-11-27",
+      "title": "九龍建業：出售威隆40%股權與股東貸款公告",
+      "url": "https://www.kdc.com.hk/files/news/691/E-Ann-2026%201127%20%28Final%29.pdf"
     }
   },
   "issuerLinks": [
