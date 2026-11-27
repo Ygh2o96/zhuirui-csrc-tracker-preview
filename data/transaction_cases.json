@@ -7946,6 +7946,21 @@
           "label": "股東通過相關決議",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "認購率 61.19% · 餘股待補償配售",
+          "state": "actual",
+          "detail": "139,712,511股（38.81%）未獲認購，沒有不合資格股東未售股份；按盡力基準向獨立承配人配售。",
+          "evidence": {
+            "documentId": "YS-20261127-01351-rights-acceptance",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
         }
       ],
       "headlineKey": "consideration",
@@ -8046,48 +8061,48 @@
         },
         {
           "date": "2026-11-26",
-          "detail": "香港時間下午4時。",
-          "evidence": {
-            "documentId": "YS-20261112-09db690b060a",
-            "pages": [
-              9
-            ]
-          },
           "kind": "supplement",
           "label": "供股認購及繳款截止",
-          "state": "expected",
+          "state": "actual",
+          "detail": "下午4時截止；收到5份有效接納，合計220,287,489股（61.19%）。",
+          "evidence": {
+            "documentId": "YS-20261127-01351-rights-acceptance",
+            "pages": [
+              1
+            ]
+          },
           "timeZone": "Asia/Hong_Kong"
         },
         {
-          "date": "2026-11-27",
-          "detail": "按供股章程所載補償安排。",
+          "date": "2026-12-04",
+          "kind": "supplement",
+          "label": "預計補償配售截止",
+          "state": "expected",
+          "detail": "下午4時；承配價不低於每股0.60港元供股價。",
           "evidence": {
-            "documentId": "YS-20261112-09db690b060a",
+            "documentId": "YS-20261127-01351-rights-acceptance",
             "pages": [
-              9
+              2
             ]
           },
-          "kind": "supplement",
-          "label": "預計披露未獲認購股份數",
-          "state": "expected",
           "timeZone": "Asia/Hong_Kong"
         },
         {
           "date": "2026-12-10",
-          "detail": "包括配售結果。",
+          "kind": "supplement",
+          "label": "預計公布供股及配售結果",
+          "state": "expected",
+          "detail": "同時披露每股未認購供股股份的補償淨收益（如有）。",
           "evidence": {
-            "documentId": "YS-20261112-09db690b060a",
+            "documentId": "YS-20261127-01351-rights-acceptance",
             "pages": [
-              9
+              2
             ]
           },
-          "kind": "supplement",
-          "label": "預計公布供股結果",
-          "state": "expected",
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-12",
+      "progressDate": "2026-11-27",
       "rules": [
         {
           "application": "供股增加已發行股本逾50%，須獨立股東批准。",
@@ -8117,10 +8132,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-12",
+        "date": "2026-11-27",
+        "status": "active",
         "eventKind": "supplement",
-        "label": "已刊供股章程 · 待認購結果",
-        "status": "active"
+        "label": "認購率 61.19% · 餘股待補償配售"
       },
       "terms": [
         {
@@ -8171,16 +8186,47 @@
           "precision": 2,
           "unit": "shares",
           "value": 360000000
+        },
+        {
+          "key": "accepted_rights_shares",
+          "label": "有效接納供股股份",
+          "value": 220287489,
+          "unit": "shares",
+          "precision": 0,
+          "approximate": false,
+          "basis": "截至11月26日下午4時；5份有效接納。",
+          "evidence": {
+            "documentId": "YS-20261127-01351-rights-acceptance",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "unsubscribed_rights_shares",
+          "label": "待補償配售供股股份",
+          "value": 139712511,
+          "unit": "shares",
+          "precision": 0,
+          "approximate": false,
+          "basis": "未獲認購股份；沒有不合資格股東未售股份。",
+          "evidence": {
+            "documentId": "YS-20261127-01351-rights-acceptance",
+            "pages": [
+              1,
+              2
+            ]
+          }
         }
       ],
       "rightsExecution": {
         "issuerLabel": "輝煌明天",
         "method": "placement",
         "evidence": {
-          "documentId": "YS-20261009-0c26cd4fa3d1",
+          "documentId": "YS-20261127-01351-rights-acceptance",
           "pages": [
             1,
-            22
+            2
           ]
         }
       }
@@ -106214,6 +106260,13 @@
       "date": "2026-11-27",
       "title": "越南競爭委員會批准與預期交割日",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700217.pdf"
+    },
+    "YS-20261127-01351-rights-acceptance": {
+      "id": "YS-20261127-01351-rights-acceptance",
+      "caseId": "HK-01351-20260916-bright-future-rights",
+      "date": "2026-11-27",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701036.pdf",
+      "title": "有效接納結果及須按補償安排處理的未認購供股股份"
     }
   },
   "issuerLinks": [
