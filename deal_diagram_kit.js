@@ -9895,7 +9895,35 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"英文公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildCogoConstructionTender(c,docs) {
+    const a="YS-20261022-2026102201291",b="YS-20261022-2026102201075",q="YS-20261111-2026111100478";
+    const date="2026-11-11",status="active",badge="宏洋已發通函 · 雙方待獨立股東批准";
+    if (![a,b,q].every(id=>docs?.[id]?.caseId===c.id)||c.stage?.date!==date||c.stage?.status!==status||c.stage?.eventKind!=="circular"||
+        !c.events?.some(x=>x.kind==="circular"&&x.date===date&&x.state==="actual"&&x.evidence?.documentId===q)||
+        ![2027,2028,2029].every(y=>c.terms?.some(t=>t.key==="cap_"+y&&t.value===1500000000&&t.currency==="CNY"&&t.evidence?.documentId===a))) return null;
+    const left="同一份內地工程招標框架",right="一組年度上限 · 兩家上市公司審批";
+    const s="中國建築國際",buyer="中國海外宏洋",service="中標後承建內地工程",cash="按各工程合約付款";
+    const nodes=[{id:"s",role:"seller",name:s},{id:"b",role:"buyer",name:buyer}];
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status,leftTitle:left,rightTitle:right,transitionLabel:"年度上限與審批",outcomeBadge:badge}),[
+      box("s","left",42,102,164,144,"seller",s,"03311 · 參與競爭性投標"),
+      box("b","left",438,102,178,144,"buyer",buyer,"00081 · 按招標程序發包"),
+      box("r1","right",724,72,310,73,"target","2027、2028、2029年","每年最高人民幣15億元"),
+      box("r2","right",724,168,310,73,"creditor","00081 · 12月4日股東大會","Maxa Capital 獨立財務顧問"),
+      box("r3","right",724,264,310,73,"creditor","03311 · 合併計算超過5%","Red Sun Capital 獨立財務顧問")
+    ],[],[
+      {id:"service",panel:"left",kind:"asset",step:"①",pathPoints:[[206,142],[438,142]],labelCenter:[322,142],labelWidth:194,labelHeight:34,label:service,proposedOrTerminated:true},
+      {id:"cash",panel:"left",kind:"cash",step:"②",pathPoints:[[438,204],[206,204]],labelCenter:[322,204],labelWidth:194,labelHeight:34,label:cash,proposedOrTerminated:true}
+    ]);
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"關連工程框架",caseModalityShortLabel:"關連工程框架",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[
+      {id:"service",kind:"asset",direction:"ltr",fromLabel:s,toLabel:buyer,headline:service,proposedOrTerminated:true},
+      {id:"cash",kind:"cash",direction:"rtl",fromLabel:buyer,toLabel:s,headline:cash,proposedOrTerminated:true}
+    ],annotations:[{tag:"①",title:"工程投標與結算",body:"框架為期三年，實際工程須成功投標後另行授出，付款按各工程合約。宏洋側比率逾5%；中國建築國際側單項比率逾0.1%但低於5%，按第14A.81條合併計算後逾5%。"}],
+    evidenceLinks:[{documentId:a,pages:[1,2,3],label:"中國海外宏洋首份公告"},{documentId:b,pages:[1,2,3,8],label:"中國建築國際首份公告"},{documentId:q,pages:[9,16,17,37,42],label:"中國海外宏洋通函"}]});
+  }
+
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-00081-20261022-csci-construction-tender")return buildCogoConstructionTender(txCase,documents);
     if(["HK-01258-20261126-treasury-finance-frameworks","HK-00455-20261126-sph-framework-renewal","HK-02880-20261126-connected-frameworks"].includes(txCase?.id))return buildFinalThreeFrameworks(txCase,documents);
     if(["HK-00834-20261013-kd-renewal","HK-02199-20261126-zhaoqing-four-leases","HK-02517-20261126-cold-chain-renewal"].includes(txCase?.id))return buildKDZhaoqingColdChain(txCase,documents);
     if(["HK-07688-20261020-cnc-target-loi","HK-01956-20260814-guoke-qizhi-fund","HK-00486-20261126-novokuznetsk-heat","HK-08400-20261126-macau-office-renewal"].includes(txCase?.id))return buildFourStructureBatches(txCase,documents);

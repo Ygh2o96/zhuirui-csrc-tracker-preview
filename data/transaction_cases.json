@@ -92710,6 +92710,238 @@
       "comparables": {},
       "comparisonEvidence": {},
       "mandates": []
+    },
+    {
+      "id": "HK-00081-20261022-csci-construction-tender",
+      "code": "00081",
+      "name": "中國海外宏洋／中國建築國際：內地工程招標框架續期",
+      "aliases": [
+        "00081",
+        "03311",
+        "中国海外宏洋",
+        "中国建筑国际",
+        "China Overseas Grand Oceans",
+        "China State Construction International",
+        "COGO",
+        "CSCI"
+      ],
+      "category": "continuing_connected",
+      "mechanism": "宏洋續簽工程委聘框架，中國建築國際可按同等條款投標；2027至2029年各年最高人民幣15億元。兩家上市公司分別履行獨立股東審批。",
+      "parties": {
+        "招標及發包方（00081）": "中國海外宏洋集團有限公司",
+        "投標及承建方（03311）": "中國建築國際集團有限公司",
+        "有利害關係股東": "中國海外集團有限公司及其聯繫人"
+      },
+      "headlineKey": "cap_2027",
+      "terms": [
+        {
+          "key": "cap_2027",
+          "label": "2027年工程合約年度上限",
+          "value": 1500000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "同一工程委聘框架，兩家公司披露同一組年度上限",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201291",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2028",
+          "label": "2028年工程合約年度上限",
+          "value": 1500000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "同一工程委聘框架，兩家公司披露同一組年度上限",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201291",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "cap_2029",
+          "label": "2029年工程合約年度上限",
+          "value": 1500000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 1,
+          "approximate": false,
+          "basis": "同一工程委聘框架，兩家公司披露同一組年度上限",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201291",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-22",
+          "kind": "first_announcement",
+          "state": "actual",
+          "label": "雙方簽署續期框架並分別公告",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201291",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-11",
+          "kind": "circular",
+          "state": "actual",
+          "label": "00081 中國海外宏洋刊發通函",
+          "evidence": {
+            "documentId": "YS-20261111-2026111100478",
+            "pages": [
+              1,
+              16,
+              17,
+              37,
+              42
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-10-22",
+          "kind": "supplement",
+          "state": "actual",
+          "label": "03311 中國建築國際刊發公告，按相關協議合併計算",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201075",
+            "pages": [
+              1,
+              2,
+              8
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "circular",
+          "state": "expected",
+          "label": "03311 首份公告所列最遲寄發日期",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201075",
+            "pages": [
+              2,
+              8
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-12-04",
+          "kind": "vote",
+          "state": "expected",
+          "label": "00081 股東大會下午4時；中國海外集團及聯繫人合計持股約39.63%，須迴避",
+          "evidence": {
+            "documentId": "YS-20261111-2026111100478",
+            "pages": [
+              16,
+              17,
+              42
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2027-01-01",
+          "kind": "effective",
+          "state": "expected",
+          "label": "擬開始三年框架期，須通過各自批准",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201291",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "00081 單獨計算有比率超過5%，須獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201291",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.81",
+          "label": "上市規則 14A.81",
+          "classificationStatus": "applied",
+          "application": "03311 單獨計算逾0.1%低於5%；與同類關連交易合計後超過5%，須獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201075",
+            "pages": [
+              8
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Maxa Capital Limited",
+          "role": "IFA",
+          "service": "connected_ifa_opinion",
+          "side": "00081 獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261111-2026111100478",
+            "pages": [
+              37
+            ]
+          }
+        },
+        {
+          "firm": "Red Sun Capital Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice_appointment",
+          "side": "03311 獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261022-2026102201075",
+            "pages": [
+              8
+            ]
+          }
+        }
+      ],
+      "stage": {
+        "date": "2026-11-11",
+        "eventKind": "circular",
+        "status": "active",
+        "label": "宏洋已發通函 · 雙方待獨立股東批准"
+      },
+      "progressDate": "2026-11-11",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "intervals": {
+        "announcementToCircular": 20
+      }
     }
   ],
   "coverage": {
@@ -102726,6 +102958,27 @@
       "publishedAt": "2026-11-10T22:02:00+08:00",
       "title": "售後回租及轉讓通函（署期11月11日）",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1110/2026111001199.pdf"
+    },
+    "YS-20261022-2026102201291": {
+      "id": "YS-20261022-2026102201291",
+      "caseId": "HK-00081-20261022-csci-construction-tender",
+      "date": "2026-10-22",
+      "title": "中國海外宏洋：續訂工程委聘框架",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201291.pdf"
+    },
+    "YS-20261022-2026102201075": {
+      "id": "YS-20261022-2026102201075",
+      "caseId": "HK-00081-20261022-csci-construction-tender",
+      "date": "2026-10-22",
+      "title": "中國建築國際：續訂宏洋工程框架及合併計算",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1022/2026102201075.pdf"
+    },
+    "YS-20261111-2026111100478": {
+      "id": "YS-20261111-2026111100478",
+      "caseId": "HK-00081-20261022-csci-construction-tender",
+      "date": "2026-11-11",
+      "title": "中國海外宏洋通函及股東大會通知",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1111/2026111100478.pdf"
     }
   },
   "issuerLinks": [
