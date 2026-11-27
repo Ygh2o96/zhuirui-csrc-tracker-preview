@@ -8504,6 +8504,16 @@
     const nodes=[{id:"m",role:"listed",name:"民商創科",code:"01632.HK"},{id:"s",role:"target",name:"民商智惠"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"mixed",status,stageDate:c.stage.date,stageLabel:badge,caseArchetypeLabel:"反向收購監管裁定",caseModalityLabel:"章程改組",caseModalityShortLabel:"章程改組",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:"民商創科",toLabel:"民商智惠",headline:"董事會控制變更，持股比例不變"}],annotations:[{tag:"①",title:"額外指引",body:"11月23日收悉復牌指引，11月24日公告。股票自2026年7月2日起持續停牌。"}],evidenceLinks:[{documentId:i,pages:[2],label:"章程改組與財務合併"},{documentId:l,pages:[1,2,3],label:"上市覆核決定"},{documentId:d,pages:[1,2],label:"額外復牌指引及時間"}]});
   }
+  function buildHaitongSellerPerspective(c,docs){
+    const g=buildSigOrCoastal(c,docs),s="YS-20261106-02611-seller-undertaking";
+    if(!g||docs?.[s]?.caseId!==c.id||!c.terms?.some(x=>x.key==="seller_net_low"&&x.value===6602000000)||!c.terms?.some(x=>x.key==="seller_net_high"&&x.value===7768000000))return g;
+    return validateDiagramSpec({...g,annotations:[...g.annotations,
+      {tag:"②",title:"國泰海通賣方審批 · 02611",body:"國泰海通另須獨立股東批准，上海國際集團及其聯繫人將迴避表決。賣方通函原預計11月27日或之前寄發。"},
+      {tag:"③",title:"承諾交出與接納上限",body:"賣方承諾交出45.5915億股H股；全體H股要約只收購最多29.5517億股，賣方最終獲接納數目受比例分配約束。"},
+      {tag:"④",title:"賣方交割情境",body:"國泰海通預計所得淨額為人民幣66.02–77.68億元（所得稅前），持股降至約34.00%–41.65%並出表。"}],
+      evidenceLinks:[...g.evidenceLinks,{documentId:s,pages:[2,3,7,8,9,10],label:"國泰海通：股份、出表及賣方批准"}]});
+  }
+
   function buildSigOrCoastal(c,docs){
     const t=c.code==="01905",a=t?"YS-20261023-7273926483f3":"YS-20261112-9c7186b680b6",z=t?"YS-20261113-5f45e1e4e3b7":"YS-20261125-2026112501689",date=t?"2026-11-13":"2026-11-25";
     const terms=t?[["domestic_offer_shares",1244831880],["h_offer_shares",2955171120],["domestic_offer_price",1.85],["h_offer_price",2.16]]:[["block_pct",36.93],["control_cash",11880000],["offer_price",.0776],["offer_cash_cap",20290524.49]];
@@ -10474,6 +10484,7 @@
     if(["HK-00852-20260225-speed-success-liquidator","HK-03938-20260109-fortune-origin-control"].includes(txCase?.id))return buildStrongOrLfg(txCase,documents);
     if(["HK-01037-20260727-foxconn-control","HK-03336-20260518-lens-voluntary"].includes(txCase?.id))return buildFoxconnOrLens(txCase,documents);
     if(["HK-01835-20260630-3g-h-share-control","HK-00456-20260715-receivers-charged-shares"].includes(txCase?.id))return buildRealwayOrReceivers(txCase,documents);
+    if(txCase?.id==="HK-01905-20261023-sig-partial")return buildHaitongSellerPerspective(txCase,documents);
     if(["HK-01905-20261023-sig-partial","HK-01124-20260923-deep-water-receiver"].includes(txCase?.id))return buildSigOrCoastal(txCase,documents);
     if(txCase?.id==="HK-01632-20250617-minshang-consolidation")return buildMinshangResumption(txCase,documents);
     if(["HK-08285-20261022-ome","HK-08093-20261026-invengo"].includes(txCase?.id))return buildOmeInvengoStage(txCase,documents);

@@ -37751,7 +37751,13 @@
       "aliases": [
         "海通恆信",
         "Haitong Unitrust",
-        "HAITONG UT"
+        "HAITONG UT",
+        "國泰海通",
+        "国泰海通",
+        "國泰海通證券",
+        "Guotai Haitong",
+        "02611",
+        "601211"
       ],
       "category": "offer",
       "code": "01905",
@@ -37811,6 +37817,19 @@
           "role": "IFA",
           "service": "offer_ifa_appointment",
           "side": "独立董事委员会"
+        },
+        {
+          "firm": "Gram Capital Limited",
+          "role": "IFA",
+          "service": "獨立財務顧問",
+          "side": "國泰海通獨立董事委員會與獨立股東",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              2,
+              9
+            ]
+          }
         }
       ],
       "mechanism": "境内股及 H 股自愿现金部分要约",
@@ -37818,7 +37837,10 @@
       "parties": {
         "H 股要约方": "上海国际集团（香港）有限公司",
         "境内股要约方": "上海国有资产经营有限公司",
-        "标的": "海通恒信境内股及 H 股"
+        "标的": "海通恒信境内股及 H 股",
+        "上市賣方集團": "國泰海通證券股份有限公司（02611／601211）",
+        "境內股份承諾人": "國泰海通證裕",
+        "H股承諾人": "海通恒信金融"
       },
       "processEvents": [
         {
@@ -37832,6 +37854,23 @@
           },
           "kind": "supplement",
           "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-06",
+          "kind": "supplement",
+          "label": "國泰海通披露獨立審批安排",
+          "state": "actual",
+          "detail": "賣方另須獨立股東批准。H股承諾交出數多於全部H股要約接納上限，按比例分配。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              2,
+              3,
+              7,
+              9
+            ]
+          },
           "timeZone": "Asia/Hong_Kong"
         },
         {
@@ -37858,6 +37897,21 @@
           },
           "kind": "dispatch_extension",
           "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "seller_circular",
+          "label": "國泰海通通函原預計寄發日",
+          "state": "expected",
+          "detail": "11月6日公告預計於當日或之前寄發賣方通函；要約綜合文件另有安排。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              2,
+              10
+            ]
+          },
           "timeZone": "Asia/Hong_Kong"
         }
       ],
@@ -37922,6 +37976,32 @@
             ]
           },
           "label": "收购守则 8.2"
+        },
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第 14 章",
+          "classificationStatus": "applied",
+          "application": "國泰海通的擬出售屬須予披露交易。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              2,
+              9
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "classificationStatus": "applied",
+          "application": "屬國泰海通關連交易，待國泰海通獨立股東批准；上海國際集團及其聯繫人須迴避表決。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              2,
+              9
+            ]
+          }
         }
       ],
       "stage": {
@@ -38045,6 +38125,72 @@
           "precision": 0,
           "unit": "shares",
           "value": 4559153176
+        },
+        {
+          "key": "seller_net_low",
+          "label": "國泰海通預計所得淨額下限",
+          "value": 6602000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": true,
+          "basis": "擬出售完成的情境；所得稅前，以原公告為準。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              7,
+              8
+            ]
+          }
+        },
+        {
+          "key": "seller_net_high",
+          "label": "國泰海通預計所得淨額上限",
+          "value": 7768000000,
+          "unit": "money",
+          "currency": "CNY",
+          "precision": 2,
+          "approximate": true,
+          "basis": "擬出售完成的情境；所得稅前，以原公告為準。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              7,
+              8
+            ]
+          }
+        },
+        {
+          "key": "seller_residual_low",
+          "label": "國泰海通預期餘下持股下限",
+          "value": 34,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": true,
+          "basis": "完成後海通恒信不再納入合併報表。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              8
+            ]
+          }
+        },
+        {
+          "key": "seller_residual_high",
+          "label": "國泰海通預期餘下持股上限",
+          "value": 41.65,
+          "unit": "percent",
+          "currency": null,
+          "precision": 2,
+          "approximate": true,
+          "basis": "視H股要約比例分配而定。",
+          "evidence": {
+            "documentId": "YS-20261106-02611-seller-undertaking",
+            "pages": [
+              8
+            ]
+          }
         }
       ]
     },
@@ -112227,6 +112373,13 @@
       "date": "2026-11-27",
       "title": "海信家電：延遲寄發通函",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701859.pdf"
+    },
+    "YS-20261106-02611-seller-undertaking": {
+      "id": "YS-20261106-02611-seller-undertaking",
+      "caseId": "HK-01905-20261023-sig-partial",
+      "date": "2026-11-06",
+      "title": "國泰海通：不可撤回承諾及擬出售海通恒信股份",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1106/2026110601684.pdf"
     }
   },
   "issuerLinks": [
