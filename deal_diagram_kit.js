@@ -9858,7 +9858,45 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"首份公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildFinalThreeFrameworks(c,docs){
+    const configs={
+      "HK-01258-20261126-treasury-finance-frameworks":{
+        a:"YS-20261126-e494102a5fb5",z:"YS-20261126-e494102a5fb5",date:"2026-11-26",event:"first_announcement",status:"active",modality:"關連金融服務",
+        ts:[["pool_2027",500000000,"a"],["pool_2028",500000000,"a"],["pool_2029",500000000,"a"],["deposit_2027",700000000,"a"],["deposit_2028",700000000,"a"],["deposit_2029",700000000,"a"]],
+        left:"中國有色礦業兩份金融框架",right:"2027至2029年每日餘額上限",badge:"框架已簽 · 非豁免交易待獨立股東批准",
+        seller:"財資公司及財務公司",buyer:"中國有色礦業",sSub:"分別提供資金集中及存款服務",bSub:"上市公司及所屬集團",main:"兩類服務、各有餘額上限",
+        steps:[["資金集中 · 每日最高5億美元","中國有色集團財資管理（香港）"],["存款服務 · 每日最高7億美元","有色礦業集團財務有限公司"],["兩項均待獨立股東批准","兩個上限均含應計利息"]],
+        detail:"同一公告另含銅供應及其他關連協議，各按公告所列分類。兩項金融框架的其他服務有各自豁免門檻。南華融資獲委任為非豁免交易的獨立財務顧問。",pagesA:[1,6,7,39,42,45,49,55]
+      },
+      "HK-00455-20261126-sph-framework-renewal":{
+        a:"YS-20261126-ed9a0e589fe8",z:"YS-20261126-ed9a0e589fe8",p:"YS-20261126-ef6f93e3909a",date:"2026-11-26",event:"first_announcement",status:"active",modality:"關連銷售續約",
+        ts:[["sales_2027",27000000,"a"],["sales_2028",29000000,"a"],["sales_2029",31000000,"a"]],
+        left:"天大藥業與上海醫藥續簽銷售框架",right:"三年建議上限與審批",badge:"框架已簽 · 待獨立股東批准",
+        seller:"天大藥業集團",buyer:"上海醫藥集團",sSub:"供應產品；按框架定價",bSub:"分銷渠道；間接持股約13.05%",main:"產品供應及配套物流",
+        steps:[["2027年上限2,700萬港元","2028年上限2,900萬港元"],["2029年上限3,100萬港元","為銷售合併上限，含定義內產品物流"],["獨立股東批准後生效","浤博資本獲委任為獨立財務顧問"]],
+        detail:"框架擬自2027年1月1日至2029年12月31日生效。銷售條款就天大而言不得遜於給獨立第三方的條款。",pagesA:[1,4,5,8,9],pagesP:[2,8]
+      },
+      "HK-02880-20261126-connected-frameworks":{
+        a:"YS-20261126-75fb68681149",z:"YS-20261126-75fb68681149",date:"2026-11-26",event:"first_announcement",status:"active",modality:"關連服務續期",
+        ts:[["deposit_2027",5500000000,"a"],["deposit_2028",5500000000,"a"],["deposit_2029",5500000000,"a"],["credit_2027",4000000000,"a"],["credit_2028",4000000000,"a"],["credit_2029",4000000000,"a"],["sales_2027",1960000000,"a"],["sales_2028",1990000000,"a"],["sales_2029",2060000000,"a"],["procurement_2027",1060000000,"a"],["procurement_2028",1100000000,"a"],["procurement_2029",1110000000,"a"]],
+        left:"遼寧港口續簽六項關連服務框架",right:"每日餘額與年度流量分列",badge:"框架已簽 · 待獨立股東批准",
+        seller:"遼寧港口集團／招商局財務",buyer:"遼寧港口股份",sSub:"分別為港口、租賃及金融協議對手方",bSub:"上市公司；貨物服務有雙向交易",main:"2027至2029年框架",
+        steps:[["存款55億 · 信貸40億人民幣","分別為日終存款、每日信貸餘額上限"],["按香港第14A章口徑的銷售上限","三年為19.6／19.9／20.6億人民幣"],["按香港第14A章口徑的採購上限","三年為10.6／11.0／11.1億人民幣"]],
+        detail:"香港規則下，銷售、採購及存款待獨立股東批准；信貸及指定其他金融服務另按上海上市規則審議。天財資本國際為上述三類非豁免交易的獨立財務顧問。",pagesA:[1,2,3,4,6,20,22,25,28]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"英文公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01258-20261126-treasury-finance-frameworks","HK-00455-20261126-sph-framework-renewal","HK-02880-20261126-connected-frameworks"].includes(txCase?.id))return buildFinalThreeFrameworks(txCase,documents);
     if(["HK-00834-20261013-kd-renewal","HK-02199-20261126-zhaoqing-four-leases","HK-02517-20261126-cold-chain-renewal"].includes(txCase?.id))return buildKDZhaoqingColdChain(txCase,documents);
     if(["HK-07688-20261020-cnc-target-loi","HK-01956-20260814-guoke-qizhi-fund","HK-00486-20261126-novokuznetsk-heat","HK-08400-20261126-macau-office-renewal"].includes(txCase?.id))return buildFourStructureBatches(txCase,documents);
     if(["HK-03329-20261126-barclays-notes","HK-01635-20261126-zhiqichen-followon","HK-09886-20261126-macao-mou"].includes(txCase?.id))return buildNotesFundMOU(txCase,documents);
