@@ -5995,7 +5995,8 @@ function cornerstoneBankRanking(deals,index) {
 }
 function renderCornerstoneAdditionalPlacing(allocations, roundId) {
   const entries = (allocations || []).filter(a => a.id.startsWith(roundId + ":"))
-    .map(a => a.additionalInternationalAllocation)
+    .flatMap(a => Array.isArray(a.additionalInternationalAllocations)
+      ? a.additionalInternationalAllocations : [a.additionalInternationalAllocation])
     .filter(x => x && Number.isSafeInteger(x.shares) && x.shares > 0 && Number.isFinite(Number(x.amountHkd)) && Number(x.amountHkd) > 0 && x.source);
   if (!entries.length) return "";
   return `<details class="cs-acct-fold"><summary>另获国际配售</summary><ul>${entries.map(x =>
