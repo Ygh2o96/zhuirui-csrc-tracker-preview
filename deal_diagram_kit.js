@@ -9066,7 +9066,36 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:c.code==="01536"?"shares":"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:c.code==="01536"?"交割款及延期款披露":"股東表決結果"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"完成公告"}])]});
   }
+  function buildCarrySem(c,docs){
+    const configs={
+      "00643":{
+        a:"YS-20251024-4668cd67742c",p:"YS-20251224-a7cc04db819a",z:"YS-20260114-a096bcba2522",date:"2026-01-14",event:"terminated",status:"terminated",
+        ts:[["indirect_block_shares",411293396,"a"],["block_total",54000000,"a"],["block_immediate_cash",5000000,"a"],["block_promissory_notes_face",49000000,"a"],["offer_price",.1331,"a"],["tenders_before_lapse",590000,"z"]],
+        left:"先行收購 Mars Worldwide",right:"強制現金要約失效",badge:"要約失效 · 先行間接持股45.71%保留",seller:"Ma Xiaoqiu",buyer:"Zephyrus Capital",sSub:"曾俊豪執行股份抵押代賣方出售",bSub:"取得Mars Worldwide全部股權",main:"協議對價5,400萬港元",
+        steps:[["2025年9月4日先行交易完成","500萬港元現金＋4,900萬港元承兌票據"],["2026年1月14日有效接納59萬股","每股0.1331港元 · 計入後僅45.77%"],["未達超過50%的要約條件","接納股份不轉讓，先行45.71%保留"]],
+        detail:"Zephyrus Capital與曾俊豪為聯名要約人；Mars Worldwide持有411,293,396股恒富股份。票據面額並非當日支付的現金。",pagesA:[3,11,12,34],pagesP:[1],pagesZ:[2,3,4]
+      },
+      "09929":{
+        a:"YS-20251203-94d7db42313f",p:"YS-20260120-b15d8aa1cb25",z:"YS-20260119-78598208b329",o:"YS-20260424-26e731f31de7",date:"2026-01-19",event:"completion",status:"closed",
+        ts:[["block_shares",1500000000,"a"],["block_cash",165000000,"a"],["offer_price",.11,"a"],["accepted_shares",240000,"z"],["post_close_market_sale_shares",240000,"p"],["restored_float_pct",25,"p"],["bond_subscription_principal",44000000,"o"]],
+        left:"澳達控股控股股份交割",right:"餘股要約、減持與另行發債",badge:"要約截止 · 公眾持股其後恢復至25%",seller:"SEM Enterprises",buyer:"Yao Capital",sSub:"出售15億股（75%）",bSub:"每股0.11港元現金",main:"先行對價1.65億港元",
+        steps:[["2026年1月19日要約截止","有效接納24萬股 · 其後出售同等股數"],["4月兩批減持合共4.615億股","Yao Capital 持股由75%降至51.93%"],["4月24日另行發行可換股債","本金4,400萬港元 · 發行日尚未轉股"]],
+        detail:"1月20日公開市場出售24萬股，公眾持股回到25%。4月10日出售1.8億股；4月14日再出售2.815億股。債券如按初始價全數轉換，按4月24日股本計算為59.94%。",pagesA:[2,8,9],pagesP:[1,2],pagesZ:[2,3,4],pagesO:[1,2]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    if(c.code==="09929"&&!["YS-20260410-sem-yao-disposal","YS-20260415-sem-yao-disposals"].every(id=>docs?.[id]?.caseId===c.id))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:c.code==="00643"?"綜合文件":"公眾持股恢復公告"}]:[]),...(c.code==="09929"?[{documentId:"YS-20260410-sem-yao-disposal",pages:[1],label:"4月10日減持"},{documentId:"YS-20260415-sem-yao-disposals",pages:[1,2],label:"4月14日減持"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"可換股債券發行公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00643-20251024-zephyrus-tsang-conditional-lapsed","HK-09929-20251203-yao-control-mgo-cb"].includes(txCase?.id))return buildCarrySem(txCase,documents);
     if(["HK-01536-20260612-anhui-runsheng","HK-08373-20260722-changi-south"].includes(txCase?.id))return buildYukIndigo(txCase,documents);
     if(["HK-03989-20261126-fangcaohu-operations","HK-00521-20261126-november-mri-tmsc-copper"].includes(txCase?.id))return buildMinorConnectedContracts(txCase,documents);
     if(["HK-00830-20261022-csc-services","HK-00830-20261022-csc-works"].includes(txCase?.id))return buildCscRenewals(txCase,documents);

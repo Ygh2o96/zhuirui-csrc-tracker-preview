@@ -64928,7 +64928,8 @@
       "name": "SEM Holdings Limited",
       "parties": {
         "标的": "SEM Holdings Limited",
-        "要约方": "Yao Capital Limited"
+        "要约方": "Yao Capital Limited",
+        "先行股份賣方": "SEM Enterprises Limited"
       },
       "processEvents": [
         {
@@ -64983,6 +64984,36 @@
             ]
           },
           "kind": "supplement",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-04-10",
+          "kind": "implementation",
+          "label": "Yao Capital出售1.8億股",
+          "detail": "出售後持股由75%降至66%。",
+          "evidence": {
+            "documentId": "YS-20260410-sem-yao-disposal",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-04-14",
+          "kind": "implementation",
+          "label": "Yao Capital再出售2.815億股",
+          "detail": "分三項向獨立第三方出售，餘下持股10.385億股。",
+          "evidence": {
+            "documentId": "YS-20260415-sem-yao-disposals",
+            "pages": [
+              1,
+              2
+            ]
+          },
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
         },
@@ -65871,7 +65902,8 @@
         "上市目标公司": "Carry Wealth Holdings Limited",
         "联名要约人一": "Zephyrus Capital Limited",
         "联名要约人二": "Tsang Chun Ho Anthony",
-        "被购持股公司": "Mars Worldwide"
+        "被购持股公司": "Mars Worldwide",
+        "Mars Worldwide 股份賣方": "Ma Xiaoqiu（曾俊豪以受權人身分出售）"
       },
       "processEvents": [
         {
@@ -100802,6 +100834,20 @@
       "publishedAt": "2026-11-26T17:27:00+08:00",
       "title": "CWT International：MRI 銅陰極銷售公告",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600695.pdf"
+    },
+    "YS-20260410-sem-yao-disposal": {
+      "id": "YS-20260410-sem-yao-disposal",
+      "date": "2026-04-10",
+      "caseId": "HK-09929-20251203-yao-control-mgo-cb",
+      "title": "Yao Capital出售1.8億股",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0410/2026041001263.pdf"
+    },
+    "YS-20260415-sem-yao-disposals": {
+      "id": "YS-20260415-sem-yao-disposals",
+      "date": "2026-04-15",
+      "caseId": "HK-09929-20251203-yao-control-mgo-cb",
+      "title": "Yao Capital出售2.815億股",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0415/2026041500095.pdf"
     }
   },
   "issuerLinks": [
