@@ -27618,12 +27618,28 @@
           "label": "通函日期（刊发通知）",
           "state": "actual",
           "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "kind": "vote",
+          "date": "2026-11-26",
+          "label": "獨立股東批准出售兩家附屬公司",
+          "state": "actual",
+          "timeZone": "Asia/Hong_Kong",
+          "detail": "969,441,705票贊成，零票反對；9,097,448,953股須迴避表決。",
+          "evidence": {
+            "documentId": "YS-20261126-00413-2026112600685",
+            "pages": [
+              1,
+              2
+            ]
+          }
         }
       ],
       "headlineKey": "sale_shares",
       "id": "HK-00413-20260827-wah-shing-sparkling",
       "intervals": {
-        "announcementToDispatch": 71
+        "announcementToDispatch": 71,
+        "announcementToVote": 91
       },
       "mandates": [
         {
@@ -27673,7 +27689,7 @@
           "timeZone": "Asia/Hong_Kong"
         }
       ],
-      "progressDate": "2026-11-06",
+      "progressDate": "2026-11-26",
       "rules": [
         {
           "application": "发行人披露为须予披露交易。",
@@ -27704,10 +27720,10 @@
         }
       ],
       "stage": {
-        "date": "2026-11-06",
-        "eventKind": "dispatch",
-        "label": "已刊发通函 · 待独立股东批准",
-        "status": "active"
+        "status": "approved",
+        "date": "2026-11-26",
+        "eventKind": "vote",
+        "label": "獨立股東已批准 · 待交割"
       },
       "terms": [
         {
@@ -27757,6 +27773,54 @@
           "precision": 2,
           "unit": "money",
           "value": 32400000
+        },
+        {
+          "key": "independent_votes_for",
+          "label": "獨立股東贊成票",
+          "value": 969441705,
+          "unit": "shares",
+          "currency": null,
+          "basis": "11月26日表決",
+          "evidence": {
+            "documentId": "YS-20261126-00413-2026112600685",
+            "pages": [
+              1
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "independent_votes_against",
+          "label": "獨立股東反對票",
+          "value": 0,
+          "unit": "shares",
+          "currency": null,
+          "basis": "11月26日表決",
+          "evidence": {
+            "documentId": "YS-20261126-00413-2026112600685",
+            "pages": [
+              1
+            ]
+          },
+          "precision": 0,
+          "approximate": false
+        },
+        {
+          "key": "shares_required_to_abstain",
+          "label": "須迴避表決股份",
+          "value": 9097448953,
+          "unit": "shares",
+          "currency": null,
+          "basis": "依上市規則迴避投票",
+          "evidence": {
+            "documentId": "YS-20261126-00413-2026112600685",
+            "pages": [
+              2
+            ]
+          },
+          "precision": 0,
+          "approximate": false
         }
       ]
     },
@@ -101933,6 +101997,14 @@
       "publishedAt": "2026-11-27T06:08:00+08:00",
       "title": "每持四股獲發一股供股股份的結果",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112700009.pdf"
+    },
+    "YS-20261126-00413-2026112600685": {
+      "id": "YS-20261126-00413-2026112600685",
+      "caseId": "HK-00413-20260827-wah-shing-sparkling",
+      "date": "2026-11-26",
+      "publishedAt": "2026-11-26T17:27:00+08:00",
+      "title": "11月26日股東特別大會表決結果",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1126/2026112600685.pdf"
     }
   },
   "issuerLinks": [

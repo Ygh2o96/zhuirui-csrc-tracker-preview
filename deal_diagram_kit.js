@@ -9626,7 +9626,29 @@
     const nodes=[{id:"s",role:finished?"seller":"creditor",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind,direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:!finished}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pages,label:"聯交所公告"}]});
   }
+  function buildSouthChinaVote(c,docs){
+    const configs={
+      "HK-00413-20260827-wah-shing-sparkling":{
+        a:"YS-20260827-78fd9b4a1160",z:"YS-20261126-00413-2026112600685",date:"2026-11-26",event:"vote",status:"approved",modality:"出售股權",
+        ts:[["sale_shares",16000000,"a"],["independent_votes_for",969441705,"z"],["independent_votes_against",0,"z"],["shares_required_to_abstain",9097448953,"z"]],
+        left:"出售Sparkling Honor及華昇電子",right:"批准、付款與交割",badge:"獨立股東已批准 · 待交割",
+        seller:"WTS International (BVI)",buyer:"Best Galaxy Holdings",sSub:"南華集團控股旗下賣方",bSub:"由控股股東吳鴻生全資持有",main:"兩家標的公司全數股權",
+        steps:[["獨立股東969,441,705票贊成","零票反對；9,097,448,953股須迴避表決"],["現金對價1,600萬港元","按協議在交割時或書面約定較後日期支付"],["兩家標的交割後退出合併範圍","標的持有的物業估值與股權對價分列"]],
+        detail:"11月26日表決通過股權買賣協議。按上市規則第14及14A章披露。最新表決公告確認股東批准，交易仍待交割進度。",pagesA:[1,3,4,5,6],pagesZ:[1,2]
+      }
+    };
+    const q=configs[c.id]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易條件及後續安排",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"asset",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"asset",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易原件及結算條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"相關交易方公告"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"股東大會表決結果"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-00413-20260827-wah-shing-sparkling"].includes(txCase?.id))return buildSouthChinaVote(txCase,documents);
     if(["HK-01643-20261126-modern-biotech-secondary-sale","HK-00108-20261126-chunyu-dalian-guarantee"].includes(txCase?.id))return buildSecondaryAndGuaranteeNov(txCase,documents);
     if(["HK-00217-20261106-hka-aircraft-finance-lease"].includes(txCase?.id))return buildChengtongA320Lease(txCase,documents);
     if(["HK-08112-20261126-rights-consolidation"].includes(txCase?.id))return buildCSFinancialRightsProposal(txCase,documents);
