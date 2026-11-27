@@ -9121,7 +9121,24 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildHengdeliOffer(c,docs){
+    const p="YS-20260102-fcc63045ffc0",z="YS-20260123-aca8e33b7865",r="YS-20260907-1e785c824f1b",date="2026-01-23";
+    const values=[["offer_price",.14,null],["accepted_shares",995708828,z],["concert_after_pct_registrations_assumed",80.69,z],["issuer_reported_public_float_pct_post_offer",29.25,z],["offeror_direct_pct_confirmed",53.61,r],["accepted_gross_before_per_holder_rounding",139399235.92,z]];
+    if(c.stage?.status!=="closed"||c.stage.date!==date||![p,z,r].every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===date&&e.kind==="completion"&&e.state==="actual"&&e.evidence?.documentId===z)||!values.every(([key,value,id])=>c.terms?.some(t=>t.key===key&&t.value===value&&(!id||t.evidence?.documentId===id))))return null;
+    const left="自願無條件現金要約",right="要約結果與持股",badge="要約截止 · 君雅直接持股53.61%";
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:"closed",leftTitle:left,rightTitle:right,transitionLabel:"要約截止",outcomeBadge:badge}),[
+      box("s","left",42,106,164,124,"seller","有效接納股東","接納995,708,828股（22.61%）"),
+      box("b","left",438,106,178,124,"buyer","君雅有限公司","要約前直接持股31.00%"),
+      box("out1","right",724,72,310,73,"target","君雅直接持股53.61%","中期報告確認持有2,360,954,705股"),
+      box("out2","right",724,168,310,73,"creditor","一致行動方持股80.69%","收購守則口徑 · 按有效接納完成登記計"),
+      box("out3","right",724,264,310,73,"creditor","公眾持股29.25%","上市規則口徑 · 按有效接納完成登記計")
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:"現金要約每股0.14港元"}]);
+    const nodes=[{id:"s",role:"seller",name:"有效接納股東"},{id:"b",role:"buyer",name:"君雅有限公司"}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:"closed",stageDate:date,stageLabel:badge,caseArchetypeLabel:left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:badge,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:"有效接納股東",toLabel:"君雅有限公司",headline:"現金要約每股0.14港元"}],annotations:[{tag:"①",title:"要約對價及持股口徑",body:"有效接納按要約價計約1.394億港元（扣除印花稅前）。兩項披露持股口徑均計入 Swatch Group（香港）持有的4.378億股（9.94%）。"}],evidenceLinks:[{documentId:p,pages:[15,16],label:"綜合文件：要約前持股"},{documentId:z,pages:[2,3],label:"要約結果及公眾持股"},{documentId:r,pages:[26,27,28],label:"中期報告：實際持股"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-03389-20251128-empire-charm-voluntary-go")return buildHengdeliOffer(txCase,documents);
     if(["HK-02442-20251202-ever-genius-75-cash","HK-02623-20251104-prominence-mandatory-cash"].includes(txCase?.id))return buildEasyProminence(txCase,documents);
     if(["HK-00643-20251024-zephyrus-tsang-conditional-lapsed","HK-09929-20251203-yao-control-mgo-cb"].includes(txCase?.id))return buildCarrySem(txCase,documents);
     if(["HK-01536-20260612-anhui-runsheng","HK-08373-20260722-changi-south"].includes(txCase?.id))return buildYukIndigo(txCase,documents);
