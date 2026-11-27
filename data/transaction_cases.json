@@ -2,6 +2,159 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01765-20261127-intelligent-joy-disposal",
+      "code": "01765",
+      "name": "希教國際：出售 Intelligent Joy Limited",
+      "aliases": [
+        "希教国际",
+        "XJ International",
+        "Intelligent Group",
+        "INTJ",
+        "Intelligent Joy",
+        "深圳慧悅科技",
+        "Pinetree Advisory and Valuation"
+      ],
+      "category": "connected",
+      "mechanism": "希教國際間接非全資附屬 Intelligent Group 擬以約2,071萬港元向 INTELLIGENTJOY PTE. LTD 出售 Intelligent Joy Limited 全部股權；交割以股權變更登記及備案完成為準。",
+      "headlineKey": "cash_total",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市發行人": "希教國際控股有限公司（01765）",
+        "賣方": "Intelligent Group Limited（Nasdaq: INTJ）",
+        "買方": "INTELLIGENTJOY PTE. LTD（Lau Wai全資持有）",
+        "標的": "Intelligent Joy Limited（含全資附屬深圳慧悅科技）"
+      },
+      "terms": [
+        {
+          "key": "cash_total",
+          "label": "總對價",
+          "value": 20710000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "約數；完成日後由買方向賣方一次付清。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "stake_pct",
+          "label": "擬出售標的股權比例",
+          "value": 100,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "出售標的已發行股本全部股份。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "book_nav",
+          "label": "未經審計資產淨值",
+          "value": 26800000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "截至2026年10月31日，含深圳慧悅科技。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              4,
+              6
+            ]
+          }
+        },
+        {
+          "key": "expected_loss",
+          "label": "發行人預計綜合出售虧損",
+          "value": 6140000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "公告估算，含出售相關稅費。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              6
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則 14A",
+          "classificationStatus": "applied",
+          "application": "買方由賣方董事全資持有；最高適用百分比率高於0.1%而低於5%，須申報及公告，豁免獨立股東批准。",
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              1,
+              7
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Pinetree Advisory and Valuation Limited",
+          "role": "Valuer",
+          "side": "賣方",
+          "service": "標的全部股權估值 · 資產法",
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽出售協議 · 待股份變更登記",
+          "state": "actual",
+          "detail": "兩家法律名稱相近的公司分為新加坡買方及香港標的。完成後標的及其全資附屬不再合併報表。",
+          "evidence": {
+            "documentId": "YS-20261127-01765-intelligent-joy",
+            "pages": [
+              2,
+              6,
+              8,
+              9
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽出售協議 · 待股份變更登記"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-02068-20261127-guinea-epc",
       "code": "02068",
       "name": "中鋁國際：幾內亞氧化鋁項目EPC總承包",
@@ -113604,6 +113757,13 @@
       "date": "2026-11-27",
       "title": "陸慶娛樂：海港城主要交易通函再延期",
       "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701977.pdf"
+    },
+    "YS-20261127-01765-intelligent-joy": {
+      "id": "YS-20261127-01765-intelligent-joy",
+      "caseId": "HK-01765-20261127-intelligent-joy-disposal",
+      "date": "2026-11-27",
+      "title": "希教國際：關連交易 – 出售附屬公司",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112702023.pdf"
     }
   },
   "issuerLinks": [

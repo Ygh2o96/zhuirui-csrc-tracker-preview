@@ -6747,6 +6747,23 @@
       annotations:[{tag:"①",title:o.a,body:o.b},{tag:"②",title:o.x,body:o.y}],evidenceLinks,compactSummary:o.fund+" · "+o.x,topology});
   }
 
+  function buildIntelligentJoy(c,docs){
+    const s="YS-20261127-01765-intelligent-joy",l="Intelligent Group",r="INTELLIGENTJOY PTE. LTD",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="cash_total"&&t.value===20710000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[322,y],labelWidth:168,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:362,status:"active",leftTitle:"Intelligent Joy Limited 股權出售",rightTitle:"登記與付款安排",transitionLabel:"尚待股份變更登記",outcomeBadge:badge}),[
+      box("l","left",41,100,174,146,"seller",l,"賣方 · Nasdaq: INTJ"),box("r","left",426,100,197,146,"buyer",r,"新加坡買方 · Lau Wai 全資持有"),
+      box("target","right",726,84,300,76,"target","Intelligent Joy Limited","香港標的 · 含深圳慧悅科技"),box("payment","right",726,210,300,77,"public","交割後一次付清","完成股權變更登記及備案後")
+    ],[],[flow("asset","shares","①",215,137,426,"標的全部股權"),flow("cash","cash","②",426,208,215,"約2,071萬港元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"14A關連出售",caseModalityShortLabel:"港元",
+      before:{title:"有條件出售",nodes,equityLinks:[]},after:{title:"登記及交割",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬轉讓香港標的 Intelligent Joy Limited 全部股權",proposedOrTerminated:true},{id:"cash",kind:"cash",direction:"rtl",fromLabel:r,toLabel:l,headline:"交割後一次支付約2,071萬港元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"關連關係",body:"買方由賣方董事 Lau Wai 全資持有。"}, {tag:"②",title:"合併報表",body:"完成後標的及其附屬停止合併；公告估計綜合出售虧損約614萬港元。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,6,7,8,9],label:"原件：交易條款及法律主體"}],compactSummary:"100%股權出售 · 約2,071萬港元 · 待登記",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10702,6 +10719,7 @@
     if(txCase?.id==="HK-01601-20261127-truck-charging-lease")return buildZgcChargingLease(txCase,documents);
     if(txCase?.id==="HK-02068-20261127-guinea-epc")return buildLateTwo(txCase,documents,0);
     if(txCase?.id==="HK-08052-20241106-harbour-city-lease")return buildLateTwo(txCase,documents,1);
+    if(txCase?.id==="HK-01765-20261127-intelligent-joy-disposal")return buildIntelligentJoy(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
