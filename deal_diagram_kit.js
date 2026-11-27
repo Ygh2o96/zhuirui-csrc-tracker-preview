@@ -9602,7 +9602,32 @@
     const nodes=[{id:"vendor",role:"seller",name:"HK Aircraft Sub6 Company Limited"},{id:"lessor",role:"buyer",name:"Chengtong Trading (International) Limited"},{id:"lessee",role:"target",name:"Hong Kong Airlines Limited"}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status,stageDate:c.stage.date,stageLabel,caseArchetypeLabel:left,caseModalityLabel:"購機及融資租賃",caseModalityShortLabel:"融資租賃",topology,compactSummary:stageLabel,before:{title:left,nodes,equityLinks:[]},after:{title:right,nodes,equityLinks:[],outcomeBadge:stageLabel},flows:[{id:"purchase",kind:"asset",direction:"ltr",fromLabel:"HK Aircraft Sub6",toLabel:"誠通貿易",headline:"移轉飛機所有權；買方付15,500萬元",proposedOrTerminated:true},{id:"lease",kind:"asset",direction:"rtl",fromLabel:"誠通貿易",toLabel:"香港航空",headline:"交付後租予香港航空",proposedOrTerminated:true}],annotations:[{tag:"①",title:"股東批准",body:"持股約53.14%的控股股東已按上市規則14.44書面批准；本案毋須召開股東大會。交付仍按購機及租賃協議的條件核對。 "},{tag:"②",title:"租賃付款",body:"香港航空按季後付本金及利息，共20期；利率於每年1月1日按LPR調整，保證金符合條件可抵末期付款。"}],evidenceLinks:[{documentId:doc,pages:[15,16,17,18,19,21],label:"通函：購機、融資租賃及審批"},{documentId:orig,pages:[1,2,3,4,5],label:"買賣及租賃首公告"}]});
   }
+  function buildSecondaryAndGuaranteeNov(c,docs){
+    const map={
+      "HK-01643-20261126-modern-biotech-secondary-sale":{
+        a:"YS-20261126-01643-modern-biotech-secondary-sale",event:"completion",status:"closed",modality:"股東出售舊股",ts:[["seller_gross_cash",31248000],["placed_shares",144000000],["per_share",0.217],["ownership_before",55.8],["ownership_after",35.8]],
+        left:"股東向承配人出售已發行股份",right:"出售規模及持股變化",badge:"舊股配售已完成 · 賣方持股約35.8%",seller:"Modern Biotechnology",buyer:"多名承配人",sSub:"賣方；由孫新蕾全資持有",bSub:"由證券經紀安排；名單未披露",main:"轉讓1.44億股舊股",
+        steps:[["每股0.217港元","按股數及單價計約3,124.8萬港元"],["賣方持股由55.8%降至35.8%","4.02億股降至2.58億股"],["配售款歸出售股東","交易為既有股份轉讓"]],
+        detail:"上市公司公告記錄11月26日完成配售。經手證券經紀及多名承配人未具名。",pages:[1,2]
+      },
+      "HK-00108-20261126-chunyu-dalian-guarantee":{
+        a:"YS-20261126-5d269d244d15",event:"first_announcement",status:"active",modality:"借款擔保及物業抵押",ts:[["principal",130000000],["loan_interest_pct",3.8],["guarantee_fee_pct",1],["guarantee_fee_cap",1300000]],
+        left:"大連銀行向關連方提供一年貸款",right:"擔保、抵押及費用",badge:"保證及抵押合同已簽訂",seller:"大連銀行",buyer:"北京中和鴻潤",sSub:"授信銀行及抵押權人",bSub:"關連借款人",main:"貸款本金1.3億人民幣",
+        steps:[["北京萬港通提供連帶還款擔保","並將其物業抵押予大連銀行"],["借款人按實提金額付年費1%","擔保費付萬港通；按全提計一年130萬元"],["借款利息3.8%","借款人把利息另付大連銀行"]],
+        detail:"本次一年借款自11月26日起算；保證及抵押合同各有單獨到期條款。關連財務資助按第14A章申報及公告，合計適用比率超過0.1%、低於5%。",pages:[1,2,3,4]
+      }
+    };
+    const q=map[c.id],date="2026-11-26";if(!q||c.stage?.status!==q.status||c.stage?.date!==date||docs?.[q.a]?.caseId!==c.id||!c.events?.some(e=>e.date===date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.a)||!q.ts.every(([key,value])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q.a)))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const finished=q.status==="closed",kind=finished?"asset":"cash";
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:finished?"舊股配售":"貸款與擔保",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,finished?"seller":"creditor",q.seller,q.sSub),box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind,step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:!finished}]);
+    const nodes=[{id:"s",role:finished?"seller":"creditor",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:q.modality,caseModalityShortLabel:q.modality,topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind,direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:!finished}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pages,label:"聯交所公告"}]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(["HK-01643-20261126-modern-biotech-secondary-sale","HK-00108-20261126-chunyu-dalian-guarantee"].includes(txCase?.id))return buildSecondaryAndGuaranteeNov(txCase,documents);
     if(["HK-00217-20261106-hka-aircraft-finance-lease"].includes(txCase?.id))return buildChengtongA320Lease(txCase,documents);
     if(["HK-08112-20261126-rights-consolidation"].includes(txCase?.id))return buildCSFinancialRightsProposal(txCase,documents);
     if(["HK-01870-20260929-green-power-rights"].includes(txCase?.id))return buildGreenPowerRightsActual(txCase,documents);
