@@ -2,6 +2,274 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-08487-20261028-isp-placing",
+      "code": "08487",
+      "name": "ISP Global：一般授權配售新股",
+      "aliases": [
+        "ISP GLOBAL",
+        "Oriental Patron Asia"
+      ],
+      "category": "placing",
+      "mechanism": "ISP Global擬由Oriental Patron Asia以每股0.072港元向獨立承配人配售最多2.08億股，最低須配售1.50億股。11月27日補充淨所得款項用途明細。",
+      "headlineKey": "gross_max",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "ISP Global Limited（08487）",
+        "配售代理": "Oriental Patron Asia Limited",
+        "承配人": "原公告擬向不少於六名獨立承配人配售"
+      },
+      "terms": [
+        {
+          "key": "gross_max",
+          "label": "配售所籌總額上限",
+          "value": 14976000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "股數上限乘每股配售價，公告約1,498萬港元。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "placing_shares",
+          "label": "擬配售新股上限",
+          "value": 208000000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "發行上限。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "placing_min",
+          "label": "完成所需最低股數",
+          "value": 150000000,
+          "unit": "shares",
+          "currency": null,
+          "approximate": false,
+          "basis": "先決條件，公告列明不可豁免。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "placing_price",
+          "label": "每股配售價",
+          "value": 0.072,
+          "unit": "price",
+          "currency": "HKD",
+          "approximate": false,
+          "basis": "原協議價格。",
+          "precision": 3,
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "net_max",
+          "label": "全數配售淨所得款項",
+          "value": 14730000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "扣除佣金、專業費用及其他開支後估計。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08487-placing",
+            "pages": [
+              1
+            ]
+          }
+        },
+        {
+          "key": "use_commodity",
+          "label": "發展實物商品買賣業務",
+          "value": 8830000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "預計佔所得款項淨額60%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08487-placing",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "use_debt",
+          "label": "償還債務",
+          "value": 2950000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "預計佔所得款項淨額20%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08487-placing",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "use_working",
+          "label": "一般營運資金",
+          "value": 2950000,
+          "unit": "money",
+          "currency": "HKD",
+          "approximate": true,
+          "basis": "預計佔所得款項淨額20%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-08487-placing",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "commission",
+          "label": "配售佣金率",
+          "value": 1,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "按配售總所得款項計。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              4
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:GEM-GENERAL-MANDATE",
+          "label": "GEM 上市規則 · 一般授權",
+          "classificationStatus": "applied",
+          "application": "公告列明新股擬根據現有一般授權發行。",
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              1,
+              6
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "Oriental Patron Asia Limited",
+          "role": "PlacingAgent",
+          "side": "發行人",
+          "service": "配售代理",
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-28",
+          "kind": "first_announcement",
+          "label": "簽訂配售協議",
+          "state": "actual",
+          "detail": "有條件按盡力基準配售。",
+          "evidence": {
+            "documentId": "YS-20261028-08487-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-17",
+          "kind": "supplement",
+          "label": "延長達成先決條件期限",
+          "state": "actual",
+          "detail": "延至12月1日。",
+          "evidence": {
+            "documentId": "YS-20261117-08487-placing",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "supplement",
+          "label": "已補充所得款用途 · 待達成配售條件",
+          "state": "actual",
+          "detail": "分配至商品業務、償債及營運資金，預期2027年底前悉數動用。",
+          "evidence": {
+            "documentId": "YS-20261127-08487-placing",
+            "pages": [
+              1,
+              2
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-01",
+          "kind": "conditions_deadline",
+          "label": "修訂後的條件期限",
+          "state": "expected",
+          "detail": "非交割或配售結果。",
+          "evidence": {
+            "documentId": "YS-20261117-08487-placing",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "supplement",
+        "label": "已補充所得款用途 · 待達成配售條件"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-00034-20261127-rideon-forty",
       "code": "00034",
       "name": "九龍建業：出售威隆40%股權及股東貸款",
@@ -109351,6 +109619,27 @@
       "date": "2026-11-27",
       "title": "九龍建業：出售威隆40%股權與股東貸款公告",
       "url": "https://www.kdc.com.hk/files/news/691/E-Ann-2026%201127%20%28Final%29.pdf"
+    },
+    "YS-20261028-08487-placing": {
+      "id": "YS-20261028-08487-placing",
+      "caseId": "HK-08487-20261028-isp-placing",
+      "date": "2026-10-28",
+      "title": "一般授權配售新股",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1028/2026102801689.pdf"
+    },
+    "YS-20261117-08487-placing": {
+      "id": "YS-20261117-08487-placing",
+      "caseId": "HK-08487-20261028-isp-placing",
+      "date": "2026-11-17",
+      "title": "延長達成配售條件的期限",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1117/2026111701481.pdf"
+    },
+    "YS-20261127-08487-placing": {
+      "id": "YS-20261127-08487-placing",
+      "caseId": "HK-08487-20261028-isp-placing",
+      "date": "2026-11-27",
+      "title": "配售所得款用途補充公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701764_c.pdf"
     }
   },
   "issuerLinks": [
