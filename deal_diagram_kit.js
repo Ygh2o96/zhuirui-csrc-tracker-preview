@@ -6710,6 +6710,23 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3],label:"公告：認購條款及上市條件"}],compactSummary:"新股認購 · 444萬港元 · 待上市批准",topology});
   }
 
+  function buildZgcChargingLease(c,docs){
+    const s="YS-20261127-01601-charging-lease",l="設備供應商",r="充電站營運商",m="中關村科技租賃",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="asset_price"&&t.value===85310000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const flow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[320,y],labelWidth:208,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:462,status:"active",leftTitle:"設備購買與交付",rightTitle:"融資租賃安排",transitionLabel:"購買及租賃協議已簽",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"seller",l,"電線電纜企業"),box("r","left",448,100,157,146,"buyer",r,"承租人"),
+      box("m","right",726,82,300,75,"listed",m,"向供應商支付7,500萬元餘款"),box("term","right",726,202,300,74,"public","承租人首付款約1,031萬元","付予中關村科技租賃"),box("lease","right",726,312,300,73,"target","60個月融租","合計約8,818萬元租金")
+    ],[],[flow("asset","asset","①",192,170,448,"供應商按約交付充電站設備")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r},{id:"m",role:"listed",name:m}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"設備購買及直接融租",caseModalityShortLabel:"人民幣",
+      before:{title:"設備購買",nodes,equityLinks:[]},after:{title:"租賃付款",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"asset",kind:"asset",direction:"ltr",fromLabel:l,toLabel:r,headline:"供應商按約向承租人交付重卡充電站設備",proposedOrTerminated:true},{id:"fund",kind:"cash",direction:"rtl",fromLabel:m,toLabel:l,headline:"中關村科技租賃支付供應商7,500萬元",proposedOrTerminated:true},{id:"first",kind:"cash",direction:"rtl",fromLabel:r,toLabel:m,headline:"承租人首付款約1,031萬元",proposedOrTerminated:true},{id:"rent",kind:"cash",direction:"rtl",fromLabel:r,toLabel:m,headline:"60個月按季付款合計約8,818萬元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"設備採購",body:"設備價約8,531萬元；供應商依約向充電站營運商交付。"}, {tag:"②",title:"融租付款",body:"融資本金7,500萬元、含稅利息約1,318萬元；全面履行後可按人民幣100元名義價購買。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3,4,5],label:"原件：資產、付款與租賃條款"}],compactSummary:"設備8,531萬元 · 60個月融租 · 已簽協議",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10662,6 +10679,7 @@
     if(txCase?.id==="HK-08245-20260828-canopy-placing")return buildCanopyPlacing(txCase,documents);
     if(txCase?.id==="HK-01057-20260807-shibao-a-placing")return buildShibaoPlacing(txCase,documents);
     if(txCase?.id==="HK-08623-20261127-saftower-subscription")return buildSaftower(txCase,documents);
+    if(txCase?.id==="HK-01601-20261127-truck-charging-lease")return buildZgcChargingLease(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

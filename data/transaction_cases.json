@@ -2,6 +2,174 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01601-20261127-truck-charging-lease",
+      "code": "01601",
+      "name": "中關村科技租賃：重卡充電站設備融資租賃",
+      "aliases": [
+        "中关村科技租赁",
+        "ZGC TEC LEASING",
+        "重卡充电站",
+        "融資租賃",
+        "設備直接租賃"
+      ],
+      "category": "disclosable_acquisition",
+      "mechanism": "中關村科技租賃擬向供應商購買約8,531萬元重卡充電站資產，向營運商出租60個月。承租人付約1,031萬元首款，出租人向供應商支付7,500萬元餘款。",
+      "headlineKey": "asset_price",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "買方兼出租人": "中關村科技租賃股份有限公司（01601）",
+        "設備供應商": "中國電線電纜製造企業",
+        "承租人": "中國重卡充電站營運商"
+      },
+      "terms": [
+        {
+          "key": "asset_price",
+          "label": "設備購買總對價",
+          "value": 85310000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "購入設備價約8,531萬元，含承租人首款及公司付款。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "initial_lessee_payment",
+          "label": "承租人首付款",
+          "value": 10310000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "付予中關村科技租賃。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              2
+            ]
+          }
+        },
+        {
+          "key": "lease_principal",
+          "label": "融資本金",
+          "value": 75000000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "公司向供應商一次付清的餘款；同為租賃本金。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "key": "lease_total",
+          "label": "融租期內付款總額",
+          "value": 88180000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "本金7,500萬元及含增值稅的融資利息約1,318萬元。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "lease_interest",
+          "label": "融資利息（含增值稅）",
+          "value": 13180000,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": true,
+          "basis": "按季分期融租付款，不與購買對價疊加。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "key": "nominal_buyout",
+          "label": "期滿可選名義購買價",
+          "value": 100,
+          "unit": "money",
+          "currency": "CNY",
+          "approximate": false,
+          "basis": "承租人全面履約後可在期滿以名義價購買。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則 14",
+          "classificationStatus": "applied",
+          "application": "最高適用百分比率高於5%但低於25%，屬須予披露交易。",
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              1,
+              5
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "已簽購買及租賃協議 · 交付待核",
+          "state": "actual",
+          "detail": "供應商須在購買協議簽訂及生效後60日內向承租人交付；公告列承租人股權及項目收益權質押、關聯擔保。",
+          "evidence": {
+            "documentId": "YS-20261127-01601-charging-lease",
+            "pages": [
+              1,
+              2,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "已簽購買及租賃協議 · 交付待核"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-08623-20261127-saftower-subscription",
       "code": "08623",
       "name": "中國蜀塔：別具一格科技認購新股",
@@ -113116,6 +113284,13 @@
       "date": "2026-11-27",
       "title": "中國蜀塔：根據一般授權認購新股份",
       "url": "https://www1.hkexnews.hk/listedco/listconews/gem/2026/1127/2026112701955.pdf"
+    },
+    "YS-20261127-01601-charging-lease": {
+      "id": "YS-20261127-01601-charging-lease",
+      "caseId": "HK-01601-20261127-truck-charging-lease",
+      "date": "2026-11-27",
+      "title": "中關村科技租賃：購買協議及融資租賃交易",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701951.pdf"
     }
   },
   "issuerLinks": [
