@@ -9265,7 +9265,28 @@
     const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
     return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"綜合文件"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"要約結果"}])]});
   }
+  function buildEuroEyesFYEO(c,docs){
+    const configs={
+      "01846":{
+        a:"YS-20260226-3161352e2d5c",p:"YS-20260630-68857e77c6de",z:"YS-20260723-c98b1d63388e",date:"2026-07-22",event:"completion",status:"closed",
+        ts:[["settled_eur",131350266,"z"],["base_eur",131766173,"a"],["buyer_eur",118625267,"z"],["manco_eur",12725000,"z"],["direct_stake",100,"a"],["ownership_acquisition_vehicle",90.31,"z"]],
+        left:"荷蘭收購主體取得FYEO全部股權",right:"交割及再投資後股權",badge:"收購及再投資均於2026年7月22日完成",seller:"Committed Capital等五方",buyer:"EuroEyes Netherlands",sSub:"出讓FYEO Europe B.V. 100%股權",bSub:"德視佳為收購方擔保人",main:"交割現金對價約1.3億歐元",
+        steps:[["德視佳持收購主體90.31%","出資約1.2億歐元"],["FYEO Manco持收購主體9.69%","四名管理人員與九名醫生透過STAK再投資"],["Manco合計投入1,272.5萬歐元","管理層1,065萬 · 醫生207.5萬歐元"]],
+        detail:"交割對價為131,350,266歐元：固定股權價加鎖箱補償，扣除價值流失。德視佳與Manco的持股比例是收購主體的股權，該主體持有全部FYEO股權。",pagesA:[2,3,4],pagesP:[1],pagesZ:[1,2,3,4,5]
+      }
+    };
+    const q=configs[c.code]; if(!q||c.stage?.status!==q.status||c.stage.date!==q.date||![q.a,q.z,q.p,q.o].filter(Boolean).every(id=>docs?.[id]?.caseId===c.id)||!c.events?.some(e=>e.date===q.date&&e.kind===q.event&&e.state==="actual"&&e.evidence?.documentId===q.z)||!q.ts.every(([key,value,doc])=>c.terms?.some(t=>t.key===key&&t.value===value&&t.evidence?.documentId===q[doc])))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:470,status:q.status,leftTitle:q.left,rightTitle:q.right,transitionLabel:"交易執行結果",outcomeBadge:q.badge}),[
+      box("s","left",42,106,164,124,"seller",q.seller,q.sSub),
+      box("b","left",438,106,178,124,"buyer",q.buyer,q.bSub),
+      ...q.steps.map(([t,s],i)=>box("out"+i,"right",724,72+i*96,310,73,i===0?"target":"creditor",t,s))
+    ],[],[{id:"main",panel:"left",kind:"shares",step:"①",pathPoints:[[206,169],[438,169]],labelCenter:[322,169],labelWidth:205,labelHeight:35,label:q.main,proposedOrTerminated:q.status==="active"}]);
+    const nodes=[{id:"s",role:"seller",name:q.seller},{id:"b",role:"buyer",name:q.buyer}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,archetype:"acquisition",modality:"cash",status:q.status,stageDate:q.date,stageLabel:q.badge,caseArchetypeLabel:q.left,caseModalityLabel:"現金",caseModalityShortLabel:"現金",topology,compactSummary:q.badge,before:{title:q.left,nodes,equityLinks:[]},after:{title:q.right,nodes,equityLinks:[],outcomeBadge:q.badge},flows:[{id:"main",kind:"shares",direction:"ltr",fromLabel:q.seller,toLabel:q.buyer,headline:q.main,proposedOrTerminated:q.status==="active"}],annotations:[{tag:"①",title:q.left,body:q.detail}],evidenceLinks:[{documentId:q.a,pages:q.pagesA,label:"交易條款"},...(q.p?[{documentId:q.p,pages:q.pagesP,label:"股東通函"}]:[]),...(q.o?[{documentId:q.o,pages:q.pagesO,label:"公眾持股恢復公告"}]:[]),...(q.z===q.a?[]:[{documentId:q.z,pages:q.pagesZ,label:"交割對價及再投資股權"}])]});
+  }
   function getSpecForCase(txCase, documents) {
+    if(txCase?.id==="HK-01846-20260220-fyeo")return buildEuroEyesFYEO(txCase,documents);
     if(txCase?.id==="HK-01757-20251023-china-vc-control-mgo")return buildAffluentChinaVC(txCase,documents);
     if(txCase?.id==="HK-00223-20250514-china-innovation-partial-lapsed")return buildElifeLapsed(txCase,documents);
     if(txCase?.id==="HK-01980-20251119-truesense-on-market-mgo")return buildTianGeOffer(txCase,documents);
