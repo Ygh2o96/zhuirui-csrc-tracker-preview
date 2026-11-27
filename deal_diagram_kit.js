@@ -6335,6 +6335,31 @@
       evidenceLinks:[{documentId:circ,pages:[9,10,11],label:"通函：减资结构、对价与条件"},{documentId:vote,pages:[2],label:"股东大会表决结果"}],compactSummary:"北京汽车 · 减资退出 33%／14% · 股东已批准",topology};
   }
 
+  function buildStarShineCircleTime(c,docs){
+    const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
+    if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
+       docs?.[z]?.url!=="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701034.pdf"||
+       ![z,p,m].every(id=>docs[id]?.caseId===c.id)||
+       ![["consideration",58700000],["loan_face",70965199],["cash_component",0]].every(([k,v])=>c.terms?.some(t=>t.key===k&&t.value===v&&t.evidence?.documentId===z)))return null;
+    const l="應星控股",r="Glorious Way",badge=c.stage.label;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const arrow=(id,kind,step,x,y,end,label)=>({id,panel:"left",kind,step,pathPoints:[[x,y],[end,y]],labelCenter:[322,y],labelWidth:210,labelHeight:34,label,dashed:true});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:374,status:"active",leftTitle:"出售股權及轉讓貸款",rightTitle:"交割時全數抵銷",transitionLabel:"附條件交易",outcomeBadge:badge}),[
+      box("L_sell","left",43,100,149,146,"seller",l,"上市公司 01440"),
+      box("L_buy","left",448,100,157,146,"buyer",r,"持有上市公司 28.85%"),
+      box("R_loan","right",726,84,300,80,"target","Circle Time 貸款","擬轉讓本金約 7,096.5 萬港元"),
+      box("R_cancel","right",726,211,300,76,"creditor","上市公司股東貸款","抵銷 5,870 萬港元 · 無現金")
+    ],[],[arrow("equity","shares","①",192,138,448,"Circle Time 100%＋貸款"),arrow("setoff","cancel","②",448,209,192,"抵銷 5,870 萬港元")]);
+    const nodes=[{id:"l",role:"seller",name:l},{id:"r",role:"buyer",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,name:c.name,code:c.code,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"acquisition",modality:"mixed",status:"active",
+      caseArchetypeLabel:"附條件出售股權及貸款",caseModalityShortLabel:"股東貸款抵銷",
+      before:{title:"附條件買賣",nodes,equityLinks:[]},after:{title:"擬交割結算",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"equity",kind:"shares",direction:"ltr",fromLabel:l,toLabel:r,headline:"擬轉讓 Circle Time 全部股權及其對應貸款債權",proposedOrTerminated:true},{id:"setoff",kind:"cancel",direction:"rtl",fromLabel:r,toLabel:l,headline:"買方持有的上市公司股東貸款擬抵銷 5,870 萬港元",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"標的貸款",body:"交割前重整後，Circle Time 欠應星控股 70,965,199 港元；貸款將連同標的股權轉讓予買方。"},{tag:"②",title:"股東貸款抵銷",body:"應星控股欠買方的股東貸款於交割時抵銷 5,870 萬港元，餘額估計約 1,240 萬港元；12 月 18 日擬交獨立股東表決。"}],
+      evidenceLinks:[{documentId:z,pages:[6,9,10,12,20,21],label:"通函：買方、貸款及抵銷安排"},{documentId:m,pages:[1],label:"股東大會通知"}],
+      compactSummary:"5,870 萬港元 · 股東貸款全額抵銷對價 · 待獨立股東表決",topology});
+  }
+
   function buildEvidencedRightsIssue(c,docs) {
     const x=c.rightsExecution;
     if(!x||!["excess","placement","best_efforts"].includes(x.method)||!docs?.[x.evidence?.documentId]||
@@ -10231,6 +10256,7 @@
     if (["HK-08526-20261103-lumina","HK-06063-20260908-control-mgo"].includes(txCase?.id)) {const x=buildVerifiedWingFungOrLotus(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-02663-20261020-dax"){const x=buildVerifiedDaxOffer(txCase,documents);return x&&validateDiagramSpec(x);}
     if (["HK-01958-20261125-anpeng-capital-injection","HK-03382-20260608-tianjin-port-two-terminals"].includes(txCase?.id)) {const x=buildVerifiedAnpengOrTianjin(txCase,documents);return x&&validateDiagramSpec(x);}
+    if(txCase?.id==="HK-01440-20261023-circle-time-disposal")return buildStarShineCircleTime(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}

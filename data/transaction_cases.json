@@ -2,6 +2,259 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-01440-20261023-circle-time-disposal",
+      "code": "01440",
+      "name": "應星控股：出售 Circle Time 及轉讓貸款",
+      "aliases": [
+        "應星控股",
+        "应星控股",
+        "Star Shine Holdings",
+        "Circle Time",
+        "Glorious Way"
+      ],
+      "category": "disclosable_disposal",
+      "mechanism": "應星控股擬將 Circle Time 全部股權及股東貸款債權轉予 Glorious Way。總對價 5,870 萬港元於交割時全數抵銷應星控股欠買方的股東貸款，不支付現金。",
+      "headlineKey": "consideration",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "賣方": "應星控股集團有限公司（01440）",
+        "買方": "Glorious Way Investments Limited",
+        "標的": "Circle Time",
+        "買方最終持有人": "Tsoi Wing Sing（應星控股主席兼執董）"
+      },
+      "terms": [
+        {
+          "key": "consideration",
+          "label": "交易總對價",
+          "value": 58700000,
+          "basis": "HKD 1 股權及 HKD 58,699,999 貸款債權；交割時全數抵銷。",
+          "currency": "HKD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              9,
+              10,
+              12
+            ]
+          }
+        },
+        {
+          "key": "loan_face",
+          "label": "擬轉讓貸款本金",
+          "value": 70965199,
+          "basis": "交割前重整完成後 Circle Time 欠應星控股的貸款；非對價。",
+          "currency": "HKD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              9,
+              10
+            ]
+          }
+        },
+        {
+          "key": "equity_price",
+          "label": "股權對價",
+          "value": 1,
+          "basis": "Circle Time 唯一普通股，即全部已發行股本。",
+          "currency": "HKD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              9,
+              12
+            ]
+          }
+        },
+        {
+          "key": "loan_price",
+          "label": "貸款債權對價",
+          "value": 58699999,
+          "basis": "總對價扣除 1 港元股權對價。",
+          "currency": "HKD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              12
+            ]
+          }
+        },
+        {
+          "key": "cash_component",
+          "label": "現金支付",
+          "value": 0,
+          "basis": "全部以應星控股欠承讓方的股東貸款抵銷。",
+          "currency": "HKD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": false,
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              10
+            ]
+          }
+        },
+        {
+          "key": "issuer_loan_remaining",
+          "label": "交割後股東貸款餘額",
+          "value": 12400000,
+          "basis": "通函估計；不是 Circle Time 貸款的餘額。",
+          "currency": "HKD",
+          "precision": 2,
+          "unit": "money",
+          "approximate": true,
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              10
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:14",
+          "label": "上市規則第 14 章",
+          "application": "適用百分比率超過 5% 而低於 25%；須予披露交易。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              20
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A",
+          "label": "上市規則第 14A 章",
+          "application": "買方為上市公司主要股東；須獨立股東批准。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              20,
+              21
+            ]
+          }
+        },
+        {
+          "code": "HKEX:14A.36",
+          "label": "上市規則 14A.36",
+          "application": "有重大利益的股東須放棄表決。",
+          "classificationStatus": "applied",
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              21
+            ]
+          }
+        }
+      ],
+      "mandates": [
+        {
+          "firm": "INCU Corporate Finance Limited",
+          "role": "IFA",
+          "service": "independent_financial_advice",
+          "side": "獨立董事委員會及獨立股東",
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              1,
+              25
+            ]
+          }
+        },
+        {
+          "firm": "Ravia Global Appraisal Advisory Limited",
+          "role": "valuer",
+          "service": "business_valuation",
+          "side": "出售股權及貸款債權",
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              7,
+              12
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-10-23",
+          "kind": "first_announcement",
+          "label": "公布附條件買賣契據",
+          "state": "actual",
+          "detail": "董事會公布全資附屬公司及貸款債權的出售。",
+          "evidence": {
+            "documentId": "YS-20261023-01440-circle-time",
+            "pages": [
+              1,
+              2,
+              3
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        },
+        {
+          "date": "2026-11-27",
+          "kind": "dispatch",
+          "label": "刊發股東通函",
+          "state": "actual",
+          "detail": "披露股權與貸款估值、抵銷安排、獨立意見及股東大會。",
+          "evidence": {
+            "documentId": "YS-20261127-01440-circle-time",
+            "pages": [
+              1,
+              9,
+              10,
+              12
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [
+        {
+          "date": "2026-12-18",
+          "kind": "vote",
+          "label": "預計獨立股東表決",
+          "state": "expected",
+          "detail": "香港時間上午 11 時；有重大利益股東須放棄表決。",
+          "evidence": {
+            "documentId": "YS-20261127-01440-egm",
+            "pages": [
+              1
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "intervals": {
+        "announcementToDispatch": 35
+      },
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "dispatch",
+        "label": "已刊交易通函 · 待獨立股東表決"
+      },
+      "progressDate": "2026-11-27"
+    },
+    {
       "id": "HK-00854-20260623-willas-yct-supply-caps",
       "code": "00854",
       "name": "威雅利：向上海雅創供貨框架修訂",
@@ -106267,6 +106520,27 @@
       "date": "2026-11-27",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701036.pdf",
       "title": "有效接納結果及須按補償安排處理的未認購供股股份"
+    },
+    "YS-20261023-01440-circle-time": {
+      "id": "YS-20261023-01440-circle-time",
+      "caseId": "HK-01440-20261023-circle-time-disposal",
+      "date": "2026-10-23",
+      "title": "有條件出售 Circle Time 全部股權及轉讓貸款",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1023/2026102301195.pdf"
+    },
+    "YS-20261127-01440-circle-time": {
+      "id": "YS-20261127-01440-circle-time",
+      "caseId": "HK-01440-20261023-circle-time-disposal",
+      "date": "2026-11-27",
+      "title": "出售 Circle Time 股權及貸款通函",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701034.pdf"
+    },
+    "YS-20261127-01440-egm": {
+      "id": "YS-20261127-01440-egm",
+      "caseId": "HK-01440-20261023-circle-time-disposal",
+      "date": "2026-11-27",
+      "title": "股東特別大會通告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701060.pdf"
     }
   },
   "issuerLinks": [
