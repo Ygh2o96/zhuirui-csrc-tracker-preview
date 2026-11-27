@@ -2,6 +2,158 @@
   "asOf": "2026-11-27",
   "cases": [
     {
+      "id": "HK-03750-20261127-lochpine-lush",
+      "code": "03750",
+      "name": "寧德時代：香港時代參與 Lochpine Lush 基金",
+      "aliases": [
+        "宁德时代",
+        "CATL",
+        "香港時代",
+        "Lochpine Lush",
+        "Lochpine Capital"
+      ],
+      "category": "investment",
+      "mechanism": "香港時代擬作為有限合夥人認繳不超過2.98701億美元，佔Lochpine Lush基金99.90%；基金聚焦儲能、礦山微電網和零碳項目。",
+      "headlineKey": "lp_commitment",
+      "comparables": {},
+      "comparisonEvidence": {},
+      "parties": {
+        "上市公司": "寧德時代新能源科技股份有限公司（03750／300750）",
+        "有限合夥人": "香港時代新能源科技有限公司",
+        "基金": "Lochpine Lush Limited Partnership",
+        "普通合夥人": "Lochpine Lush GP Limited",
+        "基金管理人": "Lochpine Capital Limited（香港）"
+      },
+      "terms": [
+        {
+          "key": "fund_commitments",
+          "label": "基金總認繳額",
+          "value": 299000000,
+          "unit": "money",
+          "currency": "USD",
+          "approximate": false,
+          "basis": "合夥協議初始總認繳額。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              3,
+              4
+            ]
+          }
+        },
+        {
+          "key": "lp_commitment",
+          "label": "香港時代認繳上限",
+          "value": 298701000,
+          "unit": "money",
+          "currency": "USD",
+          "approximate": false,
+          "basis": "佔基金總認繳99.90%，按繳款通知出資。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        {
+          "key": "gp_commitment",
+          "label": "普通合夥人認繳上限",
+          "value": 299000,
+          "unit": "money",
+          "currency": "USD",
+          "approximate": false,
+          "basis": "佔基金總認繳0.10%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              4
+            ]
+          }
+        },
+        {
+          "key": "lp_pct",
+          "label": "香港時代認繳比例",
+          "value": 99.9,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "佔基金總認繳額。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              3
+            ]
+          }
+        },
+        {
+          "key": "gp_mgr_stake",
+          "label": "香港時代分別持GP及管理人股權",
+          "value": 30,
+          "unit": "percent",
+          "currency": null,
+          "approximate": false,
+          "basis": "分別間接持有各30%。",
+          "precision": 2,
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "code": "HKEX:13.10B",
+          "label": "上市規則 13.10B",
+          "classificationStatus": "applied",
+          "application": "香港刊發海外監管公告。深圳公告依深交所規則認定不屬關聯交易或重大資產重組。",
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "mandates": [],
+      "events": [
+        {
+          "date": "2026-11-27",
+          "kind": "first_announcement",
+          "label": "合夥協議已簽 · 按繳款通知出資",
+          "state": "actual",
+          "detail": "簽署合夥協議，出資依GP發出的繳款通知。",
+          "evidence": {
+            "documentId": "YS-20261127-03750-lochpine-lush",
+            "pages": [
+              1,
+              2,
+              4
+            ]
+          },
+          "timeZone": "Asia/Hong_Kong"
+        }
+      ],
+      "processEvents": [],
+      "stage": {
+        "date": "2026-11-27",
+        "status": "active",
+        "eventKind": "first_announcement",
+        "label": "合夥協議已簽 · 按繳款通知出資"
+      },
+      "progressDate": "2026-11-27",
+      "intervals": {}
+    },
+    {
       "id": "HK-00379-20261127-tei-framework",
       "code": "00379",
       "name": "恒嘉融資租賃：冠邦國際醫療保健產品採購",
@@ -111226,6 +111378,13 @@
       "date": "2026-11-27",
       "title": "持續關連交易：冠邦國際框架採購協議",
       "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701377.pdf"
+    },
+    "YS-20261127-03750-lochpine-lush": {
+      "id": "YS-20261127-03750-lochpine-lush",
+      "caseId": "HK-03750-20261127-lochpine-lush",
+      "date": "2026-11-27",
+      "title": "寧德時代全資子公司參與投資產業投資基金",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1127/2026112701361_c.pdf"
     }
   },
   "issuerLinks": [

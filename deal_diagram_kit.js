@@ -6562,6 +6562,24 @@
       evidenceLinks:[{documentId:s,pages:[1,2,3,4,6,7],label:"原件：框架上限、關連關係及批准條件"}],compactSummary:"醫療採購框架 · 首年上限1.04億港元 · 待獨立股東批准",topology});
   }
 
+  function buildCatlLochpineFund(c,docs){
+    const s="YS-20261127-03750-lochpine-lush",l="香港時代",r="Lochpine Lush LP",badge=c.stage?.label;
+    if(c.stage?.status!=="active"||docs?.[s]?.caseId!==c.id||!c.terms?.some(t=>t.key==="fund_commitments"&&t.value===299000000)||!c.terms?.some(t=>t.key==="lp_commitment"&&t.value===298701000))return null;
+    const box=(id,panel,x,y,w,h,role,title,subtitle)=>({id,panel,x,y,w,h,role,title,subtitle});
+    const topology=finalizeLayout(createDiagramCanvas({width:MASTER_W,height:360,status:"active",leftTitle:"境外產業基金認繳",rightTitle:"合夥人與基金管理",transitionLabel:"協議已簽 · 按通知繳款",outcomeBadge:badge}),[
+      box("l","left",43,100,149,146,"listed",l,"寧德時代全資子公司"),
+      box("r","left",448,100,157,146,"target",r,"總認繳 2.99 億美元"),
+      box("gp","right",726,84,300,76,"target","Lochpine Lush GP","普通合夥人 · 認繳 0.10%"),
+      box("manage","right",726,210,300,80,"public","Lochpine Capital","基金管理人 · 香港時代間接持股 30%")
+    ],[],[{id:"commitment",panel:"left",kind:"cash",step:"①",pathPoints:[[192,168],[448,168]],labelCenter:[320,168],labelWidth:215,labelHeight:35,label:"最高 2.98701 億美元",dashed:true}]);
+    const nodes=[{id:"l",role:"listed",name:l},{id:"r",role:"target",name:r}];
+    return validateDiagramSpec({id:c.id,caseId:c.id,code:c.code,name:c.name,mechanism:c.mechanism,stageLabel:badge,stageDate:c.stage.date,archetype:"disclosable_major",modality:"cash",status:"active",caseArchetypeLabel:"境外產業基金認繳",caseModalityShortLabel:"現金認繳",
+      before:{title:"認繳安排",nodes,equityLinks:[]},after:{title:"已簽合夥協議",nodes,equityLinks:[],outcomeBadge:badge},
+      flows:[{id:"commitment",kind:"cash",direction:"ltr",fromLabel:l,toLabel:r,headline:"香港時代擬認繳不超過2.98701億美元，佔99.90%，按通知實繳",proposedOrTerminated:true}],
+      annotations:[{tag:"①",title:"合夥安排",body:"香港時代是有限合夥人，對投資標的無一票否決權。"}, {tag:"②",title:"持股與管理",body:"香港時代間接持有普通合夥人及基金管理人各30%股權。"}],
+      evidenceLinks:[{documentId:s,pages:[1,2,3,4],label:"原件：認繳、管理及監管披露"}],compactSummary:"基金2.99億美元 · 香港時代認繳99.90% · 待按通知繳款",topology});
+  }
+
   function buildStarShineCircleTime(c,docs){
     const z="YS-20261127-01440-circle-time",p="YS-20261023-01440-circle-time",m="YS-20261127-01440-egm";
     if(c.stage?.date!=="2026-11-27"||c.stage.status!=="active"||c.stage.eventKind!=="dispatch"||
@@ -10495,6 +10513,7 @@
     if(["HK-01202-20261127-8th-sales","HK-01202-20261127-51st-sales","HK-01202-20261127-23rd-sales","HK-01202-20261127-seekon-sales","HK-01202-20261127-rongwei-sales","HK-01202-20261127-sumitomo-purchase","HK-01202-20261127-23rd-purchase","HK-01202-20261127-29th-purchase","HK-01202-20261127-siwi-purchase"].includes(txCase?.id))return buildSiwiFramework27(txCase,documents);
     if(txCase?.id==="HK-01385-20260817-rongsheng-fund")return buildFudanIndustrialFund(txCase,documents);
     if(txCase?.id==="HK-00379-20261127-tei-framework")return buildTeiHealthFramework(txCase,documents);
+    if(txCase?.id==="HK-03750-20261127-lochpine-lush")return buildCatlLochpineFund(txCase,documents);
     if (txCase?.category === "rights_issue") { const x=buildEvidencedRightsIssue(txCase,documents);return x&&validateDiagramSpec(x); }
     if(txCase?.id==="HK-01958-20261021-bhaf-capital-reduction"){const x=buildBhafCapitalReduction(txCase,documents);return x&&validateDiagramSpec(x);}
     if(txCase?.id==="HK-01958-20261117-battery-swap-assets"){const x=buildBaicSwapTender(txCase,documents);return x&&validateDiagramSpec(x);}
